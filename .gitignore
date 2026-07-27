@@ -1,0 +1,26 @@
+# Local game and test state
+*.eug
+*.eug.cfg
+!mod/scenarios/*.eug
+savedebug.txt
+history.txt
+sync_log.txt
+config.eu
+
+# Archives and temporary packaging
+dist/
+*.zip
+*.7z
+*.rar
+*.tmp
+
+# Editor and OS state
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Python
+__pycache__/
+*.pyc

@@ -1,0 +1,554 @@
+#########################################################################
+# India Mod V3.1: continuity, stabilization and controlled-risk systems
+#########################################################################
+
+event = {
+	id = 9270700
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_constitution
+		NOT = { flag = ind_v3_reconstruction_1933 }
+	}
+
+	name = "Provincial Recovery Fills the Gap"
+	desc = "Delhi allowed the Emergency Reconstruction Act to lapse, but provincial governments, Indian business houses and railway workshops have not remained idle. Their scattered programme is slower and less coherent than a national plan, yet it prevents industrial development from stopping altogether."
+	style = 2
+	picture = "india_v3_industry"
+
+	date = { day = 0 month = january year = 1935 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1935 }
+
+	action_a = {
+		name = "Recognize the provincial recovery programme"
+		command = { type = money value = 150 }
+		command = { type = dissent value = 3 }
+		command = { type = domestic which = free_market value = 1 }
+		command = { type = research_mod value = 1 }
+		command = { type = construct which = ic where = 1447 value = 1 }
+		command = { type = construct which = ic where = 1459 value = 1 }
+		command = { type = construct which = ic where = 1472 value = 1 }
+		command = { type = construct which = ic where = 1502 value = 1 }
+		command = { type = construct which = ic where = 1517 value = 1 }
+		command = { type = setflag which = ind_v3_private_reconstruction }
+		command = { type = setflag which = ind_v3_reconstruction_1933 }
+		command = { type = setflag which = ind_v31_reconstruction_fallback }
+	}
+}
+
+event = {
+	id = 9270701
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_reconstruction_1933
+		NOT = { flag = ind_v3_transport_1934 }
+	}
+
+	name = "The Patchwork Transport Settlement"
+	desc = "The national transport bill expired, leaving railways, ports and frontier authorities to pursue separate priorities. Standardized gauges and military roads now provide a modest common network, but India has lost the efficiency of a unified trunk programme."
+	style = 2
+	picture = "india_v3_industry"
+
+	date = { day = 0 month = january year = 1936 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1936 }
+
+	action_a = {
+		name = "Connect the regional systems"
+		command = { type = dissent value = 1 }
+		command = { type = tc_mod value = 1 }
+		command = { type = construct which = infrastructure where = 1447 value = 5 trigger = { NOT = { building = { province = 1447 type = infrastructure value = 0.96 } } } }
+		command = { type = construct which = infrastructure where = 1459 value = 5 trigger = { NOT = { building = { province = 1459 type = infrastructure value = 0.96 } } } }
+		command = { type = construct which = infrastructure where = 1517 value = 5 trigger = { NOT = { building = { province = 1517 type = infrastructure value = 0.96 } } } }
+		command = { type = construct which = infrastructure where = 1533 value = 5 trigger = { NOT = { building = { province = 1533 type = infrastructure value = 0.96 } } } }
+		command = { type = setflag which = ind_v3_frontier_transport }
+		command = { type = setflag which = ind_v3_transport_1934 }
+		command = { type = setflag which = ind_v31_transport_fallback }
+	}
+}
+
+event = {
+	id = 9270702
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_transport_1934
+		NOT = { flag = ind_v3_steel_1935 }
+	}
+
+	name = "Private Foundries Lead the Steel Programme"
+	desc = "Without a national steel settlement, Tata and a network of smaller foundries have expanded where contracts and transport permit. Output rises, but machine-tool standardization and state control remain limited."
+	style = 2
+	picture = "india_v3_industry"
+
+	date = { day = 0 month = january year = 1937 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1937 }
+
+	action_a = {
+		name = "Accept the private steel network"
+		command = { type = dissent value = 2 }
+		command = { type = domestic which = free_market value = 1 }
+		command = { type = add_prov_resource which = 1472 value = 8 where = metal }
+		command = { type = add_prov_resource which = 1476 value = 12 where = energy }
+		command = { type = construct which = ic where = 1472 value = 1 }
+		command = { type = construct which = ic where = 1477 value = 1 }
+		command = { type = construct which = ic where = 1502 value = 1 }
+		command = { type = construct which = ic where = 1517 value = 1 }
+		command = { type = setflag which = ind_v3_private_steel }
+		command = { type = setflag which = ind_v3_steel_1935 }
+		command = { type = setflag which = ind_v31_steel_fallback }
+	}
+}
+
+event = {
+	id = 9270703
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_steel_1935
+		NOT = { flag = ind_v3_power_1936 }
+	}
+
+	name = "A Decentralized Power Settlement"
+	desc = "Provincial utilities and industrial firms have assembled a mixed system of coal stations, river works and rural grids. It cannot match a continental power authority, but it supplies the next stage of industrialization."
+	style = 2
+	picture = "india_v3_industry"
+
+	date = { day = 0 month = january year = 1938 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1938 }
+
+	action_a = {
+		name = "Standardize the provincial grids"
+		command = { type = research_mod value = 1 }
+		command = { type = add_prov_resource which = 1476 value = 15 where = energy }
+		command = { type = add_prov_resource which = 1485 value = 10 where = energy }
+		command = { type = construct which = ic where = 1476 value = 1 }
+		command = { type = construct which = ic where = 1485 value = 1 }
+		command = { type = construct which = infrastructure where = 1476 value = 5 trigger = { NOT = { building = { province = 1476 type = infrastructure value = 0.96 } } } }
+		command = { type = construct which = infrastructure where = 1485 value = 5 trigger = { NOT = { building = { province = 1485 type = infrastructure value = 0.96 } } } }
+		command = { type = setflag which = ind_v3_rural_power }
+		command = { type = setflag which = ind_v3_power_1936 }
+		command = { type = setflag which = ind_v31_power_fallback }
+	}
+}
+
+event = {
+	id = 9270704
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_power_1936
+		NOT = { flag = ind_v3_science_1937 }
+	}
+
+	name = "The Universities Coordinate Themselves"
+	desc = "The national science bill failed, but universities in Calcutta, Bombay, Delhi and Bangalore have created a voluntary research council. Its grants are modest and uneven, yet Indian science remains connected to industry and the armed forces."
+	style = 2
+	picture = "india_v3_industry"
+
+	date = { day = 0 month = january year = 1939 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1939 }
+
+	action_a = {
+		name = "Charter the voluntary research council"
+		command = { type = research_mod value = 2 }
+		command = { type = construct which = ic where = 1447 value = 1 }
+		command = { type = construct which = ic where = 1502 value = 1 }
+		command = { type = setflag which = ind_v3_university_science }
+		command = { type = setflag which = ind_v3_science_1937 }
+		command = { type = setflag which = ind_v31_science_fallback }
+	}
+}
+
+event = {
+	id = 9270705
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_science_1937
+		NOT = { flag = ind_v3_second_plan_1938 }
+	}
+
+	name = "The Modest Second Plan"
+	desc = "The grand Second Plan never secured full funding. Delhi instead coordinates a restrained programme of machine tools, electrical works and technical education that preserves momentum without transforming the economy at the intended speed."
+	style = 2
+	picture = "india_v3_industry"
+
+	date = { day = 0 month = january year = 1940 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1940 }
+
+	action_a = {
+		name = "Proceed with the affordable programme"
+		command = { type = dissent value = 2 }
+		command = { type = research_mod value = 2 }
+		command = { type = construct which = ic where = 1447 value = 1 }
+		command = { type = construct which = ic where = 1459 value = 1 }
+		command = { type = construct which = ic where = 1472 value = 1 }
+		command = { type = construct which = ic where = 1477 value = 1 }
+		command = { type = construct which = ic where = 1485 value = 1 }
+		command = { type = construct which = ic where = 1502 value = 1 }
+		command = { type = construct which = ic where = 1517 value = 1 }
+		command = { type = construct which = ic where = 1533 value = 1 }
+		command = { type = setflag which = ind_v3_technology_second_plan }
+		command = { type = setflag which = ind_v3_second_plan_1938 }
+		command = { type = setflag which = ind_v31_second_plan_fallback }
+	}
+}
+
+event = {
+	id = 9270710
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_reconstruction_1933
+		NOT = { flag = ind_v3_army_reform }
+	}
+
+	name = "The Territorial Army Compromise"
+	desc = "Parliament never funded a comprehensive army reform. Provincial formations and regular cadres have instead settled on a territorial system: inexpensive, nationally representative and adequate for defence, but poorly suited to rapid mechanized war."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = january year = 1936 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1936 }
+
+	action_a = {
+		name = "Standardize the territorial system"
+		command = { type = manpowerpool value = 30 }
+		command = { type = morale which = land value = 1 }
+		command = { type = domestic which = professional_army value = -1 }
+		command = { type = setflag which = ind_v3_mass_army }
+		command = { type = setflag which = ind_v3_army_reform }
+		command = { type = setflag which = ind_v31_army_fallback }
+	}
+}
+
+event = {
+	id = 9270711
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_army_reform
+		NOT = { flag = ind_v3_air_program }
+	}
+
+	name = "Civil Aviation Becomes the Air Reserve"
+	desc = "The combat aviation programme remained unfunded, so flying clubs, mail routes and provincial schools have become the reserve from which a future air force must grow."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = january year = 1937 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1937 }
+
+	action_a = {
+		name = "Place the civil reserve under Air Staff supervision"
+		command = { type = research_mod value = 1 }
+		command = { type = waketeam which = 250013 }
+		command = { type = construct which = air_base where = 1502 value = 3 trigger = { NOT = { building = { province = 1502 type = air_base value = 8 } } } }
+		command = { type = setflag which = ind_v3_civil_air_program }
+		command = { type = setflag which = ind_v3_air_program }
+		command = { type = setflag which = ind_v31_air_fallback }
+	}
+}
+
+event = {
+	id = 9270712
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_transport_1934
+		NOT = { flag = ind_v3_naval_program }
+	}
+
+	name = "A Coastal Denial Fleet"
+	desc = "The blue-water programme never won appropriations. The Naval Staff has concentrated the surviving budget on submarines, mines, patrol craft and coastal reconnaissance, preserving a credible sea-denial doctrine."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = january year = 1938 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1938 }
+
+	action_a = {
+		name = "Formalize the coastal denial doctrine"
+		command = { type = research_mod value = 1 }
+		command = { type = waketeam which = 250018 }
+		command = { type = construct which = naval_base where = 1517 value = 3 trigger = { NOT = { building = { province = 1517 type = naval_base value = 8 } } } }
+		command = { type = setflag which = ind_v3_denial_fleet }
+		command = { type = setflag which = ind_v3_naval_program }
+		command = { type = setflag which = ind_v31_navy_fallback }
+	}
+}
+
+event = {
+	id = 9270713
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_steel_1935
+		flag = ind_v3_army_reform
+		NOT = { flag = ind_v3_armaments_1937 }
+	}
+
+	name = "The Civilian Arsenal Network"
+	desc = "A central armaments board was never funded, but railway workshops and civilian engineering firms have standardized basic contracts. India can equip mass forces, though advanced weapons will remain scarce."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = january year = 1939 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1939 }
+
+	action_a = {
+		name = "Register the civilian arsenal network"
+		command = { type = supplies value = 1000 }
+		command = { type = research_mod value = 1 }
+		command = { type = construct which = ic where = 1472 value = 1 }
+		command = { type = construct which = ic where = 1502 value = 1 }
+		command = { type = construct which = ic where = 1517 value = 1 }
+		command = { type = setflag which = ind_v3_civilian_armaments }
+		command = { type = setflag which = ind_v3_armaments_1937 }
+		command = { type = setflag which = ind_v31_armaments_fallback }
+	}
+}
+
+event = {
+	id = 9270714
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_armaments_1937
+		NOT = { flag = ind_v3_force_expansion_1938 }
+	}
+
+	name = "The Cadre Expansion of 1939"
+	desc = "The full force-expansion bill failed, but the General Staff has enlarged training cadres and mobilization tables. India gains a framework for wartime expansion rather than a large standing force."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = january year = 1940 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1940 }
+
+	action_a = {
+		name = "Prepare the cadres for wartime expansion"
+		command = { type = manpowerpool value = 35 }
+		command = { type = max_organization which = land value = 2 }
+		command = { type = setflag which = ind_v3_combined_force }
+		command = { type = setflag which = ind_v3_force_expansion_1938 }
+		command = { type = setflag which = ind_v31_force_fallback }
+	}
+}
+
+event = {
+	id = 9270790
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_started
+		NOT = { money = 500 }
+		NOT = { flag = ind_v31_fiscal_stabilization }
+	}
+
+	name = "The Fiscal Stabilization Act"
+	desc = "Emergency note issues and rapid nation-building have exhausted the Union treasury, leaving ministries unable to fund even routine programmes. The Reserve Bank now consolidates those notes, transfers inherited sterling balances and recapitalizes the public supply system. This rescue can happen only once."
+	style = 2
+	picture = "india_v3_industry"
+
+	date = { day = 0 month = january year = 1933 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1935 }
+
+	action_a = {
+		name = "Consolidate the emergency accounts"
+		command = { type = money value = 2000 }
+		command = { type = supplies value = 1800 }
+		command = { type = dissent value = 1 }
+		command = { type = industrial_modifier which = total value = 2 }
+		command = { type = domestic which = democratic value = 1 trigger = { flag = ind_v3_federal NOT = { policy = { type = democratic value = 6 } } } }
+		command = { type = setflag which = ind_v31_fiscal_stabilization }
+	}
+}
+
+event = {
+	id = 9270791
+	random = no
+	country = IND
+
+	decision = {
+		flag = ind_v3_cabinet_developmental
+		NOT = { government = democratic }
+		NOT = { flag = ind_v31_high_command_purge }
+	}
+	decision_trigger = {
+		NOT = { government = democratic }
+	}
+
+	name = "Purge the Indian High Command"
+	desc = "The executive can remove officers considered politically unreliable and reward a younger, more aggressive command culture. The army may gain cohesion, but neither the cabinet nor the player can control how much professional experience is lost."
+	style = 2
+	picture = "purge_army"
+	decision_picture = "decision_purge_army"
+
+	date = { day = 0 month = january year = 1933 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1945 }
+
+	action_a = {
+		name = "Accept the risk and purge the command"
+		command = { type = dissent value = 2 }
+		command = { type = morale which = land value = 3 }
+		command = { type = sleepleader which = -1 }
+		command = { trigger = { random = 45 } type = sleepleader which = -1 }
+		command = { trigger = { random = 20 } type = sleepleader which = -1 }
+		command = { trigger = { random = 8 } type = sleepleader which = -1 }
+		command = { type = setflag which = ind_v31_high_command_purge }
+	}
+}
+
+# Save-compatible V3.2 roster correction. Fresh campaigns already begin with
+# Gandhi and wake the Air Staff through either service-foundation choice.
+event = {
+	id = 9270792
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_started
+		NOT = { flag = ind_v32_roster_compatibility }
+	}
+
+	name = "The Corrected Constitutional and Service Lists"
+	desc = "The Union Gazette confirms Mahatma Gandhi as constitutional President above the federal cabinet and completes the register of the Indian Air Staff College. These appointments correct omissions in the first independence settlement without changing the cabinet's programme."
+	style = 2
+	picture = "india_v3_independence"
+
+	date = { day = 0 month = january year = 1933 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1945 }
+
+	action_a = {
+		name = "Publish the corrected lists"
+		command = { trigger = { flag = ind_v3_cabinet_federal headofstate = 251001 } type = headofstate which = 251041 }
+		command = { trigger = { flag = ind_v3_air_staff_founded } type = waketeam which = 250025 }
+		command = { type = setflag which = ind_v32_roster_compatibility }
+	}
+}
+
+# Save-compatible V3.3 manpower and advanced-service corrections. These also
+# act as one-time safety nets for fresh campaigns that exhaust their reserve.
+event = {
+	id = 9270793
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_army_reform
+		NOT = { manpower = 100 }
+		NOT = { flag = ind_v33_reserve_register }
+	}
+
+	name = "The National Service Reserve Register"
+	desc = "A review of provincial, princely and railway-service rolls has found a large body of trained men omitted from the first Union mobilization tables. Their registration restores a usable strategic reserve without imposing immediate universal service."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = january year = 1934 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1945 }
+
+	action_a = {
+		name = "Enter the trained reserve into the Union rolls"
+		command = { type = manpowerpool value = 250 }
+		command = { type = setflag which = ind_v33_reserve_register }
+	}
+}
+
+event = {
+	id = 9270794
+	random = no
+	country = IND
+
+	trigger = {
+		OR = {
+			flag = ind_v3_experimental_armoured_corps
+			flag = ind_v3_combined_arms_1936
+			flag = ind_v3_mobile_reserve_1938
+			flag = ind_v3_axis_armoured_army
+			flag = ind_v3_soviet_mass_operations
+		}
+		NOT = { flag = ind_v33_armoured_registry }
+	}
+
+	name = "The Armoured Corps Is Gazetted"
+	desc = "Experimental light armour already delivered to the army is now recognized as a permanent service arm. The corrected establishment makes its formations visible to the deployment office and permits follow-on production."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = january year = 1934 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1945 }
+
+	action_a = {
+		name = "Publish the armoured establishment"
+		command = { type = activate_unit_type which = light_armor }
+		command = { type = new_model which = light_armor value = 0 }
+		command = { type = activate_unit_type which = armored_car }
+		command = { type = new_model which = armored_car value = 0 }
+		command = { type = setflag which = ind_v33_armoured_registry }
+	}
+}
+
+event = {
+	id = 9270795
+	random = no
+	country = IND
+
+	trigger = {
+		OR = {
+			flag = ind_v3_civil_air_program
+			flag = ind_v3_air_transport_command
+			flag = ind_v3_oceanic_air_force
+			flag = ind_v3_airborne_brigade
+		}
+		NOT = { flag = ind_v33_air_transport_registry }
+	}
+
+	name = "The Air Transport Command Is Gazetted"
+	desc = "Aircraft acquired under civil and airborne programmes are transferred from provisional registers to the Indian Air Force establishment. Existing lift wings become available to the deployment office and the type enters regular production."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = january year = 1934 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1945 }
+
+	action_a = {
+		name = "Publish the transport-command establishment"
+		command = { type = activate_unit_type which = transport_plane }
+		command = { type = new_model which = transport_plane value = 0 }
+		command = { type = activate_unit_type which = escort }
+		command = { type = new_model which = escort value = 0 }
+		command = { type = setflag which = ind_v33_air_transport_registry }
+	}
+}

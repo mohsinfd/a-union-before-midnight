@@ -1,0 +1,842 @@
+#########################################################################
+# India Mod V3: grand strategy, alliances and negotiated accessions
+#########################################################################
+# India Mod V3.1 economy pass
+
+event = {
+	id = 9270400
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_constitution
+		NOT = { flag = ind_v3_world_role }
+	}
+
+	name = "India and the Coming World Crisis"
+	desc = "The international order is breaking down. India can organize a non-aligned pole, seek leverage through European balance-of-power politics, turn toward an Asian security system, or align its development with the Soviet experiment. Orientation is not yet alliance, but it will decide which doors remain open."
+	style = 2
+	picture = "decision_diplomatic_campaign"
+
+	date = { day = 0 month = january year = 1936 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1936 }
+
+	action_a = {
+		ai_chance = 40
+		name = "Lead an independent non-aligned pole"
+		
+		command = { type = dissent value = -1 }
+		command = { type = domestic which = interventionism value = -1 }
+		command = { type = relation which = ENG value = 15 }
+		command = { type = relation which = GER value = 15 }
+		command = { type = relation which = SOV value = 15 }
+		command = { type = relation which = JAP value = 15 }
+		command = { type = relation which = CHI value = 25 }
+		command = { type = setflag which = ind_v3_non_aligned }
+		command = { type = setflag which = ind_v3_world_role }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Seek leverage in the European balance"
+		command = { type = money value = -175 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = relation which = ENG value = 30 }
+		command = { type = relation which = GER value = 30 }
+		command = { type = relation which = FRA value = 15 }
+		command = { type = setflag which = ind_v3_european_balance }
+		command = { type = setflag which = ind_v3_world_role }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Build an Asian security system"
+		command = { type = money value = -175 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = relation which = JAP value = 30 }
+		command = { type = relation which = CHI value = 30 }
+		command = { type = relation which = SIA value = 20 }
+		command = { type = setflag which = ind_v3_asian_security }
+		command = { type = setflag which = ind_v3_world_role }
+	}
+	action_d = {
+		ai_chance = 10
+		name = "Negotiate a socialist development compact"
+		command = { type = money value = -125 }
+		command = { type = supplies value = -250 }
+		command = { type = domestic which = free_market value = -1 }
+		command = { type = relation which = SOV value = 60 }
+		command = { type = relation which = ENG value = -20 }
+		command = { type = setflag which = ind_v3_socialist_compact }
+		command = { type = setflag which = ind_v3_world_role }
+	}
+}
+
+event = {
+	id = 9270401
+	random = no
+	country = IND
+
+	decision = {
+		flag = ind_v3_european_balance
+		NOT = { flag = ind_v3_european_partner }
+	}
+	decision_trigger = {
+	OR = {
+		AND = { money = 275 supplies = 550 }
+		AND = { money = 350 supplies = 750 }
+	}
+}
+
+	name = "Choose a European Partner"
+	desc = "London offers naval coordination, markets and a familiar military relationship, but expects India to defend the imperial sea lanes. Berlin offers machine tools, doctrine and strategic autonomy against Britain, but its revisionism may lead India into a continental war."
+	style = 2
+	picture = "diplomatic_campaign"
+
+	date = { day = 0 month = march year = 1937 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1938 }
+
+	action_a = {
+		trigger = {
+			money = 275
+			supplies = 550
+		}
+		ai_chance = 65
+		name = "Negotiate a Commonwealth defence partnership"
+		command = { type = money value = -275 }
+		command = { type = supplies value = -550 }
+		command = { type = relation which = ENG value = 80 }
+		command = { type = relation which = FRA value = 30 }
+		command = { type = relation which = GER value = -35 }
+		command = { type = dissent value = 2 }
+		command = { type = setflag which = ind_v3_allied_orientation }
+		command = { type = setflag which = ind_v3_european_partner }
+	}
+	action_b = {
+		trigger = {
+			money = 350
+			supplies = 750
+		}
+		ai_chance = 35
+		name = "Invite a German industrial and military mission"
+		command = { type = money value = -350 }
+		command = { type = supplies value = -750 }
+		command = { type = relation which = GER value = 90 }
+		command = { type = relation which = ENG value = -55 }
+		command = { type = relation which = FRA value = -30 }
+		command = { type = dissent value = 3 }
+		command = { type = research_mod value = 3 }
+		command = { type = domestic which = professional_army value = 1 }
+		command = { type = setflag which = ind_v3_axis_orientation }
+		command = { type = setflag which = ind_v3_european_partner }
+	}
+}
+
+event = {
+	id = 9270402
+	random = no
+	country = IND
+
+	decision = {
+		flag = ind_v3_asian_security
+		NOT = { flag = ind_v3_asian_partner }
+	}
+	decision_trigger = {
+	OR = {
+		AND = { money = 250 supplies = 650 }
+		AND = { money = 325 supplies = 450 }
+	}
+}
+
+	name = "The Shape of Asian Security"
+	desc = "Tokyo proposes an anti-colonial strategic partnership under Japanese leadership. Chinese and Southeast Asian envoys instead urge India to organize an autonomous Asian coalition able to resist both empire and Japanese domination."
+	style = 2
+	picture = "japan_cabinet"
+
+	date = { day = 0 month = march year = 1937 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1938 }
+
+	action_a = {
+		trigger = {
+			money = 250
+			supplies = 650
+		}
+		ai_chance = 35
+		name = "Accept Japan as the senior naval partner"
+		command = { type = money value = -250 }
+		command = { type = supplies value = -650 }
+		command = { type = relation which = JAP value = 90 }
+		command = { type = relation which = CHI value = -60 }
+		command = { type = relation which = ENG value = -30 }
+		command = { type = dissent value = 4 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = setflag which = ind_v3_japanese_orientation }
+		command = { type = setflag which = ind_v3_asian_partner }
+	}
+	action_b = {
+		trigger = {
+			money = 325
+			supplies = 450
+		}
+		ai_chance = 65
+		name = "Organize an independent Asian coalition"
+		command = { type = money value = -325 }
+		command = { type = supplies value = -450 }
+		command = { type = relation which = CHI value = 70 }
+		command = { type = relation which = SIA value = 40 }
+		command = { type = relation which = JAP value = -35 }
+		command = { type = relation which = ENG value = 10 }
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_v3_independent_asia }
+		command = { type = setflag which = ind_v3_asian_partner }
+	}
+}
+
+event = {
+	id = 9270403
+	random = no
+	country = IND
+
+	decision = {
+		flag = ind_v3_socialist_compact
+		NOT = { flag = ind_v3_soviet_compact_settled }
+	}
+	decision_trigger = {
+	OR = {
+		AND = { money = 325 supplies = 850 }
+		AND = { money = 250 supplies = 500 }
+	}
+}
+
+	name = "The Delhi-Moscow Technical Compact"
+	desc = "Moscow will exchange industrial planning, aviation experience and military doctrine for a clear strategic commitment. Accepting accelerates state development but alarms Britain, Indian business and anti-communist provincial leaders."
+	style = 2
+	picture = "Stalin_5YPlan"
+
+	date = { day = 0 month = march year = 1937 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1938 }
+
+	action_a = {
+		trigger = {
+			money = 325
+			supplies = 850
+		}
+		ai_chance = 70
+		name = "Sign the full technical and strategic compact"
+		command = { type = money value = -325 }
+		command = { type = supplies value = -850 }
+		command = { type = dissent value = 4 }
+		command = { type = relation which = SOV value = 90 }
+		command = { type = relation which = ENG value = -45 }
+		command = { type = research_mod value = 4 }
+		command = { type = domestic which = free_market value = -1 }
+		command = { type = setflag which = ind_v3_soviet_orientation }
+		command = { type = setflag which = ind_v3_soviet_compact_settled }
+	}
+	action_b = {
+		trigger = {
+			money = 250
+			supplies = 500
+		}
+		ai_chance = 30
+		name = "Limit cooperation to civilian industry"
+		command = { type = money value = -250 }
+		command = { type = supplies value = -500 }
+		command = { type = relation which = SOV value = 45 }
+		command = { type = relation which = ENG value = 10 }
+		command = { type = research_mod value = 2 }
+		command = { type = setflag which = ind_v3_non_aligned }
+		command = { type = setflag which = ind_v3_soviet_civilian_exchange }
+		command = { type = setflag which = ind_v3_soviet_compact_settled }
+	}
+}
+
+event = {
+	id = 9270404
+	random = no
+	country = IND
+
+	decision = {
+		flag = ind_v3_allied_orientation
+		NOT = { alliance = { country = IND country = ENG } }
+		atwar = no
+	}
+	decision_trigger = {
+		war = { country = ENG country = GER }
+		policy = { type = interventionism value = 5 }
+	}
+
+	name = "Enter the Allied Coalition"
+	desc = "Britain is at war with Germany and invokes the defence partnership. Joining offers naval support, markets and a place in the peace settlement, but places Indian forces in a global war under an alliance still dominated by former imperial powers."
+	style = 2
+	picture = "English_declaration_war"
+
+	date = { day = 0 month = january year = 1939 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1944 }
+
+	action_a = {
+		ai_chance = 85
+		name = "Join as a sovereign Allied great power"
+		command = { type = alliance which = ENG }
+		command = { type = dissent value = 2 }
+		command = { type = relation which = ENG value = 40 }
+		command = { type = setflag which = ind_v3_joined_allies }
+	}
+	action_b = {
+		trigger = {
+			supplies = 1650
+		}
+		ai_chance = 15
+		name = "Offer material support but remain outside"
+		command = { type = supplies value = -1650 }
+		command = { type = money value = 500 }
+		command = { type = relation which = ENG value = 30 }
+		command = { type = setflag which = ind_v3_armed_neutrality }
+	}
+}
+
+event = {
+	id = 9270405
+	random = no
+	country = IND
+
+	decision = {
+		flag = ind_v3_axis_orientation
+		NOT = { alliance = { country = IND country = GER } }
+		atwar = no
+	}
+	decision_trigger = {
+		war = { country = GER country = ENG }
+		policy = { type = interventionism value = 5 }
+	}
+
+	name = "Enter the Continental Coalition"
+	desc = "Berlin asks India to turn the Indian Ocean and Middle East against Britain. Alliance promises technology and the destruction of the old imperial order, but ties India to Germany's wars and political reputation."
+	style = 2
+	picture = "Pact_of_Steel"
+
+	date = { day = 0 month = january year = 1939 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1944 }
+
+	action_a = {
+		ai_chance = 75
+		name = "Join Germany as an equal strategic partner"
+		command = { type = alliance which = GER }
+		command = { type = dissent value = 5 }
+		command = { type = relation which = GER value = 40 }
+		command = { type = setflag which = ind_v3_joined_axis }
+	}
+	action_b = {
+		trigger = {
+			money = 325
+		}
+		ai_chance = 25
+		name = "Use the mission, avoid the war"
+		command = { type = money value = -325 }
+		command = { type = research_mod value = 2 }
+		command = { type = relation which = GER value = 20 }
+		command = { type = setflag which = ind_v3_armed_neutrality }
+	}
+}
+
+event = {
+	id = 9270406
+	random = no
+	country = IND
+
+	decision = {
+		flag = ind_v3_soviet_orientation
+		NOT = { alliance = { country = IND country = SOV } }
+		atwar = no
+	}
+	decision_trigger = {
+		OR = {
+			war = { country = SOV country = GER }
+			war = { country = SOV country = JAP }
+		}
+		policy = { type = interventionism value = 5 }
+	}
+
+	name = "Enter the Socialist Coalition"
+	desc = "The Soviet Union faces a great-power war and asks India to convert the technical compact into alliance. The pact offers industrial and military cooperation but commits India to an ideological camp and may trigger conflict on distant fronts."
+	style = 2
+	picture = "Russian_Airborne"
+
+	date = { day = 0 month = january year = 1939 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1944 }
+
+	action_a = {
+		ai_chance = 80
+		name = "Join the Comintern as an autonomous power"
+		command = { type = alliance which = SOV }
+		command = { type = dissent value = 3 }
+		command = { type = relation which = SOV value = 40 }
+		command = { type = setflag which = ind_v3_joined_comintern }
+	}
+	action_b = {
+		trigger = {
+			supplies = 1650
+		}
+		ai_chance = 20
+		name = "Supply Moscow while preserving neutrality"
+		command = { type = supplies value = -1650 }
+		command = { type = money value = 400 }
+		command = { type = relation which = SOV value = 25 }
+		command = { type = setflag which = ind_v3_armed_neutrality }
+	}
+}
+
+event = {
+	id = 9270407
+	random = no
+	country = IND
+
+	decision = {
+		flag = ind_v3_japanese_orientation
+		NOT = { alliance = { country = IND country = JAP } }
+		atwar = no
+	}
+	decision_trigger = {
+		OR = {
+			war = { country = JAP country = CHI }
+			war = { country = JAP country = ENG }
+			war = { country = JAP country = USA }
+		}
+		policy = { type = interventionism value = 5 }
+	}
+
+	name = "Enter the Co-Prosperity Coalition"
+	desc = "Tokyo asks India to make the Asian partnership a military alliance. It promises naval cooperation and the expulsion of European power from Asia, but also demands acceptance of Japanese leadership and its war in China."
+	style = 2
+	picture = "japan_cabinet"
+
+	date = { day = 0 month = january year = 1939 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1944 }
+
+	action_a = {
+		ai_chance = 70
+		name = "Join Japan and overturn the Asian order"
+		command = { type = alliance which = JAP }
+		command = { type = dissent value = 6 }
+		command = { type = relation which = JAP value = 40 }
+		command = { type = setflag which = ind_v3_joined_japan }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Refuse subordination and stand armed"
+		command = { type = relation which = JAP value = -50 }
+		command = { type = relation which = CHI value = 35 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = setflag which = ind_v3_armed_neutrality }
+	}
+}
+
+event = {
+	id = 9270410
+	random = no
+	country = IND
+
+	decision = {
+		flag = ind_v3_integrated
+		NOT = { flag = ind_v3_himalayan_policy }
+		atwar = no
+	}
+	decision_trigger = {
+
+}
+
+	name = "The Himalayan Settlement"
+	desc = "Nepal and Bhutan are independent buffer kingdoms tied to India by geography, trade and security. Delhi can guarantee their sovereignty, invite one kingdom into the federation, or undertake the expensive diplomacy needed to offer both full constituent status."
+	style = 2
+	picture = "diplomatic_campaign"
+
+	date = { day = 0 month = january year = 1935 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1938 }
+
+	action_a = {
+		
+		ai_chance = 45
+		name = "Guarantee both kingdoms and respect the frontier"
+		
+		command = { type = relation which = NEP value = 60 }
+		command = { type = relation which = BHU value = 60 }
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_v3_himalayan_guarantee }
+		command = { type = setflag which = ind_v3_himalayan_policy }
+	}
+	action_b = {
+		trigger = {
+			money = 200
+			supplies = 300
+		}
+		ai_chance = 15
+		name = "Invite Bhutan into the federation"
+		command = { type = money value = -200 }
+		command = { type = supplies value = -300 }
+		command = { type = trigger which = 9270411 }
+		command = { type = setflag which = ind_v3_himalayan_policy }
+	}
+	action_c = {
+		trigger = {
+			money = 275
+			supplies = 400
+		}
+		ai_chance = 20
+		name = "Invite Nepal into the federation"
+		command = { type = money value = -275 }
+		command = { type = supplies value = -400 }
+		command = { type = trigger which = 9270414 }
+		command = { type = setflag which = ind_v3_himalayan_policy }
+	}
+	action_d = {
+		trigger = {
+			money = 400
+			supplies = 650
+		}
+		ai_chance = 20
+		name = "Offer both kingdoms constituent status"
+		command = { type = money value = -400 }
+		command = { type = supplies value = -650 }
+		command = { type = dissent value = 2 }
+		command = { type = trigger which = 9270411 }
+		command = { type = trigger which = 9270414 }
+		command = { type = setflag which = ind_v3_himalayan_policy }
+	}
+}
+
+event = {
+	id = 9270411
+	random = no
+	country = BHU
+
+	name = "India Offers Constituent Status"
+	desc = "Delhi offers the Bhutanese monarchy protected constituent status inside the Indian federation, preservation of local institutions and major investment in roads and administration. Acceptance ends formal independence; refusal preserves sovereignty but risks isolation."
+	style = 2
+	picture = "diplomatic_campaign"
+
+	action_a = {
+		ai_chance = 60
+		name = "Enter the Indian federation"
+		command = { type = trigger which = 9270412 }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Bhutan must remain independent"
+		command = { type = relation which = IND value = -25 }
+		command = { type = trigger which = 9270413 }
+	}
+}
+
+event = {
+	id = 9270412
+	random = no
+	country = IND
+
+	name = "Bhutan Enters the Union"
+	desc = "Bhutan accepts constituent status. Indian guarantees preserve the monarchy and local administration while defence, foreign affairs and infrastructure pass to the union."
+	style = 2
+	picture = "all_india_congress"
+
+	action_a = {
+		name = "Welcome Bhutan"
+		command = { type = inherit which = BHU }
+		command = { type = addcore which = 1456 }
+		command = { type = dissent value = -1 }
+		command = { type = manpowerpool value = 5 }
+		command = { type = setflag which = ind_v3_bhutan_integrated }
+	}
+}
+
+event = {
+	id = 9270413
+	random = no
+	country = IND
+
+	name = "Bhutan Rejects Federation"
+	desc = "The Bhutanese court chooses sovereign isolation. Delhi can preserve a friendly frontier without forcing the question."
+	style = 2
+	picture = "diplomatic_campaign"
+
+	action_a = {
+		name = "Respect the decision"
+		command = { type = relation which = BHU value = 20 }
+		command = { type = setflag which = ind_v3_bhutan_refused }
+	}
+}
+
+event = {
+	id = 9270414
+	random = no
+	country = NEP
+
+	name = "India Offers Constituent Status"
+	desc = "Delhi offers Nepal protected constituent status, recognition of the monarchy and command roles for the Nepalese army. Acceptance ends formal independence; refusal preserves a proud military kingdom between India and Tibet."
+	style = 2
+	picture = "diplomatic_campaign"
+
+	action_a = {
+		ai_chance = 45
+		name = "Enter the Indian federation"
+		command = { type = trigger which = 9270415 }
+	}
+	action_b = {
+		ai_chance = 55
+		name = "Nepal will remain sovereign"
+		command = { type = relation which = IND value = -20 }
+		command = { type = trigger which = 9270416 }
+	}
+}
+
+event = {
+	id = 9270415
+	random = no
+	country = IND
+
+	name = "Nepal Enters the Union"
+	desc = "Nepal accepts constituent status. Its army and mountain traditions enter the union while Kathmandu retains a protected local settlement."
+	style = 2
+	picture = "all_india_congress"
+
+	action_a = {
+		name = "Welcome Nepal"
+		command = { type = inherit which = NEP }
+		command = { type = addcore which = 1457 }
+		command = { type = dissent value = 1 }
+		command = { type = manpowerpool value = 20 }
+		command = { type = setflag which = ind_v3_nepal_integrated }
+	}
+}
+
+event = {
+	id = 9270416
+	random = no
+	country = IND
+
+	name = "Nepal Rejects Federation"
+	desc = "Kathmandu rejects constituent status but remains willing to discuss trade and mutual defence."
+	style = 2
+	picture = "diplomatic_campaign"
+
+	action_a = {
+		name = "Keep the mountain frontier peaceful"
+		command = { type = relation which = NEP value = 20 }
+		command = { type = setflag which = ind_v3_nepal_refused }
+	}
+}
+
+event = {
+	id = 9270420
+	random = no
+	country = IND
+
+	decision = {
+		flag = ind_v3_world_role
+		NOT = { flag = ind_v3_ceylon_requested }
+		atwar = no
+	}
+	decision_trigger = {
+relation = { which = ENG value = 25 }
+	}
+
+	name = "Negotiate the Ceylon Settlement"
+	desc = "Ceylon controls the centre of the Indian Ocean sea lanes. Delhi can offer debt assumption, port guarantees and political autonomy in exchange for a peaceful British transfer to the union."
+	style = 2
+	picture = "British_Navy"
+
+	date = { day = 0 month = january year = 1937 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1941 }
+
+	action_a = {
+		trigger = {
+			money = 500
+			supplies = 650
+		}
+		name = "Offer generous terms for a peaceful transfer"
+		command = { type = money value = -500 }
+		command = { type = supplies value = -650 }
+		command = { type = trigger which = 9270421 }
+		command = { type = setflag which = ind_v3_ceylon_requested }
+	}
+	action_b = {
+		name = "Ceylon is not worth a rupture"
+		command = { type = relation which = ENG value = 15 }
+		command = { type = setflag which = ind_v3_ceylon_deferred }
+		command = { type = setflag which = ind_v3_ceylon_requested }
+	}
+}
+
+event = {
+	id = 9270421
+	random = no
+	country = ENG
+
+	name = "India Proposes a Ceylon Settlement"
+	desc = "India offers to assume colonial liabilities, preserve British commercial access and guarantee naval facilities in return for the transfer of Ceylon. Acceptance strengthens a friendly India; refusal preserves a strategic colony at the risk of long-term hostility."
+	style = 2
+	picture = "british_parliament"
+
+	action_a = {
+		ai_chance = 55
+		name = "Transfer Ceylon under the negotiated guarantees"
+		command = { type = money value = 700 }
+		command = { type = secedeprovince which = IND value = 1509 }
+		command = { type = secedeprovince which = IND value = 1510 }
+		command = { type = secedeprovince which = IND value = 1511 }
+		command = { type = relation which = IND value = 35 }
+		command = { type = trigger which = 9270422 }
+	}
+	action_b = {
+		ai_chance = 45
+		name = "Ceylon remains British"
+		command = { type = relation which = IND value = -35 }
+		command = { type = trigger which = 9270423 }
+	}
+}
+
+event = {
+	id = 9270422
+	random = no
+	country = IND
+
+	name = "Ceylon Joins the Union"
+	desc = "The transfer is complete. Ceylon enters the union with constitutional autonomy while Colombo and Trincomalee become central to Indian Ocean strategy."
+	style = 2
+	picture = "all_india_party"
+
+	action_a = {
+		name = "Honour the settlement"
+		command = { type = addcore which = 1509 }
+		command = { type = addcore which = 1510 }
+		command = { type = addcore which = 1511 }
+		command = { type = dissent value = -2 }
+		command = { type = manpowerpool value = 15 }
+		command = { type = setflag which = ind_v3_ceylon_integrated }
+	}
+}
+
+event = {
+	id = 9270423
+	random = no
+	country = IND
+
+	name = "Britain Refuses the Ceylon Settlement"
+	desc = "London refuses to transfer Ceylon. The public sees the decision as proof that Britain still regards India as a subordinate power."
+	style = 2
+	picture = "british_parliament"
+
+	action_a = {
+		name = "Remember the refusal"
+		command = { type = dissent value = 2 }
+		command = { type = relation which = ENG value = -25 }
+		command = { type = setflag which = ind_v3_ceylon_refused }
+	}
+}
+
+event = {
+	id = 9270430
+	random = no
+	country = IND
+
+	decision = {
+		flag = ind_v3_world_role
+		NOT = { flag = ind_v3_goa_requested }
+		atwar = no
+	}
+	decision_trigger = {
+relation = { which = POR value = 0 }
+	}
+
+	name = "The Question of Goa"
+	desc = "Portuguese Goa is a small enclave with deep commercial and cultural ties to western India. Delhi can offer compensation, religious guarantees and free-port rights for a peaceful transfer."
+	style = 2
+	picture = "diplomatic_campaign"
+
+	date = { day = 0 month = january year = 1937 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1941 }
+
+	action_a = {
+		trigger = {
+			money = 275
+		}
+		name = "Offer compensation and autonomy"
+		command = { type = money value = -275 }
+		command = { type = trigger which = 9270431 }
+		command = { type = setflag which = ind_v3_goa_requested }
+	}
+	action_b = {
+		name = "Preserve relations with Lisbon"
+		command = { type = relation which = POR value = 20 }
+		command = { type = setflag which = ind_v3_goa_deferred }
+		command = { type = setflag which = ind_v3_goa_requested }
+	}
+}
+
+event = {
+	id = 9270431
+	random = no
+	country = POR
+
+	name = "India Offers to Purchase Goa"
+	desc = "India offers compensation, protection of Portuguese institutions and free-port rights in exchange for Goa. Acceptance avoids a future colonial confrontation; refusal preserves prestige and a centuries-old possession."
+	style = 2
+	picture = "diplomatic_campaign"
+
+	action_a = {
+		ai_chance = 50
+		name = "Accept the compensated transfer"
+		command = { type = money value = 450 }
+		command = { type = secedeprovince which = IND value = 1513 }
+		command = { type = relation which = IND value = 30 }
+		command = { type = trigger which = 9270432 }
+	}
+	action_b = {
+		ai_chance = 50
+		name = "Goa is Portuguese"
+		command = { type = relation which = IND value = -25 }
+		command = { type = trigger which = 9270433 }
+	}
+}
+
+event = {
+	id = 9270432
+	random = no
+	country = IND
+
+	name = "Goa Joins the Union"
+	desc = "The compensated transfer is complete. Goa enters the union with cultural guarantees and free-port privileges."
+	style = 2
+	picture = "all_india_party"
+
+	action_a = {
+		name = "Honour the Goan guarantees"
+		command = { type = addcore which = 1513 }
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_v3_goa_integrated }
+	}
+}
+
+event = {
+	id = 9270433
+	random = no
+	country = IND
+
+	name = "Portugal Refuses the Goa Settlement"
+	desc = "Lisbon rejects compensation and insists that Goa is an inseparable Portuguese possession."
+	style = 2
+	picture = "diplomatic_campaign"
+
+	action_a = {
+		name = "The dispute remains open"
+		command = { type = relation which = POR value = -20 }
+		command = { type = setflag which = ind_v3_goa_refused }
+	}
+}

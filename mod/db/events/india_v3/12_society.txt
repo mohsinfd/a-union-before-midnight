@@ -1,0 +1,508 @@
+#########################################################################
+# India Mod V3: institutions, society and federal cohesion
+#########################################################################
+# India Mod V3.1 economy pass
+
+event = {
+	id = 9271300
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_started
+		NOT = { flag = ind_v3_currency_settlement }
+	}
+
+	name = "A Currency for the Union"
+	desc = "Independence has left India inside sterling finance but outside imperial political control. A sovereign reserve bank gives Delhi monetary power; remaining in the sterling system preserves trade and credit during the dangerous first year."
+	style = 2
+	picture = "india_v3_industry"
+
+	date = { day = 0 month = february year = 1933 }
+	offset = 5
+	deathdate = { day = 29 month = april year = 1933 }
+
+	action_a = {
+		ai_chance = 65
+		name = "Create a sovereign Reserve Bank of India"
+		command = { type = money value = -150 }
+		command = { type = dissent value = 2 }
+		command = { type = industrial_modifier which = money value = 5 }
+		command = { type = research_mod value = 1 }
+		command = { type = relation which = ENG value = -15 }
+		command = { type = setflag which = ind_v3_sovereign_currency }
+		command = { type = setflag which = ind_v3_currency_settlement }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Remain in the sterling system temporarily"
+		command = { type = money value = 400 }
+		command = { type = dissent value = -1 }
+		command = { type = relation which = ENG value = 25 }
+		command = { type = domestic which = free_market value = 1 }
+		command = { type = setflag which = ind_v3_sterling_currency }
+		command = { type = setflag which = ind_v3_currency_settlement }
+	}
+}
+
+event = {
+	id = 9271301
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_currency_settlement
+		NOT = { flag = ind_v3_civil_service }
+	}
+
+	name = "The Indian Civil Service Settlement"
+	desc = "The new state needs experienced administrators, but the inherited service is remote from most citizens. Retaining officials under Indian control preserves capacity; rapid provincial recruitment builds legitimacy but disrupts revenue and planning."
+	style = 2
+	picture = "india_v3_independence"
+
+	date = { day = 0 month = may year = 1933 }
+	offset = 7
+	deathdate = { day = 29 month = july year = 1933 }
+
+	action_a = {
+		ai_chance = 55
+		name = "Retain expertise under a national service commission"
+		command = { type = money value = -100 }
+		command = { type = dissent value = -2 }
+		command = { type = research_mod value = 2 }
+		command = { type = industrial_modifier which = total value = 1 }
+		command = { type = setflag which = ind_v3_professional_civil_service }
+		command = { type = setflag which = ind_v3_civil_service }
+	}
+	action_b = {
+		ai_chance = 45
+		name = "Indianize rapidly through provincial recruitment"
+		command = { type = money value = -125 }
+		command = { type = dissent value = 2 }
+		command = { type = manpowerpool value = 20 }
+		command = { type = tc_mod value = 3 }
+		command = { type = setflag which = ind_v3_broad_civil_service }
+		command = { type = setflag which = ind_v3_civil_service }
+	}
+}
+
+event = {
+	id = 9271302
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_civil_service
+		flag = ind_v3_integrated
+		NOT = { flag = ind_v3_princely_settlement }
+	}
+
+	name = "The Princes and the Union"
+	desc = "Hundreds of princely administrations command land, revenue and armed retainers. Privy purses and ceremonial guarantees can secure a peaceful union; compulsory integration saves money later but may provoke resistance now."
+	style = 2
+	picture = "india_v3_independence"
+
+	date = { day = 0 month = november year = 1933 }
+	offset = 7
+	deathdate = { day = 29 month = january year = 1934 }
+
+	action_a = {
+		ai_chance = 60
+		name = "Guarantee dignities in exchange for accession"
+		command = { type = money value = -200 }
+		command = { type = dissent value = -4 }
+		command = { type = manpowerpool value = 15 }
+		command = { type = construct which = infrastructure where = 1480 value = 10 trigger = { NOT = { building = { province = 1480 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1487 value = 10 trigger = { NOT = { building = { province = 1487 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1507 value = 10 trigger = { NOT = { building = { province = 1507 type = infrastructure value = 0.91 } } } }
+		command = { type = setflag which = ind_v3_negotiated_princely_union }
+		command = { type = setflag which = ind_v3_princely_settlement }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Abolish private armies and integrate by statute"
+		command = { type = money value = 200 }
+		command = { type = supplies value = -300 }
+		command = { type = dissent value = 5 }
+		command = { type = manpowerpool value = 30 }
+		command = { type = domestic which = professional_army value = 1 }
+		command = { type = setflag which = ind_v3_compulsory_princely_union }
+		command = { type = setflag which = ind_v3_princely_settlement }
+	}
+}
+
+event = {
+	id = 9271303
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_princely_settlement
+		NOT = { flag = ind_v3_communal_compact }
+	}
+
+	name = "The Delhi Communal Compact"
+	desc = "Independence has not erased disputes over representation, personal law and provincial power. A binding all-party compact can protect plural citizenship; a strong secular code promises equal law but will be resisted by religious establishments."
+	style = 2
+	picture = "india_v3_independence"
+
+	date = { day = 0 month = february year = 1934 }
+	offset = 7
+	deathdate = { day = 29 month = april year = 1934 }
+
+	action_a = {
+		ai_chance = 60
+		name = "Guarantee plural citizenship and provincial safeguards"
+		command = { type = money value = -150 }
+		command = { type = dissent value = -5 }
+		command = { type = relation which = AFG value = 10 }
+		command = { type = setflag which = ind_v3_plural_compact }
+		command = { type = setflag which = ind_v3_communal_compact }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Adopt one secular civil code"
+		
+		command = { type = dissent value = 4 }
+		command = { type = manpowerpool value = 20 }
+		command = { type = research_mod value = 1 }
+		command = { type = setflag which = ind_v3_uniform_civil_code }
+		command = { type = setflag which = ind_v3_communal_compact }
+	}
+}
+
+event = {
+	id = 9271304
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_communal_compact
+		NOT = { flag = ind_v3_ambedkar_reforms }
+	}
+
+	name = "Ambedkar's Equal Citizenship Bill"
+	desc = "B. R. Ambedkar insists that political independence without equal access to schools, public service and the army is incomplete. Enforceable rights will transform recruitment and legitimacy, but conservative provincial blocs threaten obstruction."
+	style = 2
+	picture = "india_v3_independence"
+
+	date = { day = 0 month = august year = 1934 }
+	offset = 7
+	deathdate = { day = 29 month = october year = 1934 }
+
+	action_a = {
+		ai_chance = 70
+		name = "Enact enforceable civil and service rights"
+		command = { type = money value = -200 }
+		command = { type = dissent value = 3 }
+		command = { type = manpowerpool value = 35 }
+		command = { type = research_mod value = 2 }
+		command = { type = setflag which = ind_v3_equal_citizenship }
+		command = { type = setflag which = ind_v3_ambedkar_reforms }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Use grants and gradual provincial reform"
+		command = { type = money value = -150 }
+		command = { type = dissent value = -1 }
+		command = { type = manpowerpool value = 15 }
+		command = { type = setflag which = ind_v3_gradual_citizenship }
+		command = { type = setflag which = ind_v3_ambedkar_reforms }
+	}
+}
+
+event = {
+	id = 9271305
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_ambedkar_reforms
+		NOT = { flag = ind_v3_burma_compact }
+	}
+
+	name = "Burma's Place in the Union"
+	desc = "Rangoon and the Burmese provinces entered independence with India, but their leaders demand a federal compact that recognizes distinct institutions and control over local development. Delhi can offer constituent autonomy or bind Burma through a common strategic administration."
+	style = 2
+	picture = "india_v3_independence"
+
+	date = { day = 0 month = january year = 1935 }
+	offset = 7
+	deathdate = { day = 29 month = march year = 1935 }
+
+	action_a = {
+		ai_chance = 65
+		name = "Grant Burma constituent autonomy"
+		command = { type = money value = -225 }
+		command = { type = dissent value = -4 }
+		command = { type = construct which = infrastructure where = 1415 value = 15 trigger = { NOT = { building = { province = 1415 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1442 value = 10 trigger = { NOT = { building = { province = 1442 type = infrastructure value = 0.91 } } } }
+		command = { type = tc_mod value = 2 }
+		command = { type = setflag which = ind_v3_burmese_autonomy }
+		command = { type = setflag which = ind_v3_burma_compact }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Maintain one strategic eastern administration"
+		
+		command = { type = supplies value = -300 }
+		command = { type = dissent value = 3 }
+		command = { type = construct which = infrastructure where = 1415 value = 20 trigger = { NOT = { building = { province = 1415 type = infrastructure value = 0.81 } } } }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = setflag which = ind_v3_eastern_administration }
+		command = { type = setflag which = ind_v3_burma_compact }
+	}
+}
+
+event = {
+	id = 9271306
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_burma_compact
+		NOT = { flag = ind_v3_labour_code }
+	}
+
+	name = "The National Labour Code"
+	desc = "Industrial expansion is lengthening shifts and drawing migrants into unsafe company towns. Binding hours, accident insurance and collective bargaining will raise costs but reduce unrest; a production-first code will keep factories flexible."
+	style = 2
+	picture = "india_v3_industry"
+
+	date = { day = 0 month = september year = 1935 }
+	offset = 7
+	deathdate = { day = 29 month = november year = 1935 }
+
+	action_a = {
+		ai_chance = 55
+		name = "Guarantee labour rights and social insurance"
+		command = { type = money value = -275 }
+		command = { type = dissent value = -4 }
+		command = { type = industrial_modifier which = total value = -2 }
+		command = { type = manpowerpool value = 20 }
+		command = { type = setflag which = ind_v3_social_labour_code }
+		command = { type = setflag which = ind_v3_labour_code }
+	}
+	action_b = {
+		ai_chance = 45
+		name = "Keep a flexible production code"
+		
+		command = { type = dissent value = 3 }
+		command = { type = industrial_modifier which = total value = 2 }
+		command = { type = supplies value = 500 }
+		command = { type = setflag which = ind_v3_production_labour_code }
+		command = { type = setflag which = ind_v3_labour_code }
+	}
+}
+
+event = {
+	id = 9271307
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_labour_code
+		NOT = { flag = ind_v3_education_act }
+	}
+
+	name = "The National Education Act"
+	desc = "A great-power economy cannot be built by a tiny educated elite. Universal primary education is the broadest reform, while technical institutes and scholarships deliver engineers and officers sooner."
+	style = 2
+	picture = "india_v3_industry"
+
+	date = { day = 0 month = april year = 1936 }
+	offset = 7
+	deathdate = { day = 29 month = june year = 1936 }
+
+	action_a = {
+		ai_chance = 55
+		name = "Commit to universal primary education"
+		command = { type = money value = -450 }
+		command = { type = manpowerpool value = -12 }
+		command = { type = dissent value = -3 }
+		command = { type = research_mod value = 3 }
+		command = { type = industrial_modifier which = money value = -2 }
+		command = { type = setflag which = ind_v3_mass_education }
+		command = { type = setflag which = ind_v3_education_act }
+	}
+	action_b = {
+		ai_chance = 45
+		name = "Prioritize technical institutes and scholarships"
+		
+		command = { type = manpowerpool value = -8 }
+		command = { type = research_mod value = 5 }
+		command = { type = construct which = ic where = 1502 value = 2 }
+		command = { type = setflag which = ind_v3_technical_education }
+		command = { type = setflag which = ind_v3_education_act }
+	}
+}
+
+event = {
+	id = 9271308
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_education_act
+		NOT = { flag = ind_v3_intelligence_bureau }
+	}
+
+	name = "The Intelligence Bureau Charter"
+	desc = "Foreign missions, communal provocateurs and frontier smuggling all exploit the new state's open institutions. A chartered intelligence bureau can focus on foreign threats, or receive broad internal powers at the price of public trust."
+	style = 2
+	picture = "india_v3_independence"
+
+	date = { day = 0 month = december year = 1936 }
+	offset = 7
+	deathdate = { day = 29 month = february year = 1937 }
+
+	action_a = {
+		ai_chance = 65
+		name = "Create a legally bounded foreign intelligence service"
+		command = { type = money value = -250 }
+		command = { type = supplies value = -200 }
+		command = { type = research_mod value = 2 }
+		command = { type = relation which = ENG value = 5 }
+		command = { type = setflag which = ind_v3_foreign_intelligence }
+		command = { type = setflag which = ind_v3_intelligence_bureau }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Give the bureau broad internal security powers"
+		
+		command = { type = supplies value = -250 }
+		command = { type = dissent value = 2 }
+		command = { type = tc_mod value = 2 }
+		command = { type = setflag which = ind_v3_security_intelligence }
+		command = { type = setflag which = ind_v3_intelligence_bureau }
+	}
+}
+
+event = {
+	id = 9271309
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_intelligence_bureau
+		NOT = { flag = ind_v3_merchant_marine }
+	}
+
+	name = "The Indian Merchant Marine"
+	desc = "India's industry and fleets depend on ocean trade still carried largely in foreign hulls. A state-backed merchant marine costs steel and credit now but gives India strategic lift and commercial reach."
+	style = 2
+	picture = "india_v3_industry"
+
+	date = { day = 0 month = july year = 1937 }
+	offset = 7
+	deathdate = { day = 29 month = september year = 1937 }
+
+	action_a = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 2
+			manpower = 2
+	}
+		ai_chance = 65
+		name = "Subsidize a national merchant fleet"
+		command = { type = money value = -425 }
+		command = { type = supplies value = -500 }
+		command = { type = build_division which = transport value = none when = 3 cost = -1.5 where = 90 }
+		command = { type = construct which = naval_base where = 1517 value = 3 trigger = { NOT = { building = { province = 1517 type = naval_base value = 8 } } } }
+		command = { type = construct which = naval_base where = 1533 value = 3 trigger = { NOT = { building = { province = 1533 type = naval_base value = 8 } } } }
+		command = { type = industrial_modifier which = money value = 3 }
+		command = { type = setflag which = ind_v3_merchant_marine }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Charter foreign shipping and save the steel"
+		command = { type = money value = 150 }
+		command = { type = supplies value = 1000 }
+		command = { type = relation which = ENG value = 15 }
+		command = { type = relation which = USA value = 10 }
+		command = { type = setflag which = ind_v3_chartered_shipping }
+		command = { type = setflag which = ind_v3_merchant_marine }
+	}
+}
+
+event = {
+	id = 9271310
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_merchant_marine
+		NOT = { flag = ind_v3_public_health }
+	}
+
+	name = "Public Health for an Industrial Nation"
+	desc = "Malaria, cholera and preventable workplace disease drain more manpower than any frontier conflict. A national public-health service is expensive but increases the population able to work, study and serve."
+	style = 2
+	picture = "india_v3_industry"
+
+	date = { day = 0 month = february year = 1938 }
+	offset = 7
+	deathdate = { day = 29 month = april year = 1938 }
+
+	action_a = {
+		ai_chance = 70
+		name = "Build a national vaccination and sanitation service"
+		command = { type = money value = -500 }
+		command = { type = supplies value = -400 }
+		command = { type = manpowerpool value = 55 }
+		command = { type = dissent value = -3 }
+		command = { type = research_mod value = 1 }
+		command = { type = setflag which = ind_v3_public_health }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Concentrate on military and industrial districts"
+		
+		command = { type = supplies value = -300 }
+		command = { type = manpowerpool value = 25 }
+		command = { type = industrial_modifier which = supplies value = 3 }
+		command = { type = setflag which = ind_v3_public_health }
+	}
+}
+
+event = {
+	id = 9271311
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_public_health
+		NOT = { flag = ind_v3_national_service }
+	}
+
+	name = "National Service Beyond the Barracks"
+	desc = "Women, engineers, doctors and students demand defined roles in national defence and reconstruction. A universal civic service widens the state's capacity; a narrower technical reserve avoids social confrontation but leaves much talent unused."
+	style = 2
+	picture = "india_v3_independence"
+
+	date = { day = 0 month = october year = 1938 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1938 }
+
+	action_a = {
+		ai_chance = 60
+		name = "Create a universal civic and technical service"
+		command = { type = money value = -400 }
+		command = { type = supplies value = -300 }
+		command = { type = manpowerpool value = 70 }
+		command = { type = dissent value = 2 }
+		command = { type = tc_mod value = 3 }
+		command = { type = setflag which = ind_v3_universal_national_service }
+		command = { type = setflag which = ind_v3_national_service }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Create a voluntary technical reserve"
+		
+		command = { type = supplies value = -200 }
+		command = { type = manpowerpool value = 30 }
+		command = { type = research_mod value = 2 }
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_v3_technical_reserve }
+		command = { type = setflag which = ind_v3_national_service }
+	}
+}

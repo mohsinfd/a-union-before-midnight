@@ -1,0 +1,331 @@
+#########################################################################
+# India Mod V3: Soviet strategic universe
+#########################################################################
+# India Mod V3.1 economy pass
+
+event = {
+	id = 9272400
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_soviet_orientation
+		NOT = { flag = ind_v3_soviet_planning_mission }
+	}
+
+	name = "The Soviet Planning Mission"
+	desc = "Moscow offers specialists in steel, power, armour and mass aviation. The full mission accelerates the plan but expects privileged access for Soviet advisers; a narrower exchange preserves institutional independence."
+	style = 2
+	picture = "Stalin_5YPlan"
+
+	date = { day = 0 month = september year = 1937 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1938 }
+
+	action_a = {
+		ai_chance = 65
+		name = "Embed Soviet specialists in the national plans"
+		
+		command = { type = supplies value = -650 }
+		command = { type = dissent value = 3 }
+		command = { type = relation which = SOV value = 45 }
+		command = { type = steal_tech which = SOV }
+		command = { type = steal_tech which = SOV }
+		command = { type = steal_tech which = SOV }
+		command = { type = industrial_modifier which = total value = 3 }
+		command = { type = waketeam which = 250026 }
+		command = { type = setflag which = ind_v3_soviet_embedded_mission }
+		command = { type = setflag which = ind_v3_soviet_planning_mission }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Use project contracts without embedded advisers"
+		command = { type = money value = -450 }
+		command = { type = supplies value = -400 }
+		command = { type = steal_tech which = SOV }
+		command = { type = steal_tech which = SOV }
+		command = { type = research_mod value = 2 }
+		command = { type = setflag which = ind_v3_soviet_contract_mission }
+		command = { type = setflag which = ind_v3_soviet_planning_mission }
+	}
+}
+
+event = {
+	id = 9272401
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_soviet_planning_mission
+		NOT = { flag = ind_v3_soviet_deep_operations }
+	}
+
+	name = "Deep Operations in Indian Conditions"
+	desc = "Soviet instructors advocate mass armour, close aviation and successive operational echelons. Indian officers propose adapting the theory to smaller mechanized forces that can move through monsoon logistics and mountain approaches."
+	style = 2
+	picture = "Russian_Airborne"
+
+	date = { day = 0 month = february year = 1938 }
+	offset = 7
+	deathdate = { day = 29 month = april year = 1938 }
+
+	action_a = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 85
+			manpower = 85
+	}
+		ai_chance = 45
+		name = "Build a mass armoured and assault-air army"
+		command = { type = money value = -550 }
+		command = { type = supplies value = -1500 }
+		command = { type = activate_unit_type which = cas }
+		command = { type = new_model which = cas value = 0 }
+		command = { type = activate_unit_type which = light_armor }
+		command = { type = new_model which = light_armor value = 0 }
+		command = { type = activate_unit_type which = escort }
+		command = { type = new_model which = escort value = 0 }
+		command = { type = build_division which = light_armor value = artillery when = 3 cost = -2.5 where = 75 }
+		command = { type = build_division which = motorized value = armored_car when = 3 cost = -1.8 where = 60 }
+		command = { type = build_division which = cas value = escort when = 2 cost = -2.2 where = 75 }
+		command = { type = setflag which = ind_v3_soviet_mass_operations }
+		command = { type = setflag which = ind_v3_soviet_deep_operations }
+	}
+	action_b = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 70
+			manpower = 70
+	}
+		ai_chance = 55
+		name = "Adapt deep operations to Indian logistics"
+		command = { type = money value = -450 }
+		command = { type = supplies value = -1250 }
+		command = { type = activate_unit_type which = cas }
+		command = { type = new_model which = cas value = 0 }
+		command = { type = activate_unit_type which = escort }
+		command = { type = new_model which = escort value = 0 }
+		command = { type = build_division which = motorized value = engineer when = 4 cost = -1.8 where = 60 }
+		command = { type = build_division which = cas value = escort when = 2 cost = -2.2 where = 75 }
+		command = { type = tc_mod value = 4 }
+		command = { type = research_mod value = 2 }
+		command = { type = setflag which = ind_v3_soviet_adapted_operations }
+		command = { type = setflag which = ind_v3_soviet_deep_operations }
+	}
+}
+
+event = {
+	id = 9272402
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_soviet_deep_operations
+		NOT = { flag = ind_v3_soviet_domestic_bargain }
+	}
+
+	name = "Business, Provinces and the Moscow Compact"
+	desc = "Industrialists and provincial governments fear that Soviet cooperation is becoming political supervision. Delhi can protect a mixed economy and federal bargaining, or use the compact to centralize strategic industry."
+	style = 2
+	picture = "india_v3_independence"
+
+	date = { day = 0 month = august year = 1938 }
+	offset = 7
+	deathdate = { day = 29 month = october year = 1938 }
+
+	action_a = {
+		ai_chance = 60
+		name = "Guarantee a mixed economy and federal contracts"
+		command = { type = money value = 150 }
+		command = { type = dissent value = -4 }
+		command = { type = relation which = SOV value = -15 }
+		command = { type = domestic which = free_market value = 1 }
+		command = { type = industrial_modifier which = money value = 3 }
+		command = { type = setflag which = ind_v3_autonomous_socialism }
+		command = { type = setflag which = ind_v3_soviet_domestic_bargain }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Centralize strategic industry under the plan"
+		command = { type = money value = -200 }
+		command = { type = supplies value = -550 }
+		command = { type = dissent value = 5 }
+		command = { type = domestic which = free_market value = -1 }
+		command = { type = industrial_modifier which = total value = 4 }
+		command = { type = setflag which = ind_v3_centralized_socialism }
+		command = { type = setflag which = ind_v3_soviet_domestic_bargain }
+	}
+}
+
+event = {
+	id = 9272403
+	random = no
+	country = IND
+
+	trigger = {
+		OR = {
+			flag = ind_v3_joined_comintern
+			flag = ind_v3_soviet_orientation
+		}
+		flag = ind_v3_soviet_domestic_bargain
+		NOT = { flag = ind_v3_soviet_war_command }
+	}
+
+	name = "The Delhi-Tashkent War Command"
+	desc = "Soviet planners ask India to secure the southern approaches to Central Asia and threaten Axis supply through Persia. Delhi can form a western mountain command or concentrate on an eastern anti-Japanese front."
+	style = 2
+	picture = "Russian_Airborne"
+
+	date = { day = 0 month = january year = 1940 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1942 }
+
+	action_a = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 98
+			manpower = 98
+	}
+		ai_chance = 45
+		name = "Create the Tashkent-Persia mountain command"
+		command = { type = money value = -450 }
+		command = { type = supplies value = -1450 }
+		command = { type = build_division which = bergsjaeger value = engineer when = 4 cost = -1.8 where = 60 }
+		command = { type = build_division which = motorized value = armored_car when = 2 cost = -1.8 where = 75 }
+		command = { type = relation which = SOV value = 30 }
+		command = { type = ai which = "v3/IND_soviet.ai" }
+		command = { type = setflag which = ind_v3_soviet_western_command }
+		command = { type = setflag which = ind_v3_soviet_war_command }
+	}
+	action_b = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 54
+			manpower = 54
+	}
+		ai_chance = 55
+		name = "Build an autonomous eastern anti-Japanese command"
+		command = { type = money value = -425 }
+		command = { type = supplies value = -1400 }
+		command = { type = activate_unit_type which = escort }
+		command = { type = new_model which = escort value = 0 }
+		command = { type = build_division which = bergsjaeger value = artillery when = 3 cost = -1.8 where = 60 }
+		command = { type = build_division which = tactical_bomber value = escort when = 2 cost = -2.5 where = 75 }
+		command = { type = construct which = air_base where = 1439 value = 3 trigger = { NOT = { building = { province = 1439 type = air_base value = 8 } } } }
+		command = { type = ai which = "v3/IND_soviet.ai" }
+		command = { type = setflag which = ind_v3_soviet_eastern_command }
+		command = { type = setflag which = ind_v3_soviet_war_command }
+	}
+}
+
+event = {
+	id = 9272404
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_soviet_war_command
+		NOT = { flag = ind_v3_soviet_people_war }
+	}
+
+	name = "The People's War Settlement"
+	desc = "Mobilization has drawn workers, peasants and provincial militias into national defence. The government can convert this participation into permanent social guarantees, or demobilize political organizations and restore professional command."
+	style = 2
+	picture = "india_v3_independence"
+
+	date = { day = 0 month = march year = 1942 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1943 }
+
+	action_a = {
+		ai_chance = 55
+		name = "Guarantee land, labour and veterans' rights"
+		command = { type = money value = -675 }
+		command = { type = dissent value = -5 }
+		command = { type = manpowerpool value = 80 }
+		command = { type = industrial_modifier which = total value = -2 }
+		command = { type = setflag which = ind_v3_social_veterans_settlement }
+		command = { type = setflag which = ind_v3_soviet_people_war }
+	}
+	action_b = {
+		ai_chance = 45
+		name = "Restore professional command and economic discipline"
+		command = { type = money value = -375 }
+		command = { type = supplies value = 1200 }
+		command = { type = dissent value = 3 }
+		command = { type = domestic which = professional_army value = 1 }
+		command = { type = industrial_modifier which = total value = 3 }
+		command = { type = setflag which = ind_v3_professional_demobilization }
+		command = { type = setflag which = ind_v3_soviet_people_war }
+	}
+}
+
+event = {
+	id = 9272405
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_soviet_people_war
+		NOT = { flag = ind_v3_soviet_postwar_line }
+	}
+
+	name = "Moscow's Postwar Line"
+	desc = "Moscow expects India to coordinate its Asian policy with the Soviet bloc. Nehru and Bose both reject satellite status, though they disagree over how sharply Delhi should assert an independent socialist course."
+	style = 2
+	picture = "Stalin_5YPlan"
+
+	date = { day = 0 month = may year = 1945 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1947 }
+
+	action_a = {
+		ai_chance = 65
+		name = "Declare an autonomous Indian road to socialism"
+		command = { type = relation which = SOV value = -30 }
+		command = { type = relation which = CHI value = 20 }
+		command = { type = relation which = USA value = 10 }
+		command = { type = dissent value = -3 }
+		command = { type = setflag which = ind_v3_autonomous_socialist_victory }
+		command = { type = setflag which = ind_v3_soviet_postwar_line }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Coordinate the socialist Asian bloc with Moscow"
+		command = { type = relation which = SOV value = 50 }
+		command = { type = relation which = USA value = -25 }
+		command = { type = supplies value = 1800 }
+		command = { type = steal_tech which = SOV }
+		command = { type = setflag which = ind_v3_moscow_bloc_victory }
+		command = { type = setflag which = ind_v3_soviet_postwar_line }
+	}
+}
+
+event = {
+	id = 9272406
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_soviet_postwar_line
+		NOT = { flag = ind_v3_soviet_science_exchange }
+	}
+
+	name = "The Indo-Soviet Science Exchange"
+	desc = "Postwar cooperation can move beyond wartime doctrine into jets, rocketry, heavy engineering and atomic science. The exchange is valuable under either an autonomous or coordinated political line."
+	style = 2
+	picture = "india_v3_industry"
+
+	date = { day = 0 month = january year = 1947 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1950 }
+
+	action_a = {
+		ai_chance = 100
+		name = "Build a durable scientific partnership"
+		command = { type = money value = -900 }
+		command = { type = supplies value = -700 }
+		command = { type = steal_tech which = SOV }
+		command = { type = steal_tech which = SOV }
+		command = { type = waketeam which = 250028 }
+		command = { type = waketeam which = 250029 }
+		command = { type = research_mod value = 3 }
+		command = { type = setflag which = ind_v3_soviet_science_exchange }
+	}
+}

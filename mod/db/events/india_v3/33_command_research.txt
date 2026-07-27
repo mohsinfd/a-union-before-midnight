@@ -1,0 +1,563 @@
+#########################################################################
+# India Mod V3: officer corps, doctrine and strategic research institutions
+#########################################################################
+# India Mod V3.1 economy pass
+
+event = {
+	id = 9271200
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_started
+		NOT = { flag = ind_v3_army_oath }
+	}
+
+	name = "The Oath of the Indian Army"
+	desc = "The inherited army contains excellent regiments but no settled relationship with the new state. Officers must swear to the Union and the constitution, not to a dynasty, province or political movement."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 19 month = january year = 1933 }
+	offset = 5
+	deathdate = { day = 29 month = march year = 1933 }
+
+	action_a = {
+		ai_chance = 70
+		name = "An apolitical army under constitutional command"
+		command = { type = money value = -75 }
+		command = { type = supplies value = -150 }
+		command = { type = dissent value = -2 }
+		command = { type = waketeam which = 250027 }
+		command = { type = wakeleader which = 250021 }
+		command = { type = wakeleader which = 250070 }
+		command = { type = wakeleader which = 250074 }
+		command = { type = setflag which = ind_v3_constitutional_army }
+		command = { type = setflag which = ind_v3_army_oath }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Bind the army directly to the national executive"
+		command = { type = money value = -50 }
+		command = { type = supplies value = -200 }
+		command = { type = dissent value = 1 }
+		command = { type = domestic which = professional_army value = 1 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = waketeam which = 250027 }
+		command = { type = setflag which = ind_v3_executive_army }
+		command = { type = setflag which = ind_v3_army_oath }
+	}
+}
+
+event = {
+	id = 9271201
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_army_oath
+		NOT = { flag = ind_v3_indianized_commands }
+	}
+
+	name = "Indianization of the Commands"
+	desc = "The army's senior appointments remain dominated by inherited habits and provincial patronage. Accelerated promotion will create a national officer corps but risks advancing men before they have commanded large formations."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = august year = 1933 }
+	offset = 7
+	deathdate = { day = 29 month = october year = 1933 }
+
+	action_a = {
+		ai_chance = 65
+		name = "Accelerate promotion with rigorous staff examinations"
+		command = { type = money value = -125 }
+		command = { type = supplies value = -200 }
+		command = { type = manpowerpool value = -4 }
+		command = { type = set_leader_skill which = 250021 value = 4 }
+		command = { type = set_leader_skill which = 250070 value = 3 }
+		command = { type = set_leader_skill which = 250074 value = 4 }
+		command = { type = setflag which = ind_v3_merit_officer_corps }
+		command = { type = setflag which = ind_v3_indianized_commands }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Promote gradually and preserve regimental continuity"
+		command = { type = money value = -75 }
+		command = { type = supplies value = -100 }
+		command = { type = dissent value = -1 }
+		command = { type = domestic which = professional_army value = 1 }
+		command = { type = setflag which = ind_v3_regimental_officer_corps }
+		command = { type = setflag which = ind_v3_indianized_commands }
+	}
+}
+
+event = {
+	id = 9271202
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_army_reform
+		flag = ind_v3_indianized_commands
+		NOT = { flag = ind_v3_staff_college }
+	}
+
+	name = "The Quetta-Delhi Staff College"
+	desc = "India needs officers who can move and supply armies across deserts, mountains, jungles and river plains. A combined staff college can create common doctrine, while separate branch schools preserve specialist expertise."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = april year = 1934 }
+	offset = 7
+	deathdate = { day = 29 month = june year = 1934 }
+
+	action_a = {
+		ai_chance = 60
+		name = "Create one integrated general staff college"
+		command = { type = money value = -200 }
+		command = { type = supplies value = -250 }
+		command = { type = research_mod value = 2 }
+		command = { type = construct which = infrastructure where = 1529 value = 10 trigger = { NOT = { building = { province = 1529 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1459 value = 10 trigger = { NOT = { building = { province = 1459 type = infrastructure value = 0.91 } } } }
+		command = { type = setflag which = ind_v3_integrated_staff_college }
+		command = { type = setflag which = ind_v3_staff_college }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Build specialist schools for each branch"
+		command = { type = money value = -225 }
+		command = { type = supplies value = -300 }
+		command = { type = construct which = infrastructure where = 1516 value = 10 trigger = { NOT = { building = { province = 1516 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1534 value = 10 trigger = { NOT = { building = { province = 1534 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1537 value = 10 trigger = { NOT = { building = { province = 1537 type = infrastructure value = 0.91 } } } }
+		command = { type = setflag which = ind_v3_branch_staff_schools }
+		command = { type = setflag which = ind_v3_staff_college }
+	}
+}
+
+event = {
+	id = 9271203
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_staff_college
+		NOT = { flag = ind_v3_standing_divisions }
+	}
+
+	name = "The First Standing Divisions"
+	desc = "Most inherited formations are regional brigades and militia. The general staff asks for four permanent infantry divisions and a headquarters cadre that can absorb reservists during mobilization."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = november year = 1934 }
+	offset = 7
+	deathdate = { day = 29 month = january year = 1935 }
+
+	action_a = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 81
+			manpower = 81
+	}
+		ai_chance = 70
+		name = "Raise the complete standing force"
+		command = { type = money value = -250 }
+		command = { type = supplies value = -650 }
+		command = { type = build_division which = infantry value = artillery when = 2 cost = -1.5 where = 60 }
+		command = { type = build_division which = infantry value = engineer when = 2 cost = -1.5 where = 60 }
+		command = { type = build_division which = hq value = anti_air when = 1 cost = -2.0 where = 90 }
+		command = { type = setflag which = ind_v3_standing_divisions }
+	}
+	action_b = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 48
+			manpower = 48
+	}
+		ai_chance = 30
+		name = "Raise cadres and retain a larger reserve"
+		command = { type = money value = -150 }
+		command = { type = supplies value = -400 }
+		command = { type = build_division which = infantry value = artillery when = 2 cost = -1.5 where = 75 }
+		command = { type = build_division which = hq value = anti_air when = 1 cost = -2.0 where = 105 }
+		command = { type = domestic which = professional_army value = -1 }
+		command = { type = setflag which = ind_v3_standing_divisions }
+	}
+}
+
+event = {
+	id = 9271204
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_steel_security
+		flag = ind_v3_standing_divisions
+		NOT = { flag = ind_v3_mechanised_directorate }
+	}
+
+	name = "The Mechanised Warfare Directorate"
+	desc = "The western frontier and the great plains reward speed, but armour consumes steel, fuel and scarce mechanics. A mechanised directorate can build an experimental armoured division and motorized groups without allowing the army to become a purely continental machine."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = june year = 1935 }
+	offset = 7
+	deathdate = { day = 29 month = august year = 1935 }
+
+	action_a = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 44
+			manpower = 44
+	}
+		ai_chance = 55
+		name = "Build a balanced experimental corps"
+		command = { type = money value = -350 }
+		command = { type = supplies value = -800 }
+		command = { type = waketeam which = 250026 }
+		command = { type = activate_unit_type which = light_armor }
+		command = { type = new_model which = light_armor value = 0 }
+		command = { type = build_division which = light_armor value = armored_car when = 1 cost = -2.5 where = 120 }
+		command = { type = build_division which = motorized value = engineer when = 2 cost = -1.8 where = 90 }
+		command = { type = setflag which = ind_v3_experimental_armoured_corps }
+		command = { type = setflag which = ind_v3_mechanised_directorate }
+	}
+	action_b = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 48
+			manpower = 48
+	}
+		ai_chance = 45
+		name = "Motorize the army before buying tanks"
+		command = { type = money value = -300 }
+		command = { type = supplies value = -700 }
+		command = { type = waketeam which = 250026 }
+		command = { type = build_division which = motorized value = armored_car when = 3 cost = -1.8 where = 75 }
+		command = { type = tc_mod value = 2 }
+		command = { type = setflag which = ind_v3_motorized_corps }
+		command = { type = setflag which = ind_v3_mechanised_directorate }
+	}
+}
+
+event = {
+	id = 9271205
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_mechanised_directorate
+		NOT = { flag = ind_v3_frontier_corps }
+	}
+
+	name = "The Himalayan and Frontier Corps"
+	desc = "Mechanization cannot solve every Indian theatre. The army requires formations trained for Kashmir, the Khyber, Assam and the Burma ranges, with pack transport, engineers and light artillery."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = march year = 1936 }
+	offset = 7
+	deathdate = { day = 29 month = may year = 1936 }
+
+	action_a = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 49
+			manpower = 49
+	}
+		ai_chance = 70
+		name = "Raise three specialist mountain divisions"
+		command = { type = money value = -325 }
+		command = { type = supplies value = -750 }
+		command = { type = build_division which = bergsjaeger value = artillery when = 2 cost = -1.8 where = 75 }
+		command = { type = build_division which = bergsjaeger value = engineer when = 1 cost = -1.8 where = 75 }
+		command = { type = construct which = infrastructure where = 1537 value = 10 trigger = { NOT = { building = { province = 1537 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1442 value = 10 trigger = { NOT = { building = { province = 1442 type = infrastructure value = 0.91 } } } }
+		command = { type = setflag which = ind_v3_frontier_corps }
+	}
+	action_b = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 17
+			manpower = 17
+	}
+		ai_chance = 30
+		name = "Train existing infantry for mountain warfare"
+		
+		command = { type = supplies value = -500 }
+		command = { type = build_division which = bergsjaeger value = engineer when = 1 cost = -1.8 where = 90 }
+		command = { type = research_mod value = 2 }
+		command = { type = setflag which = ind_v3_frontier_corps }
+	}
+}
+
+event = {
+	id = 9271206
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_frontier_corps
+		NOT = { flag = ind_v3_army_manoeuvres_1936 }
+	}
+
+	name = "The 1936 Grand Manoeuvres"
+	desc = "The first army-wide exercise exposes incompatible radios, weak logistics and a shortage of experienced divisional staffs. The cabinet can enlarge the army immediately or pause expansion to professionalize the force."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = october year = 1936 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1936 }
+
+	action_a = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 98
+			manpower = 98
+	}
+		ai_chance = 45
+		name = "Correct the weaknesses and raise six divisions"
+		command = { type = money value = -450 }
+		command = { type = supplies value = -1100 }
+		command = { type = dissent value = 1 }
+		command = { type = build_division which = infantry value = artillery when = 3 cost = -1.5 where = 60 }
+		command = { type = build_division which = infantry value = engineer when = 3 cost = -1.5 where = 60 }
+		command = { type = setflag which = ind_v3_mass_expansion_1936 }
+		command = { type = setflag which = ind_v3_army_manoeuvres_1936 }
+	}
+	action_b = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 60
+			manpower = 60
+	}
+		ai_chance = 35
+		name = "Build a smaller combined-arms force"
+		command = { type = money value = -425 }
+		command = { type = supplies value = -1050 }
+		command = { type = activate_unit_type which = light_armor }
+		command = { type = new_model which = light_armor value = 0 }
+		command = { type = build_division which = motorized value = armored_car when = 2 cost = -1.8 where = 75 }
+		command = { type = build_division which = light_armor value = engineer when = 1 cost = -2.5 where = 105 }
+		command = { type = build_division which = infantry value = artillery when = 1 cost = -1.5 where = 60 }
+		command = { type = setflag which = ind_v3_combined_arms_1936 }
+		command = { type = setflag which = ind_v3_army_manoeuvres_1936 }
+	}
+	action_c = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 33
+			manpower = 33
+	}
+		ai_chance = 20
+		name = "Pause expansion and professionalize the cadres"
+		
+		command = { type = supplies value = -650 }
+		command = { type = research_mod value = 3 }
+		command = { type = domestic which = professional_army value = 1 }
+		command = { type = set_leader_skill which = 251001 value = 4 }
+		command = { type = set_leader_skill which = 251003 value = 4 }
+		command = { type = build_division which = infantry value = engineer when = 2 cost = -1.5 where = 75 }
+		command = { type = setflag which = ind_v3_professionalization_1936 }
+		command = { type = setflag which = ind_v3_army_manoeuvres_1936 }
+	}
+}
+
+event = {
+	id = 9271207
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_army_manoeuvres_1936
+		NOT = { flag = ind_v3_officer_crisis_1937 }
+	}
+
+	name = "The Officer Shortage"
+	desc = "Expansion has outrun the supply of majors, colonels and technical officers. Lowering standards would fill headquarters quickly; extending wartime commissions to engineers and provincial officers would preserve quality but provoke the old regimental establishment."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = may year = 1937 }
+	offset = 7
+	deathdate = { day = 29 month = july year = 1937 }
+
+	action_a = {
+		ai_chance = 65
+		name = "Open competitive wartime commissions"
+		command = { type = money value = -275 }
+		command = { type = supplies value = -350 }
+		command = { type = manpowerpool value = 20 }
+		command = { type = dissent value = 2 }
+		command = { type = research_mod value = 1 }
+		command = { type = setflag which = ind_v3_open_commissions }
+		command = { type = setflag which = ind_v3_officer_crisis_1937 }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Protect standards and slow formation of new units"
+		
+		command = { type = supplies value = -250 }
+		command = { type = manpowerpool value = -8 }
+		command = { type = dissent value = -1 }
+		command = { type = domestic which = professional_army value = 1 }
+		command = { type = set_leader_skill which = 250021 value = 5 }
+		command = { type = setflag which = ind_v3_elite_officer_corps }
+		command = { type = setflag which = ind_v3_officer_crisis_1937 }
+	}
+}
+
+event = {
+	id = 9271208
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_officer_crisis_1937
+		flag = ind_v3_armaments_1937
+		NOT = { flag = ind_v3_mobile_reserve_1938 }
+	}
+
+	name = "The Mobile Strategic Reserve"
+	desc = "The army can now form a centrally controlled reserve able to reinforce Punjab, Bengal or the Deccan. The choice is between a fast motorized corps and a heavier armoured spearhead."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = march year = 1938 }
+	offset = 7
+	deathdate = { day = 29 month = may year = 1938 }
+
+	action_a = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 65
+			manpower = 65
+	}
+		ai_chance = 60
+		name = "Raise four motorized divisions"
+		command = { type = money value = -475 }
+		command = { type = supplies value = -1300 }
+		command = { type = build_division which = motorized value = armored_car when = 2 cost = -1.8 where = 60 }
+		command = { type = build_division which = motorized value = engineer when = 2 cost = -1.8 where = 60 }
+		command = { type = tc_mod value = 2 }
+		command = { type = setflag which = ind_v3_mobile_reserve_1938 }
+	}
+	action_b = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 55
+			manpower = 55
+	}
+		ai_chance = 40
+		name = "Raise two armoured and two motorized divisions"
+		command = { type = money value = -600 }
+		command = { type = supplies value = -1550 }
+		command = { type = activate_unit_type which = light_armor }
+		command = { type = new_model which = light_armor value = 0 }
+		command = { type = build_division which = light_armor value = engineer when = 2 cost = -2.5 where = 90 }
+		command = { type = build_division which = motorized value = armored_car when = 2 cost = -1.8 where = 60 }
+		command = { type = setflag which = ind_v3_mobile_reserve_1938 }
+	}
+}
+
+event = {
+	id = 9271209
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_mobile_reserve_1938
+		NOT = { flag = ind_v3_general_staff_1939 }
+	}
+
+	name = "The General Staff of 1939"
+	desc = "India enters the world crisis with officers experienced in national manoeuvres, mechanization and multi-theatre planning. The senior appointments now pass to the generation that built the independent army."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = january year = 1939 }
+	offset = 7
+	deathdate = { day = 29 month = march year = 1939 }
+
+	action_a = {
+		ai_chance = 100
+		name = "Confirm the new generation in senior command"
+		command = { type = set_leader_skill which = 251001 value = 4 }
+		command = { type = set_leader_skill which = 251003 value = 4 }
+		command = { type = set_leader_skill which = 251009 value = 4 }
+		command = { type = set_leader_skill which = 251010 value = 3 }
+		command = { type = set_leader_skill which = 251011 value = 3 }
+		command = { type = set_leader_skill which = 250089 value = 4 }
+		command = { type = set_leader_skill which = 250138 value = 4 }
+		command = { type = dissent value = -2 }
+		command = { type = setflag which = ind_v3_general_staff_1939 }
+	}
+}
+
+event = {
+	id = 9271210
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_science_1937
+		NOT = { flag = ind_v3_rocket_centre }
+	}
+
+	name = "The Aeronautics and Rocket Centre"
+	desc = "Long-range aircraft, guided weapons and high-altitude research now overlap. A unified centre at Bangalore can connect university mathematics, defence electronics and Hindustan Aircraft's engineering teams."
+	style = 2
+	picture = "india_v3_industry"
+
+	date = { day = 0 month = january year = 1942 }
+	offset = 10
+	deathdate = { day = 29 month = june year = 1943 }
+
+	action_a = {
+		ai_chance = 100
+		name = "Establish the national aeronautics and rocket centre"
+		command = { type = money value = -675 }
+		command = { type = supplies value = -750 }
+		command = { type = waketeam which = 250028 }
+		command = { type = construct which = rocket_test where = 1502 value = 2 }
+		command = { type = research_mod value = 2 }
+		command = { type = setflag which = ind_v3_rocket_centre }
+	}
+}
+
+event = {
+	id = 9271211
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_rocket_centre
+		NOT = { flag = ind_v3_atomic_commission }
+	}
+
+	name = "The Atomic Energy Commission"
+	desc = "Indian physicists warn that atomic research will shape both power generation and the postwar balance. A civilian commission with military access preserves scientific legitimacy while ensuring India is not excluded from the new strategic age."
+	style = 2
+	picture = "india_v3_industry"
+
+	date = { day = 0 month = january year = 1944 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1946 }
+
+	action_a = {
+		ai_chance = 70
+		name = "Create a dual-use atomic commission"
+		command = { type = money value = -1100 }
+		command = { type = supplies value = -1250 }
+		command = { type = waketeam which = 250029 }
+		command = { type = construct which = nuclear_reactor where = 1502 value = 2 }
+		command = { type = research_mod value = 3 }
+		command = { type = dissent value = 1 }
+		command = { type = setflag which = ind_v3_atomic_commission }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Keep the programme civilian and transparent"
+		command = { type = money value = -775 }
+		command = { type = supplies value = -700 }
+		command = { type = waketeam which = 250029 }
+		command = { type = research_mod value = 4 }
+		command = { type = relation which = USA value = 15 }
+		command = { type = relation which = ENG value = 15 }
+		command = { type = setflag which = ind_v3_civil_atomic_program }
+		command = { type = setflag which = ind_v3_atomic_commission }
+	}
+}

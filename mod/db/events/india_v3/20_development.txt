@@ -1,0 +1,637 @@
+#########################################################################
+# India Mod V3: national development programme
+#########################################################################
+# India Mod V3.1 economy pass
+
+event = {
+	id = 9270200
+	random = no
+	country = IND
+
+	decision = {
+		flag = ind_v3_constitution
+		NOT = { flag = ind_v3_reconstruction_1933 }
+		atwar = no
+	}
+	decision_trigger = {
+	OR = {
+		AND = { money = 225 supplies = 750 manpower = 15 }
+		AND = { money = 175 supplies = 600 manpower = 10 }
+		AND = { money = 100 supplies = 300 manpower = 5 }
+	}
+}
+
+	name = "The Emergency Reconstruction Act"
+	desc = "Independence has exposed how little modern industry the subcontinent controls. Delhi can concentrate scarce capital in eight metropolitan centres, distribute smaller plants across the union, or invite Indian business houses to lead a cheaper programme in exchange for autonomy and profit."
+	style = 2
+	picture = "india_v3_industry"
+
+	date = { day = 0 month = july year = 1933 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1934 }
+
+	action_a = {
+		trigger = {
+			money = 225
+			supplies = 750
+			manpower = 15
+		}
+		ai_chance = 35
+		name = "Build the metropolitan industrial belt"
+		command = { type = money value = -225 }
+		command = { type = supplies value = -750 }
+		command = { type = manpowerpool value = -15 }
+		command = { type = dissent value = 4 }
+		command = { type = construct which = ic where = 1447 value = 3 }
+		command = { type = construct which = ic where = 1445 value = 3 }
+		command = { type = construct which = ic where = 1459 value = 3 }
+		command = { type = construct which = ic where = 1487 value = 3 }
+		command = { type = construct which = ic where = 1500 value = 3 }
+		command = { type = construct which = ic where = 1502 value = 3 }
+		command = { type = construct which = ic where = 1517 value = 3 }
+		command = { type = construct which = ic where = 1533 value = 3 }
+		command = { type = waketeam which = 250014 }
+		command = { type = setflag which = ind_v3_heavy_reconstruction }
+		command = { type = setflag which = ind_v3_reconstruction_1933 }
+	}
+	action_b = {
+		trigger = {
+			money = 175
+			supplies = 600
+			manpower = 10
+		}
+		ai_chance = 45
+		name = "Disperse plants across the federation"
+		command = { type = money value = -175 }
+		command = { type = supplies value = -600 }
+		command = { type = manpowerpool value = -10 }
+		command = { type = dissent value = -1 }
+		command = { type = construct which = ic where = 1439 value = 2 }
+		command = { type = construct which = ic where = 1445 value = 2 }
+		command = { type = construct which = ic where = 1461 value = 2 }
+		command = { type = construct which = ic where = 1465 value = 2 }
+		command = { type = construct which = ic where = 1477 value = 2 }
+		command = { type = construct which = ic where = 1485 value = 2 }
+		command = { type = construct which = ic where = 1493 value = 2 }
+		command = { type = construct which = ic where = 1503 value = 2 }
+		command = { type = construct which = infrastructure where = 1439 value = 10 trigger = { NOT = { building = { province = 1439 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1493 value = 10 trigger = { NOT = { building = { province = 1493 type = infrastructure value = 0.91 } } } }
+		command = { type = waketeam which = 250014 }
+		command = { type = setflag which = ind_v3_distributed_reconstruction }
+		command = { type = setflag which = ind_v3_reconstruction_1933 }
+	}
+	action_c = {
+		trigger = {
+			money = 100
+			supplies = 300
+			manpower = 5
+		}
+		ai_chance = 20
+		name = "Back a private industrial consortium"
+		command = { type = money value = -100 }
+		command = { type = supplies value = -300 }
+		command = { type = manpowerpool value = -5 }
+		command = { type = dissent value = 2 }
+		command = { type = domestic which = free_market value = 1 }
+		command = { type = research_mod value = 3 }
+		command = { type = construct which = ic where = 1447 value = 2 }
+		command = { type = construct which = ic where = 1472 value = 2 }
+		command = { type = construct which = ic where = 1502 value = 2 }
+		command = { type = construct which = ic where = 1517 value = 3 }
+		command = { type = construct which = ic where = 1533 value = 3 }
+		command = { type = setflag which = ind_v3_private_reconstruction }
+		command = { type = setflag which = ind_v3_reconstruction_1933 }
+	}
+}
+
+event = {
+	id = 9270201
+	random = no
+	country = IND
+
+	decision = {
+		flag = ind_v3_reconstruction_1933
+		NOT = { flag = ind_v3_transport_1934 }
+		atwar = no
+	}
+	decision_trigger = {
+	OR = {
+		AND = { money = 250 supplies = 900 manpower = 15 }
+		AND = { money = 225 supplies = 750 manpower = 10 }
+		AND = { money = 175 supplies = 1000 manpower = 15 }
+	}
+}
+
+	name = "The Union Transport Grid"
+	desc = "The inherited railway network runs from producing districts to imperial ports, not between Indian markets or strategic fronts. A trunk network can bind the union together, a port programme can make India a maritime power, or frontier roads can secure the vulnerable northwest and Burma approaches."
+	style = 2
+	picture = "india_v3_industry"
+
+	date = { day = 0 month = march year = 1934 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1935 }
+
+	action_a = {
+		trigger = {
+			money = 250
+			supplies = 900
+			manpower = 15
+		}
+		ai_chance = 55
+		name = "Complete the Karachi-Calcutta trunk network"
+		command = { type = money value = -250 }
+		command = { type = supplies value = -900 }
+		command = { type = manpowerpool value = -15 }
+		command = { type = construct which = infrastructure where = 1533 value = 20 trigger = { NOT = { building = { province = 1533 type = infrastructure value = 0.81 } } } }
+		command = { type = construct which = infrastructure where = 1530 value = 20 trigger = { NOT = { building = { province = 1530 type = infrastructure value = 0.81 } } } }
+		command = { type = construct which = infrastructure where = 1459 value = 20 trigger = { NOT = { building = { province = 1459 type = infrastructure value = 0.81 } } } }
+		command = { type = construct which = infrastructure where = 1461 value = 20 trigger = { NOT = { building = { province = 1461 type = infrastructure value = 0.81 } } } }
+		command = { type = construct which = infrastructure where = 1465 value = 20 trigger = { NOT = { building = { province = 1465 type = infrastructure value = 0.81 } } } }
+		command = { type = construct which = infrastructure where = 1447 value = 20 trigger = { NOT = { building = { province = 1447 type = infrastructure value = 0.81 } } } }
+		command = { type = construct which = infrastructure where = 1485 value = 20 trigger = { NOT = { building = { province = 1485 type = infrastructure value = 0.81 } } } }
+		command = { type = construct which = infrastructure where = 1517 value = 20 trigger = { NOT = { building = { province = 1517 type = infrastructure value = 0.81 } } } }
+		command = { type = construct which = ic where = 1533 value = 1 }
+		command = { type = construct which = ic where = 1530 value = 1 }
+		command = { type = construct which = ic where = 1459 value = 1 }
+		command = { type = construct which = ic where = 1461 value = 1 }
+		command = { type = construct which = ic where = 1465 value = 1 }
+		command = { type = construct which = ic where = 1447 value = 1 }
+		command = { type = construct which = ic where = 1485 value = 1 }
+		command = { type = construct which = ic where = 1517 value = 1 }
+		command = { type = tc_mod value = 5 }
+		command = { type = setflag which = ind_v3_trunk_railways }
+		command = { type = setflag which = ind_v3_transport_1934 }
+	}
+	action_b = {
+		trigger = {
+			money = 225
+			supplies = 750
+			manpower = 10
+		}
+		ai_chance = 25
+		name = "Modernize the six great ports"
+		command = { type = money value = -225 }
+		command = { type = supplies value = -750 }
+		command = { type = manpowerpool value = -10 }
+		command = { type = construct which = infrastructure where = 1447 value = 25 trigger = { NOT = { building = { province = 1447 type = infrastructure value = 0.76 } } } }
+		command = { type = construct which = infrastructure where = 1493 value = 25 trigger = { NOT = { building = { province = 1493 type = infrastructure value = 0.76 } } } }
+		command = { type = construct which = infrastructure where = 1497 value = 25 trigger = { NOT = { building = { province = 1497 type = infrastructure value = 0.76 } } } }
+		command = { type = construct which = infrastructure where = 1500 value = 25 trigger = { NOT = { building = { province = 1500 type = infrastructure value = 0.76 } } } }
+		command = { type = construct which = infrastructure where = 1517 value = 25 trigger = { NOT = { building = { province = 1517 type = infrastructure value = 0.76 } } } }
+		command = { type = construct which = infrastructure where = 1533 value = 25 trigger = { NOT = { building = { province = 1533 type = infrastructure value = 0.76 } } } }
+		command = { type = construct which = naval_base where = 1447 value = 3 trigger = { NOT = { building = { province = 1447 type = naval_base value = 8 } } } }
+		command = { type = construct which = naval_base where = 1493 value = 3 trigger = { NOT = { building = { province = 1493 type = naval_base value = 8 } } } }
+		command = { type = construct which = naval_base where = 1497 value = 3 trigger = { NOT = { building = { province = 1497 type = naval_base value = 8 } } } }
+		command = { type = construct which = naval_base where = 1500 value = 3 trigger = { NOT = { building = { province = 1500 type = naval_base value = 8 } } } }
+		command = { type = construct which = naval_base where = 1517 value = 3 trigger = { NOT = { building = { province = 1517 type = naval_base value = 8 } } } }
+		command = { type = construct which = naval_base where = 1533 value = 3 trigger = { NOT = { building = { province = 1533 type = naval_base value = 8 } } } }
+		command = { type = construct which = ic where = 1447 value = 2 }
+		command = { type = construct which = ic where = 1493 value = 2 }
+		command = { type = construct which = ic where = 1500 value = 2 }
+		command = { type = construct which = ic where = 1517 value = 2 }
+		command = { type = construct which = ic where = 1533 value = 2 }
+		command = { type = setflag which = ind_v3_port_transport }
+		command = { type = setflag which = ind_v3_transport_1934 }
+	}
+	action_c = {
+		trigger = {
+			money = 175
+			supplies = 1000
+			manpower = 15
+		}
+		ai_chance = 20
+		name = "Drive military roads into the frontiers"
+		command = { type = money value = -175 }
+		command = { type = supplies value = -1000 }
+		command = { type = manpowerpool value = -15 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = construct which = infrastructure where = 1529 value = 30 trigger = { NOT = { building = { province = 1529 type = infrastructure value = 0.71 } } } }
+		command = { type = construct which = infrastructure where = 1537 value = 30 trigger = { NOT = { building = { province = 1537 type = infrastructure value = 0.71 } } } }
+		command = { type = construct which = infrastructure where = 1539 value = 30 trigger = { NOT = { building = { province = 1539 type = infrastructure value = 0.71 } } } }
+		command = { type = construct which = infrastructure where = 1439 value = 30 trigger = { NOT = { building = { province = 1439 type = infrastructure value = 0.71 } } } }
+		command = { type = construct which = infrastructure where = 1441 value = 30 trigger = { NOT = { building = { province = 1441 type = infrastructure value = 0.71 } } } }
+		command = { type = construct which = infrastructure where = 1442 value = 30 trigger = { NOT = { building = { province = 1442 type = infrastructure value = 0.71 } } } }
+		command = { type = construct which = ic where = 1529 value = 1 }
+		command = { type = construct which = ic where = 1537 value = 1 }
+		command = { type = construct which = ic where = 1439 value = 2 }
+		command = { type = construct which = ic where = 1441 value = 2 }
+		command = { type = setflag which = ind_v3_frontier_transport }
+		command = { type = setflag which = ind_v3_transport_1934 }
+	}
+}
+
+event = {
+	id = 9270202
+	random = no
+	country = IND
+
+	decision = {
+		flag = ind_v3_transport_1934
+		NOT = { flag = ind_v3_steel_1935 }
+		atwar = no
+	}
+	decision_trigger = {
+	OR = {
+		AND = { money = 450 supplies = 1600 manpower = 20 }
+		AND = { money = 325 supplies = 1150 manpower = 15 }
+		AND = { supplies = 700 manpower = 10 }
+	}
+}
+
+	name = "Steel, Coal and Machine Tools"
+	desc = "Railways alone cannot create an industrial power. The next programme must produce steel, cement, chemicals and machine tools at continental scale. State combines promise the greatest capacity, mixed ownership spreads risk, and private expansion preserves flexibility and scientific efficiency."
+	style = 2
+	picture = "india_v3_industry"
+
+	date = { day = 0 month = february year = 1935 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1936 }
+
+	action_a = {
+		trigger = {
+			money = 450
+			supplies = 1600
+			manpower = 20
+		}
+		ai_chance = 35
+		name = "Create state heavy-industry combines"
+		command = { type = money value = -450 }
+		command = { type = supplies value = -1600 }
+		command = { type = manpowerpool value = -20 }
+		command = { type = dissent value = 4 }
+		command = { type = domestic which = free_market value = -1 }
+		command = { type = construct which = ic where = 1472 value = 5 }
+		command = { type = construct which = ic where = 1476 value = 4 }
+		command = { type = construct which = ic where = 1477 value = 5 }
+		command = { type = construct which = ic where = 1447 value = 4 }
+		command = { type = construct which = ic where = 1487 value = 3 }
+		command = { type = construct which = ic where = 1493 value = 3 }
+		command = { type = construct which = ic where = 1502 value = 4 }
+		command = { type = construct which = ic where = 1517 value = 4 }
+		command = { type = add_prov_resource which = 1472 value = 12 where = metal }
+		command = { type = add_prov_resource which = 1476 value = 20 where = energy }
+		command = { type = industrial_modifier which = ic value = 3 }
+		command = { type = setflag which = ind_v3_state_steel }
+		command = { type = setflag which = ind_v3_steel_1935 }
+	}
+	action_b = {
+		trigger = {
+			money = 325
+			supplies = 1150
+			manpower = 15
+		}
+		ai_chance = 45
+		name = "Build mixed public-private combines"
+		command = { type = money value = -325 }
+		command = { type = supplies value = -1150 }
+		command = { type = manpowerpool value = -15 }
+		command = { type = construct which = ic where = 1472 value = 4 }
+		command = { type = construct which = ic where = 1476 value = 3 }
+		command = { type = construct which = ic where = 1477 value = 4 }
+		command = { type = construct which = ic where = 1447 value = 3 }
+		command = { type = construct which = ic where = 1487 value = 2 }
+		command = { type = construct which = ic where = 1493 value = 2 }
+		command = { type = construct which = ic where = 1502 value = 3 }
+		command = { type = construct which = ic where = 1517 value = 3 }
+		command = { type = add_prov_resource which = 1472 value = 8 where = metal }
+		command = { type = add_prov_resource which = 1476 value = 14 where = energy }
+		command = { type = industrial_modifier which = ic value = 2 }
+		command = { type = setflag which = ind_v3_mixed_steel }
+		command = { type = setflag which = ind_v3_steel_1935 }
+	}
+	action_c = {
+		trigger = {
+			supplies = 700
+			manpower = 10
+		}
+		ai_chance = 20
+		name = "Guarantee markets to Indian capital"
+		
+		command = { type = supplies value = -700 }
+		command = { type = manpowerpool value = -10 }
+		command = { type = dissent value = 2 }
+		command = { type = domestic which = free_market value = 1 }
+		command = { type = research_mod value = 3 }
+		command = { type = construct which = ic where = 1472 value = 4 }
+		command = { type = construct which = ic where = 1447 value = 3 }
+		command = { type = construct which = ic where = 1493 value = 2 }
+		command = { type = construct which = ic where = 1502 value = 4 }
+		command = { type = construct which = ic where = 1517 value = 5 }
+		command = { type = add_prov_resource which = 1472 value = 6 where = metal }
+		command = { type = setflag which = ind_v3_private_steel }
+		command = { type = setflag which = ind_v3_steel_1935 }
+	}
+}
+
+event = {
+	id = 9270203
+	random = no
+	country = IND
+
+	decision = {
+		flag = ind_v3_steel_1935
+		NOT = { flag = ind_v3_power_1936 }
+		atwar = no
+	}
+	decision_trigger = {
+	OR = {
+		AND = { money = 475 supplies = 1500 manpower = 20 }
+		AND = { money = 350 supplies = 1250 manpower = 15 }
+		AND = { supplies = 800 manpower = 10 }
+	}
+}
+
+	name = "Power for a Continent"
+	desc = "Factories now compete with cities and railways for electricity. Giant river-valley schemes can transform output and irrigation, coal-fired regional grids can deliver capacity quickly, or a decentralized programme can electrify villages while accepting slower heavy-industry growth."
+	style = 2
+	picture = "india_v3_industry"
+
+	date = { day = 0 month = january year = 1936 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1937 }
+
+	action_a = {
+		trigger = {
+			money = 475
+			supplies = 1500
+			manpower = 20
+		}
+		ai_chance = 40
+		name = "Build the great river-valley authorities"
+		command = { type = money value = -475 }
+		command = { type = supplies value = -1500 }
+		command = { type = manpowerpool value = -20 }
+		command = { type = dissent value = 2 }
+		command = { type = construct which = ic where = 1445 value = 4 }
+		command = { type = construct which = ic where = 1465 value = 4 }
+		command = { type = construct which = ic where = 1471 value = 4 }
+		command = { type = construct which = ic where = 1476 value = 4 }
+		command = { type = construct which = ic where = 1485 value = 4 }
+		command = { type = construct which = ic where = 1507 value = 4 }
+		command = { type = add_prov_resource which = 1476 value = 25 where = energy }
+		command = { type = add_prov_resource which = 1485 value = 20 where = energy }
+		command = { type = industrial_modifier which = energy value = 5 }
+		command = { type = setflag which = ind_v3_river_power }
+		command = { type = setflag which = ind_v3_power_1936 }
+	}
+	action_b = {
+		trigger = {
+			money = 350
+			supplies = 1250
+			manpower = 15
+		}
+		ai_chance = 40
+		name = "Build coal-fired regional grids"
+		command = { type = money value = -350 }
+		command = { type = supplies value = -1250 }
+		command = { type = manpowerpool value = -15 }
+		command = { type = construct which = ic where = 1447 value = 4 }
+		command = { type = construct which = ic where = 1472 value = 4 }
+		command = { type = construct which = ic where = 1476 value = 4 }
+		command = { type = construct which = ic where = 1477 value = 4 }
+		command = { type = construct which = ic where = 1485 value = 4 }
+		command = { type = construct which = ic where = 1517 value = 4 }
+		command = { type = add_prov_resource which = 1476 value = 35 where = energy }
+		command = { type = industrial_modifier which = energy value = 3 }
+		command = { type = setflag which = ind_v3_coal_power }
+		command = { type = setflag which = ind_v3_power_1936 }
+	}
+	action_c = {
+		trigger = {
+			supplies = 800
+			manpower = 10
+		}
+		ai_chance = 20
+		name = "Electrify districts and village cooperatives"
+		
+		command = { type = supplies value = -800 }
+		command = { type = manpowerpool value = -10 }
+		command = { type = dissent value = -3 }
+		command = { type = manpowerpool value = 20 }
+		command = { type = construct which = ic where = 1439 value = 2 }
+		command = { type = construct which = ic where = 1441 value = 2 }
+		command = { type = construct which = ic where = 1445 value = 2 }
+		command = { type = construct which = ic where = 1461 value = 2 }
+		command = { type = construct which = ic where = 1465 value = 2 }
+		command = { type = construct which = ic where = 1471 value = 2 }
+		command = { type = construct which = ic where = 1495 value = 2 }
+		command = { type = construct which = ic where = 1507 value = 2 }
+		command = { type = construct which = infrastructure where = 1439 value = 10 trigger = { NOT = { building = { province = 1439 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1445 value = 10 trigger = { NOT = { building = { province = 1445 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1495 value = 10 trigger = { NOT = { building = { province = 1495 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1507 value = 10 trigger = { NOT = { building = { province = 1507 type = infrastructure value = 0.91 } } } }
+		command = { type = setflag which = ind_v3_rural_power }
+		command = { type = setflag which = ind_v3_power_1936 }
+	}
+}
+
+event = {
+	id = 9270204
+	random = no
+	country = IND
+
+	decision = {
+		flag = ind_v3_power_1936
+		NOT = { flag = ind_v3_science_1937 }
+	}
+	decision_trigger = {
+
+}
+
+	name = "A National System of Science"
+	desc = "India's universities contain first-rate scientists but little organized state patronage. A planning commission can coordinate every technical field, competitive university grants can favour flexible civilian research, or a defence-science organization can direct talent toward the approaching international crisis."
+	style = 2
+	picture = "india_v3_industry"
+
+	date = { day = 0 month = january year = 1937 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1938 }
+
+	action_a = {
+		trigger = {
+			money = 450
+			supplies = 850
+		}
+		ai_chance = 40
+		name = "Empower the National Planning Commission"
+		command = { type = money value = -450 }
+		command = { type = supplies value = -850 }
+		command = { type = research_mod value = 7 }
+		command = { type = waketeam which = 250014 }
+		command = { type = construct which = ic where = 1459 value = 5 }
+		command = { type = construct which = ic where = 1502 value = 5 }
+		command = { type = setflag which = ind_v3_planning_science }
+		command = { type = setflag which = ind_v3_science_1937 }
+	}
+	action_b = {
+		
+		ai_chance = 30
+		name = "Endow autonomous universities"
+		
+		command = { type = research_mod value = 8 }
+		command = { type = construct which = ic where = 1447 value = 3 }
+		command = { type = construct which = ic where = 1461 value = 3 }
+		command = { type = construct which = ic where = 1502 value = 3 }
+		command = { type = setflag which = ind_v3_university_science }
+		command = { type = setflag which = ind_v3_science_1937 }
+	}
+	action_c = {
+		trigger = {
+			money = 300
+			supplies = 1200
+		}
+		ai_chance = 30
+		name = "Create the Defence Science Organisation"
+		command = { type = money value = -300 }
+		command = { type = supplies value = -1200 }
+		command = { type = research_mod value = 5 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = waketeam which = 250015 }
+		command = { type = construct which = ic where = 1459 value = 3 }
+		command = { type = construct which = ic where = 1472 value = 3 }
+		command = { type = construct which = ic where = 1502 value = 3 }
+		command = { type = setflag which = ind_v3_defence_science }
+		command = { type = setflag which = ind_v3_science_1937 }
+	}
+}
+
+event = {
+	id = 9270205
+	random = no
+	country = IND
+
+	decision = {
+		flag = ind_v3_science_1937
+		NOT = { flag = ind_v3_second_plan_1938 }
+		atwar = no
+	}
+	decision_trigger = {
+	OR = {
+		AND = { money = 850 supplies = 3000 manpower = 30 }
+		AND = { money = 600 supplies = 2150 manpower = 20 }
+		AND = { money = 550 supplies = 1500 manpower = 15 }
+	}
+}
+
+	name = "The Second National Plan"
+	desc = "The first development cycle has created the foundations of a great power and the shortages of one. Delhi must choose between a maximum drive for strategic industry, a balanced consumer and armaments programme, or a technology-led plan that produces fewer factories but a more efficient economy."
+	style = 2
+	picture = "india_v3_industry"
+
+	date = { day = 0 month = february year = 1938 }
+	offset = 5
+	deathdate = { day = 29 month = june year = 1939 }
+
+	action_a = {
+		trigger = {
+			money = 850
+			supplies = 3000
+			manpower = 30
+		}
+		ai_chance = 35
+		name = "Maximum strategic industrialization"
+		command = { type = money value = -850 }
+		command = { type = supplies value = -3000 }
+		command = { type = manpowerpool value = -30 }
+		command = { type = dissent value = 6 }
+		command = { type = domestic which = free_market value = -1 }
+		command = { type = construct which = ic where = 1447 value = 4 }
+		command = { type = construct which = ic where = 1459 value = 4 }
+		command = { type = construct which = ic where = 1472 value = 5 }
+		command = { type = construct which = ic where = 1477 value = 4 }
+		command = { type = construct which = ic where = 1487 value = 3 }
+		command = { type = construct which = ic where = 1493 value = 3 }
+		command = { type = construct which = ic where = 1502 value = 4 }
+		command = { type = construct which = ic where = 1517 value = 4 }
+		command = { type = construct which = ic where = 1533 value = 3 }
+		command = { type = industrial_modifier which = ic value = 5 }
+		command = { type = setflag which = ind_v3_maximum_second_plan }
+		command = { type = setflag which = ind_v3_second_plan_1938 }
+	}
+	action_b = {
+		trigger = {
+			money = 600
+			supplies = 2150
+			manpower = 20
+		}
+		ai_chance = 45
+		name = "Balance civilian and strategic investment"
+		command = { type = money value = -600 }
+		command = { type = supplies value = -2150 }
+		command = { type = manpowerpool value = -20 }
+		command = { type = dissent value = 1 }
+		command = { type = construct which = ic where = 1445 value = 3 }
+		command = { type = construct which = ic where = 1447 value = 3 }
+		command = { type = construct which = ic where = 1459 value = 3 }
+		command = { type = construct which = ic where = 1472 value = 4 }
+		command = { type = construct which = ic where = 1477 value = 3 }
+		command = { type = construct which = ic where = 1487 value = 3 }
+		command = { type = construct which = ic where = 1493 value = 3 }
+		command = { type = construct which = ic where = 1502 value = 3 }
+		command = { type = construct which = ic where = 1517 value = 3 }
+		command = { type = construct which = ic where = 1533 value = 3 }
+		command = { type = industrial_modifier which = ic value = 3 }
+		command = { type = setflag which = ind_v3_balanced_second_plan }
+		command = { type = setflag which = ind_v3_second_plan_1938 }
+	}
+	action_c = {
+		trigger = {
+			money = 550
+			supplies = 1500
+			manpower = 15
+		}
+		ai_chance = 20
+		name = "Build a high-technology economy"
+		command = { type = money value = -550 }
+		command = { type = supplies value = -1500 }
+		command = { type = manpowerpool value = -15 }
+		command = { type = research_mod value = 8 }
+		command = { type = industrial_modifier which = ic value = 5 }
+		command = { type = construct which = ic where = 1447 value = 3 }
+		command = { type = construct which = ic where = 1459 value = 3 }
+		command = { type = construct which = ic where = 1472 value = 3 }
+		command = { type = construct which = ic where = 1502 value = 5 }
+		command = { type = construct which = ic where = 1517 value = 3 }
+		command = { type = construct which = ic where = 1533 value = 3 }
+		command = { type = waketeam which = 250017 }
+		command = { type = setflag which = ind_v3_technology_second_plan }
+		command = { type = setflag which = ind_v3_second_plan_1938 }
+	}
+}
+
+event = {
+	id = 9270206
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_second_plan_1938
+		NOT = { flag = ind_v3_industrial_maturity }
+	}
+
+	name = "An Industrial Power"
+	desc = "By the end of the decade, an economy once organized around raw-material exports now produces steel, machine tools, chemicals, power equipment and modern transport. India has paid in taxes, shortages, labour and political conflict, but it can no longer be treated as a peripheral state."
+	style = 2
+	picture = "india_v3_industry"
+
+	date = { day = 0 month = january year = 1940 }
+	offset = 10
+	deathdate = { day = 29 month = march year = 1940 }
+
+	action_a = {
+		name = "The foundation is laid"
+		command = { type = dissent value = -3 }
+		command = { type = industrial_modifier which = ic value = 5 }
+		command = { type = industrial_modifier which = money value = 5 }
+		command = { type = manpowerpool value = 25 }
+		command = { type = construct which = ic where = 1445 value = 3 }
+		command = { type = construct which = ic where = 1447 value = 3 }
+		command = { type = construct which = ic where = 1459 value = 3 }
+		command = { type = construct which = ic where = 1472 value = 3 }
+		command = { type = construct which = ic where = 1485 value = 3 }
+		command = { type = construct which = ic where = 1502 value = 3 }
+		command = { type = construct which = ic where = 1517 value = 3 }
+		command = { type = construct which = ic where = 1533 value = 3 }
+		command = { type = setflag which = ind_v3_industrial_maturity }
+	}
+}

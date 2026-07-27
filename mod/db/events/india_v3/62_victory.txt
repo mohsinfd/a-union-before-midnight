@@ -1,0 +1,210 @@
+#########################################################################
+# India Mod V3: campaign audits and endgame scorecards
+#########################################################################
+
+event = {
+	id = 9275000
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_resource_security_1939
+		flag = ind_v3_air_expansion_1938
+		flag = ind_v3_general_staff_1939
+		flag = ind_v3_oceanic_fleet_commissioned
+		NOT = { flag = ind_v3_audit_1940 }
+	}
+
+	name = "The 1940 Great-Power Audit"
+	desc = "Seven years after independence, India fields a continental army, a multi-mission air force, three fleets and an industrial resource base able to sustain them. The achievement is real, but officers warn that quality, fuel and logistics must now catch up with scale."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = july year = 1940 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1941 }
+
+	action_a = {
+		ai_chance = 100
+		name = "India has entered the first rank of powers"
+		command = { type = dissent value = -4 }
+		command = { type = research_mod value = 2 }
+		command = { type = tc_mod value = 2 }
+		command = { type = belligerence value = -2 }
+		command = { type = setflag which = ind_v3_great_power_1940 }
+		command = { type = setflag which = ind_v3_audit_1940 }
+	}
+}
+
+event = {
+	id = 9275001
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_great_power_1940
+		flag = ind_v3_bengal_food_security
+		flag = ind_v3_occupation_doctrine
+		OR = {
+			flag = ind_v3_allied_settlement_1945
+			flag = ind_v3_axis_settlement_1945
+			flag = ind_v3_soviet_postwar_line
+			flag = ind_v3_nam_settlement_1945
+		}
+		NOT = { flag = ind_v3_audit_1945 }
+	}
+
+	name = "The 1945 Great-Power Test"
+	desc = "India has survived the world crisis without losing strategic independence. Its armies, fleets and factories shaped events beyond the subcontinent, while its political choices now define an Asian order rather than merely react to one."
+	style = 2
+	picture = "diplomatic_campaign"
+
+	date = { day = 0 month = november year = 1945 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1947 }
+
+	action_a = {
+		ai_chance = 100
+		name = "The Union is a durable world power"
+		command = { type = dissent value = -5 }
+		command = { type = money value = 800 }
+		command = { type = research_mod value = 2 }
+		command = { type = setflag which = ind_v3_world_power_1945 }
+		command = { type = setflag which = ind_v3_audit_1945 }
+	}
+}
+
+event = {
+	id = 9275002
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_election_1952
+		flag = ind_v3_republic_1950
+		flag = ind_v3_fourth_national_plan
+		NOT = { flag = ind_v3_audit_1952 }
+	}
+
+	name = "The Republic at Twenty"
+	desc = "Two decades of sovereignty have produced a continental republic, an advanced industrial base and a foreign policy with global weight. The remaining test is whether federal legitimacy and living standards can keep pace with strategic power."
+	style = 2
+	picture = "india_v3_independence"
+
+	date = { day = 0 month = august year = 1952 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1953 }
+
+	action_a = {
+		ai_chance = 100
+		name = "Begin the republic's second generation"
+		command = { type = dissent value = -4 }
+		command = { type = manpowerpool value = 40 }
+		command = { type = industrial_modifier which = money value = 2 }
+		command = { type = setflag which = ind_v3_republic_consolidated_1952 }
+		command = { type = setflag which = ind_v3_audit_1952 }
+	}
+}
+
+event = {
+	id = 9275003
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_succession_1964
+		flag = ind_v3_world_power_1945
+		flag = ind_v3_republic_consolidated_1952
+		flag = ind_v3_jet_age
+		flag = ind_v3_atomic_commission
+		flag = ind_v3_space_program
+		NOT = { flag = ind_v3_bengal_catastrophe }
+		NOT = { flag = ind_v3_final_score }
+	}
+
+	name = "1964: India at the Zenith"
+	desc = "The independent state established in 1933 has become one of the world's decisive powers: industrially self-confident, scientifically advanced, secure across three seas and capable of choosing its own alignments. The campaign's central promise has been fulfilled."
+	style = 2
+	picture = "india_v3_independence"
+
+	date = { day = 0 month = february year = 1964 }
+	offset = 7
+	deathdate = { day = 29 month = may year = 1964 }
+
+	action_a = {
+		ai_chance = 100
+		name = "A first-rank power on Indian terms"
+		command = { type = dissent value = -8 }
+		command = { type = research_mod value = 5 }
+		command = { type = industrial_modifier which = total value = 5 }
+		command = { type = belligerence value = -5 }
+		command = { type = setflag which = ind_v3_zenith_victory }
+		command = { type = setflag which = ind_v3_final_score }
+	}
+}
+
+event = {
+	id = 9275004
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_succession_1964
+		flag = ind_v3_republic_consolidated_1952
+		OR = {
+			flag = ind_v3_great_power_1940
+			flag = ind_v3_jet_age
+			flag = ind_v3_atomic_commission
+			flag = ind_v3_space_program
+		}
+		NOT = { flag = ind_v3_final_score }
+	}
+
+	name = "1964: A Durable Great Power"
+	desc = "India has not achieved every ambition of the independence generation, but it remains sovereign, industrial, militarily formidable and able to influence the global balance. The Union enters its next era from strength."
+	style = 2
+	picture = "india_v3_independence"
+
+	date = { day = 0 month = june year = 1964 }
+	offset = 7
+	deathdate = { day = 29 month = september year = 1964 }
+
+	action_a = {
+		ai_chance = 100
+		name = "The great-power project endures"
+		command = { type = dissent value = -5 }
+		command = { type = research_mod value = 3 }
+		command = { type = industrial_modifier which = total value = 3 }
+		command = { type = setflag which = ind_v3_great_power_victory }
+		command = { type = setflag which = ind_v3_final_score }
+	}
+}
+
+event = {
+	id = 9275005
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_succession_1964
+		NOT = { flag = ind_v3_final_score }
+	}
+
+	name = "1964: The Union Survives"
+	desc = "The path from independence has been uneven, but India remains united and sovereign after three decades of global crisis. The next generation inherits unfinished work rather than a failed state."
+	style = 2
+	picture = "india_v3_independence"
+
+	date = { day = 0 month = october year = 1964 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		ai_chance = 100
+		name = "The work continues"
+		command = { type = dissent value = -3 }
+		command = { type = setflag which = ind_v3_survival_victory }
+		command = { type = setflag which = ind_v3_final_score }
+	}
+}
+

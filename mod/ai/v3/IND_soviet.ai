@@ -1,0 +1,109 @@
+# India Mod V3: Soviet strategic universe
+
+neutrality = 15
+war = 85
+max_front_ratio = 1.55
+exp_force_ratio = 0.15
+
+combat = {
+	GER = 100
+	ITA = 35
+	JAP = 80
+}
+
+befriend = {
+	SOV = 180
+	CHC = 110
+	MON = 70
+	AFG = 55
+}
+
+protect = {
+	SOV = 60
+	CHC = 60
+	AFG = 70
+	NEP = 50
+	BHU = 50
+}
+
+military = {
+	relative_build_scheme = no
+
+	# Land: 64 percent
+	infantry = 25
+	cavalry = 1
+	motorized = 8
+	mechanized = 7
+	light_armor = 3
+	armor = 9
+	paratrooper = 1
+	marine = 1
+	bergsjaeger = 5
+	garrison = 0
+	hq = 4
+	militia = 0
+
+	# Air: 26 percent
+	interceptor = 7
+	multi_role = 3
+	cas = 8
+	strategic_bomber = 0
+	tactical_bomber = 6
+	naval_bomber = 1
+	transport_plane = 1
+	flying_bomb = 0
+	flying_rocket = 0
+
+	# Navy: 10 percent
+	battleship = 0
+	carrier = 1
+	light_carrier = 0
+	escort_carrier = 0
+	destroyer = 2
+	light_cruiser = 1
+	heavy_cruiser = 0
+	battlecruiser = 0
+	submarine = 3
+	nuclear_submarine = 0
+	transports = 3
+}
+
+technology = {
+	preference = {
+		1396 1400 1410 1420 1430 1440 1450 1460
+		1470 1480 1490 1510 1520
+		2070 2080 2090 2140 11000 2660 11010 2670
+		2170 2180 2850 2190 2200 2210 11020 11026
+		2220 2230 2240 2250 11030 11040 2960 2966
+		4400 4170 4280 4450 4180 15120 15130
+	}
+	armor = 11
+	infantry = 9
+	industry = 8
+	aircraft = 7
+	naval = 2
+	land_doctrines = 11
+	secret_weapons = 3
+	air_doctrines = 8
+	naval_doctrines = 2
+}
+
+front = {
+	recklessness = 2
+	base_attack_odds = 1.15
+	min_attack_odds = 1.00
+	reserve_prop = 0.12
+	mountain_attack = 1.25
+}
+
+air_marshal = {
+	groundattackdesirability = 60.0
+	inderdictiondesirability = 35.0
+	logisticalstrikedesirability = 8.0
+}
+
+admiral = {
+	min_core_attack_fleets = 1
+	num_attack_fleets = 2
+	base = { 1421 1493 1497 1517 1533 }
+}

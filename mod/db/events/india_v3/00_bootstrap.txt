@@ -1,0 +1,152 @@
+#########################################################################
+# India Mod V3: sovereign start and state integration
+#########################################################################
+# India Mod V3.1 economy pass
+
+event = {
+	id = 9270000
+	random = no
+	country = IND
+
+	name = "India Ascendant"
+	desc = "At midnight the Union of India assumes sovereignty from Delhi to Rangoon and from Karachi to Dibrugarh. Independence has arrived through a negotiated rupture, but the new state inherits provincial rivalries, princely armies, a colonial bureaucracy and an economy built to serve an empire. The provisional cabinet must decide what kind of power India will become."
+	style = 2
+	picture = "india_v3_independence"
+
+	date = { day = 0 month = january year = 1933 }
+	offset = 1
+	deathdate = { day = 10 month = january year = 1933 }
+
+	action_a = {
+		ai_chance = 50
+		name = "Gandhi-Nehru: -3 dissent, open markets; costs 100 money/250 supplies"
+		command = { type = money value = -100 }
+		command = { type = supplies value = -250 }
+		command = { type = dissent value = -3 }
+		command = { type = domestic which = free_market value = 1 }
+		command = { type = domestic which = democratic value = 1 }
+		command = { type = relation which = ENG value = 20 }
+		command = { type = headofstate which = 251041 }
+		command = { type = headofgovernment which = 251002 }
+		command = { type = foreignminister which = 251003 }
+		command = { type = armamentminister which = 251004 }
+		command = { type = ministerofsecurity which = 251005 }
+		command = { type = ministerofintelligence which = 251006 }
+		command = { type = chiefofstaff which = 251007 }
+		command = { type = chiefofarmy which = 251008 }
+		command = { type = chiefofnavy which = 251009 }
+		command = { type = chiefofair which = 251010 }
+		command = { type = setflag which = ind_v3_cabinet_federal }
+		command = { type = setflag which = ind_v3_federal }
+		command = { type = setflag which = ind_v3_started }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Patel-Visvesvaraya: +3 strategic sliders; costs 200 money/400 supplies"
+		command = { type = money value = -200 }
+		command = { type = supplies value = -400 }
+		command = { type = dissent value = -1 }
+		command = { type = domestic which = professional_army value = 1 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = domestic which = democratic value = -1 }
+		command = { type = headofstate which = 251011 }
+		command = { type = headofgovernment which = 251012 }
+		command = { type = foreignminister which = 251013 }
+		command = { type = armamentminister which = 251014 }
+		command = { type = ministerofsecurity which = 251015 }
+		command = { type = ministerofintelligence which = 251016 }
+		command = { type = chiefofstaff which = 251017 }
+		command = { type = chiefofarmy which = 251018 }
+		command = { type = chiefofnavy which = 251019 }
+		command = { type = chiefofair which = 251020 }
+		command = { type = setflag which = ind_v3_cabinet_developmental }
+		command = { type = setflag which = ind_v3_executive }
+		command = { type = setflag which = ind_v3_started }
+	}
+	action_c = {
+		ai_chance = 15
+		name = "Bose-Saha: +30 manpower, Soviet opening; +2 dissent"
+		command = { type = money value = -75 }
+		command = { type = supplies value = -200 }
+		command = { type = dissent value = 2 }
+		command = { type = manpowerpool value = 30 }
+		command = { type = domestic which = free_market value = -1 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = relation which = SOV value = 40 }
+		command = { type = relation which = ENG value = -30 }
+		command = { type = headofstate which = 251021 }
+		command = { type = headofgovernment which = 251022 }
+		command = { type = foreignminister which = 251023 }
+		command = { type = armamentminister which = 251024 }
+		command = { type = ministerofsecurity which = 251025 }
+		command = { type = ministerofintelligence which = 251026 }
+		command = { type = chiefofstaff which = 251027 }
+		command = { type = chiefofarmy which = 251028 }
+		command = { type = chiefofnavy which = 251029 }
+		command = { type = chiefofair which = 251030 }
+		command = { type = setflag which = ind_v3_cabinet_social }
+		command = { type = setflag which = ind_v3_social }
+		command = { type = setflag which = ind_v3_started }
+	}
+}
+
+event = {
+	id = 9270001
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_started
+		NOT = { flag = ind_v3_integrated }
+	}
+
+	name = "One Administration, Many Nations"
+	desc = "The transfer of sovereignty did not merge tax systems, railway boards, princely courts and provincial services by magic. Delhi can pay for a negotiated administrative union, preserve wide provincial autonomy, or impose central authority with the army. Each course creates a different India."
+	style = 2
+	picture = "india_v3_independence"
+
+	date = { day = 5 month = january year = 1933 }
+	offset = 3
+	deathdate = { day = 29 month = march year = 1933 }
+
+	action_a = {
+		ai_chance = 45
+		name = "Negotiated union: -5 dissent, four trunk routes; costs 150/350"
+		command = { type = money value = -150 }
+		command = { type = supplies value = -350 }
+		command = { type = manpowerpool value = -10 }
+		command = { type = dissent value = -5 }
+		command = { type = construct which = infrastructure where = 1459 value = 10 trigger = { NOT = { building = { province = 1459 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1447 value = 10 trigger = { NOT = { building = { province = 1447 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1517 value = 10 trigger = { NOT = { building = { province = 1517 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1533 value = 10 trigger = { NOT = { building = { province = 1533 type = infrastructure value = 0.91 } } } }
+		command = { type = setflag which = ind_v3_consensual_union }
+		command = { type = setflag which = ind_v3_integrated }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Provincial compact: -3 dissent, three regional routes; costs 75/200"
+		command = { type = money value = -75 }
+		command = { type = supplies value = -200 }
+		command = { type = dissent value = -3 }
+		command = { type = construct which = infrastructure where = 1445 value = 10 trigger = { NOT = { building = { province = 1445 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1415 value = 10 trigger = { NOT = { building = { province = 1415 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1530 value = 10 trigger = { NOT = { building = { province = 1530 type = infrastructure value = 0.91 } } } }
+		command = { type = setflag which = ind_v3_provincial_union }
+		command = { type = setflag which = ind_v3_integrated }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Central decree: +150 money, army reform; +4 dissent"
+		command = { type = money value = 150 }
+		command = { type = supplies value = -400 }
+		command = { type = dissent value = 4 }
+		command = { type = manpowerpool value = -5 }
+		command = { type = domestic which = professional_army value = 1 }
+		command = { type = construct which = infrastructure where = 1459 value = 15 trigger = { NOT = { building = { province = 1459 type = infrastructure value = 0.86 } } } }
+		command = { type = setflag which = ind_v3_central_union }
+		command = { type = setflag which = ind_v3_integrated }
+	}
+}
+

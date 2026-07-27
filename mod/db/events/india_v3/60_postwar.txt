@@ -1,0 +1,387 @@
+#########################################################################
+# India Mod V3: advanced programmes and the 1944 settlement
+#########################################################################
+# India Mod V3.1 economy pass
+
+event = {
+	id = 9270600
+	random = no
+	country = IND
+
+	decision = {
+		flag = ind_v3_science_1937
+		NOT = { flag = ind_v3_advanced_science }
+	}
+	decision_trigger = {
+	OR = {
+		AND = { money = 1075 supplies = 2150 }
+		AND = { money = 800 supplies = 1750 }
+		AND = { money = 875 supplies = 2000 }
+	}
+}
+
+	name = "The Frontier Science Programme"
+	desc = "India now has the industry to pursue science beyond immediate production. Atomic research offers ultimate strategic insurance, electronics promises immediate advantages across every service, while advanced aeronautics can give India regional reach."
+	style = 2
+	picture = "india_v3_industry"
+
+	date = { day = 0 month = january year = 1941 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1943 }
+
+	action_a = {
+		trigger = {
+			money = 1075
+			supplies = 2150
+		}
+		ai_chance = 30
+		name = "Establish the Atomic Research Directorate"
+		command = { type = money value = -1075 }
+		command = { type = supplies value = -2150 }
+		command = { type = dissent value = 2 }
+		command = { type = research_mod value = 5 }
+		command = { type = waketeam which = 250016 }
+		command = { type = setflag which = ind_v3_atomic_program }
+		command = { type = setflag which = ind_v3_advanced_science }
+	}
+	action_b = {
+		trigger = {
+			money = 800
+			supplies = 1750
+		}
+		ai_chance = 45
+		name = "Create a national electronics directorate"
+		command = { type = money value = -800 }
+		command = { type = supplies value = -1750 }
+		command = { type = research_mod value = 7 }
+		command = { type = waketeam which = 250017 }
+		command = { type = construct which = radar_station where = 1447 value = 2 }
+		command = { type = construct which = radar_station where = 1517 value = 2 }
+		command = { type = construct which = radar_station where = 1533 value = 2 }
+		command = { type = setflag which = ind_v3_electronics_program }
+		command = { type = setflag which = ind_v3_advanced_science }
+	}
+	action_c = {
+		trigger = {
+			money = 875
+			supplies = 2000
+		}
+		ai_chance = 25
+		name = "Fund advanced aeronautics and long-range flight"
+		command = { type = money value = -875 }
+		command = { type = supplies value = -2000 }
+		command = { type = research_mod value = 5 }
+		command = { type = waketeam which = 250013 }
+		command = { type = waketeam which = 250020 }
+		command = { type = construct which = air_base where = 1502 value = 3 trigger = { NOT = { building = { province = 1502 type = air_base value = 8 } } } }
+		command = { type = construct which = air_base where = 1421 value = 3 trigger = { NOT = { building = { province = 1421 type = air_base value = 8 } } } }
+		command = { type = setflag which = ind_v3_aeronautics_program }
+		command = { type = setflag which = ind_v3_advanced_science }
+	}
+}
+
+event = {
+	id = 9270601
+	random = no
+	country = IND
+
+	decision = {
+		flag = ind_v3_naval_program
+		flag = ind_v3_second_plan_1938
+		NOT = { flag = ind_v3_oceanic_fleet }
+	}
+	decision_trigger = {
+	OR = {
+		AND = { money = 1325 supplies = 4450 manpower = 11 }
+		AND = { money = 1025 supplies = 3850 manpower = 12 }
+		AND = { money = 750 supplies = 3350 manpower = 12 }
+	}
+}
+
+	name = "An Oceanic Fleet"
+	desc = "Industrial maturity makes a true oceanic fleet possible. Carrier aviation offers reach, a cruiser fleet offers flexible sea control, while a submarine and land-based air network can deny the ocean at lower cost."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = january year = 1942 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1944 }
+
+	action_a = {
+		trigger = {
+			# V3_QUEUE_MANPOWER = 11
+			manpower = 11
+			money = 1325
+			supplies = 4450
+		}
+		ai_chance = 30
+		name = "Lay the carrier-fleet foundations"
+		command = { type = money value = -1325 }
+		command = { type = supplies value = -4450 }
+		command = { type = waketeam which = 250018 }
+		command = { type = construct which = naval_base where = 1517 value = 3 trigger = { NOT = { building = { province = 1517 type = naval_base value = 8 } } } }
+		command = { type = construct which = naval_base where = 1493 value = 3 trigger = { NOT = { building = { province = 1493 type = naval_base value = 8 } } } }
+		command = { type = construct which = air_base where = 1517 value = 3 trigger = { NOT = { building = { province = 1517 type = air_base value = 8 } } } }
+		command = { type = construct which = air_base where = 1493 value = 3 trigger = { NOT = { building = { province = 1493 type = air_base value = 8 } } } }
+		command = { type = build_division which = light_carrier value = light_cag when = 2 cost = 9 where = 360 }
+		command = { type = build_division which = destroyer value = naval_asw when = 4 cost = 4 where = 120 }
+		command = { type = setflag which = ind_v3_carrier_fleet }
+		command = { type = setflag which = ind_v3_oceanic_fleet }
+	}
+	action_b = {
+		trigger = {
+			# V3_QUEUE_MANPOWER = 12
+			manpower = 12
+			money = 1025
+			supplies = 3850
+		}
+		ai_chance = 40
+		name = "Build a cruiser-centred control fleet"
+		command = { type = money value = -1025 }
+		command = { type = supplies value = -3850 }
+		command = { type = waketeam which = 250018 }
+		command = { type = construct which = naval_base where = 1517 value = 3 trigger = { NOT = { building = { province = 1517 type = naval_base value = 8 } } } }
+		command = { type = construct which = naval_base where = 1497 value = 3 trigger = { NOT = { building = { province = 1497 type = naval_base value = 8 } } } }
+		command = { type = build_division which = light_cruiser value = naval_fire_controll_s when = 4 cost = 7 where = 260 }
+		command = { type = build_division which = destroyer value = naval_asw when = 5 cost = 4 where = 120 }
+		command = { type = setflag which = ind_v3_cruiser_fleet }
+		command = { type = setflag which = ind_v3_oceanic_fleet }
+	}
+	action_c = {
+		trigger = {
+			# V3_QUEUE_MANPOWER = 12
+			manpower = 12
+			money = 750
+			supplies = 3350
+		}
+		ai_chance = 30
+		name = "Control the ocean through denial"
+		command = { type = money value = -750 }
+		command = { type = supplies value = -3350 }
+		command = { type = construct which = naval_base where = 1421 value = 3 trigger = { NOT = { building = { province = 1421 type = naval_base value = 8 } } } }
+		command = { type = construct which = air_base where = 1421 value = 3 trigger = { NOT = { building = { province = 1421 type = air_base value = 8 } } } }
+		command = { type = activate_unit_type which = naval_bomber }
+		command = { type = new_model which = naval_bomber value = 0 }
+		command = { type = activate_unit_type which = escort }
+		command = { type = new_model which = escort value = 0 }
+		command = { type = build_division which = submarine value = none when = 8 cost = 4 where = 100 }
+		command = { type = build_division which = naval_bomber value = escort when = 3 cost = 9 where = 150 }
+		command = { type = setflag which = ind_v3_ocean_denial }
+		command = { type = setflag which = ind_v3_oceanic_fleet }
+	}
+}
+
+event = {
+	id = 9270602
+	random = no
+	country = IND
+
+	decision = {
+		flag = ind_v3_industrial_maturity
+		NOT = { flag = ind_v3_third_plan }
+	}
+	decision_trigger = {
+	OR = {
+		AND = { money = 1325 supplies = 4800 manpower = 35 }
+		AND = { money = 1175 supplies = 3350 manpower = 25 }
+		AND = { money = 1250 supplies = 3700 manpower = 20 }
+	}
+}
+
+	name = "The Third National Plan"
+	desc = "The mature industrial economy faces a new choice. India can pursue maximum armaments, build a continental welfare and infrastructure state, or shift capital into oil, chemicals and high-technology production."
+	style = 2
+	picture = "india_v3_industry"
+
+	date = { day = 0 month = january year = 1942 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1944 }
+
+	action_a = {
+		trigger = {
+			money = 1325
+			supplies = 4800
+			manpower = 35
+		}
+		ai_chance = 35
+		name = "Build the arsenal of Asia"
+		command = { type = money value = -1325 }
+		command = { type = supplies value = -4800 }
+		command = { type = manpowerpool value = -35 }
+		command = { type = dissent value = 4 }
+		command = { type = industrial_modifier which = supplies value = 10 }
+		command = { type = construct which = ic where = 1447 value = 5 }
+		command = { type = construct which = ic where = 1472 value = 5 }
+		command = { type = construct which = ic where = 1477 value = 5 }
+		command = { type = construct which = ic where = 1487 value = 4 }
+		command = { type = construct which = ic where = 1502 value = 5 }
+		command = { type = construct which = ic where = 1517 value = 5 }
+		command = { type = construct which = ic where = 1533 value = 4 }
+		command = { type = setflag which = ind_v3_third_plan_arsenal }
+		command = { type = setflag which = ind_v3_third_plan }
+	}
+	action_b = {
+		trigger = {
+			money = 1175
+			supplies = 3350
+			manpower = 25
+		}
+		ai_chance = 35
+		name = "Build a continental welfare and transport state"
+		command = { type = money value = -1175 }
+		command = { type = supplies value = -3350 }
+		command = { type = manpowerpool value = -25 }
+		command = { type = dissent value = -5 }
+		command = { type = manpowerpool value = 60 }
+		command = { type = construct which = ic where = 1439 value = 3 }
+		command = { type = construct which = ic where = 1445 value = 3 }
+		command = { type = construct which = ic where = 1461 value = 3 }
+		command = { type = construct which = ic where = 1465 value = 3 }
+		command = { type = construct which = ic where = 1471 value = 3 }
+		command = { type = construct which = ic where = 1485 value = 3 }
+		command = { type = construct which = ic where = 1495 value = 3 }
+		command = { type = construct which = ic where = 1507 value = 3 }
+		command = { type = construct which = infrastructure where = 1439 value = 15 trigger = { NOT = { building = { province = 1439 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1465 value = 15 trigger = { NOT = { building = { province = 1465 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1495 value = 15 trigger = { NOT = { building = { province = 1495 type = infrastructure value = 0.86 } } } }
+		command = { type = setflag which = ind_v3_third_plan_welfare }
+		command = { type = setflag which = ind_v3_third_plan }
+	}
+	action_c = {
+		trigger = {
+			money = 1250
+			supplies = 3700
+			manpower = 20
+		}
+		ai_chance = 30
+		name = "Concentrate on oil, chemicals and advanced industry"
+		command = { type = money value = -1250 }
+		command = { type = supplies value = -3700 }
+		command = { type = manpowerpool value = -20 }
+		command = { type = research_mod value = 6 }
+		command = { type = industrial_modifier which = oil value = 10 }
+		command = { type = construct which = ic where = 1441 value = 4 }
+		command = { type = construct which = ic where = 1472 value = 4 }
+		command = { type = construct which = ic where = 1502 value = 5 }
+		command = { type = construct which = ic where = 1517 value = 4 }
+		command = { type = construct which = ic where = 1533 value = 4 }
+		command = { type = add_prov_resource which = 1441 value = 20 where = oil }
+		command = { type = add_prov_resource which = 1538 value = 12 where = oil }
+		command = { type = setflag which = ind_v3_third_plan_technology }
+		command = { type = setflag which = ind_v3_third_plan }
+	}
+}
+
+event = {
+	id = 9270603
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_third_plan
+		NOT = { flag = ind_v3_great_power_charter }
+	}
+
+	name = "The Great-Power Charter"
+	desc = "By 1944 India possesses continental industry, mass armed forces and influence across the Indian Ocean. The question is no longer whether India is a great power, but what it intends to do with that power: guarantee a plural Asian order, construct a formal sphere, or remain the decisive independent balancer."
+	style = 2
+	picture = "india_v3_independence"
+
+	date = { day = 0 month = january year = 1944 }
+	offset = 10
+	deathdate = { day = 29 month = june year = 1944 }
+
+	action_a = {
+		ai_chance = 45
+		name = "Guarantee a plural and sovereign Asian order"
+		command = { type = money value = -775 }
+		command = { type = dissent value = -4 }
+		command = { type = relation which = CHI value = 50 }
+		command = { type = relation which = SIA value = 40 }
+		command = { type = relation which = PER value = 30 }
+		command = { type = setflag which = ind_v3_plural_order }
+		command = { type = setflag which = ind_v3_great_power_charter }
+	}
+	action_b = {
+		ai_chance = 25
+		name = "Construct an Indian strategic sphere"
+		command = { type = money value = -625 }
+		command = { type = supplies value = -1950 }
+		command = { type = dissent value = 4 }
+		command = { type = domestic which = interventionism value = 2 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = belligerence which = IND value = 5 }
+		command = { type = setflag which = ind_v3_indian_sphere }
+		command = { type = setflag which = ind_v3_great_power_charter }
+	}
+	action_c = {
+		ai_chance = 30
+		name = "Remain the independent global balancer"
+		command = { type = money value = 800 }
+		command = { type = research_mod value = 3 }
+		command = { type = relation which = ENG value = 20 }
+		command = { type = relation which = USA value = 20 }
+		command = { type = relation which = SOV value = 20 }
+		command = { type = setflag which = ind_v3_global_balancer }
+		command = { type = setflag which = ind_v3_great_power_charter }
+	}
+}
+
+event = {
+	id = 9270604
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_great_power_charter
+		atwar = no
+		NOT = { flag = ind_v3_peace_dividend }
+	}
+
+	name = "The Peace Dividend"
+	desc = "Demobilization releases soldiers, factories and capital into a society transformed by a decade of forced development. Veterans demand opportunity, workers demand consumption, and the services demand that India retain the strategic capacity it has built."
+	style = 2
+	picture = "india_v3_independence"
+
+	date = { day = 0 month = july year = 1944 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1948 }
+
+	action_a = {
+		ai_chance = 45
+		name = "Convert armaments to housing and infrastructure"
+		command = { type = money value = -775 }
+		command = { type = supplies value = -1950 }
+		command = { type = dissent value = -8 }
+		command = { type = manpowerpool value = 80 }
+		command = { type = industrial_modifier which = money value = 5 }
+		command = { type = setflag which = ind_v3_civilian_dividend }
+		command = { type = setflag which = ind_v3_peace_dividend }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Create a veterans' development corps"
+		command = { type = money value = -625 }
+		command = { type = supplies value = -1400 }
+		command = { type = dissent value = -5 }
+		command = { type = manpowerpool value = 40 }
+		command = { type = construct which = infrastructure where = 1439 value = 15 trigger = { NOT = { building = { province = 1439 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1442 value = 15 trigger = { NOT = { building = { province = 1442 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1529 value = 15 trigger = { NOT = { building = { province = 1529 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1537 value = 15 trigger = { NOT = { building = { province = 1537 type = infrastructure value = 0.86 } } } }
+		command = { type = setflag which = ind_v3_veterans_corps }
+		command = { type = setflag which = ind_v3_peace_dividend }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "Preserve permanent strategic readiness"
+		command = { type = money value = -475 }
+		command = { type = supplies value = 2000 }
+		command = { type = dissent value = -2 }
+		command = { type = domestic which = professional_army value = 1 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = industrial_modifier which = supplies value = 5 }
+		command = { type = setflag which = ind_v3_permanent_readiness }
+		command = { type = setflag which = ind_v3_peace_dividend }
+	}
+}

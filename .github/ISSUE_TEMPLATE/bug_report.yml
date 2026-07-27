@@ -1,0 +1,70 @@
+name: Bug report
+description: Report a crash, broken event, balance issue or visual problem
+title: "[Bug] "
+labels:
+  - bug
+body:
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - Deterministic crash
+        - Event or decision
+        - Units or production
+        - Province or construction
+        - Research or technology team
+        - Leader or government
+        - Visual or sprite
+        - Balance
+        - Installation
+    validations:
+      required: true
+  - type: input
+    id: date
+    attributes:
+      label: Campaign date
+      placeholder: 2 October 1936, 00:00
+    validations:
+      required: true
+  - type: dropdown
+    id: path
+    attributes:
+      label: Strategic path
+      options:
+        - Not selected yet
+        - Allied
+        - German
+        - Japanese
+        - Soviet
+        - Armed non-aligned
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Include the last action, event or interface opened before the problem.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction steps
+      description: Say whether it repeats from the same save and at the same hour.
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant savedebug.txt lines
+      render: text
+  - type: checkboxes
+    id: environment
+    attributes:
+      label: Environment confirmation
+      options:
+        - label: I use Darkest Hour 1.05.2.
+          required: true
+        - label: I installed over Blood and Iron v1.1 using the supplied installer.
+          required: true
+        - label: I am not combining another scenario or India overhaul.
+          required: true

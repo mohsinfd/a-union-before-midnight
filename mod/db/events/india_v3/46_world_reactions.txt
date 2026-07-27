@@ -1,0 +1,427 @@
+#########################################################################
+# India Mod V3: India and the prewar world crisis
+#########################################################################
+# India Mod V3.1 economy pass
+
+event = {
+	id = 9270450
+	random = no
+	country = IND
+
+	trigger = {
+		OR = {
+			event = 2006028
+			war = { country = ITA country = ETH }
+			}
+		NOT = { flag = ind_v3_reacted_abyssinia }
+	}
+
+	name = "India and the Abyssinian Crisis"
+	desc = "Italy's attack on Ethiopia turns the League's promises into a test. India can champion sanctions, attempt a Red Sea mediation, or study the campaign while preserving trade. Each course will be remembered in London, Rome and across the colonized world."
+	style = 2
+	picture = "india_v3_world_abyssinia"
+
+	date = { day = 0 month = october year = 1935 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1936 }
+
+	action_a = {
+		ai_chance = 40
+		name = "Lead sanctions: -300 money, anti-colonial prestige"
+		command = { type = money value = -300 }
+		command = { type = relation which = ITA value = -45 }
+		command = { type = relation which = ENG value = 15 }
+		command = { type = relation which = FRA value = 10 }
+		command = { type = dissent value = -2 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = setflag which = ind_v3_abyssinia_sanctions }
+		command = { type = setflag which = ind_v3_reacted_abyssinia }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Mediate at Aden: -225 money, improve both relationships"
+		command = { type = money value = -225 }
+		command = { type = relation which = ITA value = 10 }
+		command = { type = relation which = ETH value = 25 }
+		command = { type = relation which = ENG value = 5 }
+		command = { type = belligerence value = -1 }
+		command = { type = setflag which = ind_v3_abyssinia_mediation }
+		command = { type = setflag which = ind_v3_reacted_abyssinia }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "Military observers: -500 supplies, doctrine and Rome ties"
+		command = { type = supplies value = -500 }
+		command = { type = relation which = ITA value = 25 }
+		command = { type = relation which = ENG value = -10 }
+		command = { type = research_mod value = 1 }
+		command = { type = dissent value = 2 }
+		command = { type = setflag which = ind_v3_abyssinia_observers }
+		command = { type = setflag which = ind_v3_reacted_abyssinia }
+	}
+}
+
+event = {
+	id = 9270451
+	random = no
+	country = IND
+
+	trigger = {
+		OR = {
+			event = 2052002
+			war = { country = SPR country = SPA }
+			}
+		NOT = { flag = ind_v3_reacted_spain }
+	}
+
+	name = "The Spanish Civil War"
+	desc = "Spain's civil war divides Indian politics. Socialists demand aid to the Republic, conservative officers want observers with the Nationalists, and Gandhi proposes a medical mission that helps civilians without making India a belligerent."
+	style = 2
+	picture = "india_v3_world_spain"
+
+	date = { day = 16 month = july year = 1936 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1938 }
+
+	action_a = {
+		ai_chance = 35
+		name = "Aid the Republic: -350 money, -800 supplies, combat lessons"
+		command = { type = money value = -350 }
+		command = { type = supplies value = -800 }
+		command = { type = manpowerpool value = -5 }
+		command = { type = relation which = SPR value = 55 }
+		command = { type = relation which = SPA value = -45 }
+		command = { type = relation which = SOV value = 15 }
+		command = { type = relation which = GER value = -15 }
+		command = { type = research_mod value = 1 }
+		command = { type = setflag which = ind_v3_spain_republic }
+		command = { type = setflag which = ind_v3_reacted_spain }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Gandhian medical mission: -300 money, -1 dissent"
+		command = { type = money value = -300 }
+		command = { type = supplies value = -350 }
+		command = { type = relation which = SPR value = 25 }
+		command = { type = relation which = SPA value = 10 }
+		command = { type = relation which = ENG value = 10 }
+		command = { type = dissent value = -1 }
+		command = { type = manpowerpool value = 5 }
+		command = { type = setflag which = ind_v3_spain_medical }
+		command = { type = setflag which = ind_v3_reacted_spain }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "Observe Nationalist operations: -450 supplies, Axis access"
+		command = { type = supplies value = -450 }
+		command = { type = relation which = SPA value = 40 }
+		command = { type = relation which = GER value = 15 }
+		command = { type = relation which = ITA value = 15 }
+		command = { type = relation which = SPR value = -40 }
+		command = { type = steal_tech which = GER }
+		command = { type = dissent value = 2 }
+		command = { type = setflag which = ind_v3_spain_nationalist_observers }
+		command = { type = setflag which = ind_v3_reacted_spain }
+	}
+}
+
+event = {
+	id = 9270452
+	random = no
+	country = IND
+
+	trigger = {
+		OR = {
+			event = 2011022
+			war = { country = JAP country = CHI }
+			}
+		NOT = { flag = ind_v3_reacted_china }
+	}
+
+	name = "War Comes to China"
+	desc = "Fighting at Marco Polo Bridge has become a continental war. India controls the Burma Road and cannot pretend the conflict is distant. Delhi can supply China, mediate between Nanjing and Tokyo, or court Japan as the naval counterweight to Europe."
+	style = 2
+	picture = "india_v3_world_china"
+
+	date = { day = 0 month = july year = 1937 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1939 }
+
+	action_a = {
+		ai_chance = 40
+		name = "Keep China supplied: -900 supplies, China +60, Japan -45"
+		command = { type = supplies value = -900 }
+		command = { type = money value = -200 }
+		command = { type = relation which = CHI value = 60 }
+		command = { type = relation which = JAP value = -45 }
+		command = { type = dissent value = -1 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = setflag which = ind_v3_china_supported }
+		command = { type = setflag which = ind_v3_reacted_china }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Offer Delhi mediation: -350 money, balanced diplomacy"
+		command = { type = money value = -350 }
+		command = { type = relation which = CHI value = 25 }
+		command = { type = relation which = JAP value = 10 }
+		command = { type = belligerence value = -1 }
+		command = { type = setflag which = ind_v3_china_mediation_offer }
+		command = { type = setflag which = ind_v3_reacted_china }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "Court Tokyo: -600 supplies, naval advance, +3 dissent"
+		command = { type = supplies value = -600 }
+		command = { type = relation which = JAP value = 45 }
+		command = { type = relation which = CHI value = -55 }
+		command = { type = steal_tech which = JAP }
+		command = { type = dissent value = 3 }
+		command = { type = setflag which = ind_v3_china_backed_japan }
+		command = { type = setflag which = ind_v3_reacted_china }
+	}
+}
+
+event = {
+	id = 9270453
+	random = no
+	country = IND
+
+	trigger = {
+		OR = {
+			event = 2003010
+			AND = {
+				year = 1938
+				NOT = { exists = AUS }
+				}
+			}
+		NOT = { flag = ind_v3_reacted_anschluss }
+	}
+
+	name = "The Anschluss"
+	desc = "Germany's absorption of Austria demonstrates how quickly treaties can be replaced by force and plebiscite. India can reject annexation, recognize it as a European fait accompli, or treat it as the signal for an immediate defence appropriation."
+	style = 2
+	picture = "india_v3_world_anschluss"
+
+	date = { day = 0 month = march year = 1938 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1938 }
+
+	action_a = {
+		ai_chance = 35
+		name = "Reject annexation: Germany -40, democracies +15"
+		command = { type = relation which = GER value = -40 }
+		command = { type = relation which = ENG value = 15 }
+		command = { type = relation which = FRA value = 15 }
+		command = { type = dissent value = -1 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = setflag which = ind_v3_anschluss_rejected }
+		command = { type = setflag which = ind_v3_reacted_anschluss }
+	}
+	action_b = {
+		ai_chance = 25
+		name = "Recognize the fait accompli: Germany +30, +250 money"
+		command = { type = relation which = GER value = 30 }
+		command = { type = relation which = ENG value = -10 }
+		command = { type = money value = 250 }
+		command = { type = dissent value = 2 }
+		command = { type = setflag which = ind_v3_anschluss_recognized }
+		command = { type = setflag which = ind_v3_reacted_anschluss }
+	}
+	action_c = {
+		ai_chance = 40
+		name = "Emergency appropriation: -500 money, +900 supplies, hawk"
+		command = { type = money value = -500 }
+		command = { type = supplies value = 900 }
+		command = { type = relation which = GER value = -15 }
+		command = { type = relation which = ENG value = 10 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = dissent value = 1 }
+		command = { type = setflag which = ind_v3_anschluss_rearmament }
+		command = { type = setflag which = ind_v3_reacted_anschluss }
+	}
+}
+
+event = {
+	id = 9270454
+	random = no
+	country = IND
+
+	trigger = {
+		OR = {
+			event = 2003011
+			event = 2003012
+			event = 2003013
+			event = 2003014
+			}
+		NOT = { flag = ind_v3_reacted_munich }
+	}
+
+	name = "The Munich Settlement"
+	desc = "Britain and France have bargained over Czechoslovakia without Czechoslovakia at the table. Indian opinion sees both a warning against distant guarantees and proof that rearmament cannot be postponed."
+	style = 2
+	picture = "india_v3_world_munich"
+
+	date = { day = 0 month = september year = 1938 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1939 }
+
+	action_a = {
+		ai_chance = 35
+		name = "Condemn great-power bargaining: -250 money, autonomy"
+		command = { type = money value = -250 }
+		command = { type = relation which = GER value = -20 }
+		command = { type = relation which = ENG value = -15 }
+		command = { type = relation which = FRA value = -15 }
+		command = { type = dissent value = -2 }
+		command = { type = setflag which = ind_v3_munich_condemned }
+		command = { type = setflag which = ind_v3_reacted_munich }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Rearm without alignment: -800 supplies, research and hawk"
+		command = { type = supplies value = -800 }
+		command = { type = money value = -250 }
+		command = { type = relation which = GER value = -10 }
+		command = { type = relation which = ENG value = 5 }
+		command = { type = research_mod value = 1 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = setflag which = ind_v3_munich_rearmament }
+		command = { type = setflag which = ind_v3_reacted_munich }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "Support the settlement: +350 money, Allied ties, +2 dissent"
+		command = { type = money value = 350 }
+		command = { type = relation which = ENG value = 25 }
+		command = { type = relation which = FRA value = 20 }
+		command = { type = dissent value = 2 }
+		command = { type = domestic which = interventionism value = -1 }
+		command = { type = setflag which = ind_v3_munich_supported }
+		command = { type = setflag which = ind_v3_reacted_munich }
+	}
+}
+
+event = {
+	id = 9270455
+	random = no
+	country = IND
+
+	trigger = {
+		OR = {
+			event = 2003015
+			event = 2006008
+			AND = {
+				year = 1939
+				NOT = { exists = CZE }
+				}
+			}
+		NOT = { flag = ind_v3_reacted_empires_march }
+	}
+
+	name = "Empires on the March"
+	desc = "German troops in Prague and Italian pressure on Albania end the illusion that revision will stop at ethnic frontiers. India must decide whether to bind itself to collective security, fortify an armed neutrality, or keep channels open to the revisionist powers."
+	style = 2
+	picture = "india_v3_world_prague"
+
+	date = { day = 0 month = march year = 1939 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1940 }
+
+	action_a = {
+		ai_chance = 35
+		name = "Collective security: -500 money, Allied ties, intervention"
+		command = { type = money value = -500 }
+		command = { type = relation which = ENG value = 30 }
+		command = { type = relation which = FRA value = 25 }
+		command = { type = relation which = GER value = -35 }
+		command = { type = relation which = ITA value = -25 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = setflag which = ind_v3_collective_security }
+		command = { type = setflag which = ind_v3_reacted_empires_march }
+	}
+	action_b = {
+		ai_chance = 45
+		name = "Armed neutrality: -1100 supplies, forts and mobilization"
+		command = { type = supplies value = -1100 }
+		command = { type = relation which = ENG value = -5 }
+		command = { type = relation which = GER value = -5 }
+		command = { type = relation which = SOV value = -5 }
+		command = { type = construct which = land_fort where = 1537 value = 3 }
+		command = { type = construct which = land_fort where = 1442 value = 3 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_v3_prewar_armed_neutrality }
+		command = { type = setflag which = ind_v3_reacted_empires_march }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Revisionist channels: +500 money, Axis ties, +3 dissent"
+		command = { type = money value = 500 }
+		command = { type = relation which = GER value = 25 }
+		command = { type = relation which = ITA value = 25 }
+		command = { type = relation which = ENG value = -25 }
+		command = { type = dissent value = 3 }
+		command = { type = setflag which = ind_v3_revisionist_channels }
+		command = { type = setflag which = ind_v3_reacted_empires_march }
+	}
+}
+
+event = {
+	id = 9270456
+	random = no
+	country = IND
+
+	trigger = {
+		OR = {
+			event = 2003036
+			war = { country = GER country = POL }
+			}
+		NOT = { flag = ind_v3_reacted_poland }
+	}
+
+	name = "War in Europe"
+	desc = "The Polish crisis has become a European war. India's 1936 doctrine and 1939 coalition decision now face reality. Delhi can activate its chosen commitments, declare armed neutrality with full mobilization, or seek one final diplomatic conference."
+	style = 2
+	picture = "india_v3_world_poland"
+
+	date = { day = 0 month = august year = 1939 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1940 }
+
+	action_a = {
+		ai_chance = 40
+		name = "Honour existing commitments: -1200 supplies, mobilize"
+		command = { type = supplies value = -1200 }
+		command = { type = manpowerpool value = 30 }
+		command = { type = belligerence value = 1 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = dissent value = -2 }
+		command = { type = setflag which = ind_v3_honoured_commitments }
+		command = { type = setflag which = ind_v3_reacted_poland }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Armed neutrality: -600 money, +1000 supplies, forts"
+		command = { type = money value = -600 }
+		command = { type = supplies value = 1000 }
+		command = { type = belligerence value = -1 }
+		command = { type = construct which = land_fort where = 1537 value = 3 }
+		command = { type = construct which = coastal_fort where = 1533 value = 3 }
+		command = { type = dissent value = 1 }
+		command = { type = setflag which = ind_v3_wartime_armed_neutrality }
+		command = { type = setflag which = ind_v3_reacted_poland }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Delhi peace conference: -500 money, relations and dissent"
+		command = { type = money value = -500 }
+		command = { type = relation which = ENG value = 10 }
+		command = { type = relation which = GER value = 10 }
+		command = { type = relation which = SOV value = 10 }
+		command = { type = belligerence value = -2 }
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_v3_delhi_peace_conference }
+		command = { type = setflag which = ind_v3_reacted_poland }
+	}
+}

@@ -1,0 +1,845 @@
+#########################################################################
+# India Mod V3: 1946-1964 republic, Cold War and strategic modernization
+#########################################################################
+
+event = {
+	id = 9274000
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_world_role
+		NOT = { flag = ind_v3_postwar_mandate }
+	}
+
+	name = "The 1946 Postwar Mandate"
+	desc = "War has changed the balance between parliament, planning and the armed state. The electorate can renew Nehru's federal coalition, entrust reconstruction to Patel's development cabinet, or give Bose a social mobilization mandate. The result appoints a complete government, not a revolving prime minister."
+	style = 2
+	picture = "india_v3_independence"
+
+	date = { day = 0 month = july year = 1946 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1946 }
+
+	action_a = {
+		ai_chance = 45
+		name = "Renew Nehru's federal coalition"
+		command = { type = dissent value = -4 }
+		command = { type = money value = -500 }
+		command = { type = headofstate which = 251041 }
+		command = { type = headofgovernment which = 251002 }
+		command = { type = foreignminister which = 251003 }
+		command = { type = armamentminister which = 251004 }
+		command = { type = ministerofsecurity which = 251005 }
+		command = { type = ministerofintelligence which = 251006 }
+		command = { type = chiefofstaff which = 251007 }
+		command = { type = chiefofarmy which = 251008 }
+		command = { type = chiefofnavy which = 251009 }
+		command = { type = chiefofair which = 251010 }
+		command = { type = setflag which = ind_v3_postwar_federal_cabinet }
+		command = { type = setflag which = ind_v3_postwar_mandate }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Appoint Patel's reconstruction cabinet"
+		command = { type = dissent value = -3 }
+		command = { type = supplies value = -700 }
+		command = { type = headofstate which = 251011 }
+		command = { type = headofgovernment which = 251012 }
+		command = { type = foreignminister which = 251013 }
+		command = { type = armamentminister which = 251014 }
+		command = { type = ministerofsecurity which = 251015 }
+		command = { type = ministerofintelligence which = 251016 }
+		command = { type = chiefofstaff which = 251017 }
+		command = { type = chiefofarmy which = 251018 }
+		command = { type = chiefofnavy which = 251019 }
+		command = { type = chiefofair which = 251020 }
+		command = { type = setflag which = ind_v3_postwar_development_cabinet }
+		command = { type = setflag which = ind_v3_postwar_mandate }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Give Bose a social reconstruction mandate"
+		command = { type = dissent value = 1 }
+		command = { type = manpowerpool value = 40 }
+		command = { type = headofstate which = 251021 }
+		command = { type = headofgovernment which = 251022 }
+		command = { type = foreignminister which = 251023 }
+		command = { type = armamentminister which = 251024 }
+		command = { type = ministerofsecurity which = 251025 }
+		command = { type = ministerofintelligence which = 251026 }
+		command = { type = chiefofstaff which = 251027 }
+		command = { type = chiefofarmy which = 251028 }
+		command = { type = chiefofnavy which = 251029 }
+		command = { type = chiefofair which = 251030 }
+		command = { type = setflag which = ind_v3_postwar_social_cabinet }
+		command = { type = setflag which = ind_v3_postwar_mandate }
+	}
+}
+
+event = {
+	id = 9274001
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_postwar_mandate
+		NOT = { flag = ind_v3_indonesia_indochina_policy }
+	}
+
+	name = "Indonesia and Indochina"
+	desc = "New Asian republics are fighting to turn wartime collapse into real independence. India can recognize and materially support them, lead mediation, or avoid a confrontation with European powers while reconstruction remains fragile."
+	style = 2
+	picture = "diplomatic_campaign"
+
+	date = { day = 0 month = march year = 1947 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1948 }
+
+	action_a = {
+		ai_chance = 45
+		name = "Recognize and supply the independence movements"
+		command = { type = money value = -600 }
+		command = { type = supplies value = -1400 }
+		command = { type = relation which = HOL value = -45 }
+		command = { type = relation which = FRA value = -45 }
+		command = { type = relation which = USA value = 10 }
+		command = { type = dissent value = -3 }
+		command = { type = setflag which = ind_v3_postwar_asian_liberation }
+		command = { type = setflag which = ind_v3_indonesia_indochina_policy }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Lead an Asian mediation conference"
+		command = { type = money value = -500 }
+		command = { type = relation which = HOL value = 10 }
+		command = { type = relation which = FRA value = 10 }
+		command = { type = relation which = USA value = 20 }
+		command = { type = belligerence value = -2 }
+		command = { type = setflag which = ind_v3_postwar_asian_mediation }
+		command = { type = setflag which = ind_v3_indonesia_indochina_policy }
+	}
+	action_c = {
+		ai_chance = 15
+		name = "Reconstruction must come first"
+		command = { type = money value = 400 }
+		command = { type = dissent value = 2 }
+		command = { type = industrial_modifier which = total value = 2 }
+		command = { type = setflag which = ind_v3_postwar_inward_turn }
+		command = { type = setflag which = ind_v3_indonesia_indochina_policy }
+	}
+}
+
+event = {
+	id = 9274002
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_indonesia_indochina_policy
+		NOT = { flag = ind_v3_himalayan_border_commission }
+	}
+
+	name = "The Himalayan Border Commission"
+	desc = "The northern frontier inherited maps, customary routes and ambiguous claims rather than a surveyed border. India can negotiate sector by sector with Tibet and China, or build roads and posts first to strengthen its hand."
+	style = 2
+	picture = "diplomatic_campaign"
+
+	date = { day = 0 month = october year = 1948 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1949 }
+
+	action_a = {
+		ai_chance = 60
+		name = "Negotiate and survey the frontier jointly"
+		command = { type = money value = -500 }
+		command = { type = relation which = CHI value = 30 }
+		command = { type = relation which = TIB value = 35 }
+		command = { type = dissent value = -1 }
+		command = { type = construct which = infrastructure where = 1540 value = 10 trigger = { NOT = { building = { province = 1540 type = infrastructure value = 0.91 } } } }
+		command = { type = setflag which = ind_v3_negotiated_himalayan_border }
+		command = { type = setflag which = ind_v3_himalayan_border_commission }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Build roads and forward posts before negotiating"
+		command = { type = money value = -650 }
+		command = { type = supplies value = -900 }
+		command = { type = relation which = CHI value = -20 }
+		command = { type = construct which = infrastructure where = 1439 value = 15 trigger = { NOT = { building = { province = 1439 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1442 value = 15 trigger = { NOT = { building = { province = 1442 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1540 value = 15 trigger = { NOT = { building = { province = 1540 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = land_fort where = 1540 value = 2 }
+		command = { type = setflag which = ind_v3_forward_himalayan_border }
+		command = { type = setflag which = ind_v3_himalayan_border_commission }
+	}
+}
+
+event = {
+	id = 9274003
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_himalayan_border_commission
+		NOT = { flag = ind_v3_republic_1950 }
+	}
+
+	name = "The Republic and the United Nations"
+	desc = "India's wartime weight and continental scale justify a permanent great-power role. Delhi can champion universal sovereignty at the United Nations or define membership primarily as recognition of Indian strategic status."
+	style = 2
+	picture = "india_v3_independence"
+
+	date = { day = 25 month = january year = 1950 }
+	offset = 5
+	deathdate = { day = 29 month = june year = 1950 }
+
+	action_a = {
+		ai_chance = 60
+		name = "Make sovereignty and decolonization India's charter"
+		command = { type = money value = -500 }
+		command = { type = relation which = USA value = 20 }
+		command = { type = relation which = SOV value = 20 }
+		command = { type = relation which = ENG value = 10 }
+		command = { type = dissent value = -3 }
+		command = { type = belligerence value = -3 }
+		command = { type = setflag which = ind_v3_un_decolonization_power }
+		command = { type = setflag which = ind_v3_republic_1950 }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Use the UN to entrench Indian great-power status"
+		command = { type = money value = -350 }
+		command = { type = relation which = USA value = 15 }
+		command = { type = relation which = SOV value = 15 }
+		command = { type = research_mod value = 2 }
+		command = { type = tc_mod value = 2 }
+		command = { type = setflag which = ind_v3_un_strategic_power }
+		command = { type = setflag which = ind_v3_republic_1950 }
+	}
+}
+
+event = {
+	id = 9274004
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_republic_1950
+		NOT = { flag = ind_v3_fourth_national_plan }
+	}
+
+	name = "The Fourth National Plan"
+	desc = "The wartime industrial base can now support mass electrification, advanced defence industry or a consumption-led mixed economy. Each path preserves great-power capacity but creates a different postwar India."
+	style = 2
+	picture = "india_v3_industry"
+
+	date = { day = 0 month = april year = 1951 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1951 }
+
+	action_a = {
+		ai_chance = 40
+		name = "Build dams, power and continental transport"
+		command = { type = money value = -1400 }
+		command = { type = supplies value = -1300 }
+		command = { type = construct which = ic where = 1461 value = 3 }
+		command = { type = construct which = ic where = 1465 value = 3 }
+		command = { type = construct which = ic where = 1485 value = 3 }
+		command = { type = construct which = infrastructure where = 1461 value = 15 trigger = { NOT = { building = { province = 1461 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1465 value = 15 trigger = { NOT = { building = { province = 1465 type = infrastructure value = 0.86 } } } }
+		command = { type = add_prov_resource which = 1476 value = 25 where = energy }
+		command = { type = setflag which = ind_v3_postwar_infrastructure_plan }
+		command = { type = setflag which = ind_v3_fourth_national_plan }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Build jets, electronics and strategic industry"
+		command = { type = money value = -1500 }
+		command = { type = supplies value = -1500 }
+		command = { type = construct which = ic where = 1502 value = 4 }
+		command = { type = construct which = ic where = 1472 value = 3 }
+		command = { type = construct which = rocket_test where = 1502 value = 2 }
+		command = { type = research_mod value = 4 }
+		command = { type = setflag which = ind_v3_postwar_strategic_plan }
+		command = { type = setflag which = ind_v3_fourth_national_plan }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "Build a mixed consumer and export economy"
+		command = { type = money value = -900 }
+		command = { type = supplies value = -700 }
+		command = { type = construct which = ic where = 1447 value = 3 }
+		command = { type = construct which = ic where = 1517 value = 3 }
+		command = { type = industrial_modifier which = money value = 6 }
+		command = { type = dissent value = -3 }
+		command = { type = setflag which = ind_v3_postwar_mixed_plan }
+		command = { type = setflag which = ind_v3_fourth_national_plan }
+	}
+}
+
+event = {
+	id = 9274005
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_fourth_national_plan
+		NOT = { flag = ind_v3_election_1952 }
+	}
+
+	name = "The 1952 General Election"
+	desc = "The first full postwar election is a referendum on how the great power should use its strength. Voters can prioritize welfare and federation, strategic modernization, or commercial growth without replacing the entire cabinet mid-plan."
+	style = 2
+	picture = "india_v3_independence"
+
+	date = { day = 0 month = february year = 1952 }
+	offset = 10
+	deathdate = { day = 29 month = june year = 1952 }
+
+	action_a = {
+		ai_chance = 45
+		name = "A mandate for welfare and federal cohesion"
+		command = { type = money value = -900 }
+		command = { type = dissent value = -5 }
+		command = { type = manpowerpool value = 80 }
+		command = { type = industrial_modifier which = total value = -2 }
+		command = { type = setflag which = ind_v3_1952_welfare_mandate }
+		command = { type = setflag which = ind_v3_election_1952 }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "A mandate for science and strategic power"
+		command = { type = money value = -1000 }
+		command = { type = supplies value = -900 }
+		command = { type = research_mod value = 4 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = setflag which = ind_v3_1952_strategic_mandate }
+		command = { type = setflag which = ind_v3_election_1952 }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "A mandate for trade and private investment"
+		command = { type = money value = 700 }
+		command = { type = dissent value = -2 }
+		command = { type = domestic which = free_market value = 1 }
+		command = { type = industrial_modifier which = money value = 5 }
+		command = { type = setflag which = ind_v3_1952_market_mandate }
+		command = { type = setflag which = ind_v3_election_1952 }
+	}
+}
+
+event = {
+	id = 9274006
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_election_1952
+		NOT = { flag = ind_v3_jet_age }
+	}
+
+	name = "India Enters the Jet Age"
+	desc = "Jet aircraft, guided weapons and carrier aviation now converge into one expensive modernization cycle. India can equip the air force rapidly from foreign designs or insist on indigenous development."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = march year = 1953 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1954 }
+
+	action_a = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 4
+			manpower = 4
+	}
+		ai_chance = 45
+		name = "Buy proven jets and modernize immediately"
+		command = { type = money value = -1400 }
+		command = { type = supplies value = -1000 }
+		command = { type = steal_tech which = ENG }
+		command = { type = steal_tech which = USA }
+		command = { type = activate_unit_type which = escort }
+		command = { type = new_model which = escort value = 0 }
+		command = { type = build_division which = multi_role value = escort when = 3 cost = -2.5 where = 90 }
+		command = { type = setflag which = ind_v3_imported_jet_age }
+		command = { type = setflag which = ind_v3_jet_age }
+	}
+	action_b = {
+		ai_chance = 55
+		name = "Fund indigenous jet and missile development"
+		command = { type = money value = -1600 }
+		command = { type = supplies value = -1300 }
+		command = { type = waketeam which = 250028 }
+		command = { type = construct which = rocket_test where = 1502 value = 3 }
+		command = { type = research_mod value = 5 }
+		command = { type = dissent value = 1 }
+		command = { type = setflag which = ind_v3_indigenous_jet_age }
+		command = { type = setflag which = ind_v3_jet_age }
+	}
+}
+
+event = {
+	id = 9274007
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_jet_age
+		NOT = { flag = ind_v3_bandung_1955 }
+	}
+
+	name = "Bandung and the Afro-Asian Moment"
+	desc = "New states look to India for leadership beyond the Cold War blocs. Delhi can formalize a non-aligned programme, lead an Asian security dialogue, or use the conference primarily for development and trade."
+	style = 2
+	picture = "diplomatic_campaign"
+
+	date = { day = 0 month = april year = 1955 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1955 }
+
+	action_a = {
+		ai_chance = 45
+		name = "Make non-alignment a global political movement"
+		command = { type = money value = -700 }
+		command = { type = relation which = USA value = 5 }
+		command = { type = relation which = SOV value = 5 }
+		command = { type = relation which = CHI value = 25 }
+		command = { type = belligerence value = -3 }
+		command = { type = setflag which = ind_v3_bandung_non_alignment }
+		command = { type = setflag which = ind_v3_bandung_1955 }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Lead an Asian security dialogue"
+		command = { type = money value = -650 }
+		command = { type = supplies value = -500 }
+		command = { type = relation which = CHI value = 30 }
+		command = { type = relation which = SIA value = 30 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = setflag which = ind_v3_bandung_security }
+		command = { type = setflag which = ind_v3_bandung_1955 }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "Build an Afro-Asian development network"
+		command = { type = money value = -600 }
+		command = { type = supplies value = -400 }
+		command = { type = research_mod value = 2 }
+		command = { type = industrial_modifier which = money value = 4 }
+		command = { type = setflag which = ind_v3_bandung_development }
+		command = { type = setflag which = ind_v3_bandung_1955 }
+	}
+}
+
+event = {
+	id = 9274008
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_bandung_1955
+		NOT = { flag = ind_v3_suez_position }
+	}
+
+	name = "The Suez Crisis"
+	desc = "The attack on Egypt tests every claim India has made about sovereignty and empire. Delhi can organize economic and naval pressure, mediate between the camps, or quietly support a strategic partner."
+	style = 2
+	picture = "diplomatic_campaign"
+
+	date = { day = 0 month = october year = 1956 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1957 }
+
+	action_a = {
+		ai_chance = 50
+		name = "Lead Afro-Asian pressure against the intervention"
+		command = { type = relation which = ENG value = -45 }
+		command = { type = relation which = FRA value = -45 }
+		command = { type = relation which = USA value = 20 }
+		command = { type = supplies value = -800 }
+		command = { type = dissent value = -3 }
+		command = { type = setflag which = ind_v3_suez_anticolonial }
+		command = { type = setflag which = ind_v3_suez_position }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Mediate an immediate ceasefire"
+		command = { type = money value = -450 }
+		command = { type = relation which = ENG value = 10 }
+		command = { type = relation which = FRA value = 10 }
+		command = { type = relation which = USA value = 15 }
+		command = { type = relation which = SOV value = 15 }
+		command = { type = belligerence value = -2 }
+		command = { type = setflag which = ind_v3_suez_mediator }
+		command = { type = setflag which = ind_v3_suez_position }
+	}
+	action_c = {
+		ai_chance = 15
+		name = "Support our strategic partner quietly"
+		command = { type = money value = 500 }
+		command = { type = supplies value = 900 }
+		command = { type = dissent value = 3 }
+		command = { type = setflag which = ind_v3_suez_pragmatist }
+		command = { type = setflag which = ind_v3_suez_position }
+	}
+}
+
+event = {
+	id = 9274009
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_suez_position
+		NOT = { flag = ind_v3_election_1957 }
+	}
+
+	name = "The 1957 Mandate"
+	desc = "The electorate judges a decade of reconstruction and global activism. The government can accelerate heavy industry, turn toward agriculture and food security, or sustain the expensive strategic-services programme."
+	style = 2
+	picture = "india_v3_independence"
+
+	date = { day = 0 month = march year = 1957 }
+	offset = 10
+	deathdate = { day = 29 month = july year = 1957 }
+
+	action_a = {
+		ai_chance = 35
+		name = "Accelerate heavy industry"
+		command = { type = money value = -1100 }
+		command = { type = supplies value = -1000 }
+		command = { type = construct which = ic where = 1472 value = 4 }
+		command = { type = construct which = ic where = 1477 value = 4 }
+		command = { type = add_prov_resource which = 1476 value = 20 where = energy }
+		command = { type = setflag which = ind_v3_1957_heavy_industry }
+		command = { type = setflag which = ind_v3_election_1957 }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Launch a food and agricultural revolution"
+		command = { type = money value = -1000 }
+		command = { type = supplies value = -700 }
+		command = { type = manpowerpool value = 90 }
+		command = { type = dissent value = -4 }
+		command = { type = construct which = infrastructure where = 1461 value = 15 trigger = { NOT = { building = { province = 1461 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1465 value = 15 trigger = { NOT = { building = { province = 1465 type = infrastructure value = 0.86 } } } }
+		command = { type = setflag which = ind_v3_green_revolution }
+		command = { type = setflag which = ind_v3_election_1957 }
+	}
+	action_c = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 2
+			manpower = 2
+	}
+		ai_chance = 25
+		name = "Sustain strategic modernization"
+		command = { type = money value = -1200 }
+		command = { type = supplies value = -1400 }
+		command = { type = research_mod value = 4 }
+		command = { type = build_division which = light_carrier value = light_cag when = 1 cost = -3.0 where = 300 }
+		command = { type = setflag which = ind_v3_1957_strategic_modernization }
+		command = { type = setflag which = ind_v3_election_1957 }
+	}
+}
+
+event = {
+	id = 9274010
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_election_1957
+		NOT = { flag = ind_v3_tibet_crisis }
+	}
+
+	name = "The Tibetan Crisis"
+	desc = "Upheaval in Tibet turns the unsettled Himalayan frontier into an immediate strategic problem. India can offer asylum and harden the border, mediate with Beijing, or prioritize the relationship with China."
+	style = 2
+	picture = "diplomatic_campaign"
+
+	date = { day = 0 month = march year = 1959 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1960 }
+
+	action_a = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 33
+			manpower = 33
+	}
+		ai_chance = 45
+		name = "Offer asylum and reinforce the frontier"
+		command = { type = relation which = CHI value = -50 }
+		command = { type = manpowerpool value = 15 }
+		command = { type = construct which = land_fort where = 1439 value = 2 }
+		command = { type = construct which = land_fort where = 1540 value = 2 }
+		command = { type = build_division which = bergsjaeger value = engineer when = 2 cost = -1.8 where = 75 }
+		command = { type = setflag which = ind_v3_tibet_asylum }
+		command = { type = setflag which = ind_v3_tibet_crisis }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Offer mediation and reopen the border commission"
+		command = { type = money value = -500 }
+		command = { type = relation which = CHI value = 15 }
+		command = { type = relation which = TIB value = 20 }
+		command = { type = dissent value = 1 }
+		command = { type = setflag which = ind_v3_tibet_mediation }
+		command = { type = setflag which = ind_v3_tibet_crisis }
+	}
+	action_c = {
+		ai_chance = 15
+		name = "Preserve the China relationship"
+		command = { type = relation which = CHI value = 35 }
+		command = { type = dissent value = 4 }
+		command = { type = money value = 300 }
+		command = { type = setflag which = ind_v3_tibet_accommodation }
+		command = { type = setflag which = ind_v3_tibet_crisis }
+	}
+}
+
+event = {
+	id = 9274011
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_tibet_crisis
+		NOT = { flag = ind_v3_linguistic_states }
+	}
+
+	name = "The Linguistic States Settlement"
+	desc = "Mass politics has made linguistic reorganization unavoidable. A negotiated federal map can reduce long-term tension; resisting reorganization protects administrative continuity but risks repeated provincial crises."
+	style = 2
+	picture = "india_v3_independence"
+
+	date = { day = 0 month = april year = 1960 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1960 }
+
+	action_a = {
+		ai_chance = 70
+		name = "Negotiate linguistic states within a strong federation"
+		command = { type = money value = -700 }
+		command = { type = dissent value = -6 }
+		command = { type = tc_mod value = 3 }
+		command = { type = setflag which = ind_v3_linguistic_federation }
+		command = { type = setflag which = ind_v3_linguistic_states }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Preserve the existing provincial map"
+		command = { type = money value = -300 }
+		command = { type = dissent value = 6 }
+		command = { type = industrial_modifier which = total value = 2 }
+		command = { type = setflag which = ind_v3_administrative_provinces }
+		command = { type = setflag which = ind_v3_linguistic_states }
+	}
+}
+
+event = {
+	id = 9274012
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_linguistic_states
+		NOT = { flag = ind_v3_goa_integrated }
+		NOT = { flag = ind_v3_goa_final_policy }
+	}
+
+	name = "The Final Goa Question"
+	desc = "Portugal still refuses a negotiated transfer of Goa. India can impose a blockade and prepare military action, seek a final international settlement, or indefinitely preserve the status quo."
+	style = 2
+	picture = "diplomatic_campaign"
+
+	date = { day = 0 month = january year = 1961 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1962 }
+
+	action_a = {
+		ai_chance = 50
+		name = "Prepare to end Portuguese rule"
+		command = { type = relation which = POR value = -100 }
+		command = { type = addcore which = 1513 }
+		command = { type = supplies value = -900 }
+		command = { type = dissent value = -2 }
+		command = { type = belligerence value = 3 }
+		command = { type = setflag which = ind_v3_goa_coercion }
+		command = { type = setflag which = ind_v3_goa_final_policy }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Seek one final international settlement"
+		command = { type = money value = -500 }
+		command = { type = relation which = POR value = 10 }
+		command = { type = relation which = USA value = 15 }
+		command = { type = belligerence value = -2 }
+		command = { type = setflag which = ind_v3_goa_diplomacy }
+		command = { type = setflag which = ind_v3_goa_final_policy }
+	}
+	action_c = {
+		ai_chance = 10
+		name = "The dispute is not worth a war"
+		command = { type = dissent value = 4 }
+		command = { type = relation which = POR value = 25 }
+		command = { type = setflag which = ind_v3_goa_status_quo }
+		command = { type = setflag which = ind_v3_goa_final_policy }
+	}
+}
+
+event = {
+	id = 9274013
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_linguistic_states
+		flag = ind_v3_tibet_crisis
+		NOT = { flag = ind_v3_border_crisis_1962 }
+	}
+
+	name = "The 1962 Border Crisis"
+	desc = "Patrol clashes and rival road networks have turned the Himalayan dispute into a military crisis. India can reinforce and negotiate from strength, launch a forward policy, or offer a broad political settlement."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = october year = 1962 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1963 }
+
+	action_a = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 53
+			manpower = 53
+	}
+		ai_chance = 55
+		name = "Reinforce, mobilize and negotiate from strength"
+		command = { type = money value = -700 }
+		command = { type = supplies value = -1800 }
+		command = { type = activate_unit_type which = escort }
+		command = { type = new_model which = escort value = 0 }
+		command = { type = build_division which = bergsjaeger value = engineer when = 3 cost = -1.8 where = 60 }
+		command = { type = build_division which = tactical_bomber value = escort when = 1 cost = -2.5 where = 75 }
+		command = { type = construct which = air_base where = 1439 value = 3 trigger = { NOT = { building = { province = 1439 type = air_base value = 8 } } } }
+		command = { type = construct which = land_fort where = 1540 value = 2 }
+		command = { type = relation which = CHI value = -35 }
+		command = { type = setflag which = ind_v3_border_strength_policy }
+		command = { type = setflag which = ind_v3_border_crisis_1962 }
+	}
+	action_b = {
+		ai_chance = 25
+		name = "Adopt the forward policy"
+		command = { type = supplies value = -2200 }
+		command = { type = dissent value = 3 }
+		command = { type = relation which = CHI value = -80 }
+		command = { type = belligerence value = 5 }
+		command = { type = construct which = land_fort where = 1439 value = 3 }
+		command = { type = construct which = land_fort where = 1540 value = 3 }
+		command = { type = setflag which = ind_v3_border_forward_policy }
+		command = { type = setflag which = ind_v3_border_crisis_1962 }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Offer a broad territorial and security settlement"
+		command = { type = money value = -600 }
+		command = { type = relation which = CHI value = 35 }
+		command = { type = dissent value = 4 }
+		command = { type = belligerence value = -3 }
+		command = { type = setflag which = ind_v3_border_compromise }
+		command = { type = setflag which = ind_v3_border_crisis_1962 }
+	}
+}
+
+event = {
+	id = 9274014
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_border_crisis_1962
+		NOT = { flag = ind_v3_space_program }
+	}
+
+	name = "Rockets, Satellites and the Indian Future"
+	desc = "The missile programme can now place scientific payloads above the atmosphere. A civilian space agency builds communications and prestige; a strategic missile command strengthens deterrence but deepens the arms race."
+	style = 2
+	picture = "india_v3_industry"
+
+	date = { day = 0 month = july year = 1963 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1963 }
+
+	action_a = {
+		ai_chance = 60
+		name = "Create a civilian national space agency"
+		command = { type = money value = -1200 }
+		command = { type = supplies value = -700 }
+		command = { type = research_mod value = 5 }
+		command = { type = relation which = USA value = 15 }
+		command = { type = relation which = SOV value = 15 }
+		command = { type = construct which = rocket_test where = 1502 value = 2 }
+		command = { type = setflag which = ind_v3_civil_space_program }
+		command = { type = setflag which = ind_v3_space_program }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Create a strategic missile and satellite command"
+		command = { type = money value = -1300 }
+		command = { type = supplies value = -1200 }
+		command = { type = research_mod value = 4 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = construct which = rocket_test where = 1502 value = 3 }
+		command = { type = dissent value = 2 }
+		command = { type = setflag which = ind_v3_strategic_space_program }
+		command = { type = setflag which = ind_v3_space_program }
+	}
+}
+
+event = {
+	id = 9274015
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_space_program
+		NOT = { flag = ind_v3_succession_1964 }
+	}
+
+	name = "The Succession of 1964"
+	desc = "The generation that won independence in 1933 is passing from power. India can renew the federal parliamentary tradition, elevate the technocratic planning state, or institutionalize a permanent strategic directorate."
+	style = 2
+	picture = "india_v3_independence"
+
+	date = { day = 0 month = january year = 1964 }
+	offset = 7
+	deathdate = { day = 29 month = june year = 1964 }
+
+	action_a = {
+		ai_chance = 50
+		name = "Renew the federal parliamentary republic"
+		command = { type = dissent value = -5 }
+		command = { type = research_mod value = 2 }
+		command = { type = setflag which = ind_v3_1964_federal_succession }
+		command = { type = setflag which = ind_v3_succession_1964 }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Entrust the next era to technocratic planning"
+		command = { type = money value = -600 }
+		command = { type = industrial_modifier which = total value = 3 }
+		command = { type = tc_mod value = 3 }
+		command = { type = setflag which = ind_v3_1964_technocratic_succession }
+		command = { type = setflag which = ind_v3_succession_1964 }
+	}
+	action_c = {
+		ai_chance = 15
+		name = "Institutionalize the strategic directorate"
+		command = { type = supplies value = -900 }
+		command = { type = dissent value = 3 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = setflag which = ind_v3_1964_strategic_succession }
+		command = { type = setflag which = ind_v3_succession_1964 }
+	}
+}
+

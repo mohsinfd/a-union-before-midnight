@@ -1,0 +1,118 @@
+#########################################################################
+# India Mod V3: Common aftermath of revisionist alignments
+#########################################################################
+# India Mod V3.1 economy pass
+
+event = {
+	id = 9272206
+	random = no
+	country = IND
+
+	trigger = {
+		OR = {
+			flag = ind_v3_axis_war_aims
+			flag = ind_v3_japanese_war_aims
+		}
+		NOT = { flag = ind_v3_authoritarian_reckoning }
+	}
+
+	name = "The Authoritarian Reckoning"
+	desc = "Alliance mobilization has strengthened the executive, military police and war industries. India can constitutionalize emergency institutions, double down on permanent mobilization, or restore a national coalition before war ends."
+	style = 2
+	picture = "india_v3_revisionist_reckoning"
+
+	date = { day = 0 month = january year = 1943 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1945 }
+
+	action_a = {
+		ai_chance = 40
+		name = "Constitutionalize mobilization: -375 money, -3 dissent"
+		command = { type = money value = -375 }
+		command = { type = dissent value = -3 }
+		command = { type = research_mod value = 2 }
+		command = { type = setflag which = ind_v3_authoritarian_constitution }
+		command = { type = setflag which = ind_v3_authoritarian_reckoning }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Permanent mobilization: -900 supplies, industry, +4 dissent"
+		command = { type = supplies value = -900 }
+		command = { type = dissent value = 4 }
+		command = { type = industrial_modifier which = supplies value = 8 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = setflag which = ind_v3_permanent_mobilization }
+		command = { type = setflag which = ind_v3_authoritarian_reckoning }
+	}
+	action_c = {
+		ai_chance = 30
+		name = "Restore Gandhi-Nehru coalition: -525 money, -5 dissent"
+		command = { type = money value = -525 }
+		command = { type = dissent value = -5 }
+		command = { type = headofstate which = 251041 }
+		command = { type = headofgovernment which = 251002 }
+		command = { type = foreignminister which = 251003 }
+		command = { type = armamentminister which = 251004 }
+		command = { type = ministerofsecurity which = 251005 }
+		command = { type = ministerofintelligence which = 251006 }
+		command = { type = chiefofstaff which = 251007 }
+		command = { type = chiefofarmy which = 251008 }
+		command = { type = chiefofnavy which = 251009 }
+		command = { type = chiefofair which = 251010 }
+		command = { type = setflag which = ind_v3_restored_coalition }
+		command = { type = setflag which = ind_v3_authoritarian_reckoning }
+	}
+}
+
+event = {
+	id = 9272207
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_authoritarian_reckoning
+		NOT = { flag = ind_v3_revisionist_settlement_1945 }
+	}
+
+	name = "India After the Revisionist War"
+	desc = "Whether its coalition triumphed or fractured, India emerges armed, industrial and politically transformed. Delhi must define victory as the destruction of colonial rule, control of the Indian Ocean, or survival as an autonomous great power."
+	style = 2
+	picture = "india_v3_revisionist_settlement"
+
+	date = { day = 0 month = may year = 1945 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1948 }
+
+	action_a = {
+		ai_chance = 40
+		name = "End European empire in Asia: -4 dissent, colonial rupture"
+		command = { type = dissent value = -4 }
+		command = { type = relation which = ENG value = -30 }
+		command = { type = relation which = FRA value = -25 }
+		command = { type = setflag which = ind_v3_revisionist_anticolonial_victory }
+		command = { type = setflag which = ind_v3_axis_settlement_1945 }
+		command = { type = setflag which = ind_v3_revisionist_settlement_1945 }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Indian Ocean sphere: -800 money, -1200 supplies, +5 belligerence"
+		command = { type = money value = -800 }
+		command = { type = supplies value = -1200 }
+		command = { type = tc_mod value = 4 }
+		command = { type = belligerence value = 5 }
+		command = { type = setflag which = ind_v3_revisionist_oceanic_victory }
+		command = { type = setflag which = ind_v3_axis_settlement_1945 }
+		command = { type = setflag which = ind_v3_revisionist_settlement_1945 }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "Autonomous great power: -2 dissent, global normalization"
+		command = { type = dissent value = -2 }
+		command = { type = belligerence value = -5 }
+		command = { type = relation which = USA value = 20 }
+		command = { type = relation which = SOV value = 15 }
+		command = { type = setflag which = ind_v3_revisionist_autonomous_victory }
+		command = { type = setflag which = ind_v3_axis_settlement_1945 }
+		command = { type = setflag which = ind_v3_revisionist_settlement_1945 }
+	}
+}

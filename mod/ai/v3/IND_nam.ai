@@ -1,0 +1,107 @@
+# India Mod V3: armed non-aligned strategic universe
+
+neutrality = 80
+war = 20
+max_front_ratio = 1.25
+exp_force_ratio = 0.05
+
+combat = { }
+
+befriend = {
+	ENG = 55
+	USA = 65
+	SOV = 65
+	FRA = 45
+	CHI = 60
+	PER = 60
+	AFG = 60
+}
+
+protect = {
+	AFG = 70
+	PER = 70
+	NEP = 100
+	BHU = 100
+	BUR = 70
+}
+
+military = {
+	relative_build_scheme = no
+
+	# Land: 54 percent
+	infantry = 24
+	cavalry = 2
+	motorized = 6
+	mechanized = 4
+	light_armor = 2
+	armor = 5
+	paratrooper = 1
+	marine = 3
+	bergsjaeger = 4
+	garrison = 0
+	hq = 3
+	militia = 0
+
+	# Air: 25 percent
+	interceptor = 8
+	multi_role = 4
+	cas = 3
+	strategic_bomber = 1
+	tactical_bomber = 5
+	naval_bomber = 3
+	transport_plane = 1
+	flying_bomb = 0
+	flying_rocket = 0
+
+	# Navy: 21 percent
+	battleship = 1
+	carrier = 3
+	light_carrier = 1
+	escort_carrier = 1
+	destroyer = 5
+	light_cruiser = 3
+	heavy_cruiser = 1
+	battlecruiser = 0
+	submarine = 3
+	nuclear_submarine = 0
+	transports = 3
+}
+
+technology = {
+	preference = {
+		5190 5200 5210 5220 5230 5240 53020
+		5330 5340 7140 7150 7160 16000 16040
+		5410 5416 5417 5420 5426 5430 5440 5450 5460 5466 5476 53030 53070
+		3510 3520 3530 3540 3550 12060 3560 3570
+		5560 7550 7560 7570 7580 7590
+		5470 5480 5490 5500 5510 5520 5530 5540
+	}
+	armor = 6
+	infantry = 8
+	industry = 11
+	aircraft = 7
+	naval = 7
+	land_doctrines = 6
+	secret_weapons = 5
+	air_doctrines = 6
+	naval_doctrines = 7
+}
+
+front = {
+	recklessness = 1
+	base_attack_odds = 1.30
+	min_attack_odds = 1.10
+	reserve_prop = 0.15
+}
+
+air_marshal = {
+	airsuperioritydesirability = 40.0
+	groundattackdesirability = 35.0
+	navalstrikedesirability = 25.0
+}
+
+admiral = {
+	min_core_attack_fleets = 2
+	num_attack_fleets = 4
+	base = { 1421 1447 1493 1497 1500 1517 1533 }
+}

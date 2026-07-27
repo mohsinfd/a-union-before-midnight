@@ -1,0 +1,523 @@
+#########################################################################
+# India Mod V3: Japanese strategic universe
+#########################################################################
+# India Mod V3.1 economy pass
+
+event = {
+	id = 9272202
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_japanese_orientation
+		NOT = { flag = ind_v3_japanese_naval_mission }
+	}
+
+	name = "The Yokosuka-Delhi Naval Mission"
+	desc = "Tokyo offers carrier aviation, torpedo doctrine and long-range fleet training. Japan wants deference in return, but Delhi can insist that cooperation serve two sovereign Asian powers rather than a German-style alliance system."
+	style = 2
+	picture = "india_v3_japan_yokosuka"
+
+	date = { day = 0 month = september year = 1937 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1938 }
+
+	action_a = {
+		ai_chance = 45
+		name = "Full mission: -800 supplies, three naval advances"
+		command = { type = supplies value = -800 }
+		command = { type = dissent value = 2 }
+		command = { type = relation which = JAP value = 45 }
+		command = { type = relation which = CHI value = -25 }
+		command = { type = steal_tech which = JAP }
+		command = { type = steal_tech which = JAP }
+		command = { type = steal_tech which = JAP }
+		command = { type = waketeam which = 250021 }
+		command = { type = waketeam which = 250022 }
+		command = { type = waketeam which = 250023 }
+		command = { type = setflag which = ind_v3_japanese_full_mission }
+		command = { type = setflag which = ind_v3_japanese_naval_mission }
+	}
+	action_b = {
+		ai_chance = 55
+		name = "Equal partnership: -600 money, two advances, no China pledge"
+		command = { type = money value = -600 }
+		command = { type = relation which = JAP value = 20 }
+		command = { type = relation which = CHI value = 10 }
+		command = { type = steal_tech which = JAP }
+		command = { type = steal_tech which = JAP }
+		command = { type = waketeam which = 250021 }
+		command = { type = waketeam which = 250022 }
+		command = { type = setflag which = ind_v3_japanese_equal_mission }
+		command = { type = setflag which = ind_v3_japanese_naval_mission }
+	}
+}
+
+event = {
+	id = 9272203
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_japanese_naval_mission
+		OR = {
+			event = 2011022
+			war = { country = JAP country = CHI }
+		}
+		NOT = { flag = ind_v3_china_ultimatum }
+	}
+
+	name = "Tokyo Demands a Choice on China"
+	desc = "Japan demands closure of the Burma Road and recognition of its continental war. Compliance preserves naval cooperation at a grave political price; mediation risks both partners; open support for China ends the Japanese alignment."
+	style = 2
+	picture = "india_v3_japan_china"
+
+	date = { day = 0 month = july year = 1937 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1941 }
+
+	action_a = {
+		ai_chance = 30
+		name = "Back Tokyo: +1800 supplies, +6 dissent, China rupture"
+		command = { type = relation which = JAP value = 55 }
+		command = { type = relation which = CHI value = -90 }
+		command = { type = supplies value = 1800 }
+		command = { type = dissent value = 6 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = setflag which = ind_v3_backed_japan_in_china }
+		command = { type = setflag which = ind_v3_china_ultimatum }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Delhi mediation: -400 money, -700 supplies, balance both"
+		command = { type = money value = -400 }
+		command = { type = supplies value = -700 }
+		command = { type = relation which = JAP value = 10 }
+		command = { type = relation which = CHI value = 35 }
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_v3_mediated_china }
+		command = { type = setflag which = ind_v3_china_ultimatum }
+	}
+	action_c = {
+		ai_chance = 35
+		name = "Keep the Burma Road open: -1000 supplies, break Tokyo"
+		command = { type = relation which = JAP value = -100 }
+		command = { type = relation which = CHI value = 75 }
+		command = { type = supplies value = -1000 }
+		command = { type = dissent value = -2 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = clrflag which = ind_v3_japanese_orientation }
+		command = { type = setflag which = ind_v3_independent_asia }
+		command = { type = setflag which = ind_v3_japan_rupture }
+		command = { type = setflag which = ind_v3_china_ultimatum }
+	}
+}
+
+event = {
+	id = 9272210
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_japanese_orientation
+		NOT = { flag = ind_v3_japan_rupture }
+		NOT = { flag = ind_v3_bose_asia_mission }
+	}
+
+	name = "Bose and the Eastern Strategy"
+	desc = "Subhas Chandra Bose argues that cooperation with Japan must be made Indian rather than imitative. He proposes an Azad Hind mission linking expatriate networks, military intelligence and an autonomous national command, while Gandhi warns against exchanging one hierarchy for another."
+	style = 2
+	picture = "india_v3_japan_bose"
+
+	date = { day = 0 month = march year = 1938 }
+	offset = 9
+	deathdate = { day = 29 month = december year = 1939 }
+
+	action_a = {
+		ai_chance = 45
+		name = "Back Bose's mission: -450 money, intelligence and manpower"
+		command = { type = money value = -450 }
+		command = { type = supplies value = -450 }
+		command = { type = manpowerpool value = 15 }
+		command = { type = relation which = JAP value = 20 }
+		command = { type = dissent value = 2 }
+		command = { type = intelligence which = us value = 5 }
+		command = { type = setflag which = ind_v3_bose_eastern_mission }
+		command = { type = setflag which = ind_v3_bose_asia_mission }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Civilian Asian bureau: -300 money, diplomacy and research"
+		command = { type = money value = -300 }
+		command = { type = relation which = JAP value = 10 }
+		command = { type = relation which = CHI value = 15 }
+		command = { type = research_mod value = 1 }
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_v3_civilian_asia_bureau }
+		command = { type = setflag which = ind_v3_bose_asia_mission }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "No parallel diplomacy: +300 money, preserve cabinet control"
+		command = { type = money value = 300 }
+		command = { type = relation which = JAP value = -10 }
+		command = { type = dissent value = -2 }
+		command = { type = setflag which = ind_v3_restrained_bose_mission }
+		command = { type = setflag which = ind_v3_bose_asia_mission }
+	}
+}
+
+event = {
+	id = 9272211
+	random = no
+	country = IND
+
+	decision = {
+		flag = ind_v3_bose_eastern_mission
+		NOT = { flag = ind_v3_azad_hind_command }
+	}
+	decision_trigger = {
+	OR = {
+		AND = { money = 350 supplies = 1200 manpower = 24 }
+		AND = { money = 225 supplies = 500 }
+	}
+}
+
+	name = "The Azad Hind Expeditionary Command"
+	desc = "Indian communities across Southeast Asia and veterans of the old colonial army can form a national expeditionary force under Indian colours. It will be loyal to Delhi, not subordinated to Tokyo, but raising it before war is a costly and provocative act."
+	style = 2
+	picture = "india_v3_japan_ina"
+	decision_picture = "india_v3_japan_ina"
+
+	date = { day = 0 month = january year = 1939 }
+	offset = 11
+	deathdate = { day = 29 month = december year = 1942 }
+
+	action_a = {
+		trigger = {
+			money = 350
+			supplies = 1200
+			manpower = 24
+		}
+		ai_chance = 55
+		name = "Raise three Azad Hind divisions: -350 money, -1200 supplies"
+		command = { type = money value = -350 }
+		command = { type = supplies value = -1200 }
+		command = { type = manpowerpool value = -24 }
+		command = { type = dissent value = 2 }
+		command = { type = add_corps which = "Azad Hind Expeditionary Command" value = land where = 1442 }
+		command = { type = add_division which = "1st Subhas Brigade" value = infantry when = 8 where = engineer }
+		command = { type = add_division which = "2nd Gandhi Brigade" value = bergsjaeger when = 8 where = artillery }
+		command = { type = add_division which = "3rd Azad Brigade" value = motorized when = 3 where = armored_car }
+		command = { type = setflag which = ind_v3_azad_hind_field_force }
+		command = { type = setflag which = ind_v3_azad_hind_command }
+	}
+	action_b = {
+		trigger = {
+			money = 225
+			supplies = 500
+		}
+		ai_chance = 45
+		name = "Build a covert cadre: -225 money, -500 supplies, +10 manpower"
+		command = { type = money value = -225 }
+		command = { type = supplies value = -500 }
+		command = { type = manpowerpool value = 10 }
+		command = { type = intelligence which = us value = 5 }
+		command = { type = relation which = JAP value = 10 }
+		command = { type = setflag which = ind_v3_azad_hind_cadre }
+		command = { type = setflag which = ind_v3_azad_hind_command }
+	}
+}
+
+event = {
+	id = 9272212
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_japanese_orientation
+		NOT = { flag = ind_v3_imphal_compact }
+	}
+
+	name = "The Imphal Compact"
+	desc = "Imphal sits between the Indian and Burmese theatres. Tokyo asks for a joint headquarters and transit rights; Delhi can build an Indian-led combined command, limit Japan to liaison officers, or refuse access and prepare the frontier against every army."
+	style = 2
+	picture = "india_v3_japan_imphal"
+
+	date = { day = 0 month = june year = 1939 }
+	offset = 9
+	deathdate = { day = 29 month = december year = 1941 }
+
+	action_a = {
+		ai_chance = 45
+		name = "Indian-led command: -500 money, -1100 supplies, major bases"
+		command = { type = money value = -500 }
+		command = { type = supplies value = -1100 }
+		command = { type = relation which = JAP value = 30 }
+		command = { type = dissent value = 2 }
+		command = { type = construct which = air_base where = 1442 value = 6 trigger = { NOT = { building = { province = 1442 type = air_base value = 5 } } } }
+		command = { type = construct which = air_base where = 1415 value = 3 trigger = { NOT = { building = { province = 1415 type = air_base value = 8 } } } }
+		command = { type = construct which = infrastructure where = 1442 value = 20 trigger = { NOT = { building = { province = 1442 type = infrastructure value = 0.81 } } } }
+		command = { type = setflag which = ind_v3_indian_led_imphal }
+		command = { type = setflag which = ind_v3_imphal_compact }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Liaison only: -275 money, two Japanese advances"
+		command = { type = money value = -275 }
+		command = { type = relation which = JAP value = 10 }
+		command = { type = steal_tech which = JAP }
+		command = { type = steal_tech which = JAP }
+		command = { type = setflag which = ind_v3_imphal_liaison }
+		command = { type = setflag which = ind_v3_imphal_compact }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "Fortify sovereignty: -900 supplies, forts and public support"
+		command = { type = supplies value = -900 }
+		command = { type = relation which = JAP value = -35 }
+		command = { type = dissent value = -2 }
+		command = { type = construct which = land_fort where = 1442 value = 3 }
+		command = { type = construct which = air_base where = 1439 value = 3 trigger = { NOT = { building = { province = 1439 type = air_base value = 8 } } } }
+		command = { type = setflag which = ind_v3_imphal_sovereignty }
+		command = { type = setflag which = ind_v3_imphal_compact }
+	}
+}
+
+event = {
+	id = 9272205
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_joined_japan
+		NOT = { flag = ind_v3_japanese_war_aims }
+	}
+
+	name = "India's War in Asia"
+	desc = "The Delhi-Tokyo alliance is not an annex to Germany's war. India must define its own campaign: an autonomous Burma-Malaya command, a continental effort tied to Japan's China war, or an Indian Ocean offensive against colonial bases."
+	style = 2
+	picture = "india_v3_japan_war_aims"
+
+	date = { day = 0 month = january year = 1940 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1942 }
+
+	action_a = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 86
+			manpower = 86
+	}
+		ai_chance = 45
+		name = "Burma-Malaya command: -450 money, five field formations"
+		command = { type = money value = -450 }
+		command = { type = supplies value = -1400 }
+		command = { type = build_division which = bergsjaeger value = engineer when = 3 cost = -1.8 where = 60 }
+		command = { type = build_division which = marine value = artillery when = 2 cost = -1.8 where = 75 }
+		command = { type = relation which = JAP value = 20 }
+		command = { type = ai which = "v3/IND_japan.ai" }
+		command = { type = setflag which = ind_v3_japanese_autonomous_command }
+		command = { type = setflag which = ind_v3_japanese_war_aims }
+	}
+	action_b = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 6
+			manpower = 6
+	}
+		ai_chance = 25
+		name = "Continental commitment: -525 money, aircraft and technology"
+		command = { type = money value = -525 }
+		command = { type = supplies value = -1600 }
+		command = { type = steal_tech which = JAP }
+		command = { type = steal_tech which = JAP }
+		command = { type = activate_unit_type which = escort }
+		command = { type = new_model which = escort value = 0 }
+		command = { type = build_division which = tactical_bomber value = escort when = 2 cost = -2.5 where = 75 }
+		command = { type = dissent value = 4 }
+		command = { type = ai which = "v3/IND_japan.ai" }
+		command = { type = setflag which = ind_v3_japanese_continental_command }
+		command = { type = setflag which = ind_v3_japanese_war_aims }
+	}
+	action_c = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 61
+			manpower = 61
+	}
+		ai_chance = 30
+		name = "Indian Ocean offensive: -650 money, marines and naval air"
+		command = { type = money value = -650 }
+		command = { type = supplies value = -1200 }
+		command = { type = activate_unit_type which = naval_bomber }
+		command = { type = new_model which = naval_bomber value = 0 }
+		command = { type = activate_unit_type which = escort }
+		command = { type = new_model which = escort value = 0 }
+		command = { type = build_division which = marine value = engineer when = 3 cost = -1.8 where = 75 }
+		command = { type = build_division which = naval_bomber value = escort when = 2 cost = -2.5 where = 75 }
+		command = { type = construct which = naval_base where = 1421 value = 6 trigger = { NOT = { building = { province = 1421 type = naval_base value = 5 } } } }
+		command = { type = construct which = air_base where = 1421 value = 6 trigger = { NOT = { building = { province = 1421 type = air_base value = 5 } } } }
+		command = { type = ai which = "v3/IND_japan.ai" }
+		command = { type = setflag which = ind_v3_japanese_ocean_command }
+		command = { type = setflag which = ind_v3_japanese_war_aims }
+	}
+}
+
+event = {
+	id = 9272213
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_joined_japan
+		flag = ind_v3_imphal_compact
+		OR = {
+			war = { country = IND country = ENG }
+			war = { country = JAP country = ENG }
+			}
+		NOT = { flag = ind_v3_imphal_campaign }
+	}
+
+	name = "The Battle Plan at Imphal"
+	desc = "The historical road from Burma into India can now be reversed. Indian officers propose driving from Imphal and Rangoon toward Malaya while Japanese forces contain the colonial fleets. Tokyo instead asks for direct control of the offensive."
+	style = 2
+	picture = "india_v3_japan_imphal_campaign"
+
+	date = { day = 0 month = january year = 1940 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1945 }
+
+	action_a = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 52
+			manpower = 52
+	}
+		ai_chance = 60
+		name = "Operation Azad: Indian command, -1500 supplies"
+		command = { type = supplies value = -1500 }
+		command = { type = money value = -350 }
+		command = { type = activate_unit_type which = transport_plane }
+		command = { type = new_model which = transport_plane value = 0 }
+		command = { type = build_division which = bergsjaeger value = engineer when = 3 cost = -1.8 where = 45 }
+		command = { type = build_division which = transport_plane when = 1 cost = -2.5 where = 75 }
+		command = { type = tc_mod value = 3 }
+		command = { type = relation which = JAP value = 15 }
+		command = { type = setflag which = ind_v3_operation_azad }
+		command = { type = setflag which = ind_v3_imphal_campaign }
+	}
+	action_b = {
+		ai_chance = 20
+		name = "Accept Tokyo control: +2000 supplies, +5 dissent"
+		command = { type = supplies value = 2000 }
+		command = { type = relation which = JAP value = 40 }
+		command = { type = dissent value = 5 }
+		command = { type = domestic which = democratic value = -1 }
+		command = { type = setflag which = ind_v3_tokyo_imphal_command }
+		command = { type = setflag which = ind_v3_imphal_campaign }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Hold the frontier: -700 supplies, forts and autonomy"
+		command = { type = supplies value = -700 }
+		command = { type = relation which = JAP value = -20 }
+		command = { type = dissent value = -2 }
+		command = { type = construct which = land_fort where = 1442 value = 3 }
+		command = { type = construct which = air_base where = 1442 value = 3 trigger = { NOT = { building = { province = 1442 type = air_base value = 8 } } } }
+		command = { type = setflag which = ind_v3_held_imphal }
+		command = { type = setflag which = ind_v3_imphal_campaign }
+	}
+}
+
+event = {
+	id = 9272214
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_imphal_campaign
+		NOT = { flag = ind_v3_imphal_legacy }
+		OR = {
+			control = { province = 1415 data = IND }
+			control = { province = 1442 data = IND }
+			}
+	}
+
+	name = "Imphal Holds the Alliance Together"
+	desc = "Indian command of Imphal and the Burma approaches has survived the first test. The outcome disproves claims that Asian cooperation requires Japanese subordination and gives Delhi leverage to demand a genuinely joint strategy."
+	style = 2
+	picture = "india_v3_japan_imphal_victory"
+
+	date = { day = 0 month = january year = 1942 }
+	offset = 17
+	deathdate = { day = 29 month = december year = 1946 }
+
+	action_a = {
+		ai_chance = 60
+		name = "Demand equality: -250 money, morale and autonomy"
+		command = { type = money value = -250 }
+		command = { type = relation which = JAP value = 10 }
+		command = { type = dissent value = -3 }
+		command = { type = morale which = land value = 3 }
+		command = { type = setflag which = ind_v3_equal_asian_alliance }
+		command = { type = setflag which = ind_v3_imphal_legacy }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Exploit the victory: +1200 supplies, +3 belligerence"
+		command = { type = supplies value = 1200 }
+		command = { type = belligerence value = 3 }
+		command = { type = max_organization which = land value = 2 }
+		command = { type = setflag which = ind_v3_imphal_militarized_legacy }
+		command = { type = setflag which = ind_v3_imphal_legacy }
+	}
+}
+
+event = {
+	id = 9272215
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_japanese_war_aims
+		NOT = { flag = ind_v3_japanese_settlement }
+	}
+
+	name = "The Delhi-Tokyo Asian Settlement"
+	desc = "The war has either broken the colonial order or exposed the limits of Japanese power. India must choose whether to preserve an equal maritime compact, lead an independent Asian conference, or repudiate every wartime hierarchy."
+	style = 2
+	picture = "india_v3_japan_settlement"
+
+	date = { day = 0 month = may year = 1945 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1948 }
+
+	action_a = {
+		ai_chance = 35
+		name = "Equal maritime compact: -700 money, naval coordination"
+		command = { type = money value = -700 }
+		command = { type = relation which = JAP value = 35 }
+		command = { type = tc_mod value = 3 }
+		command = { type = setflag which = ind_v3_japan_equal_compact }
+		command = { type = setflag which = ind_v3_japanese_settlement }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Independent Asian conference: -450 money, broad diplomacy"
+		command = { type = money value = -450 }
+		command = { type = relation which = CHI value = 35 }
+		command = { type = relation which = SIA value = 25 }
+		command = { type = relation which = PER value = 20 }
+		command = { type = dissent value = -2 }
+		command = { type = setflag which = ind_v3_postwar_asian_conference }
+		command = { type = setflag which = ind_v3_japanese_settlement }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "Repudiate wartime blocs: -4 dissent, repair global relations"
+		command = { type = dissent value = -4 }
+		command = { type = relation which = JAP value = -40 }
+		command = { type = relation which = USA value = 25 }
+		command = { type = relation which = ENG value = 20 }
+		command = { type = belligerence value = -5 }
+		command = { type = setflag which = ind_v3_postwar_bloc_rupture }
+		command = { type = setflag which = ind_v3_japanese_settlement }
+	}
+}

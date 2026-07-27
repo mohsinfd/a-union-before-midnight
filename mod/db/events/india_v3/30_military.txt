@@ -1,0 +1,599 @@
+#########################################################################
+# India Mod V3: armed-forces institutions and expansion
+#########################################################################
+# India Mod V3.1 economy pass
+
+event = {
+	id = 9270300
+	random = no
+	country = IND
+
+	decision = {
+		flag = ind_v3_reconstruction_1933
+		NOT = { flag = ind_v3_army_reform }
+	}
+	decision_trigger = {
+	OR = {
+		AND = { supplies = 750 manpower = 96 }
+		AND = { money = 225 supplies = 900 manpower = 49 }
+		AND = { money = 275 supplies = 1100 manpower = 60 }
+	}
+}
+
+	name = "Rebuild the Indian Army"
+	desc = "The army is large on paper but divided among regular formations, provincial commands and princely forces. A citizen army offers numbers and national integration, a compact professional force offers readiness, and a mobile doctrine offers future striking power at the greatest technical cost."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = february year = 1934 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1935 }
+
+	action_a = {
+		trigger = {
+			# V3_QUEUE_MANPOWER = 96
+			manpower = 96
+			supplies = 750
+		}
+		ai_chance = 35
+		name = "Build a national citizen army"
+		
+		command = { type = supplies value = -750 }
+		command = { type = dissent value = 2 }
+		command = { type = manpowerpool value = 60 }
+		command = { type = domestic which = professional_army value = -1 }
+		command = { type = build_division which = infantry value = artillery when = 3 cost = 5 where = 60 }
+		command = { type = build_division which = infantry value = artillery when = 3 cost = 5 where = 60 }
+		command = { type = setflag which = ind_v3_mass_army }
+		command = { type = setflag which = ind_v3_army_reform }
+	}
+	action_b = {
+		trigger = {
+			# V3_QUEUE_MANPOWER = 49
+			manpower = 49
+			money = 225
+			supplies = 900
+		}
+		ai_chance = 45
+		name = "Create a compact professional force"
+		command = { type = money value = -225 }
+		command = { type = supplies value = -900 }
+		command = { type = dissent value = -1 }
+		command = { type = domestic which = professional_army value = 2 }
+		command = { type = build_division which = infantry value = engineer when = 2 cost = 6 where = 75 }
+		command = { type = build_division which = hq value = anti_air when = 1 cost = 8 where = 120 }
+		command = { type = setflag which = ind_v3_professional_army }
+		command = { type = setflag which = ind_v3_army_reform }
+	}
+	action_c = {
+		trigger = {
+			# V3_QUEUE_MANPOWER = 60
+			manpower = 60
+			money = 275
+			supplies = 1100
+		}
+		ai_chance = 20
+		name = "Bet on mobility and combined arms"
+		command = { type = money value = -275 }
+		command = { type = supplies value = -1100 }
+		command = { type = dissent value = 2 }
+		command = { type = domestic which = professional_army value = 1 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = waketeam which = 250019 }
+		command = { type = activate_unit_type which = tank_destroyer }
+		command = { type = new_model which = tank_destroyer value = 0 }
+		command = { type = build_division which = cavalry value = armored_car when = 2 cost = 7 where = 90 }
+		command = { type = build_division which = infantry value = tank_destroyer when = 2 cost = 6 where = 75 }
+		command = { type = setflag which = ind_v3_mobile_army }
+		command = { type = setflag which = ind_v3_army_reform }
+	}
+}
+
+event = {
+	id = 9270301
+	random = no
+	country = IND
+
+	decision = {
+		flag = ind_v3_army_reform
+		NOT = { flag = ind_v3_air_program }
+	}
+	decision_trigger = {
+	OR = {
+		AND = { money = 300 supplies = 1000 manpower = 3 }
+		AND = { money = 275 supplies = 1150 manpower = 6 }
+		AND = { supplies = 600 manpower = 3 }
+	}
+}
+
+	name = "An Indian Aviation Industry"
+	desc = "Aircraft have to be designed, tested and built at home if India is to control its skies. Fighters best protect the industrial heartland, tactical aviation gives the army reach, while a dual-use civil programme develops industry and transport before expanding the combat arm."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = january year = 1935 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1936 }
+
+	action_a = {
+		trigger = {
+			# V3_QUEUE_MANPOWER = 3
+			manpower = 3
+			money = 300
+			supplies = 1000
+		}
+		ai_chance = 40
+		name = "Prioritize fighters and air defence"
+		command = { type = money value = -300 }
+		command = { type = supplies value = -1000 }
+		command = { type = waketeam which = 250013 }
+		command = { type = construct which = air_base where = 1502 value = 6 trigger = { NOT = { building = { province = 1502 type = air_base value = 5 } } } }
+		command = { type = construct which = air_base where = 1459 value = 3 trigger = { NOT = { building = { province = 1459 type = air_base value = 8 } } } }
+		command = { type = construct which = air_base where = 1447 value = 3 trigger = { NOT = { building = { province = 1447 type = air_base value = 8 } } } }
+		command = { type = activate_unit_type which = escort }
+		command = { type = new_model which = escort value = 0 }
+		command = { type = build_division which = interceptor value = escort when = 2 cost = 8 where = 120 }
+		command = { type = setflag which = ind_v3_fighter_air_program }
+		command = { type = setflag which = ind_v3_air_program }
+	}
+	action_b = {
+		trigger = {
+			# V3_QUEUE_MANPOWER = 6
+			manpower = 6
+			money = 275
+			supplies = 1150
+		}
+		ai_chance = 35
+		name = "Build an army-cooperation air force"
+		command = { type = money value = -275 }
+		command = { type = supplies value = -1150 }
+		command = { type = waketeam which = 250013 }
+		command = { type = construct which = air_base where = 1502 value = 6 trigger = { NOT = { building = { province = 1502 type = air_base value = 5 } } } }
+		command = { type = construct which = air_base where = 1485 value = 3 trigger = { NOT = { building = { province = 1485 type = air_base value = 8 } } } }
+		command = { type = construct which = air_base where = 1530 value = 3 trigger = { NOT = { building = { province = 1530 type = air_base value = 8 } } } }
+		command = { type = activate_unit_type which = escort }
+		command = { type = new_model which = escort value = 0 }
+		command = { type = build_division which = tactical_bomber value = escort when = 2 cost = 9 where = 150 }
+		command = { type = setflag which = ind_v3_tactical_air_program }
+		command = { type = setflag which = ind_v3_air_program }
+	}
+	action_c = {
+		trigger = {
+			# V3_QUEUE_MANPOWER = 3
+			manpower = 3
+			supplies = 600
+		}
+		ai_chance = 25
+		name = "Begin with civil aviation and transport"
+		
+		command = { type = supplies value = -600 }
+		command = { type = research_mod value = 3 }
+		command = { type = industrial_modifier which = money value = 3 }
+		command = { type = waketeam which = 250013 }
+		command = { type = construct which = air_base where = 1502 value = 3 trigger = { NOT = { building = { province = 1502 type = air_base value = 8 } } } }
+		command = { type = construct which = air_base where = 1447 value = 3 trigger = { NOT = { building = { province = 1447 type = air_base value = 8 } } } }
+		command = { type = construct which = air_base where = 1517 value = 3 trigger = { NOT = { building = { province = 1517 type = air_base value = 8 } } } }
+		command = { type = construct which = air_base where = 1533 value = 3 trigger = { NOT = { building = { province = 1533 type = air_base value = 8 } } } }
+		command = { type = activate_unit_type which = transport_plane }
+		command = { type = new_model which = transport_plane value = 0 }
+		command = { type = activate_unit_type which = escort }
+		command = { type = new_model which = escort value = 0 }
+		command = { type = build_division which = transport_plane value = escort when = 1 cost = 8 where = 180 }
+		command = { type = setflag which = ind_v3_civil_air_program }
+		command = { type = setflag which = ind_v3_air_program }
+	}
+}
+
+event = {
+	id = 9270302
+	random = no
+	country = IND
+
+	decision = {
+		flag = ind_v3_transport_1934
+		NOT = { flag = ind_v3_naval_program }
+	}
+	decision_trigger = {
+	OR = {
+		AND = { money = 325 supplies = 1350 manpower = 7 }
+		AND = { supplies = 1150 manpower = 6 }
+		AND = { money = 450 supplies = 1800 manpower = 3 }
+	}
+}
+
+	name = "Command of the Indian Ocean"
+	desc = "India's coasts and sea lanes cannot be defended by a ceremonial marine. A balanced escort fleet protects trade, submarines offer denial at low cost, while a blue-water programme lays expensive foundations for cruisers and carriers."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = july year = 1935 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1937 }
+
+	action_a = {
+		trigger = {
+			# V3_QUEUE_MANPOWER = 7
+			manpower = 7
+			money = 325
+			supplies = 1350
+		}
+		ai_chance = 45
+		name = "Build escorts and light cruisers"
+		command = { type = money value = -325 }
+		command = { type = supplies value = -1350 }
+		command = { type = waketeam which = 250018 }
+		command = { type = build_division which = destroyer value = naval_asw when = 3 cost = 4 where = 150 }
+		command = { type = build_division which = light_cruiser value = naval_anti_air_s when = 2 cost = 6 where = 240 }
+		command = { type = setflag which = ind_v3_escort_fleet }
+		command = { type = setflag which = ind_v3_naval_program }
+	}
+	action_b = {
+		trigger = {
+			# V3_QUEUE_MANPOWER = 6
+			manpower = 6
+			supplies = 1150
+		}
+		ai_chance = 30
+		name = "Adopt a sea-denial strategy"
+		
+		command = { type = supplies value = -1150 }
+		command = { type = waketeam which = 250018 }
+		command = { type = build_division which = submarine value = none when = 4 cost = 4 where = 150 }
+		command = { type = build_division which = destroyer value = naval_asw when = 2 cost = 4 where = 150 }
+		command = { type = setflag which = ind_v3_denial_fleet }
+		command = { type = setflag which = ind_v3_naval_program }
+	}
+	action_c = {
+		trigger = {
+			# V3_QUEUE_MANPOWER = 3
+			manpower = 3
+			money = 450
+			supplies = 1800
+		}
+		ai_chance = 25
+		name = "Lay foundations for a blue-water fleet"
+		command = { type = money value = -450 }
+		command = { type = supplies value = -1800 }
+		command = { type = dissent value = 2 }
+		command = { type = waketeam which = 250018 }
+		command = { type = construct which = naval_base where = 1517 value = 3 trigger = { NOT = { building = { province = 1517 type = naval_base value = 8 } } } }
+		command = { type = construct which = naval_base where = 1493 value = 6 trigger = { NOT = { building = { province = 1493 type = naval_base value = 5 } } } }
+		command = { type = construct which = naval_base where = 1497 value = 6 trigger = { NOT = { building = { province = 1497 type = naval_base value = 5 } } } }
+		command = { type = build_division which = light_cruiser value = naval_fire_controll_s when = 3 cost = 7 where = 260 }
+		command = { type = setflag which = ind_v3_blue_water_fleet }
+		command = { type = setflag which = ind_v3_naval_program }
+	}
+}
+
+event = {
+	id = 9270303
+	random = no
+	country = IND
+
+	decision = {
+		flag = ind_v3_steel_1935
+		flag = ind_v3_army_reform
+		NOT = { flag = ind_v3_armaments_1937 }
+	}
+	decision_trigger = {
+
+}
+
+	name = "The National Armaments Board"
+	desc = "Factories now have the machinery to equip a modern force, but civilian plans and military contracts compete for every tonne of steel. India can standardize mass production, favour advanced weapons in smaller numbers, or preserve civilian output and stockpile basic equipment."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = june year = 1937 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1938 }
+
+	action_a = {
+		trigger = {
+			# V3_QUEUE_MANPOWER = 64
+			manpower = 64
+			money = 375
+			supplies = 1950
+		}
+		ai_chance = 45
+		name = "Standardize for mass production"
+		command = { type = money value = -375 }
+		command = { type = supplies value = -1950 }
+		command = { type = industrial_modifier which = supplies value = 8 }
+		command = { type = construct which = ic where = 1472 value = 3 }
+		command = { type = construct which = ic where = 1477 value = 3 }
+		command = { type = construct which = ic where = 1487 value = 3 }
+		command = { type = construct which = ic where = 1502 value = 3 }
+		command = { type = build_division which = infantry value = artillery when = 4 cost = 5 where = 60 }
+		command = { type = setflag which = ind_v3_mass_armaments }
+		command = { type = setflag which = ind_v3_armaments_1937 }
+	}
+	action_b = {
+		trigger = {
+			# V3_QUEUE_MANPOWER = 48
+			manpower = 48
+			money = 500
+			supplies = 1650
+		}
+		ai_chance = 35
+		name = "Fund advanced weapons and prototypes"
+		command = { type = money value = -500 }
+		command = { type = supplies value = -1650 }
+		command = { type = research_mod value = 4 }
+		command = { type = waketeam which = 250015 }
+		command = { type = waketeam which = 250019 }
+		command = { type = construct which = ic where = 1472 value = 3 }
+		command = { type = construct which = ic where = 1502 value = 4 }
+		command = { type = activate_unit_type which = tank_destroyer }
+		command = { type = new_model which = tank_destroyer value = 0 }
+		command = { type = build_division which = infantry value = tank_destroyer when = 3 cost = 6 where = 75 }
+		command = { type = setflag which = ind_v3_advanced_armaments }
+		command = { type = setflag which = ind_v3_armaments_1937 }
+	}
+	action_c = {
+		
+		ai_chance = 20
+		name = "Protect civilian output and build reserves"
+		
+		command = { type = supplies value = 3000 }
+		command = { type = dissent value = -2 }
+		command = { type = industrial_modifier which = ic value = 3 }
+		command = { type = construct which = ic where = 1447 value = 2 }
+		command = { type = construct which = ic where = 1502 value = 2 }
+		command = { type = construct which = ic where = 1517 value = 2 }
+		command = { type = setflag which = ind_v3_civilian_armaments }
+		command = { type = setflag which = ind_v3_armaments_1937 }
+	}
+}
+
+event = {
+	id = 9270304
+	random = no
+	country = IND
+
+	decision = {
+		flag = ind_v3_armaments_1937
+		NOT = { flag = ind_v3_force_expansion_1938 }
+	}
+	decision_trigger = {
+	OR = {
+		AND = { supplies = 3000 manpower = 215 }
+		AND = { money = 350 supplies = 3600 manpower = 122 }
+		AND = { money = 475 supplies = 3300 manpower = 99 }
+	}
+}
+
+	name = "The 1938 Force Expansion"
+	desc = "Asia and Europe are arming. India can create many infantry formations for continental defence, organize a smaller combined-arms field force, or build expeditionary formations able to influence wars beyond the subcontinent."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = september year = 1938 }
+	offset = 5
+	deathdate = { day = 29 month = august year = 1939 }
+
+	action_a = {
+		trigger = {
+			# V3_QUEUE_MANPOWER = 215
+			manpower = 215
+			supplies = 3000
+		}
+		ai_chance = 40
+		name = "Raise a continental defence army"
+		command = { type = supplies value = -3000 }
+		command = { type = dissent value = 2 }
+		command = { type = build_division which = infantry value = artillery when = 5 cost = 5 where = 45 }
+		command = { type = build_division which = infantry value = engineer when = 5 cost = 5 where = 45 }
+		command = { type = build_division which = garrison value = artillery when = 4 cost = 4 where = 45 }
+		command = { type = setflag which = ind_v3_continental_force }
+		command = { type = setflag which = ind_v3_force_expansion_1938 }
+	}
+	action_b = {
+		trigger = {
+			# V3_QUEUE_MANPOWER = 122
+			manpower = 122
+			money = 350
+			supplies = 3600
+		}
+		ai_chance = 40
+		name = "Build a combined-arms field force"
+		command = { type = money value = -350 }
+		command = { type = supplies value = -3600 }
+		command = { type = activate_unit_type which = tank_destroyer }
+		command = { type = new_model which = tank_destroyer value = 0 }
+		command = { type = build_division which = infantry value = tank_destroyer when = 4 cost = 6 where = 60 }
+		command = { type = build_division which = cavalry value = armored_car when = 3 cost = 7 where = 75 }
+		command = { type = build_division which = hq value = anti_air when = 1 cost = 8 where = 120 }
+		command = { type = setflag which = ind_v3_combined_force }
+		command = { type = setflag which = ind_v3_force_expansion_1938 }
+	}
+	action_c = {
+		trigger = {
+			# V3_QUEUE_MANPOWER = 99
+			manpower = 99
+			money = 475
+			supplies = 3300
+		}
+		ai_chance = 20
+		name = "Create an expeditionary strategic reserve"
+		command = { type = money value = -475 }
+		command = { type = supplies value = -3300 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = build_division which = bergsjaeger value = artillery when = 3 cost = 7 where = 75 }
+		command = { type = build_division which = infantry value = engineer when = 3 cost = 6 where = 60 }
+		command = { type = build_division which = transport value = none when = 2 cost = 5 where = 180 }
+		command = { type = setflag which = ind_v3_expeditionary_force }
+		command = { type = setflag which = ind_v3_force_expansion_1938 }
+	}
+}
+
+event = {
+	id = 9270305
+	random = no
+	country = IND
+
+	decision = {
+		flag = ind_v3_force_expansion_1938
+		NOT = { flag = ind_v3_eastern_defences }
+	}
+	decision_trigger = {
+	OR = {
+		AND = { money = 325 supplies = 1800 }
+		AND = { money = 300 supplies = 2100 }
+		AND = { money = 350 supplies = 1650 manpower = 51 }
+	}
+}
+
+	name = "Secure the Eastern Approaches"
+	desc = "Port Blair, Assam and the Burma road are the outer shield of the union. Fortifying the islands protects the Bay of Bengal, hardening Assam and Imphal prepares a continental defence, while airfields and mobile reserves offer a flexible but less durable answer."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = january year = 1939 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1940 }
+
+	action_a = {
+		trigger = {
+			money = 325
+			supplies = 1800
+		}
+		ai_chance = 30
+		name = "Turn Port Blair into an ocean fortress"
+		command = { type = money value = -325 }
+		command = { type = supplies value = -1800 }
+		command = { type = construct which = naval_base where = 1421 value = 6 trigger = { NOT = { building = { province = 1421 type = naval_base value = 5 } } } }
+		command = { type = construct which = air_base where = 1421 value = 6 trigger = { NOT = { building = { province = 1421 type = air_base value = 5 } } } }
+		command = { type = construct which = coastal_fort where = 1421 value = 4 }
+		command = { type = construct which = land_fort where = 1421 value = 2 }
+		command = { type = setflag which = ind_v3_andaman_fortress }
+		command = { type = setflag which = ind_v3_eastern_defences }
+	}
+	action_b = {
+		trigger = {
+			money = 300
+			supplies = 2100
+		}
+		ai_chance = 40
+		name = "Fortify Assam, Imphal and the Burma roads"
+		command = { type = money value = -300 }
+		command = { type = supplies value = -2100 }
+		command = { type = construct which = land_fort where = 1439 value = 2 }
+		command = { type = construct which = land_fort where = 1441 value = 2 }
+		command = { type = construct which = land_fort where = 1442 value = 3 }
+		command = { type = construct which = infrastructure where = 1439 value = 20 trigger = { NOT = { building = { province = 1439 type = infrastructure value = 0.81 } } } }
+		command = { type = construct which = infrastructure where = 1441 value = 20 trigger = { NOT = { building = { province = 1441 type = infrastructure value = 0.81 } } } }
+		command = { type = construct which = infrastructure where = 1442 value = 20 trigger = { NOT = { building = { province = 1442 type = infrastructure value = 0.81 } } } }
+		command = { type = setflag which = ind_v3_assam_fortress }
+		command = { type = setflag which = ind_v3_eastern_defences }
+	}
+	action_c = {
+		trigger = {
+			# V3_QUEUE_MANPOWER = 51
+			manpower = 51
+			money = 350
+			supplies = 1650
+		}
+		ai_chance = 30
+		name = "Build airfields and mobile reserves"
+		command = { type = money value = -350 }
+		command = { type = supplies value = -1650 }
+		command = { type = construct which = air_base where = 1421 value = 6 trigger = { NOT = { building = { province = 1421 type = air_base value = 5 } } } }
+		command = { type = construct which = air_base where = 1439 value = 3 trigger = { NOT = { building = { province = 1439 type = air_base value = 8 } } } }
+		command = { type = construct which = air_base where = 1442 value = 3 trigger = { NOT = { building = { province = 1442 type = air_base value = 8 } } } }
+		command = { type = activate_unit_type which = escort }
+		command = { type = new_model which = escort value = 0 }
+		command = { type = build_division which = infantry value = engineer when = 3 cost = 6 where = 60 }
+		command = { type = build_division which = interceptor value = escort when = 1 cost = 8 where = 120 }
+		command = { type = setflag which = ind_v3_mobile_east }
+		command = { type = setflag which = ind_v3_eastern_defences }
+	}
+}
+
+event = {
+	id = 9270306
+	random = no
+	country = IND
+
+	decision = {
+		flag = ind_v3_army_reform
+		NOT = { flag = ind_v3_gurkha_arm }
+	}
+	decision_trigger = {
+	OR = {
+		AND = { money = 300 supplies = 1750 manpower = 39 }
+		AND = { money = 175 supplies = 900 manpower = 50 }
+		AND = { money = 225 supplies = 650 manpower = 13 }
+	}
+}
+
+	name = "The Gurkha Settlement"
+	desc = "Sovereignty has left the celebrated Gurkha regiments between three institutions: the Indian Army that employs them, Nepal whose citizens fill their ranks, and Britain which still claims old recruiting privileges. Delhi can fund a complete field corps immediately, preserve the regimental recruiting compact, or build a small permanent training cadre whose doctrine will make every future Gurkha formation more formidable."
+	style = 2
+	picture = "Gurkha"
+	decision_picture = "decision_Gurkha"
+
+	date = { day = 0 month = august year = 1934 }
+	offset = 6
+	deathdate = { day = 29 month = december year = 1938 }
+
+	action_a = {
+		trigger = {
+			money = 300
+			supplies = 1750
+			manpower = 39
+		}
+		ai_chance = 45
+		name = "Concentrate the regiments into a full Gurkha corps"
+		command = { type = money value = -300 }
+		command = { type = supplies value = -1750 }
+		command = { type = manpowerpool value = -39 }
+		command = { type = dissent value = 2 }
+		command = { type = relation which = NEP value = 20 }
+		command = { type = activate_unit_type which = d_05 }
+		command = { type = add_corps which = "I Gurkha Rifles Corps" value = land where = 1460 }
+		command = { type = add_division which = "1st Gurkha Rifles Division" value = d_05 when = 8 where = engineer }
+		command = { type = add_division which = "2nd Gurkha Rifles Division" value = d_05 when = 8 where = artillery }
+		command = { type = add_division which = "3rd Gurkha Rifles Division" value = d_05 when = 8 where = anti_air }
+		command = { type = setflag which = ind_v3_gurkha_corps_ready }
+		command = { type = setflag which = ind_v3_gurkha_arm }
+	}
+	action_b = {
+		trigger = {
+			# V3_QUEUE_MANPOWER = 50
+			manpower = 50
+			money = 175
+			supplies = 900
+		}
+		ai_chance = 35
+		name = "Preserve the regimental compact with Nepal"
+		command = { type = money value = -175 }
+		command = { type = supplies value = -900 }
+		command = { type = relation which = NEP value = 35 }
+		command = { type = dissent value = -1 }
+		command = { type = activate_unit_type which = d_05 }
+		command = { type = build_division which = d_05 value = engineer when = 3 cost = 6 where = 90 }
+		command = { type = setflag which = ind_v3_gurkha_regimental_system }
+		command = { type = setflag which = ind_v3_gurkha_arm }
+	}
+	action_c = {
+		trigger = {
+			money = 225
+			supplies = 650
+			manpower = 13
+		}
+		ai_chance = 20
+		name = "Create an elite mountain-warfare cadre"
+		command = { type = money value = -225 }
+		command = { type = supplies value = -650 }
+		command = { type = manpowerpool value = -13 }
+		command = { type = relation which = NEP value = 10 }
+		command = { type = activate_unit_type which = d_05 }
+		command = { type = max_organization which = d_05 value = 5 }
+		command = { type = morale which = d_05 value = 5 }
+		command = { type = add_corps which = "Gurkha Mountain Warfare Centre" value = land where = 1460 }
+		command = { type = add_division which = "Gurkha Training Division" value = d_05 when = 8 where = engineer }
+		command = { type = setflag which = ind_v3_gurkha_training_cadre }
+		command = { type = setflag which = ind_v3_gurkha_arm }
+	}
+}

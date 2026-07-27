@@ -1,0 +1,345 @@
+#########################################################################
+# India Mod V3: non-aligned and independent Asian strategic universe
+#########################################################################
+# India Mod V3.1 economy pass
+
+event = {
+	id = 9272600
+	random = no
+	country = IND
+
+	trigger = {
+		OR = {
+			flag = ind_v3_non_aligned
+			flag = ind_v3_independent_asia
+		}
+		NOT = { flag = ind_v3_delhi_conference }
+	}
+
+	name = "The First Delhi Conference"
+	desc = "Delegations from China, Persia, Afghanistan, Siam and the colonial world gather in Delhi. India can build an activist league against aggression and empire, or a quieter forum for trade, mediation and technical exchange."
+	style = 2
+	picture = "diplomatic_campaign"
+
+	date = { day = 0 month = september year = 1937 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1938 }
+
+	action_a = {
+		ai_chance = 55
+		name = "Create an activist Asian sovereignty league"
+		command = { type = money value = -375 }
+		command = { type = relation which = CHI value = 45 }
+		command = { type = relation which = PER value = 30 }
+		command = { type = relation which = AFG value = 30 }
+		command = { type = relation which = SIA value = 30 }
+		command = { type = relation which = JAP value = -25 }
+		command = { type = relation which = ENG value = -15 }
+		command = { type = dissent value = -2 }
+		command = { type = setflag which = ind_v3_asian_sovereignty_league }
+		command = { type = setflag which = ind_v3_delhi_conference }
+	}
+	action_b = {
+		ai_chance = 45
+		name = "Build a neutral trade and mediation forum"
+		
+		command = { type = relation which = CHI value = 25 }
+		command = { type = relation which = PER value = 20 }
+		command = { type = relation which = ENG value = 15 }
+		command = { type = relation which = SOV value = 15 }
+		command = { type = industrial_modifier which = money value = 4 }
+		command = { type = setflag which = ind_v3_delhi_trade_forum }
+		command = { type = setflag which = ind_v3_delhi_conference }
+	}
+}
+
+event = {
+	id = 9272601
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_delhi_conference
+		NOT = { flag = ind_v3_many_suppliers }
+	}
+
+	name = "The Arsenal of Many Suppliers"
+	desc = "Non-alignment allows India to buy from every camp, but incompatible weapons and spare parts can paralyze logistics. Delhi can deliberately diversify for diplomatic independence or pay more to convert foreign ideas into Indian standards."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = march year = 1938 }
+	offset = 7
+	deathdate = { day = 29 month = may year = 1938 }
+
+	action_a = {
+		ai_chance = 45
+		name = "Buy the best systems from every camp"
+		command = { type = money value = -650 }
+		command = { type = supplies value = 1600 }
+		command = { type = steal_tech which = ENG }
+		command = { type = steal_tech which = GER }
+		command = { type = steal_tech which = SOV }
+		command = { type = steal_tech which = USA }
+		command = { type = tc_mod value = -3 }
+		command = { type = setflag which = ind_v3_diverse_arsenal }
+		command = { type = setflag which = ind_v3_many_suppliers }
+	}
+	action_b = {
+		ai_chance = 55
+		name = "Translate foreign designs into Indian standards"
+		command = { type = money value = -775 }
+		command = { type = supplies value = -300 }
+		command = { type = steal_tech which = ENG }
+		command = { type = steal_tech which = GER }
+		command = { type = research_mod value = 4 }
+		command = { type = waketeam which = 250015 }
+		command = { type = waketeam which = 250017 }
+		command = { type = setflag which = ind_v3_indigenous_standards }
+		command = { type = setflag which = ind_v3_many_suppliers }
+	}
+}
+
+event = {
+	id = 9272602
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_many_suppliers
+		NOT = { flag = ind_v3_delhi_pact }
+	}
+
+	name = "The Delhi Pact Proposal"
+	desc = "Smaller Asian states want India to turn conference diplomacy into guarantees against external aggression. A defensive pact increases India's obligations from Persia to Siam; bilateral guarantees preserve flexibility but weaken deterrence."
+	style = 2
+	picture = "diplomatic_campaign"
+
+	date = { day = 0 month = october year = 1938 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1938 }
+
+	action_a = {
+		ai_chance = 55
+		name = "Offer a collective defensive guarantee"
+		command = { type = money value = -425 }
+		command = { type = supplies value = -550 }
+		command = { type = relation which = PER value = 40 }
+		command = { type = relation which = AFG value = 40 }
+		command = { type = relation which = SIA value = 40 }
+		command = { type = relation which = CHI value = 35 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = dissent value = 2 }
+		command = { type = setflag which = ind_v3_collective_delhi_pact }
+		command = { type = setflag which = ind_v3_delhi_pact }
+	}
+	action_b = {
+		ai_chance = 45
+		name = "Use bilateral treaties and strategic ambiguity"
+		
+		command = { type = relation which = PER value = 25 }
+		command = { type = relation which = AFG value = 25 }
+		command = { type = relation which = SIA value = 25 }
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_v3_bilateral_delhi_system }
+		command = { type = setflag which = ind_v3_delhi_pact }
+	}
+}
+
+event = {
+	id = 9272603
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_delhi_pact
+		NOT = { flag = ind_v3_non_aligned_pressure }
+	}
+
+	name = "Pressure on the Non-Aligned Republic"
+	desc = "Every bloc now demands export controls, bases or political declarations. Refusal risks sanctions and covert action; selective economic concessions can keep trade flowing without joining a military camp."
+	style = 2
+	picture = "diplomatic_campaign"
+
+	date = { day = 0 month = april year = 1939 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1941 }
+
+	action_a = {
+		ai_chance = 55
+		name = "Reject bloc pressure and fund strategic autonomy"
+		command = { type = money value = -575 }
+		command = { type = supplies value = -650 }
+		command = { type = dissent value = -2 }
+		command = { type = relation which = ENG value = -20 }
+		command = { type = relation which = GER value = -20 }
+		command = { type = relation which = SOV value = -20 }
+		command = { type = relation which = JAP value = -20 }
+		command = { type = industrial_modifier which = total value = -2 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = setflag which = ind_v3_non_aligned_sanctions }
+		command = { type = setflag which = ind_v3_non_aligned_pressure }
+	}
+	action_b = {
+		ai_chance = 45
+		name = "Trade selectively with every camp"
+		command = { type = money value = 650 }
+		command = { type = supplies value = 1800 }
+		command = { type = relation which = ENG value = 10 }
+		command = { type = relation which = GER value = 10 }
+		command = { type = relation which = SOV value = 10 }
+		command = { type = relation which = USA value = 15 }
+		command = { type = dissent value = 2 }
+		command = { type = setflag which = ind_v3_balanced_trade }
+		command = { type = setflag which = ind_v3_non_aligned_pressure }
+	}
+}
+
+event = {
+	id = 9272604
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_non_aligned_pressure
+		NOT = { flag = ind_v3_nam_war_posture }
+	}
+
+	name = "The Doctrine of Armed Non-Alignment"
+	desc = "Neutrality without force invites coercion. India can prepare to fight any power crossing its frontiers and sea lanes, or become the arsenal and mediator of states resisting great-power domination."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = january year = 1940 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1942 }
+
+	action_a = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 100
+			manpower = 100
+	}
+		ai_chance = 60
+		name = "Build a mobile two-front deterrent"
+		command = { type = money value = -525 }
+		command = { type = supplies value = -1600 }
+		command = { type = activate_unit_type which = escort }
+		command = { type = new_model which = escort value = 0 }
+		command = { type = build_division which = motorized value = armored_car when = 3 cost = -1.8 where = 60 }
+		command = { type = build_division which = bergsjaeger value = engineer when = 3 cost = -1.8 where = 60 }
+		command = { type = build_division which = interceptor value = escort when = 2 cost = -2.0 where = 75 }
+		command = { type = ai which = "v3/IND_nam.ai" }
+		command = { type = setflag which = ind_v3_mobile_non_aligned_deterrent }
+		command = { type = setflag which = ind_v3_nam_war_posture }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Become the arsenal and mediator of independent states"
+		command = { type = money value = -450 }
+		command = { type = supplies value = -1200 }
+		command = { type = industrial_modifier which = supplies value = 6 }
+		command = { type = research_mod value = 3 }
+		command = { type = relation which = CHI value = 25 }
+		command = { type = relation which = PER value = 20 }
+		command = { type = ai which = "v3/IND_nam.ai" }
+		command = { type = setflag which = ind_v3_non_aligned_arsenal }
+		command = { type = setflag which = ind_v3_nam_war_posture }
+	}
+}
+
+event = {
+	id = 9272605
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_nam_war_posture
+		NOT = { flag = ind_v3_asian_liberation_policy }
+	}
+
+	name = "The Asian Liberation Committees"
+	desc = "Indonesian, Vietnamese, Malayan and Burmese activists ask Delhi for money, arms and diplomatic recognition. Open support advances decolonization but may bring India into conflict with every colonial power."
+	style = 2
+	picture = "diplomatic_campaign"
+
+	date = { day = 0 month = march year = 1942 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1944 }
+
+	action_a = {
+		ai_chance = 55
+		name = "Fund and arm Asian independence movements"
+		command = { type = money value = -600 }
+		command = { type = supplies value = -1350 }
+		command = { type = relation which = ENG value = -30 }
+		command = { type = relation which = FRA value = -35 }
+		command = { type = relation which = HOL value = -35 }
+		command = { type = belligerence value = 4 }
+		command = { type = dissent value = -3 }
+		command = { type = setflag which = ind_v3_active_asian_liberation }
+		command = { type = setflag which = ind_v3_asian_liberation_policy }
+	}
+	action_b = {
+		ai_chance = 45
+		name = "Offer diplomacy, training and sanctuary"
+		command = { type = money value = -375 }
+		command = { type = supplies value = -450 }
+		command = { type = relation which = USA value = 20 }
+		command = { type = relation which = ENG value = -10 }
+		command = { type = belligerence value = -2 }
+		command = { type = setflag which = ind_v3_diplomatic_asian_liberation }
+		command = { type = setflag which = ind_v3_asian_liberation_policy }
+	}
+}
+
+event = {
+	id = 9272606
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_asian_liberation_policy
+		NOT = { flag = ind_v3_nam_settlement_1945 }
+	}
+
+	name = "The Delhi Principles of 1945"
+	desc = "India's non-aligned experiment has survived the world crisis. Delhi can now lead a formal third force, remain a flexible global balancer, or concentrate on an Asian development community."
+	style = 2
+	picture = "diplomatic_campaign"
+
+	date = { day = 0 month = may year = 1945 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1947 }
+
+	action_a = {
+		ai_chance = 45
+		name = "Lead a formal non-aligned third force"
+		command = { type = money value = -900 }
+		command = { type = relation which = CHI value = 35 }
+		command = { type = relation which = PER value = 30 }
+		command = { type = relation which = SIA value = 30 }
+		command = { type = dissent value = -3 }
+		command = { type = setflag which = ind_v3_nam_third_force_victory }
+		command = { type = setflag which = ind_v3_nam_settlement_1945 }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Remain the flexible global balancer"
+		command = { type = relation which = ENG value = 20 }
+		command = { type = relation which = USA value = 20 }
+		command = { type = relation which = SOV value = 20 }
+		command = { type = industrial_modifier which = money value = 5 }
+		command = { type = setflag which = ind_v3_nam_balancer_victory }
+		command = { type = setflag which = ind_v3_nam_settlement_1945 }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "Build an Asian development community"
+		command = { type = money value = -700 }
+		command = { type = supplies value = -500 }
+		command = { type = research_mod value = 3 }
+		command = { type = tc_mod value = 3 }
+		command = { type = setflag which = ind_v3_nam_development_victory }
+		command = { type = setflag which = ind_v3_nam_settlement_1945 }
+	}
+}

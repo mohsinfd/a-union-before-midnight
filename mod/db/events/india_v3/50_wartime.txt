@@ -1,0 +1,423 @@
+#########################################################################
+# India Mod V3: mobilization and wartime state
+#########################################################################
+# India Mod V3.1 economy pass
+
+event = {
+	id = 9270500
+	random = no
+	country = IND
+
+	trigger = {
+		atwar = yes
+		flag = ind_v3_army_reform
+		NOT = { flag = ind_v3_war_mobilization }
+	}
+
+	name = "Mobilize the Union for War"
+	desc = "For the first time sovereign India faces a great war. The cabinet can mobilize the whole economy, preserve a smaller professional striking force, or arm a mass popular defence. Each strategy changes the kind of war India can sustain."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = january year = 1939 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1944 }
+
+	action_a = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 247
+			manpower = 247
+	}
+		ai_chance = 50
+		name = "Total national mobilization"
+		command = { type = money value = -450 }
+		command = { type = supplies value = -3250 }
+		command = { type = manpowerpool value = 180 }
+		command = { type = dissent value = 5 }
+		command = { type = domestic which = defense_lobby value = 2 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = industrial_modifier which = ic value = 10 }
+		command = { type = industrial_modifier which = supplies value = 15 }
+		command = { type = build_division which = infantry value = artillery when = 6 cost = 5 where = 30 }
+		command = { type = build_division which = infantry value = engineer when = 6 cost = 5 where = 30 }
+		command = { type = build_division which = garrison value = artillery when = 4 cost = 4 where = 30 }
+		command = { type = setflag which = ind_v3_total_mobilization }
+		command = { type = setflag which = ind_v3_war_mobilization }
+	}
+	action_b = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 168
+			manpower = 168
+	}
+		ai_chance = 35
+		name = "Mobilize a professional field army"
+		command = { type = money value = -575 }
+		command = { type = supplies value = -3900 }
+		command = { type = manpowerpool value = 90 }
+		command = { type = dissent value = 1 }
+		command = { type = domestic which = professional_army value = 1 }
+		command = { type = research_mod value = 3 }
+		command = { type = industrial_modifier which = supplies value = 10 }
+		command = { type = activate_unit_type which = tank_destroyer }
+		command = { type = new_model which = tank_destroyer value = 0 }
+		command = { type = build_division which = infantry value = tank_destroyer when = 5 cost = 6 where = 40 }
+		command = { type = build_division which = cavalry value = armored_car when = 4 cost = 7 where = 50 }
+		command = { type = build_division which = hq value = anti_air when = 2 cost = 8 where = 90 }
+		command = { type = setflag which = ind_v3_professional_mobilization }
+		command = { type = setflag which = ind_v3_war_mobilization }
+	}
+	action_c = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 210
+			manpower = 210
+	}
+		ai_chance = 15
+		name = "Arm the people for national defence"
+		command = { type = money value = -250 }
+		command = { type = supplies value = -2950 }
+		command = { type = manpowerpool value = 280 }
+		command = { type = dissent value = 8 }
+		command = { type = domestic which = professional_army value = -2 }
+		command = { type = industrial_modifier which = supplies value = 20 }
+		command = { type = build_division which = militia value = artillery when = 10 cost = 3 where = 20 }
+		command = { type = build_division which = infantry value = artillery when = 5 cost = 5 where = 35 }
+		command = { type = setflag which = ind_v3_popular_mobilization }
+		command = { type = setflag which = ind_v3_war_mobilization }
+	}
+}
+
+event = {
+	id = 9270501
+	random = no
+	country = IND
+
+	decision = {
+		atwar = yes
+		flag = ind_v3_war_mobilization
+		NOT = { flag = ind_v3_emergency_factories }
+	}
+	decision_trigger = {
+	OR = {
+		AND = { money = 650 supplies = 2600 manpower = 25 }
+		AND = { money = 575 supplies = 2350 manpower = 20 }
+		AND = { money = 725 supplies = 2750 manpower = 20 }
+	}
+}
+
+	name = "The Emergency Factory Programme"
+	desc = "War demand exceeds the capacity of the peacetime plans. India can concentrate armaments in the eastern mineral belt, disperse factories through the central interior, or expand coastal yards and aviation works for a maritime war."
+	style = 2
+	picture = "india_v3_industry"
+
+	date = { day = 0 month = january year = 1939 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1944 }
+
+	action_a = {
+		trigger = {
+			money = 650
+			supplies = 2600
+			manpower = 25
+		}
+		ai_chance = 40
+		name = "Expand the eastern arsenal"
+		command = { type = money value = -650 }
+		command = { type = supplies value = -2600 }
+		command = { type = manpowerpool value = -25 }
+		command = { type = dissent value = 2 }
+		command = { type = construct which = ic where = 1445 value = 4 }
+		command = { type = construct which = ic where = 1447 value = 5 }
+		command = { type = construct which = ic where = 1472 value = 5 }
+		command = { type = construct which = ic where = 1476 value = 4 }
+		command = { type = construct which = ic where = 1477 value = 4 }
+		command = { type = add_prov_resource which = 1472 value = 10 where = metal }
+		command = { type = add_prov_resource which = 1476 value = 20 where = energy }
+		command = { type = setflag which = ind_v3_eastern_arsenal }
+		command = { type = setflag which = ind_v3_emergency_factories }
+	}
+	action_b = {
+		trigger = {
+			money = 575
+			supplies = 2350
+			manpower = 20
+		}
+		ai_chance = 35
+		name = "Disperse industry through central India"
+		command = { type = money value = -575 }
+		command = { type = supplies value = -2350 }
+		command = { type = manpowerpool value = -20 }
+		command = { type = dissent value = -1 }
+		command = { type = construct which = ic where = 1477 value = 4 }
+		command = { type = construct which = ic where = 1480 value = 4 }
+		command = { type = construct which = ic where = 1485 value = 4 }
+		command = { type = construct which = ic where = 1487 value = 4 }
+		command = { type = construct which = ic where = 1502 value = 4 }
+		command = { type = construct which = ic where = 1507 value = 4 }
+		command = { type = construct which = infrastructure where = 1477 value = 15 trigger = { NOT = { building = { province = 1477 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1480 value = 15 trigger = { NOT = { building = { province = 1480 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1485 value = 15 trigger = { NOT = { building = { province = 1485 type = infrastructure value = 0.86 } } } }
+		command = { type = setflag which = ind_v3_central_arsenal }
+		command = { type = setflag which = ind_v3_emergency_factories }
+	}
+	action_c = {
+		trigger = {
+			money = 725
+			supplies = 2750
+			manpower = 20
+		}
+		ai_chance = 25
+		name = "Expand shipyards and aviation works"
+		command = { type = money value = -725 }
+		command = { type = supplies value = -2750 }
+		command = { type = manpowerpool value = -20 }
+		command = { type = waketeam which = 250013 }
+		command = { type = waketeam which = 250018 }
+		command = { type = construct which = ic where = 1447 value = 4 }
+		command = { type = construct which = ic where = 1493 value = 4 }
+		command = { type = construct which = ic where = 1497 value = 3 }
+		command = { type = construct which = ic where = 1500 value = 4 }
+		command = { type = construct which = ic where = 1517 value = 5 }
+		command = { type = construct which = ic where = 1533 value = 4 }
+		command = { type = construct which = naval_base where = 1493 value = 3 trigger = { NOT = { building = { province = 1493 type = naval_base value = 8 } } } }
+		command = { type = construct which = naval_base where = 1517 value = 3 trigger = { NOT = { building = { province = 1517 type = naval_base value = 8 } } } }
+		command = { type = setflag which = ind_v3_maritime_arsenal }
+		command = { type = setflag which = ind_v3_emergency_factories }
+	}
+}
+
+event = {
+	id = 9270502
+	random = no
+	country = IND
+
+	trigger = {
+		war = { country = IND country = JAP }
+		NOT = { flag = ind_v3_japanese_war_plan }
+	}
+
+	name = "War Reaches the Eastern Frontier"
+	desc = "War with Japan makes the Bay of Bengal, Burma and Assam a single theatre. India must decide whether to hold fortified frontier lines, fight forward through Burma in cooperation with China, or seek decision at sea and in the air."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = january year = 1939 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1945 }
+
+	action_a = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 66
+			manpower = 66
+	}
+		ai_chance = 40
+		name = "Fortify the Assam-Burma barrier"
+		command = { type = supplies value = -2300 }
+		command = { type = construct which = land_fort where = 1439 value = 3 }
+		command = { type = construct which = land_fort where = 1441 value = 3 }
+		command = { type = construct which = land_fort where = 1442 value = 4 }
+		command = { type = construct which = air_base where = 1439 value = 3 trigger = { NOT = { building = { province = 1439 type = air_base value = 8 } } } }
+		command = { type = construct which = air_base where = 1442 value = 3 trigger = { NOT = { building = { province = 1442 type = air_base value = 8 } } } }
+		command = { type = build_division which = infantry value = engineer when = 4 cost = 6 where = 35 }
+		command = { type = setflag which = ind_v3_japan_defensive }
+		command = { type = setflag which = ind_v3_japanese_war_plan }
+	}
+	action_b = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 130
+			manpower = 130
+	}
+		ai_chance = 35
+		name = "Fight forward with China"
+		command = { type = money value = -325 }
+		command = { type = supplies value = -2950 }
+		command = { type = relation which = CHI value = 80 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = build_division which = bergsjaeger value = artillery when = 4 cost = 7 where = 45 }
+		command = { type = build_division which = infantry value = engineer when = 4 cost = 6 where = 35 }
+		command = { type = setflag which = ind_v3_japan_forward }
+		command = { type = setflag which = ind_v3_japanese_war_plan }
+	}
+	action_c = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 12
+			manpower = 12
+	}
+		ai_chance = 25
+		name = "Contest the Bay of Bengal"
+		command = { type = money value = -450 }
+		command = { type = supplies value = -3250 }
+		command = { type = construct which = naval_base where = 1421 value = 6 trigger = { NOT = { building = { province = 1421 type = naval_base value = 5 } } } }
+		command = { type = construct which = air_base where = 1421 value = 6 trigger = { NOT = { building = { province = 1421 type = air_base value = 5 } } } }
+		command = { type = activate_unit_type which = naval_bomber }
+		command = { type = new_model which = naval_bomber value = 0 }
+		command = { type = activate_unit_type which = escort }
+		command = { type = new_model which = escort value = 0 }
+		command = { type = build_division which = destroyer value = naval_asw when = 4 cost = 4 where = 90 }
+		command = { type = build_division which = naval_bomber value = escort when = 2 cost = 9 where = 120 }
+		command = { type = setflag which = ind_v3_japan_maritime }
+		command = { type = setflag which = ind_v3_japanese_war_plan }
+	}
+}
+
+event = {
+	id = 9270503
+	random = no
+	country = IND
+
+	decision = {
+		atwar = yes
+		flag = ind_v3_war_mobilization
+		NOT = { flag = ind_v3_war_finance }
+	}
+
+	name = "Finance the Long War"
+	desc = "Mobilization has outgrown ordinary revenue. War bonds preserve consumer choice but create future debt, compulsory saving transfers the burden directly to households, and monetary finance buys speed at the risk of inflation and unrest."
+	style = 2
+	picture = "decision_war_bonds"
+
+	date = { day = 0 month = january year = 1940 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1944 }
+
+	action_a = {
+		trigger = {
+			supplies = 350
+		}
+		ai_chance = 50
+		name = "Issue patriotic war bonds"
+		command = { type = money value = 2200 }
+		command = { type = supplies value = -350 }
+		command = { type = dissent value = -1 }
+		command = { type = industrial_modifier which = money value = -3 }
+		command = { type = setflag which = ind_v3_war_bonds }
+		command = { type = setflag which = ind_v3_war_finance }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Impose compulsory saving and rationing"
+		command = { type = money value = 1600 }
+		command = { type = supplies value = 2500 }
+		command = { type = dissent value = 4 }
+		command = { type = industrial_modifier which = supplies value = 5 }
+		command = { type = setflag which = ind_v3_compulsory_saving }
+		command = { type = setflag which = ind_v3_war_finance }
+	}
+	action_c = {
+		ai_chance = 15
+		name = "Print what the war requires"
+		command = { type = money value = 3500 }
+		command = { type = dissent value = 8 }
+		command = { type = industrial_modifier which = money value = -8 }
+		command = { type = industrial_modifier which = ic value = 3 }
+		command = { type = setflag which = ind_v3_inflation_finance }
+		command = { type = setflag which = ind_v3_war_finance }
+	}
+}
+
+event = {
+	id = 9270504
+	random = no
+	country = IND
+
+	trigger = {
+		atwar = yes
+		flag = ind_v3_emergency_factories
+		NOT = { flag = ind_v3_unified_command }
+	}
+
+	name = "A Unified Strategic Command"
+	desc = "Army, air and naval headquarters now compete for transport, intelligence and industrial priority across several theatres. A supreme general staff improves coordination but concentrates power; service autonomy preserves initiative but wastes resources; a civilian war cabinet preserves control at the cost of speed."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = january year = 1941 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1944 }
+
+	action_a = {
+		ai_chance = 45
+		name = "Create a supreme general staff"
+		command = { type = money value = -350 }
+		command = { type = supplies value = -700 }
+		command = { type = dissent value = 2 }
+		command = { type = domestic which = professional_army value = 1 }
+		command = { type = tc_mod value = 8 }
+		command = { type = setflag which = ind_v3_general_staff_command }
+		command = { type = setflag which = ind_v3_unified_command }
+	}
+	action_b = {
+		ai_chance = 25
+		name = "Preserve independent service commands"
+		command = { type = supplies value = -1100 }
+		command = { type = research_mod value = 2 }
+		command = { type = setflag which = ind_v3_service_command }
+		command = { type = setflag which = ind_v3_unified_command }
+	}
+	action_c = {
+		ai_chance = 30
+		name = "Place strategy under a civilian war cabinet"
+		command = { type = money value = -300 }
+		command = { type = dissent value = -3 }
+		command = { type = tc_mod value = 3 }
+		command = { type = setflag which = ind_v3_civilian_command }
+		command = { type = setflag which = ind_v3_unified_command }
+	}
+}
+
+event = {
+	id = 9270505
+	random = no
+	country = IND
+
+	decision = {
+		OR = {
+			flag = ind_v3_non_aligned
+			flag = ind_v3_independent_asia
+			flag = ind_v3_armed_neutrality
+		}
+		NOT = { flag = ind_v3_arsenal_neutrality }
+		atwar = no
+	}
+	decision_trigger = {
+		OR = {
+			war = { country = ENG country = GER }
+			war = { country = JAP country = CHI }
+			war = { country = SOV country = GER }
+		}
+	OR = {
+		AND = { money = 525 supplies = 1950 manpower = 64 }
+	}
+}
+
+	name = "The Arsenal of Armed Neutrality"
+	desc = "War abroad creates danger and opportunity. India can sell arms to multiple camps while fortifying its own frontiers, but neutrality will survive only if every major power believes attacking India costs more than trading with it."
+	style = 2
+	picture = "india_v3_industry"
+
+	date = { day = 0 month = january year = 1939 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1943 }
+
+	action_a = {
+		trigger = {
+			# V3_QUEUE_MANPOWER = 64
+			manpower = 64
+			money = 525
+			supplies = 1950
+		}
+		name = "Arm India and trade with all belligerents"
+		command = { type = money value = -525 }
+		command = { type = supplies value = -1950 }
+		command = { type = dissent value = 1 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = industrial_modifier which = ic value = 5 }
+		command = { type = industrial_modifier which = money value = 8 }
+		command = { type = construct which = ic where = 1447 value = 3 }
+		command = { type = construct which = ic where = 1472 value = 3 }
+		command = { type = construct which = ic where = 1502 value = 3 }
+		command = { type = construct which = ic where = 1517 value = 3 }
+		command = { type = construct which = ic where = 1533 value = 3 }
+		command = { type = build_division which = infantry value = artillery when = 4 cost = 5 where = 45 }
+		command = { type = setflag which = ind_v3_arsenal_neutrality }
+	}
+}

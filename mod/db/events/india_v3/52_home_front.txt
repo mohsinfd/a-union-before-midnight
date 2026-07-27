@@ -1,0 +1,534 @@
+#########################################################################
+# India Mod V3: wartime home front, mobilization and reconversion
+#########################################################################
+# India Mod V3.1 economy pass
+
+event = {
+	id = 9273200
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_integrated
+		NOT = { flag = ind_v3_war_finance_settled }
+	}
+
+	name = "The War Finance Act"
+	desc = "Global war has raised the price of every ship, aircraft and machine tool India imports. The cabinet can impose a hard central war budget, finance expansion through patriotic bonds, or protect household consumption and accept slower mobilization. Each course shifts the burden to a different part of society."
+	style = 2
+	picture = "india_v3_industry"
+
+	date = { day = 12 month = february year = 1941 }
+	offset = 10
+	deathdate = { day = 29 month = april year = 1941 }
+
+	action_a = {
+		ai_chance = 45
+		name = "Tax excess profits and impose a central war budget"
+		command = { type = money value = -550 }
+		command = { type = dissent value = 3 }
+		command = { type = supplies value = 2500 }
+		command = { type = industrial_modifier which = total value = 4 }
+		command = { type = industrial_modifier which = money value = 3 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = setflag which = ind_v3_central_war_budget }
+		command = { type = setflag which = ind_v3_war_finance_settled }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Float national defence bonds"
+		command = { type = money value = 600 }
+		command = { type = dissent value = 1 }
+		command = { type = supplies value = 1200 }
+		command = { type = industrial_modifier which = total value = 2 }
+		command = { type = industrial_modifier which = money value = -4 }
+		command = { type = setflag which = ind_v3_defence_bonds }
+		command = { type = setflag which = ind_v3_war_finance_settled }
+	}
+	action_c = {
+		ai_chance = 15
+		name = "Protect civilian consumption and balance the budget"
+		command = { type = money value = 250 }
+		command = { type = dissent value = -2 }
+		command = { type = supplies value = -350 }
+		command = { type = industrial_modifier which = total value = -2 }
+		command = { type = setflag which = ind_v3_civilian_budget }
+		command = { type = setflag which = ind_v3_war_finance_settled }
+	}
+}
+
+event = {
+	id = 9273201
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_war_finance_settled
+		NOT = { flag = ind_v3_womens_service_settled }
+	}
+
+	name = "Women in National Service"
+	desc = "Factories, signals stations, hospitals and airfields are short of trained personnel. Women's organizations demand full commissions and equal industrial employment; the service chiefs prefer auxiliary corps, while conservative provincial ministries ask Delhi to postpone the question."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 18 month = july year = 1941 }
+	offset = 10
+	deathdate = { day = 29 month = september year = 1941 }
+
+	action_a = {
+		ai_chance = 50
+		name = "Open commissions and strategic industry on equal terms"
+		command = { type = money value = -350 }
+		command = { type = dissent value = 3 }
+		command = { type = manpowerpool value = 100 }
+		command = { type = industrial_modifier which = total value = 2 }
+		command = { type = research_mod value = 1 }
+		command = { type = setflag which = ind_v3_equal_national_service }
+		command = { type = setflag which = ind_v3_womens_service_settled }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Create women's auxiliary services"
+		command = { type = money value = -175 }
+		command = { type = dissent value = 1 }
+		command = { type = manpowerpool value = 50 }
+		command = { type = supplies value = 600 }
+		command = { type = setflag which = ind_v3_womens_auxiliaries }
+		command = { type = setflag which = ind_v3_womens_service_settled }
+	}
+	action_c = {
+		ai_chance = 10
+		name = "Leave recruitment to the provinces"
+		command = { type = dissent value = -2 }
+		command = { type = manpowerpool value = 10 }
+		command = { type = industrial_modifier which = total value = -1 }
+		command = { type = setflag which = ind_v3_womens_service_deferred }
+		command = { type = setflag which = ind_v3_womens_service_settled }
+	}
+}
+
+event = {
+	id = 9273202
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_womens_service_settled
+		NOT = { flag = ind_v3_ocean_logistics_settled }
+	}
+
+	name = "The Indian Ocean Logistics Board"
+	desc = "Submarine reports and shipping losses expose the fragility of India's long coastline. A unified logistics board can expand four ports and a transport fleet, the navy can concentrate on escorts and patrol aviation, or the army can claim the same steel for continental reserves."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 8 month = november year = 1941 }
+	offset = 10
+	deathdate = { day = 20 month = january year = 1942 }
+
+	action_a = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 2
+			manpower = 2
+	}
+		ai_chance = 45
+		name = "Build the four-port ocean logistics system"
+		command = { type = money value = -325 }
+		command = { type = supplies value = -850 }
+		command = { type = construct which = infrastructure where = 1421 value = 10 trigger = { NOT = { building = { province = 1421 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1493 value = 10 trigger = { NOT = { building = { province = 1493 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1517 value = 10 trigger = { NOT = { building = { province = 1517 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1533 value = 10 trigger = { NOT = { building = { province = 1533 type = infrastructure value = 0.91 } } } }
+		command = { type = build_division which = transport value = none when = 4 cost = -1.5 where = 75 }
+		command = { type = setflag which = ind_v3_ocean_logistics_board }
+		command = { type = setflag which = ind_v3_ocean_logistics_settled }
+	}
+	action_b = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 8
+			manpower = 8
+	}
+		ai_chance = 35
+		name = "Concentrate on escorts and maritime patrol"
+		command = { type = money value = -300 }
+		command = { type = activate_unit_type which = naval_bomber }
+		command = { type = new_model which = naval_bomber value = 0 }
+		command = { type = activate_unit_type which = escort }
+		command = { type = new_model which = escort value = 0 }
+		command = { type = build_division which = destroyer value = naval_asw when = 3 cost = -2.5 where = 90 }
+		command = { type = build_division which = naval_bomber value = escort when = 1 cost = -2.5 where = 90 }
+		command = { type = setflag which = ind_v3_ocean_escort_priority }
+		command = { type = setflag which = ind_v3_ocean_logistics_settled }
+	}
+	action_c = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 50
+			manpower = 50
+	}
+		ai_chance = 20
+		name = "Reserve the steel for the continental armies"
+		command = { type = supplies value = -600 }
+		command = { type = build_division which = motorized value = engineer when = 3 cost = -2.0 where = 75 }
+		command = { type = dissent value = 1 }
+		command = { type = setflag which = ind_v3_continental_logistics_priority }
+		command = { type = setflag which = ind_v3_ocean_logistics_settled }
+	}
+}
+
+event = {
+	id = 9273203
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_ocean_logistics_settled
+		NOT = { flag = ind_v3_national_service_settled }
+	}
+
+	name = "The National Service Debate"
+	desc = "The armed forces can no longer expand through volunteers and princely contingents alone. Universal service would create a mass reserve at serious political cost; selective technical service would favour mobile formations; a professional volunteer army would remain smaller but easier to train and supply."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 14 month = april year = 1942 }
+	offset = 10
+	deathdate = { day = 29 month = june year = 1942 }
+
+	action_a = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 96
+			manpower = 96
+	}
+		ai_chance = 40
+		name = "Enact universal national service"
+		command = { type = manpowerpool value = 220 }
+		command = { type = dissent value = 5 }
+		command = { type = money value = -250 }
+		command = { type = build_division which = infantry value = artillery when = 6 cost = -1.5 where = 60 }
+		command = { type = domestic which = professional_army value = -1 }
+		command = { type = setflag which = ind_v3_universal_service }
+		command = { type = setflag which = ind_v3_national_service_settled }
+	}
+	action_b = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 81
+			manpower = 81
+	}
+		ai_chance = 40
+		name = "Conscript technical and transport specialists"
+		command = { type = manpowerpool value = 110 }
+		command = { type = dissent value = 2 }
+		command = { type = money value = -325 }
+		command = { type = build_division which = motorized value = armored_car when = 3 cost = -2.0 where = 75 }
+		command = { type = build_division which = bergsjaeger value = engineer when = 2 cost = -1.8 where = 60 }
+		command = { type = setflag which = ind_v3_selective_service }
+		command = { type = setflag which = ind_v3_national_service_settled }
+	}
+	action_c = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 33
+			manpower = 33
+	}
+		ai_chance = 20
+		name = "Keep a compact professional volunteer force"
+		command = { type = dissent value = -3 }
+		command = { type = build_division which = motorized value = engineer when = 2 cost = -2.5 where = 60 }
+		command = { type = domestic which = professional_army value = 1 }
+		command = { type = setflag which = ind_v3_volunteer_service }
+		command = { type = setflag which = ind_v3_national_service_settled }
+	}
+}
+
+event = {
+	id = 9273204
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_national_service_settled
+		NOT = { flag = ind_v3_scientific_mobilization_settled }
+	}
+
+	name = "The Scientific Mobilization Board"
+	desc = "Radar, rocketry, operations research and production engineering now compete for the same physicists and machine shops. The cabinet must choose whether the board serves the battlefield, the factory system, or an autonomous long-range research programme."
+	style = 2
+	picture = "india_v3_industry"
+
+	date = { day = 6 month = october year = 1942 }
+	offset = 10
+	deathdate = { day = 20 month = december year = 1942 }
+
+	action_a = {
+		ai_chance = 35
+		name = "Prioritize radar, rocketry and operational research"
+		command = { type = money value = -475 }
+		command = { type = industrial_modifier which = total value = -2 }
+		command = { type = research_mod value = 4 }
+		command = { type = waketeam which = 250028 }
+		command = { type = waketeam which = 250030 }
+		command = { type = setflag which = ind_v3_battlefield_science }
+		command = { type = setflag which = ind_v3_scientific_mobilization_settled }
+	}
+	action_b = {
+		ai_chance = 45
+		name = "Send the scientists into production engineering"
+		command = { type = money value = -325 }
+		command = { type = industrial_modifier which = total value = 3 }
+		command = { type = research_mod value = 1 }
+		command = { type = supplies value = 1200 }
+		command = { type = setflag which = ind_v3_production_science }
+		command = { type = setflag which = ind_v3_scientific_mobilization_settled }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Protect an autonomous long-range research programme"
+		command = { type = money value = -600 }
+		command = { type = dissent value = 2 }
+		command = { type = industrial_modifier which = total value = -3 }
+		command = { type = research_mod value = 6 }
+		command = { type = waketeam which = 250028 }
+		command = { type = setflag which = ind_v3_autonomous_science }
+		command = { type = setflag which = ind_v3_scientific_mobilization_settled }
+	}
+}
+
+event = {
+	id = 9273205
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_scientific_mobilization_settled
+		NOT = { flag = ind_v3_arsenal_allocation_settled }
+	}
+
+	name = "The Arsenal Allocation Crisis"
+	desc = "The 1943 production schedules cannot fully satisfy the army, air force and navy at once. The army demands a mobile striking corps, the air staff wants modern operational groups, and the admirals insist that the oceanic fleet will remain unfinished without another aviation ship and escorts."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 9 month = may year = 1943 }
+	offset = 10
+	deathdate = { day = 29 month = july year = 1943 }
+
+	action_a = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 86
+			manpower = 86
+	}
+		ai_chance = 40
+		name = "Complete the mobile striking corps"
+		command = { type = money value = -425 }
+		command = { type = supplies value = -1200 }
+		command = { type = activate_unit_type which = armor }
+		command = { type = new_model which = armor value = 0 }
+		command = { type = activate_unit_type which = sp_artillery }
+		command = { type = new_model which = sp_artillery value = 0 }
+		command = { type = build_division which = armor value = sp_artillery when = 2 cost = -2.5 where = 120 }
+		command = { type = build_division which = motorized value = armored_car when = 4 cost = -2.0 where = 75 }
+		command = { type = setflag which = ind_v3_arsenal_army }
+		command = { type = setflag which = ind_v3_arsenal_allocation_settled }
+	}
+	action_b = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 11
+			manpower = 11
+	}
+		ai_chance = 35
+		name = "Equip the operational air groups"
+		command = { type = money value = -500 }
+		command = { type = supplies value = -900 }
+		command = { type = activate_unit_type which = naval_bomber }
+		command = { type = new_model which = naval_bomber value = 0 }
+		command = { type = activate_unit_type which = escort }
+		command = { type = new_model which = escort value = 0 }
+		command = { type = build_division which = multi_role value = escort when = 2 cost = -2.5 where = 90 }
+		command = { type = build_division which = tactical_bomber value = escort when = 2 cost = -2.5 where = 100 }
+		command = { type = build_division which = naval_bomber value = escort when = 1 cost = -2.5 where = 100 }
+		command = { type = setflag which = ind_v3_arsenal_air }
+		command = { type = setflag which = ind_v3_arsenal_allocation_settled }
+	}
+	action_c = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 7
+			manpower = 7
+	}
+		ai_chance = 25
+		name = "Finish the oceanic task force"
+		command = { type = money value = -575 }
+		command = { type = supplies value = -1050 }
+		command = { type = build_division which = light_carrier value = light_cag when = 1 cost = -3.0 where = 210 }
+		command = { type = build_division which = destroyer value = naval_asw when = 3 cost = -2.5 where = 90 }
+		command = { type = setflag which = ind_v3_arsenal_navy }
+		command = { type = setflag which = ind_v3_arsenal_allocation_settled }
+	}
+}
+
+event = {
+	id = 9273206
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_arsenal_allocation_settled
+		NOT = { flag = ind_v3_emergency_law_settled }
+	}
+
+	name = "Liberty in an Emergency"
+	desc = "Censorship requests, sabotage scares and detention lists have reached the cabinet. Civil libertarians warn that independence will mean little if wartime methods become permanent. Security officials answer that one successful attack on a rail junction or shipyard could cost thousands of lives."
+	style = 2
+	picture = "india_v3_independence"
+
+	date = { day = 17 month = november year = 1943 }
+	offset = 10
+	deathdate = { day = 29 month = january year = 1944 }
+
+	action_a = {
+		ai_chance = 40
+		name = "Keep courts open and accept the security risk"
+		command = { type = dissent value = 2 }
+		command = { type = money value = -200 }
+		command = { type = research_mod value = 1 }
+		command = { type = setflag which = ind_v3_wartime_liberty }
+		command = { type = setflag which = ind_v3_emergency_law_settled }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Pass a tightly limited security act"
+		command = { type = dissent value = -3 }
+		command = { type = manpowerpool value = -20 }
+		command = { type = money value = -275 }
+		command = { type = supplies value = 500 }
+		command = { type = setflag which = ind_v3_limited_security_act }
+		command = { type = setflag which = ind_v3_emergency_law_settled }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "Trade emergency powers for a social compact"
+		command = { type = money value = -500 }
+		command = { type = dissent value = -5 }
+		command = { type = manpowerpool value = 45 }
+		command = { type = industrial_modifier which = total value = -1 }
+		command = { type = setflag which = ind_v3_emergency_social_compact }
+		command = { type = setflag which = ind_v3_emergency_law_settled }
+	}
+}
+
+event = {
+	id = 9273207
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_emergency_law_settled
+		NOT = { flag = ind_v3_service_compact_settled }
+	}
+
+	name = "The Service and Sacrifice Compact"
+	desc = "Soldiers, dockworkers and factory labourers now ask what independence will offer after sacrifice. A universal veterans' and labour settlement is expensive, land grants favour rural servicemen, while a cash bonus preserves the old economic structure at a heavy immediate fiscal cost."
+	style = 2
+	picture = "india_v3_independence"
+
+	date = { day = 22 month = june year = 1944 }
+	offset = 10
+	deathdate = { day = 10 month = september year = 1944 }
+
+	action_a = {
+		ai_chance = 45
+		name = "Guarantee pensions, housing and collective bargaining"
+		command = { type = money value = -700 }
+		command = { type = dissent value = -6 }
+		command = { type = manpowerpool value = 100 }
+		command = { type = industrial_modifier which = total value = -2 }
+		command = { type = industrial_modifier which = money value = 3 }
+		command = { type = setflag which = ind_v3_universal_service_compact }
+		command = { type = setflag which = ind_v3_service_compact_settled }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Offer land grants and agricultural credit"
+		command = { type = money value = -425 }
+		command = { type = dissent value = -4 }
+		command = { type = manpowerpool value = 60 }
+		command = { type = supplies value = 1000 }
+		command = { type = setflag which = ind_v3_veterans_land_grants }
+		command = { type = setflag which = ind_v3_service_compact_settled }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Pay a large cash bonus without permanent guarantees"
+		command = { type = money value = -925 }
+		command = { type = dissent value = -3 }
+		command = { type = industrial_modifier which = total value = 2 }
+		command = { type = setflag which = ind_v3_service_cash_bonus }
+		command = { type = setflag which = ind_v3_service_compact_settled }
+	}
+}
+
+event = {
+	id = 9273208
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_service_compact_settled
+		NOT = { flag = ind_v3_reconversion_settled }
+	}
+
+	name = "Arsenal or Workshop"
+	desc = "As the global war approaches its end, India must decide what to do with a vast military production system. Rapid civilian reconversion promises prosperity but consumes stockpiles; maintaining the arsenal preserves military weight; an export strategy can finance modernization while binding smaller states to Delhi."
+	style = 2
+	picture = "india_v3_industry"
+
+	date = { day = 5 month = february year = 1945 }
+	offset = 10
+	deathdate = { day = 29 month = april year = 1945 }
+
+	action_a = {
+		ai_chance = 45
+		name = "Convert the arsenal to civilian machinery"
+		command = { type = supplies value = -3500 }
+		command = { type = money value = -500 }
+		command = { type = dissent value = -5 }
+		command = { type = construct which = ic where = 1447 value = 1 }
+		command = { type = construct which = ic where = 1472 value = 1 }
+		command = { type = construct which = ic where = 1502 value = 1 }
+		command = { type = construct which = ic where = 1517 value = 1 }
+		command = { type = industrial_modifier which = total value = 3 }
+		command = { type = setflag which = ind_v3_civilian_reconversion }
+		command = { type = setflag which = ind_v3_reconversion_settled }
+	}
+	action_b = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 48
+			manpower = 48
+	}
+		ai_chance = 30
+		name = "Maintain a permanent high-readiness arsenal"
+		command = { type = money value = -600 }
+		command = { type = dissent value = 2 }
+		command = { type = activate_unit_type which = mechanized }
+		command = { type = new_model which = mechanized value = 0 }
+		command = { type = activate_unit_type which = escort }
+		command = { type = new_model which = escort value = 0 }
+		command = { type = activate_unit_type which = sp_artillery }
+		command = { type = new_model which = sp_artillery value = 0 }
+		command = { type = build_division which = mechanized value = sp_artillery when = 3 cost = -2.5 where = 100 }
+		command = { type = build_division which = multi_role value = escort when = 2 cost = -2.5 where = 100 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = setflag which = ind_v3_permanent_arsenal }
+		command = { type = setflag which = ind_v3_reconversion_settled }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "Become Asia's arsenal and training partner"
+		command = { type = supplies value = -1800 }
+		command = { type = money value = 1200 }
+		command = { type = dissent value = 1 }
+		command = { type = industrial_modifier which = total value = 2 }
+		command = { type = research_mod value = 1 }
+		command = { type = setflag which = ind_v3_export_arsenal }
+		command = { type = setflag which = ind_v3_reconversion_settled }
+	}
+}

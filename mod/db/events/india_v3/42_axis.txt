@@ -1,0 +1,171 @@
+#########################################################################
+# India Mod V3: German strategic universe
+#########################################################################
+# India Mod V3.1 economy pass
+
+event = {
+	id = 9272200
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_axis_orientation
+		NOT = { flag = ind_v3_german_mission }
+	}
+
+	name = "The German Industrial Mission"
+	desc = "Berlin offers machine tools, armoured doctrine and aircraft production methods in exchange for Indian raw materials and political support against Britain. The mission is technically valuable and diplomatically poisonous."
+	style = 2
+	picture = "india_v3_german_mission"
+
+	date = { day = 0 month = september year = 1937 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1938 }
+
+	action_a = {
+		ai_chance = 55
+		name = "Full mission: -650 supplies, three advances, Allied rupture"
+		command = { type = supplies value = -650 }
+		command = { type = dissent value = 2 }
+		command = { type = relation which = GER value = 45 }
+		command = { type = relation which = ENG value = -30 }
+		command = { type = steal_tech which = GER }
+		command = { type = steal_tech which = GER }
+		command = { type = steal_tech which = GER }
+		command = { type = waketeam which = 250026 }
+		command = { type = waketeam which = 250025 }
+		command = { type = setflag which = ind_v3_german_full_mission }
+		command = { type = setflag which = ind_v3_german_mission }
+	}
+	action_b = {
+		ai_chance = 45
+		name = "Commercial mission: -500 money, two advances, +2% IC"
+		command = { type = money value = -500 }
+		command = { type = relation which = GER value = 20 }
+		command = { type = steal_tech which = GER }
+		command = { type = steal_tech which = GER }
+		command = { type = industrial_modifier which = total value = 2 }
+		command = { type = setflag which = ind_v3_german_commercial_mission }
+		command = { type = setflag which = ind_v3_german_mission }
+	}
+}
+
+event = {
+	id = 9272201
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_german_mission
+		NOT = { flag = ind_v3_axis_mobile_army }
+	}
+
+	name = "The Indian Panzer Debate"
+	desc = "German advisers recommend a compact armoured spearhead supported by motorized infantry and close air support. Indian officers warn that fuel, workshops and jungle theatres make a copied continental doctrine dangerous."
+	style = 2
+	picture = "india_v3_german_panzer"
+
+	date = { day = 0 month = february year = 1938 }
+	offset = 7
+	deathdate = { day = 29 month = april year = 1938 }
+
+	action_a = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 55
+			manpower = 55
+	}
+		ai_chance = 50
+		name = "Armoured spearhead: -550 money, -1450 supplies, four units"
+		command = { type = money value = -550 }
+		command = { type = supplies value = -1450 }
+		command = { type = activate_unit_type which = light_armor }
+		command = { type = new_model which = light_armor value = 0 }
+		command = { type = build_division which = light_armor value = engineer when = 2 cost = -2.5 where = 75 }
+		command = { type = build_division which = motorized value = armored_car when = 2 cost = -1.8 where = 60 }
+		command = { type = dissent value = 2 }
+		command = { type = setflag which = ind_v3_axis_armoured_army }
+		command = { type = setflag which = ind_v3_axis_mobile_army }
+	}
+	action_b = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 66
+			manpower = 66
+	}
+		ai_chance = 50
+		name = "Indian mobility: -1150 supplies, four motor units, logistics"
+		command = { type = supplies value = -1150 }
+		command = { type = build_division which = motorized value = engineer when = 4 cost = -1.8 where = 60 }
+		command = { type = tc_mod value = 4 }
+		command = { type = research_mod value = 2 }
+		command = { type = setflag which = ind_v3_axis_adapted_mobility }
+		command = { type = setflag which = ind_v3_axis_mobile_army }
+	}
+}
+
+event = {
+	id = 9272204
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_joined_axis
+		NOT = { flag = ind_v3_axis_war_aims }
+	}
+
+	name = "India's Continental War Aims"
+	desc = "Berlin wants India to strike the imperial system from the east. Delhi can drive through Persia toward the Middle East, concentrate on the Arabian Sea and East Africa, or keep Indian forces focused on homeland defence while supplying the coalition."
+	style = 2
+	picture = "india_v3_german_war_aims"
+
+	date = { day = 0 month = january year = 1940 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1942 }
+
+	action_a = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 81
+			manpower = 81
+	}
+		ai_chance = 40
+		name = "Persia strategy: -500 money, -1550 supplies, five units"
+		command = { type = money value = -500 }
+		command = { type = supplies value = -1550 }
+		command = { type = build_division which = motorized value = armored_car when = 3 cost = -1.8 where = 60 }
+		command = { type = build_division which = bergsjaeger value = engineer when = 2 cost = -1.8 where = 75 }
+		command = { type = relation which = GER value = 30 }
+		command = { type = ai which = "v3/IND_axis.ai" }
+		command = { type = setflag which = ind_v3_axis_middle_east_strategy }
+		command = { type = setflag which = ind_v3_axis_war_aims }
+	}
+	action_b = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 60
+			manpower = 60
+	}
+		ai_chance = 35
+		name = "Indian Ocean strategy: -450 money, marines and naval air"
+		command = { type = money value = -450 }
+		command = { type = supplies value = -1450 }
+		command = { type = activate_unit_type which = naval_bomber }
+		command = { type = new_model which = naval_bomber value = 0 }
+		command = { type = activate_unit_type which = escort }
+		command = { type = new_model which = escort value = 0 }
+		command = { type = build_division which = marine value = artillery when = 3 cost = -1.8 where = 75 }
+		command = { type = build_division which = naval_bomber value = escort when = 2 cost = -2.5 where = 75 }
+		command = { type = construct which = naval_base where = 1497 value = 6 trigger = { NOT = { building = { province = 1497 type = naval_base value = 5 } } } }
+		command = { type = ai which = "v3/IND_axis.ai" }
+		command = { type = setflag which = ind_v3_axis_ocean_strategy }
+		command = { type = setflag which = ind_v3_axis_war_aims }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "Arsenal strategy: -2100 supplies, +800 money, -2 dissent"
+		command = { type = supplies value = -2100 }
+		command = { type = money value = 800 }
+		command = { type = dissent value = -2 }
+		command = { type = industrial_modifier which = supplies value = 3 }
+		command = { type = ai which = "v3/IND_axis.ai" }
+		command = { type = setflag which = ind_v3_axis_arsenal_strategy }
+		command = { type = setflag which = ind_v3_axis_war_aims }
+	}
+}

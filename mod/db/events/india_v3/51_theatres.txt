@@ -1,0 +1,385 @@
+#########################################################################
+# India Mod V3: wartime theatres, home front and demobilization
+#########################################################################
+# India Mod V3.1 economy pass
+
+event = {
+	id = 9273000
+	random = no
+	country = IND
+
+	trigger = {
+		atwar = yes
+		flag = ind_v3_world_role
+		NOT = { flag = ind_v3_war_readiness_review }
+	}
+
+	name = "The First War Readiness Review"
+	desc = "India's plans assumed time for mobilization, but war exposes shortages in fuel distribution, radios, replacement officers and convoy escorts. The cabinet must correct the system before choosing distant objectives."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = september year = 1939 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1942 }
+
+	action_a = {
+		ai_chance = 60
+		name = "Spend heavily to correct every critical shortage"
+		command = { type = money value = -575 }
+		command = { type = supplies value = -1150 }
+		command = { type = manpowerpool value = -15 }
+		command = { type = dissent value = -2 }
+		command = { type = tc_mod value = 5 }
+		command = { type = industrial_modifier which = supplies value = 5 }
+		command = { type = setflag which = ind_v3_full_readiness_correction }
+		command = { type = setflag which = ind_v3_war_readiness_review }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Correct logistics and accept temporary equipment gaps"
+		command = { type = money value = -350 }
+		command = { type = supplies value = -600 }
+		command = { type = tc_mod value = 4 }
+		command = { type = dissent value = 2 }
+		command = { type = setflag which = ind_v3_logistics_first_correction }
+		command = { type = setflag which = ind_v3_war_readiness_review }
+	}
+}
+
+event = {
+	id = 9273001
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_war_readiness_review
+		NOT = { flag = ind_v3_western_theatre_logistics }
+	}
+
+	name = "The Western Desert and Gulf Lifeline"
+	desc = "Quetta, Karachi and the Punjab form the supply hinge for any operation toward Persia, the Gulf or Central Asia. Roads and fuel depots can support a forward strategy, or the same resources can fortify the Indus approaches."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = march year = 1940 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1942 }
+
+	action_a = {
+		ai_chance = 55
+		name = "Build the Quetta-Karachi forward logistics system"
+		command = { type = money value = -450 }
+		command = { type = supplies value = -850 }
+		command = { type = construct which = infrastructure where = 1529 value = 15 trigger = { NOT = { building = { province = 1529 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1534 value = 15 trigger = { NOT = { building = { province = 1534 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1533 value = 15 trigger = { NOT = { building = { province = 1533 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = air_base where = 1529 value = 3 trigger = { NOT = { building = { province = 1529 type = air_base value = 8 } } } }
+		command = { type = tc_mod value = 3 }
+		command = { type = setflag which = ind_v3_western_theatre_logistics }
+	}
+	action_b = {
+		ai_chance = 45
+		name = "Fortify the Indus and conserve fuel"
+		command = { type = money value = -350 }
+		command = { type = supplies value = -700 }
+		command = { type = construct which = land_fort where = 1529 value = 2 }
+		command = { type = construct which = land_fort where = 1534 value = 2 }
+		command = { type = construct which = air_base where = 1533 value = 3 trigger = { NOT = { building = { province = 1533 type = air_base value = 8 } } } }
+		command = { type = setflag which = ind_v3_western_theatre_logistics }
+	}
+}
+
+event = {
+	id = 9273002
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_western_theatre_logistics
+		NOT = { flag = ind_v3_eastern_theatre_logistics }
+	}
+
+	name = "The Assam-Burma Theatre"
+	desc = "The eastern command must supply armies through monsoon roads, jungle railways and vulnerable river crossings. A forward Burma system protects Rangoon and Malaya; a shorter Assam-Imphal line prepares for defence in depth."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = october year = 1940 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1943 }
+
+	action_a = {
+		ai_chance = 55
+		name = "Build the forward Rangoon-Imphal network"
+		command = { type = money value = -525 }
+		command = { type = supplies value = -1000 }
+		command = { type = construct which = infrastructure where = 1415 value = 15 trigger = { NOT = { building = { province = 1415 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1442 value = 15 trigger = { NOT = { building = { province = 1442 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1439 value = 15 trigger = { NOT = { building = { province = 1439 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = air_base where = 1415 value = 3 trigger = { NOT = { building = { province = 1415 type = air_base value = 8 } } } }
+		command = { type = construct which = air_base where = 1442 value = 6 trigger = { NOT = { building = { province = 1442 type = air_base value = 5 } } } }
+		command = { type = setflag which = ind_v3_forward_eastern_theatre }
+		command = { type = setflag which = ind_v3_eastern_theatre_logistics }
+	}
+	action_b = {
+		ai_chance = 45
+		name = "Prepare the Assam-Imphal defence in depth"
+		command = { type = money value = -375 }
+		command = { type = supplies value = -750 }
+		command = { type = construct which = infrastructure where = 1439 value = 15 trigger = { NOT = { building = { province = 1439 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1442 value = 15 trigger = { NOT = { building = { province = 1442 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = land_fort where = 1442 value = 3 }
+		command = { type = construct which = air_base where = 1439 value = 3 trigger = { NOT = { building = { province = 1439 type = air_base value = 8 } } } }
+		command = { type = setflag which = ind_v3_defensive_eastern_theatre }
+		command = { type = setflag which = ind_v3_eastern_theatre_logistics }
+	}
+}
+
+event = {
+	id = 9273003
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_eastern_theatre_logistics
+		NOT = { flag = ind_v3_convoy_emergency }
+	}
+
+	name = "The Indian Ocean Convoy Emergency"
+	desc = "Submarines, raiders and aircraft are attacking the trade routes that feed India's factories and fleets. The navy requests a crash escort programme; industry argues for route dispersal, stockpiles and air patrols."
+	style = 2
+	picture = "British_Navy"
+
+	date = { day = 0 month = april year = 1941 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1943 }
+
+	action_a = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 9
+			manpower = 9
+	}
+		ai_chance = 55
+		name = "Build mass escorts and convoy-control commands"
+		command = { type = money value = -500 }
+		command = { type = supplies value = -1300 }
+		command = { type = build_division which = destroyer value = naval_asw when = 5 cost = -2.0 where = 60 }
+		command = { type = research_mod value = 2 }
+		command = { type = setflag which = ind_v3_mass_convoy_escort }
+		command = { type = setflag which = ind_v3_convoy_emergency }
+	}
+	action_b = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 6
+			manpower = 6
+	}
+		ai_chance = 45
+		name = "Disperse routes, stockpile and patrol from the air"
+		command = { type = money value = -425 }
+		command = { type = supplies value = 2000 }
+		command = { type = activate_unit_type which = naval_bomber }
+		command = { type = new_model which = naval_bomber value = 0 }
+		command = { type = activate_unit_type which = escort }
+		command = { type = new_model which = escort value = 0 }
+		command = { type = build_division which = naval_bomber value = escort when = 2 cost = -2.5 where = 75 }
+		command = { type = tc_mod value = 3 }
+		command = { type = setflag which = ind_v3_air_convoy_defence }
+		command = { type = setflag which = ind_v3_convoy_emergency }
+	}
+}
+
+event = {
+	id = 9273004
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_convoy_emergency
+		NOT = { flag = ind_v3_bengal_food_security }
+	}
+
+	name = "Food Security in Bengal"
+	desc = "War demand, shipping losses, price speculation and local crop failures threaten Bengal with catastrophe. The state can requisition shipping and grain for universal rationing, buy emergency imports at any price, or preserve military priorities and risk mass death."
+	style = 2
+	picture = "india_v3_industry"
+
+	date = { day = 0 month = january year = 1942 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1943 }
+
+	action_a = {
+		ai_chance = 60
+		name = "Impose universal rationing and move grain by state order"
+		command = { type = money value = -675 }
+		command = { type = supplies value = -2600 }
+		command = { type = dissent value = 3 }
+		command = { type = manpowerpool value = 80 }
+		command = { type = tc_mod value = -2 }
+		command = { type = setflag which = ind_v3_famine_prevented_by_rationing }
+		command = { type = setflag which = ind_v3_bengal_food_security }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Purchase emergency grain and shipping abroad"
+		command = { type = money value = -1325 }
+		command = { type = supplies value = 1000 }
+		command = { type = dissent value = -2 }
+		command = { type = manpowerpool value = 55 }
+		command = { type = relation which = USA value = 20 }
+		command = { type = setflag which = ind_v3_famine_prevented_by_imports }
+		command = { type = setflag which = ind_v3_bengal_food_security }
+	}
+	action_c = {
+		ai_chance = 10
+		name = "The war effort must retain first claim"
+		command = { type = supplies value = 1800 }
+		command = { type = manpowerpool value = -180 }
+		command = { type = dissent value = 18 }
+		command = { type = industrial_modifier which = total value = -5 }
+		command = { type = setflag which = ind_v3_bengal_catastrophe }
+		command = { type = setflag which = ind_v3_bengal_food_security }
+	}
+}
+
+event = {
+	id = 9273005
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_bengal_food_security
+		atwar = yes
+		NOT = { flag = ind_v3_casualty_settlement }
+	}
+
+	name = "The Cost of a Continental War"
+	desc = "Casualty lists now reach every province. Veterans and families demand pensions, rehabilitation and a voice in postwar policy; the general staff warns that generous guarantees will permanently enlarge the state."
+	style = 2
+	picture = "india_v3_independence"
+
+	date = { day = 0 month = october year = 1943 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1945 }
+
+	action_a = {
+		ai_chance = 60
+		name = "Guarantee pensions, rehabilitation and land grants"
+		command = { type = money value = -900 }
+		command = { type = supplies value = -600 }
+		command = { type = dissent value = -6 }
+		command = { type = manpowerpool value = 35 }
+		command = { type = industrial_modifier which = money value = -3 }
+		command = { type = setflag which = ind_v3_veterans_guarantee }
+		command = { type = setflag which = ind_v3_casualty_settlement }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Prioritize rehabilitation into the defence economy"
+		command = { type = money value = -525 }
+		command = { type = supplies value = -400 }
+		command = { type = dissent value = -2 }
+		command = { type = industrial_modifier which = supplies value = 4 }
+		command = { type = tc_mod value = 2 }
+		command = { type = setflag which = ind_v3_veterans_defence_corps }
+		command = { type = setflag which = ind_v3_casualty_settlement }
+	}
+}
+
+event = {
+	id = 9273006
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_casualty_settlement
+		NOT = { flag = ind_v3_occupation_doctrine }
+	}
+
+	name = "An Indian Occupation Doctrine"
+	desc = "Indian forces may end the war outside the Union's borders. A liberation doctrine transfers authority to local governments quickly; a strategic occupation secures bases, resources and bargaining power."
+	style = 2
+	picture = "diplomatic_campaign"
+
+	date = { day = 0 month = april year = 1944 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1946 }
+
+	action_a = {
+		ai_chance = 60
+		name = "Liberate, train local forces and withdraw"
+		command = { type = money value = -475 }
+		command = { type = supplies value = -700 }
+		command = { type = dissent value = -3 }
+		command = { type = belligerence value = -5 }
+		command = { type = relation which = CHI value = 20 }
+		command = { type = setflag which = ind_v3_liberation_occupation }
+		command = { type = setflag which = ind_v3_occupation_doctrine }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Hold strategic bases until a final settlement"
+		command = { type = supplies value = -550 }
+		command = { type = money value = 500 }
+		command = { type = dissent value = 4 }
+		command = { type = belligerence value = 5 }
+		command = { type = tc_mod value = -3 }
+		command = { type = setflag which = ind_v3_strategic_occupation }
+		command = { type = setflag which = ind_v3_occupation_doctrine }
+	}
+}
+
+event = {
+	id = 9273007
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_occupation_doctrine
+		NOT = { flag = ind_v3_demobilization_plan }
+	}
+
+	name = "The Demobilization Plan"
+	desc = "Millions of soldiers, workers and contractors cannot be released into unemployment without destabilizing the Union. India can demobilize quickly, retain a large standing force, or convert formations into a national development corps."
+	style = 2
+	picture = "india_v3_industry"
+
+	date = { day = 0 month = january year = 1946 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1948 }
+
+	action_a = {
+		ai_chance = 30
+		name = "Demobilize rapidly and restore civilian production"
+		command = { type = manpowerpool value = 180 }
+		command = { type = dissent value = -4 }
+		command = { type = industrial_modifier which = total value = 4 }
+		command = { type = domestic which = professional_army value = -1 }
+		command = { type = setflag which = ind_v3_rapid_demobilization }
+		command = { type = setflag which = ind_v3_demobilization_plan }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Retain a permanent great-power establishment"
+		command = { type = money value = -700 }
+		command = { type = supplies value = -1600 }
+		command = { type = dissent value = 2 }
+		command = { type = domestic which = professional_army value = 1 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = setflag which = ind_v3_permanent_great_power_force }
+		command = { type = setflag which = ind_v3_demobilization_plan }
+	}
+	action_c = {
+		ai_chance = 40
+		name = "Convert units into a national development corps"
+		command = { type = money value = -800 }
+		command = { type = supplies value = -900 }
+		command = { type = manpowerpool value = 90 }
+		command = { type = dissent value = -3 }
+		command = { type = tc_mod value = 5 }
+		command = { type = construct which = infrastructure where = 1439 value = 10 trigger = { NOT = { building = { province = 1439 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1529 value = 10 trigger = { NOT = { building = { province = 1529 type = infrastructure value = 0.91 } } } }
+		command = { type = setflag which = ind_v3_development_corps }
+		command = { type = setflag which = ind_v3_demobilization_plan }
+	}
+}

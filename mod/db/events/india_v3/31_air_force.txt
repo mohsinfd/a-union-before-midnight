@@ -1,0 +1,492 @@
+#########################################################################
+# India Mod V3: air force, aviation industry and service doctrine
+#########################################################################
+# India Mod V3.1 economy pass
+
+event = {
+	id = 9271000
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_constitution
+		NOT = { flag = ind_v3_air_staff_founded }
+	}
+
+	name = "An Air Staff for Independent India"
+	desc = "The small air arm inherited at independence cannot defend a continent. Subroto Mukerjee and the first Indian flying officers propose a permanent air staff, technical schools and a national system of air districts."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 7 month = october year = 1933 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1933 }
+
+	action_a = {
+		ai_chance = 70
+		name = "Create an independent Indian Air Force"
+		command = { type = money value = -125 }
+		command = { type = supplies value = -200 }
+		command = { type = manpowerpool value = -4 }
+		command = { type = waketeam which = 250025 }
+		command = { type = construct which = air_base where = 1459 value = 3 trigger = { NOT = { building = { province = 1459 type = air_base value = 8 } } } }
+		command = { type = construct which = air_base where = 1502 value = 6 trigger = { NOT = { building = { province = 1502 type = air_base value = 5 } } } }
+		command = { type = domestic which = professional_army value = 1 }
+		command = { type = setflag which = ind_v3_independent_air_force }
+		command = { type = setflag which = ind_v3_air_staff_founded }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Keep aviation under the army for now"
+		
+		command = { type = supplies value = -150 }
+		command = { type = waketeam which = 250025 }
+		command = { type = construct which = air_base where = 1459 value = 3 trigger = { NOT = { building = { province = 1459 type = air_base value = 8 } } } }
+		command = { type = setflag which = ind_v3_army_air_arm }
+		command = { type = setflag which = ind_v3_air_staff_founded }
+	}
+}
+
+event = {
+	id = 9271001
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_air_staff_founded
+		NOT = { flag = ind_v3_flying_schools }
+	}
+
+	name = "The Flying Schools Programme"
+	desc = "Aircraft can be purchased faster than pilots and ground crews can be trained. Mukerjee asks for central flying schools at Bangalore and Poona, while provincial leaders prefer a larger network of reserve clubs."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = may year = 1934 }
+	offset = 7
+	deathdate = { day = 29 month = july year = 1934 }
+
+	action_a = {
+		ai_chance = 65
+		name = "Build elite central flying schools"
+		command = { type = money value = -175 }
+		command = { type = supplies value = -250 }
+		command = { type = manpowerpool value = -5 }
+		command = { type = research_mod value = 2 }
+		command = { type = construct which = air_base where = 1502 value = 6 trigger = { NOT = { building = { province = 1502 type = air_base value = 5 } } } }
+		command = { type = construct which = air_base where = 1516 value = 3 trigger = { NOT = { building = { province = 1516 type = air_base value = 8 } } } }
+		command = { type = setflag which = ind_v3_flying_schools }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Fund a broad provincial air reserve"
+		
+		command = { type = supplies value = -200 }
+		command = { type = manpowerpool value = 8 }
+		command = { type = construct which = air_base where = 1447 value = 3 trigger = { NOT = { building = { province = 1447 type = air_base value = 8 } } } }
+		command = { type = construct which = air_base where = 1517 value = 3 trigger = { NOT = { building = { province = 1517 type = air_base value = 8 } } } }
+		command = { type = construct which = air_base where = 1530 value = 3 trigger = { NOT = { building = { province = 1530 type = air_base value = 8 } } } }
+		command = { type = setflag which = ind_v3_air_reserve }
+		command = { type = setflag which = ind_v3_flying_schools }
+	}
+}
+
+event = {
+	id = 9271002
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_air_program
+		flag = ind_v3_flying_schools
+		NOT = { flag = ind_v3_hal_expansion }
+	}
+
+	name = "Hindustan Aircraft Expands"
+	desc = "Bangalore can now assemble foreign designs, but the next investment determines whether India becomes a true aircraft designer or a large licensed producer. Indigenous design is slower and dearer; licensed production puts wings in service sooner."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = october year = 1935 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1935 }
+
+	action_a = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 3
+			manpower = 3
+	}
+		ai_chance = 55
+		name = "Fund indigenous engines, airframes and testing"
+		command = { type = money value = -375 }
+		command = { type = supplies value = -550 }
+		command = { type = waketeam which = 250013 }
+		command = { type = research_mod value = 3 }
+		command = { type = construct which = ic where = 1502 value = 3 }
+		command = { type = activate_unit_type which = escort }
+		command = { type = new_model which = escort value = 0 }
+		command = { type = build_division which = multi_role value = escort when = 2 cost = -2.0 where = 90 }
+		command = { type = setflag which = ind_v3_indigenous_aircraft }
+		command = { type = setflag which = ind_v3_hal_expansion }
+	}
+	action_b = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 3
+			manpower = 3
+	}
+		ai_chance = 45
+		name = "License proven designs and expand production"
+		
+		command = { type = supplies value = -700 }
+		command = { type = waketeam which = 250013 }
+		command = { type = construct which = ic where = 1502 value = 2 }
+		command = { type = activate_unit_type which = escort }
+		command = { type = new_model which = escort value = 0 }
+		command = { type = build_division which = interceptor value = escort when = 2 cost = -3.0 where = 60 }
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_v3_licensed_aircraft }
+		command = { type = setflag which = ind_v3_hal_expansion }
+	}
+}
+
+event = {
+	id = 9271003
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_hal_expansion
+		NOT = { flag = ind_v3_air_doctrine_1936 }
+	}
+
+	name = "The Air Doctrine Conference"
+	desc = "The air staff cannot simultaneously optimize for continental interception, close support and maritime reconnaissance. Each school offers a coherent doctrine and accepts that another mission will receive fewer aircraft."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = september year = 1936 }
+	offset = 7
+	deathdate = { day = 29 month = november year = 1936 }
+
+	action_a = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 3
+			manpower = 3
+	}
+		ai_chance = 40
+		name = "Control the skies above India's cities"
+		
+		command = { type = supplies value = -600 }
+		command = { type = activate_unit_type which = escort }
+		command = { type = new_model which = escort value = 0 }
+		command = { type = build_division which = interceptor value = escort when = 2 cost = -2.5 where = 75 }
+		command = { type = construct which = radar_station where = 1447 value = 1 }
+		command = { type = construct which = radar_station where = 1517 value = 1 }
+		command = { type = setflag which = ind_v3_air_superiority_doctrine }
+		command = { type = setflag which = ind_v3_air_doctrine_1936 }
+	}
+	action_b = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 6
+			manpower = 6
+	}
+		ai_chance = 35
+		name = "Give the field army a flying artillery arm"
+		command = { type = money value = -275 }
+		command = { type = supplies value = -650 }
+		command = { type = activate_unit_type which = escort }
+		command = { type = new_model which = escort value = 0 }
+		command = { type = build_division which = tactical_bomber value = escort when = 2 cost = -2.5 where = 75 }
+		command = { type = setflag which = ind_v3_battlefield_air_doctrine }
+		command = { type = setflag which = ind_v3_air_doctrine_1936 }
+	}
+	action_c = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 6
+			manpower = 6
+	}
+		ai_chance = 25
+		name = "Make the Indian Ocean an air theatre"
+		command = { type = money value = -300 }
+		command = { type = supplies value = -700 }
+		command = { type = activate_unit_type which = naval_bomber }
+		command = { type = new_model which = naval_bomber value = 0 }
+		command = { type = activate_unit_type which = escort }
+		command = { type = new_model which = escort value = 0 }
+		command = { type = build_division which = naval_bomber value = escort when = 2 cost = -2.5 where = 90 }
+		command = { type = construct which = air_base where = 1493 value = 3 trigger = { NOT = { building = { province = 1493 type = air_base value = 8 } } } }
+		command = { type = setflag which = ind_v3_maritime_air_doctrine }
+		command = { type = setflag which = ind_v3_air_doctrine_1936 }
+	}
+}
+
+event = {
+	id = 9271004
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_air_doctrine_1936
+		NOT = { flag = ind_v3_air_defence_grid }
+	}
+
+	name = "The Continental Air Defence Grid"
+	desc = "Observers, telephones, searchlights and radio direction finding must turn isolated squadrons into a national system. A complete grid is costly, but without it fighters will arrive after the bombers have gone."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = march year = 1937 }
+	offset = 7
+	deathdate = { day = 29 month = may year = 1937 }
+
+	action_a = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 3
+			manpower = 3
+	}
+		ai_chance = 70
+		name = "Cover the industrial triangle and both coasts"
+		command = { type = money value = -375 }
+		command = { type = supplies value = -550 }
+		command = { type = construct which = radar_station where = 1459 value = 2 }
+		command = { type = construct which = radar_station where = 1447 value = 2 }
+		command = { type = construct which = radar_station where = 1517 value = 2 }
+		command = { type = construct which = radar_station where = 1500 value = 1 }
+		command = { type = activate_unit_type which = escort }
+		command = { type = new_model which = escort value = 0 }
+		command = { type = build_division which = interceptor value = escort when = 2 cost = -2.0 where = 75 }
+		command = { type = waketeam which = 250030 }
+		command = { type = setflag which = ind_v3_air_defence_grid }
+	}
+	action_b = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 2
+			manpower = 2
+	}
+		ai_chance = 30
+		name = "Protect only the heaviest industrial centres"
+		
+		command = { type = supplies value = -350 }
+		command = { type = construct which = radar_station where = 1447 value = 2 }
+		command = { type = construct which = radar_station where = 1517 value = 2 }
+		command = { type = activate_unit_type which = escort }
+		command = { type = new_model which = escort value = 0 }
+		command = { type = build_division which = interceptor value = escort when = 1 cost = -2.0 where = 60 }
+		command = { type = setflag which = ind_v3_air_defence_grid }
+	}
+}
+
+event = {
+	id = 9271005
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_naval_program
+		flag = ind_v3_air_doctrine_1936
+		NOT = { flag = ind_v3_naval_air_arm }
+	}
+
+	name = "The Indian Naval Air Arm"
+	desc = "Fleet exercises show that ships operating without reconnaissance aircraft are blind beyond the horizon. The navy requests its own pilots, torpedo school and coastal patrol groups; the air staff resists dividing a still-small force."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = december year = 1937 }
+	offset = 7
+	deathdate = { day = 29 month = february year = 1938 }
+
+	action_a = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 6
+			manpower = 6
+	}
+		ai_chance = 70
+		name = "Create a full naval air arm"
+		command = { type = money value = -375 }
+		command = { type = supplies value = -750 }
+		command = { type = waketeam which = 250022 }
+		command = { type = activate_unit_type which = naval_bomber }
+		command = { type = new_model which = naval_bomber value = 0 }
+		command = { type = activate_unit_type which = escort }
+		command = { type = new_model which = escort value = 0 }
+		command = { type = build_division which = naval_bomber value = escort when = 2 cost = -2.5 where = 90 }
+		command = { type = construct which = air_base where = 1493 value = 6 trigger = { NOT = { building = { province = 1493 type = air_base value = 5 } } } }
+		command = { type = construct which = air_base where = 1533 value = 3 trigger = { NOT = { building = { province = 1533 type = air_base value = 8 } } } }
+		command = { type = setflag which = ind_v3_naval_air_arm }
+	}
+	action_b = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 3
+			manpower = 3
+	}
+		ai_chance = 30
+		name = "Keep maritime aviation under joint command"
+		
+		command = { type = supplies value = -500 }
+		command = { type = waketeam which = 250022 }
+		command = { type = activate_unit_type which = naval_bomber }
+		command = { type = new_model which = naval_bomber value = 0 }
+		command = { type = activate_unit_type which = escort }
+		command = { type = new_model which = escort value = 0 }
+		command = { type = build_division which = naval_bomber value = escort when = 1 cost = -2.0 where = 90 }
+		command = { type = research_mod value = 1 }
+		command = { type = setflag which = ind_v3_joint_maritime_aviation }
+		command = { type = setflag which = ind_v3_naval_air_arm }
+	}
+}
+
+event = {
+	id = 9271006
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_naval_air_arm
+		flag = ind_v3_armaments_1937
+		NOT = { flag = ind_v3_air_expansion_1938 }
+	}
+
+	name = "The Fifteen-Wing Plan"
+	desc = "The general staff asks for an air force able to defend the industrial heartland, support two field armies and patrol both seas by 1940. Meeting the target requires subsidized mass production and will displace civilian aircraft orders."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = july year = 1938 }
+	offset = 7
+	deathdate = { day = 29 month = september year = 1938 }
+
+	action_a = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 7
+			manpower = 7
+	}
+		ai_chance = 45
+		name = "Build a balanced three-mission force"
+		command = { type = money value = -550 }
+		command = { type = supplies value = -1300 }
+		command = { type = activate_unit_type which = naval_bomber }
+		command = { type = new_model which = naval_bomber value = 0 }
+		command = { type = activate_unit_type which = escort }
+		command = { type = new_model which = escort value = 0 }
+		command = { type = build_division which = interceptor value = escort when = 1 cost = -3.0 where = 60 }
+		command = { type = build_division which = tactical_bomber value = escort when = 1 cost = -3.0 where = 75 }
+		command = { type = build_division which = naval_bomber value = escort when = 1 cost = -3.0 where = 75 }
+		command = { type = setflag which = ind_v3_balanced_air_force }
+		command = { type = setflag which = ind_v3_air_expansion_1938 }
+	}
+	action_b = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 5
+			manpower = 5
+	}
+		ai_chance = 35
+		name = "Concentrate on fighters and army cooperation"
+		command = { type = money value = -475 }
+		command = { type = supplies value = -1250 }
+		command = { type = activate_unit_type which = escort }
+		command = { type = new_model which = escort value = 0 }
+		command = { type = build_division which = interceptor value = escort when = 2 cost = -3.0 where = 60 }
+		command = { type = build_division which = tactical_bomber value = escort when = 1 cost = -3.0 where = 75 }
+		command = { type = setflag which = ind_v3_continental_air_force }
+		command = { type = setflag which = ind_v3_air_expansion_1938 }
+	}
+	action_c = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 8
+			manpower = 8
+	}
+		ai_chance = 20
+		name = "Build long-range maritime and transport aviation"
+		command = { type = money value = -500 }
+		command = { type = supplies value = -1200 }
+		command = { type = activate_unit_type which = naval_bomber }
+		command = { type = new_model which = naval_bomber value = 0 }
+		command = { type = activate_unit_type which = transport_plane }
+		command = { type = new_model which = transport_plane value = 0 }
+		command = { type = activate_unit_type which = escort }
+		command = { type = new_model which = escort value = 0 }
+		command = { type = build_division which = naval_bomber value = escort when = 2 cost = -3.0 where = 75 }
+		command = { type = build_division which = transport_plane value = escort when = 1 cost = -2.5 where = 90 }
+		command = { type = setflag which = ind_v3_oceanic_air_force }
+		command = { type = setflag which = ind_v3_air_expansion_1938 }
+	}
+}
+
+event = {
+	id = 9271007
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_air_expansion_1938
+		NOT = { flag = ind_v3_arjan_commissioned }
+	}
+
+	name = "A New Generation Takes the Colours"
+	desc = "The expanded academies are producing officers who have known only an independent Indian service. Among the new pilots is Arjan Singh, commissioned into a force that now offers real operational responsibility to young talent."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = december year = 1939 }
+	offset = 7
+	deathdate = { day = 29 month = february year = 1940 }
+
+	action_a = {
+		ai_chance = 100
+		name = "Give the young officers commands they can grow into"
+		command = { type = money value = -175 }
+		command = { type = supplies value = -200 }
+		command = { type = wakeleader which = 250117 }
+		command = { type = wakeleader which = 251205 }
+		command = { type = wakeleader which = 251206 }
+		command = { type = wakeleader which = 251207 }
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_v3_arjan_commissioned }
+	}
+}
+
+event = {
+	id = 9271008
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_arjan_commissioned
+		NOT = { flag = ind_v3_air_command_1940 }
+	}
+
+	name = "The 1940 Air Command Review"
+	desc = "India has reached the planned wartime establishment, but the force is split among continental, maritime and army missions. The review can add a strategic reserve or spend the same resources integrating radar, logistics and maintenance."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = april year = 1940 }
+	offset = 8
+	deathdate = { day = 29 month = june year = 1940 }
+
+	action_a = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 3
+			manpower = 3
+	}
+		ai_chance = 55
+		name = "Create a two-wing strategic reserve"
+		command = { type = money value = -450 }
+		command = { type = supplies value = -1100 }
+		command = { type = activate_unit_type which = escort }
+		command = { type = new_model which = escort value = 0 }
+		command = { type = build_division which = multi_role value = escort when = 2 cost = -2.0 where = 75 }
+		command = { type = setflag which = ind_v3_air_command_1940 }
+	}
+	action_b = {
+		ai_chance = 45
+		name = "Perfect the force already in service"
+		command = { type = money value = -425 }
+		command = { type = supplies value = -650 }
+		command = { type = research_mod value = 3 }
+		command = { type = tc_mod value = 2 }
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_v3_air_command_1940 }
+	}
+}

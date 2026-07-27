@@ -1,0 +1,328 @@
+#########################################################################
+# India Mod V3: distinctive Indian elite formations
+#########################################################################
+# India Mod V3.1 economy pass
+
+event = {
+	id = 9270340
+	random = no
+	country = IND
+
+	decision = {
+		flag = ind_v3_army_reform
+		NOT = { flag = ind_v3_frontier_force }
+	}
+	decision_trigger = {
+	OR = {
+		AND = { money = 250 supplies = 1400 manpower = 36 }
+		AND = { money = 175 supplies = 850 manpower = 12 }
+		AND = { supplies = 650 manpower = 27 }
+	}
+}
+
+	name = "The Frontier Forces Charter"
+	desc = "The Khyber, Waziristan and Assam frontiers demand soldiers who can patrol mountains, work with local intelligence and fight without a heavy divisional tail. Delhi can unite the historic scouts and rifles in a field command, build a permanent frontier-warfare school, or preserve lightly equipped provincial battalions."
+	style = 2
+	picture = "india_v3_elite_frontier"
+
+	date = { day = 0 month = april year = 1935 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1937 }
+
+	action_a = {
+		trigger = {
+			money = 250
+			supplies = 1400
+			manpower = 36
+		}
+		ai_chance = 40
+		name = "Field command: three elite divisions; costs 250/1400/36 MP"
+		command = { type = money value = -250 }
+		command = { type = supplies value = -1400 }
+		command = { type = manpowerpool value = -36 }
+		command = { type = dissent value = 1 }
+		command = { type = add_corps which = "Frontier Forces Command" value = land where = 1537 }
+		command = { type = add_division which = "Khyber Rifles Division" value = bergsjaeger when = 0 where = engineer }
+		command = { type = add_division which = "Waziristan Scouts Division" value = bergsjaeger when = 0 where = armored_car }
+		command = { type = add_division which = "Assam Rifles Division" value = bergsjaeger when = 0 where = artillery }
+		command = { type = setflag which = ind_v3_frontier_field_command }
+		command = { type = setflag which = ind_v3_frontier_force }
+	}
+	action_b = {
+		trigger = {
+			money = 175
+			supplies = 850
+			manpower = 12
+		}
+		ai_chance = 35
+		name = "Frontier school: one division, +3 mountain org/morale"
+		command = { type = money value = -175 }
+		command = { type = supplies value = -850 }
+		command = { type = manpowerpool value = -12 }
+		command = { type = max_organization which = bergsjaeger value = 3 }
+		command = { type = morale which = bergsjaeger value = 3 }
+		command = { type = add_corps which = "Frontier Warfare School" value = land where = 1537 }
+		command = { type = add_division which = "Frontier Training Division" value = bergsjaeger when = 0 where = engineer }
+		command = { type = setflag which = ind_v3_frontier_school }
+		command = { type = setflag which = ind_v3_frontier_force }
+	}
+	action_c = {
+		trigger = {
+			# V3_QUEUE_MANPOWER = 27
+			manpower = 27
+			supplies = 650
+		}
+		ai_chance = 25
+		name = "Provincial scouts: +20 manpower, two garrisons; costs 650"
+		command = { type = supplies value = -650 }
+		command = { type = manpowerpool value = 20 }
+		command = { type = domestic which = professional_army value = -1 }
+		command = { type = build_division which = garrison value = engineer when = 2 cost = 4 where = 60 }
+		command = { type = setflag which = ind_v3_frontier_constabulary }
+		command = { type = setflag which = ind_v3_frontier_force }
+	}
+}
+
+event = {
+	id = 9270341
+	random = no
+	country = IND
+
+	decision = {
+		flag = ind_v3_air_program
+		NOT = { flag = ind_v3_airborne_arm }
+	}
+	decision_trigger = {
+	OR = {
+		AND = { money = 350 supplies = 1500 manpower = 18 }
+		AND = { money = 225 supplies = 900 manpower = 10 }
+		AND = { supplies = 750 manpower = 5 }
+	}
+}
+
+	name = "The Indian Airborne Experiment"
+	desc = "India's distances make airborne troops more than a prestige project. A complete brigade with organic lift can reinforce Kashmir, Burma or an island in hours; a parachute school builds a lasting doctrine; a transport command sacrifices assault power for strategic mobility."
+	style = 2
+	picture = "india_v3_elite_airborne"
+
+	date = { day = 0 month = march year = 1937 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1939 }
+
+	action_a = {
+		trigger = {
+			money = 350
+			supplies = 1500
+			manpower = 18
+		}
+		ai_chance = 35
+		name = "Airborne brigade and lift wing; costs 350/1500/18 MP"
+		command = { type = money value = -350 }
+		command = { type = supplies value = -1500 }
+		command = { type = manpowerpool value = -18 }
+		command = { type = activate_unit_type which = paratrooper }
+		command = { type = new_model which = paratrooper value = 0 }
+		command = { type = activate_unit_type which = transport_plane }
+		command = { type = new_model which = transport_plane value = 0 }
+		command = { type = add_corps which = "50th Indian Parachute Brigade" value = land where = 1459 }
+		command = { type = add_division which = "1st Indian Parachute Division" value = paratrooper when = 0 where = artillery }
+		command = { type = add_corps which = "Indian Airborne Transport Group" value = air where = 1459 }
+		command = { type = add_division which = "No. 1 Air Landing Wing" value = transport_plane when = 0 }
+		command = { type = setflag which = ind_v3_airborne_brigade }
+		command = { type = setflag which = ind_v3_airborne_arm }
+	}
+	action_b = {
+		trigger = {
+			money = 225
+			supplies = 900
+			manpower = 10
+		}
+		ai_chance = 40
+		name = "Parachute school: one brigade, +4 airborne org/morale"
+		command = { type = money value = -225 }
+		command = { type = supplies value = -900 }
+		command = { type = manpowerpool value = -10 }
+		command = { type = activate_unit_type which = paratrooper }
+		command = { type = new_model which = paratrooper value = 0 }
+		command = { type = max_organization which = paratrooper value = 4 }
+		command = { type = morale which = paratrooper value = 4 }
+		command = { type = add_corps which = "Agra Airborne Warfare School" value = land where = 1460 }
+		command = { type = add_division which = "Airborne Training Brigade" value = paratrooper when = 0 where = engineer }
+		command = { type = setflag which = ind_v3_airborne_school }
+		command = { type = setflag which = ind_v3_airborne_arm }
+	}
+	action_c = {
+		trigger = {
+			# V3_QUEUE_MANPOWER = 5
+			manpower = 5
+			supplies = 750
+		}
+		ai_chance = 25
+		name = "Transport command: two lift wings, +2 research; costs 750"
+		command = { type = supplies value = -750 }
+		command = { type = research_mod value = 2 }
+		command = { type = activate_unit_type which = transport_plane }
+		command = { type = new_model which = transport_plane value = 0 }
+		command = { type = build_division which = transport_plane when = 2 cost = 7 where = 150 }
+		command = { type = setflag which = ind_v3_air_transport_command }
+		command = { type = setflag which = ind_v3_airborne_arm }
+	}
+}
+
+event = {
+	id = 9270342
+	random = no
+	country = IND
+
+	decision = {
+		flag = ind_v3_force_expansion_1938
+		NOT = { flag = ind_v3_long_range_groups }
+	}
+	decision_trigger = {
+	OR = {
+		AND = { money = 300 supplies = 1700 manpower = 30 }
+		AND = { money = 250 supplies = 1000 manpower = 12 }
+		AND = { supplies = 900 manpower = 28 }
+	}
+}
+
+	name = "Long-Range Penetration Groups"
+	desc = "The hills beyond Imphal favour columns that can live from air supply, cut roads and disappear before a conventional counterattack. India can organize a full Eastern penetration group, make Imphal a jungle-warfare centre, or attach smaller reconnaissance columns to the field army."
+	style = 2
+	picture = "india_v3_elite_penetration"
+
+	date = { day = 0 month = october year = 1938 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1940 }
+
+	action_a = {
+		trigger = {
+			money = 300
+			supplies = 1700
+			manpower = 30
+		}
+		ai_chance = 40
+		name = "Eastern Group: three named divisions; costs 300/1700/30 MP"
+		command = { type = money value = -300 }
+		command = { type = supplies value = -1700 }
+		command = { type = manpowerpool value = -30 }
+		command = { type = add_corps which = "Eastern Long-Range Group" value = land where = 1442 }
+		command = { type = add_division which = "77th Indian Penetration Division" value = bergsjaeger when = 0 where = engineer }
+		command = { type = add_division which = "111th Lushai Brigade Group" value = bergsjaeger when = 0 where = artillery }
+		command = { type = add_division which = "23rd Naga Reconnaissance Group" value = bergsjaeger when = 0 where = armored_car }
+		command = { type = setflag which = ind_v3_eastern_penetration_group }
+		command = { type = setflag which = ind_v3_long_range_groups }
+	}
+	action_b = {
+		trigger = {
+			money = 250
+			supplies = 1000
+			manpower = 12
+		}
+		ai_chance = 35
+		name = "Imphal school: +4 mountain org, +3 morale, one division"
+		command = { type = money value = -250 }
+		command = { type = supplies value = -1000 }
+		command = { type = manpowerpool value = -12 }
+		command = { type = max_organization which = bergsjaeger value = 4 }
+		command = { type = morale which = bergsjaeger value = 3 }
+		command = { type = add_corps which = "Imphal Jungle Warfare Centre" value = land where = 1442 }
+		command = { type = add_division which = "Imphal Training Division" value = bergsjaeger when = 0 where = engineer }
+		command = { type = setflag which = ind_v3_imphal_jungle_school }
+		command = { type = setflag which = ind_v3_long_range_groups }
+	}
+	action_c = {
+		trigger = {
+			# V3_QUEUE_MANPOWER = 28
+			manpower = 28
+			supplies = 900
+		}
+		ai_chance = 25
+		name = "Reconnaissance columns: +3 land morale; costs 900/8 MP"
+		command = { type = supplies value = -900 }
+		command = { type = morale which = infantry value = 3 }
+		command = { type = build_division which = cavalry value = armored_car when = 2 cost = 5 where = 60 }
+		command = { type = setflag which = ind_v3_field_reconnaissance_columns }
+		command = { type = setflag which = ind_v3_long_range_groups }
+	}
+}
+
+event = {
+	id = 9270343
+	random = no
+	country = IND
+
+	decision = {
+		flag = ind_v3_naval_program
+		flag = ind_v3_eastern_defences
+		NOT = { flag = ind_v3_marine_arm }
+	}
+	decision_trigger = {
+	OR = {
+		AND = { money = 325 supplies = 1500 manpower = 24 }
+		AND = { money = 225 supplies = 950 manpower = 12 }
+		AND = { supplies = 800 manpower = 26 }
+	}
+}
+
+	name = "The Andaman Marine Force"
+	desc = "Port Blair needs troops able to move between islands, seize a jetty and hold until the fleet arrives. Delhi can create a two-division marine force, establish a permanent amphibious school, or organize cheaper coastwatchers and island garrisons."
+	style = 2
+	picture = "india_v3_elite_marines"
+
+	date = { day = 0 month = april year = 1939 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1941 }
+
+	action_a = {
+		trigger = {
+			money = 325
+			supplies = 1500
+			manpower = 24
+		}
+		ai_chance = 40
+		name = "Andaman Marine Force: two divisions; costs 325/1500/24 MP"
+		command = { type = money value = -325 }
+		command = { type = supplies value = -1500 }
+		command = { type = manpowerpool value = -24 }
+		command = { type = activate_unit_type which = marine }
+		command = { type = add_corps which = "Andaman Marine Force" value = land where = 1421 }
+		command = { type = add_division which = "1st Coromandel Marine Division" value = marine when = 0 where = artillery }
+		command = { type = add_division which = "2nd Andaman Marine Division" value = marine when = 0 where = engineer }
+		command = { type = setflag which = ind_v3_andaman_marine_force }
+		command = { type = setflag which = ind_v3_marine_arm }
+	}
+	action_b = {
+		trigger = {
+			money = 225
+			supplies = 950
+			manpower = 12
+		}
+		ai_chance = 35
+		name = "Amphibious school: +4 marine org/morale, one division"
+		command = { type = money value = -225 }
+		command = { type = supplies value = -950 }
+		command = { type = manpowerpool value = -12 }
+		command = { type = activate_unit_type which = marine }
+		command = { type = max_organization which = marine value = 4 }
+		command = { type = morale which = marine value = 4 }
+		command = { type = add_corps which = "Cochin Amphibious Warfare School" value = land where = 1497 }
+		command = { type = add_division which = "Indian Marine Training Division" value = marine when = 0 where = engineer }
+		command = { type = setflag which = ind_v3_amphibious_school }
+		command = { type = setflag which = ind_v3_marine_arm }
+	}
+	action_c = {
+		trigger = {
+			# V3_QUEUE_MANPOWER = 26
+			manpower = 26
+			supplies = 800
+		}
+		ai_chance = 25
+		name = "Coastwatchers: two island garrisons, +1 intelligence; costs 800"
+		command = { type = supplies value = -800 }
+		command = { type = intelligence which = us value = 1 }
+		command = { type = build_division which = garrison value = artillery when = 2 cost = 4 where = 60 }
+		command = { type = setflag which = ind_v3_andaman_coastwatchers }
+		command = { type = setflag which = ind_v3_marine_arm }
+	}
+}

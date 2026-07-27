@@ -1,0 +1,294 @@
+#########################################################################
+# India Mod V3: Allied strategic universe
+#########################################################################
+# India Mod V3.1 economy pass
+
+event = {
+	id = 9272000
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_allied_orientation
+		NOT = { flag = ind_v3_allied_naval_mission }
+	}
+
+	name = "The Portsmouth-Delhi Naval Mission"
+	desc = "Britain offers carrier, radar and anti-submarine instruction in exchange for Indian planning commitments from Aden to Singapore. The mission can be accepted as an equal technical exchange or narrowed to preserve strategic independence."
+	style = 2
+	picture = "British_Navy"
+
+	date = { day = 0 month = september year = 1937 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1938 }
+
+	action_a = {
+		ai_chance = 65
+		name = "Accept the full mission and sea-lane obligations"
+		command = { type = money value = -375 }
+		command = { type = supplies value = -550 }
+		command = { type = relation which = ENG value = 45 }
+		command = { type = steal_tech which = ENG }
+		command = { type = steal_tech which = ENG }
+		command = { type = steal_tech which = ENG }
+		command = { type = waketeam which = 250021 }
+		command = { type = waketeam which = 250022 }
+		command = { type = waketeam which = 250023 }
+		command = { type = setflag which = ind_v3_allied_sea_lane_commitment }
+		command = { type = setflag which = ind_v3_allied_naval_mission }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Limit cooperation to design and training"
+		
+		command = { type = relation which = ENG value = 20 }
+		command = { type = steal_tech which = ENG }
+		command = { type = steal_tech which = ENG }
+		command = { type = research_mod value = 1 }
+		command = { type = setflag which = ind_v3_allied_limited_mission }
+		command = { type = setflag which = ind_v3_allied_naval_mission }
+	}
+}
+
+event = {
+	id = 9272001
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_allied_naval_mission
+		NOT = { flag = ind_v3_allied_air_mission }
+	}
+
+	name = "The Commonwealth Air and Radar Mission"
+	desc = "British officers propose an integrated warning network and common aircraft standards. India gains immediate access to operational experience, but common standards make future procurement dependent on Allied supply."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = may year = 1938 }
+	offset = 7
+	deathdate = { day = 29 month = july year = 1938 }
+
+	action_a = {
+		ai_chance = 60
+		name = "Integrate radar, signals and aircraft standards"
+		command = { type = money value = -400 }
+		command = { type = supplies value = -550 }
+		command = { type = steal_tech which = ENG }
+		command = { type = steal_tech which = ENG }
+		command = { type = waketeam which = 250025 }
+		command = { type = waketeam which = 250030 }
+		command = { type = construct which = radar_station where = 1415 value = 2 }
+		command = { type = construct which = radar_station where = 1493 value = 2 }
+		command = { type = construct which = radar_station where = 1533 value = 2 }
+		command = { type = setflag which = ind_v3_allied_air_integration }
+		command = { type = setflag which = ind_v3_allied_air_mission }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Buy equipment but preserve Indian standards"
+		
+		command = { type = supplies value = 1000 }
+		command = { type = steal_tech which = ENG }
+		command = { type = research_mod value = 2 }
+		command = { type = setflag which = ind_v3_allied_independent_standards }
+		command = { type = setflag which = ind_v3_allied_air_mission }
+	}
+}
+
+event = {
+	id = 9272002
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_allied_air_mission
+		NOT = { flag = ind_v3_allied_sovereignty_bargain }
+	}
+
+	name = "The Sovereignty Bargain"
+	desc = "London asks for wartime access to Karachi, Bombay and Rangoon. Delhi can grant reciprocal access only under Indian command, accept broader Allied basing for immediate matériel, or refuse all permanent foreign bases."
+	style = 2
+	picture = "diplomatic_campaign"
+
+	date = { day = 0 month = april year = 1939 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1940 }
+
+	action_a = {
+		ai_chance = 55
+		name = "Grant reciprocal access under Indian command"
+		command = { type = access which = ENG }
+		command = { type = money value = 500 }
+		command = { type = supplies value = 1800 }
+		command = { type = relation which = ENG value = 35 }
+		command = { type = dissent value = 1 }
+		command = { type = setflag which = ind_v3_reciprocal_allied_access }
+		command = { type = setflag which = ind_v3_allied_sovereignty_bargain }
+	}
+	action_b = {
+		ai_chance = 25
+		name = "Accept broad basing for a major matériel package"
+		command = { type = access which = ENG }
+		command = { type = money value = 900 }
+		command = { type = supplies value = 3500 }
+		command = { type = steal_tech which = ENG }
+		command = { type = dissent value = 4 }
+		command = { type = setflag which = ind_v3_allied_bases }
+		command = { type = setflag which = ind_v3_allied_sovereignty_bargain }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "No foreign bases in sovereign India"
+		command = { type = relation which = ENG value = -20 }
+		command = { type = dissent value = -2 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = setflag which = ind_v3_no_foreign_bases }
+		command = { type = setflag which = ind_v3_allied_sovereignty_bargain }
+	}
+}
+
+event = {
+	id = 9272003
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_joined_allies
+		flag = ind_v3_allied_sovereignty_bargain
+		NOT = { flag = ind_v3_allied_war_command }
+	}
+
+	name = "India's Allied War Command"
+	desc = "The alliance asks where India's strategic weight will fall. A Middle Eastern expedition protects oil and the Suez route; an eastern concentration keeps Indian command focused on Burma, Malaya and the Bay of Bengal."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = january year = 1940 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1942 }
+
+	action_a = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 80
+			manpower = 80
+	}
+		ai_chance = 40
+		name = "Create a sovereign Middle East expeditionary army"
+		command = { type = money value = -425 }
+		command = { type = supplies value = -1250 }
+		command = { type = build_division which = infantry value = artillery when = 3 cost = -1.5 where = 60 }
+		command = { type = build_division which = motorized value = armored_car when = 2 cost = -1.8 where = 75 }
+		command = { type = relation which = ENG value = 25 }
+		command = { type = ai which = "v3/IND_allied.ai" }
+		command = { type = setflag which = ind_v3_allied_middle_east_command }
+		command = { type = setflag which = ind_v3_allied_war_command }
+	}
+	action_b = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 86
+			manpower = 86
+	}
+		ai_chance = 60
+		name = "Concentrate on the sovereign Eastern Command"
+		command = { type = money value = -375 }
+		command = { type = supplies value = -1200 }
+		command = { type = build_division which = bergsjaeger value = engineer when = 3 cost = -1.8 where = 60 }
+		command = { type = build_division which = marine value = artillery when = 2 cost = -1.8 where = 75 }
+		command = { type = construct which = air_base where = 1442 value = 3 trigger = { NOT = { building = { province = 1442 type = air_base value = 8 } } } }
+		command = { type = ai which = "v3/IND_allied.ai" }
+		command = { type = setflag which = ind_v3_allied_eastern_command }
+		command = { type = setflag which = ind_v3_allied_war_command }
+	}
+}
+
+event = {
+	id = 9272004
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_allied_war_command
+		NOT = { flag = ind_v3_atlantic_charter_position }
+	}
+
+	name = "India and the Atlantic Charter"
+	desc = "Allied declarations of self-determination are meaningless if they exclude Asia. India can make decolonization a condition of continued full cooperation or accept a private British commitment to preserve alliance unity."
+	style = 2
+	picture = "british_parliament"
+
+	date = { day = 0 month = march year = 1942 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1943 }
+
+	action_a = {
+		ai_chance = 60
+		name = "Demand a public Asian self-determination pledge"
+		command = { type = relation which = ENG value = -30 }
+		command = { type = relation which = USA value = 35 }
+		command = { type = dissent value = -3 }
+		command = { type = belligerence value = -3 }
+		command = { type = setflag which = ind_v3_allied_decolonization_demand }
+		command = { type = setflag which = ind_v3_atlantic_charter_position }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Accept a private commitment and keep the alliance united"
+		command = { type = relation which = ENG value = 30 }
+		command = { type = money value = 500 }
+		command = { type = supplies value = 1200 }
+		command = { type = dissent value = 2 }
+		command = { type = setflag which = ind_v3_allied_private_pledge }
+		command = { type = setflag which = ind_v3_atlantic_charter_position }
+	}
+}
+
+event = {
+	id = 9272005
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_atlantic_charter_position
+		NOT = { flag = ind_v3_allied_settlement_1945 }
+	}
+
+	name = "The Allied Settlement of 1945"
+	desc = "India has earned a place at the top table through ships, aircraft, armies and industrial support. Delhi must use that leverage to secure an Asian decolonization timetable, permanent great-power status, or a durable Commonwealth security system."
+	style = 2
+	picture = "diplomatic_campaign"
+
+	date = { day = 0 month = may year = 1945 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1947 }
+
+	action_a = {
+		ai_chance = 45
+		name = "Make Asian decolonization the price of partnership"
+		command = { type = relation which = ENG value = -20 }
+		command = { type = relation which = USA value = 30 }
+		command = { type = dissent value = -4 }
+		command = { type = money value = -600 }
+		command = { type = setflag which = ind_v3_allied_liberator_victory }
+		command = { type = setflag which = ind_v3_allied_settlement_1945 }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Secure permanent great-power recognition"
+		command = { type = relation which = ENG value = 25 }
+		command = { type = relation which = USA value = 25 }
+		command = { type = research_mod value = 3 }
+		command = { type = industrial_modifier which = money value = 3 }
+		command = { type = setflag which = ind_v3_allied_great_power_victory }
+		command = { type = setflag which = ind_v3_allied_settlement_1945 }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Build a sovereign Commonwealth security council"
+		command = { type = relation which = ENG value = 45 }
+		command = { type = supplies value = 1500 }
+		command = { type = tc_mod value = 3 }
+		command = { type = setflag which = ind_v3_allied_commonwealth_victory }
+		command = { type = setflag which = ind_v3_allied_settlement_1945 }
+	}
+}

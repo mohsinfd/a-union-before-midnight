@@ -1,0 +1,123 @@
+# India Mod V3: Japanese-aligned strategic universe
+
+neutrality = 10
+war = 90
+max_front_ratio = 1.35
+exp_force_ratio = 0.10
+
+combat = {
+	CHI = 100
+	CHC = 65
+	ENG = 95
+	USA = 65
+	SOV = 30
+}
+
+befriend = {
+	JAP = 180
+	SIA = 100
+	MAN = 80
+	GER = 55
+}
+
+protect = {
+	JAP = 80
+	SIA = 80
+	MAN = 50
+	NEP = 40
+	BHU = 40
+}
+
+military = {
+	relative_build_scheme = no
+
+	# Land: 48 percent
+	infantry = 21
+	cavalry = 1
+	motorized = 3
+	mechanized = 2
+	light_armor = 1
+	armor = 2
+	paratrooper = 1
+	marine = 7
+	bergsjaeger = 5
+	garrison = 1
+	hq = 4
+	militia = 0
+
+	# Air: 24 percent
+	interceptor = 5
+	multi_role = 6
+	cas = 2
+	strategic_bomber = 0
+	tactical_bomber = 4
+	naval_bomber = 6
+	transport_plane = 1
+	flying_bomb = 0
+	flying_rocket = 0
+
+	# Navy: 28 percent
+	battleship = 0
+	carrier = 5
+	light_carrier = 2
+	escort_carrier = 1
+	destroyer = 6
+	light_cruiser = 5
+	heavy_cruiser = 1
+	battlecruiser = 0
+	submarine = 3
+	nuclear_submarine = 0
+	transports = 5
+}
+
+technology = {
+	preference = {
+		1560 1570 1580 1590 1600 1610 1620 1630 1640 1650 1660
+		3510 3520 3530 3540 3550 12060 3560 3570
+		12100 12110 12120 12130 12140 12150
+		4700 4710 4190 4200 4210 15140 15150
+		4900 4910 4920 4930 4940 4950 4960
+	}
+	armor = 3
+	infantry = 8
+	industry = 8
+	aircraft = 8
+	naval = 10
+	land_doctrines = 6
+	secret_weapons = 2
+	air_doctrines = 8
+	naval_doctrines = 10
+}
+
+front = {
+	recklessness = 1
+	base_attack_odds = 1.25
+	min_attack_odds = 1.05
+	jungle_attack = 1.30
+	mountain_attack = 1.10
+}
+
+air_marshal = {
+	airsuperioritydesirability = 35.0
+	navalstrikedesirability = 45.0
+	portstrikedesirability = 25.0
+	convoyraiddesirability = 20.0
+}
+
+invasion = {
+	base = 0.5
+	random = 5.0
+	distance = 0.3
+	island = 3.0
+	air_base = 2.0
+	naval_base = 2.0
+	air_support = 3.0
+	redirect = priority
+	ignore = no
+}
+
+admiral = {
+	min_core_attack_fleets = 2
+	num_attack_fleets = 5
+	base = { 1421 1447 1493 1497 1500 1517 1533 }
+}

@@ -1,0 +1,396 @@
+#########################################################################
+# India Mod V3: resources, fuel security and connected economic corridors
+#########################################################################
+# India Mod V3.1 economy pass
+
+event = {
+	id = 9271400
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_integrated
+		NOT = { flag = ind_v3_geological_survey }
+	}
+
+	name = "The Geological Survey Mandate"
+	desc = "Industrial plans drawn in Delhi mean little without reliable surveys of coal, ore, oil and transport. A national survey can map the whole subcontinent, while a narrower strategic survey will concentrate scarce engineers on the eastern mineral belt."
+	style = 2
+	picture = "india_v3_industry"
+
+	date = { day = 0 month = february year = 1934 }
+	offset = 8
+	deathdate = { day = 29 month = april year = 1934 }
+
+	action_a = {
+		ai_chance = 60
+		name = "Map the resources of the whole Union"
+		command = { type = money value = -150 }
+		command = { type = supplies value = -200 }
+		command = { type = research_mod value = 2 }
+		command = { type = add_prov_resource which = 1476 value = 15 where = energy }
+		command = { type = add_prov_resource which = 1472 value = 8 where = metal }
+		command = { type = add_prov_resource which = 1503 value = 4 where = rare_materials }
+		command = { type = setflag which = ind_v3_geological_survey }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Concentrate on the eastern mineral belt"
+		
+		command = { type = supplies value = -250 }
+		command = { type = add_prov_resource which = 1476 value = 22 where = energy }
+		command = { type = add_prov_resource which = 1472 value = 10 where = metal }
+		command = { type = dissent value = 1 }
+		command = { type = setflag which = ind_v3_geological_survey }
+	}
+}
+
+event = {
+	id = 9271401
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_geological_survey
+		NOT = { flag = ind_v3_coalfield_modernization }
+	}
+
+	name = "The Bengal-Bihar Coal Corridor"
+	desc = "Ranchi's coal can power Calcutta and Jamshedpur only if mines, washeries and rail sidings are expanded together. The cabinet must choose between a fast state programme and a slower compact with the mining houses."
+	style = 2
+	picture = "india_v3_industry"
+
+	date = { day = 0 month = october year = 1934 }
+	offset = 8
+	deathdate = { day = 29 month = december year = 1934 }
+
+	action_a = {
+		ai_chance = 65
+		name = "Build the integrated public coal corridor"
+		command = { type = money value = -225 }
+		command = { type = supplies value = -400 }
+		command = { type = manpowerpool value = -8 }
+		command = { type = add_prov_resource which = 1476 value = 38 where = energy }
+		command = { type = add_prov_resource which = 1476 value = 12 where = metal }
+		command = { type = construct which = infrastructure where = 1476 value = 15 trigger = { NOT = { building = { province = 1476 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1472 value = 15 trigger = { NOT = { building = { province = 1472 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1447 value = 10 trigger = { NOT = { building = { province = 1447 type = infrastructure value = 0.91 } } } }
+		command = { type = setflag which = ind_v3_coalfield_modernization }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Guarantee markets to private mine owners"
+		command = { type = money value = -100 }
+		command = { type = supplies value = -200 }
+		command = { type = add_prov_resource which = 1476 value = 28 where = energy }
+		command = { type = add_prov_resource which = 1476 value = 8 where = metal }
+		command = { type = domestic which = free_market value = 1 }
+		command = { type = dissent value = 2 }
+		command = { type = setflag which = ind_v3_coalfield_modernization }
+	}
+}
+
+event = {
+	id = 9271402
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_coalfield_modernization
+		NOT = { flag = ind_v3_steel_security }
+	}
+
+	name = "Tata, Bhilai and the Steel Security Act"
+	desc = "The army, railways and shipyards are competing for the same steel. Expanding both Jamshedpur and the central ore fields will be expensive, but a single-company solution risks creating a strategic bottleneck."
+	style = 2
+	picture = "india_v3_industry"
+
+	date = { day = 0 month = may year = 1935 }
+	offset = 8
+	deathdate = { day = 29 month = july year = 1935 }
+
+	action_a = {
+		ai_chance = 55
+		name = "Build two national steel centres"
+		command = { type = money value = -400 }
+		command = { type = supplies value = -700 }
+		command = { type = manpowerpool value = -10 }
+		command = { type = add_prov_resource which = 1472 value = 24 where = metal }
+		command = { type = add_prov_resource which = 1477 value = 20 where = metal }
+		command = { type = add_prov_resource which = 1476 value = 20 where = energy }
+		command = { type = construct which = infrastructure where = 1472 value = 10 trigger = { NOT = { building = { province = 1472 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1477 value = 10 trigger = { NOT = { building = { province = 1477 type = infrastructure value = 0.91 } } } }
+		command = { type = industrial_modifier which = total value = 2 }
+		command = { type = setflag which = ind_v3_steel_security }
+	}
+	action_b = {
+		ai_chance = 45
+		name = "Let Tata lead under a state purchase guarantee"
+		
+		command = { type = supplies value = -400 }
+		command = { type = add_prov_resource which = 1472 value = 34 where = metal }
+		command = { type = add_prov_resource which = 1476 value = 15 where = energy }
+		command = { type = domestic which = free_market value = 1 }
+		command = { type = dissent value = 1 }
+		command = { type = setflag which = ind_v3_steel_security }
+	}
+}
+
+event = {
+	id = 9271403
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_steel_security
+		NOT = { flag = ind_v3_assam_oil }
+	}
+
+	name = "Assam Oil and the Brahmaputra Lifeline"
+	desc = "The Digboi fields are modest by global standards but vital to an India planning mechanized armies, aviation and oceanic fleets. Delhi can build a protected pipeline and refinery system or maximize extraction and rely on vulnerable rail tankers."
+	style = 2
+	picture = "india_v3_industry"
+
+	date = { day = 0 month = december year = 1935 }
+	offset = 8
+	deathdate = { day = 29 month = february year = 1936 }
+
+	action_a = {
+		ai_chance = 70
+		name = "Build the protected Assam fuel system"
+		command = { type = money value = -350 }
+		command = { type = supplies value = -550 }
+		command = { type = add_prov_resource which = 1441 value = 22 where = oil }
+		command = { type = add_prov_resource which = 1441 value = 18 where = energy }
+		command = { type = construct which = infrastructure where = 1441 value = 15 trigger = { NOT = { building = { province = 1441 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1439 value = 15 trigger = { NOT = { building = { province = 1439 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1445 value = 10 trigger = { NOT = { building = { province = 1445 type = infrastructure value = 0.91 } } } }
+		command = { type = setflag which = ind_v3_assam_oil }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Maximize output and accept the transport risk"
+		command = { type = money value = 150 }
+		command = { type = supplies value = -250 }
+		command = { type = add_prov_resource which = 1441 value = 30 where = oil }
+		command = { type = dissent value = 2 }
+		command = { type = setflag which = ind_v3_assam_oil }
+	}
+}
+
+event = {
+	id = 9271404
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_assam_oil
+		NOT = { flag = ind_v3_central_mineral_grid }
+	}
+
+	name = "The Central Mineral Grid"
+	desc = "Nagpur, Raipur, Ranchi and Jamshedpur form a defensible inland industrial quadrilateral. Linking their mines and furnaces will reduce coastal vulnerability and support the second national plan."
+	style = 2
+	picture = "india_v3_industry"
+
+	date = { day = 0 month = august year = 1936 }
+	offset = 8
+	deathdate = { day = 29 month = october year = 1936 }
+
+	action_a = {
+		ai_chance = 65
+		name = "Complete the inland heavy-industry grid"
+		command = { type = money value = -425 }
+		command = { type = supplies value = -750 }
+		command = { type = manpowerpool value = -8 }
+		command = { type = add_prov_resource which = 1476 value = 30 where = energy }
+		command = { type = add_prov_resource which = 1485 value = 20 where = energy }
+		command = { type = add_prov_resource which = 1477 value = 16 where = metal }
+		command = { type = construct which = infrastructure where = 1476 value = 10 trigger = { NOT = { building = { province = 1476 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1477 value = 15 trigger = { NOT = { building = { province = 1477 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1485 value = 15 trigger = { NOT = { building = { province = 1485 type = infrastructure value = 0.86 } } } }
+		command = { type = setflag which = ind_v3_central_mineral_grid }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Prioritize power generation over transport"
+		
+		command = { type = supplies value = -500 }
+		command = { type = add_prov_resource which = 1476 value = 42 where = energy }
+		command = { type = add_prov_resource which = 1485 value = 18 where = energy }
+		command = { type = add_prov_resource which = 1477 value = 10 where = metal }
+		command = { type = setflag which = ind_v3_central_mineral_grid }
+	}
+}
+
+event = {
+	id = 9271405
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_central_mineral_grid
+		NOT = { flag = ind_v3_refinery_program }
+	}
+
+	name = "The National Refinery Programme"
+	desc = "Crude production alone cannot sustain modern armed forces. Refineries at Bombay, Calcutta and Rangoon can distribute fuel across three theatres, while synthetic plants inland promise greater security at a much higher capital cost."
+	style = 2
+	picture = "india_v3_industry"
+
+	date = { day = 0 month = april year = 1937 }
+	offset = 8
+	deathdate = { day = 29 month = june year = 1937 }
+
+	action_a = {
+		ai_chance = 55
+		name = "Build the three-coast refinery network"
+		command = { type = money value = -500 }
+		command = { type = supplies value = -750 }
+		command = { type = add_prov_resource which = 1517 value = 8 where = oil }
+		command = { type = add_prov_resource which = 1447 value = 6 where = oil }
+		command = { type = add_prov_resource which = 1415 value = 6 where = oil }
+		command = { type = construct which = infrastructure where = 1517 value = 10 trigger = { NOT = { building = { province = 1517 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1447 value = 10 trigger = { NOT = { building = { province = 1447 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1415 value = 10 trigger = { NOT = { building = { province = 1415 type = infrastructure value = 0.91 } } } }
+		command = { type = setflag which = ind_v3_refinery_program }
+	}
+	action_b = {
+		ai_chance = 45
+		name = "Invest in protected synthetic fuel plants"
+		command = { type = money value = -650 }
+		command = { type = supplies value = -1000 }
+		command = { type = add_prov_resource which = 1477 value = 8 where = oil }
+		command = { type = add_prov_resource which = 1485 value = 8 where = oil }
+		command = { type = add_prov_resource which = 1476 value = 20 where = energy }
+		command = { type = construct which = infrastructure where = 1477 value = 10 trigger = { NOT = { building = { province = 1477 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1485 value = 10 trigger = { NOT = { building = { province = 1485 type = infrastructure value = 0.91 } } } }
+		command = { type = research_mod value = 2 }
+		command = { type = setflag which = ind_v3_synthetic_fuel }
+		command = { type = setflag which = ind_v3_refinery_program }
+	}
+}
+
+event = {
+	id = 9271406
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_refinery_program
+		NOT = { flag = ind_v3_strategic_materials }
+	}
+
+	name = "Strategic Materials Reserve"
+	desc = "Aircraft engines, radios, optics and armour require alloys that ordinary coal-and-steel planning does not provide. India can subsidize difficult mines and chemical separation plants or secure long-term foreign contracts."
+	style = 2
+	picture = "india_v3_industry"
+
+	date = { day = 0 month = january year = 1938 }
+	offset = 8
+	deathdate = { day = 29 month = march year = 1938 }
+
+	action_a = {
+		ai_chance = 60
+		name = "Develop domestic alloy and chemical capacity"
+		command = { type = money value = -500 }
+		command = { type = supplies value = -650 }
+		command = { type = add_prov_resource which = 1503 value = 8 where = rare_materials }
+		command = { type = add_prov_resource which = 1507 value = 8 where = rare_materials }
+		command = { type = add_prov_resource which = 1493 value = 6 where = rare_materials }
+		command = { type = add_prov_resource which = 1477 value = 12 where = metal }
+		command = { type = setflag which = ind_v3_strategic_materials }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Buy reserves on the world market"
+		command = { type = money value = -725 }
+		command = { type = supplies value = 1500 }
+		command = { type = relation which = USA value = 20 }
+		command = { type = relation which = ENG value = 15 }
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_v3_imported_materials }
+		command = { type = setflag which = ind_v3_strategic_materials }
+	}
+}
+
+event = {
+	id = 9271407
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_strategic_materials
+		NOT = { flag = ind_v3_resource_security_1939 }
+	}
+
+	name = "Resource Security for a Great-Power Economy"
+	desc = "The 1939 estimates are blunt: a continental army, sixteen air groups and three fleets will consume more energy and metal than the pre-independence economy ever produced. The cabinet must finish the resource base before war closes the sea lanes."
+	style = 2
+	picture = "india_v3_industry"
+
+	date = { day = 0 month = march year = 1939 }
+	offset = 8
+	deathdate = { day = 29 month = may year = 1939 }
+
+	action_a = {
+		ai_chance = 60
+		name = "Fund the full strategic self-sufficiency programme"
+		command = { type = money value = -775 }
+		command = { type = supplies value = -1300 }
+		command = { type = manpowerpool value = -12 }
+		command = { type = add_prov_resource which = 1476 value = 35 where = energy }
+		command = { type = add_prov_resource which = 1485 value = 25 where = energy }
+		command = { type = add_prov_resource which = 1472 value = 18 where = metal }
+		command = { type = add_prov_resource which = 1477 value = 18 where = metal }
+		command = { type = add_prov_resource which = 1441 value = 10 where = oil }
+		command = { type = industrial_modifier which = total value = 3 }
+		command = { type = setflag which = ind_v3_resource_self_sufficient }
+		command = { type = setflag which = ind_v3_resource_security_1939 }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Rely on trade and preserve capital for rearmament"
+		command = { type = money value = -450 }
+		command = { type = supplies value = 2500 }
+		command = { type = add_prov_resource which = 1476 value = 24 where = energy }
+		command = { type = add_prov_resource which = 1472 value = 16 where = metal }
+		command = { type = relation which = USA value = 25 }
+		command = { type = relation which = ENG value = 20 }
+		command = { type = setflag which = ind_v3_trade_dependent }
+		command = { type = setflag which = ind_v3_resource_security_1939 }
+	}
+}
+
+event = {
+	id = 9271408
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_resource_security_1939
+		NOT = { flag = ind_v3_resource_review_1940 }
+	}
+
+	name = "The 1940 Resource Balance"
+	desc = "The national plans have created a true industrial economy. Engineers now recommend a final programme of mine safety, reserve stocks and duplicated power links so that one raid or regional crisis cannot halt the whole system."
+	style = 2
+	picture = "india_v3_industry"
+
+	date = { day = 0 month = june year = 1940 }
+	offset = 10
+	deathdate = { day = 29 month = august year = 1940 }
+
+	action_a = {
+		ai_chance = 100
+		name = "Build resilience into the national resource grid"
+		command = { type = money value = -450 }
+		command = { type = supplies value = -650 }
+		command = { type = dissent value = -2 }
+		command = { type = add_prov_resource which = 1476 value = 20 where = energy }
+		command = { type = add_prov_resource which = 1472 value = 10 where = metal }
+		command = { type = add_prov_resource which = 1503 value = 5 where = rare_materials }
+		command = { type = tc_mod value = 3 }
+		command = { type = setflag which = ind_v3_resource_review_1940 }
+	}
+}

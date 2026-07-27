@@ -1,0 +1,518 @@
+#########################################################################
+# India Mod V3: three-fleet navy and carrier programme
+#########################################################################
+# India Mod V3.1 economy pass
+
+event = {
+	id = 9271100
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_transport_1934
+		NOT = { flag = ind_v3_naval_staff }
+	}
+
+	name = "The Indian Naval Staff"
+	desc = "A continental state with two ocean fronts cannot improvise maritime strategy after war begins. Ram Dass Katari proposes a permanent naval staff, fleet school and submarine branch before the first expansion programme is authorized."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = november year = 1934 }
+	offset = 7
+	deathdate = { day = 29 month = january year = 1935 }
+
+	action_a = {
+		ai_chance = 70
+		name = "Found the fleet and submarine schools"
+		command = { type = money value = -175 }
+		command = { type = supplies value = -250 }
+		command = { type = manpowerpool value = -5 }
+		command = { type = waketeam which = 250023 }
+		command = { type = waketeam which = 250024 }
+		command = { type = construct which = naval_base where = 1533 value = 3 trigger = { NOT = { building = { province = 1533 type = naval_base value = 8 } } } }
+		command = { type = construct which = naval_base where = 1493 value = 3 trigger = { NOT = { building = { province = 1493 type = naval_base value = 8 } } } }
+		command = { type = setflag which = ind_v3_naval_staff }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Concentrate scarce officers in one fleet school"
+		
+		command = { type = supplies value = -150 }
+		command = { type = waketeam which = 250023 }
+		command = { type = research_mod value = 1 }
+		command = { type = setflag which = ind_v3_naval_staff }
+	}
+}
+
+event = {
+	id = 9271101
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_naval_program
+		flag = ind_v3_naval_staff
+		NOT = { flag = ind_v3_three_fleet_doctrine }
+	}
+
+	name = "Three Seas, Three Commands"
+	desc = "The navy proposes permanent Arabian Sea, Bay of Bengal and Indian Ocean commands. Three headquarters consume officers and escorts, but a single fleet cannot defend Karachi, Burma and the ocean trade routes at the same time."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = november year = 1935 }
+	offset = 7
+	deathdate = { day = 29 month = january year = 1936 }
+
+	action_a = {
+		ai_chance = 75
+		name = "Create all three maritime commands"
+		command = { type = money value = -300 }
+		command = { type = supplies value = -400 }
+		command = { type = manpowerpool value = -6 }
+		command = { type = construct which = naval_base where = 1533 value = 3 trigger = { NOT = { building = { province = 1533 type = naval_base value = 8 } } } }
+		command = { type = construct which = naval_base where = 1493 value = 6 trigger = { NOT = { building = { province = 1493 type = naval_base value = 5 } } } }
+		command = { type = construct which = naval_base where = 1497 value = 6 trigger = { NOT = { building = { province = 1497 type = naval_base value = 5 } } } }
+		command = { type = domestic which = professional_army value = 1 }
+		command = { type = setflag which = ind_v3_three_fleet_doctrine }
+	}
+	action_b = {
+		ai_chance = 25
+		name = "Keep one fleet with two regional stations"
+		
+		command = { type = supplies value = -250 }
+		command = { type = construct which = naval_base where = 1533 value = 3 trigger = { NOT = { building = { province = 1533 type = naval_base value = 8 } } } }
+		command = { type = construct which = naval_base where = 1493 value = 3 trigger = { NOT = { building = { province = 1493 type = naval_base value = 8 } } } }
+		command = { type = setflag which = ind_v3_three_fleet_doctrine }
+	}
+}
+
+event = {
+	id = 9271102
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_three_fleet_doctrine
+		NOT = { flag = ind_v3_dockyard_act }
+	}
+
+	name = "The National Dockyard Act"
+	desc = "Bombay can repair a fleet, but India needs yards able to design and build major warships. A national act would divide work among Bombay, Vizagapatam and Cochin; concentrating at Bombay is cheaper but leaves the eastern fleet dependent on one coast."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = june year = 1936 }
+	offset = 7
+	deathdate = { day = 29 month = august year = 1936 }
+
+	action_a = {
+		ai_chance = 65
+		name = "Build a three-coast naval industry"
+		command = { type = money value = -550 }
+		command = { type = supplies value = -950 }
+		command = { type = manpowerpool value = -8 }
+		command = { type = waketeam which = 250021 }
+		command = { type = construct which = ic where = 1517 value = 2 }
+		command = { type = construct which = ic where = 1493 value = 2 }
+		command = { type = construct which = ic where = 1497 value = 2 }
+		command = { type = construct which = naval_base where = 1517 value = 3 trigger = { NOT = { building = { province = 1517 type = naval_base value = 8 } } } }
+		command = { type = construct which = naval_base where = 1493 value = 6 trigger = { NOT = { building = { province = 1493 type = naval_base value = 5 } } } }
+		command = { type = construct which = naval_base where = 1497 value = 6 trigger = { NOT = { building = { province = 1497 type = naval_base value = 5 } } } }
+		command = { type = setflag which = ind_v3_three_coast_yards }
+		command = { type = setflag which = ind_v3_dockyard_act }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Concentrate major construction at Bombay"
+		
+		command = { type = supplies value = -700 }
+		command = { type = waketeam which = 250021 }
+		command = { type = construct which = ic where = 1517 value = 4 }
+		command = { type = construct which = naval_base where = 1517 value = 3 trigger = { NOT = { building = { province = 1517 type = naval_base value = 8 } } } }
+		command = { type = dissent value = 1 }
+		command = { type = setflag which = ind_v3_bombay_yard }
+		command = { type = setflag which = ind_v3_dockyard_act }
+	}
+}
+
+event = {
+	id = 9271103
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_dockyard_act
+		NOT = { flag = ind_v3_carrier_decision }
+	}
+
+	name = "The Carrier Question"
+	desc = "Naval aviation officers argue that India cannot command the open ocean from land bases alone. A fleet carrier would announce great-power status, a light carrier would cover the regional fleets, while a submarine strategy would reject the expense and vulnerability of aviation ships."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = january year = 1937 }
+	offset = 7
+	deathdate = { day = 29 month = march year = 1937 }
+
+	action_a = {
+		ai_chance = 50
+		name = "Authorize one fleet carrier and one light carrier"
+		command = { type = money value = -775 }
+		command = { type = supplies value = -1450 }
+		command = { type = manpowerpool value = -8 }
+		command = { type = dissent value = 2 }
+		command = { type = gain_tech which = 3510 }
+		command = { type = gain_tech which = 4900 }
+		command = { type = gain_tech which = 8030 }
+		command = { type = waketeam which = 250021 }
+		command = { type = waketeam which = 250022 }
+		command = { type = waketeam which = 250023 }
+		command = { type = setflag which = ind_v3_fleet_carrier_authorized }
+		command = { type = setflag which = ind_v3_light_carrier_authorized }
+		command = { type = setflag which = ind_v3_carrier_decision }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Begin with two light carriers"
+		command = { type = money value = -525 }
+		command = { type = supplies value = -1050 }
+		command = { type = manpowerpool value = -6 }
+		command = { type = gain_tech which = 3510 }
+		command = { type = gain_tech which = 4900 }
+		command = { type = gain_tech which = 8030 }
+		command = { type = waketeam which = 250021 }
+		command = { type = waketeam which = 250022 }
+		command = { type = setflag which = ind_v3_two_light_carriers }
+		command = { type = setflag which = ind_v3_carrier_decision }
+	}
+	action_c = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 2
+			manpower = 2
+	}
+		ai_chance = 15
+		name = "Reject the fleet carrier and dominate below the surface"
+		
+		command = { type = supplies value = -950 }
+		command = { type = gain_tech which = 3510 }
+		command = { type = gain_tech which = 4900 }
+		command = { type = waketeam which = 250024 }
+		command = { type = build_division which = submarine value = naval_torpedoes_s when = 3 cost = -3.0 where = 90 }
+		command = { type = setflag which = ind_v3_submarine_navy }
+		command = { type = setflag which = ind_v3_carrier_decision }
+	}
+}
+
+event = {
+	id = 9271104
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_carrier_decision
+		NOT = { flag = ind_v3_arabian_fleet }
+	}
+
+	name = "The Arabian Sea Fleet"
+	desc = "Karachi's command requests a permanent force able to escort oil traffic, cover the western coast and contest raiders entering from the Gulf. The first operational fleet will also train the navy's new generation of captains."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = august year = 1937 }
+	offset = 7
+	deathdate = { day = 29 month = october year = 1937 }
+
+	action_a = {
+		ai_chance = 100
+		name = "Commission the Arabian Sea Fleet at Karachi"
+		command = { type = money value = -525 }
+		command = { type = supplies value = -1300 }
+		command = { type = manpowerpool value = -8 }
+		command = { type = add_corps which = "Arabian Sea Fleet" value = naval where = 1533 }
+		command = { type = add_division which = "INS Himalaya" value = battleship when = 0 where = naval_fire_controll_l }
+		command = { type = add_division which = "INS Delhi" value = light_cruiser when = 0 where = naval_fire_controll_s }
+		command = { type = add_division which = "INS Bombay" value = light_cruiser when = 0 where = naval_anti_air_s }
+		command = { type = setflag which = ind_v3_arabian_fleet }
+	}
+}
+
+event = {
+	id = 9271105
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_arabian_fleet
+		NOT = { flag = ind_v3_bay_fleet }
+	}
+
+	name = "The Bay of Bengal Fleet"
+	desc = "Vizagapatam's command must protect Calcutta, Rangoon and the approaches to Malaya. Its cruisers and destroyers will operate with the naval air arm and prepare the service for carrier operations."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = april year = 1938 }
+	offset = 7
+	deathdate = { day = 29 month = june year = 1938 }
+
+	action_a = {
+		ai_chance = 100
+		name = "Commission the Bay of Bengal Fleet at Vizagapatam"
+		command = { type = money value = -575 }
+		command = { type = supplies value = -1450 }
+		command = { type = manpowerpool value = -8 }
+		command = { type = add_corps which = "Bay of Bengal Fleet" value = naval where = 1493 }
+		command = { type = add_division which = "INS Brahmaputra" value = battleship when = 0 where = naval_fire_controll_l }
+		command = { type = add_division which = "INS Calcutta" value = light_cruiser when = 0 where = naval_fire_controll_s }
+		command = { type = add_division which = "INS Madras" value = light_cruiser when = 0 where = naval_anti_air_s }
+		command = { type = setflag which = ind_v3_bay_fleet }
+	}
+}
+
+event = {
+	id = 9271106
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_bay_fleet
+		NOT = { flag = ind_v3_carrier_keels }
+	}
+
+	name = "The Carrier Keels Are Laid"
+	desc = "The slipways are ready, but armour plate, turbines and trained shipwrights must be diverted from every other programme. Laying the keels now commits India to years of expenditure and makes the carrier fleet politically difficult to abandon."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = october year = 1938 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1938 }
+
+	action_a = {
+		ai_chance = 100
+		name = "Fund the keels, escorts and naval aircraft"
+		command = { type = money value = -950 }
+		command = { type = supplies value = -2100 }
+		command = { type = manpowerpool value = -10 }
+		command = { type = dissent value = 2 }
+		command = { type = construct which = ic where = 1517 value = 2 }
+		command = { type = construct which = ic where = 1493 value = 2 }
+		command = { type = setflag which = ind_v3_carrier_keels }
+	}
+}
+
+event = {
+	id = 9271107
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_carrier_keels
+		NOT = { flag = ind_v3_oceanic_fleet_commissioned }
+	}
+
+	name = "The Oceanic Fleet Commissions"
+	desc = "India's first aviation ships complete trials with their escort screen. The exact force reflects the 1937 decision, but in every case the navy now possesses three permanent commands and an ocean-going striking force."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = january year = 1940 }
+	offset = 7
+	deathdate = { day = 29 month = march year = 1940 }
+
+	action_a = {
+		trigger = { flag = ind_v3_fleet_carrier_authorized }
+		ai_chance = 34
+		name = "Commission INS Vikrant and its battle group"
+		command = { type = supplies value = -1250 }
+		command = { type = add_corps which = "Indian Ocean Fleet" value = naval where = 1517 }
+		command = { type = add_division which = "INS Vikrant" value = carrier when = 0 where = cag }
+		command = { type = add_division which = "INS Hindustan" value = heavy_cruiser when = 0 where = naval_fire_controll_l }
+		command = { type = add_division which = "INS Rajputana" value = heavy_cruiser when = 0 where = naval_anti_air_l }
+		command = { type = add_division which = "1st Ocean Escort Flotilla" value = destroyer when = 0 where = naval_asw }
+		command = { type = add_division which = "2nd Ocean Escort Flotilla" value = destroyer when = 0 where = naval_asw }
+		command = { type = setflag which = ind_v3_oceanic_fleet_commissioned }
+	}
+	action_b = {
+		trigger = { flag = ind_v3_two_light_carriers }
+		ai_chance = 33
+		name = "Commission the twin light carriers"
+		command = { type = supplies value = -1050 }
+		command = { type = add_corps which = "Indian Ocean Fleet" value = naval where = 1517 }
+		command = { type = add_division which = "INS Viraat" value = light_carrier when = 0 where = light_cag }
+		command = { type = add_division which = "INS Vikram" value = light_carrier when = 0 where = light_cag }
+		command = { type = add_division which = "INS Hindustan" value = heavy_cruiser when = 0 where = naval_fire_controll_l }
+		command = { type = add_division which = "INS Rajputana" value = heavy_cruiser when = 0 where = naval_anti_air_l }
+		command = { type = add_division which = "1st Ocean Escort Flotilla" value = destroyer when = 0 where = naval_asw }
+		command = { type = add_division which = "2nd Ocean Escort Flotilla" value = destroyer when = 0 where = naval_asw }
+		command = { type = setflag which = ind_v3_oceanic_fleet_commissioned }
+	}
+	action_c = {
+		trigger = { flag = ind_v3_submarine_navy }
+		ai_chance = 33
+		name = "Commission a light carrier and the oceanic submarine force"
+		command = { type = supplies value = -1000 }
+		command = { type = add_corps which = "Indian Ocean Fleet" value = naval where = 1517 }
+		command = { type = add_division which = "INS Viraat" value = light_carrier when = 0 where = light_cag }
+		command = { type = add_division which = "INS Hindustan" value = heavy_cruiser when = 0 where = naval_fire_controll_l }
+		command = { type = add_division which = "INS Rajputana" value = heavy_cruiser when = 0 where = naval_anti_air_l }
+		command = { type = add_division which = "1st Ocean Escort Flotilla" value = destroyer when = 0 where = naval_asw }
+		command = { type = add_division which = "2nd Ocean Escort Flotilla" value = destroyer when = 0 where = naval_asw }
+		command = { type = add_corps which = "Indian Ocean Submarine Command" value = naval where = 1517 }
+		command = { type = add_division which = "Indian Ocean Submarine Squadron" value = submarine when = 0 where = naval_torpedoes_s }
+		command = { type = add_division which = "Arabian Submarine Squadron" value = submarine when = 0 where = naval_torpedoes_s }
+		command = { type = add_division which = "Bay Submarine Squadron" value = submarine when = 0 where = naval_torpedoes_s }
+		command = { type = setflag which = ind_v3_oceanic_fleet_commissioned }
+	}
+}
+
+event = {
+	id = 9271108
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_oceanic_fleet_commissioned
+		owned = { province = 1511 data = IND }
+		control = { province = 1511 data = IND }
+		NOT = { flag = ind_v3_trincomalee_command }
+	}
+
+	name = "Trincomalee and the Deep-Ocean Command"
+	desc = "With Ceylon in the Union, Trincomalee offers the finest fleet anchorage in the northern Indian Ocean. Expanding the base would shift the oceanic fleet away from crowded Bombay and place it astride the sea lanes to Africa and Southeast Asia."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = april year = 1940 }
+	offset = 20
+	deathdate = { day = 29 month = december year = 1945 }
+
+	action_a = {
+		ai_chance = 80
+		name = "Build the deep-ocean base at Colombo-Trincomalee"
+		command = { type = money value = -550 }
+		command = { type = supplies value = -900 }
+		command = { type = construct which = naval_base where = 1511 value = 6 trigger = { NOT = { building = { province = 1511 type = naval_base value = 5 } } } }
+		command = { type = construct which = air_base where = 1511 value = 3 trigger = { NOT = { building = { province = 1511 type = air_base value = 8 } } } }
+		command = { type = construct which = coastal_fort where = 1511 value = 2 }
+		command = { type = setflag which = ind_v3_trincomalee_command }
+	}
+	action_b = {
+		ai_chance = 20
+		name = "Keep oceanic command at Cochin and Bombay"
+		command = { type = money value = -250 }
+		command = { type = construct which = naval_base where = 1497 value = 3 trigger = { NOT = { building = { province = 1497 type = naval_base value = 8 } } } }
+		command = { type = relation which = ENG value = 10 }
+		command = { type = setflag which = ind_v3_trincomalee_command }
+	}
+}
+
+event = {
+	id = 9271109
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_oceanic_fleet_commissioned
+		NOT = { flag = ind_v3_naval_board_1941 }
+	}
+
+	name = "The 1941 Naval Board"
+	desc = "Three fleets now compete for modern escorts, trained aviators and fuel. Katari asks the cabinet to choose whether the next effort should improve carrier operations, anti-submarine warfare or undersea striking power."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = april year = 1941 }
+	offset = 8
+	deathdate = { day = 29 month = june year = 1941 }
+
+	action_a = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 4
+			manpower = 4
+	}
+		ai_chance = 45
+		name = "Expand carrier aviation and fleet logistics"
+		command = { type = money value = -500 }
+		command = { type = supplies value = -1100 }
+		command = { type = research_mod value = 3 }
+		command = { type = build_division which = destroyer value = naval_asw when = 2 cost = -2.5 where = 90 }
+		command = { type = setflag which = ind_v3_carrier_navy_1941 }
+		command = { type = setflag which = ind_v3_naval_board_1941 }
+	}
+	action_b = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 7
+			manpower = 7
+	}
+		ai_chance = 35
+		name = "Build an escort and anti-submarine navy"
+		command = { type = money value = -425 }
+		command = { type = supplies value = -1000 }
+		command = { type = build_division which = destroyer value = naval_asw when = 4 cost = -3.0 where = 75 }
+		command = { type = setflag which = ind_v3_escort_navy_1941 }
+		command = { type = setflag which = ind_v3_naval_board_1941 }
+	}
+	action_c = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 3
+			manpower = 3
+	}
+		ai_chance = 20
+		name = "Expand the oceanic submarine arm"
+		command = { type = money value = -400 }
+		command = { type = supplies value = -950 }
+		command = { type = build_division which = submarine value = naval_torpedoes_s when = 4 cost = -3.0 where = 75 }
+		command = { type = setflag which = ind_v3_submarine_navy_1941 }
+		command = { type = setflag which = ind_v3_naval_board_1941 }
+	}
+}
+
+event = {
+	id = 9271110
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_naval_board_1941
+		NOT = { flag = ind_v3_second_carrier }
+	}
+
+	name = "The Second Carrier Programme"
+	desc = "The first carrier generation has proven that India can sustain aviation ships. A second fleet carrier would give the oceanic command strategic depth; a modern light carrier is cheaper and can reinforce either regional fleet."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = july year = 1942 }
+	offset = 8
+	deathdate = { day = 29 month = september year = 1942 }
+
+	action_a = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 11
+			manpower = 11
+	}
+		ai_chance = 55
+		name = "Build a second fleet carrier"
+		command = { type = money value = -1025 }
+		command = { type = supplies value = -2200 }
+		command = { type = build_division which = carrier value = cag when = 1 cost = -3.0 where = 300 }
+		command = { type = build_division which = destroyer value = naval_asw when = 3 cost = -2.5 where = 120 }
+		command = { type = setflag which = ind_v3_second_carrier }
+	}
+	action_b = {
+	trigger = {
+			# V3_QUEUE_MANPOWER = 9
+			manpower = 9
+	}
+		ai_chance = 45
+		name = "Build a modern light carrier and escorts"
+		command = { type = money value = -675 }
+		command = { type = supplies value = -1650 }
+		command = { type = build_division which = light_carrier value = light_cag when = 1 cost = -3.0 where = 240 }
+		command = { type = build_division which = destroyer value = naval_asw when = 4 cost = -3.0 where = 90 }
+		command = { type = setflag which = ind_v3_second_carrier }
+	}
+}

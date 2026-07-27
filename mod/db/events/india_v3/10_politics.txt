@@ -1,0 +1,246 @@
+#########################################################################
+# India Mod V3: constitutional politics and social settlement
+#########################################################################
+# India Mod V3.1 economy pass
+
+event = {
+	id = 9270100
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_integrated
+		NOT = { flag = ind_v3_constitution }
+	}
+
+	name = "The Constituent Assembly"
+	desc = "Delegates arrive in Delhi with incompatible mandates. Federalists demand entrenched provincial rights, planners demand an executive able to transform the economy, and radicals demand that independence reach the village as well as the flagstaff. The constitution will determine both political legitimacy and the speed of reconstruction."
+	style = 2
+	picture = "india_v3_independence"
+
+	date = { day = 0 month = april year = 1933 }
+	offset = 10
+	deathdate = { day = 29 month = june year = 1933 }
+
+	action_a = {
+		ai_chance = 45
+		name = "Parliament: -3 dissent, less intervention; costs 100 money"
+		command = { type = money value = -100 }
+		command = { type = dissent value = -3 }
+		command = { type = domestic which = interventionism value = -1 }
+		command = { type = setflag which = ind_v3_parliamentary_constitution }
+		command = { type = setflag which = ind_v3_constitution }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Planning executive: defence/intervention +1; costs 150/200"
+		command = { type = money value = -150 }
+		command = { type = supplies value = -200 }
+		command = { type = dissent value = -2 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = setflag which = ind_v3_planning_constitution }
+		command = { type = setflag which = ind_v3_constitution }
+	}
+	action_c = {
+		ai_chance = 15
+		name = "Social rights: +15 manpower; +1 dissent, costs 75/150"
+		command = { type = money value = -75 }
+		command = { type = supplies value = -150 }
+		command = { type = dissent value = 1 }
+		command = { type = manpowerpool value = 15 }
+		command = { type = domestic which = free_market value = -1 }
+		command = { type = setflag which = ind_v3_social_constitution }
+		command = { type = setflag which = ind_v3_constitution }
+	}
+}
+
+event = {
+	id = 9270101
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_constitution
+		NOT = { flag = ind_v3_land_settlement }
+	}
+
+	name = "Land, Water and the Village"
+	desc = "Most Indians live from the land, yet revenue systems, indebtedness and insecure tenancy keep agricultural output low. Confiscatory reform can break landed power quickly, a vast irrigation and credit programme can raise output at enormous cost, or Delhi can bargain with landlords for stability and private investment."
+	style = 2
+	picture = "india_v3_industry"
+
+	date = { day = 0 month = september year = 1933 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1933 }
+
+	action_a = {
+		ai_chance = 25
+		name = "Redistribute: +45 manpower, two rural routes; +5 dissent"
+		command = { type = money value = -75 }
+		command = { type = supplies value = -200 }
+		command = { type = dissent value = 5 }
+		command = { type = manpowerpool value = 45 }
+		command = { type = domestic which = free_market value = -1 }
+		command = { type = construct which = infrastructure where = 1465 value = 10 trigger = { NOT = { building = { province = 1465 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1445 value = 10 trigger = { NOT = { building = { province = 1445 type = infrastructure value = 0.91 } } } }
+		command = { type = setflag which = ind_v3_land_redistribution }
+		command = { type = setflag which = ind_v3_land_settlement }
+	}
+	action_b = {
+		ai_chance = 55
+		name = "Rural investment: -2 dissent, four routes; costs 200/550"
+		command = { type = money value = -200 }
+		command = { type = supplies value = -550 }
+		command = { type = manpowerpool value = -10 }
+		command = { type = dissent value = -2 }
+		command = { type = construct which = infrastructure where = 1461 value = 15 trigger = { NOT = { building = { province = 1461 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1465 value = 15 trigger = { NOT = { building = { province = 1465 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1530 value = 15 trigger = { NOT = { building = { province = 1530 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1445 value = 15 trigger = { NOT = { building = { province = 1445 type = infrastructure value = 0.86 } } } }
+		command = { type = setflag which = ind_v3_rural_investment }
+		command = { type = setflag which = ind_v3_land_settlement }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Property compact: +500 money, freer market; +4 dissent"
+		command = { type = money value = 500 }
+		command = { type = dissent value = 4 }
+		command = { type = manpowerpool value = -15 }
+		command = { type = domestic which = free_market value = 1 }
+		command = { type = relation which = ENG value = 15 }
+		command = { type = setflag which = ind_v3_property_compromise }
+		command = { type = setflag which = ind_v3_land_settlement }
+	}
+}
+
+event = {
+	id = 9270102
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_land_settlement
+		NOT = { flag = ind_v3_language_settlement }
+	}
+
+	name = "A Language for the Union"
+	desc = "The civil service needs common working languages, but any imposed settlement risks turning culture into rebellion. A multilingual federation is expensive, a Hindi-Hindustani standard is efficient but divisive, and retaining English as the senior administrative language preserves expertise at the price of dependence."
+	style = 2
+	picture = "india_v3_independence"
+
+	date = { day = 0 month = july year = 1934 }
+	offset = 20
+	deathdate = { day = 29 month = october year = 1934 }
+
+	action_a = {
+		ai_chance = 50
+		name = "Multilingual service: -3 dissent, +1 research; costs 250"
+		command = { type = money value = -250 }
+		command = { type = dissent value = -3 }
+		command = { type = research_mod value = 1 }
+		command = { type = setflag which = ind_v3_multilingual }
+		command = { type = setflag which = ind_v3_language_settlement }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Hindustani standard: +3 TC, +10 manpower; +2 dissent"
+		command = { type = money value = -125 }
+		command = { type = dissent value = 2 }
+		command = { type = tc_mod value = 3 }
+		command = { type = manpowerpool value = 10 }
+		command = { type = setflag which = ind_v3_hindustani }
+		command = { type = setflag which = ind_v3_language_settlement }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "English service: +2 research, +20 UK; costs 300 supplies"
+		command = { type = supplies value = -300 }
+		command = { type = dissent value = 1 }
+		command = { type = relation which = ENG value = 20 }
+		command = { type = research_mod value = 2 }
+		command = { type = domestic which = interventionism value = -1 }
+		command = { type = setflag which = ind_v3_english_service }
+		command = { type = setflag which = ind_v3_language_settlement }
+	}
+}
+
+event = {
+	id = 9270103
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_language_settlement
+		NOT = { flag = ind_v3_1936_mandate }
+	}
+
+	name = "The 1936 National Mandate"
+	desc = "Three years of sovereignty have transformed the argument. Gandhi offers to serve as constitutional President above a renewed Nehru federal coalition. Patel proposes a national development cabinet. Bose demands a mobilization directorate able to force the pace of rearmament. This mandate appoints a complete government and remains in office until the next constitutional crisis."
+	style = 2
+	picture = "india_v3_independence"
+
+	date = { day = 0 month = november year = 1936 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1936 }
+
+	action_a = {
+		ai_chance = 35
+		name = "Gandhi-Nehru: -5 dissent, -1 intervention; costs 150 money"
+		command = { type = dissent value = -5 }
+		command = { type = money value = -150 }
+		command = { type = domestic which = interventionism value = -1 }
+		command = { type = headofstate which = 251041 }
+		command = { type = headofgovernment which = 251002 }
+		command = { type = foreignminister which = 251003 }
+		command = { type = armamentminister which = 251004 }
+		command = { type = ministerofsecurity which = 251005 }
+		command = { type = ministerofintelligence which = 251006 }
+		command = { type = chiefofstaff which = 251007 }
+		command = { type = chiefofarmy which = 251008 }
+		command = { type = chiefofnavy which = 251009 }
+		command = { type = chiefofair which = 251010 }
+		command = { type = setflag which = ind_v3_gandhi_mandate }
+		command = { type = setflag which = ind_v3_1936_mandate }
+	}
+	action_b = {
+		ai_chance = 45
+		name = "Patel-Visvesvaraya: -2 dissent, +1 defence; costs 250/400"
+		command = { type = money value = -250 }
+		command = { type = supplies value = -400 }
+		command = { type = dissent value = -2 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = headofstate which = 251011 }
+		command = { type = headofgovernment which = 251012 }
+		command = { type = foreignminister which = 251013 }
+		command = { type = armamentminister which = 251014 }
+		command = { type = ministerofsecurity which = 251015 }
+		command = { type = ministerofintelligence which = 251016 }
+		command = { type = chiefofstaff which = 251017 }
+		command = { type = chiefofarmy which = 251018 }
+		command = { type = chiefofnavy which = 251019 }
+		command = { type = chiefofair which = 251020 }
+		command = { type = setflag which = ind_v3_patel_mandate }
+		command = { type = setflag which = ind_v3_1936_mandate }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Bose-Patel: army/intervention +1; +2 dissent, costs 700 supplies"
+		command = { type = supplies value = -700 }
+		command = { type = dissent value = 2 }
+		command = { type = domestic which = professional_army value = 1 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = headofstate which = 251040 }
+		command = { type = headofgovernment which = 251031 }
+		command = { type = foreignminister which = 251032 }
+		command = { type = armamentminister which = 251033 }
+		command = { type = ministerofsecurity which = 251034 }
+		command = { type = ministerofintelligence which = 251035 }
+		command = { type = chiefofstaff which = 251036 }
+		command = { type = chiefofarmy which = 251037 }
+		command = { type = chiefofnavy which = 251038 }
+		command = { type = chiefofair which = 251039 }
+		command = { type = setflag which = ind_v3_bose_mandate }
+		command = { type = setflag which = ind_v3_1936_mandate }
+	}
+}
