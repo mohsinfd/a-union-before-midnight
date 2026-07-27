@@ -16,7 +16,7 @@ event = {
 	}
 
 	name = "The 1940 Great-Power Audit"
-	desc = "Seven years after independence, India fields a continental army, a multi-mission air force, three fleets and an industrial resource base able to sustain them. The achievement is real, but officers warn that quality, fuel and logistics must now catch up with scale."
+	desc = "Seven years after the 1933 Union Settlement, India fields a continental army, a multi-mission air force, three fleets and an industrial resource base able to sustain them. The achievement is real, but officers warn that quality, fuel and logistics must now catch up with scale."
 	style = 2
 	picture = "india_v3_armed_forces"
 
@@ -123,7 +123,7 @@ event = {
 	}
 
 	name = "1964: India at the Zenith"
-	desc = "The independent state established in 1933 has become one of the world's decisive powers: industrially self-confident, scientifically advanced, secure across three seas and capable of choosing its own alignments. The campaign's central promise has been fulfilled."
+	desc = "The state born at Lahore has become one of the world's decisive powers: industrially self-confident, scientifically advanced, secure across three seas and capable of choosing its own alignments. The campaign's central promise has been fulfilled."
 	style = 2
 	picture = "india_v3_independence"
 
@@ -161,7 +161,7 @@ event = {
 	}
 
 	name = "1964: A Durable Great Power"
-	desc = "India has not achieved every ambition of the independence generation, but it remains sovereign, industrial, militarily formidable and able to influence the global balance. The Union enters its next era from strength."
+	desc = "India has not achieved every ambition of the Lahore generation, but it remains sovereign, industrial, militarily formidable and able to influence the global balance. The Union enters its next era from strength."
 	style = 2
 	picture = "india_v3_independence"
 
@@ -207,4 +207,3 @@ event = {
 		command = { type = setflag which = ind_v3_final_score }
 	}
 }
-

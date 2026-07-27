@@ -1,6 +1,6 @@
 ﻿param(
     [string]$GameRoot,
-    [string]$TargetName = "India Ascendant",
+    [string]$TargetName = "A Union Before Midnight",
     [switch]$Force
 )
 
@@ -93,7 +93,7 @@ if ($managed.Count -ne $expectedHashes.Count) {
     throw "Manifest and hash-manifest counts do not match."
 }
 
-Write-Host "Verifying $($managed.Count) India Ascendant overlay files..."
+Write-Host "Verifying $($managed.Count) A Union Before Midnight overlay files..."
 foreach ($relative in $managed) {
     $source = Assert-SafeChildPath $overlayRoot $relative
     if (-not (Test-Path -LiteralPath $source -PathType Leaf)) {
@@ -105,13 +105,13 @@ foreach ($relative in $managed) {
     }
 }
 
-$markerPath = Join-Path $targetRoot "INDIA_ASCENDANT_INSTALL.json"
-$oldManagedPath = Join-Path $targetRoot "INDIA_ASCENDANT_MANAGED_FILES.txt"
+$markerPath = Join-Path $targetRoot "A_UNION_BEFORE_MIDNIGHT_INSTALL.json"
+$oldManagedPath = Join-Path $targetRoot "A_UNION_BEFORE_MIDNIGHT_MANAGED_FILES.txt"
 if (Test-Path -LiteralPath $targetRoot -PathType Container) {
     if (-not (Test-Path -LiteralPath $markerPath -PathType Leaf) -and -not $Force) {
         throw "The target folder already exists and was not created by this installer. Use -Force only after checking it: $targetRoot"
     }
-    Write-Host "Updating existing India Ascendant installation..."
+    Write-Host "Updating existing A Union Before Midnight installation..."
 } else {
     Write-Host "Creating an isolated Blood and Iron foundation..."
     New-Item -ItemType Directory -Path $targetRoot -Force | Out-Null
@@ -134,7 +134,7 @@ foreach ($relative in $oldManaged) {
     }
 }
 
-Write-Host "Installing India Ascendant $version..."
+Write-Host "Installing A Union Before Midnight $version..."
 foreach ($relative in $managed) {
     $source = Assert-SafeChildPath $overlayRoot $relative
     $target = Assert-SafeChildPath $targetRoot $relative
@@ -156,14 +156,14 @@ foreach ($relative in $managed) {
 
 $managed | Set-Content -LiteralPath $oldManagedPath -Encoding ASCII
 @{
-    name = "India Ascendant"
+    name = "A Union Before Midnight"
     version = $version
     installed_at = (Get-Date).ToString("o")
     foundation = "Blood and Iron v1.1"
 } | ConvertTo-Json | Set-Content -LiteralPath $markerPath -Encoding UTF8
 
 Write-Host ""
-Write-Host "India Ascendant $version is installed and verified:"
+Write-Host "A Union Before Midnight $version is installed and verified:"
 Write-Host "  $targetRoot"
 Write-Host ""
 Write-Host "Select '$TargetName' in the Darkest Hour launcher."

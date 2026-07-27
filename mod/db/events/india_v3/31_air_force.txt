@@ -435,8 +435,6 @@ event = {
 	action_a = {
 		ai_chance = 100
 		name = "Give the young officers commands they can grow into"
-		command = { type = money value = -175 }
-		command = { type = supplies value = -200 }
 		command = { type = wakeleader which = 250117 }
 		command = { type = wakeleader which = 251205 }
 		command = { type = wakeleader which = 251206 }

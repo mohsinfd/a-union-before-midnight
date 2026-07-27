@@ -1,9 +1,9 @@
 =======================================================================
- INDIA ASCENDANT 3.3.0
+ A UNION BEFORE MIDNIGHT - V3.4
  For Darkest Hour 1.05.2
 =======================================================================
 
-India Ascendant is a focused alternate-history campaign built on Blood and
+A Union Before Midnight is a focused alternate-history campaign built on Blood and
 Iron v1.1. India becomes sovereign on 1 January 1933 and inherits the
 territories, armed forces and unresolved institutions of the British Raj.
 
@@ -16,12 +16,22 @@ third-ranked power without receiving an automatic victory.
  INSTALLATION
 -----------------------------------------------------------------------
 
-1. Install Blood and Iron v1.1.
-2. Run INSTALL.bat from the public release folder.
-3. Select "India Ascendant" in the Darkest Hour launcher.
-4. Start "India Ascendant: 1933" and select India.
+Source build:
 
-A new 1933 campaign is recommended. V2 save games are not compatible.
+1. Keep this source folder outside the Darkest Hour game directory.
+2. Run BUILD_AND_DEPLOY_V3.bat.
+3. The build validates all events, provinces, portraits, AI profiles,
+   industrial targets and force-plan targets before it updates the game.
+4. Select "India Mod V3" in the Darkest Hour launcher.
+5. Start "A Union Before Midnight: India 1933" and select India.
+
+Manual public installation:
+
+1. Install Blood and Iron v1.1.
+2. Extract the distributed "India Mod V3" folder into Darkest Hour\Mods.
+3. Select "India Mod V3" in the launcher.
+
+V3 requires a new 1933 campaign. V2 save games are not compatible.
 
 -----------------------------------------------------------------------
  CAMPAIGN FEATURES
@@ -91,6 +101,9 @@ BUILD_AND_DEPLOY_V3.bat runs:
   sprite, unit-panel and production-icon namespaces.
 - Province registry regeneration.
 - Event syntax, ID, trigger, command and date validation.
+- A row-by-row event/decision audit: optional authorizations are decisions;
+  deadlines, crises, replies and consequences are events. Automatic
+  one-option events cannot silently deduct resources.
 - Province ownership and province-role validation.
 - Minister, leader, team and portrait validation.
 - Exact historical-basis, embellishment and research-source coverage for all
@@ -110,15 +123,15 @@ BUILD_AND_DEPLOY_V3.bat runs:
 The automated gates cannot simulate the closed-source Darkest Hour engine.
 A consolidated in-game campaign test is still required after deployment.
 
-V3.2 can continue a V3.1 save made before the February 1934 army-reform
-choice. A save that already contains the disabled anti-tank attachment in
-its production queue should not be resumed; use the last pre-choice save.
+V3.4 requires a new campaign to see the 1933 independence prologue and
+provisional-cabinet sequence. Existing healthy V3.3 saves can continue and
+will use the corrected future programme decisions.
 
 -----------------------------------------------------------------------
  CREDITS
 -----------------------------------------------------------------------
 
-India Mod V3 design, events, validation and India-specific content:
+A Union Before Midnight design, events, validation and India-specific content:
 Mohsin Dingankar with Codex collaboration.
 
 Foundation:
@@ -136,4 +149,3 @@ foundational authors and subject to their original permissions.
 Detailed image provenance, licence records and historical research notes are
 included in docs\ART_AND_RESEARCH_CREDITS_V3.2.md and the CSV manifests under
 tools\data.
-

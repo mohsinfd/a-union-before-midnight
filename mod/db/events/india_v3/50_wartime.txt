@@ -269,6 +269,9 @@ event = {
 		flag = ind_v3_war_mobilization
 		NOT = { flag = ind_v3_war_finance }
 	}
+	decision_trigger = {
+		atwar = yes
+	}
 
 	name = "Finance the Long War"
 	desc = "Mobilization has outgrown ordinary revenue. War bonds preserve consumer choice but create future debt, compulsory saving transfers the burden directly to households, and monetary finance buys speed at the risk of inflation and unrest."

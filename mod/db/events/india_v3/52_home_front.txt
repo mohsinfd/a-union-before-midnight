@@ -9,12 +9,13 @@ event = {
 	country = IND
 
 	trigger = {
-		flag = ind_v3_integrated
+		atwar = yes
+		flag = ind_v3_war_finance
 		NOT = { flag = ind_v3_war_finance_settled }
 	}
 
-	name = "The War Finance Act"
-	desc = "Global war has raised the price of every ship, aircraft and machine tool India imports. The cabinet can impose a hard central war budget, finance expansion through patriotic bonds, or protect household consumption and accept slower mobilization. Each course shifts the burden to a different part of society."
+	name = "The Second War Budget"
+	desc = "A year of emergency finance has exposed the real burden of the long war. Import prices have risen, the services compete for every machine tool, and the first bond issue or compulsory levy cannot carry mobilization indefinitely. Parliament must now decide where the continuing burden will fall: excess profits, another appeal to national savings, or a slower war economy that protects household consumption."
 	style = 2
 	picture = "india_v3_industry"
 

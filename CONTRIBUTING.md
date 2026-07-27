@@ -21,7 +21,7 @@ unit tooltip. Those distinctions matter in the Darkest Hour engine.
 
 ## Contributions
 
-Keep changes within India Ascendant namespace whenever possible:
+Keep changes within the A Union Before Midnight namespace whenever possible:
 
 - event IDs: `9270000-9279999`;
 - flags: `ind_v3_*` or a documented successor namespace;

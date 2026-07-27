@@ -1,0 +1,210 @@
+id,file,title,classification,actions,reason
+9270000,00_bootstrap.txt,A Union Before Midnight,event,1,Campaign premise or mandatory transfer-of-power settlement.
+9270001,00_bootstrap.txt,"One Administration, Many Nations",event,3,Campaign premise or mandatory transfer-of-power settlement.
+9270002,00_bootstrap.txt,The Provisional Cabinet,event,3,Campaign premise or mandatory transfer-of-power settlement.
+9270100,10_politics.txt,The Constituent Assembly,event,3,Time-bound constitutional or social settlement that the state must resolve.
+9270101,10_politics.txt,"Land, Water and the Village",event,3,Time-bound constitutional or social settlement that the state must resolve.
+9270102,10_politics.txt,A Language for the Union,event,3,Time-bound constitutional or social settlement that the state must resolve.
+9270103,10_politics.txt,The 1936 National Mandate,event,3,Time-bound constitutional or social settlement that the state must resolve.
+9270200,20_development.txt,The Emergency Reconstruction Act,decision,3,Optional national investment authorization; the player may defer it.
+9270201,20_development.txt,The Union Transport Grid,decision,3,Optional national investment authorization; the player may defer it.
+9270202,20_development.txt,"Steel, Coal and Machine Tools",decision,3,Optional national investment authorization; the player may defer it.
+9270203,20_development.txt,Power for a Continent,decision,3,Optional national investment authorization; the player may defer it.
+9270204,20_development.txt,A National System of Science,decision,3,Optional national investment authorization; the player may defer it.
+9270205,20_development.txt,The Second National Plan,decision,3,Optional national investment authorization; the player may defer it.
+9270206,20_development.txt,An Industrial Power,event,1,Automatic milestone reached after the player-authorized development chain.
+9270300,30_military.txt,Rebuild the Indian Army,decision,3,Optional armed-forces programme authorization.
+9270301,30_military.txt,An Indian Aviation Industry,decision,3,Optional armed-forces programme authorization.
+9270302,30_military.txt,Command of the Indian Ocean,decision,3,Optional armed-forces programme authorization.
+9270303,30_military.txt,The National Armaments Board,decision,3,Optional armed-forces programme authorization.
+9270304,30_military.txt,The 1938 Force Expansion,decision,3,Optional armed-forces programme authorization.
+9270305,30_military.txt,Secure the Eastern Approaches,decision,3,Optional armed-forces programme authorization.
+9270306,30_military.txt,The Gurkha Settlement,decision,3,Optional armed-forces programme authorization.
+9270340,34_elite_forces.txt,The Frontier Forces Charter,decision,3,Optional elite-formation authorization.
+9270341,34_elite_forces.txt,The Indian Airborne Experiment,decision,3,Optional elite-formation authorization.
+9270342,34_elite_forces.txt,Long-Range Penetration Groups,decision,3,Optional elite-formation authorization.
+9270343,34_elite_forces.txt,The Andaman Marine Force,decision,3,Optional elite-formation authorization.
+9270400,40_diplomacy.txt,India and the Coming World Crisis,event,4,Foreign reply or mandatory grand-strategy conference.
+9270401,40_diplomacy.txt,Choose a European Partner,decision,2,"Player-initiated diplomatic, alliance, or accession initiative."
+9270402,40_diplomacy.txt,The Shape of Asian Security,decision,2,"Player-initiated diplomatic, alliance, or accession initiative."
+9270403,40_diplomacy.txt,The Delhi-Moscow Technical Compact,decision,2,"Player-initiated diplomatic, alliance, or accession initiative."
+9270404,40_diplomacy.txt,Enter the Allied Coalition,decision,2,"Player-initiated diplomatic, alliance, or accession initiative."
+9270405,40_diplomacy.txt,Enter the Continental Coalition,decision,2,"Player-initiated diplomatic, alliance, or accession initiative."
+9270406,40_diplomacy.txt,Enter the Socialist Coalition,decision,2,"Player-initiated diplomatic, alliance, or accession initiative."
+9270407,40_diplomacy.txt,Enter the Co-Prosperity Coalition,decision,2,"Player-initiated diplomatic, alliance, or accession initiative."
+9270410,40_diplomacy.txt,The Himalayan Settlement,decision,4,"Player-initiated diplomatic, alliance, or accession initiative."
+9270411,40_diplomacy.txt,India Offers Constituent Status,event,2,Foreign reply or mandatory grand-strategy conference.
+9270412,40_diplomacy.txt,Bhutan Enters the Union,event,1,Foreign reply or mandatory grand-strategy conference.
+9270413,40_diplomacy.txt,Bhutan Rejects Federation,event,1,Foreign reply or mandatory grand-strategy conference.
+9270414,40_diplomacy.txt,India Offers Constituent Status,event,2,Foreign reply or mandatory grand-strategy conference.
+9270415,40_diplomacy.txt,Nepal Enters the Union,event,1,Foreign reply or mandatory grand-strategy conference.
+9270416,40_diplomacy.txt,Nepal Rejects Federation,event,1,Foreign reply or mandatory grand-strategy conference.
+9270420,40_diplomacy.txt,Negotiate the Ceylon Settlement,decision,2,"Player-initiated diplomatic, alliance, or accession initiative."
+9270421,40_diplomacy.txt,India Proposes a Ceylon Settlement,event,2,Foreign reply or mandatory grand-strategy conference.
+9270422,40_diplomacy.txt,Ceylon Joins the Union,event,1,Foreign reply or mandatory grand-strategy conference.
+9270423,40_diplomacy.txt,Britain Refuses the Ceylon Settlement,event,1,Foreign reply or mandatory grand-strategy conference.
+9270430,40_diplomacy.txt,The Question of Goa,decision,2,"Player-initiated diplomatic, alliance, or accession initiative."
+9270431,40_diplomacy.txt,India Offers to Purchase Goa,event,2,Foreign reply or mandatory grand-strategy conference.
+9270432,40_diplomacy.txt,Goa Joins the Union,event,1,Foreign reply or mandatory grand-strategy conference.
+9270433,40_diplomacy.txt,Portugal Refuses the Goa Settlement,event,1,Foreign reply or mandatory grand-strategy conference.
+9270450,46_world_reactions.txt,India and the Abyssinian Crisis,event,3,External world event requiring an Indian response.
+9270451,46_world_reactions.txt,The Spanish Civil War,event,3,External world event requiring an Indian response.
+9270452,46_world_reactions.txt,War Comes to China,event,3,External world event requiring an Indian response.
+9270453,46_world_reactions.txt,The Anschluss,event,3,External world event requiring an Indian response.
+9270454,46_world_reactions.txt,The Munich Settlement,event,3,External world event requiring an Indian response.
+9270455,46_world_reactions.txt,Empires on the March,event,3,External world event requiring an Indian response.
+9270456,46_world_reactions.txt,War in Europe,event,3,External world event requiring an Indian response.
+9270500,50_wartime.txt,Mobilize the Union for War,event,3,"War-triggered crisis, operational review, or consequence of an earlier authorization."
+9270501,50_wartime.txt,The Emergency Factory Programme,decision,3,Optional wartime economic authorization.
+9270502,50_wartime.txt,War Reaches the Eastern Frontier,event,3,"War-triggered crisis, operational review, or consequence of an earlier authorization."
+9270503,50_wartime.txt,Finance the Long War,decision,3,Optional wartime economic authorization.
+9270504,50_wartime.txt,A Unified Strategic Command,event,3,"War-triggered crisis, operational review, or consequence of an earlier authorization."
+9270505,50_wartime.txt,The Arsenal of Armed Neutrality,decision,1,Optional wartime economic authorization.
+9270600,60_postwar.txt,The Frontier Science Programme,decision,3,Optional advanced or postwar strategic programme.
+9270601,60_postwar.txt,An Oceanic Fleet,decision,3,Optional advanced or postwar strategic programme.
+9270602,60_postwar.txt,The Third National Plan,decision,3,Optional advanced or postwar strategic programme.
+9270603,60_postwar.txt,The Great-Power Charter,event,3,"Scheduled election, postwar settlement, international crisis, or programme review."
+9270604,60_postwar.txt,The Peace Dividend,event,3,"Scheduled election, postwar settlement, international crisis, or programme review."
+9270700,21_fallbacks.txt,Provincial Recovery Fills the Gap,event,1,"Automatic continuity, compatibility, or missed-decision fallback."
+9270701,21_fallbacks.txt,The Patchwork Transport Settlement,event,1,"Automatic continuity, compatibility, or missed-decision fallback."
+9270702,21_fallbacks.txt,Private Foundries Lead the Steel Programme,event,1,"Automatic continuity, compatibility, or missed-decision fallback."
+9270703,21_fallbacks.txt,A Decentralized Power Settlement,event,1,"Automatic continuity, compatibility, or missed-decision fallback."
+9270704,21_fallbacks.txt,The Universities Coordinate Themselves,event,1,"Automatic continuity, compatibility, or missed-decision fallback."
+9270705,21_fallbacks.txt,The Modest Second Plan,event,1,"Automatic continuity, compatibility, or missed-decision fallback."
+9270710,21_fallbacks.txt,The Territorial Army Compromise,event,1,"Automatic continuity, compatibility, or missed-decision fallback."
+9270711,21_fallbacks.txt,Civil Aviation Becomes the Air Reserve,event,1,"Automatic continuity, compatibility, or missed-decision fallback."
+9270712,21_fallbacks.txt,A Coastal Denial Fleet,event,1,"Automatic continuity, compatibility, or missed-decision fallback."
+9270713,21_fallbacks.txt,The Civilian Arsenal Network,event,1,"Automatic continuity, compatibility, or missed-decision fallback."
+9270714,21_fallbacks.txt,The Cadre Expansion of 1939,event,1,"Automatic continuity, compatibility, or missed-decision fallback."
+9270790,21_fallbacks.txt,The Fiscal Stabilization Act,event,1,"Automatic continuity, compatibility, or missed-decision fallback."
+9270791,21_fallbacks.txt,Purge the Indian High Command,decision,1,Optional authoritarian action with controlled political risk.
+9270792,21_fallbacks.txt,The Corrected Constitutional and Service Lists,event,1,"Automatic continuity, compatibility, or missed-decision fallback."
+9270793,21_fallbacks.txt,The National Service Reserve Register,event,1,"Automatic continuity, compatibility, or missed-decision fallback."
+9270794,21_fallbacks.txt,The Armoured Corps Is Gazetted,event,1,"Automatic continuity, compatibility, or missed-decision fallback."
+9270795,21_fallbacks.txt,The Air Transport Command Is Gazetted,event,1,"Automatic continuity, compatibility, or missed-decision fallback."
+9271000,31_air_force.txt,An Air Staff for Independent India,event,2,"Implementation conference, service review, or milestone after a military authorization."
+9271001,31_air_force.txt,The Flying Schools Programme,event,2,"Implementation conference, service review, or milestone after a military authorization."
+9271002,31_air_force.txt,Hindustan Aircraft Expands,event,2,"Implementation conference, service review, or milestone after a military authorization."
+9271003,31_air_force.txt,The Air Doctrine Conference,event,3,"Implementation conference, service review, or milestone after a military authorization."
+9271004,31_air_force.txt,The Continental Air Defence Grid,event,2,"Implementation conference, service review, or milestone after a military authorization."
+9271005,31_air_force.txt,The Indian Naval Air Arm,event,2,"Implementation conference, service review, or milestone after a military authorization."
+9271006,31_air_force.txt,The Fifteen-Wing Plan,event,3,"Implementation conference, service review, or milestone after a military authorization."
+9271007,31_air_force.txt,A New Generation Takes the Colours,event,1,"Implementation conference, service review, or milestone after a military authorization."
+9271008,31_air_force.txt,The 1940 Air Command Review,event,2,"Implementation conference, service review, or milestone after a military authorization."
+9271100,32_navy.txt,The Indian Naval Staff,event,2,"Implementation conference, service review, or milestone after a military authorization."
+9271101,32_navy.txt,"Three Seas, Three Commands",event,2,"Implementation conference, service review, or milestone after a military authorization."
+9271102,32_navy.txt,The National Dockyard Act,event,2,"Implementation conference, service review, or milestone after a military authorization."
+9271103,32_navy.txt,The Carrier Question,event,3,"Implementation conference, service review, or milestone after a military authorization."
+9271104,32_navy.txt,The Arabian Sea Fleet,decision,1,Costly fleet stage that the player must be able to fund and time.
+9271105,32_navy.txt,The Bay of Bengal Fleet,decision,1,Costly fleet stage that the player must be able to fund and time.
+9271106,32_navy.txt,The Carrier Keels Are Laid,decision,1,Costly fleet stage that the player must be able to fund and time.
+9271107,32_navy.txt,The Oceanic Fleet Commissions,event,3,"Implementation conference, service review, or milestone after a military authorization."
+9271108,32_navy.txt,Trincomalee and the Deep-Ocean Command,event,2,"Implementation conference, service review, or milestone after a military authorization."
+9271109,32_navy.txt,The 1941 Naval Board,event,3,"Implementation conference, service review, or milestone after a military authorization."
+9271110,32_navy.txt,The Second Carrier Programme,event,2,"Implementation conference, service review, or milestone after a military authorization."
+9271200,33_command_research.txt,The Oath of the Indian Army,event,2,"Implementation conference, service review, or milestone after a military authorization."
+9271201,33_command_research.txt,Indianization of the Commands,event,2,"Implementation conference, service review, or milestone after a military authorization."
+9271202,33_command_research.txt,The Quetta-Delhi Staff College,event,2,"Implementation conference, service review, or milestone after a military authorization."
+9271203,33_command_research.txt,The First Standing Divisions,event,2,"Implementation conference, service review, or milestone after a military authorization."
+9271204,33_command_research.txt,The Mechanised Warfare Directorate,event,2,"Implementation conference, service review, or milestone after a military authorization."
+9271205,33_command_research.txt,The Himalayan and Frontier Corps,event,2,"Implementation conference, service review, or milestone after a military authorization."
+9271206,33_command_research.txt,The 1936 Grand Manoeuvres,event,3,"Implementation conference, service review, or milestone after a military authorization."
+9271207,33_command_research.txt,The Officer Shortage,event,2,"Implementation conference, service review, or milestone after a military authorization."
+9271208,33_command_research.txt,The Mobile Strategic Reserve,event,2,"Implementation conference, service review, or milestone after a military authorization."
+9271209,33_command_research.txt,The General Staff of 1939,event,1,"Implementation conference, service review, or milestone after a military authorization."
+9271210,33_command_research.txt,The Aeronautics and Rocket Centre,decision,1,Optional long-range research complex requiring a major appropriation.
+9271211,33_command_research.txt,The Atomic Energy Commission,event,2,"Implementation conference, service review, or milestone after a military authorization."
+9271300,12_society.txt,A Currency for the Union,event,2,Time-bound constitutional or social settlement that the state must resolve.
+9271301,12_society.txt,The Indian Civil Service Settlement,event,2,Time-bound constitutional or social settlement that the state must resolve.
+9271302,12_society.txt,The Princes and the Union,event,2,Time-bound constitutional or social settlement that the state must resolve.
+9271303,12_society.txt,The Delhi Communal Compact,event,2,Time-bound constitutional or social settlement that the state must resolve.
+9271304,12_society.txt,Ambedkar's Equal Citizenship Bill,event,2,Time-bound constitutional or social settlement that the state must resolve.
+9271305,12_society.txt,Burma's Place in the Union,event,2,Time-bound constitutional or social settlement that the state must resolve.
+9271306,12_society.txt,The National Labour Code,event,2,Time-bound constitutional or social settlement that the state must resolve.
+9271307,12_society.txt,The National Education Act,event,2,Time-bound constitutional or social settlement that the state must resolve.
+9271308,12_society.txt,The Intelligence Bureau Charter,event,2,Time-bound constitutional or social settlement that the state must resolve.
+9271309,12_society.txt,The Indian Merchant Marine,event,2,Time-bound constitutional or social settlement that the state must resolve.
+9271310,12_society.txt,Public Health for an Industrial Nation,event,2,Time-bound constitutional or social settlement that the state must resolve.
+9271311,12_society.txt,National Service Beyond the Barracks,event,2,Time-bound constitutional or social settlement that the state must resolve.
+9271400,22_resources.txt,The Geological Survey Mandate,event,2,Scheduled implementation choice within the national resource programme.
+9271401,22_resources.txt,The Bengal-Bihar Coal Corridor,event,2,Scheduled implementation choice within the national resource programme.
+9271402,22_resources.txt,"Tata, Bhilai and the Steel Security Act",event,2,Scheduled implementation choice within the national resource programme.
+9271403,22_resources.txt,Assam Oil and the Brahmaputra Lifeline,event,2,Scheduled implementation choice within the national resource programme.
+9271404,22_resources.txt,The Central Mineral Grid,event,2,Scheduled implementation choice within the national resource programme.
+9271405,22_resources.txt,The National Refinery Programme,event,2,Scheduled implementation choice within the national resource programme.
+9271406,22_resources.txt,Strategic Materials Reserve,event,2,Scheduled implementation choice within the national resource programme.
+9271407,22_resources.txt,Resource Security for a Great-Power Economy,event,2,Scheduled implementation choice within the national resource programme.
+9271408,22_resources.txt,The 1940 Resource Balance,decision,1,Optional resource-resilience investment requiring a major appropriation.
+9272000,41_allied.txt,The Portsmouth-Delhi Naval Mission,event,2,"Consequence, crisis, or settlement within the chosen strategic path."
+9272001,41_allied.txt,The Commonwealth Air and Radar Mission,event,2,"Consequence, crisis, or settlement within the chosen strategic path."
+9272002,41_allied.txt,The Sovereignty Bargain,event,3,"Consequence, crisis, or settlement within the chosen strategic path."
+9272003,41_allied.txt,India's Allied War Command,event,2,"Consequence, crisis, or settlement within the chosen strategic path."
+9272004,41_allied.txt,India and the Atlantic Charter,event,2,"Consequence, crisis, or settlement within the chosen strategic path."
+9272005,41_allied.txt,The Allied Settlement of 1945,event,3,"Consequence, crisis, or settlement within the chosen strategic path."
+9272200,42_axis.txt,The German Industrial Mission,event,2,"Consequence, crisis, or settlement within the chosen strategic path."
+9272201,42_axis.txt,The Indian Panzer Debate,event,2,"Consequence, crisis, or settlement within the chosen strategic path."
+9272202,45_japan.txt,The Yokosuka-Delhi Naval Mission,event,2,"Consequence, crisis, or settlement within the chosen strategic path."
+9272203,45_japan.txt,Tokyo Demands a Choice on China,event,3,"Consequence, crisis, or settlement within the chosen strategic path."
+9272204,42_axis.txt,India's Continental War Aims,event,3,"Consequence, crisis, or settlement within the chosen strategic path."
+9272205,45_japan.txt,India's War in Asia,event,3,"Consequence, crisis, or settlement within the chosen strategic path."
+9272206,47_revisionist_aftermath.txt,The Authoritarian Reckoning,event,3,"Consequence, crisis, or settlement within the chosen strategic path."
+9272207,47_revisionist_aftermath.txt,India After the Revisionist War,event,3,"Consequence, crisis, or settlement within the chosen strategic path."
+9272210,45_japan.txt,Bose and the Eastern Strategy,event,3,"Consequence, crisis, or settlement within the chosen strategic path."
+9272211,45_japan.txt,The Azad Hind Expeditionary Command,decision,2,Optional expeditionary command authorization.
+9272212,45_japan.txt,The Imphal Compact,event,3,"Consequence, crisis, or settlement within the chosen strategic path."
+9272213,45_japan.txt,The Battle Plan at Imphal,event,3,"Consequence, crisis, or settlement within the chosen strategic path."
+9272214,45_japan.txt,Imphal Holds the Alliance Together,event,2,"Consequence, crisis, or settlement within the chosen strategic path."
+9272215,45_japan.txt,The Delhi-Tokyo Asian Settlement,event,3,"Consequence, crisis, or settlement within the chosen strategic path."
+9272400,43_soviet.txt,The Soviet Planning Mission,event,2,"Consequence, crisis, or settlement within the chosen strategic path."
+9272401,43_soviet.txt,Deep Operations in Indian Conditions,event,2,"Consequence, crisis, or settlement within the chosen strategic path."
+9272402,43_soviet.txt,"Business, Provinces and the Moscow Compact",event,2,"Consequence, crisis, or settlement within the chosen strategic path."
+9272403,43_soviet.txt,The Delhi-Tashkent War Command,event,2,"Consequence, crisis, or settlement within the chosen strategic path."
+9272404,43_soviet.txt,The People's War Settlement,event,2,"Consequence, crisis, or settlement within the chosen strategic path."
+9272405,43_soviet.txt,Moscow's Postwar Line,event,2,"Consequence, crisis, or settlement within the chosen strategic path."
+9272406,43_soviet.txt,The Indo-Soviet Science Exchange,decision,1,Optional international scientific partnership.
+9272600,44_non_aligned.txt,The First Delhi Conference,event,2,"Consequence, crisis, or settlement within the chosen strategic path."
+9272601,44_non_aligned.txt,The Arsenal of Many Suppliers,event,2,"Consequence, crisis, or settlement within the chosen strategic path."
+9272602,44_non_aligned.txt,The Delhi Pact Proposal,event,2,"Consequence, crisis, or settlement within the chosen strategic path."
+9272603,44_non_aligned.txt,Pressure on the Non-Aligned Republic,event,2,"Consequence, crisis, or settlement within the chosen strategic path."
+9272604,44_non_aligned.txt,The Doctrine of Armed Non-Alignment,event,2,"Consequence, crisis, or settlement within the chosen strategic path."
+9272605,44_non_aligned.txt,The Asian Liberation Committees,event,2,"Consequence, crisis, or settlement within the chosen strategic path."
+9272606,44_non_aligned.txt,The Delhi Principles of 1945,event,3,"Consequence, crisis, or settlement within the chosen strategic path."
+9273000,51_theatres.txt,The First War Readiness Review,event,2,"War-triggered crisis, operational review, or consequence of an earlier authorization."
+9273001,51_theatres.txt,The Western Desert and Gulf Lifeline,event,2,"War-triggered crisis, operational review, or consequence of an earlier authorization."
+9273002,51_theatres.txt,The Assam-Burma Theatre,event,2,"War-triggered crisis, operational review, or consequence of an earlier authorization."
+9273003,51_theatres.txt,The Indian Ocean Convoy Emergency,event,2,"War-triggered crisis, operational review, or consequence of an earlier authorization."
+9273004,51_theatres.txt,Food Security in Bengal,event,3,"War-triggered crisis, operational review, or consequence of an earlier authorization."
+9273005,51_theatres.txt,The Cost of a Continental War,event,2,"War-triggered crisis, operational review, or consequence of an earlier authorization."
+9273006,51_theatres.txt,An Indian Occupation Doctrine,event,2,"War-triggered crisis, operational review, or consequence of an earlier authorization."
+9273007,51_theatres.txt,The Demobilization Plan,event,3,"War-triggered crisis, operational review, or consequence of an earlier authorization."
+9273200,52_home_front.txt,The Second War Budget,event,3,"War-triggered crisis, operational review, or consequence of an earlier authorization."
+9273201,52_home_front.txt,Women in National Service,event,3,"War-triggered crisis, operational review, or consequence of an earlier authorization."
+9273202,52_home_front.txt,The Indian Ocean Logistics Board,event,3,"War-triggered crisis, operational review, or consequence of an earlier authorization."
+9273203,52_home_front.txt,The National Service Debate,event,3,"War-triggered crisis, operational review, or consequence of an earlier authorization."
+9273204,52_home_front.txt,The Scientific Mobilization Board,event,3,"War-triggered crisis, operational review, or consequence of an earlier authorization."
+9273205,52_home_front.txt,The Arsenal Allocation Crisis,event,3,"War-triggered crisis, operational review, or consequence of an earlier authorization."
+9273206,52_home_front.txt,Liberty in an Emergency,event,3,"War-triggered crisis, operational review, or consequence of an earlier authorization."
+9273207,52_home_front.txt,The Service and Sacrifice Compact,event,3,"War-triggered crisis, operational review, or consequence of an earlier authorization."
+9273208,52_home_front.txt,Arsenal or Workshop,event,3,"War-triggered crisis, operational review, or consequence of an earlier authorization."
+9274000,61_cold_war.txt,The 1946 Postwar Mandate,event,3,"Scheduled election, postwar settlement, international crisis, or programme review."
+9274001,61_cold_war.txt,Indonesia and Indochina,event,3,"Scheduled election, postwar settlement, international crisis, or programme review."
+9274002,61_cold_war.txt,The Himalayan Border Commission,event,2,"Scheduled election, postwar settlement, international crisis, or programme review."
+9274003,61_cold_war.txt,The Republic and the United Nations,event,2,"Scheduled election, postwar settlement, international crisis, or programme review."
+9274004,61_cold_war.txt,The Fourth National Plan,event,3,"Scheduled election, postwar settlement, international crisis, or programme review."
+9274005,61_cold_war.txt,The 1952 General Election,event,3,"Scheduled election, postwar settlement, international crisis, or programme review."
+9274006,61_cold_war.txt,India Enters the Jet Age,event,2,"Scheduled election, postwar settlement, international crisis, or programme review."
+9274007,61_cold_war.txt,Bandung and the Afro-Asian Moment,event,3,"Scheduled election, postwar settlement, international crisis, or programme review."
+9274008,61_cold_war.txt,The Suez Crisis,event,3,"Scheduled election, postwar settlement, international crisis, or programme review."
+9274009,61_cold_war.txt,The 1957 Mandate,event,3,"Scheduled election, postwar settlement, international crisis, or programme review."
+9274010,61_cold_war.txt,The Tibetan Crisis,event,3,"Scheduled election, postwar settlement, international crisis, or programme review."
+9274011,61_cold_war.txt,The Linguistic States Settlement,event,2,"Scheduled election, postwar settlement, international crisis, or programme review."
+9274012,61_cold_war.txt,The Final Goa Question,event,3,"Scheduled election, postwar settlement, international crisis, or programme review."
+9274013,61_cold_war.txt,The 1962 Border Crisis,event,3,"Scheduled election, postwar settlement, international crisis, or programme review."
+9274014,61_cold_war.txt,"Rockets, Satellites and the Indian Future",event,2,"Scheduled election, postwar settlement, international crisis, or programme review."
+9274015,61_cold_war.txt,The Succession of 1964,event,3,"Scheduled election, postwar settlement, international crisis, or programme review."
+9275000,62_victory.txt,The 1940 Great-Power Audit,event,1,Automatic campaign milestone or final scorecard.
+9275001,62_victory.txt,The 1945 Great-Power Test,event,1,Automatic campaign milestone or final scorecard.
+9275002,62_victory.txt,The Republic at Twenty,event,1,Automatic campaign milestone or final scorecard.
+9275003,62_victory.txt,1964: India at the Zenith,event,1,Automatic campaign milestone or final scorecard.
+9275004,62_victory.txt,1964: A Durable Great Power,event,1,Automatic campaign milestone or final scorecard.
+9275005,62_victory.txt,1964: The Union Survives,event,1,Automatic campaign milestone or final scorecard.

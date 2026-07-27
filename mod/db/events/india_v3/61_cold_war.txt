@@ -807,7 +807,7 @@ event = {
 	}
 
 	name = "The Succession of 1964"
-	desc = "The generation that won independence in 1933 is passing from power. India can renew the federal parliamentary tradition, elevate the technocratic planning state, or institutionalize a permanent strategic directorate."
+	desc = "The generation of the 1933 Union Settlement is passing from power. India can renew the federal parliamentary tradition, elevate the technocratic planning state, or institutionalize a permanent strategic directorate."
 	style = 2
 	picture = "india_v3_independence"
 
@@ -842,4 +842,3 @@ event = {
 		command = { type = setflag which = ind_v3_succession_1964 }
 	}
 }
-

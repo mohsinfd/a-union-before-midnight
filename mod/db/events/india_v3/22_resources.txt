@@ -367,10 +367,15 @@ event = {
 	random = no
 	country = IND
 
-	trigger = {
+	decision = {
 		flag = ind_v3_resource_security_1939
 		NOT = { flag = ind_v3_resource_review_1940 }
 	}
+	decision_trigger = {
+	OR = {
+		AND = { money = 450 supplies = 650 }
+	}
+}
 
 	name = "The 1940 Resource Balance"
 	desc = "The national plans have created a true industrial economy. Engineers now recommend a final programme of mine safety, reserve stocks and duplicated power links so that one raid or regional crisis cannot halt the whole system."
@@ -382,6 +387,10 @@ event = {
 	deathdate = { day = 29 month = august year = 1940 }
 
 	action_a = {
+		trigger = {
+			money = 450
+			supplies = 650
+		}
 		ai_chance = 100
 		name = "Build resilience into the national resource grid"
 		command = { type = money value = -450 }

@@ -4,11 +4,11 @@ set "REPOROOT=%~dp0"
 
 echo.
 echo ============================================================
-echo  India Ascendant 3.3.0 - Installer
+echo  A Union Before Midnight 3.4.0 - Installer
 echo ============================================================
 echo.
 
-powershell -NoProfile -ExecutionPolicy Bypass -File "%REPOROOT%installer\Install-India-Ascendant.ps1"
+powershell -NoProfile -ExecutionPolicy Bypass -File "%REPOROOT%installer\Install-A-Union-Before-Midnight.ps1"
 if errorlevel 1 goto :failed
 
 echo.

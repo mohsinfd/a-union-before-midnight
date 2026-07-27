@@ -210,10 +210,15 @@ event = {
 	random = no
 	country = IND
 
-	trigger = {
+	decision = {
 		flag = ind_v3_carrier_decision
 		NOT = { flag = ind_v3_arabian_fleet }
 	}
+	decision_trigger = {
+	OR = {
+		AND = { money = 525 supplies = 1300 manpower = 8 }
+	}
+}
 
 	name = "The Arabian Sea Fleet"
 	desc = "Karachi's command requests a permanent force able to escort oil traffic, cover the western coast and contest raiders entering from the Gulf. The first operational fleet will also train the navy's new generation of captains."
@@ -225,6 +230,11 @@ event = {
 	deathdate = { day = 29 month = october year = 1937 }
 
 	action_a = {
+		trigger = {
+			money = 525
+			supplies = 1300
+			manpower = 8
+		}
 		ai_chance = 100
 		name = "Commission the Arabian Sea Fleet at Karachi"
 		command = { type = money value = -525 }
@@ -243,10 +253,15 @@ event = {
 	random = no
 	country = IND
 
-	trigger = {
+	decision = {
 		flag = ind_v3_arabian_fleet
 		NOT = { flag = ind_v3_bay_fleet }
 	}
+	decision_trigger = {
+	OR = {
+		AND = { money = 575 supplies = 1450 manpower = 8 }
+	}
+}
 
 	name = "The Bay of Bengal Fleet"
 	desc = "Vizagapatam's command must protect Calcutta, Rangoon and the approaches to Malaya. Its cruisers and destroyers will operate with the naval air arm and prepare the service for carrier operations."
@@ -258,6 +273,11 @@ event = {
 	deathdate = { day = 29 month = june year = 1938 }
 
 	action_a = {
+		trigger = {
+			money = 575
+			supplies = 1450
+			manpower = 8
+		}
 		ai_chance = 100
 		name = "Commission the Bay of Bengal Fleet at Vizagapatam"
 		command = { type = money value = -575 }
@@ -276,10 +296,15 @@ event = {
 	random = no
 	country = IND
 
-	trigger = {
+	decision = {
 		flag = ind_v3_bay_fleet
 		NOT = { flag = ind_v3_carrier_keels }
 	}
+	decision_trigger = {
+	OR = {
+		AND = { money = 950 supplies = 2100 manpower = 10 }
+	}
+}
 
 	name = "The Carrier Keels Are Laid"
 	desc = "The slipways are ready, but armour plate, turbines and trained shipwrights must be diverted from every other programme. Laying the keels now commits India to years of expenditure and makes the carrier fleet politically difficult to abandon."
@@ -291,6 +316,11 @@ event = {
 	deathdate = { day = 29 month = december year = 1938 }
 
 	action_a = {
+		trigger = {
+			money = 950
+			supplies = 2100
+			manpower = 10
+		}
 		ai_chance = 100
 		name = "Fund the keels, escorts and naval aircraft"
 		command = { type = money value = -950 }

@@ -492,10 +492,15 @@ event = {
 	random = no
 	country = IND
 
-	trigger = {
+	decision = {
 		flag = ind_v3_science_1937
 		NOT = { flag = ind_v3_rocket_centre }
 	}
+	decision_trigger = {
+	OR = {
+		AND = { money = 675 supplies = 750 }
+	}
+}
 
 	name = "The Aeronautics and Rocket Centre"
 	desc = "Long-range aircraft, guided weapons and high-altitude research now overlap. A unified centre at Bangalore can connect university mathematics, defence electronics and Hindustan Aircraft's engineering teams."
@@ -507,6 +512,10 @@ event = {
 	deathdate = { day = 29 month = june year = 1943 }
 
 	action_a = {
+		trigger = {
+			money = 675
+			supplies = 750
+		}
 		ai_chance = 100
 		name = "Establish the national aeronautics and rocket centre"
 		command = { type = money value = -675 }

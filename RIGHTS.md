@@ -1,6 +1,6 @@
 ﻿# Rights And Distribution
 
-India Ascendant is a non-commercial fan modification with mixed-origin
+A Union Before Midnight is a non-commercial fan modification with mixed-origin
 content.
 
 ## Original Project Material
@@ -10,7 +10,7 @@ logic and project documentation are copyright Mohsin Dingankar.
 
 No general open-source or content licence is granted by this repository at
 this time. Permission is required before redistributing those materials outside
-an unmodified India Ascendant release.
+an unmodified A Union Before Midnight release.
 
 ## Foundation And Third-Party Material
 

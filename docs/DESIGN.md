@@ -1,4 +1,4 @@
-# India Mod V3 Design
+# A Union Before Midnight Design
 
 ## Product Goal
 
@@ -82,7 +82,7 @@ India begins 1933 as a newly sovereign but institutionally fragile state with ap
 
 Run `BUILD_AND_DEPLOY_V3.bat` from the V3 source folder. It rebuilds the province
 registry, runs every static and balance gate, generates the managed overlay, copies
-only a valid build into `Darkest Hour A HOI Game\Mods\India Mod V3`, and validates
+only a valid build into `Darkest Hour A HOI Game\Mods\A Union Before Midnight`, and validates
 the deployed copy. A failed source build does not update the game folder.
 
 Optional `smoke_test_v3.ps1` and `engine_scenario_test_v3.ps1` tools are kept

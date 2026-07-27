@@ -302,10 +302,15 @@ event = {
 	random = no
 	country = IND
 
-	trigger = {
+	decision = {
 		flag = ind_v3_soviet_postwar_line
 		NOT = { flag = ind_v3_soviet_science_exchange }
 	}
+	decision_trigger = {
+	OR = {
+		AND = { money = 900 supplies = 700 }
+	}
+}
 
 	name = "The Indo-Soviet Science Exchange"
 	desc = "Postwar cooperation can move beyond wartime doctrine into jets, rocketry, heavy engineering and atomic science. The exchange is valuable under either an autonomous or coordinated political line."
@@ -317,6 +322,10 @@ event = {
 	deathdate = { day = 29 month = december year = 1950 }
 
 	action_a = {
+		trigger = {
+			money = 900
+			supplies = 700
+		}
 		ai_chance = 100
 		name = "Build a durable scientific partnership"
 		command = { type = money value = -900 }

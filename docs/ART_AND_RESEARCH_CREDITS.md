@@ -1,8 +1,8 @@
-﻿# India Mod V3.2 Art and Research Credits
+﻿# A Union Before Midnight Art and Research Credits
 
 ## Scope
 
-India Mod V3.2 contains a complete India-specific visual and research pass:
+A Union Before Midnight contains a complete India-specific visual and research pass:
 
 - 31 bespoke technology-team images.
 - 44 distinct minister and military-leader portraits.
@@ -61,7 +61,7 @@ embellishments explicit rather than presenting them as literal history.
 
 ## Foundation
 
-India Mod V3 is built on Blood and Iron v1.1 by thewanderingknight. Blood and
+A Union Before Midnight is built on Blood and Iron v1.1 by thewanderingknight. Blood and
 Iron incorporates work from World in Flames 2, Edge of Darkness, Total Realism
 Project, Francesco's Models Mod, Kazoo's SKIF Style Icons, Decriser's DEC Map,
 the Official Graphic Pack, Horton13's Graphic Improvement Project,

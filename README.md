@@ -1,12 +1,14 @@
-﻿# India Ascendant
+﻿# A Union Before Midnight
 
-![India Ascendant](assets/india-ascendant-banner.png)
+![A Union Before Midnight](assets/a-union-before-midnight-banner.png)
 
 **An independent India alternate-history campaign for Darkest Hour, beginning on 1 January 1933.**
 
-India Ascendant asks a simple question: what if the British Raj transferred
+A Union Before Midnight asks a simple question: what if the British Raj transferred
 power before the global crisis of the 1930s, leaving a united but unsettled
 Indian state to choose its own place in the world?
+
+*Freedom came early. Unity came at a price.*
 
 India begins sovereign from Delhi to Rangoon. It has enormous potential, weak
 institutions, uneven infrastructure and an inherited military that is large on
@@ -20,31 +22,33 @@ second- or third-ranked power, but no route grants an automatic victory.
 - Blood and Iron v1.1 installed as `Mods\Blood and Iron v1.1`
 - A new 1933 campaign is recommended
 
-This repository contains only **India Ascendant overlay**. It does not
+This repository contains only the **A Union Before Midnight overlay**. It does not
 redistribute Darkest Hour or the complete Blood and Iron mod.
 
 ## Installation
 
 1. Install Darkest Hour and Blood and Iron v1.1.
-2. Download and extract the latest India Ascendant release.
+2. Download and extract the latest A Union Before Midnight release.
 3. Run `INSTALL.bat`.
-4. Select **India Ascendant** in the Darkest Hour launcher.
-5. Start **India Ascendant: 1933** in the scenario list.
+4. Select **A Union Before Midnight** in the Darkest Hour launcher.
+5. Start **A Union Before Midnight: India 1933** in the scenario list.
 
 The installer detects the standard Steam location, verifies every overlay file,
-copies Blood and Iron into an isolated mod folder and applies India Ascendant
-content. Existing India Ascendant saves are preserved during updates.
+copies Blood and Iron into an isolated mod folder and applies A Union Before
+Midnight content. Existing saves in that mod folder are preserved during updates.
 
 For a non-standard Steam library:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File installer\Install-India-Ascendant.ps1 `
+powershell -ExecutionPolicy Bypass -File installer\Install-A-Union-Before-Midnight.ps1 `
   -GameRoot "D:\SteamLibrary\steamapps\common\Darkest Hour A HOI Game"
 ```
 
 ## Campaign
 
-- **208 India-focused events** across 25 isolated event modules.
+- **209 India-focused entries** across 25 isolated event modules.
+- **41 player-timed decisions** for optional authorizations and **168 events**
+  for deadlines, crises, replies, implementation disputes and milestones.
 - Stable constitutional governments, complete cabinets and leadership
   transitions tied to genuine political milestones.
 - **Five strategic universes:** Allied, German, Japanese, Soviet and armed
@@ -125,16 +129,19 @@ The release pipeline rejects:
 
 The public release passed source and installed-mod validation, all five
 deterministic prewar simulations and a human campaign through January 1937
-without India Ascendant errors in `savedebug.txt`.
+without India-event namespace errors in `savedebug.txt`.
 
 See [Release Notes](RELEASE_NOTES.md), [Design Notes](docs/DESIGN.md) and
-[Art and Research Credits](docs/ART_AND_RESEARCH_CREDITS.md).
+[Art and Research Credits](docs/ART_AND_RESEARCH_CREDITS.md). The complete
+[event/decision policy](docs/EVENT_AND_DECISION_DESIGN.md) and
+[row-by-row audit](docs/event_decision_audit.csv) are also included.
 
 ## Compatibility
 
 - A new campaign provides the intended force and economic curve.
-- Late V3.2 saves can continue, with compatibility events for manpower, armour
-  and air-transport registration.
+- A new campaign is required to see the independence prologue and provisional
+  cabinet sequence introduced in V3.4.
+- Healthy V3.3 saves can continue and will use the corrected future decisions.
 - Units silently omitted by the engine before the V3.3 queue fix cannot be
   reconstructed automatically.
 - Other mods that replace the Blood and Iron 1933 scenario, India data or
