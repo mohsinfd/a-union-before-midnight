@@ -37,10 +37,10 @@ event = {
 	action_b = {
 		ai_chance = 30
 		name = "Concentrate scarce officers in one fleet school"
-		
+
 		command = { type = supplies value = -150 }
 		command = { type = waketeam which = 250023 }
-		command = { type = research_mod value = 1 }
+
 		command = { type = setflag which = ind_v3_naval_staff }
 	}
 }
@@ -80,7 +80,7 @@ event = {
 	action_b = {
 		ai_chance = 25
 		name = "Keep one fleet with two regional stations"
-		
+
 		command = { type = supplies value = -250 }
 		command = { type = construct which = naval_base where = 1533 value = 3 trigger = { NOT = { building = { province = 1533 type = naval_base value = 8 } } } }
 		command = { type = construct which = naval_base where = 1493 value = 3 trigger = { NOT = { building = { province = 1493 type = naval_base value = 8 } } } }
@@ -126,7 +126,7 @@ event = {
 	action_b = {
 		ai_chance = 35
 		name = "Concentrate major construction at Bombay"
-		
+
 		command = { type = supplies value = -700 }
 		command = { type = waketeam which = 250021 }
 		command = { type = construct which = ic where = 1517 value = 4 }
@@ -194,7 +194,7 @@ event = {
 	}
 		ai_chance = 15
 		name = "Reject the fleet carrier and dominate below the surface"
-		
+
 		command = { type = supplies value = -950 }
 		command = { type = gain_tech which = 3510 }
 		command = { type = gain_tech which = 4900 }
@@ -306,8 +306,8 @@ event = {
 	}
 }
 
-	name = "The Carrier Keels Are Laid"
-	desc = "The slipways are ready, but armour plate, turbines and trained shipwrights must be diverted from every other programme. Laying the keels now commits India to years of expenditure and makes the carrier fleet politically difficult to abandon."
+	name = "The Oceanic Fleet Keels Are Laid"
+	desc = "The slipways are ready, but armour plate, turbines and trained shipwrights must be diverted from every other programme. The exact hulls follow the 1937 doctrine: aviation ships for a carrier navy, or cruisers and long-range boats for an undersea strategy."
 	style = 2
 	picture = "india_v3_armed_forces"
 
@@ -382,10 +382,9 @@ event = {
 	action_c = {
 		trigger = { flag = ind_v3_submarine_navy }
 		ai_chance = 33
-		name = "Commission a light carrier and the oceanic submarine force"
+		name = "Commission the oceanic cruiser and submarine force"
 		command = { type = supplies value = -1000 }
 		command = { type = add_corps which = "Indian Ocean Fleet" value = naval where = 1517 }
-		command = { type = add_division which = "INS Viraat" value = light_carrier when = 0 where = light_cag }
 		command = { type = add_division which = "INS Hindustan" value = heavy_cruiser when = 0 where = naval_fire_controll_l }
 		command = { type = add_division which = "INS Rajputana" value = heavy_cruiser when = 0 where = naval_anti_air_l }
 		command = { type = add_division which = "1st Ocean Escort Flotilla" value = destroyer when = 0 where = naval_asw }
@@ -447,7 +446,14 @@ event = {
 	trigger = {
 		flag = ind_v3_oceanic_fleet_commissioned
 		NOT = { flag = ind_v3_naval_board_1941 }
-	}
+	# V3_ACTION_REACHABILITY_BEGIN
+	OR = {
+		AND = { manpower = 4 }
+		AND = { manpower = 7 }
+		AND = { manpower = 3 }
+		}
+	# V3_ACTION_REACHABILITY_END
+}
 
 	name = "The 1941 Naval Board"
 	desc = "Three fleets now compete for modern escorts, trained aviators and fuel. Katari asks the cabinet to choose whether the next effort should improve carrier operations, anti-submarine warfare or undersea striking power."
@@ -467,7 +473,7 @@ event = {
 		name = "Expand carrier aviation and fleet logistics"
 		command = { type = money value = -500 }
 		command = { type = supplies value = -1100 }
-		command = { type = research_mod value = 3 }
+
 		command = { type = build_division which = destroyer value = naval_asw when = 2 cost = -2.5 where = 90 }
 		command = { type = setflag which = ind_v3_carrier_navy_1941 }
 		command = { type = setflag which = ind_v3_naval_board_1941 }
@@ -508,7 +514,13 @@ event = {
 	trigger = {
 		flag = ind_v3_naval_board_1941
 		NOT = { flag = ind_v3_second_carrier }
-	}
+	# V3_ACTION_REACHABILITY_BEGIN
+	OR = {
+		AND = { manpower = 11 }
+		AND = { manpower = 9 }
+		}
+	# V3_ACTION_REACHABILITY_END
+}
 
 	name = "The Second Carrier Programme"
 	desc = "The first carrier generation has proven that India can sustain aviation ships. A second fleet carrier would give the oceanic command strategic depth; a modern light carrier is cheaper and can reinforce either regional fleet."

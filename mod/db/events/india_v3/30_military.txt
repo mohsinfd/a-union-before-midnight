@@ -31,13 +31,13 @@ event = {
 
 	action_a = {
 		trigger = {
+			supplies = 750
 			# V3_QUEUE_MANPOWER = 96
 			manpower = 96
-			supplies = 750
 		}
 		ai_chance = 35
 		name = "Build a national citizen army"
-		
+
 		command = { type = supplies value = -750 }
 		command = { type = dissent value = 2 }
 		command = { type = manpowerpool value = 60 }
@@ -49,10 +49,10 @@ event = {
 	}
 	action_b = {
 		trigger = {
-			# V3_QUEUE_MANPOWER = 49
-			manpower = 49
 			money = 225
 			supplies = 900
+			# V3_QUEUE_MANPOWER = 49
+			manpower = 49
 		}
 		ai_chance = 45
 		name = "Create a compact professional force"
@@ -67,10 +67,10 @@ event = {
 	}
 	action_c = {
 		trigger = {
-			# V3_QUEUE_MANPOWER = 60
-			manpower = 60
 			money = 275
 			supplies = 1100
+			# V3_QUEUE_MANPOWER = 60
+			manpower = 60
 		}
 		ai_chance = 20
 		name = "Bet on mobility and combined arms"
@@ -117,10 +117,10 @@ event = {
 
 	action_a = {
 		trigger = {
-			# V3_QUEUE_MANPOWER = 3
-			manpower = 3
 			money = 300
 			supplies = 1000
+			# V3_QUEUE_MANPOWER = 3
+			manpower = 3
 		}
 		ai_chance = 40
 		name = "Prioritize fighters and air defence"
@@ -138,10 +138,10 @@ event = {
 	}
 	action_b = {
 		trigger = {
-			# V3_QUEUE_MANPOWER = 6
-			manpower = 6
 			money = 275
 			supplies = 1150
+			# V3_QUEUE_MANPOWER = 6
+			manpower = 6
 		}
 		ai_chance = 35
 		name = "Build an army-cooperation air force"
@@ -159,15 +159,15 @@ event = {
 	}
 	action_c = {
 		trigger = {
+			supplies = 600
 			# V3_QUEUE_MANPOWER = 3
 			manpower = 3
-			supplies = 600
 		}
 		ai_chance = 25
 		name = "Begin with civil aviation and transport"
-		
+
 		command = { type = supplies value = -600 }
-		command = { type = research_mod value = 3 }
+
 		command = { type = industrial_modifier which = money value = 3 }
 		command = { type = waketeam which = 250013 }
 		command = { type = construct which = air_base where = 1502 value = 3 trigger = { NOT = { building = { province = 1502 type = air_base value = 8 } } } }
@@ -212,10 +212,10 @@ event = {
 
 	action_a = {
 		trigger = {
-			# V3_QUEUE_MANPOWER = 7
-			manpower = 7
 			money = 325
 			supplies = 1350
+			# V3_QUEUE_MANPOWER = 7
+			manpower = 7
 		}
 		ai_chance = 45
 		name = "Build escorts and light cruisers"
@@ -229,13 +229,13 @@ event = {
 	}
 	action_b = {
 		trigger = {
+			supplies = 1150
 			# V3_QUEUE_MANPOWER = 6
 			manpower = 6
-			supplies = 1150
 		}
 		ai_chance = 30
 		name = "Adopt a sea-denial strategy"
-		
+
 		command = { type = supplies value = -1150 }
 		command = { type = waketeam which = 250018 }
 		command = { type = build_division which = submarine value = none when = 4 cost = 4 where = 150 }
@@ -245,10 +245,10 @@ event = {
 	}
 	action_c = {
 		trigger = {
-			# V3_QUEUE_MANPOWER = 3
-			manpower = 3
 			money = 450
 			supplies = 1800
+			# V3_QUEUE_MANPOWER = 3
+			manpower = 3
 		}
 		ai_chance = 25
 		name = "Lay foundations for a blue-water fleet"
@@ -290,10 +290,10 @@ event = {
 
 	action_a = {
 		trigger = {
-			# V3_QUEUE_MANPOWER = 64
-			manpower = 64
 			money = 375
 			supplies = 1950
+			# V3_QUEUE_MANPOWER = 64
+			manpower = 64
 		}
 		ai_chance = 45
 		name = "Standardize for mass production"
@@ -310,16 +310,16 @@ event = {
 	}
 	action_b = {
 		trigger = {
-			# V3_QUEUE_MANPOWER = 48
-			manpower = 48
 			money = 500
 			supplies = 1650
+			# V3_QUEUE_MANPOWER = 48
+			manpower = 48
 		}
 		ai_chance = 35
 		name = "Fund advanced weapons and prototypes"
 		command = { type = money value = -500 }
 		command = { type = supplies value = -1650 }
-		command = { type = research_mod value = 4 }
+		command = { type = research_mod value = 2 }
 		command = { type = waketeam which = 250015 }
 		command = { type = waketeam which = 250019 }
 		command = { type = construct which = ic where = 1472 value = 3 }
@@ -331,10 +331,10 @@ event = {
 		command = { type = setflag which = ind_v3_armaments_1937 }
 	}
 	action_c = {
-		
+
 		ai_chance = 20
 		name = "Protect civilian output and build reserves"
-		
+
 		command = { type = supplies value = 3000 }
 		command = { type = dissent value = -2 }
 		command = { type = industrial_modifier which = ic value = 3 }
@@ -374,9 +374,9 @@ event = {
 
 	action_a = {
 		trigger = {
+			supplies = 3000
 			# V3_QUEUE_MANPOWER = 215
 			manpower = 215
-			supplies = 3000
 		}
 		ai_chance = 40
 		name = "Raise a continental defence army"
@@ -390,10 +390,10 @@ event = {
 	}
 	action_b = {
 		trigger = {
-			# V3_QUEUE_MANPOWER = 122
-			manpower = 122
 			money = 350
 			supplies = 3600
+			# V3_QUEUE_MANPOWER = 122
+			manpower = 122
 		}
 		ai_chance = 40
 		name = "Build a combined-arms field force"
@@ -409,10 +409,10 @@ event = {
 	}
 	action_c = {
 		trigger = {
-			# V3_QUEUE_MANPOWER = 99
-			manpower = 99
 			money = 475
 			supplies = 3300
+			# V3_QUEUE_MANPOWER = 99
+			manpower = 99
 		}
 		ai_chance = 20
 		name = "Create an expeditionary strategic reserve"
@@ -489,10 +489,10 @@ event = {
 	}
 	action_c = {
 		trigger = {
-			# V3_QUEUE_MANPOWER = 51
-			manpower = 51
 			money = 350
 			supplies = 1650
+			# V3_QUEUE_MANPOWER = 51
+			manpower = 51
 		}
 		ai_chance = 30
 		name = "Build airfields and mobile reserves"
@@ -560,10 +560,10 @@ event = {
 	}
 	action_b = {
 		trigger = {
-			# V3_QUEUE_MANPOWER = 50
-			manpower = 50
 			money = 175
 			supplies = 900
+			# V3_QUEUE_MANPOWER = 50
+			manpower = 50
 		}
 		ai_chance = 35
 		name = "Preserve the regimental compact with Nepal"

@@ -28,7 +28,7 @@ event = {
 		ai_chance = 100
 		name = "India has entered the first rank of powers"
 		command = { type = dissent value = -4 }
-		command = { type = research_mod value = 2 }
+		command = { type = research_mod value = 1 }
 		command = { type = tc_mod value = 2 }
 		command = { type = belligerence value = -2 }
 		command = { type = setflag which = ind_v3_great_power_1940 }
@@ -68,7 +68,7 @@ event = {
 		name = "The Union is a durable world power"
 		command = { type = dissent value = -5 }
 		command = { type = money value = 800 }
-		command = { type = research_mod value = 2 }
+		command = { type = research_mod value = 1 }
 		command = { type = setflag which = ind_v3_world_power_1945 }
 		command = { type = setflag which = ind_v3_audit_1945 }
 	}

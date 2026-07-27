@@ -12,7 +12,14 @@ event = {
 		atwar = yes
 		flag = ind_v3_army_reform
 		NOT = { flag = ind_v3_war_mobilization }
-	}
+	# V3_ACTION_REACHABILITY_BEGIN
+	OR = {
+		AND = { manpower = 247 }
+		AND = { manpower = 168 }
+		AND = { manpower = 210 }
+		}
+	# V3_ACTION_REACHABILITY_END
+}
 
 	name = "Mobilize the Union for War"
 	desc = "For the first time sovereign India faces a great war. The cabinet can mobilize the whole economy, preserve a smaller professional striking force, or arm a mass popular defence. Each strategy changes the kind of war India can sustain."
@@ -56,7 +63,7 @@ event = {
 		command = { type = manpowerpool value = 90 }
 		command = { type = dissent value = 1 }
 		command = { type = domestic which = professional_army value = 1 }
-		command = { type = research_mod value = 3 }
+		command = { type = research_mod value = 1 }
 		command = { type = industrial_modifier which = supplies value = 10 }
 		command = { type = activate_unit_type which = tank_destroyer }
 		command = { type = new_model which = tank_destroyer value = 0 }
@@ -193,7 +200,14 @@ event = {
 	trigger = {
 		war = { country = IND country = JAP }
 		NOT = { flag = ind_v3_japanese_war_plan }
-	}
+	# V3_ACTION_REACHABILITY_BEGIN
+	OR = {
+		AND = { manpower = 66 }
+		AND = { manpower = 130 }
+		AND = { manpower = 12 }
+		}
+	# V3_ACTION_REACHABILITY_END
+}
 
 	name = "War Reaches the Eastern Frontier"
 	desc = "War with Japan makes the Bay of Bengal, Burma and Assam a single theatre. India must decide whether to hold fortified frontier lines, fight forward through Burma in cooperation with China, or seek decision at sea and in the air."
@@ -352,7 +366,7 @@ event = {
 		ai_chance = 25
 		name = "Preserve independent service commands"
 		command = { type = supplies value = -1100 }
-		command = { type = research_mod value = 2 }
+
 		command = { type = setflag which = ind_v3_service_command }
 		command = { type = setflag which = ind_v3_unified_command }
 	}
@@ -403,10 +417,10 @@ event = {
 
 	action_a = {
 		trigger = {
-			# V3_QUEUE_MANPOWER = 64
-			manpower = 64
 			money = 525
 			supplies = 1950
+			# V3_QUEUE_MANPOWER = 64
+			manpower = 64
 		}
 		name = "Arm India and trade with all belligerents"
 		command = { type = money value = -525 }

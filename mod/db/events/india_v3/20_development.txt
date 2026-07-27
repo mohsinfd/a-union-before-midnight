@@ -93,7 +93,7 @@ event = {
 		command = { type = manpowerpool value = -5 }
 		command = { type = dissent value = 2 }
 		command = { type = domestic which = free_market value = 1 }
-		command = { type = research_mod value = 3 }
+
 		command = { type = construct which = ic where = 1447 value = 2 }
 		command = { type = construct which = ic where = 1472 value = 2 }
 		command = { type = construct which = ic where = 1502 value = 2 }
@@ -306,12 +306,12 @@ event = {
 		}
 		ai_chance = 20
 		name = "Guarantee markets to Indian capital"
-		
+
 		command = { type = supplies value = -700 }
 		command = { type = manpowerpool value = -10 }
 		command = { type = dissent value = 2 }
 		command = { type = domestic which = free_market value = 1 }
-		command = { type = research_mod value = 3 }
+
 		command = { type = construct which = ic where = 1472 value = 4 }
 		command = { type = construct which = ic where = 1447 value = 3 }
 		command = { type = construct which = ic where = 1493 value = 2 }
@@ -403,7 +403,7 @@ event = {
 		}
 		ai_chance = 20
 		name = "Electrify districts and village cooperatives"
-		
+
 		command = { type = supplies value = -800 }
 		command = { type = manpowerpool value = -10 }
 		command = { type = dissent value = -3 }
@@ -435,7 +435,11 @@ event = {
 		NOT = { flag = ind_v3_science_1937 }
 	}
 	decision_trigger = {
-
+	OR = {
+		AND = { money = 450 supplies = 850 }
+		AND = { supplies = 500 }
+		AND = { money = 300 supplies = 1200 }
+	}
 }
 
 	name = "A National System of Science"
@@ -456,7 +460,7 @@ event = {
 		name = "Empower the National Planning Commission"
 		command = { type = money value = -450 }
 		command = { type = supplies value = -850 }
-		command = { type = research_mod value = 7 }
+		command = { type = research_mod value = 4 }
 		command = { type = waketeam which = 250014 }
 		command = { type = construct which = ic where = 1459 value = 5 }
 		command = { type = construct which = ic where = 1502 value = 5 }
@@ -464,11 +468,14 @@ event = {
 		command = { type = setflag which = ind_v3_science_1937 }
 	}
 	action_b = {
-		
+		trigger = {
+			supplies = 500
+		}
 		ai_chance = 30
 		name = "Endow autonomous universities"
-		
-		command = { type = research_mod value = 8 }
+		command = { type = money value = 250 }
+		command = { type = supplies value = -500 }
+		command = { type = research_mod value = 4 }
 		command = { type = construct which = ic where = 1447 value = 3 }
 		command = { type = construct which = ic where = 1461 value = 3 }
 		command = { type = construct which = ic where = 1502 value = 3 }
@@ -484,7 +491,7 @@ event = {
 		name = "Create the Defence Science Organisation"
 		command = { type = money value = -300 }
 		command = { type = supplies value = -1200 }
-		command = { type = research_mod value = 5 }
+		command = { type = research_mod value = 4 }
 		command = { type = domestic which = defense_lobby value = 1 }
 		command = { type = waketeam which = 250015 }
 		command = { type = construct which = ic where = 1459 value = 3 }
@@ -585,7 +592,7 @@ event = {
 		command = { type = money value = -550 }
 		command = { type = supplies value = -1500 }
 		command = { type = manpowerpool value = -15 }
-		command = { type = research_mod value = 8 }
+		command = { type = research_mod value = 3 }
 		command = { type = industrial_modifier which = ic value = 5 }
 		command = { type = construct which = ic where = 1447 value = 3 }
 		command = { type = construct which = ic where = 1459 value = 3 }

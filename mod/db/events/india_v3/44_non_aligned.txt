@@ -42,7 +42,7 @@ event = {
 	action_b = {
 		ai_chance = 45
 		name = "Build a neutral trade and mediation forum"
-		
+
 		command = { type = relation which = CHI value = 25 }
 		command = { type = relation which = PER value = 20 }
 		command = { type = relation which = ENG value = 15 }
@@ -92,7 +92,7 @@ event = {
 		command = { type = supplies value = -300 }
 		command = { type = steal_tech which = ENG }
 		command = { type = steal_tech which = GER }
-		command = { type = research_mod value = 4 }
+		command = { type = research_mod value = 2 }
 		command = { type = waketeam which = 250015 }
 		command = { type = waketeam which = 250017 }
 		command = { type = setflag which = ind_v3_indigenous_standards }
@@ -136,7 +136,7 @@ event = {
 	action_b = {
 		ai_chance = 45
 		name = "Use bilateral treaties and strategic ambiguity"
-		
+
 		command = { type = relation which = PER value = 25 }
 		command = { type = relation which = AFG value = 25 }
 		command = { type = relation which = SIA value = 25 }
@@ -238,7 +238,7 @@ event = {
 		command = { type = money value = -450 }
 		command = { type = supplies value = -1200 }
 		command = { type = industrial_modifier which = supplies value = 6 }
-		command = { type = research_mod value = 3 }
+
 		command = { type = relation which = CHI value = 25 }
 		command = { type = relation which = PER value = 20 }
 		command = { type = ai which = "v3/IND_nam.ai" }
@@ -299,6 +299,8 @@ event = {
 
 	trigger = {
 		flag = ind_v3_asian_liberation_policy
+		atwar = no
+		control = { province = 1459 data = IND }
 		NOT = { flag = ind_v3_nam_settlement_1945 }
 	}
 
@@ -337,7 +339,7 @@ event = {
 		name = "Build an Asian development community"
 		command = { type = money value = -700 }
 		command = { type = supplies value = -500 }
-		command = { type = research_mod value = 3 }
+		command = { type = research_mod value = 1 }
 		command = { type = tc_mod value = 3 }
 		command = { type = setflag which = ind_v3_nam_development_victory }
 		command = { type = setflag which = ind_v3_nam_settlement_1945 }

@@ -16,9 +16,9 @@ must be decisions.
 
 ## Audit result
 
-- Entries reviewed: 209
+- Entries reviewed: 210
 - Decisions: 41
-- Events: 168
+- Events: 169
 - Classification errors: 0
 
 The row-by-row assessment is in `event_decision_audit.csv`.

@@ -28,7 +28,7 @@ event = {
 		command = { type = money value = -150 }
 		command = { type = dissent value = 2 }
 		command = { type = industrial_modifier which = money value = 5 }
-		command = { type = research_mod value = 1 }
+
 		command = { type = relation which = ENG value = -15 }
 		command = { type = setflag which = ind_v3_sovereign_currency }
 		command = { type = setflag which = ind_v3_currency_settlement }
@@ -69,7 +69,7 @@ event = {
 		name = "Retain expertise under a national service commission"
 		command = { type = money value = -100 }
 		command = { type = dissent value = -2 }
-		command = { type = research_mod value = 2 }
+
 		command = { type = industrial_modifier which = total value = 1 }
 		command = { type = setflag which = ind_v3_professional_civil_service }
 		command = { type = setflag which = ind_v3_civil_service }
@@ -162,10 +162,10 @@ event = {
 	action_b = {
 		ai_chance = 40
 		name = "Adopt one secular civil code"
-		
+
 		command = { type = dissent value = 4 }
 		command = { type = manpowerpool value = 20 }
-		command = { type = research_mod value = 1 }
+
 		command = { type = setflag which = ind_v3_uniform_civil_code }
 		command = { type = setflag which = ind_v3_communal_compact }
 	}
@@ -196,7 +196,7 @@ event = {
 		command = { type = money value = -200 }
 		command = { type = dissent value = 3 }
 		command = { type = manpowerpool value = 35 }
-		command = { type = research_mod value = 2 }
+
 		command = { type = setflag which = ind_v3_equal_citizenship }
 		command = { type = setflag which = ind_v3_ambedkar_reforms }
 	}
@@ -244,7 +244,7 @@ event = {
 	action_b = {
 		ai_chance = 35
 		name = "Maintain one strategic eastern administration"
-		
+
 		command = { type = supplies value = -300 }
 		command = { type = dissent value = 3 }
 		command = { type = construct which = infrastructure where = 1415 value = 20 trigger = { NOT = { building = { province = 1415 type = infrastructure value = 0.81 } } } }
@@ -286,7 +286,7 @@ event = {
 	action_b = {
 		ai_chance = 45
 		name = "Keep a flexible production code"
-		
+
 		command = { type = dissent value = 3 }
 		command = { type = industrial_modifier which = total value = 2 }
 		command = { type = supplies value = 500 }
@@ -328,9 +328,9 @@ event = {
 	action_b = {
 		ai_chance = 45
 		name = "Prioritize technical institutes and scholarships"
-		
+
 		command = { type = manpowerpool value = -8 }
-		command = { type = research_mod value = 5 }
+		command = { type = research_mod value = 4 }
 		command = { type = construct which = ic where = 1502 value = 2 }
 		command = { type = setflag which = ind_v3_technical_education }
 		command = { type = setflag which = ind_v3_education_act }
@@ -361,7 +361,7 @@ event = {
 		name = "Create a legally bounded foreign intelligence service"
 		command = { type = money value = -250 }
 		command = { type = supplies value = -200 }
-		command = { type = research_mod value = 2 }
+
 		command = { type = relation which = ENG value = 5 }
 		command = { type = setflag which = ind_v3_foreign_intelligence }
 		command = { type = setflag which = ind_v3_intelligence_bureau }
@@ -369,7 +369,7 @@ event = {
 	action_b = {
 		ai_chance = 35
 		name = "Give the bureau broad internal security powers"
-		
+
 		command = { type = supplies value = -250 }
 		command = { type = dissent value = 2 }
 		command = { type = tc_mod value = 2 }
@@ -450,13 +450,13 @@ event = {
 		command = { type = supplies value = -400 }
 		command = { type = manpowerpool value = 55 }
 		command = { type = dissent value = -3 }
-		command = { type = research_mod value = 1 }
+
 		command = { type = setflag which = ind_v3_public_health }
 	}
 	action_b = {
 		ai_chance = 30
 		name = "Concentrate on military and industrial districts"
-		
+
 		command = { type = supplies value = -300 }
 		command = { type = manpowerpool value = 25 }
 		command = { type = industrial_modifier which = supplies value = 3 }
@@ -497,10 +497,10 @@ event = {
 	action_b = {
 		ai_chance = 40
 		name = "Create a voluntary technical reserve"
-		
+
 		command = { type = supplies value = -200 }
 		command = { type = manpowerpool value = 30 }
-		command = { type = research_mod value = 2 }
+
 		command = { type = dissent value = -1 }
 		command = { type = setflag which = ind_v3_technical_reserve }
 		command = { type = setflag which = ind_v3_national_service }

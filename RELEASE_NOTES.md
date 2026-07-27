@@ -1,5 +1,47 @@
 # Release Notes
 
+## 3.4.1 Open Beta Hardening
+
+### Balance And Exploit Fixes
+
+- Rebalanced the national science decision and capped the conservative
+  permanent research upper bound at 22% in 1940 and 34% in 1945.
+- Replaced deliberate-bankruptcy and free-manpower rewards with conditional
+  emergency measures, political costs and a later fiscal settlement.
+- Added event-level reachability gates to all 23 mandatory events whose
+  actions require resources.
+- Removed the light carrier from the submarine doctrine package.
+- Reduced the Allied broad-basing windfall.
+
+### Strategic Outcomes
+
+- Required actual Comintern membership for Soviet war command.
+- Made Imphal recognition require a wartime Malayan objective.
+- Prevented German and Japanese settlements from overlapping.
+- Route settlements now require peace, a secure Delhi and the relevant active
+  alignment.
+
+### Art, Attribution And Packaging
+
+- Replaced three confirmed swastika-bearing images with original, symbol-free
+  reconstructions and rebuilt the public event gallery.
+- Added explicit creator and credit fields for Creative Commons portraits.
+- Removed 15 unrelated or retired inherited files from the overlay.
+- Corrected installer updates so retired overlay files revert to the user's
+  Blood and Iron foundation instead of being deleted blindly.
+- Corrected distributed documentation and added a forum-release audit.
+
+### Validation
+
+- Source and installed-mod parser validation: zero errors and zero warnings.
+- Event/decision audit: 210 entries, 41 decisions and 169 events.
+- Research, economy, force, province-construction and all five deterministic
+  prewar route gates pass.
+- Managed overlay: 2,911 files.
+
+V3.4.1 requires a new 1933 campaign. The 1942-1964 content remains beta
+pending full-war and postwar playthroughs.
+
 ## 3.4.0 Narrative And Decision Update
 
 ### A Union Before Midnight

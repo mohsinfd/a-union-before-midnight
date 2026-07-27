@@ -11,7 +11,8 @@ India begins 1933 as a newly sovereign but institutionally fragile state with ap
 - Indian sprite selection, model panels, production icons, palettes and
   elite-force presentation: V3 country-specific overlay.
 - Scenario date: January 1, 1933.
-- Starting territory: unified British Indian Empire, including Burma and the Indian island possessions.
+- Starting territory: undivided British India, including Burma and the Indian
+  island possessions.
 - Ceylon remains British and Goa remains Portuguese.
 - Nepal and Bhutan remain independent.
 
@@ -70,7 +71,7 @@ India begins 1933 as a newly sovereign but institutionally fragile state with ap
   ocean logistics, science, civil liberty, veterans and reconversion.
 - Atomic, electronics, aeronautics, oceanic-fleet and 1942-44 great-power programmes.
 - Path-specific Allied, German, Japanese, Soviet and non-aligned AI build profiles.
-- 205 India events across 25 independently validated V3 modules.
+- 210 India entries across 25 independently validated V3 modules.
 - Twenty-eight V3 event images, 31 bespoke technology-team images and 44
   distinct personnel portraits with independent source and rendered-hash
   validation.
@@ -78,13 +79,14 @@ India begins 1933 as a newly sovereign but institutionally fragile state with ap
   101 V3 minister, commander and technology-team assignments.
 - Self-contained technology-team portraits and Indian command, fleet, air and ship names.
 
-## Automated Build
+## Published Validation Records
 
-Run `BUILD_AND_DEPLOY_V3.bat` from the V3 source folder. It rebuilds the province
-registry, runs every static and balance gate, generates the managed overlay, copies
-only a valid build into `Darkest Hour A HOI Game\Mods\A Union Before Midnight`, and validates
-the deployed copy. A failed source build does not update the game folder.
+The private source pipeline rebuilds the province registry, runs every static
+and balance gate, generates the managed overlay, and validates both the source
+and installed game trees. The release package publishes the resulting
+event/decision audit and the art, personnel and historical-trait manifests
+under `docs`.
 
-Optional `smoke_test_v3.ps1` and `engine_scenario_test_v3.ps1` tools are kept
-outside the automatic build. They launch the closed-source game only when a
-deliberate engine test is requested.
+These reports are evidence of the candidate build; they are not a substitute
+for closed-engine playtesting. The player release contains only the verified
+overlay and installer, not the private authoring toolchain.

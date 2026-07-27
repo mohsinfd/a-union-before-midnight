@@ -144,7 +144,13 @@ event = {
 	trigger = {
 		flag = ind_v3_eastern_theatre_logistics
 		NOT = { flag = ind_v3_convoy_emergency }
-	}
+	# V3_ACTION_REACHABILITY_BEGIN
+	OR = {
+		AND = { manpower = 9 }
+		AND = { manpower = 6 }
+		}
+	# V3_ACTION_REACHABILITY_END
+}
 
 	name = "The Indian Ocean Convoy Emergency"
 	desc = "Submarines, raiders and aircraft are attacking the trade routes that feed India's factories and fleets. The navy requests a crash escort programme; industry argues for route dispersal, stockpiles and air patrols."
@@ -165,7 +171,7 @@ event = {
 		command = { type = money value = -500 }
 		command = { type = supplies value = -1300 }
 		command = { type = build_division which = destroyer value = naval_asw when = 5 cost = -2.0 where = 60 }
-		command = { type = research_mod value = 2 }
+
 		command = { type = setflag which = ind_v3_mass_convoy_escort }
 		command = { type = setflag which = ind_v3_convoy_emergency }
 	}

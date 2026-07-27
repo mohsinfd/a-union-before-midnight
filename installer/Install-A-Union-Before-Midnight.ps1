@@ -128,7 +128,14 @@ if (Test-Path -LiteralPath $oldManagedPath -PathType Leaf) {
 foreach ($relative in $oldManaged) {
     if ($relative -notin $managed) {
         $stale = Assert-SafeChildPath $targetRoot $relative
-        if (Test-Path -LiteralPath $stale -PathType Leaf) {
+        $foundation = Assert-SafeChildPath $baseMod $relative
+        if (Test-Path -LiteralPath $foundation -PathType Leaf) {
+            $staleDirectory = Split-Path -Parent $stale
+            if (-not (Test-Path -LiteralPath $staleDirectory -PathType Container)) {
+                New-Item -ItemType Directory -Path $staleDirectory -Force | Out-Null
+            }
+            Copy-Item -LiteralPath $foundation -Destination $stale -Force
+        } elseif (Test-Path -LiteralPath $stale -PathType Leaf) {
             Remove-Item -LiteralPath $stale -Force
         }
     }

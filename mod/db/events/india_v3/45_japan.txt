@@ -292,7 +292,14 @@ event = {
 	trigger = {
 		flag = ind_v3_joined_japan
 		NOT = { flag = ind_v3_japanese_war_aims }
-	}
+	# V3_ACTION_REACHABILITY_BEGIN
+	OR = {
+		AND = { manpower = 86 }
+		AND = { manpower = 6 }
+		AND = { manpower = 61 }
+		}
+	# V3_ACTION_REACHABILITY_END
+}
 
 	name = "India's War in Asia"
 	desc = "The Delhi-Tokyo alliance is not an annex to Germany's war. India must define its own campaign: an autonomous Burma-Malaya command, a continental effort tied to Japan's China war, or an Indian Ocean offensive against colonial bases."
@@ -433,10 +440,17 @@ event = {
 
 	trigger = {
 		flag = ind_v3_imphal_campaign
+		OR = {
+			flag = ind_v3_operation_azad
+			flag = ind_v3_tokyo_imphal_command
+			}
+		atwar = yes
+		control = { province = 1442 data = IND }
+		control = { province = 1415 data = IND }
 		NOT = { flag = ind_v3_imphal_legacy }
 		OR = {
-			control = { province = 1415 data = IND }
-			control = { province = 1442 data = IND }
+			control = { province = 1432 data = IND }
+			control = { province = 1438 data = IND }
 			}
 	}
 
@@ -477,6 +491,14 @@ event = {
 
 	trigger = {
 		flag = ind_v3_japanese_war_aims
+		flag = ind_v3_joined_japan
+		atwar = no
+		alliance = { country = IND country = JAP }
+		control = { province = 1459 data = IND }
+		OR = {
+			control = { province = 1432 data = IND }
+			control = { province = 1438 data = IND }
+			}
 		NOT = { flag = ind_v3_japanese_settlement }
 	}
 

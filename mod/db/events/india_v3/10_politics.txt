@@ -138,7 +138,7 @@ event = {
 		name = "Multilingual service: -3 dissent, +1 research; costs 250"
 		command = { type = money value = -250 }
 		command = { type = dissent value = -3 }
-		command = { type = research_mod value = 1 }
+
 		command = { type = setflag which = ind_v3_multilingual }
 		command = { type = setflag which = ind_v3_language_settlement }
 	}
@@ -158,7 +158,7 @@ event = {
 		command = { type = supplies value = -300 }
 		command = { type = dissent value = 1 }
 		command = { type = relation which = ENG value = 20 }
-		command = { type = research_mod value = 2 }
+
 		command = { type = domestic which = interventionism value = -1 }
 		command = { type = setflag which = ind_v3_english_service }
 		command = { type = setflag which = ind_v3_language_settlement }

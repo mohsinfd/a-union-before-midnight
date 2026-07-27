@@ -24,6 +24,15 @@ authors. Publication in this repository does not relicense them.
 The repository deliberately excludes the complete Blood and Iron foundation.
 Users must obtain and install that dependency separately.
 
+Written permission covering redistribution of the remaining Blood and Iron
+derivatives is not currently recorded in this project. Until that permission
+is obtained, or the package is redesigned and approved to generate every
+remaining derivative from the user's installed foundation, V3.4.1 must not be
+presented as cleared for official-forum publication.
+
+External GitHub or ModDB links should also be privately approved by a Darkest
+Hour forum moderator before posting. See `docs/FORUM_RELEASE_AUDIT.md`.
+
 ## Generated And Archival Images
 
 Image provenance, archival sources and reconstruction labels are recorded in:

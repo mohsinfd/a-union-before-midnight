@@ -25,7 +25,7 @@ event = {
 	action_a = {
 		ai_chance = 40
 		name = "Lead an independent non-aligned pole"
-		
+
 		command = { type = dissent value = -1 }
 		command = { type = domestic which = interventionism value = -1 }
 		command = { type = relation which = ENG value = 15 }
@@ -125,7 +125,7 @@ event = {
 		command = { type = relation which = ENG value = -55 }
 		command = { type = relation which = FRA value = -30 }
 		command = { type = dissent value = 3 }
-		command = { type = research_mod value = 3 }
+
 		command = { type = domestic which = professional_army value = 1 }
 		command = { type = setflag which = ind_v3_axis_orientation }
 		command = { type = setflag which = ind_v3_european_partner }
@@ -230,7 +230,7 @@ event = {
 		command = { type = dissent value = 4 }
 		command = { type = relation which = SOV value = 90 }
 		command = { type = relation which = ENG value = -45 }
-		command = { type = research_mod value = 4 }
+		command = { type = research_mod value = 1 }
 		command = { type = domestic which = free_market value = -1 }
 		command = { type = setflag which = ind_v3_soviet_orientation }
 		command = { type = setflag which = ind_v3_soviet_compact_settled }
@@ -246,7 +246,7 @@ event = {
 		command = { type = supplies value = -500 }
 		command = { type = relation which = SOV value = 45 }
 		command = { type = relation which = ENG value = 10 }
-		command = { type = research_mod value = 2 }
+		command = { type = research_mod value = 1 }
 		command = { type = setflag which = ind_v3_non_aligned }
 		command = { type = setflag which = ind_v3_soviet_civilian_exchange }
 		command = { type = setflag which = ind_v3_soviet_compact_settled }
@@ -337,7 +337,7 @@ event = {
 		ai_chance = 25
 		name = "Use the mission, avoid the war"
 		command = { type = money value = -325 }
-		command = { type = research_mod value = 2 }
+
 		command = { type = relation which = GER value = 20 }
 		command = { type = setflag which = ind_v3_armed_neutrality }
 	}
@@ -461,10 +461,10 @@ event = {
 	deathdate = { day = 29 month = december year = 1938 }
 
 	action_a = {
-		
+
 		ai_chance = 45
 		name = "Guarantee both kingdoms and respect the frontier"
-		
+
 		command = { type = relation which = NEP value = 60 }
 		command = { type = relation which = BHU value = 60 }
 		command = { type = dissent value = -1 }

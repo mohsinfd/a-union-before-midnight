@@ -27,7 +27,7 @@ event = {
 		name = "Map the resources of the whole Union"
 		command = { type = money value = -150 }
 		command = { type = supplies value = -200 }
-		command = { type = research_mod value = 2 }
+
 		command = { type = add_prov_resource which = 1476 value = 15 where = energy }
 		command = { type = add_prov_resource which = 1472 value = 8 where = metal }
 		command = { type = add_prov_resource which = 1503 value = 4 where = rare_materials }
@@ -36,7 +36,7 @@ event = {
 	action_b = {
 		ai_chance = 40
 		name = "Concentrate on the eastern mineral belt"
-		
+
 		command = { type = supplies value = -250 }
 		command = { type = add_prov_resource which = 1476 value = 22 where = energy }
 		command = { type = add_prov_resource which = 1472 value = 10 where = metal }
@@ -126,7 +126,7 @@ event = {
 	action_b = {
 		ai_chance = 45
 		name = "Let Tata lead under a state purchase guarantee"
-		
+
 		command = { type = supplies value = -400 }
 		command = { type = add_prov_resource which = 1472 value = 34 where = metal }
 		command = { type = add_prov_resource which = 1476 value = 15 where = energy }
@@ -214,7 +214,7 @@ event = {
 	action_b = {
 		ai_chance = 35
 		name = "Prioritize power generation over transport"
-		
+
 		command = { type = supplies value = -500 }
 		command = { type = add_prov_resource which = 1476 value = 42 where = energy }
 		command = { type = add_prov_resource which = 1485 value = 18 where = energy }
@@ -265,7 +265,7 @@ event = {
 		command = { type = add_prov_resource which = 1476 value = 20 where = energy }
 		command = { type = construct which = infrastructure where = 1477 value = 10 trigger = { NOT = { building = { province = 1477 type = infrastructure value = 0.91 } } } }
 		command = { type = construct which = infrastructure where = 1485 value = 10 trigger = { NOT = { building = { province = 1485 type = infrastructure value = 0.91 } } } }
-		command = { type = research_mod value = 2 }
+
 		command = { type = setflag which = ind_v3_synthetic_fuel }
 		command = { type = setflag which = ind_v3_refinery_program }
 	}

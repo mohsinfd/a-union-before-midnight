@@ -117,7 +117,7 @@ event = {
 		name = "Create one integrated general staff college"
 		command = { type = money value = -200 }
 		command = { type = supplies value = -250 }
-		command = { type = research_mod value = 2 }
+		command = { type = research_mod value = 1 }
 		command = { type = construct which = infrastructure where = 1529 value = 10 trigger = { NOT = { building = { province = 1529 type = infrastructure value = 0.91 } } } }
 		command = { type = construct which = infrastructure where = 1459 value = 10 trigger = { NOT = { building = { province = 1459 type = infrastructure value = 0.91 } } } }
 		command = { type = setflag which = ind_v3_integrated_staff_college }
@@ -144,7 +144,13 @@ event = {
 	trigger = {
 		flag = ind_v3_staff_college
 		NOT = { flag = ind_v3_standing_divisions }
-	}
+	# V3_ACTION_REACHABILITY_BEGIN
+	OR = {
+		AND = { manpower = 81 }
+		AND = { manpower = 48 }
+		}
+	# V3_ACTION_REACHABILITY_END
+}
 
 	name = "The First Standing Divisions"
 	desc = "Most inherited formations are regional brigades and militia. The general staff asks for four permanent infantry divisions and a headquarters cadre that can absorb reservists during mobilization."
@@ -194,7 +200,13 @@ event = {
 		flag = ind_v3_steel_security
 		flag = ind_v3_standing_divisions
 		NOT = { flag = ind_v3_mechanised_directorate }
-	}
+	# V3_ACTION_REACHABILITY_BEGIN
+	OR = {
+		AND = { manpower = 44 }
+		AND = { manpower = 48 }
+		}
+	# V3_ACTION_REACHABILITY_END
+}
 
 	name = "The Mechanised Warfare Directorate"
 	desc = "The western frontier and the great plains reward speed, but armour consumes steel, fuel and scarce mechanics. A mechanised directorate can build an experimental armoured division and motorized groups without allowing the army to become a purely continental machine."
@@ -247,7 +259,13 @@ event = {
 	trigger = {
 		flag = ind_v3_mechanised_directorate
 		NOT = { flag = ind_v3_frontier_corps }
-	}
+	# V3_ACTION_REACHABILITY_BEGIN
+	OR = {
+		AND = { manpower = 49 }
+		AND = { manpower = 17 }
+		}
+	# V3_ACTION_REACHABILITY_END
+}
 
 	name = "The Himalayan and Frontier Corps"
 	desc = "Mechanization cannot solve every Indian theatre. The army requires formations trained for Kashmir, the Khyber, Assam and the Burma ranges, with pack transport, engineers and light artillery."
@@ -280,10 +298,10 @@ event = {
 	}
 		ai_chance = 30
 		name = "Train existing infantry for mountain warfare"
-		
+
 		command = { type = supplies value = -500 }
 		command = { type = build_division which = bergsjaeger value = engineer when = 1 cost = -1.8 where = 90 }
-		command = { type = research_mod value = 2 }
+
 		command = { type = setflag which = ind_v3_frontier_corps }
 	}
 }
@@ -296,7 +314,14 @@ event = {
 	trigger = {
 		flag = ind_v3_frontier_corps
 		NOT = { flag = ind_v3_army_manoeuvres_1936 }
-	}
+	# V3_ACTION_REACHABILITY_BEGIN
+	OR = {
+		AND = { manpower = 98 }
+		AND = { manpower = 60 }
+		AND = { manpower = 33 }
+		}
+	# V3_ACTION_REACHABILITY_END
+}
 
 	name = "The 1936 Grand Manoeuvres"
 	desc = "The first army-wide exercise exposes incompatible radios, weak logistics and a shortage of experienced divisional staffs. The cabinet can enlarge the army immediately or pause expansion to professionalize the force."
@@ -346,9 +371,9 @@ event = {
 	}
 		ai_chance = 20
 		name = "Pause expansion and professionalize the cadres"
-		
+
 		command = { type = supplies value = -650 }
-		command = { type = research_mod value = 3 }
+		command = { type = research_mod value = 1 }
 		command = { type = domestic which = professional_army value = 1 }
 		command = { type = set_leader_skill which = 251001 value = 4 }
 		command = { type = set_leader_skill which = 251003 value = 4 }
@@ -384,14 +409,14 @@ event = {
 		command = { type = supplies value = -350 }
 		command = { type = manpowerpool value = 20 }
 		command = { type = dissent value = 2 }
-		command = { type = research_mod value = 1 }
+
 		command = { type = setflag which = ind_v3_open_commissions }
 		command = { type = setflag which = ind_v3_officer_crisis_1937 }
 	}
 	action_b = {
 		ai_chance = 35
 		name = "Protect standards and slow formation of new units"
-		
+
 		command = { type = supplies value = -250 }
 		command = { type = manpowerpool value = -8 }
 		command = { type = dissent value = -1 }
@@ -411,7 +436,13 @@ event = {
 		flag = ind_v3_officer_crisis_1937
 		flag = ind_v3_armaments_1937
 		NOT = { flag = ind_v3_mobile_reserve_1938 }
-	}
+	# V3_ACTION_REACHABILITY_BEGIN
+	OR = {
+		AND = { manpower = 65 }
+		AND = { manpower = 55 }
+		}
+	# V3_ACTION_REACHABILITY_END
+}
 
 	name = "The Mobile Strategic Reserve"
 	desc = "The army can now form a centrally controlled reserve able to reinforce Punjab, Bengal or the Deccan. The choice is between a fast motorized corps and a heavier armoured spearhead."
@@ -522,7 +553,7 @@ event = {
 		command = { type = supplies value = -750 }
 		command = { type = waketeam which = 250028 }
 		command = { type = construct which = rocket_test where = 1502 value = 2 }
-		command = { type = research_mod value = 2 }
+
 		command = { type = setflag which = ind_v3_rocket_centre }
 	}
 }
@@ -553,7 +584,7 @@ event = {
 		command = { type = supplies value = -1250 }
 		command = { type = waketeam which = 250029 }
 		command = { type = construct which = nuclear_reactor where = 1502 value = 2 }
-		command = { type = research_mod value = 3 }
+		command = { type = research_mod value = 1 }
 		command = { type = dissent value = 1 }
 		command = { type = setflag which = ind_v3_atomic_commission }
 	}
@@ -563,7 +594,7 @@ event = {
 		command = { type = money value = -775 }
 		command = { type = supplies value = -700 }
 		command = { type = waketeam which = 250029 }
-		command = { type = research_mod value = 4 }
+		command = { type = research_mod value = 2 }
 		command = { type = relation which = USA value = 15 }
 		command = { type = relation which = ENG value = 15 }
 		command = { type = setflag which = ind_v3_civil_atomic_program }

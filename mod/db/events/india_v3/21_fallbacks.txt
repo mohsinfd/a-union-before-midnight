@@ -1,6 +1,7 @@
 #########################################################################
 # India Mod V3.1: continuity, stabilization and controlled-risk systems
 #########################################################################
+# India Mod V3.1 economy pass
 
 event = {
 	id = 9270700
@@ -366,12 +367,13 @@ event = {
 
 	trigger = {
 		flag = ind_v3_started
-		NOT = { money = 500 }
+		NOT = { money = 100 }
+		NOT = { supplies = 500 }
 		NOT = { flag = ind_v31_fiscal_stabilization }
 	}
 
 	name = "The Fiscal Stabilization Act"
-	desc = "Emergency note issues and rapid nation-building have exhausted the Union treasury, leaving ministries unable to fund even routine programmes. The Reserve Bank now consolidates those notes, transfers inherited sterling balances and recapitalizes the public supply system. This rescue can happen only once."
+	desc = "Emergency note issues and rapid nation-building have exhausted both the Union treasury and the public supply system. The Reserve Bank can consolidate the accounts and advance a limited reserve, but the rescue will tighten credit, alarm the provinces and require a later settlement."
 	style = 2
 	picture = "india_v3_industry"
 
@@ -381,10 +383,10 @@ event = {
 
 	action_a = {
 		name = "Consolidate the emergency accounts"
-		command = { type = money value = 2000 }
-		command = { type = supplies value = 1800 }
-		command = { type = dissent value = 1 }
-		command = { type = industrial_modifier which = total value = 2 }
+		command = { type = money value = 750 }
+		command = { type = supplies value = 900 }
+		command = { type = dissent value = 4 }
+		command = { type = industrial_modifier which = total value = -3 }
 		command = { type = domestic which = democratic value = 1 trigger = { flag = ind_v3_federal NOT = { policy = { type = democratic value = 6 } } } }
 		command = { type = setflag which = ind_v31_fiscal_stabilization }
 	}
@@ -455,21 +457,22 @@ event = {
 	}
 }
 
-# Save-compatible V3.3 manpower and advanced-service corrections. These also
-# act as one-time safety nets for fresh campaigns that exhaust their reserve.
+# Save-compatible V3.3 advanced-service correction and a one-time wartime
+# manpower safety net for campaigns that have suffered severe losses.
 event = {
 	id = 9270793
 	random = no
 	country = IND
 
 	trigger = {
+		atwar = yes
 		flag = ind_v3_army_reform
-		NOT = { manpower = 100 }
+		NOT = { manpower = 40 }
 		NOT = { flag = ind_v33_reserve_register }
 	}
 
-	name = "The National Service Reserve Register"
-	desc = "A review of provincial, princely and railway-service rolls has found a large body of trained men omitted from the first Union mobilization tables. Their registration restores a usable strategic reserve without imposing immediate universal service."
+	name = "The Emergency National Service Register"
+	desc = "Heavy wartime losses have exhausted the trained reserve. The provinces can release railway, police and territorial-service cadres for the army, but doing so disrupts civil administration and weakens the professional character of the force."
 	style = 2
 	picture = "india_v3_armed_forces"
 
@@ -478,8 +481,10 @@ event = {
 	deathdate = { day = 29 month = december year = 1945 }
 
 	action_a = {
-		name = "Enter the trained reserve into the Union rolls"
-		command = { type = manpowerpool value = 250 }
+		name = "Call the emergency register"
+		command = { type = manpowerpool value = 90 }
+		command = { type = dissent value = 3 }
+		command = { type = domestic which = professional_army value = -1 }
 		command = { type = setflag which = ind_v33_reserve_register }
 	}
 }
@@ -550,5 +555,47 @@ event = {
 		command = { type = activate_unit_type which = escort }
 		command = { type = new_model which = escort value = 0 }
 		command = { type = setflag which = ind_v33_air_transport_registry }
+	}
+}
+
+event = {
+	id = 9270796
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v31_fiscal_stabilization
+		money = 600
+		supplies = 800
+		NOT = { flag = ind_v34_fiscal_accounts_settled }
+	}
+
+	name = "The Emergency Accounts Come Due"
+	desc = "The Reserve Bank's emergency advance prevented administrative paralysis, but its notes now crowd private credit and weaken confidence in the Union budget. Parliament must redeem the issue directly or convert it into a longer reconstruction debt."
+	style = 2
+	picture = "india_v3_industry"
+
+	date = { day = 0 month = january year = 1935 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1938 }
+
+	action_a = {
+		ai_chance = 60
+		name = "Redeem the emergency notes"
+		command = { type = money value = -225 }
+		command = { type = supplies value = -200 }
+		command = { type = dissent value = -2 }
+		command = { type = industrial_modifier which = total value = 3 }
+		command = { type = setflag which = ind_v34_fiscal_accounts_settled }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Fund a long reconstruction bond"
+		command = { type = money value = -100 }
+		command = { type = dissent value = 2 }
+		command = { type = industrial_modifier which = total value = 3 }
+		command = { type = industrial_modifier which = money value = -3 }
+		command = { type = setflag which = ind_v34_reconstruction_debt }
+		command = { type = setflag which = ind_v34_fiscal_accounts_settled }
 	}
 }

@@ -89,11 +89,6 @@ gfx/events_pics/india_v3_world_prague.bmp
 gfx/events_pics/india_v3_world_spain.bmp
 gfx/events_pics/silberfuchs.bmp
 gfx/events_pics/walther_funk.bmp
-gfx/interface/models/ast_model_12_0.bmp
-gfx/interface/models/ast_model_30_0.bmp
-gfx/interface/models/chi_model_18_3.bmp
-gfx/interface/models/ger_model_29_2.bmp
-gfx/interface/models/hol_model_12_1.bmp
 gfx/interface/models/ill_div_IND_0_0.bmp
 gfx/interface/models/ill_div_IND_0_1.bmp
 gfx/interface/models/ill_div_IND_0_10.bmp
@@ -746,13 +741,6 @@ gfx/interface/models/IND_model_9_6.bmp
 gfx/interface/models/IND_model_9_7.bmp
 gfx/interface/models/IND_model_9_8.bmp
 gfx/interface/models/IND_model_9_9.bmp
-gfx/interface/models/ita_model_11_2a.bmp
-gfx/interface/models/ita_model_31_7.bmp
-gfx/interface/models/model_8_16.bmp
-gfx/interface/models/mon_model_0_5.bmp
-gfx/interface/models/pol_model_25_6b.bmp
-gfx/interface/models/saf_model_0_2.bmp
-gfx/interface/models/swe_model_6_5.bmp
 gfx/interface/pics/INDL251001.bmp
 gfx/interface/pics/INDL251002.bmp
 gfx/interface/pics/INDL251003.bmp

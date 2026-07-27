@@ -79,9 +79,10 @@ id,file,title,classification,actions,reason
 9270790,21_fallbacks.txt,The Fiscal Stabilization Act,event,1,"Automatic continuity, compatibility, or missed-decision fallback."
 9270791,21_fallbacks.txt,Purge the Indian High Command,decision,1,Optional authoritarian action with controlled political risk.
 9270792,21_fallbacks.txt,The Corrected Constitutional and Service Lists,event,1,"Automatic continuity, compatibility, or missed-decision fallback."
-9270793,21_fallbacks.txt,The National Service Reserve Register,event,1,"Automatic continuity, compatibility, or missed-decision fallback."
+9270793,21_fallbacks.txt,The Emergency National Service Register,event,1,"Automatic continuity, compatibility, or missed-decision fallback."
 9270794,21_fallbacks.txt,The Armoured Corps Is Gazetted,event,1,"Automatic continuity, compatibility, or missed-decision fallback."
 9270795,21_fallbacks.txt,The Air Transport Command Is Gazetted,event,1,"Automatic continuity, compatibility, or missed-decision fallback."
+9270796,21_fallbacks.txt,The Emergency Accounts Come Due,event,2,"Automatic continuity, compatibility, or missed-decision fallback."
 9271000,31_air_force.txt,An Air Staff for Independent India,event,2,"Implementation conference, service review, or milestone after a military authorization."
 9271001,31_air_force.txt,The Flying Schools Programme,event,2,"Implementation conference, service review, or milestone after a military authorization."
 9271002,31_air_force.txt,Hindustan Aircraft Expands,event,2,"Implementation conference, service review, or milestone after a military authorization."
@@ -97,7 +98,7 @@ id,file,title,classification,actions,reason
 9271103,32_navy.txt,The Carrier Question,event,3,"Implementation conference, service review, or milestone after a military authorization."
 9271104,32_navy.txt,The Arabian Sea Fleet,decision,1,Costly fleet stage that the player must be able to fund and time.
 9271105,32_navy.txt,The Bay of Bengal Fleet,decision,1,Costly fleet stage that the player must be able to fund and time.
-9271106,32_navy.txt,The Carrier Keels Are Laid,decision,1,Costly fleet stage that the player must be able to fund and time.
+9271106,32_navy.txt,The Oceanic Fleet Keels Are Laid,decision,1,Costly fleet stage that the player must be able to fund and time.
 9271107,32_navy.txt,The Oceanic Fleet Commissions,event,3,"Implementation conference, service review, or milestone after a military authorization."
 9271108,32_navy.txt,Trincomalee and the Deep-Ocean Command,event,2,"Implementation conference, service review, or milestone after a military authorization."
 9271109,32_navy.txt,The 1941 Naval Board,event,3,"Implementation conference, service review, or milestone after a military authorization."

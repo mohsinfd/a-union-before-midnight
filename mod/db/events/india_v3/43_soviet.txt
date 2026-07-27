@@ -25,7 +25,7 @@ event = {
 	action_a = {
 		ai_chance = 65
 		name = "Embed Soviet specialists in the national plans"
-		
+
 		command = { type = supplies value = -650 }
 		command = { type = dissent value = 3 }
 		command = { type = relation which = SOV value = 45 }
@@ -44,7 +44,7 @@ event = {
 		command = { type = supplies value = -400 }
 		command = { type = steal_tech which = SOV }
 		command = { type = steal_tech which = SOV }
-		command = { type = research_mod value = 2 }
+		command = { type = research_mod value = 1 }
 		command = { type = setflag which = ind_v3_soviet_contract_mission }
 		command = { type = setflag which = ind_v3_soviet_planning_mission }
 	}
@@ -58,7 +58,13 @@ event = {
 	trigger = {
 		flag = ind_v3_soviet_planning_mission
 		NOT = { flag = ind_v3_soviet_deep_operations }
-	}
+	# V3_ACTION_REACHABILITY_BEGIN
+	OR = {
+		AND = { manpower = 85 }
+		AND = { manpower = 70 }
+		}
+	# V3_ACTION_REACHABILITY_END
+}
 
 	name = "Deep Operations in Indian Conditions"
 	desc = "Soviet instructors advocate mass armour, close aviation and successive operational echelons. Indian officers propose adapting the theory to smaller mechanized forces that can move through monsoon logistics and mountain approaches."
@@ -106,7 +112,7 @@ event = {
 		command = { type = build_division which = motorized value = engineer when = 4 cost = -1.8 where = 60 }
 		command = { type = build_division which = cas value = escort when = 2 cost = -2.2 where = 75 }
 		command = { type = tc_mod value = 4 }
-		command = { type = research_mod value = 2 }
+		command = { type = research_mod value = 1 }
 		command = { type = setflag which = ind_v3_soviet_adapted_operations }
 		command = { type = setflag which = ind_v3_soviet_deep_operations }
 	}
@@ -161,13 +167,17 @@ event = {
 	country = IND
 
 	trigger = {
-		OR = {
-			flag = ind_v3_joined_comintern
-			flag = ind_v3_soviet_orientation
-		}
+		flag = ind_v3_joined_comintern
+		alliance = { country = IND country = SOV }
 		flag = ind_v3_soviet_domestic_bargain
 		NOT = { flag = ind_v3_soviet_war_command }
-	}
+	# V3_ACTION_REACHABILITY_BEGIN
+	OR = {
+		AND = { manpower = 98 }
+		AND = { manpower = 54 }
+		}
+	# V3_ACTION_REACHABILITY_END
+}
 
 	name = "The Delhi-Tashkent War Command"
 	desc = "Soviet planners ask India to secure the southern approaches to Central Asia and threaten Axis supply through Persia. Delhi can form a western mountain command or concentrate on an eastern anti-Japanese front."
@@ -263,6 +273,10 @@ event = {
 
 	trigger = {
 		flag = ind_v3_soviet_people_war
+		flag = ind_v3_joined_comintern
+		atwar = no
+		alliance = { country = IND country = SOV }
+		control = { province = 1459 data = IND }
 		NOT = { flag = ind_v3_soviet_postwar_line }
 	}
 

@@ -68,9 +68,9 @@ event = {
 	}
 	action_c = {
 		trigger = {
+			supplies = 650
 			# V3_QUEUE_MANPOWER = 27
 			manpower = 27
-			supplies = 650
 		}
 		ai_chance = 25
 		name = "Provincial scouts: +20 manpower, two garrisons; costs 650"
@@ -153,14 +153,14 @@ event = {
 	}
 	action_c = {
 		trigger = {
+			supplies = 750
 			# V3_QUEUE_MANPOWER = 5
 			manpower = 5
-			supplies = 750
 		}
 		ai_chance = 25
 		name = "Transport command: two lift wings, +2 research; costs 750"
 		command = { type = supplies value = -750 }
-		command = { type = research_mod value = 2 }
+
 		command = { type = activate_unit_type which = transport_plane }
 		command = { type = new_model which = transport_plane value = 0 }
 		command = { type = build_division which = transport_plane when = 2 cost = 7 where = 150 }
@@ -233,9 +233,9 @@ event = {
 	}
 	action_c = {
 		trigger = {
+			supplies = 900
 			# V3_QUEUE_MANPOWER = 28
 			manpower = 28
-			supplies = 900
 		}
 		ai_chance = 25
 		name = "Reconnaissance columns: +3 land morale; costs 900/8 MP"
@@ -313,9 +313,9 @@ event = {
 	}
 	action_c = {
 		trigger = {
+			supplies = 800
 			# V3_QUEUE_MANPOWER = 26
 			manpower = 26
-			supplies = 800
 		}
 		ai_chance = 25
 		name = "Coastwatchers: two island garrisons, +1 intelligence; costs 800"

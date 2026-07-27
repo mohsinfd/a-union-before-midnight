@@ -84,7 +84,7 @@ event = {
 		command = { type = dissent value = 3 }
 		command = { type = manpowerpool value = 100 }
 		command = { type = industrial_modifier which = total value = 2 }
-		command = { type = research_mod value = 1 }
+
 		command = { type = setflag which = ind_v3_equal_national_service }
 		command = { type = setflag which = ind_v3_womens_service_settled }
 	}
@@ -117,7 +117,14 @@ event = {
 	trigger = {
 		flag = ind_v3_womens_service_settled
 		NOT = { flag = ind_v3_ocean_logistics_settled }
-	}
+	# V3_ACTION_REACHABILITY_BEGIN
+	OR = {
+		AND = { manpower = 2 }
+		AND = { manpower = 8 }
+		AND = { manpower = 50 }
+		}
+	# V3_ACTION_REACHABILITY_END
+}
 
 	name = "The Indian Ocean Logistics Board"
 	desc = "Submarine reports and shipping losses expose the fragility of India's long coastline. A unified logistics board can expand four ports and a transport fleet, the navy can concentrate on escorts and patrol aviation, or the army can claim the same steel for continental reserves."
@@ -185,7 +192,14 @@ event = {
 	trigger = {
 		flag = ind_v3_ocean_logistics_settled
 		NOT = { flag = ind_v3_national_service_settled }
-	}
+	# V3_ACTION_REACHABILITY_BEGIN
+	OR = {
+		AND = { manpower = 96 }
+		AND = { manpower = 81 }
+		AND = { manpower = 33 }
+		}
+	# V3_ACTION_REACHABILITY_END
+}
 
 	name = "The National Service Debate"
 	desc = "The armed forces can no longer expand through volunteers and princely contingents alone. Universal service would create a mass reserve at serious political cost; selective technical service would favour mobile formations; a professional volunteer army would remain smaller but easier to train and supply."
@@ -265,7 +279,7 @@ event = {
 		name = "Prioritize radar, rocketry and operational research"
 		command = { type = money value = -475 }
 		command = { type = industrial_modifier which = total value = -2 }
-		command = { type = research_mod value = 4 }
+		command = { type = research_mod value = 2 }
 		command = { type = waketeam which = 250028 }
 		command = { type = waketeam which = 250030 }
 		command = { type = setflag which = ind_v3_battlefield_science }
@@ -287,7 +301,7 @@ event = {
 		command = { type = money value = -600 }
 		command = { type = dissent value = 2 }
 		command = { type = industrial_modifier which = total value = -3 }
-		command = { type = research_mod value = 6 }
+		command = { type = research_mod value = 3 }
 		command = { type = waketeam which = 250028 }
 		command = { type = setflag which = ind_v3_autonomous_science }
 		command = { type = setflag which = ind_v3_scientific_mobilization_settled }
@@ -302,7 +316,14 @@ event = {
 	trigger = {
 		flag = ind_v3_scientific_mobilization_settled
 		NOT = { flag = ind_v3_arsenal_allocation_settled }
-	}
+	# V3_ACTION_REACHABILITY_BEGIN
+	OR = {
+		AND = { manpower = 86 }
+		AND = { manpower = 11 }
+		AND = { manpower = 7 }
+		}
+	# V3_ACTION_REACHABILITY_END
+}
 
 	name = "The Arsenal Allocation Crisis"
 	desc = "The 1943 production schedules cannot fully satisfy the army, air force and navy at once. The army demands a mobile striking corps, the air staff wants modern operational groups, and the admirals insist that the oceanic fleet will remain unfinished without another aviation ship and escorts."
@@ -390,7 +411,7 @@ event = {
 		name = "Keep courts open and accept the security risk"
 		command = { type = dissent value = 2 }
 		command = { type = money value = -200 }
-		command = { type = research_mod value = 1 }
+
 		command = { type = setflag which = ind_v3_wartime_liberty }
 		command = { type = setflag which = ind_v3_emergency_law_settled }
 	}
@@ -528,7 +549,7 @@ event = {
 		command = { type = money value = 1200 }
 		command = { type = dissent value = 1 }
 		command = { type = industrial_modifier which = total value = 2 }
-		command = { type = research_mod value = 1 }
+
 		command = { type = setflag which = ind_v3_export_arsenal }
 		command = { type = setflag which = ind_v3_reconversion_settled }
 	}

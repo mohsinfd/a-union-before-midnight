@@ -38,7 +38,7 @@ event = {
 	action_b = {
 		ai_chance = 30
 		name = "Keep aviation under the army for now"
-		
+
 		command = { type = supplies value = -150 }
 		command = { type = waketeam which = 250025 }
 		command = { type = construct which = air_base where = 1459 value = 3 trigger = { NOT = { building = { province = 1459 type = air_base value = 8 } } } }
@@ -72,7 +72,7 @@ event = {
 		command = { type = money value = -175 }
 		command = { type = supplies value = -250 }
 		command = { type = manpowerpool value = -5 }
-		command = { type = research_mod value = 2 }
+
 		command = { type = construct which = air_base where = 1502 value = 6 trigger = { NOT = { building = { province = 1502 type = air_base value = 5 } } } }
 		command = { type = construct which = air_base where = 1516 value = 3 trigger = { NOT = { building = { province = 1516 type = air_base value = 8 } } } }
 		command = { type = setflag which = ind_v3_flying_schools }
@@ -80,7 +80,7 @@ event = {
 	action_b = {
 		ai_chance = 35
 		name = "Fund a broad provincial air reserve"
-		
+
 		command = { type = supplies value = -200 }
 		command = { type = manpowerpool value = 8 }
 		command = { type = construct which = air_base where = 1447 value = 3 trigger = { NOT = { building = { province = 1447 type = air_base value = 8 } } } }
@@ -100,7 +100,13 @@ event = {
 		flag = ind_v3_air_program
 		flag = ind_v3_flying_schools
 		NOT = { flag = ind_v3_hal_expansion }
-	}
+	# V3_ACTION_REACHABILITY_BEGIN
+	OR = {
+		AND = { manpower = 3 }
+		AND = { manpower = 3 }
+		}
+	# V3_ACTION_REACHABILITY_END
+}
 
 	name = "Hindustan Aircraft Expands"
 	desc = "Bangalore can now assemble foreign designs, but the next investment determines whether India becomes a true aircraft designer or a large licensed producer. Indigenous design is slower and dearer; licensed production puts wings in service sooner."
@@ -121,7 +127,7 @@ event = {
 		command = { type = money value = -375 }
 		command = { type = supplies value = -550 }
 		command = { type = waketeam which = 250013 }
-		command = { type = research_mod value = 3 }
+		command = { type = research_mod value = 2 }
 		command = { type = construct which = ic where = 1502 value = 3 }
 		command = { type = activate_unit_type which = escort }
 		command = { type = new_model which = escort value = 0 }
@@ -136,7 +142,7 @@ event = {
 	}
 		ai_chance = 45
 		name = "License proven designs and expand production"
-		
+
 		command = { type = supplies value = -700 }
 		command = { type = waketeam which = 250013 }
 		command = { type = construct which = ic where = 1502 value = 2 }
@@ -157,7 +163,14 @@ event = {
 	trigger = {
 		flag = ind_v3_hal_expansion
 		NOT = { flag = ind_v3_air_doctrine_1936 }
-	}
+	# V3_ACTION_REACHABILITY_BEGIN
+	OR = {
+		AND = { manpower = 3 }
+		AND = { manpower = 6 }
+		AND = { manpower = 6 }
+		}
+	# V3_ACTION_REACHABILITY_END
+}
 
 	name = "The Air Doctrine Conference"
 	desc = "The air staff cannot simultaneously optimize for continental interception, close support and maritime reconnaissance. Each school offers a coherent doctrine and accepts that another mission will receive fewer aircraft."
@@ -175,7 +188,7 @@ event = {
 	}
 		ai_chance = 40
 		name = "Control the skies above India's cities"
-		
+
 		command = { type = supplies value = -600 }
 		command = { type = activate_unit_type which = escort }
 		command = { type = new_model which = escort value = 0 }
@@ -228,7 +241,13 @@ event = {
 	trigger = {
 		flag = ind_v3_air_doctrine_1936
 		NOT = { flag = ind_v3_air_defence_grid }
-	}
+	# V3_ACTION_REACHABILITY_BEGIN
+	OR = {
+		AND = { manpower = 3 }
+		AND = { manpower = 2 }
+		}
+	# V3_ACTION_REACHABILITY_END
+}
 
 	name = "The Continental Air Defence Grid"
 	desc = "Observers, telephones, searchlights and radio direction finding must turn isolated squadrons into a national system. A complete grid is costly, but without it fighters will arrive after the bombers have gone."
@@ -265,7 +284,7 @@ event = {
 	}
 		ai_chance = 30
 		name = "Protect only the heaviest industrial centres"
-		
+
 		command = { type = supplies value = -350 }
 		command = { type = construct which = radar_station where = 1447 value = 2 }
 		command = { type = construct which = radar_station where = 1517 value = 2 }
@@ -285,7 +304,13 @@ event = {
 		flag = ind_v3_naval_program
 		flag = ind_v3_air_doctrine_1936
 		NOT = { flag = ind_v3_naval_air_arm }
-	}
+	# V3_ACTION_REACHABILITY_BEGIN
+	OR = {
+		AND = { manpower = 6 }
+		AND = { manpower = 3 }
+		}
+	# V3_ACTION_REACHABILITY_END
+}
 
 	name = "The Indian Naval Air Arm"
 	desc = "Fleet exercises show that ships operating without reconnaissance aircraft are blind beyond the horizon. The navy requests its own pilots, torpedo school and coastal patrol groups; the air staff resists dividing a still-small force."
@@ -322,7 +347,7 @@ event = {
 	}
 		ai_chance = 30
 		name = "Keep maritime aviation under joint command"
-		
+
 		command = { type = supplies value = -500 }
 		command = { type = waketeam which = 250022 }
 		command = { type = activate_unit_type which = naval_bomber }
@@ -330,7 +355,7 @@ event = {
 		command = { type = activate_unit_type which = escort }
 		command = { type = new_model which = escort value = 0 }
 		command = { type = build_division which = naval_bomber value = escort when = 1 cost = -2.0 where = 90 }
-		command = { type = research_mod value = 1 }
+
 		command = { type = setflag which = ind_v3_joint_maritime_aviation }
 		command = { type = setflag which = ind_v3_naval_air_arm }
 	}
@@ -345,7 +370,14 @@ event = {
 		flag = ind_v3_naval_air_arm
 		flag = ind_v3_armaments_1937
 		NOT = { flag = ind_v3_air_expansion_1938 }
-	}
+	# V3_ACTION_REACHABILITY_BEGIN
+	OR = {
+		AND = { manpower = 7 }
+		AND = { manpower = 5 }
+		AND = { manpower = 8 }
+		}
+	# V3_ACTION_REACHABILITY_END
+}
 
 	name = "The Fifteen-Wing Plan"
 	desc = "The general staff asks for an air force able to defend the industrial heartland, support two field armies and patrol both seas by 1940. Meeting the target requires subsidized mass production and will displace civilian aircraft orders."
@@ -482,7 +514,7 @@ event = {
 		name = "Perfect the force already in service"
 		command = { type = money value = -425 }
 		command = { type = supplies value = -650 }
-		command = { type = research_mod value = 3 }
+
 		command = { type = tc_mod value = 2 }
 		command = { type = dissent value = -1 }
 		command = { type = setflag which = ind_v3_air_command_1940 }

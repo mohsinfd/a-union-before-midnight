@@ -20,7 +20,7 @@ second- or third-ranked power, but no route grants an automatic victory.
 
 - Darkest Hour 1.05.2
 - Blood and Iron v1.1 installed as `Mods\Blood and Iron v1.1`
-- A new 1933 campaign is recommended
+- A new 1933 campaign is required for the V3.4.1 balance and trigger changes
 
 This repository contains only the **A Union Before Midnight overlay**. It does not
 redistribute Darkest Hour or the complete Blood and Iron mod.
@@ -44,10 +44,21 @@ powershell -ExecutionPolicy Bypass -File installer\Install-A-Union-Before-Midnig
   -GameRoot "D:\SteamLibrary\steamapps\common\Darkest Hour A HOI Game"
 ```
 
+## V3.4.1 Open Beta
+
+This hardening release closes the treasury, manpower, research and route
+exploits identified in the public review. It also adds mandatory-action
+reachability checks, corrects the submarine fleet package, replaces prohibited
+event imagery and completes Creative Commons creator attribution.
+
+The 1933-1940 source and installed-mod gates pass. Human playtesting reaches
+early 1937; the 1942-1964 campaign remains beta content pending complete war
+and postwar runs.
+
 ## Campaign
 
-- **209 India-focused entries** across 25 isolated event modules.
-- **41 player-timed decisions** for optional authorizations and **168 events**
+- **210 India-focused entries** across 25 isolated event modules.
+- **41 player-timed decisions** for optional authorizations and **169 events**
   for deadlines, crises, replies, implementation disputes and milestones.
 - Stable constitutional governments, complete cabinets and leadership
   transitions tied to genuine political milestones.
@@ -71,10 +82,11 @@ powershell -ExecutionPolicy Bypass -File installer\Install-A-Union-Before-Midnig
 - Resource development based on the actual oil, coal, iron, chromite and
   manganese belts of the subcontinent.
 - Event-supported **67-108 effective land formations**, **10-18 air wings** and
-  **14-32 naval formations** by 1940 before ordinary player queues and
+  **14-31 naval formations** by 1940 before ordinary player queues and
   strategic-path bonuses.
 - Arabian Sea, Bay of Bengal and Indian Ocean commands.
-- One or two naval-aviation ships by 1940 and two or three by 1942.
+- Zero to two naval-aviation ships by 1940 and one to three by 1942,
+  depending on doctrine.
 - Gurkhas, frontier forces, airborne formations, long-range penetration groups
   and Andaman marine charters.
 - Complete Indian naming pools for corps, divisions, air groups, wings, fleets,
@@ -134,16 +146,15 @@ without India-event namespace errors in `savedebug.txt`.
 See [Release Notes](RELEASE_NOTES.md), [Design Notes](docs/DESIGN.md) and
 [Art and Research Credits](docs/ART_AND_RESEARCH_CREDITS.md). The complete
 [event/decision policy](docs/EVENT_AND_DECISION_DESIGN.md) and
-[row-by-row audit](docs/event_decision_audit.csv) are also included.
+[row-by-row audit](docs/event_decision_audit.csv) are also included. The
+[forum release audit](docs/FORUM_RELEASE_AUDIT.md) records the remaining
+permission and moderator-approval work.
 
 ## Compatibility
 
-- A new campaign provides the intended force and economic curve.
-- A new campaign is required to see the independence prologue and provisional
-  cabinet sequence introduced in V3.4.
-- Healthy V3.3 saves can continue and will use the corrected future decisions.
-- Units silently omitted by the engine before the V3.3 queue fix cannot be
-  reconstructed automatically.
+- A new campaign is required for the intended force, economy, route and
+  research curve.
+- Earlier saves are not supported by the V3.4.1 Open Beta.
 - Other mods that replace the Blood and Iron 1933 scenario, India data or
   global event files are not supported.
 

@@ -1,22 +1,25 @@
-﻿# A Union Before Midnight Art and Research Credits
+# A Union Before Midnight Art and Research Credits
 
 ## Scope
 
-A Union Before Midnight contains a complete India-specific visual and research pass:
+A Union Before Midnight contains a complete India-specific visual and research
+pass:
 
 - 31 bespoke technology-team images.
 - 44 distinct minister and military-leader portraits.
-- 28 V3 event images.
+- 28 rebuilt India-event images and four inherited-event safety replacements.
 - 101 researched minister, commander and technology-team assignments.
 
-The machine-readable manifests under `tools/data` are the authoritative asset
+The machine-readable manifests under `docs` are the authoritative asset
 and research records. The build validator requires exact coverage and checks
 the packaged files against their recorded hashes.
 
 ## Personnel Portraits
 
-`tools/data/personnel_art_manifest.csv` records the person, source page,
-licence, licence URL and provenance for every active personnel portrait.
+`docs/personnel_art_manifest.csv` records the person, source page,
+licence, licence URL, creator, required credit line and provenance for every
+active personnel portrait. Creative Commons portraits include the
+transformation notice required for the cropped, grayscale game derivative.
 
 - 27 portraits are derived from historical photographs.
 - 17 portraits are explicitly labelled plausible painted reconstructions.
@@ -29,14 +32,17 @@ as proof of an undocumented historical appearance.
 
 All 31 technology-team source images are generated originals made for the
 specific institution or team. They do not reuse a minister, commander or
-another technology team's portrait. `tools/data/v32_art_manifest.csv` records
+another technology team's portrait. `docs/art_manifest.csv` records
 the source, output path, provenance and rendered SHA-256 hash.
 
 ## Event Art
 
-The same V3.2 art manifest covers all 28 event images:
+The same art manifest covers 28 India-event images and four safe replacements
+used by inherited events:
 
-- Three are generated original campaign images.
+- Seven are AI-assisted generated originals: the three India campaign images,
+  two symbol-free Indo-German scenes, a symbol-free general-staff scene and a
+  civilian Walther Funk reconstruction.
 - Twenty-five are distinct transformed period photographs already packaged
   with the Blood and Iron foundation.
 
@@ -46,7 +52,7 @@ credits of that project and its contributing graphic packs.
 
 ## Historical Traits
 
-`tools/data/india_historical_traits.csv` records the exact active game
+`docs/india_historical_traits.csv` records the exact active game
 assignment, historical basis, alternate-history embellishment and research
 source for:
 
@@ -55,13 +61,14 @@ source for:
 - 31 technology teams.
 
 Traits are grounded in documented careers where possible. Earlier entry dates,
-higher ceilings and cross-service roles are used only where the 1933
-independence timeline makes the development plausible. The manifest makes those
+higher ceilings and cross-service roles are used only where the 1933 Union Settlement
+alternate history makes the development plausible. The manifest makes those
 embellishments explicit rather than presenting them as literal history.
 
 ## Foundation
 
-A Union Before Midnight is built on Blood and Iron v1.1 by thewanderingknight. Blood and
+A Union Before Midnight is built on Blood and Iron v1.1 by
+thewanderingknight. Blood and
 Iron incorporates work from World in Flames 2, Edge of Darkness, Total Realism
 Project, Francesco's Models Mod, Kazoo's SKIF Style Icons, Decriser's DEC Map,
 the Official Graphic Pack, Horton13's Graphic Improvement Project,
@@ -70,4 +77,3 @@ credited in the original Blood and Iron release.
 
 Public redistribution must retain the original Blood and Iron credits and
 respect the permissions attached to the foundation and each archival source.
-

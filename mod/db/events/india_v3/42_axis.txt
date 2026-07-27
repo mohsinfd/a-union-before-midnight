@@ -58,7 +58,13 @@ event = {
 	trigger = {
 		flag = ind_v3_german_mission
 		NOT = { flag = ind_v3_axis_mobile_army }
-	}
+	# V3_ACTION_REACHABILITY_BEGIN
+	OR = {
+		AND = { manpower = 55 }
+		AND = { manpower = 66 }
+		}
+	# V3_ACTION_REACHABILITY_END
+}
 
 	name = "The Indian Panzer Debate"
 	desc = "German advisers recommend a compact armoured spearhead supported by motorized infantry and close air support. Indian officers warn that fuel, workshops and jungle theatres make a copied continental doctrine dangerous."
@@ -96,7 +102,7 @@ event = {
 		command = { type = supplies value = -1150 }
 		command = { type = build_division which = motorized value = engineer when = 4 cost = -1.8 where = 60 }
 		command = { type = tc_mod value = 4 }
-		command = { type = research_mod value = 2 }
+		command = { type = research_mod value = 1 }
 		command = { type = setflag which = ind_v3_axis_adapted_mobility }
 		command = { type = setflag which = ind_v3_axis_mobile_army }
 	}

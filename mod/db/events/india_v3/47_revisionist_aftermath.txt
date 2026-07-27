@@ -30,7 +30,7 @@ event = {
 		name = "Constitutionalize mobilization: -375 money, -3 dissent"
 		command = { type = money value = -375 }
 		command = { type = dissent value = -3 }
-		command = { type = research_mod value = 2 }
+		command = { type = research_mod value = 1 }
 		command = { type = setflag which = ind_v3_authoritarian_constitution }
 		command = { type = setflag which = ind_v3_authoritarian_reckoning }
 	}
@@ -70,7 +70,12 @@ event = {
 	country = IND
 
 	trigger = {
+		flag = ind_v3_axis_war_aims
 		flag = ind_v3_authoritarian_reckoning
+		flag = ind_v3_joined_axis
+		atwar = no
+		alliance = { country = IND country = GER }
+		control = { province = 1459 data = IND }
 		NOT = { flag = ind_v3_revisionist_settlement_1945 }
 	}
 

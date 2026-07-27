@@ -39,7 +39,7 @@ event = {
 		command = { type = money value = -1075 }
 		command = { type = supplies value = -2150 }
 		command = { type = dissent value = 2 }
-		command = { type = research_mod value = 5 }
+		command = { type = research_mod value = 2 }
 		command = { type = waketeam which = 250016 }
 		command = { type = setflag which = ind_v3_atomic_program }
 		command = { type = setflag which = ind_v3_advanced_science }
@@ -53,7 +53,7 @@ event = {
 		name = "Create a national electronics directorate"
 		command = { type = money value = -800 }
 		command = { type = supplies value = -1750 }
-		command = { type = research_mod value = 7 }
+		command = { type = research_mod value = 3 }
 		command = { type = waketeam which = 250017 }
 		command = { type = construct which = radar_station where = 1447 value = 2 }
 		command = { type = construct which = radar_station where = 1517 value = 2 }
@@ -70,7 +70,7 @@ event = {
 		name = "Fund advanced aeronautics and long-range flight"
 		command = { type = money value = -875 }
 		command = { type = supplies value = -2000 }
-		command = { type = research_mod value = 5 }
+		command = { type = research_mod value = 2 }
 		command = { type = waketeam which = 250013 }
 		command = { type = waketeam which = 250020 }
 		command = { type = construct which = air_base where = 1502 value = 3 trigger = { NOT = { building = { province = 1502 type = air_base value = 8 } } } }
@@ -109,10 +109,10 @@ event = {
 
 	action_a = {
 		trigger = {
-			# V3_QUEUE_MANPOWER = 11
-			manpower = 11
 			money = 1325
 			supplies = 4450
+			# V3_QUEUE_MANPOWER = 11
+			manpower = 11
 		}
 		ai_chance = 30
 		name = "Lay the carrier-fleet foundations"
@@ -130,10 +130,10 @@ event = {
 	}
 	action_b = {
 		trigger = {
-			# V3_QUEUE_MANPOWER = 12
-			manpower = 12
 			money = 1025
 			supplies = 3850
+			# V3_QUEUE_MANPOWER = 12
+			manpower = 12
 		}
 		ai_chance = 40
 		name = "Build a cruiser-centred control fleet"
@@ -149,10 +149,10 @@ event = {
 	}
 	action_c = {
 		trigger = {
-			# V3_QUEUE_MANPOWER = 12
-			manpower = 12
 			money = 750
 			supplies = 3350
+			# V3_QUEUE_MANPOWER = 12
+			manpower = 12
 		}
 		ai_chance = 30
 		name = "Control the ocean through denial"
@@ -258,7 +258,7 @@ event = {
 		command = { type = money value = -1250 }
 		command = { type = supplies value = -3700 }
 		command = { type = manpowerpool value = -20 }
-		command = { type = research_mod value = 6 }
+		command = { type = research_mod value = 1 }
 		command = { type = industrial_modifier which = oil value = 10 }
 		command = { type = construct which = ic where = 1441 value = 4 }
 		command = { type = construct which = ic where = 1472 value = 4 }
@@ -318,7 +318,7 @@ event = {
 		ai_chance = 30
 		name = "Remain the independent global balancer"
 		command = { type = money value = 800 }
-		command = { type = research_mod value = 3 }
+
 		command = { type = relation which = ENG value = 20 }
 		command = { type = relation which = USA value = 20 }
 		command = { type = relation which = SOV value = 20 }

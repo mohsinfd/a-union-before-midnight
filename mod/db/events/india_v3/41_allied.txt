@@ -40,7 +40,7 @@ event = {
 	action_b = {
 		ai_chance = 35
 		name = "Limit cooperation to design and training"
-		
+
 		command = { type = relation which = ENG value = 20 }
 		command = { type = steal_tech which = ENG }
 		command = { type = steal_tech which = ENG }
@@ -87,10 +87,10 @@ event = {
 	action_b = {
 		ai_chance = 40
 		name = "Buy equipment but preserve Indian standards"
-		
+
 		command = { type = supplies value = 1000 }
 		command = { type = steal_tech which = ENG }
-		command = { type = research_mod value = 2 }
+		command = { type = research_mod value = 1 }
 		command = { type = setflag which = ind_v3_allied_independent_standards }
 		command = { type = setflag which = ind_v3_allied_air_mission }
 	}
@@ -130,10 +130,10 @@ event = {
 		ai_chance = 25
 		name = "Accept broad basing for a major matériel package"
 		command = { type = access which = ENG }
-		command = { type = money value = 900 }
-		command = { type = supplies value = 3500 }
+		command = { type = money value = 550 }
+		command = { type = supplies value = 2200 }
 		command = { type = steal_tech which = ENG }
-		command = { type = dissent value = 4 }
+		command = { type = dissent value = 5 }
 		command = { type = setflag which = ind_v3_allied_bases }
 		command = { type = setflag which = ind_v3_allied_sovereignty_bargain }
 	}
@@ -157,7 +157,13 @@ event = {
 		flag = ind_v3_joined_allies
 		flag = ind_v3_allied_sovereignty_bargain
 		NOT = { flag = ind_v3_allied_war_command }
-	}
+	# V3_ACTION_REACHABILITY_BEGIN
+	OR = {
+		AND = { manpower = 80 }
+		AND = { manpower = 86 }
+		}
+	# V3_ACTION_REACHABILITY_END
+}
 
 	name = "India's Allied War Command"
 	desc = "The alliance asks where India's strategic weight will fall. A Middle Eastern expedition protects oil and the Suez route; an eastern concentration keeps Indian command focused on Burma, Malaya and the Bay of Bengal."
@@ -250,6 +256,10 @@ event = {
 
 	trigger = {
 		flag = ind_v3_atlantic_charter_position
+		flag = ind_v3_joined_allies
+		atwar = no
+		alliance = { country = IND country = ENG }
+		control = { province = 1459 data = IND }
 		NOT = { flag = ind_v3_allied_settlement_1945 }
 	}
 
@@ -277,7 +287,7 @@ event = {
 		name = "Secure permanent great-power recognition"
 		command = { type = relation which = ENG value = 25 }
 		command = { type = relation which = USA value = 25 }
-		command = { type = research_mod value = 3 }
+		command = { type = research_mod value = 1 }
 		command = { type = industrial_modifier which = money value = 3 }
 		command = { type = setflag which = ind_v3_allied_great_power_victory }
 		command = { type = setflag which = ind_v3_allied_settlement_1945 }

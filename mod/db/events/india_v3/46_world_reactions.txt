@@ -54,7 +54,7 @@ event = {
 		command = { type = supplies value = -500 }
 		command = { type = relation which = ITA value = 25 }
 		command = { type = relation which = ENG value = -10 }
-		command = { type = research_mod value = 1 }
+
 		command = { type = dissent value = 2 }
 		command = { type = setflag which = ind_v3_abyssinia_observers }
 		command = { type = setflag which = ind_v3_reacted_abyssinia }
@@ -93,7 +93,7 @@ event = {
 		command = { type = relation which = SPA value = -45 }
 		command = { type = relation which = SOV value = 15 }
 		command = { type = relation which = GER value = -15 }
-		command = { type = research_mod value = 1 }
+
 		command = { type = setflag which = ind_v3_spain_republic }
 		command = { type = setflag which = ind_v3_reacted_spain }
 	}
@@ -284,7 +284,7 @@ event = {
 		command = { type = money value = -250 }
 		command = { type = relation which = GER value = -10 }
 		command = { type = relation which = ENG value = 5 }
-		command = { type = research_mod value = 1 }
+
 		command = { type = domestic which = defense_lobby value = 1 }
 		command = { type = setflag which = ind_v3_munich_rearmament }
 		command = { type = setflag which = ind_v3_reacted_munich }
