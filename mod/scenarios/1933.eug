@@ -3,29 +3,8 @@ panel      = "scenarios/data/scenario_1933.bmp"
 header =
 { name       = "A Union Before Midnight: India 1933"
   startdate  = { year = 1933 }
-  selectable = { AFG ALB ARG AST AUS BEL BHU BOL BRA BUL CAN CGX CHC CHI CHL COL COS CSX CUB CXB CYN CZE DEN DOM ECU EGY ENG EST ETH FIN FRA GER GRE GUA HAI HOL HON HUN IRE IRQ ITA 
-		 JAP LAT LIB LIT LUX MAN MEX MON NEP NIC NOR NZL OMN PAN PAR PER POL POR PRU ROM SOV SWE SAF SAL SAU SCH SIA SIK SPR TAN TIB TUR URU USA VEN YEM YUG IND U06 U03 U04 U05 U60
-         UPE     }
-  ENG        = { }
-  FRA        = { }
-  ITA        = { }
-  GER        = { picture = "scenarios\data\propaganda_GER_1933.bmp" flag_ext = _weimar }
-  SOV        = { picture = "scenarios\data\propaganda_SOV_1936.bmp" }
-  POL        = { }
-  JAP        = { }
-  CHI        = { }
-  CAN        = { }
-  USA        = { picture = "scenarios\data\propaganda_USA_1933.bmp" }
-  ARG 	     = { }
-  AST 	     = { }
-  NZL 	     = { }  
-  BRA 	     = { }
-  CZE 	     = { }
-  FIN 	     = { }
-  HUN 	     = { }
-  ROM 	     = { }
-  SPR 	     = { }
-  IND 	     = { picture = "scenarios\data\propaganda_IND_V3.bmp" }
+  selectable = { IND }
+  IND        = { picture = "scenarios\data\propaganda_IND_V3.bmp" }
 }
 globaldata =
 { startdate = { year = 1933 month = january day = 0 }
@@ -66,6 +45,7 @@ globaldata =
  #     participant = { CHI CSX }
  #   }
  # }
+
    war =
   { id        = { type = 9430 id = 7 }
     date      = { year = 1933 month = january day = 0 }
@@ -116,13 +96,13 @@ globaldata =
     55321 55322 55323 55324
 
 	#CHI - 1914 CGX Clique
-	55400 55401 55402 55403 55404 55405 55406 55407 55408 55409 55410 55411 55412 55413 55414 55415 55416 55417
- 
+	55350 55351 55352 55353 55354 55355 55356 55357 55358 55359 55360 55361 55362 55363 55364 55365 55366 55367
+
 	#CHI - New CGX Clique
 	55250 55251 55252 55253 55254 55255 55256 55257 55258 55259 55260 55261 55262 55263 55264 55265 55266 55267 55268
 
 	#CHI - Wuhan
-	55418 55419 55420
+	55400 55401 55402 55403 55404 55405 55406 55407 55408 55409 55410 55411 55412 55413 55414 55415 55416 55417 55418 55419 55420
 
 	#UPE - In Xinjiang Government
 	1400001 1400015 1400016 # Xoja Niyaz Haji
@@ -494,6 +474,14 @@ globaldata =
     expirydate = { year = 1940 month = april day = 29 }
   }
   treaty =
+  { id         = { type = 16384 id = 59 }
+    type       = non_aggression
+    country    = "GER"
+    country    = "POL"
+    startdate  = { year = 1932 month = december day = 29 }
+    expirydate = { year = 1939 month = july day = 29 }
+  }
+  treaty =
   { id         = { type = 16384 id = 60 }
     type       = non_aggression
     country    = "GER"
@@ -695,8 +683,6 @@ event      = "db\events\AI\AI_BEL.txt"
 event      = "db\events\AI\AI_PHI.txt"
 
 event 	   = "db\events\DayofDecision.txt"
-event 	   = "db\events\Gameplay.txt"
-
 event 	   = "db\events\China\1933-CHI-Pre-Long-March.txt"
 event 	   = "db\events\China\1928-CHI-Nanjing-Decade.txt"
 event 	   = "db\events\China\1933-CHI-UPE-First-East-Turkestan-War.txt"
@@ -713,6 +699,7 @@ event 	   = "db\events\Japan\1933-MAN-Manchukuo.txt"
 event 	   = "db\events\Japan\1933-JAP-Domestic.txt"
 event 	   = "db\events\Japan\1933-JAP-North-Strike.txt"
 event 	   = "db\events\Japan\1937-JAP-Marco-Polo.txt"
+
 
 # Includes for global data
 include = "db\events.txt"
@@ -810,11 +797,3 @@ include = "scenarios\1933\bases.inc"
 include = "scenarios\1933\bases_DOD.inc"
 include = "scenarios\1933\depots.inc"
 include = "scenarios\1933\rebels.inc"
-include = "scenarios\1933\WIF2.inc"
-
-sleepevent = {
-2011006 # 2-26 Incident (JAP)
-2003182 # Afrika-Korps (GER)
-2007047 # Great Patriotic War (DHF)
-2003184 # Repudiate Locarno Treaties (DHF)
-}

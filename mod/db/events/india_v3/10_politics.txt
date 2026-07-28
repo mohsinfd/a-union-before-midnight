@@ -82,8 +82,8 @@ event = {
 		command = { type = dissent value = 5 }
 		command = { type = manpowerpool value = 45 }
 		command = { type = domestic which = free_market value = -1 }
-		command = { type = construct which = infrastructure where = 1465 value = 10 trigger = { NOT = { building = { province = 1465 type = infrastructure value = 0.91 } } } }
-		command = { type = construct which = infrastructure where = 1445 value = 10 trigger = { NOT = { building = { province = 1445 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1465 value = 10 trigger = { owned = { province = 1465 data = IND } NOT = { building = { province = 1465 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1445 value = 10 trigger = { owned = { province = 1445 data = IND } NOT = { building = { province = 1445 type = infrastructure value = 0.91 } } } }
 		command = { type = setflag which = ind_v3_land_redistribution }
 		command = { type = setflag which = ind_v3_land_settlement }
 	}
@@ -94,10 +94,10 @@ event = {
 		command = { type = supplies value = -550 }
 		command = { type = manpowerpool value = -10 }
 		command = { type = dissent value = -2 }
-		command = { type = construct which = infrastructure where = 1461 value = 15 trigger = { NOT = { building = { province = 1461 type = infrastructure value = 0.86 } } } }
-		command = { type = construct which = infrastructure where = 1465 value = 15 trigger = { NOT = { building = { province = 1465 type = infrastructure value = 0.86 } } } }
-		command = { type = construct which = infrastructure where = 1530 value = 15 trigger = { NOT = { building = { province = 1530 type = infrastructure value = 0.86 } } } }
-		command = { type = construct which = infrastructure where = 1445 value = 15 trigger = { NOT = { building = { province = 1445 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1461 value = 15 trigger = { owned = { province = 1461 data = IND } NOT = { building = { province = 1461 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1465 value = 15 trigger = { owned = { province = 1465 data = IND } NOT = { building = { province = 1465 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1530 value = 15 trigger = { owned = { province = 1530 data = IND } NOT = { building = { province = 1530 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1445 value = 15 trigger = { owned = { province = 1445 data = IND } NOT = { building = { province = 1445 type = infrastructure value = 0.86 } } } }
 		command = { type = setflag which = ind_v3_rural_investment }
 		command = { type = setflag which = ind_v3_land_settlement }
 	}

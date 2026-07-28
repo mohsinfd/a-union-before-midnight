@@ -1904,7 +1904,7 @@
 	}
 	
 	minister =  { 
-		trait		= "ger_mil_m2" #Heinrich August Meissner
+		trait		= "ger_mil_m2" #Heinrich August Meißner
 		id			= 119
 		name		= NPERSONALITY_ger_mil_m2
 		desc		= DPERSONALITY_ger_mil_m2
@@ -2132,7 +2132,7 @@
 	}
 
 	minister =  { 
-		trait		= "The Iron Knight" #Hermann Goering Chief of hair
+		trait		= "The Iron Knight" #Hermann Göring Chief of hair
 		id			= 136
 		name		= NPERSONALITY_GOERING
 		desc		= DPERSONALITY_GOERING
@@ -3014,24 +3014,6 @@
 		command		= { type = intelligence_network when = all value = -5 }
 		command		= { type = intelligence_report which = production value = -1 }
     }
-
-###### Added in WIF II #########
-	minister =  { 
-		trait		= "Red Army Leader" # Trotsky
-		id			= 300
-		name		= NPERSONALITY_TROTSKY
-		desc		= DPERSONALITY_TROTSKY
-		position	= ArmamentMinister
-		value		= 0
-		command		= { type = production which = production value = 0.0500 }
-		command		= { type = production which = consumer value = -0.1000 }
-		command		= { type = populationgrowth when = national value = 0.0500 }
-		command		= { type = dissent value = -0.1000 }
-		command     	= { type = unit which = all when = morale value = 0.05 }
-		command		= { type = leader_skill value = 0.2500 }
-		command		= { type = tc_mod value = 0.1000 }
-		command		= { type = stockpile value = 0.1000 }
-	}
 
 ####### India Mod V3: historical and alternate-history personalities #########
 

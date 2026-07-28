@@ -1,0 +1,161 @@
+#########################################################################
+# A Union Before Midnight V4: war aims, liberation and demobilization
+#########################################################################
+
+event = {
+	id = 9280400
+	random = no
+	country = IND
+
+	trigger = {
+		atwar = yes
+		flag = ind_v3_world_role
+		NOT = { flag = ind_v4_war_aims }
+	}
+
+	name = "India Defines Its War Aims"
+	desc = "Mobilization answers how India will fight, not what peace it seeks. Parliament demands a public doctrine before Indian armies cross continents: an anti-colonial charter, a strategic settlement securing the Indian Ocean, or a limited defence of the Union."
+	style = 2
+	picture = "aubm_v4_war_aims"
+
+	date = { day = 0 month = january year = 1937 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1960 }
+
+	action_a = {
+		ai_chance = 40
+		name = "An anti-colonial charter: -3 dissent, +2 intervention; -20 empires"
+		command = { type = dissent value = -3 }
+		command = { type = domestic which = interventionism value = 2 }
+		command = { type = relation which = ENG value = -20 }
+		command = { type = relation which = FRA value = -20 }
+		command = { type = relation which = HOL value = -20 }
+		command = { type = setflag which = ind_v4_anti_colonial_war_aims }
+		command = { type = setflag which = ind_v4_war_aims }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Secure the Indian Ocean: +3 naval org, +1 defence; costs 500 supplies"
+		command = { type = supplies value = -500 }
+		command = { type = max_organization which = naval value = 3 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = setflag which = ind_v4_maritime_war_aims }
+		command = { type = setflag which = ind_v4_war_aims }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "Defend the Union, seek no empire: -4 dissent, -1 intervention"
+		command = { type = dissent value = -4 }
+		command = { type = domestic which = interventionism value = -1 }
+		command = { type = belligerence value = -3 }
+		command = { type = setflag which = ind_v4_limited_war_aims }
+		command = { type = setflag which = ind_v4_war_aims }
+	}
+}
+
+event = {
+	id = 9280401
+	random = no
+	country = IND
+
+	trigger = {
+		atwar = yes
+		flag = ind_v4_war_aims
+		year = 1942
+		NOT = { flag = ind_v4_liberation_policy }
+	}
+
+	name = "The Administration of Liberated Territory"
+	desc = "Indian forces may soon govern territory far beyond the Union. Military government is efficient but politically corrosive; provisional national councils advance independence but complicate supply; allied restoration is simple and risks replacing one empire with another."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+
+	date = { day = 0 month = january year = 1942 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1950 }
+
+	action_a = {
+		ai_chance = 45
+		name = "Provisional national councils: -3 dissent, -3 TC; costs 350 money"
+		command = { type = money value = -350 }
+		command = { type = dissent value = -3 }
+		command = { type = tc_mod value = -3 }
+		command = { type = belligerence value = -3 }
+		command = { type = setflag which = ind_v4_provisional_councils }
+		command = { type = setflag which = ind_v4_liberation_policy }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Temporary military government: +5 TC, +4 dissent; costs 600 supplies"
+		command = { type = supplies value = -600 }
+		command = { type = dissent value = 4 }
+		command = { type = tc_mod value = 5 }
+		command = { type = belligerence value = 2 }
+		command = { type = setflag which = ind_v4_military_government }
+		command = { type = setflag which = ind_v4_liberation_policy }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "Restore recognized allies: +20 Allied relations, -1 dissent"
+		command = { type = dissent value = -1 }
+		command = { type = relation which = ENG value = 20 }
+		command = { type = relation which = FRA value = 20 }
+		command = { type = relation which = USA value = 20 }
+		command = { type = setflag which = ind_v4_allied_restoration }
+		command = { type = setflag which = ind_v4_liberation_policy }
+	}
+}
+
+event = {
+	id = 9280402
+	random = no
+	country = IND
+
+	trigger = {
+		atwar = no
+		flag = ind_v4_war_aims
+		year = 1944
+		NOT = { flag = ind_v4_demobilization_settlement }
+	}
+
+	name = "The Soldiers Return"
+	desc = "Peace releases millions of expectations at once. Veterans want land, employment and education; industry wants military contracts converted rather than cancelled; the services warn that a dangerous world has not become safe merely because one war ended."
+	style = 2
+	picture = "aubm_v4_soldiers_return"
+
+	date = { day = 0 month = january year = 1944 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1960 }
+
+	action_a = {
+		ai_chance = 40
+		name = "Veterans' land and education: -5 dissent, +50 manpower; costs 700 money"
+		command = { type = money value = -700 }
+		command = { type = dissent value = -5 }
+		command = { type = manpowerpool value = 50 }
+		command = { type = research_mod value = 1 }
+		command = { type = setflag which = ind_v4_veterans_settlement }
+		command = { type = setflag which = ind_v4_demobilization_settlement }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Convert arsenals to development: +4 IC efficiency; costs 500/800"
+		command = { type = money value = -500 }
+		command = { type = supplies value = -800 }
+		command = { type = industrial_modifier which = total value = 4 }
+		command = { type = dissent value = -2 }
+		command = { type = setflag which = ind_v4_arsenal_conversion }
+		command = { type = setflag which = ind_v4_demobilization_settlement }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "Maintain a ready force: +4 land/air/naval morale, +3 dissent"
+		command = { type = dissent value = 3 }
+		command = { type = morale which = land value = 4 }
+		command = { type = morale which = air value = 4 }
+		command = { type = morale which = naval value = 4 }
+		command = { type = domestic which = professional_army value = 1 }
+		command = { type = setflag which = ind_v4_ready_force }
+		command = { type = setflag which = ind_v4_demobilization_settlement }
+	}
+}

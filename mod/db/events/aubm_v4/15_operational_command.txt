@@ -1,0 +1,525 @@
+#########################################################################
+# A Union Before Midnight V4: operational command and force preservation
+#########################################################################
+
+event = {
+	id = 9280150
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_indianized_commands
+		NOT = { flag = ind_v4_field_service_regulations }
+	}
+
+	name = "Field Service Regulations, 1933"
+	desc = "The inherited army is a collection of divisions, brigade areas and provincial forces rather than a field organization. Cariappa proposes three-division corps under lieutenant-generals, grouped beneath four theatre commands. Divisions may still detach for frontier service, but common signals, supply tables and assembly areas will make it easier to put them back together."
+	style = 2
+	picture = "aubm_v4_field_service_regulations"
+
+	date = { day = 15 month = september year = 1933 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1933 }
+
+	action_a = {
+		ai_chance = 65
+		name = "Three-division corps: +2 land org, +2 HQ supply; costs 100 money/300 supplies"
+		command = { type = money value = -100 }
+		command = { type = supplies value = -300 }
+		command = { type = max_organization which = land value = 2 }
+		command = { type = hq_supply_eff value = 2 }
+		command = { type = setflag which = ind_v4_three_division_corps }
+		command = { type = setflag which = ind_v4_field_service_regulations }
+	}
+	action_b = {
+		ai_chance = 20
+		name = "Independent brigade groups: +3 land morale, +1 TC; costs 75 money/240 supplies"
+		command = { type = money value = -75 }
+		command = { type = supplies value = -240 }
+		command = { type = morale which = land value = 3 }
+		command = { type = tc_mod value = 1 }
+		command = { type = setflag which = ind_v4_brigade_groups }
+		command = { type = setflag which = ind_v4_field_service_regulations }
+	}
+	action_c = {
+		ai_chance = 15
+		name = "Central divisional system: +4 land org, -1 TC; costs 120 money/350 supplies"
+		command = { type = money value = -120 }
+		command = { type = supplies value = -350 }
+		command = { type = max_organization which = land value = 4 }
+		command = { type = tc_mod value = -1 }
+		command = { type = setflag which = ind_v4_central_divisions }
+		command = { type = setflag which = ind_v4_field_service_regulations }
+	}
+}
+
+event = {
+	id = 9280151
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_staff_college
+		flag = ind_v4_field_service_regulations
+		NOT = { flag = ind_v4_army_commands }
+	}
+
+	name = "Army Commands and Operational Reserves"
+	desc = "The staff college recommends four army commands for the north-west, east, south and the maritime approaches. Each command would hold a small headquarters and designate formations for support-defence and reserve missions. The arrangement cannot create a new layer of counters, but it can make existing formations react as an army rather than as isolated stacks."
+	style = 2
+	picture = "aubm_v4_army_commands"
+
+	date = { day = 15 month = july year = 1934 }
+	offset = 7
+	deathdate = { day = 29 month = october year = 1934 }
+
+	action_a = {
+		ai_chance = 60
+		name = "Four theatre commands: +3 HQ supply, +2 TC; costs 100 money/400 supplies"
+		command = { type = money value = -100 }
+		command = { type = supplies value = -400 }
+		command = { type = hq_supply_eff value = 3 }
+		command = { type = tc_mod value = 2 }
+		command = { type = setflag which = ind_v4_theatre_commands }
+		command = { type = setflag which = ind_v4_army_commands }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "One mobile general reserve: +2 land morale, +3 TC; costs 90 money/450 supplies"
+		command = { type = money value = -90 }
+		command = { type = supplies value = -450 }
+		command = { type = morale which = land value = 2 }
+		command = { type = tc_mod value = 3 }
+		command = { type = setflag which = ind_v4_general_reserve }
+		command = { type = setflag which = ind_v4_army_commands }
+	}
+}
+
+event = {
+	id = 9280152
+	random = no
+	country = IND
+
+	decision = {
+		flag = ind_v3_air_staff_founded
+		NOT = { flag = ind_v4_airfield_security }
+	}
+	decision_trigger = {
+		OR = {
+			AND = { money = 225 supplies = 500 manpower = 30 }
+			AND = { money = 150 supplies = 350 manpower = 20 }
+			AND = { supplies = 550 manpower = 32 }
+		}
+	}
+
+	name = "The Airfield Security Act"
+	desc = "A combat wing on a forward strip is vulnerable to sabotage, raiding parties and a sudden ground advance. The air staff asks for dedicated security formations, warning posts and demolition teams. These troops must still be deployed by the player to the bases that matter; no order from Delhi can make an undefended airfield safe."
+	style = 2
+	picture = "aubm_v4_airfield_security"
+	decision_picture = "decision_wargames"
+
+	date = { day = 0 month = march year = 1934 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1937 }
+
+	action_a = {
+		trigger = { money = 225 supplies = 500 manpower = 30 }
+		ai_chance = 50
+		name = "Six airfield guards with AA: costs 225 money/500 supplies/30 manpower"
+		command = { type = money value = -225 }
+		command = { type = supplies value = -500 }
+		command = { type = activate_unit_type which = garrison } # AUBM_V4_UNIT_GATE garrison
+		command = { type = new_model which = garrison value = 0 } # AUBM_V4_UNIT_GATE garrison
+		command = { type = activate_unit_type which = anti_air } # AUBM_V4_UNIT_GATE anti_air
+		command = { type = new_model which = anti_air value = 0 } # AUBM_V4_UNIT_GATE anti_air
+		command = { type = build_division which = garrison value = anti_air when = 6 cost = -1.0 where = 45 }
+		command = { type = setflag which = ind_v4_airfield_guard_battalions }
+		command = { type = setflag which = ind_v4_airfield_security }
+	}
+	action_b = {
+		trigger = { money = 150 supplies = 350 manpower = 20 }
+		ai_chance = 35
+		name = "Four mobile security groups: costs 150 money/350 supplies/20 manpower"
+		command = { type = money value = -150 }
+		command = { type = supplies value = -350 }
+		command = { type = activate_unit_type which = militia } # AUBM_V4_UNIT_GATE militia
+		command = { type = new_model which = militia value = 0 } # AUBM_V4_UNIT_GATE militia
+		command = { type = activate_unit_type which = anti_air } # AUBM_V4_UNIT_GATE anti_air
+		command = { type = new_model which = anti_air value = 0 } # AUBM_V4_UNIT_GATE anti_air
+		command = { type = build_division which = militia value = anti_air when = 4 cost = -1.0 where = 35 }
+		command = { type = tc_mod value = 1 }
+		command = { type = setflag which = ind_v4_mobile_airfield_security }
+		command = { type = setflag which = ind_v4_airfield_security }
+	}
+	action_c = {
+		trigger = { supplies = 550 manpower = 32 }
+		ai_chance = 15
+		name = "Provincial guards and redundancy: eight militia; costs 550 supplies/32 manpower"
+		command = { type = supplies value = -550 }
+		command = { type = dissent value = 1 }
+		command = { type = activate_unit_type which = militia } # AUBM_V4_UNIT_GATE militia
+		command = { type = new_model which = militia value = 0 } # AUBM_V4_UNIT_GATE militia
+		command = { type = build_division which = militia when = 8 cost = -0.8 where = 30 }
+		command = { type = setflag which = ind_v4_provincial_airfield_guards }
+		command = { type = setflag which = ind_v4_airfield_security }
+	}
+}
+
+event = {
+	id = 9280153
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_flying_schools
+		flag = ind_v4_airfield_security
+		NOT = { flag = ind_v4_dispersal_protocol }
+	}
+
+	name = "Dispersal Fields and the Observer Corps"
+	desc = "Aircraft concentrated at a handful of permanent bases are efficient in peace and dangerously brittle in war. Mukerjee proposes satellite strips, fuel caches, telephone observers and standing orders to disperse before a front collapses. Darkest Hour cannot automatically fly every wing out of a captured base; this system instead gives earlier warning, faster interception and a more survivable operating pattern."
+	style = 2
+	picture = "aubm_v4_observer_corps"
+
+	date = { day = 0 month = january year = 1935 }
+	offset = 7
+	deathdate = { day = 29 month = april year = 1935 }
+
+	action_a = {
+		ai_chance = 65
+		name = "Continental dispersal network: +4 air org, radar at five hubs; costs 260/450"
+		command = { type = money value = -260 }
+		command = { type = supplies value = -450 }
+		command = { type = max_organization which = air value = 4 }
+		command = { type = construct which = radar_station where = 1459 value = 1 trigger = { owned = { province = 1459 data = IND } NOT = { building = { province = 1459 type = radar_station value = 10 } } } }
+		command = { type = construct which = radar_station where = 1447 value = 1 trigger = { owned = { province = 1447 data = IND } NOT = { building = { province = 1447 type = radar_station value = 10 } } } }
+		command = { type = construct which = radar_station where = 1502 value = 1 trigger = { owned = { province = 1502 data = IND } NOT = { building = { province = 1502 type = radar_station value = 10 } } } }
+		command = { type = construct which = radar_station where = 1517 value = 1 trigger = { owned = { province = 1517 data = IND } NOT = { building = { province = 1517 type = radar_station value = 10 } } } }
+		command = { type = construct which = radar_station where = 1530 value = 1 trigger = { owned = { province = 1530 data = IND } NOT = { building = { province = 1530 type = radar_station value = 10 } } } }
+		command = { type = setflag which = ind_v4_continental_dispersal }
+		command = { type = setflag which = ind_v4_dispersal_protocol }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Harden three principal hubs: +5 air morale, AA +2; costs 180/500"
+		command = { type = money value = -180 }
+		command = { type = supplies value = -500 }
+		command = { type = morale which = air value = 5 }
+		command = { type = construct which = flak where = 1459 value = 2 trigger = { owned = { province = 1459 data = IND } NOT = { building = { province = 1459 type = flak value = 9 } } } }
+		command = { type = construct which = flak where = 1502 value = 2 trigger = { owned = { province = 1502 data = IND } NOT = { building = { province = 1502 type = flak value = 9 } } } }
+		command = { type = construct which = flak where = 1517 value = 2 trigger = { owned = { province = 1517 data = IND } NOT = { building = { province = 1517 type = flak value = 9 } } } }
+		command = { type = setflag which = ind_v4_hardened_air_hubs }
+		command = { type = setflag which = ind_v4_dispersal_protocol }
+	}
+}
+
+event = {
+	id = 9280154
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v4_army_commands
+		NOT = { flag = ind_v4_command_exercise_1935 }
+	}
+
+	name = "The 1935 Corps Exercise"
+	desc = "For the first time, divisional staffs are rotated through corps headquarters while detached columns continue frontier duties. Darkest Hour awards combat experience only to the leader of each formation, so the exercise programme deliberately advances officers who would otherwise disappear beneath a single corps counter."
+	style = 2
+	picture = "aubm_v4_corps_exercise_1935"
+
+	date = { day = 0 month = november year = 1935 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1935 }
+
+	action_a = {
+		ai_chance = 60
+		name = "Full field exercise: four officers gain skill; costs 180 money/450 supplies"
+		command = { type = money value = -180 }
+		command = { type = supplies value = -450 }
+		command = { type = add_leader_skill which = 251002 value = 1 }
+		command = { type = add_leader_skill which = 251004 value = 1 }
+		command = { type = add_leader_skill which = 251007 value = 1 }
+		command = { type = add_leader_skill which = 251009 value = 1 }
+		command = { type = setflag which = ind_v4_command_exercise_1935 }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Staff exercise: two officers gain skill; costs 90 money/180 supplies"
+		command = { type = money value = -90 }
+		command = { type = supplies value = -180 }
+		command = { type = add_leader_skill which = 251002 value = 1 }
+		command = { type = add_leader_skill which = 251007 value = 1 }
+		command = { type = setflag which = ind_v4_command_exercise_1935 }
+	}
+}
+
+event = {
+	id = 9280155
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v4_command_exercise_1935
+		flag = ind_v3_air_staff_founded
+		NOT = { flag = ind_v4_joint_exercise_1937 }
+	}
+
+	name = "The 1937 Joint Command Exercise"
+	desc = "Army, naval and air officers conduct a common map exercise from Karachi to the Bay of Bengal. The exercise is less glamorous than commissioning a new ship or wing, but it creates commanders able to coordinate formations when the map begins moving faster than orders from Delhi."
+	style = 2
+	picture = "aubm_v4_joint_exercise_1937"
+
+	date = { day = 0 month = november year = 1937 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1937 }
+
+	action_a = {
+		ai_chance = 65
+		name = "Exercise every service: six officers gain skill; costs 260 money/650 supplies"
+		command = { type = money value = -260 }
+		command = { type = supplies value = -650 }
+		command = { type = add_leader_skill which = 251005 value = 1 }
+		command = { type = add_leader_skill which = 251006 value = 1 }
+		command = { type = add_leader_skill which = 251008 value = 1 }
+		command = { type = add_leader_skill which = 251101 value = 1 }
+		command = { type = add_leader_skill which = 251201 value = 1 }
+		command = { type = add_leader_skill which = 251202 value = 1 }
+		command = { type = setflag which = ind_v4_joint_exercise_1937 }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Concentrate on field command: three army officers gain skill; costs 140/350"
+		command = { type = money value = -140 }
+		command = { type = supplies value = -350 }
+		command = { type = add_leader_skill which = 251005 value = 1 }
+		command = { type = add_leader_skill which = 251006 value = 1 }
+		command = { type = add_leader_skill which = 251008 value = 1 }
+		command = { type = setflag which = ind_v4_joint_exercise_1937 }
+	}
+}
+
+event = {
+	id = 9280156
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v4_joint_exercise_1937
+		NOT = { flag = ind_v4_operational_review_1939 }
+	}
+
+	name = "The 1939 Operational Review"
+	desc = "The staff reviews six years of exercises and frontier deployments. Corps tables are simplified, radio nets are standardized and theatre reserves receive standing routes and assembly areas. Officers are reminded that a planned withdrawal preserving trained formations may be more valuable than an impressive last stand."
+	style = 2
+	picture = "aubm_v4_operational_review_1939"
+
+	date = { day = 0 month = june year = 1939 }
+	offset = 7
+	deathdate = { day = 29 month = august year = 1939 }
+
+	action_a = {
+		ai_chance = 70
+		name = "Institutionalize mission command: +2 HQ supply; five officers gain skill"
+		command = { type = money value = -225 }
+		command = { type = supplies value = -600 }
+		command = { type = hq_supply_eff value = 2 }
+		command = { type = add_leader_skill which = 251012 value = 1 }
+		command = { type = add_leader_skill which = 251014 value = 1 }
+		command = { type = add_leader_skill which = 251103 value = 1 }
+		command = { type = add_leader_skill which = 251203 value = 1 }
+		command = { type = add_leader_skill which = 251204 value = 1 }
+		command = { type = setflag which = ind_v4_operational_review_1939 }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Keep a tightly controlled staff: +3 land org; three officers gain skill"
+		command = { type = money value = -175 }
+		command = { type = supplies value = -500 }
+		command = { type = max_organization which = land value = 3 }
+		command = { type = add_leader_skill which = 251012 value = 1 }
+		command = { type = add_leader_skill which = 251014 value = 1 }
+		command = { type = add_leader_skill which = 251103 value = 1 }
+		command = { type = setflag which = ind_v4_operational_review_1939 }
+	}
+}
+
+event = {
+	id = 9280157
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_naval_program
+		NOT = { flag = ind_v4_damage_control_school }
+	}
+
+	name = "The Bombay Damage-Control School"
+	desc = "A modern warship is too expensive to treat every hit as a death sentence. Engineers and seamen propose a permanent school for flooding control, firefighting, redundant power and towing under fire. V4's combat rules already make most engagements organization contests; the school explains how the Indian fleet turns damaged ships into repairable ships."
+	style = 2
+	picture = "aubm_v4_damage_control_school"
+
+	date = { day = 0 month = april year = 1936 }
+	offset = 7
+	deathdate = { day = 29 month = july year = 1936 }
+
+	action_a = {
+		ai_chance = 65
+		name = "Fleet-wide damage control: +4 naval morale; costs 220 money/500 supplies"
+		command = { type = money value = -220 }
+		command = { type = supplies value = -500 }
+		command = { type = morale which = naval value = 4 }
+		command = { type = add_leader_skill which = 251101 value = 1 }
+		command = { type = setflag which = ind_v4_damage_control_school }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Concentrate on capital ships: +3 naval org; costs 160 money/350 supplies"
+		command = { type = money value = -160 }
+		command = { type = supplies value = -350 }
+		command = { type = max_organization which = naval value = 3 }
+		command = { type = setflag which = ind_v4_damage_control_school }
+	}
+}
+
+event = {
+	id = 9280158
+	random = no
+	country = IND
+
+	trigger = {
+		atwar = yes
+		flag = ind_v4_dispersal_protocol
+		NOT = { flag = ind_v4_wartime_basing_protocol }
+	}
+
+	name = "Wartime Forward-Basing Protocol"
+	desc = "War makes every forward airfield a potential trap. Aircraft will operate in four-wing groups from defended hubs, use satellite strips closer to the front and rebase before ground forces reach the perimeter. The rule is procedural rather than magical: forward bases still need guards, and the player must order threatened wings away."
+	style = 2
+	picture = "aubm_v4_forward_basing"
+
+	date = { day = 0 month = january year = 1936 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		ai_chance = 100
+		name = "Disperse, scramble and preserve the trained force: +2 air org/+2 morale"
+		command = { type = supplies value = -300 }
+		command = { type = max_organization which = air value = 2 }
+		command = { type = morale which = air value = 2 }
+		command = { type = setflag which = ind_v4_wartime_basing_protocol }
+	}
+}
+
+event = {
+	id = 9280159
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v4_operational_review_1939
+		NOT = { flag = ind_v4_command_rotation_1940 }
+	}
+
+	name = "The Subordinate Command Rotation"
+	desc = "The corps system has made operations easier to control, but officers serving below the visible formation commander receive no experience from the game engine. The command board therefore rotates promising officers through acting corps, naval-staff and air-group appointments. The policy rewards the bench beneath the named commanders without pretending that Darkest Hour supports a hidden hierarchy."
+	style = 2
+	picture = "aubm_v4_command_rotation"
+
+	date = { day = 0 month = may year = 1940 }
+	offset = 7
+	deathdate = { day = 29 month = july year = 1940 }
+
+	action_a = {
+		ai_chance = 60
+		name = "Rotate the field officers: three land commanders gain skill, +1 land morale"
+		command = { type = add_leader_skill which = 251010 value = 1 }
+		command = { type = add_leader_skill which = 251011 value = 1 }
+		command = { type = add_leader_skill which = 251013 value = 1 }
+		command = { type = morale which = land value = 1 }
+		command = { type = setflag which = ind_v4_command_rotation_1940 }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Rotate joint-service staffs: one naval and two air officers gain skill"
+		command = { type = add_leader_skill which = 251103 value = 1 }
+		command = { type = add_leader_skill which = 251201 value = 1 }
+		command = { type = add_leader_skill which = 251202 value = 1 }
+		command = { type = setflag which = ind_v4_command_rotation_1940 }
+	}
+}
+
+event = {
+	id = 9280160
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v4_command_rotation_1940
+		NOT = { flag = ind_v4_command_rotation_1942 }
+	}
+
+	name = "The Second Command Board"
+	desc = "Two years of manoeuvres and war reports reveal which officers can manage dispersed formations. Delhi can deepen the army reserve of corps commanders or strengthen the maritime and air staffs needed for an oceanic war."
+	style = 2
+	picture = "aubm_v4_second_command_board"
+
+	date = { day = 0 month = may year = 1942 }
+	offset = 7
+	deathdate = { day = 29 month = july year = 1942 }
+
+	action_a = {
+		ai_chance = 55
+		name = "Deepen the army bench: Bhalla, Shabeg Singh and Shah Nawaz gain skill"
+		command = { type = add_leader_skill which = 251015 value = 1 }
+		command = { type = add_leader_skill which = 250167 value = 1 }
+		command = { type = add_leader_skill which = 251005 value = 1 }
+		command = { type = setflag which = ind_v4_command_rotation_1942 }
+	}
+	action_b = {
+		ai_chance = 45
+		name = "Deepen maritime air command: three service officers gain skill"
+		command = { type = add_leader_skill which = 251105 value = 1 }
+		command = { type = add_leader_skill which = 251203 value = 1 }
+		command = { type = add_leader_skill which = 251204 value = 1 }
+		command = { type = setflag which = ind_v4_command_rotation_1942 }
+	}
+}
+
+event = {
+	id = 9280161
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v4_command_rotation_1942
+		NOT = { flag = ind_v4_command_rotation_1944 }
+	}
+
+	name = "The Combat Command Board"
+	desc = "By 1944 India possesses more formations than the inherited officer system was designed to command. The final wartime board must favor either proven field leaders capable of splitting and recombining corps or specialists able to coordinate fleets and four-wing air groups."
+	style = 2
+	picture = "aubm_v4_combat_command_board"
+
+	date = { day = 0 month = may year = 1944 }
+	offset = 7
+	deathdate = { day = 29 month = july year = 1944 }
+
+	action_a = {
+		ai_chance = 60
+		name = "Reward field command: Akbar Khan, Wadalia and Mohan Singh gain skill"
+		command = { type = add_leader_skill which = 251006 value = 1 }
+		command = { type = add_leader_skill which = 251008 value = 1 }
+		command = { type = add_leader_skill which = 251004 value = 1 }
+		command = { type = setflag which = ind_v4_command_rotation_1944 }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Reward operational specialists: three naval and air officers gain skill"
+		command = { type = add_leader_skill which = 251106 value = 1 }
+		command = { type = add_leader_skill which = 251205 value = 1 }
+		command = { type = add_leader_skill which = 251206 value = 1 }
+		command = { type = setflag which = ind_v4_command_rotation_1944 }
+	}
+}

@@ -77,6 +77,10 @@ event = {
 		command = { type = supplies value = -650 }
 		command = { type = manpowerpool value = 20 }
 		command = { type = domestic which = professional_army value = -1 }
+		command = { type = activate_unit_type which = garrison } # AUBM_V4_UNIT_GATE garrison
+		command = { type = new_model which = garrison value = 0 } # AUBM_V4_UNIT_GATE garrison
+		command = { type = activate_unit_type which = engineer } # AUBM_V4_UNIT_GATE engineer
+		command = { type = new_model which = engineer value = 0 } # AUBM_V4_UNIT_GATE engineer
 		command = { type = build_division which = garrison value = engineer when = 2 cost = 4 where = 60 }
 		command = { type = setflag which = ind_v3_frontier_constabulary }
 		command = { type = setflag which = ind_v3_frontier_force }
@@ -163,6 +167,8 @@ event = {
 
 		command = { type = activate_unit_type which = transport_plane }
 		command = { type = new_model which = transport_plane value = 0 }
+		command = { type = activate_unit_type which = transport_plane } # AUBM_V4_UNIT_GATE transport_plane
+		command = { type = new_model which = transport_plane value = 0 } # AUBM_V4_UNIT_GATE transport_plane
 		command = { type = build_division which = transport_plane when = 2 cost = 7 where = 150 }
 		command = { type = setflag which = ind_v3_air_transport_command }
 		command = { type = setflag which = ind_v3_airborne_arm }
@@ -241,6 +247,10 @@ event = {
 		name = "Reconnaissance columns: +3 land morale; costs 900/8 MP"
 		command = { type = supplies value = -900 }
 		command = { type = morale which = infantry value = 3 }
+		command = { type = activate_unit_type which = cavalry } # AUBM_V4_UNIT_GATE cavalry
+		command = { type = new_model which = cavalry value = 0 } # AUBM_V4_UNIT_GATE cavalry
+		command = { type = activate_unit_type which = armored_car } # AUBM_V4_UNIT_GATE armored_car
+		command = { type = new_model which = armored_car value = 0 } # AUBM_V4_UNIT_GATE armored_car
 		command = { type = build_division which = cavalry value = armored_car when = 2 cost = 5 where = 60 }
 		command = { type = setflag which = ind_v3_field_reconnaissance_columns }
 		command = { type = setflag which = ind_v3_long_range_groups }
@@ -321,6 +331,10 @@ event = {
 		name = "Coastwatchers: two island garrisons, +1 intelligence; costs 800"
 		command = { type = supplies value = -800 }
 		command = { type = intelligence which = us value = 1 }
+		command = { type = activate_unit_type which = garrison } # AUBM_V4_UNIT_GATE garrison
+		command = { type = new_model which = garrison value = 0 } # AUBM_V4_UNIT_GATE garrison
+		command = { type = activate_unit_type which = artillery } # AUBM_V4_UNIT_GATE artillery
+		command = { type = new_model which = artillery value = 0 } # AUBM_V4_UNIT_GATE artillery
 		command = { type = build_division which = garrison value = artillery when = 2 cost = 4 where = 60 }
 		command = { type = setflag which = ind_v3_andaman_coastwatchers }
 		command = { type = setflag which = ind_v3_marine_arm }

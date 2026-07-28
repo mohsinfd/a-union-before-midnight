@@ -118,8 +118,8 @@ event = {
 		command = { type = money value = -200 }
 		command = { type = supplies value = -250 }
 		command = { type = research_mod value = 1 }
-		command = { type = construct which = infrastructure where = 1529 value = 10 trigger = { NOT = { building = { province = 1529 type = infrastructure value = 0.91 } } } }
-		command = { type = construct which = infrastructure where = 1459 value = 10 trigger = { NOT = { building = { province = 1459 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1529 value = 10 trigger = { owned = { province = 1529 data = IND } NOT = { building = { province = 1529 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1459 value = 10 trigger = { owned = { province = 1459 data = IND } NOT = { building = { province = 1459 type = infrastructure value = 0.91 } } } }
 		command = { type = setflag which = ind_v3_integrated_staff_college }
 		command = { type = setflag which = ind_v3_staff_college }
 	}
@@ -128,9 +128,9 @@ event = {
 		name = "Build specialist schools for each branch"
 		command = { type = money value = -225 }
 		command = { type = supplies value = -300 }
-		command = { type = construct which = infrastructure where = 1516 value = 10 trigger = { NOT = { building = { province = 1516 type = infrastructure value = 0.91 } } } }
-		command = { type = construct which = infrastructure where = 1534 value = 10 trigger = { NOT = { building = { province = 1534 type = infrastructure value = 0.91 } } } }
-		command = { type = construct which = infrastructure where = 1537 value = 10 trigger = { NOT = { building = { province = 1537 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1516 value = 10 trigger = { owned = { province = 1516 data = IND } NOT = { building = { province = 1516 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1534 value = 10 trigger = { owned = { province = 1534 data = IND } NOT = { building = { province = 1534 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1537 value = 10 trigger = { owned = { province = 1537 data = IND } NOT = { building = { province = 1537 type = infrastructure value = 0.91 } } } }
 		command = { type = setflag which = ind_v3_branch_staff_schools }
 		command = { type = setflag which = ind_v3_staff_college }
 	}
@@ -170,8 +170,18 @@ event = {
 		name = "Raise the complete standing force"
 		command = { type = money value = -250 }
 		command = { type = supplies value = -650 }
+		command = { type = activate_unit_type which = infantry } # AUBM_V4_UNIT_GATE infantry
+		command = { type = new_model which = infantry value = 0 } # AUBM_V4_UNIT_GATE infantry
+		command = { type = activate_unit_type which = artillery } # AUBM_V4_UNIT_GATE artillery
+		command = { type = new_model which = artillery value = 0 } # AUBM_V4_UNIT_GATE artillery
 		command = { type = build_division which = infantry value = artillery when = 2 cost = -1.5 where = 60 }
+		command = { type = activate_unit_type which = engineer } # AUBM_V4_UNIT_GATE engineer
+		command = { type = new_model which = engineer value = 0 } # AUBM_V4_UNIT_GATE engineer
 		command = { type = build_division which = infantry value = engineer when = 2 cost = -1.5 where = 60 }
+		command = { type = activate_unit_type which = hq } # AUBM_V4_UNIT_GATE hq
+		command = { type = new_model which = hq value = 0 } # AUBM_V4_UNIT_GATE hq
+		command = { type = activate_unit_type which = anti_air } # AUBM_V4_UNIT_GATE anti_air
+		command = { type = new_model which = anti_air value = 0 } # AUBM_V4_UNIT_GATE anti_air
 		command = { type = build_division which = hq value = anti_air when = 1 cost = -2.0 where = 90 }
 		command = { type = setflag which = ind_v3_standing_divisions }
 	}
@@ -184,7 +194,15 @@ event = {
 		name = "Raise cadres and retain a larger reserve"
 		command = { type = money value = -150 }
 		command = { type = supplies value = -400 }
+		command = { type = activate_unit_type which = infantry } # AUBM_V4_UNIT_GATE infantry
+		command = { type = new_model which = infantry value = 0 } # AUBM_V4_UNIT_GATE infantry
+		command = { type = activate_unit_type which = artillery } # AUBM_V4_UNIT_GATE artillery
+		command = { type = new_model which = artillery value = 0 } # AUBM_V4_UNIT_GATE artillery
 		command = { type = build_division which = infantry value = artillery when = 2 cost = -1.5 where = 75 }
+		command = { type = activate_unit_type which = hq } # AUBM_V4_UNIT_GATE hq
+		command = { type = new_model which = hq value = 0 } # AUBM_V4_UNIT_GATE hq
+		command = { type = activate_unit_type which = anti_air } # AUBM_V4_UNIT_GATE anti_air
+		command = { type = new_model which = anti_air value = 0 } # AUBM_V4_UNIT_GATE anti_air
 		command = { type = build_division which = hq value = anti_air when = 1 cost = -2.0 where = 105 }
 		command = { type = domestic which = professional_army value = -1 }
 		command = { type = setflag which = ind_v3_standing_divisions }
@@ -229,7 +247,15 @@ event = {
 		command = { type = waketeam which = 250026 }
 		command = { type = activate_unit_type which = light_armor }
 		command = { type = new_model which = light_armor value = 0 }
+		command = { type = activate_unit_type which = light_armor } # AUBM_V4_UNIT_GATE light_armor
+		command = { type = new_model which = light_armor value = 0 } # AUBM_V4_UNIT_GATE light_armor
+		command = { type = activate_unit_type which = armored_car } # AUBM_V4_UNIT_GATE armored_car
+		command = { type = new_model which = armored_car value = 0 } # AUBM_V4_UNIT_GATE armored_car
 		command = { type = build_division which = light_armor value = armored_car when = 1 cost = -2.5 where = 120 }
+		command = { type = activate_unit_type which = motorized } # AUBM_V4_UNIT_GATE motorized
+		command = { type = new_model which = motorized value = 0 } # AUBM_V4_UNIT_GATE motorized
+		command = { type = activate_unit_type which = engineer } # AUBM_V4_UNIT_GATE engineer
+		command = { type = new_model which = engineer value = 0 } # AUBM_V4_UNIT_GATE engineer
 		command = { type = build_division which = motorized value = engineer when = 2 cost = -1.8 where = 90 }
 		command = { type = setflag which = ind_v3_experimental_armoured_corps }
 		command = { type = setflag which = ind_v3_mechanised_directorate }
@@ -244,6 +270,10 @@ event = {
 		command = { type = money value = -300 }
 		command = { type = supplies value = -700 }
 		command = { type = waketeam which = 250026 }
+		command = { type = activate_unit_type which = motorized } # AUBM_V4_UNIT_GATE motorized
+		command = { type = new_model which = motorized value = 0 } # AUBM_V4_UNIT_GATE motorized
+		command = { type = activate_unit_type which = armored_car } # AUBM_V4_UNIT_GATE armored_car
+		command = { type = new_model which = armored_car value = 0 } # AUBM_V4_UNIT_GATE armored_car
 		command = { type = build_division which = motorized value = armored_car when = 3 cost = -1.8 where = 75 }
 		command = { type = tc_mod value = 2 }
 		command = { type = setflag which = ind_v3_motorized_corps }
@@ -285,10 +315,16 @@ event = {
 		name = "Raise three specialist mountain divisions"
 		command = { type = money value = -325 }
 		command = { type = supplies value = -750 }
+		command = { type = activate_unit_type which = bergsjaeger } # AUBM_V4_UNIT_GATE bergsjaeger
+		command = { type = new_model which = bergsjaeger value = 0 } # AUBM_V4_UNIT_GATE bergsjaeger
+		command = { type = activate_unit_type which = artillery } # AUBM_V4_UNIT_GATE artillery
+		command = { type = new_model which = artillery value = 0 } # AUBM_V4_UNIT_GATE artillery
 		command = { type = build_division which = bergsjaeger value = artillery when = 2 cost = -1.8 where = 75 }
+		command = { type = activate_unit_type which = engineer } # AUBM_V4_UNIT_GATE engineer
+		command = { type = new_model which = engineer value = 0 } # AUBM_V4_UNIT_GATE engineer
 		command = { type = build_division which = bergsjaeger value = engineer when = 1 cost = -1.8 where = 75 }
-		command = { type = construct which = infrastructure where = 1537 value = 10 trigger = { NOT = { building = { province = 1537 type = infrastructure value = 0.91 } } } }
-		command = { type = construct which = infrastructure where = 1442 value = 10 trigger = { NOT = { building = { province = 1442 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1537 value = 10 trigger = { owned = { province = 1537 data = IND } NOT = { building = { province = 1537 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1442 value = 10 trigger = { owned = { province = 1442 data = IND } NOT = { building = { province = 1442 type = infrastructure value = 0.91 } } } }
 		command = { type = setflag which = ind_v3_frontier_corps }
 	}
 	action_b = {
@@ -300,6 +336,10 @@ event = {
 		name = "Train existing infantry for mountain warfare"
 
 		command = { type = supplies value = -500 }
+		command = { type = activate_unit_type which = bergsjaeger } # AUBM_V4_UNIT_GATE bergsjaeger
+		command = { type = new_model which = bergsjaeger value = 0 } # AUBM_V4_UNIT_GATE bergsjaeger
+		command = { type = activate_unit_type which = engineer } # AUBM_V4_UNIT_GATE engineer
+		command = { type = new_model which = engineer value = 0 } # AUBM_V4_UNIT_GATE engineer
 		command = { type = build_division which = bergsjaeger value = engineer when = 1 cost = -1.8 where = 90 }
 
 		command = { type = setflag which = ind_v3_frontier_corps }
@@ -342,7 +382,13 @@ event = {
 		command = { type = money value = -450 }
 		command = { type = supplies value = -1100 }
 		command = { type = dissent value = 1 }
+		command = { type = activate_unit_type which = infantry } # AUBM_V4_UNIT_GATE infantry
+		command = { type = new_model which = infantry value = 0 } # AUBM_V4_UNIT_GATE infantry
+		command = { type = activate_unit_type which = artillery } # AUBM_V4_UNIT_GATE artillery
+		command = { type = new_model which = artillery value = 0 } # AUBM_V4_UNIT_GATE artillery
 		command = { type = build_division which = infantry value = artillery when = 3 cost = -1.5 where = 60 }
+		command = { type = activate_unit_type which = engineer } # AUBM_V4_UNIT_GATE engineer
+		command = { type = new_model which = engineer value = 0 } # AUBM_V4_UNIT_GATE engineer
 		command = { type = build_division which = infantry value = engineer when = 3 cost = -1.5 where = 60 }
 		command = { type = setflag which = ind_v3_mass_expansion_1936 }
 		command = { type = setflag which = ind_v3_army_manoeuvres_1936 }
@@ -358,8 +404,20 @@ event = {
 		command = { type = supplies value = -1050 }
 		command = { type = activate_unit_type which = light_armor }
 		command = { type = new_model which = light_armor value = 0 }
+		command = { type = activate_unit_type which = motorized } # AUBM_V4_UNIT_GATE motorized
+		command = { type = new_model which = motorized value = 0 } # AUBM_V4_UNIT_GATE motorized
+		command = { type = activate_unit_type which = armored_car } # AUBM_V4_UNIT_GATE armored_car
+		command = { type = new_model which = armored_car value = 0 } # AUBM_V4_UNIT_GATE armored_car
 		command = { type = build_division which = motorized value = armored_car when = 2 cost = -1.8 where = 75 }
+		command = { type = activate_unit_type which = light_armor } # AUBM_V4_UNIT_GATE light_armor
+		command = { type = new_model which = light_armor value = 0 } # AUBM_V4_UNIT_GATE light_armor
+		command = { type = activate_unit_type which = engineer } # AUBM_V4_UNIT_GATE engineer
+		command = { type = new_model which = engineer value = 0 } # AUBM_V4_UNIT_GATE engineer
 		command = { type = build_division which = light_armor value = engineer when = 1 cost = -2.5 where = 105 }
+		command = { type = activate_unit_type which = infantry } # AUBM_V4_UNIT_GATE infantry
+		command = { type = new_model which = infantry value = 0 } # AUBM_V4_UNIT_GATE infantry
+		command = { type = activate_unit_type which = artillery } # AUBM_V4_UNIT_GATE artillery
+		command = { type = new_model which = artillery value = 0 } # AUBM_V4_UNIT_GATE artillery
 		command = { type = build_division which = infantry value = artillery when = 1 cost = -1.5 where = 60 }
 		command = { type = setflag which = ind_v3_combined_arms_1936 }
 		command = { type = setflag which = ind_v3_army_manoeuvres_1936 }
@@ -377,6 +435,10 @@ event = {
 		command = { type = domestic which = professional_army value = 1 }
 		command = { type = set_leader_skill which = 251001 value = 4 }
 		command = { type = set_leader_skill which = 251003 value = 4 }
+		command = { type = activate_unit_type which = infantry } # AUBM_V4_UNIT_GATE infantry
+		command = { type = new_model which = infantry value = 0 } # AUBM_V4_UNIT_GATE infantry
+		command = { type = activate_unit_type which = engineer } # AUBM_V4_UNIT_GATE engineer
+		command = { type = new_model which = engineer value = 0 } # AUBM_V4_UNIT_GATE engineer
 		command = { type = build_division which = infantry value = engineer when = 2 cost = -1.5 where = 75 }
 		command = { type = setflag which = ind_v3_professionalization_1936 }
 		command = { type = setflag which = ind_v3_army_manoeuvres_1936 }
@@ -462,7 +524,13 @@ event = {
 		name = "Raise four motorized divisions"
 		command = { type = money value = -475 }
 		command = { type = supplies value = -1300 }
+		command = { type = activate_unit_type which = motorized } # AUBM_V4_UNIT_GATE motorized
+		command = { type = new_model which = motorized value = 0 } # AUBM_V4_UNIT_GATE motorized
+		command = { type = activate_unit_type which = armored_car } # AUBM_V4_UNIT_GATE armored_car
+		command = { type = new_model which = armored_car value = 0 } # AUBM_V4_UNIT_GATE armored_car
 		command = { type = build_division which = motorized value = armored_car when = 2 cost = -1.8 where = 60 }
+		command = { type = activate_unit_type which = engineer } # AUBM_V4_UNIT_GATE engineer
+		command = { type = new_model which = engineer value = 0 } # AUBM_V4_UNIT_GATE engineer
 		command = { type = build_division which = motorized value = engineer when = 2 cost = -1.8 where = 60 }
 		command = { type = tc_mod value = 2 }
 		command = { type = setflag which = ind_v3_mobile_reserve_1938 }
@@ -478,7 +546,15 @@ event = {
 		command = { type = supplies value = -1550 }
 		command = { type = activate_unit_type which = light_armor }
 		command = { type = new_model which = light_armor value = 0 }
+		command = { type = activate_unit_type which = light_armor } # AUBM_V4_UNIT_GATE light_armor
+		command = { type = new_model which = light_armor value = 0 } # AUBM_V4_UNIT_GATE light_armor
+		command = { type = activate_unit_type which = engineer } # AUBM_V4_UNIT_GATE engineer
+		command = { type = new_model which = engineer value = 0 } # AUBM_V4_UNIT_GATE engineer
 		command = { type = build_division which = light_armor value = engineer when = 2 cost = -2.5 where = 90 }
+		command = { type = activate_unit_type which = motorized } # AUBM_V4_UNIT_GATE motorized
+		command = { type = new_model which = motorized value = 0 } # AUBM_V4_UNIT_GATE motorized
+		command = { type = activate_unit_type which = armored_car } # AUBM_V4_UNIT_GATE armored_car
+		command = { type = new_model which = armored_car value = 0 } # AUBM_V4_UNIT_GATE armored_car
 		command = { type = build_division which = motorized value = armored_car when = 2 cost = -1.8 where = 60 }
 		command = { type = setflag which = ind_v3_mobile_reserve_1938 }
 	}
@@ -552,7 +628,7 @@ event = {
 		command = { type = money value = -675 }
 		command = { type = supplies value = -750 }
 		command = { type = waketeam which = 250028 }
-		command = { type = construct which = rocket_test where = 1502 value = 2 }
+		command = { type = construct which = rocket_test where = 1502 value = 2 trigger = { owned = { province = 1502 data = IND } NOT = { building = { province = 1502 type = rocket_test value = 9 } } } }
 
 		command = { type = setflag which = ind_v3_rocket_centre }
 	}
@@ -583,7 +659,7 @@ event = {
 		command = { type = money value = -1100 }
 		command = { type = supplies value = -1250 }
 		command = { type = waketeam which = 250029 }
-		command = { type = construct which = nuclear_reactor where = 1502 value = 2 }
+		command = { type = construct which = nuclear_reactor where = 1502 value = 2 trigger = { owned = { province = 1502 data = IND } NOT = { building = { province = 1502 type = nuclear_reactor value = 9 } } } }
 		command = { type = research_mod value = 1 }
 		command = { type = dissent value = 1 }
 		command = { type = setflag which = ind_v3_atomic_commission }

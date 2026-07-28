@@ -4,7 +4,7 @@ set "REPOROOT=%~dp0"
 
 echo.
 echo ============================================================
-echo  A Union Before Midnight 3.4.1 Open Beta - Installer
+echo  A Union Before Midnight 4.0 Alpha - Installer
 echo ============================================================
 echo.
 

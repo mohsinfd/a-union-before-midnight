@@ -30,8 +30,8 @@ event = {
 		command = { type = manpowerpool value = -5 }
 		command = { type = waketeam which = 250023 }
 		command = { type = waketeam which = 250024 }
-		command = { type = construct which = naval_base where = 1533 value = 3 trigger = { NOT = { building = { province = 1533 type = naval_base value = 8 } } } }
-		command = { type = construct which = naval_base where = 1493 value = 3 trigger = { NOT = { building = { province = 1493 type = naval_base value = 8 } } } }
+		command = { type = construct which = naval_base where = 1533 value = 3 trigger = { owned = { province = 1533 data = IND } NOT = { building = { province = 1533 type = naval_base value = 8 } } } }
+		command = { type = construct which = naval_base where = 1493 value = 3 trigger = { owned = { province = 1493 data = IND } NOT = { building = { province = 1493 type = naval_base value = 8 } } } }
 		command = { type = setflag which = ind_v3_naval_staff }
 	}
 	action_b = {
@@ -71,9 +71,9 @@ event = {
 		command = { type = money value = -300 }
 		command = { type = supplies value = -400 }
 		command = { type = manpowerpool value = -6 }
-		command = { type = construct which = naval_base where = 1533 value = 3 trigger = { NOT = { building = { province = 1533 type = naval_base value = 8 } } } }
-		command = { type = construct which = naval_base where = 1493 value = 6 trigger = { NOT = { building = { province = 1493 type = naval_base value = 5 } } } }
-		command = { type = construct which = naval_base where = 1497 value = 6 trigger = { NOT = { building = { province = 1497 type = naval_base value = 5 } } } }
+		command = { type = construct which = naval_base where = 1533 value = 3 trigger = { owned = { province = 1533 data = IND } NOT = { building = { province = 1533 type = naval_base value = 8 } } } }
+		command = { type = construct which = naval_base where = 1493 value = 6 trigger = { owned = { province = 1493 data = IND } NOT = { building = { province = 1493 type = naval_base value = 5 } } } }
+		command = { type = construct which = naval_base where = 1497 value = 6 trigger = { owned = { province = 1497 data = IND } NOT = { building = { province = 1497 type = naval_base value = 5 } } } }
 		command = { type = domestic which = professional_army value = 1 }
 		command = { type = setflag which = ind_v3_three_fleet_doctrine }
 	}
@@ -82,8 +82,8 @@ event = {
 		name = "Keep one fleet with two regional stations"
 
 		command = { type = supplies value = -250 }
-		command = { type = construct which = naval_base where = 1533 value = 3 trigger = { NOT = { building = { province = 1533 type = naval_base value = 8 } } } }
-		command = { type = construct which = naval_base where = 1493 value = 3 trigger = { NOT = { building = { province = 1493 type = naval_base value = 8 } } } }
+		command = { type = construct which = naval_base where = 1533 value = 3 trigger = { owned = { province = 1533 data = IND } NOT = { building = { province = 1533 type = naval_base value = 8 } } } }
+		command = { type = construct which = naval_base where = 1493 value = 3 trigger = { owned = { province = 1493 data = IND } NOT = { building = { province = 1493 type = naval_base value = 8 } } } }
 		command = { type = setflag which = ind_v3_three_fleet_doctrine }
 	}
 }
@@ -114,12 +114,12 @@ event = {
 		command = { type = supplies value = -950 }
 		command = { type = manpowerpool value = -8 }
 		command = { type = waketeam which = 250021 }
-		command = { type = construct which = ic where = 1517 value = 2 }
-		command = { type = construct which = ic where = 1493 value = 2 }
-		command = { type = construct which = ic where = 1497 value = 2 }
-		command = { type = construct which = naval_base where = 1517 value = 3 trigger = { NOT = { building = { province = 1517 type = naval_base value = 8 } } } }
-		command = { type = construct which = naval_base where = 1493 value = 6 trigger = { NOT = { building = { province = 1493 type = naval_base value = 5 } } } }
-		command = { type = construct which = naval_base where = 1497 value = 6 trigger = { NOT = { building = { province = 1497 type = naval_base value = 5 } } } }
+		command = { type = construct which = ic where = 1517 value = 2 trigger = { owned = { province = 1517 data = IND } } }
+		command = { type = construct which = ic where = 1493 value = 2 trigger = { owned = { province = 1493 data = IND } } }
+		command = { type = construct which = ic where = 1497 value = 2 trigger = { owned = { province = 1497 data = IND } } }
+		command = { type = construct which = naval_base where = 1517 value = 3 trigger = { owned = { province = 1517 data = IND } NOT = { building = { province = 1517 type = naval_base value = 8 } } } }
+		command = { type = construct which = naval_base where = 1493 value = 6 trigger = { owned = { province = 1493 data = IND } NOT = { building = { province = 1493 type = naval_base value = 5 } } } }
+		command = { type = construct which = naval_base where = 1497 value = 6 trigger = { owned = { province = 1497 data = IND } NOT = { building = { province = 1497 type = naval_base value = 5 } } } }
 		command = { type = setflag which = ind_v3_three_coast_yards }
 		command = { type = setflag which = ind_v3_dockyard_act }
 	}
@@ -129,8 +129,8 @@ event = {
 
 		command = { type = supplies value = -700 }
 		command = { type = waketeam which = 250021 }
-		command = { type = construct which = ic where = 1517 value = 4 }
-		command = { type = construct which = naval_base where = 1517 value = 3 trigger = { NOT = { building = { province = 1517 type = naval_base value = 8 } } } }
+		command = { type = construct which = ic where = 1517 value = 4 trigger = { owned = { province = 1517 data = IND } } }
+		command = { type = construct which = naval_base where = 1517 value = 3 trigger = { owned = { province = 1517 data = IND } NOT = { building = { province = 1517 type = naval_base value = 8 } } } }
 		command = { type = dissent value = 1 }
 		command = { type = setflag which = ind_v3_bombay_yard }
 		command = { type = setflag which = ind_v3_dockyard_act }
@@ -199,6 +199,10 @@ event = {
 		command = { type = gain_tech which = 3510 }
 		command = { type = gain_tech which = 4900 }
 		command = { type = waketeam which = 250024 }
+		command = { type = activate_unit_type which = submarine } # AUBM_V4_UNIT_GATE submarine
+		command = { type = new_model which = submarine value = 0 } # AUBM_V4_UNIT_GATE submarine
+		command = { type = activate_unit_type which = naval_torpedoes_s } # AUBM_V4_UNIT_GATE naval_torpedoes_s
+		command = { type = new_model which = naval_torpedoes_s value = 0 } # AUBM_V4_UNIT_GATE naval_torpedoes_s
 		command = { type = build_division which = submarine value = naval_torpedoes_s when = 3 cost = -3.0 where = 90 }
 		command = { type = setflag which = ind_v3_submarine_navy }
 		command = { type = setflag which = ind_v3_carrier_decision }
@@ -327,8 +331,8 @@ event = {
 		command = { type = supplies value = -2100 }
 		command = { type = manpowerpool value = -10 }
 		command = { type = dissent value = 2 }
-		command = { type = construct which = ic where = 1517 value = 2 }
-		command = { type = construct which = ic where = 1493 value = 2 }
+		command = { type = construct which = ic where = 1517 value = 2 trigger = { owned = { province = 1517 data = IND } } }
+		command = { type = construct which = ic where = 1493 value = 2 trigger = { owned = { province = 1493 data = IND } } }
 		command = { type = setflag which = ind_v3_carrier_keels }
 	}
 }
@@ -423,16 +427,16 @@ event = {
 		name = "Build the deep-ocean base at Colombo-Trincomalee"
 		command = { type = money value = -550 }
 		command = { type = supplies value = -900 }
-		command = { type = construct which = naval_base where = 1511 value = 6 trigger = { NOT = { building = { province = 1511 type = naval_base value = 5 } } } }
-		command = { type = construct which = air_base where = 1511 value = 3 trigger = { NOT = { building = { province = 1511 type = air_base value = 8 } } } }
-		command = { type = construct which = coastal_fort where = 1511 value = 2 }
+		command = { type = construct which = naval_base where = 1511 value = 6 trigger = { owned = { province = 1511 data = IND } NOT = { building = { province = 1511 type = naval_base value = 5 } } } }
+		command = { type = construct which = air_base where = 1511 value = 3 trigger = { owned = { province = 1511 data = IND } NOT = { building = { province = 1511 type = air_base value = 8 } } } }
+		command = { type = construct which = coastal_fort where = 1511 value = 2 trigger = { owned = { province = 1511 data = IND } NOT = { building = { province = 1511 type = coastal_fort value = 9 } } } }
 		command = { type = setflag which = ind_v3_trincomalee_command }
 	}
 	action_b = {
 		ai_chance = 20
 		name = "Keep oceanic command at Cochin and Bombay"
 		command = { type = money value = -250 }
-		command = { type = construct which = naval_base where = 1497 value = 3 trigger = { NOT = { building = { province = 1497 type = naval_base value = 8 } } } }
+		command = { type = construct which = naval_base where = 1497 value = 3 trigger = { owned = { province = 1497 data = IND } NOT = { building = { province = 1497 type = naval_base value = 8 } } } }
 		command = { type = relation which = ENG value = 10 }
 		command = { type = setflag which = ind_v3_trincomalee_command }
 	}
@@ -474,6 +478,10 @@ event = {
 		command = { type = money value = -500 }
 		command = { type = supplies value = -1100 }
 
+		command = { type = activate_unit_type which = destroyer } # AUBM_V4_UNIT_GATE destroyer
+		command = { type = new_model which = destroyer value = 0 } # AUBM_V4_UNIT_GATE destroyer
+		command = { type = activate_unit_type which = naval_asw } # AUBM_V4_UNIT_GATE naval_asw
+		command = { type = new_model which = naval_asw value = 0 } # AUBM_V4_UNIT_GATE naval_asw
 		command = { type = build_division which = destroyer value = naval_asw when = 2 cost = -2.5 where = 90 }
 		command = { type = setflag which = ind_v3_carrier_navy_1941 }
 		command = { type = setflag which = ind_v3_naval_board_1941 }
@@ -487,6 +495,10 @@ event = {
 		name = "Build an escort and anti-submarine navy"
 		command = { type = money value = -425 }
 		command = { type = supplies value = -1000 }
+		command = { type = activate_unit_type which = destroyer } # AUBM_V4_UNIT_GATE destroyer
+		command = { type = new_model which = destroyer value = 0 } # AUBM_V4_UNIT_GATE destroyer
+		command = { type = activate_unit_type which = naval_asw } # AUBM_V4_UNIT_GATE naval_asw
+		command = { type = new_model which = naval_asw value = 0 } # AUBM_V4_UNIT_GATE naval_asw
 		command = { type = build_division which = destroyer value = naval_asw when = 4 cost = -3.0 where = 75 }
 		command = { type = setflag which = ind_v3_escort_navy_1941 }
 		command = { type = setflag which = ind_v3_naval_board_1941 }
@@ -500,6 +512,10 @@ event = {
 		name = "Expand the oceanic submarine arm"
 		command = { type = money value = -400 }
 		command = { type = supplies value = -950 }
+		command = { type = activate_unit_type which = submarine } # AUBM_V4_UNIT_GATE submarine
+		command = { type = new_model which = submarine value = 0 } # AUBM_V4_UNIT_GATE submarine
+		command = { type = activate_unit_type which = naval_torpedoes_s } # AUBM_V4_UNIT_GATE naval_torpedoes_s
+		command = { type = new_model which = naval_torpedoes_s value = 0 } # AUBM_V4_UNIT_GATE naval_torpedoes_s
 		command = { type = build_division which = submarine value = naval_torpedoes_s when = 4 cost = -3.0 where = 75 }
 		command = { type = setflag which = ind_v3_submarine_navy_1941 }
 		command = { type = setflag which = ind_v3_naval_board_1941 }
@@ -540,7 +556,15 @@ event = {
 		name = "Build a second fleet carrier"
 		command = { type = money value = -1025 }
 		command = { type = supplies value = -2200 }
+		command = { type = activate_unit_type which = carrier } # AUBM_V4_UNIT_GATE carrier
+		command = { type = new_model which = carrier value = 0 } # AUBM_V4_UNIT_GATE carrier
+		command = { type = activate_unit_type which = cag } # AUBM_V4_UNIT_GATE cag
+		command = { type = new_model which = cag value = 0 } # AUBM_V4_UNIT_GATE cag
 		command = { type = build_division which = carrier value = cag when = 1 cost = -3.0 where = 300 }
+		command = { type = activate_unit_type which = destroyer } # AUBM_V4_UNIT_GATE destroyer
+		command = { type = new_model which = destroyer value = 0 } # AUBM_V4_UNIT_GATE destroyer
+		command = { type = activate_unit_type which = naval_asw } # AUBM_V4_UNIT_GATE naval_asw
+		command = { type = new_model which = naval_asw value = 0 } # AUBM_V4_UNIT_GATE naval_asw
 		command = { type = build_division which = destroyer value = naval_asw when = 3 cost = -2.5 where = 120 }
 		command = { type = setflag which = ind_v3_second_carrier }
 	}
@@ -553,7 +577,15 @@ event = {
 		name = "Build a modern light carrier and escorts"
 		command = { type = money value = -675 }
 		command = { type = supplies value = -1650 }
+		command = { type = activate_unit_type which = light_carrier } # AUBM_V4_UNIT_GATE light_carrier
+		command = { type = new_model which = light_carrier value = 0 } # AUBM_V4_UNIT_GATE light_carrier
+		command = { type = activate_unit_type which = light_cag } # AUBM_V4_UNIT_GATE light_cag
+		command = { type = new_model which = light_cag value = 0 } # AUBM_V4_UNIT_GATE light_cag
 		command = { type = build_division which = light_carrier value = light_cag when = 1 cost = -3.0 where = 240 }
+		command = { type = activate_unit_type which = destroyer } # AUBM_V4_UNIT_GATE destroyer
+		command = { type = new_model which = destroyer value = 0 } # AUBM_V4_UNIT_GATE destroyer
+		command = { type = activate_unit_type which = naval_asw } # AUBM_V4_UNIT_GATE naval_asw
+		command = { type = new_model which = naval_asw value = 0 } # AUBM_V4_UNIT_GATE naval_asw
 		command = { type = build_division which = destroyer value = naval_asw when = 4 cost = -3.0 where = 90 }
 		command = { type = setflag which = ind_v3_second_carrier }
 	}

@@ -639,6 +639,7 @@ event = {
 	decision = {
 		flag = ind_v3_world_role
 		NOT = { flag = ind_v3_ceylon_requested }
+		NOT = { owned = { province = 1509 data = IND } }
 		atwar = no
 	}
 	decision_trigger = {

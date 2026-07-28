@@ -1,0 +1,34 @@
+#########################################################################
+# A Union Before Midnight V4: direct-Darkest-Hour foundation
+#########################################################################
+
+event = {
+	id = 9280000
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_started
+		NOT = { flag = ind_v4_initialized }
+	}
+
+	name = "A Continental State in a Dangerous World"
+	desc = "The Lahore Accord has produced something without precedent: a sovereign Indian Union in 1933, extending from the north-west frontier through Burma and Malaya to Ceylon. It has inherited railways, regiments and ports, but not yet a common political economy or a settled place in the world. Europe is rearming, Japan is advancing in Asia and every major power assumes the new Union will eventually need a patron. India now has the narrowest of opportunities to prove them wrong."
+	style = 2
+	picture = "aubm_v4_continental_state"
+
+	date = { day = 1 month = january year = 1933 }
+	offset = 1
+	deathdate = { day = 15 month = january year = 1933 }
+
+	action_a = {
+		ai_chance = 100
+		name = "Transfer the sterling reserve and begin: +1000 money"
+		command = { type = money value = 1000 }
+		command = { type = relation which = ENG value = 10 }
+		command = { type = relation which = USA value = 5 }
+		command = { type = relation which = CHI value = 5 }
+		command = { type = setflag which = ind_v4_direct_dh }
+		command = { type = setflag which = ind_v4_initialized }
+	}
+}

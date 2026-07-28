@@ -13,6 +13,12 @@ dist/
 *.7z
 *.rar
 *.tmp
+construction_caps.txt
+v4_validation.txt
+
+# Local visual research and superseded generation drafts
+tools/data/*.png
+tools/art_sources/v4_events/*_draft.png
 
 # Editor and OS state
 .idea/

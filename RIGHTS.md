@@ -14,24 +14,17 @@ an unmodified A Union Before Midnight release.
 
 ## Foundation And Third-Party Material
 
-The project depends on Blood and Iron v1.1 and Darkest Hour. Some overlay
-graphics and data are adaptations or compatibility derivatives of material
-from Blood and Iron and the projects credited by Blood and Iron.
+V4 depends on the user's installed Darkest Hour Full data. Its installer clones
+that local foundation and applies the files listed in the release manifest.
+The repository does not redistribute the complete game or complete foundation.
 
-Those materials remain subject to the rights and permissions of their original
-authors. Publication in this repository does not relicense them.
+The V3 history of this project depended on Blood and Iron. Donor-derived V3 map
+sprites, palettes and model panels are deliberately excluded from V4. Any
+remaining archival or third-party material remains subject to the rights and
+permissions of its original author; publication here does not relicense it.
 
-The repository deliberately excludes the complete Blood and Iron foundation.
-Users must obtain and install that dependency separately.
-
-Written permission covering redistribution of the remaining Blood and Iron
-derivatives is not currently recorded in this project. Until that permission
-is obtained, or the package is redesigned and approved to generate every
-remaining derivative from the user's installed foundation, V3.4.1 must not be
-presented as cleared for official-forum publication.
-
-External GitHub or ModDB links should also be privately approved by a Darkest
-Hour forum moderator before posting. See `docs/FORUM_RELEASE_AUDIT.md`.
+External GitHub or ModDB publication should still follow Darkest Hour community
+rules and the audit in `docs/FORUM_RELEASE_AUDIT.md`.
 
 ## Generated And Archival Images
 
@@ -41,8 +34,11 @@ Image provenance, archival sources and reconstruction labels are recorded in:
 - `docs/art_manifest.csv`
 - `docs/personnel_art_manifest.csv`
 - `docs/india_historical_traits.csv`
+- `docs/v4_sprite_manifest.csv`
 
-The repository banner is original AI-assisted artwork created for this project.
+The repository banner, generated event reconstructions and India service-sprite
+source sheets are original AI-assisted artwork created for this project. The
+V4 service sprites are not derived from Blood and Iron or another donor mod.
 
 ## Trademarks
 

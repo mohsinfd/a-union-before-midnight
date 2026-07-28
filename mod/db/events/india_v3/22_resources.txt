@@ -72,9 +72,9 @@ event = {
 		command = { type = manpowerpool value = -8 }
 		command = { type = add_prov_resource which = 1476 value = 38 where = energy }
 		command = { type = add_prov_resource which = 1476 value = 12 where = metal }
-		command = { type = construct which = infrastructure where = 1476 value = 15 trigger = { NOT = { building = { province = 1476 type = infrastructure value = 0.86 } } } }
-		command = { type = construct which = infrastructure where = 1472 value = 15 trigger = { NOT = { building = { province = 1472 type = infrastructure value = 0.86 } } } }
-		command = { type = construct which = infrastructure where = 1447 value = 10 trigger = { NOT = { building = { province = 1447 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1476 value = 15 trigger = { owned = { province = 1476 data = IND } NOT = { building = { province = 1476 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1472 value = 15 trigger = { owned = { province = 1472 data = IND } NOT = { building = { province = 1472 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1447 value = 10 trigger = { owned = { province = 1447 data = IND } NOT = { building = { province = 1447 type = infrastructure value = 0.91 } } } }
 		command = { type = setflag which = ind_v3_coalfield_modernization }
 	}
 	action_b = {
@@ -118,8 +118,8 @@ event = {
 		command = { type = add_prov_resource which = 1472 value = 24 where = metal }
 		command = { type = add_prov_resource which = 1477 value = 20 where = metal }
 		command = { type = add_prov_resource which = 1476 value = 20 where = energy }
-		command = { type = construct which = infrastructure where = 1472 value = 10 trigger = { NOT = { building = { province = 1472 type = infrastructure value = 0.91 } } } }
-		command = { type = construct which = infrastructure where = 1477 value = 10 trigger = { NOT = { building = { province = 1477 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1472 value = 10 trigger = { owned = { province = 1472 data = IND } NOT = { building = { province = 1472 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1477 value = 10 trigger = { owned = { province = 1477 data = IND } NOT = { building = { province = 1477 type = infrastructure value = 0.91 } } } }
 		command = { type = industrial_modifier which = total value = 2 }
 		command = { type = setflag which = ind_v3_steel_security }
 	}
@@ -162,9 +162,9 @@ event = {
 		command = { type = supplies value = -550 }
 		command = { type = add_prov_resource which = 1441 value = 22 where = oil }
 		command = { type = add_prov_resource which = 1441 value = 18 where = energy }
-		command = { type = construct which = infrastructure where = 1441 value = 15 trigger = { NOT = { building = { province = 1441 type = infrastructure value = 0.86 } } } }
-		command = { type = construct which = infrastructure where = 1439 value = 15 trigger = { NOT = { building = { province = 1439 type = infrastructure value = 0.86 } } } }
-		command = { type = construct which = infrastructure where = 1445 value = 10 trigger = { NOT = { building = { province = 1445 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1441 value = 15 trigger = { owned = { province = 1441 data = IND } NOT = { building = { province = 1441 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1439 value = 15 trigger = { owned = { province = 1439 data = IND } NOT = { building = { province = 1439 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1445 value = 10 trigger = { owned = { province = 1445 data = IND } NOT = { building = { province = 1445 type = infrastructure value = 0.91 } } } }
 		command = { type = setflag which = ind_v3_assam_oil }
 	}
 	action_b = {
@@ -206,9 +206,9 @@ event = {
 		command = { type = add_prov_resource which = 1476 value = 30 where = energy }
 		command = { type = add_prov_resource which = 1485 value = 20 where = energy }
 		command = { type = add_prov_resource which = 1477 value = 16 where = metal }
-		command = { type = construct which = infrastructure where = 1476 value = 10 trigger = { NOT = { building = { province = 1476 type = infrastructure value = 0.91 } } } }
-		command = { type = construct which = infrastructure where = 1477 value = 15 trigger = { NOT = { building = { province = 1477 type = infrastructure value = 0.86 } } } }
-		command = { type = construct which = infrastructure where = 1485 value = 15 trigger = { NOT = { building = { province = 1485 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1476 value = 10 trigger = { owned = { province = 1476 data = IND } NOT = { building = { province = 1476 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1477 value = 15 trigger = { owned = { province = 1477 data = IND } NOT = { building = { province = 1477 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1485 value = 15 trigger = { owned = { province = 1485 data = IND } NOT = { building = { province = 1485 type = infrastructure value = 0.86 } } } }
 		command = { type = setflag which = ind_v3_central_mineral_grid }
 	}
 	action_b = {
@@ -250,9 +250,9 @@ event = {
 		command = { type = add_prov_resource which = 1517 value = 8 where = oil }
 		command = { type = add_prov_resource which = 1447 value = 6 where = oil }
 		command = { type = add_prov_resource which = 1415 value = 6 where = oil }
-		command = { type = construct which = infrastructure where = 1517 value = 10 trigger = { NOT = { building = { province = 1517 type = infrastructure value = 0.91 } } } }
-		command = { type = construct which = infrastructure where = 1447 value = 10 trigger = { NOT = { building = { province = 1447 type = infrastructure value = 0.91 } } } }
-		command = { type = construct which = infrastructure where = 1415 value = 10 trigger = { NOT = { building = { province = 1415 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1517 value = 10 trigger = { owned = { province = 1517 data = IND } NOT = { building = { province = 1517 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1447 value = 10 trigger = { owned = { province = 1447 data = IND } NOT = { building = { province = 1447 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1415 value = 10 trigger = { owned = { province = 1415 data = IND } NOT = { building = { province = 1415 type = infrastructure value = 0.91 } } } }
 		command = { type = setflag which = ind_v3_refinery_program }
 	}
 	action_b = {
@@ -263,8 +263,8 @@ event = {
 		command = { type = add_prov_resource which = 1477 value = 8 where = oil }
 		command = { type = add_prov_resource which = 1485 value = 8 where = oil }
 		command = { type = add_prov_resource which = 1476 value = 20 where = energy }
-		command = { type = construct which = infrastructure where = 1477 value = 10 trigger = { NOT = { building = { province = 1477 type = infrastructure value = 0.91 } } } }
-		command = { type = construct which = infrastructure where = 1485 value = 10 trigger = { NOT = { building = { province = 1485 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1477 value = 10 trigger = { owned = { province = 1477 data = IND } NOT = { building = { province = 1477 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1485 value = 10 trigger = { owned = { province = 1485 data = IND } NOT = { building = { province = 1485 type = infrastructure value = 0.91 } } } }
 
 		command = { type = setflag which = ind_v3_synthetic_fuel }
 		command = { type = setflag which = ind_v3_refinery_program }

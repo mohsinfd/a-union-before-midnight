@@ -112,9 +112,9 @@ event = {
 		command = { type = money value = -200 }
 		command = { type = dissent value = -4 }
 		command = { type = manpowerpool value = 15 }
-		command = { type = construct which = infrastructure where = 1480 value = 10 trigger = { NOT = { building = { province = 1480 type = infrastructure value = 0.91 } } } }
-		command = { type = construct which = infrastructure where = 1487 value = 10 trigger = { NOT = { building = { province = 1487 type = infrastructure value = 0.91 } } } }
-		command = { type = construct which = infrastructure where = 1507 value = 10 trigger = { NOT = { building = { province = 1507 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1480 value = 10 trigger = { owned = { province = 1480 data = IND } NOT = { building = { province = 1480 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1487 value = 10 trigger = { owned = { province = 1487 data = IND } NOT = { building = { province = 1487 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1507 value = 10 trigger = { owned = { province = 1507 data = IND } NOT = { building = { province = 1507 type = infrastructure value = 0.91 } } } }
 		command = { type = setflag which = ind_v3_negotiated_princely_union }
 		command = { type = setflag which = ind_v3_princely_settlement }
 	}
@@ -235,8 +235,8 @@ event = {
 		name = "Grant Burma constituent autonomy"
 		command = { type = money value = -225 }
 		command = { type = dissent value = -4 }
-		command = { type = construct which = infrastructure where = 1415 value = 15 trigger = { NOT = { building = { province = 1415 type = infrastructure value = 0.86 } } } }
-		command = { type = construct which = infrastructure where = 1442 value = 10 trigger = { NOT = { building = { province = 1442 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1415 value = 15 trigger = { owned = { province = 1415 data = IND } NOT = { building = { province = 1415 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1442 value = 10 trigger = { owned = { province = 1442 data = IND } NOT = { building = { province = 1442 type = infrastructure value = 0.91 } } } }
 		command = { type = tc_mod value = 2 }
 		command = { type = setflag which = ind_v3_burmese_autonomy }
 		command = { type = setflag which = ind_v3_burma_compact }
@@ -247,7 +247,7 @@ event = {
 
 		command = { type = supplies value = -300 }
 		command = { type = dissent value = 3 }
-		command = { type = construct which = infrastructure where = 1415 value = 20 trigger = { NOT = { building = { province = 1415 type = infrastructure value = 0.81 } } } }
+		command = { type = construct which = infrastructure where = 1415 value = 20 trigger = { owned = { province = 1415 data = IND } NOT = { building = { province = 1415 type = infrastructure value = 0.81 } } } }
 		command = { type = domestic which = interventionism value = 1 }
 		command = { type = setflag which = ind_v3_eastern_administration }
 		command = { type = setflag which = ind_v3_burma_compact }
@@ -331,7 +331,7 @@ event = {
 
 		command = { type = manpowerpool value = -8 }
 		command = { type = research_mod value = 4 }
-		command = { type = construct which = ic where = 1502 value = 2 }
+		command = { type = construct which = ic where = 1502 value = 2 trigger = { owned = { province = 1502 data = IND } } }
 		command = { type = setflag which = ind_v3_technical_education }
 		command = { type = setflag which = ind_v3_education_act }
 	}
@@ -406,9 +406,11 @@ event = {
 		name = "Subsidize a national merchant fleet"
 		command = { type = money value = -425 }
 		command = { type = supplies value = -500 }
+		command = { type = activate_unit_type which = transport } # AUBM_V4_UNIT_GATE transport
+		command = { type = new_model which = transport value = 0 } # AUBM_V4_UNIT_GATE transport
 		command = { type = build_division which = transport value = none when = 3 cost = -1.5 where = 90 }
-		command = { type = construct which = naval_base where = 1517 value = 3 trigger = { NOT = { building = { province = 1517 type = naval_base value = 8 } } } }
-		command = { type = construct which = naval_base where = 1533 value = 3 trigger = { NOT = { building = { province = 1533 type = naval_base value = 8 } } } }
+		command = { type = construct which = naval_base where = 1517 value = 3 trigger = { owned = { province = 1517 data = IND } NOT = { building = { province = 1517 type = naval_base value = 8 } } } }
+		command = { type = construct which = naval_base where = 1533 value = 3 trigger = { owned = { province = 1533 data = IND } NOT = { building = { province = 1533 type = naval_base value = 8 } } } }
 		command = { type = industrial_modifier which = money value = 3 }
 		command = { type = setflag which = ind_v3_merchant_marine }
 	}

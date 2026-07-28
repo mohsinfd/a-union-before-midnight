@@ -142,10 +142,10 @@ event = {
 		command = { type = supplies value = -350 }
 		command = { type = manpowerpool value = -10 }
 		command = { type = dissent value = -5 }
-		command = { type = construct which = infrastructure where = 1459 value = 10 trigger = { NOT = { building = { province = 1459 type = infrastructure value = 0.91 } } } }
-		command = { type = construct which = infrastructure where = 1447 value = 10 trigger = { NOT = { building = { province = 1447 type = infrastructure value = 0.91 } } } }
-		command = { type = construct which = infrastructure where = 1517 value = 10 trigger = { NOT = { building = { province = 1517 type = infrastructure value = 0.91 } } } }
-		command = { type = construct which = infrastructure where = 1533 value = 10 trigger = { NOT = { building = { province = 1533 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1459 value = 10 trigger = { owned = { province = 1459 data = IND } NOT = { building = { province = 1459 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1447 value = 10 trigger = { owned = { province = 1447 data = IND } NOT = { building = { province = 1447 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1517 value = 10 trigger = { owned = { province = 1517 data = IND } NOT = { building = { province = 1517 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1533 value = 10 trigger = { owned = { province = 1533 data = IND } NOT = { building = { province = 1533 type = infrastructure value = 0.91 } } } }
 		command = { type = setflag which = ind_v3_consensual_union }
 		command = { type = setflag which = ind_v3_integrated }
 	}
@@ -155,9 +155,9 @@ event = {
 		command = { type = money value = -75 }
 		command = { type = supplies value = -200 }
 		command = { type = dissent value = -3 }
-		command = { type = construct which = infrastructure where = 1445 value = 10 trigger = { NOT = { building = { province = 1445 type = infrastructure value = 0.91 } } } }
-		command = { type = construct which = infrastructure where = 1415 value = 10 trigger = { NOT = { building = { province = 1415 type = infrastructure value = 0.91 } } } }
-		command = { type = construct which = infrastructure where = 1530 value = 10 trigger = { NOT = { building = { province = 1530 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1445 value = 10 trigger = { owned = { province = 1445 data = IND } NOT = { building = { province = 1445 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1415 value = 10 trigger = { owned = { province = 1415 data = IND } NOT = { building = { province = 1415 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1530 value = 10 trigger = { owned = { province = 1530 data = IND } NOT = { building = { province = 1530 type = infrastructure value = 0.91 } } } }
 		command = { type = setflag which = ind_v3_provincial_union }
 		command = { type = setflag which = ind_v3_integrated }
 	}
@@ -169,7 +169,7 @@ event = {
 		command = { type = dissent value = 4 }
 		command = { type = manpowerpool value = -5 }
 		command = { type = domestic which = professional_army value = 1 }
-		command = { type = construct which = infrastructure where = 1459 value = 15 trigger = { NOT = { building = { province = 1459 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1459 value = 15 trigger = { owned = { province = 1459 data = IND } NOT = { building = { province = 1459 type = infrastructure value = 0.86 } } } }
 		command = { type = setflag which = ind_v3_central_union }
 		command = { type = setflag which = ind_v3_integrated }
 	}

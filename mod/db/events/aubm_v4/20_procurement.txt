@@ -1,0 +1,194 @@
+#########################################################################
+# A Union Before Midnight V4: operational tables and procurement doctrine
+#########################################################################
+
+event = {
+	id = 9280200
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_standing_divisions
+		flag = ind_v4_field_service_regulations
+		NOT = { flag = ind_v4_land_tables }
+	}
+
+	name = "Standard Tables of Organization"
+	desc = "New formations are arriving faster than the army can organize them. The staff must decide whether production should deliver complete three-division corps, modular divisional groups or a compact mobile reserve. The choice changes readiness and logistics, not the number of units already ordered."
+	style = 2
+	picture = "aubm_v4_standard_toe"
+
+	date = { day = 0 month = february year = 1935 }
+	offset = 7
+	deathdate = { day = 29 month = april year = 1935 }
+
+	action_a = {
+		ai_chance = 50
+		name = "Complete corps packages: +3 land org, +2 HQ supply; costs 180/400"
+		command = { type = money value = -180 }
+		command = { type = supplies value = -400 }
+		command = { type = max_organization which = land value = 3 }
+		command = { type = hq_supply_eff value = 2 }
+		command = { type = setflag which = ind_v4_complete_corps_packages }
+		command = { type = setflag which = ind_v4_land_tables }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Modular divisional groups: +3 land morale, +2 TC; costs 150/350"
+		command = { type = money value = -150 }
+		command = { type = supplies value = -350 }
+		command = { type = morale which = land value = 3 }
+		command = { type = tc_mod value = 2 }
+		command = { type = setflag which = ind_v4_modular_divisions }
+		command = { type = setflag which = ind_v4_land_tables }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Prioritize the mobile reserve: +4 TC, +1 land org; costs 220/500"
+		command = { type = money value = -220 }
+		command = { type = supplies value = -500 }
+		command = { type = tc_mod value = 4 }
+		command = { type = max_organization which = land value = 1 }
+		command = { type = setflag which = ind_v4_mobile_procurement }
+		command = { type = setflag which = ind_v4_land_tables }
+	}
+}
+
+event = {
+	id = 9280201
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_flying_schools
+		NOT = { flag = ind_v4_air_group_standard }
+	}
+
+	name = "The Four-Wing Group Standard"
+	desc = "The air staff adopts four wings as the standard operational group: large enough to sustain patrols and absorb losses, but small enough to move between India's dispersed bases. Specialist wings may still operate separately when range or mission demands it."
+	style = 2
+	picture = "aubm_v4_four_wing_standard"
+
+	date = { day = 0 month = august year = 1935 }
+	offset = 7
+	deathdate = { day = 29 month = october year = 1935 }
+
+	action_a = {
+		ai_chance = 55
+		name = "Balanced four-wing groups: +3 air org/+2 morale; costs 170/350"
+		command = { type = money value = -170 }
+		command = { type = supplies value = -350 }
+		command = { type = max_organization which = air value = 3 }
+		command = { type = morale which = air value = 2 }
+		command = { type = setflag which = ind_v4_balanced_air_groups }
+		command = { type = setflag which = ind_v4_air_group_standard }
+	}
+	action_b = {
+		ai_chance = 25
+		name = "Paired specialist groups: +4 air morale; costs 130/300"
+		command = { type = money value = -130 }
+		command = { type = supplies value = -300 }
+		command = { type = morale which = air value = 4 }
+		command = { type = setflag which = ind_v4_specialist_air_groups }
+		command = { type = setflag which = ind_v4_air_group_standard }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Central strategic reserve: +5 air org, +1 dissent; costs 220/400"
+		command = { type = money value = -220 }
+		command = { type = supplies value = -400 }
+		command = { type = dissent value = 1 }
+		command = { type = max_organization which = air value = 5 }
+		command = { type = setflag which = ind_v4_central_air_reserve }
+		command = { type = setflag which = ind_v4_air_group_standard }
+	}
+}
+
+event = {
+	id = 9280202
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_naval_program
+		NOT = { flag = ind_v4_fleet_units }
+	}
+
+	name = "Fleet Tactical Units"
+	desc = "India intends to maintain three fleets, but ships need repeatable tactical groups rather than ceremonial stations. Naval planners propose a carrier group built around one carrier, two heavy cruisers and two destroyer flotillas; a battle group built around one battleship and two light cruisers; and smaller escort groups for the sea lanes."
+	style = 2
+	picture = "aubm_v4_fleet_tactical_units"
+
+	date = { day = 0 month = november year = 1936 }
+	offset = 7
+	deathdate = { day = 29 month = january year = 1937 }
+
+	action_a = {
+		ai_chance = 35
+		name = "Carrier task groups: +4 naval org, +1 research; costs 250/550"
+		command = { type = money value = -250 }
+		command = { type = supplies value = -550 }
+		command = { type = max_organization which = naval value = 4 }
+		command = { type = research_mod value = 1 }
+		command = { type = setflag which = ind_v4_carrier_task_groups }
+		command = { type = setflag which = ind_v4_fleet_units }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Battle groups: +5 naval morale, +1 defence lobby; costs 220/600"
+		command = { type = money value = -220 }
+		command = { type = supplies value = -600 }
+		command = { type = morale which = naval value = 5 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = setflag which = ind_v4_battle_groups }
+		command = { type = setflag which = ind_v4_fleet_units }
+	}
+	action_c = {
+		ai_chance = 35
+		name = "Escort and sea-control groups: +3 naval org/+2 morale; costs 180/450"
+		command = { type = money value = -180 }
+		command = { type = supplies value = -450 }
+		command = { type = max_organization which = naval value = 3 }
+		command = { type = morale which = naval value = 2 }
+		command = { type = setflag which = ind_v4_escort_groups }
+		command = { type = setflag which = ind_v4_fleet_units }
+	}
+}
+
+event = {
+	id = 9280203
+	random = no
+	country = IND
+
+	decision = {
+		atwar = yes
+		flag = ind_v4_land_tables
+		flag = ind_v4_air_group_standard
+		NOT = { flag = ind_v4_replacement_pool }
+	}
+	decision_trigger = {
+		money = 400
+		supplies = 1200
+		manpower = 35
+	}
+
+	name = "Create a Joint Replacement Pool"
+	desc = "Ships, aircraft and corps now survive more engagements, but repairable losses still require trained drafts, spare engines and standardized components. A joint pool improves reinforcement efficiency at the cost of resources that could otherwise create new formations."
+	style = 2
+	picture = "aubm_v4_joint_replacement_pool"
+	decision_picture = "decision_wargames"
+
+	date = { day = 0 month = january year = 1937 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		ai_chance = 100
+		name = "Fund the pool: +5 reinforcement efficiency; costs 400/1200/35 manpower"
+		command = { type = money value = -400 }
+		command = { type = supplies value = -1200 }
+		command = { type = manpowerpool value = -35 }
+		command = { type = repair_mod value = 5 }
+		command = { type = setflag which = ind_v4_replacement_pool }
+	}
+}

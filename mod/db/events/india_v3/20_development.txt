@@ -42,14 +42,14 @@ event = {
 		command = { type = supplies value = -750 }
 		command = { type = manpowerpool value = -15 }
 		command = { type = dissent value = 4 }
-		command = { type = construct which = ic where = 1447 value = 3 }
-		command = { type = construct which = ic where = 1445 value = 3 }
-		command = { type = construct which = ic where = 1459 value = 3 }
-		command = { type = construct which = ic where = 1487 value = 3 }
-		command = { type = construct which = ic where = 1500 value = 3 }
-		command = { type = construct which = ic where = 1502 value = 3 }
-		command = { type = construct which = ic where = 1517 value = 3 }
-		command = { type = construct which = ic where = 1533 value = 3 }
+		command = { type = construct which = ic where = 1447 value = 3 trigger = { owned = { province = 1447 data = IND } } }
+		command = { type = construct which = ic where = 1445 value = 3 trigger = { owned = { province = 1445 data = IND } } }
+		command = { type = construct which = ic where = 1459 value = 3 trigger = { owned = { province = 1459 data = IND } } }
+		command = { type = construct which = ic where = 1487 value = 3 trigger = { owned = { province = 1487 data = IND } } }
+		command = { type = construct which = ic where = 1500 value = 3 trigger = { owned = { province = 1500 data = IND } } }
+		command = { type = construct which = ic where = 1502 value = 3 trigger = { owned = { province = 1502 data = IND } } }
+		command = { type = construct which = ic where = 1517 value = 3 trigger = { owned = { province = 1517 data = IND } } }
+		command = { type = construct which = ic where = 1533 value = 3 trigger = { owned = { province = 1533 data = IND } } }
 		command = { type = waketeam which = 250014 }
 		command = { type = setflag which = ind_v3_heavy_reconstruction }
 		command = { type = setflag which = ind_v3_reconstruction_1933 }
@@ -66,16 +66,16 @@ event = {
 		command = { type = supplies value = -600 }
 		command = { type = manpowerpool value = -10 }
 		command = { type = dissent value = -1 }
-		command = { type = construct which = ic where = 1439 value = 2 }
-		command = { type = construct which = ic where = 1445 value = 2 }
-		command = { type = construct which = ic where = 1461 value = 2 }
-		command = { type = construct which = ic where = 1465 value = 2 }
-		command = { type = construct which = ic where = 1477 value = 2 }
-		command = { type = construct which = ic where = 1485 value = 2 }
-		command = { type = construct which = ic where = 1493 value = 2 }
-		command = { type = construct which = ic where = 1503 value = 2 }
-		command = { type = construct which = infrastructure where = 1439 value = 10 trigger = { NOT = { building = { province = 1439 type = infrastructure value = 0.91 } } } }
-		command = { type = construct which = infrastructure where = 1493 value = 10 trigger = { NOT = { building = { province = 1493 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = ic where = 1439 value = 2 trigger = { owned = { province = 1439 data = IND } } }
+		command = { type = construct which = ic where = 1445 value = 2 trigger = { owned = { province = 1445 data = IND } } }
+		command = { type = construct which = ic where = 1461 value = 2 trigger = { owned = { province = 1461 data = IND } } }
+		command = { type = construct which = ic where = 1465 value = 2 trigger = { owned = { province = 1465 data = IND } } }
+		command = { type = construct which = ic where = 1477 value = 2 trigger = { owned = { province = 1477 data = IND } } }
+		command = { type = construct which = ic where = 1485 value = 2 trigger = { owned = { province = 1485 data = IND } } }
+		command = { type = construct which = ic where = 1493 value = 2 trigger = { owned = { province = 1493 data = IND } } }
+		command = { type = construct which = ic where = 1503 value = 2 trigger = { owned = { province = 1503 data = IND } } }
+		command = { type = construct which = infrastructure where = 1439 value = 10 trigger = { owned = { province = 1439 data = IND } NOT = { building = { province = 1439 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1493 value = 10 trigger = { owned = { province = 1493 data = IND } NOT = { building = { province = 1493 type = infrastructure value = 0.91 } } } }
 		command = { type = waketeam which = 250014 }
 		command = { type = setflag which = ind_v3_distributed_reconstruction }
 		command = { type = setflag which = ind_v3_reconstruction_1933 }
@@ -94,11 +94,11 @@ event = {
 		command = { type = dissent value = 2 }
 		command = { type = domestic which = free_market value = 1 }
 
-		command = { type = construct which = ic where = 1447 value = 2 }
-		command = { type = construct which = ic where = 1472 value = 2 }
-		command = { type = construct which = ic where = 1502 value = 2 }
-		command = { type = construct which = ic where = 1517 value = 3 }
-		command = { type = construct which = ic where = 1533 value = 3 }
+		command = { type = construct which = ic where = 1447 value = 2 trigger = { owned = { province = 1447 data = IND } } }
+		command = { type = construct which = ic where = 1472 value = 2 trigger = { owned = { province = 1472 data = IND } } }
+		command = { type = construct which = ic where = 1502 value = 2 trigger = { owned = { province = 1502 data = IND } } }
+		command = { type = construct which = ic where = 1517 value = 3 trigger = { owned = { province = 1517 data = IND } } }
+		command = { type = construct which = ic where = 1533 value = 3 trigger = { owned = { province = 1533 data = IND } } }
 		command = { type = setflag which = ind_v3_private_reconstruction }
 		command = { type = setflag which = ind_v3_reconstruction_1933 }
 	}
@@ -142,22 +142,22 @@ event = {
 		command = { type = money value = -250 }
 		command = { type = supplies value = -900 }
 		command = { type = manpowerpool value = -15 }
-		command = { type = construct which = infrastructure where = 1533 value = 20 trigger = { NOT = { building = { province = 1533 type = infrastructure value = 0.81 } } } }
-		command = { type = construct which = infrastructure where = 1530 value = 20 trigger = { NOT = { building = { province = 1530 type = infrastructure value = 0.81 } } } }
-		command = { type = construct which = infrastructure where = 1459 value = 20 trigger = { NOT = { building = { province = 1459 type = infrastructure value = 0.81 } } } }
-		command = { type = construct which = infrastructure where = 1461 value = 20 trigger = { NOT = { building = { province = 1461 type = infrastructure value = 0.81 } } } }
-		command = { type = construct which = infrastructure where = 1465 value = 20 trigger = { NOT = { building = { province = 1465 type = infrastructure value = 0.81 } } } }
-		command = { type = construct which = infrastructure where = 1447 value = 20 trigger = { NOT = { building = { province = 1447 type = infrastructure value = 0.81 } } } }
-		command = { type = construct which = infrastructure where = 1485 value = 20 trigger = { NOT = { building = { province = 1485 type = infrastructure value = 0.81 } } } }
-		command = { type = construct which = infrastructure where = 1517 value = 20 trigger = { NOT = { building = { province = 1517 type = infrastructure value = 0.81 } } } }
-		command = { type = construct which = ic where = 1533 value = 1 }
-		command = { type = construct which = ic where = 1530 value = 1 }
-		command = { type = construct which = ic where = 1459 value = 1 }
-		command = { type = construct which = ic where = 1461 value = 1 }
-		command = { type = construct which = ic where = 1465 value = 1 }
-		command = { type = construct which = ic where = 1447 value = 1 }
-		command = { type = construct which = ic where = 1485 value = 1 }
-		command = { type = construct which = ic where = 1517 value = 1 }
+		command = { type = construct which = infrastructure where = 1533 value = 20 trigger = { owned = { province = 1533 data = IND } NOT = { building = { province = 1533 type = infrastructure value = 0.81 } } } }
+		command = { type = construct which = infrastructure where = 1530 value = 20 trigger = { owned = { province = 1530 data = IND } NOT = { building = { province = 1530 type = infrastructure value = 0.81 } } } }
+		command = { type = construct which = infrastructure where = 1459 value = 20 trigger = { owned = { province = 1459 data = IND } NOT = { building = { province = 1459 type = infrastructure value = 0.81 } } } }
+		command = { type = construct which = infrastructure where = 1461 value = 20 trigger = { owned = { province = 1461 data = IND } NOT = { building = { province = 1461 type = infrastructure value = 0.81 } } } }
+		command = { type = construct which = infrastructure where = 1465 value = 20 trigger = { owned = { province = 1465 data = IND } NOT = { building = { province = 1465 type = infrastructure value = 0.81 } } } }
+		command = { type = construct which = infrastructure where = 1447 value = 20 trigger = { owned = { province = 1447 data = IND } NOT = { building = { province = 1447 type = infrastructure value = 0.81 } } } }
+		command = { type = construct which = infrastructure where = 1485 value = 20 trigger = { owned = { province = 1485 data = IND } NOT = { building = { province = 1485 type = infrastructure value = 0.81 } } } }
+		command = { type = construct which = infrastructure where = 1517 value = 20 trigger = { owned = { province = 1517 data = IND } NOT = { building = { province = 1517 type = infrastructure value = 0.81 } } } }
+		command = { type = construct which = ic where = 1533 value = 1 trigger = { owned = { province = 1533 data = IND } } }
+		command = { type = construct which = ic where = 1530 value = 1 trigger = { owned = { province = 1530 data = IND } } }
+		command = { type = construct which = ic where = 1459 value = 1 trigger = { owned = { province = 1459 data = IND } } }
+		command = { type = construct which = ic where = 1461 value = 1 trigger = { owned = { province = 1461 data = IND } } }
+		command = { type = construct which = ic where = 1465 value = 1 trigger = { owned = { province = 1465 data = IND } } }
+		command = { type = construct which = ic where = 1447 value = 1 trigger = { owned = { province = 1447 data = IND } } }
+		command = { type = construct which = ic where = 1485 value = 1 trigger = { owned = { province = 1485 data = IND } } }
+		command = { type = construct which = ic where = 1517 value = 1 trigger = { owned = { province = 1517 data = IND } } }
 		command = { type = tc_mod value = 5 }
 		command = { type = setflag which = ind_v3_trunk_railways }
 		command = { type = setflag which = ind_v3_transport_1934 }
@@ -173,23 +173,23 @@ event = {
 		command = { type = money value = -225 }
 		command = { type = supplies value = -750 }
 		command = { type = manpowerpool value = -10 }
-		command = { type = construct which = infrastructure where = 1447 value = 25 trigger = { NOT = { building = { province = 1447 type = infrastructure value = 0.76 } } } }
-		command = { type = construct which = infrastructure where = 1493 value = 25 trigger = { NOT = { building = { province = 1493 type = infrastructure value = 0.76 } } } }
-		command = { type = construct which = infrastructure where = 1497 value = 25 trigger = { NOT = { building = { province = 1497 type = infrastructure value = 0.76 } } } }
-		command = { type = construct which = infrastructure where = 1500 value = 25 trigger = { NOT = { building = { province = 1500 type = infrastructure value = 0.76 } } } }
-		command = { type = construct which = infrastructure where = 1517 value = 25 trigger = { NOT = { building = { province = 1517 type = infrastructure value = 0.76 } } } }
-		command = { type = construct which = infrastructure where = 1533 value = 25 trigger = { NOT = { building = { province = 1533 type = infrastructure value = 0.76 } } } }
-		command = { type = construct which = naval_base where = 1447 value = 3 trigger = { NOT = { building = { province = 1447 type = naval_base value = 8 } } } }
-		command = { type = construct which = naval_base where = 1493 value = 3 trigger = { NOT = { building = { province = 1493 type = naval_base value = 8 } } } }
-		command = { type = construct which = naval_base where = 1497 value = 3 trigger = { NOT = { building = { province = 1497 type = naval_base value = 8 } } } }
-		command = { type = construct which = naval_base where = 1500 value = 3 trigger = { NOT = { building = { province = 1500 type = naval_base value = 8 } } } }
-		command = { type = construct which = naval_base where = 1517 value = 3 trigger = { NOT = { building = { province = 1517 type = naval_base value = 8 } } } }
-		command = { type = construct which = naval_base where = 1533 value = 3 trigger = { NOT = { building = { province = 1533 type = naval_base value = 8 } } } }
-		command = { type = construct which = ic where = 1447 value = 2 }
-		command = { type = construct which = ic where = 1493 value = 2 }
-		command = { type = construct which = ic where = 1500 value = 2 }
-		command = { type = construct which = ic where = 1517 value = 2 }
-		command = { type = construct which = ic where = 1533 value = 2 }
+		command = { type = construct which = infrastructure where = 1447 value = 25 trigger = { owned = { province = 1447 data = IND } NOT = { building = { province = 1447 type = infrastructure value = 0.76 } } } }
+		command = { type = construct which = infrastructure where = 1493 value = 25 trigger = { owned = { province = 1493 data = IND } NOT = { building = { province = 1493 type = infrastructure value = 0.76 } } } }
+		command = { type = construct which = infrastructure where = 1497 value = 25 trigger = { owned = { province = 1497 data = IND } NOT = { building = { province = 1497 type = infrastructure value = 0.76 } } } }
+		command = { type = construct which = infrastructure where = 1500 value = 25 trigger = { owned = { province = 1500 data = IND } NOT = { building = { province = 1500 type = infrastructure value = 0.76 } } } }
+		command = { type = construct which = infrastructure where = 1517 value = 25 trigger = { owned = { province = 1517 data = IND } NOT = { building = { province = 1517 type = infrastructure value = 0.76 } } } }
+		command = { type = construct which = infrastructure where = 1533 value = 25 trigger = { owned = { province = 1533 data = IND } NOT = { building = { province = 1533 type = infrastructure value = 0.76 } } } }
+		command = { type = construct which = naval_base where = 1447 value = 3 trigger = { owned = { province = 1447 data = IND } NOT = { building = { province = 1447 type = naval_base value = 8 } } } }
+		command = { type = construct which = naval_base where = 1493 value = 3 trigger = { owned = { province = 1493 data = IND } NOT = { building = { province = 1493 type = naval_base value = 8 } } } }
+		command = { type = construct which = naval_base where = 1497 value = 3 trigger = { owned = { province = 1497 data = IND } NOT = { building = { province = 1497 type = naval_base value = 8 } } } }
+		command = { type = construct which = naval_base where = 1500 value = 3 trigger = { owned = { province = 1500 data = IND } NOT = { building = { province = 1500 type = naval_base value = 8 } } } }
+		command = { type = construct which = naval_base where = 1517 value = 3 trigger = { owned = { province = 1517 data = IND } NOT = { building = { province = 1517 type = naval_base value = 8 } } } }
+		command = { type = construct which = naval_base where = 1533 value = 3 trigger = { owned = { province = 1533 data = IND } NOT = { building = { province = 1533 type = naval_base value = 8 } } } }
+		command = { type = construct which = ic where = 1447 value = 2 trigger = { owned = { province = 1447 data = IND } } }
+		command = { type = construct which = ic where = 1493 value = 2 trigger = { owned = { province = 1493 data = IND } } }
+		command = { type = construct which = ic where = 1500 value = 2 trigger = { owned = { province = 1500 data = IND } } }
+		command = { type = construct which = ic where = 1517 value = 2 trigger = { owned = { province = 1517 data = IND } } }
+		command = { type = construct which = ic where = 1533 value = 2 trigger = { owned = { province = 1533 data = IND } } }
 		command = { type = setflag which = ind_v3_port_transport }
 		command = { type = setflag which = ind_v3_transport_1934 }
 	}
@@ -205,16 +205,16 @@ event = {
 		command = { type = supplies value = -1000 }
 		command = { type = manpowerpool value = -15 }
 		command = { type = domestic which = defense_lobby value = 1 }
-		command = { type = construct which = infrastructure where = 1529 value = 30 trigger = { NOT = { building = { province = 1529 type = infrastructure value = 0.71 } } } }
-		command = { type = construct which = infrastructure where = 1537 value = 30 trigger = { NOT = { building = { province = 1537 type = infrastructure value = 0.71 } } } }
-		command = { type = construct which = infrastructure where = 1539 value = 30 trigger = { NOT = { building = { province = 1539 type = infrastructure value = 0.71 } } } }
-		command = { type = construct which = infrastructure where = 1439 value = 30 trigger = { NOT = { building = { province = 1439 type = infrastructure value = 0.71 } } } }
-		command = { type = construct which = infrastructure where = 1441 value = 30 trigger = { NOT = { building = { province = 1441 type = infrastructure value = 0.71 } } } }
-		command = { type = construct which = infrastructure where = 1442 value = 30 trigger = { NOT = { building = { province = 1442 type = infrastructure value = 0.71 } } } }
-		command = { type = construct which = ic where = 1529 value = 1 }
-		command = { type = construct which = ic where = 1537 value = 1 }
-		command = { type = construct which = ic where = 1439 value = 2 }
-		command = { type = construct which = ic where = 1441 value = 2 }
+		command = { type = construct which = infrastructure where = 1529 value = 30 trigger = { owned = { province = 1529 data = IND } NOT = { building = { province = 1529 type = infrastructure value = 0.71 } } } }
+		command = { type = construct which = infrastructure where = 1537 value = 30 trigger = { owned = { province = 1537 data = IND } NOT = { building = { province = 1537 type = infrastructure value = 0.71 } } } }
+		command = { type = construct which = infrastructure where = 1539 value = 30 trigger = { owned = { province = 1539 data = IND } NOT = { building = { province = 1539 type = infrastructure value = 0.71 } } } }
+		command = { type = construct which = infrastructure where = 1439 value = 30 trigger = { owned = { province = 1439 data = IND } NOT = { building = { province = 1439 type = infrastructure value = 0.71 } } } }
+		command = { type = construct which = infrastructure where = 1441 value = 30 trigger = { owned = { province = 1441 data = IND } NOT = { building = { province = 1441 type = infrastructure value = 0.71 } } } }
+		command = { type = construct which = infrastructure where = 1442 value = 30 trigger = { owned = { province = 1442 data = IND } NOT = { building = { province = 1442 type = infrastructure value = 0.71 } } } }
+		command = { type = construct which = ic where = 1529 value = 1 trigger = { owned = { province = 1529 data = IND } } }
+		command = { type = construct which = ic where = 1537 value = 1 trigger = { owned = { province = 1537 data = IND } } }
+		command = { type = construct which = ic where = 1439 value = 2 trigger = { owned = { province = 1439 data = IND } } }
+		command = { type = construct which = ic where = 1441 value = 2 trigger = { owned = { province = 1441 data = IND } } }
 		command = { type = setflag which = ind_v3_frontier_transport }
 		command = { type = setflag which = ind_v3_transport_1934 }
 	}
@@ -260,14 +260,14 @@ event = {
 		command = { type = manpowerpool value = -20 }
 		command = { type = dissent value = 4 }
 		command = { type = domestic which = free_market value = -1 }
-		command = { type = construct which = ic where = 1472 value = 5 }
-		command = { type = construct which = ic where = 1476 value = 4 }
-		command = { type = construct which = ic where = 1477 value = 5 }
-		command = { type = construct which = ic where = 1447 value = 4 }
-		command = { type = construct which = ic where = 1487 value = 3 }
-		command = { type = construct which = ic where = 1493 value = 3 }
-		command = { type = construct which = ic where = 1502 value = 4 }
-		command = { type = construct which = ic where = 1517 value = 4 }
+		command = { type = construct which = ic where = 1472 value = 5 trigger = { owned = { province = 1472 data = IND } } }
+		command = { type = construct which = ic where = 1476 value = 4 trigger = { owned = { province = 1476 data = IND } } }
+		command = { type = construct which = ic where = 1477 value = 5 trigger = { owned = { province = 1477 data = IND } } }
+		command = { type = construct which = ic where = 1447 value = 4 trigger = { owned = { province = 1447 data = IND } } }
+		command = { type = construct which = ic where = 1487 value = 3 trigger = { owned = { province = 1487 data = IND } } }
+		command = { type = construct which = ic where = 1493 value = 3 trigger = { owned = { province = 1493 data = IND } } }
+		command = { type = construct which = ic where = 1502 value = 4 trigger = { owned = { province = 1502 data = IND } } }
+		command = { type = construct which = ic where = 1517 value = 4 trigger = { owned = { province = 1517 data = IND } } }
 		command = { type = add_prov_resource which = 1472 value = 12 where = metal }
 		command = { type = add_prov_resource which = 1476 value = 20 where = energy }
 		command = { type = industrial_modifier which = ic value = 3 }
@@ -285,14 +285,14 @@ event = {
 		command = { type = money value = -325 }
 		command = { type = supplies value = -1150 }
 		command = { type = manpowerpool value = -15 }
-		command = { type = construct which = ic where = 1472 value = 4 }
-		command = { type = construct which = ic where = 1476 value = 3 }
-		command = { type = construct which = ic where = 1477 value = 4 }
-		command = { type = construct which = ic where = 1447 value = 3 }
-		command = { type = construct which = ic where = 1487 value = 2 }
-		command = { type = construct which = ic where = 1493 value = 2 }
-		command = { type = construct which = ic where = 1502 value = 3 }
-		command = { type = construct which = ic where = 1517 value = 3 }
+		command = { type = construct which = ic where = 1472 value = 4 trigger = { owned = { province = 1472 data = IND } } }
+		command = { type = construct which = ic where = 1476 value = 3 trigger = { owned = { province = 1476 data = IND } } }
+		command = { type = construct which = ic where = 1477 value = 4 trigger = { owned = { province = 1477 data = IND } } }
+		command = { type = construct which = ic where = 1447 value = 3 trigger = { owned = { province = 1447 data = IND } } }
+		command = { type = construct which = ic where = 1487 value = 2 trigger = { owned = { province = 1487 data = IND } } }
+		command = { type = construct which = ic where = 1493 value = 2 trigger = { owned = { province = 1493 data = IND } } }
+		command = { type = construct which = ic where = 1502 value = 3 trigger = { owned = { province = 1502 data = IND } } }
+		command = { type = construct which = ic where = 1517 value = 3 trigger = { owned = { province = 1517 data = IND } } }
 		command = { type = add_prov_resource which = 1472 value = 8 where = metal }
 		command = { type = add_prov_resource which = 1476 value = 14 where = energy }
 		command = { type = industrial_modifier which = ic value = 2 }
@@ -312,11 +312,11 @@ event = {
 		command = { type = dissent value = 2 }
 		command = { type = domestic which = free_market value = 1 }
 
-		command = { type = construct which = ic where = 1472 value = 4 }
-		command = { type = construct which = ic where = 1447 value = 3 }
-		command = { type = construct which = ic where = 1493 value = 2 }
-		command = { type = construct which = ic where = 1502 value = 4 }
-		command = { type = construct which = ic where = 1517 value = 5 }
+		command = { type = construct which = ic where = 1472 value = 4 trigger = { owned = { province = 1472 data = IND } } }
+		command = { type = construct which = ic where = 1447 value = 3 trigger = { owned = { province = 1447 data = IND } } }
+		command = { type = construct which = ic where = 1493 value = 2 trigger = { owned = { province = 1493 data = IND } } }
+		command = { type = construct which = ic where = 1502 value = 4 trigger = { owned = { province = 1502 data = IND } } }
+		command = { type = construct which = ic where = 1517 value = 5 trigger = { owned = { province = 1517 data = IND } } }
 		command = { type = add_prov_resource which = 1472 value = 6 where = metal }
 		command = { type = setflag which = ind_v3_private_steel }
 		command = { type = setflag which = ind_v3_steel_1935 }
@@ -362,12 +362,12 @@ event = {
 		command = { type = supplies value = -1500 }
 		command = { type = manpowerpool value = -20 }
 		command = { type = dissent value = 2 }
-		command = { type = construct which = ic where = 1445 value = 4 }
-		command = { type = construct which = ic where = 1465 value = 4 }
-		command = { type = construct which = ic where = 1471 value = 4 }
-		command = { type = construct which = ic where = 1476 value = 4 }
-		command = { type = construct which = ic where = 1485 value = 4 }
-		command = { type = construct which = ic where = 1507 value = 4 }
+		command = { type = construct which = ic where = 1445 value = 4 trigger = { owned = { province = 1445 data = IND } } }
+		command = { type = construct which = ic where = 1465 value = 4 trigger = { owned = { province = 1465 data = IND } } }
+		command = { type = construct which = ic where = 1471 value = 4 trigger = { owned = { province = 1471 data = IND } } }
+		command = { type = construct which = ic where = 1476 value = 4 trigger = { owned = { province = 1476 data = IND } } }
+		command = { type = construct which = ic where = 1485 value = 4 trigger = { owned = { province = 1485 data = IND } } }
+		command = { type = construct which = ic where = 1507 value = 4 trigger = { owned = { province = 1507 data = IND } } }
 		command = { type = add_prov_resource which = 1476 value = 25 where = energy }
 		command = { type = add_prov_resource which = 1485 value = 20 where = energy }
 		command = { type = industrial_modifier which = energy value = 5 }
@@ -385,12 +385,12 @@ event = {
 		command = { type = money value = -350 }
 		command = { type = supplies value = -1250 }
 		command = { type = manpowerpool value = -15 }
-		command = { type = construct which = ic where = 1447 value = 4 }
-		command = { type = construct which = ic where = 1472 value = 4 }
-		command = { type = construct which = ic where = 1476 value = 4 }
-		command = { type = construct which = ic where = 1477 value = 4 }
-		command = { type = construct which = ic where = 1485 value = 4 }
-		command = { type = construct which = ic where = 1517 value = 4 }
+		command = { type = construct which = ic where = 1447 value = 4 trigger = { owned = { province = 1447 data = IND } } }
+		command = { type = construct which = ic where = 1472 value = 4 trigger = { owned = { province = 1472 data = IND } } }
+		command = { type = construct which = ic where = 1476 value = 4 trigger = { owned = { province = 1476 data = IND } } }
+		command = { type = construct which = ic where = 1477 value = 4 trigger = { owned = { province = 1477 data = IND } } }
+		command = { type = construct which = ic where = 1485 value = 4 trigger = { owned = { province = 1485 data = IND } } }
+		command = { type = construct which = ic where = 1517 value = 4 trigger = { owned = { province = 1517 data = IND } } }
 		command = { type = add_prov_resource which = 1476 value = 35 where = energy }
 		command = { type = industrial_modifier which = energy value = 3 }
 		command = { type = setflag which = ind_v3_coal_power }
@@ -408,18 +408,18 @@ event = {
 		command = { type = manpowerpool value = -10 }
 		command = { type = dissent value = -3 }
 		command = { type = manpowerpool value = 20 }
-		command = { type = construct which = ic where = 1439 value = 2 }
-		command = { type = construct which = ic where = 1441 value = 2 }
-		command = { type = construct which = ic where = 1445 value = 2 }
-		command = { type = construct which = ic where = 1461 value = 2 }
-		command = { type = construct which = ic where = 1465 value = 2 }
-		command = { type = construct which = ic where = 1471 value = 2 }
-		command = { type = construct which = ic where = 1495 value = 2 }
-		command = { type = construct which = ic where = 1507 value = 2 }
-		command = { type = construct which = infrastructure where = 1439 value = 10 trigger = { NOT = { building = { province = 1439 type = infrastructure value = 0.91 } } } }
-		command = { type = construct which = infrastructure where = 1445 value = 10 trigger = { NOT = { building = { province = 1445 type = infrastructure value = 0.91 } } } }
-		command = { type = construct which = infrastructure where = 1495 value = 10 trigger = { NOT = { building = { province = 1495 type = infrastructure value = 0.91 } } } }
-		command = { type = construct which = infrastructure where = 1507 value = 10 trigger = { NOT = { building = { province = 1507 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = ic where = 1439 value = 2 trigger = { owned = { province = 1439 data = IND } } }
+		command = { type = construct which = ic where = 1441 value = 2 trigger = { owned = { province = 1441 data = IND } } }
+		command = { type = construct which = ic where = 1445 value = 2 trigger = { owned = { province = 1445 data = IND } } }
+		command = { type = construct which = ic where = 1461 value = 2 trigger = { owned = { province = 1461 data = IND } } }
+		command = { type = construct which = ic where = 1465 value = 2 trigger = { owned = { province = 1465 data = IND } } }
+		command = { type = construct which = ic where = 1471 value = 2 trigger = { owned = { province = 1471 data = IND } } }
+		command = { type = construct which = ic where = 1495 value = 2 trigger = { owned = { province = 1495 data = IND } } }
+		command = { type = construct which = ic where = 1507 value = 2 trigger = { owned = { province = 1507 data = IND } } }
+		command = { type = construct which = infrastructure where = 1439 value = 10 trigger = { owned = { province = 1439 data = IND } NOT = { building = { province = 1439 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1445 value = 10 trigger = { owned = { province = 1445 data = IND } NOT = { building = { province = 1445 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1495 value = 10 trigger = { owned = { province = 1495 data = IND } NOT = { building = { province = 1495 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1507 value = 10 trigger = { owned = { province = 1507 data = IND } NOT = { building = { province = 1507 type = infrastructure value = 0.91 } } } }
 		command = { type = setflag which = ind_v3_rural_power }
 		command = { type = setflag which = ind_v3_power_1936 }
 	}
@@ -462,8 +462,8 @@ event = {
 		command = { type = supplies value = -850 }
 		command = { type = research_mod value = 4 }
 		command = { type = waketeam which = 250014 }
-		command = { type = construct which = ic where = 1459 value = 5 }
-		command = { type = construct which = ic where = 1502 value = 5 }
+		command = { type = construct which = ic where = 1459 value = 5 trigger = { owned = { province = 1459 data = IND } } }
+		command = { type = construct which = ic where = 1502 value = 5 trigger = { owned = { province = 1502 data = IND } } }
 		command = { type = setflag which = ind_v3_planning_science }
 		command = { type = setflag which = ind_v3_science_1937 }
 	}
@@ -476,9 +476,9 @@ event = {
 		command = { type = money value = 250 }
 		command = { type = supplies value = -500 }
 		command = { type = research_mod value = 4 }
-		command = { type = construct which = ic where = 1447 value = 3 }
-		command = { type = construct which = ic where = 1461 value = 3 }
-		command = { type = construct which = ic where = 1502 value = 3 }
+		command = { type = construct which = ic where = 1447 value = 3 trigger = { owned = { province = 1447 data = IND } } }
+		command = { type = construct which = ic where = 1461 value = 3 trigger = { owned = { province = 1461 data = IND } } }
+		command = { type = construct which = ic where = 1502 value = 3 trigger = { owned = { province = 1502 data = IND } } }
 		command = { type = setflag which = ind_v3_university_science }
 		command = { type = setflag which = ind_v3_science_1937 }
 	}
@@ -494,9 +494,9 @@ event = {
 		command = { type = research_mod value = 4 }
 		command = { type = domestic which = defense_lobby value = 1 }
 		command = { type = waketeam which = 250015 }
-		command = { type = construct which = ic where = 1459 value = 3 }
-		command = { type = construct which = ic where = 1472 value = 3 }
-		command = { type = construct which = ic where = 1502 value = 3 }
+		command = { type = construct which = ic where = 1459 value = 3 trigger = { owned = { province = 1459 data = IND } } }
+		command = { type = construct which = ic where = 1472 value = 3 trigger = { owned = { province = 1472 data = IND } } }
+		command = { type = construct which = ic where = 1502 value = 3 trigger = { owned = { province = 1502 data = IND } } }
 		command = { type = setflag which = ind_v3_defence_science }
 		command = { type = setflag which = ind_v3_science_1937 }
 	}
@@ -542,15 +542,15 @@ event = {
 		command = { type = manpowerpool value = -30 }
 		command = { type = dissent value = 6 }
 		command = { type = domestic which = free_market value = -1 }
-		command = { type = construct which = ic where = 1447 value = 4 }
-		command = { type = construct which = ic where = 1459 value = 4 }
-		command = { type = construct which = ic where = 1472 value = 5 }
-		command = { type = construct which = ic where = 1477 value = 4 }
-		command = { type = construct which = ic where = 1487 value = 3 }
-		command = { type = construct which = ic where = 1493 value = 3 }
-		command = { type = construct which = ic where = 1502 value = 4 }
-		command = { type = construct which = ic where = 1517 value = 4 }
-		command = { type = construct which = ic where = 1533 value = 3 }
+		command = { type = construct which = ic where = 1447 value = 4 trigger = { owned = { province = 1447 data = IND } } }
+		command = { type = construct which = ic where = 1459 value = 4 trigger = { owned = { province = 1459 data = IND } } }
+		command = { type = construct which = ic where = 1472 value = 5 trigger = { owned = { province = 1472 data = IND } } }
+		command = { type = construct which = ic where = 1477 value = 4 trigger = { owned = { province = 1477 data = IND } } }
+		command = { type = construct which = ic where = 1487 value = 3 trigger = { owned = { province = 1487 data = IND } } }
+		command = { type = construct which = ic where = 1493 value = 3 trigger = { owned = { province = 1493 data = IND } } }
+		command = { type = construct which = ic where = 1502 value = 4 trigger = { owned = { province = 1502 data = IND } } }
+		command = { type = construct which = ic where = 1517 value = 4 trigger = { owned = { province = 1517 data = IND } } }
+		command = { type = construct which = ic where = 1533 value = 3 trigger = { owned = { province = 1533 data = IND } } }
 		command = { type = industrial_modifier which = ic value = 5 }
 		command = { type = setflag which = ind_v3_maximum_second_plan }
 		command = { type = setflag which = ind_v3_second_plan_1938 }
@@ -567,16 +567,16 @@ event = {
 		command = { type = supplies value = -2150 }
 		command = { type = manpowerpool value = -20 }
 		command = { type = dissent value = 1 }
-		command = { type = construct which = ic where = 1445 value = 3 }
-		command = { type = construct which = ic where = 1447 value = 3 }
-		command = { type = construct which = ic where = 1459 value = 3 }
-		command = { type = construct which = ic where = 1472 value = 4 }
-		command = { type = construct which = ic where = 1477 value = 3 }
-		command = { type = construct which = ic where = 1487 value = 3 }
-		command = { type = construct which = ic where = 1493 value = 3 }
-		command = { type = construct which = ic where = 1502 value = 3 }
-		command = { type = construct which = ic where = 1517 value = 3 }
-		command = { type = construct which = ic where = 1533 value = 3 }
+		command = { type = construct which = ic where = 1445 value = 3 trigger = { owned = { province = 1445 data = IND } } }
+		command = { type = construct which = ic where = 1447 value = 3 trigger = { owned = { province = 1447 data = IND } } }
+		command = { type = construct which = ic where = 1459 value = 3 trigger = { owned = { province = 1459 data = IND } } }
+		command = { type = construct which = ic where = 1472 value = 4 trigger = { owned = { province = 1472 data = IND } } }
+		command = { type = construct which = ic where = 1477 value = 3 trigger = { owned = { province = 1477 data = IND } } }
+		command = { type = construct which = ic where = 1487 value = 3 trigger = { owned = { province = 1487 data = IND } } }
+		command = { type = construct which = ic where = 1493 value = 3 trigger = { owned = { province = 1493 data = IND } } }
+		command = { type = construct which = ic where = 1502 value = 3 trigger = { owned = { province = 1502 data = IND } } }
+		command = { type = construct which = ic where = 1517 value = 3 trigger = { owned = { province = 1517 data = IND } } }
+		command = { type = construct which = ic where = 1533 value = 3 trigger = { owned = { province = 1533 data = IND } } }
 		command = { type = industrial_modifier which = ic value = 3 }
 		command = { type = setflag which = ind_v3_balanced_second_plan }
 		command = { type = setflag which = ind_v3_second_plan_1938 }
@@ -594,12 +594,12 @@ event = {
 		command = { type = manpowerpool value = -15 }
 		command = { type = research_mod value = 3 }
 		command = { type = industrial_modifier which = ic value = 5 }
-		command = { type = construct which = ic where = 1447 value = 3 }
-		command = { type = construct which = ic where = 1459 value = 3 }
-		command = { type = construct which = ic where = 1472 value = 3 }
-		command = { type = construct which = ic where = 1502 value = 5 }
-		command = { type = construct which = ic where = 1517 value = 3 }
-		command = { type = construct which = ic where = 1533 value = 3 }
+		command = { type = construct which = ic where = 1447 value = 3 trigger = { owned = { province = 1447 data = IND } } }
+		command = { type = construct which = ic where = 1459 value = 3 trigger = { owned = { province = 1459 data = IND } } }
+		command = { type = construct which = ic where = 1472 value = 3 trigger = { owned = { province = 1472 data = IND } } }
+		command = { type = construct which = ic where = 1502 value = 5 trigger = { owned = { province = 1502 data = IND } } }
+		command = { type = construct which = ic where = 1517 value = 3 trigger = { owned = { province = 1517 data = IND } } }
+		command = { type = construct which = ic where = 1533 value = 3 trigger = { owned = { province = 1533 data = IND } } }
 		command = { type = waketeam which = 250017 }
 		command = { type = setflag which = ind_v3_technology_second_plan }
 		command = { type = setflag which = ind_v3_second_plan_1938 }
@@ -631,14 +631,14 @@ event = {
 		command = { type = industrial_modifier which = ic value = 5 }
 		command = { type = industrial_modifier which = money value = 5 }
 		command = { type = manpowerpool value = 25 }
-		command = { type = construct which = ic where = 1445 value = 3 }
-		command = { type = construct which = ic where = 1447 value = 3 }
-		command = { type = construct which = ic where = 1459 value = 3 }
-		command = { type = construct which = ic where = 1472 value = 3 }
-		command = { type = construct which = ic where = 1485 value = 3 }
-		command = { type = construct which = ic where = 1502 value = 3 }
-		command = { type = construct which = ic where = 1517 value = 3 }
-		command = { type = construct which = ic where = 1533 value = 3 }
+		command = { type = construct which = ic where = 1445 value = 3 trigger = { owned = { province = 1445 data = IND } } }
+		command = { type = construct which = ic where = 1447 value = 3 trigger = { owned = { province = 1447 data = IND } } }
+		command = { type = construct which = ic where = 1459 value = 3 trigger = { owned = { province = 1459 data = IND } } }
+		command = { type = construct which = ic where = 1472 value = 3 trigger = { owned = { province = 1472 data = IND } } }
+		command = { type = construct which = ic where = 1485 value = 3 trigger = { owned = { province = 1485 data = IND } } }
+		command = { type = construct which = ic where = 1502 value = 3 trigger = { owned = { province = 1502 data = IND } } }
+		command = { type = construct which = ic where = 1517 value = 3 trigger = { owned = { province = 1517 data = IND } } }
+		command = { type = construct which = ic where = 1533 value = 3 trigger = { owned = { province = 1533 data = IND } } }
 		command = { type = setflag which = ind_v3_industrial_maturity }
 	}
 }

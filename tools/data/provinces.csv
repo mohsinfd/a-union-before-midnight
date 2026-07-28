@@ -1,0 +1,138 @@
+province_id,name,area,region,terrain,infrastructure,beaches,port_allowed,port_seazone,ic,manpower,oil,metal,energy,rare_materials,scenario_owners,ind_owned_1933,ind_controlled_1933,ind_national_1933,source
+1278,Sumdo,Xinjiang,China,Mountain,10,0,0,0,0,0,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1406,Haka,North Burma,Indochine,Jungle,10,0,0,0,0,0,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1407,Indaw,North Burma,Indochine,Jungle,30,0,0,0,0,2,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1408,Myitkyina,North Burma,Indochine,Jungle,20,0,0,0,0,0,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1409,Lashio,North Burma,Indochine,Jungle,20,0,0,0,0,1,0,0,0,13,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1410,Mandalay,North Burma,Indochine,Plains,40,0,0,0,0,2,1,0,0,1,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1411,Pakokku,North Burma,Indochine,Jungle,20,0,0,0,0,1,1,0,0,3,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1412,Taunggyi,North Burma,Indochine,Mountain,20,0,0,0,0,1,0,1,0,24,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1413,Kengtung,North Burma,Indochine,Mountain,10,0,0,0,0,0,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1414,Putao,North Burma,Indochine,Jungle,10,0,0,0,0,0,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1415,Rangoon,Burma,Indochine,Plains,50,1,1,2646,0,2,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1416,Moulmein,Burma,Indochine,Hills,30,0,1,2646,0,2,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1417,Pegu,Burma,Indochine,Hills,30,0,0,0,1,2,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1418,Tavoy,Burma,Indochine,Mountain,30,0,1,2647,0,0,0,0,0,4,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1419,Bassein,Burma,Indochine,Plains,20,0,1,2646,0,2,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1420,Akyab,Burma,Indochine,Mountain,10,0,1,2645,0,1,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1421,Port Blair,Burma,India,Jungle,10,1,1,2644,0,0,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1422,Chon Buri,Siam,Indochine,Forest,30,0,0,0,1,3,0,0,0,1,SIA,no,no,no,Darkest Hour Full/map/Map_1/province_names.csv
+1423,Bangkok,Siam,Indochine,Plains,50,1,1,2525,7,3,0,0,0,0,SIA,no,no,no,Darkest Hour Full/map/Map_1/province_names.csv
+1424,Nakhon Sawan,Siam,Indochine,Plains,30,1,1,2525,0,1,0,0,0,2,SIA,no,no,no,Darkest Hour Full/map/Map_1/province_names.csv
+1425,Chiang Mai,Siam,Indochine,Mountain,10,0,0,0,0,1,0,0,0,1,SIA,no,no,no,Darkest Hour Full/map/Map_1/province_names.csv
+1426,Phitsanulok,Siam,Indochine,Jungle,30,0,0,0,0,1,0,0,0,0,SIA,no,no,no,Darkest Hour Full/map/Map_1/province_names.csv
+1427,Khon Kaen,Siam,Indochine,Forest,20,0,0,0,1,2,0,0,0,0,SIA,no,no,no,Darkest Hour Full/map/Map_1/province_names.csv
+1428,Phetchabun,Siam,Indochine,Jungle,30,0,0,0,0,1,0,0,0,0,SIA,no,no,no,Darkest Hour Full/map/Map_1/province_names.csv
+1429,Prachuap Khiri Khan,Kra Peninsula,Indochine,Jungle,30,0,1,2525,0,0,0,0,0,4,SIA,no,no,no,Darkest Hour Full/map/Map_1/province_names.csv
+1430,Surat Thani,Kra Peninsula,Indochine,Jungle,30,0,1,2526,0,1,0,0,0,4,SIA,no,no,no,Darkest Hour Full/map/Map_1/province_names.csv
+1431,Songhla,Kra Peninsula,Indochine,Jungle,30,1,1,2526,0,1,0,0,0,2,SIA,no,no,no,Darkest Hour Full/map/Map_1/province_names.csv
+1432,Singapore,Malacka,Indochine,Jungle,40,1,1,2528,1,1,0,0,0,11,ENG,no,no,no,Darkest Hour Full/map/Map_1/province_names.csv
+1433,Kota Bahru,Malacka,Indochine,Jungle,30,0,0,0,0,0,0,12,0,19,ENG,no,no,no,Darkest Hour Full/map/Map_1/province_names.csv
+1434,Alor Setar,Malacka,Indochine,Jungle,30,0,0,0,0,0,0,0,0,12,ENG,no,no,no,Darkest Hour Full/map/Map_1/province_names.csv
+1435,Ipoh,Malacka,Indochine,Jungle,30,1,1,2530,0,1,0,0,0,24,ENG,no,no,no,Darkest Hour Full/map/Map_1/province_names.csv
+1436,Kuantan,Malacka,Indochine,Jungle,30,1,1,2528,0,0,0,24,3,23,ENG,no,no,no,Darkest Hour Full/map/Map_1/province_names.csv
+1437,Johor Bahru,Malacka,Indochine,Mountain,30,0,1,2528,0,1,0,0,0,14,ENG,no,no,no,Darkest Hour Full/map/Map_1/province_names.csv
+1438,Kuala Lumpur,Malacka,Indochine,Mountain,30,0,1,2530,0,2,0,12,0,17,ENG,no,no,no,Darkest Hour Full/map/Map_1/province_names.csv
+1439,Gauhati,East Bengal,India,Hills,30,0,0,0,0,1,0,0,4,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1440,Aizawl,East Bengal,India,Jungle,10,0,0,0,0,1,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1441,Dibrugarh,East Bengal,India,Hills,30,0,0,0,0,4,4,0,12,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1442,Imphal,East Bengal,India,Jungle,10,0,0,0,0,2,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1443,Dhubri,East Bengal,India,Plains,30,0,0,0,0,4,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1444,Khulna,Bengal,India,Marsh,30,0,1,2645,0,6,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1445,Dhaka,Bengal,India,Plains,30,0,0,0,0,10,0,0,6,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1446,Siliguri,Bengal,India,Plains,30,0,0,0,0,4,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1447,Calcutta,Bengal,India,Plains,60,1,1,2643,3,16,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1448,Kharagpur,Bengal,India,Plains,50,1,1,2643,2,3,0,0,0,1,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1449,Rajshahi,Bengal,India,Plains,30,0,0,0,0,12,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1450,Chittagong,Bengal,India,Jungle,40,0,1,2645,1,9,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1451,Dehradun,Himalayas,India,Mountain,30,0,0,0,0,2,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1452,Gangtok,Himalayas,India,Mountain,10,0,0,0,0,0,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1453,Dharmasala,Himalayas,India,Mountain,10,0,0,0,0,2,0,0,2,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1454,Simla,Himalayas,India,Mountain,30,0,0,0,0,0,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1455,Itanagar,Himalayas,India,Mountain,10,0,0,0,0,0,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1456,Punakha,Himalayas,India,Mountain,10,0,0,0,1,1,0,0,0,0,BHU,no,no,no,Darkest Hour Full/map/Map_1/province_names.csv
+1457,Kathmandu,Himalayas,India,Mountain,10,0,0,0,2,7,0,0,0,0,NEP,no,no,no,Darkest Hour Full/map/Map_1/province_names.csv
+1458,Mipi,Himalayas,India,Mountain,10,0,0,0,0,0,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1459,Delhi,Delhi,India,Urban,60,0,0,0,1,6,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1460,Meerut,Delhi,India,Plains,50,0,0,0,1,7,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1461,Lucknow,Delhi,India,Plains,50,0,0,0,1,10,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1462,Muzaffarpur,Delhi,India,Plains,40,0,0,0,0,13,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1463,Chandigarh,Delhi,India,Plains,50,0,0,0,1,4,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1464,Bareilly,Delhi,India,Plains,50,0,0,0,1,9,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1465,Patna,Delhi,India,Plains,40,0,0,0,0,7,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1466,Arrah,Delhi,India,Plains,50,0,0,0,1,10,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1467,Gorakhpur,Delhi,India,Plains,50,0,0,0,0,6,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1468,Kanpur,Delhi,India,Plains,50,0,0,0,1,8,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1469,Raigarh,Orissa,India,Hills,40,0,0,0,0,2,0,0,12,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1470,Balangir,Orissa,India,Plains,10,0,0,0,0,1,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1471,Bhubaneswar,Orissa,India,Plains,40,1,1,2643,1,3,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1472,Jamshedpur,Orissa,India,Hills,50,1,1,2643,2,3,0,12,6,2,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1473,Cuttack,Orissa,India,Plains,40,0,0,0,1,1,0,6,0,2,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1474,Jeypore,Orissa,India,Hills,10,0,0,0,0,2,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1475,Bastar,Orissa,India,Forest,10,0,0,0,0,1,0,11,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1476,Ranchi,Orissa,India,Hills,50,0,0,0,1,8,0,15,38,4,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1477,Raipur,Orissa,India,Hills,40,0,0,0,1,3,0,11,2,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1478,Burhanpur,Nagpur,India,Hills,40,0,0,0,0,1,0,0,4,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1479,Jabalpur,Nagpur,India,Hills,40,0,0,0,0,2,0,3,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1480,Bhopal,Nagpur,India,Hills,50,0,0,0,0,3,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1481,Indore,Nagpur,India,Hills,40,0,0,0,1,2,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1482,Amaravati,Nagpur,India,Hills,40,0,0,0,0,1,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1483,Rewa,Nagpur,India,Plains,40,0,0,0,0,3,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1484,Chhindwara,Nagpur,India,Forest,30,0,0,0,0,2,0,0,2,1,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1485,Nagpur,Nagpur,India,Plains,40,0,0,0,1,2,0,3,4,2,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1486,Aurangabad,Deccar,India,Hills,30,0,0,0,0,1,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1487,Hyderabad,Deccar,India,Hills,40,0,0,0,1,5,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1488,Warangal,Deccar,India,Forest,30,0,0,0,0,3,0,0,8,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1489,Nizamabad,Deccar,India,Hills,40,0,0,0,0,2,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1490,Raichur,Deccar,India,Hills,40,0,0,0,0,2,0,0,0,1,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1491,Nalgonda,Deccar,India,Hills,30,0,0,0,0,2,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1492,Adilabad,Deccar,India,Forest,30,0,0,0,0,1,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1493,Visakhapatnam,Western Ghat,India,Hills,50,0,1,2642,1,4,0,0,0,1,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1494,Nellore,Western Ghat,India,Plains,40,1,1,2642,0,1,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1495,Trivandrum,Western Ghat,India,Hills,40,1,1,2627,1,4,0,0,0,1,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1496,Guntur,Western Ghat,India,Plains,40,0,1,2642,0,1,0,3,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1497,Cochin,Western Ghat,India,Plains,40,0,1,2627,1,5,0,0,0,1,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1498,Vijayawada,Western Ghat,India,Plains,50,0,0,0,0,4,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1499,Tiruchirappalli,Western Ghat,India,Plains,40,0,0,0,0,3,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1500,Madras,Western Ghat,India,Plains,50,0,1,2630,0,6,0,0,2,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1501,Anantapur,Western Ghat,India,Hills,40,0,0,0,0,1,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1502,Bangalore,Western Ghat,India,Hills,50,0,0,0,1,8,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1503,Mangalore,Western Ghat,India,Hills,40,0,1,2216,0,2,0,3,0,4,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1504,Madurai,Western Ghat,India,Plains,40,0,1,2628,0,2,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1505,Coimbatore,Western Ghat,India,Hills,40,0,0,0,1,4,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1506,Salem,Western Ghat,India,Hills,40,0,0,0,0,3,0,3,0,1,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1507,Mysore,Western Ghat,India,Hills,40,0,0,0,0,0,0,0,0,3,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1508,Solapur,Bombay,India,Plains,40,0,0,0,1,3,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1509,Jaffna,Ceylon,India,Jungle,30,0,0,0,0,2,0,0,0,1,ENG,no,no,no,Darkest Hour Full/map/Map_1/province_names.csv
+1510,Kandy,Ceylon,India,Jungle,30,0,0,0,0,2,0,0,0,6,ENG,no,no,no,Darkest Hour Full/map/Map_1/province_names.csv
+1511,Colombo,Ceylon,India,Jungle,40,1,1,2628,1,2,0,0,0,2,ENG,no,no,no,Darkest Hour Full/map/Map_1/province_names.csv
+1512,Kolhapur,Bombay,India,Hills,30,0,1,2215,0,3,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1513,Panjim,Bombay,India,Mountain,50,1,1,2216,0,0,0,0,0,1,POR,no,no,no,Darkest Hour Full/map/Map_1/province_names.csv
+1514,Nasik,Bombay,India,Hills,50,0,0,0,0,2,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1515,Hubli,Bombay,India,Hills,50,0,0,0,0,3,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1516,Poona,Bombay,India,Hills,50,0,0,0,1,2,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1517,Bombay,Bombay,India,Urban,60,0,1,2215,2,10,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1518,Ahmedabad,Eastern Ghat,India,Plains,60,1,1,2215,1,4,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1519,Mandvi,Eastern Ghat,India,Marsh,30,0,0,0,0,0,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1520,Surat,Eastern Ghat,India,Plains,40,0,0,0,1,3,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1521,Baroda,Eastern Ghat,India,Plains,50,0,1,2215,0,4,0,0,0,1,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1522,Rajkot,Eastern Ghat,India,Hills,50,0,1,2215,1,3,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1523,Gwalior,Rajastan,India,Plains,40,0,0,0,0,3,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1524,Jaipur,Rajastan,India,Plains,40,0,0,0,1,8,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1525,Jodhpur,Rajastan,India,Desert,40,0,0,0,0,1,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1526,Udaipur,Rajastan,India,Mountain,40,0,0,0,1,5,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1527,Bikaner,Rajastan,India,Desert,40,0,0,0,0,2,0,0,4,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1528,Kota,Rajastan,India,Plains,40,0,0,0,0,1,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1529,Quetta,Pakistan,India,Mountain,40,0,0,0,0,1,0,0,8,1,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1530,Lahore,Pakistan,India,Plains,50,0,0,0,1,5,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1531,Ludhiana,Delhi,India,Plains,40,0,0,0,0,4,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1532,Nawabshah,Pakistan,India,Plains,40,1,1,2208,0,3,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1533,Karachi,Pakistan,India,Plains,60,1,1,2208,0,4,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1534,Rawalpindi,Pakistan,India,Hills,40,0,0,0,0,10,0,3,6,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1535,Amritsar,Delhi,India,Plains,40,0,0,0,0,3,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1536,Bahawalnagar,Pakistan,India,Plains,40,0,0,0,0,2,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1537,Peshawar,Pakistan,India,Mountain,30,0,0,0,1,4,0,0,2,1,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1538,Gwadar,Pakistan,India,Mountain,10,0,1,2211,0,1,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1539,Muzaffarabad,Pakistan,India,Mountain,10,0,0,0,0,1,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1540,Srinagar,Pakistan,India,Mountain,10,0,0,0,0,3,0,0,4,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv
+1612,Kavaratti,Diego Garcia Island,Diego Garcia Island,Plains,10,1,1,2218,0,0,0,0,0,0,IND,yes,yes,yes,Darkest Hour Full/map/Map_1/province_names.csv

@@ -347,8 +347,8 @@ event = {
 		command = { type = relation which = ENG value = -5 }
 		command = { type = relation which = GER value = -5 }
 		command = { type = relation which = SOV value = -5 }
-		command = { type = construct which = land_fort where = 1537 value = 3 }
-		command = { type = construct which = land_fort where = 1442 value = 3 }
+		command = { type = construct which = land_fort where = 1537 value = 3 trigger = { owned = { province = 1537 data = IND } NOT = { building = { province = 1537 type = land_fort value = 8 } } } }
+		command = { type = construct which = land_fort where = 1442 value = 3 trigger = { owned = { province = 1442 data = IND } NOT = { building = { province = 1442 type = land_fort value = 8 } } } }
 		command = { type = domestic which = defense_lobby value = 1 }
 		command = { type = dissent value = -1 }
 		command = { type = setflag which = ind_v3_prewar_armed_neutrality }
@@ -406,8 +406,8 @@ event = {
 		command = { type = money value = -600 }
 		command = { type = supplies value = 1000 }
 		command = { type = belligerence value = -1 }
-		command = { type = construct which = land_fort where = 1537 value = 3 }
-		command = { type = construct which = coastal_fort where = 1533 value = 3 }
+		command = { type = construct which = land_fort where = 1537 value = 3 trigger = { owned = { province = 1537 data = IND } NOT = { building = { province = 1537 type = land_fort value = 8 } } } }
+		command = { type = construct which = coastal_fort where = 1533 value = 3 trigger = { owned = { province = 1533 data = IND } NOT = { building = { province = 1533 type = coastal_fort value = 8 } } } }
 		command = { type = dissent value = 1 }
 		command = { type = setflag which = ind_v3_wartime_armed_neutrality }
 		command = { type = setflag which = ind_v3_reacted_poland }

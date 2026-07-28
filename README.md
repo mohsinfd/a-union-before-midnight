@@ -19,22 +19,22 @@ second- or third-ranked power, but no route grants an automatic victory.
 ## Requirements
 
 - Darkest Hour 1.05.2
-- Blood and Iron v1.1 installed as `Mods\Blood and Iron v1.1`
-- A new 1933 campaign is required for the V3.4.1 balance and trigger changes
+- Darkest Hour Full, included with the game
+- A new 1933 campaign
 
 This repository contains only the **A Union Before Midnight overlay**. It does not
-redistribute Darkest Hour or the complete Blood and Iron mod.
+redistribute Darkest Hour. V4 has no Blood and Iron dependency.
 
 ## Installation
 
-1. Install Darkest Hour and Blood and Iron v1.1.
+1. Install Darkest Hour.
 2. Download and extract the latest A Union Before Midnight release.
 3. Run `INSTALL.bat`.
-4. Select **A Union Before Midnight** in the Darkest Hour launcher.
+4. Select **A Union Before Midnight V4** in the Darkest Hour launcher.
 5. Start **A Union Before Midnight: India 1933** in the scenario list.
 
 The installer detects the standard Steam location, verifies every overlay file,
-copies Blood and Iron into an isolated mod folder and applies A Union Before
+copies Darkest Hour Full into an isolated mod folder and applies A Union Before
 Midnight content. Existing saves in that mod folder are preserved during updates.
 
 For a non-standard Steam library:
@@ -44,21 +44,29 @@ powershell -ExecutionPolicy Bypass -File installer\Install-A-Union-Before-Midnig
   -GameRoot "D:\SteamLibrary\steamapps\common\Darkest Hour A HOI Game"
 ```
 
-## V3.4.1 Open Beta
+For development, `BUILD_AND_DEPLOY_V4.bat` performs the complete rebase,
+repeat-build stability check, static audit, manifest generation and verified
+deployment. Passing `-ValidateOnly` rebuilds and audits without touching the
+installed mod.
 
-This hardening release closes the treasury, manpower, research and route
-exploits identified in the public review. It also adds mandatory-action
-reachability checks, corrects the submarine fleet package, replaces prohibited
-event imagery and completes Creative Commons creator attribution.
+## V4 Direct-DH Alpha
 
-The 1933-1940 source and installed-mod gates pass. Human playtesting reaches
-early 1937; the 1942-1964 campaign remains beta content pending complete war
-and postwar runs.
+V4 rebases the campaign directly onto Darkest Hour Full and removes the
+Blood and Iron runtime dependency. It adds a grounded union-integration layer,
+global reactions, operational command, procurement and war-settlement systems.
+
+Air and naval combat now emphasizes organization loss and withdrawal over
+routine destruction. Twelve three-division field corps, faster prepared
+reserves, airfield security, dispersal fields and scramble missions reduce
+wartime micromanagement within the limits of the Darkest Hour executable.
+
+All current source gates pass. V4 has not yet been handed to the user for its
+first in-game scenario-load and campaign test.
 
 ## Campaign
 
-- **210 India-focused entries** across 25 isolated event modules.
-- **41 player-timed decisions** for optional authorizations and **169 events**
+- **255 India-focused entries** across 31 isolated event modules.
+- **44 player-timed decisions** for optional authorizations and **211 events**
   for deadlines, crises, replies, implementation disputes and milestones.
 - Stable constitutional governments, complete cabinets and leadership
   transitions tied to genuine political milestones.
@@ -110,20 +118,28 @@ and postwar runs.
 
 ## Visuals And World Events
 
-India has a complete `IND` visual namespace with Indian service palettes,
-model panels, production icons, national flags and dedicated Gurkha coverage.
-The map animation geometry remains compatible with Blood and Iron.
+V4 includes 80 byte-distinct custom event pictures, including one
+subject-specific reconstruction for every new V4 event and unique scenes for
+the political routes, global crises and elite formations. Generated scenes are
+explicitly disclosed as alternate-history reconstructions rather than archival
+photographs. The event-ID manifest, source sheets and review galleries are
+included in the repository.
 
-![Indian sprite comparison](assets/sprite-comparison.png)
+![India event art](assets/event-gallery.png)
 
-Major world events and strategic-route events use a curated visual library.
+V4 now includes an original India map-sprite package: 13 visual families cover
+32 Darkest Hour unit types through 595 India-specific descriptors and 234
+indexed bitmap or palette files. The source sheets, build script, manifest,
+review preview and strict sprite audit are included in the repository.
 
-<details>
-<summary>Open the event-art gallery</summary>
+![India service sprites](assets/sprite-comparison.png)
 
-![Event-art gallery](assets/event-gallery.png)
+Darkest Hour Full model and production-screen art remains in use. The removed
+V3 donor-derived sprite and model overrides are not part of the direct-DH
+package; original India model panels are the next visual phase.
 
-</details>
+India can react to the major crises of the 1930s and pursue separate Allied,
+German, Japanese, Soviet or armed non-aligned strategic relationships.
 
 ## Reliability
 
@@ -136,12 +152,12 @@ The release pipeline rejects:
 - event force serials that lack the manpower required by Darkest Hour;
 - advanced units queued before their type and model are enabled;
 - invalid or display-string-less division attachments;
-- broken portraits, sprite palettes, model panels and production icons;
+- missing event pictures and malformed personnel records;
 - strategic paths that fail the deterministic economy and force-plan gates.
 
-The public release passed source and installed-mod validation, all five
-deterministic prewar simulations and a human campaign through January 1937
-without India-event namespace errors in `savedebug.txt`.
+The V4 build pipeline also verifies the opening treasury, event-built unit
+availability, combat pacing, cumulative construction caps and every installer
+file hash before deployment.
 
 See [Release Notes](RELEASE_NOTES.md), [Design Notes](docs/DESIGN.md) and
 [Art and Research Credits](docs/ART_AND_RESEARCH_CREDITS.md). The complete
@@ -154,8 +170,8 @@ permission and moderator-approval work.
 
 - A new campaign is required for the intended force, economy, route and
   research curve.
-- Earlier saves are not supported by the V3.4.1 Open Beta.
-- Other mods that replace the Blood and Iron 1933 scenario, India data or
+- V3 saves are not supported by V4.
+- Other mods that replace the Darkest Hour Full 1933 scenario, India data or
   global event files are not supported.
 
 ## Credits
@@ -163,9 +179,10 @@ permission and moderator-approval work.
 Design and India-specific content by **Mohsin Dingankar**, developed with Codex
 collaboration.
 
-Built on **Blood and Iron v1.1** by thewanderingknight, which incorporates work
-from the projects and contributors listed in the original Blood and Iron
-credits. See the full [credit and provenance record](docs/ART_AND_RESEARCH_CREDITS.md).
+V4 is built directly on the user's installed **Darkest Hour Full** foundation.
+V3 was developed against Blood and Iron; that historical dependency is not
+redistributed or required by V4. See the full
+[credit and provenance record](docs/ART_AND_RESEARCH_CREDITS.md).
 
 Darkest Hour and Hearts of Iron are trademarks of their respective owners.
 This is a non-commercial fan modification and is not affiliated with or

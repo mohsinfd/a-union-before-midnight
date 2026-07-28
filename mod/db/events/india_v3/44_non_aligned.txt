@@ -225,8 +225,20 @@ event = {
 		command = { type = supplies value = -1600 }
 		command = { type = activate_unit_type which = escort }
 		command = { type = new_model which = escort value = 0 }
+		command = { type = activate_unit_type which = motorized } # AUBM_V4_UNIT_GATE motorized
+		command = { type = new_model which = motorized value = 0 } # AUBM_V4_UNIT_GATE motorized
+		command = { type = activate_unit_type which = armored_car } # AUBM_V4_UNIT_GATE armored_car
+		command = { type = new_model which = armored_car value = 0 } # AUBM_V4_UNIT_GATE armored_car
 		command = { type = build_division which = motorized value = armored_car when = 3 cost = -1.8 where = 60 }
+		command = { type = activate_unit_type which = bergsjaeger } # AUBM_V4_UNIT_GATE bergsjaeger
+		command = { type = new_model which = bergsjaeger value = 0 } # AUBM_V4_UNIT_GATE bergsjaeger
+		command = { type = activate_unit_type which = engineer } # AUBM_V4_UNIT_GATE engineer
+		command = { type = new_model which = engineer value = 0 } # AUBM_V4_UNIT_GATE engineer
 		command = { type = build_division which = bergsjaeger value = engineer when = 3 cost = -1.8 where = 60 }
+		command = { type = activate_unit_type which = interceptor } # AUBM_V4_UNIT_GATE interceptor
+		command = { type = new_model which = interceptor value = 0 } # AUBM_V4_UNIT_GATE interceptor
+		command = { type = activate_unit_type which = escort } # AUBM_V4_UNIT_GATE escort
+		command = { type = new_model which = escort value = 0 } # AUBM_V4_UNIT_GATE escort
 		command = { type = build_division which = interceptor value = escort when = 2 cost = -2.0 where = 75 }
 		command = { type = ai which = "v3/IND_nam.ai" }
 		command = { type = setflag which = ind_v3_mobile_non_aligned_deterrent }

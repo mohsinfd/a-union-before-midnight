@@ -1,7 +1,7 @@
 Sprite = {
-	Bitmap = "T-CAVALRY C-AST A-WALK D-S.bmp"
-	Origin = { x = 95 y = 76 }
-	Frames = 10
-	Palette = "V3-IND-KHAKI-WWI-CS-AST-CAV.bmp"
-	Speed = 4
+	Bitmap = "AUBM-IND-CAVALRY A-WALK D-S.bmp"
+	Origin = { x = 48 y = 82 }
+	Frames = 4
+	Speed = 5
+	Palette = "AUBM-IND-CAVALRY.bmp"
 }

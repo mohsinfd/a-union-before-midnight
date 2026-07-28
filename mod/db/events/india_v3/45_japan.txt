@@ -187,7 +187,7 @@ event = {
 	desc = "Indian communities across Southeast Asia and veterans of the old colonial army can form a national expeditionary force under Indian colours. It will be loyal to Delhi, not subordinated to Tokyo, but raising it before war is a costly and provocative act."
 	style = 2
 	picture = "india_v3_japan_ina"
-	decision_picture = "india_v3_japan_ina"
+	decision_picture = "decision_wargames"
 
 	date = { day = 0 month = january year = 1939 }
 	offset = 11
@@ -255,9 +255,9 @@ event = {
 		command = { type = supplies value = -1100 }
 		command = { type = relation which = JAP value = 30 }
 		command = { type = dissent value = 2 }
-		command = { type = construct which = air_base where = 1442 value = 6 trigger = { NOT = { building = { province = 1442 type = air_base value = 5 } } } }
-		command = { type = construct which = air_base where = 1415 value = 3 trigger = { NOT = { building = { province = 1415 type = air_base value = 8 } } } }
-		command = { type = construct which = infrastructure where = 1442 value = 20 trigger = { NOT = { building = { province = 1442 type = infrastructure value = 0.81 } } } }
+		command = { type = construct which = air_base where = 1442 value = 6 trigger = { owned = { province = 1442 data = IND } NOT = { building = { province = 1442 type = air_base value = 5 } } } }
+		command = { type = construct which = air_base where = 1415 value = 3 trigger = { owned = { province = 1415 data = IND } NOT = { building = { province = 1415 type = air_base value = 8 } } } }
+		command = { type = construct which = infrastructure where = 1442 value = 20 trigger = { owned = { province = 1442 data = IND } NOT = { building = { province = 1442 type = infrastructure value = 0.81 } } } }
 		command = { type = setflag which = ind_v3_indian_led_imphal }
 		command = { type = setflag which = ind_v3_imphal_compact }
 	}
@@ -277,8 +277,8 @@ event = {
 		command = { type = supplies value = -900 }
 		command = { type = relation which = JAP value = -35 }
 		command = { type = dissent value = -2 }
-		command = { type = construct which = land_fort where = 1442 value = 3 }
-		command = { type = construct which = air_base where = 1439 value = 3 trigger = { NOT = { building = { province = 1439 type = air_base value = 8 } } } }
+		command = { type = construct which = land_fort where = 1442 value = 3 trigger = { owned = { province = 1442 data = IND } NOT = { building = { province = 1442 type = land_fort value = 8 } } } }
+		command = { type = construct which = air_base where = 1439 value = 3 trigger = { owned = { province = 1439 data = IND } NOT = { building = { province = 1439 type = air_base value = 8 } } } }
 		command = { type = setflag which = ind_v3_imphal_sovereignty }
 		command = { type = setflag which = ind_v3_imphal_compact }
 	}
@@ -319,7 +319,15 @@ event = {
 		name = "Burma-Malaya command: -450 money, five field formations"
 		command = { type = money value = -450 }
 		command = { type = supplies value = -1400 }
+		command = { type = activate_unit_type which = bergsjaeger } # AUBM_V4_UNIT_GATE bergsjaeger
+		command = { type = new_model which = bergsjaeger value = 0 } # AUBM_V4_UNIT_GATE bergsjaeger
+		command = { type = activate_unit_type which = engineer } # AUBM_V4_UNIT_GATE engineer
+		command = { type = new_model which = engineer value = 0 } # AUBM_V4_UNIT_GATE engineer
 		command = { type = build_division which = bergsjaeger value = engineer when = 3 cost = -1.8 where = 60 }
+		command = { type = activate_unit_type which = marine } # AUBM_V4_UNIT_GATE marine
+		command = { type = new_model which = marine value = 0 } # AUBM_V4_UNIT_GATE marine
+		command = { type = activate_unit_type which = artillery } # AUBM_V4_UNIT_GATE artillery
+		command = { type = new_model which = artillery value = 0 } # AUBM_V4_UNIT_GATE artillery
 		command = { type = build_division which = marine value = artillery when = 2 cost = -1.8 where = 75 }
 		command = { type = relation which = JAP value = 20 }
 		command = { type = ai which = "v3/IND_japan.ai" }
@@ -339,6 +347,10 @@ event = {
 		command = { type = steal_tech which = JAP }
 		command = { type = activate_unit_type which = escort }
 		command = { type = new_model which = escort value = 0 }
+		command = { type = activate_unit_type which = tactical_bomber } # AUBM_V4_UNIT_GATE tactical_bomber
+		command = { type = new_model which = tactical_bomber value = 0 } # AUBM_V4_UNIT_GATE tactical_bomber
+		command = { type = activate_unit_type which = escort } # AUBM_V4_UNIT_GATE escort
+		command = { type = new_model which = escort value = 0 } # AUBM_V4_UNIT_GATE escort
 		command = { type = build_division which = tactical_bomber value = escort when = 2 cost = -2.5 where = 75 }
 		command = { type = dissent value = 4 }
 		command = { type = ai which = "v3/IND_japan.ai" }
@@ -358,10 +370,18 @@ event = {
 		command = { type = new_model which = naval_bomber value = 0 }
 		command = { type = activate_unit_type which = escort }
 		command = { type = new_model which = escort value = 0 }
+		command = { type = activate_unit_type which = marine } # AUBM_V4_UNIT_GATE marine
+		command = { type = new_model which = marine value = 0 } # AUBM_V4_UNIT_GATE marine
+		command = { type = activate_unit_type which = engineer } # AUBM_V4_UNIT_GATE engineer
+		command = { type = new_model which = engineer value = 0 } # AUBM_V4_UNIT_GATE engineer
 		command = { type = build_division which = marine value = engineer when = 3 cost = -1.8 where = 75 }
+		command = { type = activate_unit_type which = naval_bomber } # AUBM_V4_UNIT_GATE naval_bomber
+		command = { type = new_model which = naval_bomber value = 0 } # AUBM_V4_UNIT_GATE naval_bomber
+		command = { type = activate_unit_type which = escort } # AUBM_V4_UNIT_GATE escort
+		command = { type = new_model which = escort value = 0 } # AUBM_V4_UNIT_GATE escort
 		command = { type = build_division which = naval_bomber value = escort when = 2 cost = -2.5 where = 75 }
-		command = { type = construct which = naval_base where = 1421 value = 6 trigger = { NOT = { building = { province = 1421 type = naval_base value = 5 } } } }
-		command = { type = construct which = air_base where = 1421 value = 6 trigger = { NOT = { building = { province = 1421 type = air_base value = 5 } } } }
+		command = { type = construct which = naval_base where = 1421 value = 6 trigger = { owned = { province = 1421 data = IND } NOT = { building = { province = 1421 type = naval_base value = 5 } } } }
+		command = { type = construct which = air_base where = 1421 value = 6 trigger = { owned = { province = 1421 data = IND } NOT = { building = { province = 1421 type = air_base value = 5 } } } }
 		command = { type = ai which = "v3/IND_japan.ai" }
 		command = { type = setflag which = ind_v3_japanese_ocean_command }
 		command = { type = setflag which = ind_v3_japanese_war_aims }
@@ -403,7 +423,13 @@ event = {
 		command = { type = money value = -350 }
 		command = { type = activate_unit_type which = transport_plane }
 		command = { type = new_model which = transport_plane value = 0 }
+		command = { type = activate_unit_type which = bergsjaeger } # AUBM_V4_UNIT_GATE bergsjaeger
+		command = { type = new_model which = bergsjaeger value = 0 } # AUBM_V4_UNIT_GATE bergsjaeger
+		command = { type = activate_unit_type which = engineer } # AUBM_V4_UNIT_GATE engineer
+		command = { type = new_model which = engineer value = 0 } # AUBM_V4_UNIT_GATE engineer
 		command = { type = build_division which = bergsjaeger value = engineer when = 3 cost = -1.8 where = 45 }
+		command = { type = activate_unit_type which = transport_plane } # AUBM_V4_UNIT_GATE transport_plane
+		command = { type = new_model which = transport_plane value = 0 } # AUBM_V4_UNIT_GATE transport_plane
 		command = { type = build_division which = transport_plane when = 1 cost = -2.5 where = 75 }
 		command = { type = tc_mod value = 3 }
 		command = { type = relation which = JAP value = 15 }
@@ -426,8 +452,8 @@ event = {
 		command = { type = supplies value = -700 }
 		command = { type = relation which = JAP value = -20 }
 		command = { type = dissent value = -2 }
-		command = { type = construct which = land_fort where = 1442 value = 3 }
-		command = { type = construct which = air_base where = 1442 value = 3 trigger = { NOT = { building = { province = 1442 type = air_base value = 8 } } } }
+		command = { type = construct which = land_fort where = 1442 value = 3 trigger = { owned = { province = 1442 data = IND } NOT = { building = { province = 1442 type = land_fort value = 8 } } } }
+		command = { type = construct which = air_base where = 1442 value = 3 trigger = { owned = { province = 1442 data = IND } NOT = { building = { province = 1442 type = air_base value = 8 } } } }
 		command = { type = setflag which = ind_v3_held_imphal }
 		command = { type = setflag which = ind_v3_imphal_campaign }
 	}

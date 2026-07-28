@@ -55,9 +55,9 @@ event = {
 		command = { type = supplies value = -1750 }
 		command = { type = research_mod value = 3 }
 		command = { type = waketeam which = 250017 }
-		command = { type = construct which = radar_station where = 1447 value = 2 }
-		command = { type = construct which = radar_station where = 1517 value = 2 }
-		command = { type = construct which = radar_station where = 1533 value = 2 }
+		command = { type = construct which = radar_station where = 1447 value = 2 trigger = { owned = { province = 1447 data = IND } NOT = { building = { province = 1447 type = radar_station value = 9 } } } }
+		command = { type = construct which = radar_station where = 1517 value = 2 trigger = { owned = { province = 1517 data = IND } NOT = { building = { province = 1517 type = radar_station value = 9 } } } }
+		command = { type = construct which = radar_station where = 1533 value = 2 trigger = { owned = { province = 1533 data = IND } NOT = { building = { province = 1533 type = radar_station value = 9 } } } }
 		command = { type = setflag which = ind_v3_electronics_program }
 		command = { type = setflag which = ind_v3_advanced_science }
 	}
@@ -73,8 +73,8 @@ event = {
 		command = { type = research_mod value = 2 }
 		command = { type = waketeam which = 250013 }
 		command = { type = waketeam which = 250020 }
-		command = { type = construct which = air_base where = 1502 value = 3 trigger = { NOT = { building = { province = 1502 type = air_base value = 8 } } } }
-		command = { type = construct which = air_base where = 1421 value = 3 trigger = { NOT = { building = { province = 1421 type = air_base value = 8 } } } }
+		command = { type = construct which = air_base where = 1502 value = 3 trigger = { owned = { province = 1502 data = IND } NOT = { building = { province = 1502 type = air_base value = 8 } } } }
+		command = { type = construct which = air_base where = 1421 value = 3 trigger = { owned = { province = 1421 data = IND } NOT = { building = { province = 1421 type = air_base value = 8 } } } }
 		command = { type = setflag which = ind_v3_aeronautics_program }
 		command = { type = setflag which = ind_v3_advanced_science }
 	}
@@ -119,11 +119,19 @@ event = {
 		command = { type = money value = -1325 }
 		command = { type = supplies value = -4450 }
 		command = { type = waketeam which = 250018 }
-		command = { type = construct which = naval_base where = 1517 value = 3 trigger = { NOT = { building = { province = 1517 type = naval_base value = 8 } } } }
-		command = { type = construct which = naval_base where = 1493 value = 3 trigger = { NOT = { building = { province = 1493 type = naval_base value = 8 } } } }
-		command = { type = construct which = air_base where = 1517 value = 3 trigger = { NOT = { building = { province = 1517 type = air_base value = 8 } } } }
-		command = { type = construct which = air_base where = 1493 value = 3 trigger = { NOT = { building = { province = 1493 type = air_base value = 8 } } } }
+		command = { type = construct which = naval_base where = 1517 value = 3 trigger = { owned = { province = 1517 data = IND } NOT = { building = { province = 1517 type = naval_base value = 8 } } } }
+		command = { type = construct which = naval_base where = 1493 value = 3 trigger = { owned = { province = 1493 data = IND } NOT = { building = { province = 1493 type = naval_base value = 8 } } } }
+		command = { type = construct which = air_base where = 1517 value = 3 trigger = { owned = { province = 1517 data = IND } NOT = { building = { province = 1517 type = air_base value = 8 } } } }
+		command = { type = construct which = air_base where = 1493 value = 3 trigger = { owned = { province = 1493 data = IND } NOT = { building = { province = 1493 type = air_base value = 8 } } } }
+		command = { type = activate_unit_type which = light_carrier } # AUBM_V4_UNIT_GATE light_carrier
+		command = { type = new_model which = light_carrier value = 0 } # AUBM_V4_UNIT_GATE light_carrier
+		command = { type = activate_unit_type which = light_cag } # AUBM_V4_UNIT_GATE light_cag
+		command = { type = new_model which = light_cag value = 0 } # AUBM_V4_UNIT_GATE light_cag
 		command = { type = build_division which = light_carrier value = light_cag when = 2 cost = 9 where = 360 }
+		command = { type = activate_unit_type which = destroyer } # AUBM_V4_UNIT_GATE destroyer
+		command = { type = new_model which = destroyer value = 0 } # AUBM_V4_UNIT_GATE destroyer
+		command = { type = activate_unit_type which = naval_asw } # AUBM_V4_UNIT_GATE naval_asw
+		command = { type = new_model which = naval_asw value = 0 } # AUBM_V4_UNIT_GATE naval_asw
 		command = { type = build_division which = destroyer value = naval_asw when = 4 cost = 4 where = 120 }
 		command = { type = setflag which = ind_v3_carrier_fleet }
 		command = { type = setflag which = ind_v3_oceanic_fleet }
@@ -140,9 +148,17 @@ event = {
 		command = { type = money value = -1025 }
 		command = { type = supplies value = -3850 }
 		command = { type = waketeam which = 250018 }
-		command = { type = construct which = naval_base where = 1517 value = 3 trigger = { NOT = { building = { province = 1517 type = naval_base value = 8 } } } }
-		command = { type = construct which = naval_base where = 1497 value = 3 trigger = { NOT = { building = { province = 1497 type = naval_base value = 8 } } } }
+		command = { type = construct which = naval_base where = 1517 value = 3 trigger = { owned = { province = 1517 data = IND } NOT = { building = { province = 1517 type = naval_base value = 8 } } } }
+		command = { type = construct which = naval_base where = 1497 value = 3 trigger = { owned = { province = 1497 data = IND } NOT = { building = { province = 1497 type = naval_base value = 8 } } } }
+		command = { type = activate_unit_type which = light_cruiser } # AUBM_V4_UNIT_GATE light_cruiser
+		command = { type = new_model which = light_cruiser value = 0 } # AUBM_V4_UNIT_GATE light_cruiser
+		command = { type = activate_unit_type which = naval_fire_controll_s } # AUBM_V4_UNIT_GATE naval_fire_controll_s
+		command = { type = new_model which = naval_fire_controll_s value = 0 } # AUBM_V4_UNIT_GATE naval_fire_controll_s
 		command = { type = build_division which = light_cruiser value = naval_fire_controll_s when = 4 cost = 7 where = 260 }
+		command = { type = activate_unit_type which = destroyer } # AUBM_V4_UNIT_GATE destroyer
+		command = { type = new_model which = destroyer value = 0 } # AUBM_V4_UNIT_GATE destroyer
+		command = { type = activate_unit_type which = naval_asw } # AUBM_V4_UNIT_GATE naval_asw
+		command = { type = new_model which = naval_asw value = 0 } # AUBM_V4_UNIT_GATE naval_asw
 		command = { type = build_division which = destroyer value = naval_asw when = 5 cost = 4 where = 120 }
 		command = { type = setflag which = ind_v3_cruiser_fleet }
 		command = { type = setflag which = ind_v3_oceanic_fleet }
@@ -158,13 +174,19 @@ event = {
 		name = "Control the ocean through denial"
 		command = { type = money value = -750 }
 		command = { type = supplies value = -3350 }
-		command = { type = construct which = naval_base where = 1421 value = 3 trigger = { NOT = { building = { province = 1421 type = naval_base value = 8 } } } }
-		command = { type = construct which = air_base where = 1421 value = 3 trigger = { NOT = { building = { province = 1421 type = air_base value = 8 } } } }
+		command = { type = construct which = naval_base where = 1421 value = 3 trigger = { owned = { province = 1421 data = IND } NOT = { building = { province = 1421 type = naval_base value = 8 } } } }
+		command = { type = construct which = air_base where = 1421 value = 3 trigger = { owned = { province = 1421 data = IND } NOT = { building = { province = 1421 type = air_base value = 8 } } } }
 		command = { type = activate_unit_type which = naval_bomber }
 		command = { type = new_model which = naval_bomber value = 0 }
 		command = { type = activate_unit_type which = escort }
 		command = { type = new_model which = escort value = 0 }
+		command = { type = activate_unit_type which = submarine } # AUBM_V4_UNIT_GATE submarine
+		command = { type = new_model which = submarine value = 0 } # AUBM_V4_UNIT_GATE submarine
 		command = { type = build_division which = submarine value = none when = 8 cost = 4 where = 100 }
+		command = { type = activate_unit_type which = naval_bomber } # AUBM_V4_UNIT_GATE naval_bomber
+		command = { type = new_model which = naval_bomber value = 0 } # AUBM_V4_UNIT_GATE naval_bomber
+		command = { type = activate_unit_type which = escort } # AUBM_V4_UNIT_GATE escort
+		command = { type = new_model which = escort value = 0 } # AUBM_V4_UNIT_GATE escort
 		command = { type = build_division which = naval_bomber value = escort when = 3 cost = 9 where = 150 }
 		command = { type = setflag which = ind_v3_ocean_denial }
 		command = { type = setflag which = ind_v3_oceanic_fleet }
@@ -210,13 +232,13 @@ event = {
 		command = { type = manpowerpool value = -35 }
 		command = { type = dissent value = 4 }
 		command = { type = industrial_modifier which = supplies value = 10 }
-		command = { type = construct which = ic where = 1447 value = 5 }
-		command = { type = construct which = ic where = 1472 value = 5 }
-		command = { type = construct which = ic where = 1477 value = 5 }
-		command = { type = construct which = ic where = 1487 value = 4 }
-		command = { type = construct which = ic where = 1502 value = 5 }
-		command = { type = construct which = ic where = 1517 value = 5 }
-		command = { type = construct which = ic where = 1533 value = 4 }
+		command = { type = construct which = ic where = 1447 value = 5 trigger = { owned = { province = 1447 data = IND } } }
+		command = { type = construct which = ic where = 1472 value = 5 trigger = { owned = { province = 1472 data = IND } } }
+		command = { type = construct which = ic where = 1477 value = 5 trigger = { owned = { province = 1477 data = IND } } }
+		command = { type = construct which = ic where = 1487 value = 4 trigger = { owned = { province = 1487 data = IND } } }
+		command = { type = construct which = ic where = 1502 value = 5 trigger = { owned = { province = 1502 data = IND } } }
+		command = { type = construct which = ic where = 1517 value = 5 trigger = { owned = { province = 1517 data = IND } } }
+		command = { type = construct which = ic where = 1533 value = 4 trigger = { owned = { province = 1533 data = IND } } }
 		command = { type = setflag which = ind_v3_third_plan_arsenal }
 		command = { type = setflag which = ind_v3_third_plan }
 	}
@@ -233,17 +255,17 @@ event = {
 		command = { type = manpowerpool value = -25 }
 		command = { type = dissent value = -5 }
 		command = { type = manpowerpool value = 60 }
-		command = { type = construct which = ic where = 1439 value = 3 }
-		command = { type = construct which = ic where = 1445 value = 3 }
-		command = { type = construct which = ic where = 1461 value = 3 }
-		command = { type = construct which = ic where = 1465 value = 3 }
-		command = { type = construct which = ic where = 1471 value = 3 }
-		command = { type = construct which = ic where = 1485 value = 3 }
-		command = { type = construct which = ic where = 1495 value = 3 }
-		command = { type = construct which = ic where = 1507 value = 3 }
-		command = { type = construct which = infrastructure where = 1439 value = 15 trigger = { NOT = { building = { province = 1439 type = infrastructure value = 0.86 } } } }
-		command = { type = construct which = infrastructure where = 1465 value = 15 trigger = { NOT = { building = { province = 1465 type = infrastructure value = 0.86 } } } }
-		command = { type = construct which = infrastructure where = 1495 value = 15 trigger = { NOT = { building = { province = 1495 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = ic where = 1439 value = 3 trigger = { owned = { province = 1439 data = IND } } }
+		command = { type = construct which = ic where = 1445 value = 3 trigger = { owned = { province = 1445 data = IND } } }
+		command = { type = construct which = ic where = 1461 value = 3 trigger = { owned = { province = 1461 data = IND } } }
+		command = { type = construct which = ic where = 1465 value = 3 trigger = { owned = { province = 1465 data = IND } } }
+		command = { type = construct which = ic where = 1471 value = 3 trigger = { owned = { province = 1471 data = IND } } }
+		command = { type = construct which = ic where = 1485 value = 3 trigger = { owned = { province = 1485 data = IND } } }
+		command = { type = construct which = ic where = 1495 value = 3 trigger = { owned = { province = 1495 data = IND } } }
+		command = { type = construct which = ic where = 1507 value = 3 trigger = { owned = { province = 1507 data = IND } } }
+		command = { type = construct which = infrastructure where = 1439 value = 15 trigger = { owned = { province = 1439 data = IND } NOT = { building = { province = 1439 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1465 value = 15 trigger = { owned = { province = 1465 data = IND } NOT = { building = { province = 1465 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1495 value = 15 trigger = { owned = { province = 1495 data = IND } NOT = { building = { province = 1495 type = infrastructure value = 0.86 } } } }
 		command = { type = setflag which = ind_v3_third_plan_welfare }
 		command = { type = setflag which = ind_v3_third_plan }
 	}
@@ -260,11 +282,11 @@ event = {
 		command = { type = manpowerpool value = -20 }
 		command = { type = research_mod value = 1 }
 		command = { type = industrial_modifier which = oil value = 10 }
-		command = { type = construct which = ic where = 1441 value = 4 }
-		command = { type = construct which = ic where = 1472 value = 4 }
-		command = { type = construct which = ic where = 1502 value = 5 }
-		command = { type = construct which = ic where = 1517 value = 4 }
-		command = { type = construct which = ic where = 1533 value = 4 }
+		command = { type = construct which = ic where = 1441 value = 4 trigger = { owned = { province = 1441 data = IND } } }
+		command = { type = construct which = ic where = 1472 value = 4 trigger = { owned = { province = 1472 data = IND } } }
+		command = { type = construct which = ic where = 1502 value = 5 trigger = { owned = { province = 1502 data = IND } } }
+		command = { type = construct which = ic where = 1517 value = 4 trigger = { owned = { province = 1517 data = IND } } }
+		command = { type = construct which = ic where = 1533 value = 4 trigger = { owned = { province = 1533 data = IND } } }
 		command = { type = add_prov_resource which = 1441 value = 20 where = oil }
 		command = { type = add_prov_resource which = 1538 value = 12 where = oil }
 		command = { type = setflag which = ind_v3_third_plan_technology }
@@ -365,10 +387,10 @@ event = {
 		command = { type = supplies value = -1400 }
 		command = { type = dissent value = -5 }
 		command = { type = manpowerpool value = 40 }
-		command = { type = construct which = infrastructure where = 1439 value = 15 trigger = { NOT = { building = { province = 1439 type = infrastructure value = 0.86 } } } }
-		command = { type = construct which = infrastructure where = 1442 value = 15 trigger = { NOT = { building = { province = 1442 type = infrastructure value = 0.86 } } } }
-		command = { type = construct which = infrastructure where = 1529 value = 15 trigger = { NOT = { building = { province = 1529 type = infrastructure value = 0.86 } } } }
-		command = { type = construct which = infrastructure where = 1537 value = 15 trigger = { NOT = { building = { province = 1537 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1439 value = 15 trigger = { owned = { province = 1439 data = IND } NOT = { building = { province = 1439 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1442 value = 15 trigger = { owned = { province = 1442 data = IND } NOT = { building = { province = 1442 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1529 value = 15 trigger = { owned = { province = 1529 data = IND } NOT = { building = { province = 1529 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1537 value = 15 trigger = { owned = { province = 1537 data = IND } NOT = { building = { province = 1537 type = infrastructure value = 0.86 } } } }
 		command = { type = setflag which = ind_v3_veterans_corps }
 		command = { type = setflag which = ind_v3_peace_dividend }
 	}
