@@ -1,7 +1,7 @@
 Sprite = {
-	Bitmap = "AUBM-IND-ESCORT A-FIRE D-SW.bmp"
-	Origin = { x = 48 y = 82 }
-	Frames = 3
+	Bitmap = "T-DESTROYER A-FIRE C-MIN L-1 D-SW.bmp"
+	Origin = { x = 52 y = 56 }
+	Frames = 18
 	Speed = 5
-	Palette = "AUBM-IND-ESCORT.bmp"
+	Palette = "V3-IND-NAVY-T-DESTROYER_C-MIN_L-1.bmp"
 }

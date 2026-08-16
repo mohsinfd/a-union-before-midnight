@@ -1,32 +1,32 @@
 IND;Name;Pic Name;Skill;Start Year;End Year;Speciality1;Speciality2;Speciality3;Speciality4;Speciality5;Speciality6;Speciality7;Speciality8;Speciality9;Speciality10;Speciality11;Speciality12;Speciality13;Speciality14;Speciality15;Speciality16;Speciality17;Speciality18;Speciality19;Speciality20;Speciality21;Speciality22;Speciality23;Speciality24;Speciality25;Speciality26;Speciality27;Speciality28;Speciality29;Speciality30;Speciality31;Speciality32;x
-250001;Indian Government Railways;TT250001;6;1930;1970;mechanics;industrial_engineering;management;technical_efficiency;;;;;;;;;;;;;;;;;;;;;;;;;;;;;x
-250002;Tata Iron and Steel Company;TT250002;7;1930;1970;industrial_engineering;technical_efficiency;chemistry;management;;;;;;;;;;;;;;;;;;;;;;;;;;;;;x
-250003;Indian Association for Cultivation of Science;TT250003;7;1930;1970;mathematics;chemistry;nuclear_physics;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;x
-250004;Military Engineering Services;TT250004;6;1930;1970;management;general_equipment;mechanics;technical_efficiency;vehicle_engineering;;;;;;;;;;;;;;;;;;;;;;;;;;;;x
-250005;Indian Ordnance Factories;TT250005;6;1930;1970;mechanics;munitions;artillery;general_equipment;;;;;;;;;;;;;;;;;;;;;;;;;;;;;x
-250006;Garden Reach Workshop;TT250006;5;1930;1970;naval_engineering;general_equipment;technical_efficiency;submarine_design;;;;;;;;;;;;;;;;;;;;;;;;;;;;;x
-250007;Mazagon Dock Limited;TT250007;5;1930;1970;naval_engineering;naval_artillery;technical_efficiency;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;x
-250008;J. R. D. Tata;TT250008;6;1930;1970;aeronautics;industrial_engineering;technical_efficiency;management;aircraft_testing;fighter_design;bomber_design;avionics;;;;;;;;;;;;;;;;;;;;;;;;;x
-250009;Indian Academy of Sciences;TT250009;7;1930;1970;mathematics;chemistry;electronics;mechanics;;;;;;;;;;;;;;;;;;;;;;;;;;;;;x
-250010;K. M. Cariappa;TT250010;6;1930;1970;centralized_execution;large_unit_tactics;training;combined_arms_focus;;;;;;;;;;;;;;;;;;;;;;;;;;;;;x
-250011;Frank Messervy;TT250011;5;1930;1947;decentralized_execution;small_unit_tactics;combined_arms_focus;infantry_focus;individual_courage;mountain_training;;;;;;;;;;;;;;;;;;;;;;;;;;;;x
-250012;Aspy Merwan Engineer;TT250012;5;1930;1970;bomber_tactics;training;piloting;centralized_execution;;;;;;;;;;;;;;;;;;;;;;;;;;;;;x
-250013;Hindustan Aircraft Limited;TT250013;7;1930;1970;bomber_design;aeronautics;aircraft_testing;fighter_design;avionics;;;;;;;;;;;;;;;;;;;;;;;;;;;;x
-250014;National Planning Commission;TT250014;8;1930;1970;industrial_engineering;management;technical_efficiency;mathematics;;;;;;;;;;;;;;;;;;;;;;;;;;;;;x
-250015;Defence Science Organisation;TT250015;8;1930;1970;munitions;mechanics;artillery;general_equipment;electronics;;;;;;;;;;;;;;;;;;;;;;;;;;;;x
-250016;Atomic Research Directorate;TT250016;8;1930;1970;nuclear_physics;nuclear_engineering;mathematics;chemistry;;;;;;;;;;;;;;;;;;;;;;;;;;;;;x
-250017;Bharat Electronics Directorate;TT250017;8;1930;1970;electronics;management;technical_efficiency;mechanics;;;;;;;;;;;;;;;;;;;;;;;;;;;;;x
-250018;Indian Naval Design Bureau;TT250018;7;1930;1970;naval_training;small_taskforce_tactics;seamanship;naval_engineering;carrier_tactics;;;;;;;;;;;;;;;;;;;;;;;;;;;;x
-250019;Armoured Forces Centre;TT250019;7;1930;1970;combined_arms_focus;small_unit_tactics;mechanics;training;;;;;;;;;;;;;;;;;;;;;;;;;;;;;x
-250020;Indian Strategic Air Command;TT250020;7;1930;1970;bomber_tactics;centralized_execution;piloting;aircraft_testing;;;;;;;;;;;;;;;;;;;;;;;;;;;;;x
-250021;Directorate of Naval Construction;TT250021;8;1933;1970;carrier_design;naval_engineering;technical_efficiency;naval_artillery;mechanics;;;;;;;;;;;;;;;;;;;;;;;;;;;;x
-250022;Indian Naval Air Arm;TT250022;7;1933;1970;carrier_tactics;aeronautics;aircraft_testing;piloting;naval_training;;;;;;;;;;;;;;;;;;;;;;;;;;;;x
-250023;Indian Fleet Tactical School;TT250023;7;1933;1970;large_taskforce_tactics;small_taskforce_tactics;naval_training;seamanship;carrier_tactics;marine_training;;;;;;;;;;;;;;;;;;;;;;;;;;;x
-250024;Submarine Warfare School;TT250024;6;1933;1970;submarine_tactics;small_taskforce_tactics;seamanship;naval_training;electronics;submarine_design;;;;;;;;;;;;;;;;;;;;;;;;;;;x
-250025;Indian Air Staff College;TT250025;8;1933;1970;fighter_tactics;bomber_tactics;piloting;centralized_execution;training;airborne_training;;;;;;;;;;;;;;;;;;;;;;;;;;;x
-250026;Mechanised Warfare Directorate;TT250026;8;1933;1970;vehicle_engineering;mechanics;combined_arms_focus;training;technical_efficiency;maneuver_tactics;blitzkrieg_tactics;;;;;;;;;;;;;;;;;;;;;;;;;;x
-250027;Indian General Staff College;TT250027;8;1933;1970;large_unit_tactics;small_unit_tactics;combined_arms_focus;training;decentralized_execution;infantry_focus;mountain_training;maneuver_tactics;;;;;;;;;;;;;;;;;;;;;;;;;x
-250028;Aeronautics and Rocket Centre;TT250028;8;1938;1970;rocketry;aeronautics;mathematics;electronics;chemistry;;;;;;;;;;;;;;;;;;;;;;;;;;;;x
-250029;Atomic Energy Commission;TT250029;9;1944;1970;nuclear_physics;nuclear_engineering;mathematics;chemistry;management;;;;;;;;;;;;;;;;;;;;;;;;;;;;x
-250030;Indian Ocean Signals Bureau;TT250030;7;1935;1970;electronics;mathematics;naval_training;technical_efficiency;management;;;;;;;;;;;;;;;;;;;;;;;;;;;;x
-250031;Bengal Chemicals and Pharmaceuticals;TT250031;5;1930;1970;medicine;chemistry;industrial_engineering;management;;;;;;;;;;;;;;;;;;;;;;;;;;;;;x
+250001;Bharat Railworks Corporation;TT250001;6;1930;1970;mechanics;industrial_engineering;management;technical_efficiency;;;;;;;;;;;;;;;;;;;;;;;;;;;;;x
+250002;Tata Steelworks Group;TT250002;7;1930;1970;industrial_engineering;technical_efficiency;chemistry;management;;;;;;;;;;;;;;;;;;;;;;;;;;;;;x
+250003;Bengal Innovation Science Network;TT250003;7;1930;1970;mathematics;chemistry;nuclear_physics;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;x
+250004;Frontline Engineering Services;TT250004;6;1930;1970;management;general_equipment;mechanics;technical_efficiency;vehicle_engineering;;;;;;;;;;;;;;;;;;;;;;;;;;;;x
+250005;Hindustan Arsenal Works;TT250005;6;1930;1970;mechanics;munitions;artillery;general_equipment;;;;;;;;;;;;;;;;;;;;;;;;;;;;;x
+250006;Garden Reach Marine Systems;TT250006;5;1930;1970;naval_engineering;general_equipment;technical_efficiency;submarine_design;;;;;;;;;;;;;;;;;;;;;;;;;;;;;x
+250007;Mazagon Naval Systems Group;TT250007;5;1930;1970;naval_engineering;naval_artillery;technical_efficiency;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;x
+250008;Tata Aerostructures Group;TT250008;6;1930;1970;aeronautics;industrial_engineering;technical_efficiency;management;aircraft_testing;fighter_design;bomber_design;avionics;;;;;;;;;;;;;;;;;;;;;;;;;x
+250009;Bengal Applied Science Forum;TT250009;7;1930;1970;mathematics;chemistry;electronics;mechanics;;;;;;;;;;;;;;;;;;;;;;;;;;;;;x
+250010;Cariappa Command Institute;TT250010;6;1930;1970;centralized_execution;large_unit_tactics;training;combined_arms_focus;;;;;;;;;;;;;;;;;;;;;;;;;;;;;x
+250011;Messervy Tactical Group;TT250011;5;1947;1970;decentralized_execution;small_unit_tactics;combined_arms_focus;infantry_focus;individual_courage;mountain_training;;;;;;;;;;;;;;;;;;;;;;;;;;;;x
+250012;Merwan Flight and Tactics Group;TT250012;5;1930;1970;bomber_tactics;training;piloting;centralized_execution;;;;;;;;;;;;;;;;;;;;;;;;;;;;;x
+250013;Hindustan Aeronautics Forge;TT250013;7;1930;1970;bomber_design;aeronautics;aircraft_testing;fighter_design;avionics;;;;;;;;;;;;;;;;;;;;;;;;;;;;x
+250014;National Planning Secretariat;TT250014;8;1930;1970;industrial_engineering;management;technical_efficiency;mathematics;;;;;;;;;;;;;;;;;;;;;;;;;;;;;x
+250015;Defence Design Bureau;TT250015;8;1930;1970;munitions;mechanics;artillery;general_equipment;electronics;;;;;;;;;;;;;;;;;;;;;;;;;;;;x
+250016;Atomic Research Works Authority;TT250016;8;1930;1970;nuclear_physics;nuclear_engineering;mathematics;chemistry;;;;;;;;;;;;;;;;;;;;;;;;;;;;;x
+250017;Bharat Electronics Network;TT250017;8;1930;1970;electronics;management;technical_efficiency;mechanics;;;;;;;;;;;;;;;;;;;;;;;;;;;;;x
+250018;Sagar Design Bureau;TT250018;7;1930;1970;naval_training;small_taskforce_tactics;seamanship;naval_engineering;carrier_tactics;;;;;;;;;;;;;;;;;;;;;;;;;;;;x
+250019;Armoured Logistics Group;TT250019;7;1930;1970;combined_arms_focus;small_unit_tactics;mechanics;training;;;;;;;;;;;;;;;;;;;;;;;;;;;;;x
+250020;AeroNav Innovations Lab;TT250020;7;1930;1970;bomber_tactics;centralized_execution;piloting;aircraft_testing;carrier_tactics;fighter_tactics;;;;;;;;;;;;;;;;;;;;;;;;;;x
+250021;Sagar Shipwright Systems;TT250021;8;1930;1970;carrier_design;naval_engineering;technical_efficiency;naval_artillery;mechanics;;;;;;;;;;;;;;;;;;;;;;;;;;;;x
+250022;Carrier-Aviation Command Lab;TT250022;7;1930;1970;carrier_tactics;aeronautics;aircraft_testing;piloting;naval_training;fighter_tactics;bomber_tactics;;;;;;;;;;;;;;;;;;;;;;;;;;x
+250023;Fleet Doctrine Works;TT250023;7;1930;1970;large_taskforce_tactics;small_taskforce_tactics;naval_training;seamanship;carrier_tactics;marine_training;fighter_tactics;;;;;;;;;;;;;;;;;;;;;;;;;x
+250024;Submarine Warfare Systems School;TT250024;6;1933;1970;submarine_tactics;small_taskforce_tactics;seamanship;naval_training;electronics;submarine_design;;;;;;;;;;;;;;;;;;;;;;;;;;;x
+250025;Air Staff Tactical Academy;TT250025;8;1933;1970;fighter_tactics;bomber_tactics;piloting;centralized_execution;training;airborne_training;;;;;;;;;;;;;;;;;;;;;;;;;;;x
+250026;Mechanised Mobility Group;TT250026;8;1933;1970;vehicle_engineering;mechanics;combined_arms_focus;training;technical_efficiency;maneuver_tactics;blitzkrieg_tactics;;;;;;;;;;;;;;;;;;;;;;;;;;x
+250027;General Staff Systems College;TT250027;8;1933;1970;large_unit_tactics;small_unit_tactics;combined_arms_focus;training;decentralized_execution;infantry_focus;mountain_training;maneuver_tactics;;;;;;;;;;;;;;;;;;;;;;;;;x
+250028;Aero-Rocket Foundry;TT250028;8;1938;1970;rocketry;aeronautics;mathematics;electronics;chemistry;;;;;;;;;;;;;;;;;;;;;;;;;;;;x
+250029;Atomic Energy Enterprise;TT250029;9;1944;1970;nuclear_physics;nuclear_engineering;mathematics;chemistry;management;;;;;;;;;;;;;;;;;;;;;;;;;;;;x
+250030;Maritime Signals Network;TT250030;7;1935;1970;electronics;mathematics;naval_training;technical_efficiency;management;;;;;;;;;;;;;;;;;;;;;;;;;;;;x
+250031;Bengal Pharma-Chemical Group;TT250031;5;1930;1970;medicine;chemistry;industrial_engineering;management;;;;;;;;;;;;;;;;;;;;;;;;;;;;;x

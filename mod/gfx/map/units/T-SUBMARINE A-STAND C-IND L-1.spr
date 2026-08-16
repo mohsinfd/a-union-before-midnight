@@ -1,7 +1,7 @@
 Sprite = {
-	Bitmap = "AUBM-IND-SUBMARINE A-STAND.bmp"
-	Origin = { x = 48 y = 82 }
-	Frames = 1
+	Bitmap = "T-SUBMARINE A-STAND C-MIN L-1.bmp"
+	Origin = { x = 80 y = 70 }
+	Frames = 30
 	Speed = 5
-	Palette = "AUBM-IND-SUBMARINE.bmp"
+	Palette = "V3-IND-NAVY-T-SUBMARINE_C-MIN_L-1.bmp"
 }
