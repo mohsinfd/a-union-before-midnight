@@ -9,17 +9,47 @@ event = {
 	country = IND
 
 	name = "A Union Before Midnight"
-	desc = "In our history, the Round Table Conferences ended in deadlock and London prepared another constitution on its own. Here, the deadlock broke Britain first. Depression, the cost of repression and a crisis over Indian financing of imperial defence forced the National Government back to the table in December 1932. The Poona settlement had shown that Indian leaders could negotiate their own guarantees; Congress, Muslim provincial leaders, Ambedkar's representatives, Sikh delegates and the Chamber of Princes assembled in Delhi for one final bargain. Britain transferred sovereignty at midnight on 1 January 1933 in return for debt guarantees, commercial access and an orderly military handover. Burma entered the Union before its planned separation, while the princely states acceded under temporary constitutional guarantees. The flag is Indian and the authority is real, but the settlement is only a bridge: provinces distrust Delhi, communal safeguards remain disputed, the army serves a government not yet defined, and the economy still points outward to London."
+	desc = "The Round Table deadlock broke Britain first. Depression, repression and the cost of imperial defence forced London into the Lahore Accord of December 1932. At midnight on 1 January 1933 India receives sovereignty, Burma enters the Union, and the princes accede under temporary guarantees. The flag is Indian and the authority is real, but the settlement is only a bridge."
 	style = 2
 	picture = "india_v3_independence"
 
 	date = { day = 0 month = january year = 1933 }
 	offset = 1
-	deathdate = { day = 2 month = january year = 1933 }
+	deathdate = { day = 2 month = january year = 1964 }
 
 	action_a = {
 		name = "Freedom came early. Unity will have its price."
 		command = { type = setflag which = ind_v3_sovereignty_proclaimed }
+		command = { type = waketeam which = 250020 }
+		command = { type = waketeam which = 250021 }
+		command = { type = waketeam which = 250022 }
+		command = { type = waketeam which = 250023 }
+		command = { type = sleepevent which = 9000100 } # Stock election system
+		command = { type = sleepevent which = 9000101 }
+		command = { type = sleepevent which = 9000102 }
+		command = { type = sleepevent which = 9000103 }
+		command = { type = sleepevent which = 9000110 }
+		command = { type = sleepevent which = 9000119 }
+		command = { type = sleepevent which = 9000111 }
+		command = { type = sleepevent which = 9000120 }
+		command = { type = sleepevent which = 9000112 }
+		command = { type = sleepevent which = 9000121 }
+		command = { type = sleepevent which = 9000113 }
+		command = { type = sleepevent which = 9000122 }
+		command = { type = sleepevent which = 9000114 }
+		command = { type = sleepevent which = 9000123 }
+		command = { type = sleepevent which = 9000115 }
+		command = { type = sleepevent which = 9000116 }
+		command = { type = sleepevent which = 9000117 }
+		command = { type = sleepevent which = 9000118 }
+		command = { type = sleepevent which = 9000150 }
+		command = { type = sleepevent which = 9000151 }
+		command = { type = sleepevent which = 9000152 }
+		command = { type = sleepevent which = 9000153 }
+		command = { type = sleepevent which = 2900127 } # Stock Indian independence election
+		command = { type = sleepevent which = 2900128 }
+		command = { type = sleepevent which = 2900129 } # Stock 1950 election
+		command = { type = sleepevent which = 2051001 } # Stock minister-specific Gandhi event
 	}
 }
 
@@ -34,17 +64,17 @@ event = {
 	}
 
 	name = "The Provisional Cabinet"
-	desc = "The transfer agreement deliberately left India's permanent constitution unsettled. Gandhi and Nehru offer a federal civilian cabinet able to reconcile the provinces and reassure Britain. Patel and Visvesvaraya offer a disciplined developmental executive built around administration, industry and military reform. Bose and Saha demand social mobilization, rapid state planning and freedom from British influence. This cabinet will not decide every future election, but it will define who controls the first years of independence."
+	desc = "The permanent constitution remains unsettled. Gandhi and Nehru offer a federal civilian cabinet. Patel and Visvesvaraya offer a disciplined developmental executive. Bose and Saha demand social mobilization, state planning and freedom from British influence. This choice defines who controls the first years of independence."
 	style = 2
 	picture = "india_v3_independence"
 
 	date = { day = 1 month = january year = 1933 }
 	offset = 1
-	deathdate = { day = 10 month = january year = 1933 }
+	deathdate = { day = 10 month = january year = 1964 }
 
 	action_a = {
 		ai_chance = 50
-		name = "Gandhi-Nehru: -3 dissent, open markets; costs 100 money/250 supplies"
+		name = "Gandhi-Nehru: -3 dissent, market reform"
 		command = { type = money value = -100 }
 		command = { type = supplies value = -250 }
 		command = { type = dissent value = -3 }
@@ -67,7 +97,7 @@ event = {
 	}
 	action_b = {
 		ai_chance = 35
-		name = "Patel-Visvesvaraya: +3 strategic sliders; costs 200 money/400 supplies"
+		name = "Patel-Visvesvaraya: army and defence reform"
 		command = { type = money value = -200 }
 		command = { type = supplies value = -400 }
 		command = { type = dissent value = -1 }
@@ -133,11 +163,11 @@ event = {
 
 	date = { day = 5 month = january year = 1933 }
 	offset = 3
-	deathdate = { day = 29 month = march year = 1933 }
+	deathdate = { day = 29 month = march year = 1964 }
 
 	action_a = {
 		ai_chance = 45
-		name = "Negotiated union: -5 dissent, four trunk routes; costs 150/350"
+		name = "Negotiated union: -5 dissent; four trunk routes"
 		command = { type = money value = -150 }
 		command = { type = supplies value = -350 }
 		command = { type = manpowerpool value = -10 }
@@ -151,7 +181,7 @@ event = {
 	}
 	action_b = {
 		ai_chance = 35
-		name = "Provincial compact: -3 dissent, three regional routes; costs 75/200"
+		name = "Provincial compact: -3 dissent; three trunk routes"
 		command = { type = money value = -75 }
 		command = { type = supplies value = -200 }
 		command = { type = dissent value = -3 }

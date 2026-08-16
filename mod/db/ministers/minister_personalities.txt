@@ -3269,6 +3269,7 @@
 		command		= { type = unit which = infantry when = defence value = 0.0400 }
 		command		= { type = unit which = motorized when = organisation value = 0.0300 }
 		command		= { type = unit which = armor when = organisation value = 0.0300 }
+		command		= { type = unit which = cavalry when = attack value = 0.0200 }
 		command		= { type = production which = reinforcement value = -0.0400 }
 	}
 
@@ -3284,6 +3285,8 @@
 		command		= { type = unit which = light_carrier when = time value = -0.0400 }
 		command		= { type = unit which = light_cruiser when = cost value = -0.0400 }
 		command		= { type = unit which = destroyer when = cost value = -0.0400 }
+		command		= { type = unit which = naval_bomber when = organisation value = 0.0400 }
+		command		= { type = unit which = naval_bomber when = morale value = 0.0400 }
 		command		= { type = detection which = navy value = 0.0500 }
 		command		= { type = production which = supplies when = national value = 0.0200 }
 	}
@@ -3297,9 +3300,11 @@
 		value		= 0
 		command		= { type = research which = aircraft when = time value = -0.0500 }
 		command		= { type = research which = air_doctrines when = time value = -0.0500 }
+		command		= { type = research which = naval when = time value = -0.0400 }
 		command		= { type = unit which = interceptor when = organisation value = 0.0500 }
 		command		= { type = unit which = multi_role when = organisation value = 0.0500 }
 		command		= { type = unit which = tactical_bomber when = morale value = 0.0400 }
 		command		= { type = unit which = naval_bomber when = morale value = 0.0400 }
+		command		= { type = unit which = naval_bomber when = time value = -0.0500 }
 		command		= { type = production which = supplies when = national value = 0.0200 }
 	}
