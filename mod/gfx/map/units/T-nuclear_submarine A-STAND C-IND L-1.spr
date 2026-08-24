@@ -1,7 +1,0 @@
-Sprite = {
-	Bitmap = "AUBM-IND-SUBMARINE A-STAND.bmp"
-	Origin = { x = 48 y = 82 }
-	Frames = 1
-	Speed = 5
-	Palette = "AUBM-IND-SUBMARINE.bmp"
-}

@@ -14,24 +14,32 @@ event = {
 		atwar = no
 	}
 	decision_trigger = {
-	OR = {
-		AND = { money = 225 supplies = 750 manpower = 15 }
-		AND = { money = 175 supplies = 600 manpower = 10 }
-		AND = { money = 100 supplies = 300 manpower = 5 }
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		OR = {
+			AND = { money = 225 supplies = 750 manpower = 15 }
+			AND = { money = 175 supplies = 600 manpower = 10 }
+			AND = { money = 100 supplies = 300 manpower = 5 }
+		}
+		# AUBM_FULL_OPTION_GATE_END
 	}
-}
 
 	name = "The Emergency Reconstruction Act"
+	decision_desc = "Cabinet funding estimates: Build the metropolitan industrial belt [money 225, supplies 750, manpower 15]; Disperse plants across the federation [money 175, supplies 600, manpower 10]; Back a private industrial consortium [money 100, supplies 300, manpower 5]."
 	desc = "Independence has exposed how little modern industry the subcontinent controls. Delhi can concentrate scarce capital in eight metropolitan centres, distribute smaller plants across the union, or invite Indian business houses to lead a cheaper programme in exchange for autonomy and profit."
 	style = 2
 	picture = "india_v3_industry"
 
 	date = { day = 0 month = july year = 1933 }
 	offset = 5
-	deathdate = { day = 29 month = december year = 1934 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 225
+			supplies = 750
+			manpower = 15
+			# AUBM_ACTION_RESERVE_END
 			money = 225
 			supplies = 750
 			manpower = 15
@@ -56,6 +64,11 @@ event = {
 	}
 	action_b = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 175
+			supplies = 600
+			manpower = 10
+			# AUBM_ACTION_RESERVE_END
 			money = 175
 			supplies = 600
 			manpower = 10
@@ -82,6 +95,11 @@ event = {
 	}
 	action_c = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 100
+			supplies = 300
+			manpower = 5
+			# AUBM_ACTION_RESERVE_END
 			money = 100
 			supplies = 300
 			manpower = 5
@@ -115,24 +133,32 @@ event = {
 		atwar = no
 	}
 	decision_trigger = {
-	OR = {
-		AND = { money = 250 supplies = 900 manpower = 15 }
-		AND = { money = 225 supplies = 750 manpower = 10 }
-		AND = { money = 175 supplies = 1000 manpower = 15 }
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		OR = {
+			AND = { money = 250 supplies = 900 manpower = 15 }
+			AND = { money = 225 supplies = 750 manpower = 10 }
+			AND = { money = 175 supplies = 1000 manpower = 15 }
+		}
+		# AUBM_FULL_OPTION_GATE_END
 	}
-}
 
 	name = "The Union Transport Grid"
+	decision_desc = "Cabinet funding estimates: Complete the Karachi-Calcutta trunk network [money 250, supplies 900, manpower 15]; Modernize the six great ports [money 225, supplies 750, manpower 10]; Drive military roads into the frontiers [money 175, supplies 1,000, manpower 15]."
 	desc = "The inherited railway network runs from producing districts to imperial ports, not between Indian markets or strategic fronts. A trunk network can bind the union together, a port programme can make India a maritime power, or frontier roads can secure the vulnerable northwest and Burma approaches."
 	style = 2
 	picture = "india_v3_industry"
 
 	date = { day = 0 month = march year = 1934 }
 	offset = 5
-	deathdate = { day = 29 month = december year = 1935 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 250
+			supplies = 900
+			manpower = 15
+			# AUBM_ACTION_RESERVE_END
 			money = 250
 			supplies = 900
 			manpower = 15
@@ -164,6 +190,11 @@ event = {
 	}
 	action_b = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 225
+			supplies = 750
+			manpower = 10
+			# AUBM_ACTION_RESERVE_END
 			money = 225
 			supplies = 750
 			manpower = 10
@@ -195,6 +226,11 @@ event = {
 	}
 	action_c = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 175
+			supplies = 1000
+			manpower = 15
+			# AUBM_ACTION_RESERVE_END
 			money = 175
 			supplies = 1000
 			manpower = 15
@@ -231,24 +267,32 @@ event = {
 		atwar = no
 	}
 	decision_trigger = {
-	OR = {
-		AND = { money = 450 supplies = 1600 manpower = 20 }
-		AND = { money = 325 supplies = 1150 manpower = 15 }
-		AND = { supplies = 700 manpower = 10 }
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		OR = {
+			AND = { money = 450 supplies = 1600 manpower = 20 }
+			AND = { money = 325 supplies = 1150 manpower = 15 }
+			AND = { supplies = 700 manpower = 10 }
+		}
+		# AUBM_FULL_OPTION_GATE_END
 	}
-}
 
 	name = "Steel, Coal and Machine Tools"
+	decision_desc = "Cabinet funding estimates: Create state heavy-industry combines [money 450, supplies 1,600, manpower 20]; Build mixed public-private combines [money 325, supplies 1,150, manpower 15]; Guarantee markets to Indian capital [supplies 700, manpower 10]."
 	desc = "Railways alone cannot create an industrial power. The next programme must produce steel, cement, chemicals and machine tools at continental scale. State combines promise the greatest capacity, mixed ownership spreads risk, and private expansion preserves flexibility and scientific efficiency."
 	style = 2
 	picture = "india_v3_industry"
 
 	date = { day = 0 month = february year = 1935 }
 	offset = 5
-	deathdate = { day = 29 month = december year = 1936 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 450
+			supplies = 1600
+			manpower = 20
+			# AUBM_ACTION_RESERVE_END
 			money = 450
 			supplies = 1600
 			manpower = 20
@@ -276,6 +320,11 @@ event = {
 	}
 	action_b = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 325
+			supplies = 1150
+			manpower = 15
+			# AUBM_ACTION_RESERVE_END
 			money = 325
 			supplies = 1150
 			manpower = 15
@@ -301,6 +350,10 @@ event = {
 	}
 	action_c = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			supplies = 700
+			manpower = 10
+			# AUBM_ACTION_RESERVE_END
 			supplies = 700
 			manpower = 10
 		}
@@ -334,24 +387,32 @@ event = {
 		atwar = no
 	}
 	decision_trigger = {
-	OR = {
-		AND = { money = 475 supplies = 1500 manpower = 20 }
-		AND = { money = 350 supplies = 1250 manpower = 15 }
-		AND = { supplies = 800 manpower = 10 }
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		OR = {
+			AND = { money = 475 supplies = 1500 manpower = 20 }
+			AND = { money = 350 supplies = 1250 manpower = 15 }
+			AND = { supplies = 800 manpower = 10 }
+		}
+		# AUBM_FULL_OPTION_GATE_END
 	}
-}
 
 	name = "Power for a Continent"
+	decision_desc = "Cabinet funding estimates: Build the great river-valley authorities [money 475, supplies 1,500, manpower 20]; Build coal-fired regional grids [money 350, supplies 1,250, manpower 15]; Electrify districts and village cooperatives [supplies 800, manpower 10]."
 	desc = "Factories now compete with cities and railways for electricity. Giant river-valley schemes can transform output and irrigation, coal-fired regional grids can deliver capacity quickly, or a decentralized programme can electrify villages while accepting slower heavy-industry growth."
 	style = 2
 	picture = "india_v3_industry"
 
 	date = { day = 0 month = january year = 1936 }
 	offset = 5
-	deathdate = { day = 29 month = december year = 1937 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 475
+			supplies = 1500
+			manpower = 20
+			# AUBM_ACTION_RESERVE_END
 			money = 475
 			supplies = 1500
 			manpower = 20
@@ -376,6 +437,11 @@ event = {
 	}
 	action_b = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 350
+			supplies = 1250
+			manpower = 15
+			# AUBM_ACTION_RESERVE_END
 			money = 350
 			supplies = 1250
 			manpower = 15
@@ -398,6 +464,10 @@ event = {
 	}
 	action_c = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			supplies = 800
+			manpower = 10
+			# AUBM_ACTION_RESERVE_END
 			supplies = 800
 			manpower = 10
 		}
@@ -435,24 +505,31 @@ event = {
 		NOT = { flag = ind_v3_science_1937 }
 	}
 	decision_trigger = {
-	OR = {
-		AND = { money = 450 supplies = 850 }
-		AND = { supplies = 500 }
-		AND = { money = 300 supplies = 1200 }
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		OR = {
+			AND = { money = 450 supplies = 850 }
+			AND = { supplies = 500 }
+			AND = { money = 300 supplies = 1200 }
+		}
+		# AUBM_FULL_OPTION_GATE_END
 	}
-}
 
 	name = "A National System of Science"
+	decision_desc = "Cabinet funding estimates: Empower the National Planning Commission [money 450, supplies 850]; Endow autonomous universities [supplies 500]; Create the Defence Science Organisation [money 300, supplies 1,200]."
 	desc = "India's universities contain first-rate scientists but little organized state patronage. A planning commission can coordinate every technical field, competitive university grants can favour flexible civilian research, or a defence-science organization can direct talent toward the approaching international crisis."
 	style = 2
 	picture = "india_v3_industry"
 
 	date = { day = 0 month = january year = 1937 }
 	offset = 5
-	deathdate = { day = 29 month = december year = 1938 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 450
+			supplies = 850
+			# AUBM_ACTION_RESERVE_END
 			money = 450
 			supplies = 850
 		}
@@ -469,6 +546,9 @@ event = {
 	}
 	action_b = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			supplies = 500
+			# AUBM_ACTION_RESERVE_END
 			supplies = 500
 		}
 		ai_chance = 30
@@ -484,6 +564,10 @@ event = {
 	}
 	action_c = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 300
+			supplies = 1200
+			# AUBM_ACTION_RESERVE_END
 			money = 300
 			supplies = 1200
 		}
@@ -513,24 +597,32 @@ event = {
 		atwar = no
 	}
 	decision_trigger = {
-	OR = {
-		AND = { money = 850 supplies = 3000 manpower = 30 }
-		AND = { money = 600 supplies = 2150 manpower = 20 }
-		AND = { money = 550 supplies = 1500 manpower = 15 }
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		OR = {
+			AND = { money = 850 supplies = 3000 manpower = 30 }
+			AND = { money = 600 supplies = 2150 manpower = 20 }
+			AND = { money = 550 supplies = 1500 manpower = 15 }
+		}
+		# AUBM_FULL_OPTION_GATE_END
 	}
-}
 
 	name = "The Second National Plan"
+	decision_desc = "Cabinet funding estimates: Maximum strategic industrialization [money 850, supplies 3,000, manpower 30]; Balance civilian and strategic investment [money 600, supplies 2,150, manpower 20]; Build a high-technology economy [money 550, supplies 1,500, manpower 15]."
 	desc = "The first development cycle has created the foundations of a great power and the shortages of one. Delhi must choose between a maximum drive for strategic industry, a balanced consumer and armaments programme, or a technology-led plan that produces fewer factories but a more efficient economy."
 	style = 2
 	picture = "india_v3_industry"
 
 	date = { day = 0 month = february year = 1938 }
 	offset = 5
-	deathdate = { day = 29 month = june year = 1939 }
+	deathdate = { day = 29 month = june year = 1964 }
 
 	action_a = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 850
+			supplies = 3000
+			manpower = 30
+			# AUBM_ACTION_RESERVE_END
 			money = 850
 			supplies = 3000
 			manpower = 30
@@ -557,6 +649,11 @@ event = {
 	}
 	action_b = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 600
+			supplies = 2150
+			manpower = 20
+			# AUBM_ACTION_RESERVE_END
 			money = 600
 			supplies = 2150
 			manpower = 20
@@ -583,6 +680,11 @@ event = {
 	}
 	action_c = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 550
+			supplies = 1500
+			manpower = 15
+			# AUBM_ACTION_RESERVE_END
 			money = 550
 			supplies = 1500
 			manpower = 15
@@ -623,22 +725,18 @@ event = {
 
 	date = { day = 0 month = january year = 1940 }
 	offset = 10
-	deathdate = { day = 29 month = march year = 1940 }
+	deathdate = { day = 29 month = march year = 1964 }
 
 	action_a = {
 		name = "The foundation is laid"
 		command = { type = dissent value = -3 }
-		command = { type = industrial_modifier which = ic value = 5 }
-		command = { type = industrial_modifier which = money value = 5 }
-		command = { type = manpowerpool value = 25 }
-		command = { type = construct which = ic where = 1445 value = 3 trigger = { owned = { province = 1445 data = IND } } }
-		command = { type = construct which = ic where = 1447 value = 3 trigger = { owned = { province = 1447 data = IND } } }
-		command = { type = construct which = ic where = 1459 value = 3 trigger = { owned = { province = 1459 data = IND } } }
-		command = { type = construct which = ic where = 1472 value = 3 trigger = { owned = { province = 1472 data = IND } } }
-		command = { type = construct which = ic where = 1485 value = 3 trigger = { owned = { province = 1485 data = IND } } }
-		command = { type = construct which = ic where = 1502 value = 3 trigger = { owned = { province = 1502 data = IND } } }
-		command = { type = construct which = ic where = 1517 value = 3 trigger = { owned = { province = 1517 data = IND } } }
-		command = { type = construct which = ic where = 1533 value = 3 trigger = { owned = { province = 1533 data = IND } } }
+		command = { type = industrial_modifier which = ic value = 3 }
+		command = { type = industrial_modifier which = money value = 3 }
+		command = { type = manpowerpool value = 15 }
+		command = { type = construct which = ic where = 1447 value = 2 trigger = { owned = { province = 1447 data = IND } } }
+		command = { type = construct which = ic where = 1459 value = 2 trigger = { owned = { province = 1459 data = IND } } }
+		command = { type = construct which = ic where = 1502 value = 2 trigger = { owned = { province = 1502 data = IND } } }
+		command = { type = construct which = ic where = 1517 value = 2 trigger = { owned = { province = 1517 data = IND } } }
 		command = { type = setflag which = ind_v3_industrial_maturity }
 	}
 }

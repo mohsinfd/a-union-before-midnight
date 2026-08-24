@@ -20,11 +20,11 @@ event = {
 
 	date = { day = 0 month = february year = 1935 }
 	offset = 7
-	deathdate = { day = 29 month = april year = 1935 }
+	deathdate = { day = 29 month = april year = 1964 }
 
 	action_a = {
 		ai_chance = 50
-		name = "Complete corps packages: +3 land org, +2 HQ supply; costs 180/400"
+		name = "Complete corps packages"
 		command = { type = money value = -180 }
 		command = { type = supplies value = -400 }
 		command = { type = max_organization which = land value = 3 }
@@ -34,7 +34,7 @@ event = {
 	}
 	action_b = {
 		ai_chance = 30
-		name = "Modular divisional groups: +3 land morale, +2 TC; costs 150/350"
+		name = "Modular divisional groups"
 		command = { type = money value = -150 }
 		command = { type = supplies value = -350 }
 		command = { type = morale which = land value = 3 }
@@ -44,7 +44,7 @@ event = {
 	}
 	action_c = {
 		ai_chance = 20
-		name = "Prioritize the mobile reserve: +4 TC, +1 land org; costs 220/500"
+		name = "Prioritize the mobile reserve"
 		command = { type = money value = -220 }
 		command = { type = supplies value = -500 }
 		command = { type = tc_mod value = 4 }
@@ -71,11 +71,11 @@ event = {
 
 	date = { day = 0 month = august year = 1935 }
 	offset = 7
-	deathdate = { day = 29 month = october year = 1935 }
+	deathdate = { day = 29 month = october year = 1964 }
 
 	action_a = {
 		ai_chance = 55
-		name = "Balanced four-wing groups: +3 air org/+2 morale; costs 170/350"
+		name = "Balanced four-wing groups"
 		command = { type = money value = -170 }
 		command = { type = supplies value = -350 }
 		command = { type = max_organization which = air value = 3 }
@@ -94,7 +94,7 @@ event = {
 	}
 	action_c = {
 		ai_chance = 20
-		name = "Central strategic reserve: +5 air org, +1 dissent; costs 220/400"
+		name = "Central strategic reserve"
 		command = { type = money value = -220 }
 		command = { type = supplies value = -400 }
 		command = { type = dissent value = 1 }
@@ -121,11 +121,11 @@ event = {
 
 	date = { day = 0 month = november year = 1936 }
 	offset = 7
-	deathdate = { day = 29 month = january year = 1937 }
+	deathdate = { day = 29 month = january year = 1964 }
 
 	action_a = {
 		ai_chance = 35
-		name = "Carrier task groups: +4 naval org, +1 research; costs 250/550"
+		name = "Carrier task groups"
 		command = { type = money value = -250 }
 		command = { type = supplies value = -550 }
 		command = { type = max_organization which = naval value = 4 }
@@ -135,7 +135,7 @@ event = {
 	}
 	action_b = {
 		ai_chance = 30
-		name = "Battle groups: +5 naval morale, +1 defence lobby; costs 220/600"
+		name = "Battle groups"
 		command = { type = money value = -220 }
 		command = { type = supplies value = -600 }
 		command = { type = morale which = naval value = 5 }
@@ -145,7 +145,7 @@ event = {
 	}
 	action_c = {
 		ai_chance = 35
-		name = "Escort and sea-control groups: +3 naval org/+2 morale; costs 180/450"
+		name = "Escort and sea-control groups"
 		command = { type = money value = -180 }
 		command = { type = supplies value = -450 }
 		command = { type = max_organization which = naval value = 3 }
@@ -167,12 +167,15 @@ event = {
 		NOT = { flag = ind_v4_replacement_pool }
 	}
 	decision_trigger = {
+		# AUBM_FULL_OPTION_GATE_BEGIN
 		money = 400
 		supplies = 1200
 		manpower = 35
+		# AUBM_FULL_OPTION_GATE_END
 	}
 
 	name = "Create a Joint Replacement Pool"
+	decision_desc = "Cabinet funding estimates: Fund the pool [money 400, supplies 1,200, manpower 35]."
 	desc = "Ships, aircraft and corps now survive more engagements, but repairable losses still require trained drafts, spare engines and standardized components. A joint pool improves reinforcement efficiency at the cost of resources that could otherwise create new formations."
 	style = 2
 	picture = "aubm_v4_joint_replacement_pool"
@@ -183,8 +186,15 @@ event = {
 	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 400
+			supplies = 1200
+			manpower = 35
+			# AUBM_ACTION_RESERVE_END
+		}
 		ai_chance = 100
-		name = "Fund the pool: +5 reinforcement efficiency; costs 400/1200/35 manpower"
+		name = "Fund the pool"
 		command = { type = money value = -400 }
 		command = { type = supplies value = -1200 }
 		command = { type = manpowerpool value = -35 }

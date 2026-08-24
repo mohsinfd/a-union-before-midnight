@@ -1,0 +1,56 @@
+# AUBM: Persia-Caucasus theatre
+
+neutrality = 15
+war = 85
+max_front_ratio = 1.60
+
+combat = {
+	GER = 100
+	ITA = 30
+	JAP = 25
+}
+
+befriend = {
+	SOV = 140
+	PER = 140
+	AFG = 70
+}
+
+protect = {
+	PER = 130
+	AFG = 60
+}
+
+target = {
+	1093 = 90  # Zahedan
+	1085 = 100 # Tehran
+	1083 = 70  # Tabriz
+	713 = 100  # Baku
+	711 = 80   # Yerevan
+	709 = 80   # Tbilisi
+	706 = 90   # Astrakhan
+	663 = 100  # Stalingrad
+}
+
+front = {
+	recklessness = 2
+	distrib_vs_ai = op_defensive
+	distrib_vs_human = reactive
+	enemy_reinf_days = 5
+	reserve_prop = 0.14
+	panic_ratio_vs_ai = 2.5
+	panic_ratio_vs_human = 2.5
+	base_attack_odds = 1.18
+	min_attack_odds = 1.05
+	max_attack_odds = 4.0
+	reinforce_odds = 1.2
+	withdraw_odds = 0.65
+	strength = 0.9
+	organisation = 0.9
+	soft_attack = 1.1
+	hard_attack = 1.25
+	ground_defense = 1.0
+	dig_in = 1.0
+	mountain_attack = 1.25
+}
+

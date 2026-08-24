@@ -22,7 +22,7 @@
 	rare_materials         = 1200
 	oil                    = 450
 	supplies               = 4000
-	money                  = 2500
+	money                  = 3000
 	transports             = 130 
 	escorts                = 20 
   
@@ -93,15 +93,26 @@
 	# Static Anti-Air Artillery 
 	2800 2450
 	# Destroyer
-	3010 3020 3030 3040
+	3010 3020 3030 3040 3050
 	# Light Cruiser 
 	3110 3120 3130 3140
 	# Heavy Cruiser 
-	3210 3220 3230
+	3210 3220 3230 3240
+	# Battlecruiser foundations
+	3310 3320 3330
+	# Battleship foundations through the Washington era
+	3410 3420 3430 3440 3450 3456 3460
+	# Light carriers and converted carriers
+	12100 12110 12120 3510
+	# Submarines and modern troopships
+	3610 3620 3630 3640 3820
 	# Fighter 
-	4500 4510 4520 4530 4540 4550 4010
+	4500 4510 4520 4530 4540 4550 4010 4020
 	# Bomber 
-	4600 4610 4620 4630 4120
+	4600 4610 4620 4630 4120 4130
+	# Multirole, transport and maritime aviation
+	4290 4300 4310 4320 4330 4340
+	4700 4710 4740 4750 4760 4900
 	# Computers & cryptography
 	5310 54010 54020 54030 5316 5326
 	# Manufacturing
@@ -115,13 +126,27 @@
 	# Medicine
 	5600
 	# Naval Doctrines
-	8010 8020 8050
+	8010 8020 8030 8040 8050 8060 8070 8080
+	8100 8110 8120
+	8500 8510 8520
+	8900 8910 8920 8930
+	81650 82300 82500
 	# Air Doctrines 
 	27480 27490 27500 27510 27520 27530 27540 27550 27570 27580 27590 27600 9030 9020 27560 27460 27470 
 	# Great War Land Doctrines (entente)
 	6500 6510 6530 6580 6600 6610 6680 6620 6630 6640 6650 6660 6670 6540 6910
 	# Defensive Focus Grand Battleplan Path (FRA / UK)
 	6560
+	# Inherited British Indian service baseline. Independence transfers the
+	# institutions and archives already operating in India; it does not erase
+	# two decades of infantry, industrial, medical, armour, air or naval work.
+	1070 1080 1090 1560
+	2510 2630 2640 2646 2810 2820 2900 2910 2920
+	3060 3150 3250 3520 3650 12130
+	4800 4810 4820 4910
+	5010 5020 5060 5190 5327 5560 5610 5620 5630 5700 5710
+	8150 8160 8200 8210 8550 8560 8600 8610 8940 8950
+	14000 14010 14020 21180 21190
 } 
 	inventions = { 3000027 }
 	policy = 

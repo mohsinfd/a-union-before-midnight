@@ -463,9 +463,9 @@ class Validator:
 
     def validate_india_names(self) -> None:
         formation_requirements = {
-            "armynames.csv": (200, r"^[IVXLCDM]+ Indian Army Corps$"),
+            "armynames.csv": (200, r"^\d+(?:st|nd|rd|th) Indian Corps$"),
             "airnames.csv": (100, r"^No\. \d+ Indian Air Group$"),
-            "navynames.csv": (100, None),
+            "navynames.csv": (100, r"^\d+(?:st|nd|rd|th) Indian Naval Group$"),
         }
         for filename, (expected_count, pattern) in formation_requirements.items():
             path = self.root / "db" / filename
@@ -483,18 +483,6 @@ class Validator:
                 malformed = [name for name in names if not re.fullmatch(pattern, name)]
                 if malformed:
                     self.error(path, 1, f"Malformed IND formation name: {malformed[0]!r}.")
-
-        navy_path = self.root / "db" / "navynames.csv"
-        if navy_path.exists():
-            with navy_path.open(encoding="latin-1", newline="") as stream:
-                navy_names = [
-                    row[1].strip()
-                    for row in csv.reader(stream, delimiter=";")
-                    if len(row) > 1 and row[0].upper() == "IND"
-                ]
-            expected_first = ["Arabian Sea Fleet", "Bay of Bengal Fleet", "Indian Ocean Fleet"]
-            if navy_names[:3] != expected_first:
-                self.error(navy_path, 1, f"IND's first three naval formations must be {expected_first}.")
 
         path = self.root / "db" / "unitnames.csv"
         if not path.exists():

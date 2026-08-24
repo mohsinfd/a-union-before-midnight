@@ -1,0 +1,92 @@
+# AUBM: autonomous socialist India baseline
+# This is a national build posture. Theatre switch files layer targets over it.
+
+neutrality = 20
+war = 80
+max_front_ratio = 1.50
+exp_force_ratio = 0.08
+
+combat = {
+	GER = 85
+	JAP = 70
+}
+
+befriend = {
+	SOV = 120
+	CHI = 100
+	CHC = 70
+	PER = 70
+	AFG = 65
+}
+
+protect = {
+	PER = 80
+	AFG = 80
+	CHI = 60
+	NEP = 50
+	BHU = 50
+}
+
+military = {
+	relative_build_scheme = no
+
+	# Land: 66 percent
+	infantry = 27
+	cavalry = 1
+	motorized = 8
+	mechanized = 6
+	light_armor = 2
+	armor = 7
+	paratrooper = 1
+	marine = 1
+	bergsjaeger = 7
+	garrison = 0
+	hq = 6
+	militia = 0
+
+	# Air: 24 percent
+	interceptor = 7
+	multi_role = 3
+	cas = 6
+	strategic_bomber = 0
+	tactical_bomber = 6
+	naval_bomber = 1
+	transport_plane = 1
+	flying_bomb = 0
+	flying_rocket = 0
+
+	# Navy: 10 percent
+	battleship = 0
+	carrier = 1
+	light_carrier = 0
+	escort_carrier = 0
+	destroyer = 2
+	light_cruiser = 1
+	heavy_cruiser = 0
+	battlecruiser = 0
+	submarine = 3
+	nuclear_submarine = 0
+	transports = 3
+}
+
+front = {
+	recklessness = 1
+	distrib_vs_ai = op_defensive
+	distrib_vs_human = reactive
+	enemy_reinf_days = 5
+	reserve_prop = 0.18
+	panic_ratio_vs_ai = 2.5
+	panic_ratio_vs_human = 2.5
+	base_attack_odds = 1.20
+	min_attack_odds = 1.05
+	max_attack_odds = 4.0
+	reinforce_odds = 1.2
+	withdraw_odds = 0.65
+	strength = 0.9
+	organisation = 0.9
+	soft_attack = 1.1
+	hard_attack = 1.2
+	ground_defense = 1.0
+	dig_in = 1.0
+}
+

@@ -20,7 +20,7 @@ event = {
 
 	date = { day = 0 month = april year = 1933 }
 	offset = 10
-	deathdate = { day = 29 month = june year = 1933 }
+	deathdate = { day = 29 month = june year = 1964 }
 
 	action_a = {
 		ai_chance = 45
@@ -72,7 +72,7 @@ event = {
 
 	date = { day = 0 month = september year = 1933 }
 	offset = 15
-	deathdate = { day = 29 month = december year = 1933 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 25
@@ -131,7 +131,7 @@ event = {
 
 	date = { day = 0 month = july year = 1934 }
 	offset = 20
-	deathdate = { day = 29 month = october year = 1934 }
+	deathdate = { day = 29 month = october year = 1964 }
 
 	action_a = {
 		ai_chance = 50
@@ -182,7 +182,7 @@ event = {
 
 	date = { day = 0 month = november year = 1936 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1936 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 35
@@ -225,7 +225,7 @@ event = {
 	}
 	action_c = {
 		ai_chance = 20
-		name = "Bose-Patel: army/intervention +1; +2 dissent, costs 700 supplies"
+		name = "Bose-Patel"
 		command = { type = supplies value = -700 }
 		command = { type = dissent value = 2 }
 		command = { type = domestic which = professional_army value = 1 }

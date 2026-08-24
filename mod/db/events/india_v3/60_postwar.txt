@@ -13,24 +13,31 @@ event = {
 		NOT = { flag = ind_v3_advanced_science }
 	}
 	decision_trigger = {
-	OR = {
-		AND = { money = 1075 supplies = 2150 }
-		AND = { money = 800 supplies = 1750 }
-		AND = { money = 875 supplies = 2000 }
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		OR = {
+			AND = { money = 1075 supplies = 2150 }
+			AND = { money = 800 supplies = 1750 }
+			AND = { money = 875 supplies = 2000 }
+		}
+		# AUBM_FULL_OPTION_GATE_END
 	}
-}
 
 	name = "The Frontier Science Programme"
+	decision_desc = "Cabinet funding estimates: Establish the Atomic Research Directorate [money 1,075, supplies 2,150]; Create a national electronics directorate [money 800, supplies 1,750]; Fund advanced aeronautics and long-range flight [money 875, supplies 2,000]."
 	desc = "India now has the industry to pursue science beyond immediate production. Atomic research offers ultimate strategic insurance, electronics promises immediate advantages across every service, while advanced aeronautics can give India regional reach."
 	style = 2
 	picture = "india_v3_industry"
 
 	date = { day = 0 month = january year = 1941 }
 	offset = 5
-	deathdate = { day = 29 month = december year = 1943 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 1075
+			supplies = 2150
+			# AUBM_ACTION_RESERVE_END
 			money = 1075
 			supplies = 2150
 		}
@@ -46,6 +53,10 @@ event = {
 	}
 	action_b = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 800
+			supplies = 1750
+			# AUBM_ACTION_RESERVE_END
 			money = 800
 			supplies = 1750
 		}
@@ -63,6 +74,10 @@ event = {
 	}
 	action_c = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 875
+			supplies = 2000
+			# AUBM_ACTION_RESERVE_END
 			money = 875
 			supplies = 2000
 		}
@@ -86,108 +101,78 @@ event = {
 	country = IND
 
 	decision = {
-		flag = ind_v3_naval_program
-		flag = ind_v3_second_plan_1938
+		flag = ind_v3_oceanic_fleet_commissioned
 		NOT = { flag = ind_v3_oceanic_fleet }
 	}
 	decision_trigger = {
-	OR = {
-		AND = { money = 1325 supplies = 4450 manpower = 11 }
-		AND = { money = 1025 supplies = 3850 manpower = 12 }
-		AND = { money = 750 supplies = 3350 manpower = 12 }
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		OR = {
+			AND = { money = 700 supplies = 1600 }
+			AND = { money = 550 supplies = 1400 }
+			AND = { money = 450 supplies = 1100 }
+		}
+		# AUBM_FULL_OPTION_GATE_END
 	}
-}
 
-	name = "An Oceanic Fleet"
-	desc = "Industrial maturity makes a true oceanic fleet possible. Carrier aviation offers reach, a cruiser fleet offers flexible sea control, while a submarine and land-based air network can deny the ocean at lower cost."
+	name = "The Oceanic Fleet Review"
+	decision_desc = "Cabinet funding estimates: Carrier readiness [money 700, supplies 1,600]; Fleet train [money 550, supplies 1,400]; Repair and reconnaissance [money 450, supplies 1,100]."
+	desc = "India already possesses an oceanic fleet. The 1941 review therefore asks how to make existing hulls effective: train a carrier air arm, create a permanent fleet train, or build a repair and reconnaissance system. The programme no longer duplicates ships the player may have constructed."
 	style = 2
 	picture = "india_v3_armed_forces"
 
-	date = { day = 0 month = january year = 1942 }
+	date = { day = 0 month = october year = 1941 }
 	offset = 5
-	deathdate = { day = 29 month = december year = 1944 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		trigger = {
-			money = 1325
-			supplies = 4450
-			# V3_QUEUE_MANPOWER = 11
-			manpower = 11
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 700
+			supplies = 1600
+			# AUBM_ACTION_RESERVE_END
 		}
-		ai_chance = 30
-		name = "Lay the carrier-fleet foundations"
-		command = { type = money value = -1325 }
-		command = { type = supplies value = -4450 }
+		ai_chance = 40
+		name = "Carrier readiness: -700 money, -1600 supplies"
+		command = { type = money value = -700 }
+		command = { type = supplies value = -1600 }
 		command = { type = waketeam which = 250018 }
-		command = { type = construct which = naval_base where = 1517 value = 3 trigger = { owned = { province = 1517 data = IND } NOT = { building = { province = 1517 type = naval_base value = 8 } } } }
-		command = { type = construct which = naval_base where = 1493 value = 3 trigger = { owned = { province = 1493 data = IND } NOT = { building = { province = 1493 type = naval_base value = 8 } } } }
-		command = { type = construct which = air_base where = 1517 value = 3 trigger = { owned = { province = 1517 data = IND } NOT = { building = { province = 1517 type = air_base value = 8 } } } }
-		command = { type = construct which = air_base where = 1493 value = 3 trigger = { owned = { province = 1493 data = IND } NOT = { building = { province = 1493 type = air_base value = 8 } } } }
-		command = { type = activate_unit_type which = light_carrier } # AUBM_V4_UNIT_GATE light_carrier
-		command = { type = new_model which = light_carrier value = 0 } # AUBM_V4_UNIT_GATE light_carrier
-		command = { type = activate_unit_type which = light_cag } # AUBM_V4_UNIT_GATE light_cag
-		command = { type = new_model which = light_cag value = 0 } # AUBM_V4_UNIT_GATE light_cag
-		command = { type = build_division which = light_carrier value = light_cag when = 2 cost = 9 where = 360 }
-		command = { type = activate_unit_type which = destroyer } # AUBM_V4_UNIT_GATE destroyer
-		command = { type = new_model which = destroyer value = 0 } # AUBM_V4_UNIT_GATE destroyer
-		command = { type = activate_unit_type which = naval_asw } # AUBM_V4_UNIT_GATE naval_asw
-		command = { type = new_model which = naval_asw value = 0 } # AUBM_V4_UNIT_GATE naval_asw
-		command = { type = build_division which = destroyer value = naval_asw when = 4 cost = 4 where = 120 }
+		command = { type = max_organization which = naval value = 3 }
+		command = { type = morale which = naval value = 2 }
+		command = { type = max_organization which = naval value = 2 }
 		command = { type = setflag which = ind_v3_carrier_fleet }
 		command = { type = setflag which = ind_v3_oceanic_fleet }
 	}
 	action_b = {
 		trigger = {
-			money = 1025
-			supplies = 3850
-			# V3_QUEUE_MANPOWER = 12
-			manpower = 12
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 550
+			supplies = 1400
+			# AUBM_ACTION_RESERVE_END
 		}
-		ai_chance = 40
-		name = "Build a cruiser-centred control fleet"
-		command = { type = money value = -1025 }
-		command = { type = supplies value = -3850 }
-		command = { type = waketeam which = 250018 }
-		command = { type = construct which = naval_base where = 1517 value = 3 trigger = { owned = { province = 1517 data = IND } NOT = { building = { province = 1517 type = naval_base value = 8 } } } }
-		command = { type = construct which = naval_base where = 1497 value = 3 trigger = { owned = { province = 1497 data = IND } NOT = { building = { province = 1497 type = naval_base value = 8 } } } }
-		command = { type = activate_unit_type which = light_cruiser } # AUBM_V4_UNIT_GATE light_cruiser
-		command = { type = new_model which = light_cruiser value = 0 } # AUBM_V4_UNIT_GATE light_cruiser
-		command = { type = activate_unit_type which = naval_fire_controll_s } # AUBM_V4_UNIT_GATE naval_fire_controll_s
-		command = { type = new_model which = naval_fire_controll_s value = 0 } # AUBM_V4_UNIT_GATE naval_fire_controll_s
-		command = { type = build_division which = light_cruiser value = naval_fire_controll_s when = 4 cost = 7 where = 260 }
-		command = { type = activate_unit_type which = destroyer } # AUBM_V4_UNIT_GATE destroyer
-		command = { type = new_model which = destroyer value = 0 } # AUBM_V4_UNIT_GATE destroyer
-		command = { type = activate_unit_type which = naval_asw } # AUBM_V4_UNIT_GATE naval_asw
-		command = { type = new_model which = naval_asw value = 0 } # AUBM_V4_UNIT_GATE naval_asw
-		command = { type = build_division which = destroyer value = naval_asw when = 5 cost = 4 where = 120 }
+		ai_chance = 35
+		name = "Fleet train: -550 money, -1400 supplies"
+		command = { type = money value = -550 }
+		command = { type = supplies value = -1400 }
+		command = { type = max_organization which = naval value = 2 }
+		command = { type = morale which = naval value = 3 }
+		command = { type = repair_mod value = 3 }
 		command = { type = setflag which = ind_v3_cruiser_fleet }
 		command = { type = setflag which = ind_v3_oceanic_fleet }
 	}
 	action_c = {
 		trigger = {
-			money = 750
-			supplies = 3350
-			# V3_QUEUE_MANPOWER = 12
-			manpower = 12
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 450
+			supplies = 1100
+			# AUBM_ACTION_RESERVE_END
 		}
-		ai_chance = 30
-		name = "Control the ocean through denial"
-		command = { type = money value = -750 }
-		command = { type = supplies value = -3350 }
-		command = { type = construct which = naval_base where = 1421 value = 3 trigger = { owned = { province = 1421 data = IND } NOT = { building = { province = 1421 type = naval_base value = 8 } } } }
-		command = { type = construct which = air_base where = 1421 value = 3 trigger = { owned = { province = 1421 data = IND } NOT = { building = { province = 1421 type = air_base value = 8 } } } }
-		command = { type = activate_unit_type which = naval_bomber }
-		command = { type = new_model which = naval_bomber value = 0 }
-		command = { type = activate_unit_type which = escort }
-		command = { type = new_model which = escort value = 0 }
-		command = { type = activate_unit_type which = submarine } # AUBM_V4_UNIT_GATE submarine
-		command = { type = new_model which = submarine value = 0 } # AUBM_V4_UNIT_GATE submarine
-		command = { type = build_division which = submarine value = none when = 8 cost = 4 where = 100 }
-		command = { type = activate_unit_type which = naval_bomber } # AUBM_V4_UNIT_GATE naval_bomber
-		command = { type = new_model which = naval_bomber value = 0 } # AUBM_V4_UNIT_GATE naval_bomber
-		command = { type = activate_unit_type which = escort } # AUBM_V4_UNIT_GATE escort
-		command = { type = new_model which = escort value = 0 } # AUBM_V4_UNIT_GATE escort
-		command = { type = build_division which = naval_bomber value = escort when = 3 cost = 9 where = 150 }
+		ai_chance = 25
+		name = "Repair and reconnaissance: -450 money, -1100 supplies"
+		command = { type = money value = -450 }
+		command = { type = supplies value = -1100 }
+		command = { type = repair_mod value = 5 }
+		command = { type = intelligence which = us value = 2 }
+		command = { type = max_organization which = naval value = 1 }
 		command = { type = setflag which = ind_v3_ocean_denial }
 		command = { type = setflag which = ind_v3_oceanic_fleet }
 	}
@@ -203,24 +188,32 @@ event = {
 		NOT = { flag = ind_v3_third_plan }
 	}
 	decision_trigger = {
-	OR = {
-		AND = { money = 1325 supplies = 4800 manpower = 35 }
-		AND = { money = 1175 supplies = 3350 manpower = 25 }
-		AND = { money = 1250 supplies = 3700 manpower = 20 }
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		OR = {
+			AND = { money = 1325 supplies = 4800 manpower = 35 }
+			AND = { money = 1175 supplies = 3350 manpower = 25 }
+			AND = { money = 1250 supplies = 3700 manpower = 20 }
+		}
+		# AUBM_FULL_OPTION_GATE_END
 	}
-}
 
 	name = "The Third National Plan"
+	decision_desc = "Cabinet funding estimates: Build the arsenal of Asia [money 1,325, supplies 4,800, manpower 35]; Build a continental welfare and transport state [money 1,175, supplies 3,350, manpower 25]; Concentrate on oil, chemicals and advanced industry [money 1,250, supplies 3,700, manpower 20]."
 	desc = "The mature industrial economy faces a new choice. India can pursue maximum armaments, build a continental welfare and infrastructure state, or shift capital into oil, chemicals and high-technology production."
 	style = 2
 	picture = "india_v3_industry"
 
 	date = { day = 0 month = january year = 1942 }
 	offset = 5
-	deathdate = { day = 29 month = december year = 1944 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 1325
+			supplies = 4800
+			manpower = 35
+			# AUBM_ACTION_RESERVE_END
 			money = 1325
 			supplies = 4800
 			manpower = 35
@@ -244,6 +237,11 @@ event = {
 	}
 	action_b = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 1175
+			supplies = 3350
+			manpower = 25
+			# AUBM_ACTION_RESERVE_END
 			money = 1175
 			supplies = 3350
 			manpower = 25
@@ -271,6 +269,11 @@ event = {
 	}
 	action_c = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 1250
+			supplies = 3700
+			manpower = 20
+			# AUBM_ACTION_RESERVE_END
 			money = 1250
 			supplies = 3700
 			manpower = 20
@@ -311,7 +314,7 @@ event = {
 
 	date = { day = 0 month = january year = 1944 }
 	offset = 10
-	deathdate = { day = 29 month = june year = 1944 }
+	deathdate = { day = 29 month = june year = 1964 }
 
 	action_a = {
 		ai_chance = 45
@@ -367,7 +370,7 @@ event = {
 
 	date = { day = 0 month = july year = 1944 }
 	offset = 15
-	deathdate = { day = 29 month = december year = 1948 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 45

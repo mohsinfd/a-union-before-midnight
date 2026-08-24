@@ -19,9 +19,10 @@ that local foundation and applies the files listed in the release manifest.
 The repository does not redistribute the complete game or complete foundation.
 
 The V3 history of this project depended on Blood and Iron. Donor-derived V3 map
-sprites, palettes and model panels are deliberately excluded from V4. Any
-remaining archival or third-party material remains subject to the rights and
-permissions of its original author; publication here does not relicense it.
+sprites, palettes and model panels are deliberately excluded from public V4
+manifests and Git snapshots. Any remaining archival or third-party material
+remains subject to the rights and permissions of its original author;
+publication here does not relicense it.
 
 External GitHub or ModDB publication should still follow Darkest Hour community
 rules and the audit in `docs/FORUM_RELEASE_AUDIT.md`.
@@ -36,9 +37,13 @@ Image provenance, archival sources and reconstruction labels are recorded in:
 - `docs/india_historical_traits.csv`
 - `docs/v4_sprite_manifest.csv`
 
-The repository banner, generated event reconstructions and India service-sprite
-source sheets are original AI-assisted artwork created for this project. The
-V4 service sprites are not derived from Blood and Iron or another donor mod.
+The repository banner and generated event reconstructions are original
+AI-assisted artwork created for this project. Sprite source sheets and manifests
+document experimental or reconstructed material; their presence is not
+redistribution clearance. Public manifests exclude donor-derived map files,
+sprite descriptors, animation strips, palettes and model panels. Any
+developer-only local reconstruction remains subject to the original author's
+rights.
 
 ## Trademarks
 

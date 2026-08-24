@@ -1,0 +1,394 @@
+#########################################################################
+# A Union Before Midnight V4.1: campaign continuity and state-driven play
+#########################################################################
+
+# Old saves can contain every orientation flag at once because successive
+# strategy reviews did not clear the complete legacy ledger.
+event = {
+	id = 9280800
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_integrated
+		NOT = { flag = ind_v3_world_role }
+		NOT = { flag = ind_v41_strategy_ledger_reconciled }
+	}
+
+	name = "The Strategic Ledger Is Opened"
+	desc = "The Cabinet Secretariat separates diplomatic contacts from national strategy before the 1937 foreign-policy debate. India begins without a hidden alignment: the absence of an alliance is not itself non-alignment, and no strategic programme exists until the elected government chooses one."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	date = { day = 0 month = january year = 1933 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Prepare a clean ledger for the elected government"
+		command = { type = clrflag which = ind_v3_allied_orientation }
+		command = { type = clrflag which = ind_v3_axis_orientation }
+		command = { type = clrflag which = ind_v3_soviet_orientation }
+		command = { type = clrflag which = ind_v3_japanese_orientation }
+		command = { type = clrflag which = ind_v3_non_aligned }
+		command = { type = clrflag which = ind_v3_independent_asia }
+		command = { type = clrflag which = ind_v3_joined_allies }
+		command = { type = clrflag which = ind_v3_joined_axis }
+		command = { type = clrflag which = ind_v3_joined_comintern }
+		command = { type = clrflag which = ind_v3_joined_japan }
+		command = { type = clrflag which = ind_v4_strategy_allied }
+		command = { type = clrflag which = ind_v4_strategy_axis }
+		command = { type = clrflag which = ind_v4_strategy_soviet }
+		command = { type = clrflag which = ind_v4_strategy_japan }
+		command = { type = clrflag which = ind_v4_strategy_nam }
+		command = { type = clrflag which = ind_v4_strategy_independent_asia }
+		command = { type = setflag which = ind_v41_strategy_ledger_reconciled }
+	}
+}
+
+event = {
+	id = 9280801
+	random = no
+	country = IND
+
+	trigger = {
+		atwar = no
+		OR = {
+			war = { country = JAP country = ENG }
+			war = { country = JAP country = USA }
+		}
+		NOT = { flag = ind_v41_pacific_entry_debate }
+	}
+
+	name = "The War Reaches the Indian Ocean"
+	desc = "Japan now fights the western maritime powers while operating through Siam. India can enter the Allied coalition, declare a separate Asian war, seek terms with Tokyo, or remain armed but uncommitted. Every course leaves the permanent war-entry decisions open until India actually enters a conflict."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+
+	date = { day = 0 month = january year = 1939 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		ai_chance = 45
+		name = "Enter the Allies as a sovereign great power"
+		command = { type = clrflag which = ind_v3_axis_orientation }
+		command = { type = clrflag which = ind_v3_soviet_orientation }
+		command = { type = clrflag which = ind_v3_japanese_orientation }
+		command = { type = clrflag which = ind_v3_non_aligned }
+		command = { type = clrflag which = ind_v4_strategy_axis }
+		command = { type = clrflag which = ind_v4_strategy_soviet }
+		command = { type = clrflag which = ind_v4_strategy_japan }
+		command = { type = clrflag which = ind_v4_strategy_nam }
+		command = { type = clrflag which = ind_v4_strategy_independent_asia }
+		command = { type = setflag which = ind_v3_allied_orientation }
+		command = { type = setflag which = ind_v3_joined_allies }
+		command = { type = setflag which = ind_v4_strategy_allied }
+		command = { type = alliance which = ENG }
+		command = { type = dissent value = 2 }
+		command = { type = setflag which = ind_v41_pacific_entry_debate }
+	}
+	action_b = {
+		ai_chance = 25
+		name = "Declare a separate Indian war against Japan"
+		command = { type = clrflag which = ind_v3_allied_orientation }
+		command = { type = clrflag which = ind_v3_axis_orientation }
+		command = { type = clrflag which = ind_v3_soviet_orientation }
+		command = { type = clrflag which = ind_v3_japanese_orientation }
+		command = { type = clrflag which = ind_v4_strategy_allied }
+		command = { type = clrflag which = ind_v4_strategy_axis }
+		command = { type = clrflag which = ind_v4_strategy_soviet }
+		command = { type = clrflag which = ind_v4_strategy_japan }
+		command = { type = clrflag which = ind_v4_strategy_nam }
+		command = { type = setflag which = ind_v3_non_aligned }
+		command = { type = setflag which = ind_v3_independent_asia }
+		command = { type = setflag which = ind_v4_strategy_independent_asia }
+		command = { type = setflag which = ind_v41_independent_war_japan }
+		command = { type = relation which = CHI value = 35 }
+		command = { type = dissent value = 2 }
+		command = { type = war which = JAP }
+		command = { type = setflag which = ind_v41_pacific_entry_debate }
+	}
+	action_c = {
+		ai_chance = 10
+		name = "Open a sovereign Delhi-Tokyo compact"
+		command = { type = clrflag which = ind_v3_allied_orientation }
+		command = { type = clrflag which = ind_v3_axis_orientation }
+		command = { type = clrflag which = ind_v3_soviet_orientation }
+		command = { type = clrflag which = ind_v3_non_aligned }
+		command = { type = clrflag which = ind_v4_strategy_allied }
+		command = { type = clrflag which = ind_v4_strategy_axis }
+		command = { type = clrflag which = ind_v4_strategy_soviet }
+		command = { type = clrflag which = ind_v4_strategy_nam }
+		command = { type = clrflag which = ind_v4_strategy_independent_asia }
+		command = { type = setflag which = ind_v3_japanese_orientation }
+		command = { type = setflag which = ind_v4_strategy_japan }
+		command = { type = setflag which = ind_v4_japan_bilateral_channel }
+		command = { type = relation which = JAP value = 30 }
+		command = { type = relation which = CHI value = -25 }
+		command = { type = dissent value = 4 }
+		command = { type = setflag which = ind_v41_pacific_entry_debate }
+	}
+	action_d = {
+		ai_chance = 20
+		name = "Remain armed and uncommitted"
+		command = { type = clrflag which = ind_v3_allied_orientation }
+		command = { type = clrflag which = ind_v3_axis_orientation }
+		command = { type = clrflag which = ind_v3_soviet_orientation }
+		command = { type = clrflag which = ind_v3_japanese_orientation }
+		command = { type = clrflag which = ind_v4_strategy_allied }
+		command = { type = clrflag which = ind_v4_strategy_axis }
+		command = { type = clrflag which = ind_v4_strategy_soviet }
+		command = { type = clrflag which = ind_v4_strategy_japan }
+		command = { type = clrflag which = ind_v4_strategy_independent_asia }
+		command = { type = setflag which = ind_v3_non_aligned }
+		command = { type = setflag which = ind_v4_strategy_nam }
+		command = { type = supplies value = -500 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = setflag which = ind_v41_pacific_entry_debate }
+	}
+}
+
+event = {
+	id = 9280802
+	random = no
+	country = IND
+
+	trigger = {
+		OR = {
+			alliance = { country = JAP country = SIA }
+			puppet = { country = SIA country = JAP }
+		}
+		NOT = { flag = ind_v4_siamese_alignment_crisis }
+	}
+
+	name = "Bangkok Under Japanese Command"
+	desc = "Japanese access to Siamese airfields and ports changes the defence of Burma, Malaya and the Bay of Bengal whether or not Delhi has followed every earlier diplomatic exchange. The Cabinet must answer the military fact now on the map."
+	style = 2
+	picture = "aubm_v4_tokyo_proposition"
+
+	date = { day = 0 month = january year = 1937 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		ai_chance = 50
+		name = "Fortify the Burma approaches: -700 supplies"
+		command = { type = supplies value = -700 }
+		command = { type = max_organization which = land value = 1 }
+		command = { type = max_organization which = air value = 1 }
+		command = { type = relation which = JAP value = -25 }
+		command = { type = setflag which = ind_v4_siamese_alignment_crisis }
+		command = { type = setflag which = ind_v41_siam_state_reaction }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Demand a Delhi-Bangkok security conference"
+		command = { type = money value = -150 }
+		command = { type = relation which = SIA value = 15 }
+		command = { type = relation which = JAP value = -10 }
+		command = { type = setflag which = ind_v4_siamese_alignment_crisis }
+		command = { type = setflag which = ind_v41_siam_state_reaction }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Accept the assurances: +300 money, +3 dissent"
+		command = { type = money value = 300 }
+		command = { type = dissent value = 3 }
+		command = { type = relation which = JAP value = 15 }
+		command = { type = setflag which = ind_v4_siamese_alignment_crisis }
+		command = { type = setflag which = ind_v41_siam_state_reaction }
+	}
+}
+
+# Essential national institutions arrive by calendar. Earlier policy choices
+# still provide an advantage by waking them before these guarantee dates.
+event = {
+	id = 9280810
+	random = no
+	country = IND
+	trigger = {
+		year = 1935
+		NOT = { flag = ind_v41_core_research_charter }
+	}
+	name = "The National Research Charter"
+	desc = "Defence science, mechanisation and the staff colleges are made permanent national institutions. Earlier investment could establish them ahead of schedule; by 1935 their absence is no longer a viable great-power policy."
+	style = 2
+	picture = "india_v3_industry"
+	date = { day = 0 month = january year = 1935 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Guarantee the core research establishment"
+		command = { type = waketeam which = 250013 }
+		command = { type = waketeam which = 250014 }
+		command = { type = waketeam which = 250015 }
+		command = { type = waketeam which = 250017 }
+		command = { type = waketeam which = 250019 }
+		command = { type = waketeam which = 250025 }
+		command = { type = waketeam which = 250027 }
+		command = { type = setflag which = ind_v41_core_research_charter }
+	}
+}
+
+event = {
+	id = 9280811
+	random = no
+	country = IND
+	trigger = {
+		year = 1938
+		NOT = { flag = ind_v41_advanced_service_charter }
+	}
+	name = "The Advanced Service Research Charter"
+	desc = "The naval, air, signals and mechanised directorates receive permanent establishments. Strategic choices still determine blueprints and bonuses, but they can no longer erase an entire branch of Indian research."
+	style = 2
+	picture = "india_v3_industry"
+	date = { day = 0 month = january year = 1938 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Fund every advanced service school"
+		command = { type = waketeam which = 250018 }
+		command = { type = waketeam which = 250020 }
+		command = { type = waketeam which = 250021 }
+		command = { type = waketeam which = 250022 }
+		command = { type = waketeam which = 250023 }
+		command = { type = waketeam which = 250024 }
+		command = { type = waketeam which = 250026 }
+		command = { type = waketeam which = 250030 }
+		command = { type = setflag which = ind_v41_advanced_service_charter }
+	}
+}
+
+event = {
+	id = 9280812
+	random = no
+	country = IND
+	trigger = {
+		year = 1940
+		NOT = { flag = ind_v41_aeronautics_charter }
+	}
+	name = "The Aeronautics and Rocket Centre"
+	desc = "Wartime advances in propulsion, radar and high-altitude flight require a permanent centre even when earlier service politics delayed it. The institution begins on schedule; prior choices retain their two-year advantage."
+	style = 2
+	picture = "india_v3_industry"
+	date = { day = 0 month = january year = 1940 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Open the national aeronautics centre"
+		command = { type = waketeam which = 250028 }
+		command = { type = setflag which = ind_v41_aeronautics_charter }
+	}
+}
+
+event = {
+	id = 9280813
+	random = no
+	country = IND
+	trigger = {
+		year = 1944
+		NOT = { flag = ind_v41_atomic_charter }
+	}
+	name = "The National Atomic Charter"
+	desc = "The Union consolidates atomic physics and engineering under permanent commissions. Earlier scientific investment remains valuable, but a major power can no longer lose the entire field because one predecessor event failed."
+	style = 2
+	picture = "india_v3_industry"
+	date = { day = 0 month = january year = 1944 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Establish the atomic directorates"
+		command = { type = waketeam which = 250016 }
+		command = { type = waketeam which = 250029 }
+		command = { type = setflag which = ind_v41_atomic_charter }
+	}
+}
+
+event = {
+	id = 9280820
+	random = no
+	country = IND
+	trigger = {
+		year = 1936
+		NOT = { flag = ind_v41_officer_expansion }
+	}
+	name = "The Expanded Indian Officer List"
+	desc = "The staff colleges commission a broad middle generation instead of concentrating every formation under a handful of famous commanders. Senior talent remains exceptional, while previously nominal provincial officers receive practical field training."
+	style = 2
+	picture = "india_v3_armed_forces"
+	date = { day = 0 month = january year = 1936 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Issue active commissions and field evaluations"
+		command = { type = wakeleader which = 251001 }
+		command = { type = wakeleader which = 251002 }
+		command = { type = wakeleader which = 251003 }
+		command = { type = wakeleader which = 251004 }
+		command = { type = wakeleader which = 251005 }
+		command = { type = wakeleader which = 251006 }
+		command = { type = wakeleader which = 251007 }
+		command = { type = wakeleader which = 251008 }
+		command = { type = wakeleader which = 251009 }
+		command = { type = wakeleader which = 251010 }
+		command = { type = wakeleader which = 251011 }
+		command = { type = wakeleader which = 251012 }
+		command = { type = wakeleader which = 251013 }
+		command = { type = wakeleader which = 251014 }
+		command = { type = wakeleader which = 251015 }
+		command = { type = wakeleader which = 251016 }
+		command = { type = wakeleader which = 251017 }
+		command = { type = wakeleader which = 251018 }
+		command = { type = wakeleader which = 251019 }
+		command = { type = wakeleader which = 251020 }
+		command = { type = wakeleader which = 251021 }
+		command = { type = wakeleader which = 251022 }
+		command = { type = wakeleader which = 251023 }
+		command = { type = wakeleader which = 251107 }
+		command = { type = add_leader_skill which = 251002 value = 1 }
+		command = { type = add_leader_skill which = 251003 value = 1 }
+		command = { type = add_leader_skill which = 251004 value = 1 }
+		command = { type = add_leader_skill which = 251007 value = 1 }
+		command = { type = add_leader_skill which = 251009 value = 1 }
+		command = { type = add_leader_skill which = 251016 value = 1 }
+		command = { type = add_leader_skill which = 251018 value = 1 }
+		command = { type = add_leader_skill which = 251020 value = 1 }
+		command = { type = setflag which = ind_v41_officer_expansion }
+	}
+}
+
+event = {
+	id = 9280830
+	random = no
+	persistent = yes
+	country = IND
+
+	decision = {
+		flag = ind_v3_gandhi_mandate
+		NOT = { flag = ind_v3_restored_coalition }
+		NOT = { flag = ind_v3_postwar_mandate }
+		OR = {
+			NOT = { headofstate = 251041 }
+			NOT = { headofgovernment = 251002 }
+		}
+	}
+	decision_trigger = {
+		flag = ind_v3_gandhi_mandate
+		NOT = { flag = ind_v3_restored_coalition }
+		NOT = { flag = ind_v3_postwar_mandate }
+	}
+
+	name = "Reconfirm the Gandhi-Nehru Mandate"
+	desc = "The President may order the Gazette to restore the constitutional executive selected in the 1936 mandate. Domestic slider changes may still alter the working cabinet, but they will no longer silently replace the Head of State or Head of Government."
+	style = 2
+	picture = "india_v3_independence"
+	date = { day = 0 month = january year = 1937 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Restore Gandhi and Nehru"
+		command = { type = headofstate which = 251041 }
+		command = { type = headofgovernment which = 251002 }
+	}
+}

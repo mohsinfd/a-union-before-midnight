@@ -1,6 +1,7 @@
 param(
     [string]$GameRoot,
-    [string]$RepositoryRoot = (Split-Path -Parent $PSScriptRoot)
+    [string]$RepositoryRoot = (Split-Path -Parent $PSScriptRoot),
+    [switch]$IncludePersonalSprites
 )
 
 $ErrorActionPreference = "Stop"
@@ -129,6 +130,83 @@ function Disable-GenericPurgeForIndia {
     )
 }
 
+function Exclude-IndiaFromGenericMobilization {
+    $relativePath = "db\events\Mobilization.txt"
+    Copy-StockFile $relativePath
+    $path = Join-Path $script:OverlayRoot $relativePath
+    $text = Get-Content -LiteralPath $path -Raw
+    $updated = [regex]::Replace(
+        $text,
+        '(?<![A-Z0-9])IND(?![A-Z0-9])',
+        ''
+    )
+    if ($updated -eq $text) {
+        throw "India was not present in the generic mobilization TAG lists."
+    }
+    [System.IO.File]::WriteAllText(
+        $path,
+        $updated,
+        [System.Text.Encoding]::GetEncoding(1252)
+    )
+}
+
+function Exclude-IndiaFromGenericElections {
+    $relativePath = "db\events\Election_day.txt"
+    Copy-StockFile $relativePath
+    $path = Join-Path $script:OverlayRoot $relativePath
+    $text = Get-Content -LiteralPath $path -Raw
+    $updated = [regex]::Replace(
+        $text,
+        '(?<![A-Z0-9])IND(?![A-Z0-9])',
+        ''
+    )
+    if ($updated -eq $text) {
+        throw "India was not present in the generic election TAG lists."
+    }
+    [System.IO.File]::WriteAllText(
+        $path,
+        $updated,
+        [System.Text.Encoding]::GetEncoding(1252)
+    )
+}
+
+function Add-SovereignIndiaToJapanAI {
+    $relativePaths = @(
+        "ai\jap_1933.ai",
+        "ai\jap_1936.ai",
+        "ai\jap_1939.ai",
+        "ai\jap_1940.ai",
+        "ai\switch\jap_backoff.ai",
+        "ai\switch\jap_backoff2.ai",
+        "ai\switch\jap_backoff2_siam.ai",
+        "ai\switch\jap_backoff_remove.ai",
+        "ai\switch\JAP_Backoff_Remove_Siam.ai",
+        "ai\switch\jap_chc.ai",
+        "ai\switch\jap_china.ai",
+        "ai\switch\jap_naval_nei.ai",
+        "ai\switch\JAP_Naval_PHI.ai"
+    )
+
+    foreach ($relativePath in $relativePaths) {
+        Copy-StockFile $relativePath
+        $path = Join-Path $script:OverlayRoot $relativePath
+        $lines = @(Get-Content -LiteralPath $path)
+        $updated = New-Object System.Collections.Generic.List[string]
+        $replacements = 0
+        foreach ($line in $lines) {
+            $updated.Add($line)
+            if ($line -match '^(\s*)U02\s*=\s*([^#\r\n]+)(.*)$') {
+                $updated.Add("$($Matches[1])IND = $($Matches[2].Trim())$($Matches[3])")
+                $replacements++
+            }
+        }
+        if ($replacements -eq 0) {
+            throw "Japan AI file has no British Raj U02 policy to mirror for India: $relativePath"
+        }
+        Write-Text -Path $path -Lines $updated
+    }
+}
+
 function Build-EventsIndex {
     Copy-StockFile "db\events.txt"
     $path = Join-Path $script:OverlayRoot "db\events.txt"
@@ -170,9 +248,34 @@ function Build-EventsIndex {
         "00_world_bootstrap.txt",
         "05_union_integration.txt",
         "10_world_reactions.txt",
+        "12_campaign_systems.txt",
         "15_operational_command.txt",
+        "18_manpower_reserves.txt",
         "20_procurement.txt",
-        "30_war_settlements.txt"
+        "22_crisis_interventions.txt",
+        "25_global_war.txt",
+        "26_grand_strategy.txt",
+        "27_dynamic_strategy.txt",
+        "28_foreign_responses.txt",
+        "29_world_pressure.txt",
+        "30_war_settlements.txt",
+        "31_campaign_continuity.txt",
+        "32_national_consolidation.txt",
+        "35_japan_partnership.txt",
+        "36_allied_campaigns.txt",
+        "37_german_campaigns.txt",
+        "38_soviet_campaigns.txt",
+        "39_non_aligned_campaigns.txt",
+        "40_special_units_and_capital_ships.txt",
+        "41_wartime_state.txt",
+        "42_wartime_theatres.txt",
+        "43_wartime_settlements.txt",
+        "44_wartime_economy.txt",
+        "45_enemy_campaigns.txt",
+        "46_regional_campaigns.txt",
+		"47_global_campaign_matrix.txt",
+		"48_route_wartime_consequences.txt",
+		"49_bespoke_armistices.txt"
     )) {
         $lines += "event = `"db\events\aubm_v4\$name`""
     }
@@ -256,10 +359,83 @@ function Build-UnitedKingdomScenario {
     )
 }
 
+function Enable-NavalConversions {
+    $routes = [ordered]@{
+        "db\units\divisions\battleship.txt" = @(
+            "upgrade = { type = carrier upgrade_time_factor = 0.90 upgrade_cost_factor = 0.70 }"
+        )
+        "db\units\divisions\battlecruiser.txt" = @(
+            "upgrade = { type = carrier upgrade_time_factor = 0.80 upgrade_cost_factor = 0.75 }"
+        )
+        "db\units\divisions\heavy_cruiser.txt" = @(
+            "upgrade = { type = light_carrier upgrade_time_factor = 0.32 upgrade_cost_factor = 0.60 }",
+            "upgrade = { type = escort_carrier upgrade_time_factor = 0.45 upgrade_cost_factor = 0.35 }"
+        )
+        "db\units\divisions\light_cruiser.txt" = @(
+            "upgrade = { type = light_carrier upgrade_time_factor = 0.30 upgrade_cost_factor = 0.65 }",
+            "upgrade = { type = escort_carrier upgrade_time_factor = 0.42 upgrade_cost_factor = 0.35 }"
+        )
+        "db\units\divisions\transport.txt" = @(
+            "upgrade = { type = light_carrier upgrade_time_factor = 0.30 upgrade_cost_factor = 1.00 }",
+            "upgrade = { type = escort_carrier upgrade_time_factor = 0.40 upgrade_cost_factor = 0.60 }"
+        )
+    }
+
+    $encoding = [System.Text.Encoding]::GetEncoding(1252)
+    foreach ($entry in $routes.GetEnumerator()) {
+        Copy-StockFile $entry.Key
+        $path = Join-Path $script:OverlayRoot $entry.Key
+        $text = [System.IO.File]::ReadAllText($path, $encoding)
+        if ([regex]::IsMatch($text, '(?m)^upgrade\s*=')) {
+            throw "Darkest Hour Full unexpectedly defines naval conversions in $($entry.Key)."
+        }
+        $firstLineEnd = $text.IndexOf("`n")
+        if ($firstLineEnd -lt 0) {
+            throw "Malformed naval unit definition: $($entry.Key)"
+        }
+        $block = @(
+            @("# AUBM V4.2: refit an existing hull through the normal upgrade budget.") +
+            @($entry.Value)
+        ) -join "`r`n"
+        $text = $text.Insert($firstLineEnd + 1, "`r`n$block`r`n")
+        [System.IO.File]::WriteAllText($path, $text, $encoding)
+    }
+}
+
+function Enable-LandConversionUsability {
+    $encoding = [System.Text.Encoding]::GetEncoding(1252)
+    $routes = [ordered]@{
+        "db\units\divisions\cavalry.txt" = @{
+            Pattern = '(?m)^upgrade\s*=\s*\{\s*type\s*=\s*motorized\b[^}\r\n]*\}'
+            Replacement = 'upgrade = { type = motorized upgrade_time_factor = 0.45 upgrade_cost_factor = 0.45 }'
+        }
+        "db\units\divisions\militia.txt" = @{
+            Pattern = '(?m)^upgrade\s*=\s*\{\s*type\s*=\s*infantry\b[^}\r\n]*\}'
+            Replacement = 'upgrade = { type = infantry upgrade_time_factor = 0.45 upgrade_cost_factor = 0.70 }'
+        }
+        "db\units\divisions\garrison.txt" = @{
+            Pattern = '(?m)^upgrade\s*=\s*\{\s*type\s*=\s*infantry\b[^}\r\n]*\}'
+            Replacement = 'upgrade = { type = infantry upgrade_time_factor = 0.50 upgrade_cost_factor = 0.70 }'
+        }
+    }
+
+    foreach ($entry in $routes.GetEnumerator()) {
+        Copy-StockFile $entry.Key
+        $path = Join-Path $script:OverlayRoot $entry.Key
+        $text = [System.IO.File]::ReadAllText($path, $encoding)
+        $updated = [regex]::Replace($text, $entry.Value.Pattern, $entry.Value.Replacement)
+        if ($updated -eq $text) {
+            throw "Expected conversion route was not found in $($entry.Key)."
+        }
+        [System.IO.File]::WriteAllText($path, $updated, $encoding)
+    }
+}
+
 $GameRoot = Resolve-GameRoot $GameRoot
 $script:StockRoot = Join-Path $GameRoot "Mods\Darkest Hour Full"
 $repositoryFullPath = [System.IO.Path]::GetFullPath($RepositoryRoot)
 $script:OverlayRoot = Join-Path $repositoryFullPath "mod"
+$python = Get-Command python -ErrorAction Stop
 
 if (-not (Test-Path -LiteralPath $script:StockRoot -PathType Container)) {
     throw "Darkest Hour Full was not found at: $script:StockRoot"
@@ -276,20 +452,51 @@ foreach ($nameFile in @(
 )) {
     Replace-TaggedRowsWithOverlayRows -RelativePath $nameFile -Tag "IND"
 }
+& (Join-Path $repositoryFullPath "tools\Set-V4-IndiaFormationNames.ps1") -RepositoryRoot $repositoryFullPath
 Replace-TaggedRowsWithOverlayRows -RelativePath "db\country.csv" -Tag "IND"
 
 Add-IndiaPersonalityDefinitions
 Disable-GenericPurgeForIndia
+Exclude-IndiaFromGenericMobilization
+Exclude-IndiaFromGenericElections
+Add-SovereignIndiaToJapanAI
 Build-EventsIndex
 Build-Scenario
 Build-UnitedKingdomScenario
+Enable-LandConversionUsability
+Enable-NavalConversions
 Copy-StockFile "db\misc.txt"
 
 & (Join-Path $repositoryFullPath "tools\Set-V4-CombatRules.ps1") -RepositoryRoot $repositoryFullPath
 & (Join-Path $repositoryFullPath "tools\Set-V4-IndiaOOB.ps1") -RepositoryRoot $repositoryFullPath
+Copy-StockFile "db\units\division_types.txt"
+& (Join-Path $repositoryFullPath "tools\Ensure-Aubm-SpecialUnits.ps1") -RepositoryRoot $repositoryFullPath
 & (Join-Path $repositoryFullPath "tools\Ensure-V4-EventUnitAvailability.ps1") -RepositoryRoot $repositoryFullPath
+& (Join-Path $repositoryFullPath "tools\Ensure-V4-EventProcurement.ps1") -RepositoryRoot $repositoryFullPath
+& $python.Source (Join-Path $repositoryFullPath "tools\normalize_v4_procurement_gates.py")
+if ($LASTEXITCODE -ne 0) {
+    throw "Procurement-gate normalization failed with exit code $LASTEXITCODE."
+}
+& $python.Source (Join-Path $repositoryFullPath "tools\ensure_decision_visibility.py") --root $repositoryFullPath
+if ($LASTEXITCODE -ne 0) {
+    throw "Decision-visibility normalization failed with exit code $LASTEXITCODE."
+}
 & (Join-Path $repositoryFullPath "tools\Ensure-V4-ConstructionSafety.ps1") -RepositoryRoot $repositoryFullPath
 & (Join-Path $repositoryFullPath "tools\Ensure-V4-EventPictures.ps1") -RepositoryRoot $repositoryFullPath -GameRoot $GameRoot
+if ($IncludePersonalSprites) {
+    & (Join-Path $repositoryFullPath "tools\Build-Aubm-IndiaSprites.ps1") `
+        -RepositoryRoot $repositoryFullPath `
+        -GameRoot $GameRoot `
+        -BloodAndIronPath (Join-Path $GameRoot "Mods\Blood and Iron v1.1")
+
+    & $python.Source (Join-Path $repositoryFullPath "tools\validate_aubm_sprites.py") `
+        --root $repositoryFullPath `
+        --game-root $GameRoot `
+        --skip-idempotence
+    if ($LASTEXITCODE -ne 0) {
+        throw "India sprite validation failed with exit code $LASTEXITCODE."
+    }
+}
 
 Write-Host "V4 overlay rebased onto Darkest Hour Full:"
 Write-Host "  $script:OverlayRoot"

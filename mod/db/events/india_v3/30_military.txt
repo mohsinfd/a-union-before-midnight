@@ -13,97 +13,104 @@ event = {
 		NOT = { flag = ind_v3_army_reform }
 	}
 	decision_trigger = {
-	OR = {
-		AND = { supplies = 750 manpower = 96 }
-		AND = { money = 225 supplies = 900 manpower = 49 }
-		AND = { money = 275 supplies = 1100 manpower = 60 }
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		OR = {
+			AND = { supplies = 750 manpower = 24 }
+			AND = { money = 225 supplies = 900 manpower = 30 }
+			AND = { money = 275 supplies = 1100 manpower = 24 }
+		}
+		# AUBM_FULL_OPTION_GATE_END
 	}
-}
 
 	name = "Rebuild the Indian Army"
+	decision_desc = "Cabinet funding estimates: Four citizen divisions and 60 trained reservists [supplies 750, manpower 24]; Two infantry divisions and one field headquarters [money 225, supplies 900, manpower 30]; Four mobile and combined-arms formations [money 275, supplies 1,100, manpower 24]."
 	desc = "The army is large on paper but divided among regular formations, provincial commands and princely forces. A citizen army offers numbers and national integration, a compact professional force offers readiness, and a mobile doctrine offers future striking power at the greatest technical cost."
 	style = 2
 	picture = "india_v3_armed_forces"
 
 	date = { day = 0 month = february year = 1934 }
 	offset = 5
-	deathdate = { day = 29 month = december year = 1935 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
 			supplies = 750
-			# V3_QUEUE_MANPOWER = 96
-			manpower = 96
+			manpower = 24
+			# AUBM_ACTION_RESERVE_END
+			supplies = 750
+			manpower = 24
 		}
 		ai_chance = 35
-		name = "Build a national citizen army"
+		name = "Four citizen divisions and 60 trained reservists"
 
 		command = { type = supplies value = -750 }
 		command = { type = dissent value = 2 }
 		command = { type = manpowerpool value = 60 }
+		command = { type = manpowerpool value = -24 }
 		command = { type = domestic which = professional_army value = -1 }
-		command = { type = activate_unit_type which = infantry } # AUBM_V4_UNIT_GATE infantry
-		command = { type = new_model which = infantry value = 0 } # AUBM_V4_UNIT_GATE infantry
-		command = { type = activate_unit_type which = artillery } # AUBM_V4_UNIT_GATE artillery
-		command = { type = new_model which = artillery value = 0 } # AUBM_V4_UNIT_GATE artillery
-		command = { type = build_division which = infantry value = artillery when = 3 cost = 5 where = 60 }
-		command = { type = build_division which = infantry value = artillery when = 3 cost = 5 where = 60 }
+		command = { type = add_corps which = "Citizen Army Training Command" value = land where = 1459 }
+		command = { type = add_division which = "1st Union Citizen Division" value = infantry when = -1 where = artillery }
+		command = { type = add_division which = "2nd Union Citizen Division" value = infantry when = -1 where = engineer }
+		command = { type = add_division which = "3rd Union Citizen Division" value = infantry when = -1 where = artillery }
+		command = { type = add_division which = "4th Union Citizen Division" value = infantry when = -1 where = engineer }
+		command = { type = setflag which = ind_v42_army_reward_contract }
 		command = { type = setflag which = ind_v3_mass_army }
 		command = { type = setflag which = ind_v3_army_reform }
 	}
 	action_b = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
 			money = 225
 			supplies = 900
-			# V3_QUEUE_MANPOWER = 49
-			manpower = 49
+			manpower = 30
+			# AUBM_ACTION_RESERVE_END
+			money = 225
+			supplies = 900
+			manpower = 30
 		}
 		ai_chance = 45
-		name = "Create a compact professional force"
+		name = "Two infantry divisions and one field headquarters"
 		command = { type = money value = -225 }
 		command = { type = supplies value = -900 }
+		command = { type = manpowerpool value = -30 }
 		command = { type = dissent value = -1 }
 		command = { type = domestic which = professional_army value = 2 }
-		command = { type = activate_unit_type which = infantry } # AUBM_V4_UNIT_GATE infantry
-		command = { type = new_model which = infantry value = 0 } # AUBM_V4_UNIT_GATE infantry
-		command = { type = activate_unit_type which = engineer } # AUBM_V4_UNIT_GATE engineer
-		command = { type = new_model which = engineer value = 0 } # AUBM_V4_UNIT_GATE engineer
-		command = { type = build_division which = infantry value = engineer when = 2 cost = 6 where = 75 }
-		command = { type = activate_unit_type which = hq } # AUBM_V4_UNIT_GATE hq
-		command = { type = new_model which = hq value = 0 } # AUBM_V4_UNIT_GATE hq
-		command = { type = activate_unit_type which = anti_air } # AUBM_V4_UNIT_GATE anti_air
-		command = { type = new_model which = anti_air value = 0 } # AUBM_V4_UNIT_GATE anti_air
-		command = { type = build_division which = hq value = anti_air when = 1 cost = 8 where = 120 }
+		command = { type = add_corps which = "Indian Professional Field Force" value = land where = 1459 }
+		command = { type = add_division which = "1st Professional Infantry Cadre" value = infantry when = -1 where = engineer }
+		command = { type = add_division which = "2nd Professional Infantry Cadre" value = infantry when = -1 where = artillery }
+		command = { type = add_division which = "Indian Professional Headquarters Cadre" value = hq when = -1 where = anti_air }
+		command = { type = setflag which = ind_v42_army_reward_contract }
 		command = { type = setflag which = ind_v3_professional_army }
 		command = { type = setflag which = ind_v3_army_reform }
 	}
 	action_c = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
 			money = 275
 			supplies = 1100
-			# V3_QUEUE_MANPOWER = 60
-			manpower = 60
+			manpower = 24
+			# AUBM_ACTION_RESERVE_END
+			money = 275
+			supplies = 1100
+			manpower = 24
 		}
 		ai_chance = 20
-		name = "Bet on mobility and combined arms"
+		name = "Four mobile and combined-arms formations"
 		command = { type = money value = -275 }
 		command = { type = supplies value = -1100 }
+		command = { type = manpowerpool value = -24 }
 		command = { type = dissent value = 2 }
 		command = { type = domestic which = professional_army value = 1 }
 		command = { type = domestic which = defense_lobby value = 1 }
 		command = { type = waketeam which = 250019 }
 		command = { type = activate_unit_type which = tank_destroyer }
-		command = { type = new_model which = tank_destroyer value = 0 }
-		command = { type = activate_unit_type which = cavalry } # AUBM_V4_UNIT_GATE cavalry
-		command = { type = new_model which = cavalry value = 0 } # AUBM_V4_UNIT_GATE cavalry
-		command = { type = activate_unit_type which = armored_car } # AUBM_V4_UNIT_GATE armored_car
-		command = { type = new_model which = armored_car value = 0 } # AUBM_V4_UNIT_GATE armored_car
-		command = { type = build_division which = cavalry value = armored_car when = 2 cost = 7 where = 90 }
-		command = { type = activate_unit_type which = infantry } # AUBM_V4_UNIT_GATE infantry
-		command = { type = new_model which = infantry value = 0 } # AUBM_V4_UNIT_GATE infantry
-		command = { type = activate_unit_type which = tank_destroyer } # AUBM_V4_UNIT_GATE tank_destroyer
-		command = { type = new_model which = tank_destroyer value = 0 } # AUBM_V4_UNIT_GATE tank_destroyer
-		command = { type = build_division which = infantry value = tank_destroyer when = 2 cost = 6 where = 75 }
+		command = { type = add_corps which = "Indian Mobile Force" value = land where = 1459 }
+		command = { type = add_division which = "1st Indian Mobile Cavalry Cadre" value = cavalry when = -1 where = armored_car }
+		command = { type = add_division which = "2nd Indian Mobile Cavalry Cadre" value = cavalry when = -1 where = armored_car }
+		command = { type = add_division which = "1st Indian Combined-Arms Cadre" value = infantry when = -1 where = tank_destroyer }
+		command = { type = add_division which = "2nd Indian Combined-Arms Cadre" value = infantry when = -1 where = tank_destroyer }
+		command = { type = setflag which = ind_v42_army_reward_contract }
 		command = { type = setflag which = ind_v3_mobile_army }
 		command = { type = setflag which = ind_v3_army_reform }
 	}
@@ -119,28 +126,36 @@ event = {
 		NOT = { flag = ind_v3_air_program }
 	}
 	decision_trigger = {
-	OR = {
-		AND = { money = 300 supplies = 1000 manpower = 3 }
-		AND = { money = 275 supplies = 1150 manpower = 6 }
-		AND = { supplies = 600 manpower = 3 }
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		OR = {
+			AND = { money = 300 supplies = 1000 manpower = 1 }
+			AND = { money = 275 supplies = 1150 manpower = 1 }
+			AND = { supplies = 600 manpower = 1 }
+		}
+		# AUBM_FULL_OPTION_GATE_END
 	}
-}
 
 	name = "An Indian Aviation Industry"
+	decision_desc = "Cabinet funding estimates: Prioritize fighters and air defence [money 300, supplies 1,000, manpower 1]; Build an army-cooperation air force [money 275, supplies 1,150, manpower 1]; Begin with civil aviation and transport [supplies 600, manpower 1]."
 	desc = "Aircraft have to be designed, tested and built at home if India is to control its skies. Fighters best protect the industrial heartland, tactical aviation gives the army reach, while a dual-use civil programme develops industry and transport before expanding the combat arm."
 	style = 2
 	picture = "india_v3_armed_forces"
 
 	date = { day = 0 month = january year = 1935 }
 	offset = 5
-	deathdate = { day = 29 month = december year = 1936 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
 			money = 300
 			supplies = 1000
-			# V3_QUEUE_MANPOWER = 3
-			manpower = 3
+			manpower = 1
+			# AUBM_ACTION_RESERVE_END
+			money = 300
+			supplies = 1000
+			# V3_QUEUE_MANPOWER = 1
+			manpower = 1
 		}
 		ai_chance = 40
 		name = "Prioritize fighters and air defence"
@@ -151,21 +166,21 @@ event = {
 		command = { type = construct which = air_base where = 1459 value = 3 trigger = { owned = { province = 1459 data = IND } NOT = { building = { province = 1459 type = air_base value = 8 } } } }
 		command = { type = construct which = air_base where = 1447 value = 3 trigger = { owned = { province = 1447 data = IND } NOT = { building = { province = 1447 type = air_base value = 8 } } } }
 		command = { type = activate_unit_type which = escort }
-		command = { type = new_model which = escort value = 0 }
-		command = { type = activate_unit_type which = interceptor } # AUBM_V4_UNIT_GATE interceptor
-		command = { type = new_model which = interceptor value = 0 } # AUBM_V4_UNIT_GATE interceptor
-		command = { type = activate_unit_type which = escort } # AUBM_V4_UNIT_GATE escort
-		command = { type = new_model which = escort value = 0 } # AUBM_V4_UNIT_GATE escort
-		command = { type = build_division which = interceptor value = escort when = 2 cost = 8 where = 120 }
+		command = { type = build_division which = interceptor when = 1 where = 75 }
 		command = { type = setflag which = ind_v3_fighter_air_program }
 		command = { type = setflag which = ind_v3_air_program }
 	}
 	action_b = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
 			money = 275
 			supplies = 1150
-			# V3_QUEUE_MANPOWER = 6
-			manpower = 6
+			manpower = 1
+			# AUBM_ACTION_RESERVE_END
+			money = 275
+			supplies = 1150
+			# V3_QUEUE_MANPOWER = 1
+			manpower = 1
 		}
 		ai_chance = 35
 		name = "Build an army-cooperation air force"
@@ -176,20 +191,19 @@ event = {
 		command = { type = construct which = air_base where = 1485 value = 3 trigger = { owned = { province = 1485 data = IND } NOT = { building = { province = 1485 type = air_base value = 8 } } } }
 		command = { type = construct which = air_base where = 1530 value = 3 trigger = { owned = { province = 1530 data = IND } NOT = { building = { province = 1530 type = air_base value = 8 } } } }
 		command = { type = activate_unit_type which = escort }
-		command = { type = new_model which = escort value = 0 }
-		command = { type = activate_unit_type which = tactical_bomber } # AUBM_V4_UNIT_GATE tactical_bomber
-		command = { type = new_model which = tactical_bomber value = 0 } # AUBM_V4_UNIT_GATE tactical_bomber
-		command = { type = activate_unit_type which = escort } # AUBM_V4_UNIT_GATE escort
-		command = { type = new_model which = escort value = 0 } # AUBM_V4_UNIT_GATE escort
-		command = { type = build_division which = tactical_bomber value = escort when = 2 cost = 9 where = 150 }
+		command = { type = build_division which = tactical_bomber value = escort when = 1 where = 105 }
 		command = { type = setflag which = ind_v3_tactical_air_program }
 		command = { type = setflag which = ind_v3_air_program }
 	}
 	action_c = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
 			supplies = 600
-			# V3_QUEUE_MANPOWER = 3
-			manpower = 3
+			manpower = 1
+			# AUBM_ACTION_RESERVE_END
+			supplies = 600
+			# V3_QUEUE_MANPOWER = 1
+			manpower = 1
 		}
 		ai_chance = 25
 		name = "Begin with civil aviation and transport"
@@ -203,14 +217,8 @@ event = {
 		command = { type = construct which = air_base where = 1517 value = 3 trigger = { owned = { province = 1517 data = IND } NOT = { building = { province = 1517 type = air_base value = 8 } } } }
 		command = { type = construct which = air_base where = 1533 value = 3 trigger = { owned = { province = 1533 data = IND } NOT = { building = { province = 1533 type = air_base value = 8 } } } }
 		command = { type = activate_unit_type which = transport_plane }
-		command = { type = new_model which = transport_plane value = 0 }
 		command = { type = activate_unit_type which = escort }
-		command = { type = new_model which = escort value = 0 }
-		command = { type = activate_unit_type which = transport_plane } # AUBM_V4_UNIT_GATE transport_plane
-		command = { type = new_model which = transport_plane value = 0 } # AUBM_V4_UNIT_GATE transport_plane
-		command = { type = activate_unit_type which = escort } # AUBM_V4_UNIT_GATE escort
-		command = { type = new_model which = escort value = 0 } # AUBM_V4_UNIT_GATE escort
-		command = { type = build_division which = transport_plane value = escort when = 1 cost = 8 where = 180 }
+		command = { type = build_division which = transport_plane value = escort when = 1 where = 120 }
 		command = { type = setflag which = ind_v3_civil_air_program }
 		command = { type = setflag which = ind_v3_air_program }
 	}
@@ -226,75 +234,78 @@ event = {
 		NOT = { flag = ind_v3_naval_program }
 	}
 	decision_trigger = {
-	OR = {
-		AND = { money = 325 supplies = 1350 manpower = 7 }
-		AND = { supplies = 1150 manpower = 6 }
-		AND = { money = 450 supplies = 1800 manpower = 3 }
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		OR = {
+			AND = { money = 325 supplies = 1350 manpower = 2 }
+			AND = { supplies = 1150 manpower = 2 }
+			AND = { money = 450 supplies = 1800 manpower = 1 }
+		}
+		# AUBM_FULL_OPTION_GATE_END
 	}
-}
 
 	name = "Command of the Indian Ocean"
+	decision_desc = "Cabinet funding estimates: Build escorts and light cruisers [money 325, supplies 1,350, manpower 2]; Adopt a sea-denial strategy [supplies 1,150, manpower 2]; Lay foundations for a blue-water fleet [money 450, supplies 1,800, manpower 1]."
 	desc = "India's coasts and sea lanes cannot be defended by a ceremonial marine. A balanced escort fleet protects trade, submarines offer denial at low cost, while a blue-water programme lays expensive foundations for cruisers and carriers."
 	style = 2
 	picture = "india_v3_armed_forces"
 
 	date = { day = 0 month = july year = 1935 }
 	offset = 5
-	deathdate = { day = 29 month = december year = 1937 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
 			money = 325
 			supplies = 1350
-			# V3_QUEUE_MANPOWER = 7
-			manpower = 7
+			manpower = 2
+			# AUBM_ACTION_RESERVE_END
+			money = 325
+			supplies = 1350
+			# V3_QUEUE_MANPOWER = 2
+			manpower = 2
 		}
 		ai_chance = 45
 		name = "Build escorts and light cruisers"
 		command = { type = money value = -325 }
 		command = { type = supplies value = -1350 }
 		command = { type = waketeam which = 250018 }
-		command = { type = activate_unit_type which = destroyer } # AUBM_V4_UNIT_GATE destroyer
-		command = { type = new_model which = destroyer value = 0 } # AUBM_V4_UNIT_GATE destroyer
-		command = { type = activate_unit_type which = naval_asw } # AUBM_V4_UNIT_GATE naval_asw
-		command = { type = new_model which = naval_asw value = 0 } # AUBM_V4_UNIT_GATE naval_asw
-		command = { type = build_division which = destroyer value = naval_asw when = 3 cost = 4 where = 150 }
-		command = { type = activate_unit_type which = light_cruiser } # AUBM_V4_UNIT_GATE light_cruiser
-		command = { type = new_model which = light_cruiser value = 0 } # AUBM_V4_UNIT_GATE light_cruiser
-		command = { type = activate_unit_type which = naval_anti_air_s } # AUBM_V4_UNIT_GATE naval_anti_air_s
-		command = { type = new_model which = naval_anti_air_s value = 0 } # AUBM_V4_UNIT_GATE naval_anti_air_s
-		command = { type = build_division which = light_cruiser value = naval_anti_air_s when = 2 cost = 6 where = 240 }
+		command = { type = build_division which = destroyer value = naval_asw when = 1 where = 90 }
+		command = { type = build_division which = light_cruiser value = naval_anti_air_s when = 1 where = 150 }
 		command = { type = setflag which = ind_v3_escort_fleet }
 		command = { type = setflag which = ind_v3_naval_program }
 	}
 	action_b = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
 			supplies = 1150
-			# V3_QUEUE_MANPOWER = 6
-			manpower = 6
+			manpower = 2
+			# AUBM_ACTION_RESERVE_END
+			supplies = 1150
+			# V3_QUEUE_MANPOWER = 2
+			manpower = 2
 		}
 		ai_chance = 30
 		name = "Adopt a sea-denial strategy"
 
 		command = { type = supplies value = -1150 }
 		command = { type = waketeam which = 250018 }
-		command = { type = activate_unit_type which = submarine } # AUBM_V4_UNIT_GATE submarine
-		command = { type = new_model which = submarine value = 0 } # AUBM_V4_UNIT_GATE submarine
-		command = { type = build_division which = submarine value = none when = 4 cost = 4 where = 150 }
-		command = { type = activate_unit_type which = destroyer } # AUBM_V4_UNIT_GATE destroyer
-		command = { type = new_model which = destroyer value = 0 } # AUBM_V4_UNIT_GATE destroyer
-		command = { type = activate_unit_type which = naval_asw } # AUBM_V4_UNIT_GATE naval_asw
-		command = { type = new_model which = naval_asw value = 0 } # AUBM_V4_UNIT_GATE naval_asw
-		command = { type = build_division which = destroyer value = naval_asw when = 2 cost = 4 where = 150 }
+		command = { type = build_division which = submarine value = none when = 1 where = 90 }
+		command = { type = build_division which = destroyer value = naval_asw when = 1 where = 90 }
 		command = { type = setflag which = ind_v3_denial_fleet }
 		command = { type = setflag which = ind_v3_naval_program }
 	}
 	action_c = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
 			money = 450
 			supplies = 1800
-			# V3_QUEUE_MANPOWER = 3
-			manpower = 3
+			manpower = 1
+			# AUBM_ACTION_RESERVE_END
+			money = 450
+			supplies = 1800
+			# V3_QUEUE_MANPOWER = 1
+			manpower = 1
 		}
 		ai_chance = 25
 		name = "Lay foundations for a blue-water fleet"
@@ -305,11 +316,7 @@ event = {
 		command = { type = construct which = naval_base where = 1517 value = 3 trigger = { owned = { province = 1517 data = IND } NOT = { building = { province = 1517 type = naval_base value = 8 } } } }
 		command = { type = construct which = naval_base where = 1493 value = 6 trigger = { owned = { province = 1493 data = IND } NOT = { building = { province = 1493 type = naval_base value = 5 } } } }
 		command = { type = construct which = naval_base where = 1497 value = 6 trigger = { owned = { province = 1497 data = IND } NOT = { building = { province = 1497 type = naval_base value = 5 } } } }
-		command = { type = activate_unit_type which = light_cruiser } # AUBM_V4_UNIT_GATE light_cruiser
-		command = { type = new_model which = light_cruiser value = 0 } # AUBM_V4_UNIT_GATE light_cruiser
-		command = { type = activate_unit_type which = naval_fire_controll_s } # AUBM_V4_UNIT_GATE naval_fire_controll_s
-		command = { type = new_model which = naval_fire_controll_s value = 0 } # AUBM_V4_UNIT_GATE naval_fire_controll_s
-		command = { type = build_division which = light_cruiser value = naval_fire_controll_s when = 3 cost = 7 where = 260 }
+		command = { type = build_division which = light_cruiser value = naval_fire_controll_s when = 1 where = 150 }
 		command = { type = setflag which = ind_v3_blue_water_fleet }
 		command = { type = setflag which = ind_v3_naval_program }
 	}
@@ -326,24 +333,32 @@ event = {
 		NOT = { flag = ind_v3_armaments_1937 }
 	}
 	decision_trigger = {
-
-}
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		# A programme without a resource threshold is available.
+		# AUBM_FULL_OPTION_GATE_END
+	}
 
 	name = "The National Armaments Board"
+	decision_desc = "Cabinet funding estimates: Standardize for mass production [money 375, supplies 1,950, manpower 17]; Fund advanced weapons and prototypes [money 500, supplies 1,650, manpower 17]; Protect civilian output and build reserves [no minimum reserve]."
 	desc = "Factories now have the machinery to equip a modern force, but civilian plans and military contracts compete for every tonne of steel. India can standardize mass production, favour advanced weapons in smaller numbers, or preserve civilian output and stockpile basic equipment."
 	style = 2
 	picture = "india_v3_armed_forces"
 
 	date = { day = 0 month = june year = 1937 }
 	offset = 5
-	deathdate = { day = 29 month = december year = 1938 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
 			money = 375
 			supplies = 1950
-			# V3_QUEUE_MANPOWER = 64
-			manpower = 64
+			manpower = 17
+			# AUBM_ACTION_RESERVE_END
+			money = 375
+			supplies = 1950
+			# V3_QUEUE_MANPOWER = 17
+			manpower = 17
 		}
 		ai_chance = 45
 		name = "Standardize for mass production"
@@ -354,20 +369,21 @@ event = {
 		command = { type = construct which = ic where = 1477 value = 3 trigger = { owned = { province = 1477 data = IND } } }
 		command = { type = construct which = ic where = 1487 value = 3 trigger = { owned = { province = 1487 data = IND } } }
 		command = { type = construct which = ic where = 1502 value = 3 trigger = { owned = { province = 1502 data = IND } } }
-		command = { type = activate_unit_type which = infantry } # AUBM_V4_UNIT_GATE infantry
-		command = { type = new_model which = infantry value = 0 } # AUBM_V4_UNIT_GATE infantry
-		command = { type = activate_unit_type which = artillery } # AUBM_V4_UNIT_GATE artillery
-		command = { type = new_model which = artillery value = 0 } # AUBM_V4_UNIT_GATE artillery
-		command = { type = build_division which = infantry value = artillery when = 4 cost = 5 where = 60 }
+		command = { type = build_division which = infantry value = artillery when = 1 where = 75 }
 		command = { type = setflag which = ind_v3_mass_armaments }
 		command = { type = setflag which = ind_v3_armaments_1937 }
 	}
 	action_b = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
 			money = 500
 			supplies = 1650
-			# V3_QUEUE_MANPOWER = 48
-			manpower = 48
+			manpower = 17
+			# AUBM_ACTION_RESERVE_END
+			money = 500
+			supplies = 1650
+			# V3_QUEUE_MANPOWER = 17
+			manpower = 17
 		}
 		ai_chance = 35
 		name = "Fund advanced weapons and prototypes"
@@ -379,12 +395,7 @@ event = {
 		command = { type = construct which = ic where = 1472 value = 3 trigger = { owned = { province = 1472 data = IND } } }
 		command = { type = construct which = ic where = 1502 value = 4 trigger = { owned = { province = 1502 data = IND } } }
 		command = { type = activate_unit_type which = tank_destroyer }
-		command = { type = new_model which = tank_destroyer value = 0 }
-		command = { type = activate_unit_type which = infantry } # AUBM_V4_UNIT_GATE infantry
-		command = { type = new_model which = infantry value = 0 } # AUBM_V4_UNIT_GATE infantry
-		command = { type = activate_unit_type which = tank_destroyer } # AUBM_V4_UNIT_GATE tank_destroyer
-		command = { type = new_model which = tank_destroyer value = 0 } # AUBM_V4_UNIT_GATE tank_destroyer
-		command = { type = build_division which = infantry value = tank_destroyer when = 3 cost = 6 where = 75 }
+		command = { type = build_division which = infantry value = tank_destroyer when = 1 where = 75 }
 		command = { type = setflag which = ind_v3_advanced_armaments }
 		command = { type = setflag which = ind_v3_armaments_1937 }
 	}
@@ -414,102 +425,96 @@ event = {
 		NOT = { flag = ind_v3_force_expansion_1938 }
 	}
 	decision_trigger = {
-	OR = {
-		AND = { supplies = 3000 manpower = 215 }
-		AND = { money = 350 supplies = 3600 manpower = 122 }
-		AND = { money = 475 supplies = 3300 manpower = 99 }
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		OR = {
+			AND = { supplies = 3000 manpower = 40 }
+			AND = { money = 350 supplies = 3600 manpower = 39 }
+			AND = { money = 475 supplies = 3300 manpower = 35 }
+		}
+		# AUBM_FULL_OPTION_GATE_END
 	}
-}
 
 	name = "The 1938 Force Expansion"
+	decision_desc = "Cabinet funding estimates: Raise a continental defence army [supplies 3,000, manpower 40]; Build a combined-arms field force [money 350, supplies 3,600, manpower 39]; Create an expeditionary strategic reserve [money 475, supplies 3,300, manpower 35]."
 	desc = "Asia and Europe are arming. India can create many infantry formations for continental defence, organize a smaller combined-arms field force, or build expeditionary formations able to influence wars beyond the subcontinent."
 	style = 2
 	picture = "india_v3_armed_forces"
 
 	date = { day = 0 month = september year = 1938 }
 	offset = 5
-	deathdate = { day = 29 month = august year = 1939 }
+	deathdate = { day = 29 month = august year = 1964 }
 
 	action_a = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
 			supplies = 3000
-			# V3_QUEUE_MANPOWER = 215
-			manpower = 215
+			manpower = 40
+			# AUBM_ACTION_RESERVE_END
+			supplies = 3000
+			# V3_QUEUE_MANPOWER = 34
+			manpower = 34
 		}
 		ai_chance = 40
 		name = "Raise a continental defence army"
 		command = { type = supplies value = -3000 }
 		command = { type = dissent value = 2 }
-		command = { type = activate_unit_type which = infantry } # AUBM_V4_UNIT_GATE infantry
-		command = { type = new_model which = infantry value = 0 } # AUBM_V4_UNIT_GATE infantry
-		command = { type = activate_unit_type which = artillery } # AUBM_V4_UNIT_GATE artillery
-		command = { type = new_model which = artillery value = 0 } # AUBM_V4_UNIT_GATE artillery
-		command = { type = build_division which = infantry value = artillery when = 5 cost = 5 where = 45 }
-		command = { type = activate_unit_type which = engineer } # AUBM_V4_UNIT_GATE engineer
-		command = { type = new_model which = engineer value = 0 } # AUBM_V4_UNIT_GATE engineer
-		command = { type = build_division which = infantry value = engineer when = 5 cost = 5 where = 45 }
-		command = { type = activate_unit_type which = garrison } # AUBM_V4_UNIT_GATE garrison
-		command = { type = new_model which = garrison value = 0 } # AUBM_V4_UNIT_GATE garrison
-		command = { type = build_division which = garrison value = artillery when = 4 cost = 4 where = 45 }
+		command = { type = build_division which = infantry value = artillery when = 1 where = 75 }
+		command = { type = build_division which = infantry value = engineer when = 1 where = 75 }
+		command = { type = manpowerpool value = -40 }
+		command = { type = add_corps which = "Delhi Defence District" value = land where = 1459 }
+		command = { type = add_division which = "Delhi Fortress Division" value = garrison when = -1 where = artillery }
+		command = { type = add_corps which = "Bengal Defence District" value = land where = 1447 }
+		command = { type = add_division which = "Calcutta Fortress Division" value = garrison when = -1 where = artillery }
+		command = { type = add_corps which = "Bombay Defence District" value = land where = 1517 }
+		command = { type = add_division which = "Bombay Fortress Division" value = garrison when = -1 where = artillery }
+		command = { type = add_corps which = "Karachi Defence District" value = land where = 1533 }
+		command = { type = add_division which = "Karachi Fortress Division" value = garrison when = -1 where = artillery }
 		command = { type = setflag which = ind_v3_continental_force }
 		command = { type = setflag which = ind_v3_force_expansion_1938 }
 	}
 	action_b = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
 			money = 350
 			supplies = 3600
-			# V3_QUEUE_MANPOWER = 122
-			manpower = 122
+			manpower = 39
+			# AUBM_ACTION_RESERVE_END
+			money = 350
+			supplies = 3600
+			# V3_QUEUE_MANPOWER = 39
+			manpower = 39
 		}
 		ai_chance = 40
 		name = "Build a combined-arms field force"
 		command = { type = money value = -350 }
 		command = { type = supplies value = -3600 }
 		command = { type = activate_unit_type which = tank_destroyer }
-		command = { type = new_model which = tank_destroyer value = 0 }
-		command = { type = activate_unit_type which = infantry } # AUBM_V4_UNIT_GATE infantry
-		command = { type = new_model which = infantry value = 0 } # AUBM_V4_UNIT_GATE infantry
-		command = { type = activate_unit_type which = tank_destroyer } # AUBM_V4_UNIT_GATE tank_destroyer
-		command = { type = new_model which = tank_destroyer value = 0 } # AUBM_V4_UNIT_GATE tank_destroyer
-		command = { type = build_division which = infantry value = tank_destroyer when = 4 cost = 6 where = 60 }
-		command = { type = activate_unit_type which = cavalry } # AUBM_V4_UNIT_GATE cavalry
-		command = { type = new_model which = cavalry value = 0 } # AUBM_V4_UNIT_GATE cavalry
-		command = { type = activate_unit_type which = armored_car } # AUBM_V4_UNIT_GATE armored_car
-		command = { type = new_model which = armored_car value = 0 } # AUBM_V4_UNIT_GATE armored_car
-		command = { type = build_division which = cavalry value = armored_car when = 3 cost = 7 where = 75 }
-		command = { type = activate_unit_type which = hq } # AUBM_V4_UNIT_GATE hq
-		command = { type = new_model which = hq value = 0 } # AUBM_V4_UNIT_GATE hq
-		command = { type = activate_unit_type which = anti_air } # AUBM_V4_UNIT_GATE anti_air
-		command = { type = new_model which = anti_air value = 0 } # AUBM_V4_UNIT_GATE anti_air
-		command = { type = build_division which = hq value = anti_air when = 1 cost = 8 where = 120 }
+		command = { type = build_division which = infantry value = tank_destroyer when = 1 where = 75 }
+		command = { type = build_division which = cavalry value = armored_car when = 1 where = 90 }
+		command = { type = build_division which = hq value = anti_air when = 1 where = 120 }
 		command = { type = setflag which = ind_v3_combined_force }
 		command = { type = setflag which = ind_v3_force_expansion_1938 }
 	}
 	action_c = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
 			money = 475
 			supplies = 3300
-			# V3_QUEUE_MANPOWER = 99
-			manpower = 99
+			manpower = 35
+			# AUBM_ACTION_RESERVE_END
+			money = 475
+			supplies = 3300
+			# V3_QUEUE_MANPOWER = 35
+			manpower = 35
 		}
 		ai_chance = 20
 		name = "Create an expeditionary strategic reserve"
 		command = { type = money value = -475 }
 		command = { type = supplies value = -3300 }
 		command = { type = domestic which = interventionism value = 1 }
-		command = { type = activate_unit_type which = bergsjaeger } # AUBM_V4_UNIT_GATE bergsjaeger
-		command = { type = new_model which = bergsjaeger value = 0 } # AUBM_V4_UNIT_GATE bergsjaeger
-		command = { type = activate_unit_type which = artillery } # AUBM_V4_UNIT_GATE artillery
-		command = { type = new_model which = artillery value = 0 } # AUBM_V4_UNIT_GATE artillery
-		command = { type = build_division which = bergsjaeger value = artillery when = 3 cost = 7 where = 75 }
-		command = { type = activate_unit_type which = infantry } # AUBM_V4_UNIT_GATE infantry
-		command = { type = new_model which = infantry value = 0 } # AUBM_V4_UNIT_GATE infantry
-		command = { type = activate_unit_type which = engineer } # AUBM_V4_UNIT_GATE engineer
-		command = { type = new_model which = engineer value = 0 } # AUBM_V4_UNIT_GATE engineer
-		command = { type = build_division which = infantry value = engineer when = 3 cost = 6 where = 60 }
-		command = { type = activate_unit_type which = transport } # AUBM_V4_UNIT_GATE transport
-		command = { type = new_model which = transport value = 0 } # AUBM_V4_UNIT_GATE transport
-		command = { type = build_division which = transport value = none when = 2 cost = 5 where = 180 }
+		command = { type = build_division which = bergsjaeger value = artillery when = 1 where = 105 }
+		command = { type = build_division which = infantry value = engineer when = 1 where = 75 }
+		command = { type = build_division which = transport value = none when = 1 where = 105 }
 		command = { type = setflag which = ind_v3_expeditionary_force }
 		command = { type = setflag which = ind_v3_force_expansion_1938 }
 	}
@@ -525,24 +530,31 @@ event = {
 		NOT = { flag = ind_v3_eastern_defences }
 	}
 	decision_trigger = {
-	OR = {
-		AND = { money = 325 supplies = 1800 }
-		AND = { money = 300 supplies = 2100 }
-		AND = { money = 350 supplies = 1650 manpower = 51 }
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		OR = {
+			AND = { money = 325 supplies = 1800 }
+			AND = { money = 300 supplies = 2100 }
+			AND = { money = 350 supplies = 1650 manpower = 18 }
+		}
+		# AUBM_FULL_OPTION_GATE_END
 	}
-}
 
 	name = "Secure the Eastern Approaches"
-	desc = "Port Blair, Assam and the Burma road are the outer shield of the union. Fortifying the islands protects the Bay of Bengal, hardening Assam and Imphal prepares a continental defence, while airfields and mobile reserves offer a flexible but less durable answer."
+	decision_desc = "Cabinet funding estimates: Turn Port Blair into an ocean fortress [money 325, supplies 1,800]; Fortify Assam, Imphal and the Burma roads [money 300, supplies 2,100]; Build airfields and mobile reserves [money 350, supplies 1,650, manpower 18]."
+	desc = "Port Blair, Assam and the Burma road are the outer shield of the union. Fortifying the islands protects the Bay of Bengal, hardening Assam and Imphal prepares a continental defence, while a dispersed air-warning network and mobile reserves offer a flexible but less durable answer. Existing dockyard and air-base programmes will continue independently."
 	style = 2
 	picture = "india_v3_armed_forces"
 
 	date = { day = 0 month = january year = 1939 }
 	offset = 5
-	deathdate = { day = 29 month = december year = 1940 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 325
+			supplies = 1800
+			# AUBM_ACTION_RESERVE_END
 			money = 325
 			supplies = 1800
 		}
@@ -550,15 +562,19 @@ event = {
 		name = "Turn Port Blair into an ocean fortress"
 		command = { type = money value = -325 }
 		command = { type = supplies value = -1800 }
-		command = { type = construct which = naval_base where = 1421 value = 6 trigger = { owned = { province = 1421 data = IND } NOT = { building = { province = 1421 type = naval_base value = 5 } } } }
-		command = { type = construct which = air_base where = 1421 value = 6 trigger = { owned = { province = 1421 data = IND } NOT = { building = { province = 1421 type = air_base value = 5 } } } }
 		command = { type = construct which = coastal_fort where = 1421 value = 4 trigger = { owned = { province = 1421 data = IND } NOT = { building = { province = 1421 type = coastal_fort value = 7 } } } }
 		command = { type = construct which = land_fort where = 1421 value = 2 trigger = { owned = { province = 1421 data = IND } NOT = { building = { province = 1421 type = land_fort value = 9 } } } }
+		command = { type = construct which = flak where = 1421 value = 4 trigger = { owned = { province = 1421 data = IND } NOT = { building = { province = 1421 type = flak value = 7 } } } }
+		command = { type = construct which = radar_station where = 1421 value = 2 trigger = { owned = { province = 1421 data = IND } NOT = { building = { province = 1421 type = radar_station value = 9 } } } }
 		command = { type = setflag which = ind_v3_andaman_fortress }
 		command = { type = setflag which = ind_v3_eastern_defences }
 	}
 	action_b = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 300
+			supplies = 2100
+			# AUBM_ACTION_RESERVE_END
 			money = 300
 			supplies = 2100
 		}
@@ -577,30 +593,27 @@ event = {
 	}
 	action_c = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
 			money = 350
 			supplies = 1650
-			# V3_QUEUE_MANPOWER = 51
-			manpower = 51
+			manpower = 18
+			# AUBM_ACTION_RESERVE_END
+			money = 350
+			supplies = 1650
+			# V3_QUEUE_MANPOWER = 18
+			manpower = 18
 		}
 		ai_chance = 30
 		name = "Build airfields and mobile reserves"
 		command = { type = money value = -350 }
 		command = { type = supplies value = -1650 }
-		command = { type = construct which = air_base where = 1421 value = 6 trigger = { owned = { province = 1421 data = IND } NOT = { building = { province = 1421 type = air_base value = 5 } } } }
+		command = { type = construct which = radar_station where = 1421 value = 2 trigger = { owned = { province = 1421 data = IND } NOT = { building = { province = 1421 type = radar_station value = 9 } } } }
+		command = { type = construct which = flak where = 1421 value = 2 trigger = { owned = { province = 1421 data = IND } NOT = { building = { province = 1421 type = flak value = 9 } } } }
 		command = { type = construct which = air_base where = 1439 value = 3 trigger = { owned = { province = 1439 data = IND } NOT = { building = { province = 1439 type = air_base value = 8 } } } }
 		command = { type = construct which = air_base where = 1442 value = 3 trigger = { owned = { province = 1442 data = IND } NOT = { building = { province = 1442 type = air_base value = 8 } } } }
 		command = { type = activate_unit_type which = escort }
-		command = { type = new_model which = escort value = 0 }
-		command = { type = activate_unit_type which = infantry } # AUBM_V4_UNIT_GATE infantry
-		command = { type = new_model which = infantry value = 0 } # AUBM_V4_UNIT_GATE infantry
-		command = { type = activate_unit_type which = engineer } # AUBM_V4_UNIT_GATE engineer
-		command = { type = new_model which = engineer value = 0 } # AUBM_V4_UNIT_GATE engineer
-		command = { type = build_division which = infantry value = engineer when = 3 cost = 6 where = 60 }
-		command = { type = activate_unit_type which = interceptor } # AUBM_V4_UNIT_GATE interceptor
-		command = { type = new_model which = interceptor value = 0 } # AUBM_V4_UNIT_GATE interceptor
-		command = { type = activate_unit_type which = escort } # AUBM_V4_UNIT_GATE escort
-		command = { type = new_model which = escort value = 0 } # AUBM_V4_UNIT_GATE escort
-		command = { type = build_division which = interceptor value = escort when = 1 cost = 8 where = 120 }
+		command = { type = build_division which = infantry value = engineer when = 1 where = 75 }
+		command = { type = build_division which = interceptor when = 1 where = 75 }
 		command = { type = setflag which = ind_v3_mobile_east }
 		command = { type = setflag which = ind_v3_eastern_defences }
 	}
@@ -616,14 +629,17 @@ event = {
 		NOT = { flag = ind_v3_gurkha_arm }
 	}
 	decision_trigger = {
-	OR = {
-		AND = { money = 300 supplies = 1750 manpower = 39 }
-		AND = { money = 175 supplies = 900 manpower = 50 }
-		AND = { money = 225 supplies = 650 manpower = 13 }
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		OR = {
+			AND = { money = 300 supplies = 1750 manpower = 42 }
+			AND = { money = 175 supplies = 900 manpower = 30 }
+			AND = { money = 225 supplies = 650 manpower = 10 }
+		}
+		# AUBM_FULL_OPTION_GATE_END
 	}
-}
 
 	name = "The Gurkha Settlement"
+	decision_desc = "Cabinet funding estimates: Three field-ready Gurkha divisions [money 300, supplies 1,750, manpower 42]; Three field-ready Gurkha regimental groups [money 175, supplies 900, manpower 30]; One field-ready Gurkha training formation [money 225, supplies 650, manpower 10]."
 	desc = "Sovereignty has left the celebrated Gurkha regiments between three institutions: the Indian Army that employs them, Nepal whose citizens fill their ranks, and Britain which still claims old recruiting privileges. Delhi can fund a complete field corps immediately, preserve the regimental recruiting compact, or build a small permanent training cadre whose doctrine will make every future Gurkha formation more formidable."
 	style = 2
 	picture = "Gurkha"
@@ -631,68 +647,85 @@ event = {
 
 	date = { day = 0 month = august year = 1934 }
 	offset = 6
-	deathdate = { day = 29 month = december year = 1938 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
 			money = 300
 			supplies = 1750
-			manpower = 39
+			manpower = 42
+			# AUBM_ACTION_RESERVE_END
+			money = 300
+			supplies = 1750
+			manpower = 42
 		}
 		ai_chance = 45
-		name = "Concentrate the regiments into a full Gurkha corps"
+		name = "Three field-ready Gurkha divisions"
 		command = { type = money value = -300 }
 		command = { type = supplies value = -1750 }
-		command = { type = manpowerpool value = -39 }
+		command = { type = manpowerpool value = -42 }
 		command = { type = dissent value = 2 }
 		command = { type = relation which = NEP value = 20 }
-		command = { type = activate_unit_type which = d_05 }
-		command = { type = add_corps which = "I Gurkha Rifles Corps" value = land where = 1460 }
-		command = { type = add_division which = "1st Gurkha Rifles Division" value = d_05 when = 8 where = engineer }
-		command = { type = add_division which = "2nd Gurkha Rifles Division" value = d_05 when = 8 where = artillery }
-		command = { type = add_division which = "3rd Gurkha Rifles Division" value = d_05 when = 8 where = anti_air }
+		# DH Full has no separate Gurkha unit family; use its supported mountain family.
+		command = { type = activate_unit_type which = bergsjaeger }
+		command = { type = max_organization which = bergsjaeger value = 2 }
+		command = { type = morale which = bergsjaeger value = 2 }
+		command = { type = add_corps which = "Indian Gurkha Division Group" value = land where = 1459 }
+		command = { type = add_division which = "1st King George V's Own Gurkha Rifles" value = bergsjaeger when = -1 where = engineer }
+		command = { type = add_division which = "5th Royal Gurkha Rifles (Frontier Force)" value = bergsjaeger when = -1 where = artillery }
+		command = { type = add_division which = "10th Gurkha Rifles" value = bergsjaeger when = -1 where = anti_air }
 		command = { type = setflag which = ind_v3_gurkha_corps_ready }
 		command = { type = setflag which = ind_v3_gurkha_arm }
 	}
 	action_b = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
 			money = 175
 			supplies = 900
-			# V3_QUEUE_MANPOWER = 50
-			manpower = 50
+			manpower = 30
+			# AUBM_ACTION_RESERVE_END
+			money = 175
+			supplies = 900
+			manpower = 30
 		}
 		ai_chance = 35
-		name = "Preserve the regimental compact with Nepal"
+		name = "Three field-ready Gurkha regimental groups"
 		command = { type = money value = -175 }
 		command = { type = supplies value = -900 }
+		command = { type = manpowerpool value = -30 }
 		command = { type = relation which = NEP value = 35 }
 		command = { type = dissent value = -1 }
-		command = { type = activate_unit_type which = d_05 }
-		command = { type = activate_unit_type which = d_05 } # AUBM_V4_UNIT_GATE d_05
-		command = { type = new_model which = d_05 value = 0 } # AUBM_V4_UNIT_GATE d_05
-		command = { type = activate_unit_type which = engineer } # AUBM_V4_UNIT_GATE engineer
-		command = { type = new_model which = engineer value = 0 } # AUBM_V4_UNIT_GATE engineer
-		command = { type = build_division which = d_05 value = engineer when = 3 cost = 6 where = 90 }
+		command = { type = activate_unit_type which = bergsjaeger }
+		command = { type = add_corps which = "Indian Gurkha Regimental Group" value = land where = 1459 }
+		command = { type = add_division which = "2nd King Edward VII's Own Gurkha Rifles" value = bergsjaeger when = -1 where = engineer }
+		command = { type = add_division which = "6th Gurkha Rifles" value = bergsjaeger when = -1 where = artillery }
+		command = { type = add_division which = "8th Gurkha Rifles" value = bergsjaeger when = -1 where = engineer }
 		command = { type = setflag which = ind_v3_gurkha_regimental_system }
 		command = { type = setflag which = ind_v3_gurkha_arm }
 	}
 	action_c = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
 			money = 225
 			supplies = 650
-			manpower = 13
+			manpower = 10
+			# AUBM_ACTION_RESERVE_END
+			money = 225
+			supplies = 650
+			manpower = 10
 		}
 		ai_chance = 20
-		name = "Create an elite mountain-warfare cadre"
+		name = "One field-ready Gurkha training formation"
 		command = { type = money value = -225 }
 		command = { type = supplies value = -650 }
-		command = { type = manpowerpool value = -13 }
+		command = { type = manpowerpool value = -10 }
 		command = { type = relation which = NEP value = 10 }
-		command = { type = activate_unit_type which = d_05 }
-		command = { type = max_organization which = d_05 value = 5 }
-		command = { type = morale which = d_05 value = 5 }
-		command = { type = add_corps which = "Gurkha Mountain Warfare Centre" value = land where = 1460 }
-		command = { type = add_division which = "Gurkha Training Division" value = d_05 when = 8 where = engineer }
+		command = { type = activate_unit_type which = bergsjaeger }
+		command = { type = max_organization which = bergsjaeger value = 5 }
+		command = { type = morale which = bergsjaeger value = 5 }
+		command = { type = add_corps which = "Gurkha Mountain Warfare School" value = land where = 1459 }
+		command = { type = add_division which = "Gurkha Mountain Warfare Cadre" value = bergsjaeger when = -1 where = engineer }
 		command = { type = setflag which = ind_v3_gurkha_training_cadre }
 		command = { type = setflag which = ind_v3_gurkha_arm }
 	}

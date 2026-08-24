@@ -20,7 +20,7 @@ event = {
 
 	date = { day = 0 month = january year = 1935 }
 	offset = 5
-	deathdate = { day = 29 month = december year = 1935 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		name = "Recognize the provincial recovery programme"
@@ -56,7 +56,7 @@ event = {
 
 	date = { day = 0 month = january year = 1936 }
 	offset = 5
-	deathdate = { day = 29 month = december year = 1936 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		name = "Connect the regional systems"
@@ -89,7 +89,7 @@ event = {
 
 	date = { day = 0 month = january year = 1937 }
 	offset = 5
-	deathdate = { day = 29 month = december year = 1937 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		name = "Accept the private steel network"
@@ -124,7 +124,7 @@ event = {
 
 	date = { day = 0 month = january year = 1938 }
 	offset = 5
-	deathdate = { day = 29 month = december year = 1938 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		name = "Standardize the provincial grids"
@@ -158,7 +158,7 @@ event = {
 
 	date = { day = 0 month = january year = 1939 }
 	offset = 5
-	deathdate = { day = 29 month = december year = 1939 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		name = "Charter the voluntary research council"
@@ -188,7 +188,7 @@ event = {
 
 	date = { day = 0 month = january year = 1940 }
 	offset = 5
-	deathdate = { day = 29 month = december year = 1940 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		name = "Proceed with the affordable programme"
@@ -225,7 +225,7 @@ event = {
 
 	date = { day = 0 month = january year = 1936 }
 	offset = 5
-	deathdate = { day = 29 month = december year = 1936 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		name = "Standardize the territorial system"
@@ -255,7 +255,7 @@ event = {
 
 	date = { day = 0 month = january year = 1937 }
 	offset = 5
-	deathdate = { day = 29 month = december year = 1937 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		name = "Place the civil reserve under Air Staff supervision"
@@ -285,7 +285,7 @@ event = {
 
 	date = { day = 0 month = january year = 1938 }
 	offset = 5
-	deathdate = { day = 29 month = december year = 1938 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		name = "Formalize the coastal denial doctrine"
@@ -316,7 +316,7 @@ event = {
 
 	date = { day = 0 month = january year = 1939 }
 	offset = 5
-	deathdate = { day = 29 month = december year = 1939 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		name = "Register the civilian arsenal network"
@@ -348,7 +348,7 @@ event = {
 
 	date = { day = 0 month = january year = 1940 }
 	offset = 5
-	deathdate = { day = 29 month = december year = 1940 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		name = "Prepare the cadres for wartime expansion"
@@ -379,7 +379,7 @@ event = {
 
 	date = { day = 0 month = january year = 1933 }
 	offset = 3
-	deathdate = { day = 29 month = december year = 1935 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		name = "Consolidate the emergency accounts"
@@ -403,27 +403,37 @@ event = {
 		NOT = { flag = ind_v31_high_command_purge }
 	}
 	decision_trigger = {
-		NOT = { government = democratic }
+# AUBM_FULL_OPTION_GATE_BEGIN
+money = 350
+supplies = 600
+# AUBM_FULL_OPTION_GATE_END
+NOT = { government = democratic }
 	}
 
-	name = "Purge the Indian High Command"
-	desc = "The executive can remove officers considered politically unreliable and reward a younger, more aggressive command culture. The army may gain cohesion, but neither the cabinet nor the player can control how much professional experience is lost."
+	name = "Reorganize the Indian High Command"
+	decision_desc = "Cabinet funding estimates: Fund a controlled retirement and staff reform [money 350, supplies 600]."
+	desc = "The executive can retire obsolete appointments and expand professional staff training without gambling away named commanders. The reform is politically divisive and consumes scarce administrative and military resources."
 	style = 2
 	picture = "purge_army"
 	decision_picture = "decision_purge_army"
 
 	date = { day = 0 month = january year = 1933 }
 	offset = 30
-	deathdate = { day = 29 month = december year = 1945 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
-		name = "Accept the risk and purge the command"
-		command = { type = dissent value = 2 }
-		command = { type = morale which = land value = 3 }
-		command = { type = sleepleader which = -1 }
-		command = { trigger = { random = 45 } type = sleepleader which = -1 }
-		command = { trigger = { random = 20 } type = sleepleader which = -1 }
-		command = { trigger = { random = 8 } type = sleepleader which = -1 }
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 350
+			supplies = 600
+			# AUBM_ACTION_RESERVE_END
+		}
+		name = "Fund a controlled retirement and staff reform"
+		command = { type = money value = -350 }
+		command = { type = supplies value = -600 }
+		command = { type = dissent value = 4 }
+		command = { type = morale which = land value = 1 }
+		command = { type = max_organization which = land value = 1 }
 		command = { type = setflag which = ind_v31_high_command_purge }
 	}
 }
@@ -447,13 +457,157 @@ event = {
 
 	date = { day = 0 month = january year = 1933 }
 	offset = 3
-	deathdate = { day = 29 month = december year = 1945 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		name = "Publish the corrected lists"
 		command = { trigger = { flag = ind_v3_cabinet_federal headofstate = 251001 } type = headofstate which = 251041 }
 		command = { trigger = { flag = ind_v3_air_staff_founded } type = waketeam which = 250025 }
 		command = { type = setflag which = ind_v32_roster_compatibility }
+	}
+}
+
+# Personal-play hotfix: Darkest Hour's stock election chain can still disturb
+# old saves created before AUBM slept those events. Restore the chosen cabinet
+# once the player has made a provisional-government choice.
+event = {
+	id = 9270780
+	random = no
+	persistent = yes
+	country = IND
+
+	trigger = {
+		NOT = { flag = ind_v3_restored_coalition }
+		NOT = { flag = ind_v3_postwar_mandate }
+		OR = {
+			flag = ind_v3_gandhi_mandate
+			AND = {
+				flag = ind_v3_cabinet_federal
+				NOT = { flag = ind_v3_1936_mandate }
+			}
+		}
+		OR = {
+			NOT = { headofstate = 251041 }
+			NOT = { headofgovernment = 251002 }
+		}
+	}
+
+	name = "The Federal Cabinet Reconfirmed"
+	desc = "The Union Gazette voids stray election paperwork and reconfirms the constitutional executive chosen at independence. Other ministers remain answerable to Parliament."
+	style = 2
+	picture = "india_v3_independence"
+
+	date = { day = 0 month = january year = 1933 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Reconfirm the constitutional executive"
+		command = { type = headofstate which = 251041 }
+		command = { type = headofgovernment which = 251002 }
+	}
+}
+
+event = {
+	id = 9270781
+	random = no
+	persistent = yes
+	country = IND
+
+	trigger = {
+		NOT = { flag = ind_v3_restored_coalition }
+		NOT = { flag = ind_v3_postwar_mandate }
+		OR = {
+			flag = ind_v3_patel_mandate
+			AND = {
+				flag = ind_v3_cabinet_developmental
+				NOT = { flag = ind_v3_1936_mandate }
+			}
+		}
+		OR = {
+			NOT = { headofstate = 251011 }
+			NOT = { headofgovernment = 251012 }
+		}
+	}
+
+	name = "The Developmental Cabinet Reconfirmed"
+	desc = "The Union Gazette voids stray election paperwork and reconfirms the constitutional executive chosen at independence. Other ministers remain answerable to the governing coalition."
+	style = 2
+	picture = "india_v3_independence"
+
+	date = { day = 0 month = january year = 1933 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Reconfirm the constitutional executive"
+		command = { type = headofstate which = 251011 }
+		command = { type = headofgovernment which = 251012 }
+	}
+}
+
+event = {
+	id = 9270782
+	random = no
+	persistent = yes
+	country = IND
+
+	trigger = {
+		flag = ind_v3_cabinet_social
+		NOT = { flag = ind_v3_1936_mandate }
+		NOT = { flag = ind_v3_restored_coalition }
+		NOT = { flag = ind_v3_postwar_mandate }
+		OR = {
+			NOT = { headofstate = 251021 }
+			NOT = { headofgovernment = 251022 }
+		}
+	}
+
+	name = "The Mobilization Cabinet Reconfirmed"
+	desc = "The Union Gazette voids stray election paperwork and reconfirms the constitutional executive chosen at independence. Other ministers remain replaceable."
+	style = 2
+	picture = "india_v3_independence"
+
+	date = { day = 0 month = january year = 1933 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Reconfirm the constitutional executive"
+		command = { type = headofstate which = 251021 }
+		command = { type = headofgovernment which = 251022 }
+	}
+}
+
+event = {
+	id = 9270783
+	random = no
+	persistent = yes
+	country = IND
+
+	trigger = {
+		flag = ind_v3_bose_mandate
+		NOT = { flag = ind_v3_restored_coalition }
+		NOT = { flag = ind_v3_postwar_mandate }
+		OR = {
+			NOT = { headofstate = 251040 }
+			NOT = { headofgovernment = 251031 }
+		}
+	}
+
+	name = "The Bose-Patel Directorate Reconfirmed"
+	desc = "The Union Gazette voids stray election paperwork and reconfirms the constitutional executive chosen in the 1936 national mandate. Service and departmental ministers remain replaceable."
+	style = 2
+	picture = "india_v3_independence"
+
+	date = { day = 0 month = january year = 1937 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Reconfirm the 1936 mandate"
+		command = { type = headofstate which = 251040 }
+		command = { type = headofgovernment which = 251031 }
 	}
 }
 
@@ -478,7 +632,7 @@ event = {
 
 	date = { day = 0 month = january year = 1934 }
 	offset = 3
-	deathdate = { day = 29 month = december year = 1945 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		name = "Call the emergency register"
@@ -512,14 +666,12 @@ event = {
 
 	date = { day = 0 month = january year = 1934 }
 	offset = 2
-	deathdate = { day = 29 month = december year = 1945 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		name = "Publish the armoured establishment"
 		command = { type = activate_unit_type which = light_armor }
-		command = { type = new_model which = light_armor value = 0 }
 		command = { type = activate_unit_type which = armored_car }
-		command = { type = new_model which = armored_car value = 0 }
 		command = { type = setflag which = ind_v33_armoured_registry }
 	}
 }
@@ -546,14 +698,12 @@ event = {
 
 	date = { day = 0 month = january year = 1934 }
 	offset = 2
-	deathdate = { day = 29 month = december year = 1945 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		name = "Publish the transport-command establishment"
 		command = { type = activate_unit_type which = transport_plane }
-		command = { type = new_model which = transport_plane value = 0 }
 		command = { type = activate_unit_type which = escort }
-		command = { type = new_model which = escort value = 0 }
 		command = { type = setflag which = ind_v33_air_transport_registry }
 	}
 }
@@ -577,7 +727,7 @@ event = {
 
 	date = { day = 0 month = january year = 1935 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1938 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 60

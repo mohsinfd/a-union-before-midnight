@@ -119,5 +119,5 @@ invasion = {
 admiral = {
 	min_core_attack_fleets = 2
 	num_attack_fleets = 5
-	base = { 1421 1447 1493 1497 1500 1517 1533 }
+	base = { 1421 1447 1493 1497 1500 1517 1533 1612 }
 }

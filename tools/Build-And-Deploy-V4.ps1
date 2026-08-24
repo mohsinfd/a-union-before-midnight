@@ -1,7 +1,9 @@
 param(
     [string]$GameRoot,
-    [string]$TargetName = "A Union Before Midnight V4",
-    [switch]$ValidateOnly
+    [string]$TargetName = "A Union Before Midnight V4.2",
+    [switch]$ValidateOnly,
+    [switch]$SkipSteamDeckValidation,
+    [switch]$IncludePersonalSprites
 )
 
 $ErrorActionPreference = "Stop"
@@ -39,6 +41,16 @@ $rebaseArguments = @{
 if ($GameRoot) {
     $rebaseArguments.GameRoot = $GameRoot
 }
+if ($IncludePersonalSprites) {
+    $rebaseArguments.IncludePersonalSprites = $true
+}
+
+Invoke-Checked "Complete global campaign matrix" {
+    & $python.Source (Join-Path $PSScriptRoot "generate_aubm_global_campaigns.py") --check
+}
+Invoke-Checked "Complete bespoke regional armistices" {
+    & $python.Source (Join-Path $PSScriptRoot "generate_aubm_bespoke_armistices.py") --check
+}
 
 Write-Host "Rebuilding the V4 overlay from Darkest Hour Full..."
 & (Join-Path $PSScriptRoot "Rebase-V4-DirectDH.ps1") @rebaseArguments
@@ -60,9 +72,42 @@ if ($unstable.Count -gt 0) {
 }
 Write-Host "Repeat-build stability passed for $($secondPass.Count) overlay files."
 
+Invoke-Checked "V4 event-art provenance" {
+    & $python.Source (Join-Path $PSScriptRoot "sync_v4_event_art_manifest.py")
+}
+
+Invoke-Checked "Indian special units and capital ships" {
+    & $python.Source (Join-Path $PSScriptRoot "validate_aubm_units.py")
+}
+Invoke-Checked "Delhi-Tokyo campaign" {
+    & $python.Source (Join-Path $PSScriptRoot "validate_aubm_japan.py")
+}
+Invoke-Checked "Diplomatic chance disclosure" {
+    & $python.Source (Join-Path $PSScriptRoot "validate_aubm_diplomatic_clarity.py")
+}
+Invoke-Checked "Coalition-independent wartime campaigns" {
+    & $python.Source (Join-Path $PSScriptRoot "validate_aubm_wartime.py")
+}
+Invoke-Checked "Wartime persistence contract" {
+    & $python.Source (Join-Path $PSScriptRoot "normalize_aubm_wartime_persistence.py") --check
+}
+Invoke-Checked "Every-country campaign lifecycle" {
+    & $python.Source (Join-Path $PSScriptRoot "generate_aubm_global_campaigns.py") --check
+    & $python.Source (Join-Path $PSScriptRoot "validate_aubm_global_campaigns.py")
+}
+Invoke-Checked "Route-specific wartime consequences" {
+    & $python.Source (Join-Path $PSScriptRoot "generate_aubm_route_consequences.py") --check
+    & $python.Source (Join-Path $PSScriptRoot "validate_aubm_route_consequences.py")
+}
+Invoke-Checked "Bespoke regional armistice lifecycle" {
+    & $python.Source (Join-Path $PSScriptRoot "generate_aubm_bespoke_armistices.py") --check
+}
+
 Write-Host ""
 Write-Host "[Installer manifest]"
-& (Join-Path $PSScriptRoot "Generate-V4-InstallerManifest.ps1") -RepositoryRoot $repositoryRoot
+& (Join-Path $PSScriptRoot "Generate-V4-InstallerManifest.ps1") `
+    -RepositoryRoot $repositoryRoot `
+    -IncludePersonalSprites:$IncludePersonalSprites
 
 Invoke-Checked "Static validation" {
     & $python.Source (Join-Path $PSScriptRoot "validate_v4.py") --root $repositoryRoot
@@ -70,17 +115,33 @@ Invoke-Checked "Static validation" {
 Invoke-Checked "Art release gate" {
     & $python.Source (Join-Path $PSScriptRoot "audit_v4_art.py") --strict
 }
-Invoke-Checked "Service-sprite gate" {
-    & $python.Source (Join-Path $PSScriptRoot "audit_v4_sprites.py")
+if ($IncludePersonalSprites) {
+    Invoke-Checked "Personal India sprite integrity" {
+        & $python.Source (Join-Path $PSScriptRoot "validate_aubm_sprites.py") `
+            --root $repositoryRoot `
+            --game-root $(if ($GameRoot) { $GameRoot } else { "C:\Program Files (x86)\Steam\steamapps\common\Darkest Hour A HOI Game" }) `
+            --skip-idempotence
+    }
 }
 Invoke-Checked "Opening economy" {
     & $python.Source (Join-Path $PSScriptRoot "analyze_v4_opening.py")
+}
+Invoke-Checked "Sustained resources" {
+    & $python.Source (Join-Path $PSScriptRoot "analyze_v4_resources.py")
+}
+Invoke-Checked "Campaign cold-start" {
+    & $python.Source (Join-Path $PSScriptRoot "analyze_v4_campaign.py")
 }
 Invoke-Checked "Combat pacing" {
     & $python.Source (Join-Path $PSScriptRoot "analyze_combat_pacing.py")
 }
 Invoke-Checked "Construction caps" {
     & $python.Source (Join-Path $PSScriptRoot "analyze_construction_caps.py") --root (Join-Path $repositoryRoot "mod")
+}
+if (-not $SkipSteamDeckValidation) {
+    Invoke-Checked "Steam Deck platform" {
+        & (Join-Path $PSScriptRoot "Test-SteamDeck.ps1")
+    }
 }
 
 if ($ValidateOnly) {

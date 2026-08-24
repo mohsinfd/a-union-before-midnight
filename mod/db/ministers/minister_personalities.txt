@@ -1904,7 +1904,7 @@
 	}
 	
 	minister =  { 
-		trait		= "ger_mil_m2" #Heinrich August Meiner
+		trait		= "ger_mil_m2" #Heinrich August Meißner
 		id			= 119
 		name		= NPERSONALITY_ger_mil_m2
 		desc		= DPERSONALITY_ger_mil_m2
@@ -2132,7 +2132,7 @@
 	}
 
 	minister =  { 
-		trait		= "The Iron Knight" #Hermann Goering Chief of hair
+		trait		= "The Iron Knight" #Hermann Göring Chief of hair
 		id			= 136
 		name		= NPERSONALITY_GOERING
 		desc		= DPERSONALITY_GOERING
@@ -3288,7 +3288,7 @@
 		command		= { type = unit which = naval_bomber when = organisation value = 0.0400 }
 		command		= { type = unit which = naval_bomber when = morale value = 0.0400 }
 		command		= { type = detection which = navy value = 0.0500 }
-		command		= { type = production which = supplies when = national value = 0.0200 }
+		command		= { type = production which = supplies value = 0.0200 }
 	}
 
 	minister = {
@@ -3306,5 +3306,5 @@
 		command		= { type = unit which = tactical_bomber when = morale value = 0.0400 }
 		command		= { type = unit which = naval_bomber when = morale value = 0.0400 }
 		command		= { type = unit which = naval_bomber when = time value = -0.0500 }
-		command		= { type = production which = supplies when = national value = 0.0200 }
+		command		= { type = production which = supplies value = 0.0200 }
 	}

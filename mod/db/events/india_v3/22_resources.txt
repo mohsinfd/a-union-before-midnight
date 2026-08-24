@@ -20,7 +20,7 @@ event = {
 
 	date = { day = 0 month = february year = 1934 }
 	offset = 8
-	deathdate = { day = 29 month = april year = 1934 }
+	deathdate = { day = 29 month = april year = 1964 }
 
 	action_a = {
 		ai_chance = 60
@@ -62,7 +62,7 @@ event = {
 
 	date = { day = 0 month = october year = 1934 }
 	offset = 8
-	deathdate = { day = 29 month = december year = 1934 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 65
@@ -107,7 +107,7 @@ event = {
 
 	date = { day = 0 month = may year = 1935 }
 	offset = 8
-	deathdate = { day = 29 month = july year = 1935 }
+	deathdate = { day = 29 month = july year = 1964 }
 
 	action_a = {
 		ai_chance = 55
@@ -153,7 +153,7 @@ event = {
 
 	date = { day = 0 month = december year = 1935 }
 	offset = 8
-	deathdate = { day = 29 month = february year = 1936 }
+	deathdate = { day = 29 month = february year = 1964 }
 
 	action_a = {
 		ai_chance = 70
@@ -195,7 +195,7 @@ event = {
 
 	date = { day = 0 month = august year = 1936 }
 	offset = 8
-	deathdate = { day = 29 month = october year = 1936 }
+	deathdate = { day = 29 month = october year = 1964 }
 
 	action_a = {
 		ai_chance = 65
@@ -240,7 +240,7 @@ event = {
 
 	date = { day = 0 month = april year = 1937 }
 	offset = 8
-	deathdate = { day = 29 month = june year = 1937 }
+	deathdate = { day = 29 month = june year = 1964 }
 
 	action_a = {
 		ai_chance = 55
@@ -288,7 +288,7 @@ event = {
 
 	date = { day = 0 month = january year = 1938 }
 	offset = 8
-	deathdate = { day = 29 month = march year = 1938 }
+	deathdate = { day = 29 month = march year = 1964 }
 
 	action_a = {
 		ai_chance = 60
@@ -331,7 +331,7 @@ event = {
 
 	date = { day = 0 month = march year = 1939 }
 	offset = 8
-	deathdate = { day = 29 month = may year = 1939 }
+	deathdate = { day = 29 month = may year = 1964 }
 
 	action_a = {
 		ai_chance = 60
@@ -372,22 +372,28 @@ event = {
 		NOT = { flag = ind_v3_resource_review_1940 }
 	}
 	decision_trigger = {
-	OR = {
-		AND = { money = 450 supplies = 650 }
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		money = 450
+		supplies = 650
+		# AUBM_FULL_OPTION_GATE_END
 	}
-}
 
 	name = "The 1940 Resource Balance"
+	decision_desc = "Cabinet funding estimates: Build resilience into the national resource grid [money 450, supplies 650]."
 	desc = "The national plans have created a true industrial economy. Engineers now recommend a final programme of mine safety, reserve stocks and duplicated power links so that one raid or regional crisis cannot halt the whole system."
 	style = 2
 	picture = "india_v3_industry"
 
 	date = { day = 0 month = june year = 1940 }
 	offset = 10
-	deathdate = { day = 29 month = august year = 1940 }
+	deathdate = { day = 29 month = august year = 1964 }
 
 	action_a = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 450
+			supplies = 650
+			# AUBM_ACTION_RESERVE_END
 			money = 450
 			supplies = 650
 		}

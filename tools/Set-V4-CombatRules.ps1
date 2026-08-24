@@ -14,7 +14,7 @@ function Set-ValueAfterComment {
     )
 
     $escaped = [regex]::Escape($Comment)
-    $pattern = "(?m)(^# $escaped\r?\n)[^\r\n]+"
+    $pattern = "(?m)(^# $escaped[ \t]*\r?\n)[^\r\n]+"
     $matches = [regex]::Matches($script:text, $pattern)
     if ($matches.Count -ne 1) {
         throw "Expected one misc.txt setting for '$Comment', found $($matches.Count)."
@@ -26,6 +26,19 @@ function Set-ValueAfterComment {
         1
     )
 }
+
+Set-ValueAfterComment `
+    "Upgrade cost" `
+    "0.5 # AUBM V4.2: paid upgrades use the Darkest Hour baseline cost"
+Set-ValueAfterComment `
+    "Upgrade time" `
+    "0.5 # AUBM V4.2: paid upgrades use the Darkest Hour baseline time"
+Set-ValueAfterComment `
+    "Reinforce to upgrade modifier. Values from 0.0 (divisions do not get extra upgrade progress on reinforcement) to 1.0 (1:1 ratio, 1% reinforce adds 1% to upgrade progress)" `
+    "0.0 # AUBM V4.2: reinforcement does not bypass the upgrade budget"
+Set-ValueAfterComment `
+    "Added extra upgrade progress to units in supply. Added daily progress to all units in supply that can upgrade is equal to Cur_STR/(Max_STR * THIS). Added value is not affected by any other upgrade modifiers. Set to 0 to disable this functionality." `
+    "0 # AUBM V4.2: zero upgrade IC means zero upgrade progress"
 
 Set-ValueAfterComment `
     "Carriers vs. Bases - Str dmg - Increasing this will increase the STR damage inflicted by carriers to enemy units while attacking enemy bases [multiplier]" `

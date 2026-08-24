@@ -21,7 +21,7 @@ event = {
 
 	date = { day = 0 month = september year = 1939 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1942 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 60
@@ -64,7 +64,7 @@ event = {
 
 	date = { day = 0 month = march year = 1940 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1942 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 55
@@ -107,7 +107,7 @@ event = {
 
 	date = { day = 0 month = october year = 1940 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1943 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 55
@@ -146,9 +146,9 @@ event = {
 		NOT = { flag = ind_v3_convoy_emergency }
 	# V3_ACTION_REACHABILITY_BEGIN
 	OR = {
-		AND = { manpower = 9 }
-		AND = { manpower = 6 }
-		}
+		AND = { manpower = 1 }
+		AND = { manpower = 1 }
+	}
 	# V3_ACTION_REACHABILITY_END
 }
 
@@ -159,44 +159,34 @@ event = {
 
 	date = { day = 0 month = april year = 1941 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1943 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 	trigger = {
-			# V3_QUEUE_MANPOWER = 9
-			manpower = 9
+			# V3_QUEUE_MANPOWER = 1
+			manpower = 1
 	}
 		ai_chance = 55
 		name = "Build mass escorts and convoy-control commands"
 		command = { type = money value = -500 }
 		command = { type = supplies value = -1300 }
-		command = { type = activate_unit_type which = destroyer } # AUBM_V4_UNIT_GATE destroyer
-		command = { type = new_model which = destroyer value = 0 } # AUBM_V4_UNIT_GATE destroyer
-		command = { type = activate_unit_type which = naval_asw } # AUBM_V4_UNIT_GATE naval_asw
-		command = { type = new_model which = naval_asw value = 0 } # AUBM_V4_UNIT_GATE naval_asw
-		command = { type = build_division which = destroyer value = naval_asw when = 5 cost = -2.0 where = 60 }
+		command = { type = build_division which = destroyer value = naval_asw when = 1 where = 90 }
 
 		command = { type = setflag which = ind_v3_mass_convoy_escort }
 		command = { type = setflag which = ind_v3_convoy_emergency }
 	}
 	action_b = {
 	trigger = {
-			# V3_QUEUE_MANPOWER = 6
-			manpower = 6
+			# V3_QUEUE_MANPOWER = 1
+			manpower = 1
 	}
 		ai_chance = 45
 		name = "Disperse routes, stockpile and patrol from the air"
 		command = { type = money value = -425 }
 		command = { type = supplies value = 2000 }
 		command = { type = activate_unit_type which = naval_bomber }
-		command = { type = new_model which = naval_bomber value = 0 }
 		command = { type = activate_unit_type which = escort }
-		command = { type = new_model which = escort value = 0 }
-		command = { type = activate_unit_type which = naval_bomber } # AUBM_V4_UNIT_GATE naval_bomber
-		command = { type = new_model which = naval_bomber value = 0 } # AUBM_V4_UNIT_GATE naval_bomber
-		command = { type = activate_unit_type which = escort } # AUBM_V4_UNIT_GATE escort
-		command = { type = new_model which = escort value = 0 } # AUBM_V4_UNIT_GATE escort
-		command = { type = build_division which = naval_bomber value = escort when = 2 cost = -2.5 where = 75 }
+		command = { type = build_division which = naval_bomber value = escort when = 1 where = 105 }
 		command = { type = tc_mod value = 3 }
 		command = { type = setflag which = ind_v3_air_convoy_defence }
 		command = { type = setflag which = ind_v3_convoy_emergency }
@@ -220,7 +210,7 @@ event = {
 
 	date = { day = 0 month = january year = 1942 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1943 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 60
@@ -274,7 +264,7 @@ event = {
 
 	date = { day = 0 month = october year = 1943 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1945 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 60
@@ -317,7 +307,7 @@ event = {
 
 	date = { day = 0 month = april year = 1944 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1946 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 60
@@ -360,7 +350,7 @@ event = {
 
 	date = { day = 0 month = january year = 1946 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1948 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 30

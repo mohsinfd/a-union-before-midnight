@@ -1,0 +1,11 @@
+# AUBM: Persia-Caucasus operational route
+
+max_front_ratio = 1.55
+
+target = {
+	713 = 120 # Baku
+	709 = 95  # Tbilisi
+	711 = 90  # Yerevan
+	706 = 105 # Astrakhan
+	663 = 100 # Stalingrad
+}

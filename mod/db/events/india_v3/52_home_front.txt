@@ -21,7 +21,7 @@ event = {
 
 	date = { day = 12 month = february year = 1941 }
 	offset = 10
-	deathdate = { day = 29 month = april year = 1941 }
+	deathdate = { day = 29 month = april year = 1964 }
 
 	action_a = {
 		ai_chance = 45
@@ -75,7 +75,7 @@ event = {
 
 	date = { day = 18 month = july year = 1941 }
 	offset = 10
-	deathdate = { day = 29 month = september year = 1941 }
+	deathdate = { day = 29 month = september year = 1964 }
 
 	action_a = {
 		ai_chance = 50
@@ -119,10 +119,10 @@ event = {
 		NOT = { flag = ind_v3_ocean_logistics_settled }
 	# V3_ACTION_REACHABILITY_BEGIN
 	OR = {
+		AND = { manpower = 1 }
 		AND = { manpower = 2 }
-		AND = { manpower = 8 }
-		AND = { manpower = 50 }
-		}
+		AND = { manpower = 17 }
+	}
 	# V3_ACTION_REACHABILITY_END
 }
 
@@ -133,12 +133,12 @@ event = {
 
 	date = { day = 8 month = november year = 1941 }
 	offset = 10
-	deathdate = { day = 20 month = january year = 1942 }
+	deathdate = { day = 20 month = january year = 1964 }
 
 	action_a = {
 	trigger = {
-			# V3_QUEUE_MANPOWER = 2
-			manpower = 2
+			# V3_QUEUE_MANPOWER = 1
+			manpower = 1
 	}
 		ai_chance = 45
 		name = "Build the four-port ocean logistics system"
@@ -148,50 +148,34 @@ event = {
 		command = { type = construct which = infrastructure where = 1493 value = 10 trigger = { owned = { province = 1493 data = IND } NOT = { building = { province = 1493 type = infrastructure value = 0.91 } } } }
 		command = { type = construct which = infrastructure where = 1517 value = 10 trigger = { owned = { province = 1517 data = IND } NOT = { building = { province = 1517 type = infrastructure value = 0.91 } } } }
 		command = { type = construct which = infrastructure where = 1533 value = 10 trigger = { owned = { province = 1533 data = IND } NOT = { building = { province = 1533 type = infrastructure value = 0.91 } } } }
-		command = { type = activate_unit_type which = transport } # AUBM_V4_UNIT_GATE transport
-		command = { type = new_model which = transport value = 0 } # AUBM_V4_UNIT_GATE transport
-		command = { type = build_division which = transport value = none when = 4 cost = -1.5 where = 75 }
+		command = { type = build_division which = transport value = none when = 1 where = 105 }
 		command = { type = setflag which = ind_v3_ocean_logistics_board }
 		command = { type = setflag which = ind_v3_ocean_logistics_settled }
 	}
 	action_b = {
 	trigger = {
-			# V3_QUEUE_MANPOWER = 8
-			manpower = 8
+			# V3_QUEUE_MANPOWER = 2
+			manpower = 2
 	}
 		ai_chance = 35
 		name = "Concentrate on escorts and maritime patrol"
 		command = { type = money value = -300 }
 		command = { type = activate_unit_type which = naval_bomber }
-		command = { type = new_model which = naval_bomber value = 0 }
 		command = { type = activate_unit_type which = escort }
-		command = { type = new_model which = escort value = 0 }
-		command = { type = activate_unit_type which = destroyer } # AUBM_V4_UNIT_GATE destroyer
-		command = { type = new_model which = destroyer value = 0 } # AUBM_V4_UNIT_GATE destroyer
-		command = { type = activate_unit_type which = naval_asw } # AUBM_V4_UNIT_GATE naval_asw
-		command = { type = new_model which = naval_asw value = 0 } # AUBM_V4_UNIT_GATE naval_asw
-		command = { type = build_division which = destroyer value = naval_asw when = 3 cost = -2.5 where = 90 }
-		command = { type = activate_unit_type which = naval_bomber } # AUBM_V4_UNIT_GATE naval_bomber
-		command = { type = new_model which = naval_bomber value = 0 } # AUBM_V4_UNIT_GATE naval_bomber
-		command = { type = activate_unit_type which = escort } # AUBM_V4_UNIT_GATE escort
-		command = { type = new_model which = escort value = 0 } # AUBM_V4_UNIT_GATE escort
-		command = { type = build_division which = naval_bomber value = escort when = 1 cost = -2.5 where = 90 }
+		command = { type = build_division which = destroyer value = naval_asw when = 1 where = 90 }
+		command = { type = build_division which = naval_bomber value = escort when = 1 where = 105 }
 		command = { type = setflag which = ind_v3_ocean_escort_priority }
 		command = { type = setflag which = ind_v3_ocean_logistics_settled }
 	}
 	action_c = {
 	trigger = {
-			# V3_QUEUE_MANPOWER = 50
-			manpower = 50
+			# V3_QUEUE_MANPOWER = 17
+			manpower = 17
 	}
 		ai_chance = 20
 		name = "Reserve the steel for the continental armies"
 		command = { type = supplies value = -600 }
-		command = { type = activate_unit_type which = motorized } # AUBM_V4_UNIT_GATE motorized
-		command = { type = new_model which = motorized value = 0 } # AUBM_V4_UNIT_GATE motorized
-		command = { type = activate_unit_type which = engineer } # AUBM_V4_UNIT_GATE engineer
-		command = { type = new_model which = engineer value = 0 } # AUBM_V4_UNIT_GATE engineer
-		command = { type = build_division which = motorized value = engineer when = 3 cost = -2.0 where = 75 }
+		command = { type = build_division which = motorized value = engineer when = 1 where = 105 }
 		command = { type = dissent value = 1 }
 		command = { type = setflag which = ind_v3_continental_logistics_priority }
 		command = { type = setflag which = ind_v3_ocean_logistics_settled }
@@ -204,81 +188,48 @@ event = {
 	country = IND
 
 	trigger = {
-		flag = ind_v3_ocean_logistics_settled
+		flag = ind_v3_integrated
 		NOT = { flag = ind_v3_national_service_settled }
-	# V3_ACTION_REACHABILITY_BEGIN
-	OR = {
-		AND = { manpower = 96 }
-		AND = { manpower = 81 }
-		AND = { manpower = 33 }
-		}
-	# V3_ACTION_REACHABILITY_END
 }
 
 	name = "The National Service Debate"
-	desc = "The armed forces can no longer expand through volunteers and princely contingents alone. Universal service would create a mass reserve at serious political cost; selective technical service would favour mobile formations; a professional volunteer army would remain smaller but easier to train and supply."
+	desc = "The armed forces can no longer expand through volunteers and princely contingents alone. This law governs recruitment, not a one-time batch of discounted divisions. Universal service creates the largest pool at serious political cost; selective technical service balances quantity and specialization; a professional volunteer system remains smaller but steadier. Every option continues to receive the annual trained-reserve class."
 	style = 2
 	picture = "india_v3_armed_forces"
 
 	date = { day = 14 month = april year = 1942 }
 	offset = 10
-	deathdate = { day = 29 month = june year = 1942 }
+	deathdate = { day = 29 month = june year = 1964 }
 
 	action_a = {
-	trigger = {
-			# V3_QUEUE_MANPOWER = 96
-			manpower = 96
-	}
 		ai_chance = 40
-		name = "Enact universal national service"
-		command = { type = manpowerpool value = 220 }
+		name = "Universal service: +400 now, +90/year; +5 dissent"
+		command = { type = manpowerpool value = 400 }
 		command = { type = dissent value = 5 }
 		command = { type = money value = -250 }
-		command = { type = activate_unit_type which = infantry } # AUBM_V4_UNIT_GATE infantry
-		command = { type = new_model which = infantry value = 0 } # AUBM_V4_UNIT_GATE infantry
-		command = { type = activate_unit_type which = artillery } # AUBM_V4_UNIT_GATE artillery
-		command = { type = new_model which = artillery value = 0 } # AUBM_V4_UNIT_GATE artillery
-		command = { type = build_division which = infantry value = artillery when = 6 cost = -1.5 where = 60 }
+		command = { type = supplies value = -400 }
 		command = { type = domestic which = professional_army value = -1 }
 		command = { type = setflag which = ind_v3_universal_service }
 		command = { type = setflag which = ind_v3_national_service_settled }
 	}
 	action_b = {
-	trigger = {
-			# V3_QUEUE_MANPOWER = 81
-			manpower = 81
-	}
 		ai_chance = 40
-		name = "Conscript technical and transport specialists"
-		command = { type = manpowerpool value = 110 }
+		name = "Selective service: +260 now, +60/year; +2 dissent"
+		command = { type = manpowerpool value = 260 }
 		command = { type = dissent value = 2 }
-		command = { type = money value = -325 }
-		command = { type = activate_unit_type which = motorized } # AUBM_V4_UNIT_GATE motorized
-		command = { type = new_model which = motorized value = 0 } # AUBM_V4_UNIT_GATE motorized
-		command = { type = activate_unit_type which = armored_car } # AUBM_V4_UNIT_GATE armored_car
-		command = { type = new_model which = armored_car value = 0 } # AUBM_V4_UNIT_GATE armored_car
-		command = { type = build_division which = motorized value = armored_car when = 3 cost = -2.0 where = 75 }
-		command = { type = activate_unit_type which = bergsjaeger } # AUBM_V4_UNIT_GATE bergsjaeger
-		command = { type = new_model which = bergsjaeger value = 0 } # AUBM_V4_UNIT_GATE bergsjaeger
-		command = { type = activate_unit_type which = engineer } # AUBM_V4_UNIT_GATE engineer
-		command = { type = new_model which = engineer value = 0 } # AUBM_V4_UNIT_GATE engineer
-		command = { type = build_division which = bergsjaeger value = engineer when = 2 cost = -1.8 where = 60 }
+		command = { type = money value = -200 }
+		command = { type = supplies value = -250 }
+		command = { type = tc_mod value = 3 }
 		command = { type = setflag which = ind_v3_selective_service }
 		command = { type = setflag which = ind_v3_national_service_settled }
 	}
 	action_c = {
-	trigger = {
-			# V3_QUEUE_MANPOWER = 33
-			manpower = 33
-	}
 		ai_chance = 20
-		name = "Keep a compact professional volunteer force"
+		name = "Volunteer force: +150 now, +35 yearly, +2 org; -3 dissent"
+		command = { type = manpowerpool value = 150 }
+		command = { type = supplies value = -150 }
 		command = { type = dissent value = -3 }
-		command = { type = activate_unit_type which = motorized } # AUBM_V4_UNIT_GATE motorized
-		command = { type = new_model which = motorized value = 0 } # AUBM_V4_UNIT_GATE motorized
-		command = { type = activate_unit_type which = engineer } # AUBM_V4_UNIT_GATE engineer
-		command = { type = new_model which = engineer value = 0 } # AUBM_V4_UNIT_GATE engineer
-		command = { type = build_division which = motorized value = engineer when = 2 cost = -2.5 where = 60 }
+		command = { type = max_organization which = land value = 2 }
 		command = { type = domestic which = professional_army value = 1 }
 		command = { type = setflag which = ind_v3_volunteer_service }
 		command = { type = setflag which = ind_v3_national_service_settled }
@@ -302,7 +253,7 @@ event = {
 
 	date = { day = 6 month = october year = 1942 }
 	offset = 10
-	deathdate = { day = 20 month = december year = 1942 }
+	deathdate = { day = 20 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 35
@@ -348,10 +299,10 @@ event = {
 		NOT = { flag = ind_v3_arsenal_allocation_settled }
 	# V3_ACTION_REACHABILITY_BEGIN
 	OR = {
-		AND = { manpower = 86 }
-		AND = { manpower = 11 }
-		AND = { manpower = 7 }
-		}
+		AND = { manpower = 28 }
+		AND = { manpower = 3 }
+		AND = { manpower = 1 }
+	}
 	# V3_ACTION_REACHABILITY_END
 }
 
@@ -362,80 +313,53 @@ event = {
 
 	date = { day = 9 month = may year = 1943 }
 	offset = 10
-	deathdate = { day = 29 month = july year = 1943 }
+	deathdate = { day = 29 month = july year = 1964 }
 
 	action_a = {
 	trigger = {
-			# V3_QUEUE_MANPOWER = 86
-			manpower = 86
+			# V3_QUEUE_MANPOWER = 28
+			manpower = 28
 	}
 		ai_chance = 40
 		name = "Complete the mobile striking corps"
 		command = { type = money value = -425 }
 		command = { type = supplies value = -1200 }
 		command = { type = activate_unit_type which = armor }
-		command = { type = new_model which = armor value = 0 }
 		command = { type = activate_unit_type which = sp_artillery }
-		command = { type = new_model which = sp_artillery value = 0 }
-		command = { type = activate_unit_type which = armor } # AUBM_V4_UNIT_GATE armor
-		command = { type = new_model which = armor value = 0 } # AUBM_V4_UNIT_GATE armor
-		command = { type = activate_unit_type which = sp_artillery } # AUBM_V4_UNIT_GATE sp_artillery
-		command = { type = new_model which = sp_artillery value = 0 } # AUBM_V4_UNIT_GATE sp_artillery
-		command = { type = build_division which = armor value = sp_artillery when = 2 cost = -2.5 where = 120 }
-		command = { type = activate_unit_type which = motorized } # AUBM_V4_UNIT_GATE motorized
-		command = { type = new_model which = motorized value = 0 } # AUBM_V4_UNIT_GATE motorized
-		command = { type = activate_unit_type which = armored_car } # AUBM_V4_UNIT_GATE armored_car
-		command = { type = new_model which = armored_car value = 0 } # AUBM_V4_UNIT_GATE armored_car
-		command = { type = build_division which = motorized value = armored_car when = 4 cost = -2.0 where = 75 }
+		command = { type = build_division which = armor value = sp_artillery when = 1 where = 165 }
+		command = { type = build_division which = motorized value = armored_car when = 1 where = 105 }
 		command = { type = setflag which = ind_v3_arsenal_army }
 		command = { type = setflag which = ind_v3_arsenal_allocation_settled }
 	}
 	action_b = {
 	trigger = {
-			# V3_QUEUE_MANPOWER = 11
-			manpower = 11
+			# V3_QUEUE_MANPOWER = 3
+			manpower = 3
 	}
 		ai_chance = 35
 		name = "Equip the operational air groups"
 		command = { type = money value = -500 }
 		command = { type = supplies value = -900 }
 		command = { type = activate_unit_type which = naval_bomber }
-		command = { type = new_model which = naval_bomber value = 0 }
 		command = { type = activate_unit_type which = escort }
-		command = { type = new_model which = escort value = 0 }
-		command = { type = activate_unit_type which = multi_role } # AUBM_V4_UNIT_GATE multi_role
-		command = { type = new_model which = multi_role value = 0 } # AUBM_V4_UNIT_GATE multi_role
-		command = { type = activate_unit_type which = escort } # AUBM_V4_UNIT_GATE escort
-		command = { type = new_model which = escort value = 0 } # AUBM_V4_UNIT_GATE escort
-		command = { type = build_division which = multi_role value = escort when = 2 cost = -2.5 where = 90 }
-		command = { type = activate_unit_type which = tactical_bomber } # AUBM_V4_UNIT_GATE tactical_bomber
-		command = { type = new_model which = tactical_bomber value = 0 } # AUBM_V4_UNIT_GATE tactical_bomber
-		command = { type = build_division which = tactical_bomber value = escort when = 2 cost = -2.5 where = 100 }
-		command = { type = activate_unit_type which = naval_bomber } # AUBM_V4_UNIT_GATE naval_bomber
-		command = { type = new_model which = naval_bomber value = 0 } # AUBM_V4_UNIT_GATE naval_bomber
-		command = { type = build_division which = naval_bomber value = escort when = 1 cost = -2.5 where = 100 }
+		command = { type = build_division which = multi_role when = 1 where = 90 }
+		command = { type = build_division which = tactical_bomber value = escort when = 1 where = 105 }
+		command = { type = build_division which = naval_bomber value = escort when = 1 where = 105 }
 		command = { type = setflag which = ind_v3_arsenal_air }
 		command = { type = setflag which = ind_v3_arsenal_allocation_settled }
 	}
 	action_c = {
 	trigger = {
-			# V3_QUEUE_MANPOWER = 7
-			manpower = 7
+			# V3_QUEUE_MANPOWER = 1
+			manpower = 1
 	}
 		ai_chance = 25
-		name = "Finish the oceanic task force"
-		command = { type = money value = -575 }
-		command = { type = supplies value = -1050 }
-		command = { type = activate_unit_type which = light_carrier } # AUBM_V4_UNIT_GATE light_carrier
-		command = { type = new_model which = light_carrier value = 0 } # AUBM_V4_UNIT_GATE light_carrier
-		command = { type = activate_unit_type which = light_cag } # AUBM_V4_UNIT_GATE light_cag
-		command = { type = new_model which = light_cag value = 0 } # AUBM_V4_UNIT_GATE light_cag
-		command = { type = build_division which = light_carrier value = light_cag when = 1 cost = -3.0 where = 210 }
-		command = { type = activate_unit_type which = destroyer } # AUBM_V4_UNIT_GATE destroyer
-		command = { type = new_model which = destroyer value = 0 } # AUBM_V4_UNIT_GATE destroyer
-		command = { type = activate_unit_type which = naval_asw } # AUBM_V4_UNIT_GATE naval_asw
-		command = { type = new_model which = naval_asw value = 0 } # AUBM_V4_UNIT_GATE naval_asw
-		command = { type = build_division which = destroyer value = naval_asw when = 3 cost = -2.5 where = 90 }
+		name = "Refit the oceanic task force: -400/-850"
+		command = { type = money value = -400 }
+		command = { type = supplies value = -850 }
+		command = { type = build_division which = destroyer value = naval_asw when = 1 where = 90 }
+		command = { type = repair_mod value = 2 }
+		command = { type = max_organization which = naval value = 1 }
 		command = { type = setflag which = ind_v3_arsenal_navy }
 		command = { type = setflag which = ind_v3_arsenal_allocation_settled }
 	}
@@ -458,7 +382,7 @@ event = {
 
 	date = { day = 17 month = november year = 1943 }
 	offset = 10
-	deathdate = { day = 29 month = january year = 1944 }
+	deathdate = { day = 29 month = january year = 1964 }
 
 	action_a = {
 		ai_chance = 40
@@ -508,7 +432,7 @@ event = {
 
 	date = { day = 22 month = june year = 1944 }
 	offset = 10
-	deathdate = { day = 10 month = september year = 1944 }
+	deathdate = { day = 10 month = september year = 1964 }
 
 	action_a = {
 		ai_chance = 45
@@ -559,7 +483,7 @@ event = {
 
 	date = { day = 5 month = february year = 1945 }
 	offset = 10
-	deathdate = { day = 29 month = april year = 1945 }
+	deathdate = { day = 29 month = april year = 1964 }
 
 	action_a = {
 		ai_chance = 45
@@ -577,29 +501,18 @@ event = {
 	}
 	action_b = {
 	trigger = {
-			# V3_QUEUE_MANPOWER = 48
-			manpower = 48
+			# V3_QUEUE_MANPOWER = 15
+			manpower = 15
 	}
 		ai_chance = 30
 		name = "Maintain a permanent high-readiness arsenal"
 		command = { type = money value = -600 }
 		command = { type = dissent value = 2 }
 		command = { type = activate_unit_type which = mechanized }
-		command = { type = new_model which = mechanized value = 0 }
 		command = { type = activate_unit_type which = escort }
-		command = { type = new_model which = escort value = 0 }
 		command = { type = activate_unit_type which = sp_artillery }
-		command = { type = new_model which = sp_artillery value = 0 }
-		command = { type = activate_unit_type which = mechanized } # AUBM_V4_UNIT_GATE mechanized
-		command = { type = new_model which = mechanized value = 0 } # AUBM_V4_UNIT_GATE mechanized
-		command = { type = activate_unit_type which = sp_artillery } # AUBM_V4_UNIT_GATE sp_artillery
-		command = { type = new_model which = sp_artillery value = 0 } # AUBM_V4_UNIT_GATE sp_artillery
-		command = { type = build_division which = mechanized value = sp_artillery when = 3 cost = -2.5 where = 100 }
-		command = { type = activate_unit_type which = multi_role } # AUBM_V4_UNIT_GATE multi_role
-		command = { type = new_model which = multi_role value = 0 } # AUBM_V4_UNIT_GATE multi_role
-		command = { type = activate_unit_type which = escort } # AUBM_V4_UNIT_GATE escort
-		command = { type = new_model which = escort value = 0 } # AUBM_V4_UNIT_GATE escort
-		command = { type = build_division which = multi_role value = escort when = 2 cost = -2.5 where = 100 }
+		command = { type = build_division which = mechanized value = sp_artillery when = 1 where = 135 }
+		command = { type = build_division which = multi_role when = 1 where = 90 }
 		command = { type = domestic which = defense_lobby value = 1 }
 		command = { type = setflag which = ind_v3_permanent_arsenal }
 		command = { type = setflag which = ind_v3_reconversion_settled }

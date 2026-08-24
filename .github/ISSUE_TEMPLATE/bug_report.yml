@@ -37,7 +37,7 @@ body:
         - German
         - Japanese
         - Soviet
-        - Armed non-aligned
+        - Sovereign / armed non-aligned
   - type: textarea
     id: description
     attributes:
@@ -64,7 +64,7 @@ body:
       options:
         - label: I use Darkest Hour 1.05.2.
           required: true
-        - label: I installed over Blood and Iron v1.1 using the supplied installer.
+        - label: I installed A Union Before Midnight using the supplied installer.
           required: true
         - label: I am not combining another scenario or India overhaul.
           required: true

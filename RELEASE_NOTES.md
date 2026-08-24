@@ -1,5 +1,182 @@
 # Release Notes
 
+## 4.2.0 Alpha 19 - 1933 Launch Hotfix
+
+### Engine Crash Fix
+
+- Fixed unsupported foreign-country flag scopes in Japanese-partnership and
+  wartime-settlement events that caused Darkest Hour to abort while loading the
+  1933 campaign.
+- Reworked those cross-country checks into Darkest Hour-supported event and
+  callback logic while preserving the intended global flag contract.
+- Added a validation gate that rejects the unsupported syntax before deployment.
+- Confirmed that a fresh 1933 campaign reaches the playable map without the
+  Alpha 18 parser failure.
+
+### Public-Safe Source Snapshot
+
+- Split public installer content from developer-only personal visual outputs.
+- Excluded copied foundation and donor map files, donor-derived unit sprites and
+  palettes, donor-derived model panels, and unresolved visual overrides.
+- Kept local personal assets outside Git and public release manifests.
+- Verified every file in the active installer manifest by SHA-256.
+
+### Status
+
+Alpha 19 passes static validation, installed-file verification and a fresh 1933
+engine smoke test. A complete human wartime and postwar playthrough is still
+required. This remains an alpha branch snapshot rather than a stable packaged
+release.
+
+## 4.2.0 Alpha 18 - Every War Has an Indian Ending
+
+Alpha 18 turns the wartime framework into a complete campaign system. India
+can align with Britain or the United States, Berlin, Moscow or Tokyo; retain a
+separate-command compact; return to sovereign command; or declare a bilateral
+war against any modeled country. Battlefield control now creates immediate
+political feedback, a reversible settlement claim and a constitutional end
+state instead of waiting silently for the global war to finish.
+
+### Alliance And Command Routes
+
+- Added deterministic formal-coalition precedence and canonical synchronizers
+  for Allied, German, Soviet, Japanese and sovereign command.
+- Added an explicit British or American choice for formal Allied entry and
+  preserved that partner identity when India presents battlefield claims.
+- Added chronology and state gates to every formal alliance and compact
+  conference, plus recovery for completed or orphaned Allied negotiations.
+- Added clean alliance departure and relationship cleanup when India attacks a
+  former partner, changes sides, or loses its strategic partner to annexation.
+- Added Allied command failover between London and Washington when the selected
+  partner disappears, preserving India's current campaign and peace standing.
+- Added an Indian Bitter Peace response: accept the armistice, continue a
+  separate Soviet war, or record inherited peace without losing earned claims.
+- Autonomous Indian socialism now uses the socialist wartime charter and Delhi
+  congress while remaining under sovereign Indian command.
+- Choosing postwar autonomy at the Socialist Peace Congress now preserves the
+  domestic Indian socialist programme instead of relabelling it as ordinary
+  non-alignment.
+
+### Campaigns And Settlements
+
+- Expanded the generated matrix to 210 country lifecycles. With five bespoke
+  great powers and 21 bespoke regional opponents, India has 236 practical
+  country-specific campaigns, including later successor states.
+- Opened campaign recognition, reversals, recoveries, wartime finance and
+  mobilisation from 1933 so an early sovereign war is no longer invisible.
+- Rebuilt all 21 regional victory checks around live war, legal capital
+  ownership and Indian control. Occupying a capital owned by a third country
+  can no longer produce a false victory.
+- Kept annexed-country monitors persistent: every annexation opens a choice to
+  restore sovereignty, establish protection or assume costly direct rule.
+- Added one-country refusal and retry locks so failed negotiations do not block
+  unrelated settlements or allow repeated rewards.
+- Replaced six universal declaration and armistice helpers containing up to
+  1,695 commands with country-specific callbacks. The generated matrix now has
+  3,223 small lifecycle events, and its largest event contains 210 commands.
+- Added vanished-government recovery: if an opponent is annexed by another
+  power while its reply is in transit, the dead response lock is removed and
+  the country file can reopen if that state later returns.
+- Hardened Central Asian peace terms. Moscow can transfer only a complete
+  republic it legally owns and India controls; a failed transfer continues the
+  war and reopens negotiation after cooldown.
+- Added independent 60/25/15 foreign-response files for Persia, Iraq, Saudi
+  Arabia, Yemen, Oman, Afghanistan, Tibet and Xinjiang. One refusal can no
+  longer lock every other regional settlement.
+- Removed the automatic Tibet transfer from the Japan path. Tokyo's Himalayan
+  clause now improves the terms of a verified Indian-controlled settlement.
+
+### Victory Feedback And Occupation
+
+- Added one route achievement and one postwar Delhi congress per completed
+  campaign, with current-route recognition after a legitimate side change.
+- Added a route-wide achievement fallback so victory over any modeled country,
+  including a late-created state outside the selected charter, can reach the
+  Delhi peace congress.
+- Preserved campaign credit through coalition collapse, rupture, armistice and
+  strategic autonomy while preventing duplicate route rewards.
+- Added an annual option to civilianize one occupation tier. Direct rule keeps
+  an irreducible tier-one annual burden until sovereignty is actually changed;
+  administrative reform alone cannot erase the cost of retained territory.
+- Retained immediate theater feedback, local pairwise peace and provisional
+  governments without requiring every Indian war to end.
+
+### Production Gates
+
+- Expanded the canonical wartime suite to 1,434 checks, alongside 28,175
+  generated-country checks and 595 five-route consequence checks.
+- New assertions cover coalition precedence, partner identity and collapse,
+  direct-war cleanup, Bitter Peace, early-war monitors, all regional legal-owner
+  guards, Central Asian transfer safety and occupation devolution.
+- A new 1933 campaign is required to exercise the complete route state cleanly.
+
+## 4.2.0 Alpha 17 - The War Has Consequences
+
+Alpha 17 replaces overlapping wartime reward chains with one state-driven War
+Cabinet and settlement system. India can follow Allied, German, Soviet,
+Japanese or sovereign command, switch formal coalitions through an explicit
+transfer rule, retain bilateral compacts, or declare an independent campaign
+against any modeled sovereign country.
+
+### Five Complete Strategic Routes
+
+- Added four operational doctrines for each strategic route, selected when
+  India enters its first live war on that route.
+- Added twenty route-specific achievements tied to Indian-controlled
+  objectives rather than another country's progress or a brittle event flag.
+- Added five Delhi peace congresses. A completed campaign can produce a concert
+  of sovereign partners, an Indian security sphere or renewed strategic
+  autonomy.
+- Preserved the distinct Delhi-Tokyo division of labour, including an Indian
+  southern sphere and an independent Soviet war that does not automatically
+  involve Japan under the strategic compact.
+
+### Campaigns Against Any Country
+
+- Added audited campaign lifecycles for 58 sovereign states not already covered
+  by bespoke British, German, Soviet, Japanese, American or regional systems.
+- Every lifecycle includes a declaration page, campaign brief, capital
+  objective, reversal, recovery, fixed foreign response, India-scoped peace,
+  refusal cooldown and post-annex constitutional settlement.
+- Country-specific peace closes only that opponent. It does not silently end
+  India's other wars or award territory before the relevant settlement choice.
+- Previously settled regional and great-power files can reopen after a genuine
+  later war; old victory and annex flags no longer block the new campaign.
+
+### War Economy And Mobilisation
+
+- Added an initial War Finance Act and one guarded annual budget cycle with
+  bonds, progressive taxation, external credit and ordinary-revenue choices.
+- Borrowing advances a cumulative four-tier debt register with postwar
+  redemption, conversion, annual service or repudiation.
+- Added cooldown-protected emergency credit for a negative wartime treasury.
+- Added limited, national and technical mobilisation, one low-manpower service
+  escalation and a real demobilisation or retained-readiness choice.
+- Direct mandates now advance a scalable annual occupation register instead of
+  granting cost-free map colour. The Japanese settlement uses the same ledger.
+
+### Settlement Reliability
+
+- Moved foreign accept, counter and refusal results into delayed callbacks;
+  only India executes pairwise peace commands.
+- Added one-response locks and 90-day retry files so a refusal cannot duplicate
+  rewards or lose the selected country.
+- Limited Arabian and Central Asian settlements to governments whose actual
+  objectives India won. Existing unrelated republics can no longer become
+  puppets merely because they exist.
+- Formal Allied, German, Soviet and Japanese route state now converts to the
+  appropriate separate-command compact before a local armistice.
+- Retired the old overlapping wartime stacks while leaving prewar diplomacy,
+  procurement and treaty conferences intact.
+
+### Production Gates
+
+- Added 620 canonical wartime checks, 2,852 every-country lifecycle checks and
+  433 five-route consequence checks to the build.
+- The build rejects foreign-scoped peace commands, stale generated matrices,
+  missing retry locks, non-persistent reusable events, duplicate legacy reward
+  stacks and a Japanese direct mandate without occupation upkeep.
+
 ## 4.0.0 Alpha 1 - The Direct Darkest Hour Rebuild
 
 *Freedom came early. Unity came at a price.*
@@ -283,25 +460,11 @@ the original foundation.
 - These limitations cannot be removed without executable-level development or
   creating a new game.
 
-### Alpha Status
+### Alpha 18 Superseded Status
 
-V4 Alpha 1 has passed:
-
-- repeat-build stability across all 1,042 overlay files;
-- source validation with zero errors and zero warnings;
-- strict art and provenance validation with zero issues;
-- strict service-sprite validation with zero errors;
-- opening-economy simulation;
-- air and naval combat-pacing analysis;
-- cumulative construction-cap analysis;
-- fresh-install verification;
-- update repair and save-preservation verification.
-
-It has now been deployed for its first integrated scenario-load and campaign
-test. Full 1933-45 human validation, actual executable combat observation and
-the India model and production-panel pass remain before a stable public
-release. Map-sprite selection, animation and upgrade behavior still require
-one executable visual smoke test.
+Alpha 18 passed its static gates but failed its first fresh 1933 launch because
+of unsupported foreign-country event syntax. Alpha 19 supersedes it with the
+launch fix and public-packaging hardening.
 
 ## 3.4.1 Open Beta Hardening
 

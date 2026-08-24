@@ -39,6 +39,7 @@ V4_1933 = {
     9280300: "a",
     9280301: "a",
     9280150: "a",
+    9281000: "a",
 }
 V4_1934 = {
     9280108: "a",
@@ -123,13 +124,13 @@ def main() -> int:
     print("  Daily production and trade income are deliberately excluded.")
 
     errors: list[str] = []
-    if end_1933["money"] < 750:
-        errors.append("Default opening leaves less than 750 money before 1934 institutions.")
+    if end_1933["money"] < 1400:
+        errors.append("Default opening leaves less than 1400 money before 1934 institutions.")
     if end_1933["supplies"] < 750:
         errors.append("Default opening leaves less than 750 supplies before 1934 institutions.")
-    if end_1934["money"] < 350:
-        errors.append("Default 1934 institutions leave less than 350 money before daily income.")
-    if with_security["money"] < 100 or with_security["supplies"] < 250:
+    if end_1934["money"] < 1000:
+        errors.append("Default 1934 institutions leave less than 1000 money before daily income.")
+    if with_security["money"] < 800 or with_security["supplies"] < 450:
         errors.append("Optional airfield security makes the static opening ledger insolvent.")
 
     for error in errors:

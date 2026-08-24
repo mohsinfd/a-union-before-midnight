@@ -19,7 +19,7 @@ event = {
 
 	date = { day = 0 month = july year = 1946 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1946 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 45
@@ -94,7 +94,7 @@ event = {
 
 	date = { day = 0 month = march year = 1947 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1948 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 45
@@ -147,7 +147,7 @@ event = {
 
 	date = { day = 0 month = october year = 1948 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1949 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 60
@@ -192,7 +192,7 @@ event = {
 
 	date = { day = 25 month = january year = 1950 }
 	offset = 5
-	deathdate = { day = 29 month = june year = 1950 }
+	deathdate = { day = 29 month = june year = 1964 }
 
 	action_a = {
 		ai_chance = 60
@@ -236,7 +236,7 @@ event = {
 
 	date = { day = 0 month = april year = 1951 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1951 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 40
@@ -295,7 +295,7 @@ event = {
 
 	date = { day = 0 month = february year = 1952 }
 	offset = 10
-	deathdate = { day = 29 month = june year = 1952 }
+	deathdate = { day = 29 month = june year = 1964 }
 
 	action_a = {
 		ai_chance = 45
@@ -346,26 +346,21 @@ event = {
 
 	date = { day = 0 month = march year = 1953 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1954 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 	trigger = {
-			# V3_QUEUE_MANPOWER = 4
-			manpower = 4
+			manpower = 1
 	}
 		ai_chance = 45
-		name = "Buy proven jets and modernize immediately"
+		name = "Buy one field-ready current-model jet wing"
 		command = { type = money value = -1400 }
 		command = { type = supplies value = -1000 }
+		command = { type = manpowerpool value = -1 }
 		command = { type = steal_tech which = ENG }
 		command = { type = steal_tech which = USA }
-		command = { type = activate_unit_type which = escort }
-		command = { type = new_model which = escort value = 0 }
-		command = { type = activate_unit_type which = multi_role } # AUBM_V4_UNIT_GATE multi_role
-		command = { type = new_model which = multi_role value = 0 } # AUBM_V4_UNIT_GATE multi_role
-		command = { type = activate_unit_type which = escort } # AUBM_V4_UNIT_GATE escort
-		command = { type = new_model which = escort value = 0 } # AUBM_V4_UNIT_GATE escort
-		command = { type = build_division which = multi_role value = escort when = 3 cost = -2.5 where = 90 }
+		command = { type = add_corps which = "No. 1 Jet Conversion Group" value = air where = 1459 }
+		command = { type = add_division which = "No. 1 Indian Jet Wing" value = multi_role when = -1 }
 		command = { type = setflag which = ind_v3_imported_jet_age }
 		command = { type = setflag which = ind_v3_jet_age }
 	}
@@ -400,7 +395,7 @@ event = {
 
 	date = { day = 0 month = april year = 1955 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1955 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 45
@@ -453,7 +448,7 @@ event = {
 
 	date = { day = 0 month = october year = 1956 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1957 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 50
@@ -506,7 +501,7 @@ event = {
 
 	date = { day = 0 month = march year = 1957 }
 	offset = 10
-	deathdate = { day = 29 month = july year = 1957 }
+	deathdate = { day = 29 month = july year = 1964 }
 
 	action_a = {
 		ai_chance = 35
@@ -541,11 +536,7 @@ event = {
 		command = { type = money value = -1200 }
 		command = { type = supplies value = -1400 }
 		command = { type = research_mod value = 4 }
-		command = { type = activate_unit_type which = light_carrier } # AUBM_V4_UNIT_GATE light_carrier
-		command = { type = new_model which = light_carrier value = 0 } # AUBM_V4_UNIT_GATE light_carrier
-		command = { type = activate_unit_type which = light_cag } # AUBM_V4_UNIT_GATE light_cag
-		command = { type = new_model which = light_cag value = 0 } # AUBM_V4_UNIT_GATE light_cag
-		command = { type = build_division which = light_carrier value = light_cag when = 1 cost = -3.0 where = 300 }
+		command = { type = build_division which = light_carrier value = light_cag when = 1 where = 270 name = "INS Shakti" }
 		command = { type = setflag which = ind_v3_1957_strategic_modernization }
 		command = { type = setflag which = ind_v3_election_1957 }
 	}
@@ -568,12 +559,12 @@ event = {
 
 	date = { day = 0 month = march year = 1959 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1960 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 	trigger = {
-			# V3_QUEUE_MANPOWER = 33
-			manpower = 33
+			# V3_QUEUE_MANPOWER = 17
+			manpower = 17
 	}
 		ai_chance = 45
 		name = "Offer asylum and reinforce the frontier"
@@ -581,11 +572,7 @@ event = {
 		command = { type = manpowerpool value = 15 }
 		command = { type = construct which = land_fort where = 1439 value = 2 trigger = { owned = { province = 1439 data = IND } NOT = { building = { province = 1439 type = land_fort value = 9 } } } }
 		command = { type = construct which = land_fort where = 1540 value = 2 trigger = { owned = { province = 1540 data = IND } NOT = { building = { province = 1540 type = land_fort value = 9 } } } }
-		command = { type = activate_unit_type which = bergsjaeger } # AUBM_V4_UNIT_GATE bergsjaeger
-		command = { type = new_model which = bergsjaeger value = 0 } # AUBM_V4_UNIT_GATE bergsjaeger
-		command = { type = activate_unit_type which = engineer } # AUBM_V4_UNIT_GATE engineer
-		command = { type = new_model which = engineer value = 0 } # AUBM_V4_UNIT_GATE engineer
-		command = { type = build_division which = bergsjaeger value = engineer when = 2 cost = -1.8 where = 75 }
+		command = { type = build_division which = bergsjaeger value = engineer when = 1 where = 105 }
 		command = { type = setflag which = ind_v3_tibet_asylum }
 		command = { type = setflag which = ind_v3_tibet_crisis }
 	}
@@ -627,7 +614,7 @@ event = {
 
 	date = { day = 0 month = april year = 1960 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1960 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 70
@@ -667,7 +654,7 @@ event = {
 
 	date = { day = 0 month = january year = 1961 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1962 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 50
@@ -718,29 +705,20 @@ event = {
 
 	date = { day = 0 month = october year = 1962 }
 	offset = 7
-	deathdate = { day = 29 month = december year = 1963 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 	trigger = {
-			# V3_QUEUE_MANPOWER = 53
-			manpower = 53
+			# V3_QUEUE_MANPOWER = 18
+			manpower = 18
 	}
 		ai_chance = 55
 		name = "Reinforce, mobilize and negotiate from strength"
 		command = { type = money value = -700 }
 		command = { type = supplies value = -1800 }
 		command = { type = activate_unit_type which = escort }
-		command = { type = new_model which = escort value = 0 }
-		command = { type = activate_unit_type which = bergsjaeger } # AUBM_V4_UNIT_GATE bergsjaeger
-		command = { type = new_model which = bergsjaeger value = 0 } # AUBM_V4_UNIT_GATE bergsjaeger
-		command = { type = activate_unit_type which = engineer } # AUBM_V4_UNIT_GATE engineer
-		command = { type = new_model which = engineer value = 0 } # AUBM_V4_UNIT_GATE engineer
-		command = { type = build_division which = bergsjaeger value = engineer when = 3 cost = -1.8 where = 60 }
-		command = { type = activate_unit_type which = tactical_bomber } # AUBM_V4_UNIT_GATE tactical_bomber
-		command = { type = new_model which = tactical_bomber value = 0 } # AUBM_V4_UNIT_GATE tactical_bomber
-		command = { type = activate_unit_type which = escort } # AUBM_V4_UNIT_GATE escort
-		command = { type = new_model which = escort value = 0 } # AUBM_V4_UNIT_GATE escort
-		command = { type = build_division which = tactical_bomber value = escort when = 1 cost = -2.5 where = 75 }
+		command = { type = build_division which = bergsjaeger value = engineer when = 1 where = 105 }
+		command = { type = build_division which = tactical_bomber value = escort when = 1 where = 105 }
 		command = { type = construct which = air_base where = 1439 value = 3 trigger = { owned = { province = 1439 data = IND } NOT = { building = { province = 1439 type = air_base value = 8 } } } }
 		command = { type = construct which = land_fort where = 1540 value = 2 trigger = { owned = { province = 1540 data = IND } NOT = { building = { province = 1540 type = land_fort value = 9 } } } }
 		command = { type = relation which = CHI value = -35 }
@@ -788,7 +766,7 @@ event = {
 
 	date = { day = 0 month = july year = 1963 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1963 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 60

@@ -1,120 +1,259 @@
 =======================================================================
- A UNION BEFORE MIDNIGHT - V3.4.1 OPEN BETA
+ A UNION BEFORE MIDNIGHT - V4.2.0 ALPHA 19
  For Darkest Hour 1.05.2
 =======================================================================
 
 Freedom came early. Unity came at a price.
 
-A Union Before Midnight is an alternate-history campaign built on Blood and
-Iron v1.1. India becomes sovereign on 1 January 1933 and inherits an undivided
-British India, including Burma, together with the armed forces and unresolved
-institutions of the Raj. Ceylon and Goa remain colonial possessions; Nepal and
-Bhutan begin independent.
+A Union Before Midnight is an independent-India alternate-history campaign
+beginning on 1 January 1933. India inherits a united but unsettled continental
+state from Ceylon to Burma and must build a working federation, modern economy
+and credible armed forces before the world crisis reaches Asia.
 
-India is intentionally stronger than it was historically. Political bargains,
-industrial investment, military commitments and diplomatic risk can make it
-the world's second- or third-ranked power, but no route receives an automatic
-victory.
+Alpha 19 passes the automated release gates and a fresh 1933 executable smoke
+test. It remains an alpha playtest build pending a complete wartime and postwar
+campaign.
+
+-----------------------------------------------------------------------
+ PLAYER REQUIREMENTS
+-----------------------------------------------------------------------
+
+- Darkest Hour 1.05.2.
+- Darkest Hour Full, included with the game.
+- A fresh 1933 campaign.
+
+Blood and Iron is not a runtime foundation and is not required to play an
+already built local installation. The developer-only personal sprite rebuild
+does use a locally installed Blood and Iron v1.1 as a donor and records every
+source hash. Those donor graphics are not cleared for redistribution.
 
 -----------------------------------------------------------------------
  INSTALLATION
 -----------------------------------------------------------------------
 
-1. Install Darkest Hour 1.05.2 and Blood and Iron v1.1.
-2. Run INSTALL.bat from the A Union Before Midnight release package.
-3. Select "A Union Before Midnight" in the Darkest Hour launcher.
-4. Start "A Union Before Midnight: India 1933" and select India.
+1. Install Darkest Hour 1.05.2.
+2. Run INSTALL.bat from the A Union Before Midnight source/release folder.
+3. Select "A Union Before Midnight V4.2" in the launcher.
+4. Start "A Union Before Midnight: India 1933".
 
-The installer creates an isolated copy of Blood and Iron and applies only the
-verified A Union Before Midnight overlay. It does not modify the foundation.
+The installer creates or updates an isolated copy of Darkest Hour Full, checks
+every overlay hash before and after copying, removes stale managed files, and
+preserves existing save files. It does not modify Darkest Hour Full itself.
 
-V3.4.1 requires a new 1933 campaign for every corrected trigger, balance rule
-and opening event to take effect. Earlier V3 saves are not supported by the
-public beta.
-
------------------------------------------------------------------------
- CAMPAIGN FEATURES
------------------------------------------------------------------------
-
-- A narrative independence prologue and provisional cabinet on 1-2 January
-  1933.
-- Stable full-cabinet government packages, researched ministers, staged
-  military leadership and thirty-one Indian technology teams.
-- Industrial, transport and resource programmes tied to verified Blood and
-  Iron province IDs.
-- A 150-209 provincial-IC core range by 1940 before wartime expansion,
-  depending on player choices.
-- Army, air and naval programmes capable of producing a major power without
-  giving every service its maximum force for free.
-- Arabian Sea, Bay of Bengal and Indian Ocean commands, with distinct carrier,
-  light-carrier and submarine doctrines.
-- Indian formation and unit naming pools for every land, air and naval type.
-- Indian unit panels, production icons, map palettes and dedicated Gurkha
-  visual coverage.
-- Gurkha, frontier, airborne, long-range penetration and Andaman marine
-  traditions.
-- Allied, German, Japanese, Soviet and armed non-aligned strategic routes.
-- A Japan route independent from Germany, covering China, Bose, the INA,
-  Imphal, Burma and competing visions of Asian leadership.
-- Indian reactions to Abyssinia, Spain, China, Anschluss, Munich, Prague and
-  the war over Poland.
-- Wartime finance, national service, logistics, science, civil liberty,
-  veterans and industrial reconversion.
-- Postwar and Cold War content through 1964.
+For a non-standard Steam library, run the PowerShell installer with -GameRoot.
 
 -----------------------------------------------------------------------
- V3.4.1 OPEN BETA HARDENING
+ THE ALPHA 18 GAMEPLAY REWORK (RETAINED IN ALPHA 19)
 -----------------------------------------------------------------------
 
-- Rebalanced the National System of Science so autonomous universities are no
-  longer a free dominant choice.
-- Capped the conservative permanent global-research upper bound at 22% in 1940
-  and 34% in 1945 while retaining strong teams and foreign advances.
-- Replaced the bankruptcy and manpower exploits with conditional emergency
-  measures carrying political and economic consequences.
-- Added a later settlement for the Fiscal Stabilization Act.
-- Added validated affordability gates to every mandatory event whose actions
-  require resources.
-- Removed the light carrier from the submarine doctrine.
-- Closed the Soviet route after an alliance refusal.
-- Made Imphal recognition require an actual Malayan objective, and stopped
-  Japanese and German postwar settlements from overlapping.
-- Required peace, a secure Delhi and the relevant surviving alignment before
-  strategic-route settlements can fire.
-- Reduced the Allied broad-basing windfall.
-- Replaced forum-prohibited imagery and removed unrelated inherited graphics
-  from the distributed overlay.
+Alpha 19 fixes the unsupported foreign-country event scopes that caused Alpha
+18 to abort while loading the 1933 scenario. The validator now rejects that
+syntax before deployment.
+
+Earlier builds could let India capture Persia, Suez, Singapore or the East
+Indies without meaningful feedback until the entire world war ended. Old route
+flags could also disagree with India's actual alliances and wars. Alpha 18
+replaced that overlap with one state-driven War Cabinet and one common campaign
+contract.
+
+The new rules are:
+
+1. Actual alliances, wars, control and ownership outrank old policy flags.
+2. Every supported war publishes an Indian-controlled objective.
+3. Capturing it produces immediate theatre feedback and a live settlement.
+4. Losing it suspends the claim; recovering it restores the same file.
+5. Each opponent accepts, counters or refuses separately.
+6. Delhi ratifies only that pairwise peace; India's other wars continue.
+7. Annexation opens a sovereign, protected or direct-rule settlement.
+8. A completed campaign earns route standing and a Delhi peace congress.
+
+One refusal cannot block another country. If a government vanishes while its
+answer is in transit, the dead reply lock is removed and the campaign can reopen
+if that country later returns.
 
 -----------------------------------------------------------------------
- TESTING STATUS
+ STRATEGIC COMMAND
 -----------------------------------------------------------------------
 
-The production gate checks 210 India entries across 25 modules, event syntax,
-IDs, triggers, action reachability, province ownership, province roles,
-construction caps, force plans, team and leader records, graphics, AI profiles
-and five deterministic prewar route simulations through 1940.
+The permanent War Cabinet supports five command universes:
 
-Human campaign testing has reached early 1937. The 1940 simulations are static
-and deterministic; they are not a substitute for the closed-source game
-engine. The 1942-1964 campaign is beta content until full route and postwar
-playthroughs are completed.
+- Allied: join Britain or the United States, or retain separate command.
+- German: join Berlin or cooperate as an independent co-belligerent.
+- Soviet: join Moscow, negotiate a compact, or pursue autonomous socialism.
+- Japanese: form an engine alliance or a separate Delhi-Tokyo compact.
+- Sovereign: fight country-by-country without a permanent patron.
+
+A formal alliance merges every current war because that is Darkest Hour engine
+behavior. A compact preserves separate declarations and peace authority. India
+can change sides through a guarded transfer, attack a former partner, or return
+to sovereign command without losing verified battlefield credit.
+
+Each route has four wartime doctrines and its own postwar Delhi congress. The
+final settlement can establish a concert of sovereign partners, an Indian
+security sphere, or renewed strategic autonomy.
+
+-----------------------------------------------------------------------
+ CAMPAIGN COVERAGE AND PEACE
+-----------------------------------------------------------------------
+
+India has 236 practical country-specific campaigns:
+
+- 5 bespoke great powers: Britain, Germany, Soviet Union, Japan and USA.
+- 21 bespoke regional opponents across Asia, Europe, Africa and Oceania.
+- 210 generated campaigns for other loaded and later-created sovereign tags.
+
+The common generated terms are 60 percent acceptance, 25 percent counteroffer
+and 15 percent refusal. Earned coalition, sovereign or great-power standing can
+improve them to 75/20/5. Bespoke negotiations disclose their own actual odds.
+
+After annexation India must choose:
+
+- restore a sovereign government and seek access or partnership;
+- establish a protected government at a political cost;
+- retain direct rule with dissent, belligerence and annual upkeep; or
+- defer the constitutional decision for a limited period.
+
+-----------------------------------------------------------------------
+ JAPANESE PARTNERSHIP
+-----------------------------------------------------------------------
+
+The Delhi-Tokyo route now distinguishes a formal alliance from a strategic
+compact. Under the compact India can lead the southern campaign while Japan
+handles China, the Philippines and the Pacific, and India can open an
+independent Soviet war without automatically involving Japan.
+
+The southern ledger tracks:
+
+- Rangoon, Imphal and Port Blair for the Burma-Andaman approach.
+- Singapore and Kuala Lumpur for Malaya.
+- Palembang, Batavia and Soerabaja for the East Indies.
+- Darwin, Canberra and Sydney for Australia.
+
+Japanese occupation inside India's agreed theatre can transfer to Indian
+control while legal ownership waits for peace. India can settle Malaya,
+Indonesia and Australia before the entire Pacific war ends.
+
+Tibet is not transferred automatically. A victorious partnership improves the
+terms only after India fights a real Tibetan campaign, controls the verified
+objective and completes the constitutional settlement.
+
+The earlier second-proposal deadlock is repaired, influence accounting is
+corrected, and a pro-Japanese India no longer receives anti-Japanese criticism
+unless it actually fights Japan.
+
+-----------------------------------------------------------------------
+ WAR FINANCE, MOBILISATION AND OCCUPATION
+-----------------------------------------------------------------------
+
+The peacetime Union Budget begins in 1934. Permanent revenue grows through the
+Revenue Service, the 1937 Federal Income Tax Settlement and, from 1940 during an
+Indian or global war, the National War Finance Board. Taxation, borrowing and
+foreign credit carry visible political or debt costs.
+
+Whenever India is at war without an active account, a War Finance Act opens
+with bonds, taxation, external credit or ordinary revenue. Borrowing advances a
+cumulative four-tier debt register. A negative treasury can use guarded
+emergency credit. At the next wartime-account review after peace, India must
+choose redemption, annual service or politically costly repudiation.
+
+India receives one annual trained reserve class from 1934 through 1964. War
+also opens limited service, national service or a technical reserve. Further
+low-manpower call-ups cost supplies and dissent, and peace opens a real choice
+between demobilisation and retained readiness.
+
+Every new direct mandate advances an occupation register. Annual costs scale
+with the number of retained administrations. Civilianisation can reduce a high
+tier, but direct rule keeps an irreducible tier-one burden until sovereignty
+actually changes.
+
+-----------------------------------------------------------------------
+ ARMED FORCES AND RESEARCH
+-----------------------------------------------------------------------
+
+- 31 additional real Indian and subcontinental officers.
+- At least 80 active land leaders in 1938 and 90 in 1940.
+- Restored commando leaders for Gurkha, INA, airborne and frontier forces.
+- Eight special-unit families with 42 research-linked equipment models.
+- Distinct Gurkha, Frontier, Chindit, Airborne, Marine, Pioneer and Guards roles.
+- Arabian Sea Fleet: 1 BB, 2 CL and 2 DD.
+- Bay of Bengal Fleet: 1 BB, 2 CL and 2 DD.
+- Every Indian Ocean programme has a CV, 2 CVL or BC capital core.
+- New hulls receive the mature 50-percent model-zero time standard at normal
+  daily IC cost; ships already queued keep their saved completion dates.
+- Illegal unit and brigade combinations have been removed.
+- 31 Indian technology teams and a complete Raj-level research inheritance.
+- Air and naval combat favors organization loss and withdrawal over routine
+  annihilation, although bad engagements can still destroy units.
+
+Public installations use Darkest Hour Full sprites and ordinary model panels.
+Reserved special-unit models currently use the engine's missing-art placeholder
+pending original panels. The 41-family animated India sprite rebuild is a
+developer-only local option; its donor-derived descriptors, strips, palettes
+and panels are excluded from public manifests.
+
+-----------------------------------------------------------------------
+ DECISION INFORMATION
+-----------------------------------------------------------------------
+
+Major choices disclose money, supplies, manpower, dissent and foreign response
+odds before commitment. A decision remains selectable when at least one full
+action is affordable; every action keeps its own complete resource gate, while
+the description discloses the costs of unavailable alternatives.
+
+Strategic orientation, treaty, formal alliance and declaration of war are
+separate steps. Choosing a domestic Gandhi-Nehru government does not by itself
+forbid a Japanese, Allied, German, Soviet or sovereign foreign-policy route.
+
+-----------------------------------------------------------------------
+ COMPATIBILITY AND TESTING STATUS
+-----------------------------------------------------------------------
+
+Start a new 1933 campaign. V3 saves are unsupported, and earlier V4 alpha saves
+do not contain the complete Alpha 19 route, economy and campaign state. The
+expanded leader roster and scenario research are serialized at game start.
+
+Verified for this build:
+
+- Full static validation: 0 errors and 0 warnings.
+- Every file in the active installed manifest: 0 missing and 0 hash mismatches.
+- 28,175 every-country checks across 210 generated countries.
+- 1,434 canonical wartime checks.
+- 595 five-route consequence checks.
+- 3,620 special-unit checks and 431 diplomatic-disclosure checks.
+- Japan, art, sprites, economy, resources, campaign, combat, construction-cap
+  and Steam Deck gates passed.
+- Fresh 1933 scenario executable smoke: passed.
+
+Still required:
+
+- A no-cheat 1940/1942 force and economy measurement.
+- Real coalition, side-switch, partner-collapse and separate-peace testing.
+- At least one complete armistice, annexation, occupation and Delhi-congress run.
+
+The executable still allows only one leader per formation and cannot
+automatically find and rebase every threatened air wing. Players must order
+aircraft away from an endangered base. An event can also attach only one module
+directly to an ordered ship; other legal modules enter the deployment pool.
+
+For a bug report, include the exact campaign date and route, whether the fault
+repeats from the same save, the last 100 lines of savedebug.txt, the relevant
+save when practical, and any manual edits or other overlays.
 
 -----------------------------------------------------------------------
  CREDITS AND RIGHTS
 -----------------------------------------------------------------------
 
-A Union Before Midnight design, events, validation and India-specific content:
-Mohsin Dingankar with Codex collaboration.
+Design and India-specific content:
+Mohsin Dingankar, developed with Codex collaboration.
 
-Foundation:
-Blood and Iron v1.1 by thewanderingknight.
+Gameplay is rebased directly on Darkest Hour Full. Public manifests exclude
+copied foundation/donor map assets, donor-derived sprites and palettes,
+donor-derived model panels and unresolved art. Developer-only local
+reconstructions remain subject to their original rights and must not be
+redistributed.
 
-Blood and Iron incorporates work from World in Flames 2, Edge of Darkness,
-Total Realism Project, Francesco's Models Mod, Kazoo's SKIF Style Icons,
-Decriser's DEC Map, the Official Graphic Pack, Horton13's Graphic Improvement
-Project, tioperete's ProvincePics Project and contributors credited in the
-original Blood and Iron release.
+This is a non-commercial fan modification. Darkest Hour and Hearts of Iron are
+trademarks of their respective owners. See RIGHTS.md and the art/research
+credits in the source package before redistribution.
 
-This is a non-commercial fan modification. Third-party material remains subject
-to its original rights and permissions. See RIGHTS.md and
-docs/ART_AND_RESEARCH_CREDITS.md in the release package before redistribution.
+The complete source-side gameplay guide is GAMEPLAY_CHANGES.md.

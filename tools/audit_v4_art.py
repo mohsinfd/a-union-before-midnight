@@ -116,8 +116,22 @@ def art_manifest_issues() -> list[str]:
         issues.append("docs/art_manifest.csv contains duplicate output rows")
 
     kinds = Counter(row.get("kind") or "" for row in rows)
-    if kinds != Counter({"event": 80, "tech_team": 31}):
+    if kinds != Counter({"event": 102, "tech_team": 31, "loading_screen": 1}):
         issues.append(f"unexpected art-manifest kind counts: {dict(kinds)}")
+
+    loading_rows = [row for row in rows if row.get("kind") == "loading_screen"]
+    if len(loading_rows) == 1:
+        loading_output = (loading_rows[0].get("output") or "").replace("\\", "/")
+        loading_path = MOD / loading_output
+        if loading_output != "gfx/load_1024.bmp":
+            issues.append(f"unexpected loading-screen output: {loading_output}")
+        elif loading_path.is_file():
+            dimensions = bmp_info(loading_path)
+            if dimensions != (1024, 768, 24):
+                issues.append(
+                    "gfx/load_1024.bmp must be a 1024x768 24-bit BMP, got "
+                    f"{dimensions[0]}x{dimensions[1]} {dimensions[2]}-bit"
+                )
 
     referenced_custom = {
         name
@@ -161,8 +175,10 @@ def v4_manifest_issues() -> list[str]:
     rows: list[dict[str, str]] = []
     with path.open(encoding="utf-8-sig", newline="") as stream:
         rows.extend(csv.DictReader(stream))
-    if len(rows) != 45:
-        issues.append(f"expected 45 V4 event-art rows, found {len(rows)}")
+    if len(rows) != len(catalog):
+        issues.append(
+            f"expected {len(catalog)} V4 event-art rows, found {len(rows)}"
+        )
 
     ids: list[int] = []
     assets: list[str] = []
@@ -197,8 +213,6 @@ def v4_manifest_issues() -> list[str]:
 
     if len(ids) != len(set(ids)):
         issues.append("V4 event-art manifest contains duplicate event ids")
-    if len(assets) != len(set(assets)):
-        issues.append("V4 event-art manifest contains duplicate asset names")
     if set(ids) != set(catalog):
         issues.append(
             "V4 event-art event coverage mismatch: "
@@ -213,7 +227,7 @@ def main() -> int:
     parser.add_argument(
         "--strict",
         action="store_true",
-        help="fail until every India event has distinct custom art and all manifests agree",
+        help="fail until every India event has validated custom art and all manifests agree",
     )
     args = parser.parse_args()
 

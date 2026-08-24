@@ -131,6 +131,58 @@ SHEETS: tuple[tuple[str, tuple[tuple[int, str], ...]], ...] = (
         "tools/art_sources/v4_events/sheet_12_return_and_v3_priority.png",
         ((9280402, "aubm_v4_soldiers_return"),),
     ),
+    (
+        "tools/art_sources/v4_events/sheet_13_campaign_finance.png",
+        (
+            (9280310, "aubm_v4_budget_conference"),
+            (9280311, "aubm_v4_union_budget_choices"),
+            (9280313, "aubm_v4_retire_development_debt"),
+            (9280312, "aubm_v4_next_budget_year"),
+        ),
+    ),
+    (
+        "tools/art_sources/v4_events/sheet_14_growth_and_islands.png",
+        (
+            (9280314, "aubm_v4_economy_full_stretch"),
+            (9280315, "aubm_v4_inherited_archives"),
+            (9280320, "aubm_v4_island_base_stage_one"),
+            (9280321, "aubm_v4_island_base_stage_two"),
+        ),
+    ),
+    (
+        "tools/art_sources/v4_events/sheet_15_china_and_burma.png",
+        (
+            (9280350, "aubm_v4_china_war_deepens"),
+            (9280351, "aubm_v4_burma_road_refugees"),
+            (9280352, "aubm_v4_bangkok_chooses_war"),
+            (9280353, "aubm_v4_china_interior"),
+        ),
+    ),
+    (
+        "tools/art_sources/v4_events/sheet_16_widening_war.png",
+        (
+            (9280354, "aubm_v4_indian_ocean_war"),
+            (9280355, "aubm_v4_barbarossa_reaction"),
+            (9280356, "aubm_v4_japan_southern_choice"),
+            (9280357, "aubm_v4_malaya_burma_conference"),
+        ),
+    ),
+    (
+        "tools/art_sources/v4_events/sheet_17_wartime_strategy.png",
+        (
+            (9280358, "aubm_v4_india_world_war"),
+            (9280359, "aubm_v4_wartime_social_contract"),
+            (9280500, "aubm_v4_strategic_council"),
+            (9280501, "aubm_v4_grand_strategy"),
+        ),
+    ),
+    (
+        "tools/art_sources/v4_events/sheet_18_asian_strategy.png",
+        (
+            (9280502, "aubm_v4_asian_strategy_menu"),
+            (9280503, "aubm_v4_strategic_council_returns"),
+        ),
+    ),
 )
 
 LEGACY_SHEETS: tuple[tuple[str, tuple[tuple[int, str], ...]], ...] = (
@@ -299,8 +351,8 @@ def records() -> list[dict[str, str | int]]:
                     "sha256": sha256(picture),
                 }
             )
-    if len(output) != 45:
-        raise ValueError(f"expected 45 V4 art records, built {len(output)}")
+    if len(output) != 67:
+        raise ValueError(f"expected 67 V4 art records, built {len(output)}")
     return output
 
 

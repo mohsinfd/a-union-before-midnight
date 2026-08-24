@@ -1,0 +1,83 @@
+# AUBM V4: partial switch for Burma, Malaya and Indonesia.
+
+neutrality = 12
+war = 88
+max_front_ratio = 1.35
+
+combat = {
+	JAP = 110
+	ENG = 55
+	U05 = 90
+	HOL = 70
+}
+
+max_front_ratios = {
+	JAP = 2.5
+	ENG = 1.6
+	U05 = 2.2
+	HOL = 1.8
+}
+
+target = {
+	1415 = 120
+	1421 = 140
+	1432 = 190
+	1438 = 150
+	1636 = 130
+	1642 = 100
+	1647 = 150
+	1653 = 145
+}
+
+front = {
+	recklessness = 1
+	distrib_vs_ai = offensive
+	distrib_vs_human = reactive
+	base_attack_odds = 1.20
+	min_attack_odds = 1.00
+	max_attack_odds = 3.20
+}
+
+invasion = {
+	invasion = yes
+	base = 0.35
+	random = 4.0
+	coastal = 0.3
+	beach = 0.3
+	distance = 7.0
+	max_distance = 150.0
+	max_staging_distance = 35
+	pocket = 15.0
+	island = 2.5
+	enemy = 2.0
+	adjacentenemy = 2.0
+	air_base = 1.5
+	naval_base = 0.25
+	air_support = 3.0
+	redirect = priority
+	ignore = no
+	help_allies = no
+	staging_province = { 1415 1421 1511 1533 }
+	target = {
+		1432 = 3600
+		1438 = 2800
+		1636 = 2400
+		1642 = 2100
+		1647 = 2700
+		1653 = 2600
+	}
+}
+
+air_marshal = {
+	airsuperioritydesirability = 45.0
+	groundattackdesirability = 30.0
+	inderdictiondesirability = 35.0
+	navalstrikedesirability = 45.0
+	portstrikedesirability = 25.0
+}
+
+admiral = {
+	min_core_attack_fleets = 2
+	num_attack_fleets = 5
+	base = { 1421 1511 1517 1533 1432 }
+}

@@ -24,28 +24,6 @@ event = {
 		command = { type = waketeam which = 250021 }
 		command = { type = waketeam which = 250022 }
 		command = { type = waketeam which = 250023 }
-		command = { type = sleepevent which = 9000100 } # Stock election system
-		command = { type = sleepevent which = 9000101 }
-		command = { type = sleepevent which = 9000102 }
-		command = { type = sleepevent which = 9000103 }
-		command = { type = sleepevent which = 9000110 }
-		command = { type = sleepevent which = 9000119 }
-		command = { type = sleepevent which = 9000111 }
-		command = { type = sleepevent which = 9000120 }
-		command = { type = sleepevent which = 9000112 }
-		command = { type = sleepevent which = 9000121 }
-		command = { type = sleepevent which = 9000113 }
-		command = { type = sleepevent which = 9000122 }
-		command = { type = sleepevent which = 9000114 }
-		command = { type = sleepevent which = 9000123 }
-		command = { type = sleepevent which = 9000115 }
-		command = { type = sleepevent which = 9000116 }
-		command = { type = sleepevent which = 9000117 }
-		command = { type = sleepevent which = 9000118 }
-		command = { type = sleepevent which = 9000150 }
-		command = { type = sleepevent which = 9000151 }
-		command = { type = sleepevent which = 9000152 }
-		command = { type = sleepevent which = 9000153 }
 		command = { type = sleepevent which = 2900127 } # Stock Indian independence election
 		command = { type = sleepevent which = 2900128 }
 		command = { type = sleepevent which = 2900129 } # Stock 1950 election

@@ -1,9 +1,63 @@
+ai/aubm/allied/IND_allied_eastern.ai
+ai/aubm/allied/IND_allied_global.ai
+ai/aubm/allied/IND_allied_joint.ai
+ai/aubm/allied/IND_allied_ocean.ai
+ai/aubm/allied/IND_allied_western.ai
+ai/aubm/german/IND_afghan_central_asia.ai
+ai/aubm/german/IND_combined_corridors.ai
+ai/aubm/german/IND_formal_axis.ai
+ai/aubm/german/IND_german_cobelligerent.ai
+ai/aubm/german/IND_persia_caucasus.ai
+ai/aubm/german/IND_post_soviet.ai
+ai/aubm/german/IND_sovereign_anti_soviet.ai
+ai/aubm/german/IND_xinjiang_corridor.ai
+ai/aubm/japan/JAP_india_neutrality.ai
+ai/aubm/japan/JAP_india_north_pressure.ai
+ai/aubm/japan/JAP_india_north_strike.ai
+ai/aubm/japan/JAP_india_peer.ai
+ai/aubm/japan/JAP_india_rupture.ai
+ai/aubm/japan/JAP_india_senior.ai
+ai/aubm/nam/armed_arbiter.ai
+ai/aubm/nam/continental_arc.ai
+ai/aubm/nam/delhi_pact.ai
+ai/aubm/nam/eastern_arc.ai
+ai/aubm/nam/liberation_coalition.ai
+ai/aubm/nam/maritime_power.ai
+ai/aubm/nam/ocean_arc.ai
+ai/aubm/nam/settlement.ai
+ai/aubm/soviet/IND_dual_west.ai
+ai/aubm/soviet/IND_eastern_anti_japan.ai
+ai/aubm/soviet/IND_persia_caucasus.ai
+ai/aubm/soviet/IND_socialist_autonomous.ai
+ai/aubm/soviet/IND_tashkent_corridor.ai
+ai/aubm/soviet/IND_three_theatre.ai
+ai/aubm/soviet/IND_xinjiang_corridor.ai
+ai/aubm/soviet/SOV_india_asia.ai
+ai/aubm/soviet/SOV_india_compact.ai
+ai/aubm/soviet/SOV_india_war.ai
 ai/IND.ai
+ai/jap_1933.ai
+ai/jap_1936.ai
+ai/jap_1939.ai
+ai/jap_1940.ai
+ai/switch/jap_backoff.ai
+ai/switch/jap_backoff2.ai
+ai/switch/jap_backoff2_siam.ai
+ai/switch/jap_backoff_remove.ai
+ai/switch/JAP_Backoff_Remove_Siam.ai
+ai/switch/jap_chc.ai
+ai/switch/jap_china.ai
+ai/switch/jap_naval_nei.ai
+ai/switch/JAP_Naval_PHI.ai
 ai/v3/IND_allied.ai
 ai/v3/IND_axis.ai
 ai/v3/IND_japan.ai
 ai/v3/IND_nam.ai
 ai/v3/IND_soviet.ai
+config/aubm_special_units.csv
+config/aubm_special_unit_models.csv
+config/famous_quotes.csv
+config/unit_names.csv
 db/airnames.csv
 db/armynames.csv
 db/country.csv
@@ -11,9 +65,35 @@ db/events.txt
 db/events/aubm_v4/00_world_bootstrap.txt
 db/events/aubm_v4/05_union_integration.txt
 db/events/aubm_v4/10_world_reactions.txt
+db/events/aubm_v4/12_campaign_systems.txt
 db/events/aubm_v4/15_operational_command.txt
+db/events/aubm_v4/18_manpower_reserves.txt
 db/events/aubm_v4/20_procurement.txt
+db/events/aubm_v4/22_crisis_interventions.txt
+db/events/aubm_v4/25_global_war.txt
+db/events/aubm_v4/26_grand_strategy.txt
+db/events/aubm_v4/27_dynamic_strategy.txt
+db/events/aubm_v4/28_foreign_responses.txt
+db/events/aubm_v4/29_world_pressure.txt
 db/events/aubm_v4/30_war_settlements.txt
+db/events/aubm_v4/31_campaign_continuity.txt
+db/events/aubm_v4/32_national_consolidation.txt
+db/events/aubm_v4/35_japan_partnership.txt
+db/events/aubm_v4/36_allied_campaigns.txt
+db/events/aubm_v4/37_german_campaigns.txt
+db/events/aubm_v4/38_soviet_campaigns.txt
+db/events/aubm_v4/39_non_aligned_campaigns.txt
+db/events/aubm_v4/40_special_units_and_capital_ships.txt
+db/events/aubm_v4/41_wartime_state.txt
+db/events/aubm_v4/42_wartime_theatres.txt
+db/events/aubm_v4/43_wartime_settlements.txt
+db/events/aubm_v4/44_wartime_economy.txt
+db/events/aubm_v4/45_enemy_campaigns.txt
+db/events/aubm_v4/46_regional_campaigns.txt
+db/events/aubm_v4/47_global_campaign_matrix.txt
+db/events/aubm_v4/48_route_wartime_consequences.txt
+db/events/aubm_v4/49_bespoke_armistices.txt
+db/events/Election_day.txt
 db/events/generic_decisions.txt
 db/events/india_v3/00_bootstrap.txt
 db/events/india_v3/10_politics.txt
@@ -40,21 +120,49 @@ db/events/india_v3/52_home_front.txt
 db/events/india_v3/60_postwar.txt
 db/events/india_v3/61_cold_war.txt
 db/events/india_v3/62_victory.txt
+db/events/Mobilization.txt
 db/leaders/india.csv
-db/ministers/minister_personalities.txt
 db/ministers/ministers_ind.csv
+db/ministers/minister_personalities.txt
 db/misc.txt
 db/navynames.csv
+db/tech/armor_tech.txt
+db/tech/infantry_tech.txt
 db/tech/teams/teams_ind.csv
 db/unitnames.csv
+db/units/divisions/battlecruiser.txt
+db/units/divisions/battleship.txt
+db/units/divisions/cavalry.txt
+db/units/divisions/d_rsv_33.txt
+db/units/divisions/d_rsv_34.txt
+db/units/divisions/d_rsv_35.txt
+db/units/divisions/d_rsv_36.txt
+db/units/divisions/d_rsv_37.txt
+db/units/divisions/d_rsv_38.txt
+db/units/divisions/d_rsv_39.txt
+db/units/divisions/d_rsv_40.txt
+db/units/divisions/garrison.txt
+db/units/divisions/heavy_cruiser.txt
+db/units/divisions/light_cruiser.txt
+db/units/divisions/militia.txt
+db/units/divisions/transport.txt
+db/units/division_types.txt
+db/units/modifiers.csv
 gfx/events_pics/all_india_congress.bmp
 gfx/events_pics/all_india_party.bmp
 gfx/events_pics/aubm_v4_administrative_state.bmp
 gfx/events_pics/aubm_v4_airfield_security.bmp
 gfx/events_pics/aubm_v4_army_commands.bmp
+gfx/events_pics/aubm_v4_asian_strategy_menu.bmp
+gfx/events_pics/aubm_v4_bangkok_chooses_war.bmp
+gfx/events_pics/aubm_v4_barbarossa_reaction.bmp
 gfx/events_pics/aubm_v4_bengal_jute.bmp
+gfx/events_pics/aubm_v4_budget_conference.bmp
+gfx/events_pics/aubm_v4_burma_road_refugees.bmp
 gfx/events_pics/aubm_v4_capacity_without_settlement.bmp
 gfx/events_pics/aubm_v4_ceylon_council.bmp
+gfx/events_pics/aubm_v4_china_interior.bmp
+gfx/events_pics/aubm_v4_china_war_deepens.bmp
 gfx/events_pics/aubm_v4_combat_command_board.bmp
 gfx/events_pics/aubm_v4_command_rotation.bmp
 gfx/events_pics/aubm_v4_continental_state.bmp
@@ -62,6 +170,7 @@ gfx/events_pics/aubm_v4_corps_exercise_1935.bmp
 gfx/events_pics/aubm_v4_customs_union.bmp
 gfx/events_pics/aubm_v4_damage_control_school.bmp
 gfx/events_pics/aubm_v4_development_loan_due.bmp
+gfx/events_pics/aubm_v4_economy_full_stretch.bmp
 gfx/events_pics/aubm_v4_federal_works_compact.bmp
 gfx/events_pics/aubm_v4_field_service_regulations.bmp
 gfx/events_pics/aubm_v4_first_union_budget.bmp
@@ -70,29 +179,43 @@ gfx/events_pics/aubm_v4_fleet_tactical_units.bmp
 gfx/events_pics/aubm_v4_foreign_expertise.bmp
 gfx/events_pics/aubm_v4_forward_basing.bmp
 gfx/events_pics/aubm_v4_four_wing_standard.bmp
+gfx/events_pics/aubm_v4_grand_strategy.bmp
+gfx/events_pics/aubm_v4_indian_ocean_war.bmp
+gfx/events_pics/aubm_v4_india_world_war.bmp
 gfx/events_pics/aubm_v4_indus_frontier_council.bmp
+gfx/events_pics/aubm_v4_inherited_archives.bmp
+gfx/events_pics/aubm_v4_island_base_stage_one.bmp
+gfx/events_pics/aubm_v4_island_base_stage_two.bmp
+gfx/events_pics/aubm_v4_japan_southern_choice.bmp
 gfx/events_pics/aubm_v4_joint_exercise_1937.bmp
 gfx/events_pics/aubm_v4_joint_replacement_pool.bmp
 gfx/events_pics/aubm_v4_league_of_nations.bmp
 gfx/events_pics/aubm_v4_liberated_territory.bmp
 gfx/events_pics/aubm_v4_london_settlement.bmp
 gfx/events_pics/aubm_v4_malayan_bargain.bmp
+gfx/events_pics/aubm_v4_malaya_burma_conference.bmp
+gfx/events_pics/aubm_v4_next_budget_year.bmp
 gfx/events_pics/aubm_v4_observer_corps.bmp
 gfx/events_pics/aubm_v4_operational_review_1939.bmp
 gfx/events_pics/aubm_v4_provincial_granaries.bmp
 gfx/events_pics/aubm_v4_provincial_oath.bmp
 gfx/events_pics/aubm_v4_railway_board.bmp
 gfx/events_pics/aubm_v4_rangoon_conference.bmp
+gfx/events_pics/aubm_v4_retire_development_debt.bmp
 gfx/events_pics/aubm_v4_second_command_board.bmp
 gfx/events_pics/aubm_v4_soldiers_return.bmp
 gfx/events_pics/aubm_v4_standard_toe.bmp
+gfx/events_pics/aubm_v4_strategic_council.bmp
+gfx/events_pics/aubm_v4_strategic_council_returns.bmp
 gfx/events_pics/aubm_v4_telegraph_statistics.bmp
 gfx/events_pics/aubm_v4_tokyo_proposition.bmp
 gfx/events_pics/aubm_v4_unfinished_bargain.bmp
 gfx/events_pics/aubm_v4_union_before_storm.bmp
+gfx/events_pics/aubm_v4_union_budget_choices.bmp
 gfx/events_pics/aubm_v4_union_by_consent.bmp
 gfx/events_pics/aubm_v4_union_register.bmp
 gfx/events_pics/aubm_v4_union_takes_root.bmp
+gfx/events_pics/aubm_v4_wartime_social_contract.bmp
 gfx/events_pics/aubm_v4_war_aims.bmp
 gfx/events_pics/british_parliament.bmp
 gfx/events_pics/Gurkha.bmp
@@ -142,6 +265,9 @@ gfx/interface/pics/INDL251012.bmp
 gfx/interface/pics/INDL251013.bmp
 gfx/interface/pics/INDL251014.bmp
 gfx/interface/pics/INDL251015.bmp
+gfx/interface/pics/INDL251016.bmp
+gfx/interface/pics/INDL251017.bmp
+gfx/interface/pics/INDL251024.bmp
 gfx/interface/pics/INDL251101.bmp
 gfx/interface/pics/INDL251102.bmp
 gfx/interface/pics/INDL251103.bmp
@@ -202,837 +328,10 @@ gfx/interface/pics/TT250028.bmp
 gfx/interface/pics/TT250029.bmp
 gfx/interface/pics/TT250030.bmp
 gfx/interface/pics/TT250031.bmp
+gfx/load_1024.bmp
 gfx/map/flags/flag_IND.bmp
 gfx/map/flags/icon_IND.bmp
-gfx/map/units/bmp/AUBM-IND-ARMOR A-FIRE D-E.bmp
-gfx/map/units/bmp/AUBM-IND-ARMOR A-FIRE D-N.bmp
-gfx/map/units/bmp/AUBM-IND-ARMOR A-FIRE D-NE.bmp
-gfx/map/units/bmp/AUBM-IND-ARMOR A-FIRE D-NW.bmp
-gfx/map/units/bmp/AUBM-IND-ARMOR A-FIRE D-S.bmp
-gfx/map/units/bmp/AUBM-IND-ARMOR A-FIRE D-SE.bmp
-gfx/map/units/bmp/AUBM-IND-ARMOR A-FIRE D-SW.bmp
-gfx/map/units/bmp/AUBM-IND-ARMOR A-FIRE D-W.bmp
-gfx/map/units/bmp/AUBM-IND-ARMOR A-STAND.bmp
-gfx/map/units/bmp/AUBM-IND-ARMOR A-WALK D-E.bmp
-gfx/map/units/bmp/AUBM-IND-ARMOR A-WALK D-N.bmp
-gfx/map/units/bmp/AUBM-IND-ARMOR A-WALK D-NE.bmp
-gfx/map/units/bmp/AUBM-IND-ARMOR A-WALK D-NW.bmp
-gfx/map/units/bmp/AUBM-IND-ARMOR A-WALK D-S.bmp
-gfx/map/units/bmp/AUBM-IND-ARMOR A-WALK D-SE.bmp
-gfx/map/units/bmp/AUBM-IND-ARMOR A-WALK D-SW.bmp
-gfx/map/units/bmp/AUBM-IND-ARMOR A-WALK D-W.bmp
-gfx/map/units/bmp/AUBM-IND-BOMBER A-FIRE D-E.bmp
-gfx/map/units/bmp/AUBM-IND-BOMBER A-FIRE D-N.bmp
-gfx/map/units/bmp/AUBM-IND-BOMBER A-FIRE D-NE.bmp
-gfx/map/units/bmp/AUBM-IND-BOMBER A-FIRE D-NW.bmp
-gfx/map/units/bmp/AUBM-IND-BOMBER A-FIRE D-S.bmp
-gfx/map/units/bmp/AUBM-IND-BOMBER A-FIRE D-SE.bmp
-gfx/map/units/bmp/AUBM-IND-BOMBER A-FIRE D-SW.bmp
-gfx/map/units/bmp/AUBM-IND-BOMBER A-FIRE D-W.bmp
-gfx/map/units/bmp/AUBM-IND-BOMBER A-STAND.bmp
-gfx/map/units/bmp/AUBM-IND-BOMBER A-WALK D-E.bmp
-gfx/map/units/bmp/AUBM-IND-BOMBER A-WALK D-N.bmp
-gfx/map/units/bmp/AUBM-IND-BOMBER A-WALK D-NE.bmp
-gfx/map/units/bmp/AUBM-IND-BOMBER A-WALK D-NW.bmp
-gfx/map/units/bmp/AUBM-IND-BOMBER A-WALK D-S.bmp
-gfx/map/units/bmp/AUBM-IND-BOMBER A-WALK D-SE.bmp
-gfx/map/units/bmp/AUBM-IND-BOMBER A-WALK D-SW.bmp
-gfx/map/units/bmp/AUBM-IND-BOMBER A-WALK D-W.bmp
-gfx/map/units/bmp/AUBM-IND-CAPITAL A-FIRE D-E.bmp
-gfx/map/units/bmp/AUBM-IND-CAPITAL A-FIRE D-N.bmp
-gfx/map/units/bmp/AUBM-IND-CAPITAL A-FIRE D-NE.bmp
-gfx/map/units/bmp/AUBM-IND-CAPITAL A-FIRE D-NW.bmp
-gfx/map/units/bmp/AUBM-IND-CAPITAL A-FIRE D-S.bmp
-gfx/map/units/bmp/AUBM-IND-CAPITAL A-FIRE D-SE.bmp
-gfx/map/units/bmp/AUBM-IND-CAPITAL A-FIRE D-SW.bmp
-gfx/map/units/bmp/AUBM-IND-CAPITAL A-FIRE D-W.bmp
-gfx/map/units/bmp/AUBM-IND-CAPITAL A-STAND.bmp
-gfx/map/units/bmp/AUBM-IND-CAPITAL A-WALK D-E.bmp
-gfx/map/units/bmp/AUBM-IND-CAPITAL A-WALK D-N.bmp
-gfx/map/units/bmp/AUBM-IND-CAPITAL A-WALK D-NE.bmp
-gfx/map/units/bmp/AUBM-IND-CAPITAL A-WALK D-NW.bmp
-gfx/map/units/bmp/AUBM-IND-CAPITAL A-WALK D-S.bmp
-gfx/map/units/bmp/AUBM-IND-CAPITAL A-WALK D-SE.bmp
-gfx/map/units/bmp/AUBM-IND-CAPITAL A-WALK D-SW.bmp
-gfx/map/units/bmp/AUBM-IND-CAPITAL A-WALK D-W.bmp
-gfx/map/units/bmp/AUBM-IND-CARRIER A-FIRE D-E.bmp
-gfx/map/units/bmp/AUBM-IND-CARRIER A-FIRE D-N.bmp
-gfx/map/units/bmp/AUBM-IND-CARRIER A-FIRE D-NE.bmp
-gfx/map/units/bmp/AUBM-IND-CARRIER A-FIRE D-NW.bmp
-gfx/map/units/bmp/AUBM-IND-CARRIER A-FIRE D-S.bmp
-gfx/map/units/bmp/AUBM-IND-CARRIER A-FIRE D-SE.bmp
-gfx/map/units/bmp/AUBM-IND-CARRIER A-FIRE D-SW.bmp
-gfx/map/units/bmp/AUBM-IND-CARRIER A-FIRE D-W.bmp
-gfx/map/units/bmp/AUBM-IND-CARRIER A-STAND.bmp
-gfx/map/units/bmp/AUBM-IND-CARRIER A-WALK D-E.bmp
-gfx/map/units/bmp/AUBM-IND-CARRIER A-WALK D-N.bmp
-gfx/map/units/bmp/AUBM-IND-CARRIER A-WALK D-NE.bmp
-gfx/map/units/bmp/AUBM-IND-CARRIER A-WALK D-NW.bmp
-gfx/map/units/bmp/AUBM-IND-CARRIER A-WALK D-S.bmp
-gfx/map/units/bmp/AUBM-IND-CARRIER A-WALK D-SE.bmp
-gfx/map/units/bmp/AUBM-IND-CARRIER A-WALK D-SW.bmp
-gfx/map/units/bmp/AUBM-IND-CARRIER A-WALK D-W.bmp
-gfx/map/units/bmp/AUBM-IND-CAVALRY A-FIRE D-E.bmp
-gfx/map/units/bmp/AUBM-IND-CAVALRY A-FIRE D-N.bmp
-gfx/map/units/bmp/AUBM-IND-CAVALRY A-FIRE D-NE.bmp
-gfx/map/units/bmp/AUBM-IND-CAVALRY A-FIRE D-NW.bmp
-gfx/map/units/bmp/AUBM-IND-CAVALRY A-FIRE D-S.bmp
-gfx/map/units/bmp/AUBM-IND-CAVALRY A-FIRE D-SE.bmp
-gfx/map/units/bmp/AUBM-IND-CAVALRY A-FIRE D-SW.bmp
-gfx/map/units/bmp/AUBM-IND-CAVALRY A-FIRE D-W.bmp
-gfx/map/units/bmp/AUBM-IND-CAVALRY A-STAND.bmp
-gfx/map/units/bmp/AUBM-IND-CAVALRY A-WALK D-E.bmp
-gfx/map/units/bmp/AUBM-IND-CAVALRY A-WALK D-N.bmp
-gfx/map/units/bmp/AUBM-IND-CAVALRY A-WALK D-NE.bmp
-gfx/map/units/bmp/AUBM-IND-CAVALRY A-WALK D-NW.bmp
-gfx/map/units/bmp/AUBM-IND-CAVALRY A-WALK D-S.bmp
-gfx/map/units/bmp/AUBM-IND-CAVALRY A-WALK D-SE.bmp
-gfx/map/units/bmp/AUBM-IND-CAVALRY A-WALK D-SW.bmp
-gfx/map/units/bmp/AUBM-IND-CAVALRY A-WALK D-W.bmp
-gfx/map/units/bmp/AUBM-IND-CRUISER A-FIRE D-E.bmp
-gfx/map/units/bmp/AUBM-IND-CRUISER A-FIRE D-N.bmp
-gfx/map/units/bmp/AUBM-IND-CRUISER A-FIRE D-NE.bmp
-gfx/map/units/bmp/AUBM-IND-CRUISER A-FIRE D-NW.bmp
-gfx/map/units/bmp/AUBM-IND-CRUISER A-FIRE D-S.bmp
-gfx/map/units/bmp/AUBM-IND-CRUISER A-FIRE D-SE.bmp
-gfx/map/units/bmp/AUBM-IND-CRUISER A-FIRE D-SW.bmp
-gfx/map/units/bmp/AUBM-IND-CRUISER A-FIRE D-W.bmp
-gfx/map/units/bmp/AUBM-IND-CRUISER A-STAND.bmp
-gfx/map/units/bmp/AUBM-IND-CRUISER A-WALK D-E.bmp
-gfx/map/units/bmp/AUBM-IND-CRUISER A-WALK D-N.bmp
-gfx/map/units/bmp/AUBM-IND-CRUISER A-WALK D-NE.bmp
-gfx/map/units/bmp/AUBM-IND-CRUISER A-WALK D-NW.bmp
-gfx/map/units/bmp/AUBM-IND-CRUISER A-WALK D-S.bmp
-gfx/map/units/bmp/AUBM-IND-CRUISER A-WALK D-SE.bmp
-gfx/map/units/bmp/AUBM-IND-CRUISER A-WALK D-SW.bmp
-gfx/map/units/bmp/AUBM-IND-CRUISER A-WALK D-W.bmp
-gfx/map/units/bmp/AUBM-IND-ESCORT A-FIRE D-E.bmp
-gfx/map/units/bmp/AUBM-IND-ESCORT A-FIRE D-N.bmp
-gfx/map/units/bmp/AUBM-IND-ESCORT A-FIRE D-NE.bmp
-gfx/map/units/bmp/AUBM-IND-ESCORT A-FIRE D-NW.bmp
-gfx/map/units/bmp/AUBM-IND-ESCORT A-FIRE D-S.bmp
-gfx/map/units/bmp/AUBM-IND-ESCORT A-FIRE D-SE.bmp
-gfx/map/units/bmp/AUBM-IND-ESCORT A-FIRE D-SW.bmp
-gfx/map/units/bmp/AUBM-IND-ESCORT A-FIRE D-W.bmp
-gfx/map/units/bmp/AUBM-IND-ESCORT A-STAND.bmp
-gfx/map/units/bmp/AUBM-IND-ESCORT A-WALK D-E.bmp
-gfx/map/units/bmp/AUBM-IND-ESCORT A-WALK D-N.bmp
-gfx/map/units/bmp/AUBM-IND-ESCORT A-WALK D-NE.bmp
-gfx/map/units/bmp/AUBM-IND-ESCORT A-WALK D-NW.bmp
-gfx/map/units/bmp/AUBM-IND-ESCORT A-WALK D-S.bmp
-gfx/map/units/bmp/AUBM-IND-ESCORT A-WALK D-SE.bmp
-gfx/map/units/bmp/AUBM-IND-ESCORT A-WALK D-SW.bmp
-gfx/map/units/bmp/AUBM-IND-ESCORT A-WALK D-W.bmp
-gfx/map/units/bmp/AUBM-IND-FIGHTER A-FIRE D-E.bmp
-gfx/map/units/bmp/AUBM-IND-FIGHTER A-FIRE D-N.bmp
-gfx/map/units/bmp/AUBM-IND-FIGHTER A-FIRE D-NE.bmp
-gfx/map/units/bmp/AUBM-IND-FIGHTER A-FIRE D-NW.bmp
-gfx/map/units/bmp/AUBM-IND-FIGHTER A-FIRE D-S.bmp
-gfx/map/units/bmp/AUBM-IND-FIGHTER A-FIRE D-SE.bmp
-gfx/map/units/bmp/AUBM-IND-FIGHTER A-FIRE D-SW.bmp
-gfx/map/units/bmp/AUBM-IND-FIGHTER A-FIRE D-W.bmp
-gfx/map/units/bmp/AUBM-IND-FIGHTER A-STAND.bmp
-gfx/map/units/bmp/AUBM-IND-FIGHTER A-WALK D-E.bmp
-gfx/map/units/bmp/AUBM-IND-FIGHTER A-WALK D-N.bmp
-gfx/map/units/bmp/AUBM-IND-FIGHTER A-WALK D-NE.bmp
-gfx/map/units/bmp/AUBM-IND-FIGHTER A-WALK D-NW.bmp
-gfx/map/units/bmp/AUBM-IND-FIGHTER A-WALK D-S.bmp
-gfx/map/units/bmp/AUBM-IND-FIGHTER A-WALK D-SE.bmp
-gfx/map/units/bmp/AUBM-IND-FIGHTER A-WALK D-SW.bmp
-gfx/map/units/bmp/AUBM-IND-FIGHTER A-WALK D-W.bmp
-gfx/map/units/bmp/AUBM-IND-GURKHA A-FIRE D-E.bmp
-gfx/map/units/bmp/AUBM-IND-GURKHA A-FIRE D-N.bmp
-gfx/map/units/bmp/AUBM-IND-GURKHA A-FIRE D-NE.bmp
-gfx/map/units/bmp/AUBM-IND-GURKHA A-FIRE D-NW.bmp
-gfx/map/units/bmp/AUBM-IND-GURKHA A-FIRE D-S.bmp
-gfx/map/units/bmp/AUBM-IND-GURKHA A-FIRE D-SE.bmp
-gfx/map/units/bmp/AUBM-IND-GURKHA A-FIRE D-SW.bmp
-gfx/map/units/bmp/AUBM-IND-GURKHA A-FIRE D-W.bmp
-gfx/map/units/bmp/AUBM-IND-GURKHA A-STAND.bmp
-gfx/map/units/bmp/AUBM-IND-GURKHA A-WALK D-E.bmp
-gfx/map/units/bmp/AUBM-IND-GURKHA A-WALK D-N.bmp
-gfx/map/units/bmp/AUBM-IND-GURKHA A-WALK D-NE.bmp
-gfx/map/units/bmp/AUBM-IND-GURKHA A-WALK D-NW.bmp
-gfx/map/units/bmp/AUBM-IND-GURKHA A-WALK D-S.bmp
-gfx/map/units/bmp/AUBM-IND-GURKHA A-WALK D-SE.bmp
-gfx/map/units/bmp/AUBM-IND-GURKHA A-WALK D-SW.bmp
-gfx/map/units/bmp/AUBM-IND-GURKHA A-WALK D-W.bmp
-gfx/map/units/bmp/AUBM-IND-INFANTRY A-FIRE D-E.bmp
-gfx/map/units/bmp/AUBM-IND-INFANTRY A-FIRE D-N.bmp
-gfx/map/units/bmp/AUBM-IND-INFANTRY A-FIRE D-NE.bmp
-gfx/map/units/bmp/AUBM-IND-INFANTRY A-FIRE D-NW.bmp
-gfx/map/units/bmp/AUBM-IND-INFANTRY A-FIRE D-S.bmp
-gfx/map/units/bmp/AUBM-IND-INFANTRY A-FIRE D-SE.bmp
-gfx/map/units/bmp/AUBM-IND-INFANTRY A-FIRE D-SW.bmp
-gfx/map/units/bmp/AUBM-IND-INFANTRY A-FIRE D-W.bmp
-gfx/map/units/bmp/AUBM-IND-INFANTRY A-STAND.bmp
-gfx/map/units/bmp/AUBM-IND-INFANTRY A-WALK D-E.bmp
-gfx/map/units/bmp/AUBM-IND-INFANTRY A-WALK D-N.bmp
-gfx/map/units/bmp/AUBM-IND-INFANTRY A-WALK D-NE.bmp
-gfx/map/units/bmp/AUBM-IND-INFANTRY A-WALK D-NW.bmp
-gfx/map/units/bmp/AUBM-IND-INFANTRY A-WALK D-S.bmp
-gfx/map/units/bmp/AUBM-IND-INFANTRY A-WALK D-SE.bmp
-gfx/map/units/bmp/AUBM-IND-INFANTRY A-WALK D-SW.bmp
-gfx/map/units/bmp/AUBM-IND-INFANTRY A-WALK D-W.bmp
-gfx/map/units/bmp/AUBM-IND-MOTORIZED A-FIRE D-E.bmp
-gfx/map/units/bmp/AUBM-IND-MOTORIZED A-FIRE D-N.bmp
-gfx/map/units/bmp/AUBM-IND-MOTORIZED A-FIRE D-NE.bmp
-gfx/map/units/bmp/AUBM-IND-MOTORIZED A-FIRE D-NW.bmp
-gfx/map/units/bmp/AUBM-IND-MOTORIZED A-FIRE D-S.bmp
-gfx/map/units/bmp/AUBM-IND-MOTORIZED A-FIRE D-SE.bmp
-gfx/map/units/bmp/AUBM-IND-MOTORIZED A-FIRE D-SW.bmp
-gfx/map/units/bmp/AUBM-IND-MOTORIZED A-FIRE D-W.bmp
-gfx/map/units/bmp/AUBM-IND-MOTORIZED A-STAND.bmp
-gfx/map/units/bmp/AUBM-IND-MOTORIZED A-WALK D-E.bmp
-gfx/map/units/bmp/AUBM-IND-MOTORIZED A-WALK D-N.bmp
-gfx/map/units/bmp/AUBM-IND-MOTORIZED A-WALK D-NE.bmp
-gfx/map/units/bmp/AUBM-IND-MOTORIZED A-WALK D-NW.bmp
-gfx/map/units/bmp/AUBM-IND-MOTORIZED A-WALK D-S.bmp
-gfx/map/units/bmp/AUBM-IND-MOTORIZED A-WALK D-SE.bmp
-gfx/map/units/bmp/AUBM-IND-MOTORIZED A-WALK D-SW.bmp
-gfx/map/units/bmp/AUBM-IND-MOTORIZED A-WALK D-W.bmp
-gfx/map/units/bmp/AUBM-IND-SUBMARINE A-FIRE D-E.bmp
-gfx/map/units/bmp/AUBM-IND-SUBMARINE A-FIRE D-N.bmp
-gfx/map/units/bmp/AUBM-IND-SUBMARINE A-FIRE D-NE.bmp
-gfx/map/units/bmp/AUBM-IND-SUBMARINE A-FIRE D-NW.bmp
-gfx/map/units/bmp/AUBM-IND-SUBMARINE A-FIRE D-S.bmp
-gfx/map/units/bmp/AUBM-IND-SUBMARINE A-FIRE D-SE.bmp
-gfx/map/units/bmp/AUBM-IND-SUBMARINE A-FIRE D-SW.bmp
-gfx/map/units/bmp/AUBM-IND-SUBMARINE A-FIRE D-W.bmp
-gfx/map/units/bmp/AUBM-IND-SUBMARINE A-STAND.bmp
-gfx/map/units/bmp/AUBM-IND-SUBMARINE A-WALK D-E.bmp
-gfx/map/units/bmp/AUBM-IND-SUBMARINE A-WALK D-N.bmp
-gfx/map/units/bmp/AUBM-IND-SUBMARINE A-WALK D-NE.bmp
-gfx/map/units/bmp/AUBM-IND-SUBMARINE A-WALK D-NW.bmp
-gfx/map/units/bmp/AUBM-IND-SUBMARINE A-WALK D-S.bmp
-gfx/map/units/bmp/AUBM-IND-SUBMARINE A-WALK D-SE.bmp
-gfx/map/units/bmp/AUBM-IND-SUBMARINE A-WALK D-SW.bmp
-gfx/map/units/bmp/AUBM-IND-SUBMARINE A-WALK D-W.bmp
-gfx/map/units/bmp/AUBM-IND-TRANSPORT A-FIRE D-E.bmp
-gfx/map/units/bmp/AUBM-IND-TRANSPORT A-FIRE D-N.bmp
-gfx/map/units/bmp/AUBM-IND-TRANSPORT A-FIRE D-NE.bmp
-gfx/map/units/bmp/AUBM-IND-TRANSPORT A-FIRE D-NW.bmp
-gfx/map/units/bmp/AUBM-IND-TRANSPORT A-FIRE D-S.bmp
-gfx/map/units/bmp/AUBM-IND-TRANSPORT A-FIRE D-SE.bmp
-gfx/map/units/bmp/AUBM-IND-TRANSPORT A-FIRE D-SW.bmp
-gfx/map/units/bmp/AUBM-IND-TRANSPORT A-FIRE D-W.bmp
-gfx/map/units/bmp/AUBM-IND-TRANSPORT A-STAND.bmp
-gfx/map/units/bmp/AUBM-IND-TRANSPORT A-WALK D-E.bmp
-gfx/map/units/bmp/AUBM-IND-TRANSPORT A-WALK D-N.bmp
-gfx/map/units/bmp/AUBM-IND-TRANSPORT A-WALK D-NE.bmp
-gfx/map/units/bmp/AUBM-IND-TRANSPORT A-WALK D-NW.bmp
-gfx/map/units/bmp/AUBM-IND-TRANSPORT A-WALK D-S.bmp
-gfx/map/units/bmp/AUBM-IND-TRANSPORT A-WALK D-SE.bmp
-gfx/map/units/bmp/AUBM-IND-TRANSPORT A-WALK D-SW.bmp
-gfx/map/units/bmp/AUBM-IND-TRANSPORT A-WALK D-W.bmp
-gfx/map/units/T-BATTLECRUISER A-FIRE C-IND L-1 D-E.spr
-gfx/map/units/T-BATTLECRUISER A-FIRE C-IND L-1 D-N.spr
-gfx/map/units/T-BATTLECRUISER A-FIRE C-IND L-1 D-NE.spr
-gfx/map/units/T-BATTLECRUISER A-FIRE C-IND L-1 D-NW.spr
-gfx/map/units/T-BATTLECRUISER A-FIRE C-IND L-1 D-S.spr
-gfx/map/units/T-BATTLECRUISER A-FIRE C-IND L-1 D-SE.spr
-gfx/map/units/T-BATTLECRUISER A-FIRE C-IND L-1 D-SW.spr
-gfx/map/units/T-BATTLECRUISER A-FIRE C-IND L-1 D-W.spr
-gfx/map/units/T-BATTLECRUISER A-STAND C-IND L-1.spr
-gfx/map/units/T-BATTLECRUISER A-WALK C-IND L-1 D-E.spr
-gfx/map/units/T-BATTLECRUISER A-WALK C-IND L-1 D-N.spr
-gfx/map/units/T-BATTLECRUISER A-WALK C-IND L-1 D-NE.spr
-gfx/map/units/T-BATTLECRUISER A-WALK C-IND L-1 D-NW.spr
-gfx/map/units/T-BATTLECRUISER A-WALK C-IND L-1 D-S.spr
-gfx/map/units/T-BATTLECRUISER A-WALK C-IND L-1 D-SE.spr
-gfx/map/units/T-BATTLECRUISER A-WALK C-IND L-1 D-SW.spr
-gfx/map/units/T-BATTLECRUISER A-WALK C-IND L-1 D-W.spr
-gfx/map/units/T-BATTLESHIP A-FIRE C-IND L-1 D-E.spr
-gfx/map/units/T-BATTLESHIP A-FIRE C-IND L-1 D-N.spr
-gfx/map/units/T-BATTLESHIP A-FIRE C-IND L-1 D-NE.spr
-gfx/map/units/T-BATTLESHIP A-FIRE C-IND L-1 D-NW.spr
-gfx/map/units/T-BATTLESHIP A-FIRE C-IND L-1 D-S.spr
-gfx/map/units/T-BATTLESHIP A-FIRE C-IND L-1 D-SE.spr
-gfx/map/units/T-BATTLESHIP A-FIRE C-IND L-1 D-SW.spr
-gfx/map/units/T-BATTLESHIP A-FIRE C-IND L-1 D-W.spr
-gfx/map/units/T-BATTLESHIP A-STAND C-IND L-1.spr
-gfx/map/units/T-BATTLESHIP A-WALK C-IND L-1 D-E.spr
-gfx/map/units/T-BATTLESHIP A-WALK C-IND L-1 D-N.spr
-gfx/map/units/T-BATTLESHIP A-WALK C-IND L-1 D-NE.spr
-gfx/map/units/T-BATTLESHIP A-WALK C-IND L-1 D-NW.spr
-gfx/map/units/T-BATTLESHIP A-WALK C-IND L-1 D-S.spr
-gfx/map/units/T-BATTLESHIP A-WALK C-IND L-1 D-SE.spr
-gfx/map/units/T-BATTLESHIP A-WALK C-IND L-1 D-SW.spr
-gfx/map/units/T-BATTLESHIP A-WALK C-IND L-1 D-W.spr
-gfx/map/units/T-BOMBER A-FIRE C-IND L-1 D-E.spr
-gfx/map/units/T-BOMBER A-FIRE C-IND L-1 D-N.spr
-gfx/map/units/T-BOMBER A-FIRE C-IND L-1 D-NE.spr
-gfx/map/units/T-BOMBER A-FIRE C-IND L-1 D-NW.spr
-gfx/map/units/T-BOMBER A-FIRE C-IND L-1 D-S.spr
-gfx/map/units/T-BOMBER A-FIRE C-IND L-1 D-SE.spr
-gfx/map/units/T-BOMBER A-FIRE C-IND L-1 D-SW.spr
-gfx/map/units/T-BOMBER A-FIRE C-IND L-1 D-W.spr
-gfx/map/units/T-BOMBER A-STAND C-IND L-1.spr
-gfx/map/units/T-BOMBER A-WALK C-IND L-1 D-E.spr
-gfx/map/units/T-BOMBER A-WALK C-IND L-1 D-N.spr
-gfx/map/units/T-BOMBER A-WALK C-IND L-1 D-NE.spr
-gfx/map/units/T-BOMBER A-WALK C-IND L-1 D-NW.spr
-gfx/map/units/T-BOMBER A-WALK C-IND L-1 D-S.spr
-gfx/map/units/T-BOMBER A-WALK C-IND L-1 D-SE.spr
-gfx/map/units/T-BOMBER A-WALK C-IND L-1 D-SW.spr
-gfx/map/units/T-BOMBER A-WALK C-IND L-1 D-W.spr
-gfx/map/units/T-CARRIER A-FIRE C-IND D-E.spr
-gfx/map/units/T-CARRIER A-FIRE C-IND D-N.spr
-gfx/map/units/T-CARRIER A-FIRE C-IND D-NE.spr
-gfx/map/units/T-CARRIER A-FIRE C-IND D-NW.spr
-gfx/map/units/T-CARRIER A-FIRE C-IND D-S.spr
-gfx/map/units/T-CARRIER A-FIRE C-IND D-SE.spr
-gfx/map/units/T-CARRIER A-FIRE C-IND D-SW.spr
-gfx/map/units/T-CARRIER A-FIRE C-IND D-W.spr
-gfx/map/units/T-CARRIER A-FIRE C-IND L-1 D-E.spr
-gfx/map/units/T-CARRIER A-FIRE C-IND L-1 D-N.spr
-gfx/map/units/T-CARRIER A-FIRE C-IND L-1 D-NE.spr
-gfx/map/units/T-CARRIER A-FIRE C-IND L-1 D-NW.spr
-gfx/map/units/T-CARRIER A-FIRE C-IND L-1 D-S.spr
-gfx/map/units/T-CARRIER A-FIRE C-IND L-1 D-SE.spr
-gfx/map/units/T-CARRIER A-FIRE C-IND L-1 D-SW.spr
-gfx/map/units/T-CARRIER A-FIRE C-IND L-1 D-W.spr
-gfx/map/units/T-CARRIER A-STAND C-IND L-1.spr
-gfx/map/units/T-CARRIER A-STAND C-IND.spr
-gfx/map/units/T-CARRIER A-WALK C-IND D-E.spr
-gfx/map/units/T-CARRIER A-WALK C-IND D-N.spr
-gfx/map/units/T-CARRIER A-WALK C-IND D-NE.spr
-gfx/map/units/T-CARRIER A-WALK C-IND D-NW.spr
-gfx/map/units/T-CARRIER A-WALK C-IND D-S.spr
-gfx/map/units/T-CARRIER A-WALK C-IND D-SE.spr
-gfx/map/units/T-CARRIER A-WALK C-IND D-SW.spr
-gfx/map/units/T-CARRIER A-WALK C-IND D-W.spr
-gfx/map/units/T-CARRIER A-WALK C-IND L-1 D-E.spr
-gfx/map/units/T-CARRIER A-WALK C-IND L-1 D-N.spr
-gfx/map/units/T-CARRIER A-WALK C-IND L-1 D-NE.spr
-gfx/map/units/T-CARRIER A-WALK C-IND L-1 D-NW.spr
-gfx/map/units/T-CARRIER A-WALK C-IND L-1 D-S.spr
-gfx/map/units/T-CARRIER A-WALK C-IND L-1 D-SE.spr
-gfx/map/units/T-CARRIER A-WALK C-IND L-1 D-SW.spr
-gfx/map/units/T-CARRIER A-WALK C-IND L-1 D-W.spr
-gfx/map/units/T-CAS A-FIRE C-IND L-1 D-E.spr
-gfx/map/units/T-CAS A-FIRE C-IND L-1 D-N.spr
-gfx/map/units/T-CAS A-FIRE C-IND L-1 D-NE.spr
-gfx/map/units/T-CAS A-FIRE C-IND L-1 D-NW.spr
-gfx/map/units/T-CAS A-FIRE C-IND L-1 D-S.spr
-gfx/map/units/T-CAS A-FIRE C-IND L-1 D-SE.spr
-gfx/map/units/T-CAS A-FIRE C-IND L-1 D-SW.spr
-gfx/map/units/T-CAS A-FIRE C-IND L-1 D-W.spr
-gfx/map/units/T-CAS A-STAND C-IND L-1.spr
-gfx/map/units/T-CAS A-WALK C-IND L-1 D-E.spr
-gfx/map/units/T-CAS A-WALK C-IND L-1 D-N.spr
-gfx/map/units/T-CAS A-WALK C-IND L-1 D-NE.spr
-gfx/map/units/T-CAS A-WALK C-IND L-1 D-NW.spr
-gfx/map/units/T-CAS A-WALK C-IND L-1 D-S.spr
-gfx/map/units/T-CAS A-WALK C-IND L-1 D-SE.spr
-gfx/map/units/T-CAS A-WALK C-IND L-1 D-SW.spr
-gfx/map/units/T-CAS A-WALK C-IND L-1 D-W.spr
-gfx/map/units/T-CAVALRY A-FIRE C-IND L-1 D-E.spr
-gfx/map/units/T-CAVALRY A-FIRE C-IND L-1 D-N.spr
-gfx/map/units/T-CAVALRY A-FIRE C-IND L-1 D-NE.spr
-gfx/map/units/T-CAVALRY A-FIRE C-IND L-1 D-NW.spr
-gfx/map/units/T-CAVALRY A-FIRE C-IND L-1 D-S.spr
-gfx/map/units/T-CAVALRY A-FIRE C-IND L-1 D-SE.spr
-gfx/map/units/T-CAVALRY A-FIRE C-IND L-1 D-SW.spr
-gfx/map/units/T-CAVALRY A-FIRE C-IND L-1 D-W.spr
-gfx/map/units/T-CAVALRY A-STAND C-IND L-1.spr
-gfx/map/units/T-CAVALRY A-WALK C-IND L-1 D-E.spr
-gfx/map/units/T-CAVALRY A-WALK C-IND L-1 D-N.spr
-gfx/map/units/T-CAVALRY A-WALK C-IND L-1 D-NE.spr
-gfx/map/units/T-CAVALRY A-WALK C-IND L-1 D-NW.spr
-gfx/map/units/T-CAVALRY A-WALK C-IND L-1 D-S.spr
-gfx/map/units/T-CAVALRY A-WALK C-IND L-1 D-SE.spr
-gfx/map/units/T-CAVALRY A-WALK C-IND L-1 D-SW.spr
-gfx/map/units/T-CAVALRY A-WALK C-IND L-1 D-W.spr
-gfx/map/units/T-d_05 A-FIRE C-IND L-1 D-E.spr
-gfx/map/units/T-d_05 A-FIRE C-IND L-1 D-N.spr
-gfx/map/units/T-d_05 A-FIRE C-IND L-1 D-NE.spr
-gfx/map/units/T-d_05 A-FIRE C-IND L-1 D-NW.spr
-gfx/map/units/T-d_05 A-FIRE C-IND L-1 D-S.spr
-gfx/map/units/T-d_05 A-FIRE C-IND L-1 D-SE.spr
-gfx/map/units/T-d_05 A-FIRE C-IND L-1 D-SW.spr
-gfx/map/units/T-d_05 A-FIRE C-IND L-1 D-W.spr
-gfx/map/units/T-d_05 A-STAND C-IND L-1.spr
-gfx/map/units/T-d_05 A-WALK C-IND L-1 D-E.spr
-gfx/map/units/T-d_05 A-WALK C-IND L-1 D-N.spr
-gfx/map/units/T-d_05 A-WALK C-IND L-1 D-NE.spr
-gfx/map/units/T-d_05 A-WALK C-IND L-1 D-NW.spr
-gfx/map/units/T-d_05 A-WALK C-IND L-1 D-S.spr
-gfx/map/units/T-d_05 A-WALK C-IND L-1 D-SE.spr
-gfx/map/units/T-d_05 A-WALK C-IND L-1 D-SW.spr
-gfx/map/units/T-d_05 A-WALK C-IND L-1 D-W.spr
-gfx/map/units/T-DESTROYER A-FIRE C-IND L-1 D-E.spr
-gfx/map/units/T-DESTROYER A-FIRE C-IND L-1 D-N.spr
-gfx/map/units/T-DESTROYER A-FIRE C-IND L-1 D-NE.spr
-gfx/map/units/T-DESTROYER A-FIRE C-IND L-1 D-NW.spr
-gfx/map/units/T-DESTROYER A-FIRE C-IND L-1 D-S.spr
-gfx/map/units/T-DESTROYER A-FIRE C-IND L-1 D-SE.spr
-gfx/map/units/T-DESTROYER A-FIRE C-IND L-1 D-SW.spr
-gfx/map/units/T-DESTROYER A-FIRE C-IND L-1 D-W.spr
-gfx/map/units/T-DESTROYER A-STAND C-IND L-1.spr
-gfx/map/units/T-DESTROYER A-WALK C-IND L-1 D-E.spr
-gfx/map/units/T-DESTROYER A-WALK C-IND L-1 D-N.spr
-gfx/map/units/T-DESTROYER A-WALK C-IND L-1 D-NE.spr
-gfx/map/units/T-DESTROYER A-WALK C-IND L-1 D-NW.spr
-gfx/map/units/T-DESTROYER A-WALK C-IND L-1 D-S.spr
-gfx/map/units/T-DESTROYER A-WALK C-IND L-1 D-SE.spr
-gfx/map/units/T-DESTROYER A-WALK C-IND L-1 D-SW.spr
-gfx/map/units/T-DESTROYER A-WALK C-IND L-1 D-W.spr
-gfx/map/units/T-ESCORT A-FIRE C-IND L-1 D-E.spr
-gfx/map/units/T-ESCORT A-FIRE C-IND L-1 D-N.spr
-gfx/map/units/T-ESCORT A-FIRE C-IND L-1 D-NE.spr
-gfx/map/units/T-ESCORT A-FIRE C-IND L-1 D-NW.spr
-gfx/map/units/T-ESCORT A-FIRE C-IND L-1 D-S.spr
-gfx/map/units/T-ESCORT A-FIRE C-IND L-1 D-SE.spr
-gfx/map/units/T-ESCORT A-FIRE C-IND L-1 D-SW.spr
-gfx/map/units/T-ESCORT A-FIRE C-IND L-1 D-W.spr
-gfx/map/units/T-ESCORT A-STAND C-IND L-1.spr
-gfx/map/units/T-ESCORT A-WALK C-IND L-1 D-E.spr
-gfx/map/units/T-ESCORT A-WALK C-IND L-1 D-N.spr
-gfx/map/units/T-ESCORT A-WALK C-IND L-1 D-NE.spr
-gfx/map/units/T-ESCORT A-WALK C-IND L-1 D-NW.spr
-gfx/map/units/T-ESCORT A-WALK C-IND L-1 D-S.spr
-gfx/map/units/T-ESCORT A-WALK C-IND L-1 D-SE.spr
-gfx/map/units/T-ESCORT A-WALK C-IND L-1 D-SW.spr
-gfx/map/units/T-ESCORT A-WALK C-IND L-1 D-W.spr
-gfx/map/units/T-escort_carrier A-FIRE C-IND D-E.spr
-gfx/map/units/T-escort_carrier A-FIRE C-IND D-N.spr
-gfx/map/units/T-escort_carrier A-FIRE C-IND D-NE.spr
-gfx/map/units/T-escort_carrier A-FIRE C-IND D-NW.spr
-gfx/map/units/T-escort_carrier A-FIRE C-IND D-S.spr
-gfx/map/units/T-escort_carrier A-FIRE C-IND D-SE.spr
-gfx/map/units/T-escort_carrier A-FIRE C-IND D-SW.spr
-gfx/map/units/T-escort_carrier A-FIRE C-IND D-W.spr
-gfx/map/units/T-escort_carrier A-FIRE C-IND L-1 D-E.spr
-gfx/map/units/T-escort_carrier A-FIRE C-IND L-1 D-N.spr
-gfx/map/units/T-escort_carrier A-FIRE C-IND L-1 D-NE.spr
-gfx/map/units/T-escort_carrier A-FIRE C-IND L-1 D-NW.spr
-gfx/map/units/T-escort_carrier A-FIRE C-IND L-1 D-S.spr
-gfx/map/units/T-escort_carrier A-FIRE C-IND L-1 D-SE.spr
-gfx/map/units/T-escort_carrier A-FIRE C-IND L-1 D-SW.spr
-gfx/map/units/T-escort_carrier A-FIRE C-IND L-1 D-W.spr
-gfx/map/units/T-escort_carrier A-STAND C-IND L-1.spr
-gfx/map/units/T-escort_carrier A-STAND C-IND.spr
-gfx/map/units/T-escort_carrier A-WALK C-IND D-E.spr
-gfx/map/units/T-escort_carrier A-WALK C-IND D-N.spr
-gfx/map/units/T-escort_carrier A-WALK C-IND D-NE.spr
-gfx/map/units/T-escort_carrier A-WALK C-IND D-NW.spr
-gfx/map/units/T-escort_carrier A-WALK C-IND D-S.spr
-gfx/map/units/T-escort_carrier A-WALK C-IND D-SE.spr
-gfx/map/units/T-escort_carrier A-WALK C-IND D-SW.spr
-gfx/map/units/T-escort_carrier A-WALK C-IND D-W.spr
-gfx/map/units/T-escort_carrier A-WALK C-IND L-1 D-E.spr
-gfx/map/units/T-escort_carrier A-WALK C-IND L-1 D-N.spr
-gfx/map/units/T-escort_carrier A-WALK C-IND L-1 D-NE.spr
-gfx/map/units/T-escort_carrier A-WALK C-IND L-1 D-NW.spr
-gfx/map/units/T-escort_carrier A-WALK C-IND L-1 D-S.spr
-gfx/map/units/T-escort_carrier A-WALK C-IND L-1 D-SE.spr
-gfx/map/units/T-escort_carrier A-WALK C-IND L-1 D-SW.spr
-gfx/map/units/T-escort_carrier A-WALK C-IND L-1 D-W.spr
-gfx/map/units/T-FIGHTER A-FIRE C-IND L-1 D-E.spr
-gfx/map/units/T-FIGHTER A-FIRE C-IND L-1 D-N.spr
-gfx/map/units/T-FIGHTER A-FIRE C-IND L-1 D-NE.spr
-gfx/map/units/T-FIGHTER A-FIRE C-IND L-1 D-NW.spr
-gfx/map/units/T-FIGHTER A-FIRE C-IND L-1 D-S.spr
-gfx/map/units/T-FIGHTER A-FIRE C-IND L-1 D-SE.spr
-gfx/map/units/T-FIGHTER A-FIRE C-IND L-1 D-SW.spr
-gfx/map/units/T-FIGHTER A-FIRE C-IND L-1 D-W.spr
-gfx/map/units/T-FIGHTER A-STAND C-IND L-1.spr
-gfx/map/units/T-FIGHTER A-WALK C-IND L-1 D-E.spr
-gfx/map/units/T-FIGHTER A-WALK C-IND L-1 D-N.spr
-gfx/map/units/T-FIGHTER A-WALK C-IND L-1 D-NE.spr
-gfx/map/units/T-FIGHTER A-WALK C-IND L-1 D-NW.spr
-gfx/map/units/T-FIGHTER A-WALK C-IND L-1 D-S.spr
-gfx/map/units/T-FIGHTER A-WALK C-IND L-1 D-SE.spr
-gfx/map/units/T-FIGHTER A-WALK C-IND L-1 D-SW.spr
-gfx/map/units/T-FIGHTER A-WALK C-IND L-1 D-W.spr
-gfx/map/units/T-GARRISON A-FIRE C-IND L-1 D-E.spr
-gfx/map/units/T-GARRISON A-FIRE C-IND L-1 D-N.spr
-gfx/map/units/T-GARRISON A-FIRE C-IND L-1 D-NE.spr
-gfx/map/units/T-GARRISON A-FIRE C-IND L-1 D-NW.spr
-gfx/map/units/T-GARRISON A-FIRE C-IND L-1 D-S.spr
-gfx/map/units/T-GARRISON A-FIRE C-IND L-1 D-SE.spr
-gfx/map/units/T-GARRISON A-FIRE C-IND L-1 D-SW.spr
-gfx/map/units/T-GARRISON A-FIRE C-IND L-1 D-W.spr
-gfx/map/units/T-GARRISON A-STAND C-IND L-1.spr
-gfx/map/units/T-GARRISON A-WALK C-IND L-1 D-E.spr
-gfx/map/units/T-GARRISON A-WALK C-IND L-1 D-N.spr
-gfx/map/units/T-GARRISON A-WALK C-IND L-1 D-NE.spr
-gfx/map/units/T-GARRISON A-WALK C-IND L-1 D-NW.spr
-gfx/map/units/T-GARRISON A-WALK C-IND L-1 D-S.spr
-gfx/map/units/T-GARRISON A-WALK C-IND L-1 D-SE.spr
-gfx/map/units/T-GARRISON A-WALK C-IND L-1 D-SW.spr
-gfx/map/units/T-GARRISON A-WALK C-IND L-1 D-W.spr
-gfx/map/units/T-HEAVY_CRUISER A-FIRE C-IND L-1 D-E.spr
-gfx/map/units/T-HEAVY_CRUISER A-FIRE C-IND L-1 D-N.spr
-gfx/map/units/T-HEAVY_CRUISER A-FIRE C-IND L-1 D-NE.spr
-gfx/map/units/T-HEAVY_CRUISER A-FIRE C-IND L-1 D-NW.spr
-gfx/map/units/T-HEAVY_CRUISER A-FIRE C-IND L-1 D-S.spr
-gfx/map/units/T-HEAVY_CRUISER A-FIRE C-IND L-1 D-SE.spr
-gfx/map/units/T-HEAVY_CRUISER A-FIRE C-IND L-1 D-SW.spr
-gfx/map/units/T-HEAVY_CRUISER A-FIRE C-IND L-1 D-W.spr
-gfx/map/units/T-HEAVY_CRUISER A-STAND C-IND L-1.spr
-gfx/map/units/T-HEAVY_CRUISER A-WALK C-IND L-1 D-E.spr
-gfx/map/units/T-HEAVY_CRUISER A-WALK C-IND L-1 D-N.spr
-gfx/map/units/T-HEAVY_CRUISER A-WALK C-IND L-1 D-NE.spr
-gfx/map/units/T-HEAVY_CRUISER A-WALK C-IND L-1 D-NW.spr
-gfx/map/units/T-HEAVY_CRUISER A-WALK C-IND L-1 D-S.spr
-gfx/map/units/T-HEAVY_CRUISER A-WALK C-IND L-1 D-SE.spr
-gfx/map/units/T-HEAVY_CRUISER A-WALK C-IND L-1 D-SW.spr
-gfx/map/units/T-HEAVY_CRUISER A-WALK C-IND L-1 D-W.spr
-gfx/map/units/T-HQ A-FIRE C-IND L-1 D-E.spr
-gfx/map/units/T-HQ A-FIRE C-IND L-1 D-N.spr
-gfx/map/units/T-HQ A-FIRE C-IND L-1 D-NE.spr
-gfx/map/units/T-HQ A-FIRE C-IND L-1 D-NW.spr
-gfx/map/units/T-HQ A-FIRE C-IND L-1 D-S.spr
-gfx/map/units/T-HQ A-FIRE C-IND L-1 D-SE.spr
-gfx/map/units/T-HQ A-FIRE C-IND L-1 D-SW.spr
-gfx/map/units/T-HQ A-FIRE C-IND L-1 D-W.spr
-gfx/map/units/T-HQ A-STAND C-IND L-1.spr
-gfx/map/units/T-HQ A-WALK C-IND L-1 D-E.spr
-gfx/map/units/T-HQ A-WALK C-IND L-1 D-N.spr
-gfx/map/units/T-HQ A-WALK C-IND L-1 D-NE.spr
-gfx/map/units/T-HQ A-WALK C-IND L-1 D-NW.spr
-gfx/map/units/T-HQ A-WALK C-IND L-1 D-S.spr
-gfx/map/units/T-HQ A-WALK C-IND L-1 D-SE.spr
-gfx/map/units/T-HQ A-WALK C-IND L-1 D-SW.spr
-gfx/map/units/T-HQ A-WALK C-IND L-1 D-W.spr
-gfx/map/units/T-INFANTRY A-FIRE C-IND D-E.spr
-gfx/map/units/T-INFANTRY A-FIRE C-IND D-N.spr
-gfx/map/units/T-INFANTRY A-FIRE C-IND D-NE.spr
-gfx/map/units/T-INFANTRY A-FIRE C-IND D-NW.spr
-gfx/map/units/T-INFANTRY A-FIRE C-IND D-S.spr
-gfx/map/units/T-INFANTRY A-FIRE C-IND D-SE.spr
-gfx/map/units/T-INFANTRY A-FIRE C-IND D-SW.spr
-gfx/map/units/T-INFANTRY A-FIRE C-IND D-W.spr
-gfx/map/units/T-INFANTRY A-FIRE C-IND L-1 D-E.spr
-gfx/map/units/T-INFANTRY A-FIRE C-IND L-1 D-N.spr
-gfx/map/units/T-INFANTRY A-FIRE C-IND L-1 D-NE.spr
-gfx/map/units/T-INFANTRY A-FIRE C-IND L-1 D-NW.spr
-gfx/map/units/T-INFANTRY A-FIRE C-IND L-1 D-S.spr
-gfx/map/units/T-INFANTRY A-FIRE C-IND L-1 D-SE.spr
-gfx/map/units/T-INFANTRY A-FIRE C-IND L-1 D-SW.spr
-gfx/map/units/T-INFANTRY A-FIRE C-IND L-1 D-W.spr
-gfx/map/units/T-INFANTRY A-STAND C-IND L-1.spr
-gfx/map/units/T-INFANTRY A-STAND C-IND.spr
-gfx/map/units/T-INFANTRY A-WALK C-IND D-E.spr
-gfx/map/units/T-INFANTRY A-WALK C-IND D-N.spr
-gfx/map/units/T-INFANTRY A-WALK C-IND D-NE.spr
-gfx/map/units/T-INFANTRY A-WALK C-IND D-NW.spr
-gfx/map/units/T-INFANTRY A-WALK C-IND D-S.spr
-gfx/map/units/T-INFANTRY A-WALK C-IND D-SE.spr
-gfx/map/units/T-INFANTRY A-WALK C-IND D-SW.spr
-gfx/map/units/T-INFANTRY A-WALK C-IND D-W.spr
-gfx/map/units/T-INFANTRY A-WALK C-IND L-1 D-E.spr
-gfx/map/units/T-INFANTRY A-WALK C-IND L-1 D-N.spr
-gfx/map/units/T-INFANTRY A-WALK C-IND L-1 D-NE.spr
-gfx/map/units/T-INFANTRY A-WALK C-IND L-1 D-NW.spr
-gfx/map/units/T-INFANTRY A-WALK C-IND L-1 D-S.spr
-gfx/map/units/T-INFANTRY A-WALK C-IND L-1 D-SE.spr
-gfx/map/units/T-INFANTRY A-WALK C-IND L-1 D-SW.spr
-gfx/map/units/T-INFANTRY A-WALK C-IND L-1 D-W.spr
-gfx/map/units/T-INTERCEPTOR A-FIRE C-IND L-1 D-E.spr
-gfx/map/units/T-INTERCEPTOR A-FIRE C-IND L-1 D-N.spr
-gfx/map/units/T-INTERCEPTOR A-FIRE C-IND L-1 D-NE.spr
-gfx/map/units/T-INTERCEPTOR A-FIRE C-IND L-1 D-NW.spr
-gfx/map/units/T-INTERCEPTOR A-FIRE C-IND L-1 D-S.spr
-gfx/map/units/T-INTERCEPTOR A-FIRE C-IND L-1 D-SE.spr
-gfx/map/units/T-INTERCEPTOR A-FIRE C-IND L-1 D-SW.spr
-gfx/map/units/T-INTERCEPTOR A-FIRE C-IND L-1 D-W.spr
-gfx/map/units/T-INTERCEPTOR A-STAND C-IND L-1.spr
-gfx/map/units/T-INTERCEPTOR A-WALK C-IND L-1 D-E.spr
-gfx/map/units/T-INTERCEPTOR A-WALK C-IND L-1 D-N.spr
-gfx/map/units/T-INTERCEPTOR A-WALK C-IND L-1 D-NE.spr
-gfx/map/units/T-INTERCEPTOR A-WALK C-IND L-1 D-NW.spr
-gfx/map/units/T-INTERCEPTOR A-WALK C-IND L-1 D-S.spr
-gfx/map/units/T-INTERCEPTOR A-WALK C-IND L-1 D-SE.spr
-gfx/map/units/T-INTERCEPTOR A-WALK C-IND L-1 D-SW.spr
-gfx/map/units/T-INTERCEPTOR A-WALK C-IND L-1 D-W.spr
-gfx/map/units/T-LIGHT_CRUISER A-FIRE C-IND L-1 D-E.spr
-gfx/map/units/T-LIGHT_CRUISER A-FIRE C-IND L-1 D-N.spr
-gfx/map/units/T-LIGHT_CRUISER A-FIRE C-IND L-1 D-NE.spr
-gfx/map/units/T-LIGHT_CRUISER A-FIRE C-IND L-1 D-NW.spr
-gfx/map/units/T-LIGHT_CRUISER A-FIRE C-IND L-1 D-S.spr
-gfx/map/units/T-LIGHT_CRUISER A-FIRE C-IND L-1 D-SE.spr
-gfx/map/units/T-LIGHT_CRUISER A-FIRE C-IND L-1 D-SW.spr
-gfx/map/units/T-LIGHT_CRUISER A-FIRE C-IND L-1 D-W.spr
-gfx/map/units/T-LIGHT_CRUISER A-STAND C-IND L-1.spr
-gfx/map/units/T-LIGHT_CRUISER A-WALK C-IND L-1 D-E.spr
-gfx/map/units/T-LIGHT_CRUISER A-WALK C-IND L-1 D-N.spr
-gfx/map/units/T-LIGHT_CRUISER A-WALK C-IND L-1 D-NE.spr
-gfx/map/units/T-LIGHT_CRUISER A-WALK C-IND L-1 D-NW.spr
-gfx/map/units/T-LIGHT_CRUISER A-WALK C-IND L-1 D-S.spr
-gfx/map/units/T-LIGHT_CRUISER A-WALK C-IND L-1 D-SE.spr
-gfx/map/units/T-LIGHT_CRUISER A-WALK C-IND L-1 D-SW.spr
-gfx/map/units/T-LIGHT_CRUISER A-WALK C-IND L-1 D-W.spr
-gfx/map/units/T-MARINE A-FIRE C-IND L-1 D-E.spr
-gfx/map/units/T-MARINE A-FIRE C-IND L-1 D-N.spr
-gfx/map/units/T-MARINE A-FIRE C-IND L-1 D-NE.spr
-gfx/map/units/T-MARINE A-FIRE C-IND L-1 D-NW.spr
-gfx/map/units/T-MARINE A-FIRE C-IND L-1 D-S.spr
-gfx/map/units/T-MARINE A-FIRE C-IND L-1 D-SE.spr
-gfx/map/units/T-MARINE A-FIRE C-IND L-1 D-SW.spr
-gfx/map/units/T-MARINE A-FIRE C-IND L-1 D-W.spr
-gfx/map/units/T-MARINE A-STAND C-IND L-1.spr
-gfx/map/units/T-MARINE A-WALK C-IND L-1 D-E.spr
-gfx/map/units/T-MARINE A-WALK C-IND L-1 D-N.spr
-gfx/map/units/T-MARINE A-WALK C-IND L-1 D-NE.spr
-gfx/map/units/T-MARINE A-WALK C-IND L-1 D-NW.spr
-gfx/map/units/T-MARINE A-WALK C-IND L-1 D-S.spr
-gfx/map/units/T-MARINE A-WALK C-IND L-1 D-SE.spr
-gfx/map/units/T-MARINE A-WALK C-IND L-1 D-SW.spr
-gfx/map/units/T-MARINE A-WALK C-IND L-1 D-W.spr
-gfx/map/units/T-MECHANIZED A-FIRE C-IND L-1 D-E.spr
-gfx/map/units/T-MECHANIZED A-FIRE C-IND L-1 D-N.spr
-gfx/map/units/T-MECHANIZED A-FIRE C-IND L-1 D-NE.spr
-gfx/map/units/T-MECHANIZED A-FIRE C-IND L-1 D-NW.spr
-gfx/map/units/T-MECHANIZED A-FIRE C-IND L-1 D-S.spr
-gfx/map/units/T-MECHANIZED A-FIRE C-IND L-1 D-SE.spr
-gfx/map/units/T-MECHANIZED A-FIRE C-IND L-1 D-SW.spr
-gfx/map/units/T-MECHANIZED A-FIRE C-IND L-1 D-W.spr
-gfx/map/units/T-MECHANIZED A-STAND C-IND L-1.spr
-gfx/map/units/T-MECHANIZED A-WALK C-IND L-1 D-E.spr
-gfx/map/units/T-MECHANIZED A-WALK C-IND L-1 D-N.spr
-gfx/map/units/T-MECHANIZED A-WALK C-IND L-1 D-NE.spr
-gfx/map/units/T-MECHANIZED A-WALK C-IND L-1 D-NW.spr
-gfx/map/units/T-MECHANIZED A-WALK C-IND L-1 D-S.spr
-gfx/map/units/T-MECHANIZED A-WALK C-IND L-1 D-SE.spr
-gfx/map/units/T-MECHANIZED A-WALK C-IND L-1 D-SW.spr
-gfx/map/units/T-MECHANIZED A-WALK C-IND L-1 D-W.spr
-gfx/map/units/T-MILITIA A-FIRE C-IND L-1 D-E.spr
-gfx/map/units/T-MILITIA A-FIRE C-IND L-1 D-N.spr
-gfx/map/units/T-MILITIA A-FIRE C-IND L-1 D-NE.spr
-gfx/map/units/T-MILITIA A-FIRE C-IND L-1 D-NW.spr
-gfx/map/units/T-MILITIA A-FIRE C-IND L-1 D-S.spr
-gfx/map/units/T-MILITIA A-FIRE C-IND L-1 D-SE.spr
-gfx/map/units/T-MILITIA A-FIRE C-IND L-1 D-SW.spr
-gfx/map/units/T-MILITIA A-FIRE C-IND L-1 D-W.spr
-gfx/map/units/T-MILITIA A-STAND C-IND L-1.spr
-gfx/map/units/T-MILITIA A-WALK C-IND L-1 D-E.spr
-gfx/map/units/T-MILITIA A-WALK C-IND L-1 D-N.spr
-gfx/map/units/T-MILITIA A-WALK C-IND L-1 D-NE.spr
-gfx/map/units/T-MILITIA A-WALK C-IND L-1 D-NW.spr
-gfx/map/units/T-MILITIA A-WALK C-IND L-1 D-S.spr
-gfx/map/units/T-MILITIA A-WALK C-IND L-1 D-SE.spr
-gfx/map/units/T-MILITIA A-WALK C-IND L-1 D-SW.spr
-gfx/map/units/T-MILITIA A-WALK C-IND L-1 D-W.spr
-gfx/map/units/T-MOTORIZED A-FIRE C-IND L-1 D-E.spr
-gfx/map/units/T-MOTORIZED A-FIRE C-IND L-1 D-N.spr
-gfx/map/units/T-MOTORIZED A-FIRE C-IND L-1 D-NE.spr
-gfx/map/units/T-MOTORIZED A-FIRE C-IND L-1 D-NW.spr
-gfx/map/units/T-MOTORIZED A-FIRE C-IND L-1 D-S.spr
-gfx/map/units/T-MOTORIZED A-FIRE C-IND L-1 D-SE.spr
-gfx/map/units/T-MOTORIZED A-FIRE C-IND L-1 D-SW.spr
-gfx/map/units/T-MOTORIZED A-FIRE C-IND L-1 D-W.spr
-gfx/map/units/T-MOTORIZED A-STAND C-IND L-1.spr
-gfx/map/units/T-MOTORIZED A-WALK C-IND L-1 D-E.spr
-gfx/map/units/T-MOTORIZED A-WALK C-IND L-1 D-N.spr
-gfx/map/units/T-MOTORIZED A-WALK C-IND L-1 D-NE.spr
-gfx/map/units/T-MOTORIZED A-WALK C-IND L-1 D-NW.spr
-gfx/map/units/T-MOTORIZED A-WALK C-IND L-1 D-S.spr
-gfx/map/units/T-MOTORIZED A-WALK C-IND L-1 D-SE.spr
-gfx/map/units/T-MOTORIZED A-WALK C-IND L-1 D-SW.spr
-gfx/map/units/T-MOTORIZED A-WALK C-IND L-1 D-W.spr
-gfx/map/units/T-MOUNTAIN A-FIRE C-IND L-1 D-E.spr
-gfx/map/units/T-MOUNTAIN A-FIRE C-IND L-1 D-N.spr
-gfx/map/units/T-MOUNTAIN A-FIRE C-IND L-1 D-NE.spr
-gfx/map/units/T-MOUNTAIN A-FIRE C-IND L-1 D-NW.spr
-gfx/map/units/T-MOUNTAIN A-FIRE C-IND L-1 D-S.spr
-gfx/map/units/T-MOUNTAIN A-FIRE C-IND L-1 D-SE.spr
-gfx/map/units/T-MOUNTAIN A-FIRE C-IND L-1 D-SW.spr
-gfx/map/units/T-MOUNTAIN A-FIRE C-IND L-1 D-W.spr
-gfx/map/units/T-MOUNTAIN A-STAND C-IND L-1.spr
-gfx/map/units/T-MOUNTAIN A-WALK C-IND L-1 D-E.spr
-gfx/map/units/T-MOUNTAIN A-WALK C-IND L-1 D-N.spr
-gfx/map/units/T-MOUNTAIN A-WALK C-IND L-1 D-NE.spr
-gfx/map/units/T-MOUNTAIN A-WALK C-IND L-1 D-NW.spr
-gfx/map/units/T-MOUNTAIN A-WALK C-IND L-1 D-S.spr
-gfx/map/units/T-MOUNTAIN A-WALK C-IND L-1 D-SE.spr
-gfx/map/units/T-MOUNTAIN A-WALK C-IND L-1 D-SW.spr
-gfx/map/units/T-MOUNTAIN A-WALK C-IND L-1 D-W.spr
-gfx/map/units/T-NAVAL A-FIRE C-IND L-1 D-E.spr
-gfx/map/units/T-NAVAL A-FIRE C-IND L-1 D-N.spr
-gfx/map/units/T-NAVAL A-FIRE C-IND L-1 D-NE.spr
-gfx/map/units/T-NAVAL A-FIRE C-IND L-1 D-NW.spr
-gfx/map/units/T-NAVAL A-FIRE C-IND L-1 D-S.spr
-gfx/map/units/T-NAVAL A-FIRE C-IND L-1 D-SE.spr
-gfx/map/units/T-NAVAL A-FIRE C-IND L-1 D-SW.spr
-gfx/map/units/T-NAVAL A-FIRE C-IND L-1 D-W.spr
-gfx/map/units/T-NAVAL A-STAND C-IND L-1.spr
-gfx/map/units/T-NAVAL A-WALK C-IND L-1 D-E.spr
-gfx/map/units/T-NAVAL A-WALK C-IND L-1 D-N.spr
-gfx/map/units/T-NAVAL A-WALK C-IND L-1 D-NE.spr
-gfx/map/units/T-NAVAL A-WALK C-IND L-1 D-NW.spr
-gfx/map/units/T-NAVAL A-WALK C-IND L-1 D-S.spr
-gfx/map/units/T-NAVAL A-WALK C-IND L-1 D-SE.spr
-gfx/map/units/T-NAVAL A-WALK C-IND L-1 D-SW.spr
-gfx/map/units/T-NAVAL A-WALK C-IND L-1 D-W.spr
-gfx/map/units/T-nuclear_submarine A-FIRE C-IND L-1 D-E.spr
-gfx/map/units/T-nuclear_submarine A-FIRE C-IND L-1 D-N.spr
-gfx/map/units/T-nuclear_submarine A-FIRE C-IND L-1 D-NE.spr
-gfx/map/units/T-nuclear_submarine A-FIRE C-IND L-1 D-NW.spr
-gfx/map/units/T-nuclear_submarine A-FIRE C-IND L-1 D-S.spr
-gfx/map/units/T-nuclear_submarine A-FIRE C-IND L-1 D-SE.spr
-gfx/map/units/T-nuclear_submarine A-FIRE C-IND L-1 D-SW.spr
-gfx/map/units/T-nuclear_submarine A-FIRE C-IND L-1 D-W.spr
-gfx/map/units/T-nuclear_submarine A-STAND C-IND L-1.spr
-gfx/map/units/T-nuclear_submarine A-WALK C-IND L-1 D-E.spr
-gfx/map/units/T-nuclear_submarine A-WALK C-IND L-1 D-N.spr
-gfx/map/units/T-nuclear_submarine A-WALK C-IND L-1 D-NE.spr
-gfx/map/units/T-nuclear_submarine A-WALK C-IND L-1 D-NW.spr
-gfx/map/units/T-nuclear_submarine A-WALK C-IND L-1 D-S.spr
-gfx/map/units/T-nuclear_submarine A-WALK C-IND L-1 D-SE.spr
-gfx/map/units/T-nuclear_submarine A-WALK C-IND L-1 D-SW.spr
-gfx/map/units/T-nuclear_submarine A-WALK C-IND L-1 D-W.spr
-gfx/map/units/T-PANZER A-FIRE C-IND L-1 D-E.spr
-gfx/map/units/T-PANZER A-FIRE C-IND L-1 D-N.spr
-gfx/map/units/T-PANZER A-FIRE C-IND L-1 D-NE.spr
-gfx/map/units/T-PANZER A-FIRE C-IND L-1 D-NW.spr
-gfx/map/units/T-PANZER A-FIRE C-IND L-1 D-S.spr
-gfx/map/units/T-PANZER A-FIRE C-IND L-1 D-SE.spr
-gfx/map/units/T-PANZER A-FIRE C-IND L-1 D-SW.spr
-gfx/map/units/T-PANZER A-FIRE C-IND L-1 D-W.spr
-gfx/map/units/T-PANZER A-STAND C-IND L-1.spr
-gfx/map/units/T-PANZER A-WALK C-IND L-1 D-E.spr
-gfx/map/units/T-PANZER A-WALK C-IND L-1 D-N.spr
-gfx/map/units/T-PANZER A-WALK C-IND L-1 D-NE.spr
-gfx/map/units/T-PANZER A-WALK C-IND L-1 D-NW.spr
-gfx/map/units/T-PANZER A-WALK C-IND L-1 D-S.spr
-gfx/map/units/T-PANZER A-WALK C-IND L-1 D-SE.spr
-gfx/map/units/T-PANZER A-WALK C-IND L-1 D-SW.spr
-gfx/map/units/T-PANZER A-WALK C-IND L-1 D-W.spr
-gfx/map/units/T-PARATROOPER A-FIRE C-IND L-1 D-E.spr
-gfx/map/units/T-PARATROOPER A-FIRE C-IND L-1 D-N.spr
-gfx/map/units/T-PARATROOPER A-FIRE C-IND L-1 D-NE.spr
-gfx/map/units/T-PARATROOPER A-FIRE C-IND L-1 D-NW.spr
-gfx/map/units/T-PARATROOPER A-FIRE C-IND L-1 D-S.spr
-gfx/map/units/T-PARATROOPER A-FIRE C-IND L-1 D-SE.spr
-gfx/map/units/T-PARATROOPER A-FIRE C-IND L-1 D-SW.spr
-gfx/map/units/T-PARATROOPER A-FIRE C-IND L-1 D-W.spr
-gfx/map/units/T-PARATROOPER A-STAND C-IND L-1.spr
-gfx/map/units/T-PARATROOPER A-WALK C-IND L-1 D-E.spr
-gfx/map/units/T-PARATROOPER A-WALK C-IND L-1 D-N.spr
-gfx/map/units/T-PARATROOPER A-WALK C-IND L-1 D-NE.spr
-gfx/map/units/T-PARATROOPER A-WALK C-IND L-1 D-NW.spr
-gfx/map/units/T-PARATROOPER A-WALK C-IND L-1 D-S.spr
-gfx/map/units/T-PARATROOPER A-WALK C-IND L-1 D-SE.spr
-gfx/map/units/T-PARATROOPER A-WALK C-IND L-1 D-SW.spr
-gfx/map/units/T-PARATROOPER A-WALK C-IND L-1 D-W.spr
-gfx/map/units/T-ROCKET_INTERCEPTOR A-FIRE C-IND L-1 D-E.spr
-gfx/map/units/T-ROCKET_INTERCEPTOR A-FIRE C-IND L-1 D-N.spr
-gfx/map/units/T-ROCKET_INTERCEPTOR A-FIRE C-IND L-1 D-NE.spr
-gfx/map/units/T-ROCKET_INTERCEPTOR A-FIRE C-IND L-1 D-NW.spr
-gfx/map/units/T-ROCKET_INTERCEPTOR A-FIRE C-IND L-1 D-S.spr
-gfx/map/units/T-ROCKET_INTERCEPTOR A-FIRE C-IND L-1 D-SE.spr
-gfx/map/units/T-ROCKET_INTERCEPTOR A-FIRE C-IND L-1 D-SW.spr
-gfx/map/units/T-ROCKET_INTERCEPTOR A-FIRE C-IND L-1 D-W.spr
-gfx/map/units/T-ROCKET_INTERCEPTOR A-STAND C-IND L-1.spr
-gfx/map/units/T-ROCKET_INTERCEPTOR A-WALK C-IND L-1 D-E.spr
-gfx/map/units/T-ROCKET_INTERCEPTOR A-WALK C-IND L-1 D-N.spr
-gfx/map/units/T-ROCKET_INTERCEPTOR A-WALK C-IND L-1 D-NE.spr
-gfx/map/units/T-ROCKET_INTERCEPTOR A-WALK C-IND L-1 D-NW.spr
-gfx/map/units/T-ROCKET_INTERCEPTOR A-WALK C-IND L-1 D-S.spr
-gfx/map/units/T-ROCKET_INTERCEPTOR A-WALK C-IND L-1 D-SE.spr
-gfx/map/units/T-ROCKET_INTERCEPTOR A-WALK C-IND L-1 D-SW.spr
-gfx/map/units/T-ROCKET_INTERCEPTOR A-WALK C-IND L-1 D-W.spr
-gfx/map/units/T-STRATEGIC A-FIRE C-IND L-1 D-E.spr
-gfx/map/units/T-STRATEGIC A-FIRE C-IND L-1 D-N.spr
-gfx/map/units/T-STRATEGIC A-FIRE C-IND L-1 D-NE.spr
-gfx/map/units/T-STRATEGIC A-FIRE C-IND L-1 D-NW.spr
-gfx/map/units/T-STRATEGIC A-FIRE C-IND L-1 D-S.spr
-gfx/map/units/T-STRATEGIC A-FIRE C-IND L-1 D-SE.spr
-gfx/map/units/T-STRATEGIC A-FIRE C-IND L-1 D-SW.spr
-gfx/map/units/T-STRATEGIC A-FIRE C-IND L-1 D-W.spr
-gfx/map/units/T-STRATEGIC A-STAND C-IND L-1.spr
-gfx/map/units/T-STRATEGIC A-WALK C-IND L-1 D-E.spr
-gfx/map/units/T-STRATEGIC A-WALK C-IND L-1 D-N.spr
-gfx/map/units/T-STRATEGIC A-WALK C-IND L-1 D-NE.spr
-gfx/map/units/T-STRATEGIC A-WALK C-IND L-1 D-NW.spr
-gfx/map/units/T-STRATEGIC A-WALK C-IND L-1 D-S.spr
-gfx/map/units/T-STRATEGIC A-WALK C-IND L-1 D-SE.spr
-gfx/map/units/T-STRATEGIC A-WALK C-IND L-1 D-SW.spr
-gfx/map/units/T-STRATEGIC A-WALK C-IND L-1 D-W.spr
-gfx/map/units/T-SUBMARINE A-FIRE C-IND L-1 D-E.spr
-gfx/map/units/T-SUBMARINE A-FIRE C-IND L-1 D-N.spr
-gfx/map/units/T-SUBMARINE A-FIRE C-IND L-1 D-NE.spr
-gfx/map/units/T-SUBMARINE A-FIRE C-IND L-1 D-NW.spr
-gfx/map/units/T-SUBMARINE A-FIRE C-IND L-1 D-S.spr
-gfx/map/units/T-SUBMARINE A-FIRE C-IND L-1 D-SE.spr
-gfx/map/units/T-SUBMARINE A-FIRE C-IND L-1 D-SW.spr
-gfx/map/units/T-SUBMARINE A-FIRE C-IND L-1 D-W.spr
-gfx/map/units/T-SUBMARINE A-STAND C-IND L-1.spr
-gfx/map/units/T-SUBMARINE A-WALK C-IND L-1 D-E.spr
-gfx/map/units/T-SUBMARINE A-WALK C-IND L-1 D-N.spr
-gfx/map/units/T-SUBMARINE A-WALK C-IND L-1 D-NE.spr
-gfx/map/units/T-SUBMARINE A-WALK C-IND L-1 D-NW.spr
-gfx/map/units/T-SUBMARINE A-WALK C-IND L-1 D-S.spr
-gfx/map/units/T-SUBMARINE A-WALK C-IND L-1 D-SE.spr
-gfx/map/units/T-SUBMARINE A-WALK C-IND L-1 D-SW.spr
-gfx/map/units/T-SUBMARINE A-WALK C-IND L-1 D-W.spr
-gfx/map/units/T-TACTICAL A-FIRE C-IND L-1 D-E.spr
-gfx/map/units/T-TACTICAL A-FIRE C-IND L-1 D-N.spr
-gfx/map/units/T-TACTICAL A-FIRE C-IND L-1 D-NE.spr
-gfx/map/units/T-TACTICAL A-FIRE C-IND L-1 D-NW.spr
-gfx/map/units/T-TACTICAL A-FIRE C-IND L-1 D-S.spr
-gfx/map/units/T-TACTICAL A-FIRE C-IND L-1 D-SE.spr
-gfx/map/units/T-TACTICAL A-FIRE C-IND L-1 D-SW.spr
-gfx/map/units/T-TACTICAL A-FIRE C-IND L-1 D-W.spr
-gfx/map/units/T-TACTICAL A-STAND C-IND L-1.spr
-gfx/map/units/T-TACTICAL A-WALK C-IND L-1 D-E.spr
-gfx/map/units/T-TACTICAL A-WALK C-IND L-1 D-N.spr
-gfx/map/units/T-TACTICAL A-WALK C-IND L-1 D-NE.spr
-gfx/map/units/T-TACTICAL A-WALK C-IND L-1 D-NW.spr
-gfx/map/units/T-TACTICAL A-WALK C-IND L-1 D-S.spr
-gfx/map/units/T-TACTICAL A-WALK C-IND L-1 D-SE.spr
-gfx/map/units/T-TACTICAL A-WALK C-IND L-1 D-SW.spr
-gfx/map/units/T-TACTICAL A-WALK C-IND L-1 D-W.spr
-gfx/map/units/T-TRANSPORT A-FIRE C-IND L-1 D-E.spr
-gfx/map/units/T-TRANSPORT A-FIRE C-IND L-1 D-N.spr
-gfx/map/units/T-TRANSPORT A-FIRE C-IND L-1 D-NE.spr
-gfx/map/units/T-TRANSPORT A-FIRE C-IND L-1 D-NW.spr
-gfx/map/units/T-TRANSPORT A-FIRE C-IND L-1 D-S.spr
-gfx/map/units/T-TRANSPORT A-FIRE C-IND L-1 D-SE.spr
-gfx/map/units/T-TRANSPORT A-FIRE C-IND L-1 D-SW.spr
-gfx/map/units/T-TRANSPORT A-FIRE C-IND L-1 D-W.spr
-gfx/map/units/T-TRANSPORT A-STAND C-IND L-1.spr
-gfx/map/units/T-TRANSPORT A-WALK C-IND L-1 D-E.spr
-gfx/map/units/T-TRANSPORT A-WALK C-IND L-1 D-N.spr
-gfx/map/units/T-TRANSPORT A-WALK C-IND L-1 D-NE.spr
-gfx/map/units/T-TRANSPORT A-WALK C-IND L-1 D-NW.spr
-gfx/map/units/T-TRANSPORT A-WALK C-IND L-1 D-S.spr
-gfx/map/units/T-TRANSPORT A-WALK C-IND L-1 D-SE.spr
-gfx/map/units/T-TRANSPORT A-WALK C-IND L-1 D-SW.spr
-gfx/map/units/T-TRANSPORT A-WALK C-IND L-1 D-W.spr
-gfx/map/units/T-TRANSPORTPLANE A-FIRE C-IND L-1 D-E.spr
-gfx/map/units/T-TRANSPORTPLANE A-FIRE C-IND L-1 D-N.spr
-gfx/map/units/T-TRANSPORTPLANE A-FIRE C-IND L-1 D-NE.spr
-gfx/map/units/T-TRANSPORTPLANE A-FIRE C-IND L-1 D-NW.spr
-gfx/map/units/T-TRANSPORTPLANE A-FIRE C-IND L-1 D-S.spr
-gfx/map/units/T-TRANSPORTPLANE A-FIRE C-IND L-1 D-SE.spr
-gfx/map/units/T-TRANSPORTPLANE A-FIRE C-IND L-1 D-SW.spr
-gfx/map/units/T-TRANSPORTPLANE A-FIRE C-IND L-1 D-W.spr
-gfx/map/units/T-TRANSPORTPLANE A-STAND C-IND L-1.spr
-gfx/map/units/T-TRANSPORTPLANE A-WALK C-IND L-1 D-E.spr
-gfx/map/units/T-TRANSPORTPLANE A-WALK C-IND L-1 D-N.spr
-gfx/map/units/T-TRANSPORTPLANE A-WALK C-IND L-1 D-NE.spr
-gfx/map/units/T-TRANSPORTPLANE A-WALK C-IND L-1 D-NW.spr
-gfx/map/units/T-TRANSPORTPLANE A-WALK C-IND L-1 D-S.spr
-gfx/map/units/T-TRANSPORTPLANE A-WALK C-IND L-1 D-SE.spr
-gfx/map/units/T-TRANSPORTPLANE A-WALK C-IND L-1 D-SW.spr
-gfx/map/units/T-TRANSPORTPLANE A-WALK C-IND L-1 D-W.spr
-gfx/palette/AUBM-IND-ARMOR.bmp
-gfx/palette/AUBM-IND-BOMBER.bmp
-gfx/palette/AUBM-IND-CAPITAL.bmp
-gfx/palette/AUBM-IND-CARRIER.bmp
-gfx/palette/AUBM-IND-CAVALRY.bmp
-gfx/palette/AUBM-IND-CRUISER.bmp
-gfx/palette/AUBM-IND-ESCORT.bmp
-gfx/palette/AUBM-IND-FIGHTER.bmp
-gfx/palette/AUBM-IND-GURKHA.bmp
-gfx/palette/AUBM-IND-INFANTRY.bmp
-gfx/palette/AUBM-IND-MOTORIZED.bmp
-gfx/palette/AUBM-IND-SUBMARINE.bmp
-gfx/palette/AUBM-IND-TRANSPORT.bmp
+gfx/map/hoi_counter_strip.bmp
 map/Map_1/Province.csv
 map/Map_1/province_names.csv
 Readme.txt

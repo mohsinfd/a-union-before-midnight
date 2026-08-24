@@ -13,13 +13,13 @@ event = {
 	}
 
 	name = "A Continental State in a Dangerous World"
-	desc = "The Lahore Accord has produced something without precedent: a sovereign Indian Union in 1933, extending from the north-west frontier through Burma and Malaya to Ceylon. It has inherited railways, regiments and ports, but not yet a common political economy or a settled place in the world. Europe is rearming, Japan is advancing in Asia and every major power assumes the new Union will eventually need a patron. India now has the narrowest of opportunities to prove them wrong."
+	desc = "The Lahore Accord has produced something without precedent: a sovereign Indian Union in 1933, extending from the north-west frontier through Burma to Ceylon. British power still holds Malaya and Singapore beyond the Union's eastern approaches. India has inherited railways, regiments and ports, but not yet a common political economy or a settled place in the world. Europe is rearming, Japan is advancing in Asia and every major power assumes the new Union will eventually need a patron."
 	style = 2
 	picture = "aubm_v4_continental_state"
 
 	date = { day = 1 month = january year = 1933 }
 	offset = 1
-	deathdate = { day = 15 month = january year = 1933 }
+	deathdate = { day = 15 month = january year = 1964 }
 
 	action_a = {
 		ai_chance = 100

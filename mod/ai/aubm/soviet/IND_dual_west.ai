@@ -1,0 +1,59 @@
+# AUBM: simultaneous Persia-Caucasus and Tashkent corridors
+
+neutrality = 10
+war = 90
+max_front_ratio = 1.70
+
+combat = {
+	GER = 100
+	ITA = 30
+	JAP = 25
+}
+
+befriend = {
+	SOV = 145
+	PER = 135
+	AFG = 140
+}
+
+protect = {
+	PER = 125
+	AFG = 130
+}
+
+target = {
+	1093 = 80
+	1085 = 95
+	713 = 100
+	706 = 85
+	663 = 100
+	2172 = 75
+	2168 = 80
+	1105 = 75
+	1099 = 85
+	1103 = 95
+	1097 = 70
+}
+
+front = {
+	recklessness = 2
+	distrib_vs_ai = op_defensive
+	distrib_vs_human = reactive
+	enemy_reinf_days = 5
+	reserve_prop = 0.16
+	panic_ratio_vs_ai = 2.5
+	panic_ratio_vs_human = 2.5
+	base_attack_odds = 1.17
+	min_attack_odds = 1.04
+	max_attack_odds = 4.0
+	reinforce_odds = 1.25
+	withdraw_odds = 0.67
+	strength = 0.9
+	organisation = 0.9
+	soft_attack = 1.1
+	hard_attack = 1.2
+	ground_defense = 1.0
+	dig_in = 1.0
+	mountain_attack = 1.30
+}
+

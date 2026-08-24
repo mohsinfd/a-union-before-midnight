@@ -1,0 +1,55 @@
+# AUBM: India and Germany as autonomous co-belligerents
+
+switch = no
+neutrality = 5
+war = 95
+max_front_ratio = 1.55
+exp_force_ratio = 0.00
+
+combat = {
+	SOV = 200
+}
+
+befriend = {
+	GER = 150
+	JAP = 60
+	PER = 110
+	AFG = 110
+}
+
+protect = {
+	PER = 100
+	AFG = 100
+	NEP = 60
+	BHU = 60
+}
+
+target = {
+	713 = 100  # Baku
+	706 = 90   # Astrakhan
+	663 = 95   # Stalingrad
+	1103 = 100 # Tashkent
+	1099 = 85  # Samarkand
+}
+
+front = {
+	recklessness = 2
+	distrib_vs_ai = op_defensive
+	distrib_vs_human = reactive
+	enemy_reinf_days = 5
+	reserve_prop = 0.16
+	panic_ratio_vs_ai = 2.6
+	panic_ratio_vs_human = 2.6
+	base_attack_odds = 1.17
+	min_attack_odds = 1.05
+	max_attack_odds = 3.9
+	reinforce_odds = 1.2
+	withdraw_odds = 0.67
+	strength = 0.90
+	organisation = 0.90
+	soft_attack = 1.10
+	hard_attack = 1.20
+	ground_defense = 1.00
+	dig_in = 1.00
+	mountain_attack = 1.25
+}

@@ -1,0 +1,2449 @@
+#########################################################################
+# A Union Before Midnight V4: Germany and the independent Soviet war
+# Reserved event IDs: 9281300-9281399
+#
+# Design rules:
+# - Formal Axis membership merges wars. Co-belligerency does not.
+# - Britain is a separate declaration outside formal Axis membership.
+# - Persia, Afghanistan and Xinjiang answer for themselves.
+# - German aid follows Indian battlefield results, never the initial choice.
+# - Settlements transfer only provinces India actually controls and a legal
+#   owner actually holds. Releasable states are then created from Indian land.
+# - The stock Bitter Peace (SOV 2007033) remains authoritative.
+#########################################################################
+
+#########################################################################
+# Strategic relationship with Berlin
+#########################################################################
+
+event = {
+	id = 9281300
+	random = no
+	persistent = yes
+	country = IND
+
+	decision = {
+		OR = { NOT = { flag = ind_aubm_wartime_framework } flag = ind_aubm_route_german flag = ind_v3_axis_orientation flag = ind_v4_strategy_axis }
+		exists = GER
+		exists = SOV
+		OR = {
+			war = { country = GER country = SOV }
+			war = { country = IND country = SOV }
+		}
+		NOT = { war = { country = IND country = GER } }
+		NOT = { alliance = { country = IND country = ENG } }
+		NOT = { alliance = { country = IND country = USA } }
+		NOT = { alliance = { country = IND country = SOV } }
+		NOT = { alliance = { country = IND country = JAP } }
+		NOT = { ispuppet = IND }
+		NOT = { flag = ind_gc_formal_axis }
+		NOT = { flag = ind_gc_cobelligerent }
+		NOT = { flag = ind_gc_sovereign }
+		NOT = { flag = ind_gc_berlin_negotiating }
+		NOT = { flag = ind_gc_berlin_cooldown }
+		year = 1940
+	}
+	decision_trigger = {
+		exists = GER
+		exists = SOV
+	}
+
+	name = "The Delhi-Berlin War Conference"
+	# AUBM_DECISION_DESC_MANUAL
+	decision_desc = "Formal Axis: Berlin accepts 55%, demands war on Britain 35%, rejects 10%. Co-belligerency: 60/30/10. Sovereign war: recognition 45%, German counteroffer 35%, aloof 20%. Formal membership merges wars; the other routes do not."
+	desc = "The German-Soviet war opens a continental choice. Every Berlin response is a fixed proposal-specific roll shown on the action; relations, IC and force size do not modify it. Persia, Afghanistan and Xinjiang retain separate transit negotiations."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	date = { day = 0 month = june year = 1940 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		ai_chance = 25
+		name = "Formal Axis: accept 55%, Britain demand 35%, reject 10%"
+		command = { type = setflag which = ind_gc_berlin_negotiating }
+		command = { type = event which = 9281301 where = GER when = 2 }
+	}
+	action_b = {
+		ai_chance = 45
+		name = "Co-belligerency: accept 60%, counter 30%, reject 10%"
+		command = { type = setflag which = ind_gc_berlin_negotiating }
+		command = { type = event which = 9281302 where = GER when = 2 }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Sovereign war: recognize 45%, counter 35%, aloof 20%"
+		command = { trigger = { NOT = { war = { country = IND country = SOV } } } type = war which = SOV }
+		command = { type = clrflag which = ind_gc_berlin_negotiating }
+		command = { type = clrflag which = ind_gc_formal_axis }
+		command = { type = clrflag which = ind_gc_cobelligerent }
+		command = { type = setflag which = ind_gc_sovereign }
+		command = { type = setflag which = ind_gc_campaign_active }
+		command = { type = dissent value = 4 }
+		command = { type = relation which = SOV value = -100 }
+		command = { type = ai which = "aubm/german/IND_sovereign_anti_soviet.ai" }
+		command = { type = event which = 9281303 where = GER when = 2 }
+	}
+	action_d = {
+		ai_chance = 10
+		name = "Defer the continental commitment"
+		command = { type = dissent value = 1 }
+	}
+}
+
+event = {
+	id = 9281301
+	random = no
+	country = GER
+
+	name = "India Requests Formal Axis Membership"
+	desc = "Delhi offers full coalition membership but insists that Indian forces remain under Indian command. Acceptance merges India's wars and partners into the Axis system. Berlin may instead demand an immediate anti-British commitment or reject the proposal."
+	style = 2
+	picture = "india_v3_german_mission"
+
+	action_a = {
+		ai_chance = 55
+		name = "Admit India as a formal strategic partner"
+		command = { type = relation which = IND value = 40 }
+		command = { type = alliance which = IND when = 1 }
+		command = { type = event which = 9281304 where = IND when = 2 }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Demand war on Britain as the price"
+		command = { type = relation which = IND value = 10 }
+		command = { type = event which = 9281305 where = IND when = 2 }
+	}
+	action_c = {
+		ai_chance = 10
+		name = "Reject an equal Indian place in the Axis"
+		command = { type = relation which = IND value = -30 }
+		command = { type = event which = 9281306 where = IND when = 2 }
+	}
+}
+
+event = {
+	id = 9281302
+	random = no
+	country = GER
+
+	name = "India Proposes Co-belligerency"
+	desc = "Delhi will open its own war against the Soviet Union, exchange intelligence and coordinate objectives, but refuses an engine alliance and automatic war with Britain. Berlin must decide whether battlefield help without political subordination is worth recognizing."
+	style = 2
+	picture = "india_v3_german_mission"
+
+	action_a = {
+		ai_chance = 60
+		name = "Recognize an autonomous Indian theatre"
+		command = { type = relation which = IND value = 35 }
+		command = { type = non_aggression which = GER where = IND when = 1080 }
+		command = { type = event which = 9281307 where = IND when = 2 }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Demand an anti-British embargo and supplies"
+		command = { type = relation which = IND value = 10 }
+		command = { type = event which = 9281308 where = IND when = 2 }
+	}
+	action_c = {
+		ai_chance = 10
+		name = "Refuse cooperation outside the Axis"
+		command = { type = relation which = IND value = -25 }
+		command = { type = event which = 9281306 where = IND when = 2 }
+	}
+}
+
+event = {
+	id = 9281303
+	random = no
+	country = GER
+
+	name = "India Declares a Sovereign Soviet War"
+	desc = "India has entered the Soviet war without joining Berlin or Tokyo. Germany can recognize the independent front, counter with a co-belligerent formula, or withhold every commitment until Indian armies prove that the declaration changes the war."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+
+	action_a = {
+		ai_chance = 45
+		name = "Recognize the sovereign Indian campaign"
+		command = { type = relation which = IND value = 20 }
+		command = { type = non_aggression which = GER where = IND when = 720 }
+		command = { type = event which = 9281309 where = IND when = 2 }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Offer co-belligerency on German terms"
+		command = { type = event which = 9281308 where = IND when = 2 }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Remain aloof until India wins a battle"
+		command = { type = relation which = IND value = -5 }
+		command = { type = event which = 9281312 where = IND when = 2 }
+	}
+}
+
+event = {
+	id = 9281304
+	random = no
+	country = IND
+
+	name = "India Enters the Axis as a Great Power"
+	desc = "Berlin has accepted full membership. Alliance mechanics now merge coalition wars: war with Britain is no longer a separate Indian choice. Delhi retains national command in event policy, but strategic peace and war are shared with Germany."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	action_a = {
+		name = "Assume command of the Indian continental theatre"
+		command = { type = clrflag which = ind_gc_berlin_negotiating }
+		command = { type = clrflag which = ind_gc_cobelligerent }
+		command = { type = clrflag which = ind_gc_sovereign }
+		command = { type = setflag which = ind_gc_formal_axis }
+		command = { type = setflag which = ind_gc_campaign_active }
+		command = { type = clrflag which = ind_v3_allied_orientation }
+		command = { type = clrflag which = ind_v3_soviet_orientation }
+		command = { type = clrflag which = ind_v3_japanese_orientation }
+		command = { type = clrflag which = ind_v3_non_aligned }
+		command = { type = clrflag which = ind_v3_joined_allies }
+		command = { type = clrflag which = ind_v3_joined_comintern }
+		command = { type = clrflag which = ind_v3_joined_japan }
+		command = { type = setflag which = ind_v3_axis_orientation }
+		command = { type = setflag which = ind_v3_joined_axis }
+		command = { type = setflag which = ind_v4_strategy_axis }
+		command = { type = dissent value = 5 }
+		command = { type = ai which = "aubm/german/IND_formal_axis.ai" }
+	}
+}
+
+event = {
+	id = 9281305
+	random = no
+	country = IND
+
+	name = "Berlin Sets Britain as the Price"
+	desc = "Germany will admit India only if Delhi joins the war against Britain. Acceptance and sovereign refusal are deterministic Indian choices. Returning a Soviet-only counterproposal produces a fixed German roll: 70% narrower partnership and 30% closure; relations and force size do not modify it."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	action_a = {
+		ai_chance = 30
+		name = "Accept formal alliance and war with Britain"
+		command = { trigger = { NOT = { war = { country = IND country = ENG } } } type = war which = ENG }
+		command = { type = alliance which = GER when = 1 }
+		command = { type = event which = 9281304 where = IND when = 1 }
+	}
+	action_b = {
+		ai_chance = 45
+		name = "Counter on the Soviet war: Berlin accepts 70%, closes 30%"
+		command = { type = event which = 9281313 where = GER when = 2 }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "Reject the price and fight as a sovereign"
+		command = { trigger = { NOT = { war = { country = IND country = SOV } } } type = war which = SOV }
+		command = { type = clrflag which = ind_gc_berlin_negotiating }
+		command = { type = clrflag which = ind_gc_formal_axis }
+		command = { type = clrflag which = ind_gc_cobelligerent }
+		command = { type = setflag which = ind_gc_sovereign }
+		command = { type = setflag which = ind_gc_campaign_active }
+		command = { type = relation which = GER value = -15 }
+		command = { type = dissent value = 3 }
+		command = { type = ai which = "aubm/german/IND_sovereign_anti_soviet.ai" }
+	}
+}
+
+event = {
+	id = 9281306
+	random = no
+	country = IND
+
+	name = "Berlin Rejects Delhi's Formula"
+	desc = "Germany has refused the proposed relationship. India can continue an existing sovereign war, open one now without German obligations, or let six months of battlefield evidence reopen negotiations. Rejection does not close the continental campaign."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+
+	action_a = {
+		trigger = { flag = ind_gc_sovereign }
+		ai_chance = 40
+		name = "Continue without Berlin"
+		command = { type = clrflag which = ind_gc_berlin_negotiating }
+		command = { type = relation which = GER value = -10 }
+		command = { type = dissent value = -1 }
+	}
+	action_b = {
+		trigger = { NOT = { flag = ind_gc_sovereign } }
+		ai_chance = 35
+		name = "Open the sovereign campaign regardless"
+		command = { trigger = { NOT = { war = { country = IND country = SOV } } } type = war which = SOV }
+		command = { type = clrflag which = ind_gc_berlin_negotiating }
+		command = { type = clrflag which = ind_gc_formal_axis }
+		command = { type = clrflag which = ind_gc_cobelligerent }
+		command = { type = setflag which = ind_gc_sovereign }
+		command = { type = setflag which = ind_gc_campaign_active }
+		command = { type = dissent value = 4 }
+		command = { type = ai which = "aubm/german/IND_sovereign_anti_soviet.ai" }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "Reopen the Berlin channel in six months"
+		command = { type = clrflag which = ind_gc_berlin_negotiating }
+		command = { type = setflag which = ind_gc_berlin_cooldown }
+		command = { type = event which = 9281310 where = IND when = 180 }
+	}
+}
+
+event = {
+	id = 9281307
+	random = no
+	country = IND
+
+	name = "Berlin Recognizes Indian Co-belligerency"
+	desc = "Germany accepts a separate Indian-Soviet war and Indian command. There is no engine alliance and no automatic war with Britain. Material support remains contingent upon India capturing operational objectives rather than merely signing the agreement."
+	style = 2
+	picture = "india_v3_german_mission"
+
+	action_a = {
+		name = "Open the autonomous Indian theatre"
+		command = { trigger = { NOT = { war = { country = IND country = SOV } } } type = war which = SOV }
+		command = { type = clrflag which = ind_gc_berlin_negotiating }
+		command = { type = clrflag which = ind_gc_formal_axis }
+		command = { type = clrflag which = ind_gc_sovereign }
+		command = { type = setflag which = ind_gc_cobelligerent }
+		command = { type = setflag which = ind_gc_campaign_active }
+		command = { type = relation which = GER value = 25 }
+		command = { type = dissent value = 2 }
+		command = { type = ai which = "aubm/german/IND_german_cobelligerent.ai" }
+	}
+}
+
+event = {
+	id = 9281308
+	random = no
+	country = IND
+
+	name = "German Terms for Co-belligerency"
+	desc = "Berlin will recognize separate Indian command if Delhi embargoes Britain and supplies the continental war. India may pay that political price without declaring war on Britain, reject every German condition, or suspend the channel for later review."
+	style = 2
+	picture = "india_v3_german_mission"
+
+	action_a = {
+		ai_chance = 45
+		name = "Accept the embargo and supply commitment"
+		command = { type = supplies value = -800 }
+		command = { type = relation which = ENG value = -30 }
+		command = { type = relation which = GER value = 25 }
+		command = { trigger = { NOT = { war = { country = IND country = SOV } } } type = war which = SOV }
+		command = { type = clrflag which = ind_gc_berlin_negotiating }
+		command = { type = clrflag which = ind_gc_formal_axis }
+		command = { type = clrflag which = ind_gc_sovereign }
+		command = { type = setflag which = ind_gc_cobelligerent }
+		command = { type = setflag which = ind_gc_campaign_active }
+		command = { type = setflag which = ind_gc_british_embargo }
+		command = { type = dissent value = 3 }
+		command = { type = ai which = "aubm/german/IND_german_cobelligerent.ai" }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Reject German conditions and fight alone"
+		command = { trigger = { NOT = { war = { country = IND country = SOV } } } type = war which = SOV }
+		command = { type = clrflag which = ind_gc_berlin_negotiating }
+		command = { type = clrflag which = ind_gc_formal_axis }
+		command = { type = clrflag which = ind_gc_cobelligerent }
+		command = { type = setflag which = ind_gc_sovereign }
+		command = { type = setflag which = ind_gc_campaign_active }
+		command = { type = relation which = GER value = -20 }
+		command = { type = dissent value = 2 }
+		command = { type = ai which = "aubm/german/IND_sovereign_anti_soviet.ai" }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Suspend talks and preserve neutrality"
+		command = { type = clrflag which = ind_gc_berlin_negotiating }
+		command = { type = setflag which = ind_gc_berlin_cooldown }
+		command = { type = event which = 9281310 where = IND when = 180 }
+	}
+}
+
+event = {
+	id = 9281309
+	random = no
+	country = IND
+
+	name = "Berlin Recognizes the Sovereign Campaign"
+	desc = "Germany acknowledges India as an independent belligerent and promises no automatic aid. Delhi may negotiate routes and set objectives immediately; German materiel will be considered only after Indian forces take Baku, Tashkent or another recognized operational objective."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+
+	action_a = {
+		name = "Victory, not signatures, will determine support"
+		command = { type = clrflag which = ind_gc_berlin_negotiating }
+		command = { type = setflag which = ind_gc_berlin_recognition }
+		command = { type = setflag which = ind_gc_campaign_active }
+		command = { type = relation which = GER value = 15 }
+	}
+}
+
+event = {
+	id = 9281310
+	random = no
+	persistent = yes
+	country = IND
+
+	name = "The Berlin Channel Reopens"
+	desc = "Six months have passed since the failed negotiation. Changes on the battlefield allow Delhi to request a new strategic formula if India has not already committed to one."
+	style = 2
+	picture = "india_v3_german_mission"
+
+	action_a = {
+		name = "Return the file to the War Cabinet"
+		command = { type = clrflag which = ind_gc_berlin_cooldown }
+		command = { type = clrflag which = ind_gc_berlin_negotiating }
+		command = { type = clrflag which = ind_gc_sovereign }
+	}
+}
+
+event = {
+	id = 9281311
+	random = no
+	persistent = yes
+	country = IND
+
+	decision = {
+		exists = ENG
+		OR = {
+			flag = ind_gc_cobelligerent
+			flag = ind_gc_sovereign
+		}
+		war = { country = IND country = SOV }
+		NOT = { war = { country = IND country = ENG } }
+		NOT = { alliance = { country = IND country = ENG } }
+		NOT = { flag = ind_gc_formal_axis }
+		NOT = { flag = ind_gc_british_review_cooldown }
+	}
+	decision_trigger = {
+		exists = ENG
+		NOT = { war = { country = IND country = ENG } }
+	}
+
+	name = "The British Question"
+	# AUBM_DECISION_DESC_MANUAL
+	decision_desc = "No foreign roll: declaring war on Britain here is immediate. Co-belligerent and sovereign Soviet campaigns do not otherwise include Britain, and deferral preserves the choice."
+	desc = "Berlin urges India to widen the war against Britain, while Indian planners warn that the Soviet and maritime campaigns would compete for aircraft, shipping and reserves. The decision belongs to Delhi alone outside formal Axis membership."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+
+	date = { day = 0 month = january year = 1941 }
+	offset = 11
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		ai_chance = 30
+		name = "Declare an independent war on Britain"
+		command = { type = war which = ENG }
+		command = { type = relation which = GER value = 20 }
+		command = { type = dissent value = 4 }
+		command = { type = setflag which = ind_gc_independent_british_war }
+	}
+	action_b = {
+		ai_chance = 70
+		name = "Keep the Soviet war separate for now"
+		command = { type = setflag which = ind_gc_british_review_cooldown }
+		command = { type = event which = 9281390 where = IND when = 180 }
+	}
+}
+
+event = {
+	id = 9281312
+	random = no
+	country = IND
+
+	name = "Berlin Remains Aloof"
+	desc = "Germany has offered neither recognition nor assistance. The sovereign Indian war nevertheless continues, and success at Baku or Tashkent may compel Berlin to reconsider without giving it authority over Indian strategy."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+
+	action_a = {
+		name = "Proceed under Delhi's authority"
+		command = { type = clrflag which = ind_gc_berlin_negotiating }
+		command = { type = setflag which = ind_gc_berlin_aloof }
+		command = { type = setflag which = ind_gc_campaign_active }
+		command = { type = dissent value = -1 }
+	}
+}
+
+event = {
+	id = 9281313
+	random = no
+	country = GER
+
+	name = "Delhi Returns a Co-belligerent Counteroffer"
+	desc = "India refuses automatic war with Britain but still offers an independent Soviet front, intelligence exchange and coordinated objectives. Berlin can accept the narrower military value or close the special channel."
+	style = 2
+	picture = "india_v3_german_mission"
+
+	action_a = {
+		ai_chance = 70
+		name = "Accept the narrower military partnership"
+		command = { type = relation which = IND value = 25 }
+		command = { type = non_aggression which = GER where = IND when = 1080 }
+		command = { type = event which = 9281307 where = IND when = 2 }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Close the channel"
+		command = { type = relation which = IND value = -20 }
+		command = { type = event which = 9281306 where = IND when = 2 }
+	}
+}
+
+#########################################################################
+# Route decisions. These are independent and may all be completed.
+#########################################################################
+
+event = {
+	id = 9281314
+	random = no
+	persistent = yes
+	country = IND
+
+	decision = {
+		flag = ind_gc_campaign_active
+		war = { country = IND country = SOV }
+		exists = PER
+		NOT = { war = { country = IND country = PER } }
+		NOT = { flag = ind_gc_persia_route }
+		NOT = { flag = ind_gc_persia_requested }
+	}
+	decision_trigger = {
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		money = 200
+		supplies = 400
+		# AUBM_FULL_OPTION_GATE_END
+	}
+
+	name = "Negotiate the Persia-Caucasus Corridor"
+	# AUBM_DECISION_DESC_MANUAL
+	decision_desc = "Cost: 200 money and 400 supplies. Persia's fixed response is 55% full transit, 30% logistical counteroffer and 15% refusal. Relations, IC and force size do not modify this roll."
+	desc = "A western Indian army can move from Baluchistan through Zahedan and Teheran toward Baku. Persia will not be treated as empty map space: sovereignty, domestic politics and pressure from other powers shape its answer."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+
+	date = { day = 0 month = june year = 1941 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 200
+			supplies = 400
+			# AUBM_ACTION_RESERVE_END
+		}
+		name = "Request sovereign military transit"
+		command = { type = money value = -200 }
+		command = { type = supplies value = -400 }
+		command = { type = setflag which = ind_gc_persia_requested }
+		command = { type = event which = 9281320 where = PER when = 2 }
+	}
+}
+
+event = {
+	id = 9281315
+	random = no
+	persistent = yes
+	country = IND
+
+	decision = {
+		flag = ind_gc_campaign_active
+		war = { country = IND country = SOV }
+		exists = AFG
+		NOT = { war = { country = IND country = AFG } }
+		NOT = { flag = ind_gc_afghan_route }
+		NOT = { flag = ind_gc_afghan_requested }
+	}
+	decision_trigger = {
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		money = 175
+		supplies = 350
+		# AUBM_FULL_OPTION_GATE_END
+	}
+
+	name = "Negotiate the Afghan-Central Asian Corridor"
+	# AUBM_DECISION_DESC_MANUAL
+	decision_desc = "Cost: 175 money and 350 supplies. Afghanistan's fixed response is 45% armed transit, 40% neutral-corridor counteroffer and 15% refusal. Relations, IC and force size do not modify this roll."
+	desc = "The northern route crosses Afghanistan before reaching the Central Asian frontier. Kabul fears both Soviet retaliation and permanent Indian influence, so an alliance on paper cannot substitute for an Afghan decision."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+
+	date = { day = 0 month = june year = 1941 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 175
+			supplies = 350
+			# AUBM_ACTION_RESERVE_END
+		}
+		name = "Offer guarantees for armed transit"
+		command = { type = money value = -175 }
+		command = { type = supplies value = -350 }
+		command = { type = setflag which = ind_gc_afghan_requested }
+		command = { type = event which = 9281321 where = AFG when = 2 }
+	}
+}
+
+event = {
+	id = 9281316
+	random = no
+	persistent = yes
+	country = IND
+
+	decision = {
+		flag = ind_gc_campaign_active
+		war = { country = IND country = SOV }
+		NOT = { flag = ind_gc_xinjiang_route }
+		NOT = { flag = ind_gc_xinjiang_requested }
+		OR = {
+			AND = { exists = SIK control = { province = 1279 data = SIK } control = { province = 1281 data = SIK } NOT = { war = { country = IND country = SIK } } }
+			AND = { exists = UPE control = { province = 1279 data = UPE } control = { province = 1281 data = UPE } NOT = { war = { country = IND country = UPE } } }
+			AND = { exists = CHI control = { province = 1279 data = CHI } control = { province = 1281 data = CHI } NOT = { war = { country = IND country = CHI } } }
+			AND = { exists = CHC control = { province = 1279 data = CHC } control = { province = 1281 data = CHC } NOT = { war = { country = IND country = CHC } } }
+			AND = { exists = CXB control = { province = 1279 data = CXB } control = { province = 1281 data = CXB } NOT = { war = { country = IND country = CXB } } }
+		}
+	}
+	decision_trigger = {
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		money = 150
+		supplies = 300
+		# AUBM_FULL_OPTION_GATE_END
+	}
+
+	name = "Survey the Xinjiang Liaison Route"
+	# AUBM_DECISION_DESC_MANUAL
+	decision_desc = "Cost: 150 money/300 supplies. Actual controller selects the fixed accept/counter/refuse roll: Sinkiang 35/40/25; East Turkestan 45/35/20; China 25/45/30; Communist China 30/45/25; Ma Clique 25/40/35."
+	desc = "A Xinjiang mission is possible only if a single government controls the Kashgar-Urumqi axis and can police the road. Delhi will address the authority that exists on the map, whether Sinkiang, East Turkestan or a reunited Chinese government."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+
+	date = { day = 0 month = june year = 1941 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 150
+			supplies = 300
+			# AUBM_ACTION_RESERVE_END
+		}
+		name = "Dispatch the actual-controller mission"
+		command = { type = money value = -150 }
+		command = { type = supplies value = -300 }
+		command = { type = setflag which = ind_gc_xinjiang_requested }
+		command = { trigger = { exists = SIK control = { province = 1279 data = SIK } control = { province = 1281 data = SIK } NOT = { war = { country = IND country = SIK } } } type = event which = 9281322 where = SIK when = 2 }
+		command = { trigger = { exists = UPE control = { province = 1279 data = UPE } control = { province = 1281 data = UPE } NOT = { war = { country = IND country = UPE } } } type = event which = 9281323 where = UPE when = 2 }
+		command = { trigger = { exists = CHI control = { province = 1279 data = CHI } control = { province = 1281 data = CHI } NOT = { war = { country = IND country = CHI } } } type = event which = 9281324 where = CHI when = 2 }
+		command = { trigger = { exists = CHC control = { province = 1279 data = CHC } control = { province = 1281 data = CHC } NOT = { war = { country = IND country = CHC } } } type = event which = 9281325 where = CHC when = 2 }
+		command = { trigger = { exists = CXB control = { province = 1279 data = CXB } control = { province = 1281 data = CXB } NOT = { war = { country = IND country = CXB } } } type = event which = 9281326 where = CXB when = 2 }
+	}
+}
+
+#########################################################################
+# Governments on the route answer independently
+#########################################################################
+
+event = {
+	id = 9281320
+	random = no
+	country = PER
+
+	name = "Delhi Requests Transit Across Persia"
+	desc = "India asks to move its own armies from Zahedan through Teheran toward the Caucasus while guaranteeing Persian sovereignty. Teheran may grant armed transit, counter with a civilian supply corridor, or refuse involvement in the Soviet war."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+
+	action_a = {
+		ai_chance = 55
+		name = "Grant sovereign Indian military transit"
+		command = { type = access which = IND }
+		command = { type = relation which = IND value = 30 }
+		command = { type = non_aggression which = PER where = IND when = 1080 }
+		command = { type = event which = 9281330 where = IND when = 2 }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Permit supplies, but no Indian armies"
+		command = { type = relation which = IND value = 10 }
+		command = { type = event which = 9281331 where = IND when = 2 }
+	}
+	action_c = {
+		ai_chance = 15
+		name = "Refuse to become a battlefield"
+		command = { type = relation which = IND value = -15 }
+		command = { type = event which = 9281332 where = IND when = 2 }
+	}
+}
+
+event = {
+	id = 9281321
+	random = no
+	country = AFG
+
+	name = "Delhi Requests the Afghan Corridor"
+	desc = "India offers guarantees and infrastructure aid in return for armed transit through Kabul, Kondoz and Wakhan. Afghanistan may admit Indian formations, permit supplies while preserving military neutrality, or refuse a route that could invite Soviet attack."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+
+	action_a = {
+		ai_chance = 45
+		name = "Grant armed transit under Afghan authority"
+		command = { type = access which = IND }
+		command = { type = relation which = IND value = 35 }
+		command = { type = non_aggression which = AFG where = IND when = 1080 }
+		command = { type = event which = 9281333 where = IND when = 2 }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Allow supplies while armies remain outside"
+		command = { type = relation which = IND value = 15 }
+		command = { type = event which = 9281334 where = IND when = 2 }
+	}
+	action_c = {
+		ai_chance = 15
+		name = "Close the passes to every belligerent"
+		command = { type = relation which = IND value = -15 }
+		command = { type = event which = 9281335 where = IND when = 2 }
+	}
+}
+
+event = {
+	id = 9281322
+	random = no
+	country = SIK
+
+	name = "India Requests a Xinjiang Liaison Route"
+	desc = "Delhi recognizes Sinkiang as the actual authority over the Kashgar-Urumqi axis and requests transit and liaison against the Soviet Union. Urumqi may grant the route, limit cooperation to civilian traffic, or refuse."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+
+	action_a = {
+		ai_chance = 35
+		name = "Grant transit along the controlled axis"
+		command = { type = access which = IND }
+		command = { type = relation which = IND value = 30 }
+		command = { type = event which = 9281336 where = IND when = 2 }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Permit liaison and civilian freight only"
+		command = { type = relation which = IND value = 10 }
+		command = { type = event which = 9281337 where = IND when = 2 }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "Refuse the Indian mission"
+		command = { type = relation which = IND value = -15 }
+		command = { type = event which = 9281338 where = IND when = 2 }
+	}
+}
+
+event = {
+	id = 9281323
+	random = no
+	country = UPE
+
+	name = "India Requests an East Turkestan Route"
+	desc = "Delhi recognizes East Turkestan as the actual authority over the Kashgar-Urumqi axis and requests transit against the Soviet Union. The government may accept Indian guarantees, counter with civilian liaison, or refuse a dangerous continental commitment."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+
+	action_a = {
+		ai_chance = 45
+		name = "Accept Indian guarantees and transit"
+		command = { type = access which = IND }
+		command = { type = relation which = IND value = 35 }
+		command = { type = event which = 9281336 where = IND when = 2 }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Permit liaison and civilian freight only"
+		command = { type = relation which = IND value = 15 }
+		command = { type = event which = 9281337 where = IND when = 2 }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Refuse the Indian mission"
+		command = { type = relation which = IND value = -10 }
+		command = { type = event which = 9281338 where = IND when = 2 }
+	}
+}
+
+event = {
+	id = 9281324
+	random = no
+	country = CHI
+
+	name = "India Requests Transit Through Reunited Xinjiang"
+	desc = "Chinese authority now spans Kashgar and Urumqi. India requests a northern liaison route against the Soviet Union, but Nanjing fears both foreign armies and a precedent for Indian influence in China's frontier regions."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+
+	action_a = {
+		ai_chance = 25
+		name = "Grant supervised Indian transit"
+		command = { type = access which = IND }
+		command = { type = relation which = IND value = 25 }
+		command = { type = event which = 9281336 where = IND when = 2 }
+	}
+	action_b = {
+		ai_chance = 45
+		name = "Allow liaison but exclude Indian armies"
+		command = { type = relation which = IND value = 10 }
+		command = { type = event which = 9281337 where = IND when = 2 }
+	}
+	action_c = {
+		ai_chance = 30
+		name = "Reject foreign troops in Xinjiang"
+		command = { type = relation which = IND value = -20 }
+		command = { type = event which = 9281338 where = IND when = 2 }
+	}
+}
+
+event = {
+	id = 9281325
+	random = no
+	country = CHC
+
+	name = "India Requests Transit Through Red Xinjiang"
+	desc = "Communist China controls the Kashgar-Urumqi axis while India is at war with Moscow. Delhi requests a practical route, but the Chinese leadership must weigh frontier autonomy against ideological and strategic ties to the Soviet Union."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+
+	action_a = {
+		ai_chance = 30
+		name = "Put frontier autonomy before Moscow"
+		command = { type = access which = IND }
+		command = { type = relation which = IND value = 20 }
+		command = { type = event which = 9281336 where = IND when = 2 }
+	}
+	action_b = {
+		ai_chance = 45
+		name = "Permit civilian liaison only"
+		command = { type = relation which = IND value = 5 }
+		command = { type = event which = 9281337 where = IND when = 2 }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "Honor the Soviet relationship"
+		command = { type = relation which = IND value = -25 }
+		command = { type = event which = 9281338 where = IND when = 2 }
+	}
+}
+
+event = {
+	id = 9281326
+	random = no
+	country = CXB
+
+	name = "India Requests a Northwestern Chinese Route"
+	desc = "The Ma government controls both Kashgar and Urumqi and can decide whether an Indian mission crosses the frontier. It may trade transit for guarantees, offer civilian liaison, or reject entanglement in the Soviet war."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+
+	action_a = {
+		ai_chance = 25
+		name = "Trade supervised transit for guarantees"
+		command = { type = access which = IND }
+		command = { type = relation which = IND value = 30 }
+		command = { type = event which = 9281336 where = IND when = 2 }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Allow civilian liaison only"
+		command = { type = relation which = IND value = 10 }
+		command = { type = event which = 9281337 where = IND when = 2 }
+	}
+	action_c = {
+		ai_chance = 35
+		name = "Keep every foreign army outside"
+		command = { type = relation which = IND value = -15 }
+		command = { type = event which = 9281338 where = IND when = 2 }
+	}
+}
+
+#########################################################################
+# Indian consequences of route negotiations
+#########################################################################
+
+event = {
+	id = 9281330
+	random = no
+	country = IND
+
+	name = "Persia Opens the Caucasus Corridor"
+	desc = "Teheran grants Indian military transit while retaining civil authority. The legal route now runs through Zahedan and Teheran toward Baku; no Persian province has changed owner and Persia remains free to revoke the arrangement later."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+
+	action_a = {
+		name = "Guarantee Persia and organize the western route"
+		command = { type = guarantee which = IND where = PER }
+		command = { type = relation which = PER value = 30 }
+		command = { type = tc_mod value = 2 }
+		command = { type = setflag which = ind_gc_persia_route }
+		command = { type = clrflag which = ind_gc_persia_requested }
+		command = { trigger = { OR = { flag = ind_gc_afghan_route flag = ind_gc_xinjiang_route } } type = ai which = "aubm/german/IND_combined_corridors.ai" }
+		command = { trigger = { NOT = { OR = { flag = ind_gc_afghan_route flag = ind_gc_xinjiang_route } } } type = ai which = "aubm/german/IND_persia_caucasus.ai" }
+	}
+}
+
+event = {
+	id = 9281331
+	random = no
+	country = IND
+
+	name = "Persia Permits Supplies but Not Armies"
+	desc = "Teheran accepts Indian engineers, rolling stock and civilian freight but refuses foreign formations. The compromise improves logistics and influence without creating military access; Delhi may reopen the full transit question after a year."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+
+	action_a = {
+		name = "Work within Persian sovereignty for now"
+		command = { type = relation which = PER value = 20 }
+		command = { type = tc_mod value = 1 }
+		command = { type = setflag which = ind_gc_persia_limited }
+		command = { type = event which = 9281339 where = IND when = 360 }
+	}
+}
+
+event = {
+	id = 9281332
+	random = no
+	country = IND
+
+	name = "Persia Rejects Armed Transit"
+	desc = "Teheran refuses to make Persia an avenue of invasion. Delhi can use Afghanistan instead and may reopen the Persian request after the diplomatic cooling period; the rejection does not terminate the wider Soviet campaign."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+
+	action_a = {
+		name = "Record the refusal and prepare another approach"
+		command = { type = relation which = PER value = -15 }
+		command = { type = setflag which = ind_gc_persia_rejected }
+		command = { type = event which = 9281339 where = IND when = 180 }
+	}
+}
+
+event = {
+	id = 9281333
+	random = no
+	country = IND
+
+	name = "Afghanistan Opens the Northern Corridor"
+	desc = "Kabul grants armed transit under Afghan civil authority. Indian forces may use the Kondoz and Wakhan approaches, while Delhi guarantees that cooperation will not become annexation or a permanent occupation."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+
+	action_a = {
+		name = "Guarantee Afghanistan and organize the route"
+		command = { type = guarantee which = IND where = AFG }
+		command = { type = relation which = AFG value = 30 }
+		command = { type = tc_mod value = 2 }
+		command = { type = setflag which = ind_gc_afghan_route }
+		command = { type = clrflag which = ind_gc_afghan_requested }
+		command = { trigger = { OR = { flag = ind_gc_persia_route flag = ind_gc_xinjiang_route } } type = ai which = "aubm/german/IND_combined_corridors.ai" }
+		command = { trigger = { NOT = { OR = { flag = ind_gc_persia_route flag = ind_gc_xinjiang_route } } } type = ai which = "aubm/german/IND_afghan_central_asia.ai" }
+	}
+}
+
+event = {
+	id = 9281334
+	random = no
+	country = IND
+
+	name = "Afghanistan Allows Supplies but Not Armies"
+	desc = "Kabul will permit Indian freight and liaison officers but keeps foreign formations outside. The arrangement strengthens a future Central Asian approach without creating a legal military corridor, and the issue may be reopened later."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+
+	action_a = {
+		name = "Accept the limited arrangement"
+		command = { type = relation which = AFG value = 20 }
+		command = { type = tc_mod value = 1 }
+		command = { type = setflag which = ind_gc_afghan_limited }
+		command = { type = event which = 9281340 where = IND when = 360 }
+	}
+}
+
+event = {
+	id = 9281335
+	random = no
+	country = IND
+
+	name = "Afghanistan Closes the Passes"
+	desc = "Kabul refuses every belligerent military route. Delhi may concentrate on Persia, wait for conditions to change, or continue the Soviet war without an Afghan corridor; this answer does not silently terminate any other chain."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+
+	action_a = {
+		name = "Respect the refusal and retain other options"
+		command = { type = relation which = AFG value = -10 }
+		command = { type = setflag which = ind_gc_afghan_rejected }
+		command = { type = event which = 9281340 where = IND when = 180 }
+	}
+}
+
+event = {
+	id = 9281336
+	random = no
+	country = IND
+
+	name = "The Kashgar-Urumqi Route Opens"
+	desc = "The government that actually controls Kashgar and Urumqi grants India supervised military transit. The agreement creates a liaison route across existing roads; it does not create an impassable Khorugh-Kashgar connection or transfer Chinese territory."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+
+	action_a = {
+		name = "Establish the frontier liaison command"
+		command = { type = tc_mod value = 1 }
+		command = { type = setflag which = ind_gc_xinjiang_route }
+		command = { type = clrflag which = ind_gc_xinjiang_requested }
+		command = { trigger = { OR = { flag = ind_gc_persia_route flag = ind_gc_afghan_route } } type = ai which = "aubm/german/IND_combined_corridors.ai" }
+		command = { trigger = { NOT = { OR = { flag = ind_gc_persia_route flag = ind_gc_afghan_route } } } type = ai which = "aubm/german/IND_xinjiang_corridor.ai" }
+	}
+}
+
+event = {
+	id = 9281337
+	random = no
+	country = IND
+
+	name = "Xinjiang Offers Civilian Liaison Only"
+	desc = "The frontier government permits observers, freight and intelligence exchange but refuses Indian formations. Delhi gains useful knowledge without military access and may survey the route again if political control remains coherent."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+
+	action_a = {
+		name = "Use the limited liaison and review it later"
+		command = { type = intelligence which = us value = 1 }
+		command = { type = setflag which = ind_gc_xinjiang_limited }
+		command = { type = event which = 9281349 where = IND when = 360 }
+	}
+}
+
+event = {
+	id = 9281338
+	random = no
+	country = IND
+
+	name = "The Xinjiang Mission Is Refused"
+	desc = "The authority controlling Kashgar and Urumqi rejects Indian transit. Because control in the region can change rapidly, Delhi may survey the actual-controller route again after six months rather than losing the option forever."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+
+	action_a = {
+		name = "Wait for the frontier balance to change"
+		command = { type = setflag which = ind_gc_xinjiang_rejected }
+		command = { type = event which = 9281349 where = IND when = 180 }
+	}
+}
+
+event = {
+	id = 9281339
+	random = no
+	persistent = yes
+	country = IND
+
+	name = "Persian Transit Talks May Reopen"
+	desc = "The Persian cooling period has expired. If the military corridor is still unresolved and Teheran remains eligible to negotiate, Delhi may place a new proposal before the cabinet."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+
+	action_a = {
+		name = "Return the Persian corridor to the Cabinet"
+		command = { trigger = { NOT = { flag = ind_gc_persia_route } } type = clrflag which = ind_gc_persia_requested }
+		command = { type = clrflag which = ind_gc_persia_rejected }
+	}
+}
+
+event = {
+	id = 9281340
+	random = no
+	persistent = yes
+	country = IND
+
+	name = "Afghan Transit Talks May Reopen"
+	desc = "The Afghan cooling period has expired. If the northern corridor remains unresolved and Kabul can still negotiate, Delhi may return a revised transit proposal to the cabinet."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+
+	action_a = {
+		name = "Return the Afghan corridor to the Cabinet"
+		command = { trigger = { NOT = { flag = ind_gc_afghan_route } } type = clrflag which = ind_gc_afghan_requested }
+		command = { type = clrflag which = ind_gc_afghan_rejected }
+	}
+}
+
+#########################################################################
+# Battlefield-earned German support
+#########################################################################
+
+event = {
+	id = 9281341
+	random = no
+	country = GER
+
+	name = "Indian Forces Break the Southern Soviet Front"
+	desc = "Indian forces, not merely Indian diplomats, have taken Baku or Tashkent. Berlin must now decide whether to divert scarce materiel to the autonomous Indian theatre, send a limited doctrine mission, or retain every reserve for the European front."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+
+	action_a = {
+		ai_chance = 65
+		name = "Dispatch a six-month logistics mission"
+		command = { type = supplies value = -1200 }
+		command = { type = money value = -100 }
+		command = { type = relation which = IND value = 25 }
+		command = { type = event which = 9281342 where = IND when = 4 }
+	}
+	action_b = {
+		ai_chance = 25
+		name = "Send doctrine and a limited shipment"
+		command = { type = supplies value = -400 }
+		command = { type = relation which = IND value = 10 }
+		command = { type = event which = 9281343 where = IND when = 4 }
+	}
+	action_c = {
+		ai_chance = 10
+		name = "Keep every reserve in Europe"
+		command = { type = relation which = IND value = -15 }
+		command = { type = event which = 9281344 where = IND when = 4 }
+	}
+}
+
+event = {
+	id = 9281342
+	random = no
+	country = IND
+
+	name = "The German Logistics Mission Arrives"
+	desc = "A limited German mission reaches Indian depots after India has demonstrated battlefield value. Its transport planning and equipment improve theatre throughput for six months; the bonus expires and cannot become a permanent gift for signing a treaty."
+	style = 2
+	picture = "india_v3_german_mission"
+
+	action_a = {
+		name = "Use the mission for the next operational phase"
+		command = { type = supplies value = 1200 }
+		command = { type = money value = 100 }
+		command = { type = tc_mod value = 3 }
+		command = { type = steal_tech which = GER }
+		command = { type = setflag which = ind_gc_german_support_active }
+		command = { type = event which = 9281345 where = IND when = 180 }
+	}
+}
+
+event = {
+	id = 9281343
+	random = no
+	country = IND
+
+	name = "Berlin Sends a Limited Mission"
+	desc = "Germany acknowledges India's breakthrough but sends only doctrine papers and a constrained shipment. The aid is useful rather than transformative, and a deeper Indian advance remains necessary before Berlin releases strategic reserves."
+	style = 2
+	picture = "india_v3_german_mission"
+
+	action_a = {
+		name = "Integrate the limited mission"
+		command = { type = supplies value = 400 }
+		command = { type = steal_tech which = GER }
+		command = { type = relation which = GER value = 10 }
+		command = { type = setflag which = ind_gc_german_support_limited }
+	}
+}
+
+event = {
+	id = 9281344
+	random = no
+	country = IND
+
+	name = "Berlin Withholds Its Reserves"
+	desc = "Germany praises the Indian breakthrough but keeps its materiel in Europe. Delhi gains no production shortcut and no free formation; further aid depends on deeper Indian objectives or must be replaced by Indian industry."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+
+	action_a = {
+		name = "The campaign will proceed on Indian resources"
+		command = { type = relation which = GER value = -10 }
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_gc_german_support_withheld }
+	}
+}
+
+event = {
+	id = 9281345
+	random = no
+	country = IND
+
+	name = "The German Logistics Mission Expires"
+	desc = "The six-month German deployment has ended. Its temporary throughput bonus is removed; captured objectives and permanent Indian investments remain, but wartime liaison cannot become an unexplained permanent national modifier."
+	style = 2
+	picture = "india_v3_german_mission"
+
+	action_a = {
+		name = "Return theatre logistics to Indian control"
+		command = { trigger = { flag = ind_gc_german_support_active } type = tc_mod value = -3 }
+		command = { type = clrflag which = ind_gc_german_support_active }
+		command = { type = setflag which = ind_gc_german_support_expired }
+	}
+}
+
+event = {
+	id = 9281346
+	random = no
+	country = GER
+
+	name = "India Reaches the Second Continental Objective"
+	desc = "India now controls two recognized objectives on the southern Soviet front. Berlin can release a final oil, equipment and doctrine package, or admit that German scarcity has overtaken the promise of coalition support."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+
+	action_a = {
+		ai_chance = 80
+		name = "Release the final strategic package"
+		command = { type = supplies value = -2000 }
+		command = { type = money value = -200 }
+		command = { type = relation which = IND value = 30 }
+		command = { type = event which = 9281347 where = IND when = 5 }
+	}
+	action_b = {
+		ai_chance = 20
+		name = "German scarcity permits no further aid"
+		command = { type = relation which = IND value = -10 }
+		command = { type = event which = 9281348 where = IND when = 5 }
+	}
+}
+
+event = {
+	id = 9281347
+	random = no
+	country = IND
+
+	name = "The Final German Strategic Package"
+	desc = "The second Indian objective releases materiel that Berlin had withheld. The package rewards an accomplished campaign: it improves supply, doctrine and enduring continental experience but does not create free divisions or alter researched models."
+	style = 2
+	picture = "india_v3_german_mission"
+
+	action_a = {
+		name = "Apply the package to Indian formations"
+		command = { type = supplies value = 2000 }
+		command = { type = money value = 200 }
+		command = { type = tc_mod value = 2 }
+		command = { type = max_organization which = land value = 1 }
+		command = { type = steal_tech which = GER }
+		command = { type = steal_tech which = GER }
+		command = { type = setflag which = ind_gc_german_final_support }
+	}
+}
+
+event = {
+	id = 9281348
+	random = no
+	country = IND
+
+	name = "German Scarcity Ends Further Support"
+	desc = "Berlin cannot reinforce the Indian theatre despite its advance. India retains the political weight earned by its objectives, but the next phase must be sustained by Indian supply and the corridors Delhi negotiated."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+
+	action_a = {
+		name = "Convert battlefield weight into settlement claims"
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_gc_german_final_support_denied }
+	}
+}
+
+event = {
+	id = 9281349
+	random = no
+	persistent = yes
+	country = IND
+
+	name = "Xinjiang Liaison Talks May Reopen"
+	desc = "The frontier cooling period has expired. If no military route exists and one eligible government still controls both Kashgar and Urumqi, Delhi may dispatch a new actual-controller mission."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+
+	action_a = {
+		name = "Return the Xinjiang route to the Cabinet"
+		command = { type = clrflag which = ind_gc_xinjiang_requested }
+		command = { type = clrflag which = ind_gc_xinjiang_rejected }
+	}
+}
+
+#########################################################################
+# State-based operational score
+#########################################################################
+
+event = {
+	id = 9281350
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_gc_campaign_active
+		war = { country = IND country = SOV }
+		NOT = { flag = ind_gc_performance_1 }
+		OR = {
+			control = { province = 713 data = IND }
+			control = { province = 1103 data = IND }
+		}
+	}
+
+	name = "India Takes a Continental Objective"
+	desc = "Indian forces control Baku or Tashkent. The achievement establishes a real Indian theatre, improves morale and compels Berlin to decide whether battlefield performance now justifies material support."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+
+	date = { day = 0 month = june year = 1941 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Record India's first continental objective"
+		command = { type = supplies value = 200 }
+		command = { type = dissent value = -2 }
+		command = { type = setflag which = ind_gc_performance_1 }
+		command = { type = setflag which = ind_v4_strategic_weight_2 }
+		command = { trigger = { exists = GER war = { country = GER country = SOV } } type = event which = 9281341 where = GER when = 2 }
+	}
+}
+
+event = {
+	id = 9281351
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_gc_campaign_active
+		flag = ind_gc_performance_1
+		war = { country = IND country = SOV }
+		NOT = { flag = ind_gc_performance_2 }
+		OR = {
+			AND = { control = { province = 713 data = IND } control = { province = 1103 data = IND } }
+			AND = { control = { province = 713 data = IND } control = { province = 706 data = IND } }
+			AND = { control = { province = 713 data = IND } control = { province = 663 data = IND } }
+			AND = { control = { province = 1103 data = IND } control = { province = 706 data = IND } }
+			AND = { control = { province = 1103 data = IND } control = { province = 663 data = IND } }
+			AND = { control = { province = 706 data = IND } control = { province = 663 data = IND } }
+		}
+	}
+
+	name = "India Reaches the Second Objective"
+	desc = "India controls two of Baku, Tashkent, Astrakhan and Stalingrad. Delhi has contributed enough to demand a senior voice in any armistice, while Berlin must decide whether its remaining strategic reserves will support the southern front."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+
+	date = { day = 0 month = june year = 1941 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Claim senior-partner battlefield standing"
+		command = { type = supplies value = 400 }
+		command = { type = dissent value = -3 }
+		command = { type = setflag which = ind_gc_performance_2 }
+		command = { type = setflag which = ind_v4_strategic_weight_3 }
+		command = { trigger = { exists = GER war = { country = GER country = SOV } } type = event which = 9281346 where = GER when = 2 }
+	}
+}
+
+event = {
+	id = 9281352
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_gc_campaign_active
+		flag = ind_gc_performance_2
+		NOT = { flag = ind_gc_performance_3 }
+		OR = {
+			AND = { control = { province = 713 data = IND } control = { province = 1103 data = IND } control = { province = 706 data = IND } }
+			AND = { control = { province = 713 data = IND } control = { province = 1103 data = IND } control = { province = 663 data = IND } }
+			AND = { control = { province = 713 data = IND } control = { province = 706 data = IND } control = { province = 663 data = IND } }
+			AND = { control = { province = 1103 data = IND } control = { province = 706 data = IND } control = { province = 663 data = IND } }
+		}
+	}
+
+	name = "India Becomes the Decisive Southern Belligerent"
+	desc = "Indian forces control three major objectives. Whatever Berlin's condition, Delhi now possesses the performance required to negotiate a Central Asian order and, where Indian forces actually hold territory, a wider Gulf or East African settlement."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+
+	date = { day = 0 month = june year = 1941 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Prepare India's senior-partner settlement brief"
+		command = { type = dissent value = -4 }
+		command = { type = belligerence value = -2 }
+		command = { type = setflag which = ind_gc_performance_3 }
+	}
+}
+
+#########################################################################
+# Collapse, Bitter Peace and independent victory
+#########################################################################
+
+event = {
+	id = 9281353
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_gc_campaign_active
+		war = { country = IND country = SOV }
+		NOT = { flag = ind_gc_german_collapse_answered }
+		NOT = { event = 2007033 }
+		exists = GER
+		OR = {
+			lost_national = { country = GER value = 50 }
+			NOT = { control = { province = 163 data = GER } }
+		}
+	}
+
+	name = "The German Front Collapses"
+	desc = "Berlin has fallen or Germany has lost half its national territory, but the German state still exists. India must decide whether to leave the failing coalition and continue alone, or seek a separate armistice before the Soviet war consumes the Union."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+
+	date = { day = 0 month = january year = 1941 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		ai_chance = 65
+		name = "Continue the war under sovereign command"
+		command = { trigger = { alliance = { country = IND country = GER } } type = leave_alliance when = 1 }
+		command = { trigger = { NOT = { war = { country = IND country = SOV } } } type = war which = SOV }
+		command = { type = clrflag which = ind_gc_formal_axis }
+		command = { type = clrflag which = ind_gc_cobelligerent }
+		command = { type = setflag which = ind_gc_sovereign }
+		command = { type = setflag which = ind_gc_german_collapse_answered }
+		command = { type = supplies value = -500 }
+		command = { type = dissent value = 4 }
+		command = { type = ai which = "aubm/german/IND_sovereign_anti_soviet.ai" }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Seek a separate armistice with Moscow"
+		command = { trigger = { alliance = { country = IND country = GER } } type = leave_alliance when = 1 }
+		command = { type = peace which = SOV value = 1 }
+		command = { type = clrflag which = ind_gc_campaign_active }
+		command = { type = setflag which = ind_gc_campaign_ended }
+		command = { type = setflag which = ind_gc_german_collapse_answered }
+		command = { type = dissent value = 3 }
+		command = { type = ai which = "aubm/german/IND_post_soviet.ai" }
+	}
+}
+
+event = {
+	id = 9281354
+	random = no
+	country = IND
+
+	trigger = {
+		event = 2007033
+		flag = ind_gc_campaign_active
+		NOT = { flag = ind_gc_settlement_opened }
+	}
+
+	name = "India and the Bitter Peace"
+	desc = "The stock German-Soviet settlement has fired, but it does not explicitly conclude India's independent war. Delhi now enters the armistice without replacing the Bitter Peace and opens a separate conference limited by Indian battlefield control."
+	style = 2
+	picture = "india_v3_revisionist_settlement"
+
+	date = { day = 0 month = june year = 1941 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Enter the armistice and present India's record"
+		command = { trigger = { war = { country = IND country = SOV } } type = peace which = SOV }
+		command = { type = setflag which = ind_gc_bitter_peace_hook }
+		command = { type = setflag which = ind_gc_settlement_opened }
+		command = { type = event which = 9281359 where = IND when = 5 }
+	}
+}
+
+event = {
+	id = 9281355
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_gc_campaign_active
+		flag = ind_gc_performance_1
+		NOT = { flag = ind_gc_campaign_ended }
+		NOT = { flag = ind_gc_settlement_opened }
+		NOT = { event = 2007033 }
+		OR = {
+			NOT = { exists = SOV }
+			AND = {
+				NOT = { war = { country = IND country = SOV } }
+				flag = ind_gc_performance_2
+			}
+		}
+	}
+
+	name = "The Independent Continental Victory"
+	desc = "The Soviet war has ended outside the stock Bitter Peace after a substantial Indian contribution. Delhi may now negotiate only from positions Indian forces actually occupied; the event creates no claim against an undefeated owner."
+	style = 2
+	picture = "india_v3_revisionist_settlement"
+
+	date = { day = 0 month = january year = 1941 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Convene the Indian continental settlement"
+		command = { type = setflag which = ind_gc_independent_victory }
+		command = { type = setflag which = ind_gc_settlement_opened }
+		command = { type = event which = 9281359 where = IND when = 5 }
+	}
+}
+
+#########################################################################
+# Continental settlement: doctrine, owner adjudication and application
+#########################################################################
+
+event = {
+	id = 9281359
+	random = no
+	country = IND
+
+	name = "The Indian Continental Settlement"
+	desc = "India can restore republics, build a security sphere, establish protectorates or retain Indian occupations. For every doctrine, Moscow's fixed accept/counter/reject roll is 70/25/5 and Berlin's is 75/20/5. Relations and force size do not modify them; only land India controls and the responder legally owns can transfer."
+	style = 2
+	picture = "india_v3_revisionist_settlement"
+
+	action_a = {
+		ai_chance = 30
+		name = "Restore sovereign republics"
+		command = { type = clrflag which = ind_gc_settlement_deferred }
+		command = { type = clrflag which = ind_gc_settlement_disputed }
+		command = { type = dissent value = -4 }
+		command = { type = belligerence value = -6 }
+		command = { type = setflag which = ind_gc_settlement_restore }
+		command = { type = clrflag which = ind_gc_settlement_influence }
+		command = { type = clrflag which = ind_gc_settlement_puppet }
+		command = { type = clrflag which = ind_gc_settlement_retain }
+		command = { trigger = { exists = SOV } type = event which = 9281360 where = SOV when = 2 }
+		command = { trigger = { exists = GER } type = event which = 9281361 where = GER when = 2 }
+		command = { type = event which = 9281370 where = IND when = 10 }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Build an Indian security sphere"
+		command = { type = clrflag which = ind_gc_settlement_deferred }
+		command = { type = clrflag which = ind_gc_settlement_disputed }
+		command = { type = money value = -700 }
+		command = { type = supplies value = -1200 }
+		command = { type = dissent value = 1 }
+		command = { type = setflag which = ind_gc_settlement_influence }
+		command = { type = clrflag which = ind_gc_settlement_restore }
+		command = { type = clrflag which = ind_gc_settlement_puppet }
+		command = { type = clrflag which = ind_gc_settlement_retain }
+		command = { trigger = { exists = SOV } type = event which = 9281360 where = SOV when = 2 }
+		command = { trigger = { exists = GER } type = event which = 9281361 where = GER when = 2 }
+		command = { type = event which = 9281370 where = IND when = 10 }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Establish Indian protectorates"
+		command = { type = clrflag which = ind_gc_settlement_deferred }
+		command = { type = clrflag which = ind_gc_settlement_disputed }
+		command = { type = money value = -1000 }
+		command = { type = supplies value = -1600 }
+		command = { type = dissent value = 5 }
+		command = { type = belligerence value = 8 }
+		command = { type = setflag which = ind_gc_settlement_puppet }
+		command = { type = clrflag which = ind_gc_settlement_restore }
+		command = { type = clrflag which = ind_gc_settlement_influence }
+		command = { type = clrflag which = ind_gc_settlement_retain }
+		command = { trigger = { exists = SOV } type = event which = 9281360 where = SOV when = 2 }
+		command = { trigger = { exists = GER } type = event which = 9281361 where = GER when = 2 }
+		command = { type = event which = 9281370 where = IND when = 10 }
+	}
+	action_d = {
+		ai_chance = 15
+		name = "Retain Indian military occupations"
+		command = { type = clrflag which = ind_gc_settlement_deferred }
+		command = { type = clrflag which = ind_gc_settlement_disputed }
+		command = { type = money value = -500 }
+		command = { type = supplies value = -800 }
+		command = { type = dissent value = 8 }
+		command = { type = belligerence value = 15 }
+		command = { type = setflag which = ind_gc_settlement_retain }
+		command = { type = clrflag which = ind_gc_settlement_restore }
+		command = { type = clrflag which = ind_gc_settlement_influence }
+		command = { type = clrflag which = ind_gc_settlement_puppet }
+		command = { trigger = { exists = SOV } type = event which = 9281368 where = SOV when = 2 }
+		command = { trigger = { exists = GER } type = event which = 9281369 where = GER when = 2 }
+		command = { type = event which = 9281370 where = IND when = 10 }
+	}
+}
+
+event = {
+	id = 9281360
+	random = no
+	country = SOV
+
+	name = "India Presents Its Central Asian Record"
+	desc = "Delhi claims only provinces Indian forces control. Moscow may recognize the full occupied settlement, counter by recognizing the southern republics while retaining Kazakhstan, or reject India's separate claims and risk a renewed war."
+	style = 2
+	picture = "india_v3_revisionist_settlement"
+
+	action_a = {
+		ai_chance = 70
+		name = "Recognize every Indian-controlled position"
+		command = { trigger = { owned = { province = 1097 data = SOV } control = { province = 1097 data = IND } } type = secedeprovince which = IND value = 1097 when = 1 }
+		command = { trigger = { owned = { province = 1098 data = SOV } control = { province = 1098 data = IND } } type = secedeprovince which = IND value = 1098 when = 1 }
+		command = { trigger = { owned = { province = 1099 data = SOV } control = { province = 1099 data = IND } } type = secedeprovince which = IND value = 1099 when = 1 }
+		command = { trigger = { owned = { province = 1100 data = SOV } control = { province = 1100 data = IND } } type = secedeprovince which = IND value = 1100 when = 1 }
+		command = { trigger = { owned = { province = 1101 data = SOV } control = { province = 1101 data = IND } } type = secedeprovince which = IND value = 1101 when = 1 }
+		command = { trigger = { owned = { province = 1102 data = SOV } control = { province = 1102 data = IND } } type = secedeprovince which = IND value = 1102 when = 1 }
+		command = { trigger = { owned = { province = 1103 data = SOV } control = { province = 1103 data = IND } } type = secedeprovince which = IND value = 1103 when = 1 }
+		command = { trigger = { owned = { province = 1104 data = SOV } control = { province = 1104 data = IND } } type = secedeprovince which = IND value = 1104 when = 1 }
+		command = { trigger = { owned = { province = 1105 data = SOV } control = { province = 1105 data = IND } } type = secedeprovince which = IND value = 1105 when = 1 }
+		command = { trigger = { owned = { province = 1106 data = SOV } control = { province = 1106 data = IND } } type = secedeprovince which = IND value = 1106 when = 1 }
+		command = { trigger = { owned = { province = 1107 data = SOV } control = { province = 1107 data = IND } } type = secedeprovince which = IND value = 1107 when = 1 }
+		command = { trigger = { owned = { province = 498 data = SOV } control = { province = 498 data = IND } } type = secedeprovince which = IND value = 498 when = 1 }
+		command = { trigger = { owned = { province = 499 data = SOV } control = { province = 499 data = IND } } type = secedeprovince which = IND value = 499 when = 1 }
+		command = { trigger = { owned = { province = 500 data = SOV } control = { province = 500 data = IND } } type = secedeprovince which = IND value = 500 when = 1 }
+		command = { trigger = { owned = { province = 501 data = SOV } control = { province = 501 data = IND } } type = secedeprovince which = IND value = 501 when = 1 }
+		command = { trigger = { owned = { province = 502 data = SOV } control = { province = 502 data = IND } } type = secedeprovince which = IND value = 502 when = 1 }
+		command = { trigger = { owned = { province = 503 data = SOV } control = { province = 503 data = IND } } type = secedeprovince which = IND value = 503 when = 1 }
+		command = { trigger = { owned = { province = 504 data = SOV } control = { province = 504 data = IND } } type = secedeprovince which = IND value = 504 when = 1 }
+		command = { trigger = { owned = { province = 505 data = SOV } control = { province = 505 data = IND } } type = secedeprovince which = IND value = 505 when = 1 }
+		command = { trigger = { owned = { province = 506 data = SOV } control = { province = 506 data = IND } } type = secedeprovince which = IND value = 506 when = 1 }
+		command = { trigger = { owned = { province = 507 data = SOV } control = { province = 507 data = IND } } type = secedeprovince which = IND value = 507 when = 1 }
+		command = { trigger = { owned = { province = 1108 data = SOV } control = { province = 1108 data = IND } } type = secedeprovince which = IND value = 1108 when = 1 }
+		command = { trigger = { owned = { province = 1109 data = SOV } control = { province = 1109 data = IND } } type = secedeprovince which = IND value = 1109 when = 1 }
+		command = { trigger = { owned = { province = 1110 data = SOV } control = { province = 1110 data = IND } } type = secedeprovince which = IND value = 1110 when = 1 }
+		command = { trigger = { owned = { province = 1111 data = SOV } control = { province = 1111 data = IND } } type = secedeprovince which = IND value = 1111 when = 1 }
+		command = { trigger = { owned = { province = 1112 data = SOV } control = { province = 1112 data = IND } } type = secedeprovince which = IND value = 1112 when = 1 }
+		command = { trigger = { owned = { province = 1113 data = SOV } control = { province = 1113 data = IND } } type = secedeprovince which = IND value = 1113 when = 1 }
+		command = { trigger = { owned = { province = 1114 data = SOV } control = { province = 1114 data = IND } } type = secedeprovince which = IND value = 1114 when = 1 }
+		command = { trigger = { owned = { province = 1115 data = SOV } control = { province = 1115 data = IND } } type = secedeprovince which = IND value = 1115 when = 1 }
+		command = { trigger = { owned = { province = 1116 data = SOV } control = { province = 1116 data = IND } } type = secedeprovince which = IND value = 1116 when = 1 }
+		command = { trigger = { owned = { province = 1117 data = SOV } control = { province = 1117 data = IND } } type = secedeprovince which = IND value = 1117 when = 1 }
+		command = { trigger = { owned = { province = 1118 data = SOV } control = { province = 1118 data = IND } } type = secedeprovince which = IND value = 1118 when = 1 }
+		command = { trigger = { flag = ind_gc_settlement_retain owned = { province = 706 data = SOV } control = { province = 706 data = IND } } type = secedeprovince which = IND value = 706 when = 1 }
+		command = { trigger = { flag = ind_gc_settlement_retain owned = { province = 709 data = SOV } control = { province = 709 data = IND } } type = secedeprovince which = IND value = 709 when = 1 }
+		command = { trigger = { flag = ind_gc_settlement_retain owned = { province = 711 data = SOV } control = { province = 711 data = IND } } type = secedeprovince which = IND value = 711 when = 1 }
+		command = { trigger = { flag = ind_gc_settlement_retain owned = { province = 713 data = SOV } control = { province = 713 data = IND } } type = secedeprovince which = IND value = 713 when = 1 }
+		command = { type = relation which = IND value = 10 }
+		command = { type = clrflag which = ind_gc_settlement_retain }
+		command = { type = event which = 9281362 where = IND when = 2 }
+	}
+	action_b = {
+		ai_chance = 25
+		name = "Recognize the south, but retain Kazakhstan"
+		command = { trigger = { owned = { province = 1097 data = SOV } control = { province = 1097 data = IND } } type = secedeprovince which = IND value = 1097 when = 1 }
+		command = { trigger = { owned = { province = 1098 data = SOV } control = { province = 1098 data = IND } } type = secedeprovince which = IND value = 1098 when = 1 }
+		command = { trigger = { owned = { province = 1099 data = SOV } control = { province = 1099 data = IND } } type = secedeprovince which = IND value = 1099 when = 1 }
+		command = { trigger = { owned = { province = 1100 data = SOV } control = { province = 1100 data = IND } } type = secedeprovince which = IND value = 1100 when = 1 }
+		command = { trigger = { owned = { province = 1101 data = SOV } control = { province = 1101 data = IND } } type = secedeprovince which = IND value = 1101 when = 1 }
+		command = { trigger = { owned = { province = 1102 data = SOV } control = { province = 1102 data = IND } } type = secedeprovince which = IND value = 1102 when = 1 }
+		command = { trigger = { owned = { province = 1103 data = SOV } control = { province = 1103 data = IND } } type = secedeprovince which = IND value = 1103 when = 1 }
+		command = { trigger = { owned = { province = 1104 data = SOV } control = { province = 1104 data = IND } } type = secedeprovince which = IND value = 1104 when = 1 }
+		command = { trigger = { owned = { province = 1105 data = SOV } control = { province = 1105 data = IND } } type = secedeprovince which = IND value = 1105 when = 1 }
+		command = { trigger = { owned = { province = 1106 data = SOV } control = { province = 1106 data = IND } } type = secedeprovince which = IND value = 1106 when = 1 }
+		command = { trigger = { owned = { province = 1107 data = SOV } control = { province = 1107 data = IND } } type = secedeprovince which = IND value = 1107 when = 1 }
+		command = { type = relation which = IND value = -5 }
+		command = { type = clrflag which = ind_gc_settlement_retain }
+		command = { type = event which = 9281363 where = IND when = 2 }
+	}
+	action_c = {
+		ai_chance = 5
+		name = "Reject every separate Indian claim"
+		command = { type = relation which = IND value = -50 }
+		command = { type = clrflag which = ind_gc_settlement_retain }
+		command = { type = event which = 9281364 where = IND when = 2 }
+	}
+}
+
+event = {
+	id = 9281361
+	random = no
+	country = GER
+
+	name = "India Claims Its Occupied Soviet Territory"
+	desc = "Delhi asks Germany to recognize only Soviet provinces that India controls and Germany legally owns after the general settlement. Berlin may recognize the full record, exclude Kazakhstan, or refuse a separate Indian sphere."
+	style = 2
+	picture = "india_v3_revisionist_settlement"
+
+	action_a = {
+		ai_chance = 75
+		name = "Recognize every Indian-controlled position"
+		command = { trigger = { owned = { province = 1097 data = GER } control = { province = 1097 data = IND } } type = secedeprovince which = IND value = 1097 when = 1 }
+		command = { trigger = { owned = { province = 1098 data = GER } control = { province = 1098 data = IND } } type = secedeprovince which = IND value = 1098 when = 1 }
+		command = { trigger = { owned = { province = 1099 data = GER } control = { province = 1099 data = IND } } type = secedeprovince which = IND value = 1099 when = 1 }
+		command = { trigger = { owned = { province = 1100 data = GER } control = { province = 1100 data = IND } } type = secedeprovince which = IND value = 1100 when = 1 }
+		command = { trigger = { owned = { province = 1101 data = GER } control = { province = 1101 data = IND } } type = secedeprovince which = IND value = 1101 when = 1 }
+		command = { trigger = { owned = { province = 1102 data = GER } control = { province = 1102 data = IND } } type = secedeprovince which = IND value = 1102 when = 1 }
+		command = { trigger = { owned = { province = 1103 data = GER } control = { province = 1103 data = IND } } type = secedeprovince which = IND value = 1103 when = 1 }
+		command = { trigger = { owned = { province = 1104 data = GER } control = { province = 1104 data = IND } } type = secedeprovince which = IND value = 1104 when = 1 }
+		command = { trigger = { owned = { province = 1105 data = GER } control = { province = 1105 data = IND } } type = secedeprovince which = IND value = 1105 when = 1 }
+		command = { trigger = { owned = { province = 1106 data = GER } control = { province = 1106 data = IND } } type = secedeprovince which = IND value = 1106 when = 1 }
+		command = { trigger = { owned = { province = 1107 data = GER } control = { province = 1107 data = IND } } type = secedeprovince which = IND value = 1107 when = 1 }
+		command = { trigger = { owned = { province = 498 data = GER } control = { province = 498 data = IND } } type = secedeprovince which = IND value = 498 when = 1 }
+		command = { trigger = { owned = { province = 499 data = GER } control = { province = 499 data = IND } } type = secedeprovince which = IND value = 499 when = 1 }
+		command = { trigger = { owned = { province = 500 data = GER } control = { province = 500 data = IND } } type = secedeprovince which = IND value = 500 when = 1 }
+		command = { trigger = { owned = { province = 501 data = GER } control = { province = 501 data = IND } } type = secedeprovince which = IND value = 501 when = 1 }
+		command = { trigger = { owned = { province = 502 data = GER } control = { province = 502 data = IND } } type = secedeprovince which = IND value = 502 when = 1 }
+		command = { trigger = { owned = { province = 503 data = GER } control = { province = 503 data = IND } } type = secedeprovince which = IND value = 503 when = 1 }
+		command = { trigger = { owned = { province = 504 data = GER } control = { province = 504 data = IND } } type = secedeprovince which = IND value = 504 when = 1 }
+		command = { trigger = { owned = { province = 505 data = GER } control = { province = 505 data = IND } } type = secedeprovince which = IND value = 505 when = 1 }
+		command = { trigger = { owned = { province = 506 data = GER } control = { province = 506 data = IND } } type = secedeprovince which = IND value = 506 when = 1 }
+		command = { trigger = { owned = { province = 507 data = GER } control = { province = 507 data = IND } } type = secedeprovince which = IND value = 507 when = 1 }
+		command = { trigger = { owned = { province = 1108 data = GER } control = { province = 1108 data = IND } } type = secedeprovince which = IND value = 1108 when = 1 }
+		command = { trigger = { owned = { province = 1109 data = GER } control = { province = 1109 data = IND } } type = secedeprovince which = IND value = 1109 when = 1 }
+		command = { trigger = { owned = { province = 1110 data = GER } control = { province = 1110 data = IND } } type = secedeprovince which = IND value = 1110 when = 1 }
+		command = { trigger = { owned = { province = 1111 data = GER } control = { province = 1111 data = IND } } type = secedeprovince which = IND value = 1111 when = 1 }
+		command = { trigger = { owned = { province = 1112 data = GER } control = { province = 1112 data = IND } } type = secedeprovince which = IND value = 1112 when = 1 }
+		command = { trigger = { owned = { province = 1113 data = GER } control = { province = 1113 data = IND } } type = secedeprovince which = IND value = 1113 when = 1 }
+		command = { trigger = { owned = { province = 1114 data = GER } control = { province = 1114 data = IND } } type = secedeprovince which = IND value = 1114 when = 1 }
+		command = { trigger = { owned = { province = 1115 data = GER } control = { province = 1115 data = IND } } type = secedeprovince which = IND value = 1115 when = 1 }
+		command = { trigger = { owned = { province = 1116 data = GER } control = { province = 1116 data = IND } } type = secedeprovince which = IND value = 1116 when = 1 }
+		command = { trigger = { owned = { province = 1117 data = GER } control = { province = 1117 data = IND } } type = secedeprovince which = IND value = 1117 when = 1 }
+		command = { trigger = { owned = { province = 1118 data = GER } control = { province = 1118 data = IND } } type = secedeprovince which = IND value = 1118 when = 1 }
+		command = { trigger = { flag = ind_gc_settlement_retain owned = { province = 706 data = GER } control = { province = 706 data = IND } } type = secedeprovince which = IND value = 706 when = 1 }
+		command = { trigger = { flag = ind_gc_settlement_retain owned = { province = 709 data = GER } control = { province = 709 data = IND } } type = secedeprovince which = IND value = 709 when = 1 }
+		command = { trigger = { flag = ind_gc_settlement_retain owned = { province = 711 data = GER } control = { province = 711 data = IND } } type = secedeprovince which = IND value = 711 when = 1 }
+		command = { trigger = { flag = ind_gc_settlement_retain owned = { province = 713 data = GER } control = { province = 713 data = IND } } type = secedeprovince which = IND value = 713 when = 1 }
+		command = { type = relation which = IND value = 20 }
+		command = { type = clrflag which = ind_gc_settlement_retain }
+		command = { type = event which = 9281365 where = IND when = 2 }
+	}
+	action_b = {
+		ai_chance = 20
+		name = "Recognize the south, but reserve Kazakhstan"
+		command = { trigger = { owned = { province = 1097 data = GER } control = { province = 1097 data = IND } } type = secedeprovince which = IND value = 1097 when = 1 }
+		command = { trigger = { owned = { province = 1098 data = GER } control = { province = 1098 data = IND } } type = secedeprovince which = IND value = 1098 when = 1 }
+		command = { trigger = { owned = { province = 1099 data = GER } control = { province = 1099 data = IND } } type = secedeprovince which = IND value = 1099 when = 1 }
+		command = { trigger = { owned = { province = 1100 data = GER } control = { province = 1100 data = IND } } type = secedeprovince which = IND value = 1100 when = 1 }
+		command = { trigger = { owned = { province = 1101 data = GER } control = { province = 1101 data = IND } } type = secedeprovince which = IND value = 1101 when = 1 }
+		command = { trigger = { owned = { province = 1102 data = GER } control = { province = 1102 data = IND } } type = secedeprovince which = IND value = 1102 when = 1 }
+		command = { trigger = { owned = { province = 1103 data = GER } control = { province = 1103 data = IND } } type = secedeprovince which = IND value = 1103 when = 1 }
+		command = { trigger = { owned = { province = 1104 data = GER } control = { province = 1104 data = IND } } type = secedeprovince which = IND value = 1104 when = 1 }
+		command = { trigger = { owned = { province = 1105 data = GER } control = { province = 1105 data = IND } } type = secedeprovince which = IND value = 1105 when = 1 }
+		command = { trigger = { owned = { province = 1106 data = GER } control = { province = 1106 data = IND } } type = secedeprovince which = IND value = 1106 when = 1 }
+		command = { trigger = { owned = { province = 1107 data = GER } control = { province = 1107 data = IND } } type = secedeprovince which = IND value = 1107 when = 1 }
+		command = { type = relation which = IND value = 5 }
+		command = { type = clrflag which = ind_gc_settlement_retain }
+		command = { type = event which = 9281366 where = IND when = 2 }
+	}
+	action_c = {
+		ai_chance = 5
+		name = "Reserve the settlement to Germany"
+		command = { type = relation which = IND value = -40 }
+		command = { type = clrflag which = ind_gc_settlement_retain }
+		command = { type = event which = 9281367 where = IND when = 2 }
+	}
+}
+
+event = {
+	id = 9281362
+	random = no
+	country = IND
+	name = "Moscow Recognizes India's Occupied Positions"
+	desc = "Moscow has accepted the full record of Indian-controlled positions. Delhi may now apply its chosen policy only to territory that was legally transferred or already belonged to India."
+	style = 2
+	picture = "india_v3_revisionist_settlement"
+	action_a = {
+		name = "Proceed with the selected settlement"
+		command = { type = setflag which = ind_gc_soviet_settlement_accept }
+	}
+}
+
+event = {
+	id = 9281363
+	random = no
+	country = IND
+	name = "Moscow Excludes Kazakhstan"
+	desc = "Moscow recognizes Indian-controlled territory in the southern Central Asian republics but refuses to transfer Kazakhstan. Delhi retains a substantial sphere without receiving provinces its armies and diplomacy could not secure."
+	style = 2
+	picture = "india_v3_revisionist_settlement"
+	action_a = {
+		name = "Accept the southern settlement"
+		command = { type = setflag which = ind_gc_soviet_settlement_counter }
+		command = { type = relation which = SOV value = -10 }
+	}
+}
+
+event = {
+	id = 9281364
+	random = no
+	country = IND
+	name = "Moscow Rejects India's Separate Claims"
+	desc = "Moscow rejects every separate Indian claim. The settlement still applies to provinces India already owns; Delhi may accept that limit or resume war rather than receiving territory by event fiat."
+	style = 2
+	picture = "india_v3_revisionist_settlement"
+	action_a = {
+		ai_chance = 75
+		name = "Settle only territory India legally holds"
+		command = { type = relation which = SOV value = -25 }
+		command = { type = setflag which = ind_gc_soviet_settlement_reject }
+	}
+	action_b = {
+		ai_chance = 25
+		name = "Resume war rather than accept exclusion"
+		command = { trigger = { exists = SOV NOT = { war = { country = IND country = SOV } } } type = war which = SOV }
+		command = { type = dissent value = 4 }
+		command = { type = belligerence value = 5 }
+		command = { type = setflag which = ind_gc_settlement_disputed }
+	}
+}
+
+event = {
+	id = 9281365
+	random = no
+	country = IND
+	name = "Berlin Recognizes India's Occupied Positions"
+	desc = "Germany recognizes the full Indian record where German ownership and Indian control overlap. The transfer does not include provinces held by another ally or an undefeated state."
+	style = 2
+	picture = "india_v3_revisionist_settlement"
+	action_a = {
+		name = "Proceed under the recognition agreement"
+		command = { type = setflag which = ind_gc_german_settlement_accept }
+	}
+}
+
+event = {
+	id = 9281366
+	random = no
+	country = IND
+	name = "Berlin Reserves Kazakhstan"
+	desc = "Germany recognizes Indian-controlled southern Central Asia but reserves Kazakhstan for its wider settlement. Delhi gains what its southern campaign secured while the disagreement remains a postwar diplomatic fault line."
+	style = 2
+	picture = "india_v3_revisionist_settlement"
+	action_a = {
+		name = "Accept the southern settlement for now"
+		command = { type = relation which = GER value = -10 }
+		command = { type = setflag which = ind_gc_german_settlement_counter }
+	}
+}
+
+event = {
+	id = 9281367
+	random = no
+	country = IND
+	name = "Berlin Rejects a Separate Indian Sphere"
+	desc = "Germany refuses to recognize a separate Indian settlement. Delhi keeps only territory it already owns and must decide whether formal partnership is worth preserving after the rebuff."
+	style = 2
+	picture = "india_v3_revisionist_settlement"
+	action_a = {
+		ai_chance = 65
+		name = "Preserve cooperation despite the dispute"
+		command = { type = relation which = GER value = -30 }
+		command = { type = dissent value = 2 }
+		command = { type = setflag which = ind_gc_german_settlement_reject }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Break with Berlin over the settlement"
+		command = { trigger = { alliance = { country = IND country = GER } } type = leave_alliance when = 1 }
+		command = { type = relation which = GER value = -75 }
+		command = { type = clrflag which = ind_gc_formal_axis }
+		command = { type = clrflag which = ind_gc_cobelligerent }
+		command = { type = setflag which = ind_gc_sovereign }
+		command = { type = setflag which = ind_gc_german_settlement_reject }
+	}
+}
+
+event = {
+	id = 9281368
+	random = no
+	country = SOV
+
+	name = "India Claims Its Caucasus Occupations"
+	desc = "Delhi has chosen direct military retention. Moscow will adjudicate the same Indian-controlled Central Asian record, but full acceptance may now include Baku, Astrakhan and the occupied Caucasus positions that India actually controls."
+	style = 2
+	picture = "india_v3_revisionist_settlement"
+
+	action_a = {
+		name = "Review the retention claim with the full record"
+		command = { type = setflag which = ind_gc_settlement_retain }
+		command = { type = event which = 9281360 where = SOV when = 1 }
+	}
+}
+
+event = {
+	id = 9281369
+	random = no
+	country = GER
+
+	name = "India Claims Its Caucasus Occupations"
+	desc = "Delhi has chosen direct military retention. Berlin will adjudicate the same Indian-controlled Central Asian record, but full acceptance may now include Soviet Caucasus positions that Germany legally owns and India actually controls."
+	style = 2
+	picture = "india_v3_revisionist_settlement"
+
+	action_a = {
+		name = "Review the retention claim with the full record"
+		command = { type = setflag which = ind_gc_settlement_retain }
+		command = { type = event which = 9281361 where = GER when = 1 }
+	}
+}
+
+event = {
+	id = 9281370
+	random = no
+	country = IND
+
+	name = "Apply the Central Asian Settlement"
+	desc = "The owner responses are complete. Delhi now releases, influences, protects or retains only provinces India legally owns. If India resumed the Soviet war after a rejection, implementation pauses until that renewed campaign is actually resolved."
+	style = 2
+	picture = "india_v3_revisionist_settlement"
+
+	action_a = {
+		trigger = { NOT = { flag = ind_gc_settlement_disputed } }
+		name = "Apply the chosen constitutional order"
+		command = { trigger = { NOT = { flag = ind_gc_settlement_retain } NOT = { exists = TRK } owned = { province = 1097 data = IND } owned = { province = 1098 data = IND } } type = setflag which = ind_gc_released_trk }
+		command = { trigger = { flag = ind_gc_released_trk } type = independence which = TRK value = 1 when = 0 }
+		command = { trigger = { NOT = { flag = ind_gc_settlement_retain } NOT = { exists = UZB } owned = { province = 1099 data = IND } owned = { province = 1100 data = IND } owned = { province = 1101 data = IND } owned = { province = 1102 data = IND } owned = { province = 1103 data = IND } } type = setflag which = ind_gc_released_uzb }
+		command = { trigger = { flag = ind_gc_released_uzb } type = independence which = UZB value = 1 when = 0 }
+		command = { trigger = { NOT = { flag = ind_gc_settlement_retain } NOT = { exists = TAJ } owned = { province = 1104 data = IND } owned = { province = 1105 data = IND } } type = setflag which = ind_gc_released_taj }
+		command = { trigger = { flag = ind_gc_released_taj } type = independence which = TAJ value = 1 when = 0 }
+		command = { trigger = { NOT = { flag = ind_gc_settlement_retain } NOT = { exists = KYG } owned = { province = 1106 data = IND } owned = { province = 1107 data = IND } } type = setflag which = ind_gc_released_kyg }
+		command = { trigger = { flag = ind_gc_released_kyg } type = independence which = KYG value = 1 when = 0 }
+		command = { trigger = { NOT = { flag = ind_gc_settlement_retain } NOT = { exists = KAZ } owned = { province = 498 data = IND } owned = { province = 500 data = IND } owned = { province = 504 data = IND } owned = { province = 505 data = IND } owned = { province = 506 data = IND } owned = { province = 507 data = IND } } type = setflag which = ind_gc_released_kaz }
+		command = { trigger = { flag = ind_gc_released_kaz } type = independence which = KAZ value = 1 when = 0 }
+		command = { trigger = { flag = ind_gc_settlement_retain owned = { province = 1097 data = IND } } type = province_revoltrisk which = 1097 value = 3 }
+		command = { trigger = { flag = ind_gc_settlement_retain owned = { province = 1103 data = IND } } type = province_revoltrisk which = 1103 value = 3 }
+		command = { trigger = { flag = ind_gc_settlement_retain owned = { province = 1105 data = IND } } type = province_revoltrisk which = 1105 value = 3 }
+		command = { trigger = { flag = ind_gc_settlement_retain owned = { province = 1107 data = IND } } type = province_revoltrisk which = 1107 value = 3 }
+		command = { trigger = { flag = ind_gc_settlement_retain owned = { province = 506 data = IND } } type = province_revoltrisk which = 506 value = 3 }
+		command = { type = event which = 9281371 where = IND when = 3 }
+	}
+	action_b = {
+		trigger = { flag = ind_gc_settlement_disputed }
+		name = "Suspend implementation until the renewed war ends"
+		command = { type = clrflag which = ind_gc_settlement_opened }
+		command = { type = clrflag which = ind_gc_settlement_disputed }
+		command = { type = setflag which = ind_gc_settlement_deferred }
+	}
+}
+
+event = {
+	id = 9281371
+	random = no
+	country = IND
+
+	name = "The Central Asian Order Takes Shape"
+	desc = "The settlement now reflects the selected doctrine. New protectorates are limited to states India released from transferred territory; pre-existing undefeated countries are influenced or guaranteed rather than silently puppeted."
+	style = 2
+	picture = "india_v3_revisionist_settlement"
+
+	action_a = {
+		name = "Recognize the new continental order"
+		command = { trigger = { flag = ind_gc_settlement_puppet flag = ind_gc_released_trk exists = TRK } type = make_puppet which = TRK }
+		command = { trigger = { flag = ind_gc_settlement_puppet flag = ind_gc_released_uzb exists = UZB } type = make_puppet which = UZB }
+		command = { trigger = { flag = ind_gc_settlement_puppet flag = ind_gc_released_taj exists = TAJ } type = make_puppet which = TAJ }
+		command = { trigger = { flag = ind_gc_settlement_puppet flag = ind_gc_released_kyg exists = KYG } type = make_puppet which = KYG }
+		command = { trigger = { flag = ind_gc_settlement_puppet flag = ind_gc_released_kaz exists = KAZ } type = make_puppet which = KAZ }
+		command = { trigger = { flag = ind_gc_settlement_influence exists = TRK } type = guarantee which = IND where = TRK }
+		command = { trigger = { flag = ind_gc_settlement_influence exists = UZB } type = guarantee which = IND where = UZB }
+		command = { trigger = { flag = ind_gc_settlement_influence exists = TAJ } type = guarantee which = IND where = TAJ }
+		command = { trigger = { flag = ind_gc_settlement_influence exists = KYG } type = guarantee which = IND where = KYG }
+		command = { trigger = { flag = ind_gc_settlement_influence exists = KAZ } type = guarantee which = IND where = KAZ }
+		command = { trigger = { flag = ind_gc_settlement_influence exists = TRK } type = non_aggression which = IND where = TRK when = 1800 }
+		command = { trigger = { flag = ind_gc_settlement_influence exists = UZB } type = non_aggression which = IND where = UZB when = 1800 }
+		command = { trigger = { flag = ind_gc_settlement_influence exists = TAJ } type = non_aggression which = IND where = TAJ when = 1800 }
+		command = { trigger = { flag = ind_gc_settlement_influence exists = KYG } type = non_aggression which = IND where = KYG when = 1800 }
+		command = { trigger = { flag = ind_gc_settlement_influence exists = KAZ } type = non_aggression which = IND where = KAZ when = 1800 }
+		command = { trigger = { exists = TRK } type = relation which = TRK value = 40 }
+		command = { trigger = { exists = UZB } type = relation which = UZB value = 40 }
+		command = { trigger = { exists = TAJ } type = relation which = TAJ value = 40 }
+		command = { trigger = { exists = KYG } type = relation which = KYG value = 40 }
+		command = { trigger = { exists = KAZ } type = relation which = KAZ value = 40 }
+		command = { trigger = { OR = { flag = ind_gc_formal_axis flag = ind_gc_cobelligerent } } type = setflag which = ind_v3_axis_settlement_1945 }
+		command = { trigger = { flag = ind_gc_sovereign } type = setflag which = ind_v3_nam_settlement_1945 }
+		command = { type = setflag which = ind_gc_continental_settlement_done }
+		command = { type = clrflag which = ind_gc_campaign_active }
+		command = { type = ai which = "aubm/german/IND_post_soviet.ai" }
+		command = { trigger = { flag = ind_gc_performance_2 } type = event which = 9281372 where = IND when = 10 }
+		command = { trigger = { flag = ind_gc_performance_3 OR = { AND = { owned = { province = 836 data = IND } owned = { province = 842 data = IND } } AND = { owned = { province = 836 data = IND } owned = { province = 850 data = IND } } AND = { owned = { province = 842 data = IND } owned = { province = 850 data = IND } } } } type = event which = 9281380 where = IND when = 15 }
+	}
+}
+
+#########################################################################
+# Gulf settlement: influence is broad, subordination requires consent or
+# an Indian release from territory India legally owns.
+#########################################################################
+
+event = {
+	id = 9281372
+	random = no
+	country = IND
+
+	name = "The Gulf and Mesopotamian Settlement"
+	desc = "India's continental performance gives Delhi a voice from Iran to Arabia, not automatic ownership. Guarantees and direct retention have no foreign roll. Security-system or protectorate proposals use fixed accept/counter/reject rolls: Persia 50/35/15 and Iraq 55/30/15."
+	style = 2
+	picture = "india_v3_revisionist_settlement"
+
+	action_a = {
+		ai_chance = 30
+		name = "Guarantee sovereign Gulf governments"
+		command = { type = dissent value = -2 }
+		command = { type = belligerence value = -4 }
+		command = { type = setflag which = ind_gc_gulf_restore }
+		command = { type = clrflag which = ind_gc_gulf_influence }
+		command = { type = clrflag which = ind_gc_gulf_puppet }
+		command = { type = clrflag which = ind_gc_gulf_retain }
+		command = { trigger = { exists = PER } type = guarantee which = IND where = PER }
+		command = { trigger = { exists = IRQ } type = guarantee which = IND where = IRQ }
+		command = { trigger = { exists = OMN } type = guarantee which = IND where = OMN }
+		command = { trigger = { exists = SAU } type = guarantee which = IND where = SAU }
+		command = { trigger = { exists = YEM } type = guarantee which = IND where = YEM }
+		command = { type = event which = 9281378 where = IND when = 3 }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Finance an Indian Ocean security system"
+		command = { type = money value = -600 }
+		command = { type = supplies value = -1000 }
+		command = { type = dissent value = 1 }
+		command = { type = setflag which = ind_gc_gulf_influence }
+		command = { type = clrflag which = ind_gc_gulf_restore }
+		command = { type = clrflag which = ind_gc_gulf_puppet }
+		command = { type = clrflag which = ind_gc_gulf_retain }
+		command = { trigger = { exists = PER NOT = { ispuppet = PER } } type = event which = 9281373 where = PER when = 2 }
+		command = { trigger = { exists = IRQ NOT = { ispuppet = IRQ } } type = event which = 9281374 where = IRQ when = 2 }
+		command = { type = event which = 9281378 where = IND when = 3 }
+	}
+	action_c = {
+		ai_chance = 15
+		name = "Negotiate Iranian and Iraqi protectorates"
+		command = { type = money value = -900 }
+		command = { type = supplies value = -1400 }
+		command = { type = dissent value = 4 }
+		command = { type = belligerence value = 6 }
+		command = { type = setflag which = ind_gc_gulf_puppet }
+		command = { type = clrflag which = ind_gc_gulf_restore }
+		command = { type = clrflag which = ind_gc_gulf_influence }
+		command = { type = clrflag which = ind_gc_gulf_retain }
+		command = { trigger = { exists = PER NOT = { ispuppet = PER } } type = event which = 9281373 where = PER when = 2 }
+		command = { trigger = { exists = IRQ NOT = { ispuppet = IRQ } } type = event which = 9281374 where = IRQ when = 2 }
+		command = { type = event which = 9281378 where = IND when = 3 }
+	}
+	action_d = {
+		ai_chance = 15
+		name = "Retain only existing Indian occupations"
+		command = { type = money value = -400 }
+		command = { type = supplies value = -700 }
+		command = { type = dissent value = 7 }
+		command = { type = belligerence value = 12 }
+		command = { type = setflag which = ind_gc_gulf_retain }
+		command = { type = clrflag which = ind_gc_gulf_restore }
+		command = { type = clrflag which = ind_gc_gulf_influence }
+		command = { type = clrflag which = ind_gc_gulf_puppet }
+		command = { type = event which = 9281378 where = IND when = 3 }
+	}
+}
+
+event = {
+	id = 9281373
+	random = no
+	country = PER
+
+	name = "Delhi Proposes a Gulf Security Settlement"
+	desc = "India proposes basing, guarantees and economic coordination. If Delhi seeks a protectorate, Persia may consent, counter with an equal security treaty, or reject the proposal. No Indian command can subordinate Persia without this answer or prior Indian ownership and release."
+	style = 2
+	picture = "india_v3_revisionist_settlement"
+
+	action_a = {
+		ai_chance = 50
+		name = "Accept India's proposed security relationship"
+		command = { type = access which = IND }
+		command = { type = relation which = IND value = 35 }
+		command = { type = event which = 9281375 where = IND when = 2 }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Counter with an equal basing treaty"
+		command = { type = access which = IND }
+		command = { type = relation which = IND value = 15 }
+		command = { type = event which = 9281376 where = IND when = 2 }
+	}
+	action_c = {
+		ai_chance = 15
+		name = "Reject the Indian settlement"
+		command = { type = relation which = IND value = -20 }
+		command = { type = event which = 9281377 where = IND when = 2 }
+	}
+}
+
+event = {
+	id = 9281374
+	random = no
+	country = IRQ
+
+	name = "Delhi Proposes an Iraqi Security Settlement"
+	desc = "India proposes Gulf defence, air transit and economic coordination. Baghdad may accept the proposed relationship, counter with an equal treaty that excludes subordination, or reject Indian influence."
+	style = 2
+	picture = "india_v3_revisionist_settlement"
+
+	action_a = {
+		ai_chance = 55
+		name = "Accept India's proposed security relationship"
+		command = { type = access which = IND }
+		command = { type = relation which = IND value = 35 }
+		command = { type = event which = 9281383 where = IND when = 2 }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Counter with an equal basing treaty"
+		command = { type = access which = IND }
+		command = { type = relation which = IND value = 15 }
+		command = { type = event which = 9281384 where = IND when = 2 }
+	}
+	action_c = {
+		ai_chance = 15
+		name = "Reject the Indian settlement"
+		command = { type = relation which = IND value = -20 }
+		command = { type = event which = 9281385 where = IND when = 2 }
+	}
+}
+
+event = {
+	id = 9281375
+	random = no
+	country = IND
+
+	name = "Persia Accepts Delhi's Gulf Terms"
+	desc = "Teheran has accepted India's proposed relationship. A negotiated protectorate now rests on Persian consent; under the influence doctrine, Persia remains sovereign beneath an Indian guarantee and long non-aggression accord."
+	style = 2
+	picture = "india_v3_revisionist_settlement"
+
+	action_a = {
+		name = "Ratify the Persian relationship"
+		command = { trigger = { flag = ind_gc_gulf_puppet exists = PER } type = make_puppet which = PER }
+		command = { trigger = { flag = ind_gc_gulf_influence exists = PER } type = guarantee which = IND where = PER }
+		command = { trigger = { exists = PER } type = non_aggression which = IND where = PER when = 1800 }
+	}
+}
+
+event = {
+	id = 9281376
+	random = no
+	country = IND
+
+	name = "Persia Demands an Equal Treaty"
+	desc = "Teheran refuses subordination but accepts Indian access and an equal security treaty. Delhi can preserve a valuable Caucasus and Gulf partner, but the Persian counteroffer cannot be converted into a puppet command."
+	style = 2
+	picture = "india_v3_revisionist_settlement"
+
+	action_a = {
+		name = "Accept sovereign Persian partnership and basing"
+		command = { trigger = { exists = PER } type = guarantee which = IND where = PER }
+		command = { trigger = { exists = PER } type = non_aggression which = IND where = PER when = 1800 }
+		command = { type = dissent value = -1 }
+	}
+}
+
+event = {
+	id = 9281377
+	random = no
+	country = IND
+
+	name = "Persia Rejects Delhi's Gulf Terms"
+	desc = "Teheran rejects the proposed settlement. Delhi may respect Persian sovereignty and preserve the wider regional system, or impose political and commercial pressure at the cost of dissent and belligerence."
+	style = 2
+	picture = "india_v3_revisionist_settlement"
+
+	action_a = {
+		ai_chance = 70
+		name = "Respect Persia's refusal and preserve the system"
+		command = { trigger = { exists = PER } type = relation which = PER value = -10 }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Apply commercial pressure on Persia"
+		command = { trigger = { exists = PER } type = relation which = PER value = -45 }
+		command = { type = dissent value = 1 }
+		command = { type = belligerence value = 3 }
+	}
+}
+
+event = {
+	id = 9281378
+	random = no
+	country = IND
+
+	name = "Apply the Indian Gulf Doctrine"
+	desc = "Delhi now applies its Gulf doctrine. Iran or Iraq can be released only from a complete set of required provinces India owns; existing governments remain subject to their own diplomatic answer."
+	style = 2
+	picture = "india_v3_revisionist_settlement"
+
+	action_a = {
+		name = "Establish the regional framework"
+		command = { trigger = { NOT = { flag = ind_gc_gulf_retain } NOT = { exists = PER } owned = { province = 1095 data = IND } owned = { province = 1085 data = IND } owned = { province = 1082 data = IND } owned = { province = 1089 data = IND } owned = { province = 1091 data = IND } owned = { province = 1090 data = IND } owned = { province = 1088 data = IND } owned = { province = 1086 data = IND } owned = { province = 1092 data = IND } owned = { province = 1094 data = IND } owned = { province = 1093 data = IND } } type = setflag which = ind_gc_released_per }
+		command = { trigger = { flag = ind_gc_released_per } type = independence which = PER value = 1 when = 0 }
+		command = { trigger = { NOT = { flag = ind_gc_gulf_retain } NOT = { exists = IRQ } owned = { province = 1034 data = IND } owned = { province = 1035 data = IND } owned = { province = 1037 data = IND } owned = { province = 1028 data = IND } owned = { province = 1032 data = IND } owned = { province = 1031 data = IND } owned = { province = 1030 data = IND } } type = setflag which = ind_gc_released_irq }
+		command = { trigger = { flag = ind_gc_released_irq } type = independence which = IRQ value = 1 when = 0 }
+		command = { trigger = { flag = ind_gc_gulf_retain owned = { province = 1032 data = IND } } type = province_revoltrisk which = 1032 value = 3 }
+		command = { trigger = { flag = ind_gc_gulf_retain owned = { province = 1038 data = IND } } type = province_revoltrisk which = 1038 value = 3 }
+		command = { trigger = { flag = ind_gc_gulf_retain owned = { province = 1039 data = IND } } type = province_revoltrisk which = 1039 value = 3 }
+		command = { trigger = { flag = ind_gc_gulf_retain owned = { province = 1041 data = IND } } type = province_revoltrisk which = 1041 value = 3 }
+		command = { trigger = { flag = ind_gc_gulf_retain owned = { province = 1052 data = IND } } type = province_revoltrisk which = 1052 value = 3 }
+		command = { trigger = { flag = ind_gc_gulf_retain owned = { province = 1053 data = IND } } type = province_revoltrisk which = 1053 value = 3 }
+		command = { trigger = { flag = ind_gc_gulf_retain owned = { province = 1089 data = IND } } type = province_revoltrisk which = 1089 value = 3 }
+		command = { trigger = { flag = ind_gc_gulf_retain owned = { province = 1090 data = IND } } type = province_revoltrisk which = 1090 value = 3 }
+		command = { trigger = { flag = ind_gc_gulf_retain owned = { province = 1091 data = IND } } type = province_revoltrisk which = 1091 value = 3 }
+		command = { type = event which = 9281379 where = IND when = 3 }
+	}
+}
+
+event = {
+	id = 9281379
+	random = no
+	country = IND
+
+	name = "The Indian Ocean Security Arc"
+	desc = "The Gulf framework is complete. Newly released protectorates may enter Indian tutelage, while sovereign governments receive guarantees and economic influence extending from Iran and Iraq to Oman, Arabia and Yemen."
+	style = 2
+	picture = "india_v3_revisionist_settlement"
+
+	action_a = {
+		name = "Anchor the security arc in sovereign agreements"
+		command = { trigger = { flag = ind_gc_gulf_puppet flag = ind_gc_released_per exists = PER } type = make_puppet which = PER }
+		command = { trigger = { flag = ind_gc_gulf_puppet flag = ind_gc_released_irq exists = IRQ } type = make_puppet which = IRQ }
+		command = { trigger = { exists = PER NOT = { flag = ind_gc_gulf_retain } } type = relation which = PER value = 35 }
+		command = { trigger = { exists = IRQ NOT = { flag = ind_gc_gulf_retain } } type = relation which = IRQ value = 35 }
+		command = { trigger = { exists = OMN NOT = { flag = ind_gc_gulf_retain } } type = relation which = OMN value = 40 }
+		command = { trigger = { exists = SAU NOT = { flag = ind_gc_gulf_retain } } type = relation which = SAU value = 30 }
+		command = { trigger = { exists = YEM NOT = { flag = ind_gc_gulf_retain } } type = relation which = YEM value = 40 }
+		command = { trigger = { flag = ind_gc_gulf_influence exists = OMN } type = guarantee which = IND where = OMN }
+		command = { trigger = { flag = ind_gc_gulf_influence exists = SAU } type = guarantee which = IND where = SAU }
+		command = { trigger = { flag = ind_gc_gulf_influence exists = YEM } type = guarantee which = IND where = YEM }
+		command = { trigger = { flag = ind_gc_gulf_influence exists = OMN } type = non_aggression which = IND where = OMN when = 1800 }
+		command = { trigger = { flag = ind_gc_gulf_influence exists = SAU } type = non_aggression which = IND where = SAU when = 1800 }
+		command = { trigger = { flag = ind_gc_gulf_influence exists = YEM } type = non_aggression which = IND where = YEM when = 1800 }
+		command = { type = setflag which = ind_gc_gulf_settlement_done }
+	}
+}
+
+#########################################################################
+# Optional East African settlement. It opens only when India legally owns
+# a meaningful coastal bridgehead, never from a remote alliance flag.
+#########################################################################
+
+event = {
+	id = 9281380
+	random = no
+	country = IND
+
+	name = "India's East African Settlement"
+	desc = "Indian ownership of a real coastal bridgehead permits a settlement from the Horn toward Tanganyika. India may restore sovereignty, establish an Indian Ocean community, create protectorates from land India owns, or retain occupations at a high political cost."
+	style = 2
+	picture = "india_v3_revisionist_settlement"
+
+	action_a = {
+		ai_chance = 30
+		name = "Restore sovereign African governments"
+		command = { type = dissent value = -3 }
+		command = { type = belligerence value = -5 }
+		command = { type = setflag which = ind_gc_africa_restore }
+		command = { type = clrflag which = ind_gc_africa_influence }
+		command = { type = clrflag which = ind_gc_africa_puppet }
+		command = { type = clrflag which = ind_gc_africa_retain }
+		command = { type = event which = 9281381 where = IND when = 2 }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Build an Indian Ocean community"
+		command = { type = money value = -650 }
+		command = { type = supplies value = -1000 }
+		command = { type = dissent value = 1 }
+		command = { type = relation which = SAF value = 30 }
+		command = { type = setflag which = ind_gc_africa_influence }
+		command = { type = clrflag which = ind_gc_africa_restore }
+		command = { type = clrflag which = ind_gc_africa_puppet }
+		command = { type = clrflag which = ind_gc_africa_retain }
+		command = { type = event which = 9281381 where = IND when = 2 }
+	}
+	action_c = {
+		ai_chance = 15
+		name = "Create Indian-protected coastal states"
+		command = { type = money value = -900 }
+		command = { type = supplies value = -1400 }
+		command = { type = dissent value = 5 }
+		command = { type = belligerence value = 8 }
+		command = { type = relation which = SAF value = -20 }
+		command = { type = setflag which = ind_gc_africa_puppet }
+		command = { type = clrflag which = ind_gc_africa_restore }
+		command = { type = clrflag which = ind_gc_africa_influence }
+		command = { type = clrflag which = ind_gc_africa_retain }
+		command = { type = event which = 9281381 where = IND when = 2 }
+	}
+	action_d = {
+		ai_chance = 15
+		name = "Retain the Indian coastal occupation"
+		command = { type = money value = -400 }
+		command = { type = supplies value = -700 }
+		command = { type = dissent value = 8 }
+		command = { type = belligerence value = 14 }
+		command = { type = relation which = SAF value = -35 }
+		command = { type = setflag which = ind_gc_africa_retain }
+		command = { type = clrflag which = ind_gc_africa_restore }
+		command = { type = clrflag which = ind_gc_africa_influence }
+		command = { type = clrflag which = ind_gc_africa_puppet }
+		command = { type = event which = 9281381 where = IND when = 2 }
+	}
+}
+
+event = {
+	id = 9281381
+	random = no
+	country = IND
+
+	name = "Apply the East African Doctrine"
+	desc = "African states are released only when India owns every required province in their local definition. Partial bridgeheads remain occupations and cannot conjure a government from another country's undefeated territory."
+	style = 2
+	picture = "india_v3_revisionist_settlement"
+
+	action_a = {
+		name = "Apply the doctrine to Indian-owned territory"
+		command = { trigger = { NOT = { flag = ind_gc_africa_retain } NOT = { exists = ETH } owned = { province = 818 data = IND } owned = { province = 819 data = IND } owned = { province = 820 data = IND } owned = { province = 821 data = IND } owned = { province = 822 data = IND } owned = { province = 823 data = IND } owned = { province = 824 data = IND } owned = { province = 825 data = IND } owned = { province = 826 data = IND } owned = { province = 827 data = IND } owned = { province = 828 data = IND } owned = { province = 829 data = IND } owned = { province = 830 data = IND } owned = { province = 831 data = IND } } type = setflag which = ind_gc_released_eth }
+		command = { trigger = { flag = ind_gc_released_eth } type = independence which = ETH value = 1 when = 0 }
+		command = { trigger = { NOT = { flag = ind_gc_africa_retain } NOT = { exists = SOM } owned = { province = 836 data = IND } owned = { province = 837 data = IND } owned = { province = 838 data = IND } } type = setflag which = ind_gc_released_som }
+		command = { trigger = { flag = ind_gc_released_som } type = independence which = SOM value = 1 when = 0 }
+		command = { trigger = { NOT = { flag = ind_gc_africa_retain } NOT = { exists = U90 } owned = { province = 839 data = IND } owned = { province = 841 data = IND } owned = { province = 842 data = IND } owned = { province = 843 data = IND } } type = setflag which = ind_gc_released_u90 }
+		command = { trigger = { flag = ind_gc_released_u90 } type = independence which = U90 value = 1 when = 0 }
+		command = { trigger = { NOT = { flag = ind_gc_africa_retain } NOT = { exists = U97 } owned = { province = 848 data = IND } owned = { province = 849 data = IND } owned = { province = 850 data = IND } owned = { province = 851 data = IND } } type = setflag which = ind_gc_released_u97 }
+		command = { trigger = { flag = ind_gc_released_u97 } type = independence which = U97 value = 1 when = 0 }
+		command = { type = event which = 9281382 where = IND when = 3 }
+	}
+}
+
+event = {
+	id = 9281382
+	random = no
+	country = IND
+
+	name = "The Indian Ocean Community Takes Shape"
+	desc = "The East African settlement is complete. Protectorates are limited to states India itself released; influence and restoration preserve sovereignty, while retained Indian ports carry continuing unrest."
+	style = 2
+	picture = "india_v3_revisionist_settlement"
+
+	action_a = {
+		name = "Conclude the East African settlement"
+		command = { trigger = { flag = ind_gc_africa_puppet flag = ind_gc_released_eth exists = ETH } type = make_puppet which = ETH }
+		command = { trigger = { flag = ind_gc_africa_puppet flag = ind_gc_released_som exists = SOM } type = make_puppet which = SOM }
+		command = { trigger = { flag = ind_gc_africa_puppet flag = ind_gc_released_u90 exists = U90 } type = make_puppet which = U90 }
+		command = { trigger = { flag = ind_gc_africa_puppet flag = ind_gc_released_u97 exists = U97 } type = make_puppet which = U97 }
+		command = { trigger = { flag = ind_gc_africa_influence exists = ETH } type = guarantee which = IND where = ETH }
+		command = { trigger = { flag = ind_gc_africa_influence exists = SOM } type = guarantee which = IND where = SOM }
+		command = { trigger = { flag = ind_gc_africa_influence exists = U90 } type = guarantee which = IND where = U90 }
+		command = { trigger = { flag = ind_gc_africa_influence exists = U97 } type = guarantee which = IND where = U97 }
+		command = { trigger = { exists = ETH NOT = { flag = ind_gc_africa_retain } } type = relation which = ETH value = 40 }
+		command = { trigger = { exists = SOM NOT = { flag = ind_gc_africa_retain } } type = relation which = SOM value = 40 }
+		command = { trigger = { exists = U90 NOT = { flag = ind_gc_africa_retain } } type = relation which = U90 value = 40 }
+		command = { trigger = { exists = U97 NOT = { flag = ind_gc_africa_retain } } type = relation which = U97 value = 40 }
+		command = { trigger = { flag = ind_gc_africa_retain owned = { province = 815 data = IND } } type = province_revoltrisk which = 815 value = 3 }
+		command = { trigger = { flag = ind_gc_africa_retain owned = { province = 832 data = IND } } type = province_revoltrisk which = 832 value = 3 }
+		command = { trigger = { flag = ind_gc_africa_retain owned = { province = 833 data = IND } } type = province_revoltrisk which = 833 value = 3 }
+		command = { trigger = { flag = ind_gc_africa_retain owned = { province = 836 data = IND } } type = province_revoltrisk which = 836 value = 3 }
+		command = { trigger = { flag = ind_gc_africa_retain owned = { province = 838 data = IND } } type = province_revoltrisk which = 838 value = 3 }
+		command = { trigger = { flag = ind_gc_africa_retain owned = { province = 842 data = IND } } type = province_revoltrisk which = 842 value = 3 }
+		command = { trigger = { flag = ind_gc_africa_retain owned = { province = 850 data = IND } } type = province_revoltrisk which = 850 value = 3 }
+		command = { trigger = { flag = ind_gc_africa_retain owned = { province = 852 data = IND } } type = province_revoltrisk which = 852 value = 3 }
+		command = { type = setflag which = ind_gc_africa_settlement_done }
+	}
+}
+
+#########################################################################
+# Country-specific Gulf answers keep foreign and Indian flags separate.
+#########################################################################
+
+event = {
+	id = 9281383
+	random = no
+	country = IND
+
+	name = "Iraq Accepts Delhi's Gulf Terms"
+	desc = "Baghdad has accepted India's proposed relationship. A negotiated protectorate now rests on Iraqi consent; under the influence doctrine, Iraq remains sovereign beneath an Indian guarantee and long non-aggression accord."
+	style = 2
+	picture = "india_v3_revisionist_settlement"
+
+	action_a = {
+		name = "Ratify the Iraqi relationship"
+		command = { trigger = { flag = ind_gc_gulf_puppet exists = IRQ } type = make_puppet which = IRQ }
+		command = { trigger = { flag = ind_gc_gulf_influence exists = IRQ } type = guarantee which = IND where = IRQ }
+		command = { trigger = { exists = IRQ } type = non_aggression which = IND where = IRQ when = 1800 }
+	}
+}
+
+event = {
+	id = 9281384
+	random = no
+	country = IND
+
+	name = "Iraq Demands an Equal Treaty"
+	desc = "Baghdad refuses subordination but accepts Indian access and an equal security treaty. Delhi can preserve a valuable Gulf partner, but the Iraqi counteroffer cannot be converted into a puppet command."
+	style = 2
+	picture = "india_v3_revisionist_settlement"
+
+	action_a = {
+		name = "Accept sovereign Iraqi partnership and basing"
+		command = { trigger = { exists = IRQ } type = guarantee which = IND where = IRQ }
+		command = { trigger = { exists = IRQ } type = non_aggression which = IND where = IRQ when = 1800 }
+		command = { type = dissent value = -1 }
+	}
+}
+
+event = {
+	id = 9281385
+	random = no
+	country = IND
+
+	name = "Iraq Rejects Delhi's Gulf Terms"
+	desc = "Baghdad rejects the proposed settlement. Delhi may respect Iraqi sovereignty and preserve the wider regional system, or impose political and commercial pressure at the cost of dissent and belligerence."
+	style = 2
+	picture = "india_v3_revisionist_settlement"
+
+	action_a = {
+		ai_chance = 70
+		name = "Respect Iraq's refusal and preserve the system"
+		command = { trigger = { exists = IRQ } type = relation which = IRQ value = -10 }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Apply commercial pressure on Iraq"
+		command = { trigger = { exists = IRQ } type = relation which = IRQ value = -45 }
+		command = { type = dissent value = 1 }
+		command = { type = belligerence value = 3 }
+	}
+}
+
+event = {
+	id = 9281390
+	random = no
+	persistent = yes
+	country = IND
+
+	name = "The British War Review Returns"
+	desc = "Six months have passed since Delhi deferred a separate war with Britain. If the Soviet campaign and India's diplomatic position still permit it, the question may return to the cabinet."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+
+	action_a = {
+		name = "Reopen the British file"
+		command = { type = clrflag which = ind_gc_british_review_cooldown }
+	}
+}

@@ -20,7 +20,7 @@ event = {
 
 	date = { day = 0 month = september year = 1937 }
 	offset = 7
-	deathdate = { day = 29 month = december year = 1938 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 65
@@ -60,9 +60,9 @@ event = {
 		NOT = { flag = ind_v3_soviet_deep_operations }
 	# V3_ACTION_REACHABILITY_BEGIN
 	OR = {
-		AND = { manpower = 85 }
-		AND = { manpower = 70 }
-		}
+		AND = { manpower = 29 }
+		AND = { manpower = 18 }
+	}
 	# V3_ACTION_REACHABILITY_END
 }
 
@@ -73,64 +73,37 @@ event = {
 
 	date = { day = 0 month = february year = 1938 }
 	offset = 7
-	deathdate = { day = 29 month = april year = 1938 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 	trigger = {
-			# V3_QUEUE_MANPOWER = 85
-			manpower = 85
+			# V3_QUEUE_MANPOWER = 29
+			manpower = 29
 	}
 		ai_chance = 45
 		name = "Build a mass armoured and assault-air army"
 		command = { type = money value = -550 }
 		command = { type = supplies value = -1500 }
 		command = { type = activate_unit_type which = cas }
-		command = { type = new_model which = cas value = 0 }
 		command = { type = activate_unit_type which = light_armor }
-		command = { type = new_model which = light_armor value = 0 }
-		command = { type = activate_unit_type which = escort }
-		command = { type = new_model which = escort value = 0 }
-		command = { type = activate_unit_type which = light_armor } # AUBM_V4_UNIT_GATE light_armor
-		command = { type = new_model which = light_armor value = 0 } # AUBM_V4_UNIT_GATE light_armor
-		command = { type = activate_unit_type which = artillery } # AUBM_V4_UNIT_GATE artillery
-		command = { type = new_model which = artillery value = 0 } # AUBM_V4_UNIT_GATE artillery
-		command = { type = build_division which = light_armor value = artillery when = 3 cost = -2.5 where = 75 }
-		command = { type = activate_unit_type which = motorized } # AUBM_V4_UNIT_GATE motorized
-		command = { type = new_model which = motorized value = 0 } # AUBM_V4_UNIT_GATE motorized
-		command = { type = activate_unit_type which = armored_car } # AUBM_V4_UNIT_GATE armored_car
-		command = { type = new_model which = armored_car value = 0 } # AUBM_V4_UNIT_GATE armored_car
-		command = { type = build_division which = motorized value = armored_car when = 3 cost = -1.8 where = 60 }
-		command = { type = activate_unit_type which = cas } # AUBM_V4_UNIT_GATE cas
-		command = { type = new_model which = cas value = 0 } # AUBM_V4_UNIT_GATE cas
-		command = { type = activate_unit_type which = escort } # AUBM_V4_UNIT_GATE escort
-		command = { type = new_model which = escort value = 0 } # AUBM_V4_UNIT_GATE escort
-		command = { type = build_division which = cas value = escort when = 2 cost = -2.2 where = 75 }
+		command = { type = build_division which = light_armor value = sp_artillery when = 1 where = 135 }
+		command = { type = build_division which = motorized value = armored_car when = 1 where = 105 }
+		command = { type = build_division which = cas when = 1 where = 90 }
 		command = { type = setflag which = ind_v3_soviet_mass_operations }
 		command = { type = setflag which = ind_v3_soviet_deep_operations }
 	}
 	action_b = {
 	trigger = {
-			# V3_QUEUE_MANPOWER = 70
-			manpower = 70
+			# V3_QUEUE_MANPOWER = 18
+			manpower = 18
 	}
 		ai_chance = 55
 		name = "Adapt deep operations to Indian logistics"
 		command = { type = money value = -450 }
 		command = { type = supplies value = -1250 }
 		command = { type = activate_unit_type which = cas }
-		command = { type = new_model which = cas value = 0 }
-		command = { type = activate_unit_type which = escort }
-		command = { type = new_model which = escort value = 0 }
-		command = { type = activate_unit_type which = motorized } # AUBM_V4_UNIT_GATE motorized
-		command = { type = new_model which = motorized value = 0 } # AUBM_V4_UNIT_GATE motorized
-		command = { type = activate_unit_type which = engineer } # AUBM_V4_UNIT_GATE engineer
-		command = { type = new_model which = engineer value = 0 } # AUBM_V4_UNIT_GATE engineer
-		command = { type = build_division which = motorized value = engineer when = 4 cost = -1.8 where = 60 }
-		command = { type = activate_unit_type which = cas } # AUBM_V4_UNIT_GATE cas
-		command = { type = new_model which = cas value = 0 } # AUBM_V4_UNIT_GATE cas
-		command = { type = activate_unit_type which = escort } # AUBM_V4_UNIT_GATE escort
-		command = { type = new_model which = escort value = 0 } # AUBM_V4_UNIT_GATE escort
-		command = { type = build_division which = cas value = escort when = 2 cost = -2.2 where = 75 }
+		command = { type = build_division which = motorized value = engineer when = 1 where = 105 }
+		command = { type = build_division which = cas when = 1 where = 90 }
 		command = { type = tc_mod value = 4 }
 		command = { type = research_mod value = 1 }
 		command = { type = setflag which = ind_v3_soviet_adapted_operations }
@@ -155,7 +128,7 @@ event = {
 
 	date = { day = 0 month = august year = 1938 }
 	offset = 7
-	deathdate = { day = 29 month = october year = 1938 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 60
@@ -193,9 +166,9 @@ event = {
 		NOT = { flag = ind_v3_soviet_war_command }
 	# V3_ACTION_REACHABILITY_BEGIN
 	OR = {
-		AND = { manpower = 98 }
-		AND = { manpower = 54 }
-		}
+		AND = { manpower = 33 }
+		AND = { manpower = 18 }
+	}
 	# V3_ACTION_REACHABILITY_END
 }
 
@@ -206,27 +179,19 @@ event = {
 
 	date = { day = 0 month = january year = 1940 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1942 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 	trigger = {
-			# V3_QUEUE_MANPOWER = 98
-			manpower = 98
+			# V3_QUEUE_MANPOWER = 33
+			manpower = 33
 	}
 		ai_chance = 45
 		name = "Create the Tashkent-Persia mountain command"
 		command = { type = money value = -450 }
 		command = { type = supplies value = -1450 }
-		command = { type = activate_unit_type which = bergsjaeger } # AUBM_V4_UNIT_GATE bergsjaeger
-		command = { type = new_model which = bergsjaeger value = 0 } # AUBM_V4_UNIT_GATE bergsjaeger
-		command = { type = activate_unit_type which = engineer } # AUBM_V4_UNIT_GATE engineer
-		command = { type = new_model which = engineer value = 0 } # AUBM_V4_UNIT_GATE engineer
-		command = { type = build_division which = bergsjaeger value = engineer when = 4 cost = -1.8 where = 60 }
-		command = { type = activate_unit_type which = motorized } # AUBM_V4_UNIT_GATE motorized
-		command = { type = new_model which = motorized value = 0 } # AUBM_V4_UNIT_GATE motorized
-		command = { type = activate_unit_type which = armored_car } # AUBM_V4_UNIT_GATE armored_car
-		command = { type = new_model which = armored_car value = 0 } # AUBM_V4_UNIT_GATE armored_car
-		command = { type = build_division which = motorized value = armored_car when = 2 cost = -1.8 where = 75 }
+		command = { type = build_division which = bergsjaeger value = engineer when = 1 where = 105 }
+		command = { type = build_division which = motorized value = armored_car when = 1 where = 105 }
 		command = { type = relation which = SOV value = 30 }
 		command = { type = ai which = "v3/IND_soviet.ai" }
 		command = { type = setflag which = ind_v3_soviet_western_command }
@@ -234,25 +199,16 @@ event = {
 	}
 	action_b = {
 	trigger = {
-			# V3_QUEUE_MANPOWER = 54
-			manpower = 54
+			# V3_QUEUE_MANPOWER = 18
+			manpower = 18
 	}
 		ai_chance = 55
 		name = "Build an autonomous eastern anti-Japanese command"
 		command = { type = money value = -425 }
 		command = { type = supplies value = -1400 }
 		command = { type = activate_unit_type which = escort }
-		command = { type = new_model which = escort value = 0 }
-		command = { type = activate_unit_type which = bergsjaeger } # AUBM_V4_UNIT_GATE bergsjaeger
-		command = { type = new_model which = bergsjaeger value = 0 } # AUBM_V4_UNIT_GATE bergsjaeger
-		command = { type = activate_unit_type which = artillery } # AUBM_V4_UNIT_GATE artillery
-		command = { type = new_model which = artillery value = 0 } # AUBM_V4_UNIT_GATE artillery
-		command = { type = build_division which = bergsjaeger value = artillery when = 3 cost = -1.8 where = 60 }
-		command = { type = activate_unit_type which = tactical_bomber } # AUBM_V4_UNIT_GATE tactical_bomber
-		command = { type = new_model which = tactical_bomber value = 0 } # AUBM_V4_UNIT_GATE tactical_bomber
-		command = { type = activate_unit_type which = escort } # AUBM_V4_UNIT_GATE escort
-		command = { type = new_model which = escort value = 0 } # AUBM_V4_UNIT_GATE escort
-		command = { type = build_division which = tactical_bomber value = escort when = 2 cost = -2.5 where = 75 }
+		command = { type = build_division which = bergsjaeger value = artillery when = 1 where = 105 }
+		command = { type = build_division which = tactical_bomber value = escort when = 1 where = 105 }
 		command = { type = construct which = air_base where = 1439 value = 3 trigger = { owned = { province = 1439 data = IND } NOT = { building = { province = 1439 type = air_base value = 8 } } } }
 		command = { type = ai which = "v3/IND_soviet.ai" }
 		command = { type = setflag which = ind_v3_soviet_eastern_command }
@@ -277,7 +233,7 @@ event = {
 
 	date = { day = 0 month = march year = 1942 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1943 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 55
@@ -323,7 +279,7 @@ event = {
 
 	date = { day = 0 month = may year = 1945 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1947 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 65
@@ -357,22 +313,28 @@ event = {
 		NOT = { flag = ind_v3_soviet_science_exchange }
 	}
 	decision_trigger = {
-	OR = {
-		AND = { money = 900 supplies = 700 }
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		money = 900
+		supplies = 700
+		# AUBM_FULL_OPTION_GATE_END
 	}
-}
 
 	name = "The Indo-Soviet Science Exchange"
+	decision_desc = "Cabinet funding estimates: Build a durable scientific partnership [money 900, supplies 700]."
 	desc = "Postwar cooperation can move beyond wartime doctrine into jets, rocketry, heavy engineering and atomic science. The exchange is valuable under either an autonomous or coordinated political line."
 	style = 2
 	picture = "india_v3_industry"
 
 	date = { day = 0 month = january year = 1947 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1950 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 900
+			supplies = 700
+			# AUBM_ACTION_RESERVE_END
 			money = 900
 			supplies = 700
 		}

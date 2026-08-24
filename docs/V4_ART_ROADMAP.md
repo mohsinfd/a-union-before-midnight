@@ -1,4 +1,4 @@
-# V4.1 Visual Roadmap
+# V4.2 Visual Roadmap
 
 ## Objective
 
@@ -12,17 +12,23 @@ not be described as historical photographs.
 
 ## Current Baseline
 
-- All 255 India event entries have valid picture references.
-- All 45 new V4 events have subject-specific generated reconstructions.
-- All 80 custom event-picture files are byte-distinct and locally sourced.
+- All 4,343 campaign entries resolve to valid picture references.
+- All 102 custom event-picture files are byte-distinct and locally sourced.
 - The strict event-art and provenance gate passes with zero issues.
-- All 44 custom minister and military-leader portraits are byte-distinct.
+- All redistributed custom minister and military-leader portraits are
+  byte-distinct; unresolved new leader likenesses use the stock
+  `unknownleader` token.
 - All 31 technology-team images are byte-distinct.
 - Personnel pictures use the correct Darkest Hour dimensions and indexed format.
-- V4 includes an original India map-sprite package covering 32 engine unit
-  types across 13 visual families.
-- The strict service-sprite gate passes with zero errors.
-- V4 still uses Darkest Hour Full model and production-screen panels.
+- The current personal build contains 41 independently addressed Indian unit
+  families, 591 descriptors, 553 animated bitmap strips and 44 palettes.
+- Forty sprite families are rebuilt from a locally installed Blood and Iron
+  donor and one from Darkest Hour core; provenance and hashes are recorded.
+- The personal sprite gate passes, but donor assets are not cleared for public
+  redistribution.
+- V4 uses Darkest Hour Full model and production-screen panels for ordinary
+  units. Donor-derived special-unit cards are excluded; reserved models 33-40
+  currently use the engine's missing-art placeholder pending original panels.
 
 ## Phase 1: Event Art - Complete
 
@@ -77,7 +83,7 @@ India campaign:
 Panels must remain readable at Darkest Hour production-screen scale and may
 not reuse another mod's SKIF or model artwork.
 
-## Phase 4: Map Sprites - Core Set Complete
+## Phase 4: Map Sprites - Source Set Archived
 
 The core service set includes:
 
@@ -88,21 +94,19 @@ The core service set includes:
 - destroyer, cruiser, capital-ship, carrier, submarine and transport
   silhouettes.
 
-The package contains 13 original visual families, 595 `C-IND` descriptors and
-234 indexed animation or palette files. It explicitly covers 32 Darkest Hour
-unit types, including model upgrades through family-level country selection.
-Source sheets are preserved under `tools/art_sources/v4_sprites`.
+The archived experiment contains 13 original visual families and source data
+for 32 Darkest Hour unit types. Source sheets are preserved under
+`tools/art_sources/v4_sprites`, but generated `C-IND` descriptors, bitmaps and
+palettes are excluded from the stable live overlay.
 
 Exit criteria:
 
-- no missing descriptor or bitmap target: complete;
-- no donor-mod palettes or sprite sheets: complete;
-- correct country and unit-family namespace: statically complete;
-- visible distinction at normal map zoom: executable smoke test pending;
-- no crash or blank counter when a model upgrades: executable smoke test
-  pending.
+- stock fallback renderer present: complete;
+- no custom descriptor, bitmap or palette in the live overlay: complete;
+- extended in-engine soak without a DirectDraw crash: required before any
+  bespoke service-sprite package returns.
 
-Completed outputs:
+Archived development outputs:
 
 - `docs/v4_sprite_manifest.csv`
 - `assets/sprite-comparison.png`

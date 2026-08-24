@@ -1,0 +1,84 @@
+# AUBM V4 Allied Western Command switch.
+# Partial AI profile: production and research remain defined by IND.ai.
+
+neutrality = 15
+war = 80
+max_front_ratio = 1.30
+
+combat = {
+	ITA = 90
+	GER = 60
+}
+
+max_front_ratios = {
+	ITA = 2.2
+	GER = 1.5
+}
+
+target = {
+	1053 = 150 # Aden
+	1032 = 135 # Basrah
+	900  = 150 # Suez
+	787  = 90  # Cairo
+	789  = 80  # Alexandria
+	833  = 70  # Djibouti
+	836  = 90  # Mogadishu
+	841  = 80  # Nairobi
+	842  = 100 # Mombasa
+	850  = 85  # Dar es Salaam
+	852  = 75  # Zanzibar
+}
+
+front = {
+	recklessness = 1
+	distrib_vs_ai = offensive
+	distrib_vs_human = reactive
+	base_attack_odds = 1.20
+	min_attack_odds = 1.00
+	max_attack_odds = 3.00
+}
+
+invasion = {
+	invasion = yes
+	base = 0.5
+	random = 4.0
+	coastal = 0.4
+	beach = 0.4
+	distance = 8.0
+	max_distance = 120.0
+	max_staging_distance = 30
+	pocket = 12.0
+	island = 1.5
+	enemy = 2.0
+	adjacentenemy = 2.0
+	air_base = 1.5
+	naval_base = 0.3
+	air_support = 3.0
+	redirect = priority
+	ignore = no
+	help_allies = yes
+	staging_province = { 1533 1517 1511 }
+	target = {
+		1053 = 3000
+		900 = 2800
+		1032 = 2500
+		833 = 1600
+		836 = 1800
+		842 = 1800
+		850 = 1500
+	}
+}
+
+air_marshal = {
+	airsuperioritydesirability = 40.0
+	groundattackdesirability = 35.0
+	interdictiondesirability = 40.0
+	logisticalstrikedesirability = 20.0
+	navalstrikedesirability = 20.0
+}
+
+admiral = {
+	min_core_attack_fleets = 2
+	num_attack_fleets = 3
+	base = { 1533 1517 1511 1493 }
+}

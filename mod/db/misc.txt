@@ -76,13 +76,13 @@ economy = {
 # Reinforce time
 	1 # 0.35
 # Upgrade cost	
-	1 # 0.5
+	0.5 # AUBM V4.2: paid upgrades use the Darkest Hour baseline cost
 # Upgrade time
-	1 # 0.6
+	0.5 # AUBM V4.2: paid upgrades use the Darkest Hour baseline time
 # Reinforce to upgrade modifier. Values from 0.0 (divisions do not get extra upgrade progress on reinforcement) to 1.0 (1:1 ratio, 1% reinforce adds 1% to upgrade progress)
-	0.5 # 0.0
+	0.0 # AUBM V4.2: reinforcement does not bypass the upgrade budget
 # Added extra upgrade progress to units in supply. Added daily progress to all units in supply that can upgrade is equal to Cur_STR/(Max_STR * THIS). Added value is not affected by any other upgrade modifiers. Set to 0 to disable this functionality.
-	720 #0
+	0 # AUBM V4.2: zero upgrade IC means zero upgrade progress
 # Nationalism starting value
 	5 #15
 # Nationalism per MP (added to stating value)

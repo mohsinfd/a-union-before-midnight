@@ -1,7 +1,0 @@
-Sprite = {
-	Bitmap = "Aicro-W-NW.bmp"
-	Origin = { x = 95 y = 80 }
-	Frames = 16
-	Speed = 5
-	Palette = "V3-IND-AIR-Aicro.bmp"
-}

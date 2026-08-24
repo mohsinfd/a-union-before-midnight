@@ -1,0 +1,811 @@
+#########################################################################
+# A Union Before Midnight V4: foreign recipients and diplomatic replies
+#########################################################################
+
+event = {
+	id = 9280600
+	random = no
+	one_action = yes
+	country = CHI
+
+	name = "Indian Aid Reaches China"
+	desc = "Indian lorries, medical stores and machine tools move through Burma into China's interior. The aid cannot decide the war alone, but it keeps workshops operating and confirms that Delhi is prepared to bear material costs for Chinese survival."
+	style = 2
+	picture = "aubm_v4_china_war_deepens"
+
+	action_a = {
+		name = "Put the Indian aid into service"
+		command = { type = supplies value = 700 }
+		command = { type = manpowerpool value = 5 }
+		command = { type = relation which = IND value = 25 }
+	}
+}
+
+event = {
+	id = 9280601
+	random = no
+	one_action = yes
+	country = JAP
+
+	name = "India Expands the Burma Road"
+	desc = "Delhi is no longer merely tolerating the Burma Road. Indian state resources now sustain China's interior war. The Foreign Ministry demands a protest while the army asks whether economic pressure can force India to retreat."
+	style = 2
+	picture = "aubm_v4_tokyo_proposition"
+
+	action_a = {
+		name = "Deliver a formal warning to Delhi"
+		command = { type = relation which = IND value = -30 }
+		command = { type = supplies value = -100 }
+		command = { type = event which = 9280610 where = IND when = 4 }
+	}
+}
+
+event = {
+	id = 9280602
+	random = no
+	one_action = yes
+	country = JAP
+
+	name = "Indian Strategic Goods Reach Japan"
+	desc = "Indian merchants and state purchasing boards have opened a useful source of food, fibres and industrial materials. Tokyo welcomes the commerce and expects political accommodation to follow."
+	style = 2
+	picture = "aubm_v4_tokyo_proposition"
+
+	action_a = {
+		name = "Expand purchases from India"
+		command = { type = supplies value = 500 }
+		command = { type = relation which = IND value = 25 }
+		command = { type = event which = 9280611 where = IND when = 5 }
+	}
+}
+
+event = {
+	id = 9280603
+	random = no
+	one_action = yes
+	country = SOV
+
+	name = "Indian Machinery and Medicine"
+	desc = "A neutral Indian supply mission brings machine tools, pharmaceuticals and transport equipment. The shipment has military value and political meaning: Delhi has chosen to sustain the Soviet war without yet joining it."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+
+	action_a = {
+		name = "Route the shipment to the war economy"
+		command = { type = supplies value = 750 }
+		command = { type = money value = 100 }
+		command = { type = relation which = IND value = 30 }
+	}
+}
+
+event = {
+	id = 9280604
+	random = no
+	one_action = yes
+	country = GER
+
+	name = "Indian Continental Trade"
+	desc = "Indian exporters are prepared to use neutral intermediaries despite the blockade. The volume is limited, but the trade demonstrates that Britain cannot fully isolate Germany from the wider world."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	action_a = {
+		name = "Accept the Indian trade channel"
+		command = { type = supplies value = 450 }
+		command = { type = relation which = IND value = 25 }
+	}
+}
+
+event = {
+	id = 9280605
+	random = no
+	one_action = yes
+	country = ENG
+
+	name = "India Escorts Indian Ocean Commerce"
+	desc = "Indian patrols and convoy information reduce losses on routes Britain can no longer protect alone. The Admiralty recognizes the practical value while noting that Delhi insists on neutral markings and sovereign command."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+
+	action_a = {
+		name = "Coordinate without challenging Indian command"
+		command = { type = supplies value = 300 }
+		command = { type = relation which = IND value = 20 }
+	}
+}
+
+event = {
+	id = 9280606
+	random = no
+	one_action = yes
+	country = ENG
+
+	name = "India Demands Reciprocal Command"
+	desc = "The Indian mission will cooperate only as the representative of a sovereign power. London can no longer treat bases, forces or procurement as an internal imperial arrangement. Accepting the formula gains a powerful partner but concedes the political point."
+	style = 2
+	picture = "aubm_v4_london_settlement"
+
+	action_a = {
+		name = "Recognize India as a sovereign strategic partner"
+		command = { type = relation which = IND value = 30 }
+		command = { type = supplies value = -300 }
+		command = { type = event which = 9280612 where = IND when = 5 }
+	}
+}
+
+event = {
+	id = 9280607
+	random = no
+	one_action = yes
+	country = GER
+
+	name = "The Indian Continental Mission"
+	desc = "India requests equipment and doctrine without accepting German political direction. Berlin sees an opportunity against Britain, but Delhi's insistence on equality limits what can be demanded in return."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	action_a = {
+		name = "Offer technical cooperation against Britain"
+		command = { type = relation which = IND value = 30 }
+		command = { type = supplies value = -250 }
+		command = { type = event which = 9280613 where = IND when = 5 }
+	}
+}
+
+event = {
+	id = 9280608
+	random = no
+	one_action = yes
+	country = SOV
+
+	name = "The Indian Technical Compact"
+	desc = "Delhi accepts Soviet expertise but insists that Indian ministries direct the programme. Moscow can gain a durable Asian partner by respecting the boundary between cooperation and supervision."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	action_a = {
+		name = "Send advisers under Indian authority"
+		command = { type = relation which = IND value = 30 }
+		command = { type = supplies value = -250 }
+		command = { type = event which = 9280614 where = IND when = 5 }
+	}
+}
+
+event = {
+	id = 9280609
+	random = no
+	one_action = yes
+	country = JAP
+
+	name = "Delhi Proposes a Bilateral Asian Compact"
+	desc = "India offers maritime cooperation outside Germany's coalition and refuses any formula that places Indian forces under Japanese command. Tokyo must decide whether partnership with a continental Asian power is worth accepting genuine operational equality."
+	style = 2
+	picture = "aubm_v4_tokyo_proposition"
+
+	action_a = {
+		name = "Accept equality in form, test it in practice"
+		command = { type = relation which = IND value = 25 }
+		command = { type = supplies value = -250 }
+		command = { type = event which = 9280615 where = IND when = 5 }
+	}
+}
+
+event = {
+	id = 9280610
+	random = no
+	country = IND
+
+	name = "Tokyo Protests the Burma Road"
+	desc = "Japan warns that continued state aid to China will affect trade, intelligence and naval relations. Retreat would preserve commerce but advertise that pressure works. Defiance would make India's China policy an open strategic commitment."
+	style = 2
+	picture = "aubm_v4_tokyo_proposition"
+
+	action_a = {
+		ai_chance = 45
+		name = "The road remains open: +1 dissent"
+		command = { type = dissent value = 1 }
+		command = { type = relation which = JAP value = -20 }
+		command = { type = relation which = CHI value = 15 }
+		command = { type = setflag which = ind_v4_japan_pressure_resisted }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Restrict military cargo: +250 money, China -20"
+		command = { type = money value = 250 }
+		command = { type = relation which = JAP value = 15 }
+		command = { type = relation which = CHI value = -20 }
+		command = { type = setflag which = ind_v4_japan_pressure_compromise }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Suspend aid: -2 dissent, lose Asian leverage"
+		command = { type = dissent value = -2 }
+		command = { type = relation which = JAP value = 25 }
+		command = { type = relation which = CHI value = -35 }
+		command = { type = setflag which = ind_v4_japan_pressure_conceded }
+	}
+}
+
+event = {
+	id = 9280611
+	random = no
+	country = IND
+
+	name = "China Condemns Indian Trade with Japan"
+	desc = "Chinese diplomats publish evidence that Indian goods are reaching Japan while Chinese armies fight inland. Delhi can defend neutral commerce, divert part of the profit to relief, or end the contracts and restore its standing in China."
+	style = 2
+	picture = "aubm_v4_china_war_deepens"
+
+	action_a = {
+		ai_chance = 35
+		name = "Neutral trade is legal: +250 money, +2 dissent"
+		command = { type = money value = 250 }
+		command = { type = dissent value = 2 }
+		command = { type = relation which = CHI value = -15 }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Fund Chinese relief: -250 money, China +25"
+		command = { type = money value = -250 }
+		command = { type = relation which = CHI value = 25 }
+		command = { type = relation which = JAP value = -10 }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "End strategic sales: -1 dissent"
+		command = { type = dissent value = -1 }
+		command = { type = relation which = CHI value = 15 }
+		command = { type = relation which = JAP value = -20 }
+	}
+}
+
+event = {
+	id = 9280612
+	random = no
+	country = IND
+
+	name = "London Accepts Sovereign Cooperation"
+	desc = "Britain formally recognizes that Indian bases and forces remain under Indian authority. Equipment and liaison officers will follow, but every future request must be negotiated rather than ordered."
+	style = 2
+	picture = "aubm_v4_london_settlement"
+
+	action_a = {
+		name = "Receive the first equipment mission: +450 supplies"
+		command = { type = supplies value = 450 }
+		command = { type = relation which = ENG value = 15 }
+		command = { type = setflag which = ind_v4_london_sovereign_terms }
+	}
+}
+
+event = {
+	id = 9280613
+	random = no
+	country = IND
+
+	name = "Berlin Offers a Restricted Mission"
+	desc = "German advisers arrive through neutral routes with doctrine manuals, optical equipment and industrial samples. The mission is useful but smaller than Berlin implied, a reminder that blockade and distance constrain every continental promise."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	action_a = {
+		name = "Use what reached India: +350 supplies"
+		command = { type = supplies value = 350 }
+		command = { type = relation which = GER value = 15 }
+		command = { type = setflag which = ind_v4_berlin_mission_received }
+	}
+}
+
+event = {
+	id = 9280614
+	random = no
+	country = IND
+
+	name = "Soviet Advisers Reach India"
+	desc = "Engineers and staff instructors arrive under contracts that place them inside Indian institutions rather than above them. The arrangement provides genuine expertise while preserving political control in Delhi."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	action_a = {
+		name = "Put the mission to work: +300 supplies"
+		command = { type = supplies value = 300 }
+		command = { type = relation which = SOV value = 15 }
+		command = { type = setflag which = ind_v4_moscow_mission_received }
+	}
+}
+
+event = {
+	id = 9280615
+	random = no
+	country = IND
+
+	name = "Tokyo Accepts the Language of Equality"
+	desc = "Japan accepts a bilateral commission and sends naval instructors, while avoiding firm commitments over China or operational command. Delhi has opened a channel, not resolved the conflict between Asian partnership and Japanese expansion."
+	style = 2
+	picture = "aubm_v4_tokyo_proposition"
+
+	action_a = {
+		name = "Test the compact carefully: +300 supplies"
+		command = { type = supplies value = 300 }
+		command = { type = relation which = JAP value = 15 }
+		command = { type = setflag which = ind_v4_tokyo_equal_terms }
+	}
+}
+
+event = {
+	id = 9280616
+	random = no
+	one_action = yes
+	country = CHI
+
+	name = "India Calls an Asian Security Conference"
+	desc = "Delhi proposes consultation, supply planning and mutual respect for sovereignty without asking China to enter a great-power bloc. The framework is limited, but it offers China a major continental partner outside formal alliance politics."
+	style = 2
+	picture = "aubm_v4_asian_strategy_menu"
+
+	action_a = {
+		name = "Send a Chinese delegation"
+		command = { type = relation which = IND value = 25 }
+		command = { type = event which = 9280617 where = IND when = 6 }
+	}
+}
+
+event = {
+	id = 9280617
+	random = no
+	country = IND
+
+	name = "China Answers the Delhi Conference"
+	desc = "China accepts regular consultation and asks that the Burma Road become the first practical test. The response gives India's independent Asian policy substance, but it will be noticed immediately in Tokyo."
+	style = 2
+	picture = "aubm_v4_asian_strategy_menu"
+
+	action_a = {
+		name = "Build the consultation mechanism"
+		command = { type = relation which = CHI value = 20 }
+		command = { type = relation which = JAP value = -10 }
+		command = { type = setflag which = ind_v4_china_conference_partner }
+	}
+}
+
+event = {
+	id = 9280618
+	random = no
+	one_action = yes
+	country = SIA
+
+	name = "India Invites Siam to Delhi"
+	desc = "India offers consultation without demanding that Bangkok abandon every relationship with Japan or Britain. Siam can gain room to manoeuvre by attending, though every major power will study the delegation."
+	style = 2
+	picture = "aubm_v4_asian_strategy_menu"
+
+	action_a = {
+		name = "Attend without accepting an alliance"
+		command = { type = relation which = IND value = 20 }
+		command = { type = event which = 9280619 where = IND when = 7 }
+	}
+}
+
+event = {
+	id = 9280619
+	random = no
+	country = IND
+
+	name = "Siam Attends the Delhi Conference"
+	desc = "Bangkok sends a cautious delegation. It accepts consultation and frontier communication but no alliance. Even this limited success gives Delhi information and influence along the approaches to Burma."
+	style = 2
+	picture = "aubm_v4_asian_strategy_menu"
+
+	action_a = {
+		name = "Establish the frontier liaison"
+		command = { type = relation which = SIA value = 15 }
+		command = { type = intelligence which = us value = 1 }
+		command = { type = setflag which = ind_v4_siam_conference_partner }
+	}
+}
+
+event = {
+	id = 9280620
+	random = no
+	one_action = yes
+	country = ENG
+
+	name = "India Sends Emergency Aid"
+	desc = "Indian supplies arrive while Britain reorganizes after the collapse of France. Delhi has attached no automatic right of command to the shipment, making the aid both useful and unmistakably sovereign."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+
+	action_a = {
+		name = "Acknowledge India as a sovereign partner"
+		command = { type = supplies value = 600 }
+		command = { type = relation which = IND value = 25 }
+		command = { type = event which = 9280624 where = IND when = 4 }
+	}
+}
+
+event = {
+	id = 9280621
+	random = no
+	one_action = yes
+	country = IRQ
+
+	name = "Delhi Offers Mediation"
+	desc = "India offers to recognize Iraqi sovereignty while keeping the Gulf transport network open under negotiated supervision. The proposal gives Baghdad diplomatic room without promising military rescue."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+
+	action_a = {
+		name = "Accept Indian mediation"
+		command = { type = relation which = IND value = 30 }
+		command = { type = dissent value = -1 }
+		command = { type = event which = 9280625 where = IND when = 5 }
+	}
+}
+
+event = {
+	id = 9280622
+	random = no
+	one_action = yes
+	country = PER
+
+	name = "India Funds a Sovereign Corridor"
+	desc = "Delhi offers rolling stock, fuel and engineers on the condition that Persian civil authority remains visible along the route. The bargain is imperfect, but it is better than an unconsulted occupation."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+
+	action_a = {
+		name = "Open the corridor under Persian authority"
+		command = { type = supplies value = 700 }
+		command = { type = relation which = IND value = 25 }
+		command = { type = event which = 9280626 where = IND when = 7 }
+	}
+}
+
+event = {
+	id = 9280623
+	random = no
+	one_action = yes
+	country = USA
+
+	name = "India Proposes Pacific Coordination"
+	desc = "Delhi offers convoy schedules, repair access and intelligence while retaining command of Indian forces. Washington can turn the proposal into a practical partnership without requiring immediate Indian entry into an alliance."
+	style = 2
+	picture = "aubm_v4_japan_southern_choice"
+
+	action_a = {
+		name = "Send equipment under sovereign terms"
+		command = { type = supplies value = 900 }
+		command = { type = relation which = IND value = 30 }
+		command = { type = event which = 9280627 where = IND when = 8 }
+	}
+}
+
+event = {
+	id = 9280624
+	random = no
+	country = IND
+
+	name = "London Acknowledges Indian Sovereignty"
+	desc = "Britain publicly thanks India for emergency aid and accepts that future military cooperation must be negotiated between governments. The statement costs London little, but gives Delhi a precedent it can cite in every later conference."
+	style = 2
+	picture = "aubm_v4_london_settlement"
+
+	action_a = {
+		name = "Record the precedent"
+		command = { type = relation which = ENG value = 10 }
+		command = { type = intelligence which = us value = 1 }
+		command = { type = setflag which = ind_v4_british_sovereignty_precedent }
+	}
+}
+
+event = {
+	id = 9280625
+	random = no
+	country = IND
+
+	name = "Baghdad Accepts Delhi's Mediation"
+	desc = "Iraqi representatives accept Indian mediation and agree to discuss transport access without surrendering the language of sovereignty. Britain remains wary, but Delhi has shown that regional diplomacy need not be dictated from Europe."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+
+	action_a = {
+		name = "Keep the channel open"
+		command = { type = dissent value = -1 }
+		command = { type = relation which = IRQ value = 15 }
+		command = { type = setflag which = ind_v4_iraq_mediation_accepted }
+	}
+}
+
+event = {
+	id = 9280626
+	random = no
+	country = IND
+
+	name = "Tehran Opens the Sovereign Corridor"
+	desc = "Persia accepts Indian engineers and material while keeping its own officials at the stations and depots. The route is slower than military seizure would have been, but it builds durable influence and improves Indian experience with continental logistics."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+
+	action_a = {
+		name = "Put the route into service: +1 transport capacity"
+		command = { type = tc_mod value = 1 }
+		command = { type = relation which = PER value = 15 }
+		command = { type = setflag which = ind_v4_sovereign_persian_corridor }
+	}
+}
+
+event = {
+	id = 9280627
+	random = no
+	country = IND
+
+	name = "Washington Answers Delhi"
+	desc = "American equipment begins moving toward India under an agreement that leaves Indian forces under Delhi's command. The first shipment cannot transform the war, but it gives Pacific coordination a material foundation."
+	style = 2
+	picture = "aubm_v4_japan_southern_choice"
+
+	action_a = {
+		name = "Receive the first shipment: +450 supplies"
+		command = { type = supplies value = 450 }
+		command = { type = relation which = USA value = 15 }
+		command = { type = setflag which = ind_v4_american_pacific_equipment }
+	}
+}
+
+event = {
+	id = 9280630
+	random = no
+	one_action = yes
+	country = ENG
+
+	name = "India Enters the Allied Coalition"
+	desc = "India has entered the war as a sovereign power rather than an imperial auxiliary. London accepts Indian command over Indian forces and releases equipment for the first joint plans."
+	style = 2
+	picture = "aubm_v4_london_settlement"
+
+	action_a = {
+		name = "Recognize India's independent command"
+		command = { type = supplies value = -600 }
+		command = { type = relation which = IND value = 30 }
+		command = { type = event which = 9280634 where = IND when = 5 }
+	}
+}
+
+event = {
+	id = 9280631
+	random = no
+	one_action = yes
+	country = GER
+
+	name = "India Enters the Continental Coalition"
+	desc = "India's entry opens a front against the British imperial system, but Delhi insists upon separate command and equal status. Berlin accepts the formula and dispatches what equipment can pass the blockade."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	action_a = {
+		name = "Accept separate Indian command"
+		command = { type = supplies value = -450 }
+		command = { type = relation which = IND value = 30 }
+		command = { type = event which = 9280635 where = IND when = 7 }
+	}
+}
+
+event = {
+	id = 9280632
+	random = no
+	one_action = yes
+	country = SOV
+
+	name = "India Enters the Socialist Coalition"
+	desc = "Delhi converts technical cooperation into a wartime alliance while retaining national control of its armies. Moscow agrees to coordinate through Tashkent and releases equipment for the new front."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	action_a = {
+		name = "Coordinate through Tashkent"
+		command = { type = supplies value = -500 }
+		command = { type = relation which = IND value = 30 }
+		command = { type = event which = 9280636 where = IND when = 6 }
+	}
+}
+
+event = {
+	id = 9280633
+	random = no
+	one_action = yes
+	country = JAP
+
+	name = "India Enters a Separate Asian Coalition"
+	desc = "India joins Japan through a bilateral agreement outside German leadership. Delhi's insistence on separate command remains contentious, but Tokyo accepts it in exchange for access to a continental partner."
+	style = 2
+	picture = "aubm_v4_tokyo_proposition"
+
+	action_a = {
+		name = "Accept the bilateral command formula"
+		command = { type = supplies value = -500 }
+		command = { type = relation which = IND value = 30 }
+		command = { type = event which = 9280637 where = IND when = 6 }
+	}
+}
+
+event = {
+	id = 9280634
+	random = no
+	country = IND
+
+	name = "British Equipment Reaches India"
+	desc = "The first Allied shipment arrives under papers naming the Government of India as consignee and commander. The language is as important as the matériel: cooperation has begun without restoring imperial authority."
+	style = 2
+	picture = "aubm_v4_london_settlement"
+
+	action_a = {
+		name = "Receive 600 supplies under sovereign terms"
+		command = { type = supplies value = 600 }
+		command = { type = intelligence which = us value = 1 }
+		command = { type = setflag which = ind_v4_allied_entry_recognized }
+		command = { type = setflag which = ind_v4_strategic_weight_1 }
+	}
+}
+
+event = {
+	id = 9280635
+	random = no
+	country = IND
+
+	name = "The Blockade Mission Arrives"
+	desc = "A limited German shipment reaches India through neutral carriers. It is smaller than promised, but confirms that Berlin has accepted an Indian theatre under Indian command."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	action_a = {
+		name = "Receive 450 supplies and the mission"
+		command = { type = supplies value = 450 }
+		command = { type = intelligence which = us value = 1 }
+		command = { type = setflag which = ind_v4_axis_entry_recognized }
+		command = { type = setflag which = ind_v4_strategic_weight_1 }
+	}
+}
+
+event = {
+	id = 9280636
+	random = no
+	country = IND
+
+	name = "The Tashkent Trains Arrive"
+	desc = "Soviet equipment and liaison officers reach the northwestern depots. Coordination remains difficult across Persia and Central Asia, but Moscow has accepted India's national command structure."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	action_a = {
+		name = "Receive 500 supplies and establish liaison"
+		command = { type = supplies value = 500 }
+		command = { type = intelligence which = us value = 1 }
+		command = { type = setflag which = ind_v4_soviet_entry_recognized }
+		command = { type = setflag which = ind_v4_strategic_weight_1 }
+	}
+}
+
+event = {
+	id = 9280637
+	random = no
+	country = IND
+
+	name = "Tokyo Accepts Separate Indian Command"
+	desc = "Japanese matériel reaches eastern India with a formal acknowledgement that Indian formations remain under Delhi's command. The agreement does not settle China or competing ambitions in Southeast Asia, but it prevents immediate subordination."
+	style = 2
+	picture = "aubm_v4_tokyo_proposition"
+
+	action_a = {
+		name = "Receive 500 supplies and test the agreement"
+		command = { type = supplies value = 500 }
+		command = { type = intelligence which = us value = 1 }
+		command = { type = setflag which = ind_v4_japan_entry_recognized }
+		command = { type = setflag which = ind_v4_strategic_weight_1 }
+	}
+}
+
+event = {
+	id = 9280640
+	random = no
+	one_action = yes
+	country = USA
+
+	name = "India Claims a Great-Power Seat"
+	desc = "Delhi argues that its continental resources, ocean bases and wartime contribution require permanent participation in the postwar security system. Washington accepts India as a principal Asian power, while leaving the exact institutions to negotiation."
+	style = 2
+	picture = "aubm_v4_war_aims"
+
+	action_a = {
+		name = "Recognize India as a principal power"
+		command = { type = relation which = IND value = 30 }
+		command = { type = event which = 9280643 where = IND when = 5 }
+	}
+}
+
+event = {
+	id = 9280641
+	random = no
+	one_action = yes
+	country = CHI
+
+	name = "India Proposes an Asian Decolonization Charter"
+	desc = "Delhi asks Asian governments to support fixed timetables for colonial self-government and independence. China endorses the principle while insisting that resistance to Japanese expansion remain part of the new order."
+	style = 2
+	picture = "aubm_v4_asian_strategy_menu"
+
+	action_a = {
+		name = "Endorse the charter with a China clause"
+		command = { type = relation which = IND value = 35 }
+		command = { type = event which = 9280644 where = IND when = 5 }
+	}
+}
+
+event = {
+	id = 9280642
+	random = no
+	one_action = yes
+	country = USA
+
+	name = "India Proposes an Indian Ocean Charter"
+	desc = "Delhi proposes sovereign access agreements, shared rescue and convoy standards, and no automatic foreign command over Indian bases. Washington accepts the framework as the basis for postwar maritime talks."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+
+	action_a = {
+		name = "Open the maritime conference"
+		command = { type = relation which = IND value = 25 }
+		command = { type = event which = 9280645 where = IND when = 5 }
+	}
+}
+
+event = {
+	id = 9280643
+	random = no
+	country = IND
+
+	name = "Washington Recognizes India's Claim"
+	desc = "The United States accepts India as a principal Asian power and invites Delhi into the design of the postwar security system. The institutions remain unfinished, but the question of India's status is no longer deferred."
+	style = 2
+	picture = "aubm_v4_war_aims"
+
+	action_a = {
+		name = "Take the seat and shape the institution"
+		command = { type = relation which = USA value = 15 }
+		command = { type = setflag which = ind_v4_great_power_claim_recognized }
+	}
+}
+
+event = {
+	id = 9280644
+	random = no
+	country = IND
+
+	name = "China Endorses the Delhi Charter"
+	desc = "China supports fixed independence timetables and asks that the charter also reject conquest by Asian empires. Delhi gains a powerful partner, but the added clause makes any later accommodation with Japan more difficult."
+	style = 2
+	picture = "aubm_v4_asian_strategy_menu"
+
+	action_a = {
+		name = "Accept the reciprocal anti-imperial principle"
+		command = { type = relation which = CHI value = 20 }
+		command = { type = relation which = JAP value = -15 }
+		command = { type = setflag which = ind_v4_decolonization_charter_endorsed }
+	}
+}
+
+event = {
+	id = 9280645
+	random = no
+	country = IND
+
+	name = "The Indian Ocean Conference Opens"
+	desc = "American delegates accept sovereign basing, common rescue standards and negotiated convoy planning as the conference agenda. India has converted wartime geography into an institution it can lead."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+
+	action_a = {
+		name = "Lead the maritime conference"
+		command = { type = relation which = USA value = 15 }
+		command = { type = intelligence which = us value = 1 }
+		command = { type = setflag which = ind_v4_ocean_charter_conference }
+	}
+}

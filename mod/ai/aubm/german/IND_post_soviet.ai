@@ -1,0 +1,56 @@
+# AUBM: India after the continental settlement
+
+switch = no
+neutrality = 65
+war = 20
+max_front_ratio = 1.20
+exp_force_ratio = 0.05
+
+combat = { }
+
+befriend = {
+	GER = 60
+	ENG = 45
+	USA = 45
+	JAP = 35
+	PER = 100
+	AFG = 100
+	TRK = 90
+	UZB = 90
+	TAJ = 90
+	KYG = 90
+	KAZ = 90
+}
+
+protect = {
+	PER = 90
+	AFG = 90
+	TRK = 80
+	UZB = 80
+	TAJ = 80
+	KYG = 80
+	KAZ = 80
+}
+
+target = { }
+
+front = {
+	recklessness = 1
+	distrib_vs_ai = defensive
+	distrib_vs_human = reactive
+	enemy_reinf_days = 7
+	reserve_prop = 0.25
+	panic_ratio_vs_ai = 3.0
+	panic_ratio_vs_human = 3.0
+	base_attack_odds = 1.25
+	min_attack_odds = 1.10
+	max_attack_odds = 4.0
+	reinforce_odds = 1.4
+	withdraw_odds = 0.72
+	strength = 0.92
+	organisation = 0.92
+	soft_attack = 1.0
+	hard_attack = 1.0
+	ground_defense = 1.1
+	dig_in = 1.1
+}

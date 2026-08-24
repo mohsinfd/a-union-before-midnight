@@ -19,11 +19,11 @@ event = {
 
 	date = { day = 15 month = september year = 1933 }
 	offset = 5
-	deathdate = { day = 29 month = december year = 1933 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 65
-		name = "Three-division corps: +2 land org, +2 HQ supply; costs 100 money/300 supplies"
+		name = "Three-division corps"
 		command = { type = money value = -100 }
 		command = { type = supplies value = -300 }
 		command = { type = max_organization which = land value = 2 }
@@ -33,7 +33,7 @@ event = {
 	}
 	action_b = {
 		ai_chance = 20
-		name = "Independent brigade groups: +3 land morale, +1 TC; costs 75 money/240 supplies"
+		name = "Independent brigade groups"
 		command = { type = money value = -75 }
 		command = { type = supplies value = -240 }
 		command = { type = morale which = land value = 3 }
@@ -43,7 +43,7 @@ event = {
 	}
 	action_c = {
 		ai_chance = 15
-		name = "Central divisional system: +4 land org, -1 TC; costs 120 money/350 supplies"
+		name = "Central divisional system"
 		command = { type = money value = -120 }
 		command = { type = supplies value = -350 }
 		command = { type = max_organization which = land value = 4 }
@@ -71,11 +71,11 @@ event = {
 
 	date = { day = 15 month = july year = 1934 }
 	offset = 7
-	deathdate = { day = 29 month = october year = 1934 }
+	deathdate = { day = 29 month = october year = 1964 }
 
 	action_a = {
 		ai_chance = 60
-		name = "Four theatre commands: +3 HQ supply, +2 TC; costs 100 money/400 supplies"
+		name = "Four theatre commands"
 		command = { type = money value = -100 }
 		command = { type = supplies value = -400 }
 		command = { type = hq_supply_eff value = 3 }
@@ -85,7 +85,7 @@ event = {
 	}
 	action_b = {
 		ai_chance = 40
-		name = "One mobile general reserve: +2 land morale, +3 TC; costs 90 money/450 supplies"
+		name = "One mobile general reserve"
 		command = { type = money value = -90 }
 		command = { type = supplies value = -450 }
 		command = { type = morale which = land value = 2 }
@@ -105,61 +105,107 @@ event = {
 		NOT = { flag = ind_v4_airfield_security }
 	}
 	decision_trigger = {
+		# AUBM_FULL_OPTION_GATE_BEGIN
 		OR = {
 			AND = { money = 225 supplies = 500 manpower = 30 }
 			AND = { money = 150 supplies = 350 manpower = 20 }
 			AND = { supplies = 550 manpower = 32 }
 		}
+		# AUBM_FULL_OPTION_GATE_END
 	}
 
 	name = "The Airfield Security Act"
-	desc = "A combat wing on a forward strip is vulnerable to sabotage, raiding parties and a sudden ground advance. The air staff asks for dedicated security formations, warning posts and demolition teams. These troops must still be deployed by the player to the bases that matter; no order from Delhi can make an undefended airfield safe."
+	decision_desc = "Cabinet funding estimates: Six airfield guards with AA [money 225, supplies 500, manpower 30]; Four mobile security groups [money 150, supplies 350, manpower 20]; Provincial guards and redundancy [supplies 550, manpower 32]."
+	desc = "A combat wing on a forward strip is vulnerable to sabotage, raiding parties and a sudden ground advance. The air staff asks for dedicated security formations, warning posts and demolition teams. Delhi can post permanent guards directly to the principal airfields or organize lighter formations that remain available for reassignment."
 	style = 2
 	picture = "aubm_v4_airfield_security"
 	decision_picture = "decision_wargames"
 
 	date = { day = 0 month = march year = 1934 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1937 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
-		trigger = { money = 225 supplies = 500 manpower = 30 }
+		trigger = {
+ # AUBM_ACTION_RESERVE_BEGIN
+ money = 225
+ supplies = 500
+ manpower = 30
+ # AUBM_ACTION_RESERVE_END
+ money = 225 supplies = 500 manpower = 30 }
 		ai_chance = 50
-		name = "Six airfield guards with AA: costs 225 money/500 supplies/30 manpower"
+		name = "Six airfield guards with AA"
 		command = { type = money value = -225 }
 		command = { type = supplies value = -500 }
-		command = { type = activate_unit_type which = garrison } # AUBM_V4_UNIT_GATE garrison
-		command = { type = new_model which = garrison value = 0 } # AUBM_V4_UNIT_GATE garrison
-		command = { type = activate_unit_type which = anti_air } # AUBM_V4_UNIT_GATE anti_air
-		command = { type = new_model which = anti_air value = 0 } # AUBM_V4_UNIT_GATE anti_air
-		command = { type = build_division which = garrison value = anti_air when = 6 cost = -1.0 where = 45 }
+		command = { type = manpowerpool value = -30 }
+		command = { type = add_corps which = "Delhi Airfield Security Command" value = land where = 1459 }
+		command = { type = add_division which = "Delhi Airfield Guard Division" value = garrison when = -1 where = anti_air }
+		command = { type = add_corps which = "Bengal Airfield Security Command" value = land where = 1447 }
+		command = { type = add_division which = "Bengal Airfield Guard Division" value = garrison when = -1 where = anti_air }
+		command = { type = add_corps which = "Bombay Airfield Security Command" value = land where = 1517 }
+		command = { type = add_division which = "Bombay Airfield Guard Division" value = garrison when = -1 where = anti_air }
+		command = { type = add_corps which = "Karachi Airfield Security Command" value = land where = 1533 }
+		command = { type = add_division which = "Karachi Airfield Guard Division" value = garrison when = -1 where = anti_air }
+		command = { type = add_corps which = "Madras Airfield Security Command" value = land where = 1500 }
+		command = { type = add_division which = "Madras Airfield Guard Division" value = garrison when = -1 where = anti_air }
+		command = { type = add_corps which = "Rangoon Airfield Security Command" value = land where = 1415 }
+		command = { type = add_division which = "Rangoon Airfield Guard Division" value = garrison when = -1 where = anti_air }
 		command = { type = setflag which = ind_v4_airfield_guard_battalions }
 		command = { type = setflag which = ind_v4_airfield_security }
 	}
 	action_b = {
-		trigger = { money = 150 supplies = 350 manpower = 20 }
+		trigger = {
+ # AUBM_ACTION_RESERVE_BEGIN
+ money = 150
+ supplies = 350
+ manpower = 20
+ # AUBM_ACTION_RESERVE_END
+ money = 150 supplies = 350 manpower = 20 }
 		ai_chance = 35
-		name = "Four mobile security groups: costs 150 money/350 supplies/20 manpower"
+		name = "Four mobile security groups"
 		command = { type = money value = -150 }
 		command = { type = supplies value = -350 }
-		command = { type = activate_unit_type which = militia } # AUBM_V4_UNIT_GATE militia
-		command = { type = new_model which = militia value = 0 } # AUBM_V4_UNIT_GATE militia
-		command = { type = activate_unit_type which = anti_air } # AUBM_V4_UNIT_GATE anti_air
-		command = { type = new_model which = anti_air value = 0 } # AUBM_V4_UNIT_GATE anti_air
-		command = { type = build_division which = militia value = anti_air when = 4 cost = -1.0 where = 35 }
+		command = { type = manpowerpool value = -20 }
+		command = { type = add_corps which = "Northern Airfield Security Group" value = land where = 1459 }
+		command = { type = add_division which = "1st Mobile Airfield Security Division" value = militia when = -1 where = anti_air }
+		command = { type = add_corps which = "Eastern Airfield Security Group" value = land where = 1447 }
+		command = { type = add_division which = "2nd Mobile Airfield Security Division" value = militia when = -1 where = anti_air }
+		command = { type = add_corps which = "Western Airfield Security Group" value = land where = 1517 }
+		command = { type = add_division which = "3rd Mobile Airfield Security Division" value = militia when = -1 where = anti_air }
+		command = { type = add_corps which = "Indus Airfield Security Group" value = land where = 1533 }
+		command = { type = add_division which = "4th Mobile Airfield Security Division" value = militia when = -1 where = anti_air }
 		command = { type = tc_mod value = 1 }
 		command = { type = setflag which = ind_v4_mobile_airfield_security }
 		command = { type = setflag which = ind_v4_airfield_security }
 	}
 	action_c = {
-		trigger = { supplies = 550 manpower = 32 }
+		trigger = {
+ # AUBM_ACTION_RESERVE_BEGIN
+ supplies = 550
+ manpower = 32
+ # AUBM_ACTION_RESERVE_END
+ supplies = 550 manpower = 32 }
 		ai_chance = 15
-		name = "Provincial guards and redundancy: eight militia; costs 550 supplies/32 manpower"
+		name = "Provincial guards and redundancy"
 		command = { type = supplies value = -550 }
+		command = { type = manpowerpool value = -32 }
 		command = { type = dissent value = 1 }
-		command = { type = activate_unit_type which = militia } # AUBM_V4_UNIT_GATE militia
-		command = { type = new_model which = militia value = 0 } # AUBM_V4_UNIT_GATE militia
-		command = { type = build_division which = militia when = 8 cost = -0.8 where = 30 }
+		command = { type = add_corps which = "Delhi Provincial Air Guard" value = land where = 1459 }
+		command = { type = add_division which = "Delhi Provincial Air Guard Division" value = militia when = -1 }
+		command = { type = add_corps which = "Bengal Provincial Air Guard" value = land where = 1447 }
+		command = { type = add_division which = "Bengal Provincial Air Guard Division" value = militia when = -1 }
+		command = { type = add_corps which = "Bombay Provincial Air Guard" value = land where = 1517 }
+		command = { type = add_division which = "Bombay Provincial Air Guard Division" value = militia when = -1 }
+		command = { type = add_corps which = "Sind Provincial Air Guard" value = land where = 1533 }
+		command = { type = add_division which = "Sind Provincial Air Guard Division" value = militia when = -1 }
+		command = { type = add_corps which = "Madras Provincial Air Guard" value = land where = 1500 }
+		command = { type = add_division which = "Madras Provincial Air Guard Division" value = militia when = -1 }
+		command = { type = add_corps which = "Burma Provincial Air Guard" value = land where = 1415 }
+		command = { type = add_division which = "Burma Provincial Air Guard Division" value = militia when = -1 }
+		command = { type = add_corps which = "Punjab Provincial Air Guard" value = land where = 1530 }
+		command = { type = add_division which = "Punjab Provincial Air Guard Division" value = militia when = -1 }
+		command = { type = add_corps which = "Frontier Provincial Air Guard" value = land where = 1537 }
+		command = { type = add_division which = "Frontier Provincial Air Guard Division" value = militia when = -1 }
 		command = { type = setflag which = ind_v4_provincial_airfield_guards }
 		command = { type = setflag which = ind_v4_airfield_security }
 	}
@@ -183,11 +229,11 @@ event = {
 
 	date = { day = 0 month = january year = 1935 }
 	offset = 7
-	deathdate = { day = 29 month = april year = 1935 }
+	deathdate = { day = 29 month = april year = 1964 }
 
 	action_a = {
 		ai_chance = 65
-		name = "Continental dispersal network: +4 air org, radar at five hubs; costs 260/450"
+		name = "Continental dispersal network"
 		command = { type = money value = -260 }
 		command = { type = supplies value = -450 }
 		command = { type = max_organization which = air value = 4 }
@@ -201,7 +247,7 @@ event = {
 	}
 	action_b = {
 		ai_chance = 35
-		name = "Harden three principal hubs: +5 air morale, AA +2; costs 180/500"
+		name = "Harden three principal hubs"
 		command = { type = money value = -180 }
 		command = { type = supplies value = -500 }
 		command = { type = morale which = air value = 5 }
@@ -230,11 +276,11 @@ event = {
 
 	date = { day = 0 month = november year = 1935 }
 	offset = 7
-	deathdate = { day = 29 month = december year = 1935 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 60
-		name = "Full field exercise: four officers gain skill; costs 180 money/450 supplies"
+		name = "Full field exercise"
 		command = { type = money value = -180 }
 		command = { type = supplies value = -450 }
 		command = { type = add_leader_skill which = 251002 value = 1 }
@@ -245,7 +291,7 @@ event = {
 	}
 	action_b = {
 		ai_chance = 40
-		name = "Staff exercise: two officers gain skill; costs 90 money/180 supplies"
+		name = "Staff exercise"
 		command = { type = money value = -90 }
 		command = { type = supplies value = -180 }
 		command = { type = add_leader_skill which = 251002 value = 1 }
@@ -272,11 +318,11 @@ event = {
 
 	date = { day = 0 month = november year = 1937 }
 	offset = 7
-	deathdate = { day = 29 month = december year = 1937 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 65
-		name = "Exercise every service: six officers gain skill; costs 260 money/650 supplies"
+		name = "Exercise every service"
 		command = { type = money value = -260 }
 		command = { type = supplies value = -650 }
 		command = { type = add_leader_skill which = 251005 value = 1 }
@@ -289,7 +335,7 @@ event = {
 	}
 	action_b = {
 		ai_chance = 35
-		name = "Concentrate on field command: three army officers gain skill; costs 140/350"
+		name = "Concentrate on field command"
 		command = { type = money value = -140 }
 		command = { type = supplies value = -350 }
 		command = { type = add_leader_skill which = 251005 value = 1 }
@@ -316,11 +362,11 @@ event = {
 
 	date = { day = 0 month = june year = 1939 }
 	offset = 7
-	deathdate = { day = 29 month = august year = 1939 }
+	deathdate = { day = 29 month = august year = 1964 }
 
 	action_a = {
 		ai_chance = 70
-		name = "Institutionalize mission command: +2 HQ supply; five officers gain skill"
+		name = "Institutionalize mission command"
 		command = { type = money value = -225 }
 		command = { type = supplies value = -600 }
 		command = { type = hq_supply_eff value = 2 }
@@ -333,7 +379,7 @@ event = {
 	}
 	action_b = {
 		ai_chance = 30
-		name = "Keep a tightly controlled staff: +3 land org; three officers gain skill"
+		name = "Keep a tightly controlled staff"
 		command = { type = money value = -175 }
 		command = { type = supplies value = -500 }
 		command = { type = max_organization which = land value = 3 }
@@ -361,11 +407,11 @@ event = {
 
 	date = { day = 0 month = april year = 1936 }
 	offset = 7
-	deathdate = { day = 29 month = july year = 1936 }
+	deathdate = { day = 29 month = july year = 1964 }
 
 	action_a = {
 		ai_chance = 65
-		name = "Fleet-wide damage control: +4 naval morale; costs 220 money/500 supplies"
+		name = "Fleet-wide damage control"
 		command = { type = money value = -220 }
 		command = { type = supplies value = -500 }
 		command = { type = morale which = naval value = 4 }
@@ -374,7 +420,7 @@ event = {
 	}
 	action_b = {
 		ai_chance = 35
-		name = "Concentrate on capital ships: +3 naval org; costs 160 money/350 supplies"
+		name = "Concentrate on capital ships"
 		command = { type = money value = -160 }
 		command = { type = supplies value = -350 }
 		command = { type = max_organization which = naval value = 3 }
@@ -404,8 +450,7 @@ event = {
 
 	action_a = {
 		ai_chance = 100
-		name = "Disperse, scramble and preserve the trained force: +2 air org/+2 morale"
-		command = { type = supplies value = -300 }
+		name = "Disperse, scramble and preserve the trained force: +2/+2"
 		command = { type = max_organization which = air value = 2 }
 		command = { type = morale which = air value = 2 }
 		command = { type = setflag which = ind_v4_wartime_basing_protocol }
@@ -429,11 +474,11 @@ event = {
 
 	date = { day = 0 month = may year = 1940 }
 	offset = 7
-	deathdate = { day = 29 month = july year = 1940 }
+	deathdate = { day = 29 month = july year = 1964 }
 
 	action_a = {
 		ai_chance = 60
-		name = "Rotate the field officers: three land commanders gain skill, +1 land morale"
+		name = "Rotate field officers"
 		command = { type = add_leader_skill which = 251010 value = 1 }
 		command = { type = add_leader_skill which = 251011 value = 1 }
 		command = { type = add_leader_skill which = 251013 value = 1 }
@@ -442,7 +487,7 @@ event = {
 	}
 	action_b = {
 		ai_chance = 40
-		name = "Rotate joint-service staffs: one naval and two air officers gain skill"
+		name = "Rotate joint-service staffs"
 		command = { type = add_leader_skill which = 251103 value = 1 }
 		command = { type = add_leader_skill which = 251201 value = 1 }
 		command = { type = add_leader_skill which = 251202 value = 1 }
@@ -467,11 +512,11 @@ event = {
 
 	date = { day = 0 month = may year = 1942 }
 	offset = 7
-	deathdate = { day = 29 month = july year = 1942 }
+	deathdate = { day = 29 month = july year = 1964 }
 
 	action_a = {
 		ai_chance = 55
-		name = "Deepen the army bench: Bhalla, Shabeg Singh and Shah Nawaz gain skill"
+		name = "Deepen the army bench"
 		command = { type = add_leader_skill which = 251015 value = 1 }
 		command = { type = add_leader_skill which = 250167 value = 1 }
 		command = { type = add_leader_skill which = 251005 value = 1 }
@@ -479,7 +524,7 @@ event = {
 	}
 	action_b = {
 		ai_chance = 45
-		name = "Deepen maritime air command: three service officers gain skill"
+		name = "Deepen maritime air command"
 		command = { type = add_leader_skill which = 251105 value = 1 }
 		command = { type = add_leader_skill which = 251203 value = 1 }
 		command = { type = add_leader_skill which = 251204 value = 1 }
@@ -504,11 +549,11 @@ event = {
 
 	date = { day = 0 month = may year = 1944 }
 	offset = 7
-	deathdate = { day = 29 month = july year = 1944 }
+	deathdate = { day = 29 month = july year = 1964 }
 
 	action_a = {
 		ai_chance = 60
-		name = "Reward field command: Akbar Khan, Wadalia and Mohan Singh gain skill"
+		name = "Reward field command"
 		command = { type = add_leader_skill which = 251006 value = 1 }
 		command = { type = add_leader_skill which = 251008 value = 1 }
 		command = { type = add_leader_skill which = 251004 value = 1 }
@@ -516,7 +561,7 @@ event = {
 	}
 	action_b = {
 		ai_chance = 40
-		name = "Reward operational specialists: three naval and air officers gain skill"
+		name = "Reward operational specialists"
 		command = { type = add_leader_skill which = 251106 value = 1 }
 		command = { type = add_leader_skill which = 251205 value = 1 }
 		command = { type = add_leader_skill which = 251206 value = 1 }

@@ -19,11 +19,11 @@ event = {
 
 	date = { day = 20 month = february year = 1933 }
 	offset = 7
-	deathdate = { day = 29 month = april year = 1933 }
+	deathdate = { day = 29 month = april year = 1964 }
 
 	action_a = {
 		ai_chance = 40
-		name = "Defend collective security: +20 UK/France, -1 dissent; costs 60 money"
+		name = "Defend collective security"
 		command = { type = money value = -60 }
 		command = { type = dissent value = -1 }
 		command = { type = relation which = ENG value = 20 }
@@ -34,7 +34,7 @@ event = {
 	}
 	action_b = {
 		ai_chance = 35
-		name = "Speak for colonized peoples: +15 China, +2 dissent; costs 50 money"
+		name = "Speak for colonized peoples"
 		command = { type = money value = -50 }
 		command = { type = dissent value = 2 }
 		command = { type = relation which = CHI value = 15 }
@@ -45,7 +45,7 @@ event = {
 	}
 	action_c = {
 		ai_chance = 25
-		name = "Guard sovereign freedom: +150 money, -1 intervention; -10 UK/France"
+		name = "Guard sovereign freedom"
 		command = { type = money value = 150 }
 		command = { type = domestic which = interventionism value = -1 }
 		command = { type = relation which = ENG value = -10 }
@@ -72,11 +72,11 @@ event = {
 
 	date = { day = 15 month = may year = 1933 }
 	offset = 7
-	deathdate = { day = 29 month = july year = 1933 }
+	deathdate = { day = 29 month = july year = 1964 }
 
 	action_a = {
 		ai_chance = 55
-		name = "A commercial settlement: +35 UK, -2 dissent; costs 120 money"
+		name = "A commercial settlement"
 		command = { type = money value = -120 }
 		command = { type = dissent value = -2 }
 		command = { type = relation which = ENG value = 35 }
@@ -87,7 +87,7 @@ event = {
 	}
 	action_b = {
 		ai_chance = 30
-		name = "A defence transition: +20 UK, +2 intervention; costs 100/400 supplies"
+		name = "A defence transition"
 		command = { type = money value = -100 }
 		command = { type = supplies value = -400 }
 		command = { type = domestic which = interventionism value = 2 }
@@ -98,7 +98,7 @@ event = {
 	}
 	action_c = {
 		ai_chance = 15
-		name = "A clean break: +1 freedom, +3 dissent, -45 UK; keep the treasury"
+		name = "A clean break"
 		command = { type = dissent value = 3 }
 		command = { type = domestic which = freedom value = 1 }
 		command = { type = relation which = ENG value = -45 }
@@ -125,11 +125,11 @@ event = {
 
 	date = { day = 0 month = september year = 1934 }
 	offset = 7
-	deathdate = { day = 29 month = november year = 1934 }
+	deathdate = { day = 29 month = november year = 1964 }
 
 	action_a = {
 		ai_chance = 40
-		name = "American industrial contracts: +2 IC efficiency, +30 USA; costs 150/250"
+		name = "American industrial contracts"
 		command = { type = money value = -150 }
 		command = { type = supplies value = -250 }
 		command = { type = industrial_modifier which = total value = 2 }
@@ -140,7 +140,7 @@ event = {
 	}
 	action_b = {
 		ai_chance = 30
-		name = "Soviet planning mission: +2 research, +30 USSR; costs 140/350"
+		name = "Soviet planning mission"
 		command = { type = money value = -140 }
 		command = { type = supplies value = -350 }
 		command = { type = research_mod value = 2 }
@@ -151,7 +151,7 @@ event = {
 	}
 	action_c = {
 		ai_chance = 30
-		name = "Open competitive tenders: +1 research, +1 IC efficiency; costs 160/300"
+		name = "Open competitive tenders"
 		command = { type = money value = -160 }
 		command = { type = supplies value = -300 }
 		command = { type = research_mod value = 1 }
@@ -180,11 +180,11 @@ event = {
 
 	date = { day = 0 month = june year = 1935 }
 	offset = 7
-	deathdate = { day = 29 month = august year = 1935 }
+	deathdate = { day = 29 month = august year = 1964 }
 
 	action_a = {
 		ai_chance = 30
-		name = "Open a separate Asian channel: +35 Japan, -10 China; +2 dissent"
+		name = "Open the Delhi-Tokyo channel (unlocks a future compact)"
 		command = { type = dissent value = 2 }
 		command = { type = relation which = JAP value = 35 }
 		command = { type = relation which = CHI value = -10 }
@@ -193,7 +193,7 @@ event = {
 	}
 	action_b = {
 		ai_chance = 40
-		name = "Tie cooperation to peace in China: +25 China, -25 Japan; costs 80"
+		name = "Condition any future compact on peace in China"
 		command = { type = money value = -80 }
 		command = { type = relation which = CHI value = 25 }
 		command = { type = relation which = JAP value = -25 }
@@ -203,7 +203,7 @@ event = {
 	}
 	action_c = {
 		ai_chance = 30
-		name = "Trade without alignment: +200 money, +10 Japan/China; -250 supplies"
+		name = "Limit ties to trade (no strategic compact)"
 		command = { type = money value = 200 }
 		command = { type = supplies value = -250 }
 		command = { type = relation which = JAP value = 10 }

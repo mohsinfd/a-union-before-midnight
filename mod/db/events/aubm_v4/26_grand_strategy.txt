@@ -1,0 +1,303 @@
+#########################################################################
+# A Union Before Midnight V4: revisable strategic orientation
+#########################################################################
+
+event = {
+	id = 9280500
+	random = no
+	persistent = yes
+	country = IND
+
+	decision = {
+		flag = ind_v3_world_role
+		year = 1937
+		atwar = no
+		NOT = { flag = ind_v4_strategy_review_cooldown }
+		NOT = { alliance = { country = IND country = ENG } }
+		NOT = { alliance = { country = IND country = USA } }
+		NOT = { alliance = { country = IND country = GER } }
+		NOT = { alliance = { country = IND country = SOV } }
+		NOT = { alliance = { country = IND country = JAP } }
+	}
+	decision_trigger = {
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		money = 300
+		supplies = 500
+		# AUBM_FULL_OPTION_GATE_END
+	}
+
+	name = "Convene the Strategic Council"
+	# AUBM_DECISION_DESC_MANUAL
+	decision_desc = "No foreign roll: 300 money and 500 supplies open a player-chosen strategic posture review. Orientation only unlocks later negotiations; it does not itself create an alliance or war."
+	desc = "India's 1937 programme is a starting position, not a permanent lock. At peace, Delhi may review its posture once each year. Changing course costs political capital and military preparation; formal coalition entry and declarations of war remain separate decisions."
+	style = 2
+	picture = "aubm_v4_strategic_council"
+
+	date = { day = 0 month = january year = 1937 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 300
+			supplies = 500
+			# AUBM_ACTION_RESERVE_END
+		}
+		name = "Open the review: -300 money, -500 supplies"
+		command = { type = money value = -300 }
+		command = { type = supplies value = -500 }
+		command = { type = setflag which = ind_v4_strategy_review_cooldown }
+		command = { type = trigger which = 9280501 }
+	}
+}
+
+event = {
+	id = 9280501
+	random = no
+	persistent = yes
+	country = IND
+
+	name = "The Strategic Council of India"
+	desc = "The Council separates strategic posture from formal alliance. Armed non-alignment preserves freedom. Allied or Soviet orientation opens coalition talks. Asian and revisionist alternatives require a second, explicit choice."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	action_a = {
+		ai_chance = 40
+		name = "Maintain armed non-alignment"
+		command = { type = clrflag which = ind_v3_joined_allies }
+		command = { type = clrflag which = ind_v3_joined_axis }
+		command = { type = clrflag which = ind_v3_joined_comintern }
+		command = { type = clrflag which = ind_v3_joined_japan }
+		command = { type = clrflag which = ind_v3_allied_orientation }
+		command = { type = clrflag which = ind_v3_axis_orientation }
+		command = { type = clrflag which = ind_v3_soviet_orientation }
+		command = { type = clrflag which = ind_v3_japanese_orientation }
+		command = { type = clrflag which = ind_v3_independent_asia }
+		command = { type = clrflag which = ind_v4_strategy_allied }
+		command = { type = clrflag which = ind_v4_strategy_axis }
+		command = { type = clrflag which = ind_v4_strategy_soviet }
+		command = { type = clrflag which = ind_v4_strategy_japan }
+		command = { type = clrflag which = ind_v4_strategy_independent_asia }
+		command = { type = clrflag which = ind_v42_program_european }
+		command = { type = clrflag which = ind_v42_program_asian }
+		command = { type = clrflag which = ind_v42_program_socialist }
+		command = { type = setflag which = ind_v3_non_aligned }
+		command = { type = setflag which = ind_v4_strategy_nam }
+		command = { type = setflag which = ind_v42_program_nam }
+		command = { type = dissent value = -1 }
+		command = { type = domestic which = interventionism value = -1 }
+		command = { type = relation which = ENG value = 5 }
+		command = { type = relation which = SOV value = 5 }
+		command = { type = relation which = CHI value = 10 }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Orient toward the Allied coalition"
+		command = { type = clrflag which = ind_v3_joined_allies }
+		command = { type = clrflag which = ind_v3_joined_axis }
+		command = { type = clrflag which = ind_v3_joined_comintern }
+		command = { type = clrflag which = ind_v3_joined_japan }
+		command = { type = clrflag which = ind_v3_non_aligned }
+		command = { type = clrflag which = ind_v3_axis_orientation }
+		command = { type = clrflag which = ind_v3_soviet_orientation }
+		command = { type = clrflag which = ind_v3_japanese_orientation }
+		command = { type = clrflag which = ind_v3_independent_asia }
+		command = { type = clrflag which = ind_v4_strategy_nam }
+		command = { type = clrflag which = ind_v4_strategy_axis }
+		command = { type = clrflag which = ind_v4_strategy_soviet }
+		command = { type = clrflag which = ind_v4_strategy_japan }
+		command = { type = clrflag which = ind_v4_strategy_independent_asia }
+		command = { type = clrflag which = ind_v42_program_nam }
+		command = { type = clrflag which = ind_v42_program_asian }
+		command = { type = clrflag which = ind_v42_program_socialist }
+		command = { type = setflag which = ind_v3_allied_orientation }
+		command = { type = setflag which = ind_v4_strategy_allied }
+		command = { type = setflag which = ind_v42_program_european }
+		command = { type = dissent value = 2 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = relation which = ENG value = 40 }
+		command = { type = relation which = USA value = 25 }
+		command = { type = relation which = GER value = -25 }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Orient toward a Soviet compact"
+		command = { type = clrflag which = ind_v3_joined_allies }
+		command = { type = clrflag which = ind_v3_joined_axis }
+		command = { type = clrflag which = ind_v3_joined_comintern }
+		command = { type = clrflag which = ind_v3_joined_japan }
+		command = { type = clrflag which = ind_v3_non_aligned }
+		command = { type = clrflag which = ind_v3_allied_orientation }
+		command = { type = clrflag which = ind_v3_axis_orientation }
+		command = { type = clrflag which = ind_v3_japanese_orientation }
+		command = { type = clrflag which = ind_v3_independent_asia }
+		command = { type = clrflag which = ind_v4_strategy_nam }
+		command = { type = clrflag which = ind_v4_strategy_allied }
+		command = { type = clrflag which = ind_v4_strategy_axis }
+		command = { type = clrflag which = ind_v4_strategy_japan }
+		command = { type = clrflag which = ind_v4_strategy_independent_asia }
+		command = { type = clrflag which = ind_v42_program_nam }
+		command = { type = clrflag which = ind_v42_program_european }
+		command = { type = clrflag which = ind_v42_program_asian }
+		command = { type = setflag which = ind_v3_soviet_orientation }
+		command = { type = setflag which = ind_v4_strategy_soviet }
+		command = { type = setflag which = ind_v42_program_socialist }
+		command = { type = dissent value = 3 }
+		command = { type = domestic which = free_market value = -1 }
+		command = { type = relation which = SOV value = 45 }
+		command = { type = relation which = GER value = -20 }
+	}
+	action_d = {
+		ai_chance = 10
+		name = "Open second menu: Germany, Japan or independent Asia"
+		command = { type = trigger which = 9280502 }
+	}
+}
+
+event = {
+	id = 9280502
+	random = no
+	persistent = yes
+	country = IND
+
+	name = "Alternatives to the Great-Power Blocs"
+	desc = "Delhi may seek a continental partnership with Germany, a bilateral Asian compact with Japan outside German leadership, or an independent Asian coalition opposed to every external empire. Returning to non-alignment remains possible."
+	style = 2
+	picture = "aubm_v4_asian_strategy_menu"
+
+	action_a = {
+		ai_chance = 20
+		name = "Orient toward the Continental coalition"
+		command = { type = clrflag which = ind_v3_joined_allies }
+		command = { type = clrflag which = ind_v3_joined_axis }
+		command = { type = clrflag which = ind_v3_joined_comintern }
+		command = { type = clrflag which = ind_v3_joined_japan }
+		command = { type = clrflag which = ind_v3_non_aligned }
+		command = { type = clrflag which = ind_v3_allied_orientation }
+		command = { type = clrflag which = ind_v3_soviet_orientation }
+		command = { type = clrflag which = ind_v3_japanese_orientation }
+		command = { type = clrflag which = ind_v3_independent_asia }
+		command = { type = clrflag which = ind_v4_strategy_nam }
+		command = { type = clrflag which = ind_v4_strategy_allied }
+		command = { type = clrflag which = ind_v4_strategy_soviet }
+		command = { type = clrflag which = ind_v4_strategy_japan }
+		command = { type = clrflag which = ind_v4_strategy_independent_asia }
+		command = { type = clrflag which = ind_v42_program_nam }
+		command = { type = clrflag which = ind_v42_program_asian }
+		command = { type = clrflag which = ind_v42_program_socialist }
+		command = { type = setflag which = ind_v3_axis_orientation }
+		command = { type = setflag which = ind_v4_strategy_axis }
+		command = { type = setflag which = ind_v42_program_european }
+		command = { type = dissent value = 4 }
+		command = { type = relation which = GER value = 45 }
+		command = { type = relation which = ENG value = -30 }
+		command = { type = relation which = SOV value = -20 }
+	}
+	action_b = {
+		ai_chance = 20
+		name = "Negotiate a separate Delhi-Tokyo compact"
+		command = { type = clrflag which = ind_v3_joined_allies }
+		command = { type = clrflag which = ind_v3_joined_axis }
+		command = { type = clrflag which = ind_v3_joined_comintern }
+		command = { type = clrflag which = ind_v3_joined_japan }
+		command = { type = clrflag which = ind_v3_non_aligned }
+		command = { type = clrflag which = ind_v3_allied_orientation }
+		command = { type = clrflag which = ind_v3_axis_orientation }
+		command = { type = clrflag which = ind_v3_soviet_orientation }
+		command = { type = clrflag which = ind_v3_independent_asia }
+		command = { type = clrflag which = ind_v4_strategy_nam }
+		command = { type = clrflag which = ind_v4_strategy_allied }
+		command = { type = clrflag which = ind_v4_strategy_axis }
+		command = { type = clrflag which = ind_v4_strategy_soviet }
+		command = { type = clrflag which = ind_v4_strategy_independent_asia }
+		command = { type = clrflag which = ind_v42_program_nam }
+		command = { type = clrflag which = ind_v42_program_european }
+		command = { type = clrflag which = ind_v42_program_socialist }
+		command = { type = setflag which = ind_v3_japanese_orientation }
+		command = { type = setflag which = ind_v4_strategy_japan }
+		command = { type = setflag which = ind_v42_program_asian }
+		command = { type = dissent value = 4 }
+		command = { type = relation which = JAP value = 45 }
+		command = { type = relation which = CHI value = -35 }
+		command = { type = relation which = GER value = -10 }
+	}
+	action_c = {
+		ai_chance = 40
+		name = "Build an independent Asian coalition"
+		command = { type = clrflag which = ind_v3_joined_allies }
+		command = { type = clrflag which = ind_v3_joined_axis }
+		command = { type = clrflag which = ind_v3_joined_comintern }
+		command = { type = clrflag which = ind_v3_joined_japan }
+		command = { type = clrflag which = ind_v3_allied_orientation }
+		command = { type = clrflag which = ind_v3_axis_orientation }
+		command = { type = clrflag which = ind_v3_soviet_orientation }
+		command = { type = clrflag which = ind_v3_japanese_orientation }
+		command = { type = clrflag which = ind_v3_non_aligned }
+		command = { type = clrflag which = ind_v4_strategy_nam }
+		command = { type = clrflag which = ind_v4_strategy_allied }
+		command = { type = clrflag which = ind_v4_strategy_axis }
+		command = { type = clrflag which = ind_v4_strategy_soviet }
+		command = { type = clrflag which = ind_v4_strategy_japan }
+		command = { type = clrflag which = ind_v42_program_nam }
+		command = { type = clrflag which = ind_v42_program_european }
+		command = { type = clrflag which = ind_v42_program_socialist }
+		command = { type = setflag which = ind_v3_non_aligned }
+		command = { type = setflag which = ind_v3_independent_asia }
+		command = { type = setflag which = ind_v4_strategy_independent_asia }
+		command = { type = setflag which = ind_v42_program_asian }
+		command = { type = dissent value = 1 }
+		command = { type = relation which = CHI value = 35 }
+		command = { type = relation which = SIA value = 20 }
+		command = { type = relation which = JAP value = -20 }
+	}
+	action_d = {
+		ai_chance = 20
+		name = "Return to armed non-alignment"
+		command = { type = clrflag which = ind_v3_joined_allies }
+		command = { type = clrflag which = ind_v3_joined_axis }
+		command = { type = clrflag which = ind_v3_joined_comintern }
+		command = { type = clrflag which = ind_v3_joined_japan }
+		command = { type = clrflag which = ind_v3_allied_orientation }
+		command = { type = clrflag which = ind_v3_axis_orientation }
+		command = { type = clrflag which = ind_v3_soviet_orientation }
+		command = { type = clrflag which = ind_v3_japanese_orientation }
+		command = { type = clrflag which = ind_v3_independent_asia }
+		command = { type = clrflag which = ind_v4_strategy_allied }
+		command = { type = clrflag which = ind_v4_strategy_axis }
+		command = { type = clrflag which = ind_v4_strategy_soviet }
+		command = { type = clrflag which = ind_v4_strategy_japan }
+		command = { type = clrflag which = ind_v4_strategy_independent_asia }
+		command = { type = clrflag which = ind_v42_program_european }
+		command = { type = clrflag which = ind_v42_program_asian }
+		command = { type = clrflag which = ind_v42_program_socialist }
+		command = { type = setflag which = ind_v3_non_aligned }
+		command = { type = setflag which = ind_v4_strategy_nam }
+		command = { type = setflag which = ind_v42_program_nam }
+		command = { type = dissent value = -1 }
+	}
+}
+
+event = {
+	id = 9280503
+	random = no
+	persistent = yes
+	country = IND
+
+	trigger = { flag = ind_v4_strategy_review_cooldown }
+
+	name = "The Strategic Review Window Reopens"
+	desc = "A year has passed since the last strategic conference. If India remains at peace and outside a major alliance, the Cabinet may reconsider its orientation."
+	style = 2
+	picture = "aubm_v4_strategic_council_returns"
+
+	date = { day = 0 month = january year = 1937 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "The Council may reconvene"
+		command = { type = clrflag which = ind_v4_strategy_review_cooldown }
+	}
+}

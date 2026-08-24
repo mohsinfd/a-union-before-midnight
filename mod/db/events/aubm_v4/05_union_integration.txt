@@ -13,18 +13,16 @@ event = {
 	}
 
 	name = "The Union Register"
-	desc = "The Lahore Accord transferred sovereignty over an immense and uneven inheritance. British Indian provinces, hundreds of princely jurisdictions, Burma, Malaya and Ceylon now answer to Delhi, but they do not yet share one treasury, one civil service or even one definition of citizenship. The Cabinet orders a Union Register: every province, railway, regiment, customs post and public debt is to be counted before promises become policy."
+	desc = "The Lahore Accord transferred sovereignty over an immense and uneven inheritance. British Indian provinces, hundreds of princely jurisdictions, Burma and Ceylon now answer to Delhi, but they do not yet share one treasury, one civil service or even one definition of citizenship. Malaya and Singapore remain British beyond the eastern frontier. The Cabinet orders a Union Register before promises become policy."
 	style = 2
 	picture = "aubm_v4_union_register"
 
 	date = { day = 12 month = january year = 1933 }
 	offset = 2
-	deathdate = { day = 29 month = january year = 1933 }
+	deathdate = { day = 29 month = january year = 1964 }
 
 	action_a = {
-		name = "First count the country we have inherited"
-		command = { type = money value = -40 }
-		command = { type = supplies value = -50 }
+		name = "Open the register across the Union"
 		command = { type = setflag which = aubm_v4_union_register_opened }
 		command = { type = setflag which = aubm_v4_integration_active }
 	}
@@ -48,11 +46,11 @@ event = {
 
 	date = { day = 12 month = february year = 1933 }
 	offset = 5
-	deathdate = { day = 29 month = march year = 1933 }
+	deathdate = { day = 29 month = march year = 1964 }
 
 	action_a = {
 		ai_chance = 45
-		name = "Constituent autonomy: -2 dissent, +10 manpower; costs 60 money"
+		name = "Constituent autonomy"
 		command = { type = money value = -60 }
 		command = { type = dissent value = -2 }
 		command = { type = manpowerpool value = 10 }
@@ -74,7 +72,7 @@ event = {
 	}
 	action_c = {
 		ai_chance = 20
-		name = "Strategic administration: +1 intervention, +250 supplies; +3 dissent"
+		name = "Strategic administration"
 		command = { type = supplies value = 250 }
 		command = { type = dissent value = 3 }
 		command = { type = domestic which = interventionism value = 1 }
@@ -97,17 +95,17 @@ event = {
 	}
 
 	name = "The Customs Line Disappears"
-	desc = "A train from Lahore to Rangoon can cross a maze of provincial excise rules, while ships entering Bombay, Colombo and Singapore pay different schedules. Abolishing internal customs would create a continental market but leave provincial budgets exposed. Delhi can compensate the provinces, impose a uniform tariff immediately, or preserve regional collection under a shared clearing house."
+	desc = "A train from Lahore to Rangoon can cross a maze of provincial excise rules, while ships entering Bombay, Colombo and Rangoon pay different schedules. Abolishing internal customs would create a continental market but leave provincial budgets exposed. Delhi can compensate the provinces, impose a uniform tariff immediately, or preserve regional collection under a shared clearing house."
 	style = 2
 	picture = "aubm_v4_customs_union"
 
 	date = { day = 15 month = march year = 1933 }
 	offset = 7
-	deathdate = { day = 29 month = may year = 1933 }
+	deathdate = { day = 29 month = may year = 1964 }
 
 	action_a = {
 		ai_chance = 45
-		name = "Compensated customs union: +3 IC efficiency, -1 dissent; costs 100"
+		name = "Compensated customs union"
 		command = { type = money value = -100 }
 		command = { type = dissent value = -1 }
 		command = { type = industrial_modifier which = total value = 3 }
@@ -118,7 +116,7 @@ event = {
 	}
 	action_b = {
 		ai_chance = 30
-		name = "Uniform tariff now: +200 money, +2 IC efficiency; +3 dissent"
+		name = "Uniform tariff now"
 		command = { type = money value = 200 }
 		command = { type = dissent value = 3 }
 		command = { type = industrial_modifier which = total value = 2 }
@@ -129,7 +127,7 @@ event = {
 	}
 	action_c = {
 		ai_chance = 25
-		name = "Regional clearing house: +100 money, -2 dissent; no efficiency gain"
+		name = "Regional clearing house"
 		command = { type = money value = 100 }
 		command = { type = dissent value = -2 }
 		command = { type = domestic which = free_market value = 1 }
@@ -150,18 +148,16 @@ event = {
 	}
 
 	name = "One Railway Board, Four Gauges"
-	desc = "The Union Register exposes a transport system built for separate presidencies and imperial ports. Broad, metre and narrow gauge networks meet at costly transhipment yards; Malayan and Burmese lines face outward to the sea. A permanent board begins with signalling standards, common freight accounts and military timetables rather than the fantasy of relaying a continent overnight."
+	desc = "The Union Register exposes a transport system built for separate presidencies and imperial ports. Broad, metre and narrow gauge networks meet at costly transhipment yards; Burma's lines still face outward to the sea. A permanent board begins with signalling standards, common freight accounts and military timetables rather than the fantasy of relaying a continent overnight."
 	style = 2
 	picture = "aubm_v4_railway_board"
 
 	date = { day = 10 month = april year = 1933 }
 	offset = 8
-	deathdate = { day = 29 month = june year = 1933 }
+	deathdate = { day = 29 month = june year = 1964 }
 
 	action_a = {
-		name = "Standardize operations before rebuilding track"
-		command = { type = money value = -90 }
-		command = { type = supplies value = -120 }
+		name = "Standardize operations before rebuilding track: +2 TC"
 		command = { type = tc_mod value = 2 }
 		command = { type = setflag which = aubm_v4_transport_board }
 	}
@@ -174,49 +170,49 @@ event = {
 
 	trigger = {
 		flag = aubm_v4_transport_board
-		NOT = { flag = aubm_v4_malaya_settled }
+		NOT = { flag = aubm_v4_malaya_policy }
 		owned = { province = 1415 data = IND }
 	}
 
-	name = "The Malayan Federal Bargain"
-	desc = "Malaya's ports and rubber estates are indispensable to the Union's balance of payments, but Kuala Lumpur and Singapore did not exchange London for unquestioned rule from Delhi. Malay rulers seek guarantees, Chinese commercial associations demand equal citizenship, and the naval staff sees only the approaches to the Strait. A durable settlement must choose which promise comes first."
+	name = "The Malayan Question"
+	desc = "Malaya and Singapore remain under British rule beyond Burma's frontier. Their rubber, tin and ports are essential to Indian trade, while their airfields could become either a shield or a highway for a hostile fleet. Delhi must decide whether to pursue a formal commercial understanding, rely on private trade, or prepare Burma without accepting British strategic control."
 	style = 2
 	picture = "aubm_v4_malayan_bargain"
 
 	date = { day = 12 month = june year = 1933 }
 	offset = 7
-	deathdate = { day = 29 month = august year = 1933 }
+	deathdate = { day = 29 month = august year = 1964 }
 
 	action_a = {
 		ai_chance = 45
-		name = "Federal guarantees: -3 dissent, +15 manpower; costs 80"
-		command = { type = money value = -80 }
-		command = { type = dissent value = -3 }
-		command = { type = manpowerpool value = 15 }
-		command = { type = setflag which = aubm_v4_malaya_federal }
-		command = { type = setflag which = aubm_v4_union_legitimacy_gain }
-		command = { type = setflag which = aubm_v4_malaya_settled }
+		name = "Negotiate rubber transit: -100 money"
+		command = { type = money value = -100 }
+		command = { type = rarematerialspool value = 150 }
+		command = { type = relation which = ENG value = 20 }
+		command = { type = relation which = SIA value = 10 }
+		command = { type = setflag which = aubm_v4_malaya_treaty }
+		command = { type = setflag which = aubm_v4_malaya_policy }
 	}
 	action_b = {
 		ai_chance = 35
-		name = "Commercial compact: +350 money, +2 rares; +2 dissent"
-		command = { type = money value = 350 }
-		command = { type = rarematerialspool value = 200 }
-		command = { type = dissent value = 2 }
+		name = "Merchant trade: +300 money, +1 dissent"
+		command = { type = money value = 300 }
+		command = { type = rarematerialspool value = 75 }
+		command = { type = dissent value = 1 }
 		command = { type = domestic which = free_market value = 1 }
 		command = { type = setflag which = aubm_v4_malaya_commercial }
-		command = { type = setflag which = aubm_v4_provincial_bargain }
-		command = { type = setflag which = aubm_v4_malaya_settled }
+		command = { type = setflag which = aubm_v4_malaya_policy }
 	}
 	action_c = {
 		ai_chance = 20
-		name = "Straits security zone: +1 defence, naval base +2; +4 dissent"
-		command = { type = dissent value = 4 }
+		name = "Fortify Burma independently: -150/-300"
+		command = { type = money value = -150 }
+		command = { type = supplies value = -300 }
+		command = { type = dissent value = 1 }
 		command = { type = domestic which = defense_lobby value = 1 }
-		command = { type = construct which = naval_base where = 1415 value = 2 trigger = { owned = { province = 1415 data = IND } NOT = { building = { province = 1415 type = naval_base value = 9 } } } }
+		command = { type = max_organization which = land value = 1 }
 		command = { type = setflag which = aubm_v4_malaya_security }
-		command = { type = setflag which = aubm_v4_union_coercion }
-		command = { type = setflag which = aubm_v4_malaya_settled }
+		command = { type = setflag which = aubm_v4_malaya_policy }
 	}
 }
 
@@ -226,7 +222,7 @@ event = {
 	country = IND
 
 	trigger = {
-		flag = aubm_v4_malaya_settled
+		flag = aubm_v4_malaya_policy
 		NOT = { flag = aubm_v4_bengal_revenue_settled }
 	}
 
@@ -237,7 +233,7 @@ event = {
 
 	date = { day = 12 month = august year = 1933 }
 	offset = 8
-	deathdate = { day = 29 month = october year = 1933 }
+	deathdate = { day = 29 month = october year = 1964 }
 
 	action_a = {
 		ai_chance = 35
@@ -252,7 +248,7 @@ event = {
 	}
 	action_b = {
 		ai_chance = 30
-		name = "Back mills and exporters: +400 money, +2 IC efficiency; +3 dissent"
+		name = "Back mills and exporters"
 		command = { type = money value = 400 }
 		command = { type = dissent value = 3 }
 		command = { type = industrial_modifier which = total value = 2 }
@@ -262,7 +258,7 @@ event = {
 	}
 	action_c = {
 		ai_chance = 35
-		name = "Joint jute board: -1 dissent, +100 money; costs 100 supplies"
+		name = "Joint jute board"
 		command = { type = money value = 100 }
 		command = { type = supplies value = -100 }
 		command = { type = dissent value = -1 }
@@ -289,11 +285,11 @@ event = {
 
 	date = { day = 10 month = october year = 1933 }
 	offset = 8
-	deathdate = { day = 29 month = december year = 1933 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 45
-		name = "Constitutional water council: -3 dissent, infra +5 in Punjab/Sindh; costs 100"
+		name = "Constitutional water council"
 		command = { type = money value = -100 }
 		command = { type = dissent value = -3 }
 		command = { type = construct which = infrastructure where = 1533 value = 5 trigger = { owned = { province = 1533 data = IND } NOT = { building = { province = 1533 type = infrastructure value = 0.96 } } } }
@@ -314,7 +310,7 @@ event = {
 	}
 	action_c = {
 		ai_chance = 25
-		name = "Provincial bargain: +150 money, -1 dissent; frontier remains uneven"
+		name = "Provincial bargain"
 		command = { type = money value = 150 }
 		command = { type = dissent value = -1 }
 		command = { type = setflag which = aubm_v4_frontier_provincial }
@@ -340,11 +336,11 @@ event = {
 
 	date = { day = 5 month = december year = 1933 }
 	offset = 5
-	deathdate = { day = 29 month = january year = 1934 }
+	deathdate = { day = 29 month = january year = 1964 }
 
 	action_a = {
 		ai_chance = 40
-		name = "Honour every compact: -4 dissent; costs 150 money/300 supplies"
+		name = "Honour every compact"
 		command = { type = money value = -150 }
 		command = { type = supplies value = -300 }
 		command = { type = dissent value = -4 }
@@ -354,7 +350,7 @@ event = {
 	}
 	action_b = {
 		ai_chance = 30
-		name = "Balance the treasury: +350 money, -5 supplies/day efficiency; +3 dissent"
+		name = "Balance the treasury"
 		command = { type = money value = 350 }
 		command = { type = dissent value = 3 }
 		command = { type = industrial_modifier which = supplies value = -5 }
@@ -364,7 +360,7 @@ event = {
 	}
 	action_c = {
 		ai_chance = 30
-		name = "Issue a development loan: +750 money, +2 IC efficiency; +2 dissent"
+		name = "Issue a development loan"
 		command = { type = money value = 750 }
 		command = { type = dissent value = 2 }
 		command = { type = industrial_modifier which = total value = 2 }
@@ -395,7 +391,7 @@ event = {
 
 	date = { day = 10 month = january year = 1934 }
 	offset = 5
-	deathdate = { day = 29 month = february year = 1934 }
+	deathdate = { day = 29 month = february year = 1964 }
 
 	action_a = {
 		name = "Consent has become a source of power"
@@ -426,7 +422,7 @@ event = {
 
 	date = { day = 10 month = january year = 1934 }
 	offset = 5
-	deathdate = { day = 29 month = february year = 1934 }
+	deathdate = { day = 29 month = february year = 1964 }
 
 	action_a = {
 		name = "Capacity first, legitimacy must follow"
@@ -459,11 +455,10 @@ event = {
 
 	date = { day = 10 month = january year = 1934 }
 	offset = 5
-	deathdate = { day = 29 month = february year = 1934 }
+	deathdate = { day = 29 month = february year = 1964 }
 
 	action_a = {
 		name = "The work of union has only begun"
-		command = { type = money value = -60 }
 		command = { type = dissent value = 2 }
 		command = { type = setflag which = aubm_v4_integration_fragile }
 		command = { type = setflag which = aubm_v4_review_1934 }
@@ -488,11 +483,11 @@ event = {
 
 	date = { day = 12 month = april year = 1934 }
 	offset = 8
-	deathdate = { day = 29 month = june year = 1934 }
+	deathdate = { day = 29 month = june year = 1964 }
 
 	action_a = {
 		ai_chance = 40
-		name = "One national army: +1 professional, +4 org; costs 100/500 and 12 manpower"
+		name = "One army: +10 MP/year, +4 org; -100/-500/-12 MP"
 		command = { type = money value = -100 }
 		command = { type = supplies value = -500 }
 		command = { type = manpowerpool value = -12 }
@@ -505,7 +500,7 @@ event = {
 	}
 	action_b = {
 		ai_chance = 40
-		name = "Territorial commands: +25 manpower, +3 morale; costs 150/350"
+		name = "Territorial: +25 now, +15/year, +3 morale; -150/-350"
 		command = { type = money value = -150 }
 		command = { type = supplies value = -350 }
 		command = { type = manpowerpool value = 25 }
@@ -517,7 +512,7 @@ event = {
 	}
 	action_c = {
 		ai_chance = 20
-		name = "Small professional cadre: +250 money, +5 org; -20 manpower"
+		name = "Cadre: +5 MP/year, +250 money, +5 org; -20 MP"
 		command = { type = money value = 250 }
 		command = { type = manpowerpool value = -20 }
 		command = { type = max_organization which = land value = 5 }
@@ -544,11 +539,10 @@ event = {
 
 	date = { day = 15 month = july year = 1934 }
 	offset = 10
-	deathdate = { day = 29 month = september year = 1934 }
+	deathdate = { day = 29 month = september year = 1964 }
 
 	action_a = {
-		name = "Make information a public utility: +3 TC; costs 75 money"
-		command = { type = money value = -75 }
+		name = "Make information a public utility: +3 TC"
 		command = { type = tc_mod value = 3 }
 		command = { type = intelligence which = us value = 1 }
 		command = { type = setflag which = aubm_v4_statistics_service }
@@ -566,17 +560,17 @@ event = {
 	}
 
 	name = "Rice, Wheat and the Provincial Granaries"
-	desc = "Crop reports reveal the danger of governing a continental food market as separate provinces. Burma exports rice while drought districts ration grain; Punjab has wheat but wagon shortages; Malayan cities depend on shipping. Delhi can build a costly reserve, guarantee private inter-provincial trade, or give the army priority over civilian distribution."
+	desc = "Crop reports reveal the danger of governing a continental food market as separate provinces. Burma exports rice while drought districts ration grain; Punjab has wheat but wagon shortages; Ceylon's cities depend on shipping. Delhi can build a costly reserve, guarantee private inter-provincial trade, or give the army priority over civilian distribution."
 	style = 2
 	picture = "aubm_v4_provincial_granaries"
 
 	date = { day = 5 month = october year = 1934 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1934 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 45
-		name = "Union grain reserve: +1000 supplies, -2 dissent; costs 100 money"
+		name = "Union grain reserve"
 		command = { type = money value = -100 }
 		command = { type = supplies value = 1000 }
 		command = { type = dissent value = -2 }
@@ -585,7 +579,7 @@ event = {
 	}
 	action_b = {
 		ai_chance = 35
-		name = "Guarantee the grain trade: +3 supply efficiency, +150 money; +1 dissent"
+		name = "Guarantee the grain trade"
 		command = { type = money value = 150 }
 		command = { type = dissent value = 1 }
 		command = { type = industrial_modifier which = supplies value = 3 }
@@ -595,7 +589,7 @@ event = {
 	}
 	action_c = {
 		ai_chance = 20
-		name = "Military priority: +1400 supplies; +4 dissent, -10 manpower"
+		name = "Military priority"
 		command = { type = supplies value = 1400 }
 		command = { type = dissent value = 4 }
 		command = { type = manpowerpool value = -10 }
@@ -623,11 +617,11 @@ event = {
 
 	date = { day = 10 month = april year = 1935 }
 	offset = 10
-	deathdate = { day = 29 month = june year = 1935 }
+	deathdate = { day = 29 month = june year = 1964 }
 
 	action_a = {
 		trigger = { flag = ind_v3_burmese_autonomy }
-		name = "Fund constituent autonomy: -3 dissent, +15 manpower; costs 220"
+		name = "Fund constituent autonomy"
 		command = { type = money value = -220 }
 		command = { type = dissent value = -3 }
 		command = { type = manpowerpool value = 15 }
@@ -638,7 +632,7 @@ event = {
 	}
 	action_b = {
 		trigger = { flag = ind_v3_eastern_administration }
-		name = "Build the eastern secretariat: +4 TC, infra +5; costs 180/250"
+		name = "Build the eastern secretariat"
 		command = { type = money value = -180 }
 		command = { type = supplies value = -250 }
 		command = { type = dissent value = 2 }
@@ -661,13 +655,13 @@ event = {
 	}
 
 	name = "The Fiscal Federalism Act"
-	desc = "Two years of improvised grants have made every provincial budget a negotiation with Delhi. Finance officials propose a durable division of income tax, customs, defence and development spending. A generous formula secures cooperation, a central formula funds great-power projects, and an equalization pool favours poorer regions at the expense of Bombay, Bengal and Malaya."
+	desc = "Two years of improvised grants have made every provincial budget a negotiation with Delhi. Finance officials propose a durable division of income tax, customs, defence and development spending. A generous formula secures cooperation, a central formula funds great-power projects, and an equalization pool favours poorer regions at the expense of Bombay, Bengal and Ceylon."
 	style = 2
 	picture = "aubm_v4_fiscal_federalism"
 
 	date = { day = 12 month = july year = 1935 }
 	offset = 10
-	deathdate = { day = 29 month = september year = 1935 }
+	deathdate = { day = 29 month = september year = 1964 }
 
 	action_a = {
 		ai_chance = 40
@@ -680,7 +674,7 @@ event = {
 	}
 	action_b = {
 		ai_chance = 35
-		name = "Central development levy: +500 money, +3 IC efficiency; +4 dissent"
+		name = "Central development levy"
 		command = { type = money value = 500 }
 		command = { type = dissent value = 4 }
 		command = { type = industrial_modifier which = total value = 3 }
@@ -725,7 +719,7 @@ event = {
 
 	date = { day = 10 month = january year = 1936 }
 	offset = 10
-	deathdate = { day = 29 month = february year = 1936 }
+	deathdate = { day = 29 month = february year = 1964 }
 
 	action_a = {
 		name = "A continental federation is becoming ordinary"
@@ -755,7 +749,7 @@ event = {
 
 	date = { day = 10 month = january year = 1936 }
 	offset = 10
-	deathdate = { day = 29 month = february year = 1936 }
+	deathdate = { day = 29 month = february year = 1964 }
 
 	action_a = {
 		name = "Use capacity carefully while the bargain matures"
@@ -777,8 +771,9 @@ event = {
 		atwar = no
 	}
 	decision_trigger = {
-		money = 350
-		supplies = 600
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		# A programme without a resource threshold is available.
+		# AUBM_FULL_OPTION_GATE_END
 	}
 	trigger = {
 		flag = aubm_v4_review_1936
@@ -787,6 +782,7 @@ event = {
 	}
 
 	name = "Authorize the Federal Works Compact"
+	decision_desc = "Cabinet funding estimates: Shared works: eight regions gain +5 infra; costs 350/600 [money 350, supplies 600, manpower 8]; Strategic trunk routes [money 280, supplies 500, manpower 6]; Leave works to provinces: keep the treasury, -2 dissent [no minimum reserve]."
 	desc = "The railway board proposes a five-year programme of modest improvements across every major region rather than another showcase corridor. Provincial matching funds will spread the benefit and the political credit, but the Union must supply engineering cadres, steel and a guaranteed budget."
 	style = 2
 	picture = "aubm_v4_federal_works_compact"
@@ -794,9 +790,16 @@ event = {
 
 	date = { day = 0 month = april year = 1936 }
 	offset = 30
-	deathdate = { day = 29 month = december year = 1937 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 350
+			supplies = 600
+			manpower = 8
+			# AUBM_ACTION_RESERVE_END
+		}
 		ai_chance = 55
 		name = "Shared works: eight regions gain +5 infra; costs 350/600"
 		command = { type = money value = -350 }
@@ -815,8 +818,15 @@ event = {
 		command = { type = setflag which = aubm_v4_federal_works_authorized }
 	}
 	action_b = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 280
+			supplies = 500
+			manpower = 6
+			# AUBM_ACTION_RESERVE_END
+		}
 		ai_chance = 30
-		name = "Strategic trunk routes: four regions gain +10 infra; costs 280/500"
+		name = "Strategic trunk routes"
 		command = { type = money value = -280 }
 		command = { type = supplies value = -500 }
 		command = { type = manpowerpool value = -6 }
@@ -856,7 +866,7 @@ event = {
 
 	date = { day = 10 month = september year = 1936 }
 	offset = 15
-	deathdate = { day = 29 month = november year = 1936 }
+	deathdate = { day = 29 month = november year = 1964 }
 
 	action_a = {
 		ai_chance = 35
@@ -904,11 +914,11 @@ event = {
 
 	date = { day = 5 month = january year = 1938 }
 	offset = 10
-	deathdate = { day = 29 month = february year = 1938 }
+	deathdate = { day = 29 month = february year = 1964 }
 
 	action_a = {
 		trigger = { flag = aubm_v4_union_rooted }
-		name = "A federation ready to choose its own war: -4 dissent, +30 manpower"
+		name = "A federation ready to choose its own war"
 		command = { type = dissent value = -4 }
 		command = { type = manpowerpool value = 30 }
 		command = { type = setflag which = aubm_v4_union_mature }

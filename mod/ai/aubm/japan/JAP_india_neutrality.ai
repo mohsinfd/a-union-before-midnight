@@ -1,0 +1,50 @@
+# AUBM: Japan honours Soviet neutrality while India fights independently.
+
+combat = { IND = -1 SOV = -1 CHI = 100 CHC = 70 PHI = 100 USA = 80 }
+befriend = { IND = 190 MAN = 100 SIA = 80 }
+protect = { IND = 130 MAN = 100 SIA = 60 }
+
+max_front_ratios = { IND = 0.05 SOV = 0.05 CHI = 3.0 PHI = 4.0 USA = 2.0 }
+
+front = {
+	recklessness = 1
+	base_attack_odds = 1.25
+	min_attack_odds = 1.10
+	passivity = { IND = 100 SOV = 100 MON = 100 }
+}
+
+target = {
+	1371 = 180
+	1565 = 350
+	1567 = 300
+	1568 = 300
+	1579 = 300
+}
+
+invasion = {
+	invasion = yes
+	base = 0.3 random = 4.0 coastal = 0.3 beach = 0.2
+	max_distance = 800.0 max_staging_distance = 90 distance = 2.0
+	pocket = 15.0 island = 3.0 enemy = 2.0 adjacentenemy = 2.0
+	air_base = 2.0 naval_base = 1.5 air_support = 3.0
+	redirect = priority ignore = no help_allies = no
+	staging_province = { 1361 1553 1667 1670 1685 1726 }
+	target = {
+		1565 = 4000 1567 = 3750 1568 = 3750 1572 = 3500 1579 = 3750
+		1661 = 3250 1662 = 3250 1667 = 3250 1670 = 3250
+		1683 = 3400 1684 = 3200 1685 = 3300 1686 = 3100 1726 = 3500
+	}
+}
+
+admiral = {
+	min_org = 90 min_dmg = 90 return_org = 55 return_dmg = 80
+	min_core_attack_fleets = 2 num_attack_fleets = 4
+	ignore = {
+		"Persian Gulf" "North Arabian Sea" "South Arabian Sea" "Coast of Ceylon"
+		"East Bay of Bengal" "West Bay of Bengal" "Mascarene Plateau"
+		"Mid-Indian Ridge" "Ninetyeast Ridge" "Southeast Indian Ocean"
+		"Southwest Indian Ocean" "Java Trench" "Timor Sea"
+		"West Coast of Australia" "East Great Australian Bight" "West Great Australian Bight"
+	}
+	base = { 1361 1553 1667 1670 1685 1726 }
+}

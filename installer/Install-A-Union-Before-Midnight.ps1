@@ -1,6 +1,6 @@
 ﻿param(
     [string]$GameRoot,
-    [string]$TargetName = "A Union Before Midnight V4",
+    [string]$TargetName = "A Union Before Midnight V4.2",
     [switch]$Force
 )
 

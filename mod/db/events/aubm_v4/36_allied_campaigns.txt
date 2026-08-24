@@ -1,0 +1,2664 @@
+#########################################################################
+# A Union Before Midnight V4: Allied campaigns and Indian peace order
+#########################################################################
+# This module deliberately separates four kinds of state:
+#   strategy -> treaty -> war entry -> theatre command -> settlement.
+# Flags record Indian intent and completed negotiations. Battlefield
+# control, rather than a preceding event flag, records campaign success.
+#
+# Verified objective provinces (Map_1):
+#   1415 Rangoon, 1442 Imphal, 1421 Port Blair
+#   1432 Singapore, 1438 Kuala Lumpur, 1624 Kuching
+#   1511 Colombo, 1533 Karachi, 1053 Aden, 1032 Basrah, 900 Suez
+#   836 Mogadishu, 841 Nairobi, 842 Mombasa, 850 Dar es Salaam
+#   852 Zanzibar, 1041 Kuwait, 1632 Balikpapan, 1647 Batavia
+#
+# Reserved event range used here: 9281200-9281275.
+#########################################################################
+
+#########################################################################
+# I. The Allied framework
+#########################################################################
+
+event = {
+	id = 9281200
+	random = no
+	persistent = yes
+	country = IND
+
+	trigger = {
+		OR = {
+			NOT = { flag = ind_aubm_wartime_framework }
+			flag = ind_aubm_route_allied
+			flag = ind_v3_allied_orientation
+			flag = ind_v4_strategy_allied
+		}
+		year = 1938
+		exists = ENG
+		NOT = { alliance = { country = IND country = ENG } }
+		NOT = { alliance = { country = IND country = USA } }
+		NOT = { alliance = { country = IND country = GER } }
+		NOT = { alliance = { country = IND country = SOV } }
+		NOT = { alliance = { country = IND country = JAP } }
+		OR = {
+			flag = ind_v3_allied_orientation
+			flag = ind_v4_strategy_allied
+			flag = ind_v3_joined_allies
+			flag = ind_v4_london_sovereign_terms
+			flag = ind_v4_allied_entry_recognized
+			alliance = { country = IND country = ENG }
+		}
+		NOT = { flag = ind_v4a_allied_framework_started }
+		NOT = {
+			OR = {
+				flag = ind_v4a_treaty_commonwealth
+				flag = ind_v4a_treaty_naval_compact
+				flag = ind_v4a_treaty_formal_alliance
+				flag = ind_v4a_treaty_cobelligerent
+			}
+		}
+		OR = {
+			NOT = { flag = ind_v4a_allied_framework_settled }
+			NOT = { flag = ind_v4a_limited_accommodation }
+		}
+	}
+
+	name = "The Delhi Allied Conference"
+	desc = "Allied orientation does not answer command or war obligations. Every action shows its fixed accept/counter/refuse roll; relations, IC and force size do not modify these opening replies. A formal alliance merges wars, while Commonwealth, naval and co-belligerent formulas preserve separate Indian declarations."
+	style = 2
+	picture = "aubm_v4_london_settlement"
+
+	date = { day = 0 month = january year = 1938 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		ai_chance = 30
+		name = "Commonwealth: accept 55%, counter 30%, refuse 15%"
+		command = { type = clrflag which = ind_v4a_allied_framework_settled }
+		command = { type = clrflag which = ind_v4a_limited_accommodation }
+		command = { type = clrflag which = ind_v4a_proposal_commonwealth }
+		command = { type = clrflag which = ind_v4a_proposal_naval_compact }
+		command = { type = clrflag which = ind_v4a_proposal_formal_alliance }
+		command = { type = clrflag which = ind_v4a_proposal_cobelligerent }
+		command = { type = setflag which = ind_v4a_allied_framework_started }
+		command = { type = setflag which = ind_v4a_proposal_commonwealth }
+		command = { type = event which = 9281201 where = ENG when = 2 }
+	}
+	action_b = {
+		trigger = { exists = USA }
+		ai_chance = 25
+		name = "US naval compact: accept 50%, counter 35%, refuse 15%"
+		command = { type = clrflag which = ind_v4a_allied_framework_settled }
+		command = { type = clrflag which = ind_v4a_limited_accommodation }
+		command = { type = clrflag which = ind_v4a_proposal_commonwealth }
+		command = { type = clrflag which = ind_v4a_proposal_naval_compact }
+		command = { type = clrflag which = ind_v4a_proposal_formal_alliance }
+		command = { type = clrflag which = ind_v4a_proposal_cobelligerent }
+		command = { type = setflag which = ind_v4a_allied_framework_started }
+		command = { type = setflag which = ind_v4a_proposal_naval_compact }
+		command = { type = event which = 9281202 where = USA when = 2 }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "Allied equality: accept 60%, counter 30%, refuse 10%"
+		command = { type = clrflag which = ind_v4a_allied_framework_settled }
+		command = { type = clrflag which = ind_v4a_limited_accommodation }
+		command = { type = clrflag which = ind_v4a_proposal_commonwealth }
+		command = { type = clrflag which = ind_v4a_proposal_naval_compact }
+		command = { type = clrflag which = ind_v4a_proposal_formal_alliance }
+		command = { type = clrflag which = ind_v4a_proposal_cobelligerent }
+		command = { type = setflag which = ind_v4a_allied_framework_started }
+		command = { type = setflag which = ind_v4a_proposal_formal_alliance }
+		command = { type = event which = 9281203 where = ENG when = 2 }
+	}
+	action_d = {
+		ai_chance = 20
+		name = "Co-belligerency: accept 50%, counter 35%, refuse 15%"
+		command = { type = clrflag which = ind_v4a_allied_framework_settled }
+		command = { type = clrflag which = ind_v4a_limited_accommodation }
+		command = { type = clrflag which = ind_v4a_proposal_commonwealth }
+		command = { type = clrflag which = ind_v4a_proposal_naval_compact }
+		command = { type = clrflag which = ind_v4a_proposal_formal_alliance }
+		command = { type = clrflag which = ind_v4a_proposal_cobelligerent }
+		command = { type = setflag which = ind_v4a_allied_framework_started }
+		command = { type = setflag which = ind_v4a_proposal_cobelligerent }
+		command = { type = event which = 9281204 where = ENG when = 2 }
+	}
+}
+
+event = {
+	id = 9281201
+	random = no
+	persistent = yes
+	country = ENG
+
+	trigger = { flag = ind_v4a_proposal_commonwealth }
+
+	name = "Delhi Proposes a Sovereign Commonwealth"
+	desc = "India offers consultation, reciprocal access and common planning without restoring imperial authority or automatically inheriting British wars. Acceptance creates a durable partnership. A counteroffer would ask for wartime use of Indian ports. Refusal may push Delhi toward Washington or entirely independent action."
+	style = 2
+	picture = "aubm_v4_london_settlement"
+
+	action_a = {
+		ai_chance = 55
+		name = "Recognize a sovereign Commonwealth partner"
+		command = { type = relation which = IND value = 35 }
+		command = { type = access which = IND }
+		command = { type = guarantee which = ENG where = IND }
+		command = { type = event which = 9281205 where = IND when = 2 }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Counter with a wartime basing clause"
+		command = { type = relation which = IND value = 10 }
+		command = { type = event which = 9281206 where = IND when = 2 }
+	}
+	action_c = {
+		ai_chance = 15
+		name = "Refuse to dilute the existing Commonwealth"
+		command = { type = relation which = IND value = -25 }
+		command = { type = event which = 9281207 where = IND when = 2 }
+	}
+}
+
+event = {
+	id = 9281202
+	random = no
+	persistent = yes
+	country = USA
+
+	trigger = { flag = ind_v4a_proposal_naval_compact }
+
+	name = "Delhi Proposes an Anglo-American Naval Compact"
+	desc = "India offers convoy intelligence, repair coordination and a sovereign Indian Ocean command. Washington can recognize India directly, insist that Britain join a tripartite arrangement, or decline a commitment beyond existing Pacific plans."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+
+	action_a = {
+		ai_chance = 50
+		name = "Recognize India's ocean command"
+		command = { type = relation which = IND value = 35 }
+		command = { type = access which = IND }
+		command = { type = guarantee which = USA where = IND }
+		command = { type = supplies value = -500 }
+		command = { type = event which = 9281208 where = IND when = 3 }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Counter with a tripartite basing compact"
+		command = { type = relation which = IND value = 15 }
+		command = { type = event which = 9281209 where = IND when = 3 }
+	}
+	action_c = {
+		ai_chance = 15
+		name = "Keep Pacific planning inside existing channels"
+		command = { type = relation which = IND value = -15 }
+		command = { type = event which = 9281210 where = IND when = 3 }
+	}
+}
+
+event = {
+	id = 9281203
+	random = no
+	persistent = yes
+	country = ENG
+
+	trigger = { flag = ind_v4a_proposal_formal_alliance }
+
+	name = "India Requests a Formal Alliance of Equals"
+	desc = "Delhi is prepared to enter Britain's coalition, but only as a sovereign power retaining national command. Britain may accept equality, demand an integrated theatre command, or refuse a settlement that would permanently transform the Allied leadership."
+	style = 2
+	picture = "aubm_v4_london_settlement"
+
+	action_a = {
+		ai_chance = 60
+		name = "Admit India as a sovereign ally"
+		command = { type = alliance which = IND when = 2 }
+		command = { type = relation which = IND value = 40 }
+		command = { type = supplies value = -800 }
+		command = { type = event which = 9281211 where = IND when = 2 }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Demand an integrated theatre command"
+		command = { type = relation which = IND value = 5 }
+		command = { type = event which = 9281212 where = IND when = 2 }
+	}
+	action_c = {
+		ai_chance = 10
+		name = "Decline formal Indian membership"
+		command = { type = relation which = IND value = -30 }
+		command = { type = event which = 9281213 where = IND when = 2 }
+	}
+}
+
+event = {
+	id = 9281204
+	random = no
+	persistent = yes
+	country = ENG
+
+	trigger = { flag = ind_v4a_proposal_cobelligerent }
+
+	name = "India Offers Independent Co-Belligerency"
+	desc = "India proposes to fight selected common enemies without entering Britain's alliance or accepting automatic war obligations. London can recognize the arrangement, counter with a reciprocal wartime-access clause, or refuse coordination with an unbound military partner."
+	style = 2
+	picture = "aubm_v4_london_settlement"
+
+	action_a = {
+		ai_chance = 50
+		name = "Recognize India as an independent co-belligerent"
+		command = { type = relation which = IND value = 30 }
+		command = { type = access which = IND }
+		command = { type = guarantee which = ENG where = IND }
+		command = { type = event which = 9281214 where = IND when = 2 }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Counter with reciprocal wartime access"
+		command = { type = relation which = IND value = 10 }
+		command = { type = event which = 9281215 where = IND when = 2 }
+	}
+	action_c = {
+		ai_chance = 15
+		name = "Refuse operational coordination"
+		command = { type = relation which = IND value = -20 }
+		command = { type = event which = 9281216 where = IND when = 2 }
+	}
+}
+
+event = {
+	id = 9281205
+	random = no
+	persistent = yes
+	country = IND
+	one_action = yes
+
+	name = "The Sovereign Commonwealth Charter"
+	desc = "London accepts consultation between equal governments. India grants reciprocal access but remains outside automatic British war commitments. The charter opens every Allied theatre while preserving Delhi's right to decide when and whom to fight."
+	style = 2
+	picture = "aubm_v4_london_settlement"
+
+	action_a = {
+		name = "Ratify reciprocal cooperation"
+		command = { type = access which = ENG }
+		command = { type = non_aggression which = IND where = ENG when = 720 }
+		command = { type = supplies value = 400 }
+		command = { type = setflag which = ind_v4a_treaty_commonwealth }
+		command = { type = setflag which = ind_v4a_sovereign_command }
+		command = { type = setflag which = ind_v4a_allied_framework_settled }
+		command = { type = setflag which = ind_v4_strategic_weight_1 }
+	}
+}
+
+event = {
+	id = 9281206
+	random = no
+	persistent = yes
+	country = IND
+
+	name = "London's Commonwealth Counteroffer"
+	desc = "Britain accepts Indian sovereignty but asks for wartime access to Bombay, Karachi and Rangoon. Delhi may trade access for materiel, redirect the negotiation toward Washington, or adopt co-belligerency without a permanent British base clause."
+	style = 2
+	picture = "aubm_v4_london_settlement"
+
+	action_a = {
+		ai_chance = 55
+		name = "Grant wartime access: +700 supplies, +2 dissent"
+		command = { type = access which = ENG }
+		command = { type = supplies value = 700 }
+		command = { type = dissent value = 2 }
+		command = { type = setflag which = ind_v4a_treaty_commonwealth }
+		command = { type = setflag which = ind_v4a_allied_base_access }
+		command = { type = setflag which = ind_v4a_sovereign_command }
+		command = { type = setflag which = ind_v4a_allied_framework_settled }
+	}
+	action_b = {
+		trigger = { exists = USA }
+		ai_chance = 25
+		name = "Ask Washington for an ocean compact"
+		command = { type = clrflag which = ind_v4a_proposal_commonwealth }
+		command = { type = setflag which = ind_v4a_proposal_naval_compact }
+		command = { type = relation which = ENG value = -10 }
+		command = { type = event which = 9281202 where = USA when = 2 }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Adopt sovereign co-belligerency"
+		command = { type = relation which = ENG value = 10 }
+		command = { type = setflag which = ind_v4a_treaty_cobelligerent }
+		command = { type = setflag which = ind_v4a_sovereign_command }
+		command = { type = setflag which = ind_v4a_allied_framework_settled }
+	}
+}
+
+event = {
+	id = 9281207
+	random = no
+	persistent = yes
+	country = IND
+
+	name = "London Refuses the Commonwealth Charter"
+	desc = "Britain refuses to recast the Commonwealth around Indian equality. The rejection does not close the war: Delhi can approach Washington, announce independent co-belligerency, or retain only limited liaison while preparing to fight without British cooperation."
+	style = 2
+	picture = "aubm_v4_london_settlement"
+
+	action_a = {
+		trigger = { exists = USA }
+		ai_chance = 40
+		name = "Approach Washington directly"
+		command = { type = clrflag which = ind_v4a_proposal_commonwealth }
+		command = { type = setflag which = ind_v4a_proposal_naval_compact }
+		command = { type = event which = 9281202 where = USA when = 2 }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Declare independent co-belligerency"
+		command = { type = dissent value = -1 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = setflag which = ind_v4a_treaty_cobelligerent }
+		command = { type = setflag which = ind_v4a_sovereign_command }
+		command = { type = setflag which = ind_v4a_london_refusal_challenge }
+		command = { type = setflag which = ind_v4a_allied_framework_settled }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Keep liaison, accept no obligations"
+		command = { type = supplies value = -250 }
+		command = { type = relation which = USA value = 10 }
+		command = { type = setflag which = ind_v4a_limited_accommodation }
+		command = { type = setflag which = ind_v4a_sovereign_command }
+		command = { type = setflag which = ind_v4a_allied_framework_settled }
+	}
+}
+
+event = {
+	id = 9281208
+	random = no
+	persistent = yes
+	country = IND
+	one_action = yes
+
+	name = "The Anglo-American Naval Compact"
+	desc = "Washington recognizes India's Indian Ocean command and releases an initial equipment mission. India grants reciprocal access for repair and convoy coordination without entering either country's alliance."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+
+	action_a = {
+		name = "Ratify sovereign naval coordination"
+		command = { type = access which = USA }
+		command = { type = supplies value = 500 }
+		command = { type = relation which = ENG value = 20 }
+		command = { type = setflag which = ind_v4a_treaty_naval_compact }
+		command = { type = setflag which = ind_v4a_sovereign_command }
+		command = { type = setflag which = ind_v4a_allied_framework_settled }
+		command = { type = setflag which = ind_v4_strategic_weight_1 }
+	}
+}
+
+event = {
+	id = 9281209
+	random = no
+	persistent = yes
+	country = IND
+
+	name = "Washington's Tripartite Counteroffer"
+	desc = "The United States will coordinate only if Britain receives the same repair and basing rights. Delhi can accept the larger network, return to a sovereign Commonwealth formula, or preserve naval coordination without permanent foreign access."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+
+	action_a = {
+		ai_chance = 50
+		name = "Accept tripartite access: +900 supplies, +3 dissent"
+		command = { type = access which = USA }
+		command = { type = access which = ENG }
+		command = { type = supplies value = 900 }
+		command = { type = dissent value = 3 }
+		command = { type = setflag which = ind_v4a_treaty_naval_compact }
+		command = { type = setflag which = ind_v4a_allied_base_access }
+		command = { type = setflag which = ind_v4a_allied_framework_settled }
+	}
+	action_b = {
+		ai_chance = 25
+		name = "Adopt the sovereign Commonwealth formula"
+		command = { type = clrflag which = ind_v4a_proposal_naval_compact }
+		command = { type = relation which = ENG value = 15 }
+		command = { type = supplies value = 300 }
+		command = { type = setflag which = ind_v4a_treaty_commonwealth }
+		command = { type = setflag which = ind_v4a_sovereign_command }
+		command = { type = setflag which = ind_v4a_no_foreign_bases }
+		command = { type = setflag which = ind_v4a_allied_framework_settled }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "Coordinate at sea, concede no permanent bases"
+		command = { type = supplies value = -350 }
+		command = { type = max_organization which = naval value = 1 }
+		command = { type = setflag which = ind_v4a_treaty_naval_compact }
+		command = { type = setflag which = ind_v4a_sovereign_command }
+		command = { type = setflag which = ind_v4a_no_foreign_bases }
+		command = { type = setflag which = ind_v4a_allied_framework_settled }
+	}
+}
+
+event = {
+	id = 9281210
+	random = no
+	persistent = yes
+	country = IND
+
+	name = "Washington Declines the Naval Compact"
+	desc = "Washington keeps India outside its formal Pacific planning. Delhi may seek a British naval mission, construct an independent ocean command, or answer with a public freedom-of-the-seas doctrine that raises India's diplomatic profile but offers no foreign materiel."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+
+	action_a = {
+		ai_chance = 35
+		name = "Commission a sovereign British naval mission"
+		command = { type = clrflag which = ind_v4a_proposal_naval_compact }
+		command = { type = relation which = ENG value = 15 }
+		command = { type = supplies value = 250 }
+		command = { type = setflag which = ind_v4a_treaty_commonwealth }
+		command = { type = setflag which = ind_v4a_sovereign_command }
+		command = { type = setflag which = ind_v4a_limited_accommodation }
+		command = { type = setflag which = ind_v4a_allied_framework_settled }
+	}
+	action_b = {
+		ai_chance = 45
+		name = "Build the ocean command alone"
+		command = { type = supplies value = -450 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = setflag which = ind_v4a_treaty_cobelligerent }
+		command = { type = setflag which = ind_v4a_sovereign_command }
+		command = { type = setflag which = ind_v4a_washington_refusal_challenge }
+		command = { type = setflag which = ind_v4a_allied_framework_settled }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Proclaim freedom of the Indian Ocean"
+		command = { type = dissent value = -2 }
+		command = { type = belligerence value = -1 }
+		command = { type = relation which = AST value = 15 }
+		command = { type = relation which = SAF value = 15 }
+		command = { type = setflag which = ind_v4a_limited_accommodation }
+		command = { type = setflag which = ind_v4a_allied_framework_settled }
+	}
+}
+
+event = {
+	id = 9281211
+	random = no
+	persistent = yes
+	country = IND
+	one_action = yes
+
+	name = "India Enters the Allied Coalition"
+	desc = "Britain admits India as a sovereign ally. Indian forces remain under Delhi's national command, but alliance membership carries the engine's automatic war obligations. The Eastern, Western and Indian Ocean commands may now be funded separately."
+	style = 2
+	picture = "aubm_v4_london_settlement"
+
+	action_a = {
+		name = "Take India's seat as an equal ally"
+		command = { type = supplies value = 800 }
+		command = { type = setflag which = ind_v3_allied_orientation }
+		command = { type = setflag which = ind_v3_joined_allies }
+		command = { type = setflag which = ind_v4_strategy_allied }
+		command = { type = setflag which = ind_v4a_treaty_formal_alliance }
+		command = { type = setflag which = ind_v4a_sovereign_command }
+		command = { type = setflag which = ind_v4a_allied_framework_settled }
+		command = { type = setflag which = ind_v4_strategic_weight_1 }
+	}
+}
+
+event = {
+	id = 9281212
+	random = no
+	persistent = yes
+	country = IND
+
+	name = "London Demands Integrated Command"
+	desc = "Britain will admit India only if Indian expeditionary forces accept an integrated Allied theatre. Delhi can accept the military compromise, reject formal membership and fight as a sovereign co-belligerent, or redirect its maritime planning toward Washington."
+	style = 2
+	picture = "aubm_v4_london_settlement"
+
+	action_a = {
+		ai_chance = 35
+		name = "Accept integration: +1000 supplies, +5 dissent"
+		command = { type = alliance which = ENG when = 2 }
+		command = { type = access which = ENG }
+		command = { type = supplies value = 1000 }
+		command = { type = dissent value = 5 }
+		command = { type = setflag which = ind_v3_allied_orientation }
+		command = { type = setflag which = ind_v3_joined_allies }
+		command = { type = setflag which = ind_v4_strategy_allied }
+		command = { type = setflag which = ind_v4a_treaty_formal_alliance }
+		command = { type = setflag which = ind_v4a_integrated_command }
+		command = { type = setflag which = ind_v4a_allied_framework_settled }
+	}
+	action_b = {
+		ai_chance = 45
+		name = "Fight beside Britain, not beneath it"
+		command = { type = relation which = ENG value = -10 }
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_v4a_treaty_cobelligerent }
+		command = { type = setflag which = ind_v4a_sovereign_command }
+		command = { type = setflag which = ind_v4a_allied_framework_settled }
+	}
+	action_c = {
+		trigger = { exists = USA }
+		ai_chance = 20
+		name = "Redirect the mission to Washington"
+		command = { type = clrflag which = ind_v4a_proposal_formal_alliance }
+		command = { type = setflag which = ind_v4a_proposal_naval_compact }
+		command = { type = relation which = ENG value = -15 }
+		command = { type = event which = 9281202 where = USA when = 2 }
+	}
+}
+
+event = {
+	id = 9281213
+	random = no
+	persistent = yes
+	country = IND
+
+	name = "Britain Refuses Formal Indian Membership"
+	desc = "London rejects a formal alliance on equal terms. India can issue an independent war accord, seek American maritime backing, or end the membership dispute while retaining limited intelligence liaison. None of these choices closes future war entry."
+	style = 2
+	picture = "aubm_v4_london_settlement"
+
+	action_a = {
+		ai_chance = 45
+		name = "Issue an independent co-belligerent accord"
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = setflag which = ind_v4a_treaty_cobelligerent }
+		command = { type = setflag which = ind_v4a_sovereign_command }
+		command = { type = setflag which = ind_v4a_london_refusal_challenge }
+		command = { type = setflag which = ind_v4a_allied_framework_settled }
+	}
+	action_b = {
+		trigger = { exists = USA }
+		ai_chance = 35
+		name = "Seek American maritime backing"
+		command = { type = clrflag which = ind_v4a_proposal_formal_alliance }
+		command = { type = setflag which = ind_v4a_proposal_naval_compact }
+		command = { type = event which = 9281202 where = USA when = 2 }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Retain intelligence liaison only"
+		command = { type = supplies value = -200 }
+		command = { type = intelligence which = us value = 1 }
+		command = { type = setflag which = ind_v4a_limited_accommodation }
+		command = { type = setflag which = ind_v4a_allied_framework_settled }
+	}
+}
+
+event = {
+	id = 9281214
+	random = no
+	persistent = yes
+	country = IND
+	one_action = yes
+
+	name = "The Independent War Accord"
+	desc = "London recognizes India as a co-belligerent whose wars remain separate from Britain's alliance. Reciprocal consultation begins immediately; Delhi still decides whether to fight Japan, Germany, Italy or none of them."
+	style = 2
+	picture = "aubm_v4_london_settlement"
+
+	action_a = {
+		name = "Ratify sovereign co-belligerency"
+		command = { type = relation which = ENG value = 15 }
+		command = { type = setflag which = ind_v4a_treaty_cobelligerent }
+		command = { type = setflag which = ind_v4a_sovereign_command }
+		command = { type = setflag which = ind_v4a_allied_framework_settled }
+		command = { type = setflag which = ind_v4_strategic_weight_1 }
+	}
+}
+
+event = {
+	id = 9281215
+	random = no
+	persistent = yes
+	country = IND
+
+	name = "London's Co-Belligerent Counteroffer"
+	desc = "Britain accepts separate Indian war entry but asks for wartime access. Delhi can exchange access for stores, coordinate without permanent bases, or ask Washington to underwrite an ocean compact instead."
+	style = 2
+	picture = "aubm_v4_london_settlement"
+
+	action_a = {
+		ai_chance = 50
+		name = "Grant wartime access: +650 supplies, +2 dissent"
+		command = { type = access which = ENG }
+		command = { type = supplies value = 650 }
+		command = { type = dissent value = 2 }
+		command = { type = setflag which = ind_v4a_treaty_cobelligerent }
+		command = { type = setflag which = ind_v4a_allied_base_access }
+		command = { type = setflag which = ind_v4a_allied_framework_settled }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Coordinate without permanent foreign bases"
+		command = { type = supplies value = -250 }
+		command = { type = setflag which = ind_v4a_treaty_cobelligerent }
+		command = { type = setflag which = ind_v4a_sovereign_command }
+		command = { type = setflag which = ind_v4a_no_foreign_bases }
+		command = { type = setflag which = ind_v4a_allied_framework_settled }
+	}
+	action_c = {
+		trigger = { exists = USA }
+		ai_chance = 20
+		name = "Ask Washington to underwrite the compact"
+		command = { type = clrflag which = ind_v4a_proposal_cobelligerent }
+		command = { type = setflag which = ind_v4a_proposal_naval_compact }
+		command = { type = event which = 9281202 where = USA when = 2 }
+	}
+}
+
+event = {
+	id = 9281216
+	random = no
+	persistent = yes
+	country = IND
+
+	name = "Britain Refuses Operational Coordination"
+	desc = "London refuses to share operational planning with an India outside its alliance. Delhi may fight independently despite the refusal, seek an American naval agreement, or limit the relationship to commerce while maintaining armed readiness."
+	style = 2
+	picture = "aubm_v4_london_settlement"
+
+	action_a = {
+		ai_chance = 45
+		name = "Fight independently when India chooses"
+		command = { type = relation which = ENG value = -15 }
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_v4a_treaty_cobelligerent }
+		command = { type = setflag which = ind_v4a_sovereign_command }
+		command = { type = setflag which = ind_v4a_london_refusal_challenge }
+		command = { type = setflag which = ind_v4a_allied_framework_settled }
+	}
+	action_b = {
+		trigger = { exists = USA }
+		ai_chance = 35
+		name = "Seek an American naval agreement"
+		command = { type = clrflag which = ind_v4a_proposal_cobelligerent }
+		command = { type = setflag which = ind_v4a_proposal_naval_compact }
+		command = { type = event which = 9281202 where = USA when = 2 }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Trade, rearm and accept no obligations"
+		command = { type = money value = 200 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = setflag which = ind_v4a_limited_accommodation }
+		command = { type = setflag which = ind_v4a_allied_framework_settled }
+	}
+}
+
+#########################################################################
+# II. Selective war entry and theatre commands
+#########################################################################
+
+event = {
+	id = 9281217
+	random = no
+	persistent = yes
+	country = IND
+
+	decision = {
+		flag = ind_v4a_allied_framework_settled
+		NOT = { flag = ind_v4a_war_entry_cooldown }
+		NOT = { alliance = { country = IND country = ENG } }
+		OR = {
+			AND = {
+				exists = JAP
+				NOT = { war = { country = IND country = JAP } }
+				OR = { war = { country = ENG country = JAP } war = { country = USA country = JAP } }
+			}
+			AND = {
+				exists = GER
+				NOT = { war = { country = IND country = GER } }
+				OR = { war = { country = ENG country = GER } war = { country = USA country = GER } }
+			}
+			AND = {
+				exists = ITA
+				NOT = { war = { country = IND country = ITA } }
+				war = { country = ENG country = ITA }
+			}
+		}
+	}
+	decision_trigger = {
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		money = 200
+		supplies = 500
+		# AUBM_FULL_OPTION_GATE_END
+	}
+
+	name = "Exercise the Co-Belligerent Clause"
+	# AUBM_DECISION_DESC_MANUAL
+	decision_desc = "No foreign roll: 200 money and 500 supplies open a player-chosen declaration against one eligible common enemy. The treaty remains short of a formal alliance and imports no other Allied wars."
+	desc = "India's sovereign treaties do not automatically inherit Allied wars. The Cabinet can select one common enemy while keeping the legal war separate, then review another eligible war after ninety days."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+
+	date = { day = 0 month = january year = 1939 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 200
+			supplies = 500
+			# AUBM_ACTION_RESERVE_END
+		}
+		name = "Convene the war-entry conference: -200/-500"
+		command = { type = money value = -200 }
+		command = { type = supplies value = -500 }
+		command = { type = trigger which = 9281218 }
+	}
+}
+
+event = {
+	id = 9281218
+	random = no
+	persistent = yes
+	country = IND
+
+	name = "India Selects Its Allied War"
+	desc = "Delhi may enter one existing Allied war without joining Britain's alliance. Further enemies can still be engaged later through ordinary diplomacy or a renewed strategic decision. Theatre commands remain independent of this choice."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+
+	action_a = {
+		trigger = {
+			exists = JAP
+			NOT = { war = { country = IND country = JAP } }
+			OR = {
+				war = { country = ENG country = JAP }
+				war = { country = USA country = JAP }
+			}
+		}
+		name = "Enter the eastern war against Japan"
+		command = { type = war which = JAP }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = setflag which = ind_v4a_allied_war_japan }
+		command = { type = setflag which = ind_v4a_war_entry_cooldown }
+		command = { type = event which = 9281219 where = IND when = 90 }
+	}
+	action_b = {
+		trigger = {
+			exists = GER
+			NOT = { war = { country = IND country = GER } }
+			OR = {
+				war = { country = ENG country = GER }
+				war = { country = USA country = GER }
+			}
+		}
+		name = "Enter the continental war against Germany"
+		command = { type = war which = GER }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = setflag which = ind_v4a_allied_war_germany }
+		command = { type = setflag which = ind_v4a_war_entry_cooldown }
+		command = { type = event which = 9281219 where = IND when = 90 }
+	}
+	action_c = {
+		trigger = {
+			exists = ITA
+			NOT = { war = { country = IND country = ITA } }
+			war = { country = ENG country = ITA }
+		}
+		name = "Enter the Mediterranean war against Italy"
+		command = { type = war which = ITA }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = setflag which = ind_v4a_allied_war_italy }
+		command = { type = setflag which = ind_v4a_war_entry_cooldown }
+		command = { type = event which = 9281219 where = IND when = 90 }
+	}
+	action_d = {
+		name = "Keep the clause in reserve for ninety days"
+		command = { type = setflag which = ind_v4a_war_entry_cooldown }
+		command = { type = event which = 9281219 where = IND when = 90 }
+	}
+}
+
+event = {
+	id = 9281219
+	random = no
+	persistent = yes
+	country = IND
+
+	name = "The War-Entry Review Reopens"
+	desc = "Ninety days of military preparation and diplomatic change have passed. India may again consider the co-belligerent clause, whether still at peace or already fighting another Allied enemy."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+
+	action_a = {
+		name = "Return the clause to the Cabinet"
+		command = { type = clrflag which = ind_v4a_war_entry_cooldown }
+	}
+}
+
+event = {
+	id = 9281220
+	random = no
+	country = IND
+
+	decision = {
+		atwar = yes
+		flag = ind_v4a_allied_framework_settled
+		NOT = { flag = ind_v4a_eastern_command }
+	}
+	decision_trigger = {
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		money = 250
+		supplies = 750
+		# AUBM_FULL_OPTION_GATE_END
+	}
+
+	name = "Establish the Sovereign Eastern Command"
+	# AUBM_DECISION_DESC_MANUAL
+	decision_desc = "No foreign roll: 250 money and 750 supplies establish Eastern Command. Later status is earned from Indian control of its listed Burma, Malaya and Singapore objectives."
+	desc = "Eastern Command will defend the Burma approaches and carry Indian power through Malaya toward Singapore. It is a national command cooperating with Allied headquarters, not an imperial reconstruction."
+	style = 2
+	picture = "aubm_v4_japan_southern_choice"
+
+	date = { day = 0 month = january year = 1939 }
+	offset = 4
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 250
+			supplies = 750
+			# AUBM_ACTION_RESERVE_END
+		}
+		name = "Fund Eastern Command: -250 money, -750 supplies"
+		command = { type = money value = -250 }
+		command = { type = supplies value = -750 }
+		command = { type = max_organization which = land value = 1 }
+		command = { type = max_organization which = air value = 1 }
+		command = { type = relation which = AST value = 10 }
+		command = { type = ai which = "aubm/allied/IND_allied_eastern.ai" }
+		command = { type = setflag which = ind_v4a_eastern_command }
+	}
+}
+
+event = {
+	id = 9281221
+	random = no
+	country = IND
+
+	decision = {
+		atwar = yes
+		flag = ind_v4a_allied_framework_settled
+		NOT = { flag = ind_v4a_western_command }
+	}
+	decision_trigger = {
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		money = 300
+		supplies = 900
+		# AUBM_FULL_OPTION_GATE_END
+	}
+
+	name = "Establish the Sovereign Western Command"
+	# AUBM_DECISION_DESC_MANUAL
+	decision_desc = "No foreign roll: 300 money and 900 supplies establish Western Command. Later status is earned from Indian control of its listed Gulf, Red Sea and Suez objectives."
+	desc = "Western Command will protect the Arabian Sea and project Indian forces toward the Gulf, the Red Sea and Suez. Success will give Delhi a direct voice in the political order from Aden to Basrah."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+
+	date = { day = 0 month = january year = 1939 }
+	offset = 4
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 300
+			supplies = 900
+			# AUBM_ACTION_RESERVE_END
+		}
+		name = "Fund Western Command: -300 money, -900 supplies"
+		command = { type = money value = -300 }
+		command = { type = supplies value = -900 }
+		command = { type = tc_mod value = 1 }
+		command = { type = morale which = land value = 1 }
+		command = { type = relation which = PER value = 10 }
+		command = { type = ai which = "aubm/allied/IND_allied_western.ai" }
+		command = { type = setflag which = ind_v4a_western_command }
+	}
+}
+
+event = {
+	id = 9281222
+	random = no
+	country = IND
+
+	decision = {
+		atwar = yes
+		flag = ind_v4a_allied_framework_settled
+		NOT = { flag = ind_v4a_ocean_command }
+	}
+	decision_trigger = {
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		money = 350
+		supplies = 1100
+		# AUBM_FULL_OPTION_GATE_END
+	}
+
+	name = "Establish the Indian Ocean Command"
+	# AUBM_DECISION_DESC_MANUAL
+	decision_desc = "No foreign roll: 350 money and 1,100 supplies establish Ocean Command. Later status is earned from Indian control of its listed ocean, East African and East Indies objectives."
+	desc = "The Indian Ocean Command joins fleet, maritime air and amphibious planning from Colombo and Port Blair. Its purpose is to make India the organizer of the ocean rather than one more contributor to British naval plans."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+
+	date = { day = 0 month = january year = 1939 }
+	offset = 4
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 350
+			supplies = 1100
+			# AUBM_ACTION_RESERVE_END
+		}
+		name = "Fund Ocean Command: -350 money, -1100 supplies"
+		command = { type = money value = -350 }
+		command = { type = supplies value = -1100 }
+		command = { type = max_organization which = naval value = 1 }
+		command = { type = max_organization which = air value = 1 }
+		command = { type = repair_mod value = 1 }
+		command = { type = ai which = "aubm/allied/IND_allied_ocean.ai" }
+		command = { type = setflag which = ind_v4a_ocean_command }
+	}
+}
+
+event = {
+	id = 9281223
+	random = no
+	country = IND
+
+	trigger = {
+		atwar = yes
+		NOT = { flag = ind_v4a_joint_command }
+		OR = {
+			AND = { flag = ind_v4a_eastern_command flag = ind_v4a_western_command }
+			AND = { flag = ind_v4a_eastern_command flag = ind_v4a_ocean_command }
+			AND = { flag = ind_v4a_western_command flag = ind_v4a_ocean_command }
+		}
+	}
+
+	name = "The Indian Joint Operations Board"
+	desc = "Two active theatres now compete for shipping, aircraft and staff attention. A joint board will sequence operations and prevent either front from consuming the entire transport reserve."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	date = { day = 0 month = january year = 1939 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Coordinate the active theatres"
+		command = { type = tc_mod value = 1 }
+		command = { type = ai which = "aubm/allied/IND_allied_joint.ai" }
+		command = { type = setflag which = ind_v4a_joint_command }
+	}
+}
+
+event = {
+	id = 9281224
+	random = no
+	country = IND
+
+	trigger = {
+		atwar = yes
+		flag = ind_v4a_eastern_command
+		flag = ind_v4a_western_command
+		flag = ind_v4a_ocean_command
+		NOT = { flag = ind_v4a_global_command }
+	}
+
+	name = "Three Theatres Under Delhi"
+	desc = "India is sustaining eastern, western and ocean commands at once. The effort expands Delhi's claim at the peace table, but the global staff requires another lift of stores and accepts political responsibility for overextension."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	date = { day = 0 month = january year = 1939 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Assume global responsibility: +2 dissent"
+		command = { type = dissent value = 2 }
+		command = { type = tc_mod value = 2 }
+		command = { type = ai which = "aubm/allied/IND_allied_global.ai" }
+		command = { type = setflag which = ind_v4a_global_command }
+	}
+}
+
+event = {
+	id = 9281229
+	random = no
+	country = IND
+
+	trigger = {
+		atwar = yes
+		flag = ind_v4a_allied_framework_settled
+		NOT = { flag = ind_v4a_allied_war_entered }
+		OR = {
+			war = { country = IND country = JAP }
+			war = { country = IND country = GER }
+			war = { country = IND country = ITA }
+		}
+	}
+
+	name = "India's Allied War Begins"
+	desc = "Whether through formal alliance or an independent declaration, India is now fighting an enemy of the western coalition. The campaign record begins; only Indian-controlled objectives will count toward the settlement."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+
+	date = { day = 0 month = january year = 1939 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Open the campaign ledger"
+		command = { trigger = { OR = { flag = ind_v4a_london_refusal_challenge flag = ind_v4a_washington_refusal_challenge } } type = domestic which = interventionism value = 1 }
+		command = { trigger = { OR = { flag = ind_v4a_london_refusal_challenge flag = ind_v4a_washington_refusal_challenge } } type = dissent value = -1 }
+		command = { trigger = { flag = ind_v4a_london_refusal_challenge } type = relation which = ENG value = -10 }
+		command = { trigger = { flag = ind_v4a_washington_refusal_challenge } type = relation which = USA value = -10 }
+		command = { type = setflag which = ind_v4a_allied_war_entered }
+	}
+}
+
+#########################################################################
+# III. State-based campaign objectives
+#########################################################################
+
+event = {
+	id = 9281230
+	random = no
+	country = IND
+
+	trigger = {
+		atwar = yes
+		flag = ind_v4a_eastern_command
+		control = { province = 1415 data = IND }
+		control = { province = 1442 data = IND }
+		control = { province = 1421 data = IND }
+		NOT = { flag = ind_v4a_eastern_line_secured }
+	}
+
+	name = "The Eastern Defensive Line Holds"
+	desc = "Rangoon, Imphal and Port Blair remain under Indian control. Eastern Command has protected the approaches to the Union and can now convert defence into an offensive toward Malaya."
+	style = 2
+	picture = "aubm_v4_japan_southern_choice"
+
+	date = { day = 0 month = january year = 1939 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Release the eastern reserve: +250 supplies"
+		command = { type = supplies value = 250 }
+		command = { type = relation which = ENG value = 5 }
+		command = { type = relation which = AST value = 5 }
+		command = { type = setflag which = ind_v4a_eastern_line_secured }
+		command = { type = setflag which = ind_v4_strategic_weight_1 }
+	}
+}
+
+event = {
+	id = 9281231
+	random = no
+	country = IND
+
+	trigger = {
+		atwar = yes
+		flag = ind_v4a_eastern_command
+		control = { province = 1432 data = IND }
+		control = { province = 1438 data = IND }
+		NOT = { flag = ind_v4a_eastern_decisive }
+	}
+
+	name = "Singapore Under Indian Command"
+	desc = "Indian forces control Singapore and Kuala Lumpur. This is a decisive eastern contribution: Delhi now has a battlefield claim to shape Malaya's future rather than merely endorse a British restoration."
+	style = 2
+	picture = "aubm_v4_japan_southern_choice"
+
+	date = { day = 0 month = january year = 1939 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Record a decisive Eastern Command victory"
+		command = { type = dissent value = -2 }
+		command = { type = money value = 200 }
+		command = { type = relation which = ENG value = 10 }
+		command = { type = setflag which = ind_v4a_eastern_decisive }
+		command = { type = setflag which = ind_v4_strategic_weight_2 }
+	}
+}
+
+event = {
+	id = 9281232
+	random = no
+	country = IND
+
+	trigger = {
+		atwar = yes
+		flag = ind_v4a_western_command
+		OR = {
+			control = { province = 1053 data = IND }
+			control = { province = 1032 data = IND }
+			control = { province = 900 data = IND }
+		}
+		NOT = { flag = ind_v4a_western_lodgement }
+	}
+
+	name = "Western Command Reaches the Strategic Crescent"
+	desc = "Indian forces hold at least one of Aden, Basrah or Suez. The first lodgement protects an Allied artery and demonstrates that Delhi can project organized power beyond the subcontinent."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+
+	date = { day = 0 month = january year = 1939 }
+	offset = 4
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Open the western logistics reserve"
+		command = { type = supplies value = 300 }
+		command = { type = tc_mod value = 1 }
+		command = { type = relation which = ENG value = 5 }
+		command = { type = setflag which = ind_v4a_western_lodgement }
+		command = { type = setflag which = ind_v4_strategic_weight_1 }
+	}
+}
+
+event = {
+	id = 9281233
+	random = no
+	country = IND
+
+	trigger = {
+		atwar = yes
+		flag = ind_v4a_western_command
+		OR = {
+			AND = { control = { province = 1053 data = IND } control = { province = 1032 data = IND } }
+			AND = { control = { province = 1053 data = IND } control = { province = 900 data = IND } }
+			AND = { control = { province = 1032 data = IND } control = { province = 900 data = IND } }
+		}
+		NOT = { flag = ind_v4a_western_decisive }
+	}
+
+	name = "The Western Corridor Secured"
+	desc = "Indian forces hold two of Aden, Basrah and Suez. Western Command has become indispensable to the Gulf-Red Sea system, earning Delhi a decisive claim in the Arabian settlement."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+
+	date = { day = 0 month = january year = 1939 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Record a decisive Western Command victory"
+		command = { type = dissent value = -2 }
+		command = { type = money value = 200 }
+		command = { type = relation which = PER value = 15 }
+		command = { type = relation which = IRQ value = 15 }
+		command = { type = setflag which = ind_v4a_western_decisive }
+		command = { type = setflag which = ind_v4_strategic_weight_2 }
+	}
+}
+
+event = {
+	id = 9281234
+	random = no
+	country = IND
+
+	trigger = {
+		atwar = yes
+		flag = ind_v4a_ocean_command
+		control = { province = 1511 data = IND }
+		control = { province = 1421 data = IND }
+		OR = {
+			control = { province = 1432 data = IND }
+			control = { province = 1053 data = IND }
+			control = { province = 842 data = IND }
+		}
+		NOT = { flag = ind_v4a_ocean_perimeter }
+	}
+
+	name = "The Indian Ocean Perimeter"
+	desc = "Colombo and Port Blair are linked to a forward port at Singapore, Aden or Mombasa. The Ocean Command now operates as a real theatre system rather than a collection of coastal bases."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+
+	date = { day = 0 month = january year = 1939 }
+	offset = 4
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Coordinate the perimeter: +1 naval repair"
+		command = { type = repair_mod value = 1 }
+		command = { type = supplies value = 250 }
+		command = { type = setflag which = ind_v4a_ocean_perimeter }
+		command = { type = setflag which = ind_v4_strategic_weight_1 }
+	}
+}
+
+event = {
+	id = 9281235
+	random = no
+	country = IND
+
+	trigger = {
+		atwar = yes
+		flag = ind_v4a_ocean_command
+		control = { province = 1432 data = IND }
+		OR = {
+			control = { province = 842 data = IND }
+			control = { province = 836 data = IND }
+			control = { province = 1647 data = IND }
+			control = { province = 1653 data = IND }
+			control = { province = 1632 data = IND }
+		}
+		NOT = { flag = ind_v4a_ocean_decisive }
+	}
+
+	name = "Two Coasts Under Ocean Command"
+	desc = "Singapore and a second forward coast in East Africa or Indonesia are under Indian control. Delhi has supplied, protected and commanded an ocean-spanning campaign and can demand more than ceremonial consultation at peace."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+
+	date = { day = 0 month = january year = 1939 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Record a decisive Ocean Command victory"
+		command = { type = dissent value = -2 }
+		command = { type = money value = 200 }
+		command = { type = relation which = USA value = 10 }
+		command = { type = setflag which = ind_v4a_ocean_decisive }
+		command = { type = setflag which = ind_v4_strategic_weight_2 }
+	}
+}
+
+event = {
+	id = 9281236
+	random = no
+	country = IND
+
+	trigger = {
+		atwar = yes
+		flag = ind_v4a_western_command
+		OR = {
+			AND = { control = { province = 1053 data = IND } control = { province = 1032 data = IND } }
+			AND = { control = { province = 1053 data = IND } control = { province = 1041 data = IND } }
+			AND = { control = { province = 1053 data = IND } control = { province = 900 data = IND } }
+			AND = { control = { province = 1032 data = IND } control = { province = 1041 data = IND } }
+			AND = { control = { province = 1032 data = IND } control = { province = 900 data = IND } }
+			AND = { control = { province = 1041 data = IND } control = { province = 900 data = IND } }
+		}
+		NOT = { flag = ind_v4a_gulf_projection }
+	}
+
+	name = "India Becomes a Gulf Power"
+	desc = "Indian forces control two strategic points among Aden, Basrah, Kuwait and Suez. Shipping, rupee finance and military logistics now reinforce one another, giving Delhi practical leverage across the Arabian peninsula."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+
+	date = { day = 0 month = january year = 1939 }
+	offset = 4
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Open the Gulf political mission"
+		command = { type = relation which = IRQ value = 20 }
+		command = { type = relation which = PER value = 20 }
+		command = { type = relation which = OMN value = 15 }
+		command = { type = relation which = YEM value = 15 }
+		command = { type = relation which = SAU value = 10 }
+		command = { type = setflag which = ind_v4a_gulf_projection }
+		command = { type = setflag which = ind_v4_strategic_weight_2 }
+	}
+}
+
+event = {
+	id = 9281237
+	random = no
+	country = IND
+
+	trigger = {
+		atwar = yes
+		OR = {
+			flag = ind_v4a_ocean_command
+			flag = ind_v4a_western_command
+		}
+		OR = {
+			AND = { control = { province = 836 data = IND } control = { province = 841 data = IND } }
+			AND = { control = { province = 836 data = IND } control = { province = 842 data = IND } }
+			AND = { control = { province = 836 data = IND } control = { province = 850 data = IND } }
+			AND = { control = { province = 836 data = IND } control = { province = 852 data = IND } }
+			AND = { control = { province = 841 data = IND } control = { province = 842 data = IND } }
+			AND = { control = { province = 841 data = IND } control = { province = 850 data = IND } }
+			AND = { control = { province = 841 data = IND } control = { province = 852 data = IND } }
+			AND = { control = { province = 842 data = IND } control = { province = 850 data = IND } }
+			AND = { control = { province = 842 data = IND } control = { province = 852 data = IND } }
+			AND = { control = { province = 850 data = IND } control = { province = 852 data = IND } }
+		}
+		NOT = { flag = ind_v4a_east_africa_projection }
+	}
+
+	name = "The East African Littoral"
+	desc = "Indian forces control two major points on the East African coast or its approaches. Wartime shipping, established Indian communities and a sovereign Indian command now create a credible political network from the Horn toward South Africa."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+
+	date = { day = 0 month = january year = 1939 }
+	offset = 4
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Convene the East African liaison council"
+		command = { type = relation which = ETH value = 20 }
+		command = { type = relation which = SOM value = 20 }
+		command = { type = relation which = SAF value = 25 }
+		command = { type = relation which = U90 value = 20 }
+		command = { type = relation which = U97 value = 20 }
+		command = { type = setflag which = ind_v4a_east_africa_projection }
+		command = { type = setflag which = ind_v4_strategic_weight_2 }
+	}
+}
+
+event = {
+	id = 9281238
+	random = no
+	country = IND
+
+	trigger = {
+		atwar = yes
+		flag = ind_v4a_joint_command
+		OR = {
+			AND = { flag = ind_v4a_eastern_decisive flag = ind_v4a_western_decisive }
+			AND = { flag = ind_v4a_eastern_decisive flag = ind_v4a_ocean_decisive }
+			AND = { flag = ind_v4a_western_decisive flag = ind_v4a_ocean_decisive }
+		}
+		NOT = { flag = ind_v4a_joint_campaign_decisive }
+	}
+
+	name = "India Carries Two Decisive Theatres"
+	desc = "Two Indian commands have achieved decisive objectives under one national operations board. Delhi is no longer bargaining as a regional auxiliary; it has supplied and commanded a great-power share of the war."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	date = { day = 0 month = january year = 1939 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Claim senior-partner standing"
+		command = { type = dissent value = -2 }
+		command = { type = setflag which = ind_v4a_joint_campaign_decisive }
+		command = { type = setflag which = ind_v4_strategic_weight_3 }
+	}
+}
+
+#########################################################################
+# IV. Performance classification and settlement doctrine
+#########################################################################
+
+event = {
+	id = 9281240
+	random = no
+	country = IND
+
+	decision = {
+		atwar = no
+		year = 1943
+		flag = ind_v4a_allied_framework_settled
+		flag = ind_v4a_allied_war_entered
+		NOT = { flag = ind_v4a_allied_performance_evaluated }
+		NOT = { flag = ind_v4a_allied_settlement_convened }
+	}
+	decision_trigger = {
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		money = 300
+		# AUBM_FULL_OPTION_GATE_END
+	}
+
+	name = "Convene the Allied Settlement Conference"
+	# AUBM_DECISION_DESC_MANUAL
+	decision_desc = "Cost 300. Hegemon: 3 decisive commands, Eastern+both projections, or global+joint+1 projection. Senior: joint decisive or a decisive command+projection. Regional: any decisive command/projection; else Participant. Senior odds: UK/USA/Australia 60/30/10, Dutch 55/30/15; lower: 35/45/20 and 30/45/25."
+	desc = "India's tier is calculated deterministically from Indian-controlled objectives and command combinations, exactly as summarized above. Foreign replies then use the fixed tier-specific accept/counter/refuse rolls; relations, IC and force size do not modify them."
+	style = 2
+	picture = "aubm_v4_war_aims"
+
+	date = { day = 0 month = january year = 1943 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 300
+			# AUBM_ACTION_RESERVE_END
+		}
+		name = "Open the conference: -300 money"
+		command = { type = money value = -300 }
+		command = { type = setflag which = ind_v4a_allied_settlement_convened }
+		command = { type = trigger which = 9281241 }
+	}
+}
+
+event = {
+	id = 9281241
+	random = no
+	country = IND
+
+	name = "India's Allied Campaign Ledger"
+	desc = "The record is counted from Indian-controlled objectives. Diplomatic promises, Allied victories won without Indian command and territories merely passed through do not raise India's standing."
+	style = 2
+	picture = "aubm_v4_war_aims"
+
+	action_a = {
+		trigger = {
+			OR = {
+				AND = {
+					flag = ind_v4a_eastern_decisive
+					flag = ind_v4a_western_decisive
+					flag = ind_v4a_ocean_decisive
+				}
+				AND = {
+					flag = ind_v4a_eastern_decisive
+					flag = ind_v4a_gulf_projection
+					flag = ind_v4a_east_africa_projection
+				}
+				AND = {
+					flag = ind_v4a_global_command
+					flag = ind_v4a_joint_campaign_decisive
+					OR = {
+						flag = ind_v4a_gulf_projection
+						flag = ind_v4a_east_africa_projection
+					}
+				}
+			}
+		}
+		name = "Hegemon: India carried an ocean-spanning war"
+		command = { type = setflag which = ind_v4a_allied_tier_hegemon }
+		command = { type = setflag which = ind_v4a_allied_performance_evaluated }
+		command = { type = trigger which = 9281242 }
+	}
+	action_b = {
+		trigger = {
+			NOT = {
+				OR = {
+					AND = { flag = ind_v4a_eastern_decisive flag = ind_v4a_western_decisive flag = ind_v4a_ocean_decisive }
+					AND = { flag = ind_v4a_eastern_decisive flag = ind_v4a_gulf_projection flag = ind_v4a_east_africa_projection }
+					AND = {
+						flag = ind_v4a_global_command
+						flag = ind_v4a_joint_campaign_decisive
+						OR = { flag = ind_v4a_gulf_projection flag = ind_v4a_east_africa_projection }
+					}
+				}
+			}
+			OR = {
+				flag = ind_v4a_joint_campaign_decisive
+				AND = { flag = ind_v4a_eastern_decisive flag = ind_v4a_gulf_projection }
+				AND = { flag = ind_v4a_western_decisive flag = ind_v4a_east_africa_projection }
+				AND = { flag = ind_v4a_ocean_decisive flag = ind_v4a_gulf_projection }
+				AND = { flag = ind_v4a_ocean_decisive flag = ind_v4a_east_africa_projection }
+			}
+		}
+		name = "Senior partner: India decided more than one theatre"
+		command = { type = setflag which = ind_v4a_allied_tier_senior }
+		command = { type = setflag which = ind_v4a_allied_performance_evaluated }
+		command = { type = trigger which = 9281242 }
+	}
+	action_c = {
+		trigger = {
+			NOT = {
+				OR = {
+					AND = { flag = ind_v4a_eastern_decisive flag = ind_v4a_western_decisive flag = ind_v4a_ocean_decisive }
+					AND = { flag = ind_v4a_eastern_decisive flag = ind_v4a_gulf_projection flag = ind_v4a_east_africa_projection }
+					AND = {
+						flag = ind_v4a_global_command
+						flag = ind_v4a_joint_campaign_decisive
+						OR = { flag = ind_v4a_gulf_projection flag = ind_v4a_east_africa_projection }
+					}
+				}
+			}
+			NOT = { flag = ind_v4a_joint_campaign_decisive }
+			NOT = { AND = { flag = ind_v4a_eastern_decisive flag = ind_v4a_gulf_projection } }
+			NOT = { AND = { flag = ind_v4a_western_decisive flag = ind_v4a_east_africa_projection } }
+			NOT = { AND = { flag = ind_v4a_ocean_decisive flag = ind_v4a_gulf_projection } }
+			NOT = { AND = { flag = ind_v4a_ocean_decisive flag = ind_v4a_east_africa_projection } }
+			OR = {
+				flag = ind_v4a_eastern_decisive
+				flag = ind_v4a_western_decisive
+				flag = ind_v4a_ocean_decisive
+				flag = ind_v4a_gulf_projection
+				flag = ind_v4a_east_africa_projection
+				AND = { flag = ind_v4a_eastern_line_secured flag = ind_v4a_western_lodgement }
+			}
+		}
+		name = "Regional power: India delivered a substantial campaign"
+		command = { type = setflag which = ind_v4a_allied_tier_regional }
+		command = { type = setflag which = ind_v4a_allied_performance_evaluated }
+		command = { type = trigger which = 9281242 }
+	}
+	action_d = {
+		trigger = {
+			NOT = { flag = ind_v4a_eastern_decisive }
+			NOT = { flag = ind_v4a_western_decisive }
+			NOT = { flag = ind_v4a_ocean_decisive }
+			NOT = { flag = ind_v4a_gulf_projection }
+			NOT = { flag = ind_v4a_east_africa_projection }
+			NOT = { AND = { flag = ind_v4a_eastern_line_secured flag = ind_v4a_western_lodgement } }
+		}
+		name = "Participant: India contributed without deciding a theatre"
+		command = { type = setflag which = ind_v4a_allied_tier_participant }
+		command = { type = setflag which = ind_v4a_allied_performance_evaluated }
+		command = { type = trigger which = 9281242 }
+	}
+}
+
+event = {
+	id = 9281242
+	random = no
+	country = IND
+
+	name = "The Allied Peace Doctrine"
+	desc = "India must convert performance into one settlement. Restoration is available at every tier; sovereign states require Regional, protectorates Senior and retention Hegemon. Fixed Senior/Hegemon replies are UK/USA/Australia 60/30/10 and Netherlands 55/30/15; lower-tier replies are 35/45/20 and 30/45/25."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+
+	action_a = {
+		ai_chance = 30
+		name = "Restore recognized allies; claim influence, not territory"
+		command = { type = dissent value = -3 }
+		command = { type = belligerence value = -2 }
+		command = { type = relation which = ENG value = 25 }
+		command = { type = relation which = USA value = 20 }
+		command = { type = relation which = HOL value = 20 }
+		command = { type = setflag which = ind_v4a_doctrine_restoration }
+		command = { type = trigger which = 9281243 }
+	}
+	action_b = {
+		trigger = {
+			OR = {
+				flag = ind_v4a_allied_tier_regional
+				flag = ind_v4a_allied_tier_senior
+				flag = ind_v4a_allied_tier_hegemon
+			}
+		}
+		ai_chance = 35
+		name = "Build sovereign Indian-backed states: -600/-1000"
+		command = { type = money value = -600 }
+		command = { type = supplies value = -1000 }
+		command = { type = dissent value = -3 }
+		command = { type = belligerence value = -3 }
+		command = { type = setflag which = ind_v4a_doctrine_sovereign_states }
+		command = { type = trigger which = 9281243 }
+	}
+	action_c = {
+		trigger = {
+			OR = {
+				flag = ind_v4a_allied_tier_senior
+				flag = ind_v4a_allied_tier_hegemon
+			}
+		}
+		ai_chance = 20
+		name = "Create Indian protectorates: -800/-1400, +3 dissent"
+		command = { type = money value = -800 }
+		command = { type = supplies value = -1400 }
+		command = { type = dissent value = 3 }
+		command = { type = belligerence value = 5 }
+		command = { type = setflag which = ind_v4a_doctrine_protectorates }
+		command = { type = trigger which = 9281243 }
+	}
+	action_d = {
+		trigger = { flag = ind_v4a_allied_tier_hegemon }
+		ai_chance = 15
+		name = "Retain strategic territories: -1000/-1800, +7 dissent"
+		command = { type = money value = -1000 }
+		command = { type = supplies value = -1800 }
+		command = { type = dissent value = 7 }
+		command = { type = belligerence value = 12 }
+		command = { type = relation which = ENG value = -35 }
+		command = { type = relation which = USA value = -20 }
+		command = { type = relation which = HOL value = -45 }
+		command = { type = setflag which = ind_v4a_doctrine_retention }
+		command = { type = trigger which = 9281243 }
+	}
+}
+
+event = {
+	id = 9281243
+	random = no
+	country = IND
+	one_action = yes
+
+	name = "The Four Allied Delegations"
+	desc = "London decides colonial transfers and Gulf-East African concessions; Washington judges the ocean order; Canberra decides whether Indian leadership is partnership or tutelage; The Hague determines Indonesia. Senior performance makes acceptance more likely, but every refusal produces a playable consequence."
+	style = 2
+	picture = "aubm_v4_war_aims"
+
+	action_a = {
+		name = "Submit the settlement memoranda"
+		command = { trigger = { exists = ENG OR = { flag = ind_v4a_allied_tier_senior flag = ind_v4a_allied_tier_hegemon } } type = event which = 9281250 where = ENG when = 2 }
+		command = { trigger = { exists = ENG NOT = { flag = ind_v4a_allied_tier_senior } NOT = { flag = ind_v4a_allied_tier_hegemon } } type = event which = 9281251 where = ENG when = 2 }
+		command = { trigger = { exists = USA OR = { flag = ind_v4a_allied_tier_senior flag = ind_v4a_allied_tier_hegemon } } type = event which = 9281252 where = USA when = 3 }
+		command = { trigger = { exists = USA NOT = { flag = ind_v4a_allied_tier_senior } NOT = { flag = ind_v4a_allied_tier_hegemon } } type = event which = 9281253 where = USA when = 3 }
+		command = { trigger = { exists = AST OR = { flag = ind_v4a_allied_tier_senior flag = ind_v4a_allied_tier_hegemon } } type = event which = 9281254 where = AST when = 4 }
+		command = { trigger = { exists = AST NOT = { flag = ind_v4a_allied_tier_senior } NOT = { flag = ind_v4a_allied_tier_hegemon } } type = event which = 9281255 where = AST when = 4 }
+		command = { trigger = { exists = HOL OR = { flag = ind_v4a_allied_tier_senior flag = ind_v4a_allied_tier_hegemon } } type = event which = 9281256 where = HOL when = 5 }
+		command = { trigger = { exists = HOL NOT = { flag = ind_v4a_allied_tier_senior } NOT = { flag = ind_v4a_allied_tier_hegemon } } type = event which = 9281257 where = HOL when = 5 }
+		command = { trigger = { NOT = { exists = ENG } } type = setflag which = ind_v4a_uk_settlement_resolved }
+		command = { trigger = { NOT = { exists = USA } } type = setflag which = ind_v4a_usa_settlement_resolved }
+		command = { trigger = { NOT = { exists = AST } } type = setflag which = ind_v4a_ast_settlement_resolved }
+		command = { trigger = { NOT = { exists = HOL } } type = setflag which = ind_v4a_hol_settlement_resolved }
+		command = { type = setflag which = ind_v4a_settlement_dispatched }
+	}
+}
+
+#########################################################################
+# V. Accept-counter-reject responses from the Allied powers
+#########################################################################
+
+event = {
+	id = 9281250
+	random = no
+	country = ENG
+
+	name = "London Weighs India's Senior Settlement"
+	desc = "India's battlefield record cannot be dismissed, but its demand may dismantle Britain's Asian and African position. London can accept the Indian doctrine, counter with autonomy inside a British Commonwealth, or refuse and risk a postwar rupture."
+	style = 2
+	picture = "aubm_v4_london_settlement"
+
+	action_a = {
+		ai_chance = 60
+		name = "Accept India's earned settlement"
+		command = { type = relation which = IND value = 25 }
+		command = { type = setflag which = ind_v4a_uk_accepts_settlement }
+		command = { type = event which = 9281271 where = ENG when = 1 }
+		command = { type = event which = 9281258 where = IND when = 3 }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Counter with Commonwealth autonomy and base access"
+		command = { type = relation which = IND value = 5 }
+		command = { type = setflag which = ind_v4a_uk_counters_settlement }
+		command = { type = event which = 9281272 where = ENG when = 1 }
+		command = { type = event which = 9281259 where = IND when = 3 }
+	}
+	action_c = {
+		ai_chance = 10
+		name = "Reject Indian revision of the imperial settlement"
+		command = { type = relation which = IND value = -50 }
+		command = { type = setflag which = ind_v4a_uk_rejects_settlement }
+		command = { type = event which = 9281260 where = IND when = 3 }
+	}
+}
+
+event = {
+	id = 9281251
+	random = no
+	country = ENG
+
+	name = "London Weighs India's Limited Settlement"
+	desc = "India contributed but did not dominate the war. Britain can still accept a modest Indian role, counter with supervised Commonwealth autonomy, or refuse concessions beyond consultation."
+	style = 2
+	picture = "aubm_v4_london_settlement"
+
+	action_a = {
+		ai_chance = 35
+		name = "Accept the limited Indian settlement"
+		command = { type = relation which = IND value = 20 }
+		command = { type = setflag which = ind_v4a_uk_accepts_settlement }
+		command = { type = event which = 9281271 where = ENG when = 1 }
+		command = { type = event which = 9281258 where = IND when = 3 }
+	}
+	action_b = {
+		ai_chance = 45
+		name = "Offer Commonwealth autonomy under British guarantees"
+		command = { type = relation which = IND value = 5 }
+		command = { type = setflag which = ind_v4a_uk_counters_settlement }
+		command = { type = event which = 9281272 where = ENG when = 1 }
+		command = { type = event which = 9281259 where = IND when = 3 }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Refuse territorial or constitutional concessions"
+		command = { type = relation which = IND value = -35 }
+		command = { type = setflag which = ind_v4a_uk_rejects_settlement }
+		command = { type = event which = 9281260 where = IND when = 3 }
+	}
+}
+
+event = {
+	id = 9281252
+	random = no
+	country = USA
+
+	name = "Washington Weighs India's Ocean Order"
+	desc = "India asks the United States to recognize its performance-based order from the Gulf to Southeast Asia. Washington can endorse Indian leadership, counter with open reciprocal bases and multilateral guarantees, or refuse to underwrite a new sphere."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+
+	action_a = {
+		ai_chance = 60
+		name = "Recognize India's senior Indian Ocean role"
+		command = { type = relation which = IND value = 35 }
+		command = { type = supplies value = -700 }
+		command = { type = guarantee which = USA where = IND }
+		command = { type = setflag which = ind_v4a_usa_accepts_settlement }
+		command = { type = event which = 9281261 where = IND when = 3 }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Counter with open bases and multilateral guarantees"
+		command = { type = relation which = IND value = 15 }
+		command = { type = setflag which = ind_v4a_usa_counters_settlement }
+		command = { type = event which = 9281262 where = IND when = 3 }
+	}
+	action_c = {
+		ai_chance = 10
+		name = "Refuse recognition of an Indian sphere"
+		command = { type = relation which = IND value = -30 }
+		command = { type = setflag which = ind_v4a_usa_rejects_settlement }
+		command = { type = event which = 9281263 where = IND when = 3 }
+	}
+}
+
+event = {
+	id = 9281253
+	random = no
+	country = USA
+
+	name = "Washington Weighs India's Regional Claim"
+	desc = "India seeks recognition beyond what its limited campaign alone compels. Washington can endorse a regional role, counter with reciprocal access and guarantees, or keep the postwar order inside established Allied arrangements."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+
+	action_a = {
+		ai_chance = 35
+		name = "Recognize a regional Indian security role"
+		command = { type = relation which = IND value = 25 }
+		command = { type = supplies value = -400 }
+		command = { type = setflag which = ind_v4a_usa_accepts_settlement }
+		command = { type = event which = 9281261 where = IND when = 3 }
+	}
+	action_b = {
+		ai_chance = 45
+		name = "Offer guarantees in exchange for reciprocal access"
+		command = { type = relation which = IND value = 10 }
+		command = { type = setflag which = ind_v4a_usa_counters_settlement }
+		command = { type = event which = 9281262 where = IND when = 3 }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Decline a separate Indian security order"
+		command = { type = relation which = IND value = -20 }
+		command = { type = setflag which = ind_v4a_usa_rejects_settlement }
+		command = { type = event which = 9281263 where = IND when = 3 }
+	}
+}
+
+event = {
+	id = 9281254
+	random = no
+	country = AST
+
+	name = "Canberra and the Indian Ocean Partnership"
+	desc = "India's war record makes it the strongest power on Australia's western approaches. Canberra may accept an equal security partnership under Indian ocean leadership, counter with strict reciprocity and no political tutelage, or refuse any hierarchy."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+
+	action_a = {
+		ai_chance = 60
+		name = "Accept an equal Indian Ocean partnership"
+		command = { type = relation which = IND value = 40 }
+		command = { type = access which = IND }
+		command = { type = guarantee which = AST where = IND }
+		command = { type = setflag which = ind_v4a_ast_accepts_settlement }
+		command = { type = event which = 9281264 where = IND when = 3 }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Counter with reciprocal defence and no tutelage"
+		command = { type = relation which = IND value = 15 }
+		command = { type = access which = IND }
+		command = { type = setflag which = ind_v4a_ast_counters_settlement }
+		command = { type = event which = 9281265 where = IND when = 3 }
+	}
+	action_c = {
+		ai_chance = 10
+		name = "Refuse Indian leadership of Australian defence"
+		command = { type = relation which = IND value = -25 }
+		command = { type = setflag which = ind_v4a_ast_rejects_settlement }
+		command = { type = event which = 9281266 where = IND when = 3 }
+	}
+}
+
+event = {
+	id = 9281255
+	random = no
+	country = AST
+
+	name = "Canberra Weighs India's Regional Proposal"
+	desc = "India asks Australia to enter a regional security system despite a limited campaign record. Canberra may accept cooperation, counter with strict reciprocity, or retain its existing British and American arrangements."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+
+	action_a = {
+		ai_chance = 35
+		name = "Accept regional defence cooperation"
+		command = { type = relation which = IND value = 30 }
+		command = { type = access which = IND }
+		command = { type = setflag which = ind_v4a_ast_accepts_settlement }
+		command = { type = event which = 9281264 where = IND when = 3 }
+	}
+	action_b = {
+		ai_chance = 45
+		name = "Demand complete reciprocity and no hierarchy"
+		command = { type = relation which = IND value = 10 }
+		command = { type = access which = IND }
+		command = { type = setflag which = ind_v4a_ast_counters_settlement }
+		command = { type = event which = 9281265 where = IND when = 3 }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Remain outside an Indian-led system"
+		command = { type = relation which = IND value = -15 }
+		command = { type = setflag which = ind_v4a_ast_rejects_settlement }
+		command = { type = event which = 9281266 where = IND when = 3 }
+	}
+}
+
+event = {
+	id = 9281256
+	random = no
+	country = HOL
+
+	name = "The Hague Weighs India's Indonesian Settlement"
+	desc = "India's forces and ocean command give Delhi a powerful claim in Indonesia. The Netherlands can accept India's doctrine, counter with Indonesian home rule inside a Dutch commercial system, or reject any erosion of restored colonial sovereignty."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+
+	action_a = {
+		ai_chance = 55
+		name = "Accept India's earned Indonesian settlement"
+		command = { type = relation which = IND value = 20 }
+		command = { type = setflag which = ind_v4a_hol_accepts_settlement }
+		command = { type = event which = 9281273 where = HOL when = 1 }
+		command = { type = event which = 9281267 where = IND when = 3 }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Counter with home rule and Dutch commercial primacy"
+		command = { type = relation which = IND value = 5 }
+		command = { type = setflag which = ind_v4a_hol_counters_settlement }
+		command = { type = event which = 9281274 where = HOL when = 1 }
+		command = { type = event which = 9281268 where = IND when = 3 }
+	}
+	action_c = {
+		ai_chance = 15
+		name = "Reject Indian interference in the Indies"
+		command = { type = relation which = IND value = -55 }
+		command = { type = setflag which = ind_v4a_hol_rejects_settlement }
+		command = { type = event which = 9281269 where = IND when = 3 }
+	}
+}
+
+event = {
+	id = 9281257
+	random = no
+	country = HOL
+
+	name = "The Hague Weighs India's Limited Claim"
+	desc = "India seeks influence in Indonesia without a commanding battlefield record. The Netherlands can accept a narrow Indian role, offer Dutch-led home rule, or reject postwar revision."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+
+	action_a = {
+		ai_chance = 30
+		name = "Accept limited Indian participation"
+		command = { type = relation which = IND value = 15 }
+		command = { type = setflag which = ind_v4a_hol_accepts_settlement }
+		command = { type = event which = 9281273 where = HOL when = 1 }
+		command = { type = event which = 9281267 where = IND when = 3 }
+	}
+	action_b = {
+		ai_chance = 45
+		name = "Offer Dutch-led Indonesian home rule"
+		command = { type = relation which = IND value = 5 }
+		command = { type = setflag which = ind_v4a_hol_counters_settlement }
+		command = { type = event which = 9281274 where = HOL when = 1 }
+		command = { type = event which = 9281268 where = IND when = 3 }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "Restore Dutch rule without Indian concessions"
+		command = { type = relation which = IND value = -35 }
+		command = { type = setflag which = ind_v4a_hol_rejects_settlement }
+		command = { type = event which = 9281269 where = IND when = 3 }
+	}
+}
+
+#########################################################################
+# VI. Indian answers: every foreign outcome resolves into gameplay
+#########################################################################
+
+event = {
+	id = 9281258
+	random = no
+	country = IND
+	one_action = yes
+	name = "London Accepts India's Settlement"
+	desc = "Britain accepts that Indian performance has earned political consequences. Restoration remains restoration; sovereign states receive Indian guarantees; protectorates transfer into Delhi's security system; retained positions are ceded only where the matching Indian theatre performed."
+	style = 2
+	picture = "aubm_v4_london_settlement"
+
+	action_a = {
+		name = "Implement the British portion of the settlement"
+		command = { trigger = { flag = ind_v4a_doctrine_restoration } type = money value = 350 }
+		command = { trigger = { flag = ind_v4a_doctrine_restoration } type = relation which = ENG value = 25 }
+		command = { trigger = { flag = ind_v4a_doctrine_sovereign_states exists = MLY } type = guarantee which = IND where = MLY }
+		command = { trigger = { flag = ind_v4a_doctrine_sovereign_states exists = U90 } type = guarantee which = IND where = U90 }
+		command = { trigger = { flag = ind_v4a_doctrine_sovereign_states exists = U70 } type = guarantee which = IND where = U70 }
+		command = { trigger = { flag = ind_v4a_doctrine_sovereign_states exists = U97 } type = guarantee which = IND where = U97 }
+		command = { trigger = { flag = ind_v4a_doctrine_sovereign_states flag = ind_v4a_gulf_projection exists = IRQ } type = guarantee which = IND where = IRQ }
+		command = { trigger = { flag = ind_v4a_doctrine_sovereign_states flag = ind_v4a_gulf_projection exists = OMN } type = guarantee which = IND where = OMN }
+		command = { trigger = { flag = ind_v4a_doctrine_sovereign_states flag = ind_v4a_gulf_projection exists = YEM } type = guarantee which = IND where = YEM }
+		command = { trigger = { flag = ind_v4a_doctrine_sovereign_states flag = ind_v4a_gulf_projection exists = SAU } type = guarantee which = IND where = SAU }
+		command = { trigger = { flag = ind_v4a_doctrine_protectorates exists = MLY NOT = { ispuppet = MLY } } type = make_puppet which = MLY }
+		command = { trigger = { flag = ind_v4a_doctrine_protectorates flag = ind_v4a_east_africa_projection exists = U90 NOT = { ispuppet = U90 } } type = make_puppet which = U90 }
+		command = { trigger = { flag = ind_v4a_doctrine_protectorates flag = ind_v4a_east_africa_projection exists = U70 NOT = { ispuppet = U70 } } type = make_puppet which = U70 }
+		command = { trigger = { flag = ind_v4a_doctrine_protectorates flag = ind_v4a_east_africa_projection exists = U97 NOT = { ispuppet = U97 } } type = make_puppet which = U97 }
+		command = { trigger = { flag = ind_v4a_doctrine_protectorates flag = ind_v4a_gulf_projection exists = IRQ NOT = { ispuppet = IRQ } } type = make_puppet which = IRQ }
+		command = { trigger = { flag = ind_v4a_doctrine_protectorates flag = ind_v4a_gulf_projection exists = OMN NOT = { ispuppet = OMN } } type = make_puppet which = OMN }
+		command = { trigger = { flag = ind_v4a_doctrine_protectorates flag = ind_v4a_gulf_projection exists = YEM NOT = { ispuppet = YEM } } type = make_puppet which = YEM }
+		command = { trigger = { flag = ind_v4a_doctrine_retention flag = ind_v4a_eastern_decisive } type = addclaim which = 1432 }
+		command = { trigger = { flag = ind_v4a_doctrine_retention flag = ind_v4a_eastern_decisive } type = addclaim which = 1438 }
+		command = { trigger = { flag = ind_v4a_doctrine_retention flag = ind_v4a_eastern_decisive } type = addclaim which = 1624 }
+		command = { trigger = { flag = ind_v4a_doctrine_retention flag = ind_v4a_gulf_projection } type = addclaim which = 1053 }
+		command = { trigger = { flag = ind_v4a_doctrine_retention flag = ind_v4a_gulf_projection } type = addclaim which = 1032 }
+		command = { trigger = { flag = ind_v4a_doctrine_retention flag = ind_v4a_east_africa_projection } type = addclaim which = 842 }
+		command = { trigger = { flag = ind_v4a_doctrine_retention flag = ind_v4a_east_africa_projection } type = addclaim which = 852 }
+		command = { trigger = { flag = ind_v4a_east_africa_projection exists = SAF } type = relation which = SAF value = 35 }
+		command = { type = setflag which = ind_v4a_uk_settlement_resolved }
+	}
+}
+
+event = {
+	id = 9281259
+	random = no
+	country = IND
+	name = "London's Commonwealth Counter-Settlement"
+	desc = "Britain creates self-governing Commonwealth territories where Indian forces earned a claim, but retains British mastery and commercial privileges. Delhi can accept autonomy, purchase long base leases, or reject the imperial ceiling and accept a colder postwar partnership."
+	style = 2
+	picture = "aubm_v4_london_settlement"
+
+	action_a = {
+		ai_chance = 45
+		name = "Accept autonomy and guarantee the new governments"
+		command = { trigger = { exists = MLY } type = guarantee which = IND where = MLY }
+		command = { trigger = { exists = U90 } type = guarantee which = IND where = U90 }
+		command = { trigger = { exists = U70 } type = guarantee which = IND where = U70 }
+		command = { trigger = { exists = U97 } type = guarantee which = IND where = U97 }
+		command = { type = relation which = ENG value = 20 }
+		command = { type = belligerence value = -2 }
+		command = { type = setflag which = ind_v4a_commonwealth_autonomy }
+		command = { type = setflag which = ind_v4a_uk_settlement_resolved }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Purchase long base leases: -600 money, -800 supplies"
+		command = { type = money value = -600 }
+		command = { type = supplies value = -800 }
+		command = { type = max_organization which = naval value = 1 }
+		command = { type = repair_mod value = 1 }
+		command = { type = relation which = ENG value = 10 }
+		command = { type = setflag which = ind_v4a_commonwealth_base_leases }
+		command = { type = setflag which = ind_v4a_uk_settlement_resolved }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Reject the ceiling and keep an independent sphere"
+		command = { type = dissent value = -2 }
+		command = { type = relation which = ENG value = -45 }
+		command = { type = relation which = USA value = 10 }
+		command = { type = setflag which = ind_v4a_commonwealth_fracture }
+		command = { type = setflag which = ind_v4a_uk_settlement_resolved }
+	}
+}
+
+event = {
+	id = 9281260
+	random = no
+	country = IND
+	name = "London Rejects India's Peace Claim"
+	desc = "Britain refuses both constitutional and territorial revision. India may preserve Allied unity through restoration, spend diplomatic capital on American mediation, or convert its battlefield positions into disputed claims and prepare for a postwar confrontation."
+	style = 2
+	picture = "aubm_v4_london_settlement"
+
+	action_a = {
+		ai_chance = 35
+		name = "Accept restoration and preserve the alliance"
+		command = { type = dissent value = -1 }
+		command = { type = relation which = ENG value = 15 }
+		command = { type = setflag which = ind_v4a_uk_restoration_imposed }
+		command = { type = setflag which = ind_v4a_uk_settlement_resolved }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Invoke American mediation: -300 money"
+		command = { type = money value = -300 }
+		command = { type = relation which = USA value = 25 }
+		command = { type = relation which = ENG value = -15 }
+		command = { type = setflag which = ind_v4a_american_mediation_claim }
+		command = { type = setflag which = ind_v4a_uk_settlement_resolved }
+	}
+	action_c = {
+		trigger = {
+			OR = {
+				flag = ind_v4a_allied_tier_senior
+				flag = ind_v4a_allied_tier_hegemon
+			}
+		}
+		ai_chance = 25
+		name = "Defy the veto: +4 dissent, +5 belligerence"
+		command = { type = dissent value = 4 }
+		command = { type = belligerence value = 5 }
+		command = { type = relation which = ENG value = -80 }
+		command = { trigger = { control = { province = 1432 data = IND } } type = addclaim which = 1432 }
+		command = { trigger = { control = { province = 1053 data = IND } } type = addclaim which = 1053 }
+		command = { trigger = { control = { province = 842 data = IND } } type = addclaim which = 842 }
+		command = { type = setflag which = ind_v4a_uk_settlement_confrontation }
+		command = { type = setflag which = ind_v4a_uk_settlement_resolved }
+	}
+}
+
+event = {
+	id = 9281261
+	random = no
+	country = IND
+	one_action = yes
+	name = "Washington Recognizes India's Ocean Role"
+	desc = "American recognition gives India's settlement international weight without making the United States responsible for every Indian client. Equipment credits and joint planning reward performance while keeping Indian commands sovereign."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+
+	action_a = {
+		name = "Receive recognition and the equipment credit"
+		command = { type = supplies value = 700 }
+		command = { type = relation which = USA value = 20 }
+		command = { trigger = { OR = { flag = ind_v4a_allied_tier_senior flag = ind_v4a_allied_tier_hegemon } } type = research_mod value = 1 }
+		command = { type = setflag which = ind_v4a_american_ocean_recognition }
+		command = { type = setflag which = ind_v4a_usa_settlement_resolved }
+	}
+}
+
+event = {
+	id = 9281262
+	random = no
+	country = IND
+	name = "Washington's Open-Bases Counteroffer"
+	desc = "The United States will guarantee the new order only if American forces receive reciprocal access. India can accept the exchange, substitute multilateral guarantees without bases, or proceed without an American umbrella."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+
+	action_a = {
+		ai_chance = 45
+		name = "Accept reciprocal access: +900 supplies, +2 dissent"
+		command = { type = access which = USA }
+		command = { type = supplies value = 900 }
+		command = { type = dissent value = 2 }
+		command = { type = relation which = USA value = 30 }
+		command = { type = setflag which = ind_v4a_american_base_compact }
+		command = { type = setflag which = ind_v4a_usa_settlement_resolved }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Fund guarantees without bases: -400 supplies"
+		command = { type = supplies value = -400 }
+		command = { trigger = { exists = AST } type = guarantee which = IND where = AST }
+		command = { trigger = { exists = MLY } type = guarantee which = IND where = MLY }
+		command = { trigger = { exists = INO } type = guarantee which = IND where = INO }
+		command = { type = relation which = USA value = 15 }
+		command = { type = setflag which = ind_v4a_multilateral_guarantees }
+		command = { type = setflag which = ind_v4a_usa_settlement_resolved }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Proceed without an American umbrella"
+		command = { type = dissent value = -1 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = setflag which = ind_v4a_independent_ocean_order }
+		command = { type = setflag which = ind_v4a_usa_settlement_resolved }
+	}
+}
+
+event = {
+	id = 9281263
+	random = no
+	country = IND
+	name = "Washington Refuses an Indian Sphere"
+	desc = "The United States declines to recognize a distinct Indian sphere. Delhi can shoulder the security burden itself, exchange political ambition for reconstruction trade, or appeal to anti-colonial governments and accept sharper relations with the western powers."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+
+	action_a = {
+		ai_chance = 45
+		name = "Build the order without Washington"
+		command = { type = dissent value = 1 }
+		command = { type = belligerence value = 1 }
+		command = { type = max_organization which = naval value = 1 }
+		command = { type = setflag which = ind_v4a_independent_ocean_order }
+		command = { type = setflag which = ind_v4a_usa_settlement_resolved }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Take reconstruction trade: +700 money"
+		command = { type = money value = 700 }
+		command = { type = industrial_modifier which = money value = 1 }
+		command = { type = setflag which = ind_v4a_american_trade_fallback }
+		command = { type = setflag which = ind_v4a_usa_settlement_resolved }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "Appeal to the anti-colonial world"
+		command = { type = dissent value = -2 }
+		command = { type = relation which = CHI value = 20 }
+		command = { type = relation which = ETH value = 20 }
+		command = { type = relation which = ENG value = -10 }
+		command = { type = setflag which = ind_v4a_anti_colonial_appeal }
+		command = { type = setflag which = ind_v4a_usa_settlement_resolved }
+	}
+}
+
+event = {
+	id = 9281264
+	random = no
+	country = IND
+	one_action = yes
+	name = "Australia Accepts the Ocean Partnership"
+	desc = "Canberra accepts Indian leadership as an equal security partnership. Australia remains sovereign and outside any Indian puppet structure; access, guarantees and planning make it part of an Indian-centered ocean system in practice."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+
+	action_a = {
+		name = "Guarantee Australia and open reciprocal planning"
+		command = { type = guarantee which = IND where = AST }
+		command = { type = relation which = AST value = 25 }
+		command = { type = setflag which = ind_v4a_australian_ocean_partnership }
+		command = { type = setflag which = ind_v4a_ast_settlement_resolved }
+	}
+}
+
+event = {
+	id = 9281265
+	random = no
+	country = IND
+	name = "Canberra Demands Complete Reciprocity"
+	desc = "Australia accepts cooperation but rejects political hierarchy. India can exchange full access, accept a looser sovereign partnership, or concentrate on the northern ocean and leave Australian defence outside Delhi's system."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+
+	action_a = {
+		ai_chance = 45
+		name = "Exchange full access: -350 supplies"
+		command = { type = supplies value = -350 }
+		command = { type = access which = AST }
+		command = { type = guarantee which = IND where = AST }
+		command = { type = relation which = AST value = 25 }
+		command = { type = setflag which = ind_v4a_australian_reciprocity }
+		command = { type = setflag which = ind_v4a_ast_settlement_resolved }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Respect autonomy; retain consultation"
+		command = { type = relation which = AST value = 15 }
+		command = { type = belligerence value = -1 }
+		command = { type = setflag which = ind_v4a_australian_consultation }
+		command = { type = setflag which = ind_v4a_ast_settlement_resolved }
+	}
+	action_c = {
+		ai_chance = 15
+		name = "Concentrate on the northern Indian Ocean"
+		command = { type = relation which = AST value = -10 }
+		command = { type = relation which = INO value = 15 }
+		command = { type = setflag which = ind_v4a_northern_ocean_focus }
+		command = { type = setflag which = ind_v4a_ast_settlement_resolved }
+	}
+}
+
+event = {
+	id = 9281266
+	random = no
+	country = IND
+	name = "Australia Refuses Indian Leadership"
+	desc = "Canberra refuses any Indian-led security hierarchy. Delhi may explicitly respect Australian independence, seek American mediation, or establish a harder northern perimeter that treats Australian cooperation as useful but unnecessary."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+
+	action_a = {
+		ai_chance = 45
+		name = "Respect Australia's separate system"
+		command = { type = relation which = AST value = 10 }
+		command = { type = belligerence value = -1 }
+		command = { type = setflag which = ind_v4a_australian_autonomy_respected }
+		command = { type = setflag which = ind_v4a_ast_settlement_resolved }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Seek an American guarantee for the gap"
+		command = { type = money value = -200 }
+		command = { type = relation which = USA value = 20 }
+		command = { type = setflag which = ind_v4a_australian_mediation }
+		command = { type = setflag which = ind_v4a_ast_settlement_resolved }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "Build a northern perimeter without Canberra"
+		command = { type = supplies value = -500 }
+		command = { type = max_organization which = naval value = 1 }
+		command = { type = relation which = AST value = -25 }
+		command = { type = setflag which = ind_v4a_northern_ocean_focus }
+		command = { type = setflag which = ind_v4a_ast_settlement_resolved }
+	}
+}
+
+event = {
+	id = 9281267
+	random = no
+	country = IND
+	one_action = yes
+	name = "The Hague Accepts the Indonesian Settlement"
+	desc = "The Netherlands implements India's doctrine. A sovereign Indonesia receives an Indian guarantee; a protectorate enters Delhi's security system; retained ports become Indian claims and legal territory only where The Hague actually owns and cedes them."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+
+	action_a = {
+		name = "Implement the Indonesian settlement"
+		command = { trigger = { flag = ind_v4a_doctrine_restoration } type = money value = 250 }
+		command = { trigger = { flag = ind_v4a_doctrine_sovereign_states exists = INO } type = guarantee which = IND where = INO }
+		command = { trigger = { flag = ind_v4a_doctrine_protectorates exists = INO NOT = { ispuppet = INO } } type = make_puppet which = INO }
+		command = { trigger = { flag = ind_v4a_doctrine_retention } type = addclaim which = 1636 }
+		command = { trigger = { flag = ind_v4a_doctrine_retention } type = addclaim which = 1647 }
+		command = { trigger = { flag = ind_v4a_doctrine_retention } type = addclaim which = 1653 }
+		command = { trigger = { flag = ind_v4a_doctrine_retention } type = addclaim which = 1632 }
+		command = { trigger = { flag = ind_v4a_doctrine_retention } type = addclaim which = 1642 }
+		command = { trigger = { flag = ind_v4a_doctrine_retention } type = addclaim which = 1657 }
+		command = { type = setflag which = ind_v4a_hol_settlement_resolved }
+	}
+}
+
+event = {
+	id = 9281268
+	random = no
+	country = IND
+	name = "The Dutch Home-Rule Counteroffer"
+	desc = "The Netherlands creates an Indonesian government but retains Dutch mastery and commercial primacy. India may accept home rule, purchase a privileged economic and naval position, or, with sufficient performance, force the new government into an Indian protectorate at severe diplomatic cost."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+
+	action_a = {
+		ai_chance = 45
+		name = "Accept home rule and guarantee Indonesia"
+		command = { trigger = { exists = INO } type = guarantee which = IND where = INO }
+		command = { type = relation which = HOL value = 20 }
+		command = { type = belligerence value = -2 }
+		command = { type = setflag which = ind_v4a_dutch_home_rule }
+		command = { type = setflag which = ind_v4a_hol_settlement_resolved }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Purchase commercial and naval privileges: -600 money"
+		command = { type = money value = -600 }
+		command = { type = industrial_modifier which = money value = 1 }
+		command = { type = repair_mod value = 1 }
+		command = { type = relation which = HOL value = 10 }
+		command = { type = setflag which = ind_v4a_indonesian_concessions }
+		command = { type = setflag which = ind_v4a_hol_settlement_resolved }
+	}
+	action_c = {
+		trigger = {
+			exists = INO
+			OR = {
+				flag = ind_v4a_allied_tier_senior
+				flag = ind_v4a_allied_tier_hegemon
+			}
+		}
+		ai_chance = 20
+		name = "Impose an Indian protectorate: +6 dissent, +8 belligerence"
+		command = { type = make_puppet which = INO }
+		command = { type = dissent value = 6 }
+		command = { type = belligerence value = 8 }
+		command = { type = relation which = HOL value = -80 }
+		command = { type = relation which = USA value = -20 }
+		command = { type = setflag which = ind_v4a_indonesian_protectorate_imposed }
+		command = { type = setflag which = ind_v4a_hol_settlement_resolved }
+	}
+}
+
+event = {
+	id = 9281269
+	random = no
+	country = IND
+	name = "The Hague Rejects Indian Claims"
+	desc = "The Netherlands refuses decolonization, protectorates and Indian bases. Delhi can accept Dutch restoration, fund Indonesian independence and endure a prolonged confrontation, or register claims to Indian-controlled ports while preparing to enforce them later."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+
+	action_a = {
+		ai_chance = 30
+		name = "Accept Dutch restoration for Allied unity"
+		command = { type = relation which = HOL value = 15 }
+		command = { type = dissent value = 1 }
+		command = { type = setflag which = ind_v4a_dutch_restoration_imposed }
+		command = { type = setflag which = ind_v4a_hol_settlement_resolved }
+	}
+	action_b = {
+		ai_chance = 45
+		name = "Sponsor Indonesian independence: -900 supplies"
+		command = { type = supplies value = -900 }
+		command = { type = relation which = HOL value = -70 }
+		command = { type = relation which = USA value = -10 }
+		command = { type = relation which = CHI value = 20 }
+		command = { type = embargo which = HOL where = IND }
+		command = { type = setflag which = ind_v4a_indonesian_independence_campaign }
+		command = { type = setflag which = ind_v4a_hol_settlement_resolved }
+	}
+	action_c = {
+		trigger = {
+			OR = {
+				flag = ind_v4a_allied_tier_senior
+				flag = ind_v4a_allied_tier_hegemon
+			}
+		}
+		ai_chance = 25
+		name = "Register the occupied-port claims: +4 dissent"
+		command = { type = dissent value = 4 }
+		command = { type = belligerence value = 5 }
+		command = { type = relation which = HOL value = -90 }
+		command = { trigger = { control = { province = 1636 data = IND } } type = addclaim which = 1636 }
+		command = { trigger = { control = { province = 1647 data = IND } } type = addclaim which = 1647 }
+		command = { trigger = { control = { province = 1653 data = IND } } type = addclaim which = 1653 }
+		command = { type = setflag which = ind_v4a_dutch_settlement_confrontation }
+		command = { type = setflag which = ind_v4a_hol_settlement_resolved }
+	}
+}
+
+#########################################################################
+# VII. Legal-owner settlement executors
+#########################################################################
+
+event = {
+	id = 9281271
+	random = no
+	one_action = yes
+	country = ENG
+
+	trigger = { flag = ind_v4a_uk_accepts_settlement }
+
+	name = "Britain Implements the Indian Settlement"
+	desc = "British officials execute the accepted settlement. Independence and territorial cessions are issued by the legal owner, preventing invalid self-secession or construction-side effects in India."
+	style = 2
+	picture = "aubm_v4_london_settlement"
+
+	action_a = {
+		name = "Issue the accepted constitutional instruments"
+		command = { trigger = { OR = { flag = ind_v4a_doctrine_sovereign_states flag = ind_v4a_doctrine_protectorates } OR = { flag = ind_v4a_eastern_decisive flag = ind_v4a_ocean_decisive } NOT = { exists = MLY } } type = independence which = MLY value = 1 }
+		command = { trigger = { OR = { flag = ind_v4a_doctrine_sovereign_states flag = ind_v4a_doctrine_protectorates } flag = ind_v4a_east_africa_projection NOT = { exists = U90 } } type = independence which = U90 value = 1 }
+		command = { trigger = { OR = { flag = ind_v4a_doctrine_sovereign_states flag = ind_v4a_doctrine_protectorates } flag = ind_v4a_east_africa_projection NOT = { exists = U70 } } type = independence which = U70 value = 1 }
+		command = { trigger = { OR = { flag = ind_v4a_doctrine_sovereign_states flag = ind_v4a_doctrine_protectorates } flag = ind_v4a_east_africa_projection NOT = { exists = U97 } } type = independence which = U97 value = 1 }
+		command = { trigger = { flag = ind_v4a_doctrine_sovereign_states ispuppet = MLY } type = end_mastery which = MLY }
+		command = { trigger = { flag = ind_v4a_doctrine_sovereign_states ispuppet = U90 } type = end_mastery which = U90 }
+		command = { trigger = { flag = ind_v4a_doctrine_sovereign_states ispuppet = U70 } type = end_mastery which = U70 }
+		command = { trigger = { flag = ind_v4a_doctrine_sovereign_states ispuppet = U97 } type = end_mastery which = U97 }
+		command = { trigger = { flag = ind_v4a_doctrine_protectorates ispuppet = MLY } type = end_mastery which = MLY }
+		command = { trigger = { flag = ind_v4a_doctrine_protectorates ispuppet = U90 } type = end_mastery which = U90 }
+		command = { trigger = { flag = ind_v4a_doctrine_protectorates ispuppet = U70 } type = end_mastery which = U70 }
+		command = { trigger = { flag = ind_v4a_doctrine_protectorates ispuppet = U97 } type = end_mastery which = U97 }
+		command = { trigger = { OR = { flag = ind_v4a_doctrine_sovereign_states flag = ind_v4a_doctrine_protectorates } flag = ind_v4a_gulf_projection puppet = { country = IRQ country = ENG } } type = end_mastery which = IRQ }
+		command = { trigger = { OR = { flag = ind_v4a_doctrine_sovereign_states flag = ind_v4a_doctrine_protectorates } flag = ind_v4a_gulf_projection puppet = { country = OMN country = ENG } } type = end_mastery which = OMN }
+		command = { trigger = { OR = { flag = ind_v4a_doctrine_sovereign_states flag = ind_v4a_doctrine_protectorates } flag = ind_v4a_gulf_projection puppet = { country = YEM country = ENG } } type = end_mastery which = YEM }
+		command = { trigger = { flag = ind_v4a_doctrine_sovereign_states flag = ind_v4a_gulf_projection puppet = { country = SAU country = ENG } } type = end_mastery which = SAU }
+		command = { trigger = { flag = ind_v4a_doctrine_retention flag = ind_v4a_eastern_decisive owned = { province = 1432 data = ENG } } type = secedeprovince which = IND value = 1432 when = 1 }
+		command = { trigger = { flag = ind_v4a_doctrine_retention flag = ind_v4a_eastern_decisive owned = { province = 1438 data = ENG } } type = secedeprovince which = IND value = 1438 when = 1 }
+		command = { trigger = { flag = ind_v4a_doctrine_retention flag = ind_v4a_eastern_decisive owned = { province = 1624 data = ENG } } type = secedeprovince which = IND value = 1624 when = 1 }
+		command = { trigger = { flag = ind_v4a_doctrine_retention flag = ind_v4a_gulf_projection owned = { province = 1053 data = ENG } } type = secedeprovince which = IND value = 1053 when = 1 }
+		command = { trigger = { flag = ind_v4a_doctrine_retention flag = ind_v4a_gulf_projection owned = { province = 1032 data = ENG } } type = secedeprovince which = IND value = 1032 when = 1 }
+		command = { trigger = { flag = ind_v4a_doctrine_retention flag = ind_v4a_east_africa_projection owned = { province = 842 data = ENG } } type = secedeprovince which = IND value = 842 when = 1 }
+		command = { trigger = { flag = ind_v4a_doctrine_retention flag = ind_v4a_east_africa_projection owned = { province = 852 data = ENG } } type = secedeprovince which = IND value = 852 when = 1 }
+		command = { type = access which = IND }
+		command = { type = setflag which = ind_v4a_uk_legal_transfer_complete }
+	}
+}
+
+event = {
+	id = 9281272
+	random = no
+	one_action = yes
+	country = ENG
+
+	trigger = { flag = ind_v4a_uk_counters_settlement }
+
+	name = "The Commonwealth Autonomy Instruments"
+	desc = "Britain answers India with self-government under British mastery. The new governments are real actors and India receives operational access, but London retains the constitutional and commercial ceiling Delhi disputed."
+	style = 2
+	picture = "aubm_v4_london_settlement"
+
+	action_a = {
+		name = "Create autonomous Commonwealth governments"
+		command = { trigger = { NOT = { flag = ind_v4a_doctrine_restoration } OR = { flag = ind_v4a_eastern_decisive flag = ind_v4a_ocean_decisive } NOT = { exists = MLY } } type = independence which = MLY value = 1 }
+		command = { trigger = { NOT = { flag = ind_v4a_doctrine_restoration } flag = ind_v4a_east_africa_projection NOT = { exists = U90 } } type = independence which = U90 value = 1 }
+		command = { trigger = { NOT = { flag = ind_v4a_doctrine_restoration } flag = ind_v4a_east_africa_projection NOT = { exists = U70 } } type = independence which = U70 value = 1 }
+		command = { trigger = { NOT = { flag = ind_v4a_doctrine_restoration } flag = ind_v4a_east_africa_projection NOT = { exists = U97 } } type = independence which = U97 value = 1 }
+		command = { trigger = { exists = MLY NOT = { puppet = { country = MLY country = ENG } } } type = make_puppet which = MLY }
+		command = { trigger = { exists = U90 NOT = { puppet = { country = U90 country = ENG } } } type = make_puppet which = U90 }
+		command = { trigger = { exists = U70 NOT = { puppet = { country = U70 country = ENG } } } type = make_puppet which = U70 }
+		command = { trigger = { exists = U97 NOT = { puppet = { country = U97 country = ENG } } } type = make_puppet which = U97 }
+		command = { type = access which = IND }
+		command = { type = setflag which = ind_v4a_uk_counter_transfer_complete }
+	}
+}
+
+event = {
+	id = 9281273
+	random = no
+	one_action = yes
+	country = HOL
+
+	trigger = { flag = ind_v4a_hol_accepts_settlement }
+
+	name = "The Netherlands Implements the Indonesian Settlement"
+	desc = "The Hague executes the accepted doctrine as legal owner. Sovereignty and protectorate paths release Indonesia before mastery changes; retention transfers only Dutch-owned strategic ports."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+
+	action_a = {
+		name = "Issue the Indonesian constitutional instruments"
+		command = { trigger = { OR = { flag = ind_v4a_doctrine_sovereign_states flag = ind_v4a_doctrine_protectorates } NOT = { exists = INO } } type = independence which = INO value = 1 }
+		command = { trigger = { flag = ind_v4a_doctrine_sovereign_states ispuppet = INO } type = end_mastery which = INO }
+		command = { trigger = { flag = ind_v4a_doctrine_protectorates ispuppet = INO } type = end_mastery which = INO }
+		command = { trigger = { flag = ind_v4a_doctrine_retention owned = { province = 1636 data = HOL } } type = secedeprovince which = IND value = 1636 when = 1 }
+		command = { trigger = { flag = ind_v4a_doctrine_retention owned = { province = 1647 data = HOL } } type = secedeprovince which = IND value = 1647 when = 1 }
+		command = { trigger = { flag = ind_v4a_doctrine_retention owned = { province = 1653 data = HOL } } type = secedeprovince which = IND value = 1653 when = 1 }
+		command = { trigger = { flag = ind_v4a_doctrine_retention owned = { province = 1632 data = HOL } } type = secedeprovince which = IND value = 1632 when = 1 }
+		command = { trigger = { flag = ind_v4a_doctrine_retention owned = { province = 1642 data = HOL } } type = secedeprovince which = IND value = 1642 when = 1 }
+		command = { trigger = { flag = ind_v4a_doctrine_retention owned = { province = 1657 data = HOL } } type = secedeprovince which = IND value = 1657 when = 1 }
+		command = { type = access which = IND }
+		command = { type = setflag which = ind_v4a_hol_legal_transfer_complete }
+	}
+}
+
+event = {
+	id = 9281274
+	random = no
+	one_action = yes
+	country = HOL
+
+	trigger = { flag = ind_v4a_hol_counters_settlement }
+
+	name = "Dutch-Led Indonesian Home Rule"
+	desc = "The Netherlands creates an Indonesian administration while retaining mastery and commercial primacy. Indian access recognizes Delhi's wartime role without accepting its full settlement."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+
+	action_a = {
+		name = "Create home rule under Dutch mastery"
+		command = { trigger = { NOT = { flag = ind_v4a_doctrine_restoration } NOT = { exists = INO } } type = independence which = INO value = 1 }
+		command = { trigger = { exists = INO NOT = { puppet = { country = INO country = HOL } } } type = make_puppet which = INO }
+		command = { type = access which = IND }
+		command = { type = setflag which = ind_v4a_hol_counter_transfer_complete }
+	}
+}
+
+#########################################################################
+# VIII. Settlement close and Indian Ocean projection
+#########################################################################
+
+event = {
+	id = 9281270
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v4a_uk_settlement_resolved
+		flag = ind_v4a_usa_settlement_resolved
+		flag = ind_v4a_ast_settlement_resolved
+		flag = ind_v4a_hol_settlement_resolved
+		NOT = { flag = ind_v4a_allied_settlement_complete }
+	}
+
+	name = "India's Allied Settlement Concludes"
+	desc = "The four delegations have answered. The result reflects both Indian performance and foreign resistance: recognition may coexist with refused territory, sovereign partners with commercial compromises, and an Indian sphere with lasting diplomatic rivals."
+	style = 2
+	picture = "aubm_v4_war_aims"
+
+	date = { day = 0 month = january year = 1943 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		trigger = { flag = ind_v4a_allied_tier_hegemon }
+		name = "Acknowledge India's hegemonic settlement"
+		command = { type = dissent value = -3 }
+		command = { type = tc_mod value = 4 }
+		command = { type = research_mod value = 1 }
+		command = { type = max_organization which = land value = 1 }
+		command = { type = max_organization which = air value = 1 }
+		command = { type = max_organization which = naval value = 1 }
+		command = { type = setflag which = ind_v4_peace_position_settled }
+		command = { type = setflag which = ind_v3_allied_settlement_1945 }
+		command = { type = setflag which = ind_v4a_allied_settlement_complete }
+	}
+	action_b = {
+		trigger = { flag = ind_v4a_allied_tier_senior }
+		name = "Acknowledge India's senior-partner settlement"
+		command = { type = dissent value = -2 }
+		command = { type = tc_mod value = 3 }
+		command = { type = research_mod value = 1 }
+		command = { type = max_organization which = naval value = 1 }
+		command = { type = setflag which = ind_v4_peace_position_settled }
+		command = { type = setflag which = ind_v3_allied_settlement_1945 }
+		command = { type = setflag which = ind_v4a_allied_settlement_complete }
+	}
+	action_c = {
+		trigger = { flag = ind_v4a_allied_tier_regional }
+		name = "Acknowledge India's regional-power settlement"
+		command = { type = dissent value = -1 }
+		command = { type = tc_mod value = 2 }
+		command = { type = money value = 400 }
+		command = { type = setflag which = ind_v4_peace_position_settled }
+		command = { type = setflag which = ind_v3_allied_settlement_1945 }
+		command = { type = setflag which = ind_v4a_allied_settlement_complete }
+	}
+	action_d = {
+		trigger = { flag = ind_v4a_allied_tier_participant }
+		name = "Accept the participant's reconstruction settlement"
+		command = { type = money value = 500 }
+		command = { type = supplies value = 500 }
+		command = { type = belligerence value = -1 }
+		command = { type = setflag which = ind_v4_peace_position_settled }
+		command = { type = setflag which = ind_v3_allied_settlement_1945 }
+		command = { type = setflag which = ind_v4a_allied_settlement_complete }
+	}
+}
+
+event = {
+	id = 9281275
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v4a_allied_settlement_complete
+		OR = {
+			flag = ind_v4a_gulf_projection
+			flag = ind_v4a_east_africa_projection
+		}
+		NOT = { flag = ind_v4a_indian_ocean_community }
+	}
+
+	name = "The Indian Ocean Community"
+	desc = "Campaign ties can become a lasting network from the Gulf through East Africa toward South Africa. India may emphasize commerce and guarantees, fund a maritime security organization, or turn protectorates and retained ports into a harder imperial directorate."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+
+	date = { day = 0 month = january year = 1943 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		ai_chance = 50
+		name = "Build a commercial and diplomatic community"
+		command = { type = relation which = IRQ value = 20 }
+		command = { type = relation which = OMN value = 20 }
+		command = { type = relation which = YEM value = 20 }
+		command = { type = relation which = ETH value = 20 }
+		command = { type = relation which = SOM value = 20 }
+		command = { type = relation which = SAF value = 25 }
+		command = { type = industrial_modifier which = money value = 1 }
+		command = { type = setflag which = ind_v4a_indian_ocean_community }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Fund a maritime security network: -700 supplies"
+		command = { type = supplies value = -700 }
+		command = { type = max_organization which = naval value = 1 }
+		command = { type = repair_mod value = 1 }
+		command = { trigger = { exists = IRQ } type = guarantee which = IND where = IRQ }
+		command = { trigger = { exists = OMN } type = guarantee which = IND where = OMN }
+		command = { trigger = { exists = YEM } type = guarantee which = IND where = YEM }
+		command = { trigger = { exists = ETH } type = guarantee which = IND where = ETH }
+		command = { trigger = { exists = SOM } type = guarantee which = IND where = SOM }
+		command = { trigger = { exists = SAF } type = guarantee which = IND where = SAF }
+		command = { type = setflag which = ind_v4a_ocean_security_network }
+		command = { type = setflag which = ind_v4a_indian_ocean_community }
+	}
+	action_c = {
+		trigger = {
+			OR = {
+				flag = ind_v4a_doctrine_protectorates
+				flag = ind_v4a_doctrine_retention
+			}
+		}
+		ai_chance = 15
+		name = "Create an imperial directorate: +3 dissent/belligerence"
+		command = { type = dissent value = 3 }
+		command = { type = belligerence value = 3 }
+		command = { type = tc_mod value = 2 }
+		command = { type = relation which = ENG value = -15 }
+		command = { type = relation which = USA value = -10 }
+		command = { type = setflag which = ind_v4a_ocean_imperial_directorate }
+		command = { type = setflag which = ind_v4a_indian_ocean_community }
+	}
+}

@@ -1,0 +1,400 @@
+#########################################################################
+# A Union Before Midnight V4.3 - National consolidation guarantees
+#########################################################################
+
+# Applies to new games and existing V4 saves. Upgrade cost and time are
+# controlled only by misc.txt; unit build modifiers also affect new production.
+event = {
+	id = 9281000
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v4_initialized
+		NOT = { flag = ind_v43_modernization_contract }
+	}
+
+	name = "The National Modernization Contract"
+	desc = "India inherits a vast but uneven force: provincial infantry, horse formations, obsolete aircraft and ships built to several standards. Common depots, licensed tooling and conversion yards coordinate the services, while the first national register releases trained cadres. Refits remain funded through the normal upgrade budget; equipment, officers and industrial capacity remain the binding constraints."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 1 month = january year = 1933 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Standardize the services and trained reserve"
+		command = { type = manpowerpool value = 250 }
+		command = { type = setflag which = ind_v43_war_cabinet }
+		command = { type = setflag which = ind_v43_upgrade_contract_final }
+		command = { type = setflag which = ind_v43_upgrade_contract_low_ic }
+		command = { type = setflag which = ind_v43_modernization_contract }
+		command = { type = setflag which = ind_v43_unit_build_restore }
+	}
+}
+
+# Repairs unit definitions in saves that fired an Alpha 7/8 modernization
+# contract. The old commands changed all future construction, not upgrades
+# alone. Flag combinations identify the exact cumulative values to reverse.
+event = {
+	id = 9281007
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v43_modernization_contract
+		NOT = { flag = ind_v43_unit_build_restore }
+	}
+
+	name = "The Arsenal Accounting Correction"
+	desc = "A review finds that conversion allowances were entered against complete unit contracts, sharply shortening every new ship, aircraft and formation ordered by India. The erroneous allowances are removed from future construction. Existing modernization continues under the dedicated national upgrade schedule."
+	style = 2
+	picture = "india_v3_armed_forces"
+	date = { day = 1 month = january year = 1933 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Restore honest arsenal accounting"
+		command = { trigger = { flag = ind_v43_upgrade_contract_final } type = build_time which = land when = on_upgrade where = relative value = 90 }
+		command = { trigger = { flag = ind_v43_upgrade_contract_final } type = build_time which = air when = on_upgrade where = relative value = 90 }
+		command = { trigger = { flag = ind_v43_upgrade_contract_final } type = build_time which = naval when = on_upgrade where = relative value = 90 }
+		command = { trigger = { NOT = { flag = ind_v43_upgrade_contract_final } } type = build_time which = land when = on_upgrade where = relative value = 65 }
+		command = { trigger = { NOT = { flag = ind_v43_upgrade_contract_final } } type = build_time which = air when = on_upgrade where = relative value = 40 }
+		command = { trigger = { NOT = { flag = ind_v43_upgrade_contract_final } } type = build_time which = naval when = on_upgrade where = relative value = 25 }
+		command = { trigger = { flag = ind_v43_upgrade_contract_final flag = ind_v43_upgrade_contract_low_ic } type = build_cost which = land when = on_upgrade where = relative value = 75 }
+		command = { trigger = { flag = ind_v43_upgrade_contract_final flag = ind_v43_upgrade_contract_low_ic } type = build_cost which = air when = on_upgrade where = relative value = 75 }
+		command = { trigger = { flag = ind_v43_upgrade_contract_final flag = ind_v43_upgrade_contract_low_ic } type = build_cost which = naval when = on_upgrade where = relative value = 75 }
+		command = { trigger = { flag = ind_v43_upgrade_contract_final NOT = { flag = ind_v43_upgrade_contract_low_ic } } type = build_cost which = land when = on_upgrade where = relative value = 50 }
+		command = { trigger = { flag = ind_v43_upgrade_contract_final NOT = { flag = ind_v43_upgrade_contract_low_ic } } type = build_cost which = air when = on_upgrade where = relative value = 50 }
+		command = { trigger = { flag = ind_v43_upgrade_contract_final NOT = { flag = ind_v43_upgrade_contract_low_ic } } type = build_cost which = naval when = on_upgrade where = relative value = 50 }
+		command = { trigger = { NOT = { flag = ind_v43_upgrade_contract_final } flag = ind_v43_upgrade_contract_low_ic } type = build_cost which = land when = on_upgrade where = relative value = 75 }
+		command = { trigger = { NOT = { flag = ind_v43_upgrade_contract_final } flag = ind_v43_upgrade_contract_low_ic } type = build_cost which = air when = on_upgrade where = relative value = 60 }
+		command = { trigger = { NOT = { flag = ind_v43_upgrade_contract_final } flag = ind_v43_upgrade_contract_low_ic } type = build_cost which = naval when = on_upgrade where = relative value = 45 }
+		command = { trigger = { NOT = { flag = ind_v43_upgrade_contract_final } NOT = { flag = ind_v43_upgrade_contract_low_ic } } type = build_cost which = land when = on_upgrade where = relative value = 50 }
+		command = { trigger = { NOT = { flag = ind_v43_upgrade_contract_final } NOT = { flag = ind_v43_upgrade_contract_low_ic } } type = build_cost which = air when = on_upgrade where = relative value = 35 }
+		command = { trigger = { NOT = { flag = ind_v43_upgrade_contract_final } NOT = { flag = ind_v43_upgrade_contract_low_ic } } type = build_cost which = naval when = on_upgrade where = relative value = 20 }
+		command = { type = setflag which = ind_v43_unit_build_restore }
+	}
+}
+
+# Normalize compatibility flags only after the construction correction. These
+# events intentionally contain no unit build modifiers.
+event = {
+	id = 9281005
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v43_modernization_contract
+		flag = ind_v43_unit_build_restore
+		NOT = { flag = ind_v43_upgrade_contract_final }
+	}
+
+	name = "The Modernization Contract Ledger"
+	desc = "The corrected modernization ledger records the common national upgrade schedule without altering the construction terms of new formations, aircraft or ships."
+	style = 2
+	picture = "india_v3_armed_forces"
+	date = { day = 1 month = january year = 1933 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Record the corrected national schedule"
+		command = { type = setflag which = ind_v43_upgrade_contract_final }
+	}
+}
+
+event = {
+	id = 9281006
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v43_modernization_contract
+		flag = ind_v43_unit_build_restore
+		NOT = { flag = ind_v43_upgrade_contract_low_ic }
+	}
+
+	name = "The Conversion Budget Ledger"
+	desc = "The corrected ledger confirms that modernization draws only from funded upgrade appropriations and grants no hidden progress or discount to newly ordered units."
+	style = 2
+	picture = "india_v3_armed_forces"
+	date = { day = 1 month = january year = 1933 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Close the superseded account"
+		command = { type = setflag which = ind_v43_upgrade_contract_low_ic }
+	}
+}
+
+# One permanent strategic doorway replaces six easy-to-miss decisions. The
+# underlying coalition events remain authoritative and retain their effects.
+event = {
+	id = 9281001
+	random = no
+	persistent = yes
+	country = IND
+
+	decision = {
+		flag = ind_v43_war_cabinet
+	}
+	decision_trigger = { flag = ind_v43_war_cabinet }
+
+	name = "Convene the Emergency War Cabinet"
+	decision_desc = "No fee to inspect or revise strategy. Open coalition membership, great-power wars, regional campaigns, or the current campaign ledger. Every declaration and alliance transfer receives a separate confirmation."
+	desc = "The War Cabinet separates alliances from enemies and theatres. India may join London, Berlin, Moscow or Tokyo; fight any great power under its existing coalition or sovereign command; open a regional campaign; or inspect objectives already achieved. Historical diplomatic choices no longer lock the current war policy."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+
+	date = { day = 0 month = january year = 1933 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Coalition membership and side changes"
+		command = { type = event which = 9281910 where = IND when = 1 }
+	}
+	action_b = {
+		name = "War against a great power"
+		command = { type = event which = 9281911 where = IND when = 1 }
+	}
+	action_c = {
+		name = "Regional campaigns and ultimatums"
+		command = { type = event which = 9281912 where = IND when = 1 }
+	}
+	action_d = {
+		name = "Campaign ledger or any-country war"
+		command = { type = event which = 9281012 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9281012
+	random = no
+	persistent = yes
+	country = IND
+	name = "War Cabinet: Ledger and Global Targets"
+	desc = "Review live Indian objectives, or open the complete country index. The index includes every 1933 state and standard wartime successor not already handled by a bespoke great-power or regional docket. India's current alliance determines whether a new declaration is shared; sovereign and compact routes retain separate wars."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+	action_a = {
+		name = "Review live objectives and settlements"
+		command = { type = event which = 9281913 where = IND when = 1 }
+	}
+	action_b = {
+		name = "Open the complete country campaign index"
+		command = { type = event which = 9282300 where = IND when = 1 }
+	}
+	action_c = {
+		name = "Return to the War Cabinet"
+		command = { type = event which = 9281001 where = IND when = 1 }
+	}
+	action_d = { name = "Close the Cabinet" }
+}
+
+event = {
+	id = 9281002
+	random = no
+	country = IND
+	name = "The War Cabinet: Other Strategic Courses"
+	desc = "India may enter the Soviet coalition or intervene against Japan or Germany while preserving independent command. A further docket covers war with the Soviet Union and continued neutrality."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+	action_a = {
+		name = "Open negotiations with the Soviet Union"
+		command = { type = event which = 9270406 where = IND when = 1 }
+	}
+	action_b = {
+		name = "Fight Japan under independent command"
+		command = { type = event which = 9270408 where = IND when = 1 }
+	}
+	action_c = {
+		name = "Fight Germany under independent command"
+		command = { type = event which = 9270409 where = IND when = 1 }
+	}
+	action_d = {
+		name = "Review the final strategic docket"
+		command = { type = trigger which = 9281003 }
+	}
+}
+
+event = {
+	id = 9281003
+	random = no
+	country = IND
+	name = "The War Cabinet: Final Docket"
+	desc = "The final alternatives are an independent declaration against the Soviet Union, armed neutrality for now, or a return to the coalition docket. No deferral closes the decision permanently."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+	action_a = {
+		name = "Consider independent war against Moscow"
+		command = { type = trigger which = 9281004 }
+	}
+	action_b = {
+		name = "Retain armed neutrality for now"
+		command = { type = dissent value = -1 }
+	}
+	action_c = {
+		name = "Return to the coalition docket"
+		command = { type = event which = 9281001 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9281004
+	random = no
+	country = IND
+	name = "War Against the Soviet Union?"
+	desc = "Delhi can declare a sovereign war against Moscow without joining Germany or a formal Japanese alliance. A Delhi-Tokyo strategic compact remains in force, but Japan stays outside this war unless India later converts the compact into an alliance. The campaign may secure Central Asian approaches, at the cost of dissent and diplomatic isolation."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+	action_a = {
+		ai_chance = 15
+		name = "Declare an independent war against the USSR"
+		command = { type = clrflag which = ind_v3_allied_orientation }
+		command = { type = clrflag which = ind_v3_axis_orientation }
+		command = { type = clrflag which = ind_v4_strategy_allied }
+		command = { type = clrflag which = ind_v4_strategy_axis }
+		command = { trigger = { NOT = { flag = ind_aubm_jp_partnership } } type = clrflag which = ind_v3_japanese_orientation }
+		command = { trigger = { NOT = { flag = ind_aubm_jp_partnership } } type = clrflag which = ind_v4_strategy_japan }
+		command = { trigger = { NOT = { flag = ind_aubm_jp_partnership } } type = setflag which = ind_v3_non_aligned }
+		command = { trigger = { NOT = { flag = ind_aubm_jp_partnership } } type = setflag which = ind_v4_strategy_nam }
+		command = { trigger = { flag = ind_aubm_jp_partnership } type = setflag which = ind_aubm_jp_independent_soviet_war }
+		command = { type = setflag which = ind_v43_independent_war_soviet }
+		command = { type = relation which = SOV value = -100 }
+		command = { type = dissent value = 5 }
+		command = { type = war which = SOV }
+	}
+	action_b = {
+		ai_chance = 85
+		name = "Reject this course and retain flexibility"
+	}
+}
+
+# State-based conclusions ensure an early choice still matters even if a
+# foreign event chain takes an unexpected path.
+event = {
+	id = 9281010
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_reacted_abyssinia
+		NOT = { war = { country = ITA country = ETH } }
+		NOT = { flag = ind_v43_abyssinia_concluded }
+		year = 1936
+	}
+
+	name = "The Reckoning from Abyssinia"
+	desc = "The East African campaign has ended or hardened into a settlement. Parliament now judges India's sanctions, mediation or observer mission by the result on the ground, and the Indian Ocean staff incorporates the diplomatic and operational lessons."
+	style = 2
+	picture = "india_v3_world_abyssinia"
+	date = { day = 0 month = january year = 1936 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Enter the African lessons in national policy"
+		command = { trigger = { exists = ETH } type = dissent value = -2 }
+		command = { trigger = { exists = ETH } type = relation which = ETH value = 25 }
+		command = { trigger = { NOT = { exists = ETH } } type = domestic which = defense_lobby value = 1 }
+		command = { trigger = { flag = ind_v3_abyssinia_sanctions } type = relation which = ENG value = 10 }
+		command = { trigger = { flag = ind_v3_abyssinia_mediation } type = belligerence value = -1 }
+		command = { trigger = { flag = ind_v3_abyssinia_observers } type = steal_tech which = ITA }
+		command = { type = setflag which = ind_v43_abyssinia_concluded }
+	}
+}
+
+event = {
+	id = 9281011
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_reacted_spain
+		NOT = { war = { country = SPR country = SPA } }
+		NOT = { flag = ind_v43_spanish_mission_returned }
+		year = 1937
+	}
+
+	name = "The Spanish Mission Returns"
+	desc = "Officers, doctors, volunteers and refugees return from Spain with practical knowledge no staff exercise could provide. Their reception depends on whom India supported and who survived, but every mission now leaves a visible institutional legacy."
+	style = 2
+	picture = "india_v3_world_spain"
+	date = { day = 0 month = january year = 1937 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Absorb the veterans, doctors and field reports"
+		command = { trigger = { flag = ind_v3_spain_republic exists = SPR } type = dissent value = -2 }
+		command = { trigger = { flag = ind_v3_spain_republic NOT = { exists = SPR } } type = manpowerpool value = 8 }
+		command = { trigger = { flag = ind_v3_spain_medical } type = manpowerpool value = 6 }
+		command = { trigger = { flag = ind_v3_spain_medical } type = dissent value = -1 }
+		command = { trigger = { flag = ind_v3_spain_nationalist_observers } type = steal_tech which = GER }
+		command = { type = research_mod value = 1 }
+		command = { type = setflag which = ind_v43_spanish_mission_returned }
+	}
+}
+
+event = {
+	id = 9281020
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v4_initialized
+		year = 1937
+		NOT = { flag = ind_v43_federal_income_tax }
+	}
+
+	name = "The Federal Income Tax Settlement"
+	desc = "Industrial growth has outrun the patchwork revenue system inherited in 1933. A permanent federal income-tax settlement and audited provincial transfers give Delhi dependable cash for research, diplomacy and procurement rather than another one-time windfall."
+	style = 2
+	picture = "aubm_v4_budget_conference"
+	date = { day = 0 month = january year = 1937 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Establish the federal tax settlement"
+		command = { type = money value = 500 }
+		command = { type = free_money value = 2 }
+		command = { type = dissent value = 1 }
+		command = { type = setflag which = ind_v43_federal_income_tax }
+	}
+}
+
+event = {
+	id = 9281021
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v43_federal_income_tax
+		year = 1940
+		NOT = { flag = ind_v43_war_finance_board }
+		OR = {
+			atwar = yes
+			war = { country = ENG country = GER }
+			war = { country = SOV country = GER }
+			war = { country = JAP country = CHI }
+		}
+	}
+
+	name = "The National War Finance Board"
+	desc = "Even outside a formal alliance, global war has expanded customs receipts, defence bonds and industrial profits. The Reserve Bank coordinates these flows into a standing war-finance system capable of supporting a great power's research and diplomatic commitments."
+	style = 2
+	picture = "aubm_v4_budget_conference"
+	date = { day = 0 month = january year = 1940 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Put war finance on a permanent footing"
+		command = { type = money value = 750 }
+		command = { type = free_money value = 2 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = setflag which = ind_v43_war_finance_board }
+	}
+}
