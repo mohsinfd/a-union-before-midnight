@@ -93,6 +93,7 @@ db/events/aubm_v4/46_regional_campaigns.txt
 db/events/aubm_v4/47_global_campaign_matrix.txt
 db/events/aubm_v4/48_route_wartime_consequences.txt
 db/events/aubm_v4/49_bespoke_armistices.txt
+db/events/aubm_v4/50_southeast_asia_operations.txt
 db/events/Election_day.txt
 db/events/generic_decisions.txt
 db/events/india_v3/00_bootstrap.txt

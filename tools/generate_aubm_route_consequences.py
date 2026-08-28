@@ -149,6 +149,15 @@ def strategic_autonomy_commands(route: Route) -> tuple[str, ...]:
     """Return India to a real sovereign command after the peace congress."""
     commands = [
         "leave_alliance when = 1",
+        "clrflag which = ind_aubm_commitment_allied",
+        "clrflag which = ind_aubm_commitment_german",
+        "clrflag which = ind_aubm_commitment_soviet",
+        "clrflag which = ind_aubm_commitment_japan",
+        "clrflag which = ind_aubm_negotiation_allied",
+        "clrflag which = ind_aubm_negotiation_german",
+        "clrflag which = ind_aubm_negotiation_soviet",
+        "clrflag which = ind_aubm_negotiation_japan",
+        "clrflag which = ind_aubm_diplomatic_negotiation_pending",
         "clrflag which = ind_v4a_treaty_commonwealth",
         "clrflag which = ind_v4a_treaty_naval_compact",
         "clrflag which = ind_v4a_treaty_formal_alliance",
@@ -207,6 +216,8 @@ def strategic_autonomy_commands(route: Route) -> tuple[str, ...]:
         "clrflag which = ind_v4_strategy_axis",
         "clrflag which = ind_v4_strategy_soviet",
         "clrflag which = ind_v4_strategy_japan",
+        "setflag which = ind_aubm_realignment_cooldown",
+        "event which = 9281938 where = IND when = 90",
     ]
     if route.key == "soviet":
         commands.extend(

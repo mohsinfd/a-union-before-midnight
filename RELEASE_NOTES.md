@@ -1,5 +1,77 @@
 # Release Notes
 
+## 4.2.0 Alpha 20 - Committed Alliances and Southeast Asian Victories
+
+### Alliance Commitment
+
+- Made formal Allied, German, Soviet and Japanese coalitions mutually exclusive
+  with every rival binding compact.
+- Preserved same-family compact-to-coalition upgrades, including the
+  Delhi-Tokyo compact's independent Soviet-war design.
+- Added serialized negotiation guards so a delayed foreign acceptance lapses
+  after India makes another commitment.
+- Replaced instant coalition transfer with an explicit at-peace withdrawal to
+  sovereign command and a 90-day reset before another alignment can open.
+- Reconciled old saves from live engine alliances and binding compact flags.
+- Blocked declarations against current coalition partners in both bespoke
+  campaign menus and all 210 generated country lifecycles.
+- Made partner-collapse and rupture paths enter the same 90-day sovereign reset
+  as voluntary withdrawal, so a failed coalition cannot become an instant
+  side-switch shortcut.
+
+### Southeast Asian Land and Sea Operations
+
+- Added a Batavia-only U05 docket and a separate colonial-Netherlands docket.
+  Both can settle locally without the full national Southern Theatre flag.
+- Made colonial cessions legal-owner-only and pairwise. East Indies terms now
+  include western New Guinea provinces 1594-1601 when the defeated owner
+  actually holds them, while third-party territory remains untouched.
+- Added a standalone British Malaya settlement for Indian control of Singapore
+  and Kuala Lumpur, without requiring Borneo or the wider British campaign.
+- Added Hanoi-Saigon and Manila-Davao land-operation milestones.
+- Added one-time Bay of Bengal, Malacca, Java Sea and South China Sea naval
+  milestones requiring 8/12/16/18 surface ships plus their operating ports;
+  their live operating status suspends and recovers with those conditions.
+- Added a flexible Southeast Asian theatre achievement based on combined land
+  and sea results rather than compulsory conquest of every hub.
+- Counted friendly released or protected Indonesia and Malaya as continuing
+  victories instead of treating decolonization as a reversal.
+
+### Campaign-State Recovery
+
+- Fixed the 1934 union-integration dead state in which legitimacy and state
+  capacity were present but neither provincial bargain nor coercion had been
+  recorded.
+- Added truth-table coverage for every 1934 integration-flag combination.
+- Added dedicated validators for alliance commitment, southern settlements and
+  Southeast Asian operations.
+- Made global and southern peace callbacks transactional: every delayed step
+  rechecks the live pairwise war and occupied objective, while military access
+  is granted only after the ratified peace exists.
+- Corrected 20 naval construction modifiers to use Darkest Hour's supported
+  `build_time when = on_upgrade` syntax.
+- Corrected the American campaign and armistice from Wake's sea-zone ID 2414 to
+  the actual land province 1673, and added static gates for both engine rules.
+
+### Save Review
+
+- The later file by modification time is a May 1933 launch autosave, not a
+  second developed campaign.
+- The newest developed manual save is `AltIndia_1941_December_2.eug`. It
+  records the Delhi-Tokyo compact, no formal Indian coalition and no Indian
+  participant in a live war. This confirmed that the exposed Berlin action was
+  an event-gating defect rather than a saved coalition transfer.
+- The same save contains the mixed 1934 integration state that Alpha 20 now
+  repairs.
+
+### Status
+
+Alpha 20 passes automated validation, deterministic rebuild, installed-file
+verification and a fresh 1933 executable smoke with 0 logged errors. Start a
+fresh 1933 campaign for gameplay testing; a complete human wartime and postwar
+playthrough is still required. Focused results and remaining risks are tracked
+in the gameplay status guide.
+
 ## 4.2.0 Alpha 19 - 1933 Launch Hotfix
 
 ### Engine Crash Fix

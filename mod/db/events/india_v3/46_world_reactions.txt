@@ -403,6 +403,7 @@ event = {
 	country = IND
 
 	trigger = {
+		NOT = { flag = ind_aubm_wartime_framework }
 		OR = {
 			event = 2003036
 			war = { country = GER country = POL }

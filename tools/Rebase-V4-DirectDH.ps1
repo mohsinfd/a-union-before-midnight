@@ -275,7 +275,8 @@ function Build-EventsIndex {
         "46_regional_campaigns.txt",
 		"47_global_campaign_matrix.txt",
 		"48_route_wartime_consequences.txt",
-		"49_bespoke_armistices.txt"
+		"49_bespoke_armistices.txt",
+		"50_southeast_asia_operations.txt"
     )) {
         $lines += "event = `"db\events\aubm_v4\$name`""
     }

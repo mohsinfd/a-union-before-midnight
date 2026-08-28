@@ -2,9 +2,10 @@
 
 > Historical note: this page records the Alpha 12 campaign-rework stage. Alpha
 > 18 introduced the permanent War Cabinet, five wartime charters and 236
-> country-specific campaign lifecycles; Alpha 19 retains that design and adds
-> the 1933 launch correction and public-packaging hardening. See
-> [Gameplay Changes and Alpha 19 Status](../GAMEPLAY_CHANGES.md) and the
+> country-specific campaign lifecycles; Alpha 20 retains that design, adds
+> binding alliance commitments and Southeast Asian operational outcomes, and
+> preserves Alpha 19's launch correction and packaging hardening. See
+> [Gameplay Changes and Alpha 20 Status](../GAMEPLAY_CHANGES.md) and the
 > [Wartime Campaign Map](WARTIME_CAMPAIGN_MAP.md) for the current contract.
 
 ## What Changed

@@ -19,6 +19,7 @@ ARMISTICE_ACCEPT_BASE = 9286400
 ARMISTICE_COUNTER_BASE = 9286700
 ARMISTICE_REFUSE_BASE = 9287000
 ARMISTICE_LAPSE_BASE = 9287300
+FINAL_ACCESS_BASE = 9287700
 CORE_COUNTRY_COUNT = 99
 CORE_LIFECYCLE_BASES = (9282400, 9282500, 9282600, 9282700, 9282800, 9282900, 9283000, 9283100)
 EXTENSION_LIFECYCLE_BASES = (9283400, 9283600, 9283800, 9284000, 9284200, 9284400, 9284600, 9284800)
@@ -283,6 +284,7 @@ class LifecycleIds:
     counter: int
     refuse: int
     lapse: int
+    final_access: int
 
 
 def lifecycle_ids(index: int) -> LifecycleIds:
@@ -302,6 +304,7 @@ def lifecycle_ids(index: int) -> LifecycleIds:
         ARMISTICE_COUNTER_BASE + index,
         ARMISTICE_REFUSE_BASE + index,
         ARMISTICE_LAPSE_BASE + index,
+        FINAL_ACCESS_BASE + index,
     )
 
 
@@ -362,7 +365,7 @@ def menu_events() -> str:
             out.extend(
                 [
                     f'\tname = "War Cabinet: {group} Campaigns {page_no + 1}/{len(group_pages)}"',
-                    '\tdesc = "Selecting a target is a deliberate declaration. If it shares India\'s formal alliance, India first leaves that alliance and inherited wars; the declaration follows one day later. The selected enemy then enters the same audited campaign lifecycle used by every diplomatic route."',
+                    '\tdesc = "Selecting a target is a deliberate declaration. Coalition partners are excluded while India remains committed to an alliance; every other eligible enemy enters the same audited campaign lifecycle used by every diplomatic route."',
                     "\tstyle = 2",
                     f'\tpicture = "{PICTURES[group]}"',
                 ]
@@ -372,9 +375,8 @@ def menu_events() -> str:
                 out.extend(
                     [
                         f"\taction_{letter} = {{",
-                        f"\t\ttrigger = {{ exists = {country.tag} NOT = {{ war = {{ country = IND country = {country.tag} }} }} }}",
+                        f"\t\ttrigger = {{ exists = {country.tag} NOT = {{ war = {{ country = IND country = {country.tag} }} }} NOT = {{ alliance = {{ country = IND country = {country.tag} }} }} }}",
                         f'\t\tname = "War with {country.name}: +{country.dissent} dissent"',
-                        f"\t\tcommand = {{ trigger = {{ alliance = {{ country = IND country = {country.tag} }} }} type = leave_alliance when = 1 }}",
                         f"\t\tcommand = {{ type = dissent value = {country.dissent} }}",
                         f"\t\tcommand = {{ type = event which = {country_ids.declaration} where = IND when = 1 }}",
                         "\t}",
@@ -473,6 +475,17 @@ def lifecycle_events() -> str:
         key = country.key
         picture = PICTURES[country.group]
         ids = lifecycle_ids(i)
+        objective_live = (
+            f"exists = {country.tag} "
+            f"war = {{ country = IND country = {country.tag} }} "
+            f"owned = {{ province = {country.capital} data = {country.tag} }} "
+            f"control = {{ province = {country.capital} data = IND }}"
+        )
+        armistice_live = (
+            f"flag = ind_aubm_armistice_target_{key} "
+            "flag = ind_aubm_universal_armistice_outstanding "
+            f"{objective_live}"
+        )
 
         out.extend(event_header(ids.brief))
         out.extend(
@@ -600,38 +613,36 @@ def lifecycle_events() -> str:
         )
 
         for response_id, odds in ((ids.normal_response, (60, 25, 15)), (ids.backed_response, (75, 20, 5))):
-            response_live = (
-                f"war = {{ country = IND country = {country.tag} }} "
-                f"owned = {{ province = {country.capital} data = {country.tag} }} "
-                f"control = {{ province = {country.capital} data = IND }}"
-            )
             out.extend(event_header(response_id, country.tag))
             out.extend(
                 [
                     '\tname = "India Offers a Country-Specific Armistice"',
-                    f'\tdesc = "Delhi presents terms after verified control of {country.seat}. The fixed response is accept {odds[0]}%, counter with peace but no access {odds[1]}%, refuse {odds[2]}%. If India loses the objective before the answer, refusal becomes the only valid response. Delhi alone ratifies peace."',
+                    f'\tdesc = "Delhi presents terms after verified control of {country.seat}. The fixed response is accept {odds[0]}%, counter with peace but no access {odds[1]}%, refuse {odds[2]}%. If the war or verified objective changes before the answer, the offer lapses without a peace or reward. Delhi alone ratifies peace."',
                     "\tstyle = 2",
                     f'\tpicture = "{picture}"',
                     "\taction_a = {",
-                    f"\t\ttrigger = {{ {response_live} }}",
+                    f"\t\ttrigger = {{ {armistice_live} }}",
                     f"\t\tai_chance = {odds[0]}",
                     '\t\tname = "Accept peace and reciprocal Indian access"',
-                    "\t\tcommand = { type = access which = IND }",
-                    "\t\tcommand = { type = relation which = IND value = 20 }",
                     f"\t\tcommand = {{ type = event which = {ids.accept} where = IND when = 3 }}",
                     "\t}",
                     "\taction_b = {",
-                    f"\t\ttrigger = {{ {response_live} }}",
+                    f"\t\ttrigger = {{ {armistice_live} }}",
                     f"\t\tai_chance = {odds[1]}",
                     '\t\tname = "Counter with peace but no access"',
-                    "\t\tcommand = { type = relation which = IND value = 5 }",
                     f"\t\tcommand = {{ type = event which = {ids.counter} where = IND when = 3 }}",
                     "\t}",
                     "\taction_c = {",
+                    f"\t\ttrigger = {{ {armistice_live} }}",
                     f"\t\tai_chance = {odds[2]}",
                     '\t\tname = "Refuse and continue the war"',
-                    "\t\tcommand = { type = relation which = IND value = -10 }",
                     f"\t\tcommand = {{ type = event which = {ids.refuse} where = IND when = 3 }}",
+                    "\t}",
+                    "\taction_d = {",
+                    f"\t\ttrigger = {{ NOT = {{ AND = {{ {armistice_live} }} }} }}",
+                    "\t\tai_chance = 100",
+                    '\t\tname = "The verified claim has lapsed"',
+                    f"\t\tcommand = {{ type = event which = {ids.lapse} where = IND when = 1 }}",
                     "\t}",
                     "}",
                     "",
@@ -646,7 +657,7 @@ def lifecycle_events() -> str:
                 "\tstyle = 2",
                 f'\tpicture = "{picture}"',
                 "\taction_a = {",
-				f"\t\ttrigger = {{ exists = {country.tag} war = {{ country = IND country = {country.tag} }} flag = ind_aubm_global_current_{key} NOT = {{ flag = ind_aubm_universal_armistice_outstanding }} NOT = {{ flag = ind_aubm_armistice_retry_{key} }} }}",
+                f"\t\ttrigger = {{ {objective_live} flag = ind_aubm_global_current_{key} NOT = {{ flag = ind_aubm_universal_armistice_outstanding }} NOT = {{ flag = ind_aubm_armistice_retry_{key} }} }}",
                 '\t\tname = "Submit terms: 60/25/15, or 75/20/5 with standing"',
                 f"\t\tcommand = {{ type = setflag which = ind_aubm_armistice_target_{key} }}",
                 "\t\tcommand = { type = setflag which = ind_aubm_universal_armistice_outstanding }",
@@ -788,12 +799,12 @@ def lifecycle_events() -> str:
         out.extend(
             [
                 f'\tname = "The Declaration Against {country.name}"',
-                f'\tdesc = "India has completed any required coalition withdrawal. If {country.name} still exists and peace remains in force, the Foreign Ministry now opens the authorized war without affecting any unrelated campaign."',
+                f'\tdesc = "If {country.name} still exists, remains outside India\'s coalition and peace remains in force, the Foreign Ministry now opens the authorized war without affecting any unrelated campaign."',
                 "\tstyle = 2",
                 f'\tpicture = "{picture}"',
                 "\taction_a = {",
                 f'\t\tname = "Open the {country.seat} campaign"',
-                f"\t\tcommand = {{ trigger = {{ exists = {country.tag} NOT = {{ war = {{ country = IND country = {country.tag} }} }} }} type = war which = {country.tag} }}",
+                f"\t\tcommand = {{ trigger = {{ exists = {country.tag} NOT = {{ war = {{ country = IND country = {country.tag} }} }} NOT = {{ alliance = {{ country = IND country = {country.tag} }} }} }} type = war which = {country.tag} }}",
                 "\t\tcommand = { type = setflag which = ind_aubm_war_declared_by_cabinet }",
                 "\t}",
                 "}",
@@ -809,7 +820,7 @@ def lifecycle_events() -> str:
                 "\tstyle = 2",
                 f'\tpicture = "{picture}"',
                 "\taction_a = {",
-                f"\t\ttrigger = {{ exists = {country.tag} }}",
+                f"\t\ttrigger = {{ {armistice_live} }}",
                 '\t\tname = "Ratify the full country-specific peace"',
             ]
         )
@@ -818,16 +829,18 @@ def lifecycle_events() -> str:
             [
                 f"\t\tcommand = {{ trigger = {{ war = {{ country = IND country = {country.tag} }} }} type = peace which = {country.tag} value = 1 }}",
                 f"\t\tcommand = {{ type = setflag which = ind_aubm_global_armistice_full_{key} }}",
+                f"\t\tcommand = {{ type = relation which = {country.tag} value = 20 }}",
                 "\t\tcommand = { type = dissent value = -2 }",
             ]
         )
         out.extend(negotiated_cleanup_lines(country))
         out.extend(
             [
+                f"\t\tcommand = {{ type = event which = {ids.final_access} where = {country.tag} when = 1 }}",
                 "\t}",
                 "\taction_b = {",
-                f"\t\ttrigger = {{ NOT = {{ exists = {country.tag} }} }}",
-                '\t\tname = "The government vanished; audit the settlement"',
+                f"\t\ttrigger = {{ NOT = {{ AND = {{ {armistice_live} }} }} }}",
+                '\t\tname = "The verified terms lapsed; audit the file"',
                 f"\t\tcommand = {{ type = event which = {ids.lapse} where = IND when = 1 }}",
                 "\t}",
                 "}",
@@ -843,7 +856,7 @@ def lifecycle_events() -> str:
                 "\tstyle = 2",
                 f'\tpicture = "{picture}"',
                 "\taction_a = {",
-                f"\t\ttrigger = {{ exists = {country.tag} }}",
+                f"\t\ttrigger = {{ {armistice_live} }}",
                 '\t\tname = "Ratify limited peace without access"',
             ]
         )
@@ -852,6 +865,7 @@ def lifecycle_events() -> str:
             [
                 f"\t\tcommand = {{ trigger = {{ war = {{ country = IND country = {country.tag} }} }} type = peace which = {country.tag} value = 1 }}",
                 f"\t\tcommand = {{ type = setflag which = ind_aubm_global_armistice_limited_{key} }}",
+                f"\t\tcommand = {{ type = relation which = {country.tag} value = 5 }}",
                 "\t\tcommand = { type = dissent value = -2 }",
             ]
         )
@@ -860,16 +874,17 @@ def lifecycle_events() -> str:
             [
                 "\t}",
                 "\taction_b = {",
-                f"\t\ttrigger = {{ exists = {country.tag} }}",
+                f"\t\ttrigger = {{ {armistice_live} }}",
                 '\t\tname = "Reject the counteroffer; review in ninety days"',
+                f"\t\tcommand = {{ type = relation which = {country.tag} value = 5 }}",
                 f"\t\tcommand = {{ type = setflag which = ind_aubm_armistice_retry_{key} }}",
                 f"\t\tcommand = {{ type = event which = {ids.retry_release} where = IND when = 90 }}",
                 f"\t\tcommand = {{ type = clrflag which = ind_aubm_armistice_target_{key} }}",
                 "\t\tcommand = { type = clrflag which = ind_aubm_universal_armistice_outstanding }",
                 "\t}",
                 "\taction_c = {",
-                f"\t\ttrigger = {{ NOT = {{ exists = {country.tag} }} }}",
-                '\t\tname = "The government vanished; audit the settlement"',
+                f"\t\ttrigger = {{ NOT = {{ AND = {{ {armistice_live} }} }} }}",
+                '\t\tname = "The verified terms lapsed; audit the file"',
                 f"\t\tcommand = {{ type = event which = {ids.lapse} where = IND when = 1 }}",
                 "\t}",
                 "}",
@@ -885,8 +900,9 @@ def lifecycle_events() -> str:
                 "\tstyle = 2",
                 f'\tpicture = "{picture}"',
                 "\taction_a = {",
-                f"\t\ttrigger = {{ exists = {country.tag} }}",
+                f"\t\ttrigger = {{ {armistice_live} }}",
                 '\t\tname = "Continue the war; reopen this file in ninety days"',
+                f"\t\tcommand = {{ type = relation which = {country.tag} value = -10 }}",
                 "\t\tcommand = { type = dissent value = 1 }",
                 f"\t\tcommand = {{ type = setflag which = ind_aubm_armistice_retry_{key} }}",
                 f"\t\tcommand = {{ type = event which = {ids.retry_release} where = IND when = 90 }}",
@@ -894,9 +910,35 @@ def lifecycle_events() -> str:
                 "\t\tcommand = { type = clrflag which = ind_aubm_universal_armistice_outstanding }",
                 "\t}",
                 "\taction_b = {",
-                f"\t\ttrigger = {{ NOT = {{ exists = {country.tag} }} }}",
-                '\t\tname = "The government vanished; audit the settlement"',
+                f"\t\ttrigger = {{ NOT = {{ AND = {{ {armistice_live} }} }} }}",
+                '\t\tname = "The verified refusal lapsed; audit the file"',
                 f"\t\tcommand = {{ type = event which = {ids.lapse} where = IND when = 1 }}",
+                "\t}",
+                "}",
+                "",
+            ]
+        )
+
+        full_access_live = (
+            f"flag = ind_aubm_global_armistice_full_{key} "
+            f"flag = ind_aubm_global_settled_{key} "
+            f"NOT = {{ war = {{ country = IND country = {country.tag} }} }}"
+        )
+        out.extend(event_header(ids.final_access, country.tag))
+        out.extend(
+            [
+                '\tname = "Delhi\'s Ratified Access Clause"',
+                f'\tdesc = "Delhi has completed a full, country-specific peace with {country.name}. Strategic access is granted only if that settlement remains recorded and the pairwise war is still over when this final clause is executed."',
+                "\tstyle = 2",
+                f'\tpicture = "{picture}"',
+                "\taction_a = {",
+                f"\t\ttrigger = {{ {full_access_live} }}",
+                '\t\tname = "Implement the ratified access clause"',
+                "\t\tcommand = { type = access which = IND }",
+                "\t}",
+                "\taction_b = {",
+                f"\t\ttrigger = {{ NOT = {{ AND = {{ {full_access_live} }} }} }}",
+                '\t\tname = "The access clause is no longer valid"',
                 "\t}",
                 "}",
                 "",
@@ -912,25 +954,34 @@ def lifecycle_events() -> str:
             f"owned = {{ province = {country.capital} data = IND }} "
             f"control = {{ province = {country.capital} data = IND }}"
         )
+        interrupted_live_claim = (
+            f"flag = ind_aubm_armistice_target_{key} "
+            f"exists = {country.tag} "
+            f"NOT = {{ AND = {{ war = {{ country = IND country = {country.tag} }} "
+            f"owned = {{ province = {country.capital} data = {country.tag} }} "
+            f"control = {{ province = {country.capital} data = IND }} }} }}"
+        )
         out.extend(event_header(ids.lapse, one_action=True))
         out.extend(
             [
                 f'\tname = "The {country.name} Armistice File Lapses"',
-                f'\tdesc = "{country.name} vanished before its answer reached Delhi. An Indian-owned {country.seat} proceeds to constitutional settlement; a third-party disappearance resets only this interrupted campaign and preserves every historical reward."',
+                f'\tdesc = "The verified conditions behind the {country.name} offer changed before ratification. A surviving opponent moves the earned claim into suspended status; an Indian-owned {country.seat} proceeds to constitutional settlement; a third-party disappearance resets only this interrupted campaign. Historical rewards are never paid again or erased."',
                 "\tstyle = 2",
                 f'\tpicture = "{picture}"',
                 "\taction_a = {",
-                '\t\tname = "Close the dead response without blocking another war"',
-                f"\t\tcommand = {{ trigger = {{ {lost_settlement} }} type = clrflag which = ind_aubm_global_pending_{key} }}",
-                f"\t\tcommand = {{ trigger = {{ {lost_settlement} }} type = clrflag which = ind_aubm_global_active_{key} }}",
-                f"\t\tcommand = {{ trigger = {{ {lost_settlement} }} type = clrflag which = ind_aubm_global_victory_{key} }}",
-                f"\t\tcommand = {{ trigger = {{ {lost_settlement} }} type = clrflag which = ind_aubm_global_current_{key} }}",
-                f"\t\tcommand = {{ trigger = {{ {lost_settlement} }} type = clrflag which = ind_aubm_global_suspended_{key} }}",
-                f"\t\tcommand = {{ trigger = {{ {indian_annexation} }} type = setflag which = ind_aubm_global_post_annex_resolved_{key} }}",
-                f"\t\tcommand = {{ trigger = {{ {indian_annexation} }} type = event which = {ids.settlement} where = IND when = 1 }}",
+                '\t\tname = "Audit only this stale response and preserve earned history"',
+                f"\t\tcommand = {{ trigger = {{ flag = ind_aubm_armistice_target_{key} }} type = clrflag which = ind_aubm_universal_armistice_outstanding }}",
+                f"\t\tcommand = {{ trigger = {{ {interrupted_live_claim} }} type = clrflag which = ind_aubm_global_current_{key} }}",
+                f"\t\tcommand = {{ trigger = {{ {interrupted_live_claim} }} type = setflag which = ind_aubm_global_suspended_{key} }}",
+                f"\t\tcommand = {{ trigger = {{ flag = ind_aubm_armistice_target_{key} {lost_settlement} }} type = clrflag which = ind_aubm_global_pending_{key} }}",
+                f"\t\tcommand = {{ trigger = {{ flag = ind_aubm_armistice_target_{key} {lost_settlement} }} type = clrflag which = ind_aubm_global_active_{key} }}",
+                f"\t\tcommand = {{ trigger = {{ flag = ind_aubm_armistice_target_{key} {lost_settlement} }} type = clrflag which = ind_aubm_global_victory_{key} }}",
+                f"\t\tcommand = {{ trigger = {{ flag = ind_aubm_armistice_target_{key} {lost_settlement} }} type = clrflag which = ind_aubm_global_current_{key} }}",
+                f"\t\tcommand = {{ trigger = {{ flag = ind_aubm_armistice_target_{key} {lost_settlement} }} type = clrflag which = ind_aubm_global_suspended_{key} }}",
+                f"\t\tcommand = {{ trigger = {{ flag = ind_aubm_armistice_target_{key} {indian_annexation} }} type = setflag which = ind_aubm_global_post_annex_resolved_{key} }}",
+                f"\t\tcommand = {{ trigger = {{ flag = ind_aubm_armistice_target_{key} {indian_annexation} }} type = event which = {ids.settlement} where = IND when = 1 }}",
+                f"\t\tcommand = {{ trigger = {{ flag = ind_aubm_armistice_target_{key} }} type = clrflag which = ind_aubm_armistice_retry_{key} }}",
                 f"\t\tcommand = {{ type = clrflag which = ind_aubm_armistice_target_{key} }}",
-                f"\t\tcommand = {{ type = clrflag which = ind_aubm_armistice_retry_{key} }}",
-                "\t\tcommand = { type = clrflag which = ind_aubm_universal_armistice_outstanding }",
                 "\t}",
                 "}",
                 "",

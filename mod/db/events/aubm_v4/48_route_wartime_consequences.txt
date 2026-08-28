@@ -430,6 +430,15 @@ event = {
 		command = { type = industrial_modifier which = supplies value = 3 }
 		command = { type = dissent value = -1 }
 		command = { type = leave_alliance when = 1 }
+		command = { type = clrflag which = ind_aubm_commitment_allied }
+		command = { type = clrflag which = ind_aubm_commitment_german }
+		command = { type = clrflag which = ind_aubm_commitment_soviet }
+		command = { type = clrflag which = ind_aubm_commitment_japan }
+		command = { type = clrflag which = ind_aubm_negotiation_allied }
+		command = { type = clrflag which = ind_aubm_negotiation_german }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
+		command = { type = clrflag which = ind_aubm_negotiation_japan }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
 		command = { type = clrflag which = ind_v4a_treaty_commonwealth }
 		command = { type = clrflag which = ind_v4a_treaty_naval_compact }
 		command = { type = clrflag which = ind_v4a_treaty_formal_alliance }
@@ -488,6 +497,8 @@ event = {
 		command = { type = clrflag which = ind_v4_strategy_axis }
 		command = { type = clrflag which = ind_v4_strategy_soviet }
 		command = { type = clrflag which = ind_v4_strategy_japan }
+		command = { type = setflag which = ind_aubm_realignment_cooldown }
+		command = { type = event which = 9281938 where = IND when = 90 }
 		command = { type = clrflag which = ind_v4_sov_autonomous_socialism }
 		command = { type = clrflag which = ind_aubm_socialist_autonomous }
 		command = { type = setflag which = ind_v3_non_aligned }
@@ -738,6 +749,15 @@ event = {
 		command = { type = industrial_modifier which = supplies value = 3 }
 		command = { type = dissent value = -1 }
 		command = { type = leave_alliance when = 1 }
+		command = { type = clrflag which = ind_aubm_commitment_allied }
+		command = { type = clrflag which = ind_aubm_commitment_german }
+		command = { type = clrflag which = ind_aubm_commitment_soviet }
+		command = { type = clrflag which = ind_aubm_commitment_japan }
+		command = { type = clrflag which = ind_aubm_negotiation_allied }
+		command = { type = clrflag which = ind_aubm_negotiation_german }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
+		command = { type = clrflag which = ind_aubm_negotiation_japan }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
 		command = { type = clrflag which = ind_v4a_treaty_commonwealth }
 		command = { type = clrflag which = ind_v4a_treaty_naval_compact }
 		command = { type = clrflag which = ind_v4a_treaty_formal_alliance }
@@ -796,6 +816,8 @@ event = {
 		command = { type = clrflag which = ind_v4_strategy_axis }
 		command = { type = clrflag which = ind_v4_strategy_soviet }
 		command = { type = clrflag which = ind_v4_strategy_japan }
+		command = { type = setflag which = ind_aubm_realignment_cooldown }
+		command = { type = event which = 9281938 where = IND when = 90 }
 		command = { type = clrflag which = ind_v4_sov_autonomous_socialism }
 		command = { type = clrflag which = ind_aubm_socialist_autonomous }
 		command = { type = setflag which = ind_v3_non_aligned }
@@ -1046,6 +1068,15 @@ event = {
 		command = { type = industrial_modifier which = supplies value = 3 }
 		command = { type = dissent value = -1 }
 		command = { type = leave_alliance when = 1 }
+		command = { type = clrflag which = ind_aubm_commitment_allied }
+		command = { type = clrflag which = ind_aubm_commitment_german }
+		command = { type = clrflag which = ind_aubm_commitment_soviet }
+		command = { type = clrflag which = ind_aubm_commitment_japan }
+		command = { type = clrflag which = ind_aubm_negotiation_allied }
+		command = { type = clrflag which = ind_aubm_negotiation_german }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
+		command = { type = clrflag which = ind_aubm_negotiation_japan }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
 		command = { type = clrflag which = ind_v4a_treaty_commonwealth }
 		command = { type = clrflag which = ind_v4a_treaty_naval_compact }
 		command = { type = clrflag which = ind_v4a_treaty_formal_alliance }
@@ -1104,6 +1135,8 @@ event = {
 		command = { type = clrflag which = ind_v4_strategy_axis }
 		command = { type = clrflag which = ind_v4_strategy_soviet }
 		command = { type = clrflag which = ind_v4_strategy_japan }
+		command = { type = setflag which = ind_aubm_realignment_cooldown }
+		command = { type = event which = 9281938 where = IND when = 90 }
 		command = { type = setflag which = ind_v4_sov_autonomous_socialism }
 		command = { type = setflag which = ind_aubm_socialist_autonomous }
 		command = { type = setflag which = ind_v3_soviet_orientation }
@@ -1354,6 +1387,15 @@ event = {
 		command = { type = industrial_modifier which = supplies value = 3 }
 		command = { type = dissent value = -1 }
 		command = { type = leave_alliance when = 1 }
+		command = { type = clrflag which = ind_aubm_commitment_allied }
+		command = { type = clrflag which = ind_aubm_commitment_german }
+		command = { type = clrflag which = ind_aubm_commitment_soviet }
+		command = { type = clrflag which = ind_aubm_commitment_japan }
+		command = { type = clrflag which = ind_aubm_negotiation_allied }
+		command = { type = clrflag which = ind_aubm_negotiation_german }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
+		command = { type = clrflag which = ind_aubm_negotiation_japan }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
 		command = { type = clrflag which = ind_v4a_treaty_commonwealth }
 		command = { type = clrflag which = ind_v4a_treaty_naval_compact }
 		command = { type = clrflag which = ind_v4a_treaty_formal_alliance }
@@ -1412,6 +1454,8 @@ event = {
 		command = { type = clrflag which = ind_v4_strategy_axis }
 		command = { type = clrflag which = ind_v4_strategy_soviet }
 		command = { type = clrflag which = ind_v4_strategy_japan }
+		command = { type = setflag which = ind_aubm_realignment_cooldown }
+		command = { type = event which = 9281938 where = IND when = 90 }
 		command = { type = clrflag which = ind_v4_sov_autonomous_socialism }
 		command = { type = clrflag which = ind_aubm_socialist_autonomous }
 		command = { type = setflag which = ind_v3_non_aligned }
@@ -1662,6 +1706,15 @@ event = {
 		command = { type = industrial_modifier which = supplies value = 3 }
 		command = { type = dissent value = -1 }
 		command = { type = leave_alliance when = 1 }
+		command = { type = clrflag which = ind_aubm_commitment_allied }
+		command = { type = clrflag which = ind_aubm_commitment_german }
+		command = { type = clrflag which = ind_aubm_commitment_soviet }
+		command = { type = clrflag which = ind_aubm_commitment_japan }
+		command = { type = clrflag which = ind_aubm_negotiation_allied }
+		command = { type = clrflag which = ind_aubm_negotiation_german }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
+		command = { type = clrflag which = ind_aubm_negotiation_japan }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
 		command = { type = clrflag which = ind_v4a_treaty_commonwealth }
 		command = { type = clrflag which = ind_v4a_treaty_naval_compact }
 		command = { type = clrflag which = ind_v4a_treaty_formal_alliance }
@@ -1720,6 +1773,8 @@ event = {
 		command = { type = clrflag which = ind_v4_strategy_axis }
 		command = { type = clrflag which = ind_v4_strategy_soviet }
 		command = { type = clrflag which = ind_v4_strategy_japan }
+		command = { type = setflag which = ind_aubm_realignment_cooldown }
+		command = { type = event which = 9281938 where = IND when = 90 }
 		command = { type = clrflag which = ind_v4_sov_autonomous_socialism }
 		command = { type = clrflag which = ind_aubm_socialist_autonomous }
 		command = { type = setflag which = ind_v3_non_aligned }

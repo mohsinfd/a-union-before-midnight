@@ -327,6 +327,13 @@ event = {
 	decision = {
 		flag = ind_v3_socialist_compact
 		NOT = { flag = ind_v3_soviet_compact_settled }
+		NOT = { participant = { country = IND value = 4 } }
+		NOT = { flag = ind_aubm_commitment_allied }
+		NOT = { flag = ind_aubm_commitment_german }
+		NOT = { flag = ind_aubm_commitment_soviet }
+		NOT = { flag = ind_aubm_commitment_japan }
+		NOT = { flag = ind_aubm_diplomatic_negotiation_pending }
+		NOT = { flag = ind_aubm_realignment_cooldown }
 	}
 	decision_trigger = {
 		# AUBM_FULL_OPTION_GATE_BEGIN
@@ -366,6 +373,8 @@ event = {
 		command = { type = relation which = ENG value = -45 }
 		command = { type = research_mod value = 1 }
 		command = { type = domestic which = free_market value = -1 }
+		command = { type = setflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = setflag which = ind_aubm_negotiation_soviet }
 		command = { trigger = { exists = SOV } type = event which = 9280965 where = SOV when = 1 }
 		command = { type = clrflag which = ind_v4_strategy_allied }
 		command = { type = clrflag which = ind_v4_strategy_axis }

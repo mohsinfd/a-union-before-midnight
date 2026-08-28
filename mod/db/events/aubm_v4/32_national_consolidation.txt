@@ -145,8 +145,8 @@ event = {
 	decision_trigger = { flag = ind_v43_war_cabinet }
 
 	name = "Convene the Emergency War Cabinet"
-	decision_desc = "No fee to inspect or revise strategy. Open coalition membership, great-power wars, regional campaigns, or the current campaign ledger. Every declaration and alliance transfer receives a separate confirmation."
-	desc = "The War Cabinet separates alliances from enemies and theatres. India may join London, Berlin, Moscow or Tokyo; fight any great power under its existing coalition or sovereign command; open a regional campaign; or inspect objectives already achieved. Historical diplomatic choices no longer lock the current war policy."
+	decision_desc = "No fee to inspect strategy. Open coalition membership, great-power wars, regional campaigns, or the current campaign ledger. Binding alignments are exclusive; peaceful withdrawal begins a ninety-day realignment period."
+	desc = "The War Cabinet separates alliances from enemies and theatres. India may negotiate with London, Berlin, Moscow or Tokyo only while uncommitted, or upgrade a compact within the same route. A binding partner cannot be attacked or exchanged for another side during war."
 	style = 2
 	picture = "aubm_v4_india_world_war"
 
@@ -155,7 +155,7 @@ event = {
 	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
-		name = "Coalition membership and side changes"
+		name = "Coalition membership and peaceful withdrawal"
 		command = { type = event which = 9281910 where = IND when = 1 }
 	}
 	action_b = {

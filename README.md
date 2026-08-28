@@ -71,10 +71,15 @@ routine destruction. Twelve three-division field corps, faster prepared
 reserves, airfield security, dispersal fields and scramble missions reduce
 wartime micromanagement within the limits of the Darkest Hour executable.
 
-Alpha 19 is the 1933 launch and public-snapshot hotfix. It removes 116
-unsupported country-tag wrappers around Darkest Hour's global flags, adds a
-regression validator for that parser failure and has been smoke-tested from a
-fresh launch through the live India map.
+Alpha 20 is the Southeast Asia and alliance-commitment gameplay pass. Batavia
+and Malaya can now produce local settlement dockets whose unratified claims
+suspend safely without waiting for the full Southern Theatre ledger;
+Indochina, the Philippines and four naval sea lanes give Indian land and
+maritime campaigns visible operational results.
+Binding coalitions and separate-command compacts are now mutually exclusive:
+India must withdraw while at peace and complete a 90-day sovereign reset before
+another alignment can be negotiated. The 1933 parser correction introduced in
+Alpha 19 remains protected by its regression gate.
 
 Alpha 18 completed wartime play around a canonical War Cabinet. Allied, German,
 Soviet, Japanese and sovereign routes each receive a four-doctrine war charter,
@@ -83,7 +88,7 @@ regional and 210 generated country campaigns now open from live world state,
 survive reversals, permit country-specific armistices and require an explicit
 constitutional settlement after annexation. Together with 26 bespoke opponents,
 India can prosecute 236 country-specific campaigns without committing to a
-permanent bloc. Coalition transfer, partner collapse and Bitter Peace now
+permanent bloc. At-peace withdrawal, partner collapse and Bitter Peace now
 preserve India's verified battlefield ledger. Mobilisation, annual war budgets,
 cumulative debt and scalable, reducible occupation upkeep make conquest
 consequential.
@@ -93,21 +98,24 @@ naval, command and research improvements remain intact.
 
 For a player-facing explanation of the complete campaign loop, route choices,
 war economy, mobilisation, settlement rules, verification status and remaining
-playtest risks, see [Gameplay Changes and Alpha 19 Status](GAMEPLAY_CHANGES.md).
+playtest risks, see [Gameplay Changes and Alpha 20 Status](GAMEPLAY_CHANGES.md).
+The reviewed-save chronology and focused next-run checklist are in
+[Alpha 20 Save and Playtest Review](docs/ALPHA20_SAVE_AND_PLAYTEST_REVIEW.md).
 
 ## Campaign
 
-- **4,343 campaign entries** across 56 isolated event modules: 3,706 Indian
-  events and decisions plus 637 foreign replies.
-- **103 player-timed decisions** and **4,240 events** for deadlines, crises,
+- **4,577 campaign entries** across 57 isolated event modules: 3,728 Indian
+  events and decisions plus 849 foreign replies.
+- **103 player-timed decisions** and **4,474 events** for deadlines, crises,
   negotiations, implementation disputes, objectives and settlements.
 - Stable constitutional governments, complete cabinets and leadership
   transitions tied to genuine political milestones.
 - **Five strategic universes:** Allied, German, Japanese, Soviet and armed
   non-alignment.
-- A permanent War Cabinet can join or leave formal coalitions, preserve
-  separate-command compacts, declare an independent war against every modeled
-  sovereign state and inspect every live theatre.
+- A permanent War Cabinet can accept one binding coalition or
+  separate-command compact at a time, return to sovereign command while at
+  peace, declare independent wars against non-partners and inspect every live
+  theatre.
 - Route-specific wartime charters turn battlefield objectives into political
   standing, then convert a completed war into a sovereign concert, security
   sphere or renewed strategic autonomy at a Delhi peace congress.
@@ -115,11 +123,15 @@ playtest risks, see [Gameplay Changes and Alpha 19 Status](GAMEPLAY_CHANGES.md).
   objective, reversal, recovery, armistice response and post-annex settlement;
   old prerequisite chains no longer silently erase a campaign.
 - Formal Allied, German, Soviet and Japanese alliances have deterministic
-  precedence, explicit entry, clean side-switching and sovereign fallback if a
-  strategic partner disappears.
+  precedence, explicit entry, cross-route commitment locks, an at-peace
+  withdrawal and reset period, and sovereign fallback if a strategic partner
+  disappears.
 - Japan follows an independent India-facing route around China, Bose, the INA,
   Imphal, Burma and Asian leadership rather than acting as an appendage of
   Germany.
+- Batavia, Malaya, Indochina and the Philippines now have standalone Indian
+  operational outcomes, while Bay of Bengal, Malacca, Java Sea and South China
+  Sea milestones measure both ports and surface-fleet strength.
 - Indian responses to Abyssinia, Spain, China, Anschluss, Munich, Prague,
   Albania and the invasion of Poland.
 - Meaningful choices that trade money, supplies, manpower, dissent, autonomy

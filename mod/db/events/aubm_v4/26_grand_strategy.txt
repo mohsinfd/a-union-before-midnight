@@ -13,6 +13,22 @@ event = {
 		year = 1937
 		atwar = no
 		NOT = { flag = ind_v4_strategy_review_cooldown }
+		NOT = { participant = { country = IND value = 4 } }
+		NOT = { flag = ind_aubm_commitment_allied }
+		NOT = { flag = ind_aubm_commitment_german }
+		NOT = { flag = ind_aubm_commitment_soviet }
+		NOT = { flag = ind_aubm_commitment_japan }
+		NOT = { flag = ind_v4a_treaty_commonwealth }
+		NOT = { flag = ind_v4a_treaty_naval_compact }
+		NOT = { flag = ind_v4a_treaty_formal_alliance }
+		NOT = { flag = ind_v4a_treaty_cobelligerent }
+		NOT = { flag = ind_gc_formal_axis }
+		NOT = { flag = ind_gc_cobelligerent }
+		NOT = { flag = ind_v4_sov_equal_compact }
+		NOT = { flag = ind_v4_sov_supervised_compact }
+		NOT = { flag = ind_aubm_jp_partnership }
+		NOT = { flag = ind_aubm_diplomatic_negotiation_pending }
+		NOT = { flag = ind_aubm_realignment_cooldown }
 		NOT = { alliance = { country = IND country = ENG } }
 		NOT = { alliance = { country = IND country = USA } }
 		NOT = { alliance = { country = IND country = GER } }
@@ -43,6 +59,13 @@ event = {
 			money = 300
 			supplies = 500
 			# AUBM_ACTION_RESERVE_END
+			NOT = { participant = { country = IND value = 4 } }
+			NOT = { flag = ind_aubm_commitment_allied }
+			NOT = { flag = ind_aubm_commitment_german }
+			NOT = { flag = ind_aubm_commitment_soviet }
+			NOT = { flag = ind_aubm_commitment_japan }
+			NOT = { flag = ind_aubm_diplomatic_negotiation_pending }
+			NOT = { flag = ind_aubm_realignment_cooldown }
 		}
 		name = "Open the review: -300 money, -500 supplies"
 		command = { type = money value = -300 }

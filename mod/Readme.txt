@@ -1,5 +1,5 @@
 =======================================================================
- A UNION BEFORE MIDNIGHT - V4.2.0 ALPHA 19
+ A UNION BEFORE MIDNIGHT - V4.2.0 ALPHA 20
  For Darkest Hour 1.05.2
 =======================================================================
 
@@ -10,9 +10,9 @@ beginning on 1 January 1933. India inherits a united but unsettled continental
 state from Ceylon to Burma and must build a working federation, modern economy
 and credible armed forces before the world crisis reaches Asia.
 
-Alpha 19 passes the automated release gates and a fresh 1933 executable smoke
-test. It remains an alpha playtest build pending a complete wartime and postwar
-campaign.
+Alpha 20 is the alliance-commitment and Southeast Asia gameplay pass. It
+retains Alpha 19's repaired 1933 launch path and remains an alpha playtest build
+pending a complete wartime and postwar campaign.
 
 -----------------------------------------------------------------------
  PLAYER REQUIREMENTS
@@ -43,12 +43,12 @@ preserves existing save files. It does not modify Darkest Hour Full itself.
 For a non-standard Steam library, run the PowerShell installer with -GameRoot.
 
 -----------------------------------------------------------------------
- THE ALPHA 18 GAMEPLAY REWORK (RETAINED IN ALPHA 19)
+ THE ALPHA 20 GAMEPLAY PASS
 -----------------------------------------------------------------------
 
-Alpha 19 fixes the unsupported foreign-country event scopes that caused Alpha
-18 to abort while loading the 1933 scenario. The validator now rejects that
-syntax before deployment.
+Alpha 19 fixed the unsupported foreign-country event scopes that caused Alpha
+18 to abort while loading the 1933 scenario. Alpha 20 retains that validator
+and closes gameplay gaps exposed by the next campaign save.
 
 Earlier builds could let India capture Persia, Suez, Singapore or the East
 Indies without meaningful feedback until the entire world war ended. Old route
@@ -71,6 +71,15 @@ One refusal cannot block another country. If a government vanishes while its
 answer is in transit, the dead reply lock is removed and the campaign can reopen
 if that country later returns.
 
+Alpha 20 adds local Batavia, colonial-Dutch and Malaya settlement dockets;
+Hanoi-Saigon and Manila-Davao land achievements; and operational Bay of Bengal,
+Malacca, Java Sea and South China Sea milestones. These outcomes no longer
+require every province in the national Southern Theatre checklist.
+
+The 1934 integration review also recognizes the mixed legitimacy-and-capacity
+state when no provincial bargain was recorded. That state can no longer stall
+the whole constitutional chain.
+
 -----------------------------------------------------------------------
  STRATEGIC COMMAND
 -----------------------------------------------------------------------
@@ -85,8 +94,10 @@ The permanent War Cabinet supports five command universes:
 
 A formal alliance merges every current war because that is Darkest Hour engine
 behavior. A compact preserves separate declarations and peace authority. India
-can change sides through a guarded transfer, attack a former partner, or return
-to sovereign command without losing verified battlefield credit.
+can hold only one binding coalition or compact. Rival alignment events remain
+closed until India withdraws while at peace and completes a 90-day sovereign
+reset. A compact may still be upgraded within its own family. Coalition
+partners cannot be selected as War Cabinet targets.
 
 Each route has four wartime doctrines and its own postwar Delhi congress. The
 final settlement can establish a concert of sovereign partners, an Indian
@@ -112,6 +123,29 @@ After annexation India must choose:
 - establish a protected government at a political cost;
 - retain direct rule with dissent, belligerence and annual upkeep; or
 - defer the constitutional decision for a limited period.
+
+-----------------------------------------------------------------------
+ SOUTHEAST ASIA OPERATIONS
+-----------------------------------------------------------------------
+
+- Batavia (1647) opens a local U05 settlement without the national Southern
+  route. If the Netherlands legally owns the colony, it uses a separate HOL
+  colonial response instead of requiring Amsterdam.
+- Singapore (1432) and Kuala Lumpur (1438) open a Malaya-only British
+  settlement without requiring Borneo or the whole British campaign.
+- East Indies cessions include western New Guinea provinces 1594-1601 only
+  when the defeated U05 or HOL government legally owns them. Third-party land
+  is never taken.
+- Hanoi (1395) plus Saigon (1399), and Manila (1565) plus Davao (1579), record
+  standalone Indian land victories without adding another peace docket.
+- Bay of Bengal, Malacca, Java Sea and South China Sea achievements require the
+  named ports plus 8, 12, 16 and 18 surface ships respectively. Transports and
+  submarines do not count.
+- Every local claim suspends when its ports, live war or legal-owner condition
+  is lost, recovers when the published conditions return and pays its material
+  reward only once. Naval milestones transfer no territory.
+- A flexible regional achievement counts combined land and sea results; it
+  does not require every Southeast Asian hub.
 
 -----------------------------------------------------------------------
  JAPANESE PARTNERSHIP
@@ -209,25 +243,31 @@ forbid a Japanese, Allied, German, Soviet or sovereign foreign-policy route.
 -----------------------------------------------------------------------
 
 Start a new 1933 campaign. V3 saves are unsupported, and earlier V4 alpha saves
-do not contain the complete Alpha 19 route, economy and campaign state. The
+do not contain the complete Alpha 20 commitment, economy and campaign state. The
 expanded leader roster and scenario research are serialized at game start.
 
-Verified for this build:
+Verified for the Alpha 20 release:
 
-- Full static validation: 0 errors and 0 warnings.
-- Every file in the active installed manifest: 0 missing and 0 hash mismatches.
-- 28,175 every-country checks across 210 generated countries.
-- 1,434 canonical wartime checks.
-- 595 five-route consequence checks.
-- 3,620 special-unit checks and 431 diplomatic-disclosure checks.
-- Japan, art, sprites, economy, resources, campaign, combat, construction-cap
-  and Steam Deck gates passed.
-- Fresh 1933 scenario executable smoke: passed.
+- 40,357 every-country checks across 210 generated countries.
+- 1,700 canonical wartime checks.
+- 660 five-route consequence checks.
+- 2,957 special-unit checks and 431 diplomatic-disclosure checks.
+- 305 southern-settlement checks, 25 union-integration checks and the 11-event
+  Southeast Asia operations contract.
+- Japan partnership and unsupported launch-syntax regression gates passed.
+- Deterministic repeat-build, full static, art, economy, resource, campaign,
+  combat, construction-cap and Steam Deck gates passed.
+- Public installer manifest: 342 managed files; copied foundation, donor and
+  unresolved assets excluded.
+- Installed overlay: 0 missing files and 0 hash mismatches.
+- Fresh fullscreen 1933 India campaign reached the playable map with 0 logged
+  errors; province validation ended with "No errors found."
 
 Still required:
 
 - A no-cheat 1940/1942 force and economy measurement.
-- Real coalition, side-switch, partner-collapse and separate-peace testing.
+- Real coalition commitment, at-peace withdrawal, partner-collapse and
+  separate-peace testing.
 - At least one complete armistice, annexation, occupation and Delhi-congress run.
 
 The executable still allows only one leader per formation and cannot

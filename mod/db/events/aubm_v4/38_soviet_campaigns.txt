@@ -22,6 +22,19 @@ event = {
 		year = 1937
 		exists = SOV
 		NOT = { war = { country = IND country = SOV } }
+		NOT = { participant = { country = IND value = 4 } }
+		NOT = { flag = ind_aubm_commitment_allied }
+		NOT = { flag = ind_aubm_commitment_german }
+		NOT = { flag = ind_aubm_commitment_japan }
+		NOT = { flag = ind_v4a_treaty_commonwealth }
+		NOT = { flag = ind_v4a_treaty_naval_compact }
+		NOT = { flag = ind_v4a_treaty_formal_alliance }
+		NOT = { flag = ind_v4a_treaty_cobelligerent }
+		NOT = { flag = ind_gc_formal_axis }
+		NOT = { flag = ind_gc_cobelligerent }
+		NOT = { flag = ind_aubm_jp_partnership }
+		NOT = { flag = ind_aubm_diplomatic_negotiation_pending }
+		NOT = { flag = ind_aubm_realignment_cooldown }
 		NOT = { alliance = { country = IND country = ENG } }
 		NOT = { alliance = { country = IND country = USA } }
 		NOT = { alliance = { country = IND country = GER } }
@@ -55,6 +68,12 @@ event = {
 			money = 200
 			supplies = 300
 			# AUBM_ACTION_RESERVE_END
+			NOT = { participant = { country = IND value = 4 } }
+			NOT = { flag = ind_aubm_commitment_allied }
+			NOT = { flag = ind_aubm_commitment_german }
+			NOT = { flag = ind_aubm_commitment_japan }
+			NOT = { flag = ind_aubm_diplomatic_negotiation_pending }
+			NOT = { flag = ind_aubm_realignment_cooldown }
 		}
 		ai_chance = 45
 		name = "Equal compact: accept 55%, consult 30%, reject 15%"
@@ -62,6 +81,8 @@ event = {
 		command = { type = supplies value = -300 }
 		command = { type = relation which = SOV value = 25 }
 		command = { type = setflag which = ind_v4_sov_equal_compact_proposed }
+		command = { type = setflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = setflag which = ind_aubm_negotiation_soviet }
 		command = { type = setflag which = ind_v4_sov_program_defined }
 		command = { type = event which = 9281401 where = SOV when = 2 }
 	}
@@ -71,6 +92,12 @@ event = {
 			money = 200
 			supplies = 300
 			# AUBM_ACTION_RESERVE_END
+			NOT = { participant = { country = IND value = 4 } }
+			NOT = { flag = ind_aubm_commitment_allied }
+			NOT = { flag = ind_aubm_commitment_german }
+			NOT = { flag = ind_aubm_commitment_japan }
+			NOT = { flag = ind_aubm_diplomatic_negotiation_pending }
+			NOT = { flag = ind_aubm_realignment_cooldown }
 		}
 		ai_chance = 35
 		name = "Autonomous course: coexist 55%, consult 30%, oppose 15%"
@@ -85,6 +112,8 @@ event = {
 		command = { type = setflag which = ind_v4_sov_autonomous_socialism }
 		command = { type = setflag which = ind_v4_sov_regional_diplomacy }
 		command = { type = setflag which = ind_v4_sov_program_defined }
+		command = { type = setflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = setflag which = ind_aubm_negotiation_soviet }
 		command = { type = event which = 9281408 where = SOV when = 7 }
 	}
 	action_c = {
@@ -93,6 +122,12 @@ event = {
 			money = 200
 			supplies = 300
 			# AUBM_ACTION_RESERVE_END
+			NOT = { participant = { country = IND value = 4 } }
+			NOT = { flag = ind_aubm_commitment_allied }
+			NOT = { flag = ind_aubm_commitment_german }
+			NOT = { flag = ind_aubm_commitment_japan }
+			NOT = { flag = ind_aubm_diplomatic_negotiation_pending }
+			NOT = { flag = ind_aubm_realignment_cooldown }
 		}
 		ai_chance = 20
 		name = "Science and trade: deterministic, no Moscow roll"
@@ -151,6 +186,7 @@ event = {
 	picture = "aubm_v4_grand_strategy"
 
 	action_a = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_soviet exists = SOV NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = SOV } } }
 		name = "Ratify the equal compact"
 		command = { type = relation which = SOV value = 25 }
 		command = { type = non_aggression which = IND where = SOV when = 1440 }
@@ -159,10 +195,20 @@ event = {
 		command = { type = clrflag which = ind_v4_sov_supervised_compact }
 		command = { type = clrflag which = ind_v4_sov_autonomous_socialism }
 		command = { type = setflag which = ind_v4_sov_equal_compact }
+		command = { type = setflag which = ind_aubm_commitment_soviet }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
 		command = { type = setflag which = ind_v4_sov_regional_diplomacy }
 		command = { type = setflag which = ind_v4_sov_separate_command }
 		command = { type = setflag which = ind_v4_strategic_weight_1 }
 		command = { type = ai which = "aubm/soviet/IND_socialist_autonomous.ai" }
+	}
+	action_b = {
+		trigger = { OR = { NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_negotiation_soviet } NOT = { exists = SOV } participant = { country = IND value = 4 } flag = ind_aubm_commitment_allied flag = ind_aubm_commitment_german flag = ind_aubm_commitment_japan war = { country = IND country = SOV } } }
+		name = "Let Moscow's obsolete acceptance lapse"
+		command = { type = clrflag which = ind_v4_sov_equal_compact_proposed }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
 	}
 }
 
@@ -178,6 +224,7 @@ event = {
 	picture = "aubm_v4_grand_strategy"
 
 	action_a = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_soviet exists = SOV NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = SOV } } }
 		ai_chance = 25
 		name = "Accept consultation and Soviet access"
 		command = { type = dissent value = 4 }
@@ -188,10 +235,14 @@ event = {
 		command = { type = clrflag which = ind_v4_sov_equal_compact }
 		command = { type = clrflag which = ind_v4_sov_autonomous_socialism }
 		command = { type = setflag which = ind_v4_sov_supervised_compact }
+		command = { type = setflag which = ind_aubm_commitment_soviet }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
 		command = { type = setflag which = ind_v4_sov_regional_diplomacy }
 		command = { type = event which = 9281405 where = SOV when = 2 }
 	}
 	action_b = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_soviet exists = SOV NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = SOV } } }
 		ai_chance = 50
 		name = "Equality counter: fixed Moscow roll 50/35/15"
 		command = { type = money value = -150 }
@@ -199,6 +250,7 @@ event = {
 		command = { type = event which = 9281406 where = SOV when = 5 }
 	}
 	action_c = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_soviet exists = SOV NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = SOV } } }
 		ai_chance = 25
 		name = "Walk away and organize independently"
 		command = { type = dissent value = -1 }
@@ -209,6 +261,16 @@ event = {
 		command = { type = setflag which = ind_v4_sov_regional_diplomacy }
 		command = { type = setflag which = ind_v4_sov_moscow_terms_rejected }
 		command = { type = ai which = "aubm/soviet/IND_socialist_autonomous.ai" }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
+	}
+	action_d = {
+		ai_chance = 0
+		trigger = { OR = { NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_negotiation_soviet } NOT = { exists = SOV } participant = { country = IND value = 4 } flag = ind_aubm_commitment_allied flag = ind_aubm_commitment_german flag = ind_aubm_commitment_japan war = { country = IND country = SOV } } }
+		name = "Let Moscow's obsolete counteroffer lapse"
+		command = { type = clrflag which = ind_v4_sov_equal_compact_proposed }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
 	}
 }
 
@@ -224,6 +286,7 @@ event = {
 	picture = "aubm_v4_grand_strategy"
 
 	action_a = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_soviet exists = SOV NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = SOV } } }
 		ai_chance = 45
 		name = "Build an independent socialist network"
 		command = { type = dissent value = 2 }
@@ -235,8 +298,11 @@ event = {
 		command = { type = setflag which = ind_v4_sov_regional_diplomacy }
 		command = { type = setflag which = ind_v4_sov_moscow_refused }
 		command = { type = ai which = "aubm/soviet/IND_socialist_autonomous.ai" }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
 	}
 	action_b = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_soviet exists = SOV NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = SOV } } }
 		ai_chance = 35
 		name = "Negotiate directly with the corridor states"
 		command = { type = money value = -150 }
@@ -245,8 +311,11 @@ event = {
 		command = { type = setflag which = ind_v4_sov_technical_only }
 		command = { type = setflag which = ind_v4_sov_regional_diplomacy }
 		command = { type = setflag which = ind_v4_sov_moscow_refused }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
 	}
 	action_c = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_soviet exists = SOV NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = SOV } } }
 		ai_chance = 20
 		name = "Reopen negotiations after one year"
 		command = { type = relation which = SOV value = -5 }
@@ -256,6 +325,16 @@ event = {
 		command = { type = setflag which = ind_v4_sov_regional_diplomacy }
 		command = { type = setflag which = ind_v4_sov_moscow_retry_pending }
 		command = { type = event which = 9281414 where = IND when = 360 }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
+	}
+	action_d = {
+		ai_chance = 0
+		trigger = { OR = { NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_negotiation_soviet } NOT = { exists = SOV } participant = { country = IND value = 4 } flag = ind_aubm_commitment_allied flag = ind_aubm_commitment_german flag = ind_aubm_commitment_japan war = { country = IND country = SOV } } }
+		name = "File Moscow's obsolete refusal"
+		command = { type = clrflag which = ind_v4_sov_equal_compact_proposed }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
 	}
 }
 
@@ -324,6 +403,7 @@ event = {
 	picture = "aubm_v4_grand_strategy"
 
 	action_a = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_soviet exists = SOV NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = SOV } } }
 		ai_chance = 45
 		name = "Accept contracts without political obligations"
 		command = { type = money value = -250 }
@@ -331,8 +411,11 @@ event = {
 		command = { type = research_mod value = 1 }
 		command = { type = setflag which = ind_v4_sov_technical_only }
 		command = { type = setflag which = ind_v4_sov_regional_diplomacy }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
 	}
 	action_b = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_soviet exists = SOV NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = SOV } } }
 		ai_chance = 35
 		name = "Create an autonomous socialist programme"
 		command = { type = dissent value = 1 }
@@ -342,14 +425,26 @@ event = {
 		command = { type = setflag which = ind_v4_sov_autonomous_socialism }
 		command = { type = setflag which = ind_v4_sov_regional_diplomacy }
 		command = { type = ai which = "aubm/soviet/IND_socialist_autonomous.ai" }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
 	}
 	action_c = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_soviet exists = SOV NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = SOV } } }
 		ai_chance = 20
 		name = "Defer the treaty and try again next year"
 		command = { type = setflag which = ind_v4_sov_technical_only }
 		command = { type = setflag which = ind_v4_sov_regional_diplomacy }
 		command = { type = setflag which = ind_v4_sov_moscow_retry_pending }
 		command = { type = event which = 9281414 where = IND when = 360 }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
+	}
+	action_d = {
+		ai_chance = 0
+		trigger = { OR = { NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_negotiation_soviet } NOT = { exists = SOV } participant = { country = IND value = 4 } flag = ind_aubm_commitment_allied flag = ind_aubm_commitment_german flag = ind_aubm_commitment_japan war = { country = IND country = SOV } } }
+		name = "Let Moscow's obsolete treatyless offer lapse"
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
 	}
 }
 
@@ -394,12 +489,21 @@ event = {
 	picture = "aubm_v4_grand_strategy"
 
 	action_a = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_soviet exists = SOV NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = SOV } } }
 		name = "Build cooperation without subordination"
 		command = { type = dissent value = -1 }
 		command = { type = relation which = SOV value = 15 }
 		command = { type = setflag which = ind_v4_sov_autonomy_recognized }
 		command = { type = setflag which = ind_v4_sov_regional_diplomacy }
 		command = { type = ai which = "aubm/soviet/IND_socialist_autonomous.ai" }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
+	}
+	action_b = {
+		trigger = { OR = { NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_negotiation_soviet } NOT = { exists = SOV } participant = { country = IND value = 4 } flag = ind_aubm_commitment_allied flag = ind_aubm_commitment_german flag = ind_aubm_commitment_japan war = { country = IND country = SOV } } }
+		name = "Let Moscow's obsolete recognition lapse"
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
 	}
 }
 
@@ -563,6 +667,7 @@ event = {
 	picture = "aubm_v4_grand_strategy"
 
 	action_a = {
+		trigger = { flag = ind_aubm_commitment_soviet exists = SOV NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = SOV } } }
 		name = "Put the supervised compact into operation"
 		command = { type = supplies value = 450 }
 		command = { type = relation which = SOV value = 20 }
@@ -572,6 +677,10 @@ event = {
 		command = { type = setflag which = ind_v4_sov_regional_diplomacy }
 		command = { type = setflag which = ind_v4_sov_moscow_consultation }
 		command = { type = ai which = "aubm/soviet/IND_socialist_autonomous.ai" }
+	}
+	action_b = {
+		trigger = { OR = { NOT = { flag = ind_aubm_commitment_soviet } NOT = { exists = SOV } participant = { country = IND value = 4 } flag = ind_aubm_commitment_allied flag = ind_aubm_commitment_german flag = ind_aubm_commitment_japan war = { country = IND country = SOV } } }
+		name = "File the overtaken equipment protocol"
 	}
 }
 
@@ -587,8 +696,12 @@ event = {
 	picture = "aubm_v4_grand_strategy"
 
 	action_a = {
+		trigger = { exists = SOV NOT = { war = { country = IND country = SOV } } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_realignment_cooldown } }
 		name = "Return to the negotiating table"
 		command = { type = clrflag which = ind_v4_sov_moscow_retry_pending }
+		command = { type = setflag which = ind_v4_sov_equal_compact_proposed }
+		command = { type = setflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = setflag which = ind_aubm_negotiation_soviet }
 		command = { type = event which = 9281401 where = SOV when = 2 }
 	}
 }
@@ -1303,6 +1416,19 @@ event = {
 	country = IND
 
 	decision = {
+		NOT = { participant = { country = IND value = 4 } }
+		NOT = { flag = ind_aubm_commitment_allied }
+		NOT = { flag = ind_aubm_commitment_german }
+		NOT = { flag = ind_aubm_commitment_japan }
+		NOT = { flag = ind_v4a_treaty_commonwealth }
+		NOT = { flag = ind_v4a_treaty_naval_compact }
+		NOT = { flag = ind_v4a_treaty_formal_alliance }
+		NOT = { flag = ind_v4a_treaty_cobelligerent }
+		NOT = { flag = ind_gc_formal_axis }
+		NOT = { flag = ind_gc_cobelligerent }
+		NOT = { flag = ind_aubm_jp_partnership }
+		NOT = { flag = ind_aubm_diplomatic_negotiation_pending }
+		NOT = { flag = ind_aubm_realignment_cooldown }
 		OR = {
 			flag = ind_v4_sov_equal_compact
 			flag = ind_v4_sov_supervised_compact
@@ -1339,6 +1465,12 @@ event = {
 			money = 300
 			supplies = 900
 			# AUBM_ACTION_RESERVE_END
+			NOT = { participant = { country = IND value = 4 } }
+			NOT = { flag = ind_aubm_commitment_allied }
+			NOT = { flag = ind_aubm_commitment_german }
+			NOT = { flag = ind_aubm_commitment_japan }
+			NOT = { flag = ind_aubm_diplomatic_negotiation_pending }
+			NOT = { flag = ind_aubm_realignment_cooldown }
 		}
 		name = "Declare an independent Indian war on Germany"
 		command = { type = money value = -300 }
@@ -1347,6 +1479,8 @@ event = {
 		command = { type = war which = GER }
 		command = { type = setflag which = ind_v4_sov_anti_german_committed }
 		command = { type = setflag which = ind_v4_sov_independent_cobelligerent }
+		command = { type = setflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = setflag which = ind_aubm_negotiation_soviet }
 		command = { type = event which = 9281451 where = SOV when = 4 }
 	}
 }
@@ -1395,12 +1529,22 @@ event = {
 	picture = "aubm_v4_barbarossa_reaction"
 
 	action_a = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_soviet exists = SOV NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = SOV } } }
 		name = "Coordinate objectives, not governments"
 		command = { type = supplies value = 500 }
 		command = { type = relation which = SOV value = 25 }
 		command = { type = max_organization which = land value = 1 }
 		command = { type = setflag which = ind_v4_sov_cobelligerency_recognized }
+		command = { type = setflag which = ind_aubm_commitment_soviet }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
 		command = { type = setflag which = ind_v4_strategic_weight_1 }
+	}
+	action_b = {
+		trigger = { OR = { NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_negotiation_soviet } NOT = { exists = SOV } participant = { country = IND value = 4 } flag = ind_aubm_commitment_allied flag = ind_aubm_commitment_german flag = ind_aubm_commitment_japan war = { country = IND country = SOV } } }
+		name = "Let Moscow's obsolete wartime acceptance lapse"
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
 	}
 }
 
@@ -1415,30 +1559,48 @@ event = {
 	picture = "aubm_v4_barbarossa_reaction"
 
 	action_a = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_soviet exists = SOV NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = SOV } } }
 		ai_chance = 25
 		name = "Join the Comintern and integrate planning"
 		command = { type = dissent value = 4 }
-		command = { type = alliance which = SOV when = 2 }
+		command = { type = alliance which = SOV when = 1 }
 		command = { type = setflag which = ind_v3_soviet_orientation }
 		command = { type = setflag which = ind_v3_joined_comintern }
 		command = { type = setflag which = ind_v4_strategy_soviet }
 		command = { type = setflag which = ind_v4_sov_formal_alliance }
+		command = { type = setflag which = ind_aubm_commitment_soviet }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
 	}
 	action_b = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_soviet exists = SOV NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = SOV } } }
 		ai_chance = 55
 		name = "Keep separate command and accept less aid"
 		command = { type = relation which = SOV value = -20 }
 		command = { type = supplies value = -300 }
 		command = { type = setflag which = ind_v4_sov_independent_cobelligerent }
 		command = { type = setflag which = ind_v4_sov_moscow_support_limited }
+		command = { type = setflag which = ind_aubm_commitment_soviet }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
 	}
 	action_c = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_soviet exists = SOV NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = SOV } } }
 		ai_chance = 20
 		name = "Continue the war without Soviet coordination"
 		command = { type = relation which = SOV value = -45 }
 		command = { type = dissent value = 1 }
 		command = { type = setflag which = ind_v4_sov_autonomous_war }
 		command = { type = ai which = "aubm/soviet/IND_socialist_autonomous.ai" }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
+	}
+	action_d = {
+		ai_chance = 0
+		trigger = { OR = { NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_negotiation_soviet } NOT = { exists = SOV } participant = { country = IND value = 4 } flag = ind_aubm_commitment_allied flag = ind_aubm_commitment_german flag = ind_aubm_commitment_japan war = { country = IND country = SOV } } }
+		name = "Let Moscow's obsolete alliance demand lapse"
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
 	}
 }
 
@@ -1453,14 +1615,18 @@ event = {
 	picture = "aubm_v4_barbarossa_reaction"
 
 	action_a = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_soviet exists = SOV NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = SOV } } }
 		ai_chance = 45
 		name = "Continue the war under Indian command"
 		command = { type = dissent value = -1 }
 		command = { type = relation which = SOV value = -10 }
 		command = { type = setflag which = ind_v4_sov_autonomous_war }
 		command = { type = setflag which = ind_v4_strategic_weight_1 }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
 	}
 	action_b = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_soviet exists = SOV NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = SOV } } }
 		ai_chance = 35
 		name = "Build direct Tehran and Tashkent links"
 		command = { type = money value = -250 }
@@ -1470,8 +1636,11 @@ event = {
 		command = { trigger = { exists = PER } type = event which = 9281420 where = PER when = 5 }
 		command = { trigger = { exists = AFG } type = event which = 9281430 where = AFG when = 7 }
 		command = { type = ai which = "aubm/soviet/IND_dual_west.ai" }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
 	}
 	action_c = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_soviet exists = SOV NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = SOV } } }
 		ai_chance = 20
 		name = "Publicly challenge Moscow for Asian leadership"
 		command = { type = dissent value = 3 }
@@ -1479,6 +1648,15 @@ event = {
 		command = { type = relation which = SOV value = -50 }
 		command = { type = relation which = CHI value = 20 }
 		command = { type = setflag which = ind_v4_sov_socialist_competition }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
+	}
+	action_d = {
+		ai_chance = 0
+		trigger = { OR = { NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_negotiation_soviet } NOT = { exists = SOV } participant = { country = IND value = 4 } flag = ind_aubm_commitment_allied flag = ind_aubm_commitment_german flag = ind_aubm_commitment_japan war = { country = IND country = SOV } } }
+		name = "File Moscow's obsolete refusal"
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
 	}
 }
 

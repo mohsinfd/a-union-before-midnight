@@ -85,8 +85,17 @@ Invoke-Checked "Delhi-Tokyo campaign" {
 Invoke-Checked "Diplomatic chance disclosure" {
     & $python.Source (Join-Path $PSScriptRoot "validate_aubm_diplomatic_clarity.py")
 }
+Invoke-Checked "Union integration review coverage" {
+    & $python.Source (Join-Path $PSScriptRoot "validate_aubm_union_integration.py")
+}
 Invoke-Checked "Coalition-independent wartime campaigns" {
     & $python.Source (Join-Path $PSScriptRoot "validate_aubm_wartime.py")
+}
+Invoke-Checked "Southern regional settlements" {
+    & $python.Source (Join-Path $PSScriptRoot "validate_aubm_southern_settlements.py")
+}
+Invoke-Checked "Southeast Asia operations" {
+    & $python.Source (Join-Path $PSScriptRoot "validate_aubm_southeast_asia.py")
 }
 Invoke-Checked "Wartime persistence contract" {
     & $python.Source (Join-Path $PSScriptRoot "normalize_aubm_wartime_persistence.py") --check

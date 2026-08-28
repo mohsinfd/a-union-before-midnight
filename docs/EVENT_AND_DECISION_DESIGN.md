@@ -24,11 +24,11 @@ offer a genuinely different low-cost response.
 
 ## Current Audit
 
-- Custom entries: 4,343 across 56 isolated modules: 3,706 Indian entries and
-  637 foreign replies.
+- Custom entries: 4,577 across 57 isolated modules: 3,728 Indian entries and
+  849 foreign replies.
 - Decisions: 103.
 - Automatic events, deadlines, crises, objectives, negotiations and foreign
-  replies: 4,240.
+  replies: 4,474.
 - Required persistent systems include the annual Union Budget, strategy and
   commitment reviews, the War Cabinet, country campaign ledgers, wartime
   accounts, mobilisation, occupation upkeep and postwar settlement.

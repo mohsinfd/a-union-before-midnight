@@ -52,6 +52,35 @@ def event_blocks(text: str) -> dict[int, str]:
     return events
 
 
+def action_blocks(event: str) -> dict[str, str]:
+    actions: dict[str, str] = {}
+    for match in re.finditer(r"(?m)^\s*action_([a-d])\s*=\s*\{", event):
+        opening = event.find("{", match.start())
+        depth = 0
+        quoted = False
+        escaped = False
+        for position in range(opening, len(event)):
+            char = event[position]
+            if quoted:
+                if escaped:
+                    escaped = False
+                elif char == "\\":
+                    escaped = True
+                elif char == '"':
+                    quoted = False
+                continue
+            if char == '"':
+                quoted = True
+            elif char == "{":
+                depth += 1
+            elif char == "}":
+                depth -= 1
+                if depth == 0:
+                    actions[match.group(1)] = event[match.start() : position + 1]
+                    break
+    return actions
+
+
 def main() -> int:
     errors: list[str] = []
     checks = 0
@@ -103,6 +132,7 @@ def main() -> int:
         congress_id = 9283270 + route_index
         charter = events.get(charter_id, "")
         congress = events.get(congress_id, "")
+        autonomy = action_blocks(congress).get("c", "")
         checks += 12
         if route.route_flag not in charter:
             errors.append(f"{route.key} charter omits canonical route flag")
@@ -126,6 +156,26 @@ def main() -> int:
             errors.append(f"{route.key} lifecycle cannot acknowledge an early sovereign war")
         if "leave_alliance when = 1" not in congress or "setflag which = ind_aubm_route_sovereign" not in congress:
             errors.append(f"{route.key} strategic-autonomy outcome does not leave its bloc")
+        autonomy_requirements = (
+            "atwar = no",
+            "leave_alliance when = 1",
+            "clrflag which = ind_aubm_commitment_allied",
+            "clrflag which = ind_aubm_commitment_german",
+            "clrflag which = ind_aubm_commitment_soviet",
+            "clrflag which = ind_aubm_commitment_japan",
+            "clrflag which = ind_aubm_negotiation_allied",
+            "clrflag which = ind_aubm_negotiation_german",
+            "clrflag which = ind_aubm_negotiation_soviet",
+            "clrflag which = ind_aubm_negotiation_japan",
+            "clrflag which = ind_aubm_diplomatic_negotiation_pending",
+            "setflag which = ind_aubm_realignment_cooldown",
+            "event which = 9281938 where = IND when = 90",
+        )
+        checks += len(autonomy_requirements)
+        for requirement in autonomy_requirements:
+            source = congress if requirement == "atwar = no" else autonomy
+            if requirement not in source:
+                errors.append(f"{route.key} strategic-autonomy withdrawal omits {requirement}")
         if route.key == "soviet":
             checks += 4
             if "flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous" not in charter:

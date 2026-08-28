@@ -1,14 +1,16 @@
 # Wartime Campaign Map
 
 This document is the canonical gameplay map for A Union Before Midnight Alpha
-18. Event code may add flavour, but it must preserve these rules.
+20. Event code may add flavour, but it must preserve these rules.
 
 ## Common Lifecycle
 
 1. The War Cabinet records one current command relationship: Allied, German,
-   Soviet, Japanese or sovereign.
-2. India may join a formal coalition, retain a separate-command compact, switch
-   coalitions through the transfer rule, or declare a country-specific war.
+   Soviet, Japanese or sovereign, and one binding commitment at most.
+2. A formal coalition or separate-command compact blocks every rival alignment.
+   India may upgrade a compact within the same family, withdraw only while at
+   peace, then wait through a 90-day sovereign reset before negotiating another
+   commitment.
 3. A campaign brief publishes the Indian-controlled objective before rewards
    are possible.
 4. Capturing the objective opens a live settlement claim. Losing it suspends
@@ -23,40 +25,47 @@ This document is the canonical gameplay map for A Union Before Midnight Alpha
    new lifecycle without duplicating the previous reward. If a government is
    annexed by somebody else while its answer is in transit, the dead response
    lock is released and its file can reopen if the state later returns.
-8. India can change route without losing verified campaign credit. A dead or
-   hostile partner returns India to sovereign command; the current valid route
-   determines the eventual Delhi congress.
+8. An at-peace withdrawal does not erase verified campaign credit. A dead or
+   hostile partner returns India to sovereign command and starts the same
+   90-day reset; the current valid route determines the eventual Delhi congress.
 
 ## Entry And Revision
 
 - **Allied formal coalition:** from 1937, the Coalition Docket opens a separate
   choice between London and Washington. India cannot join while fighting either
-  Allied leader. A separate Allied treaty conference becomes available in 1938.
+  Allied leader, while committed to another family, or during sovereign reset.
+  A separate Allied treaty conference becomes available in 1938 under the same
+  commitment rules.
 - **German formal coalition:** from 1937, India may enter Berlin's coalition if
-  Germany exists and India is not fighting it. The deeper separate-command
-  Berlin compact follows the European-Soviet crisis from 1940.
+  Germany exists, India is not fighting it, and no rival commitment is active.
+  The deeper separate-command Berlin compact follows the European-Soviet crisis
+  from 1940.
 - **Soviet formal coalition:** from 1937, India may enter Moscow's coalition if
-  the Soviet Union exists and India is not fighting it. The socialist
-  conference also offers equal, supervised and autonomous Indian terms.
-- **Japanese formal coalition or compact:** from 1937, India may join Tokyo's
-  wars formally or retain a bilateral separate-command compact. Under the
+  the Soviet Union exists, India is not fighting it, and no rival commitment is
+  active. The socialist conference also offers equal, supervised and
+  autonomous Indian terms.
+- **Japanese formal coalition or compact:** from 1937, an otherwise uncommitted
+  India may join Tokyo's wars formally or retain a bilateral separate-command
+  compact. The compact may be upgraded to the Japanese coalition. Under the
   compact, an Indian-Soviet war does not automatically become Japan's war.
-- **Sovereign command:** available whenever India leaves a coalition or rejects
-  permanent alignment. Autonomous Indian socialism is sovereign command with a
-  socialist charter, not membership in Moscow's alliance.
-- **Revision:** the War Cabinet remains permanent. India may attack a former
-  partner, change coalition, or prosecute any bilateral campaign; cleanup and
-  partner-collapse events normalize the route without deleting verified
-  campaign credit.
+- **Sovereign command:** the default for an uncommitted India. Voluntary
+  withdrawal requires peace and starts a 90-day reset. Autonomous Indian
+  socialism is sovereign command with a socialist charter, not membership in
+  Moscow's alliance.
+- **Revision:** the War Cabinet remains permanent, but it cannot attack a
+  current coalition partner or use a declaration to force a transfer. After an
+  at-peace withdrawal and reset, a former partner becomes an ordinary eligible
+  state. Partner-collapse events normalize the route, preserve verified
+  campaign credit and apply the same reset before another alignment.
 
 ## Route Contract
 
 | Indian command | Coalition choice | Independent war option | Failure recovery | Peace payoff |
 | --- | --- | --- | --- | --- |
-| Allied | Britain or United States | Separate-command cooperation or any bilateral war | London/Washington failover, then sovereign fallback | Allied Delhi congress |
-| German | Berlin coalition or cobelligerent compact | Parallel Indian war against Britain, the Soviet Union or any state | German collapse or rupture returns sovereign command | Continental Delhi congress |
-| Soviet | Moscow coalition, equal compact or supervised compact | Autonomous Indian socialism and any bilateral war | Moscow refusal, collapse or direct Indian-Soviet war returns sovereign command | Republican Delhi congress |
-| Japanese | Tokyo coalition or Delhi-Tokyo separate command | Independent Soviet war, southern sphere or any bilateral war | Rejection, rupture or Japanese collapse returns sovereign command | Asian Delhi congress |
+| Allied | Britain or United States | Separate-command cooperation or any non-partner bilateral war | London/Washington failover, then sovereign fallback | Allied Delhi congress |
+| German | Berlin coalition or cobelligerent compact | Parallel Indian war against Britain, the Soviet Union or any non-partner | German collapse or rupture returns sovereign command | Continental Delhi congress |
+| Soviet | Moscow coalition, equal compact or supervised compact | Autonomous Indian socialism and any non-partner bilateral war | Moscow refusal, collapse or direct Indian-Soviet war returns sovereign command | Republican Delhi congress |
+| Japanese | Tokyo coalition or Delhi-Tokyo separate command | Independent Soviet war, southern sphere or any non-partner bilateral war | Rejection, rupture or Japanese collapse returns sovereign command | Asian Delhi congress |
 | Sovereign | No permanent coalition | Every modeled country | Reversal and recovery remain country-specific | Sovereign Delhi congress |
 
 Every route uses the same visible contract: a brief names the capital or
@@ -137,6 +146,15 @@ still counts toward the current route's Delhi congress.
   capital-based country files and provisional constitutional settlements.
 - **Southern Japan partnership:** Malaya, Indonesia and Australia retain a
   dedicated division-of-labour settlement with explicit foreign responses.
+- **Southeast Asian local outcomes:** Batavia has separate U05 and colonial HOL
+  dockets; Singapore plus Kuala Lumpur has a Malaya-only British docket.
+  Hanoi-Saigon and Manila-Davao produce achievement-only Indian land milestones
+  with permanent earned credit and reversible current status; the existing
+  country campaign remains the sole peace docket.
+- **Operational sea lanes:** Bay of Bengal, Malacca, Java Sea and South China
+  Sea milestones require both specified ports and 8/12/16/18 surface ships.
+  Earned credit remains permanent, while current operating status suspends and
+  recovers with the published conditions; they never transfer territory.
 - **Regional armistice files:** Persia, Iraq, Saudi Arabia, Yemen, Oman,
   Afghanistan, Tibet and Xinjiang answer Delhi independently on disclosed
   60/25/15 terms; a refusal creates only a country-specific retry cooldown.
@@ -152,6 +170,9 @@ retry and post-annex settlement contract. These campaigns remain available
 regardless of India's strategic route. Declarations, acceptances, counteroffers,
 refusals and vanished-government audits use country-specific callbacks; no
 single monolithic event loops over every opponent or settlement command.
+Coalition partners are hidden from the declaration menus, and the delayed
+callback rechecks that relationship instead of automatically leaving India's
+alliance.
 
 ## Economy And Political Cost
 

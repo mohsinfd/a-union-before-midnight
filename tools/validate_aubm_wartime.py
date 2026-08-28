@@ -19,6 +19,7 @@ MODULE_NAMES = (
     "46_regional_campaigns.txt",
 	"48_route_wartime_consequences.txt",
 	"49_bespoke_armistices.txt",
+	"50_southeast_asia_operations.txt",
 )
 MODULE_PATHS = tuple(EVENT_ROOT / "aubm_v4" / name for name in MODULE_NAMES)
 
@@ -266,6 +267,22 @@ def main() -> int:
         checks += 1
         require(errors, token in events.get(event_id, ""), f"compact synchronizer {event_id} omits {token}")
 
+    compact_commitment_family = {
+        9281906: "allied",
+        9281907: "german",
+        9281908: "soviet",
+    }
+    for event_id, selected in compact_commitment_family.items():
+        block = events.get(event_id, "")
+        for rival in ("allied", "german", "soviet", "japan"):
+            if rival == selected:
+                continue
+            checks += 1
+            require(errors, f"NOT = {{ flag = ind_aubm_commitment_{rival} }}" in block, f"compact synchronizer {event_id} can override {rival} commitment")
+    for family in ("allied", "german", "soviet", "japan"):
+        checks += 1
+        require(errors, f"NOT = {{ flag = ind_aubm_commitment_{family} }}" in events.get(9281909, ""), f"autonomous-socialist synchronizer can override {family} commitment")
+
     for event_id, selected_family in RELATIONSHIP_SYNCHRONIZERS.items():
         block = events.get(event_id, "")
         for family, tokens in RELATIONSHIP_FAMILIES.items():
@@ -362,7 +379,7 @@ def main() -> int:
     require(errors, "event which = 9281934" in allied_selector, "Allied entry does not expose an explicit leader choice")
     for letter, partner in (("a", "ENG"), ("b", "USA")):
         action = allied_partner_actions.get(letter, "")
-        require(errors, f"type = alliance which = {partner} when = 2" in action, f"Allied entry cannot join through {partner}")
+        require(errors, f"type = alliance which = {partner} when = 1" in action, f"Allied entry cannot join safely through {partner}")
         require(errors, "war = { country = IND country = ENG }" in action, f"Allied {partner} entry ignores a British war")
         require(errors, "war = { country = IND country = USA }" in action, f"Allied {partner} entry ignores an American war")
         require(errors, "event which = 9281901" in action, f"Allied {partner} entry does not schedule canonical normalization")
@@ -391,6 +408,123 @@ def main() -> int:
     for letter, route_name in (("a", "Tokyo alliance"), ("b", "autonomous socialism"), ("d", "Tokyo compact")):
         checks += 1
         require(errors, "year = 1937" in japan_menu_actions.get(letter, ""), f"{route_name} bypasses the 1937 chronology")
+
+    commitment_flags = {
+        "allied": "ind_aubm_commitment_allied",
+        "german": "ind_aubm_commitment_german",
+        "soviet": "ind_aubm_commitment_soviet",
+        "japan": "ind_aubm_commitment_japan",
+    }
+    legacy_binding = {
+        "allied": RELATIONSHIP_FAMILIES["allied"],
+        "german": ("ind_gc_formal_axis", "ind_gc_cobelligerent"),
+        "soviet": ("ind_v4_sov_equal_compact", "ind_v4_sov_supervised_compact"),
+        "japan": ("ind_aubm_jp_partnership",),
+    }
+    route_entries = {
+        "allied": (allied_partner_actions.get("a", ""), allied_partner_actions.get("b", ""), compact_actions.get("a", "")),
+        "german": (coalition_actions.get("b", ""), compact_actions.get("b", "")),
+        "soviet": (coalition_actions.get("c", ""), compact_actions.get("c", "")),
+        "japan": (japan_menu_actions.get("a", ""), japan_menu_actions.get("d", "")),
+    }
+    for selected, entries in route_entries.items():
+        for entry_number, action in enumerate(entries, start=1):
+            checks += 2
+            require(errors, "NOT = { participant = { country = IND value = 4 } }" in action, f"{selected} route entry {entry_number} ignores a live formal alliance")
+            require(errors, "ind_aubm_diplomatic_negotiation_pending" in action and "ind_aubm_realignment_cooldown" in action, f"{selected} route entry {entry_number} bypasses pending/cooldown serialization")
+            if "type = alliance" in action:
+                checks += 1
+                require(errors, f"NOT = {{ flag = {commitment_flags[selected]} }}" not in action, f"{selected} formal entry {entry_number} blocks its own compact-to-formal upgrade")
+            for rival, commitment in commitment_flags.items():
+                if rival == selected:
+                    continue
+                checks += 1
+                require(errors, f"NOT = {{ flag = {commitment} }}" in action, f"{selected} route entry {entry_number} ignores rival {rival} commitment")
+                for token in legacy_binding[rival]:
+                    checks += 1
+                    require(errors, f"NOT = {{ flag = {token} }}" in action, f"{selected} route entry {entry_number} ignores legacy {rival} binding token {token}")
+
+    for letter, partner in (("b", "GER"), ("c", "SOV")):
+        checks += 1
+        require(errors, f"type = alliance which = {partner} when = 1" in coalition_actions.get(letter, ""), f"{partner} formal entry still uses side-switch semantics")
+    checks += 1
+    require(errors, "type = alliance which = JAP when = 1" in japan_menu_actions.get("a", ""), "Japanese formal entry still uses side-switch semantics")
+
+    commitment_migration = events.get(9281949, "")
+    checks += 9
+    require(errors, "persistent = yes" in commitment_migration, "Alpha20 commitment migration is not scenario-long")
+    require(errors, "ind_aubm_commitment_migration_alpha20" in commitment_migration, "Alpha20 commitment migration is not one-shot")
+    require(errors, "AND = { flag = ind_aubm_jp_partnership NOT = { flag = ind_aubm_jp_rupture } }" in commitment_migration, "old Tokyo-compact saves are not recognized by migration")
+    for commitment in commitment_flags.values():
+        require(errors, f"type = setflag which = {commitment}" in commitment_migration, f"migration cannot reconstruct {commitment}")
+    require(errors, "sleepevent which = 9270456" in commitment_migration, "migration does not retire legacy 1939 War in Europe bypass")
+    require(errors, "sleepevent which = 9280940" in commitment_migration, "migration does not retire legacy War Cabinet bypass")
+
+    migration_routes = {
+        "allied": "ind_aubm_route_allied",
+        "german": "ind_aubm_route_german",
+        "soviet": "ind_aubm_route_soviet",
+        "japan": "ind_aubm_route_japan",
+    }
+    for family, route_flag in migration_routes.items():
+        checks += 2
+        require(errors, f"type = clrflag which = {route_flag}" in commitment_migration, f"migration does not clear stale {family} route state")
+        require(
+            errors,
+            f"trigger = {{ flag = {commitment_flags[family]} }} type = setflag which = {route_flag}" in commitment_migration,
+            f"migration does not rebuild the {family} route from its selected commitment",
+        )
+    checks += 2
+    require(errors, "type = clrflag which = ind_aubm_route_sovereign" in commitment_migration, "migration does not clear stale sovereign route state")
+    require(
+        errors,
+        "NOT = { participant = { country = IND value = 4 } }" in commitment_migration
+        and "type = setflag which = ind_aubm_route_sovereign" in commitment_migration,
+        "migration can label a live formal-alliance member sovereign",
+    )
+
+    migration_binding = {
+        "allied": (
+            "ind_v4a_treaty_commonwealth",
+            "ind_v4a_treaty_naval_compact",
+            "ind_v4a_treaty_formal_alliance",
+            "ind_v4a_treaty_cobelligerent",
+        ),
+        "german": ("ind_gc_formal_axis", "ind_gc_cobelligerent"),
+        "soviet": (
+            "ind_v4_sov_equal_compact",
+            "ind_v4_sov_supervised_compact",
+            "ind_v4_sov_formal_alliance",
+            "ind_v4_sov_independent_cobelligerent",
+        ),
+        "japan": (
+            "ind_aubm_jp_partnership",
+            "ind_aubm_jp_formal_alliance",
+            "ind_aubm_jp_independent_cobelligerent",
+        ),
+    }
+    for family, tokens in migration_binding.items():
+        for token in tokens:
+            checks += 1
+            require(
+                errors,
+                f"trigger = {{ NOT = {{ flag = {commitment_flags[family]} }} }} type = clrflag which = {token}" in commitment_migration,
+                f"migration does not remove rival {family} binding state {token}",
+            )
+    checks += 7
+    precedence_offsets = [
+        commitment_migration.find(f"type = setflag which = {commitment_flags[family]}")
+        for family in ("allied", "german", "soviet", "japan")
+    ]
+    require(errors, all(offset >= 0 for offset in precedence_offsets) and precedence_offsets == sorted(precedence_offsets), "migration precedence is not Allied > German > Soviet > Japanese")
+    first_binding_offset = commitment_migration.find("flag = ind_v4a_treaty_commonwealth")
+    last_formal_offset = commitment_migration.find("alliance = { country = IND country = JAP } } type = setflag which = ind_aubm_commitment_japan")
+    require(errors, first_binding_offset >= 0 and last_formal_offset >= 0 and last_formal_offset < first_binding_offset, "migration lets a stale binding compact outrank live formal alliance membership")
+    require(errors, "flag = ind_gc_cobelligerent" in commitment_migration and "flag = ind_aubm_jp_partnership" in commitment_migration, "migration cannot canonicalize an old Germany-over-Tokyo exploit save")
+    require(errors, "ind_v4_sov_formal_alliance" in commitment_migration, "migration misses legacy formal Soviet commitment state")
+    require(errors, "ind_v4_sov_independent_cobelligerent" in commitment_migration, "migration misses legacy Soviet co-belligerency state")
+    require(errors, "ind_aubm_jp_independent_cobelligerent" in commitment_migration, "migration misses legacy Japanese co-belligerency state")
+    require(errors, "type = clrflag which = ind_aubm_route_achievement_" not in commitment_migration, "migration erases completed route achievements")
 
     for recovery_id in (9281935, 9281936):
         recovery = events.get(recovery_id, "")
@@ -473,8 +607,8 @@ def main() -> int:
     checks += 1
     require(
         errors,
-        bool(legacy_alliances) and all("when = 2" in tail for tail in legacy_alliances),
-        "legacy Allied conference bypasses safe coalition transfer",
+        bool(legacy_alliances) and all("when = 1" in tail for tail in legacy_alliances),
+        "legacy Allied conference still uses direct side-switch alliance semantics",
     )
 
     german_recovery = events.get(9282142, "")
@@ -488,7 +622,7 @@ def main() -> int:
         )
 
     rupture = events.get(9281998, "")
-    checks += 12
+    checks += 13
     require(errors, "persistent = yes" in rupture, "strategic-partner rupture monitor is not reusable")
     for route, partner in (
         ("ind_aubm_route_allied", "ENG"),
@@ -504,13 +638,15 @@ def main() -> int:
         )
     require(errors, "setflag which = ind_aubm_route_sovereign" in rupture, "partner rupture does not restore sovereign command")
     require(errors, "type = leave_alliance" in rupture, "partner rupture does not leave the invalid alliance")
+    require(errors, "setflag which = ind_aubm_realignment_cooldown" in rupture and "event which = 9281938 where = IND when = 90" in rupture, "partner rupture permits an immediate coalition pivot")
     require(errors, "type = clrflag which = ind_aubm_campaign_" not in rupture, "partner rupture erases campaign credit")
 
     collapse = events.get(9281997, "")
-    checks += 8
+    checks += 9
     require(errors, "persistent = yes" in collapse, "partner-collapse monitor is not persistent")
     require(errors, "type = leave_alliance" in collapse, "partner-collapse monitor does not leave the dead coalition")
     require(errors, "setflag which = ind_aubm_route_sovereign" in collapse, "partner collapse does not restore sovereign command")
+    require(errors, "setflag which = ind_aubm_realignment_cooldown" in collapse and "event which = 9281938 where = IND when = 90" in collapse, "partner collapse permits an immediate coalition pivot")
     for route, partner in (
         ("ind_aubm_route_allied", "ENG"),
         ("ind_aubm_route_german", "GER"),
@@ -523,6 +659,15 @@ def main() -> int:
         re.search(r"type\s*=\s*clrflag\s+which\s*=\s*ind_aubm_\S*(?:victory|achievement|campaign)", collapse) is None,
         "partner collapse erases earned campaign or victory credit",
     )
+
+    german_campaign_events = parse_events((EVENT_ROOT / "aubm_v4" / "37_german_campaigns.txt",))
+    german_collapse = german_campaign_events.get(9281353, "")
+    german_collapse_actions = action_blocks(german_collapse)
+    checks += 3
+    require(errors, set(german_collapse_actions) == {"a", "b"}, "German-collapse response does not expose both sovereign outcomes")
+    for letter in ("a", "b"):
+        action = german_collapse_actions.get(letter, "")
+        require(errors, "setflag which = ind_aubm_realignment_cooldown" in action and "event which = 9281938 where = IND when = 90" in action, f"German-collapse action {letter} permits an immediate coalition pivot")
 
     bitter_peace = events.get(9281996, "")
     bitter_actions = action_blocks(bitter_peace)
@@ -540,6 +685,75 @@ def main() -> int:
     all_paths = tuple(sorted((EVENT_ROOT / "aubm_v4").glob("*.txt")))
     all_events = parse_events(all_paths)
     all_event_text = "\n".join(path.read_text(encoding="cp1252") for path in all_paths)
+
+    delayed_acceptances = {
+        9280966: ("soviet", "a", "b"),
+        9280967: ("soviet", "a", "c"),
+        9281113: ("japan", "a", "b"),
+        9281205: ("allied", "a", "b"),
+        9281208: ("allied", "a", "b"),
+        9281211: ("allied", "a", "b"),
+        9281214: ("allied", "a", "b"),
+        9281304: ("german", "a", "b"),
+        9281307: ("german", "a", "b"),
+        9281402: ("soviet", "a", "b"),
+        9281403: ("soviet", "a", "d"),
+        9281453: ("soviet", "a", "d"),
+    }
+    for event_id, (family, acceptance_letter, lapse_letter) in delayed_acceptances.items():
+        actions = action_blocks(all_events.get(event_id, ""))
+        accepted = actions.get(acceptance_letter, "")
+        lapsed = actions.get(lapse_letter, "")
+        checks += 6
+        require(errors, "ind_aubm_diplomatic_negotiation_pending" in accepted, f"delayed acceptance {event_id} does not revalidate the global pending file")
+        require(errors, f"ind_aubm_negotiation_{family}" in accepted, f"delayed acceptance {event_id} does not revalidate its {family} file")
+        require(errors, "NOT = { participant = { country = IND value = 4 } }" in accepted, f"delayed acceptance {event_id} can override a formal alliance")
+        require(errors, f"setflag which = ind_aubm_commitment_{family}" in accepted, f"delayed acceptance {event_id} does not record the binding {family} commitment")
+        require(errors, "clrflag which = ind_aubm_diplomatic_negotiation_pending" in lapsed, f"stale callback {event_id} has no global lapse path")
+        require(errors, f"clrflag which = ind_aubm_negotiation_{family}" in lapsed, f"stale callback {event_id} has no family lapse path")
+
+    relationship_paths = tuple(EVENT_ROOT / "aubm_v4" / name for name in (
+        "22_crisis_interventions.txt",
+        "35_japan_partnership.txt",
+        "36_allied_campaigns.txt",
+        "37_german_campaigns.txt",
+        "38_soviet_campaigns.txt",
+        "41_wartime_state.txt",
+    ))
+    relationship_text = "\n".join(path.read_text(encoding="cp1252") for path in relationship_paths)
+    checks += 1
+    require(errors, re.search(r"type\s*=\s*alliance\s+which\s*=\s*\w+\s+when\s*=\s*2", relationship_text) is None, "a diplomatic route still contains alliance when=2 side-switch semantics")
+
+    soviet_wartime_root = all_events.get(9281450, "")
+    soviet_delayed_demand = action_blocks(all_events.get(9281453, "")).get("a", "")
+    checks += 6
+    require(errors, "NOT = { participant = { country = IND value = 4 } }" in soviet_wartime_root, "legacy Soviet wartime negotiation ignores a live alliance")
+    require(errors, "ind_aubm_diplomatic_negotiation_pending" in soviet_wartime_root, "legacy Soviet wartime negotiation is not serialized")
+    require(errors, "ind_aubm_jp_partnership" in soviet_wartime_root, "legacy Soviet wartime negotiation ignores the Tokyo compact")
+    require(errors, "type = alliance which = SOV when = 1" in soviet_delayed_demand, "legacy delayed Soviet alliance still side-switches")
+    require(errors, "ind_aubm_negotiation_soviet" in soviet_delayed_demand, "legacy delayed Soviet alliance does not revalidate")
+    require(errors, "ind_aubm_commitment_soviet" in soviet_delayed_demand, "legacy delayed Soviet alliance does not bind the Soviet route")
+
+    legacy_reactions = parse_events((EVENT_ROOT / "india_v3" / "46_world_reactions.txt",))
+    checks += 2
+    require(errors, "NOT = { flag = ind_aubm_wartime_framework }" in legacy_reactions.get(9270456, ""), "legacy War in Europe event can reopen the retired cabinet")
+    legacy_cabinet = all_events.get(9280940, "")
+    require(errors, all("NOT = { participant = { country = IND value = 4 } }" in action_blocks(legacy_cabinet).get(letter, "") for letter in ("a", "b", "c")), "legacy 1939 cabinet can override a live alliance")
+
+    legacy_diplomacy = parse_events((EVENT_ROOT / "india_v3" / "40_diplomacy.txt",))
+    soviet_technical_compact = legacy_diplomacy.get(9270403, "")
+    delhi_pact = all_events.get(9280968, "")
+    checks += 4
+    require(errors, "NOT = { participant = { country = IND value = 4 } }" in soviet_technical_compact, "legacy Soviet compact can start inside a formal alliance")
+    require(errors, "ind_aubm_diplomatic_negotiation_pending" in action_blocks(soviet_technical_compact).get("a", ""), "legacy Soviet compact does not serialize its delayed reply")
+    require(errors, "NOT = { participant = { country = IND value = 4 } }" in delhi_pact, "legacy Delhi Pact can replace a formal alliance")
+    require(errors, all("NOT = { participant = { country = IND value = 4 } }" in action_blocks(delhi_pact).get(letter, "") for letter in ("a", "b", "c")), "legacy Delhi Pact actions do not revalidate alliance exclusivity")
+
+    tokyo_soviet_war = action_blocks(all_events.get(9281180, "")).get("a", "")
+    checks += 2
+    require(errors, "type = war which = SOV" in tokyo_soviet_war, "Tokyo compact lost India's independent Soviet-war option")
+    require(errors, "clrflag which = ind_aubm_jp_partnership" not in tokyo_soviet_war and "type = leave_alliance" not in tokyo_soviet_war, "independent Soviet war ruptures the Tokyo compact")
+
     checks += 1
     require(
         errors,
@@ -565,17 +779,18 @@ def main() -> int:
         require(errors, contains_war_command(executor, tag), f"declaration executor cannot start war with {tag}")
     for tag in REGIONAL_CAPITALS:
         checks += 1
-        safe_departure = (
-            f"trigger = {{ alliance = {{ country = IND country = {tag} }} }} "
-            "type = leave_alliance when = 1"
-        )
-        require(errors, safe_departure in all_event_text, f"war with allied regional target {tag} cannot invoke safe coalition withdrawal")
+        target_guard = f"NOT = {{ alliance = {{ country = IND country = {tag} }} }}"
+        require(errors, target_guard in all_event_text, f"war docket does not hide allied regional target {tag}")
     for event_id, partner in ((9281921, "GER"), (9281922, "SOV"), (9281923, "JAP")):
-        checks += 1
-        require(errors, "type = leave_alliance" in events.get(event_id, "") and f"country = {partner}" in events.get(event_id, ""), f"war with current strategic partner {partner} cannot invoke safe coalition withdrawal")
+        checks += 2
+        block = events.get(event_id, "")
+        require(errors, "type = leave_alliance" not in block, f"war confirmation {event_id} still performs a wartime side switch")
+        require(errors, f"NOT = {{ alliance = {{ country = IND country = {partner} }} }}" in block, f"war confirmation {event_id} does not block current ally {partner}")
     for event_id, partner in ((9281920, "ENG"), (9281924, "USA")):
-        checks += 1
-        require(errors, "type = leave_alliance" in events.get(event_id, "") and f"country = {partner}" in events.get(event_id, ""), f"war with Allied leader {partner} cannot invoke safe coalition withdrawal")
+        checks += 2
+        block = events.get(event_id, "")
+        require(errors, "type = leave_alliance" not in block, f"war confirmation {event_id} still performs an Allied side switch")
+        require(errors, f"NOT = {{ alliance = {{ country = IND country = {partner} }} }}" in block, f"war confirmation {event_id} does not block Allied leader {partner}")
     require(errors, "type = trigger" not in executor, "declaration executor uses unsafe immediate trigger command")
 
     declaration_cleanup = {
@@ -628,6 +843,7 @@ def main() -> int:
     require(errors, "date = { day = 0 month = january year = 1933 }" in recognition, "regional recognition sleeps through early wars")
     regional_reversal = events.get(9282265, "")
     regional_recovery = events.get(9282266, "")
+    southern_external_cleanup = events.get(9287612, "")
     for tag, (province, suffix) in REGIONAL_CAPITALS.items():
         pending = f"ind_aubm_regional_pending_{suffix}"
         settled = f"ind_aubm_regional_settled_{suffix}"
@@ -647,8 +863,16 @@ def main() -> int:
         require(errors, f"exists = {tag}" in recognition, f"regional recognition omits live-state existence for {tag}")
         require(errors, f"owned = {{ province = {province} data = {tag} }}" in recognition, f"regional recognition ignores legal {tag} ownership")
         require(errors, f"war = {{ country = IND country = {tag} }}" in recognition, f"regional recognition ignores the live {tag} war")
-        require(errors, f"NOT = {{ exists = {tag} }}" in recognition, f"regional recognition has no annexed-{tag} branch")
-        require(errors, f"owned = {{ province = {province} data = IND }}" in recognition, f"annexed {tag} recognition ignores Indian ownership")
+        if tag in {"U05", "AST"}:
+            require(errors, f"NOT = {{ exists = {tag} }}" not in recognition, f"regional recognition falsely credits an annexed {tag}")
+            require(
+                errors,
+                current in southern_external_cleanup and pending in southern_external_cleanup and suspended in southern_external_cleanup,
+                f"vanished/external-peace {tag} ledger has no target-specific suspension cleanup",
+            )
+        else:
+            require(errors, f"NOT = {{ exists = {tag} }}" in recognition, f"regional recognition has no annexed-{tag} branch")
+            require(errors, f"owned = {{ province = {province} data = IND }}" in recognition, f"annexed {tag} recognition ignores Indian ownership")
         require(errors, current in regional_reversal, f"regional reversal omits {tag}")
         require(errors, suspended in regional_recovery, f"regional recovery omits {tag}")
         require(

@@ -131,10 +131,17 @@ event = {
 		atwar = yes
 		NOT = { flag = ind_aubm_route_japan }
 		NOT = { flag = ind_aubm_national_southern_victory }
-		control = { province = 1432 data = IND }
-		control = { province = 1438 data = IND }
 		OR = {
-			AND = { control = { province = 1636 data = IND } control = { province = 1647 data = IND } control = { province = 1653 data = IND } }
+			AND = { control = { province = 1432 data = IND } control = { province = 1438 data = IND } }
+			AND = { flag = ind_aubm_south_malaya_secured exists = MLY control = { province = 1432 data = MLY } control = { province = 1438 data = MLY } }
+		}
+		OR = {
+			AND = {
+				OR = {
+					AND = { control = { province = 1636 data = IND } control = { province = 1647 data = IND } control = { province = 1653 data = IND } }
+					AND = { flag = ind_aubm_south_dei_secured exists = INO control = { province = 1636 data = INO } control = { province = 1647 data = INO } control = { province = 1653 data = INO } }
+				}
+			}
 			AND = { control = { province = 1697 data = IND } control = { province = 1707 data = IND } control = { province = 1705 data = IND } }
 			AND = { war = { country = IND country = JAP } control = { province = 1552 data = IND } control = { province = 1553 data = IND } }
 		}
@@ -292,10 +299,17 @@ event = {
 		flag = ind_aubm_national_southern_current
 		NOT = {
 			AND = {
-				control = { province = 1432 data = IND }
-				control = { province = 1438 data = IND }
 				OR = {
-					AND = { control = { province = 1636 data = IND } control = { province = 1647 data = IND } control = { province = 1653 data = IND } }
+					AND = { control = { province = 1432 data = IND } control = { province = 1438 data = IND } }
+					AND = { flag = ind_aubm_south_malaya_secured exists = MLY control = { province = 1432 data = MLY } control = { province = 1438 data = MLY } }
+				}
+				OR = {
+					AND = {
+						OR = {
+							AND = { control = { province = 1636 data = IND } control = { province = 1647 data = IND } control = { province = 1653 data = IND } }
+							AND = { flag = ind_aubm_south_dei_secured exists = INO control = { province = 1636 data = INO } control = { province = 1647 data = INO } control = { province = 1653 data = INO } }
+						}
+					}
 					AND = { control = { province = 1697 data = IND } control = { province = 1707 data = IND } control = { province = 1705 data = IND } }
 					AND = { war = { country = IND country = JAP } control = { province = 1552 data = IND } control = { province = 1553 data = IND } }
 				}
@@ -328,10 +342,17 @@ event = {
 	country = IND
 	trigger = {
 		flag = ind_aubm_national_southern_suspended
-		control = { province = 1432 data = IND }
-		control = { province = 1438 data = IND }
 		OR = {
-			AND = { control = { province = 1636 data = IND } control = { province = 1647 data = IND } control = { province = 1653 data = IND } }
+			AND = { control = { province = 1432 data = IND } control = { province = 1438 data = IND } }
+			AND = { flag = ind_aubm_south_malaya_secured exists = MLY control = { province = 1432 data = MLY } control = { province = 1438 data = MLY } }
+		}
+		OR = {
+			AND = {
+				OR = {
+					AND = { control = { province = 1636 data = IND } control = { province = 1647 data = IND } control = { province = 1653 data = IND } }
+					AND = { flag = ind_aubm_south_dei_secured exists = INO control = { province = 1636 data = INO } control = { province = 1647 data = INO } control = { province = 1653 data = INO } }
+				}
+			}
 			AND = { control = { province = 1697 data = IND } control = { province = 1707 data = IND } control = { province = 1705 data = IND } }
 			AND = { war = { country = IND country = JAP } control = { province = 1552 data = IND } control = { province = 1553 data = IND } }
 		}

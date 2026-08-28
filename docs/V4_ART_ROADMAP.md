@@ -12,9 +12,10 @@ not be described as historical photographs.
 
 ## Current Baseline
 
-- All 4,343 campaign entries resolve to valid picture references.
+- All 4,577 campaign entries resolve to valid picture references.
 - All 102 custom event-picture files are byte-distinct and locally sourced.
-- The strict event-art and provenance gate passes with zero issues.
+- The release build requires the strict event-art and provenance gate to pass
+  with zero issues after its generated manifest is refreshed.
 - All redistributed custom minister and military-leader portraits are
   byte-distinct; unresolved new leader likenesses use the stock
   `unknownleader` token.

@@ -95,7 +95,7 @@ event = {
 	country = IND
 	trigger = { flag = ind_aubm_wartime_framework war = { country = IND country = USA } NOT = { flag = ind_aubm_campaign_america_active } }
 	name = "Campaign Brief: The American War"
-	desc = "India is now at war with the United States. Limited victory requires Manila 1565 and Davao 1579 plus Guam 1683 or Wake 2414. Decisive victory requires Pearl Harbor 1734 plus Washington 1809, Los Angeles 1887 or San Francisco 1889. American mainland occupation is never annexed automatically."
+	desc = "India is now at war with the United States. Limited victory requires Manila 1565 and Davao 1579 plus Guam 1683 or Wake 1673. Decisive victory requires Pearl Harbor 1734 plus Washington 1809, Los Angeles 1887 or San Francisco 1889. American mainland occupation is never annexed automatically."
 	style = 2
 	picture = "aubm_v4_indian_ocean_war"
 	date = { day = 0 month = january year = 1933 }
@@ -423,7 +423,7 @@ event = {
 		NOT = { flag = ind_aubm_america_limited_victory }
 		control = { province = 1565 data = IND }
 		control = { province = 1579 data = IND }
-		OR = { control = { province = 1683 data = IND } control = { province = 2414 data = IND } }
+		OR = { control = { province = 1683 data = IND } control = { province = 1673 data = IND } }
 	}
 	name = "India Breaks the American Western Pacific Line"
 	desc = "Manila, Davao and Guam or Wake are under Indian command. India has created a real Pacific bargaining position and can demand recognition as a naval great power. The claim is suspended if the Philippine base is lost."
@@ -486,7 +486,7 @@ event = {
 			AND = { flag = ind_aubm_germany_current NOT = { OR = { AND = { control = { province = 377 data = IND } control = { province = 338 data = IND } } AND = { control = { province = 377 data = IND } control = { province = 195 data = IND } } AND = { control = { province = 377 data = IND } control = { province = 419 data = IND } } AND = { control = { province = 338 data = IND } control = { province = 195 data = IND } } AND = { control = { province = 338 data = IND } control = { province = 419 data = IND } } AND = { control = { province = 195 data = IND } control = { province = 419 data = IND } } AND = { control = { province = 163 data = IND } OR = { control = { province = 195 data = IND } control = { province = 338 data = IND } control = { province = 419 data = IND } } } } } }
 			AND = { flag = ind_aubm_soviet_current OR = { NOT = { control = { province = 713 data = IND } } NOT = { OR = { control = { province = 1103 data = IND } control = { province = 706 data = IND } } } } }
 			AND = { flag = ind_aubm_japan_current NOT = { OR = { AND = { control = { province = 1432 data = IND } control = { province = 1438 data = IND } OR = { AND = { control = { province = 1636 data = IND } control = { province = 1647 data = IND } control = { province = 1653 data = IND } } AND = { control = { province = 1565 data = IND } control = { province = 1579 data = IND } } } } AND = { control = { province = 1563 data = IND } control = { province = 1564 data = IND } } AND = { control = { province = 1552 data = IND } control = { province = 1553 data = IND } } } } }
-			AND = { flag = ind_aubm_america_current OR = { NOT = { control = { province = 1565 data = IND } } NOT = { control = { province = 1579 data = IND } } NOT = { OR = { control = { province = 1683 data = IND } control = { province = 2414 data = IND } } } } }
+			AND = { flag = ind_aubm_america_current OR = { NOT = { control = { province = 1565 data = IND } } NOT = { control = { province = 1579 data = IND } } NOT = { OR = { control = { province = 1683 data = IND } control = { province = 1673 data = IND } } } } }
 		}
 	}
 	name = "A Great-Power Campaign Loses Its Leverage"
@@ -506,7 +506,7 @@ event = {
 		command = { trigger = { flag = ind_aubm_soviet_limited_victory NOT = { flag = ind_aubm_soviet_current } } type = setflag which = ind_aubm_soviet_suspended }
 		command = { trigger = { flag = ind_aubm_japan_current NOT = { OR = { AND = { control = { province = 1432 data = IND } control = { province = 1438 data = IND } OR = { AND = { control = { province = 1636 data = IND } control = { province = 1647 data = IND } control = { province = 1653 data = IND } } AND = { control = { province = 1565 data = IND } control = { province = 1579 data = IND } } } } AND = { control = { province = 1563 data = IND } control = { province = 1564 data = IND } } AND = { control = { province = 1552 data = IND } control = { province = 1553 data = IND } } } } } type = clrflag which = ind_aubm_japan_current }
 		command = { trigger = { OR = { flag = ind_aubm_japan_limited_victory flag = ind_aubm_japan_major_victory } NOT = { flag = ind_aubm_japan_current } } type = setflag which = ind_aubm_japan_suspended }
-		command = { trigger = { flag = ind_aubm_america_current OR = { NOT = { control = { province = 1565 data = IND } } NOT = { control = { province = 1579 data = IND } } NOT = { OR = { control = { province = 1683 data = IND } control = { province = 2414 data = IND } } } } } type = clrflag which = ind_aubm_america_current }
+		command = { trigger = { flag = ind_aubm_america_current OR = { NOT = { control = { province = 1565 data = IND } } NOT = { control = { province = 1579 data = IND } } NOT = { OR = { control = { province = 1683 data = IND } control = { province = 1673 data = IND } } } } } type = clrflag which = ind_aubm_america_current }
 		command = { trigger = { flag = ind_aubm_america_limited_victory NOT = { flag = ind_aubm_america_current } } type = setflag which = ind_aubm_america_suspended }
 		command = { type = dissent value = 2 }
 	}
@@ -523,7 +523,7 @@ event = {
 			AND = { flag = ind_aubm_germany_suspended OR = { AND = { control = { province = 377 data = IND } control = { province = 338 data = IND } } AND = { control = { province = 377 data = IND } control = { province = 195 data = IND } } AND = { control = { province = 377 data = IND } control = { province = 419 data = IND } } AND = { control = { province = 338 data = IND } control = { province = 195 data = IND } } AND = { control = { province = 338 data = IND } control = { province = 419 data = IND } } AND = { control = { province = 195 data = IND } control = { province = 419 data = IND } } AND = { control = { province = 163 data = IND } OR = { control = { province = 195 data = IND } control = { province = 338 data = IND } control = { province = 419 data = IND } } } } }
 			AND = { flag = ind_aubm_soviet_suspended control = { province = 713 data = IND } OR = { control = { province = 1103 data = IND } control = { province = 706 data = IND } } }
 			AND = { flag = ind_aubm_japan_suspended OR = { AND = { control = { province = 1432 data = IND } control = { province = 1438 data = IND } OR = { AND = { control = { province = 1636 data = IND } control = { province = 1647 data = IND } control = { province = 1653 data = IND } } AND = { control = { province = 1565 data = IND } control = { province = 1579 data = IND } } } } AND = { control = { province = 1563 data = IND } control = { province = 1564 data = IND } } AND = { control = { province = 1552 data = IND } control = { province = 1553 data = IND } } } }
-			AND = { flag = ind_aubm_america_suspended control = { province = 1565 data = IND } control = { province = 1579 data = IND } OR = { control = { province = 1683 data = IND } control = { province = 2414 data = IND } } }
+			AND = { flag = ind_aubm_america_suspended control = { province = 1565 data = IND } control = { province = 1579 data = IND } OR = { control = { province = 1683 data = IND } control = { province = 1673 data = IND } } }
 		}
 	}
 	name = "Indian Command Restores a Great-Power Campaign"
@@ -543,7 +543,7 @@ event = {
 		command = { trigger = { flag = ind_aubm_soviet_limited_victory NOT = { flag = ind_aubm_soviet_suspended } } type = setflag which = ind_aubm_soviet_current }
 		command = { trigger = { flag = ind_aubm_japan_suspended OR = { AND = { control = { province = 1432 data = IND } control = { province = 1438 data = IND } OR = { AND = { control = { province = 1636 data = IND } control = { province = 1647 data = IND } control = { province = 1653 data = IND } } AND = { control = { province = 1565 data = IND } control = { province = 1579 data = IND } } } } AND = { control = { province = 1563 data = IND } control = { province = 1564 data = IND } } AND = { control = { province = 1552 data = IND } control = { province = 1553 data = IND } } } } type = clrflag which = ind_aubm_japan_suspended }
 		command = { trigger = { OR = { flag = ind_aubm_japan_limited_victory flag = ind_aubm_japan_major_victory } NOT = { flag = ind_aubm_japan_suspended } } type = setflag which = ind_aubm_japan_current }
-		command = { trigger = { flag = ind_aubm_america_suspended control = { province = 1565 data = IND } control = { province = 1579 data = IND } OR = { control = { province = 1683 data = IND } control = { province = 2414 data = IND } } } type = clrflag which = ind_aubm_america_suspended }
+		command = { trigger = { flag = ind_aubm_america_suspended control = { province = 1565 data = IND } control = { province = 1579 data = IND } OR = { control = { province = 1683 data = IND } control = { province = 1673 data = IND } } } type = clrflag which = ind_aubm_america_suspended }
 		command = { trigger = { flag = ind_aubm_america_limited_victory NOT = { flag = ind_aubm_america_suspended } } type = setflag which = ind_aubm_america_current }
 		command = { type = dissent value = -1 }
 	}
@@ -889,7 +889,7 @@ event = {
 		command = { trigger = { owned = { province = 1565 data = USA } control = { province = 1565 data = IND } } type = secedeprovince which = IND value = 1565 when = 1 }
 		command = { trigger = { owned = { province = 1579 data = USA } control = { province = 1579 data = IND } } type = secedeprovince which = IND value = 1579 when = 1 }
 		command = { trigger = { owned = { province = 1683 data = USA } control = { province = 1683 data = IND } } type = secedeprovince which = IND value = 1683 when = 1 }
-		command = { trigger = { owned = { province = 2414 data = USA } control = { province = 2414 data = IND } } type = secedeprovince which = IND value = 2414 when = 1 }
+		command = { trigger = { owned = { province = 1673 data = USA } control = { province = 1673 data = IND } } type = secedeprovince which = IND value = 1673 when = 1 }
 		command = { type = event which = 9282149 where = IND when = 3 }
 	}
 	action_b = { ai_chance = 40 name = "Accept peace and reciprocal base access" command = { type = access which = IND } command = { type = event which = 9282150 where = IND when = 3 } }

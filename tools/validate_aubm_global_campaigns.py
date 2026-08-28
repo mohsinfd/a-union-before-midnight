@@ -19,6 +19,7 @@ from generate_aubm_global_campaigns import (  # noqa: E402
     ARMISTICE_LAPSE_ID,
     COUNTRIES,
     EXTENSION_COUNTRIES,
+    FINAL_ACCESS_BASE,
     MENU_FIRST_ID,
     WORLD_INDEX_ID,
     lifecycle_ids,
@@ -105,6 +106,39 @@ def parse_events(text: str) -> dict[int, str]:
     return events
 
 
+def named_blocks(text: str, pattern: str) -> dict[str, str]:
+    """Return balanced, named Clausewitz blocks matched inside an event."""
+    blocks: dict[str, str] = {}
+    for match in re.finditer(pattern, text, flags=re.MULTILINE):
+        name = match.group(1)
+        opening = text.find("{", match.start())
+        depth = 0
+        quoted = False
+        escaped = False
+        for position in range(opening, len(text)):
+            char = text[position]
+            if quoted:
+                if escaped:
+                    escaped = False
+                elif char == "\\":
+                    escaped = True
+                elif char == '"':
+                    quoted = False
+                continue
+            if char == '"':
+                quoted = True
+            elif char == "{":
+                depth += 1
+            elif char == "}":
+                depth -= 1
+                if depth == 0:
+                    blocks[name] = text[match.start() : position + 1]
+                    break
+        else:
+            raise ValueError(f"unterminated {name} block")
+    return blocks
+
+
 def require(errors: list[str], condition: bool, message: str) -> None:
     if not condition:
         errors.append(message)
@@ -149,13 +183,15 @@ def main() -> int:
     require(errors, "which = 9281012 where = IND" in cabinet_text, "War Cabinet root does not expose the global-target submenu")
 
     expected_pages = sum((sum(c.group == group for c in COUNTRIES) + 2) // 3 for group in ("Europe", "Asia", "Americas", "Africa"))
-    expected_events = 1 + expected_pages + 1 + 15 * len(COUNTRIES)
-    checks += 5
+    expected_events = 1 + expected_pages + 1 + 16 * len(COUNTRIES)
+    checks += 7
     require(errors, len(events) == expected_events, f"generated event count is {len(events)}, expected {expected_events}")
     require(errors, len(COUNTRIES) == 210, f"fallback matrix has {len(COUNTRIES)} countries instead of the audited 210")
     require(errors, len(EXTENSION_COUNTRIES) == 111, f"successor catalog has {len(EXTENSION_COUNTRIES)} countries instead of 111")
     require(errors, LOADED_EVENT_SUCCESSORS <= {country.tag for country in COUNTRIES}, "a country created by loaded events is missing from the campaign matrix")
     require(errors, MENU_FIRST_ID + expected_pages - 1 < 9286000, "campaign menu pages exceed their reserved event-ID band")
+    require(errors, FINAL_ACCESS_BASE + len(COUNTRIES) - 1 < 9288000, "final-access callbacks exceed their reserved event-ID band")
+    require(errors, text.count("type = access which = IND") == len(COUNTRIES), "strategic access exists outside the one final callback per country")
 
     for event_id, block in events.items():
         checks += 3
@@ -206,15 +242,117 @@ def main() -> int:
         counter = events.get(ids.counter, "")
         refuse = events.get(ids.refuse, "")
         country_lapse = events.get(ids.lapse, "")
+        final_access = events.get(ids.final_access, "")
         target_flag = f"ind_aubm_armistice_target_{key}"
         retry_flag = f"ind_aubm_armistice_retry_{key}"
 
-        checks += 69
-        safe_departure = (
-            f"trigger = {{ alliance = {{ country = IND country = {country.tag} }} }} "
-            "type = leave_alliance when = 1"
+        response_actions = {
+            "base": named_blocks(normal_response, r"^\s*(action_[a-d])\s*=\s*\{"),
+            "supported": named_blocks(backed_response, r"^\s*(action_[a-d])\s*=\s*\{"),
+        }
+        accept_actions = named_blocks(accept, r"^\s*(action_[a-d])\s*=\s*\{")
+        counter_actions = named_blocks(counter, r"^\s*(action_[a-d])\s*=\s*\{")
+        refuse_actions = named_blocks(refuse, r"^\s*(action_[a-d])\s*=\s*\{")
+        docket_actions = named_blocks(docket, r"^\s*(action_[a-d])\s*=\s*\{")
+        final_access_actions = named_blocks(final_access, r"^\s*(action_[a-d])\s*=\s*\{")
+        objective_tokens = (
+            f"exists = {country.tag}",
+            f"war = {{ country = IND country = {country.tag} }}",
+            f"owned = {{ province = {country.capital} data = {country.tag} }}",
+            f"control = {{ province = {country.capital} data = IND }}",
         )
-        require(errors, safe_departure in text, f"war with allied {country.tag} cannot invoke safe coalition withdrawal")
+        armistice_tokens = (
+            f"flag = {target_flag}",
+            "flag = ind_aubm_universal_armistice_outstanding",
+            *objective_tokens,
+        )
+        final_access_tokens = (
+            f"flag = ind_aubm_global_armistice_full_{key}",
+            f"flag = ind_aubm_global_settled_{key}",
+            f"NOT = {{ war = {{ country = IND country = {country.tag} }} }}",
+        )
+        stale_mutations = (
+            "type = peace",
+            "type = dissent",
+            "type = money",
+            "type = access",
+            "type = relation",
+            "ind_aubm_global_settled_",
+            "ind_aubm_global_negotiated_",
+            "ind_aubm_global_armistice_full_",
+            "ind_aubm_global_armistice_limited_",
+        )
+
+        callback_audits: list[tuple[bool, str]] = []
+        for response_name, actions in response_actions.items():
+            callback_audits.append((set(actions) == {"action_a", "action_b", "action_c", "action_d"}, f"{country.tag} {response_name} response lacks an explicit stale-offer action"))
+            for action_name in ("action_a", "action_b", "action_c"):
+                action = actions.get(action_name, "")
+                callback_audits.append((all(token in action for token in armistice_tokens), f"{country.tag} {response_name} {action_name} can answer without the complete live claim"))
+            stale_action = actions.get("action_d", "")
+            callback_audits.append(("trigger = { NOT = { AND = {" in stale_action and all(token in stale_action for token in armistice_tokens), f"{country.tag} {response_name} stale response is not the exact inverse of the live claim"))
+            callback_audits.append(("ai_chance = 100" in stale_action, f"{country.tag} {response_name} stale response has no deterministic AI weight"))
+            callback_audits.append((stale_action.count("command =") == 1 and f"which = {ids.lapse} where = IND when = 1" in stale_action, f"{country.tag} {response_name} stale response does more than route its audit"))
+
+        callback_audits.extend(
+            [
+                (set(accept_actions) == {"action_a", "action_b"}, f"{country.tag} acceptance callback lacks a stale alternative"),
+                (set(counter_actions) == {"action_a", "action_b", "action_c"}, f"{country.tag} counter callback lacks a stale alternative"),
+                (set(refuse_actions) == {"action_a", "action_b"}, f"{country.tag} refusal callback lacks a stale alternative"),
+                (all(token in accept_actions.get("action_a", "") for token in armistice_tokens), f"{country.tag} acceptance can ratify without the complete live claim"),
+                (all(token in counter_actions.get("action_a", "") for token in armistice_tokens), f"{country.tag} limited peace can ratify without the complete live claim"),
+                (all(token in counter_actions.get("action_b", "") for token in armistice_tokens), f"{country.tag} counter rejection can start cooldown without the complete live claim"),
+                (all(token in refuse_actions.get("action_a", "") for token in armistice_tokens), f"{country.tag} refusal can start cooldown without the complete live claim"),
+                (all(token in docket_actions.get("action_a", "") for token in objective_tokens), f"{country.tag} docket can submit an offer after the verified objective changes"),
+                ("type = access" not in normal_response and "type = access" not in backed_response, f"{country.tag} foreign response grants access before Delhi ratifies peace"),
+                ("type = relation" not in normal_response and "type = relation" not in backed_response, f"{country.tag} foreign response changes relations before Delhi validates its callback"),
+                (f"type = relation which = {country.tag} value = 20" in accept_actions.get("action_a", ""), f"{country.tag} valid full acceptance omits its relation effect"),
+                (f"type = relation which = {country.tag} value = 5" in counter_actions.get("action_a", "") and f"type = relation which = {country.tag} value = 5" in counter_actions.get("action_b", ""), f"{country.tag} valid counteroffer paths omit their relation effect"),
+                (f"type = relation which = {country.tag} value = -10" in refuse_actions.get("action_a", ""), f"{country.tag} valid refusal omits its relation effect"),
+                (f"which = {ids.final_access} where = {country.tag} when = 1" in accept_actions.get("action_a", ""), f"{country.tag} full settlement does not schedule its final access audit"),
+                (text.count(f"which = {ids.final_access}") == 1, f"{country.tag} final access audit can be scheduled outside full acceptance"),
+                (set(final_access_actions) == {"action_a", "action_b"}, f"{country.tag} final access callback lacks mutually exclusive live and stale paths"),
+                (country_of(final_access) == country.tag, f"{country.tag} final access callback runs in the wrong country scope"),
+                (all(token in final_access_actions.get("action_a", "") for token in final_access_tokens), f"{country.tag} access can execute without a recorded full settlement and completed peace"),
+                (final_access_actions.get("action_a", "").count("command =") == 1 and "type = access which = IND" in final_access_actions.get("action_a", ""), f"{country.tag} live access path contains effects beyond the ratified access clause"),
+                ("trigger = { NOT = { AND = {" in final_access_actions.get("action_b", "") and all(token in final_access_actions.get("action_b", "") for token in final_access_tokens), f"{country.tag} stale access path is not the exact inverse of the ratified clause"),
+                (final_access_actions.get("action_b", "").count("command =") == 0, f"{country.tag} stale access path has a residual effect"),
+            ]
+        )
+        for callback_name, stale_action in (
+            ("acceptance", accept_actions.get("action_b", "")),
+            ("counteroffer", counter_actions.get("action_c", "")),
+            ("refusal", refuse_actions.get("action_b", "")),
+        ):
+            callback_audits.append(("trigger = { NOT = { AND = {" in stale_action and all(token in stale_action for token in armistice_tokens), f"{country.tag} stale {callback_name} is not the exact inverse of the live claim"))
+            callback_audits.append((stale_action.count("command =") == 1 and f"which = {ids.lapse} where = IND when = 1" in stale_action, f"{country.tag} stale {callback_name} does more than route its audit"))
+            callback_audits.append((not any(marker in stale_action for marker in stale_mutations), f"{country.tag} stale {callback_name} mutates diplomacy, rewards or settlement state"))
+
+        conditional_unlock = f"command = {{ trigger = {{ flag = {target_flag} }} type = clrflag which = ind_aubm_universal_armistice_outstanding }}"
+        target_clear = f"command = {{ type = clrflag which = {target_flag} }}"
+        global_lapse_mutations = [
+            line for line in country_lapse.splitlines()
+            if re.search(r"type = (?:setflag|clrflag) which = ind_aubm_global_", line)
+        ]
+        callback_audits.extend(
+            [
+                (conditional_unlock in country_lapse, f"{country.tag} lapse can release another country's universal lock"),
+                (country_lapse.find(conditional_unlock) < country_lapse.find(target_clear), f"{country.tag} lapse clears its target before releasing the universal lock"),
+                (target_clear in country_lapse and country_lapse.count(target_clear) == 1, f"{country.tag} lapse does not close exactly its own target lock"),
+                ("command = { type = clrflag which = ind_aubm_universal_armistice_outstanding }" not in country_lapse, f"{country.tag} lapse contains an unconditional universal unlock"),
+                (all(f"flag = {target_flag}" in line for line in global_lapse_mutations), f"{country.tag} stale callback can mutate campaign state without owning its target lock"),
+                (f"type = clrflag which = ind_aubm_global_current_{key}" in country_lapse and f"type = setflag which = ind_aubm_global_suspended_{key}" in country_lapse, f"{country.tag} surviving stale claim is not suspended for recovery"),
+                (f"exists = {country.tag}" in country_lapse and f"NOT = {{ AND = {{ war = {{ country = IND country = {country.tag} }}" in country_lapse, f"{country.tag} lapse does not detect a surviving but invalid war claim"),
+            ]
+        )
+        checks += len(callback_audits)
+        for condition, message in callback_audits:
+            require(errors, condition, message)
+
+        checks += 70
+        alliance_guard = f"NOT = {{ alliance = {{ country = IND country = {country.tag} }} }}"
+        require(errors, alliance_guard in declaration and text.count(alliance_guard) >= 2, f"war with allied {country.tag} is not blocked by both the cabinet menu and delayed declaration")
+        require(errors, "type = leave_alliance" not in declaration, f"the delayed {country.tag} declaration can break India's coalition commitment")
         require(errors, f"which = {ids.declaration} where = IND when = 1" in text, f"{country.tag} menu does not schedule its declaration callback")
         require(errors, f"flag = {target_flag} NOT = {{ exists = {country.tag} }}" in lapse, f"a vanished {country.tag} response cannot release its target lock")
         require(errors, f"type = event which = {ids.lapse} where = IND when = 1" in lapse, f"vanished {country.tag} response is not routed to its country audit")
@@ -232,8 +370,8 @@ def main() -> int:
         require(errors, f"ind_aubm_global_suspended_{key}" in recovery, f"{country.tag} has no recovery state")
         require(errors, country_of(normal_response) == country.tag, f"normal response for {country.tag} has the wrong country scope")
         require(errors, country_of(backed_response) == country.tag, f"supported response for {country.tag} has the wrong country scope")
-        require(errors, tuple(map(int, re.findall(r"\bai_chance\s*=\s*(\d+)", normal_response))) == (60, 25, 15), f"{country.tag} base armistice odds are malformed")
-        require(errors, tuple(map(int, re.findall(r"\bai_chance\s*=\s*(\d+)", backed_response))) == (75, 20, 5), f"{country.tag} supported armistice odds are malformed")
+        require(errors, tuple(map(int, re.findall(r"\bai_chance\s*=\s*(\d+)", normal_response))) == (60, 25, 15, 100), f"{country.tag} base armistice odds are malformed")
+        require(errors, tuple(map(int, re.findall(r"\bai_chance\s*=\s*(\d+)", backed_response))) == (75, 20, 5, 100), f"{country.tag} supported armistice odds are malformed")
         require(errors, normal_response.count(f"control = {{ province = {country.capital} data = IND }}") >= 2, f"{country.tag} base acceptance survives loss of the published objective")
         require(errors, backed_response.count(f"control = {{ province = {country.capital} data = IND }}") >= 2, f"{country.tag} supported acceptance survives loss of the published objective")
         for response_name, response in (("base", normal_response), ("supported", backed_response)):

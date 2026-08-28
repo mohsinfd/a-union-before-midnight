@@ -35,6 +35,17 @@ event = {
 		}
 		year = 1938
 		exists = ENG
+		NOT = { participant = { country = IND value = 4 } }
+		NOT = { flag = ind_aubm_commitment_german }
+		NOT = { flag = ind_aubm_commitment_soviet }
+		NOT = { flag = ind_aubm_commitment_japan }
+		NOT = { flag = ind_gc_formal_axis }
+		NOT = { flag = ind_gc_cobelligerent }
+		NOT = { flag = ind_v4_sov_equal_compact }
+		NOT = { flag = ind_v4_sov_supervised_compact }
+		NOT = { flag = ind_aubm_jp_partnership }
+		NOT = { flag = ind_aubm_diplomatic_negotiation_pending }
+		NOT = { flag = ind_aubm_realignment_cooldown }
 		NOT = { alliance = { country = IND country = ENG } }
 		NOT = { alliance = { country = IND country = USA } }
 		NOT = { alliance = { country = IND country = GER } }
@@ -73,6 +84,7 @@ event = {
 	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
+		trigger = { NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_realignment_cooldown } }
 		ai_chance = 30
 		name = "Commonwealth: accept 55%, counter 30%, refuse 15%"
 		command = { type = clrflag which = ind_v4a_allied_framework_settled }
@@ -83,10 +95,12 @@ event = {
 		command = { type = clrflag which = ind_v4a_proposal_cobelligerent }
 		command = { type = setflag which = ind_v4a_allied_framework_started }
 		command = { type = setflag which = ind_v4a_proposal_commonwealth }
+		command = { type = setflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = setflag which = ind_aubm_negotiation_allied }
 		command = { type = event which = 9281201 where = ENG when = 2 }
 	}
 	action_b = {
-		trigger = { exists = USA }
+		trigger = { exists = USA NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_realignment_cooldown } }
 		ai_chance = 25
 		name = "US naval compact: accept 50%, counter 35%, refuse 15%"
 		command = { type = clrflag which = ind_v4a_allied_framework_settled }
@@ -97,9 +111,12 @@ event = {
 		command = { type = clrflag which = ind_v4a_proposal_cobelligerent }
 		command = { type = setflag which = ind_v4a_allied_framework_started }
 		command = { type = setflag which = ind_v4a_proposal_naval_compact }
+		command = { type = setflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = setflag which = ind_aubm_negotiation_allied }
 		command = { type = event which = 9281202 where = USA when = 2 }
 	}
 	action_c = {
+		trigger = { NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_realignment_cooldown } }
 		ai_chance = 25
 		name = "Allied equality: accept 60%, counter 30%, refuse 10%"
 		command = { type = clrflag which = ind_v4a_allied_framework_settled }
@@ -110,9 +127,12 @@ event = {
 		command = { type = clrflag which = ind_v4a_proposal_cobelligerent }
 		command = { type = setflag which = ind_v4a_allied_framework_started }
 		command = { type = setflag which = ind_v4a_proposal_formal_alliance }
+		command = { type = setflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = setflag which = ind_aubm_negotiation_allied }
 		command = { type = event which = 9281203 where = ENG when = 2 }
 	}
 	action_d = {
+		trigger = { NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_realignment_cooldown } }
 		ai_chance = 20
 		name = "Co-belligerency: accept 50%, counter 35%, refuse 15%"
 		command = { type = clrflag which = ind_v4a_allied_framework_settled }
@@ -123,6 +143,8 @@ event = {
 		command = { type = clrflag which = ind_v4a_proposal_cobelligerent }
 		command = { type = setflag which = ind_v4a_allied_framework_started }
 		command = { type = setflag which = ind_v4a_proposal_cobelligerent }
+		command = { type = setflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = setflag which = ind_aubm_negotiation_allied }
 		command = { type = event which = 9281204 where = ENG when = 2 }
 	}
 }
@@ -214,7 +236,6 @@ event = {
 	action_a = {
 		ai_chance = 60
 		name = "Admit India as a sovereign ally"
-		command = { type = alliance which = IND when = 2 }
 		command = { type = relation which = IND value = 40 }
 		command = { type = supplies value = -800 }
 		command = { type = event which = 9281211 where = IND when = 2 }
@@ -281,14 +302,27 @@ event = {
 	picture = "aubm_v4_london_settlement"
 
 	action_a = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_allied exists = ENG NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = ENG } } }
 		name = "Ratify reciprocal cooperation"
 		command = { type = access which = ENG }
 		command = { type = non_aggression which = IND where = ENG when = 720 }
 		command = { type = supplies value = 400 }
 		command = { type = setflag which = ind_v4a_treaty_commonwealth }
+		command = { type = setflag which = ind_aubm_commitment_allied }
 		command = { type = setflag which = ind_v4a_sovereign_command }
 		command = { type = setflag which = ind_v4a_allied_framework_settled }
 		command = { type = setflag which = ind_v4_strategic_weight_1 }
+	}
+	action_b = {
+		trigger = { OR = { NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_negotiation_allied } NOT = { exists = ENG } participant = { country = IND value = 4 } flag = ind_aubm_commitment_german flag = ind_aubm_commitment_soviet flag = ind_aubm_commitment_japan war = { country = IND country = ENG } } }
+		name = "Let the overtaken Allied reply lapse"
+		command = { type = clrflag which = ind_v4a_allied_framework_started }
+		command = { type = clrflag which = ind_v4a_proposal_commonwealth }
+		command = { type = clrflag which = ind_v4a_proposal_naval_compact }
+		command = { type = clrflag which = ind_v4a_proposal_formal_alliance }
+		command = { type = clrflag which = ind_v4a_proposal_cobelligerent }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_allied }
 	}
 }
 
@@ -304,18 +338,20 @@ event = {
 	picture = "aubm_v4_london_settlement"
 
 	action_a = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_allied exists = ENG NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = ENG } } }
 		ai_chance = 55
 		name = "Grant wartime access: +700 supplies, +2 dissent"
 		command = { type = access which = ENG }
 		command = { type = supplies value = 700 }
 		command = { type = dissent value = 2 }
 		command = { type = setflag which = ind_v4a_treaty_commonwealth }
+		command = { type = setflag which = ind_aubm_commitment_allied }
 		command = { type = setflag which = ind_v4a_allied_base_access }
 		command = { type = setflag which = ind_v4a_sovereign_command }
 		command = { type = setflag which = ind_v4a_allied_framework_settled }
 	}
 	action_b = {
-		trigger = { exists = USA }
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_allied exists = ENG exists = USA NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = ENG } } NOT = { war = { country = IND country = USA } } }
 		ai_chance = 25
 		name = "Ask Washington for an ocean compact"
 		command = { type = clrflag which = ind_v4a_proposal_commonwealth }
@@ -324,12 +360,26 @@ event = {
 		command = { type = event which = 9281202 where = USA when = 2 }
 	}
 	action_c = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_allied exists = ENG NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = ENG } } }
 		ai_chance = 20
 		name = "Adopt sovereign co-belligerency"
 		command = { type = relation which = ENG value = 10 }
 		command = { type = setflag which = ind_v4a_treaty_cobelligerent }
+		command = { type = setflag which = ind_aubm_commitment_allied }
 		command = { type = setflag which = ind_v4a_sovereign_command }
 		command = { type = setflag which = ind_v4a_allied_framework_settled }
+	}
+	action_d = {
+		ai_chance = 0
+		trigger = { OR = { NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_negotiation_allied } NOT = { exists = ENG } participant = { country = IND value = 4 } flag = ind_aubm_commitment_german flag = ind_aubm_commitment_soviet flag = ind_aubm_commitment_japan war = { country = IND country = ENG } } }
+		name = "Let the overtaken Allied reply lapse"
+		command = { type = clrflag which = ind_v4a_allied_framework_started }
+		command = { type = clrflag which = ind_v4a_proposal_commonwealth }
+		command = { type = clrflag which = ind_v4a_proposal_naval_compact }
+		command = { type = clrflag which = ind_v4a_proposal_formal_alliance }
+		command = { type = clrflag which = ind_v4a_proposal_cobelligerent }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_allied }
 	}
 }
 
@@ -345,7 +395,7 @@ event = {
 	picture = "aubm_v4_london_settlement"
 
 	action_a = {
-		trigger = { exists = USA }
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_allied exists = ENG exists = USA NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = ENG } } NOT = { war = { country = IND country = USA } } }
 		ai_chance = 40
 		name = "Approach Washington directly"
 		command = { type = clrflag which = ind_v4a_proposal_commonwealth }
@@ -353,16 +403,19 @@ event = {
 		command = { type = event which = 9281202 where = USA when = 2 }
 	}
 	action_b = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_allied exists = ENG NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = ENG } } }
 		ai_chance = 40
 		name = "Declare independent co-belligerency"
 		command = { type = dissent value = -1 }
 		command = { type = domestic which = interventionism value = 1 }
 		command = { type = setflag which = ind_v4a_treaty_cobelligerent }
+		command = { type = setflag which = ind_aubm_commitment_allied }
 		command = { type = setflag which = ind_v4a_sovereign_command }
 		command = { type = setflag which = ind_v4a_london_refusal_challenge }
 		command = { type = setflag which = ind_v4a_allied_framework_settled }
 	}
 	action_c = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_allied exists = ENG NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = ENG } } }
 		ai_chance = 20
 		name = "Keep liaison, accept no obligations"
 		command = { type = supplies value = -250 }
@@ -370,6 +423,18 @@ event = {
 		command = { type = setflag which = ind_v4a_limited_accommodation }
 		command = { type = setflag which = ind_v4a_sovereign_command }
 		command = { type = setflag which = ind_v4a_allied_framework_settled }
+	}
+	action_d = {
+		ai_chance = 0
+		trigger = { OR = { NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_negotiation_allied } NOT = { exists = ENG } participant = { country = IND value = 4 } flag = ind_aubm_commitment_german flag = ind_aubm_commitment_soviet flag = ind_aubm_commitment_japan war = { country = IND country = ENG } } }
+		name = "Let the overtaken Allied reply lapse"
+		command = { type = clrflag which = ind_v4a_allied_framework_started }
+		command = { type = clrflag which = ind_v4a_proposal_commonwealth }
+		command = { type = clrflag which = ind_v4a_proposal_naval_compact }
+		command = { type = clrflag which = ind_v4a_proposal_formal_alliance }
+		command = { type = clrflag which = ind_v4a_proposal_cobelligerent }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_allied }
 	}
 }
 
@@ -386,14 +451,27 @@ event = {
 	picture = "aubm_v4_indian_ocean_war"
 
 	action_a = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_allied exists = USA NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = USA } } }
 		name = "Ratify sovereign naval coordination"
 		command = { type = access which = USA }
 		command = { type = supplies value = 500 }
 		command = { type = relation which = ENG value = 20 }
 		command = { type = setflag which = ind_v4a_treaty_naval_compact }
+		command = { type = setflag which = ind_aubm_commitment_allied }
 		command = { type = setflag which = ind_v4a_sovereign_command }
 		command = { type = setflag which = ind_v4a_allied_framework_settled }
 		command = { type = setflag which = ind_v4_strategic_weight_1 }
+	}
+	action_b = {
+		trigger = { OR = { NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_negotiation_allied } NOT = { exists = USA } participant = { country = IND value = 4 } flag = ind_aubm_commitment_german flag = ind_aubm_commitment_soviet flag = ind_aubm_commitment_japan war = { country = IND country = USA } } }
+		name = "Let the overtaken Allied reply lapse"
+		command = { type = clrflag which = ind_v4a_allied_framework_started }
+		command = { type = clrflag which = ind_v4a_proposal_commonwealth }
+		command = { type = clrflag which = ind_v4a_proposal_naval_compact }
+		command = { type = clrflag which = ind_v4a_proposal_formal_alliance }
+		command = { type = clrflag which = ind_v4a_proposal_cobelligerent }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_allied }
 	}
 }
 
@@ -409,6 +487,7 @@ event = {
 	picture = "aubm_v4_indian_ocean_war"
 
 	action_a = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_allied exists = USA NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = USA } } }
 		ai_chance = 50
 		name = "Accept tripartite access: +900 supplies, +3 dissent"
 		command = { type = access which = USA }
@@ -416,29 +495,46 @@ event = {
 		command = { type = supplies value = 900 }
 		command = { type = dissent value = 3 }
 		command = { type = setflag which = ind_v4a_treaty_naval_compact }
+		command = { type = setflag which = ind_aubm_commitment_allied }
 		command = { type = setflag which = ind_v4a_allied_base_access }
 		command = { type = setflag which = ind_v4a_allied_framework_settled }
 	}
 	action_b = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_allied exists = USA NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = USA } } }
 		ai_chance = 25
 		name = "Adopt the sovereign Commonwealth formula"
 		command = { type = clrflag which = ind_v4a_proposal_naval_compact }
 		command = { type = relation which = ENG value = 15 }
 		command = { type = supplies value = 300 }
 		command = { type = setflag which = ind_v4a_treaty_commonwealth }
+		command = { type = setflag which = ind_aubm_commitment_allied }
 		command = { type = setflag which = ind_v4a_sovereign_command }
 		command = { type = setflag which = ind_v4a_no_foreign_bases }
 		command = { type = setflag which = ind_v4a_allied_framework_settled }
 	}
 	action_c = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_allied exists = USA NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = USA } } }
 		ai_chance = 25
 		name = "Coordinate at sea, concede no permanent bases"
 		command = { type = supplies value = -350 }
 		command = { type = max_organization which = naval value = 1 }
 		command = { type = setflag which = ind_v4a_treaty_naval_compact }
+		command = { type = setflag which = ind_aubm_commitment_allied }
 		command = { type = setflag which = ind_v4a_sovereign_command }
 		command = { type = setflag which = ind_v4a_no_foreign_bases }
 		command = { type = setflag which = ind_v4a_allied_framework_settled }
+	}
+	action_d = {
+		ai_chance = 0
+		trigger = { OR = { NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_negotiation_allied } NOT = { exists = USA } participant = { country = IND value = 4 } flag = ind_aubm_commitment_german flag = ind_aubm_commitment_soviet flag = ind_aubm_commitment_japan war = { country = IND country = USA } } }
+		name = "Let the overtaken Allied reply lapse"
+		command = { type = clrflag which = ind_v4a_allied_framework_started }
+		command = { type = clrflag which = ind_v4a_proposal_commonwealth }
+		command = { type = clrflag which = ind_v4a_proposal_naval_compact }
+		command = { type = clrflag which = ind_v4a_proposal_formal_alliance }
+		command = { type = clrflag which = ind_v4a_proposal_cobelligerent }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_allied }
 	}
 }
 
@@ -454,27 +550,32 @@ event = {
 	picture = "aubm_v4_indian_ocean_war"
 
 	action_a = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_allied exists = USA NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = USA } } }
 		ai_chance = 35
 		name = "Commission a sovereign British naval mission"
 		command = { type = clrflag which = ind_v4a_proposal_naval_compact }
 		command = { type = relation which = ENG value = 15 }
 		command = { type = supplies value = 250 }
 		command = { type = setflag which = ind_v4a_treaty_commonwealth }
+		command = { type = setflag which = ind_aubm_commitment_allied }
 		command = { type = setflag which = ind_v4a_sovereign_command }
 		command = { type = setflag which = ind_v4a_limited_accommodation }
 		command = { type = setflag which = ind_v4a_allied_framework_settled }
 	}
 	action_b = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_allied exists = USA NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = USA } } }
 		ai_chance = 45
 		name = "Build the ocean command alone"
 		command = { type = supplies value = -450 }
 		command = { type = domestic which = defense_lobby value = 1 }
 		command = { type = setflag which = ind_v4a_treaty_cobelligerent }
+		command = { type = setflag which = ind_aubm_commitment_allied }
 		command = { type = setflag which = ind_v4a_sovereign_command }
 		command = { type = setflag which = ind_v4a_washington_refusal_challenge }
 		command = { type = setflag which = ind_v4a_allied_framework_settled }
 	}
 	action_c = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_allied exists = USA NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = USA } } }
 		ai_chance = 20
 		name = "Proclaim freedom of the Indian Ocean"
 		command = { type = dissent value = -2 }
@@ -483,6 +584,18 @@ event = {
 		command = { type = relation which = SAF value = 15 }
 		command = { type = setflag which = ind_v4a_limited_accommodation }
 		command = { type = setflag which = ind_v4a_allied_framework_settled }
+	}
+	action_d = {
+		ai_chance = 0
+		trigger = { OR = { NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_negotiation_allied } NOT = { exists = USA } participant = { country = IND value = 4 } flag = ind_aubm_commitment_german flag = ind_aubm_commitment_soviet flag = ind_aubm_commitment_japan war = { country = IND country = USA } } }
+		name = "Let the overtaken Allied reply lapse"
+		command = { type = clrflag which = ind_v4a_allied_framework_started }
+		command = { type = clrflag which = ind_v4a_proposal_commonwealth }
+		command = { type = clrflag which = ind_v4a_proposal_naval_compact }
+		command = { type = clrflag which = ind_v4a_proposal_formal_alliance }
+		command = { type = clrflag which = ind_v4a_proposal_cobelligerent }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_allied }
 	}
 }
 
@@ -499,15 +612,29 @@ event = {
 	picture = "aubm_v4_london_settlement"
 
 	action_a = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_allied exists = ENG NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = ENG } } }
 		name = "Take India's seat as an equal ally"
+		command = { type = alliance which = ENG when = 1 }
 		command = { type = supplies value = 800 }
 		command = { type = setflag which = ind_v3_allied_orientation }
 		command = { type = setflag which = ind_v3_joined_allies }
 		command = { type = setflag which = ind_v4_strategy_allied }
 		command = { type = setflag which = ind_v4a_treaty_formal_alliance }
+		command = { type = setflag which = ind_aubm_commitment_allied }
 		command = { type = setflag which = ind_v4a_sovereign_command }
 		command = { type = setflag which = ind_v4a_allied_framework_settled }
 		command = { type = setflag which = ind_v4_strategic_weight_1 }
+	}
+	action_b = {
+		trigger = { OR = { NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_negotiation_allied } NOT = { exists = ENG } participant = { country = IND value = 4 } flag = ind_aubm_commitment_german flag = ind_aubm_commitment_soviet flag = ind_aubm_commitment_japan war = { country = IND country = ENG } } }
+		name = "Let the overtaken Allied reply lapse"
+		command = { type = clrflag which = ind_v4a_allied_framework_started }
+		command = { type = clrflag which = ind_v4a_proposal_commonwealth }
+		command = { type = clrflag which = ind_v4a_proposal_naval_compact }
+		command = { type = clrflag which = ind_v4a_proposal_formal_alliance }
+		command = { type = clrflag which = ind_v4a_proposal_cobelligerent }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_allied }
 	}
 }
 
@@ -523,9 +650,10 @@ event = {
 	picture = "aubm_v4_london_settlement"
 
 	action_a = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_allied exists = ENG NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = ENG } } }
 		ai_chance = 35
 		name = "Accept integration: +1000 supplies, +5 dissent"
-		command = { type = alliance which = ENG when = 2 }
+		command = { type = alliance which = ENG when = 1 }
 		command = { type = access which = ENG }
 		command = { type = supplies value = 1000 }
 		command = { type = dissent value = 5 }
@@ -533,26 +661,41 @@ event = {
 		command = { type = setflag which = ind_v3_joined_allies }
 		command = { type = setflag which = ind_v4_strategy_allied }
 		command = { type = setflag which = ind_v4a_treaty_formal_alliance }
+		command = { type = setflag which = ind_aubm_commitment_allied }
 		command = { type = setflag which = ind_v4a_integrated_command }
 		command = { type = setflag which = ind_v4a_allied_framework_settled }
 	}
 	action_b = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_allied exists = ENG NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = ENG } } }
 		ai_chance = 45
 		name = "Fight beside Britain, not beneath it"
 		command = { type = relation which = ENG value = -10 }
 		command = { type = dissent value = -1 }
 		command = { type = setflag which = ind_v4a_treaty_cobelligerent }
+		command = { type = setflag which = ind_aubm_commitment_allied }
 		command = { type = setflag which = ind_v4a_sovereign_command }
 		command = { type = setflag which = ind_v4a_allied_framework_settled }
 	}
 	action_c = {
-		trigger = { exists = USA }
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_allied exists = ENG exists = USA NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = ENG } } NOT = { war = { country = IND country = USA } } }
 		ai_chance = 20
 		name = "Redirect the mission to Washington"
 		command = { type = clrflag which = ind_v4a_proposal_formal_alliance }
 		command = { type = setflag which = ind_v4a_proposal_naval_compact }
 		command = { type = relation which = ENG value = -15 }
 		command = { type = event which = 9281202 where = USA when = 2 }
+	}
+	action_d = {
+		ai_chance = 0
+		trigger = { OR = { NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_negotiation_allied } NOT = { exists = ENG } participant = { country = IND value = 4 } flag = ind_aubm_commitment_german flag = ind_aubm_commitment_soviet flag = ind_aubm_commitment_japan war = { country = IND country = ENG } } }
+		name = "Let the overtaken Allied reply lapse"
+		command = { type = clrflag which = ind_v4a_allied_framework_started }
+		command = { type = clrflag which = ind_v4a_proposal_commonwealth }
+		command = { type = clrflag which = ind_v4a_proposal_naval_compact }
+		command = { type = clrflag which = ind_v4a_proposal_formal_alliance }
+		command = { type = clrflag which = ind_v4a_proposal_cobelligerent }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_allied }
 	}
 }
 
@@ -568,16 +711,18 @@ event = {
 	picture = "aubm_v4_london_settlement"
 
 	action_a = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_allied exists = ENG NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = ENG } } }
 		ai_chance = 45
 		name = "Issue an independent co-belligerent accord"
 		command = { type = domestic which = interventionism value = 1 }
 		command = { type = setflag which = ind_v4a_treaty_cobelligerent }
+		command = { type = setflag which = ind_aubm_commitment_allied }
 		command = { type = setflag which = ind_v4a_sovereign_command }
 		command = { type = setflag which = ind_v4a_london_refusal_challenge }
 		command = { type = setflag which = ind_v4a_allied_framework_settled }
 	}
 	action_b = {
-		trigger = { exists = USA }
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_allied exists = ENG exists = USA NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = ENG } } NOT = { war = { country = IND country = USA } } }
 		ai_chance = 35
 		name = "Seek American maritime backing"
 		command = { type = clrflag which = ind_v4a_proposal_formal_alliance }
@@ -585,12 +730,25 @@ event = {
 		command = { type = event which = 9281202 where = USA when = 2 }
 	}
 	action_c = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_allied exists = ENG NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = ENG } } }
 		ai_chance = 20
 		name = "Retain intelligence liaison only"
 		command = { type = supplies value = -200 }
 		command = { type = intelligence which = us value = 1 }
 		command = { type = setflag which = ind_v4a_limited_accommodation }
 		command = { type = setflag which = ind_v4a_allied_framework_settled }
+	}
+	action_d = {
+		ai_chance = 0
+		trigger = { OR = { NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_negotiation_allied } NOT = { exists = ENG } participant = { country = IND value = 4 } flag = ind_aubm_commitment_german flag = ind_aubm_commitment_soviet flag = ind_aubm_commitment_japan war = { country = IND country = ENG } } }
+		name = "Let the overtaken Allied reply lapse"
+		command = { type = clrflag which = ind_v4a_allied_framework_started }
+		command = { type = clrflag which = ind_v4a_proposal_commonwealth }
+		command = { type = clrflag which = ind_v4a_proposal_naval_compact }
+		command = { type = clrflag which = ind_v4a_proposal_formal_alliance }
+		command = { type = clrflag which = ind_v4a_proposal_cobelligerent }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_allied }
 	}
 }
 
@@ -607,12 +765,25 @@ event = {
 	picture = "aubm_v4_london_settlement"
 
 	action_a = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_allied exists = ENG NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = ENG } } }
 		name = "Ratify sovereign co-belligerency"
 		command = { type = relation which = ENG value = 15 }
 		command = { type = setflag which = ind_v4a_treaty_cobelligerent }
+		command = { type = setflag which = ind_aubm_commitment_allied }
 		command = { type = setflag which = ind_v4a_sovereign_command }
 		command = { type = setflag which = ind_v4a_allied_framework_settled }
 		command = { type = setflag which = ind_v4_strategic_weight_1 }
+	}
+	action_b = {
+		trigger = { OR = { NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_negotiation_allied } NOT = { exists = ENG } participant = { country = IND value = 4 } flag = ind_aubm_commitment_german flag = ind_aubm_commitment_soviet flag = ind_aubm_commitment_japan war = { country = IND country = ENG } } }
+		name = "Let the overtaken Allied reply lapse"
+		command = { type = clrflag which = ind_v4a_allied_framework_started }
+		command = { type = clrflag which = ind_v4a_proposal_commonwealth }
+		command = { type = clrflag which = ind_v4a_proposal_naval_compact }
+		command = { type = clrflag which = ind_v4a_proposal_formal_alliance }
+		command = { type = clrflag which = ind_v4a_proposal_cobelligerent }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_allied }
 	}
 }
 
@@ -628,31 +799,47 @@ event = {
 	picture = "aubm_v4_london_settlement"
 
 	action_a = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_allied exists = ENG NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = ENG } } }
 		ai_chance = 50
 		name = "Grant wartime access: +650 supplies, +2 dissent"
 		command = { type = access which = ENG }
 		command = { type = supplies value = 650 }
 		command = { type = dissent value = 2 }
 		command = { type = setflag which = ind_v4a_treaty_cobelligerent }
+		command = { type = setflag which = ind_aubm_commitment_allied }
 		command = { type = setflag which = ind_v4a_allied_base_access }
 		command = { type = setflag which = ind_v4a_allied_framework_settled }
 	}
 	action_b = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_allied exists = ENG NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = ENG } } }
 		ai_chance = 30
 		name = "Coordinate without permanent foreign bases"
 		command = { type = supplies value = -250 }
 		command = { type = setflag which = ind_v4a_treaty_cobelligerent }
+		command = { type = setflag which = ind_aubm_commitment_allied }
 		command = { type = setflag which = ind_v4a_sovereign_command }
 		command = { type = setflag which = ind_v4a_no_foreign_bases }
 		command = { type = setflag which = ind_v4a_allied_framework_settled }
 	}
 	action_c = {
-		trigger = { exists = USA }
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_allied exists = ENG exists = USA NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = ENG } } NOT = { war = { country = IND country = USA } } }
 		ai_chance = 20
 		name = "Ask Washington to underwrite the compact"
 		command = { type = clrflag which = ind_v4a_proposal_cobelligerent }
 		command = { type = setflag which = ind_v4a_proposal_naval_compact }
 		command = { type = event which = 9281202 where = USA when = 2 }
+	}
+	action_d = {
+		ai_chance = 0
+		trigger = { OR = { NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_negotiation_allied } NOT = { exists = ENG } participant = { country = IND value = 4 } flag = ind_aubm_commitment_german flag = ind_aubm_commitment_soviet flag = ind_aubm_commitment_japan war = { country = IND country = ENG } } }
+		name = "Let the overtaken Allied reply lapse"
+		command = { type = clrflag which = ind_v4a_allied_framework_started }
+		command = { type = clrflag which = ind_v4a_proposal_commonwealth }
+		command = { type = clrflag which = ind_v4a_proposal_naval_compact }
+		command = { type = clrflag which = ind_v4a_proposal_formal_alliance }
+		command = { type = clrflag which = ind_v4a_proposal_cobelligerent }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_allied }
 	}
 }
 
@@ -668,17 +855,19 @@ event = {
 	picture = "aubm_v4_london_settlement"
 
 	action_a = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_allied exists = ENG NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = ENG } } }
 		ai_chance = 45
 		name = "Fight independently when India chooses"
 		command = { type = relation which = ENG value = -15 }
 		command = { type = dissent value = -1 }
 		command = { type = setflag which = ind_v4a_treaty_cobelligerent }
+		command = { type = setflag which = ind_aubm_commitment_allied }
 		command = { type = setflag which = ind_v4a_sovereign_command }
 		command = { type = setflag which = ind_v4a_london_refusal_challenge }
 		command = { type = setflag which = ind_v4a_allied_framework_settled }
 	}
 	action_b = {
-		trigger = { exists = USA }
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_allied exists = ENG exists = USA NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = ENG } } NOT = { war = { country = IND country = USA } } }
 		ai_chance = 35
 		name = "Seek an American naval agreement"
 		command = { type = clrflag which = ind_v4a_proposal_cobelligerent }
@@ -686,12 +875,25 @@ event = {
 		command = { type = event which = 9281202 where = USA when = 2 }
 	}
 	action_c = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_allied exists = ENG NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = ENG } } }
 		ai_chance = 20
 		name = "Trade, rearm and accept no obligations"
 		command = { type = money value = 200 }
 		command = { type = domestic which = defense_lobby value = 1 }
 		command = { type = setflag which = ind_v4a_limited_accommodation }
 		command = { type = setflag which = ind_v4a_allied_framework_settled }
+	}
+	action_d = {
+		ai_chance = 0
+		trigger = { OR = { NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_negotiation_allied } NOT = { exists = ENG } participant = { country = IND value = 4 } flag = ind_aubm_commitment_german flag = ind_aubm_commitment_soviet flag = ind_aubm_commitment_japan war = { country = IND country = ENG } } }
+		name = "Let the overtaken Allied reply lapse"
+		command = { type = clrflag which = ind_v4a_allied_framework_started }
+		command = { type = clrflag which = ind_v4a_proposal_commonwealth }
+		command = { type = clrflag which = ind_v4a_proposal_naval_compact }
+		command = { type = clrflag which = ind_v4a_proposal_formal_alliance }
+		command = { type = clrflag which = ind_v4a_proposal_cobelligerent }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_allied }
 	}
 }
 

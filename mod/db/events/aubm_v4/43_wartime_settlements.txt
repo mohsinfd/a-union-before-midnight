@@ -17,13 +17,25 @@ event = {
 	persistent = yes
 	country = U05
 	name = "The East Indies Government Faces Delhi's Terms"
-	desc = "Indian forces control the principal oil and administrative centres. The East Indies government can recognize an Indian-sponsored settlement, concede sovereignty while reserving commercial rights, or refuse and continue the war. The fixed response is 50% recognition, 35% commercial counteroffer and 15% refusal."
+	desc = "Indian forces hold Batavia and have offered a local constitutional settlement. The East Indies government can recognize an Indian-sponsored Indonesia, concede sovereignty while reserving commercial rights, or refuse and continue the war. Only territory legally owned by this government can be ceded; third-party occupations remain untouched."
 	style = 2
 	picture = "aubm_v4_indian_ocean_war"
 	action_a = {
+		trigger = { OR = { AND = { flag = ind_aubm_southern_local_lock flag = ind_aubm_local_dei_outstanding flag = ind_aubm_local_dei_target_u05 exists = U05 war = { country = IND country = U05 } owned = { province = 1647 data = U05 } control = { province = 1647 data = IND } } AND = { flag = ind_aubm_south_grand_u05_dispatch exists = U05 war = { country = IND country = U05 } owned = { province = 1647 data = U05 } control = { province = 1647 data = IND } } AND = { flag = ind_aubm_jp_settlement_pending flag = ind_aubm_jp_objective_dei exists = U05 owned = { province = 1647 data = U05 } control = { province = 1647 data = IND } } } }
 		ai_chance = 50
 		name = "Recognize the Indian settlement"
+		command = { trigger = { flag = ind_aubm_jp_settlement_pending flag = ind_aubm_jp_objective_dei NOT = { flag = ind_aubm_southern_local_lock } NOT = { flag = ind_aubm_south_grand_u05_dispatch } } type = setflag which = ind_aubm_south_legacy_u05_dispatch }
 		command = { type = secederegion which = IND value = "Indonesia" when = 1 }
+		# Western New Guinea is outside the engine's Indonesia region. Because
+		# U05 executes these commands, only U05-owned provinces can move.
+		command = { type = secedeprovince which = IND value = 1594 when = 1 }
+		command = { type = secedeprovince which = IND value = 1595 when = 1 }
+		command = { type = secedeprovince which = IND value = 1596 when = 1 }
+		command = { type = secedeprovince which = IND value = 1597 when = 1 }
+		command = { type = secedeprovince which = IND value = 1598 when = 1 }
+		command = { type = secedeprovince which = IND value = 1599 when = 1 }
+		command = { type = secedeprovince which = IND value = 1600 when = 1 }
+		command = { type = secedeprovince which = IND value = 1601 when = 1 }
 		command = { type = relation which = IND value = 15 }
 		command = { type = clrflag which = ind_aubm_jp_dutch_oil_counter }
 		command = { type = clrflag which = ind_aubm_jp_dutch_settlement_reject }
@@ -31,12 +43,22 @@ event = {
 		command = { type = clrflag which = ind_aubm_south_u05_reject }
 		command = { type = setflag which = ind_aubm_jp_dutch_settlement_accept }
 		command = { type = setflag which = ind_aubm_south_u05_accept }
-		command = { type = event which = 9282050 where = IND when = 3 }
+		command = { type = event which = 9282050 where = IND when = 0 }
 	}
 	action_b = {
+		trigger = { OR = { AND = { flag = ind_aubm_southern_local_lock flag = ind_aubm_local_dei_outstanding flag = ind_aubm_local_dei_target_u05 exists = U05 war = { country = IND country = U05 } owned = { province = 1647 data = U05 } control = { province = 1647 data = IND } } AND = { flag = ind_aubm_south_grand_u05_dispatch exists = U05 war = { country = IND country = U05 } owned = { province = 1647 data = U05 } control = { province = 1647 data = IND } } AND = { flag = ind_aubm_jp_settlement_pending flag = ind_aubm_jp_objective_dei exists = U05 owned = { province = 1647 data = U05 } control = { province = 1647 data = IND } } } }
 		ai_chance = 35
 		name = "Concede sovereignty; preserve oil contracts"
+		command = { trigger = { flag = ind_aubm_jp_settlement_pending flag = ind_aubm_jp_objective_dei NOT = { flag = ind_aubm_southern_local_lock } NOT = { flag = ind_aubm_south_grand_u05_dispatch } } type = setflag which = ind_aubm_south_legacy_u05_dispatch }
 		command = { type = secederegion which = IND value = "Indonesia" when = 1 }
+		command = { type = secedeprovince which = IND value = 1594 when = 1 }
+		command = { type = secedeprovince which = IND value = 1595 when = 1 }
+		command = { type = secedeprovince which = IND value = 1596 when = 1 }
+		command = { type = secedeprovince which = IND value = 1597 when = 1 }
+		command = { type = secedeprovince which = IND value = 1598 when = 1 }
+		command = { type = secedeprovince which = IND value = 1599 when = 1 }
+		command = { type = secedeprovince which = IND value = 1600 when = 1 }
+		command = { type = secedeprovince which = IND value = 1601 when = 1 }
 		command = { type = relation which = IND value = 5 }
 		command = { type = clrflag which = ind_aubm_jp_dutch_settlement_accept }
 		command = { type = clrflag which = ind_aubm_jp_dutch_settlement_reject }
@@ -44,9 +66,10 @@ event = {
 		command = { type = clrflag which = ind_aubm_south_u05_reject }
 		command = { type = setflag which = ind_aubm_jp_dutch_oil_counter }
 		command = { type = setflag which = ind_aubm_south_u05_counter }
-		command = { type = event which = 9282050 where = IND when = 3 }
+		command = { type = event which = 9282050 where = IND when = 0 }
 	}
 	action_c = {
+		trigger = { OR = { AND = { flag = ind_aubm_southern_local_lock flag = ind_aubm_local_dei_outstanding flag = ind_aubm_local_dei_target_u05 exists = U05 war = { country = IND country = U05 } owned = { province = 1647 data = U05 } control = { province = 1647 data = IND } } AND = { flag = ind_aubm_south_grand_u05_dispatch exists = U05 war = { country = IND country = U05 } owned = { province = 1647 data = U05 } control = { province = 1647 data = IND } } AND = { flag = ind_aubm_jp_settlement_pending flag = ind_aubm_jp_objective_dei exists = U05 owned = { province = 1647 data = U05 } control = { province = 1647 data = IND } } } }
 		ai_chance = 15
 		name = "Refuse Delhi and continue the war"
 		command = { type = relation which = IND value = -40 }
@@ -56,6 +79,21 @@ event = {
 		command = { type = clrflag which = ind_aubm_south_u05_counter }
 		command = { type = setflag which = ind_aubm_jp_dutch_settlement_reject }
 		command = { type = setflag which = ind_aubm_south_u05_reject }
+		command = { type = setflag which = ind_aubm_regional_refused_u05 }
+		command = { type = clrflag which = ind_aubm_regional_pending_u05 }
+		command = { type = clrflag which = ind_aubm_regional_current_u05 }
+		command = { trigger = { flag = ind_aubm_local_dei_outstanding flag = ind_aubm_local_dei_target_u05 } type = event which = 9287609 where = IND when = 1 }
+		command = { type = clrflag which = ind_aubm_south_grand_u05_dispatch }
+		command = { type = clrflag which = ind_aubm_south_legacy_u05_dispatch }
+	}
+	action_d = {
+		trigger = { OR = { AND = { flag = ind_aubm_southern_local_lock flag = ind_aubm_local_dei_outstanding flag = ind_aubm_local_dei_target_u05 NOT = { AND = { exists = U05 war = { country = IND country = U05 } owned = { province = 1647 data = U05 } control = { province = 1647 data = IND } } } } AND = { flag = ind_aubm_south_grand_u05_dispatch NOT = { AND = { exists = U05 war = { country = IND country = U05 } owned = { province = 1647 data = U05 } control = { province = 1647 data = IND } } } } AND = { flag = ind_aubm_jp_settlement_pending flag = ind_aubm_jp_objective_dei NOT = { AND = { exists = U05 owned = { province = 1647 data = U05 } control = { province = 1647 data = IND } } } } } }
+		ai_chance = 100
+		name = "The Batavia claim has lapsed"
+		command = { trigger = { flag = ind_aubm_local_dei_outstanding flag = ind_aubm_local_dei_target_u05 } type = setflag which = ind_aubm_southern_lapse_u05 }
+		command = { trigger = { flag = ind_aubm_local_dei_outstanding flag = ind_aubm_local_dei_target_u05 } type = event which = 9287611 where = IND when = 1 }
+		command = { type = clrflag which = ind_aubm_south_grand_u05_dispatch }
+		command = { type = clrflag which = ind_aubm_south_legacy_u05_dispatch }
 	}
 }
 
@@ -69,7 +107,7 @@ event = {
 	persistent = yes
 	country = IND
 	name = "Provisional Settlement: Southern Command"
-	desc = "This common docket is for Allied, German, Soviet or sovereign India. Under the Delhi-Tokyo partnership, use the treaty settlement instead. Sovereign partners cost no cash and reduce belligerence; protectorates cost 500 supplies and 4 dissent; direct mandates cost 8 dissent, add belligerence and create annual occupation costs. Foreign governments retain fixed accept/counter/refuse rolls."
+	desc = "This common docket is for a complete Southern Command victory. Batavia and Malaya also have independent local dockets and are not demanded twice after their own settlements. Under the Delhi-Tokyo partnership, use the treaty settlement instead. Sovereign partners cost no cash; protectorates cost supplies and dissent; direct mandates create occupation costs."
 	style = 2
 	picture = "india_v3_japan_settlement"
 	action_a = {
@@ -78,32 +116,40 @@ event = {
 		command = { type = event which = 9281160 where = IND when = 1 }
 	}
 	action_b = {
-		trigger = { NOT = { flag = ind_aubm_route_japan } flag = ind_aubm_national_southern_current NOT = { flag = ind_aubm_common_south_pending } NOT = { flag = ind_aubm_common_south_complete } }
+		trigger = { NOT = { flag = ind_aubm_route_japan } NOT = { flag = ind_aubm_jp_settlement_pending } NOT = { flag = ind_aubm_south_legacy_u05_dispatch } NOT = { flag = ind_aubm_south_legacy_hol_dispatch } flag = ind_aubm_national_southern_current NOT = { flag = ind_aubm_southern_local_lock } NOT = { flag = ind_aubm_common_south_pending } NOT = { flag = ind_aubm_common_south_complete } }
 		name = "Sovereign partners | no cash | local peace"
 		command = { type = setflag which = ind_aubm_common_south_sovereign }
 		command = { type = setflag which = ind_aubm_common_south_pending }
 		command = { type = belligerence value = -3 }
-		command = { trigger = { exists = ENG } type = event which = 9282005 where = ENG when = 3 }
-		command = { trigger = { exists = U05 } type = event which = 9282000 where = U05 when = 3 }
-		command = { trigger = { exists = HOL NOT = { exists = U05 } } type = event which = 9281162 where = HOL when = 3 }
-		command = { trigger = { exists = AST control = { province = 1707 data = IND } } type = event which = 9282006 where = AST when = 3 }
+		command = { trigger = { NOT = { flag = ind_aubm_south_malaya_secured } NOT = { flag = ind_aubm_regional_refused_eng_malaya } exists = ENG war = { country = IND country = ENG } owned = { province = 1432 data = ENG } owned = { province = 1438 data = ENG } control = { province = 1432 data = IND } control = { province = 1438 data = IND } } type = setflag which = ind_aubm_south_grand_eng_dispatch }
+		command = { trigger = { NOT = { flag = ind_aubm_south_dei_secured } NOT = { flag = ind_aubm_regional_refused_u05 } exists = U05 war = { country = IND country = U05 } owned = { province = 1647 data = U05 } control = { province = 1647 data = IND } } type = setflag which = ind_aubm_south_grand_u05_dispatch }
+		command = { trigger = { NOT = { flag = ind_aubm_south_dei_secured } NOT = { flag = ind_aubm_regional_refused_hol_colonial } exists = HOL war = { country = IND country = HOL } owned = { province = 1647 data = HOL } control = { province = 1647 data = IND } } type = setflag which = ind_aubm_south_grand_hol_dispatch }
+		command = { trigger = { flag = ind_aubm_south_grand_eng_dispatch } type = event which = 9282005 where = ENG when = 0 }
+		command = { trigger = { flag = ind_aubm_south_grand_u05_dispatch } type = event which = 9282000 where = U05 when = 0 }
+		command = { trigger = { flag = ind_aubm_south_grand_hol_dispatch } type = event which = 9287606 where = HOL when = 0 }
+		command = { trigger = { NOT = { flag = ind_aubm_common_south_ast_reject } exists = AST war = { country = IND country = AST } owned = { province = 1707 data = AST } control = { province = 1707 data = IND } } type = setflag which = ind_aubm_south_grand_ast_dispatch }
+		command = { trigger = { flag = ind_aubm_south_grand_ast_dispatch } type = event which = 9282006 where = AST when = 0 }
 		command = { type = event which = 9282007 where = IND when = 12 }
 	}
 	action_c = {
-		trigger = { NOT = { flag = ind_aubm_route_japan } flag = ind_aubm_national_southern_current supplies = 500 NOT = { flag = ind_aubm_common_south_pending } NOT = { flag = ind_aubm_common_south_complete } }
+		trigger = { NOT = { flag = ind_aubm_route_japan } NOT = { flag = ind_aubm_jp_settlement_pending } NOT = { flag = ind_aubm_south_legacy_u05_dispatch } NOT = { flag = ind_aubm_south_legacy_hol_dispatch } flag = ind_aubm_national_southern_current supplies = 500 NOT = { flag = ind_aubm_southern_local_lock } NOT = { flag = ind_aubm_common_south_pending } NOT = { flag = ind_aubm_common_south_complete } }
 		name = "Protected sphere | -500 supplies | +4 dissent"
 		command = { type = supplies value = -500 }
 		command = { type = dissent value = 4 }
 		command = { type = setflag which = ind_aubm_common_south_protected }
 		command = { type = setflag which = ind_aubm_common_south_pending }
-		command = { trigger = { exists = ENG } type = event which = 9282005 where = ENG when = 3 }
-		command = { trigger = { exists = U05 } type = event which = 9282000 where = U05 when = 3 }
-		command = { trigger = { exists = HOL NOT = { exists = U05 } } type = event which = 9281162 where = HOL when = 3 }
-		command = { trigger = { exists = AST control = { province = 1707 data = IND } } type = event which = 9282006 where = AST when = 3 }
+		command = { trigger = { NOT = { flag = ind_aubm_south_malaya_secured } NOT = { flag = ind_aubm_regional_refused_eng_malaya } exists = ENG war = { country = IND country = ENG } owned = { province = 1432 data = ENG } owned = { province = 1438 data = ENG } control = { province = 1432 data = IND } control = { province = 1438 data = IND } } type = setflag which = ind_aubm_south_grand_eng_dispatch }
+		command = { trigger = { NOT = { flag = ind_aubm_south_dei_secured } NOT = { flag = ind_aubm_regional_refused_u05 } exists = U05 war = { country = IND country = U05 } owned = { province = 1647 data = U05 } control = { province = 1647 data = IND } } type = setflag which = ind_aubm_south_grand_u05_dispatch }
+		command = { trigger = { NOT = { flag = ind_aubm_south_dei_secured } NOT = { flag = ind_aubm_regional_refused_hol_colonial } exists = HOL war = { country = IND country = HOL } owned = { province = 1647 data = HOL } control = { province = 1647 data = IND } } type = setflag which = ind_aubm_south_grand_hol_dispatch }
+		command = { trigger = { flag = ind_aubm_south_grand_eng_dispatch } type = event which = 9282005 where = ENG when = 0 }
+		command = { trigger = { flag = ind_aubm_south_grand_u05_dispatch } type = event which = 9282000 where = U05 when = 0 }
+		command = { trigger = { flag = ind_aubm_south_grand_hol_dispatch } type = event which = 9287606 where = HOL when = 0 }
+		command = { trigger = { NOT = { flag = ind_aubm_common_south_ast_reject } exists = AST war = { country = IND country = AST } owned = { province = 1707 data = AST } control = { province = 1707 data = IND } } type = setflag which = ind_aubm_south_grand_ast_dispatch }
+		command = { trigger = { flag = ind_aubm_south_grand_ast_dispatch } type = event which = 9282006 where = AST when = 0 }
 		command = { type = event which = 9282007 where = IND when = 12 }
 	}
 	action_d = {
-		trigger = { NOT = { flag = ind_aubm_route_japan } flag = ind_aubm_national_southern_current NOT = { flag = ind_aubm_common_south_pending } NOT = { flag = ind_aubm_common_south_complete } }
+		trigger = { NOT = { flag = ind_aubm_route_japan } NOT = { flag = ind_aubm_jp_settlement_pending } NOT = { flag = ind_aubm_south_legacy_u05_dispatch } NOT = { flag = ind_aubm_south_legacy_hol_dispatch } flag = ind_aubm_national_southern_current NOT = { flag = ind_aubm_southern_local_lock } NOT = { flag = ind_aubm_common_south_pending } NOT = { flag = ind_aubm_common_south_complete } }
 		name = "Direct mandates | +8 dissent | annual upkeep"
 		command = { type = dissent value = 8 }
 		command = { type = belligerence value = 8 }
@@ -111,9 +157,14 @@ event = {
 		command = { type = setflag which = ind_aubm_common_south_pending }
 		command = { type = setflag which = ind_aubm_occupation_upkeep }
 		command = { type = event which = 9282093 where = IND when = 1 }
-		command = { trigger = { exists = ENG } type = event which = 9282005 where = ENG when = 3 }
-		command = { trigger = { exists = U05 } type = event which = 9282000 where = U05 when = 3 }
-		command = { trigger = { exists = HOL NOT = { exists = U05 } } type = event which = 9281162 where = HOL when = 3 }
+		command = { trigger = { NOT = { flag = ind_aubm_south_malaya_secured } NOT = { flag = ind_aubm_regional_refused_eng_malaya } exists = ENG war = { country = IND country = ENG } owned = { province = 1432 data = ENG } owned = { province = 1438 data = ENG } control = { province = 1432 data = IND } control = { province = 1438 data = IND } } type = setflag which = ind_aubm_south_grand_eng_dispatch }
+		command = { trigger = { NOT = { flag = ind_aubm_south_dei_secured } NOT = { flag = ind_aubm_regional_refused_u05 } exists = U05 war = { country = IND country = U05 } owned = { province = 1647 data = U05 } control = { province = 1647 data = IND } } type = setflag which = ind_aubm_south_grand_u05_dispatch }
+		command = { trigger = { NOT = { flag = ind_aubm_south_dei_secured } NOT = { flag = ind_aubm_regional_refused_hol_colonial } exists = HOL war = { country = IND country = HOL } owned = { province = 1647 data = HOL } control = { province = 1647 data = IND } } type = setflag which = ind_aubm_south_grand_hol_dispatch }
+		command = { trigger = { flag = ind_aubm_south_grand_eng_dispatch } type = event which = 9282005 where = ENG when = 0 }
+		command = { trigger = { flag = ind_aubm_south_grand_u05_dispatch } type = event which = 9282000 where = U05 when = 0 }
+		command = { trigger = { flag = ind_aubm_south_grand_hol_dispatch } type = event which = 9287606 where = HOL when = 0 }
+		command = { trigger = { NOT = { flag = ind_aubm_common_south_ast_reject } exists = AST war = { country = IND country = AST } owned = { province = 1707 data = AST } control = { province = 1707 data = IND } } type = setflag which = ind_aubm_south_grand_ast_dispatch }
+		command = { trigger = { flag = ind_aubm_south_grand_ast_dispatch } type = event which = 9282006 where = AST when = 0 }
 		command = { type = event which = 9282007 where = IND when = 12 }
 	}
 }
@@ -198,8 +249,8 @@ event = {
 	}
 	action_d = {
 		name = "Regional settlements or return to Cabinet"
-		command = { trigger = { OR = { flag = ind_aubm_regional_pending_per flag = ind_aubm_regional_pending_irq flag = ind_aubm_regional_pending_sau flag = ind_aubm_regional_pending_afg flag = ind_aubm_regional_pending_tib flag = ind_aubm_regional_pending_sik flag = ind_aubm_regional_pending_chi flag = ind_aubm_regional_pending_chc flag = ind_aubm_regional_pending_sia flag = ind_aubm_regional_pending_ita flag = ind_aubm_regional_pending_fra flag = ind_aubm_regional_pending_tur flag = ind_aubm_regional_pending_u05 flag = ind_aubm_regional_pending_hol flag = ind_aubm_regional_pending_ast flag = ind_aubm_regional_pending_por flag = ind_aubm_regional_pending_nzl flag = ind_aubm_regional_pending_omn flag = ind_aubm_regional_pending_yem flag = ind_aubm_regional_pending_eth flag = ind_aubm_regional_pending_saf } } type = event which = 9282201 where = IND when = 1 }
-		command = { trigger = { NOT = { OR = { flag = ind_aubm_regional_pending_per flag = ind_aubm_regional_pending_irq flag = ind_aubm_regional_pending_sau flag = ind_aubm_regional_pending_afg flag = ind_aubm_regional_pending_tib flag = ind_aubm_regional_pending_sik flag = ind_aubm_regional_pending_chi flag = ind_aubm_regional_pending_chc flag = ind_aubm_regional_pending_sia flag = ind_aubm_regional_pending_ita flag = ind_aubm_regional_pending_fra flag = ind_aubm_regional_pending_tur flag = ind_aubm_regional_pending_u05 flag = ind_aubm_regional_pending_hol flag = ind_aubm_regional_pending_ast flag = ind_aubm_regional_pending_por flag = ind_aubm_regional_pending_nzl flag = ind_aubm_regional_pending_omn flag = ind_aubm_regional_pending_yem flag = ind_aubm_regional_pending_eth flag = ind_aubm_regional_pending_saf } } } type = event which = 9281001 where = IND when = 1 }
+		command = { trigger = { OR = { flag = ind_aubm_regional_pending_per flag = ind_aubm_regional_pending_irq flag = ind_aubm_regional_pending_sau flag = ind_aubm_regional_pending_afg flag = ind_aubm_regional_pending_tib flag = ind_aubm_regional_pending_sik flag = ind_aubm_regional_pending_chi flag = ind_aubm_regional_pending_chc flag = ind_aubm_regional_pending_sia flag = ind_aubm_regional_pending_ita flag = ind_aubm_regional_pending_fra flag = ind_aubm_regional_pending_tur flag = ind_aubm_regional_pending_u05 flag = ind_aubm_regional_pending_hol_colonial flag = ind_aubm_regional_pending_eng_malaya flag = ind_aubm_regional_pending_hol flag = ind_aubm_regional_pending_ast flag = ind_aubm_regional_pending_por flag = ind_aubm_regional_pending_nzl flag = ind_aubm_regional_pending_omn flag = ind_aubm_regional_pending_yem flag = ind_aubm_regional_pending_eth flag = ind_aubm_regional_pending_saf } } type = event which = 9282201 where = IND when = 1 }
+		command = { trigger = { NOT = { OR = { flag = ind_aubm_regional_pending_per flag = ind_aubm_regional_pending_irq flag = ind_aubm_regional_pending_sau flag = ind_aubm_regional_pending_afg flag = ind_aubm_regional_pending_tib flag = ind_aubm_regional_pending_sik flag = ind_aubm_regional_pending_chi flag = ind_aubm_regional_pending_chc flag = ind_aubm_regional_pending_sia flag = ind_aubm_regional_pending_ita flag = ind_aubm_regional_pending_fra flag = ind_aubm_regional_pending_tur flag = ind_aubm_regional_pending_u05 flag = ind_aubm_regional_pending_hol_colonial flag = ind_aubm_regional_pending_eng_malaya flag = ind_aubm_regional_pending_hol flag = ind_aubm_regional_pending_ast flag = ind_aubm_regional_pending_por flag = ind_aubm_regional_pending_nzl flag = ind_aubm_regional_pending_omn flag = ind_aubm_regional_pending_yem flag = ind_aubm_regional_pending_eth flag = ind_aubm_regional_pending_saf } } } type = event which = 9281001 where = IND when = 1 }
 	}
 }
 
@@ -213,43 +264,59 @@ event = {
 	persistent = yes
 	country = ENG
 	name = "Britain Faces India's Malayan Provisional Terms"
-	desc = "India holds the Straits and proposes a local settlement without waiting for the entire British war to end. London has a fixed 55% chance to recognize the transfer, 30% to demand reciprocal base access and 15% to refuse. Only British-owned Malayan and Borneo provinces change legal owner."
+	desc = "India holds Singapore and Kuala Lumpur and proposes a local settlement without waiting for every other war to end. London normally weighs recognition at 55%, reciprocal base access at 30% and refusal at 15%; a lapsed claim cancels automatically. The standalone convention transfers only British-owned Malaya."
 	style = 2
 	picture = "aubm_v4_london_settlement"
 	action_a = {
+		trigger = { OR = { AND = { flag = ind_aubm_southern_local_lock flag = ind_aubm_local_malaya_outstanding exists = ENG war = { country = IND country = ENG } owned = { province = 1432 data = ENG } owned = { province = 1438 data = ENG } control = { province = 1432 data = IND } control = { province = 1438 data = IND } } AND = { flag = ind_aubm_south_grand_eng_dispatch exists = ENG war = { country = IND country = ENG } owned = { province = 1432 data = ENG } owned = { province = 1438 data = ENG } control = { province = 1432 data = IND } control = { province = 1438 data = IND } } } }
 		ai_chance = 55
 		name = "Recognize the Malayan transfer"
 		command = { type = secedearea which = IND value = "Malacka" when = 1 }
-		command = { type = secedeprovince which = IND value = 1624 when = 1 }
-		command = { type = secedeprovince which = IND value = 1625 when = 1 }
-		command = { type = secedeprovince which = IND value = 1626 when = 1 }
-		command = { type = secedeprovince which = IND value = 1629 when = 1 }
+		command = { trigger = { flag = ind_aubm_south_grand_eng_dispatch } type = secedeprovince which = IND value = 1624 when = 1 }
+		command = { trigger = { flag = ind_aubm_south_grand_eng_dispatch } type = secedeprovince which = IND value = 1625 when = 1 }
+		command = { trigger = { flag = ind_aubm_south_grand_eng_dispatch } type = secedeprovince which = IND value = 1626 when = 1 }
+		command = { trigger = { flag = ind_aubm_south_grand_eng_dispatch } type = secedeprovince which = IND value = 1629 when = 1 }
 		command = { type = clrflag which = ind_aubm_common_south_britain_counter }
 		command = { type = clrflag which = ind_aubm_common_south_britain_reject }
 		command = { type = setflag which = ind_aubm_common_south_britain_accept }
-		command = { type = event which = 9282051 where = IND when = 3 }
+		command = { type = event which = 9282051 where = IND when = 0 }
 	}
 	action_b = {
+		trigger = { OR = { AND = { flag = ind_aubm_southern_local_lock flag = ind_aubm_local_malaya_outstanding exists = ENG war = { country = IND country = ENG } owned = { province = 1432 data = ENG } owned = { province = 1438 data = ENG } control = { province = 1432 data = IND } control = { province = 1438 data = IND } } AND = { flag = ind_aubm_south_grand_eng_dispatch exists = ENG war = { country = IND country = ENG } owned = { province = 1432 data = ENG } owned = { province = 1438 data = ENG } control = { province = 1432 data = IND } control = { province = 1438 data = IND } } } }
 		ai_chance = 30
 		name = "Transfer Malaya for reciprocal base access"
 		command = { type = secedearea which = IND value = "Malacka" when = 1 }
-		command = { type = secedeprovince which = IND value = 1624 when = 1 }
-		command = { type = secedeprovince which = IND value = 1625 when = 1 }
-		command = { type = secedeprovince which = IND value = 1626 when = 1 }
-		command = { type = secedeprovince which = IND value = 1629 when = 1 }
+		command = { trigger = { flag = ind_aubm_south_grand_eng_dispatch } type = secedeprovince which = IND value = 1624 when = 1 }
+		command = { trigger = { flag = ind_aubm_south_grand_eng_dispatch } type = secedeprovince which = IND value = 1625 when = 1 }
+		command = { trigger = { flag = ind_aubm_south_grand_eng_dispatch } type = secedeprovince which = IND value = 1626 when = 1 }
+		command = { trigger = { flag = ind_aubm_south_grand_eng_dispatch } type = secedeprovince which = IND value = 1629 when = 1 }
 		command = { type = access which = IND }
 		command = { type = clrflag which = ind_aubm_common_south_britain_accept }
 		command = { type = clrflag which = ind_aubm_common_south_britain_reject }
 		command = { type = setflag which = ind_aubm_common_south_britain_counter }
-		command = { type = event which = 9282051 where = IND when = 3 }
+		command = { type = event which = 9282051 where = IND when = 0 }
 	}
 	action_c = {
+		trigger = { OR = { AND = { flag = ind_aubm_southern_local_lock flag = ind_aubm_local_malaya_outstanding exists = ENG war = { country = IND country = ENG } owned = { province = 1432 data = ENG } owned = { province = 1438 data = ENG } control = { province = 1432 data = IND } control = { province = 1438 data = IND } } AND = { flag = ind_aubm_south_grand_eng_dispatch exists = ENG war = { country = IND country = ENG } owned = { province = 1432 data = ENG } owned = { province = 1438 data = ENG } control = { province = 1432 data = IND } control = { province = 1438 data = IND } } } }
 		ai_chance = 15
 		name = "Refuse the provisional settlement"
 		command = { type = relation which = IND value = -35 }
 		command = { type = clrflag which = ind_aubm_common_south_britain_accept }
 		command = { type = clrflag which = ind_aubm_common_south_britain_counter }
 		command = { type = setflag which = ind_aubm_common_south_britain_reject }
+		command = { type = setflag which = ind_aubm_regional_refused_eng_malaya }
+		command = { type = clrflag which = ind_aubm_regional_pending_eng_malaya }
+		command = { type = clrflag which = ind_aubm_regional_current_eng_malaya }
+		command = { trigger = { flag = ind_aubm_local_malaya_outstanding } type = event which = 9287609 where = IND when = 1 }
+		command = { type = clrflag which = ind_aubm_south_grand_eng_dispatch }
+	}
+	action_d = {
+		trigger = { OR = { AND = { flag = ind_aubm_southern_local_lock flag = ind_aubm_local_malaya_outstanding NOT = { AND = { exists = ENG war = { country = IND country = ENG } owned = { province = 1432 data = ENG } owned = { province = 1438 data = ENG } control = { province = 1432 data = IND } control = { province = 1438 data = IND } } } } AND = { flag = ind_aubm_south_grand_eng_dispatch NOT = { AND = { exists = ENG war = { country = IND country = ENG } owned = { province = 1432 data = ENG } owned = { province = 1438 data = ENG } control = { province = 1432 data = IND } control = { province = 1438 data = IND } } } } } }
+		ai_chance = 100
+		name = "The Straits claim has lapsed"
+		command = { trigger = { flag = ind_aubm_local_malaya_outstanding } type = setflag which = ind_aubm_southern_lapse_eng }
+		command = { trigger = { flag = ind_aubm_local_malaya_outstanding } type = event which = 9287611 where = IND when = 1 }
+		command = { type = clrflag which = ind_aubm_south_grand_eng_dispatch }
 	}
 }
 
@@ -263,6 +330,7 @@ event = {
 	style = 2
 	picture = "aubm_v4_liberated_territory"
 	action_a = {
+		trigger = { flag = ind_aubm_south_grand_ast_dispatch exists = AST war = { country = IND country = AST } owned = { province = 1707 data = AST } control = { province = 1707 data = IND } }
 		ai_chance = 55
 		name = "Accept Indian protection and reciprocal access"
 		command = { type = access which = IND }
@@ -270,24 +338,37 @@ event = {
 		command = { type = clrflag which = ind_aubm_common_south_ast_neutral }
 		command = { type = clrflag which = ind_aubm_common_south_ast_reject }
 		command = { type = setflag which = ind_aubm_common_south_ast_accept }
-		command = { type = event which = 9282052 where = IND when = 3 }
+		command = { type = event which = 9282052 where = IND when = 0 }
 	}
 	action_b = {
+		trigger = { flag = ind_aubm_south_grand_ast_dispatch exists = AST war = { country = IND country = AST } owned = { province = 1707 data = AST } control = { province = 1707 data = IND } }
 		ai_chance = 30
 		name = "Accept peace and remain armed-neutral"
 		command = { type = relation which = IND value = 10 }
 		command = { type = clrflag which = ind_aubm_common_south_ast_accept }
 		command = { type = clrflag which = ind_aubm_common_south_ast_reject }
 		command = { type = setflag which = ind_aubm_common_south_ast_neutral }
-		command = { type = event which = 9282052 where = IND when = 3 }
+		command = { type = event which = 9282052 where = IND when = 0 }
 	}
 	action_c = {
+		trigger = { flag = ind_aubm_south_grand_ast_dispatch exists = AST war = { country = IND country = AST } owned = { province = 1707 data = AST } control = { province = 1707 data = IND } }
 		ai_chance = 15
 		name = "Reject India's regional order"
 		command = { type = relation which = IND value = -35 }
 		command = { type = clrflag which = ind_aubm_common_south_ast_accept }
 		command = { type = clrflag which = ind_aubm_common_south_ast_neutral }
 		command = { type = setflag which = ind_aubm_common_south_ast_reject }
+		command = { type = clrflag which = ind_aubm_regional_pending_ast }
+		command = { type = clrflag which = ind_aubm_regional_current_ast }
+		command = { type = clrflag which = ind_aubm_south_grand_ast_dispatch }
+	}
+	action_d = {
+		trigger = { flag = ind_aubm_south_grand_ast_dispatch NOT = { AND = { exists = AST war = { country = IND country = AST } owned = { province = 1707 data = AST } control = { province = 1707 data = IND } } } }
+		ai_chance = 100
+		name = "The Australian file has lapsed"
+		command = { type = setflag which = ind_aubm_southern_lapse_ast }
+		command = { type = clrflag which = ind_aubm_south_grand_ast_dispatch }
+		command = { type = event which = 9287611 where = IND when = 1 }
 	}
 }
 
@@ -325,7 +406,7 @@ event = {
 		flag = ind_aubm_common_south_complete
 		NOT = { flag = ind_aubm_common_south_resistance_resolved }
 		NOT = { flag = ind_aubm_common_south_retry_pending }
-		OR = { AND = { exists = ENG flag = ind_aubm_common_south_britain_reject } AND = { exists = U05 flag = ind_aubm_south_u05_reject } AND = { exists = AST flag = ind_aubm_common_south_ast_reject } }
+		OR = { AND = { exists = ENG flag = ind_aubm_common_south_britain_reject } AND = { exists = U05 flag = ind_aubm_south_u05_reject } AND = { exists = HOL flag = ind_aubm_hol_colonial_reject } AND = { exists = AST flag = ind_aubm_common_south_ast_reject } }
 	}
 	decision_trigger = {
 		# AUBM_FULL_OPTION_GATE_BEGIN
@@ -344,6 +425,7 @@ event = {
 		name = "Enforce rejected terms | +4 dissent"
 		command = { trigger = { flag = ind_aubm_common_south_britain_reject exists = ENG NOT = { war = { country = IND country = ENG } } } type = war which = ENG }
 		command = { trigger = { flag = ind_aubm_south_u05_reject exists = U05 NOT = { war = { country = IND country = U05 } } } type = war which = U05 }
+		command = { trigger = { flag = ind_aubm_hol_colonial_reject exists = HOL NOT = { war = { country = IND country = HOL } } } type = war which = HOL }
 		command = { trigger = { flag = ind_aubm_common_south_ast_reject exists = AST NOT = { war = { country = IND country = AST } } } type = war which = AST }
 		command = { type = dissent value = 4 }
 		command = { type = setflag which = ind_aubm_common_south_resistance_resolved }
@@ -1393,7 +1475,50 @@ event = {
 	desc = "The East Indies authority has accepted Delhi's terms. If a live war remains, India now ratifies that pairwise peace from its own diplomatic scope."
 	style = 2
 	picture = "aubm_v4_indian_ocean_war"
-	action_a = { name = "Ratify the East Indies settlement" command = { trigger = { war = { country = IND country = U05 } } type = setflag which = ind_aubm_local_armistice_target_u05 } command = { trigger = { war = { country = IND country = U05 } } type = event which = 9282059 where = IND when = 1 } }
+	action_a = {
+		trigger = { OR = { AND = { flag = ind_aubm_southern_local_lock flag = ind_aubm_local_dei_outstanding flag = ind_aubm_local_dei_target_u05 owned = { province = 1647 data = IND } OR = { exists = U05 control = { province = 1647 data = IND } flag = ind_aubm_south_u05_accept flag = ind_aubm_south_u05_counter } } AND = { flag = ind_aubm_south_grand_u05_dispatch owned = { province = 1647 data = IND } } AND = { flag = ind_aubm_south_legacy_u05_dispatch flag = ind_aubm_jp_settlement_pending flag = ind_aubm_jp_objective_dei owned = { province = 1647 data = IND } } } }
+		name = "Ratify the East Indies settlement"
+		command = { type = clrflag which = ind_aubm_callback_ready_u05 }
+		command = { type = clrflag which = ind_aubm_southern_lapse_u05 }
+		command = { type = clrflag which = ind_aubm_callback_final_u05 }
+		command = { type = clrflag which = ind_aubm_callback_implement_u05 }
+		command = { trigger = { flag = ind_aubm_local_dei_outstanding flag = ind_aubm_local_dei_target_u05 NOT = { exists = U05 } owned = { province = 1647 data = IND } control = { province = 1647 data = IND } } type = setflag which = ind_aubm_callback_annexed_u05 }
+		command = { trigger = { NOT = { war = { country = IND country = U05 } } owned = { province = 1647 data = IND } OR = { AND = { flag = ind_aubm_southern_local_lock flag = ind_aubm_local_dei_outstanding flag = ind_aubm_local_dei_target_u05 } flag = ind_aubm_south_grand_u05_dispatch flag = ind_aubm_south_legacy_u05_dispatch } } type = setflag which = ind_aubm_callback_final_u05 }
+		command = { trigger = { OR = { flag = ind_aubm_callback_annexed_u05 AND = { flag = ind_aubm_callback_final_u05 flag = ind_aubm_local_dei_outstanding flag = ind_aubm_local_dei_target_u05 } } } type = setflag which = ind_aubm_callback_implement_u05 }
+		command = { trigger = { war = { country = IND country = U05 } NOT = { OR = { flag = ind_aubm_local_armistice_target_u05 flag = ind_aubm_local_armistice_target_eng flag = ind_aubm_local_armistice_target_ast flag = ind_aubm_local_armistice_target_hol flag = ind_aubm_local_armistice_target_sov } } } type = setflag which = ind_aubm_callback_ready_u05 }
+		command = { trigger = { OR = { flag = ind_aubm_callback_final_u05 flag = ind_aubm_callback_annexed_u05 } } type = setflag which = ind_aubm_south_dei_secured }
+		command = { trigger = { flag = ind_aubm_callback_implement_u05 NOT = { flag = ind_aubm_local_dei_direct } NOT = { exists = INO } owned = { province = 1654 data = IND } } type = independence which = INO value = 1 when = 0 }
+		command = { trigger = { flag = ind_aubm_callback_implement_u05 flag = ind_aubm_local_dei_protected exists = INO } type = make_puppet which = INO }
+		command = { trigger = { flag = ind_aubm_callback_implement_u05 NOT = { flag = ind_aubm_local_dei_direct } exists = INO } type = guarantee which = IND where = INO }
+		command = { trigger = { OR = { flag = ind_aubm_callback_final_u05 flag = ind_aubm_callback_annexed_u05 } } type = setflag which = ind_aubm_regional_settled_u05 }
+		command = { trigger = { OR = { flag = ind_aubm_callback_final_u05 flag = ind_aubm_callback_annexed_u05 } } type = clrflag which = ind_aubm_regional_pending_u05 }
+		command = { trigger = { OR = { flag = ind_aubm_callback_final_u05 flag = ind_aubm_callback_annexed_u05 } } type = clrflag which = ind_aubm_regional_current_u05 }
+		command = { trigger = { OR = { flag = ind_aubm_callback_final_u05 flag = ind_aubm_callback_annexed_u05 } } type = clrflag which = ind_aubm_regional_victory_u05 }
+		command = { trigger = { OR = { flag = ind_aubm_callback_final_u05 flag = ind_aubm_callback_annexed_u05 } } type = clrflag which = ind_aubm_regional_suspended_u05 }
+		command = { trigger = { flag = ind_aubm_callback_implement_u05 } type = clrflag which = ind_aubm_southern_local_lock }
+		command = { trigger = { flag = ind_aubm_callback_implement_u05 } type = clrflag which = ind_aubm_local_dei_outstanding }
+		command = { trigger = { flag = ind_aubm_callback_implement_u05 } type = clrflag which = ind_aubm_local_dei_sovereign }
+		command = { trigger = { flag = ind_aubm_callback_implement_u05 } type = clrflag which = ind_aubm_local_dei_protected }
+		command = { trigger = { flag = ind_aubm_callback_implement_u05 } type = clrflag which = ind_aubm_local_dei_direct }
+		command = { trigger = { flag = ind_aubm_callback_implement_u05 } type = clrflag which = ind_aubm_local_dei_target_u05 }
+		command = { trigger = { flag = ind_aubm_callback_ready_u05 } type = setflag which = ind_aubm_local_armistice_target_u05 }
+		command = { trigger = { flag = ind_aubm_callback_ready_u05 } type = event which = 9282059 where = IND when = 0 }
+		command = { trigger = { war = { country = IND country = U05 } NOT = { flag = ind_aubm_callback_ready_u05 } } type = event which = 9282050 where = IND when = 2 }
+		command = { trigger = { flag = ind_aubm_callback_final_u05 } type = clrflag which = ind_aubm_south_grand_u05_dispatch }
+		command = { trigger = { flag = ind_aubm_callback_final_u05 } type = clrflag which = ind_aubm_south_legacy_u05_dispatch }
+		command = { type = clrflag which = ind_aubm_callback_ready_u05 }
+		command = { type = clrflag which = ind_aubm_callback_annexed_u05 }
+		command = { type = clrflag which = ind_aubm_callback_final_u05 }
+		command = { type = clrflag which = ind_aubm_callback_implement_u05 }
+	}
+	action_b = {
+		trigger = { NOT = { OR = { AND = { flag = ind_aubm_southern_local_lock flag = ind_aubm_local_dei_outstanding flag = ind_aubm_local_dei_target_u05 owned = { province = 1647 data = IND } OR = { exists = U05 control = { province = 1647 data = IND } flag = ind_aubm_south_u05_accept flag = ind_aubm_south_u05_counter } } AND = { flag = ind_aubm_south_grand_u05_dispatch owned = { province = 1647 data = IND } } AND = { flag = ind_aubm_south_legacy_u05_dispatch flag = ind_aubm_jp_settlement_pending flag = ind_aubm_jp_objective_dei owned = { province = 1647 data = IND } } } } }
+		name = "Lapse the stale East Indies callback"
+		command = { type = setflag which = ind_aubm_southern_lapse_u05 }
+		command = { type = clrflag which = ind_aubm_south_grand_u05_dispatch }
+		command = { type = clrflag which = ind_aubm_south_legacy_u05_dispatch }
+		command = { type = event which = 9287611 where = IND when = 1 }
+	}
 }
 
 event = {
@@ -1406,7 +1531,45 @@ event = {
 	desc = "Britain has accepted Delhi's provisional Malayan terms. If the British war remains live, India ratifies only that peace and preserves every unrelated campaign."
 	style = 2
 	picture = "aubm_v4_london_settlement"
-	action_a = { name = "Ratify the British southern settlement" command = { trigger = { war = { country = IND country = ENG } } type = setflag which = ind_aubm_local_armistice_target_eng } command = { trigger = { war = { country = IND country = ENG } } type = event which = 9282059 where = IND when = 1 } }
+	action_a = {
+		trigger = { OR = { AND = { flag = ind_aubm_southern_local_lock flag = ind_aubm_local_malaya_outstanding owned = { province = 1432 data = IND } owned = { province = 1438 data = IND } } AND = { flag = ind_aubm_south_grand_eng_dispatch owned = { province = 1432 data = IND } owned = { province = 1438 data = IND } } } }
+		name = "Ratify the British southern settlement"
+		command = { type = clrflag which = ind_aubm_callback_ready_eng }
+		command = { type = clrflag which = ind_aubm_southern_lapse_eng }
+		command = { type = clrflag which = ind_aubm_callback_final_eng }
+		command = { type = clrflag which = ind_aubm_callback_implement_eng }
+		command = { trigger = { NOT = { war = { country = IND country = ENG } } OR = { flag = ind_aubm_local_malaya_outstanding flag = ind_aubm_south_grand_eng_dispatch } } type = setflag which = ind_aubm_callback_final_eng }
+		command = { trigger = { flag = ind_aubm_callback_final_eng flag = ind_aubm_local_malaya_outstanding } type = setflag which = ind_aubm_callback_implement_eng }
+		command = { trigger = { war = { country = IND country = ENG } NOT = { OR = { flag = ind_aubm_local_armistice_target_u05 flag = ind_aubm_local_armistice_target_eng flag = ind_aubm_local_armistice_target_ast flag = ind_aubm_local_armistice_target_hol flag = ind_aubm_local_armistice_target_sov } } } type = setflag which = ind_aubm_callback_ready_eng }
+		command = { trigger = { flag = ind_aubm_callback_final_eng } type = setflag which = ind_aubm_south_malaya_secured }
+		command = { trigger = { flag = ind_aubm_callback_implement_eng NOT = { flag = ind_aubm_local_malaya_direct } NOT = { exists = MLY } owned = { province = 1438 data = IND } } type = independence which = MLY value = 1 when = 0 }
+		command = { trigger = { flag = ind_aubm_callback_implement_eng flag = ind_aubm_local_malaya_protected exists = MLY } type = make_puppet which = MLY }
+		command = { trigger = { flag = ind_aubm_callback_implement_eng NOT = { flag = ind_aubm_local_malaya_direct } exists = MLY } type = guarantee which = IND where = MLY }
+		command = { trigger = { flag = ind_aubm_callback_final_eng } type = setflag which = ind_aubm_regional_settled_eng_malaya }
+		command = { trigger = { flag = ind_aubm_callback_final_eng } type = clrflag which = ind_aubm_regional_pending_eng_malaya }
+		command = { trigger = { flag = ind_aubm_callback_final_eng } type = clrflag which = ind_aubm_regional_current_eng_malaya }
+		command = { trigger = { flag = ind_aubm_callback_final_eng } type = clrflag which = ind_aubm_regional_victory_eng_malaya }
+		command = { trigger = { flag = ind_aubm_callback_final_eng } type = clrflag which = ind_aubm_regional_suspended_eng_malaya }
+		command = { trigger = { flag = ind_aubm_callback_implement_eng } type = clrflag which = ind_aubm_southern_local_lock }
+		command = { trigger = { flag = ind_aubm_callback_implement_eng } type = clrflag which = ind_aubm_local_malaya_sovereign }
+		command = { trigger = { flag = ind_aubm_callback_implement_eng } type = clrflag which = ind_aubm_local_malaya_protected }
+		command = { trigger = { flag = ind_aubm_callback_implement_eng } type = clrflag which = ind_aubm_local_malaya_direct }
+		command = { trigger = { flag = ind_aubm_callback_implement_eng } type = clrflag which = ind_aubm_local_malaya_outstanding }
+		command = { trigger = { flag = ind_aubm_callback_ready_eng } type = setflag which = ind_aubm_local_armistice_target_eng }
+		command = { trigger = { flag = ind_aubm_callback_ready_eng } type = event which = 9282059 where = IND when = 0 }
+		command = { trigger = { war = { country = IND country = ENG } NOT = { flag = ind_aubm_callback_ready_eng } } type = event which = 9282051 where = IND when = 2 }
+		command = { trigger = { flag = ind_aubm_callback_final_eng } type = clrflag which = ind_aubm_south_grand_eng_dispatch }
+		command = { type = clrflag which = ind_aubm_callback_ready_eng }
+		command = { type = clrflag which = ind_aubm_callback_final_eng }
+		command = { type = clrflag which = ind_aubm_callback_implement_eng }
+	}
+	action_b = {
+		trigger = { NOT = { OR = { AND = { flag = ind_aubm_southern_local_lock flag = ind_aubm_local_malaya_outstanding owned = { province = 1432 data = IND } owned = { province = 1438 data = IND } } AND = { flag = ind_aubm_south_grand_eng_dispatch owned = { province = 1432 data = IND } owned = { province = 1438 data = IND } } } } }
+		name = "Lapse the stale British callback"
+		command = { type = setflag which = ind_aubm_southern_lapse_eng }
+		command = { type = clrflag which = ind_aubm_south_grand_eng_dispatch }
+		command = { type = event which = 9287611 where = IND when = 1 }
+	}
 }
 
 event = {
@@ -1419,7 +1582,23 @@ event = {
 	desc = "Australia has accepted protection or armed neutrality. If war remains live, Delhi ratifies the Australian peace without touching any other enemy."
 	style = 2
 	picture = "aubm_v4_liberated_territory"
-	action_a = { name = "Ratify the Australian settlement" command = { trigger = { war = { country = IND country = AST } } type = setflag which = ind_aubm_local_armistice_target_ast } command = { trigger = { war = { country = IND country = AST } } type = event which = 9282059 where = IND when = 1 } }
+	action_a = {
+		trigger = { flag = ind_aubm_south_grand_ast_dispatch exists = AST war = { country = IND country = AST } owned = { province = 1707 data = AST } control = { province = 1707 data = IND } }
+		name = "Ratify the Australian settlement"
+		command = { type = clrflag which = ind_aubm_callback_ready_ast }
+		command = { trigger = { NOT = { OR = { flag = ind_aubm_local_armistice_target_u05 flag = ind_aubm_local_armistice_target_eng flag = ind_aubm_local_armistice_target_ast flag = ind_aubm_local_armistice_target_hol flag = ind_aubm_local_armistice_target_sov } } } type = setflag which = ind_aubm_callback_ready_ast }
+		command = { trigger = { flag = ind_aubm_callback_ready_ast } type = setflag which = ind_aubm_local_armistice_target_ast }
+		command = { trigger = { flag = ind_aubm_callback_ready_ast } type = event which = 9282059 where = IND when = 0 }
+		command = { trigger = { NOT = { flag = ind_aubm_callback_ready_ast } } type = event which = 9282052 where = IND when = 2 }
+		command = { type = clrflag which = ind_aubm_callback_ready_ast }
+	}
+	action_b = {
+		trigger = { NOT = { AND = { flag = ind_aubm_south_grand_ast_dispatch exists = AST war = { country = IND country = AST } owned = { province = 1707 data = AST } control = { province = 1707 data = IND } } } }
+		name = "Lapse the stale Australian callback"
+		command = { type = setflag which = ind_aubm_southern_lapse_ast }
+		command = { type = clrflag which = ind_aubm_south_grand_ast_dispatch }
+		command = { type = event which = 9287611 where = IND when = 1 }
+	}
 }
 
 event = {
@@ -1428,11 +1607,65 @@ event = {
 	persistent = yes
 	one_action = yes
 	country = IND
-	name = "The Netherlands Accepts the East Indies Settlement"
-	desc = "The Dutch government has accepted the territorial or commercial settlement. If war remains live, Delhi ratifies the Dutch peace without ending another campaign."
+	name = "The Netherlands Accepts Delhi's Settlement"
+	desc = "The Dutch government has accepted the colonial or home-country convention. If war remains live, Delhi ratifies that pairwise peace without ending another campaign. A home-country armistice never transfers the East Indies."
 	style = 2
 	picture = "aubm_v4_indian_ocean_war"
-	action_a = { name = "Ratify the Dutch settlement" command = { trigger = { war = { country = IND country = HOL } } type = setflag which = ind_aubm_local_armistice_target_hol } command = { trigger = { war = { country = IND country = HOL } } type = event which = 9282059 where = IND when = 1 } }
+	action_a = {
+		trigger = { OR = { AND = { flag = ind_aubm_southern_local_lock flag = ind_aubm_local_dei_outstanding flag = ind_aubm_local_dei_target_hol_colonial owned = { province = 1647 data = IND } } AND = { flag = ind_aubm_southern_local_lock flag = ind_aubm_local_hol_home_outstanding exists = HOL war = { country = IND country = HOL } owned = { province = 122 data = HOL } control = { province = 122 data = IND } } AND = { flag = ind_aubm_southern_local_lock flag = ind_aubm_local_hol_home_outstanding NOT = { exists = HOL } owned = { province = 122 data = IND } control = { province = 122 data = IND } } AND = { flag = ind_aubm_south_grand_hol_dispatch owned = { province = 1647 data = IND } } AND = { flag = ind_aubm_jp_settlement_pending flag = ind_aubm_jp_objective_dei NOT = { flag = ind_aubm_southern_local_lock } NOT = { flag = ind_aubm_south_grand_hol_dispatch } owned = { province = 1647 data = IND } } } }
+		name = "Ratify the Dutch settlement"
+		command = { type = clrflag which = ind_aubm_callback_ready_hol }
+		command = { type = clrflag which = ind_aubm_southern_lapse_hol }
+		command = { type = clrflag which = ind_aubm_callback_annexed_hol_home }
+		command = { type = clrflag which = ind_aubm_callback_final_hol_colonial }
+		command = { type = clrflag which = ind_aubm_callback_implement_hol_colonial }
+		command = { trigger = { flag = ind_aubm_jp_settlement_pending flag = ind_aubm_jp_objective_dei NOT = { flag = ind_aubm_southern_local_lock } NOT = { flag = ind_aubm_south_grand_hol_dispatch } } type = setflag which = ind_aubm_south_legacy_hol_dispatch }
+		command = { trigger = { flag = ind_aubm_local_hol_home_outstanding NOT = { exists = HOL } owned = { province = 122 data = IND } control = { province = 122 data = IND } } type = setflag which = ind_aubm_callback_annexed_hol_home }
+		command = { trigger = { NOT = { war = { country = IND country = HOL } } owned = { province = 1647 data = IND } OR = { AND = { flag = ind_aubm_local_dei_outstanding flag = ind_aubm_local_dei_target_hol_colonial } flag = ind_aubm_south_grand_hol_dispatch flag = ind_aubm_south_legacy_hol_dispatch } } type = setflag which = ind_aubm_callback_final_hol_colonial }
+		command = { trigger = { flag = ind_aubm_callback_final_hol_colonial flag = ind_aubm_local_dei_outstanding flag = ind_aubm_local_dei_target_hol_colonial } type = setflag which = ind_aubm_callback_implement_hol_colonial }
+		command = { trigger = { war = { country = IND country = HOL } NOT = { OR = { flag = ind_aubm_local_armistice_target_u05 flag = ind_aubm_local_armistice_target_eng flag = ind_aubm_local_armistice_target_ast flag = ind_aubm_local_armistice_target_hol flag = ind_aubm_local_armistice_target_sov } } } type = setflag which = ind_aubm_callback_ready_hol }
+		command = { trigger = { flag = ind_aubm_callback_final_hol_colonial } type = setflag which = ind_aubm_south_dei_secured }
+		command = { trigger = { flag = ind_aubm_callback_implement_hol_colonial NOT = { flag = ind_aubm_local_dei_direct } NOT = { exists = INO } owned = { province = 1654 data = IND } } type = independence which = INO value = 1 when = 0 }
+		command = { trigger = { flag = ind_aubm_callback_implement_hol_colonial flag = ind_aubm_local_dei_protected exists = INO } type = make_puppet which = INO }
+		command = { trigger = { flag = ind_aubm_callback_implement_hol_colonial NOT = { flag = ind_aubm_local_dei_direct } exists = INO } type = guarantee which = IND where = INO }
+		command = { trigger = { flag = ind_aubm_callback_final_hol_colonial } type = setflag which = ind_aubm_regional_settled_hol_colonial }
+		command = { trigger = { flag = ind_aubm_callback_final_hol_colonial } type = clrflag which = ind_aubm_regional_pending_hol_colonial }
+		command = { trigger = { flag = ind_aubm_callback_final_hol_colonial } type = clrflag which = ind_aubm_regional_current_hol_colonial }
+		command = { trigger = { flag = ind_aubm_callback_final_hol_colonial } type = clrflag which = ind_aubm_regional_victory_hol_colonial }
+		command = { trigger = { flag = ind_aubm_callback_final_hol_colonial } type = clrflag which = ind_aubm_regional_suspended_hol_colonial }
+		command = { trigger = { flag = ind_aubm_callback_implement_hol_colonial } type = clrflag which = ind_aubm_southern_local_lock }
+		command = { trigger = { flag = ind_aubm_callback_implement_hol_colonial } type = clrflag which = ind_aubm_local_dei_outstanding }
+		command = { trigger = { flag = ind_aubm_callback_implement_hol_colonial } type = clrflag which = ind_aubm_local_dei_sovereign }
+		command = { trigger = { flag = ind_aubm_callback_implement_hol_colonial } type = clrflag which = ind_aubm_local_dei_protected }
+		command = { trigger = { flag = ind_aubm_callback_implement_hol_colonial } type = clrflag which = ind_aubm_local_dei_direct }
+		command = { trigger = { flag = ind_aubm_callback_implement_hol_colonial } type = clrflag which = ind_aubm_local_dei_target_hol_colonial }
+		command = { trigger = { flag = ind_aubm_callback_annexed_hol_home } type = setflag which = ind_aubm_regional_settled_hol }
+		command = { trigger = { flag = ind_aubm_callback_annexed_hol_home } type = clrflag which = ind_aubm_regional_pending_hol }
+		command = { trigger = { flag = ind_aubm_callback_annexed_hol_home } type = clrflag which = ind_aubm_regional_current_hol }
+		command = { trigger = { flag = ind_aubm_callback_annexed_hol_home } type = clrflag which = ind_aubm_regional_victory_hol }
+		command = { trigger = { flag = ind_aubm_callback_annexed_hol_home } type = clrflag which = ind_aubm_regional_suspended_hol }
+		command = { trigger = { flag = ind_aubm_callback_annexed_hol_home } type = clrflag which = ind_aubm_southern_local_lock }
+		command = { trigger = { flag = ind_aubm_callback_annexed_hol_home } type = clrflag which = ind_aubm_local_hol_home_outstanding }
+		command = { trigger = { flag = ind_aubm_callback_ready_hol OR = { flag = ind_aubm_local_dei_target_hol_colonial flag = ind_aubm_south_grand_hol_dispatch } } type = setflag which = ind_aubm_ratify_hol_colonial }
+		command = { trigger = { flag = ind_aubm_callback_ready_hol flag = ind_aubm_local_hol_home_outstanding } type = setflag which = ind_aubm_ratify_hol_home }
+		command = { trigger = { flag = ind_aubm_callback_ready_hol } type = setflag which = ind_aubm_local_armistice_target_hol }
+		command = { trigger = { flag = ind_aubm_callback_ready_hol } type = event which = 9282059 where = IND when = 0 }
+		command = { trigger = { war = { country = IND country = HOL } NOT = { flag = ind_aubm_callback_ready_hol } } type = event which = 9282053 where = IND when = 2 }
+		command = { trigger = { flag = ind_aubm_callback_final_hol_colonial } type = clrflag which = ind_aubm_south_grand_hol_dispatch }
+		command = { trigger = { flag = ind_aubm_callback_final_hol_colonial } type = clrflag which = ind_aubm_south_legacy_hol_dispatch }
+		command = { type = clrflag which = ind_aubm_callback_ready_hol }
+		command = { type = clrflag which = ind_aubm_callback_annexed_hol_home }
+		command = { type = clrflag which = ind_aubm_callback_final_hol_colonial }
+		command = { type = clrflag which = ind_aubm_callback_implement_hol_colonial }
+	}
+	action_b = {
+		trigger = { NOT = { OR = { AND = { flag = ind_aubm_southern_local_lock flag = ind_aubm_local_dei_outstanding flag = ind_aubm_local_dei_target_hol_colonial owned = { province = 1647 data = IND } } AND = { flag = ind_aubm_southern_local_lock flag = ind_aubm_local_hol_home_outstanding exists = HOL war = { country = IND country = HOL } owned = { province = 122 data = HOL } control = { province = 122 data = IND } } AND = { flag = ind_aubm_southern_local_lock flag = ind_aubm_local_hol_home_outstanding NOT = { exists = HOL } owned = { province = 122 data = IND } control = { province = 122 data = IND } } AND = { flag = ind_aubm_south_grand_hol_dispatch owned = { province = 1647 data = IND } } AND = { flag = ind_aubm_jp_settlement_pending flag = ind_aubm_jp_objective_dei NOT = { flag = ind_aubm_southern_local_lock } NOT = { flag = ind_aubm_south_grand_hol_dispatch } owned = { province = 1647 data = IND } } } } }
+		name = "Lapse the stale Dutch callback"
+		command = { type = setflag which = ind_aubm_southern_lapse_hol }
+		command = { type = clrflag which = ind_aubm_south_grand_hol_dispatch }
+		command = { type = clrflag which = ind_aubm_south_legacy_hol_dispatch }
+		command = { type = event which = 9287611 where = IND when = 1 }
+	}
 }
 
 event = {
@@ -1447,9 +1680,16 @@ event = {
 	picture = "aubm_v4_war_aims"
 	action_a = {
 		name = "Reopen only the recorded files"
-		command = { trigger = { flag = ind_aubm_common_south_retry_pending flag = ind_aubm_common_south_britain_reject exists = ENG } type = event which = 9282005 where = ENG when = 1 }
-		command = { trigger = { flag = ind_aubm_common_south_retry_pending flag = ind_aubm_south_u05_reject exists = U05 } type = event which = 9282000 where = U05 when = 1 }
-		command = { trigger = { flag = ind_aubm_common_south_retry_pending flag = ind_aubm_common_south_ast_reject exists = AST } type = event which = 9282006 where = AST when = 1 }
+		command = { trigger = { flag = ind_aubm_common_south_retry_pending flag = ind_aubm_common_south_britain_reject exists = ENG war = { country = IND country = ENG } owned = { province = 1432 data = ENG } owned = { province = 1438 data = ENG } control = { province = 1432 data = IND } control = { province = 1438 data = IND } } type = setflag which = ind_aubm_south_grand_eng_dispatch }
+		command = { trigger = { flag = ind_aubm_common_south_retry_pending flag = ind_aubm_common_south_britain_reject flag = ind_aubm_south_grand_eng_dispatch } type = event which = 9282005 where = ENG when = 0 }
+		command = { trigger = { flag = ind_aubm_common_south_retry_pending flag = ind_aubm_south_u05_reject exists = U05 war = { country = IND country = U05 } owned = { province = 1647 data = U05 } control = { province = 1647 data = IND } } type = setflag which = ind_aubm_south_grand_u05_dispatch }
+		command = { trigger = { flag = ind_aubm_common_south_retry_pending flag = ind_aubm_south_u05_reject flag = ind_aubm_south_grand_u05_dispatch } type = event which = 9282000 where = U05 when = 0 }
+		command = { trigger = { flag = ind_aubm_common_south_retry_pending flag = ind_aubm_hol_colonial_reject exists = HOL war = { country = IND country = HOL } owned = { province = 1647 data = HOL } control = { province = 1647 data = IND } } type = setflag which = ind_aubm_south_grand_hol_dispatch }
+		command = { trigger = { flag = ind_aubm_common_south_retry_pending flag = ind_aubm_hol_colonial_reject flag = ind_aubm_south_grand_hol_dispatch } type = event which = 9287606 where = HOL when = 0 }
+		command = { trigger = { flag = ind_aubm_common_south_retry_pending flag = ind_aubm_common_south_ast_reject exists = AST war = { country = IND country = AST } owned = { province = 1707 data = AST } control = { province = 1707 data = IND } } type = setflag which = ind_aubm_south_grand_ast_dispatch }
+		command = { trigger = { flag = ind_aubm_south_grand_ast_dispatch } type = setflag which = ind_aubm_common_south_pending }
+		command = { trigger = { flag = ind_aubm_common_south_retry_pending flag = ind_aubm_common_south_ast_reject flag = ind_aubm_south_grand_ast_dispatch } type = event which = 9282006 where = AST when = 0 }
+		command = { trigger = { flag = ind_aubm_south_grand_ast_dispatch } type = event which = 9282007 where = IND when = 12 }
 		command = { trigger = { flag = ind_aubm_local_armistice_retry_sov war = { country = IND country = SOV } flag = ind_aubm_soviet_current } type = event which = 9282036 where = IND when = 1 }
 		command = { type = clrflag which = ind_aubm_common_south_retry_pending }
 		command = { type = clrflag which = ind_aubm_local_armistice_retry_sov }
@@ -1468,6 +1708,7 @@ event = {
 	style = 2
 	picture = "aubm_v4_liberated_territory"
 	action_a = {
+		trigger = { OR = { AND = { flag = ind_aubm_local_armistice_target_u05 NOT = { OR = { flag = ind_aubm_local_armistice_target_eng flag = ind_aubm_local_armistice_target_ast flag = ind_aubm_local_armistice_target_hol flag = ind_aubm_local_armistice_target_sov } } war = { country = IND country = U05 } owned = { province = 1647 data = IND } } AND = { flag = ind_aubm_local_armistice_target_eng NOT = { OR = { flag = ind_aubm_local_armistice_target_u05 flag = ind_aubm_local_armistice_target_ast flag = ind_aubm_local_armistice_target_hol flag = ind_aubm_local_armistice_target_sov } } war = { country = IND country = ENG } owned = { province = 1432 data = IND } owned = { province = 1438 data = IND } } AND = { flag = ind_aubm_local_armistice_target_ast flag = ind_aubm_south_grand_ast_dispatch NOT = { OR = { flag = ind_aubm_local_armistice_target_u05 flag = ind_aubm_local_armistice_target_eng flag = ind_aubm_local_armistice_target_hol flag = ind_aubm_local_armistice_target_sov } } exists = AST war = { country = IND country = AST } owned = { province = 1707 data = AST } control = { province = 1707 data = IND } } AND = { flag = ind_aubm_local_armistice_target_hol NOT = { OR = { flag = ind_aubm_local_armistice_target_u05 flag = ind_aubm_local_armistice_target_eng flag = ind_aubm_local_armistice_target_ast flag = ind_aubm_local_armistice_target_sov } } war = { country = IND country = HOL } OR = { AND = { flag = ind_aubm_ratify_hol_colonial owned = { province = 1647 data = IND } } AND = { flag = ind_aubm_ratify_hol_home owned = { province = 122 data = HOL } control = { province = 122 data = IND } } } } AND = { flag = ind_aubm_local_armistice_target_sov NOT = { OR = { flag = ind_aubm_local_armistice_target_u05 flag = ind_aubm_local_armistice_target_eng flag = ind_aubm_local_armistice_target_ast flag = ind_aubm_local_armistice_target_hol } } war = { country = IND country = SOV } } } }
 		name = "Ratify this settlement under the compact rule"
 		command = { trigger = { OR = { flag = ind_aubm_local_armistice_target_u05 flag = ind_aubm_local_armistice_target_eng flag = ind_aubm_local_armistice_target_ast flag = ind_aubm_local_armistice_target_hol flag = ind_aubm_local_armistice_target_sov } } type = setflag which = ind_aubm_local_armistice_reward_due }
 		command = { trigger = { OR = { alliance = { country = IND country = ENG } alliance = { country = IND country = USA } } } type = setflag which = ind_v4a_treaty_cobelligerent }
@@ -1484,45 +1725,594 @@ event = {
 		command = { trigger = { flag = ind_aubm_local_armistice_target_ast war = { country = IND country = AST } } type = peace which = AST value = 1 }
 		command = { trigger = { flag = ind_aubm_local_armistice_target_hol war = { country = IND country = HOL } } type = peace which = HOL value = 1 }
 		command = { trigger = { flag = ind_aubm_local_armistice_target_sov war = { country = IND country = SOV } } type = peace which = SOV value = 1 }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_u05 } type = setflag which = ind_aubm_south_dei_secured }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_eng } type = setflag which = ind_aubm_south_malaya_secured }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_hol flag = ind_aubm_ratify_hol_colonial } type = setflag which = ind_aubm_south_dei_secured }
+		command = { trigger = { OR = { AND = { flag = ind_aubm_local_armistice_target_u05 flag = ind_aubm_local_dei_outstanding } AND = { flag = ind_aubm_local_armistice_target_hol flag = ind_aubm_local_dei_outstanding flag = ind_aubm_ratify_hol_colonial } } NOT = { flag = ind_aubm_local_dei_direct } NOT = { exists = INO } owned = { province = 1654 data = IND } } type = independence which = INO value = 1 when = 0 }
+		command = { trigger = { OR = { AND = { flag = ind_aubm_local_armistice_target_u05 flag = ind_aubm_local_dei_outstanding } AND = { flag = ind_aubm_local_armistice_target_hol flag = ind_aubm_local_dei_outstanding flag = ind_aubm_ratify_hol_colonial } } flag = ind_aubm_local_dei_protected exists = INO } type = make_puppet which = INO }
+		command = { trigger = { OR = { AND = { flag = ind_aubm_local_armistice_target_u05 flag = ind_aubm_local_dei_outstanding } AND = { flag = ind_aubm_local_armistice_target_hol flag = ind_aubm_local_dei_outstanding flag = ind_aubm_ratify_hol_colonial } } NOT = { flag = ind_aubm_local_dei_direct } exists = INO } type = guarantee which = IND where = INO }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_eng flag = ind_aubm_local_malaya_outstanding NOT = { flag = ind_aubm_local_malaya_direct } NOT = { exists = MLY } owned = { province = 1438 data = IND } } type = independence which = MLY value = 1 when = 0 }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_eng flag = ind_aubm_local_malaya_outstanding flag = ind_aubm_local_malaya_protected exists = MLY } type = make_puppet which = MLY }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_eng flag = ind_aubm_local_malaya_outstanding NOT = { flag = ind_aubm_local_malaya_direct } exists = MLY } type = guarantee which = IND where = MLY }
 		command = { trigger = { flag = ind_aubm_local_armistice_target_u05 } type = setflag which = ind_aubm_regional_settled_u05 }
 		command = { trigger = { flag = ind_aubm_local_armistice_target_u05 } type = clrflag which = ind_aubm_regional_pending_u05 }
 		command = { trigger = { flag = ind_aubm_local_armistice_target_u05 } type = clrflag which = ind_aubm_regional_current_u05 }
 		command = { trigger = { flag = ind_aubm_local_armistice_target_u05 } type = clrflag which = ind_aubm_regional_victory_u05 }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_u05 } type = clrflag which = ind_aubm_regional_suspended_u05 }
 		command = { trigger = { flag = ind_aubm_local_armistice_target_eng } type = setflag which = ind_aubm_armistice_britain }
 		command = { trigger = { flag = ind_aubm_local_armistice_target_eng } type = clrflag which = ind_aubm_campaign_britain_active }
 		command = { trigger = { flag = ind_aubm_local_armistice_target_eng } type = clrflag which = ind_aubm_britain_limited_victory }
 		command = { trigger = { flag = ind_aubm_local_armistice_target_eng } type = clrflag which = ind_aubm_britain_major_victory }
 		command = { trigger = { flag = ind_aubm_local_armistice_target_eng } type = clrflag which = ind_aubm_britain_current }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_eng flag = ind_aubm_local_malaya_outstanding } type = setflag which = ind_aubm_regional_settled_eng_malaya }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_eng } type = clrflag which = ind_aubm_regional_pending_eng_malaya }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_eng } type = clrflag which = ind_aubm_regional_current_eng_malaya }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_eng } type = clrflag which = ind_aubm_regional_victory_eng_malaya }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_eng } type = clrflag which = ind_aubm_regional_suspended_eng_malaya }
 		command = { trigger = { flag = ind_aubm_local_armistice_target_ast } type = setflag which = ind_aubm_regional_settled_ast }
 		command = { trigger = { flag = ind_aubm_local_armistice_target_ast } type = clrflag which = ind_aubm_regional_pending_ast }
 		command = { trigger = { flag = ind_aubm_local_armistice_target_ast } type = clrflag which = ind_aubm_regional_current_ast }
 		command = { trigger = { flag = ind_aubm_local_armistice_target_ast } type = clrflag which = ind_aubm_regional_victory_ast }
-		command = { trigger = { flag = ind_aubm_local_armistice_target_hol } type = setflag which = ind_aubm_regional_settled_hol }
-		command = { trigger = { flag = ind_aubm_local_armistice_target_hol } type = clrflag which = ind_aubm_regional_pending_hol }
-		command = { trigger = { flag = ind_aubm_local_armistice_target_hol } type = clrflag which = ind_aubm_regional_current_hol }
-		command = { trigger = { flag = ind_aubm_local_armistice_target_hol } type = clrflag which = ind_aubm_regional_victory_hol }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_hol flag = ind_aubm_ratify_hol_colonial } type = setflag which = ind_aubm_regional_settled_hol_colonial }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_hol flag = ind_aubm_ratify_hol_colonial } type = clrflag which = ind_aubm_regional_pending_hol_colonial }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_hol flag = ind_aubm_ratify_hol_colonial } type = clrflag which = ind_aubm_regional_current_hol_colonial }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_hol flag = ind_aubm_ratify_hol_colonial } type = clrflag which = ind_aubm_regional_victory_hol_colonial }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_hol flag = ind_aubm_ratify_hol_colonial } type = clrflag which = ind_aubm_regional_suspended_hol_colonial }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_hol flag = ind_aubm_ratify_hol_home } type = setflag which = ind_aubm_regional_settled_hol }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_hol flag = ind_aubm_ratify_hol_home } type = clrflag which = ind_aubm_regional_pending_hol }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_hol flag = ind_aubm_ratify_hol_home } type = clrflag which = ind_aubm_regional_current_hol }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_hol flag = ind_aubm_ratify_hol_home } type = clrflag which = ind_aubm_regional_victory_hol }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_hol flag = ind_aubm_ratify_hol_home } type = clrflag which = ind_aubm_regional_suspended_hol }
 		command = { trigger = { flag = ind_aubm_local_armistice_target_sov } type = setflag which = ind_aubm_armistice_soviet }
 		command = { trigger = { flag = ind_aubm_local_armistice_target_sov } type = clrflag which = ind_aubm_campaign_soviet_active }
 		command = { trigger = { flag = ind_aubm_local_armistice_target_sov } type = clrflag which = ind_aubm_soviet_limited_victory }
 		command = { trigger = { flag = ind_aubm_local_armistice_target_sov } type = clrflag which = ind_aubm_soviet_major_victory }
 		command = { trigger = { flag = ind_aubm_local_armistice_target_sov } type = clrflag which = ind_aubm_soviet_current }
 		command = { trigger = { flag = ind_aubm_local_armistice_target_sov } type = clrflag which = ind_aubm_soviet_suspended }
-		command = { type = clrflag which = ind_aubm_local_armistice_target_u05 }
-		command = { type = clrflag which = ind_aubm_local_armistice_target_eng }
-		command = { type = clrflag which = ind_aubm_local_armistice_target_ast }
-		command = { type = clrflag which = ind_aubm_local_armistice_target_hol }
-		command = { type = clrflag which = ind_aubm_local_armistice_target_sov }
-		command = { type = clrflag which = ind_aubm_local_armistice_outstanding }
-		command = { type = clrflag which = ind_aubm_local_armistice_retry_pending }
-		command = { type = clrflag which = ind_aubm_local_armistice_retry_sov }
-		command = { type = clrflag which = ind_aubm_local_soviet_sovereign_terms }
-		command = { type = clrflag which = ind_aubm_local_soviet_protected_terms }
-		command = { type = clrflag which = ind_aubm_local_soviet_base_terms }
+		command = { trigger = { OR = { AND = { flag = ind_aubm_local_armistice_target_u05 flag = ind_aubm_local_dei_outstanding flag = ind_aubm_local_dei_target_u05 } AND = { flag = ind_aubm_local_armistice_target_eng flag = ind_aubm_local_malaya_outstanding } AND = { flag = ind_aubm_local_armistice_target_hol OR = { AND = { flag = ind_aubm_local_dei_outstanding flag = ind_aubm_local_dei_target_hol_colonial } flag = ind_aubm_local_hol_home_outstanding } } } } type = clrflag which = ind_aubm_southern_local_lock }
+		command = { trigger = { OR = { AND = { flag = ind_aubm_local_armistice_target_u05 flag = ind_aubm_local_dei_target_u05 } AND = { flag = ind_aubm_local_armistice_target_hol flag = ind_aubm_local_dei_target_hol_colonial } } } type = clrflag which = ind_aubm_local_dei_outstanding }
+		command = { trigger = { OR = { AND = { flag = ind_aubm_local_armistice_target_u05 flag = ind_aubm_local_dei_target_u05 } AND = { flag = ind_aubm_local_armistice_target_hol flag = ind_aubm_local_dei_target_hol_colonial } } } type = clrflag which = ind_aubm_local_dei_sovereign }
+		command = { trigger = { OR = { AND = { flag = ind_aubm_local_armistice_target_u05 flag = ind_aubm_local_dei_target_u05 } AND = { flag = ind_aubm_local_armistice_target_hol flag = ind_aubm_local_dei_target_hol_colonial } } } type = clrflag which = ind_aubm_local_dei_protected }
+		command = { trigger = { OR = { AND = { flag = ind_aubm_local_armistice_target_u05 flag = ind_aubm_local_dei_target_u05 } AND = { flag = ind_aubm_local_armistice_target_hol flag = ind_aubm_local_dei_target_hol_colonial } } } type = clrflag which = ind_aubm_local_dei_direct }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_u05 flag = ind_aubm_local_dei_target_u05 } type = clrflag which = ind_aubm_local_dei_target_u05 }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_eng flag = ind_aubm_local_malaya_outstanding } type = clrflag which = ind_aubm_local_malaya_sovereign }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_eng flag = ind_aubm_local_malaya_outstanding } type = clrflag which = ind_aubm_local_malaya_protected }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_eng flag = ind_aubm_local_malaya_outstanding } type = clrflag which = ind_aubm_local_malaya_direct }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_eng flag = ind_aubm_local_malaya_outstanding } type = clrflag which = ind_aubm_local_malaya_outstanding }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_hol flag = ind_aubm_local_hol_home_outstanding } type = clrflag which = ind_aubm_local_hol_home_outstanding }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_hol } type = clrflag which = ind_aubm_local_dei_target_hol_colonial }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_hol } type = clrflag which = ind_aubm_ratify_hol_colonial }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_hol } type = clrflag which = ind_aubm_ratify_hol_home }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_u05 } type = clrflag which = ind_aubm_south_u05_reject }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_eng } type = clrflag which = ind_aubm_common_south_britain_reject }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_u05 } type = clrflag which = ind_aubm_south_grand_u05_dispatch }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_u05 } type = clrflag which = ind_aubm_south_legacy_u05_dispatch }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_eng } type = clrflag which = ind_aubm_south_grand_eng_dispatch }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_ast } type = clrflag which = ind_aubm_south_grand_ast_dispatch }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_hol flag = ind_aubm_ratify_hol_colonial } type = clrflag which = ind_aubm_south_grand_hol_dispatch }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_hol flag = ind_aubm_ratify_hol_colonial } type = clrflag which = ind_aubm_south_legacy_hol_dispatch }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_u05 } type = clrflag which = ind_aubm_local_armistice_target_u05 }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_eng } type = clrflag which = ind_aubm_local_armistice_target_eng }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_ast } type = clrflag which = ind_aubm_local_armistice_target_ast }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_hol } type = clrflag which = ind_aubm_local_armistice_target_hol }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_sov } type = clrflag which = ind_aubm_local_armistice_target_sov }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_sov } type = clrflag which = ind_aubm_local_armistice_outstanding }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_sov } type = clrflag which = ind_aubm_local_armistice_retry_pending }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_sov } type = clrflag which = ind_aubm_local_armistice_retry_sov }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_sov } type = clrflag which = ind_aubm_local_soviet_sovereign_terms }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_sov } type = clrflag which = ind_aubm_local_soviet_protected_terms }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_sov } type = clrflag which = ind_aubm_local_soviet_base_terms }
 		command = { type = clrflag which = ind_v3_joined_allies }
 		command = { type = clrflag which = ind_v3_joined_axis }
 		command = { type = clrflag which = ind_v3_joined_comintern }
 		command = { type = clrflag which = ind_v3_joined_japan }
 		command = { trigger = { flag = ind_aubm_local_armistice_reward_due } type = dissent value = -2 }
 		command = { type = clrflag which = ind_aubm_local_armistice_reward_due }
+		command = { type = clrflag which = ind_aubm_southern_lapse_u05 }
+		command = { type = clrflag which = ind_aubm_southern_lapse_eng }
+		command = { type = clrflag which = ind_aubm_southern_lapse_ast }
+		command = { type = clrflag which = ind_aubm_southern_lapse_hol }
+		command = { type = clrflag which = ind_aubm_southern_lapse_sov }
+		command = { type = clrflag which = ind_aubm_southern_lapse_noop }
+	}
+	action_b = {
+		trigger = { NOT = { OR = { AND = { flag = ind_aubm_local_armistice_target_u05 NOT = { OR = { flag = ind_aubm_local_armistice_target_eng flag = ind_aubm_local_armistice_target_ast flag = ind_aubm_local_armistice_target_hol flag = ind_aubm_local_armistice_target_sov } } war = { country = IND country = U05 } owned = { province = 1647 data = IND } } AND = { flag = ind_aubm_local_armistice_target_eng NOT = { OR = { flag = ind_aubm_local_armistice_target_u05 flag = ind_aubm_local_armistice_target_ast flag = ind_aubm_local_armistice_target_hol flag = ind_aubm_local_armistice_target_sov } } war = { country = IND country = ENG } owned = { province = 1432 data = IND } owned = { province = 1438 data = IND } } AND = { flag = ind_aubm_local_armistice_target_ast flag = ind_aubm_south_grand_ast_dispatch NOT = { OR = { flag = ind_aubm_local_armistice_target_u05 flag = ind_aubm_local_armistice_target_eng flag = ind_aubm_local_armistice_target_hol flag = ind_aubm_local_armistice_target_sov } } exists = AST war = { country = IND country = AST } owned = { province = 1707 data = AST } control = { province = 1707 data = IND } } AND = { flag = ind_aubm_local_armistice_target_hol NOT = { OR = { flag = ind_aubm_local_armistice_target_u05 flag = ind_aubm_local_armistice_target_eng flag = ind_aubm_local_armistice_target_ast flag = ind_aubm_local_armistice_target_sov } } war = { country = IND country = HOL } OR = { AND = { flag = ind_aubm_ratify_hol_colonial owned = { province = 1647 data = IND } } AND = { flag = ind_aubm_ratify_hol_home owned = { province = 122 data = HOL } control = { province = 122 data = IND } } } } AND = { flag = ind_aubm_local_armistice_target_sov NOT = { OR = { flag = ind_aubm_local_armistice_target_u05 flag = ind_aubm_local_armistice_target_eng flag = ind_aubm_local_armistice_target_ast flag = ind_aubm_local_armistice_target_hol } } war = { country = IND country = SOV } } } } }
+		name = "Lapse the stale or colliding ratification"
+		command = { trigger = { flag = ind_aubm_local_armistice_target_u05 NOT = { AND = { NOT = { war = { country = IND country = U05 } } owned = { province = 1647 data = IND } OR = { flag = ind_aubm_local_dei_outstanding flag = ind_aubm_south_grand_u05_dispatch flag = ind_aubm_south_legacy_u05_dispatch } } } } type = setflag which = ind_aubm_southern_lapse_u05 }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_eng NOT = { AND = { NOT = { war = { country = IND country = ENG } } owned = { province = 1432 data = IND } owned = { province = 1438 data = IND } OR = { flag = ind_aubm_local_malaya_outstanding flag = ind_aubm_south_grand_eng_dispatch } } } } type = setflag which = ind_aubm_southern_lapse_eng }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_hol NOT = { AND = { flag = ind_aubm_ratify_hol_colonial NOT = { war = { country = IND country = HOL } } owned = { province = 1647 data = IND } OR = { flag = ind_aubm_local_dei_outstanding flag = ind_aubm_south_grand_hol_dispatch flag = ind_aubm_south_legacy_hol_dispatch } } } } type = setflag which = ind_aubm_southern_lapse_hol }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_ast } type = setflag which = ind_aubm_southern_lapse_ast }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_sov } type = setflag which = ind_aubm_southern_lapse_sov }
+		command = { trigger = { NOT = { OR = { flag = ind_aubm_local_armistice_target_u05 flag = ind_aubm_local_armistice_target_eng flag = ind_aubm_local_armistice_target_ast flag = ind_aubm_local_armistice_target_hol flag = ind_aubm_local_armistice_target_sov } } } type = setflag which = ind_aubm_southern_lapse_noop }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_u05 NOT = { war = { country = IND country = U05 } } owned = { province = 1647 data = IND } OR = { flag = ind_aubm_local_dei_outstanding flag = ind_aubm_south_grand_u05_dispatch flag = ind_aubm_south_legacy_u05_dispatch } } type = setflag which = ind_aubm_ratifier_resume_u05 }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_eng NOT = { war = { country = IND country = ENG } } owned = { province = 1432 data = IND } owned = { province = 1438 data = IND } OR = { flag = ind_aubm_local_malaya_outstanding flag = ind_aubm_south_grand_eng_dispatch } } type = setflag which = ind_aubm_ratifier_resume_eng }
+		command = { trigger = { flag = ind_aubm_local_armistice_target_hol flag = ind_aubm_ratify_hol_colonial NOT = { war = { country = IND country = HOL } } owned = { province = 1647 data = IND } OR = { flag = ind_aubm_local_dei_outstanding flag = ind_aubm_south_grand_hol_dispatch flag = ind_aubm_south_legacy_hol_dispatch } } type = setflag which = ind_aubm_ratifier_resume_hol }
+		command = { trigger = { flag = ind_aubm_ratifier_resume_u05 } type = clrflag which = ind_aubm_local_armistice_target_u05 }
+		command = { trigger = { flag = ind_aubm_ratifier_resume_eng } type = clrflag which = ind_aubm_local_armistice_target_eng }
+		command = { trigger = { flag = ind_aubm_ratifier_resume_hol } type = clrflag which = ind_aubm_local_armistice_target_hol }
+		command = { trigger = { flag = ind_aubm_ratifier_resume_u05 } type = event which = 9282050 where = IND when = 0 }
+		command = { trigger = { flag = ind_aubm_ratifier_resume_eng } type = event which = 9282051 where = IND when = 0 }
+		command = { trigger = { flag = ind_aubm_ratifier_resume_hol } type = event which = 9282053 where = IND when = 0 }
+		command = { trigger = { OR = { flag = ind_aubm_southern_lapse_u05 flag = ind_aubm_southern_lapse_eng flag = ind_aubm_southern_lapse_ast flag = ind_aubm_southern_lapse_hol flag = ind_aubm_southern_lapse_sov flag = ind_aubm_southern_lapse_noop } } type = event which = 9287611 where = IND when = 1 }
+		command = { type = clrflag which = ind_aubm_ratifier_resume_u05 }
+		command = { type = clrflag which = ind_aubm_ratifier_resume_eng }
+		command = { type = clrflag which = ind_aubm_ratifier_resume_hol }
+	}
+}
+
+#########################################################################
+# Alpha 20: route-neutral Batavia, Malaya and Dutch local conventions
+# Reserved event IDs: 9287600-9287639
+#########################################################################
+
+event = {
+	id = 9287600
+	random = no
+	persistent = yes
+	country = IND
+	name = "Southern Local Convention Board"
+	desc = "Batavia, the Straits and the Netherlands home campaign are independent legal files. They do not require a complete Southern Command victory. Each convention checks the named legal owner and current Indian control again before terms are delivered; an unrelated occupier can neither earn the claim nor lose its territory through this board."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	action_a = {
+		trigger = { NOT = { flag = ind_aubm_southern_local_lock } NOT = { flag = ind_aubm_common_south_pending } NOT = { flag = ind_aubm_south_grand_u05_dispatch } NOT = { flag = ind_aubm_south_grand_eng_dispatch } NOT = { flag = ind_aubm_south_grand_hol_dispatch } NOT = { flag = ind_aubm_south_legacy_u05_dispatch } NOT = { flag = ind_aubm_south_legacy_hol_dispatch } NOT = { flag = ind_aubm_jp_settlement_pending } NOT = { flag = ind_aubm_local_dei_outstanding } NOT = { flag = ind_aubm_local_malaya_outstanding } NOT = { flag = ind_aubm_local_hol_home_outstanding } NOT = { OR = { flag = ind_aubm_local_armistice_target_u05 flag = ind_aubm_local_armistice_target_eng flag = ind_aubm_local_armistice_target_ast flag = ind_aubm_local_armistice_target_hol flag = ind_aubm_local_armistice_target_sov } } NOT = { OR = { flag = ind_aubm_southern_lapse_u05 flag = ind_aubm_southern_lapse_eng flag = ind_aubm_southern_lapse_ast flag = ind_aubm_southern_lapse_hol flag = ind_aubm_southern_lapse_sov flag = ind_aubm_southern_lapse_noop } } OR = { AND = { flag = ind_aubm_regional_pending_u05 flag = ind_aubm_regional_current_u05 control = { province = 1647 data = IND } OR = { AND = { exists = U05 war = { country = IND country = U05 } owned = { province = 1647 data = U05 } } AND = { NOT = { exists = U05 } owned = { province = 1647 data = IND } } } } AND = { flag = ind_aubm_regional_pending_hol_colonial flag = ind_aubm_regional_current_hol_colonial exists = HOL war = { country = IND country = HOL } owned = { province = 1647 data = HOL } control = { province = 1647 data = IND } } } }
+		name = "Open the Batavia convention"
+		command = { type = clrflag which = ind_aubm_local_dei_target_u05 }
+		command = { type = clrflag which = ind_aubm_local_dei_target_hol_colonial }
+		command = { trigger = { flag = ind_aubm_regional_pending_u05 flag = ind_aubm_regional_current_u05 control = { province = 1647 data = IND } OR = { AND = { exists = U05 war = { country = IND country = U05 } owned = { province = 1647 data = U05 } } AND = { NOT = { exists = U05 } owned = { province = 1647 data = IND } } } } type = setflag which = ind_aubm_local_dei_target_u05 }
+		command = { trigger = { flag = ind_aubm_regional_pending_hol_colonial flag = ind_aubm_regional_current_hol_colonial exists = HOL war = { country = IND country = HOL } owned = { province = 1647 data = HOL } control = { province = 1647 data = IND } } type = setflag which = ind_aubm_local_dei_target_hol_colonial }
+		command = { type = setflag which = ind_aubm_southern_local_lock }
+		command = { type = event which = 9287601 where = IND when = 1 }
+	}
+	action_b = {
+		trigger = { flag = ind_aubm_regional_pending_eng_malaya flag = ind_aubm_regional_current_eng_malaya exists = ENG war = { country = IND country = ENG } owned = { province = 1432 data = ENG } owned = { province = 1438 data = ENG } control = { province = 1432 data = IND } control = { province = 1438 data = IND } NOT = { flag = ind_aubm_southern_local_lock } NOT = { flag = ind_aubm_common_south_pending } NOT = { flag = ind_aubm_south_grand_u05_dispatch } NOT = { flag = ind_aubm_south_grand_eng_dispatch } NOT = { flag = ind_aubm_south_grand_hol_dispatch } NOT = { flag = ind_aubm_south_legacy_u05_dispatch } NOT = { flag = ind_aubm_south_legacy_hol_dispatch } NOT = { flag = ind_aubm_jp_settlement_pending } NOT = { flag = ind_aubm_local_dei_outstanding } NOT = { flag = ind_aubm_local_malaya_outstanding } NOT = { flag = ind_aubm_local_hol_home_outstanding } NOT = { OR = { flag = ind_aubm_local_armistice_target_u05 flag = ind_aubm_local_armistice_target_eng flag = ind_aubm_local_armistice_target_ast flag = ind_aubm_local_armistice_target_hol flag = ind_aubm_local_armistice_target_sov } } NOT = { OR = { flag = ind_aubm_southern_lapse_u05 flag = ind_aubm_southern_lapse_eng flag = ind_aubm_southern_lapse_ast flag = ind_aubm_southern_lapse_hol flag = ind_aubm_southern_lapse_sov flag = ind_aubm_southern_lapse_noop } } }
+		name = "Open the Singapore-Kuala Lumpur convention"
+		command = { type = setflag which = ind_aubm_southern_local_lock }
+		command = { type = event which = 9287602 where = IND when = 1 }
+	}
+	action_c = {
+		trigger = { flag = ind_aubm_regional_pending_hol flag = ind_aubm_regional_current_hol control = { province = 122 data = IND } OR = { AND = { exists = HOL war = { country = IND country = HOL } owned = { province = 122 data = HOL } } AND = { NOT = { exists = HOL } owned = { province = 122 data = IND } } } NOT = { flag = ind_aubm_southern_local_lock } NOT = { flag = ind_aubm_common_south_pending } NOT = { flag = ind_aubm_south_grand_u05_dispatch } NOT = { flag = ind_aubm_south_grand_eng_dispatch } NOT = { flag = ind_aubm_south_grand_hol_dispatch } NOT = { flag = ind_aubm_south_legacy_u05_dispatch } NOT = { flag = ind_aubm_south_legacy_hol_dispatch } NOT = { flag = ind_aubm_jp_settlement_pending } NOT = { flag = ind_aubm_local_dei_outstanding } NOT = { flag = ind_aubm_local_malaya_outstanding } NOT = { flag = ind_aubm_local_hol_home_outstanding } NOT = { OR = { flag = ind_aubm_local_armistice_target_u05 flag = ind_aubm_local_armistice_target_eng flag = ind_aubm_local_armistice_target_ast flag = ind_aubm_local_armistice_target_hol flag = ind_aubm_local_armistice_target_sov } } NOT = { OR = { flag = ind_aubm_southern_lapse_u05 flag = ind_aubm_southern_lapse_eng flag = ind_aubm_southern_lapse_ast flag = ind_aubm_southern_lapse_hol flag = ind_aubm_southern_lapse_sov flag = ind_aubm_southern_lapse_noop } } }
+		name = "Offer a Netherlands home-country armistice"
+		command = { type = setflag which = ind_aubm_southern_local_lock }
+		command = { type = setflag which = ind_aubm_local_hol_home_outstanding }
+		command = { trigger = { exists = HOL war = { country = IND country = HOL } owned = { province = 122 data = HOL } control = { province = 122 data = IND } } type = event which = 9287607 where = HOL when = 0 }
+		command = { trigger = { NOT = { exists = HOL } owned = { province = 122 data = IND } control = { province = 122 data = IND } } type = event which = 9282053 where = IND when = 0 }
+	}
+	action_d = {
+		name = "Return to the regional settlement board"
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9287601
+	random = no
+	persistent = yes
+	country = IND
+	name = "The Batavia Convention: Indonesia's Status"
+	desc = "Holding Batavia permits a local Indonesian convention without conquering every East Indies victory province. Sovereignty and protection are available from Batavia alone. Direct Indian administration requires one additional oil, naval or administrative centre legally owned by the same opponent."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	action_a = {
+		trigger = { flag = ind_aubm_southern_local_lock NOT = { flag = ind_aubm_local_dei_outstanding } OR = { flag = ind_aubm_local_dei_target_u05 flag = ind_aubm_local_dei_target_hol_colonial } }
+		name = "Sponsor a sovereign Indonesian partner"
+		command = { type = setflag which = ind_aubm_local_dei_sovereign }
+		command = { type = clrflag which = ind_aubm_local_dei_protected }
+		command = { type = clrflag which = ind_aubm_local_dei_direct }
+		command = { type = setflag which = ind_aubm_local_dei_outstanding }
+		command = { type = belligerence value = -2 }
+		command = { type = event which = 9287603 where = IND when = 1 }
+	}
+	action_b = {
+		trigger = { flag = ind_aubm_southern_local_lock NOT = { flag = ind_aubm_local_dei_outstanding } supplies = 500 OR = { flag = ind_aubm_local_dei_target_u05 flag = ind_aubm_local_dei_target_hol_colonial } }
+		name = "Protected Indonesia | -500 supplies | +4 dissent"
+		command = { type = supplies value = -500 }
+		command = { type = dissent value = 4 }
+		command = { type = clrflag which = ind_aubm_local_dei_sovereign }
+		command = { type = setflag which = ind_aubm_local_dei_protected }
+		command = { type = clrflag which = ind_aubm_local_dei_direct }
+		command = { type = setflag which = ind_aubm_local_dei_outstanding }
+		command = { type = event which = 9287603 where = IND when = 1 }
+	}
+	action_c = {
+		trigger = {
+			flag = ind_aubm_southern_local_lock
+			NOT = { flag = ind_aubm_local_dei_outstanding }
+			OR = {
+				AND = { flag = ind_aubm_local_dei_target_u05 OR = { AND = { owned = { province = 1632 data = U05 } control = { province = 1632 data = IND } } AND = { owned = { province = 1636 data = U05 } control = { province = 1636 data = IND } } AND = { owned = { province = 1653 data = U05 } control = { province = 1653 data = IND } } AND = { owned = { province = 1659 data = U05 } control = { province = 1659 data = IND } } } }
+				AND = { flag = ind_aubm_local_dei_target_hol_colonial OR = { AND = { owned = { province = 1632 data = HOL } control = { province = 1632 data = IND } } AND = { owned = { province = 1636 data = HOL } control = { province = 1636 data = IND } } AND = { owned = { province = 1653 data = HOL } control = { province = 1653 data = IND } } AND = { owned = { province = 1659 data = HOL } control = { province = 1659 data = IND } } } }
+			}
+		}
+		name = "Direct mandate (second centre) | +8 dissent"
+		command = { type = dissent value = 8 }
+		command = { type = belligerence value = 8 }
+		command = { type = clrflag which = ind_aubm_local_dei_sovereign }
+		command = { type = clrflag which = ind_aubm_local_dei_protected }
+		command = { type = setflag which = ind_aubm_local_dei_direct }
+		command = { type = setflag which = ind_aubm_local_dei_outstanding }
+		command = { type = setflag which = ind_aubm_occupation_upkeep }
+		command = { type = event which = 9282093 where = IND when = 1 }
+		command = { type = event which = 9287603 where = IND when = 1 }
+	}
+	action_d = {
+		name = "Postpone the Batavia convention"
+		command = { type = clrflag which = ind_aubm_local_dei_target_u05 }
+		command = { type = clrflag which = ind_aubm_local_dei_target_hol_colonial }
+		command = { type = clrflag which = ind_aubm_southern_local_lock }
+		command = { type = event which = 9287600 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9287602
+	random = no
+	persistent = yes
+	country = IND
+	name = "The Straits Convention: Malaya's Status"
+	desc = "Indian control of Singapore and Kuala Lumpur creates a standalone Malayan settlement. This convention transfers only British-owned Malaya. It does not transfer Borneo, settle another enemy or require the East Indies, Australia or Japan to have fallen."
+	style = 2
+	picture = "aubm_v4_london_settlement"
+	action_a = {
+		trigger = { flag = ind_aubm_southern_local_lock flag = ind_aubm_regional_current_eng_malaya NOT = { flag = ind_aubm_local_malaya_outstanding } }
+		name = "Sponsor a sovereign Malaysian partner"
+		command = { type = setflag which = ind_aubm_local_malaya_sovereign }
+		command = { type = clrflag which = ind_aubm_local_malaya_protected }
+		command = { type = clrflag which = ind_aubm_local_malaya_direct }
+		command = { type = setflag which = ind_aubm_local_malaya_outstanding }
+		command = { type = belligerence value = -2 }
+		command = { type = event which = 9287604 where = IND when = 1 }
+	}
+	action_b = {
+		trigger = { flag = ind_aubm_southern_local_lock flag = ind_aubm_regional_current_eng_malaya NOT = { flag = ind_aubm_local_malaya_outstanding } supplies = 500 }
+		name = "Protected Malaysia | -500 supplies | +4 dissent"
+		command = { type = supplies value = -500 }
+		command = { type = dissent value = 4 }
+		command = { type = clrflag which = ind_aubm_local_malaya_sovereign }
+		command = { type = setflag which = ind_aubm_local_malaya_protected }
+		command = { type = clrflag which = ind_aubm_local_malaya_direct }
+		command = { type = setflag which = ind_aubm_local_malaya_outstanding }
+		command = { type = event which = 9287604 where = IND when = 1 }
+	}
+	action_c = {
+		trigger = { flag = ind_aubm_southern_local_lock flag = ind_aubm_regional_current_eng_malaya NOT = { flag = ind_aubm_local_malaya_outstanding } }
+		name = "Retain a direct Malayan mandate | +8 dissent"
+		command = { type = dissent value = 8 }
+		command = { type = belligerence value = 8 }
+		command = { type = clrflag which = ind_aubm_local_malaya_sovereign }
+		command = { type = clrflag which = ind_aubm_local_malaya_protected }
+		command = { type = setflag which = ind_aubm_local_malaya_direct }
+		command = { type = setflag which = ind_aubm_local_malaya_outstanding }
+		command = { type = setflag which = ind_aubm_occupation_upkeep }
+		command = { type = event which = 9282093 where = IND when = 1 }
+		command = { type = event which = 9287604 where = IND when = 1 }
+	}
+	action_d = {
+		name = "Postpone the Straits convention"
+		command = { type = clrflag which = ind_aubm_southern_local_lock }
+		command = { type = event which = 9287600 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9287603
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	name = "Delhi Delivers the Batavia Terms"
+	desc = "The legal and operational position is checked again before the colonial government receives Delhi's terms. Loss of Batavia, a change of legal owner or the end of that pairwise war cancels the unratified convention."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	action_a = {
+		trigger = { flag = ind_aubm_southern_local_lock flag = ind_aubm_local_dei_outstanding OR = { AND = { flag = ind_aubm_local_dei_target_u05 control = { province = 1647 data = IND } OR = { AND = { exists = U05 war = { country = IND country = U05 } owned = { province = 1647 data = U05 } } AND = { NOT = { exists = U05 } owned = { province = 1647 data = IND } } } } AND = { flag = ind_aubm_local_dei_target_hol_colonial exists = HOL war = { country = IND country = HOL } owned = { province = 1647 data = HOL } control = { province = 1647 data = IND } } } }
+		name = "Deliver terms to the verified legal owner"
+		command = { trigger = { flag = ind_aubm_local_dei_target_u05 exists = U05 } type = event which = 9282000 where = U05 when = 0 }
+		command = { trigger = { flag = ind_aubm_local_dei_target_u05 NOT = { exists = U05 } owned = { province = 1647 data = IND } control = { province = 1647 data = IND } } type = event which = 9282050 where = IND when = 0 }
+		command = { trigger = { flag = ind_aubm_local_dei_target_hol_colonial } type = event which = 9287606 where = HOL when = 0 }
+	}
+	action_b = {
+		trigger = { flag = ind_aubm_southern_local_lock flag = ind_aubm_local_dei_outstanding NOT = { OR = { AND = { flag = ind_aubm_local_dei_target_u05 control = { province = 1647 data = IND } OR = { AND = { exists = U05 war = { country = IND country = U05 } owned = { province = 1647 data = U05 } } AND = { NOT = { exists = U05 } owned = { province = 1647 data = IND } } } } AND = { flag = ind_aubm_local_dei_target_hol_colonial exists = HOL war = { country = IND country = HOL } owned = { province = 1647 data = HOL } control = { province = 1647 data = IND } } } } }
+		name = "Cancel the lapsed Batavia file"
+		command = { trigger = { flag = ind_aubm_local_dei_target_u05 } type = setflag which = ind_aubm_southern_lapse_u05 }
+		command = { trigger = { flag = ind_aubm_local_dei_target_hol_colonial } type = setflag which = ind_aubm_southern_lapse_hol }
+		command = { type = event which = 9287611 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9287604
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	name = "Delhi Delivers the Straits Terms"
+	desc = "The British legal ownership of Singapore and Kuala Lumpur, the live pairwise war and Indian control of both cities are checked again before London receives the convention."
+	style = 2
+	picture = "aubm_v4_london_settlement"
+	action_a = {
+		trigger = { flag = ind_aubm_southern_local_lock flag = ind_aubm_local_malaya_outstanding exists = ENG war = { country = IND country = ENG } owned = { province = 1432 data = ENG } owned = { province = 1438 data = ENG } control = { province = 1432 data = IND } control = { province = 1438 data = IND } }
+		name = "Deliver the verified Malayan terms"
+		command = { type = event which = 9282005 where = ENG when = 0 }
+	}
+	action_b = {
+		trigger = { flag = ind_aubm_southern_local_lock flag = ind_aubm_local_malaya_outstanding NOT = { AND = { exists = ENG war = { country = IND country = ENG } owned = { province = 1432 data = ENG } owned = { province = 1438 data = ENG } control = { province = 1432 data = IND } control = { province = 1438 data = IND } } } }
+		name = "Cancel the lapsed Straits file"
+		command = { type = setflag which = ind_aubm_southern_lapse_eng }
+		command = { type = event which = 9287611 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9287606
+	random = no
+	persistent = yes
+	country = HOL
+	name = "The Netherlands Faces the Batavia Convention"
+	desc = "Indian forces hold Batavia. The Netherlands can recognize an Indonesian settlement, preserve commercial rights in a counteroffer, or continue the war. Only Dutch-owned Indonesian provinces and Dutch-owned western New Guinea can be ceded."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	action_a = {
+		trigger = { OR = { AND = { flag = ind_aubm_southern_local_lock flag = ind_aubm_local_dei_outstanding flag = ind_aubm_local_dei_target_hol_colonial exists = HOL war = { country = IND country = HOL } owned = { province = 1647 data = HOL } control = { province = 1647 data = IND } } AND = { flag = ind_aubm_south_grand_hol_dispatch exists = HOL war = { country = IND country = HOL } owned = { province = 1647 data = HOL } control = { province = 1647 data = IND } } } }
+		ai_chance = 50
+		name = "Recognize the Indonesian settlement"
+		command = { type = secederegion which = IND value = "Indonesia" when = 1 }
+		command = { type = secedeprovince which = IND value = 1594 when = 1 }
+		command = { type = secedeprovince which = IND value = 1595 when = 1 }
+		command = { type = secedeprovince which = IND value = 1596 when = 1 }
+		command = { type = secedeprovince which = IND value = 1597 when = 1 }
+		command = { type = secedeprovince which = IND value = 1598 when = 1 }
+		command = { type = secedeprovince which = IND value = 1599 when = 1 }
+		command = { type = secedeprovince which = IND value = 1600 when = 1 }
+		command = { type = secedeprovince which = IND value = 1601 when = 1 }
+		command = { type = clrflag which = ind_aubm_hol_colonial_counter }
+		command = { type = clrflag which = ind_aubm_hol_colonial_reject }
+		command = { type = setflag which = ind_aubm_hol_colonial_accept }
+		command = { type = event which = 9282053 where = IND when = 0 }
+	}
+	action_b = {
+		trigger = { OR = { AND = { flag = ind_aubm_southern_local_lock flag = ind_aubm_local_dei_outstanding flag = ind_aubm_local_dei_target_hol_colonial exists = HOL war = { country = IND country = HOL } owned = { province = 1647 data = HOL } control = { province = 1647 data = IND } } AND = { flag = ind_aubm_south_grand_hol_dispatch exists = HOL war = { country = IND country = HOL } owned = { province = 1647 data = HOL } control = { province = 1647 data = IND } } } }
+		ai_chance = 35
+		name = "Concede sovereignty; preserve Dutch commercial rights"
+		command = { type = secederegion which = IND value = "Indonesia" when = 1 }
+		command = { type = secedeprovince which = IND value = 1594 when = 1 }
+		command = { type = secedeprovince which = IND value = 1595 when = 1 }
+		command = { type = secedeprovince which = IND value = 1596 when = 1 }
+		command = { type = secedeprovince which = IND value = 1597 when = 1 }
+		command = { type = secedeprovince which = IND value = 1598 when = 1 }
+		command = { type = secedeprovince which = IND value = 1599 when = 1 }
+		command = { type = secedeprovince which = IND value = 1600 when = 1 }
+		command = { type = secedeprovince which = IND value = 1601 when = 1 }
+		command = { type = clrflag which = ind_aubm_hol_colonial_accept }
+		command = { type = clrflag which = ind_aubm_hol_colonial_reject }
+		command = { type = setflag which = ind_aubm_hol_colonial_counter }
+		command = { type = event which = 9282053 where = IND when = 0 }
+	}
+	action_c = {
+		trigger = { OR = { AND = { flag = ind_aubm_southern_local_lock flag = ind_aubm_local_dei_outstanding flag = ind_aubm_local_dei_target_hol_colonial exists = HOL war = { country = IND country = HOL } owned = { province = 1647 data = HOL } control = { province = 1647 data = IND } } AND = { flag = ind_aubm_south_grand_hol_dispatch exists = HOL war = { country = IND country = HOL } owned = { province = 1647 data = HOL } control = { province = 1647 data = IND } } } }
+		ai_chance = 15
+		name = "Reject Delhi's colonial convention"
+		command = { type = relation which = IND value = -40 }
+		command = { type = clrflag which = ind_aubm_hol_colonial_accept }
+		command = { type = clrflag which = ind_aubm_hol_colonial_counter }
+		command = { type = setflag which = ind_aubm_hol_colonial_reject }
+		command = { type = setflag which = ind_aubm_regional_refused_hol_colonial }
+		command = { type = clrflag which = ind_aubm_regional_pending_hol_colonial }
+		command = { type = clrflag which = ind_aubm_regional_current_hol_colonial }
+		command = { trigger = { flag = ind_aubm_local_dei_outstanding flag = ind_aubm_local_dei_target_hol_colonial } type = event which = 9287609 where = IND when = 1 }
+		command = { type = clrflag which = ind_aubm_south_grand_hol_dispatch }
+	}
+	action_d = {
+		trigger = { OR = { AND = { flag = ind_aubm_southern_local_lock flag = ind_aubm_local_dei_outstanding flag = ind_aubm_local_dei_target_hol_colonial NOT = { AND = { exists = HOL war = { country = IND country = HOL } owned = { province = 1647 data = HOL } control = { province = 1647 data = IND } } } } AND = { flag = ind_aubm_south_grand_hol_dispatch NOT = { AND = { exists = HOL war = { country = IND country = HOL } owned = { province = 1647 data = HOL } control = { province = 1647 data = IND } } } } } }
+		ai_chance = 100
+		name = "The Batavia claim has lapsed"
+		command = { trigger = { flag = ind_aubm_local_dei_outstanding flag = ind_aubm_local_dei_target_hol_colonial } type = setflag which = ind_aubm_southern_lapse_hol }
+		command = { trigger = { flag = ind_aubm_local_dei_outstanding flag = ind_aubm_local_dei_target_hol_colonial } type = event which = 9287611 where = IND when = 1 }
+		command = { type = clrflag which = ind_aubm_south_grand_hol_dispatch }
+	}
+}
+
+event = {
+	id = 9287607
+	random = no
+	persistent = yes
+	country = HOL
+	name = "The Netherlands Answers the Home-Country Armistice"
+	desc = "Indian forces hold Amsterdam. The Netherlands can accept pairwise peace, counter with reciprocal access, or continue the war. This home-country convention transfers no East Indies territory."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		trigger = { flag = ind_aubm_southern_local_lock flag = ind_aubm_local_hol_home_outstanding exists = HOL war = { country = IND country = HOL } owned = { province = 122 data = HOL } control = { province = 122 data = IND } }
+		ai_chance = 59
+		name = "Accept the pairwise armistice"
+		command = { type = relation which = IND value = 15 }
+		command = { type = event which = 9282053 where = IND when = 0 }
+	}
+	action_b = {
+		trigger = { flag = ind_aubm_southern_local_lock flag = ind_aubm_local_hol_home_outstanding exists = HOL war = { country = IND country = HOL } owned = { province = 122 data = HOL } control = { province = 122 data = IND } }
+		ai_chance = 25
+		name = "Accept peace with reciprocal access"
+		command = { type = access which = IND }
+		command = { type = relation which = IND value = 5 }
+		command = { type = event which = 9282053 where = IND when = 0 }
+	}
+	action_c = {
+		trigger = { flag = ind_aubm_southern_local_lock flag = ind_aubm_local_hol_home_outstanding exists = HOL war = { country = IND country = HOL } owned = { province = 122 data = HOL } control = { province = 122 data = IND } }
+		ai_chance = 15
+		name = "Continue the war"
+		command = { type = relation which = IND value = -35 }
+		command = { type = event which = 9287609 where = IND when = 1 }
+	}
+	action_d = {
+		trigger = { flag = ind_aubm_southern_local_lock flag = ind_aubm_local_hol_home_outstanding NOT = { AND = { exists = HOL war = { country = IND country = HOL } owned = { province = 122 data = HOL } control = { province = 122 data = IND } } } }
+		ai_chance = 1
+		name = "The Amsterdam claim has lapsed"
+		command = { type = setflag which = ind_aubm_southern_lapse_hol }
+		command = { type = event which = 9287611 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9287609
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	name = "A Southern Local Convention Is Refused"
+	desc = "The named government has refused Delhi's local terms. The refusal closes that one convention permanently; the historical victory remains recorded, no territorial transfer or peace is executed, and no daily reroll is available."
+	style = 2
+	picture = "aubm_v4_war_aims"
+	action_a = {
+		trigger = { OR = { flag = ind_aubm_local_dei_target_u05 flag = ind_aubm_local_dei_target_hol_colonial flag = ind_aubm_local_malaya_outstanding flag = ind_aubm_local_hol_home_outstanding } }
+		name = "Record the terminal refusal"
+		command = { trigger = { flag = ind_aubm_local_dei_target_u05 } type = setflag which = ind_aubm_regional_refused_u05 }
+		command = { trigger = { flag = ind_aubm_local_dei_target_hol_colonial } type = setflag which = ind_aubm_regional_refused_hol_colonial }
+		command = { trigger = { flag = ind_aubm_local_malaya_outstanding } type = setflag which = ind_aubm_regional_refused_eng_malaya }
+		command = { trigger = { flag = ind_aubm_local_hol_home_outstanding } type = setflag which = ind_aubm_regional_refused_hol }
+		command = { trigger = { OR = { flag = ind_aubm_local_dei_target_u05 flag = ind_aubm_local_dei_target_hol_colonial flag = ind_aubm_local_malaya_outstanding flag = ind_aubm_local_hol_home_outstanding } } type = clrflag which = ind_aubm_southern_local_lock }
+		command = { trigger = { flag = ind_aubm_local_dei_target_u05 } type = clrflag which = ind_aubm_regional_pending_u05 }
+		command = { trigger = { flag = ind_aubm_local_dei_target_u05 } type = clrflag which = ind_aubm_regional_current_u05 }
+		command = { trigger = { flag = ind_aubm_local_dei_target_u05 } type = clrflag which = ind_aubm_regional_suspended_u05 }
+		command = { trigger = { flag = ind_aubm_local_dei_target_hol_colonial } type = clrflag which = ind_aubm_regional_pending_hol_colonial }
+		command = { trigger = { flag = ind_aubm_local_dei_target_hol_colonial } type = clrflag which = ind_aubm_regional_current_hol_colonial }
+		command = { trigger = { flag = ind_aubm_local_dei_target_hol_colonial } type = clrflag which = ind_aubm_regional_suspended_hol_colonial }
+		command = { trigger = { flag = ind_aubm_local_malaya_outstanding } type = clrflag which = ind_aubm_regional_pending_eng_malaya }
+		command = { trigger = { flag = ind_aubm_local_malaya_outstanding } type = clrflag which = ind_aubm_regional_current_eng_malaya }
+		command = { trigger = { flag = ind_aubm_local_malaya_outstanding } type = clrflag which = ind_aubm_regional_suspended_eng_malaya }
+		command = { trigger = { flag = ind_aubm_local_hol_home_outstanding } type = clrflag which = ind_aubm_regional_pending_hol }
+		command = { trigger = { flag = ind_aubm_local_hol_home_outstanding } type = clrflag which = ind_aubm_regional_current_hol }
+		command = { trigger = { flag = ind_aubm_local_hol_home_outstanding } type = clrflag which = ind_aubm_regional_suspended_hol }
+		command = { trigger = { OR = { flag = ind_aubm_local_dei_target_u05 flag = ind_aubm_local_dei_target_hol_colonial } } type = clrflag which = ind_aubm_local_dei_sovereign }
+		command = { trigger = { OR = { flag = ind_aubm_local_dei_target_u05 flag = ind_aubm_local_dei_target_hol_colonial } } type = clrflag which = ind_aubm_local_dei_protected }
+		command = { trigger = { OR = { flag = ind_aubm_local_dei_target_u05 flag = ind_aubm_local_dei_target_hol_colonial } } type = clrflag which = ind_aubm_local_dei_direct }
+		command = { trigger = { OR = { flag = ind_aubm_local_dei_target_u05 flag = ind_aubm_local_dei_target_hol_colonial } } type = clrflag which = ind_aubm_local_dei_outstanding }
+		command = { trigger = { flag = ind_aubm_local_dei_target_u05 } type = clrflag which = ind_aubm_local_dei_target_u05 }
+		command = { trigger = { flag = ind_aubm_local_dei_target_hol_colonial } type = clrflag which = ind_aubm_local_dei_target_hol_colonial }
+		command = { trigger = { flag = ind_aubm_local_malaya_outstanding } type = clrflag which = ind_aubm_local_malaya_sovereign }
+		command = { trigger = { flag = ind_aubm_local_malaya_outstanding } type = clrflag which = ind_aubm_local_malaya_protected }
+		command = { trigger = { flag = ind_aubm_local_malaya_outstanding } type = clrflag which = ind_aubm_local_malaya_direct }
+		command = { trigger = { flag = ind_aubm_local_malaya_outstanding } type = clrflag which = ind_aubm_local_malaya_outstanding }
+		command = { trigger = { flag = ind_aubm_local_hol_home_outstanding } type = clrflag which = ind_aubm_local_hol_home_outstanding }
+		command = { type = dissent value = 1 }
+	}
+	action_b = {
+		trigger = { NOT = { OR = { flag = ind_aubm_local_dei_target_u05 flag = ind_aubm_local_dei_target_hol_colonial flag = ind_aubm_local_malaya_outstanding flag = ind_aubm_local_hol_home_outstanding } } }
+		name = "Discard the duplicate refusal notice"
+	}
+}
+
+event = {
+	id = 9287611
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	name = "A Southern Local Claim Lapses Before Ratification"
+	desc = "The pairwise war, legal ownership or Indian control changed before the convention could be ratified. The unexecuted file is cancelled. No third-party territory changes hands and the objective must be captured from its legal owner again before a new offer."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+	action_a = {
+		trigger = { OR = { flag = ind_aubm_southern_lapse_u05 flag = ind_aubm_southern_lapse_eng flag = ind_aubm_southern_lapse_ast flag = ind_aubm_southern_lapse_hol flag = ind_aubm_southern_lapse_sov flag = ind_aubm_southern_lapse_noop } }
+		name = "Close only the lapsed file"
+		command = { trigger = { flag = ind_aubm_southern_lapse_u05 flag = ind_aubm_regional_victory_u05 } type = setflag which = ind_aubm_regional_suspended_u05 }
+		command = { trigger = { flag = ind_aubm_southern_lapse_u05 } type = clrflag which = ind_aubm_regional_pending_u05 }
+		command = { trigger = { flag = ind_aubm_southern_lapse_u05 } type = clrflag which = ind_aubm_regional_current_u05 }
+		command = { trigger = { flag = ind_aubm_southern_lapse_hol flag = ind_aubm_regional_victory_hol_colonial OR = { flag = ind_aubm_local_dei_target_hol_colonial flag = ind_aubm_ratify_hol_colonial } } type = setflag which = ind_aubm_regional_suspended_hol_colonial }
+		command = { trigger = { flag = ind_aubm_southern_lapse_hol OR = { flag = ind_aubm_local_dei_target_hol_colonial flag = ind_aubm_ratify_hol_colonial } } type = clrflag which = ind_aubm_regional_pending_hol_colonial }
+		command = { trigger = { flag = ind_aubm_southern_lapse_hol OR = { flag = ind_aubm_local_dei_target_hol_colonial flag = ind_aubm_ratify_hol_colonial } } type = clrflag which = ind_aubm_regional_current_hol_colonial }
+		command = { trigger = { flag = ind_aubm_southern_lapse_eng flag = ind_aubm_regional_victory_eng_malaya } type = setflag which = ind_aubm_regional_suspended_eng_malaya }
+		command = { trigger = { flag = ind_aubm_southern_lapse_eng } type = clrflag which = ind_aubm_regional_pending_eng_malaya }
+		command = { trigger = { flag = ind_aubm_southern_lapse_eng } type = clrflag which = ind_aubm_regional_current_eng_malaya }
+		command = { trigger = { flag = ind_aubm_southern_lapse_hol flag = ind_aubm_regional_victory_hol OR = { flag = ind_aubm_local_hol_home_outstanding flag = ind_aubm_ratify_hol_home } } type = setflag which = ind_aubm_regional_suspended_hol }
+		command = { trigger = { flag = ind_aubm_southern_lapse_hol OR = { flag = ind_aubm_local_hol_home_outstanding flag = ind_aubm_ratify_hol_home } } type = clrflag which = ind_aubm_regional_pending_hol }
+		command = { trigger = { flag = ind_aubm_southern_lapse_hol OR = { flag = ind_aubm_local_hol_home_outstanding flag = ind_aubm_ratify_hol_home } } type = clrflag which = ind_aubm_regional_current_hol }
+		command = { trigger = { flag = ind_aubm_southern_lapse_ast flag = ind_aubm_regional_victory_ast } type = setflag which = ind_aubm_regional_suspended_ast }
+		command = { trigger = { flag = ind_aubm_southern_lapse_ast } type = clrflag which = ind_aubm_regional_pending_ast }
+		command = { trigger = { flag = ind_aubm_southern_lapse_ast } type = clrflag which = ind_aubm_regional_current_ast }
+		command = { trigger = { flag = ind_aubm_southern_lapse_u05 flag = ind_aubm_local_dei_target_u05 } type = clrflag which = ind_aubm_southern_local_lock }
+		command = { trigger = { flag = ind_aubm_southern_lapse_hol flag = ind_aubm_local_dei_target_hol_colonial } type = clrflag which = ind_aubm_southern_local_lock }
+		command = { trigger = { flag = ind_aubm_southern_lapse_eng flag = ind_aubm_local_malaya_outstanding } type = clrflag which = ind_aubm_southern_local_lock }
+		command = { trigger = { flag = ind_aubm_southern_lapse_hol flag = ind_aubm_local_hol_home_outstanding } type = clrflag which = ind_aubm_southern_local_lock }
+		command = { trigger = { flag = ind_aubm_southern_lapse_u05 flag = ind_aubm_local_dei_target_u05 } type = clrflag which = ind_aubm_local_dei_sovereign }
+		command = { trigger = { flag = ind_aubm_southern_lapse_u05 flag = ind_aubm_local_dei_target_u05 } type = clrflag which = ind_aubm_local_dei_protected }
+		command = { trigger = { flag = ind_aubm_southern_lapse_u05 flag = ind_aubm_local_dei_target_u05 } type = clrflag which = ind_aubm_local_dei_direct }
+		command = { trigger = { flag = ind_aubm_southern_lapse_u05 flag = ind_aubm_local_dei_target_u05 } type = clrflag which = ind_aubm_local_dei_outstanding }
+		command = { trigger = { flag = ind_aubm_southern_lapse_hol flag = ind_aubm_local_dei_target_hol_colonial } type = clrflag which = ind_aubm_local_dei_sovereign }
+		command = { trigger = { flag = ind_aubm_southern_lapse_hol flag = ind_aubm_local_dei_target_hol_colonial } type = clrflag which = ind_aubm_local_dei_protected }
+		command = { trigger = { flag = ind_aubm_southern_lapse_hol flag = ind_aubm_local_dei_target_hol_colonial } type = clrflag which = ind_aubm_local_dei_direct }
+		command = { trigger = { flag = ind_aubm_southern_lapse_hol flag = ind_aubm_local_dei_target_hol_colonial } type = clrflag which = ind_aubm_local_dei_outstanding }
+		command = { trigger = { flag = ind_aubm_southern_lapse_eng flag = ind_aubm_local_malaya_outstanding } type = clrflag which = ind_aubm_local_malaya_sovereign }
+		command = { trigger = { flag = ind_aubm_southern_lapse_eng flag = ind_aubm_local_malaya_outstanding } type = clrflag which = ind_aubm_local_malaya_protected }
+		command = { trigger = { flag = ind_aubm_southern_lapse_eng flag = ind_aubm_local_malaya_outstanding } type = clrflag which = ind_aubm_local_malaya_direct }
+		command = { trigger = { flag = ind_aubm_southern_lapse_eng flag = ind_aubm_local_malaya_outstanding } type = clrflag which = ind_aubm_local_malaya_outstanding }
+		command = { trigger = { flag = ind_aubm_southern_lapse_hol flag = ind_aubm_local_hol_home_outstanding } type = clrflag which = ind_aubm_local_hol_home_outstanding }
+		command = { trigger = { flag = ind_aubm_southern_lapse_u05 } type = clrflag which = ind_aubm_south_grand_u05_dispatch }
+		command = { trigger = { flag = ind_aubm_southern_lapse_u05 } type = clrflag which = ind_aubm_south_legacy_u05_dispatch }
+		command = { trigger = { flag = ind_aubm_southern_lapse_eng } type = clrflag which = ind_aubm_south_grand_eng_dispatch }
+		command = { trigger = { flag = ind_aubm_southern_lapse_ast } type = clrflag which = ind_aubm_south_grand_ast_dispatch }
+		command = { trigger = { flag = ind_aubm_southern_lapse_hol } type = clrflag which = ind_aubm_south_grand_hol_dispatch }
+		command = { trigger = { flag = ind_aubm_southern_lapse_hol } type = clrflag which = ind_aubm_south_legacy_hol_dispatch }
+		command = { trigger = { flag = ind_aubm_southern_lapse_u05 } type = clrflag which = ind_aubm_local_armistice_target_u05 }
+		command = { trigger = { flag = ind_aubm_southern_lapse_eng } type = clrflag which = ind_aubm_local_armistice_target_eng }
+		command = { trigger = { flag = ind_aubm_southern_lapse_ast } type = clrflag which = ind_aubm_local_armistice_target_ast }
+		command = { trigger = { flag = ind_aubm_southern_lapse_hol } type = clrflag which = ind_aubm_local_armistice_target_hol }
+		command = { trigger = { flag = ind_aubm_southern_lapse_sov } type = clrflag which = ind_aubm_local_armistice_target_sov }
+		command = { trigger = { flag = ind_aubm_southern_lapse_hol } type = clrflag which = ind_aubm_ratify_hol_colonial }
+		command = { trigger = { flag = ind_aubm_southern_lapse_hol } type = clrflag which = ind_aubm_ratify_hol_home }
+		command = { trigger = { flag = ind_aubm_southern_lapse_sov } type = clrflag which = ind_aubm_local_armistice_outstanding }
+		command = { trigger = { flag = ind_aubm_southern_lapse_sov } type = clrflag which = ind_aubm_local_armistice_retry_pending }
+		command = { trigger = { flag = ind_aubm_southern_lapse_sov } type = clrflag which = ind_aubm_local_armistice_retry_sov }
+		command = { trigger = { flag = ind_aubm_southern_lapse_sov } type = clrflag which = ind_aubm_local_soviet_sovereign_terms }
+		command = { trigger = { flag = ind_aubm_southern_lapse_sov } type = clrflag which = ind_aubm_local_soviet_protected_terms }
+		command = { trigger = { flag = ind_aubm_southern_lapse_sov } type = clrflag which = ind_aubm_local_soviet_base_terms }
+		command = { trigger = { flag = ind_aubm_southern_lapse_u05 flag = ind_aubm_local_dei_target_u05 } type = clrflag which = ind_aubm_local_dei_target_u05 }
+		command = { trigger = { flag = ind_aubm_southern_lapse_hol flag = ind_aubm_local_dei_target_hol_colonial } type = clrflag which = ind_aubm_local_dei_target_hol_colonial }
+		command = { type = clrflag which = ind_aubm_southern_lapse_u05 }
+		command = { type = clrflag which = ind_aubm_southern_lapse_eng }
+		command = { type = clrflag which = ind_aubm_southern_lapse_ast }
+		command = { type = clrflag which = ind_aubm_southern_lapse_hol }
+		command = { type = clrflag which = ind_aubm_southern_lapse_sov }
+		command = { type = clrflag which = ind_aubm_southern_lapse_noop }
+	}
+	action_b = {
+		trigger = { NOT = { OR = { flag = ind_aubm_southern_lapse_u05 flag = ind_aubm_southern_lapse_eng flag = ind_aubm_southern_lapse_ast flag = ind_aubm_southern_lapse_hol flag = ind_aubm_southern_lapse_sov flag = ind_aubm_southern_lapse_noop } } }
+		name = "Discard the duplicate lapse notice"
+	}
+}
+
+event = {
+	id = 9287613
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_wartime_framework
+		NOT = { flag = ind_aubm_southern_refusal_migration_alpha20 }
+	}
+	name = "India Migrates the Southern Refusal Ledger"
+	desc = "The Cabinet reconciles Alpha 19 southern refusals with the terminal regional convention ledger. Historical victories remain recorded, but an already rejected file cannot be offered again without the published paid-retry process."
+	style = 2
+	picture = "aubm_v4_war_aims"
+	date = { day = 0 month = january year = 1933 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Canonicalize the prior refusal record"
+		command = { trigger = { flag = ind_aubm_south_u05_reject } type = setflag which = ind_aubm_regional_refused_u05 }
+		command = { trigger = { flag = ind_aubm_south_u05_reject } type = clrflag which = ind_aubm_regional_pending_u05 }
+		command = { trigger = { flag = ind_aubm_south_u05_reject } type = clrflag which = ind_aubm_regional_current_u05 }
+		command = { trigger = { flag = ind_aubm_south_u05_reject } type = clrflag which = ind_aubm_regional_suspended_u05 }
+		command = { trigger = { flag = ind_aubm_common_south_britain_reject } type = setflag which = ind_aubm_regional_refused_eng_malaya }
+		command = { trigger = { flag = ind_aubm_common_south_britain_reject } type = clrflag which = ind_aubm_regional_pending_eng_malaya }
+		command = { trigger = { flag = ind_aubm_common_south_britain_reject } type = clrflag which = ind_aubm_regional_current_eng_malaya }
+		command = { trigger = { flag = ind_aubm_common_south_britain_reject } type = clrflag which = ind_aubm_regional_suspended_eng_malaya }
+		command = { trigger = { flag = ind_aubm_hol_colonial_reject } type = setflag which = ind_aubm_regional_refused_hol_colonial }
+		command = { trigger = { flag = ind_aubm_hol_colonial_reject } type = clrflag which = ind_aubm_regional_pending_hol_colonial }
+		command = { trigger = { flag = ind_aubm_hol_colonial_reject } type = clrflag which = ind_aubm_regional_current_hol_colonial }
+		command = { trigger = { flag = ind_aubm_hol_colonial_reject } type = clrflag which = ind_aubm_regional_suspended_hol_colonial }
+		command = { trigger = { flag = ind_aubm_common_south_ast_reject } type = clrflag which = ind_aubm_regional_pending_ast }
+		command = { trigger = { flag = ind_aubm_common_south_ast_reject } type = clrflag which = ind_aubm_regional_current_ast }
+		command = { trigger = { flag = ind_aubm_common_south_ast_reject } type = clrflag which = ind_aubm_regional_suspended_ast }
+		command = { type = setflag which = ind_aubm_southern_refusal_migration_alpha20 }
 	}
 }

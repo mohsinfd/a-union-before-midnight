@@ -79,8 +79,8 @@ that an alliance also accepts every current and future war obligation.
 
 ## Current Scope
 
-- 4,343 custom event entries across 56 India and foreign-response modules.
-- 103 player decisions and 4,240 automatic events or foreign replies.
+- 4,577 custom event entries across 57 India and foreign-response modules.
+- 103 player decisions and 4,474 automatic events or foreign replies.
 - 236 practical opponent tags: 26 bespoke campaign systems and 210 generated
   country lifecycles, including later successor states.
 - Three constitutional governments, a 1936 mandate and a 1946 postwar mandate.

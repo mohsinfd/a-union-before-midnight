@@ -257,16 +257,16 @@ event = {
 
 	action_a = {
 		name = "Standardize the national yards"
-		command = { type = build_time which = carrier when = now where = relative value = -50 }
-		command = { type = build_time which = light_carrier when = now where = relative value = -50 }
-		command = { type = build_time which = escort_carrier when = now where = relative value = -50 }
-		command = { type = build_time which = battleship when = now where = relative value = -50 }
-		command = { type = build_time which = battlecruiser when = now where = relative value = -50 }
-		command = { type = build_time which = heavy_cruiser when = now where = relative value = -50 }
-		command = { type = build_time which = light_cruiser when = now where = relative value = -50 }
-		command = { type = build_time which = destroyer when = now where = relative value = -50 }
-		command = { type = build_time which = submarine when = now where = relative value = -50 }
-		command = { type = build_time which = transport when = now where = relative value = -50 }
+		command = { type = build_time which = carrier when = on_upgrade where = relative value = -50 }
+		command = { type = build_time which = light_carrier when = on_upgrade where = relative value = -50 }
+		command = { type = build_time which = escort_carrier when = on_upgrade where = relative value = -50 }
+		command = { type = build_time which = battleship when = on_upgrade where = relative value = -50 }
+		command = { type = build_time which = battlecruiser when = on_upgrade where = relative value = -50 }
+		command = { type = build_time which = heavy_cruiser when = on_upgrade where = relative value = -50 }
+		command = { type = build_time which = light_cruiser when = on_upgrade where = relative value = -50 }
+		command = { type = build_time which = destroyer when = on_upgrade where = relative value = -50 }
+		command = { type = build_time which = submarine when = on_upgrade where = relative value = -50 }
+		command = { type = build_time which = transport when = on_upgrade where = relative value = -50 }
 		command = { type = setflag which = ind_aubm_dockyard_efficiency_standard }
 		command = { type = setflag which = ind_aubm_dockyard_efficiency_50 }
 	}
@@ -296,16 +296,16 @@ event = {
 
 	action_a = {
 		name = "Apply the mature-yard standard to new contracts"
-		command = { type = build_time which = carrier when = now where = relative value = -40 }
-		command = { type = build_time which = light_carrier when = now where = relative value = -40 }
-		command = { type = build_time which = escort_carrier when = now where = relative value = -40 }
-		command = { type = build_time which = battleship when = now where = relative value = -40 }
-		command = { type = build_time which = battlecruiser when = now where = relative value = -40 }
-		command = { type = build_time which = heavy_cruiser when = now where = relative value = -35 }
-		command = { type = build_time which = light_cruiser when = now where = relative value = -35 }
-		command = { type = build_time which = destroyer when = now where = relative value = -30 }
-		command = { type = build_time which = submarine when = now where = relative value = -30 }
-		command = { type = build_time which = transport when = now where = relative value = -30 }
+		command = { type = build_time which = carrier when = on_upgrade where = relative value = -40 }
+		command = { type = build_time which = light_carrier when = on_upgrade where = relative value = -40 }
+		command = { type = build_time which = escort_carrier when = on_upgrade where = relative value = -40 }
+		command = { type = build_time which = battleship when = on_upgrade where = relative value = -40 }
+		command = { type = build_time which = battlecruiser when = on_upgrade where = relative value = -40 }
+		command = { type = build_time which = heavy_cruiser when = on_upgrade where = relative value = -35 }
+		command = { type = build_time which = light_cruiser when = on_upgrade where = relative value = -35 }
+		command = { type = build_time which = destroyer when = on_upgrade where = relative value = -30 }
+		command = { type = build_time which = submarine when = on_upgrade where = relative value = -30 }
+		command = { type = build_time which = transport when = on_upgrade where = relative value = -30 }
 		command = { type = setflag which = ind_aubm_dockyard_efficiency_50 }
 	}
 }

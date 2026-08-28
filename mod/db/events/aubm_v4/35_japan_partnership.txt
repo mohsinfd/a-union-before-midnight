@@ -25,6 +25,21 @@ event = {
 		NOT = { alliance = { country = IND country = USA } }
 		NOT = { alliance = { country = IND country = GER } }
 		NOT = { alliance = { country = IND country = SOV } }
+		NOT = { participant = { country = IND value = 4 } }
+		NOT = { flag = ind_aubm_commitment_allied }
+		NOT = { flag = ind_aubm_commitment_german }
+		NOT = { flag = ind_aubm_commitment_soviet }
+		NOT = { flag = ind_aubm_commitment_japan }
+		NOT = { flag = ind_v4a_treaty_commonwealth }
+		NOT = { flag = ind_v4a_treaty_naval_compact }
+		NOT = { flag = ind_v4a_treaty_formal_alliance }
+		NOT = { flag = ind_v4a_treaty_cobelligerent }
+		NOT = { flag = ind_gc_formal_axis }
+		NOT = { flag = ind_gc_cobelligerent }
+		NOT = { flag = ind_v4_sov_equal_compact }
+		NOT = { flag = ind_v4_sov_supervised_compact }
+		NOT = { flag = ind_aubm_diplomatic_negotiation_pending }
+		NOT = { flag = ind_aubm_realignment_cooldown }
 		NOT = { flag = ind_v4_japan_commercial_channel }
 		OR = {
 			NOT = { flag = ind_v4_japan_conditional_engagement }
@@ -67,6 +82,21 @@ event = {
 			money = 350
 			supplies = 600
 			# AUBM_ACTION_RESERVE_END
+			NOT = { participant = { country = IND value = 4 } }
+			NOT = { flag = ind_aubm_commitment_allied }
+			NOT = { flag = ind_aubm_commitment_german }
+			NOT = { flag = ind_aubm_commitment_soviet }
+			NOT = { flag = ind_aubm_commitment_japan }
+			NOT = { flag = ind_v4a_treaty_commonwealth }
+			NOT = { flag = ind_v4a_treaty_naval_compact }
+			NOT = { flag = ind_v4a_treaty_formal_alliance }
+			NOT = { flag = ind_v4a_treaty_cobelligerent }
+			NOT = { flag = ind_gc_formal_axis }
+			NOT = { flag = ind_gc_cobelligerent }
+			NOT = { flag = ind_v4_sov_equal_compact }
+			NOT = { flag = ind_v4_sov_supervised_compact }
+			NOT = { flag = ind_aubm_diplomatic_negotiation_pending }
+			NOT = { flag = ind_aubm_realignment_cooldown }
 		}
 		name = "Send proposal: -350 money, -600 supplies"
 		command = { type = money value = -350 }
@@ -74,6 +104,8 @@ event = {
 		command = { type = clrflag which = ind_aubm_jp_retry_ready }
 		command = { type = clrflag which = ind_aubm_jp_rejected }
 		command = { type = setflag which = ind_aubm_jp_proposal_pending }
+		command = { type = setflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = setflag which = ind_aubm_negotiation_japan }
 		command = { type = setflag which = ind_aubm_jp_score_ledger_v2 }
 		command = { type = setflag which = ind_aubm_jp_influence value = 1 }
 		command = { trigger = { flag = ind_v4_japan_bilateral_channel } type = setflag which = ind_aubm_jp_influence when = 1 value = 1 }
@@ -173,9 +205,6 @@ event = {
 		ai_chance = 70
 		name = "Accept India's senior southern command"
 		command = { type = clrflag which = ind_aubm_jp_proposal_pending }
-		command = { type = setflag which = ind_aubm_jp_partnership }
-		command = { type = setflag which = ind_aubm_jp_tier_senior }
-		command = { type = setflag which = ind_aubm_jp_india_full_sphere }
 		command = { type = non_aggression which = IND where = JAP when = 1440 }
 		command = { type = relation which = IND value = 45 }
 		command = { type = ai which = "aubm/japan/JAP_india_senior.ai" }
@@ -214,9 +243,6 @@ event = {
 		ai_chance = 40
 		name = "Accept an equal compact and review the wider sphere later"
 		command = { type = clrflag which = ind_aubm_jp_proposal_pending }
-		command = { type = setflag which = ind_aubm_jp_partnership }
-		command = { type = setflag which = ind_aubm_jp_tier_peer }
-		command = { type = setflag which = ind_aubm_jp_india_core_sphere }
 		command = { type = non_aggression which = IND where = JAP when = 1440 }
 		command = { type = relation which = IND value = 30 }
 		command = { type = ai which = "aubm/japan/JAP_india_peer.ai" }
@@ -255,9 +281,6 @@ event = {
 		ai_chance = 15
 		name = "Accept a limited sovereign partnership"
 		command = { type = clrflag which = ind_aubm_jp_proposal_pending }
-		command = { type = setflag which = ind_aubm_jp_partnership }
-		command = { type = setflag which = ind_aubm_jp_tier_junior }
-		command = { type = setflag which = ind_aubm_jp_india_core_sphere }
 		command = { type = non_aggression which = IND where = JAP when = 1080 }
 		command = { type = relation which = IND value = 20 }
 		command = { type = ai which = "aubm/japan/JAP_india_peer.ai" }
@@ -294,6 +317,7 @@ event = {
 	picture = "aubm_v4_japan_southern_choice"
 
 	action_a = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_japan exists = JAP NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { war = { country = IND country = JAP } } }
 		name = "Prepare separate China and theatre policies"
 		command = { type = clrflag which = ind_aubm_jp_proposal_pending }
 		command = { type = clrflag which = ind_aubm_jp_counteroffer }
@@ -304,10 +328,21 @@ event = {
 		command = { type = clrflag which = ind_aubm_jp_tier_counter }
 		command = { type = clrflag which = ind_aubm_jp_india_core_sphere }
 		command = { type = setflag which = ind_aubm_jp_partnership }
+		command = { type = setflag which = ind_aubm_commitment_japan }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_japan }
 		command = { type = setflag which = ind_aubm_jp_tier_senior }
 		command = { type = setflag which = ind_aubm_jp_india_full_sphere }
 		command = { type = dissent value = -2 }
 		command = { type = relation which = JAP value = 20 }
+	}
+	action_b = {
+		trigger = { OR = { NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_negotiation_japan } NOT = { exists = JAP } participant = { country = IND value = 4 } flag = ind_aubm_commitment_allied flag = ind_aubm_commitment_german flag = ind_aubm_commitment_soviet war = { country = IND country = JAP } } }
+		name = "File the obsolete reply without changing India's alignment"
+		command = { type = clrflag which = ind_aubm_jp_proposal_pending }
+		command = { type = clrflag which = ind_aubm_jp_counteroffer }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_japan }
 	}
 }
 
@@ -323,6 +358,7 @@ event = {
 	picture = "aubm_v4_japan_southern_choice"
 
 	action_a = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_japan exists = JAP NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { war = { country = IND country = JAP } } }
 		name = "Build leverage before the southern campaign"
 		command = { type = clrflag which = ind_aubm_jp_proposal_pending }
 		command = { type = clrflag which = ind_aubm_jp_counteroffer }
@@ -333,10 +369,21 @@ event = {
 		command = { type = clrflag which = ind_aubm_jp_tier_counter }
 		command = { type = clrflag which = ind_aubm_jp_india_full_sphere }
 		command = { type = setflag which = ind_aubm_jp_partnership }
+		command = { type = setflag which = ind_aubm_commitment_japan }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_japan }
 		command = { type = setflag which = ind_aubm_jp_tier_peer }
 		command = { type = setflag which = ind_aubm_jp_india_core_sphere }
 		command = { type = dissent value = -1 }
 		command = { type = relation which = JAP value = 15 }
+	}
+	action_b = {
+		trigger = { OR = { NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_negotiation_japan } NOT = { exists = JAP } participant = { country = IND value = 4 } flag = ind_aubm_commitment_allied flag = ind_aubm_commitment_german flag = ind_aubm_commitment_soviet war = { country = IND country = JAP } } }
+		name = "File the obsolete reply without changing India's alignment"
+		command = { type = clrflag which = ind_aubm_jp_proposal_pending }
+		command = { type = clrflag which = ind_aubm_jp_counteroffer }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_japan }
 	}
 }
 
@@ -352,6 +399,7 @@ event = {
 	picture = "aubm_v4_japan_southern_choice"
 
 	action_a = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_japan exists = JAP NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { war = { country = IND country = JAP } } }
 		name = "Earn the wider sphere"
 		command = { type = clrflag which = ind_aubm_jp_proposal_pending }
 		command = { type = clrflag which = ind_aubm_jp_counteroffer }
@@ -362,10 +410,21 @@ event = {
 		command = { type = clrflag which = ind_aubm_jp_tier_counter }
 		command = { type = clrflag which = ind_aubm_jp_india_full_sphere }
 		command = { type = setflag which = ind_aubm_jp_partnership }
+		command = { type = setflag which = ind_aubm_commitment_japan }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_japan }
 		command = { type = setflag which = ind_aubm_jp_tier_junior }
 		command = { type = setflag which = ind_aubm_jp_india_core_sphere }
 		command = { type = dissent value = 1 }
 		command = { type = relation which = JAP value = 10 }
+	}
+	action_b = {
+		trigger = { OR = { NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_negotiation_japan } NOT = { exists = JAP } participant = { country = IND value = 4 } flag = ind_aubm_commitment_allied flag = ind_aubm_commitment_german flag = ind_aubm_commitment_soviet war = { country = IND country = JAP } } }
+		name = "File the obsolete reply without changing India's alignment"
+		command = { type = clrflag which = ind_aubm_jp_proposal_pending }
+		command = { type = clrflag which = ind_aubm_jp_counteroffer }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_japan }
 	}
 }
 
@@ -385,10 +444,14 @@ event = {
 
 	action_a = {
 		ai_chance = 45
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_japan exists = JAP NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { war = { country = IND country = JAP } } }
 		name = "Accept the limited division and earn a review"
 		command = { type = clrflag which = ind_aubm_jp_proposal_pending }
 		command = { type = clrflag which = ind_aubm_jp_counteroffer }
 		command = { type = setflag which = ind_aubm_jp_partnership }
+		command = { type = setflag which = ind_aubm_commitment_japan }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_japan }
 		command = { type = setflag which = ind_aubm_jp_tier_counter }
 		command = { type = setflag which = ind_aubm_jp_india_core_sphere }
 		command = { type = non_aggression which = IND where = JAP when = 1080 }
@@ -397,6 +460,7 @@ event = {
 	}
 	action_b = {
 		ai_chance = 35
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_japan exists = JAP NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { war = { country = IND country = JAP } } }
 		name = "Buy full sphere at severe resource and dissent cost"
 		command = { type = clrflag which = ind_aubm_jp_proposal_pending }
 		command = { type = money value = -1500 }
@@ -406,6 +470,9 @@ event = {
 		command = { type = clrflag which = ind_aubm_jp_counteroffer }
 		command = { type = setflag which = ind_aubm_jp_influence when = 1 value = 2 }
 		command = { type = setflag which = ind_aubm_jp_partnership }
+		command = { type = setflag which = ind_aubm_commitment_japan }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_japan }
 		command = { type = setflag which = ind_aubm_jp_tier_senior }
 		command = { type = setflag which = ind_aubm_jp_india_full_sphere }
 		command = { type = non_aggression which = IND where = JAP when = 1440 }
@@ -416,6 +483,7 @@ event = {
 	}
 	action_c = {
 		ai_chance = 20
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_japan exists = JAP NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { war = { country = IND country = JAP } } }
 		name = "Reject hierarchy; build an independent Asian order"
 		command = { type = clrflag which = ind_aubm_jp_proposal_pending }
 		command = { type = clrflag which = ind_aubm_jp_counteroffer }
@@ -428,6 +496,17 @@ event = {
 		command = { type = relation which = CHI value = 30 }
 		command = { type = dissent value = -1 }
 		command = { type = event which = 9281124 where = JAP when = 2 }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_japan }
+	}
+	action_d = {
+		ai_chance = 0
+		trigger = { OR = { NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_negotiation_japan } NOT = { exists = JAP } participant = { country = IND value = 4 } flag = ind_aubm_commitment_allied flag = ind_aubm_commitment_german flag = ind_aubm_commitment_soviet war = { country = IND country = JAP } } }
+		name = "Let the overtaken counteroffer lapse"
+		command = { type = clrflag which = ind_aubm_jp_proposal_pending }
+		command = { type = clrflag which = ind_aubm_jp_counteroffer }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_japan }
 	}
 }
 
@@ -443,6 +522,7 @@ event = {
 
 	action_a = {
 		ai_chance = 35
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_japan exists = JAP NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { war = { country = IND country = JAP } } }
 		name = "Embargo Japan and sustain China: -700 supplies, +3 dissent"
 		command = { type = clrflag which = ind_aubm_jp_proposal_pending }
 		command = { type = setflag which = ind_aubm_jp_rejected }
@@ -453,9 +533,12 @@ event = {
 		command = { type = embargo which = IND where = JAP value = 1 }
 		command = { type = setflag which = ind_aubm_jp_rupture }
 		command = { type = setflag which = ind_aubm_jp_rejection_sanctions }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_japan }
 	}
 	action_b = {
 		ai_chance = 40
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_japan exists = JAP NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { war = { country = IND country = JAP } } }
 		name = "Build deterrent: -600 money, -1200 supplies"
 		command = { type = clrflag which = ind_aubm_jp_proposal_pending }
 		command = { type = setflag which = ind_aubm_jp_rejected }
@@ -467,9 +550,12 @@ event = {
 		command = { type = setflag which = ind_aubm_jp_rejection_deterrent }
 		command = { type = setflag which = ind_aubm_jp_retry_cooldown }
 		command = { type = event which = 9281122 where = IND when = 540 }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_japan }
 	}
 	action_c = {
 		ai_chance = 25
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_japan exists = JAP NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { war = { country = IND country = JAP } } }
 		name = "Leave the invitation open for one year"
 		command = { type = clrflag which = ind_aubm_jp_proposal_pending }
 		command = { type = setflag which = ind_aubm_jp_rejected }
@@ -477,6 +563,17 @@ event = {
 		command = { type = relation which = JAP value = 5 }
 		command = { type = setflag which = ind_aubm_jp_retry_cooldown }
 		command = { type = event which = 9281122 where = IND when = 360 }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_japan }
+	}
+	action_d = {
+		ai_chance = 0
+		trigger = { OR = { NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_negotiation_japan } NOT = { exists = JAP } participant = { country = IND value = 4 } flag = ind_aubm_commitment_allied flag = ind_aubm_commitment_german flag = ind_aubm_commitment_soviet war = { country = IND country = JAP } } }
+		name = "File the obsolete rejection"
+		command = { type = clrflag which = ind_aubm_jp_proposal_pending }
+		command = { type = clrflag which = ind_aubm_jp_counteroffer }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_japan }
 	}
 }
 

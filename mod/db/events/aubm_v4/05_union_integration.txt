@@ -445,6 +445,10 @@ event = {
 		OR = {
 			NOT = { flag = aubm_v4_union_legitimacy_gain }
 			NOT = { flag = aubm_v4_state_capacity_gain }
+			# A mixed legitimacy/capacity opening can still lack any provincial
+			# bargain.  Alpha 19 left that valid combination outside all three
+			# 1934 reviews and stalled every later integration event.
+			NOT = { flag = aubm_v4_provincial_bargain }
 		}
 	}
 

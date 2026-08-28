@@ -59,6 +59,7 @@ REQUIRED_V4_MODULES = {
     "47_global_campaign_matrix.txt",
 	"48_route_wartime_consequences.txt",
 	"49_bespoke_armistices.txt",
+	"50_southeast_asia_operations.txt",
 }
 KNOWN_COMMANDS = {
     "access",
@@ -274,6 +275,126 @@ def scalar(text: str, key: str) -> str | None:
     return match.group(1).strip('"')
 
 
+def direct_scalar(text: str, key: str) -> str | None:
+    """Return a scalar assigned directly inside the outermost block.
+
+    Event commands may put a conditional ``trigger`` block before their own
+    ``type`` field.  A normal recursive regex then sees predicate fields such
+    as ``navy = { type = 1 }`` first and misidentifies them as the command
+    type.  Restricting the lookup to depth one preserves the canonical
+    trigger-first command syntax used by Darkest Hour.
+    """
+    clean = strip_comments(text)
+    opening = clean.find("{")
+    if opening < 0:
+        return None
+    pattern = re.compile(
+        rf"\b{re.escape(key)}\s*=\s*(\"[^\"]*\"|[^\s\}}]+)", re.I
+    )
+    depth = 0
+    in_quote = False
+    index = opening
+    while index < len(clean):
+        char = clean[index]
+        if char == '"':
+            in_quote = not in_quote
+            index += 1
+            continue
+        if not in_quote:
+            if char == "{":
+                depth += 1
+                index += 1
+                continue
+            if char == "}":
+                depth -= 1
+                if depth <= 0:
+                    break
+                index += 1
+                continue
+            if depth == 1:
+                match = pattern.match(clean, index)
+                if match:
+                    return match.group(1).strip('"')
+        index += 1
+    return None
+
+
+def direct_nested_block(text: str, key: str) -> str | None:
+    """Return a named block assigned directly inside the outermost block."""
+    clean = strip_comments(text)
+    opening = clean.find("{")
+    if opening < 0:
+        return None
+    pattern = re.compile(rf"\b{re.escape(key)}\s*=\s*\{{", re.I)
+    depth = 1
+    in_quote = False
+    index = opening + 1
+    while index < len(clean):
+        char = clean[index]
+        if char == '"':
+            in_quote = not in_quote
+            index += 1
+            continue
+        if not in_quote and depth == 1:
+            match = pattern.match(clean, index)
+            if match:
+                nested_opening = match.end() - 1
+                nested_depth = 0
+                nested_quote = False
+                for nested_index in range(nested_opening, len(clean)):
+                    nested_char = clean[nested_index]
+                    if nested_char == '"':
+                        nested_quote = not nested_quote
+                    elif not nested_quote:
+                        if nested_char == "{":
+                            nested_depth += 1
+                        elif nested_char == "}":
+                            nested_depth -= 1
+                            if nested_depth == 0:
+                                return clean[match.start() : nested_index + 1]
+                return None
+        if not in_quote:
+            if char == "{":
+                depth += 1
+            elif char == "}":
+                depth -= 1
+                if depth <= 0:
+                    break
+        index += 1
+    return None
+
+
+def direct_block_body(text: str) -> str:
+    """Return only depth-one content from the outermost braced block."""
+    clean = strip_comments(text)
+    opening = clean.find("{")
+    if opening < 0:
+        return clean
+    output: list[str] = []
+    depth = 1
+    in_quote = False
+    for char in clean[opening + 1 :]:
+        if char == '"':
+            in_quote = not in_quote
+            if depth == 1:
+                output.append(char)
+            continue
+        if not in_quote:
+            if char == "{":
+                depth += 1
+                if depth == 2:
+                    output.append(" ")
+                continue
+            if char == "}":
+                depth -= 1
+                if depth == 0:
+                    break
+                continue
+        if depth == 1:
+            output.append(char)
+    return "".join(output)
+
+
 def integers(text: str) -> set[int]:
     return {int(value) for value in re.findall(r"\b\d+\b", strip_comments(text))}
 
@@ -291,6 +412,7 @@ class Validator:
         self.india_events: dict[int, tuple[pathlib.Path, Block]] = {}
         self.initial_owned: set[int] = set()
         self.province_ids: set[int] = set()
+        self.land_province_ids: set[int] = set()
         self.area_names: set[str] = set()
         self.region_names: set[str] = set()
         self.leader_ids: set[int] = set()
@@ -351,7 +473,10 @@ class Validator:
             next(reader, None)
             for row in reader:
                 if row and row[0].isdigit():
-                    self.province_ids.add(int(row[0]))
+                    province_id = int(row[0])
+                    self.province_ids.add(province_id)
+                    if len(row) > 6 and row[6].strip().casefold() != "ocean":
+                        self.land_province_ids.add(province_id)
                     if len(row) > 2 and row[2] not in {"", "-"}:
                         self.area_names.add(row[2])
                     if len(row) > 3 and row[3] not in {"", "-"}:
@@ -688,7 +813,22 @@ class Validator:
                 if any(chance is None for chance in chances):
                     self.error(path, event.line, f"Event {event_id} mixes explicit and implicit ai_chance.")
                 elif sum(int(chance) for chance in chances if chance) != 100:
-                    self.error(path, event.line, f"Event {event_id} ai_chance does not sum to 100.")
+                    # Triggered actions can form mutually exclusive option
+                    # sets.  In that case each textually identical predicate
+                    # group must carry a complete 100-point distribution.
+                    trigger_groups: dict[str, list[int]] = defaultdict(list)
+                    for action, chance in zip(actions, chances):
+                        trigger = direct_nested_block(action.text, "trigger")
+                        if trigger is None:
+                            trigger_groups = {}
+                            break
+                        normalized = re.sub(r"\s+", " ", trigger).strip().lower()
+                        trigger_groups[normalized].append(int(chance or 0))
+                    if (
+                        len(trigger_groups) < 2
+                        or any(sum(group) != 100 for group in trigger_groups.values())
+                    ):
+                        self.error(path, event.line, f"Event {event_id} ai_chance does not sum to 100.")
             names = [scalar(action.text, "name") for action in actions]
             if len([name for name in names if name]) != len(set(name for name in names if name)):
                 self.error(path, event.line, f"Event {event_id} has duplicate action names.")
@@ -720,15 +860,25 @@ class Validator:
         event_id: int,
         country: str | None,
     ) -> None:
-        lines = event.text.splitlines()
-        for offset, line in enumerate(lines):
-            command = re.search(r"\bcommand\s*=\s*\{.*?\btype\s*=\s*([A-Za-z0-9_]+)", line)
-            if not command:
+        for command in extract_blocks(event.text, "command"):
+            line = command.text
+            command_type = direct_scalar(line, "type")
+            line_number = event.line + command.line - 1
+            if not command_type:
+                self.error(path, line_number, f"Event {event_id} has a command without a direct type.")
                 continue
-            command_type = command.group(1)
-            line_number = event.line + offset
             if command_type not in KNOWN_COMMANDS:
                 self.error(path, line_number, f"Event {event_id} uses unknown command {command_type}.")
+
+            if command_type == "build_time":
+                update_mode = direct_scalar(line, "when")
+                if update_mode != "on_upgrade":
+                    self.error(
+                        path,
+                        line_number,
+                        f"Event {event_id} build_time must use when = on_upgrade; "
+                        f"found {update_mode or 'no when mode'}.",
+                    )
 
             for province_text in re.findall(r"\bprovince\s*=\s*(-?\d+)", line):
                 province = int(province_text)
@@ -790,12 +940,20 @@ class Validator:
                 target = re.search(r"\bvalue\s*=\s*(-?\d+)", line)
                 if not target:
                     self.error(path, line_number, f"Event {event_id} has malformed province transfer.")
-                elif int(target.group(1)) >= 0 and int(target.group(1)) not in self.province_ids:
-                    self.error(
-                        path,
-                        line_number,
-                        f"Event {event_id} transfers unknown province {target.group(1)}.",
-                    )
+                else:
+                    province = int(target.group(1))
+                    if province >= 0 and province not in self.province_ids:
+                        self.error(
+                            path,
+                            line_number,
+                            f"Event {event_id} transfers unknown province {province}.",
+                        )
+                    elif province >= 0 and province not in self.land_province_ids:
+                        self.error(
+                            path,
+                            line_number,
+                            f"Event {event_id} transfers non-land province {province}.",
+                        )
 
             if command_type in {"secedearea", "secederegion"}:
                 target = re.search(r'\bvalue\s*=\s*(?:"([^"]+)"|([A-Za-z0-9_.-]+))', line)
@@ -857,7 +1015,7 @@ class Validator:
                         f"Event {event_id} appoints unknown minister {identifier.group(1)}.",
                     )
 
-            payload = line[command.end() :]
+            payload = direct_block_body(line)
 
             if command_type == "activate_unit_type":
                 target = re.search(r"\bwhich\s*=\s*([A-Za-z0-9_]+)", payload)
@@ -1201,7 +1359,7 @@ class Validator:
             }
             for unit_type, value in expected.items():
                 command = (
-                    f"build_time which = {unit_type} when = now "
+                    f"build_time which = {unit_type} when = on_upgrade "
                     f"where = relative value = {value}"
                 )
                 if command not in event.text:
@@ -1232,7 +1390,7 @@ class Validator:
             }
             for unit_type, value in expected.items():
                 command = (
-                    f"build_time which = {unit_type} when = now "
+                    f"build_time which = {unit_type} when = on_upgrade "
                     f"where = relative value = {value}"
                 )
                 if command not in event.text:
