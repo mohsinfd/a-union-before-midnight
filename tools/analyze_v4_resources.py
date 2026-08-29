@@ -54,10 +54,11 @@ def main() -> int:
         "supplies": scenario_value(scenario, "supplies"),
         "manpower": scenario_value(scenario, "manpower"),
     }
-    opening = apply_choices(opening, records, V3_OPENING)
-    opening = apply_choices(opening, records, V4_1933)
-    opening = apply_choices(opening, records, V4_1934)
-    opening = apply_choices(opening, records, OPTIONAL_1934)
+    active_flags: set[str] = set()
+    opening = apply_choices(opening, records, V3_OPENING, active_flags)
+    opening = apply_choices(opening, records, V4_1933, active_flags)
+    opening = apply_choices(opening, records, V4_1934, active_flags)
+    opening = apply_choices(opening, records, OPTIONAL_1934, active_flags)
 
     errors: list[str] = []
     revenue_action = event_action(records[9280316], "a")

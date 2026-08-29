@@ -14,11 +14,12 @@ event = {
 
 	trigger = {
 		flag = ind_v4_initialized
+		NOT = { flag = ind_aubm_fresh_1933_bootstrap }
 		NOT = { flag = ind_aubm_wartime_framework }
 	}
 
-	name = "The War Cabinet Opens a Clean Ledger"
-	desc = "The Cabinet Secretariat separates old diplomatic receipts from current obligations. India's actual alliance now determines its partner, each actual war determines its enemies, and battlefield control determines campaign credit. Earlier plans waive no victory conditions and impose no second command fee. The permanent War Cabinet can revise alliances, declare separate wars and inspect every active theatre."
+	name = "Compatibility Review: War Cabinet"
+	desc = "This save predates the current War Cabinet. The review preserves live alliances, wars and battlefield results, then retires overlapping old war-entry and reward files. It does not change forces, resources, research or earned victories."
 	style = 2
 	picture = "aubm_v4_india_world_war"
 
@@ -27,7 +28,7 @@ event = {
 	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
-		name = "Replace the overlapping wartime dossiers"
+		name = "Reconcile the old wartime record (no cost)"
 		command = { type = setflag which = ind_aubm_wartime_framework }
 		command = { type = setflag which = ind_v43_war_cabinet }
 
@@ -1482,17 +1483,18 @@ event = {
 	country = IND
 	trigger = {
 		flag = ind_aubm_wartime_framework
+		NOT = { flag = ind_aubm_fresh_1933_bootstrap }
 		NOT = { flag = ind_aubm_commitment_migration_alpha20 }
 	}
-	name = "India Migrates the Strategic-Commitment Ledger"
-	desc = "The Cabinet reconciles formal alliance membership and every older binding compact with the exclusive strategic-commitment ledger. This one-time audit also protects campaigns loaded from an earlier release."
+	name = "Compatibility Review: Strategic Commitments"
+	desc = "This save predates the exclusive commitment record. The review preserves the live alliance or strongest existing compact, removes contradictory old entries and keeps current wars and battlefield credit unchanged."
 	style = 2
 	picture = "aubm_v4_grand_strategy"
 	date = { day = 0 month = january year = 1933 }
 	offset = 1
 	deathdate = { day = 29 month = december year = 1964 }
 	action_a = {
-		name = "Reconstruct the binding commitment"
+		name = "Preserve the binding commitment (no cost)"
 		command = { type = sleepevent which = 9270404 }
 		command = { type = sleepevent which = 9270405 }
 		command = { type = sleepevent which = 9270406 }

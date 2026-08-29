@@ -20,7 +20,7 @@ The repository does not redistribute the complete game or complete foundation.
 
 The V3 history of this project depended on Blood and Iron. Donor-derived V3 map
 sprites, palettes and model panels are deliberately excluded from public V4
-manifests and Git snapshots. Any remaining archival or third-party material
+manifests and the current V4 Git tree. Any remaining archival or third-party material
 remains subject to the rights and permissions of its original author;
 publication here does not relicense it.
 

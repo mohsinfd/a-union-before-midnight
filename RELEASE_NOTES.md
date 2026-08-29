@@ -1,5 +1,95 @@
 # Release Notes
 
+## 4.2.0-alpha.22 / Alpha 22 - A Clean Opening and Audited Early Game
+
+*29 Aug 2026*
+
+Alpha 22 implements the first focused subset of the Gameplay Fun Rework. It
+removes fresh-start compatibility clickwork, makes the first political costs
+legible and repairs defects found by auditing the existing events on which the
+new opening depends. It does not yet implement the later ledger, national
+priority, force-balance, operations-board, staged-theatre or postwar-memory
+milestones in the full specification.
+
+### Three Meaningful Opening Choices
+
+- Reduced the newest campaign's opening sequence from **nine windows to three
+  player-facing windows total**: one premise acknowledgment at scenario
+  opening, the provisional-cabinet choice during the opening 72 hours and the
+  union-method choice on 6 January.
+- Folded fresh campaign-state, service, modernization and strategy
+  initialization into the premise instead of presenting one-button repair
+  events.
+- Folded the authoritative Union Register and integration-start flags into all
+  three union actions. A fresh campaign no longer needs the later one-action
+  Union Register popup, and the constitutional chain remains reachable.
+- Disclosed the immediate money, supplies, manpower and dissent effects in all
+  opening cabinet and union action labels within Darkest Hour's action-text
+  limit.
+- Gated the permanent War Cabinet behind both the completed union and opened
+  Union Register. Coalition, compact and independent-war commands cannot open
+  during the unfinished constitutional prologue.
+- Confirmed that the six bookkeeping windows in the older August 1934
+  autosave were campaign state (`9280000`), wartime retirement (`9281900`),
+  modernization (`9281000`), cabinet records (`9270792`), strategy records
+  (`9280800`) and the Union Register (`9280100`). None appears in the current
+  1 February 1933 autosave.
+
+### Fresh Retirement, Upgrade-Save Compatibility
+
+- Added a fresh-1933 marker and pre-slept **218 events total** only for that new
+  scenario: 216 retired legacy wartime/route IDs plus the two generic V3
+  Gurkha and frontier decisions. Fresh games use the unique V4 specialist
+  paths.
+- Excluded compatibility helpers from fresh starts while retaining them for
+  upgraded saves that may need state repair. Their names and descriptions now
+  identify them plainly as Compatibility Reviews.
+- Removed fresh-style money and manpower grants from upgrade-save repair
+  events. Migration can restore flags but cannot replay the opening treasury or
+  service pool.
+
+### Existing-Event Audit Repairs
+
+- Made the 1934 and 1936 constitutional review branches mutually exclusive by
+  defining each fallback as the exact complement of its named outcomes.
+- Gave all 18 previously write-only identity flags from the six three-way 1933
+  founding settlements one modest remembered dividend in event 9280112, the
+  first July 1934 Union report. The existing one-shot report carries the
+  callbacks, so this adds no popup or repeatable reward.
+- Added the +1 and +2 research modifiers promised by two education-policy
+  actions whose descriptions previously advertised rewards they did not give.
+- Moved the foreign-credit marker until after the prior-credit service check,
+  preventing a first credit package from charging its own service fee.
+- Converted three obsolete, unreachable direct-war War Cabinet menus into
+  one-action redirects to the current guarded War Cabinet. Upgraded saves with
+  an old menu queued cannot bypass current commitment locks.
+- Cross-locked the legacy and V4 Gurkha/frontier systems. Either version closes
+  its duplicate, while a fresh campaign exposes the unique V4 unit path.
+
+### Alpha 22 Status
+
+Alpha 22 passed the deterministic **4,434-file** build, complete release suite,
+**342-file** donor-safe public manifest, **1,531/1,531-file** personal local
+deployment and fresh Darkest Hour executable smoke. Static validation ended
+with 0 errors and 0 warnings; the engine log contained 0 exact `ERROR :` lines,
+province validation reported no errors and no crash dump appeared.
+
+The user's 1 February 1933 autosave contains all three opening event IDs
+9270000, 9270002 and 9270001, followed only by the Army Oath (`9271200`). It
+contains none of the nine Compatibility Review IDs and has the expected fresh,
+integrated and Union Register flags. Live history exposed the War Cabinet after
+the union choice. The opening run is therefore verified, but no complete human
+wartime/postwar Alpha 22 playthrough has been completed.
+
+The release gate also now fails immediately on a stale generated route file,
+and the economy analyzers evaluate selected conditional branches instead of
+summing mutually exclusive dividends.
+
+The maintained `validate_v4.py` pipeline is the authoritative production
+validator. The standalone `validate_v3_legacy.py` harness is deprecated and is
+not a mandatory release gate because its required `tools/v3_config.json` is no
+longer present.
+
 ## 4.2.0-alpha.21 / Alpha 21 - Every Indian Route Through Southeast Asia
 
 *29 Aug 2026*
@@ -7,7 +97,7 @@
 The exact personal **41-family India sprite profile** has been restored in the
 developer's local installation after the previous public deployment. It is a
 local-only overlay: its donor-derived descriptors, animation strips, palettes
-and model panels are excluded from Git and do **not** ship in the public
+and model panels are excluded from the current V4 Git tree and do **not** ship in the public
 installer. Public installations continue to use redistribution-safe Darkest
 Hour Full visuals.
 
@@ -201,7 +291,8 @@ in the gameplay status guide.
 - Split public installer content from developer-only personal visual outputs.
 - Excluded copied foundation and donor map files, donor-derived unit sprites and
   palettes, donor-derived model panels, and unresolved visual overrides.
-- Kept local personal assets outside Git and public release manifests.
+- Kept local personal assets outside the release's Git tree and public
+  manifests.
 - Verified every file in the active installer manifest by SHA-256.
 
 ### Status

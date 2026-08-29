@@ -442,13 +442,20 @@ event = {
 	trigger = {
 		flag = aubm_v4_first_union_budget
 		NOT = { flag = aubm_v4_review_1934 }
-		OR = {
-			NOT = { flag = aubm_v4_union_legitimacy_gain }
-			NOT = { flag = aubm_v4_state_capacity_gain }
-			# A mixed legitimacy/capacity opening can still lack any provincial
-			# bargain.  Alpha 19 left that valid combination outside all three
-			# 1934 reviews and stalled every later integration event.
-			NOT = { flag = aubm_v4_provincial_bargain }
+		# Exact complement of the consent and administrative-state reviews.
+		# This makes the three outcomes mutually exclusive on the first poll.
+		NOT = {
+			OR = {
+				AND = {
+					flag = aubm_v4_union_legitimacy_gain
+					flag = aubm_v4_provincial_bargain
+					NOT = { flag = aubm_v4_union_coercion }
+				}
+				AND = {
+					flag = aubm_v4_state_capacity_gain
+					flag = aubm_v4_union_coercion
+				}
+			}
 		}
 	}
 
@@ -537,7 +544,7 @@ event = {
 	}
 
 	name = "Telegraphs, Statistics and a Common Time"
-	desc = "Government cannot plan with reports that arrive in incompatible formats and months late. The new Central Statistical and Telegraph Service adopts common codes, a single fiscal calendar and Union-wide industrial returns. Provinces accept the intrusion because the same network gives them faster weather, crop and freight information."
+	desc = "Government cannot plan with reports that arrive in incompatible formats and months late. The new Central Statistical and Telegraph Service adopts common codes, a single fiscal calendar and Union-wide industrial returns. Its first report also reveals the practical dividend from each settlement made during the Union's first year."
 	style = 2
 	picture = "aubm_v4_telegraph_statistics"
 
@@ -546,9 +553,27 @@ event = {
 	deathdate = { day = 29 month = september year = 1964 }
 
 	action_a = {
-		name = "Make information a public utility: +3 TC"
+		name = "Publish the first Union report: +3 TC and 1933 dividends"
 		command = { type = tc_mod value = 3 }
 		command = { type = intelligence which = us value = 1 }
+		command = { trigger = { flag = aubm_v4_ceylon_autonomy } type = manpowerpool value = 8 }
+		command = { trigger = { flag = aubm_v4_ceylon_represented } type = tc_mod value = 1 }
+		command = { trigger = { flag = aubm_v4_ceylon_strategic } type = supplies value = 200 }
+		command = { trigger = { flag = aubm_v4_compensated_customs } type = money value = 100 }
+		command = { trigger = { flag = aubm_v4_uniform_tariff } type = money value = 150 }
+		command = { trigger = { flag = aubm_v4_regional_customs } type = dissent value = -1 }
+		command = { trigger = { flag = aubm_v4_malaya_treaty } type = rarematerialspool value = 100 }
+		command = { trigger = { flag = aubm_v4_malaya_commercial } type = money value = 150 }
+		command = { trigger = { flag = aubm_v4_malaya_security } type = supplies value = 200 }
+		command = { trigger = { flag = aubm_v4_bengal_growers } type = manpowerpool value = 8 }
+		command = { trigger = { flag = aubm_v4_bengal_exporters } type = money value = 150 }
+		command = { trigger = { flag = aubm_v4_bengal_board } type = dissent value = -1 }
+		command = { trigger = { flag = aubm_v4_frontier_council } type = dissent value = -1 }
+		command = { trigger = { flag = aubm_v4_frontier_commissioner } type = supplies value = 200 }
+		command = { trigger = { flag = aubm_v4_frontier_provincial } type = manpowerpool value = 8 }
+		command = { trigger = { flag = aubm_v4_budget_compacts } type = dissent value = -1 }
+		command = { trigger = { flag = aubm_v4_budget_austerity } type = money value = 150 }
+		command = { trigger = { flag = aubm_v4_budget_loan } type = supplies value = 250 }
 		command = { type = setflag which = aubm_v4_statistics_service }
 	}
 }
@@ -743,7 +768,17 @@ event = {
 	trigger = {
 		flag = aubm_v4_fiscal_federalism
 		NOT = { flag = aubm_v4_review_1936 }
-		NOT = { flag = aubm_v4_union_rooted }
+		# Exact complement of 9280116's rooted-state predicate. Testing the
+		# result flag was too late because both reviews could qualify together.
+		NOT = {
+			OR = {
+				flag = aubm_v4_legitimacy_established
+				AND = {
+					flag = aubm_v4_union_legitimacy_gain
+					flag = aubm_v4_provincial_bargain
+				}
+			}
+		}
 	}
 
 	name = "1936 State Review: Capacity Without Settlement"

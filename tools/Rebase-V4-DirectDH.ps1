@@ -283,6 +283,34 @@ function Build-EventsIndex {
     Write-Text -Path $path -Lines $lines
 }
 
+function Get-EventSleepTargets {
+    param(
+        [string]$RelativePath,
+        [int]$EventId
+    )
+
+    $path = Join-Path $script:OverlayRoot $RelativePath
+    $text = Get-Content -LiteralPath $path -Raw
+    $idMarker = "id = $EventId"
+    $idIndex = $text.IndexOf($idMarker)
+    if ($idIndex -lt 0) {
+        throw "Could not locate event $EventId in $RelativePath."
+    }
+    $eventStart = $text.LastIndexOf("event = {", $idIndex)
+    $nextEvent = $text.IndexOf("event = {", $idIndex + $idMarker.Length)
+    if ($eventStart -lt 0) {
+        throw "Could not isolate event $EventId in $RelativePath."
+    }
+    if ($nextEvent -lt 0) {
+        $nextEvent = $text.Length
+    }
+    $eventText = $text.Substring($eventStart, $nextEvent - $eventStart)
+    return @(
+        [regex]::Matches($eventText, 'type\s*=\s*sleepevent\s+which\s*=\s*(\d+)') |
+            ForEach-Object { [int]$_.Groups[1].Value }
+    )
+}
+
 function Build-Scenario {
     Copy-StockFile "scenarios\1933.eug"
     $path = Join-Path $script:OverlayRoot "scenarios\1933.eug"
@@ -312,6 +340,59 @@ globaldata =
         'participant = { ENG FRA BEL AST NZL CAN SAF EGY U60 }',
         1
     )
+
+    # A new 1933 campaign has no obsolete treaty, settlement or wartime state
+    # to migrate. Mark that path before the event engine polls, and pre-sleep
+    # exactly the legacy events retired by the two compatibility reviews.
+    $queuedMarker = "  queued_events = {"
+    if (-not $text.Contains($queuedMarker)) {
+        throw "Could not locate the 1933 queued-events block."
+    }
+    $freshFlags = @'
+  flags = {
+    ind_aubm_fresh_1933_bootstrap = 1
+  }
+'@
+    $text = $text.Replace($queuedMarker, $freshFlags + "`r`n" + $queuedMarker)
+
+    # The two V3 generic elite decisions compete with the V4 reserved unit
+    # families and can permanently hide their distinct models/sprites. They
+    # remain available to upgraded saves, but a new AUBM scenario always uses
+    # the V4 Gurkha and Frontier commissioning contracts.
+    $freshOnlyRetiredIds = @(9270306, 9270340)
+    $legacyRetiredIds = @(
+        Get-EventSleepTargets -RelativePath "db\events\aubm_v4\41_wartime_state.txt" -EventId 9281900
+        Get-EventSleepTargets -RelativePath "db\events\aubm_v4\48_route_wartime_consequences.txt" -EventId 9283200
+    ) | Sort-Object -Unique
+    if ($legacyRetiredIds.Count -ne 216) {
+        throw "Fresh 1933 legacy retirement contract expected 216 unique events; found $($legacyRetiredIds.Count)."
+    }
+    $freshStartSleeperIds = @($legacyRetiredIds + $freshOnlyRetiredIds) | Sort-Object -Unique
+    if ($freshStartSleeperIds.Count -ne 218) {
+        throw "Fresh 1933 retirement contract expected 218 unique events; found $($freshStartSleeperIds.Count)."
+    }
+    $sleeperLines = New-Object System.Collections.Generic.List[string]
+    for ($index = 0; $index -lt $freshStartSleeperIds.Count; $index += 12) {
+        $last = [Math]::Min($index + 11, $freshStartSleeperIds.Count - 1)
+        $sleeperLines.Add("  " + ($freshStartSleeperIds[$index..$last] -join " "))
+    }
+    $freshSleeperBlock = @(
+        "# AUBM fresh-start retirement: compatibility events remain available to old saves."
+        "sleepevent = {"
+        $sleeperLines
+        "}"
+    ) -join "`r`n"
+    $globalEndPattern = '(?m)^  enddate\s*=\s*\{ year = 1964 month = january day = 0 \}\r?\n\}'
+    $updated = [regex]::Replace(
+        $text,
+        $globalEndPattern,
+        ('$0' + "`r`n`r`n" + $freshSleeperBlock),
+        1
+    )
+    if ($updated -eq $text) {
+        throw "Could not append the fresh-start retirement list after globaldata."
+    }
+    $text = $updated
     [System.IO.File]::WriteAllText(
         $path,
         $text,

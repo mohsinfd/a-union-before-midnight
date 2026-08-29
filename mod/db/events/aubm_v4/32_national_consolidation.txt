@@ -11,11 +11,12 @@ event = {
 
 	trigger = {
 		flag = ind_v4_initialized
+		NOT = { flag = ind_aubm_fresh_1933_bootstrap }
 		NOT = { flag = ind_v43_modernization_contract }
 	}
 
-	name = "The National Modernization Contract"
-	desc = "India inherits a vast but uneven force: provincial infantry, horse formations, obsolete aircraft and ships built to several standards. Common depots, licensed tooling and conversion yards coordinate the services, while the first national register releases trained cadres. Refits remain funded through the normal upgrade budget; equipment, officers and industrial capacity remain the binding constraints."
+	name = "Compatibility Review: Modernization State"
+	desc = "This save predates the current modernization record. The review enables the normal upgrade schedule and War Cabinet without changing manpower, units, production, resources or completed research."
 	style = 2
 	picture = "india_v3_armed_forces"
 
@@ -24,8 +25,7 @@ event = {
 	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
-		name = "Standardize the services and trained reserve"
-		command = { type = manpowerpool value = 250 }
+		name = "Record the current modernization state (no cost)"
 		command = { type = setflag which = ind_v43_war_cabinet }
 		command = { type = setflag which = ind_v43_upgrade_contract_final }
 		command = { type = setflag which = ind_v43_upgrade_contract_low_ic }
@@ -141,8 +141,14 @@ event = {
 
 	decision = {
 		flag = ind_v43_war_cabinet
+		flag = ind_v3_integrated
+		flag = aubm_v4_union_register_opened
 	}
-	decision_trigger = { flag = ind_v43_war_cabinet }
+	decision_trigger = {
+		flag = ind_v43_war_cabinet
+		flag = ind_v3_integrated
+		flag = aubm_v4_union_register_opened
+	}
 
 	name = "Convene the Emergency War Cabinet"
 	decision_desc = "No fee to inspect strategy. Open coalition membership, great-power wars, regional campaigns, or the current campaign ledger. Binding alignments are exclusive; peaceful withdrawal begins a ninety-day realignment period."
@@ -199,79 +205,45 @@ event = {
 event = {
 	id = 9281002
 	random = no
+	one_action = yes
 	country = IND
 	name = "The War Cabinet: Other Strategic Courses"
-	desc = "India may enter the Soviet coalition or intervene against Japan or Germany while preserving independent command. A further docket covers war with the Soviet Union and continued neutrality."
+	desc = "This retired menu may remain queued in an upgraded save. Its direct-war choices predate the current alliance and commitment safeguards, so the file now returns to the authoritative War Cabinet."
 	style = 2
 	picture = "aubm_v4_india_world_war"
 	action_a = {
-		name = "Open negotiations with the Soviet Union"
-		command = { type = event which = 9270406 where = IND when = 1 }
-	}
-	action_b = {
-		name = "Fight Japan under independent command"
-		command = { type = event which = 9270408 where = IND when = 1 }
-	}
-	action_c = {
-		name = "Fight Germany under independent command"
-		command = { type = event which = 9270409 where = IND when = 1 }
-	}
-	action_d = {
-		name = "Review the final strategic docket"
-		command = { type = trigger which = 9281003 }
+		name = "Close retired menu; War Cabinet opens only after Union"
+		command = { trigger = { flag = ind_v3_integrated flag = aubm_v4_union_register_opened } type = event which = 9281001 where = IND when = 1 }
 	}
 }
 
 event = {
 	id = 9281003
 	random = no
+	one_action = yes
 	country = IND
 	name = "The War Cabinet: Final Docket"
-	desc = "The final alternatives are an independent declaration against the Soviet Union, armed neutrality for now, or a return to the coalition docket. No deferral closes the decision permanently."
+	desc = "This retired docket may remain queued in an upgraded save. It now returns to the authoritative War Cabinet so current alliances and binding commitments cannot be bypassed."
 	style = 2
 	picture = "aubm_v4_india_world_war"
 	action_a = {
-		name = "Consider independent war against Moscow"
-		command = { type = trigger which = 9281004 }
-	}
-	action_b = {
-		name = "Retain armed neutrality for now"
-		command = { type = dissent value = -1 }
-	}
-	action_c = {
-		name = "Return to the coalition docket"
-		command = { type = event which = 9281001 where = IND when = 1 }
+		name = "Close retired menu; War Cabinet opens only after Union"
+		command = { trigger = { flag = ind_v3_integrated flag = aubm_v4_union_register_opened } type = event which = 9281001 where = IND when = 1 }
 	}
 }
 
 event = {
 	id = 9281004
 	random = no
+	one_action = yes
 	country = IND
 	name = "War Against the Soviet Union?"
-	desc = "Delhi can declare a sovereign war against Moscow without joining Germany or a formal Japanese alliance. A Delhi-Tokyo strategic compact remains in force, but Japan stays outside this war unless India later converts the compact into an alliance. The campaign may secure Central Asian approaches, at the cost of dissent and diplomatic isolation."
+	desc = "This retired declaration may remain queued in an upgraded save. The current War Cabinet provides the supported Soviet-war path and enforces India's live alliance and exclusive commitment."
 	style = 2
 	picture = "aubm_v4_india_world_war"
 	action_a = {
-		ai_chance = 15
-		name = "Declare an independent war against the USSR"
-		command = { type = clrflag which = ind_v3_allied_orientation }
-		command = { type = clrflag which = ind_v3_axis_orientation }
-		command = { type = clrflag which = ind_v4_strategy_allied }
-		command = { type = clrflag which = ind_v4_strategy_axis }
-		command = { trigger = { NOT = { flag = ind_aubm_jp_partnership } } type = clrflag which = ind_v3_japanese_orientation }
-		command = { trigger = { NOT = { flag = ind_aubm_jp_partnership } } type = clrflag which = ind_v4_strategy_japan }
-		command = { trigger = { NOT = { flag = ind_aubm_jp_partnership } } type = setflag which = ind_v3_non_aligned }
-		command = { trigger = { NOT = { flag = ind_aubm_jp_partnership } } type = setflag which = ind_v4_strategy_nam }
-		command = { trigger = { flag = ind_aubm_jp_partnership } type = setflag which = ind_aubm_jp_independent_soviet_war }
-		command = { type = setflag which = ind_v43_independent_war_soviet }
-		command = { type = relation which = SOV value = -100 }
-		command = { type = dissent value = 5 }
-		command = { type = war which = SOV }
-	}
-	action_b = {
-		ai_chance = 85
-		name = "Reject this course and retain flexibility"
+		name = "Close retired menu; War Cabinet opens only after Union"
+		command = { trigger = { flag = ind_v3_integrated flag = aubm_v4_union_register_opened } type = event which = 9281001 where = IND when = 1 }
 	}
 }
 

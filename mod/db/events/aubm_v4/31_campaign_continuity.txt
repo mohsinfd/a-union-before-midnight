@@ -11,12 +11,13 @@ event = {
 
 	trigger = {
 		flag = ind_v3_integrated
+		NOT = { flag = ind_aubm_fresh_1933_bootstrap }
 		NOT = { flag = ind_v3_world_role }
 		NOT = { flag = ind_v41_strategy_ledger_reconciled }
 	}
 
-	name = "The Strategic Ledger Is Opened"
-	desc = "The Cabinet Secretariat separates diplomatic contacts from national strategy before the 1937 foreign-policy debate. India begins without a hidden alignment: the absence of an alliance is not itself non-alignment, and no strategic programme exists until the elected government chooses one."
+	name = "Compatibility Review: Strategy Records"
+	desc = "This save predates the current strategy record. The review removes contradictory old orientation markers while preserving live alliances, wars, forces, resources and research. India remains free to choose its programme in the later foreign-policy debate."
 	style = 2
 	picture = "aubm_v4_grand_strategy"
 
@@ -25,7 +26,7 @@ event = {
 	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
-		name = "Prepare a clean ledger for the elected government"
+		name = "Reconcile the old strategy record (no cost)"
 		command = { type = clrflag which = ind_v3_allied_orientation }
 		command = { type = clrflag which = ind_v3_axis_orientation }
 		command = { type = clrflag which = ind_v3_soviet_orientation }

@@ -15,6 +15,7 @@ event = {
 	decision = {
 		technology = 1240
 		control = { province = 1451 data = IND }
+		NOT = { flag = ind_v3_gurkha_arm }
 		NOT = { flag = ind_aubm_gurkha_rifles_commissioned }
 	}
 	decision_trigger = {
@@ -60,6 +61,7 @@ event = {
 		command = { type = setflag which = ind_aubm_gurkha_doctrine }
 		command = { type = add_corps which = "Dehradun Gurkha Brigade" value = land where = 1451 }
 		command = { type = add_division which = "1st Independent Gurkha Rifles Division" value = d_rsv_33 when = 0 }
+		command = { type = setflag which = ind_v3_gurkha_arm }
 		command = { type = setflag which = ind_aubm_gurkha_rifles_commissioned }
 	}
 }
@@ -72,6 +74,7 @@ event = {
 	decision = {
 		technology = 1240
 		control = { province = 1459 data = IND }
+		NOT = { flag = ind_v3_frontier_force }
 		NOT = { flag = ind_aubm_frontier_force_commissioned }
 	}
 	decision_trigger = {
@@ -115,6 +118,7 @@ event = {
 		command = { type = setflag which = ind_aubm_frontier_doctrine }
 		command = { type = add_corps which = "Frontier Forces Command" value = land where = 1459 }
 		command = { type = add_division which = "1st Frontier Force Rifles Division" value = d_rsv_34 when = 0 }
+		command = { type = setflag which = ind_v3_frontier_force }
 		command = { type = setflag which = ind_aubm_frontier_force_commissioned }
 	}
 }

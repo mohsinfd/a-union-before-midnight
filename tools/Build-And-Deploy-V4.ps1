@@ -88,6 +88,12 @@ Invoke-Checked "Diplomatic chance disclosure" {
 Invoke-Checked "Union integration review coverage" {
     & $python.Source (Join-Path $PSScriptRoot "validate_aubm_union_integration.py")
 }
+Invoke-Checked "Fresh 1933 opening and old-save split" {
+    & $python.Source (Join-Path $PSScriptRoot "validate_aubm_cold_start.py")
+}
+Invoke-Checked "Audited opening and early-game contracts" {
+    & $python.Source (Join-Path $PSScriptRoot "validate_aubm_early_game.py")
+}
 Invoke-Checked "Coalition-independent wartime campaigns" {
     & $python.Source (Join-Path $PSScriptRoot "validate_aubm_wartime.py")
 }
@@ -100,12 +106,16 @@ Invoke-Checked "Southeast Asia operations" {
 Invoke-Checked "Wartime persistence contract" {
     & $python.Source (Join-Path $PSScriptRoot "normalize_aubm_wartime_persistence.py") --check
 }
-Invoke-Checked "Every-country campaign lifecycle" {
+Invoke-Checked "Current every-country campaign source" {
     & $python.Source (Join-Path $PSScriptRoot "generate_aubm_global_campaigns.py") --check
+}
+Invoke-Checked "Every-country campaign lifecycle" {
     & $python.Source (Join-Path $PSScriptRoot "validate_aubm_global_campaigns.py")
 }
-Invoke-Checked "Route-specific wartime consequences" {
+Invoke-Checked "Current route-specific wartime source" {
     & $python.Source (Join-Path $PSScriptRoot "generate_aubm_route_consequences.py") --check
+}
+Invoke-Checked "Route-specific wartime consequences" {
     & $python.Source (Join-Path $PSScriptRoot "validate_aubm_route_consequences.py")
 }
 Invoke-Checked "Bespoke regional armistice lifecycle" {

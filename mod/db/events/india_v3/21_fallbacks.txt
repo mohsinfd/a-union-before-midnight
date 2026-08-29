@@ -447,11 +447,12 @@ event = {
 
 	trigger = {
 		flag = ind_v3_started
+		NOT = { flag = ind_aubm_fresh_1933_bootstrap }
 		NOT = { flag = ind_v32_roster_compatibility }
 	}
 
-	name = "The Corrected Constitutional and Service Lists"
-	desc = "The Union Gazette confirms Mahatma Gandhi as constitutional President above the federal cabinet and completes the register of the Indian Air Staff College. These appointments correct omissions in the first independence settlement without changing the cabinet's programme."
+	name = "Compatibility Review: Cabinet Records"
+	desc = "This save predates the current constitutional and service lists. The review preserves the chosen Cabinet and restores only any missing constitutional or Air Staff appointment."
 	style = 2
 	picture = "india_v3_independence"
 
@@ -460,7 +461,7 @@ event = {
 	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
-		name = "Publish the corrected lists"
+		name = "Reconcile the old appointment record (no cost)"
 		command = { trigger = { flag = ind_v3_cabinet_federal headofstate = 251001 } type = headofstate which = 251041 }
 		command = { trigger = { flag = ind_v3_air_staff_founded } type = waketeam which = 250025 }
 		command = { type = setflag which = ind_v32_roster_compatibility }

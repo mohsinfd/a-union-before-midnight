@@ -1,6 +1,6 @@
-# A Union Before Midnight: Gameplay Changes and Alpha 21 Status
+# A Union Before Midnight: Gameplay Changes and Alpha 22 Status
 
-This is the player-facing guide to the current **4.2.0-alpha.21** source of
+This is the player-facing guide to the current **4.2.0-alpha.22** source of
 *A Union Before Midnight*. It explains what changed, how the new systems are
 supposed to play, what has been verified, and what still needs a real campaign
 test.
@@ -11,14 +11,14 @@ Updated: 29 Aug 2026.
 
 | Area | Status |
 | --- | --- |
-| Current source version | `4.2.0-alpha.21` |
-| Alpha 21 build and static acceptance | Passed final deterministic build and complete release gate on 29 Aug 2026; 0 static errors and 0 warnings |
-| Public manifest | 342 managed files; foundation, donor and unresolved assets excluded |
-| Public deployment and executable smoke | 342/342 files verified; fresh 1933 India campaign reached the live map with 0 logged engine errors and no new crash |
-| Personal sprite profile | Exact 41-family profile restored locally after final public deployment; excluded from Git and public packages |
+| Current source version | `4.2.0-alpha.22` |
+| Alpha 22 implementation | Clean-opening and focused early-event audit subset complete |
+| Alpha 22 build and public package | Passed: deterministic 4,434-file build, full release suite, 342-file donor-safe manifest, 0 static errors/warnings |
+| Personal deployment and executable smoke | Passed: 1,531/1,531 local files verified; fresh map reached; 0 exact `ERROR :` lines; no crash dump |
+| Personal sprite profile | Exact 41-family/591-descriptor profile verified locally; excluded from the current V4 Git tree and public packages |
 | Campaign compatibility | Start a fresh 1933 campaign |
-| Reviewed saves | 28 Aug autosave is a fresh 1934 start; 23 Aug manual is non-aligned and not at war |
-| Human wartime playthrough | Still required |
+| Reviewed saves | 29 Aug Alpha 22 autosave reaches 1 Feb 1933 and proves the clean opening; earlier wartime saves remain compatibility evidence |
+| Human Alpha 22 playthrough | Opening run completed; a full wartime/postwar run is still required |
 | Source-control safety | Public-safe exclusions active; local-only assets remain excluded |
 
 The maintained source is the `v4-direct-dh` branch. Its public installer
@@ -26,29 +26,129 @@ manifest is designed to contain only AUBM gameplay, documentation and
 redistribution-cleared art. Darkest Hour foundation files, the restored local
 41-family donor-derived sprite and model-panel profile, unresolved leader
 portraits, manuals, screenshots and Steam test backups remain excluded. The
-final Alpha 21 public manifest contains 342 managed files.
+current Alpha 22 public manifest contains 342 donor-safe files. The installed
+personal build contains 1,531 verified files because it also reconstructs the
+local-only visual profile.
 
 Alpha 18's first fresh engine launch exposed unsupported foreign-country flag
 scopes in the Japanese-partnership and wartime-settlement events. Alpha 19
 rewrote those callbacks using Darkest Hour-supported event logic and added a
 regression check so the invalid form cannot return. Alpha 20 preserved that
 launch fix and introduced the commitment and local Southeast Asian foundation.
-Alpha 21 extends and hardens those systems as described below.
+Alpha 21 extends and hardens those systems as described below. Alpha 22 adds a
+clean cold start and repairs defects found by auditing the existing early game.
 
-The practical verdict is: **Alpha 21 is built, deployed and launch-verified,
-but it is not yet a proven stable campaign release.** A complete human war and
-postwar run is still required for balance, pacing and narrative verification.
+The practical verdict is: **Alpha 22 is built, locally deployed and
+launch-verified, but it is not yet a proven stable long campaign.** The opening
+run is complete; a human war and postwar run is still required for balance,
+pacing and narrative verification.
 
 The old `India Mod` folder is the original/base workspace. The maintained V4
 source of truth is the sibling `India Ascendant` repository, and deployment
 targets the separately installed Steam mod listed above.
+
+## What Alpha 22 Changes
+
+### The opening is now about choices, not repairs
+
+The newest campaign previously scheduled nine AUBM windows around the opening
+and union decision. A fresh Alpha 22 start reduces that sequence to three
+player-facing windows in total: one premise acknowledgment and two genuine
+political choices.
+
+1. **Scenario opening — A Union Before Midnight:** acknowledge the campaign
+   premise and sovereign starting settlement.
+2. **Opening 72 hours — The Provisional Cabinet:** choose the first governing
+   coalition with all immediate costs shown.
+3. **6 January — One Administration, Many Nations:** choose the union method,
+   with its money, supplies, manpower and dissent effects shown.
+
+Only the premise and cabinet appear during the opening 72 hours. Core
+campaign-state, service, modernization and strategy initialization is folded into the premise.
+The Union Register is folded into the union choice, so no later one-button
+register popup is needed and the integration chain remains open.
+
+Fresh 1933 scenarios pre-sleep **218 events total**: 216 retired legacy
+wartime/route IDs plus the two generic V3 Gurkha and frontier decisions. Their
+unique V4 replacements are the single player-facing specialist paths. These
+retirements are fresh-start-only: upgraded saves retain the compatibility logic
+they may need.
+
+### Upgrade saves keep repair logic without fresh rewards
+
+Compatibility helpers are excluded from a fresh campaign and have concise,
+plain-language **Compatibility Review** titles for upgraded saves. They repair
+state only; they do not regrant the fresh opening's money or manpower. This
+keeps old-save recovery available without turning a new game into a migration
+clickwall.
+
+The retained helpers and their purpose are:
+
+| Event | Upgrade-save review |
+| --- | --- |
+| 9280000 | **V4 Campaign State** — records the current V4 campaign baseline |
+| 9281000 | **Modernization State** — restores modernization and War Cabinet framework flags |
+| 9280800 | **Strategy Records** — reconciles the strategy ledger |
+| 9270792 | **Cabinet Records** — reconstructs missing cabinet history |
+| 9280315 | **Service Archives** — records inherited service and roster state |
+| 9281900 | **War Cabinet** — retires superseded wartime entry events |
+| 9281949 | **Strategic Commitments** — reconciles binding route commitments |
+| 9287613 | **Southern Settlements** — repairs southern refusal and settlement state |
+| 9283200 | **Wartime Events** — retires superseded route-wartime events |
+
+They are repair tools for upgraded saves, not intended opening content. A
+future migration milestone will consolidate them further where possible.
+
+The six bookkeeping windows seen in the older August 1934 autosave were
+`9280000` (campaign state and the old reserve grant), `9281900` (retire the old
+war ledger), `9281000` (modernization and the old manpower grant), `9270792`
+(cabinet and roster repair), `9280800` (strategy ledger) and `9280100` (open
+the Union Register). That file is a different campaign. In the current
+1 February 1933 autosave, none of those six fired: fresh initialization is in
+the premise, and every union action opens the register directly.
+
+The War Cabinet now requires both a completed union choice and an opened Union
+Register. India cannot enter a coalition, choose a compact or declare an
+independent War Cabinet campaign before its constitutional opening is settled.
+
+### Existing early-game events were audited, not assumed safe
+
+The cold review covered the existing events feeding the new opening and found
+several real defects beyond the popup problem:
+
+- The 1934 and 1936 constitutional review fallbacks now match the exact
+  complement of their named branches, so only one review can fire.
+- All 18 formerly write-only identity flags from the six three-way founding
+  settlements now pay one modest remembered dividend in **Telegraphs,
+  Statistics and a Common Time**, the first July 1934 Union report. The report
+  remains one-shot and no extra popup was added.
+- Two education-policy actions now deliver the research bonuses their text
+  already advertised.
+- The first foreign-credit package no longer charges itself the prior-credit
+  service fee.
+- Three obsolete direct-war War Cabinet menus now redirect safely to the
+  current guarded War Cabinet instead of bypassing commitment locks.
+- The V3 and V4 Gurkha/frontier systems cross-lock, leaving one unique V4 path
+  on a fresh campaign and preventing duplicate formations in upgraded games.
+- Opening cabinet and union actions disclose their immediate resource,
+  manpower and dissent costs within the engine's action-text limit.
+
+This is a completed **Milestone 1 subset**, not the whole Gameplay Fun Rework.
+The permanent State of the Union ledger, annual-budget redesign, peacetime
+objectives, broader force rebalance, guided operations board, staged Southeast
+Asian campaign and postwar-memory work remain specified but unimplemented.
+
+The deterministic build, deployment verification and fresh executable smoke
+have passed. The 1 February autosave confirms the three opening event IDs and
+contains none of the nine Compatibility Review IDs. Balance and the full
+wartime/postwar campaign still need a human playthrough.
 
 ## What Alpha 21 Changes
 
 The developer's exact personal **41-family India sprite profile** is restored
 in the local installation after the previous public deployment. This is not
 public payload: its donor-derived descriptors, animation strips, palettes and
-model panels remain outside Git and the installer manifest. Public players
+model panels remain outside the current V4 Git tree and the installer manifest. Public players
 continue to receive Darkest Hour Full sprites until redistribution-safe Indian
 art is available.
 
@@ -633,7 +733,7 @@ tier one remains while India still records direct rule. Administrative reform
 therefore reduces the burden without pretending retained territory has become
 free or sovereign.
 
-## Military Changes Retained Through Alpha 21
+## Military Changes Retained Through Alpha 22
 
 ### Leaders and Specialist Forces
 
@@ -705,15 +805,15 @@ free or sovereign.
 
 ## What Requires a Fresh Campaign
 
-Start a **new 1933 campaign** for the intended Alpha 21 playtest. The complete
+Start a **new 1933 campaign** for the intended Alpha 22 playtest. The complete
 route ledger, leader roster, scenario technologies, economy curve, campaign
 monitors and successor-state coverage cannot be reconstructed safely from an
 older save.
 
 - V3 saves are unsupported.
 - Earlier V4 alpha saves may receive individual migration or repair events,
-  but they are not complete tests of Alpha 21's liberation, lane and armistice
-  architecture.
+  but they are not complete tests of Alpha 22's fresh-only opening retirement
+  or Alpha 21's liberation, lane and armistice architecture.
 - Existing ships already in production cannot receive a newly changed build
   schedule.
 - Personnel records are serialized into saves, so the expanded leader roster
@@ -721,7 +821,7 @@ older save.
 
 ## Verification State
 
-The final **Alpha 21 acceptance run on 29 August 2026** passed:
+The final **Alpha 22 acceptance run on 29 August 2026** passed:
 
 - deterministic repeat build: **4,434 overlay files**;
 - global campaign matrix: **40,357 checks**, 210 countries, 3,433 events;
@@ -736,87 +836,103 @@ The final **Alpha 21 acceptance run on 29 August 2026** passed:
   friendly-owner liberation chains, four fleet-backed lanes and one flexible
   theatre award;
 - unsupported foreign-country-scope regression gate: passed;
-- union-integration truth table: **25 checks**;
+- union-integration and remembered-dividend contracts: **79 checks**;
+- fresh/upgrade split: **36 checks**; audited opening/early game: **24 checks**;
 - complete static validation: **0 errors and 0 warnings**;
 - art release gate: **4,588 picture entries**, 109 names and 102 custom event
   pictures, with 0 duplicate or release issues;
 - economy, sustained resources, cold start, combat pacing, construction caps
   and Steam Deck checks: passed.
 
-The public installer manifest contains **342 managed files**, and final
-deployment verified all 342 hashes. Foundation files, donor-derived personal
-visuals and unresolved assets remain outside that payload. The local-only
-sprite restoration then verified 41 distinct India families, 591 descriptors,
-553 bitmap strips, 44 palettes and 820 model graphics with 0 missing files or
-hash mismatches.
+The public installer manifest contains **342 managed files** and passed the
+donor-free validate-only gate. Foundation files, donor-derived personal visuals
+and unresolved assets remain outside that payload. The local personal build
+verified and installed **1,531/1,531 files**, including 41 distinct India
+families, 591 descriptors, 553 bitmap strips and 44 palettes.
 
 A real fresh fullscreen launch of Darkest Hour 1.05.2 selected **A Union Before
-Midnight V4.2**, loaded the 1933 India campaign, reached the playable map and
-displayed the opening AUBM events. Province validation ended with **No errors
-found**, the exact `ERROR :` count in the new `savedebug.txt` was 0, no new
-crash dump appeared and the process exited cleanly. All 27 existing saves were
-unchanged after the smoke. This verifies packaging, parsing and launch; it does
-not replace the required human wartime playthrough.
+Midnight V4.2**, loaded the 1933 India campaign and reached the playable map.
+Province validation ended with **No errors found**, the exact `ERROR :` count
+was 0 and no crash dump appeared. The user's resulting 1 February autosave
+contains opening history IDs 9270000, 9270002 and 9270001, none of the nine
+Compatibility Review IDs, and the expected fresh, integrated and Union Register
+flags. Live history exposed the War Cabinet only after the union choice. The
+save count remains 27; only the normal autosave rotation changed. This verifies
+packaging, parsing and the clean opening, not a complete wartime campaign.
+
+The obsolete standalone
+`validate_v3_legacy.py` harness is not a production release gate because its
+required `tools/v3_config.json` no longer exists; V3 syntax and cross-event
+checks are covered through the maintained V4 pipeline.
 
 ## Remaining Risks and Playtest Priorities
 
 These are the important unfinished items, not hidden claims of completion:
 
-1. **Wartime balance needs observation.** Test whether finance and mobilisation
+1. **Upgrade-save migration still needs a controlled engine run.** Fresh-start
+   separation is proven; now verify a copied older V4 save receives only the
+   Compatibility Reviews it genuinely needs and no fresh resource regrant.
+2. **Wartime balance needs observation.** Test whether finance and mobilisation
    relieve emergencies without becoming free resources, and whether occupation
    upkeep is meaningful without becoming tedious.
-2. **Coalition commitment needs stress testing.** Verify rival offers and
+3. **Coalition commitment needs stress testing.** Verify rival offers and
    retired legacy entries stay hidden, a Berlin-Tokyo faction merger cannot
    relabel a Japan commitment, same-family upgrades remain possible, wartime
    withdrawal is blocked and the at-peace 90-day reset releases correctly.
-3. **Late-game force scale remains a balance question.** Record effective IC,
+4. **Late-game force scale remains a balance question.** Record effective IC,
    formations, manpower and treasury in 1940 and 1942 on a no-cheat run.
-4. **Southeast Asia should be the first operational test.** Confirm all-route
+5. **Southeast Asia should be the first operational test.** Confirm all-route
    focus integration, the four prior-occupation plus Indian-garrison liberation
    chains, friendly-hub lane interoperability, the mixed three-result theatre
    test and the optional 45/35/20 Japanese armistice's current-leverage and
    in-flight locks, with no friendly-owner transfers.
-5. **Postwar closure needs a complete run.** Trigger at least one armistice, one
+6. **Postwar closure needs a complete run.** Trigger at least one armistice, one
    annexation settlement, one occupation year and one Delhi congress.
-6. **Repository safety is separate from package clearance.** Local donor
+7. **Repository safety is separate from package clearance.** Local donor
    graphics are excluded, but a downloadable or forum package still needs a
    current V4 rights and provenance review.
 
-## Recommended First Alpha 21 Playtest
+## Recommended First Alpha 22 Playtest
 
 For the fastest coverage of the original complaints:
 
-1. Start a fresh 1933 campaign and keep milestone saves before the first
-   commitment, Japanese war, liberation, theatre award and armistice response.
-2. Select one named Southeast Asian focus on the chosen command route and
+1. Start a fresh 1933 campaign. Record every AUBM window through 10 January:
+   the premise should appear at scenario opening, the cabinet during the
+   opening 72 hours and the union choice on 6 January. Confirm no compatibility helper or one-button
+   Union Register appears, and save/reload once before choosing the union.
+2. Confirm the War Cabinet is unavailable before the union choice, becomes
+   reachable afterward, and the chosen cabinet and union costs match their
+   action text. Keep later milestone saves before the first commitment,
+   Japanese war, liberation, theatre award and armistice response.
+3. Select one named Southeast Asian focus on the chosen command route and
    confirm the full theatre result feeds that focus; repeat from a save under a
    second route if practical.
-3. Form the Delhi-Tokyo separate compact. Confirm rival formal and compact
+4. Form the Delhi-Tokyo separate compact. Confirm rival formal and compact
    entries disappear while the Japanese same-family upgrade remains. If the
    wider factions merge, confirm the route remains Japanese rather than German.
-4. While fighting Japan, let Japan occupy a complete Indochina, Philippine,
+5. While fighting Japan, let Japan occupy a complete Indochina, Philippine,
    Malayan or Batavia hub set, then restore it to its friendly legal owner. Keep
    an Indian land division in a published hub until the liberation records.
-5. Repeat once without Indian control or a garrison and confirm another ally's
+6. Repeat once without Indian control or a garrison and confirm another ally's
    liberation gives India no credit. Verify no terms, transfer or peace opens
    against the friendly owner.
-6. Use eligible liberation credit at a Malacca or South China Sea hinge. Then
+7. Use eligible liberation credit at a Malacca or South China Sea hinge. Then
    verify Batavia-only liberation does not satisfy Java Sea without Soerabaja
    and sixteen ready surface ships.
-7. Earn two distinct land categories plus one lane, or one land category plus
+8. Earn two distinct land categories plus one lane, or one land category plus
    two lanes, and confirm the flexible theatre award. Confirm three land-only
    or three lane-only results do not qualify.
-8. Offer the Japanese Southern Armistice once with the current direct Japan
+9. Offer the Japanese Southern Armistice once with the current direct Japan
    claim and once with permanent theatre history plus a current friendly
    liberation. Confirm theatre history alone is insufficient after loss or a
    route switch. Test its 45/35/20 branches: refusal must wait 90 days, avoid a
    duplicate initial/retry popup and reopen only with recovered live leverage;
    acceptance must end only the Japanese war and transfer no friendly-owner
    territory.
-9. After all Indian wars end, withdraw to sovereign command. Rival offers must
+10. After all Indian wars end, withdraw to sovereign command. Rival offers must
    remain closed through the 90-day realignment and reopen afterward; repeat
    from a save made during the cooldown.
-10. Complete one Batavia or Malaya pairwise docket, one annexation settlement,
+11. Complete one Batavia or Malaya pairwise docket, one annexation settlement,
     one occupation year and one Delhi congress while recording treasury, debt,
     manpower, dissent, effective IC and force totals.
 

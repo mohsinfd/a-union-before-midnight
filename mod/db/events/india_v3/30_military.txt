@@ -626,6 +626,7 @@ event = {
 
 	decision = {
 		flag = ind_v3_army_reform
+		NOT = { flag = ind_aubm_gurkha_rifles_commissioned }
 		NOT = { flag = ind_v3_gurkha_arm }
 	}
 	decision_trigger = {

@@ -71,10 +71,30 @@ routine destruction. Twelve three-division field corps, faster prepared
 reserves, airfield security, dispersal fields and scramble missions reduce
 wartime micromanagement within the limits of the Darkest Hour executable.
 
+Alpha 22, dated **29 Aug 2026**, is the first implemented subset of the
+Gameplay Fun Rework: **A Clean Opening and Audited Early Game**. A fresh 1933
+campaign now has three pre-union windows instead of nine: one short premise
+acknowledgment at scenario opening, then genuine choices of cabinet during the
+opening 72 hours and union method on 6 January. Core state
+initialization and the Union Register are folded into those choices, while the
+War Cabinet remains unavailable until India has actually chosen its union.
+
+Fresh starts pre-sleep **218 events total**: 216 retired legacy wartime/route
+IDs plus the two generic V3 Gurkha and frontier decisions, leaving the unique
+V4 paths. Upgrade saves retain compatibility helpers under clearer names,
+without receiving fresh-start money or manpower again. The accompanying
+existing-event audit made the 1934 and 1936 constitutional reviews mutually
+exclusive, made all 18 founding branch identities pay one modest remembered
+dividend in the first July 1934 Union report, implemented two advertised
+research rewards that previously did nothing, stopped foreign credit charging
+its own prior-service fee, redirected unsafe old War Cabinet menus, disclosed
+opening costs and closed duplicate Gurkha/frontier entry paths.
+
 Alpha 21, dated **29 Aug 2026**, restores the developer's exact personal
 41-family India sprite profile locally after the previous public deployment.
 That profile remains a local-only overlay: donor-derived sprite and model-panel
-assets are excluded from Git and do not ship in the public installer.
+assets are excluded from the current V4 Git tree and do not ship in the public
+installer.
 
 Gameplay now applies one flexible Southeast Asian land-and-sea system under
 every Indian command route. Four anti-Japanese friendly-owner liberation
@@ -108,6 +128,15 @@ and opening AUBM events with **0 logged engine errors**, no new crash dump and
 all existing saves unchanged. A human wartime and postwar playthrough is still
 required before this alpha can be treated as a proven stable campaign.
 
+Alpha 22 passed its deterministic 4,434-file build, complete public and
+personal static suites, 342-file donor-safe manifest, 1,531-file personal local
+deployment and fresh executable smoke on **29 Aug 2026**. The user's 1 February
+1933 autosave records all three opening IDs followed only by the Army Oath
+(`9271200`), no Compatibility Review ID, an opened Union Register and the War
+Cabinet becoming available only after the union. The executable log contains 0 exact `ERROR :`
+lines, province validation reported no errors and no crash dump appeared. A
+complete human wartime and postwar playthrough is still required.
+
 Alpha 18 completed wartime play around a canonical War Cabinet. Allied, German,
 Soviet, Japanese and sovereign routes each receive a four-doctrine war charter,
 measurable battlefield achievements and a postwar Delhi congress. Great-power,
@@ -125,7 +154,7 @@ naval, command and research improvements remain intact.
 
 For a player-facing explanation of the complete campaign loop, route choices,
 war economy, mobilisation, settlement rules, verification status and remaining
-playtest risks, see [Gameplay Changes and Alpha 21 Status](GAMEPLAY_CHANGES.md).
+playtest risks, see [Gameplay Changes and Alpha 22 Status](GAMEPLAY_CHANGES.md).
 The all-route land, liberation, sea-lane and armistice rules are specified in
 the [Southeast Asia Victory Matrix](docs/SOUTHEAST_ASIA_VICTORY_MATRIX.md).
 The earlier reviewed-save chronology remains in
@@ -133,9 +162,12 @@ The earlier reviewed-save chronology remains in
 
 ## Campaign
 
-- The Alpha 21 global fallback matrix validates **3,433 generated campaign
-  events** across 210 countries as part of **40,357 checks**; the complete
-  parser suite passes with 0 errors and 0 warnings.
+- A fresh 1933 start presents only the premise and cabinet in the first 72
+  hours, followed by the union choice on 6 January; compatibility bookkeeping
+  no longer competes with those decisions.
+- The retained Alpha 21 global fallback matrix validates **3,433 generated
+  campaign events** across 210 countries as part of **40,357 checks**; the
+  complete parser suite passes with 0 errors and 0 warnings.
 - Stable constitutional governments, complete cabinets and leadership
   transitions tied to genuine political milestones.
 - **Five strategic universes:** Allied, German, Japanese, Soviet and armed
@@ -222,8 +254,8 @@ are included in the repository.
 Public builds inherit Darkest Hour Full unit sprites and production panels. The
 exact 41-family personal profile was restored locally after the previous public
 deployment, but its descriptors, animation strips, palettes and donor-derived
-model panels remain outside Git and public manifests and are not cleared for
-redistribution. Every donor path and hash is recorded in the generated personal
+model panels remain outside the current V4 Git tree and public manifests and
+are not cleared for redistribution. Every donor path and hash is recorded in the generated personal
 sprite manifest.
 
 ![India service sprites](assets/sprite-comparison.png)

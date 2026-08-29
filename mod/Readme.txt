@@ -1,7 +1,7 @@
 =======================================================================
- A UNION BEFORE MIDNIGHT - V4.2.0 ALPHA 21 - 29 AUG 2026
+ A UNION BEFORE MIDNIGHT - V4.2.0 ALPHA 22 - 29 AUG 2026
  For Darkest Hour 1.05.2
- Source version 4.2.0-alpha.21
+ Source version 4.2.0-alpha.22
 =======================================================================
 
 Freedom came early. Unity came at a price.
@@ -14,12 +14,13 @@ and credible armed forces before the world crisis reaches Asia.
 The exact personal 41-family India sprite profile has been restored in the
 developer's local installation after the previous public deployment. It remains
 local-only: donor-derived sprites, palettes and model panels are excluded from
-Git and do not ship in the public installer.
+the current V4 Git tree and do not ship in the public installer.
 
-Alpha 21 makes the flexible Southeast Asian theatre available under every
-Indian route, adds proof-based friendly liberation and a weaker optional
-Japanese Southern Armistice, and prevents live or legacy alliance logic from
-relabeling a current rival commitment. It remains an alpha playtest build.
+Alpha 22 gives a fresh 1933 campaign a clean three-window opening and repairs
+existing early-game events found unsafe during the cold review. Alpha 21's
+all-route Southeast Asian theatre, proof-based friendly liberation, Japanese
+Southern Armistice and exclusive commitment rules remain intact. This remains
+an alpha playtest build.
 
 -----------------------------------------------------------------------
  PLAYER REQUIREMENTS
@@ -50,7 +51,52 @@ preserves existing save files. It does not modify Darkest Hour Full itself.
 For a non-standard Steam library, run the PowerShell installer with -GameRoot.
 
 -----------------------------------------------------------------------
- THE ALPHA 21 GAMEPLAY PASS
+ THE ALPHA 22 CLEAN OPENING
+-----------------------------------------------------------------------
+
+A fresh campaign now has three player-facing pre-union windows instead of
+nine: one premise acknowledgment and two genuine political choices.
+
+1. At scenario opening: acknowledge the campaign premise and sovereign settlement.
+2. During the opening 72 hours: choose the Provisional Cabinet.
+3. 6 January: choose the union method.
+
+Only the first two windows appear within the first 72 hours. Core campaign,
+service, modernization and strategy state is initialized by the premise. The
+Union Register opens inside the union choice, so a one-button register notice
+no longer interrupts the player. The War Cabinet remains closed until that
+union choice is complete.
+
+Fresh 1933 starts pre-sleep 218 events total: 216 retired legacy wartime/route
+IDs plus the two generic V3 Gurkha and frontier decisions. Fresh games use the
+unique V4 specialist paths. Upgrade saves keep readable Compatibility Review
+events when they need repair, but those events do not replay fresh-start money
+or manpower.
+
+The six bookkeeping windows in the older August 1934 autosave were campaign
+state (9280000), old-war-ledger retirement (9281900), modernization (9281000),
+cabinet records (9270792), strategy records (9280800), and the Union Register
+(9280100). That was a different campaign. None fires in the current 1 February
+1933 autosave: the premise initializes a fresh start and the union choice opens
+the register directly.
+
+The audit of existing events also:
+
+- makes the 1934 and 1936 constitutional reviews mutually exclusive;
+- gives all 18 founding branch identities one modest remembered dividend in
+  the existing one-shot July 1934 Union report, with no extra popup;
+- implements the +1 and +2 research rewards promised by education choices;
+- prevents a first foreign-credit package from charging its own service fee;
+- redirects three unsafe old direct-war menus to the guarded War Cabinet;
+- cross-locks V3 and V4 Gurkha/frontier recruitment; and
+- shows opening money, supply, manpower and dissent costs in action text.
+
+This is the first implemented subset of the larger Gameplay Fun Rework. The
+permanent ledger, national priorities, wider force rebalance, guided operations
+board, staged Southeast Asian play and postwar memory remain future work.
+
+-----------------------------------------------------------------------
+ THE RETAINED ALPHA 21 GAMEPLAY PASS
 -----------------------------------------------------------------------
 
 Alpha 19 fixed the unsupported foreign-country event scopes that caused Alpha
@@ -279,7 +325,7 @@ Public installations use Darkest Hour Full sprites and ordinary model panels.
 The developer's exact 41-family animated India profile is restored locally
 after the previous public deployment, including its distinct specialist-family
 keys. Its donor-derived descriptors, strips, palettes and panels remain outside
-Git and public manifests and must not be redistributed.
+the current V4 Git tree and public manifests and must not be redistributed.
 
 -----------------------------------------------------------------------
  DECISION INFORMATION
@@ -298,22 +344,24 @@ forbid a Japanese, Allied, German, Soviet or sovereign foreign-policy route.
  COMPATIBILITY AND TESTING STATUS
 -----------------------------------------------------------------------
 
-Start a new 1933 campaign for the intended Alpha 21 test. V3 saves are
-unsupported, and earlier V4 alpha saves do not contain the complete liberation,
-lane, armistice, economy and campaign state. The expanded leader roster and
-scenario research are serialized at game start.
+Start a new 1933 campaign for the intended Alpha 22 test. V3 saves are
+unsupported, and earlier V4 alpha saves do not exercise the fresh-only opening
+retirement or contain the complete liberation, lane, armistice, economy and
+campaign state. The expanded leader roster and scenario research are
+serialized at game start.
 
-The newest reviewed file, the 28 Aug autosave, is only a fresh 1934 campaign.
-The 23 Aug manual save has India non-aligned and not at war. Neither validates
-the new wartime behavior.
+The current 29 Aug autosave is the Alpha 22 opening run at 1 February 1933.
+The 28 Aug autosave and 23 Aug manual save discussed in the retained Alpha 21
+review are historical snapshots; neither validates the new wartime behavior.
 
-The final Alpha 21 acceptance run on 29 Aug 2026 passed:
+The final Alpha 22 acceptance run on 29 Aug 2026 passed:
 
 - 40,357 every-country checks across 210 generated countries.
 - 1,860 canonical wartime checks.
 - 668 five-route consequence checks.
 - 2,957 special-unit checks and 431 diplomatic-disclosure checks.
-- 305 southern-settlement checks, 25 union-integration checks and the 21-event
+- 305 southern-settlement checks, 79 union/dividend checks, 36 cold-start
+  checks, 24 audited early-game checks and the 21-event
   Southeast Asia operations contract with four liberation chains and four
   fleet-backed lanes.
 - Japan partnership and unsupported launch-syntax regression gates passed.
@@ -321,19 +369,28 @@ The final Alpha 21 acceptance run on 29 Aug 2026 passed:
   combat, construction-cap and Steam Deck gates passed.
 - Public installer manifest: 342 managed files; copied foundation, donor and
   unresolved assets excluded.
-- Installed public payload: 342/342 files verified.
-- Fresh fullscreen 1933 India campaign reached the playable map with 0 logged
-  errors, no new crash dump and all 27 existing saves unchanged; province
-  validation ended with "No errors found."
+- Donor-safe public manifest: 342 managed files, validated without deployment.
+- Installed personal payload: 1,531/1,531 files verified.
+- Fresh fullscreen 1933 India campaign reached the playable map with 0 exact
+  `ERROR :` lines and no crash dump; province validation ended with "No errors
+  found." The 1 February autosave contains all three opening AUBM IDs, followed
+  only by Army Oath (9271200), and none of the nine Compatibility Review IDs.
 - Local-only personal visuals: 41 unique families, 591 descriptors, 553 bitmap
-  strips, 44 palettes and 820 model graphics verified after deployment with 0
-  missing files or hash mismatches.
+  strips and 44 palettes verified after deployment.
 
 These checks verify the build, parser, installer and initial launch. They do
 not replace a complete human wartime and postwar playthrough.
 
+Alpha 22's build, local deployment and fresh opening smoke are complete. A full
+human wartime and postwar playthrough remains outstanding. The maintained
+validate_v4.py pipeline is the
+authoritative production validator; the obsolete validate_v3_legacy.py harness
+is not a release gate because its tools/v3_config.json input no longer exists.
+
 Still required:
 
+- A controlled copied-old-save run confirming Compatibility Reviews repair
+  only missing state and never replay fresh money or manpower.
 - A no-cheat 1940/1942 force and economy measurement.
 - Real commitment/faction-merger, at-peace withdrawal and 90-day reset testing.
 - Friendly-owner liberation with Indian garrison proof, lane interoperability,

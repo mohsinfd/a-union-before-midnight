@@ -2291,17 +2291,18 @@ event = {
 	country = IND
 	trigger = {
 		flag = ind_aubm_wartime_framework
+		NOT = { flag = ind_aubm_fresh_1933_bootstrap }
 		NOT = { flag = ind_aubm_southern_refusal_migration_alpha20 }
 	}
-	name = "India Migrates the Southern Refusal Ledger"
-	desc = "The Cabinet reconciles Alpha 19 southern refusals with the terminal regional convention ledger. Historical victories remain recorded, but an already rejected file cannot be offered again without the published paid-retry process."
+	name = "Compatibility Review: Southern Settlements"
+	desc = "This save predates the current southern-settlement record. The review preserves victories and past refusals, then restores the normal paid-retry rules without changing forces, resources or current wars."
 	style = 2
 	picture = "aubm_v4_war_aims"
 	date = { day = 0 month = january year = 1933 }
 	offset = 1
 	deathdate = { day = 29 month = december year = 1964 }
 	action_a = {
-		name = "Canonicalize the prior refusal record"
+		name = "Reconcile the southern record (no cost)"
 		command = { trigger = { flag = ind_aubm_south_u05_reject } type = setflag which = ind_aubm_regional_refused_u05 }
 		command = { trigger = { flag = ind_aubm_south_u05_reject } type = clrflag which = ind_aubm_regional_pending_u05 }
 		command = { trigger = { flag = ind_aubm_south_u05_reject } type = clrflag which = ind_aubm_regional_current_u05 }

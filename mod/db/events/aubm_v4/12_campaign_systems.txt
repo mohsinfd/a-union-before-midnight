@@ -79,11 +79,11 @@ event = {
 		command = { type = relation which = ENG value = 15 }
 		command = { type = relation which = USA value = 15 }
 		command = { type = domestic which = interventionism value = 1 }
-		command = { type = setflag which = ind_v4_foreign_credit }
 		command = { trigger = { flag = ind_v4_budget_debt_1 } type = money value = -150 }
 		command = { trigger = { flag = ind_v4_budget_debt_2 } type = money value = -175 }
 		command = { trigger = { flag = ind_v4_budget_debt_3 } type = money value = -225 }
 		command = { trigger = { flag = ind_v4_foreign_credit } type = money value = -175 }
+		command = { type = setflag which = ind_v4_foreign_credit }
 	}
 	action_d = {
 		trigger = { NOT = { flag = ind_v4_austerity_program } }
@@ -241,6 +241,7 @@ event = {
 
 	trigger = {
 		flag = ind_v3_sovereignty_proclaimed
+		NOT = { flag = ind_aubm_fresh_1933_bootstrap }
 		NOT = { flag = ind_v4_inherited_service_baseline }
 		OR = {
 			NOT = { technology = 1070 }
@@ -254,8 +255,8 @@ event = {
 		}
 	}
 
-	name = "The Inherited Service Archives"
-	desc = "The Lahore settlement transfers the Raj's service archives, proving grounds and technical manuals to Indian authority. Mature Great War and early interwar designs already operated in India will not be rediscovered as original research. This compatibility transfer grants no future-generation weapons."
+	name = "Compatibility Review: Service Archives"
+	desc = "This save is missing part of the technical baseline already present in a new 1933 campaign. The review restores only mature Great War and early interwar designs formerly used in India; it grants no future-generation technology."
 	style = 2
 	picture = "aubm_v4_inherited_archives"
 
@@ -264,7 +265,7 @@ event = {
 	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
-		name = "Restore the inherited technical record"
+		name = "Restore the missing inherited record (no cost)"
 		# These blueprints are a compatibility bridge for campaigns begun before
 		# the 1933 scenario received full Raj service parity. New campaigns own
 		# the applications already, so the commands are harmless no-ops.

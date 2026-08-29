@@ -135,10 +135,10 @@ event = {
 
 	action_a = {
 		ai_chance = 50
-		name = "Multilingual service: -3 dissent, +1 research; costs 250"
+		name = "Multilingual: -250 money, -3 dissent, +1 research"
 		command = { type = money value = -250 }
 		command = { type = dissent value = -3 }
-
+		command = { type = research_mod value = 1 }
 		command = { type = setflag which = ind_v3_multilingual }
 		command = { type = setflag which = ind_v3_language_settlement }
 	}
@@ -154,11 +154,11 @@ event = {
 	}
 	action_c = {
 		ai_chance = 20
-		name = "English service: +2 research, +20 UK; costs 300 supplies"
+		name = "English service: -300 supplies, +1 dissent, +2 research"
 		command = { type = supplies value = -300 }
 		command = { type = dissent value = 1 }
 		command = { type = relation which = ENG value = 20 }
-
+		command = { type = research_mod value = 2 }
 		command = { type = domestic which = interventionism value = -1 }
 		command = { type = setflag which = ind_v3_english_service }
 		command = { type = setflag which = ind_v3_language_settlement }
@@ -225,7 +225,7 @@ event = {
 	}
 	action_c = {
 		ai_chance = 20
-		name = "Bose-Patel"
+		name = "Bose-Patel: -700 supplies, +2 dissent; mobilize"
 		command = { type = supplies value = -700 }
 		command = { type = dissent value = 2 }
 		command = { type = domestic which = professional_army value = 1 }

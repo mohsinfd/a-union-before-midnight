@@ -255,16 +255,16 @@ def current_route_trigger(route: Route) -> str:
 def initializer() -> str:
     out = header(9283200)
     out.extend([
-        "\ttrigger = { flag = ind_aubm_wartime_framework NOT = { flag = ind_aubm_legacy_wartime_retired } }",
-        '\tname = "The Canonical War Office Replaces the Old Dossiers"',
-        '\tdesc = "The new War Cabinet retires overlapping generic and route-specific reward stacks. Prewar treaty conferences remain available, but only the canonical campaign, reversal, armistice and constitutional-settlement system now scores battlefield results."',
+        "\ttrigger = { flag = ind_aubm_wartime_framework NOT = { flag = ind_aubm_fresh_1933_bootstrap } NOT = { flag = ind_aubm_legacy_wartime_retired } }",
+        '\tname = "Compatibility Review: Wartime Events"',
+        '\tdesc = "This save contains retired war-plan and reward events. The review disables those duplicates while preserving live wars, current objectives, forces, resources and every earned battlefield result."',
         "\tstyle = 2",
         '\tpicture = "aubm_v4_grand_strategy"',
         "\tdate = { day = 0 month = january year = 1933 }",
         "\toffset = 1",
         "\tdeathdate = { day = 29 month = december year = 1964 }",
         "\taction_a = {",
-        '\t\tname = "Retire duplicate wartime chains"',
+        '\t\tname = "Retire the duplicate events (no cost)"',
     ])
     for event_id in LEGACY_WARTIME_IDS:
         out.append(f"\t\tcommand = {{ type = sleepevent which = {event_id} }}")

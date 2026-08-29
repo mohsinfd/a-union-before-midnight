@@ -9,11 +9,12 @@ event = {
 
 	trigger = {
 		flag = ind_v3_started
+		NOT = { flag = ind_aubm_fresh_1933_bootstrap }
 		NOT = { flag = ind_v4_initialized }
 	}
 
-	name = "A Continental State in a Dangerous World"
-	desc = "The Lahore Accord has produced something without precedent: a sovereign Indian Union in 1933, extending from the north-west frontier through Burma to Ceylon. British power still holds Malaya and Singapore beyond the Union's eastern approaches. India has inherited railways, regiments and ports, but not yet a common political economy or a settled place in the world. Europe is rearming, Japan is advancing in Asia and every major power assumes the new Union will eventually need a patron."
+	name = "Compatibility Review: V4 Campaign State"
+	desc = "This save began before the current campaign state was introduced. The review enables the present India systems without changing money, manpower, forces, research or diplomatic relations."
 	style = 2
 	picture = "aubm_v4_continental_state"
 
@@ -23,11 +24,7 @@ event = {
 
 	action_a = {
 		ai_chance = 100
-		name = "Transfer the sterling reserve and begin: +1000 money"
-		command = { type = money value = 1000 }
-		command = { type = relation which = ENG value = 10 }
-		command = { type = relation which = USA value = 5 }
-		command = { type = relation which = CHI value = 5 }
+		name = "Initialize the current campaign state (no cost)"
 		command = { type = setflag which = ind_v4_direct_dh }
 		command = { type = setflag which = ind_v4_initialized }
 	}

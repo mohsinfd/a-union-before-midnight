@@ -1248,6 +1248,15 @@ class Validator:
     def validate_cross_event(self) -> None:
         all_ids = set(self.india_events)
         set_flags: set[str] = set()
+        scenario_path = self.mod / "scenarios/1933.eug"
+        if scenario_path.exists():
+            scenario_text = load_text(scenario_path)
+            for match in re.finditer(
+                rf"(?m)^\s*({INDIA_FLAG_PATTERN})\s*=\s*1\s*$",
+                scenario_text,
+                re.I,
+            ):
+                set_flags.add(match.group(1).lower())
         used_flags: list[tuple[str, pathlib.Path, int]] = []
         for path, event in self.india_events.values():
             for match in re.finditer(
@@ -1298,7 +1307,11 @@ class Validator:
                     )
         for flag, path, line in used_flags:
             if flag not in set_flags:
-                self.error(path, line, f'Trigger flag "{flag}" is never set by a loaded India event.')
+                self.error(
+                    path,
+                    line,
+                    f'Trigger flag "{flag}" is never set by a loaded India event or the 1933 scenario.',
+                )
 
     def validate_campaign_contracts(self) -> None:
         def loaded(event_id: int) -> tuple[pathlib.Path, Block] | None:

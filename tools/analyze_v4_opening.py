@@ -7,7 +7,7 @@ import pathlib
 import re
 import sys
 
-from validate_v4 import extract_blocks, load_text, scalar
+from validate_v4 import direct_scalar, extract_blocks, load_text, scalar
 
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -27,8 +27,6 @@ V3_OPENING = {
     9271400: "a",
 }
 V4_1933 = {
-    9280000: "a",
-    9280100: "a",
     9280101: "a",
     9280102: "a",
     9280103: "a",
@@ -39,7 +37,6 @@ V4_1933 = {
     9280300: "a",
     9280301: "a",
     9280150: "a",
-    9281000: "a",
 }
 V4_1934 = {
     9280108: "a",
@@ -75,17 +72,39 @@ def event_records(root: pathlib.Path) -> dict[int, str]:
     return records
 
 
-def action_delta(event: str, letter: str) -> dict[str, int]:
+def simple_flag_trigger(command: str) -> str | None:
+    triggers = extract_blocks(command, "trigger")
+    if not triggers:
+        return None
+    compact = re.sub(r"\s+", " ", triggers[0].text).strip()
+    match = re.fullmatch(r"trigger\s*=\s*\{\s*flag\s*=\s*([a-z0-9_]+)\s*\}", compact, re.I)
+    if not match:
+        raise ValueError(f"Opening resource command has an unsupported conditional trigger: {compact}")
+    return match.group(1)
+
+
+def action_delta(event: str, letter: str, active_flags: set[str]) -> dict[str, int]:
     actions = extract_blocks(event, f"action_{letter}")
     if not actions:
         raise ValueError(f"Event has no action_{letter}.")
     delta = {"money": 0, "supplies": 0, "manpower": 0}
     for command in extract_blocks(actions[0].text, "command"):
-        command_type = (scalar(command.text, "type") or "").lower()
+        command_type = (direct_scalar(command.text, "type") or "").lower()
         resource = RESOURCE_COMMANDS.get(command_type)
-        value = scalar(command.text, "value")
+        value = direct_scalar(command.text, "value")
         if resource and value:
+            required_flag = simple_flag_trigger(command.text)
+            if required_flag is not None and required_flag not in active_flags:
+                continue
             delta[resource] += int(float(value))
+        if command_type == "setflag":
+            flag = direct_scalar(command.text, "which")
+            if flag:
+                active_flags.add(flag)
+        elif command_type == "clrflag":
+            flag = direct_scalar(command.text, "which")
+            if flag:
+                active_flags.discard(flag)
     return delta
 
 
@@ -93,12 +112,13 @@ def apply_choices(
     ledger: dict[str, int],
     records: dict[int, str],
     choices: dict[int, str],
+    active_flags: set[str],
 ) -> dict[str, int]:
     updated = dict(ledger)
     for event_id, letter in choices.items():
         if event_id not in records:
             raise ValueError(f"Missing opening event {event_id}.")
-        for resource, value in action_delta(records[event_id], letter).items():
+        for resource, value in action_delta(records[event_id], letter, active_flags).items():
             updated[resource] += value
     return updated
 
@@ -111,10 +131,11 @@ def main() -> int:
         "manpower": scenario_value(scenario, "manpower"),
     }
     records = event_records(ROOT)
-    after_v3 = apply_choices(start, records, V3_OPENING)
-    end_1933 = apply_choices(after_v3, records, V4_1933)
-    end_1934 = apply_choices(end_1933, records, V4_1934)
-    with_security = apply_choices(end_1934, records, OPTIONAL_1934)
+    active_flags: set[str] = set()
+    after_v3 = apply_choices(start, records, V3_OPENING, active_flags)
+    end_1933 = apply_choices(after_v3, records, V4_1933, active_flags)
+    end_1934 = apply_choices(end_1933, records, V4_1934, active_flags)
+    with_security = apply_choices(end_1934, records, OPTIONAL_1934, active_flags)
 
     print("A Union Before Midnight V4 opening ledger")
     print(f"  Start: {start}")

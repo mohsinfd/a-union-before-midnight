@@ -10,6 +10,7 @@ event = {
 
 	decision = {
 		flag = ind_v3_army_reform
+		NOT = { flag = ind_aubm_frontier_force_commissioned }
 		NOT = { flag = ind_v3_frontier_force }
 	}
 	decision_trigger = {
