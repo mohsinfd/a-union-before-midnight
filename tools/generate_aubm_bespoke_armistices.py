@@ -395,6 +395,60 @@ def retry_event() -> str:
     return "\n".join(out)
 
 
+def japanese_southern_armistice() -> str:
+    """Expose the existing Japanese pairwise protocol after a southern victory."""
+    return """#########################################################################
+# A weaker Japanese southern armistice without a home-island invasion
+#########################################################################
+
+event = {
+	id = 9287690
+	random = no
+	persistent = yes
+	country = IND
+	trigger = {
+		war = { country = IND country = JAP }
+		OR = {
+			flag = ind_aubm_japan_current
+			AND = {
+				flag = ind_aubm_sea_theatre_achieved
+				OR = {
+					flag = ind_aubm_sea_land_malaya_liberated_current
+					flag = ind_aubm_sea_land_dei_liberated_current
+					flag = ind_aubm_sea_land_indochina_liberated_current
+					flag = ind_aubm_sea_land_philippines_liberated_current
+				}
+			}
+		}
+		NOT = { flag = ind_aubm_armistice_japan }
+		NOT = { flag = ind_aubm_japan_major_victory }
+		NOT = { flag = ind_aubm_major_armistice_outstanding }
+		NOT = { flag = ind_aubm_major_armistice_retry_pending }
+		NOT = { flag = ind_aubm_major_armistice_terms_dispatching }
+		NOT = { flag = ind_aubm_japan_southern_armistice_declined }
+		NOT = { flag = ind_aubm_japan_southern_armistice_inflight }
+	}
+	name = "Delhi Can Offer a Southern Armistice to Japan"
+	desc = "India retains either the direct Japanese limited-victory map or a full Southeast Asian theatre victory backed by current anti-Japanese liberation standing. Delhi may use the existing pairwise protocol without invading the home islands: unrelated wars continue, friendly legal owners keep their territory, and only Japanese-owned positions actually held by India can transfer."
+	style = 2
+	picture = "aubm_v4_japan_southern_choice"
+	date = { day = 0 month = january year = 1933 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Submit the southern terms: 45/35/20"
+		command = { type = setflag which = ind_aubm_japan_southern_armistice_inflight }
+		command = { type = setflag which = ind_aubm_major_armistice_target_jap }
+		command = { type = setflag which = ind_aubm_major_armistice_outstanding }
+		command = { type = event which = 9282186 where = JAP when = 3 }
+	}
+	action_b = {
+		name = "Continue the war toward Japan's inner perimeter"
+		command = { type = setflag which = ind_aubm_japan_southern_armistice_declined }
+	}
+}"""
+
+
 def render() -> str:
     sections = [
         "#########################################################################\n"
@@ -411,6 +465,7 @@ def render() -> str:
     sections.append(refusal_event())
     sections.append(ratify_event())
     sections.append(retry_event())
+    sections.append(japanese_southern_armistice())
     return "\n\n".join(sections) + "\n"
 
 
@@ -423,7 +478,7 @@ def main() -> int:
         if not OUTPUT.exists() or OUTPUT.read_text(encoding="ascii") != generated:
             print(f"STALE: {OUTPUT.relative_to(ROOT)}")
             return 1
-        print("OK: eight bespoke armistice lifecycles are current")
+        print("OK: eight bespoke armistice lifecycles and the Japanese southern docket are current")
         return 0
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT.write_text(generated, encoding="ascii", newline="\n")

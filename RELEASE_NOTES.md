@@ -1,5 +1,116 @@
 # Release Notes
 
+## 4.2.0-alpha.21 / Alpha 21 - Every Indian Route Through Southeast Asia
+
+*29 Aug 2026*
+
+The exact personal **41-family India sprite profile** has been restored in the
+developer's local installation after the previous public deployment. It is a
+local-only overlay: its donor-derived descriptors, animation strips, palettes
+and model panels are excluded from Git and do **not** ship in the public
+installer. Public installations continue to use redistribution-safe Darkest
+Hour Full visuals.
+
+The complete operational contract is published in the
+[Southeast Asia Victory Matrix](docs/SOUTHEAST_ASIA_VICTORY_MATRIX.md).
+
+### Alliance Exclusivity Without A Lifetime Lock
+
+- Hardened the Allied, German, Soviet and Japanese live-state synchronizers so
+  an existing rival commitment cannot be relabelled by engine alliance state.
+  This explicitly covers a Berlin-Tokyo faction merger reporting India as
+  allied to Germany while Delhi's binding commitment remains Japanese.
+- Prevented the sovereign synchronizer from silently erasing a current
+  commitment when a compact or alliance marker changes unexpectedly.
+- Added the same rival-commitment and live-alliance guards to every direct and
+  retired legacy coalition-entry action, including the old Pacific-entry and
+  independent-war choices that may remain open briefly in an upgraded save.
+- Retained Alpha 20's deliberate same-family compact upgrade and explicit
+  at-peace withdrawal. Withdrawal clears the current commitment, returns India
+  to sovereign command and starts the documented **90-day realignment** before
+  a different coalition can be negotiated; this is not a lifetime alignment
+  lock.
+
+### One Southeast Asian War System For All Five Routes
+
+- Integrated the complete Southeast Asian theatre result directly into the
+  relevant Allied, German, Soviet, Japanese and sovereign wartime focuses.
+  Autonomous Indian Socialism uses the same operational tests through the
+  socialist charter while retaining sovereign command.
+- Kept partial land operations, friendly liberations and sea lanes as
+  operational credit. Only the completed mixed three-result theatre publishes
+  the route-level campaign victory, so the generic "Beyond the Charter" fallback
+  cannot consume a route's one achievement slot after the first local result.
+- Added four anti-Japanese friendly-owner liberation chains for **Indochina,
+  the Philippines, Malaya and Batavia/East Indies**. Each requires recorded
+  prior Japanese occupation, friendly restoration and direct Indian control or
+  an Indian land garrison at a published hub before India receives credit.
+- Kept liberation purely operational: it opens no terms against the friendly
+  owner, transfers no friendly territory and does not end India's war with
+  Japan.
+- Made liberation credit interoperable with the Malacca and South China Sea
+  lane hinges where Darkest Hour returns allied provinces to their legal owner.
+  Java Sea Command remains stricter and still requires the Batavia-Soerabaja
+  operating pair plus its sixteen-ship screen.
+- Rebuilt the flexible theatre victory around exactly three distinct results
+  across both arms: either **two different land categories plus one sea lane**
+  or **one land category plus two different sea lanes**. Three land results or
+  three lanes alone do not qualify, and repeated results in one land category
+  cannot be counted twice.
+
+### Optional Japanese Southern Armistice
+
+- Added a weaker, optional pairwise peace offer while India is still fighting
+  Japan. Its exact live gate is an India-Japan war plus either
+  `ind_aubm_japan_current` from the recoverable direct limited-victory map
+  or `ind_aubm_sea_theatre_achieved` together with at least one **current**
+  anti-Japanese friendly-liberation flag. The stronger Okinawa or Home Islands
+  result uses the normal decisive great-power board instead of this weaker
+  decision.
+- Prevented a permanent route-neutral theatre record from being carried across
+  a route switch into free Japanese terms. The theatre award alone is not
+  sufficient; loss of the direct Japan claim or all current friendly
+  liberations suspends armistice eligibility until live leverage recovers.
+- Added southern in-flight state plus a shared great-power terms-dispatch lock,
+  so initial, retry and different-opponent dockets cannot race into duplicate
+  or disabled armistice popups. If decisive victory is
+  earned during a refusal cooldown, the retry is promoted to the normal
+  great-power board instead of being marked as a declined southern offer.
+- Reused Japan's disclosed **45% accept / 35% counter / 20% refuse** response.
+  Acceptance or counteroffer ends only the India-Japan war. Refusal continues
+  the war. After the existing **90-day retry**, Japan's docket reopens only if
+  the exact live Japan-specific gate still holds; otherwise it waits for the
+  direct claim or a qualifying friendly liberation to recover.
+- Limited any accepted southern transfer to a province Japan legally owns and
+  India actually controls. British, Malaysian, Singaporean, U05, Dutch,
+  Indonesian or other friendly-owner territory is never transferred by this
+  armistice.
+
+### Reviewed Saves
+
+- The newest file, the **28 Aug autosave**, is a fresh 1934 campaign rather
+  than a later wartime test.
+- The **23 Aug manual save** records India as non-aligned and not at war. It is
+  useful as chronology evidence but cannot validate alliance switching,
+  liberation, sea-lane or armistice behavior.
+- A new Alpha 21 wartime playthrough is therefore still required.
+
+### Alpha 21 Status
+
+Alpha 21 passed its final deterministic build, complete static suite, public
+manifest, deployment verification and fresh executable smoke on 29 Aug 2026.
+The release gate validated 4,434 overlay files, 40,357 global-campaign checks,
+1,860 wartime checks, 668 route checks and the 21-event Southeast Asian
+contract with **0 static errors and 0 warnings**. The public installer contains
+**342 managed files** and final deployment verified all 342 hashes.
+
+A fresh fullscreen 1933 India campaign reached the playable map and opening
+AUBM events with 0 logged engine errors, province validation reporting **No
+errors found**, no new crash dump and all 27 existing saves unchanged. The
+developer's local-only 41-family visual overlay was restored after deployment
+and verified separately. A new human wartime and postwar playthrough remains
+required for balance, pacing and narrative acceptance.
+
 ## 4.2.0 Alpha 20 - Committed Alliances and Southeast Asian Victories
 
 ### Alliance Commitment

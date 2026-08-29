@@ -71,15 +71,42 @@ routine destruction. Twelve three-division field corps, faster prepared
 reserves, airfield security, dispersal fields and scramble missions reduce
 wartime micromanagement within the limits of the Darkest Hour executable.
 
-Alpha 20 is the Southeast Asia and alliance-commitment gameplay pass. Batavia
-and Malaya can now produce local settlement dockets whose unratified claims
-suspend safely without waiting for the full Southern Theatre ledger;
-Indochina, the Philippines and four naval sea lanes give Indian land and
-maritime campaigns visible operational results.
-Binding coalitions and separate-command compacts are now mutually exclusive:
-India must withdraw while at peace and complete a 90-day sovereign reset before
-another alignment can be negotiated. The 1933 parser correction introduced in
-Alpha 19 remains protected by its regression gate.
+Alpha 21, dated **29 Aug 2026**, restores the developer's exact personal
+41-family India sprite profile locally after the previous public deployment.
+That profile remains a local-only overlay: donor-derived sprite and model-panel
+assets are excluded from Git and do not ship in the public installer.
+
+Gameplay now applies one flexible Southeast Asian land-and-sea system under
+every Indian command route. Four anti-Japanese friendly-owner liberation
+chains require prior Japanese occupation plus direct Indian control or an
+Indian land garrison; their credit can support the appropriate sea-lane hinges
+without making peace with, or taking land from, the friendly owner. The full
+theatre result requires two distinct land categories plus one sea lane, or one
+land category plus two lanes. It can help unlock an optional weaker pairwise
+Japanese Southern Armistice only while the Japan war and current Japanese
+leverage remain live: either the recoverable direct limited-victory flag, or the
+permanent theatre award backed by at least one currently active anti-Japanese
+friendly liberation. An old route-neutral theatre award alone is insufficient.
+The response remains 45/35/20 accept/counter/refuse with a guarded 90-day
+refusal retry. Southern in-flight state plus a shared great-power terms-dispatch
+lock prevents initial, retry and cross-opponent popups racing; if live leverage
+has lapsed at day 90, the offer waits for recovery. Decisive
+victory uses the normal great-power board and supersedes this weaker path.
+
+Alliance synchronizers and every direct or retired legacy entry path now
+respect the current binding commitment, including Berlin-Tokyo faction-merger
+artifacts. Alpha 20's explicit at-peace withdrawal and 90-day realignment are
+retained; the commitment is exclusive while active, not a lifetime lock. Alpha
+20's local Batavia and Malaya dockets, Alpha 19's 1933 parser correction and
+their regression gates remain part of the current source.
+
+Alpha 21 passed its final deterministic build, complete static acceptance,
+public-manifest generation, deployment verification and fresh executable smoke
+on **29 Aug 2026**. The public installer manages **342 files** and excludes the
+personal visual overlay. A fresh 1933 India campaign reached the playable map
+and opening AUBM events with **0 logged engine errors**, no new crash dump and
+all existing saves unchanged. A human wartime and postwar playthrough is still
+required before this alpha can be treated as a proven stable campaign.
 
 Alpha 18 completed wartime play around a canonical War Cabinet. Allied, German,
 Soviet, Japanese and sovereign routes each receive a four-doctrine war charter,
@@ -98,16 +125,17 @@ naval, command and research improvements remain intact.
 
 For a player-facing explanation of the complete campaign loop, route choices,
 war economy, mobilisation, settlement rules, verification status and remaining
-playtest risks, see [Gameplay Changes and Alpha 20 Status](GAMEPLAY_CHANGES.md).
-The reviewed-save chronology and focused next-run checklist are in
+playtest risks, see [Gameplay Changes and Alpha 21 Status](GAMEPLAY_CHANGES.md).
+The all-route land, liberation, sea-lane and armistice rules are specified in
+the [Southeast Asia Victory Matrix](docs/SOUTHEAST_ASIA_VICTORY_MATRIX.md).
+The earlier reviewed-save chronology remains in
 [Alpha 20 Save and Playtest Review](docs/ALPHA20_SAVE_AND_PLAYTEST_REVIEW.md).
 
 ## Campaign
 
-- **4,577 campaign entries** across 57 isolated event modules: 3,728 Indian
-  events and decisions plus 849 foreign replies.
-- **103 player-timed decisions** and **4,474 events** for deadlines, crises,
-  negotiations, implementation disputes, objectives and settlements.
+- The Alpha 21 global fallback matrix validates **3,433 generated campaign
+  events** across 210 countries as part of **40,357 checks**; the complete
+  parser suite passes with 0 errors and 0 warnings.
 - Stable constitutional governments, complete cabinets and leadership
   transitions tied to genuine political milestones.
 - **Five strategic universes:** Allied, German, Japanese, Soviet and armed
@@ -123,15 +151,16 @@ The reviewed-save chronology and focused next-run checklist are in
   objective, reversal, recovery, armistice response and post-annex settlement;
   old prerequisite chains no longer silently erase a campaign.
 - Formal Allied, German, Soviet and Japanese alliances have deterministic
-  precedence, explicit entry, cross-route commitment locks, an at-peace
-  withdrawal and reset period, and sovereign fallback if a strategic partner
-  disappears.
+  entry and current-commitment guards. Live synchronizers and legacy choices
+  cannot relabel a rival route, while at-peace withdrawal and the 90-day reset
+  still permit a legitimate later realignment.
 - Japan follows an independent India-facing route around China, Bose, the INA,
   Imphal, Burma and Asian leadership rather than acting as an appendage of
   Germany.
-- Batavia, Malaya, Indochina and the Philippines now have standalone Indian
-  operational outcomes, while Bay of Bengal, Malacca, Java Sea and South China
-  Sea milestones measure both ports and surface-fleet strength.
+- Batavia, Malaya, Indochina and the Philippines have direct and
+  friendly-liberation outcomes; Bay of Bengal, Malacca, Java Sea and South
+  China Sea milestones interoperate with eligible friendly-owner hubs and feed
+  the flexible three-result theatre victory under every route.
 - Indian responses to Abyssinia, Spain, China, Anschluss, Munich, Prague,
   Albania and the invasion of Poland.
 - Meaningful choices that trade money, supplies, manpower, dissent, autonomy
@@ -157,9 +186,10 @@ The reviewed-save chronology and focused next-run checklist are in
   and Andaman marine charters.
 - Eight separately researchable Indian special-unit types and two half-built
   super-heavy capital ships unlocked through late naval programmes.
-- An optional developer-only overlay reconstructs **41 distinct India sprite
-  families** with eight-direction movement and multi-frame combat animation;
-  public builds inherit Darkest Hour Full map sprites.
+- The developer's exact **41-family personal India sprite profile** is restored
+  in the local installation with eight-direction movement and multi-frame
+  combat animation. It remains local-only; public builds inherit Darkest Hour
+  Full map sprites and do not contain its donor-derived assets.
 - Complete Indian naming pools for corps, divisions, air groups, wings, fleets,
   ships, submarines, transports and missiles.
 
@@ -189,12 +219,12 @@ are included in the repository.
 
 ![India event art](assets/event-gallery.png)
 
-Public builds inherit Darkest Hour Full unit sprites and production panels. A
-developer-only local build can reconstruct 41 animated Indian sprite families
-from installed donor material, but those descriptors, animation strips,
-palettes and donor-derived model panels are excluded from public manifests and
-are not cleared for redistribution. Every donor path and hash is recorded in
-the generated personal sprite manifest.
+Public builds inherit Darkest Hour Full unit sprites and production panels. The
+exact 41-family personal profile was restored locally after the previous public
+deployment, but its descriptors, animation strips, palettes and donor-derived
+model panels remain outside Git and public manifests and are not cleared for
+redistribution. Every donor path and hash is recorded in the generated personal
+sprite manifest.
 
 ![India service sprites](assets/sprite-comparison.png)
 

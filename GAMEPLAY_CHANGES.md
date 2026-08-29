@@ -1,45 +1,182 @@
-# A Union Before Midnight: Gameplay Changes and Alpha 20 Status
+# A Union Before Midnight: Gameplay Changes and Alpha 21 Status
 
-This is the player-facing guide to the current **4.2.0-alpha.20** build of
+This is the player-facing guide to the current **4.2.0-alpha.21** source of
 *A Union Before Midnight*. It explains what changed, how the new systems are
 supposed to play, what has been verified, and what still needs a real campaign
 test.
 
-Updated: 28 August 2026.
+Updated: 29 Aug 2026.
 
 ## Current Status
 
 | Area | Status |
 | --- | --- |
-| Current source version | `4.2.0-alpha.20` |
-| Build and static validation | Passed: deterministic two-pass build, 0 errors and 0 warnings |
-| Public manifest | Passed: 342 managed files; copied foundation, donor and unresolved assets excluded |
-| Installed-file verification | Passed: all 342 managed files present and hash-matched |
+| Current source version | `4.2.0-alpha.21` |
+| Alpha 21 build and static acceptance | Passed final deterministic build and complete release gate on 29 Aug 2026; 0 static errors and 0 warnings |
+| Public manifest | 342 managed files; foundation, donor and unresolved assets excluded |
+| Public deployment and executable smoke | 342/342 files verified; fresh 1933 India campaign reached the live map with 0 logged engine errors and no new crash |
+| Personal sprite profile | Exact 41-family profile restored locally after final public deployment; excluded from Git and public packages |
 | Campaign compatibility | Start a fresh 1933 campaign |
-| 1933 engine smoke | Passed: fresh India campaign reached the playable map with 0 logged errors |
+| Reviewed saves | 28 Aug autosave is a fresh 1934 start; 23 Aug manual is non-aligned and not at war |
 | Human wartime playthrough | Still required |
 | Source-control safety | Public-safe exclusions active; local-only assets remain excluded |
 
 The maintained source is the `v4-direct-dh` branch. Its public installer
-manifest contains only AUBM gameplay, documentation and redistribution-cleared
-art. Darkest Hour foundation files, locally reconstructed donor sprites and
-model panels, unresolved leader portraits, manuals, screenshots and Steam test
-backups remain on the developer machine but are ignored and cannot enter the
-manifest accidentally.
+manifest is designed to contain only AUBM gameplay, documentation and
+redistribution-cleared art. Darkest Hour foundation files, the restored local
+41-family donor-derived sprite and model-panel profile, unresolved leader
+portraits, manuals, screenshots and Steam test backups remain excluded. The
+final Alpha 21 public manifest contains 342 managed files.
 
 Alpha 18's first fresh engine launch exposed unsupported foreign-country flag
 scopes in the Japanese-partnership and wartime-settlement events. Alpha 19
 rewrote those callbacks using Darkest Hour-supported event logic and added a
-regression check so the invalid form cannot return. Alpha 20 preserves that
-launch fix while changing the gameplay systems described below.
+regression check so the invalid form cannot return. Alpha 20 preserved that
+launch fix and introduced the commitment and local Southeast Asian foundation.
+Alpha 21 extends and hardens those systems as described below.
 
-The practical verdict is: **Alpha 20 is suitable for a new focused playthrough,
+The practical verdict is: **Alpha 21 is built, deployed and launch-verified,
 but it is not yet a proven stable campaign release.** A complete human war and
 postwar run is still required for balance, pacing and narrative verification.
 
 The old `India Mod` folder is the original/base workspace. The maintained V4
 source of truth is the sibling `India Ascendant` repository, and deployment
 targets the separately installed Steam mod listed above.
+
+## What Alpha 21 Changes
+
+The developer's exact personal **41-family India sprite profile** is restored
+in the local installation after the previous public deployment. This is not
+public payload: its donor-derived descriptors, animation strips, palettes and
+model panels remain outside Git and the installer manifest. Public players
+continue to receive Darkest Hour Full sprites until redistribution-safe Indian
+art is available.
+
+For exact objectives, legal-owner rules and examples, use the
+[Southeast Asia Victory Matrix](docs/SOUTHEAST_ASIA_VICTORY_MATRIX.md). It is
+the canonical Alpha 21 gameplay contract.
+
+### Current commitments cannot be relabelled
+
+- Allied, German, Soviet and Japanese live-state synchronizers now refuse to
+  overwrite an existing rival commitment. A Berlin-Tokyo faction merger can no
+  longer reinterpret a Delhi-Tokyo commitment as a German one merely because
+  the engine reports a shared alliance.
+- The sovereign synchronizer cannot erase an active commitment merely because
+  an alliance or compact marker changes unexpectedly.
+- Every direct coalition command and the retired pre-Alpha20 entry decisions
+  now repeat the same rival-commitment and live-alliance guards. This protects
+  upgraded saves with an old decision still open.
+- This is **not** a lifetime alignment lock. Same-family treaty upgrades remain
+  valid. India may withdraw while at peace, enter sovereign command and wait
+  through the existing 90-day realignment before choosing another family.
+
+### Every command route recognizes the theatre
+
+The same land, liberation and sea-lane tests operate under Allied, German,
+Soviet, Japanese and sovereign command. The full Southeast Asian theatre result
+now feeds these named focuses directly:
+
+| Route | Focuses accepting the full theatre result |
+| --- | --- |
+| Allied | Eastern Ocean Command; Anti-Colonial Liberation Mandate |
+| German | Dismantle Britain's imperial system; Win the southern resource race |
+| Soviet | Anti-Imperial Ocean War; A Republican Asian Order |
+| Japanese | Indian Southern Sphere |
+| Sovereign | Build an Indian Ocean League |
+
+Partial land results, friendly liberations and sea lanes do not consume the
+route's single wartime-achievement slot. Only the completed mixed theatre
+publishes route-level victory credit. A separately won named-country campaign
+can still use the existing **Beyond the Charter** fallback.
+
+Autonomous Indian Socialism follows the socialist charter lifecycle while
+remaining outside Moscow's formal alliance. Other continental focuses still
+receive unexpected victories through the established beyond-the-charter
+fallback.
+
+### Four friendly-owner liberation chains
+
+Indochina, the Philippines, Malaya and Batavia/East Indies now recognize Indian
+participation even when Darkest Hour immediately returns an allied province to
+its legal owner. A liberation is credited only when all four safeguards hold:
+
+1. India is at war with Japan.
+2. The system previously observed Japan holding the complete published hub set
+   while the friendly legal owner also fought Japan and did not fight India.
+3. The complete hub set has returned to India or an eligible friendly owner.
+4. India directly controls a hub or an Indian **land division remains
+   garrisoned in one published hub** when the liberation is recorded.
+
+This produces operational and modest campaign credit only. It opens no peace
+against the friendly owner, creates no armistice lock, transfers no friendly
+territory and does not end the Japanese war. Keep the Indian formation in a
+listed hub until the liberation message appears.
+
+### Liberation and sea lanes interoperate
+
+Current friendly Malaya credit can satisfy the Singapore-Kuala Lumpur hinges
+of Malacca and the Singapore hinge of the South China Sea. Current Batavia
+credit can satisfy Malacca's Batavia alternative. Current Indochina or
+Philippine credit can satisfy the Saigon or Manila side of the South China Sea.
+
+Java Sea Command remains deliberately stricter: Batavia-only liberation does
+not replace the Batavia-Soerabaja two-base operating system or its sixteen
+ready surface combatants. Bay of Bengal likewise retains its own published
+Rangoon-Port Blair chain and fleet test.
+
+### A flexible three-result victory
+
+**India Wins the Southeast Asian Operational Theatre** now requires exactly
+one of two mixed structures:
+
+- two different land categories plus one sea lane; or
+- one land category plus two different sea lanes.
+
+Three land results without a lane and three lanes without a land result do not
+qualify. Repeated results within one category, such as two Malayan country
+victories, count once. The permanent award grants operational and settlement
+standing, not provinces or an automatic peace.
+
+### An optional weaker Japanese peace
+
+**Delhi Can Offer a Southern Armistice to Japan** has a live, Japan-specific
+gate. India must still be at war with Japan and must hold either:
+
+- `ind_aubm_japan_current` from the recoverable direct limited-victory map,
+  provided the decisive Japan victory has not already replaced this weaker
+  path; or
+- permanent `ind_aubm_sea_theatre_achieved` history **plus at least one current
+  anti-Japanese friendly-liberation flag** in Indochina, the Philippines,
+  Malaya or Batavia/East Indies.
+
+The permanent route-neutral theatre result alone does not qualify. It cannot be
+earned under one route, carried through a route switch and converted into free
+Japanese terms after all current Japanese leverage has been lost. Loss of the
+direct Japan claim or every current qualifying liberation suspends eligibility;
+recovery restores it. Delhi may always decline and keep fighting toward Okinawa
+or the Home Islands. A decisive Okinawa or Home Islands result uses the normal
+great-power armistice board, not the weaker southern decision.
+
+Tokyo's fixed response is **45% acceptance, 35% counteroffer and 20% refusal**.
+Acceptance or counteroffer produces only a pairwise India-Japan peace. Refusal
+continues the war. Southern in-flight state plus a shared great-power
+terms-dispatch lock prevents initial, retry and cross-opponent dockets from
+opening duplicate or disabled response popups. At the end
+of the 90-day refusal cooldown, Japan's file reopens only if the same live gate
+still holds; otherwise it waits for a direct claim or qualifying liberation to
+recover. If India earns decisive victory during that cooldown, the retry moves
+to the normal great-power board. Even on acceptance, a position transfers only when Japan legally owns
+it and India actually controls it; territory owned by Britain, Malaysia,
+Singapore, U05, the Netherlands, Indonesia or another friendly government is
+never taken.
+
+### Current save review
+
+The newest **28 Aug autosave** is only a fresh 1934 campaign. The **23 Aug
+manual save** has India non-aligned and not at war. Neither file exercises the
+reported alliance transition or the new operational chains, so Alpha 21 still
+needs a fresh wartime playthrough.
 
 ## What Alpha 20 Changes
 
@@ -416,6 +553,15 @@ This is the most extensively bespoke route.
 - Under the separate compact, India can open a simultaneous Soviet war. Tokyo
   may supply India, pressure the Soviet Far East, intervene, or condemn the
   campaign without automatically ending the southern war.
+- If India instead fights Japan, the optional weaker Southern Armistice needs a
+  live Japan war plus either the current direct limited-victory claim before
+  decisive victory, or the
+  permanent all-route theatre record backed by a current friendly liberation.
+  The record alone cannot survive a route switch as free leverage. Its 45/35/20
+  response remains pairwise; southern in-flight and shared dispatch locks
+  prevent initial, retry and cross-opponent races,
+  and a 90-day refusal reopens only after live leverage is present again. No
+  friendly legal owner's territory can be transferred.
 
 ### Sovereign Command
 
@@ -487,7 +633,7 @@ tier one remains while India still records direct rule. Administrative reform
 therefore reduces the burden without pretending retained territory has become
 free or sovereign.
 
-## Military Changes Retained in Alpha 20
+## Military Changes Retained Through Alpha 21
 
 ### Leaders and Specialist Forces
 
@@ -559,111 +705,129 @@ free or sovereign.
 
 ## What Requires a Fresh Campaign
 
-Start a **new 1933 campaign** for Alpha 20. The complete route ledger, leader
-roster, scenario technologies, economy curve, campaign monitors and successor
-state coverage cannot be reconstructed safely from an older save.
+Start a **new 1933 campaign** for the intended Alpha 21 playtest. The complete
+route ledger, leader roster, scenario technologies, economy curve, campaign
+monitors and successor-state coverage cannot be reconstructed safely from an
+older save.
 
 - V3 saves are unsupported.
 - Earlier V4 alpha saves may receive individual migration or repair events,
-  but they are not valid tests of the complete Alpha 20 wartime architecture.
+  but they are not complete tests of Alpha 21's liberation, lane and armistice
+  architecture.
 - Existing ships already in production cannot receive a newly changed build
   schedule.
 - Personnel records are serialized into saves, so the expanded leader roster
   requires a new campaign.
 
-## Verification Performed
+## Verification State
 
-The Alpha 20 source and installed build were rechecked on 28 August 2026:
+The final **Alpha 21 acceptance run on 29 August 2026** passed:
 
+- deterministic repeat build: **4,434 overlay files**;
 - global campaign matrix: **40,357 checks**, 210 countries, 3,433 events;
-- canonical wartime system: **1,700 checks**;
-- five-route consequences: **660 checks**;
+- canonical wartime system: **1,860 checks**;
+- five-route consequences: **668 checks**;
 - specialist units: **2,957 checks**;
 - diplomatic disclosure: **431 checks**;
 - Japan partnership: event IDs, braces, references, pictures, AI files and
   transfer safety passed;
 - southern settlements: **305 checks**;
-- Southeast Asian operations: **11 unique events** with two land operations,
-  four sea lanes and one flexible theatre award;
+- Southeast Asian operations: **21 unique operational events**, four
+  friendly-owner liberation chains, four fleet-backed lanes and one flexible
+  theatre award;
 - unsupported foreign-country-scope regression gate: passed;
-- union-integration truth table: **25 checks**.
+- union-integration truth table: **25 checks**;
+- complete static validation: **0 errors and 0 warnings**;
+- art release gate: **4,588 picture entries**, 109 names and 102 custom event
+  pictures, with 0 duplicate or release issues;
+- economy, sustained resources, cold start, combat pacing, construction caps
+  and Steam Deck checks: passed.
 
-The final Alpha 20 acceptance run passed the full static and repeat-build gates,
-strict art and provenance audit, economy, resource, campaign, combat,
-construction-cap and Steam Deck checks. The public manifest contains 342 files;
-the installed overlay has 0 missing or mismatched hashes. A fresh fullscreen
-1933 India campaign reached the playable map, `savedebug.txt` contained 0
-errors, and province validation ended with **No errors found**.
+The public installer manifest contains **342 managed files**, and final
+deployment verified all 342 hashes. Foundation files, donor-derived personal
+visuals and unresolved assets remain outside that payload. The local-only
+sprite restoration then verified 41 distinct India families, 591 descriptors,
+553 bitmap strips, 44 palettes and 820 model graphics with 0 missing files or
+hash mismatches.
 
-The first Alpha 20 engine run caught two static-validator gaps before release:
-20 naval construction modifiers used an unsupported command parameter, and the
-American armistice named Wake's sea zone rather than land province 1673. Both
-were corrected and converted into permanent validation rules before the final
-build and smoke.
+A real fresh fullscreen launch of Darkest Hour 1.05.2 selected **A Union Before
+Midnight V4.2**, loaded the 1933 India campaign, reached the playable map and
+displayed the opening AUBM events. Province validation ended with **No errors
+found**, the exact `ERROR :` count in the new `savedebug.txt` was 0, no new
+crash dump appeared and the process exited cleanly. All 27 existing saves were
+unchanged after the smoke. This verifies packaging, parsing and launch; it does
+not replace the required human wartime playthrough.
 
 ## Remaining Risks and Playtest Priorities
 
 These are the important unfinished items, not hidden claims of completion:
 
-1. **A successful 1933 startup smoke is not a war playthrough.** Event timing,
-   AI behavior, balance and player satisfaction still require a complete
-   campaign.
-2. **Wartime balance needs observation.** Test whether finance and mobilisation
+1. **Wartime balance needs observation.** Test whether finance and mobilisation
    relieve emergencies without becoming free resources, and whether occupation
    upkeep is meaningful without becoming tedious.
-3. **Coalition commitment needs stress testing.** Verify rival offers stay
-   hidden, same-family compact upgrades remain possible, wartime withdrawal is
-   blocked, the 90-day reset releases correctly, and partner collapse or Allied
-   failover does not corrupt the route.
-4. **Late-game force scale remains a balance question.** Record effective IC,
+2. **Coalition commitment needs stress testing.** Verify rival offers and
+   retired legacy entries stay hidden, a Berlin-Tokyo faction merger cannot
+   relabel a Japan commitment, same-family upgrades remain possible, wartime
+   withdrawal is blocked and the at-peace 90-day reset releases correctly.
+3. **Late-game force scale remains a balance question.** Record effective IC,
    formations, manpower and treasury in 1940 and 1942 on a no-cheat run.
-5. **Southeast Asia should be the first operational test.** Confirm that
-   Batavia and Malaya open local terms before the national Southern Theatre is
-   complete; legal-owner cessions leave third-party provinces alone; and all
-   four naval milestones suspend and recover correctly.
-6. **Postwar closure needs a complete run.** Trigger at least one armistice, one
+4. **Southeast Asia should be the first operational test.** Confirm all-route
+   focus integration, the four prior-occupation plus Indian-garrison liberation
+   chains, friendly-hub lane interoperability, the mixed three-result theatre
+   test and the optional 45/35/20 Japanese armistice's current-leverage and
+   in-flight locks, with no friendly-owner transfers.
+5. **Postwar closure needs a complete run.** Trigger at least one armistice, one
    annexation settlement, one occupation year and one Delhi congress.
-7. **The public-safe branch snapshot is reproducible, but it is not a tagged
-   stable release.** A versioned release and default-branch merge should wait
-   for the human war and postwar tests above.
-8. **Repository safety is separate from package clearance.** Local donor
+6. **Repository safety is separate from package clearance.** Local donor
    graphics are excluded, but a downloadable or forum package still needs a
    current V4 rights and provenance review.
 
-## Recommended First Alpha 20 Playtest
+## Recommended First Alpha 21 Playtest
 
 For the fastest coverage of the original complaints:
 
-1. Start a fresh 1933 campaign. Confirm the 1934 review appears even after a
-   legitimacy-plus-capacity opening with no provincial bargain.
-2. Keep milestone saves at the start of 1937, before the first war, before the
-   first settlement and before demobilisation.
-3. Pursue the Delhi-Tokyo **separate compact**. Confirm German, Soviet and
-   Allied binding offers disappear while the Japanese formal upgrade remains.
-4. Start the Southern campaign. Take Batavia without completing every East
-   Indies objective and verify that the local U05 or HOL docket opens.
-5. In a British war, take Singapore and Kuala Lumpur without Borneo and verify
-   the standalone Malaya docket.
-6. Build the required surface fleet and test at least one sea lane. Deliberately
-   lose and recover a required port; the current flag should suspend and return
-   without a second material reward.
-7. Submit one pairwise peace and verify unrelated wars and third-party
-   territory are unchanged. If Indonesia or Malaya is released/protected,
-   confirm the achievement remains valid.
-8. Test the Hanoi-Saigon or Manila-Davao land operation and confirm it
-   contributes to the flexible regional achievement.
-9. After peace, withdraw to sovereign command. Rival offers must remain closed
-   for 90 days and reopen only after the reset; repeat from a save made during
-   the cooldown.
-10. Record treasury, debt, manpower, dissent, occupation tier, effective IC and
-    force totals at yearly saves, then finish one campaign and verify the
-    correct Delhi congress.
+1. Start a fresh 1933 campaign and keep milestone saves before the first
+   commitment, Japanese war, liberation, theatre award and armistice response.
+2. Select one named Southeast Asian focus on the chosen command route and
+   confirm the full theatre result feeds that focus; repeat from a save under a
+   second route if practical.
+3. Form the Delhi-Tokyo separate compact. Confirm rival formal and compact
+   entries disappear while the Japanese same-family upgrade remains. If the
+   wider factions merge, confirm the route remains Japanese rather than German.
+4. While fighting Japan, let Japan occupy a complete Indochina, Philippine,
+   Malayan or Batavia hub set, then restore it to its friendly legal owner. Keep
+   an Indian land division in a published hub until the liberation records.
+5. Repeat once without Indian control or a garrison and confirm another ally's
+   liberation gives India no credit. Verify no terms, transfer or peace opens
+   against the friendly owner.
+6. Use eligible liberation credit at a Malacca or South China Sea hinge. Then
+   verify Batavia-only liberation does not satisfy Java Sea without Soerabaja
+   and sixteen ready surface ships.
+7. Earn two distinct land categories plus one lane, or one land category plus
+   two lanes, and confirm the flexible theatre award. Confirm three land-only
+   or three lane-only results do not qualify.
+8. Offer the Japanese Southern Armistice once with the current direct Japan
+   claim and once with permanent theatre history plus a current friendly
+   liberation. Confirm theatre history alone is insufficient after loss or a
+   route switch. Test its 45/35/20 branches: refusal must wait 90 days, avoid a
+   duplicate initial/retry popup and reopen only with recovered live leverage;
+   acceptance must end only the Japanese war and transfer no friendly-owner
+   territory.
+9. After all Indian wars end, withdraw to sovereign command. Rival offers must
+   remain closed through the 90-day realignment and reopen afterward; repeat
+   from a save made during the cooldown.
+10. Complete one Batavia or Malaya pairwise docket, one annexation settlement,
+    one occupation year and one Delhi congress while recording treasury, debt,
+    manpower, dissent, effective IC and force totals.
 
 ## Detailed References
 
+- [Southeast Asia Victory Matrix](docs/SOUTHEAST_ASIA_VICTORY_MATRIX.md) is the
+  canonical Alpha 21 specification for all-route focuses, liberation proof,
+  sea lanes, the mixed theatre result and the Japanese Southern Armistice.
 - [Release Notes](RELEASE_NOTES.md) records the cumulative release history.
 - [Alpha 20 Save and Playtest Review](docs/ALPHA20_SAVE_AND_PLAYTEST_REVIEW.md)
-  records the installed-save chronology, diagnosed state and next-run checks.
+  preserves the previous release's installed-save chronology and diagnosis.
 - [Wartime Campaign Map](docs/WARTIME_CAMPAIGN_MAP.md) is the canonical wartime
   contract.
 - [Design Notes](docs/DESIGN.md) records the broader V4 design and content
@@ -675,4 +839,4 @@ For the fastest coverage of the original complaints:
   [Alpha 14](docs/RELEASE_NOTES_4.2_ALPHA14.md),
   [Alpha 15](docs/RELEASE_NOTES_4.2_ALPHA15.md) and
   [Alpha 16](docs/RELEASE_NOTES_4.2_ALPHA16.md) cover the military, Tokyo,
-  specialist and information improvements that Alpha 20 retains.
+  specialist and information improvements retained through Alpha 21.

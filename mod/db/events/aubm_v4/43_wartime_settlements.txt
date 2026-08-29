@@ -1162,6 +1162,7 @@ event = {
 	action_a = {
 		trigger = { war = { country = IND country = SOV } flag = ind_aubm_soviet_current OR = { AND = { owned = { province = 1097 data = SOV } owned = { province = 1098 data = SOV } control = { province = 1097 data = IND } control = { province = 1098 data = IND } } AND = { owned = { province = 1099 data = SOV } owned = { province = 1100 data = SOV } owned = { province = 1101 data = SOV } owned = { province = 1102 data = SOV } owned = { province = 1103 data = SOV } control = { province = 1099 data = IND } control = { province = 1100 data = IND } control = { province = 1101 data = IND } control = { province = 1102 data = IND } control = { province = 1103 data = IND } } AND = { owned = { province = 1104 data = SOV } owned = { province = 1105 data = SOV } control = { province = 1104 data = IND } control = { province = 1105 data = IND } } AND = { owned = { province = 1106 data = SOV } owned = { province = 1107 data = SOV } control = { province = 1106 data = IND } control = { province = 1107 data = IND } } AND = { owned = { province = 498 data = SOV } owned = { province = 500 data = SOV } owned = { province = 504 data = SOV } owned = { province = 505 data = SOV } owned = { province = 506 data = SOV } owned = { province = 507 data = SOV } control = { province = 498 data = IND } control = { province = 500 data = IND } control = { province = 504 data = IND } control = { province = 505 data = IND } control = { province = 506 data = IND } control = { province = 507 data = IND } } } NOT = { flag = ind_aubm_local_armistice_outstanding } NOT = { flag = ind_aubm_local_armistice_retry_pending } }
 		name = "Sovereign republics: 55/30/15"
+		command = { type = clrflag which = ind_aubm_major_armistice_terms_dispatching }
 		command = { type = setflag which = ind_aubm_local_armistice_target_sov }
 		command = { type = setflag which = ind_aubm_local_soviet_sovereign_terms }
 		command = { type = setflag which = ind_aubm_local_armistice_outstanding }
@@ -1170,6 +1171,7 @@ event = {
 	action_b = {
 		trigger = { war = { country = IND country = SOV } flag = ind_aubm_soviet_current OR = { AND = { owned = { province = 1097 data = SOV } owned = { province = 1098 data = SOV } control = { province = 1097 data = IND } control = { province = 1098 data = IND } } AND = { owned = { province = 1099 data = SOV } owned = { province = 1100 data = SOV } owned = { province = 1101 data = SOV } owned = { province = 1102 data = SOV } owned = { province = 1103 data = SOV } control = { province = 1099 data = IND } control = { province = 1100 data = IND } control = { province = 1101 data = IND } control = { province = 1102 data = IND } control = { province = 1103 data = IND } } AND = { owned = { province = 1104 data = SOV } owned = { province = 1105 data = SOV } control = { province = 1104 data = IND } control = { province = 1105 data = IND } } AND = { owned = { province = 1106 data = SOV } owned = { province = 1107 data = SOV } control = { province = 1106 data = IND } control = { province = 1107 data = IND } } AND = { owned = { province = 498 data = SOV } owned = { province = 500 data = SOV } owned = { province = 504 data = SOV } owned = { province = 505 data = SOV } owned = { province = 506 data = SOV } owned = { province = 507 data = SOV } control = { province = 498 data = IND } control = { province = 500 data = IND } control = { province = 504 data = IND } control = { province = 505 data = IND } control = { province = 506 data = IND } control = { province = 507 data = IND } } } NOT = { flag = ind_aubm_local_armistice_outstanding } NOT = { flag = ind_aubm_local_armistice_retry_pending } }
 		name = "Protected republics: 25/45/30"
+		command = { type = clrflag which = ind_aubm_major_armistice_terms_dispatching }
 		command = { type = setflag which = ind_aubm_local_armistice_target_sov }
 		command = { type = setflag which = ind_aubm_local_soviet_protected_terms }
 		command = { type = setflag which = ind_aubm_local_armistice_outstanding }
@@ -1178,6 +1180,7 @@ event = {
 	action_c = {
 		trigger = { war = { country = IND country = SOV } flag = ind_aubm_soviet_current NOT = { flag = ind_aubm_local_armistice_outstanding } NOT = { flag = ind_aubm_local_armistice_retry_pending } }
 		name = "Base-rights armistice: 45/40/15"
+		command = { type = clrflag which = ind_aubm_major_armistice_terms_dispatching }
 		command = { type = setflag which = ind_aubm_local_armistice_target_sov }
 		command = { type = setflag which = ind_aubm_local_soviet_base_terms }
 		command = { type = setflag which = ind_aubm_local_armistice_outstanding }
@@ -1185,6 +1188,7 @@ event = {
 	}
 	action_d = {
 		name = "Continue the northern war"
+		command = { type = clrflag which = ind_aubm_major_armistice_terms_dispatching }
 		command = { type = event which = 9282003 where = IND when = 1 }
 	}
 }

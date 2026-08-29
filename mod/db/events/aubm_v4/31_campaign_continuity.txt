@@ -53,6 +53,12 @@ event = {
 
 	trigger = {
 		atwar = no
+		NOT = { flag = ind_aubm_realignment_cooldown }
+		NOT = { participant = { country = IND value = 4 } }
+		NOT = { flag = ind_aubm_commitment_allied }
+		NOT = { flag = ind_aubm_commitment_german }
+		NOT = { flag = ind_aubm_commitment_soviet }
+		NOT = { flag = ind_aubm_commitment_japan }
 		OR = {
 			war = { country = JAP country = ENG }
 			war = { country = JAP country = USA }
@@ -70,6 +76,7 @@ event = {
 	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
+		trigger = { NOT = { flag = ind_aubm_realignment_cooldown } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } }
 		ai_chance = 45
 		name = "Enter the Allies as a sovereign great power"
 		command = { type = clrflag which = ind_v3_axis_orientation }
@@ -89,6 +96,7 @@ event = {
 		command = { type = setflag which = ind_v41_pacific_entry_debate }
 	}
 	action_b = {
+		trigger = { NOT = { flag = ind_aubm_realignment_cooldown } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } }
 		ai_chance = 25
 		name = "Declare a separate Indian war against Japan"
 		command = { type = clrflag which = ind_v3_allied_orientation }
@@ -110,6 +118,7 @@ event = {
 		command = { type = setflag which = ind_v41_pacific_entry_debate }
 	}
 	action_c = {
+		trigger = { NOT = { flag = ind_aubm_realignment_cooldown } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } }
 		ai_chance = 10
 		name = "Open a sovereign Delhi-Tokyo compact"
 		command = { type = clrflag which = ind_v3_allied_orientation }
@@ -130,6 +139,7 @@ event = {
 		command = { type = setflag which = ind_v41_pacific_entry_debate }
 	}
 	action_d = {
+		trigger = { NOT = { flag = ind_aubm_realignment_cooldown } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } }
 		ai_chance = 20
 		name = "Remain armed and uncommitted"
 		command = { type = clrflag which = ind_v3_allied_orientation }

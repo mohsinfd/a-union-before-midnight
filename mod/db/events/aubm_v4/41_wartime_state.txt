@@ -177,7 +177,9 @@ event = {
 }
 
 #########################################################################
-# Actual alliance and compact state always overrides an obsolete route flag.
+# Live alliance and compact state repairs an obsolete route flag only when it
+# does not overwrite a current rival commitment.  A commitment remains binding
+# through faction-merger artifacts until an explicit withdrawal or rupture.
 #########################################################################
 
 event = {
@@ -187,6 +189,9 @@ event = {
 	country = IND
 	trigger = {
 		flag = ind_aubm_wartime_framework
+		NOT = { flag = ind_aubm_commitment_german }
+		NOT = { flag = ind_aubm_commitment_soviet }
+		NOT = { flag = ind_aubm_commitment_japan }
 		OR = { alliance = { country = IND country = ENG } alliance = { country = IND country = USA } }
 		NOT = { alliance = { country = IND country = GER } }
 		NOT = { alliance = { country = IND country = SOV } }
@@ -257,6 +262,9 @@ event = {
 	country = IND
 	trigger = {
 		flag = ind_aubm_wartime_framework
+		NOT = { flag = ind_aubm_commitment_allied }
+		NOT = { flag = ind_aubm_commitment_soviet }
+		NOT = { flag = ind_aubm_commitment_japan }
 		alliance = { country = IND country = GER }
 		NOT = { alliance = { country = IND country = ENG } }
 		NOT = { alliance = { country = IND country = USA } }
@@ -325,6 +333,9 @@ event = {
 	country = IND
 	trigger = {
 		flag = ind_aubm_wartime_framework
+		NOT = { flag = ind_aubm_commitment_allied }
+		NOT = { flag = ind_aubm_commitment_german }
+		NOT = { flag = ind_aubm_commitment_japan }
 		alliance = { country = IND country = SOV }
 		NOT = { alliance = { country = IND country = ENG } }
 		NOT = { alliance = { country = IND country = USA } }
@@ -409,6 +420,9 @@ event = {
 	country = IND
 	trigger = {
 		flag = ind_aubm_wartime_framework
+		NOT = { flag = ind_aubm_commitment_allied }
+		NOT = { flag = ind_aubm_commitment_german }
+		NOT = { flag = ind_aubm_commitment_soviet }
 		exists = JAP
 		NOT = { war = { country = IND country = JAP } }
 		NOT = { alliance = { country = IND country = ENG } }
@@ -491,6 +505,10 @@ event = {
 	country = IND
 	trigger = {
 		flag = ind_aubm_wartime_framework
+		NOT = { flag = ind_aubm_commitment_allied }
+		NOT = { flag = ind_aubm_commitment_german }
+		NOT = { flag = ind_aubm_commitment_soviet }
+		NOT = { flag = ind_aubm_commitment_japan }
 		NOT = { alliance = { country = IND country = ENG } }
 		NOT = { alliance = { country = IND country = USA } }
 		NOT = { alliance = { country = IND country = GER } }

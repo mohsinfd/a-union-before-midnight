@@ -22,6 +22,15 @@ MODULE_NAMES = (
 	"50_southeast_asia_operations.txt",
 )
 MODULE_PATHS = tuple(EVENT_ROOT / "aubm_v4" / name for name in MODULE_NAMES)
+DIRECT_ENTRY_PATHS = (
+    EVENT_ROOT / "india_v3/40_diplomacy.txt",
+    EVENT_ROOT / "aubm_v4/22_crisis_interventions.txt",
+    EVENT_ROOT / "aubm_v4/31_campaign_continuity.txt",
+    EVENT_ROOT / "aubm_v4/36_allied_campaigns.txt",
+    EVENT_ROOT / "aubm_v4/37_german_campaigns.txt",
+    EVENT_ROOT / "aubm_v4/38_soviet_campaigns.txt",
+    EVENT_ROOT / "aubm_v4/41_wartime_state.txt",
+)
 
 ROUTES = {
     9281901: "ind_aubm_route_allied",
@@ -201,6 +210,38 @@ def action_blocks(block: str) -> dict[str, str]:
     return actions
 
 
+def named_blocks(block: str, name: str) -> list[str]:
+    """Return brace-balanced blocks assigned to a specific clause name."""
+    clean = strip_comments(block)
+    blocks: list[str] = []
+    pattern = rf"(?m)^\s*{re.escape(name)}\s*=\s*\{{"
+    for match in re.finditer(pattern, clean):
+        opening = clean.find("{", match.start())
+        depth = 0
+        quoted = False
+        escaped = False
+        for position in range(opening, len(clean)):
+            char = clean[position]
+            if quoted:
+                if escaped:
+                    escaped = False
+                elif char == "\\":
+                    escaped = True
+                elif char == '"':
+                    quoted = False
+                continue
+            if char == '"':
+                quoted = True
+            elif char == "{":
+                depth += 1
+            elif char == "}":
+                depth -= 1
+                if depth == 0:
+                    blocks.append(clean[match.start() : position + 1])
+                    break
+    return blocks
+
+
 def require(errors: list[str], condition: bool, message: str) -> None:
     if not condition:
         errors.append(message)
@@ -227,6 +268,7 @@ def main() -> int:
 
     try:
         events = parse_events(MODULE_PATHS)
+        direct_entry_events = parse_events(DIRECT_ENTRY_PATHS)
     except ValueError as exc:
         print(f"ERROR: {exc}")
         return 1
@@ -282,6 +324,38 @@ def main() -> int:
     for family in ("allied", "german", "soviet", "japan"):
         checks += 1
         require(errors, f"NOT = {{ flag = ind_aubm_commitment_{family} }}" in events.get(9281909, ""), f"autonomous-socialist synchronizer can override {family} commitment")
+
+    formal_commitment_family = {
+        9281901: "allied",
+        9281902: "german",
+        9281903: "soviet",
+        9281904: "japan",
+    }
+    for event_id, selected in formal_commitment_family.items():
+        block = events.get(event_id, "")
+        for rival in ("allied", "german", "soviet", "japan"):
+            if rival == selected:
+                continue
+            checks += 1
+            require(
+                errors,
+                f"NOT = {{ flag = ind_aubm_commitment_{rival} }}" in block,
+                f"formal synchronizer {event_id} can overwrite a current {rival} commitment",
+            )
+    sovereign_sync = events.get(9281905, "")
+    for family in ("allied", "german", "soviet", "japan"):
+        checks += 1
+        require(
+            errors,
+            f"NOT = {{ flag = ind_aubm_commitment_{family} }}" in sovereign_sync,
+            f"sovereign synchronizer can silently erase a current {family} commitment",
+        )
+    checks += 1
+    require(
+        errors,
+        "NOT = { flag = ind_aubm_commitment_japan }" in events.get(9281902, ""),
+        "Berlin synchronizer can rewrite a Tokyo commitment after a Berlin-Tokyo faction merge",
+    )
 
     for event_id, selected_family in RELATIONSHIP_SYNCHRONIZERS.items():
         block = events.get(event_id, "")
@@ -443,6 +517,152 @@ def main() -> int:
                 for token in legacy_binding[rival]:
                     checks += 1
                     require(errors, f"NOT = {{ flag = {token} }}" in action, f"{selected} route entry {entry_number} ignores legacy {rival} binding token {token}")
+
+    # Every direct alliance command, including retired pre-Alpha20 decisions
+    # that may still be open in an upgraded save, must respect the canonical
+    # current commitment before it can replace engine alliance membership.
+    target_family = {
+        "ENG": "allied",
+        "USA": "allied",
+        "GER": "german",
+        "SOV": "soviet",
+        "JAP": "japan",
+    }
+    seen_direct_entries: set[int] = set()
+    for event_id, block in direct_entry_events.items():
+        if "country = IND" not in block:
+            continue
+        for letter, action in action_blocks(block).items():
+            for match in re.finditer(r"type\s*=\s*alliance\s+which\s*=\s*(ENG|USA|GER|SOV|JAP)\b", action):
+                selected = target_family[match.group(1)]
+                seen_direct_entries.add(event_id)
+                checks += 1
+                require(
+                    errors,
+                    "NOT = { participant = { country = IND value = 4 } }" in action,
+                    f"direct alliance entry {event_id}/{letter} ignores a live formal alliance",
+                )
+                for rival, commitment in commitment_flags.items():
+                    if rival == selected:
+                        continue
+                    checks += 1
+                    require(
+                        errors,
+                        f"NOT = {{ flag = {commitment} }}" in action,
+                        f"direct alliance entry {event_id}/{letter} can overwrite a current {rival} commitment",
+                    )
+    expected_direct_entries = {
+        9270404, 9270405, 9270406, 9270407,
+        9280801, 9280940, 9281211, 9281212, 9281304, 9281453,
+        9281910, 9281914, 9281934,
+    }
+    checks += 1
+    require(
+        errors,
+        expected_direct_entries <= seen_direct_entries,
+        f"direct-entry audit missed event IDs {sorted(expected_direct_entries - seen_direct_entries)}",
+    )
+
+    cooldown_guard = "NOT = { flag = ind_aubm_realignment_cooldown }"
+    for event_id in range(9270404, 9270410):
+        fallback_entry = direct_entry_events.get(event_id, "")
+        decisions = named_blocks(fallback_entry, "decision")
+        decision_triggers = named_blocks(fallback_entry, "decision_trigger")
+        acceptance = action_blocks(fallback_entry).get("a", "")
+        acceptance_triggers = named_blocks(acceptance, "trigger")
+        checks += 6
+        require(errors, len(decisions) == 1, f"fallback entry {event_id} does not have exactly one decision visibility block")
+        require(errors, bool(decisions) and cooldown_guard in decisions[0], f"fallback entry {event_id} remains visible during realignment cooldown")
+        require(errors, len(decision_triggers) == 1, f"fallback entry {event_id} does not have exactly one decision eligibility block")
+        require(errors, bool(decision_triggers) and cooldown_guard in decision_triggers[0], f"fallback entry {event_id} can be selected during realignment cooldown")
+        require(errors, len(acceptance_triggers) == 1, f"fallback entry {event_id}/a does not have exactly one acceptance trigger")
+        require(errors, bool(acceptance_triggers) and cooldown_guard in acceptance_triggers[0], f"fallback entry {event_id}/a can accept during realignment cooldown")
+
+    for event_id in (9270408, 9270409):
+        independent_action = action_blocks(direct_entry_events.get(event_id, "")).get("a", "")
+        checks += 1
+        require(
+            errors,
+            "NOT = { participant = { country = IND value = 4 } }" in independent_action,
+            f"legacy independent-war action {event_id} can relabel a formal coalition member sovereign",
+        )
+        for commitment in commitment_flags.values():
+            checks += 1
+            require(
+                errors,
+                f"NOT = {{ flag = {commitment} }}" in independent_action,
+                f"legacy independent-war action {event_id} can erase a current coalition commitment",
+            )
+
+    pacific_entry = direct_entry_events.get(9280801, "")
+    pacific_prefix = pacific_entry.split("action_a", 1)[0]
+    pacific_event_triggers = named_blocks(pacific_prefix, "trigger")
+    checks += 3
+    require(
+        errors,
+        len(pacific_event_triggers) == 1,
+        "legacy Pacific entry debate does not have exactly one event trigger",
+    )
+    require(
+        errors,
+        bool(pacific_event_triggers) and cooldown_guard in pacific_event_triggers[0],
+        "legacy Pacific entry debate can open during realignment cooldown",
+    )
+    require(
+        errors,
+        "NOT = { participant = { country = IND value = 4 } }" in pacific_prefix,
+        "legacy Pacific entry debate can open for a formal coalition member",
+    )
+    for commitment in commitment_flags.values():
+        checks += 1
+        require(
+            errors,
+            f"NOT = {{ flag = {commitment} }}" in pacific_prefix,
+            "legacy Pacific entry debate can open during a current coalition commitment",
+        )
+    pacific_actions = action_blocks(pacific_entry)
+    for letter in ("a", "b", "c", "d"):
+        action_triggers = named_blocks(pacific_actions.get(letter, ""), "trigger")
+        checks += 2
+        require(
+            errors,
+            len(action_triggers) == 1,
+            f"legacy Pacific entry debate action {letter} does not have exactly one acceptance trigger",
+        )
+        require(
+            errors,
+            bool(action_triggers) and cooldown_guard in action_triggers[0],
+            f"legacy Pacific entry debate action {letter} can be accepted during realignment cooldown",
+        )
+    for letter in ("b", "d"):
+        action = pacific_actions.get(letter, "")
+        for commitment in commitment_flags.values():
+            checks += 1
+            require(
+                errors,
+                f"NOT = {{ flag = {commitment} }}" in action,
+                f"legacy Pacific sovereign action {letter} can override a current coalition commitment",
+            )
+
+    withdrawal = japan_menu_actions.get("c", "")
+    checks += 4
+    require(errors, "type = leave_alliance when = 1" in withdrawal, "explicit withdrawal no longer leaves a formal alliance")
+    require(errors, "type = setflag which = ind_aubm_realignment_cooldown" in withdrawal, "explicit withdrawal no longer begins realignment cooldown")
+    require(errors, "event which = 9281938 where = IND when = 90" in withdrawal, "explicit withdrawal no longer schedules the ninety-day realignment")
+    require(errors, "begin ninety-day realignment" in withdrawal, "explicit withdrawal is no longer described as a ninety-day realignment")
+    for commitment in commitment_flags.values():
+        checks += 1
+        require(
+            errors,
+            f"type = clrflag which = {commitment}" in withdrawal,
+            f"explicit withdrawal does not release {commitment}",
+        )
+    checks += 1
+    require(
+        errors,
+        "ind_aubm_alignment_lock" not in events.get(9281910, "") + events.get(9281914, "") + events.get(9281934, ""),
+        "coalition menus introduced an irreversible lifetime lock instead of the documented withdrawal path",
+    )
 
     for letter, partner in (("b", "GER"), ("c", "SOV")):
         checks += 1

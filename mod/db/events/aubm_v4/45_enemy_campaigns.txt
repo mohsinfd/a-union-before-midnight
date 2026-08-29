@@ -581,6 +581,7 @@ event = {
 	action_c = {
 		trigger = { flag = ind_aubm_major_victory_pending }
 		name = "Open the great-power armistice board"
+		command = { type = setflag which = ind_aubm_major_armistice_terms_dispatching }
 		command = { type = event which = 9282180 where = IND when = 1 }
 		command = { type = clrflag which = ind_aubm_major_victory_pending }
 	}
@@ -719,10 +720,15 @@ event = {
 	desc = "A decisive opponent-specific victory unlocks a pairwise armistice. It does not end unrelated wars or wait for global peace. Britain, Germany, Japan, America and the Soviet Union each answer separately."
 	style = 2
 	picture = "aubm_v4_war_aims"
-	action_a = { trigger = { flag = ind_aubm_britain_current war = { country = IND country = ENG } } name = "Open the British armistice" command = { type = event which = 9282181 where = IND when = 1 } }
-	action_b = { trigger = { flag = ind_aubm_germany_current war = { country = IND country = GER } } name = "Open the German armistice" command = { type = event which = 9282182 where = IND when = 1 } }
-	action_c = { trigger = { OR = { AND = { flag = ind_aubm_japan_current war = { country = IND country = JAP } } AND = { flag = ind_aubm_america_current war = { country = IND country = USA } } } } name = "Open the Pacific armistices" command = { type = event which = 9282183 where = IND when = 1 } }
-	action_d = { trigger = { flag = ind_aubm_soviet_current war = { country = IND country = SOV } } name = "Open the Soviet armistice" command = { type = event which = 9282036 where = IND when = 1 } }
+	action_a = { trigger = { flag = ind_aubm_britain_current war = { country = IND country = ENG } } name = "Open the British armistice" command = { type = setflag which = ind_aubm_major_armistice_terms_dispatching } command = { type = event which = 9282181 where = IND when = 1 } }
+	action_b = { trigger = { flag = ind_aubm_germany_current war = { country = IND country = GER } } name = "Open the German armistice" command = { type = setflag which = ind_aubm_major_armistice_terms_dispatching } command = { type = event which = 9282182 where = IND when = 1 } }
+	action_c = { trigger = { OR = { AND = { flag = ind_aubm_japan_current war = { country = IND country = JAP } } AND = { flag = ind_aubm_america_current war = { country = IND country = USA } } } } name = "Open the Pacific armistices" command = { type = setflag which = ind_aubm_major_armistice_terms_dispatching } command = { type = event which = 9282183 where = IND when = 1 } }
+	action_d = {
+		name = "Open the Soviet armistice or close the board"
+		command = { type = clrflag which = ind_aubm_major_armistice_terms_dispatching }
+		command = { trigger = { flag = ind_aubm_soviet_current war = { country = IND country = SOV } } type = setflag which = ind_aubm_major_armistice_terms_dispatching }
+		command = { trigger = { flag = ind_aubm_soviet_current war = { country = IND country = SOV } } type = event which = 9282036 where = IND when = 1 }
+	}
 }
 
 event = {
@@ -737,11 +743,12 @@ event = {
 	action_a = {
 		trigger = { flag = ind_aubm_britain_current war = { country = IND country = ENG } NOT = { flag = ind_aubm_major_armistice_outstanding } NOT = { flag = ind_aubm_major_armistice_retry_pending } }
 		name = "Submit the terms: 55/30/15"
+		command = { type = clrflag which = ind_aubm_major_armistice_terms_dispatching }
 		command = { type = setflag which = ind_aubm_major_armistice_target_eng }
 		command = { type = setflag which = ind_aubm_major_armistice_outstanding }
 		command = { type = event which = 9282184 where = ENG when = 3 }
 	}
-	action_b = { name = "Continue the war" command = { type = event which = 9282180 where = IND when = 90 } }
+	action_b = { name = "Continue the war" command = { type = clrflag which = ind_aubm_major_armistice_terms_dispatching } command = { type = event which = 9282180 where = IND when = 90 } }
 }
 
 event = {
@@ -756,11 +763,12 @@ event = {
 	action_a = {
 		trigger = { flag = ind_aubm_germany_current war = { country = IND country = GER } NOT = { flag = ind_aubm_major_armistice_outstanding } NOT = { flag = ind_aubm_major_armistice_retry_pending } }
 		name = "Submit the terms: 50/35/15"
+		command = { type = clrflag which = ind_aubm_major_armistice_terms_dispatching }
 		command = { type = setflag which = ind_aubm_major_armistice_target_ger }
 		command = { type = setflag which = ind_aubm_major_armistice_outstanding }
 		command = { type = event which = 9282185 where = GER when = 3 }
 	}
-	action_b = { name = "Continue the war" command = { type = event which = 9282180 where = IND when = 90 } }
+	action_b = { name = "Continue the war" command = { type = clrflag which = ind_aubm_major_armistice_terms_dispatching } command = { type = event which = 9282180 where = IND when = 90 } }
 }
 
 event = {
@@ -772,9 +780,9 @@ event = {
 	desc = "Japan answers at fixed odds 45/35/20; America answers at 40/40/20. Each armistice is pairwise. Japan may transfer specifically listed southern positions it legally owns. America may transfer the Philippines, Guam and Wake, never its mainland."
 	style = 2
 	picture = "aubm_v4_indian_ocean_war"
-	action_a = { trigger = { flag = ind_aubm_japan_current war = { country = IND country = JAP } } name = "Submit terms to Japan: 45/35/20" command = { type = event which = 9282188 where = IND when = 1 } }
-	action_b = { trigger = { flag = ind_aubm_america_current war = { country = IND country = USA } } name = "Submit terms to America: 40/40/20" command = { type = event which = 9282189 where = IND when = 1 } }
-	action_c = { name = "Return to the armistice board" command = { type = event which = 9282180 where = IND when = 1 } }
+	action_a = { trigger = { flag = ind_aubm_japan_current war = { country = IND country = JAP } } name = "Submit terms to Japan: 45/35/20" command = { type = setflag which = ind_aubm_major_armistice_terms_dispatching } command = { trigger = { NOT = { flag = ind_aubm_japan_major_victory } } type = setflag which = ind_aubm_japan_southern_armistice_inflight } command = { type = event which = 9282188 where = IND when = 1 } }
+	action_b = { trigger = { flag = ind_aubm_america_current war = { country = IND country = USA } } name = "Submit terms to America: 40/40/20" command = { type = setflag which = ind_aubm_major_armistice_terms_dispatching } command = { type = event which = 9282189 where = IND when = 1 } }
+	action_c = { name = "Return to the armistice board" command = { type = setflag which = ind_aubm_major_armistice_terms_dispatching } command = { type = event which = 9282180 where = IND when = 1 } }
 }
 
 event = {
@@ -787,13 +795,21 @@ event = {
 	style = 2
 	picture = "aubm_v4_japan_southern_choice"
 	action_a = {
-		trigger = { flag = ind_aubm_japan_current war = { country = IND country = JAP } NOT = { flag = ind_aubm_major_armistice_outstanding } NOT = { flag = ind_aubm_major_armistice_retry_pending } }
+		trigger = { OR = { flag = ind_aubm_japan_current AND = { flag = ind_aubm_sea_theatre_achieved OR = { flag = ind_aubm_sea_land_malaya_liberated_current flag = ind_aubm_sea_land_dei_liberated_current flag = ind_aubm_sea_land_indochina_liberated_current flag = ind_aubm_sea_land_philippines_liberated_current } } } war = { country = IND country = JAP } NOT = { flag = ind_aubm_major_armistice_outstanding } NOT = { flag = ind_aubm_major_armistice_retry_pending } }
 		name = "Submit the terms: 45/35/20"
+		command = { type = clrflag which = ind_aubm_major_armistice_terms_dispatching }
+		command = { trigger = { NOT = { flag = ind_aubm_japan_major_victory } } type = setflag which = ind_aubm_japan_southern_armistice_inflight }
 		command = { type = setflag which = ind_aubm_major_armistice_target_jap }
 		command = { type = setflag which = ind_aubm_major_armistice_outstanding }
 		command = { type = event which = 9282186 where = JAP when = 3 }
 	}
-	action_b = { name = "Continue the war" command = { type = event which = 9282180 where = IND when = 90 } }
+	action_b = {
+		name = "Continue the war"
+		command = { type = clrflag which = ind_aubm_major_armistice_terms_dispatching }
+		command = { trigger = { OR = { NOT = { flag = ind_aubm_japan_southern_armistice_inflight } flag = ind_aubm_japan_major_victory } } type = event which = 9282180 where = IND when = 90 }
+		command = { trigger = { flag = ind_aubm_japan_southern_armistice_inflight NOT = { flag = ind_aubm_japan_major_victory } war = { country = IND country = JAP } OR = { flag = ind_aubm_japan_current AND = { flag = ind_aubm_sea_theatre_achieved OR = { flag = ind_aubm_sea_land_malaya_liberated_current flag = ind_aubm_sea_land_dei_liberated_current flag = ind_aubm_sea_land_indochina_liberated_current flag = ind_aubm_sea_land_philippines_liberated_current } } } } type = setflag which = ind_aubm_japan_southern_armistice_declined }
+		command = { type = clrflag which = ind_aubm_japan_southern_armistice_inflight }
+	}
 }
 
 event = {
@@ -808,11 +824,12 @@ event = {
 	action_a = {
 		trigger = { flag = ind_aubm_america_current war = { country = IND country = USA } NOT = { flag = ind_aubm_major_armistice_outstanding } NOT = { flag = ind_aubm_major_armistice_retry_pending } }
 		name = "Submit the terms: 40/40/20"
+		command = { type = clrflag which = ind_aubm_major_armistice_terms_dispatching }
 		command = { type = setflag which = ind_aubm_major_armistice_target_usa }
 		command = { type = setflag which = ind_aubm_major_armistice_outstanding }
 		command = { type = event which = 9282187 where = USA when = 3 }
 	}
-	action_b = { name = "Continue the war" command = { type = event which = 9282180 where = IND when = 90 } }
+	action_b = { name = "Continue the war" command = { type = clrflag which = ind_aubm_major_armistice_terms_dispatching } command = { type = event which = 9282180 where = IND when = 90 } }
 }
 
 event = {
@@ -1066,6 +1083,7 @@ event = {
 		command = { trigger = { flag = ind_aubm_major_armistice_target_jap } type = clrflag which = ind_aubm_japan_major_victory }
 		command = { trigger = { flag = ind_aubm_major_armistice_target_jap } type = clrflag which = ind_aubm_japan_current }
 		command = { trigger = { flag = ind_aubm_major_armistice_target_jap } type = clrflag which = ind_aubm_japan_suspended }
+		command = { trigger = { flag = ind_aubm_major_armistice_target_jap } type = clrflag which = ind_aubm_japan_southern_armistice_inflight }
 		command = { trigger = { flag = ind_aubm_major_armistice_target_usa } type = setflag which = ind_aubm_armistice_america }
 		command = { trigger = { flag = ind_aubm_major_armistice_target_usa } type = clrflag which = ind_aubm_campaign_america_active }
 		command = { trigger = { flag = ind_aubm_major_armistice_target_usa } type = clrflag which = ind_aubm_america_limited_victory }
@@ -1078,6 +1096,7 @@ event = {
 		command = { type = clrflag which = ind_aubm_major_armistice_target_usa }
 		command = { type = clrflag which = ind_aubm_major_armistice_outstanding }
 		command = { type = clrflag which = ind_aubm_major_armistice_retry_pending }
+		command = { type = clrflag which = ind_aubm_major_armistice_terms_dispatching }
 		command = { type = clrflag which = ind_aubm_major_armistice_full }
 		command = { type = clrflag which = ind_aubm_major_armistice_limited }
 		command = { type = clrflag which = ind_v3_joined_allies }
@@ -1100,9 +1119,12 @@ event = {
 	action_a = {
 		name = "Review the recorded opponent"
 		command = { type = clrflag which = ind_aubm_major_armistice_retry_pending }
+		command = { trigger = { OR = { AND = { flag = ind_aubm_major_armistice_retry_eng flag = ind_aubm_britain_current war = { country = IND country = ENG } } AND = { flag = ind_aubm_major_armistice_retry_ger flag = ind_aubm_germany_current war = { country = IND country = GER } } AND = { flag = ind_aubm_major_armistice_retry_jap war = { country = IND country = JAP } OR = { flag = ind_aubm_japan_current AND = { flag = ind_aubm_sea_theatre_achieved OR = { flag = ind_aubm_sea_land_malaya_liberated_current flag = ind_aubm_sea_land_dei_liberated_current flag = ind_aubm_sea_land_indochina_liberated_current flag = ind_aubm_sea_land_philippines_liberated_current } } } } AND = { flag = ind_aubm_major_armistice_retry_usa flag = ind_aubm_america_current war = { country = IND country = USA } } } } type = setflag which = ind_aubm_major_armistice_terms_dispatching }
 		command = { trigger = { flag = ind_aubm_major_armistice_retry_eng flag = ind_aubm_britain_current war = { country = IND country = ENG } } type = event which = 9282181 where = IND when = 1 }
 		command = { trigger = { flag = ind_aubm_major_armistice_retry_ger flag = ind_aubm_germany_current war = { country = IND country = GER } } type = event which = 9282182 where = IND when = 1 }
-		command = { trigger = { flag = ind_aubm_major_armistice_retry_jap flag = ind_aubm_japan_current war = { country = IND country = JAP } } type = event which = 9282188 where = IND when = 1 }
+		command = { trigger = { flag = ind_aubm_major_armistice_retry_jap flag = ind_aubm_japan_southern_armistice_inflight OR = { flag = ind_aubm_japan_major_victory NOT = { AND = { war = { country = IND country = JAP } OR = { flag = ind_aubm_japan_current AND = { flag = ind_aubm_sea_theatre_achieved OR = { flag = ind_aubm_sea_land_malaya_liberated_current flag = ind_aubm_sea_land_dei_liberated_current flag = ind_aubm_sea_land_indochina_liberated_current flag = ind_aubm_sea_land_philippines_liberated_current } } } } } } } type = clrflag which = ind_aubm_japan_southern_armistice_inflight }
+		command = { trigger = { flag = ind_aubm_major_armistice_retry_jap NOT = { flag = ind_aubm_japan_major_victory } war = { country = IND country = JAP } OR = { flag = ind_aubm_japan_current AND = { flag = ind_aubm_sea_theatre_achieved OR = { flag = ind_aubm_sea_land_malaya_liberated_current flag = ind_aubm_sea_land_dei_liberated_current flag = ind_aubm_sea_land_indochina_liberated_current flag = ind_aubm_sea_land_philippines_liberated_current } } } } type = setflag which = ind_aubm_japan_southern_armistice_inflight }
+		command = { trigger = { flag = ind_aubm_major_armistice_retry_jap OR = { flag = ind_aubm_japan_current AND = { flag = ind_aubm_sea_theatre_achieved OR = { flag = ind_aubm_sea_land_malaya_liberated_current flag = ind_aubm_sea_land_dei_liberated_current flag = ind_aubm_sea_land_indochina_liberated_current flag = ind_aubm_sea_land_philippines_liberated_current } } } war = { country = IND country = JAP } } type = event which = 9282188 where = IND when = 1 }
 		command = { trigger = { flag = ind_aubm_major_armistice_retry_usa flag = ind_aubm_america_current war = { country = IND country = USA } } type = event which = 9282189 where = IND when = 1 }
 		command = { type = clrflag which = ind_aubm_major_armistice_retry_eng }
 		command = { type = clrflag which = ind_aubm_major_armistice_retry_ger }

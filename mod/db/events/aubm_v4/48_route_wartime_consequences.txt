@@ -238,10 +238,10 @@ event = {
 		NOT = { flag = ind_aubm_route_achievement_allied_eastern }
 		NOT = { flag = ind_aubm_route_war_achievement }
 		NOT = { flag = ind_aubm_postwar_congress_completed }
-		OR = { flag = ind_aubm_national_southern_victory flag = ind_aubm_japan_limited_victory flag = ind_aubm_japan_major_victory flag = ind_aubm_major_annex_victory_jap flag = ind_aubm_pacific_capital_victory flag = ind_aubm_regional_victory_sia flag = ind_aubm_regional_victory_u05 flag = ind_aubm_regional_victory_hol flag = ind_aubm_regional_victory_ast }
+		OR = { flag = ind_aubm_sea_theatre_achieved flag = ind_aubm_national_southern_victory flag = ind_aubm_japan_limited_victory flag = ind_aubm_japan_major_victory flag = ind_aubm_major_annex_victory_jap flag = ind_aubm_pacific_capital_victory flag = ind_aubm_regional_victory_sia flag = ind_aubm_regional_victory_u05 flag = ind_aubm_regional_victory_hol flag = ind_aubm_regional_victory_ast }
 	}
 	name = "Delhi Is Recognized as the Allied Eastern Command"
-	desc = "Indian command has broken a southern or Japanese objective. London and Washington can no longer describe India as a supporting contingent; the result earns coalition credit and immediate replacement stocks."
+	desc = "Indian command has broken a Japanese objective or completed the flexible Southeast Asian land-and-sea theatre. London and Washington can no longer describe India as a supporting contingent; the result earns coalition credit and immediate replacement stocks."
 	style = 2
 	picture = "aubm_v4_london_settlement"
 	date = { day = 0 month = january year = 1933 }
@@ -302,10 +302,10 @@ event = {
 		NOT = { flag = ind_aubm_route_achievement_allied_anticolonial }
 		NOT = { flag = ind_aubm_route_war_achievement }
 		NOT = { flag = ind_aubm_postwar_congress_completed }
-		OR = { flag = ind_aubm_national_western_victory flag = ind_aubm_regional_victory_eth flag = ind_aubm_regional_victory_saf flag = ind_aubm_regional_victory_per flag = ind_aubm_regional_victory_irq flag = ind_aubm_regional_victory_sau }
+		OR = { flag = ind_aubm_sea_theatre_achieved flag = ind_aubm_national_western_victory flag = ind_aubm_regional_victory_eth flag = ind_aubm_regional_victory_saf flag = ind_aubm_regional_victory_per flag = ind_aubm_regional_victory_irq flag = ind_aubm_regional_victory_sau }
 	}
 	name = "India Turns Allied War into Decolonization"
-	desc = "A western or African result lets Delhi tie military cooperation to sovereign postwar governments. This strengthens Indian settlement standing without granting territory automatically."
+	desc = "A Southeast Asian operational victory or a western and African result lets Delhi tie military cooperation to sovereign postwar governments. This strengthens Indian settlement standing without granting territory automatically."
 	style = 2
 	picture = "aubm_v4_london_settlement"
 	date = { day = 0 month = january year = 1933 }
@@ -589,10 +589,10 @@ event = {
 		NOT = { flag = ind_aubm_route_achievement_german_imperial }
 		NOT = { flag = ind_aubm_route_war_achievement }
 		NOT = { flag = ind_aubm_postwar_congress_completed }
-		OR = { flag = ind_aubm_britain_limited_victory flag = ind_aubm_britain_major_victory flag = ind_aubm_major_annex_victory_eng flag = ind_aubm_national_southern_victory flag = ind_aubm_national_western_victory }
+		OR = { flag = ind_aubm_sea_theatre_achieved flag = ind_aubm_britain_limited_victory flag = ind_aubm_britain_major_victory flag = ind_aubm_major_annex_victory_eng flag = ind_aubm_national_southern_victory flag = ind_aubm_national_western_victory }
 	}
 	name = "India Breaks the Imperial System from the East"
-	desc = "A British, southern or western victory gives Delhi the decisive claim in the Indian Ocean while Germany remains a continental partner."
+	desc = "A British, flexible Southeast Asian, southern or western victory gives Delhi the decisive claim in the Indian Ocean while Germany remains a continental partner."
 	style = 2
 	picture = "aubm_v4_barbarossa_reaction"
 	date = { day = 0 month = january year = 1933 }
@@ -621,10 +621,10 @@ event = {
 		NOT = { flag = ind_aubm_route_achievement_german_southern }
 		NOT = { flag = ind_aubm_route_war_achievement }
 		NOT = { flag = ind_aubm_postwar_congress_completed }
-		OR = { flag = ind_aubm_national_southern_victory flag = ind_aubm_regional_victory_sia flag = ind_aubm_regional_victory_u05 flag = ind_aubm_regional_victory_hol flag = ind_aubm_regional_victory_ast }
+		OR = { flag = ind_aubm_sea_theatre_achieved flag = ind_aubm_national_southern_victory flag = ind_aubm_regional_victory_sia flag = ind_aubm_regional_victory_u05 flag = ind_aubm_regional_victory_hol flag = ind_aubm_regional_victory_ast }
 	}
 	name = "Delhi Wins the Southern Race"
-	desc = "Indian command has secured the southern resource arc before another coalition power could define it. The result becomes sovereign settlement credit."
+	desc = "Indian command has secured the flexible Southeast Asian theatre or the wider southern resource arc before another coalition power could define it. The result becomes sovereign settlement credit."
 	style = 2
 	picture = "aubm_v4_barbarossa_reaction"
 	date = { day = 0 month = january year = 1933 }
@@ -908,10 +908,10 @@ event = {
 		NOT = { flag = ind_aubm_route_achievement_soviet_antiimperial }
 		NOT = { flag = ind_aubm_route_war_achievement }
 		NOT = { flag = ind_aubm_postwar_congress_completed }
-		OR = { flag = ind_aubm_britain_limited_victory flag = ind_aubm_britain_major_victory flag = ind_aubm_major_annex_victory_eng flag = ind_aubm_national_southern_victory flag = ind_aubm_national_western_victory }
+		OR = { flag = ind_aubm_sea_theatre_achieved flag = ind_aubm_britain_limited_victory flag = ind_aubm_britain_major_victory flag = ind_aubm_major_annex_victory_eng flag = ind_aubm_national_southern_victory flag = ind_aubm_national_western_victory }
 	}
 	name = "India Converts Socialist War into Oceanic Liberation"
-	desc = "A British, southern or western result gives Delhi anti-colonial leverage distinct from Soviet territorial interests."
+	desc = "A flexible Southeast Asian, British, southern or western result gives Delhi anti-colonial leverage distinct from Soviet territorial interests."
 	style = 2
 	picture = "aubm_v4_barbarossa_reaction"
 	date = { day = 0 month = january year = 1933 }
@@ -940,10 +940,10 @@ event = {
 		NOT = { flag = ind_aubm_route_achievement_soviet_republican }
 		NOT = { flag = ind_aubm_route_war_achievement }
 		NOT = { flag = ind_aubm_postwar_congress_completed }
-		OR = { flag = ind_aubm_japan_limited_victory flag = ind_aubm_japan_major_victory flag = ind_aubm_major_annex_victory_jap flag = ind_aubm_pacific_capital_victory flag = ind_aubm_regional_victory_chi flag = ind_aubm_regional_victory_chc flag = ind_aubm_regional_victory_sia }
+		OR = { flag = ind_aubm_sea_theatre_achieved flag = ind_aubm_japan_limited_victory flag = ind_aubm_japan_major_victory flag = ind_aubm_major_annex_victory_jap flag = ind_aubm_pacific_capital_victory flag = ind_aubm_regional_victory_chi flag = ind_aubm_regional_victory_chc flag = ind_aubm_regional_victory_sia }
 	}
 	name = "Delhi Establishes an Asian Republican Claim"
-	desc = "An Indian result in China, Siam or against Japan establishes a specifically Asian socialist-republican programme outside Moscow's direct command."
+	desc = "A flexible Southeast Asian result or an Indian victory in China, Siam or against Japan establishes a specifically Asian socialist-republican programme outside Moscow's direct command."
 	style = 2
 	picture = "aubm_v4_barbarossa_reaction"
 	date = { day = 0 month = january year = 1933 }
@@ -1195,10 +1195,10 @@ event = {
 		NOT = { flag = ind_aubm_route_achievement_japan_southern }
 		NOT = { flag = ind_aubm_route_war_achievement }
 		NOT = { flag = ind_aubm_postwar_congress_completed }
-		OR = { flag = ind_aubm_jp_southern_victory flag = ind_aubm_national_southern_victory }
+		OR = { flag = ind_aubm_sea_theatre_achieved flag = ind_aubm_jp_southern_victory flag = ind_aubm_national_southern_victory }
 	}
 	name = "Tokyo Recognizes the Indian Southern Sphere"
-	desc = "India has won the published southern theatre. The result confirms Indian primacy from Burma through Malaya and the East Indies; country-specific settlements still decide sovereignty."
+	desc = "India has won either the flexible Southeast Asian land-and-sea theatre or the wider published southern command. The result confirms Indian primacy from Burma through Malaya and the East Indies; country-specific settlements still decide sovereignty."
 	style = 2
 	picture = "aubm_v4_japan_southern_choice"
 	date = { day = 0 month = january year = 1933 }
@@ -1514,10 +1514,10 @@ event = {
 		NOT = { flag = ind_aubm_route_achievement_sovereign_ocean }
 		NOT = { flag = ind_aubm_route_war_achievement }
 		NOT = { flag = ind_aubm_postwar_congress_completed }
-		OR = { flag = ind_aubm_national_southern_victory flag = ind_aubm_national_western_victory flag = ind_aubm_britain_limited_victory flag = ind_aubm_major_annex_victory_eng }
+		OR = { flag = ind_aubm_sea_theatre_achieved flag = ind_aubm_national_southern_victory flag = ind_aubm_national_western_victory flag = ind_aubm_britain_limited_victory flag = ind_aubm_major_annex_victory_eng }
 	}
 	name = "The Indian Ocean League Has a Military Foundation"
-	desc = "A southern or western victory gives Delhi the ports, access treaties and bargaining power needed for a sovereign ocean order."
+	desc = "A flexible Southeast Asian, southern or western victory gives Delhi the ports, access treaties and bargaining power needed for a sovereign ocean order."
 	style = 2
 	picture = "aubm_v4_grand_strategy"
 	date = { day = 0 month = january year = 1933 }

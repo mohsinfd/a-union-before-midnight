@@ -419,6 +419,11 @@ event = {
 
 	decision = {
 		NOT = { flag = ind_v43_war_cabinet }
+		NOT = { flag = ind_aubm_realignment_cooldown }
+		NOT = { participant = { country = IND value = 4 } }
+		NOT = { flag = ind_aubm_commitment_german }
+		NOT = { flag = ind_aubm_commitment_soviet }
+		NOT = { flag = ind_aubm_commitment_japan }
 		NOT = { alliance = { country = IND country = ENG } }
 		NOT = { war = { country = IND country = ENG } }
 		OR = {
@@ -427,7 +432,14 @@ event = {
 			war = { country = ENG country = JAP }
 		}
 	}
-	decision_trigger = { NOT = { alliance = { country = IND country = ENG } } }
+	decision_trigger = {
+		NOT = { flag = ind_aubm_realignment_cooldown }
+		NOT = { participant = { country = IND value = 4 } }
+		NOT = { flag = ind_aubm_commitment_german }
+		NOT = { flag = ind_aubm_commitment_soviet }
+		NOT = { flag = ind_aubm_commitment_japan }
+		NOT = { alliance = { country = IND country = ENG } }
+	}
 
 	name = "Enter the Allied Coalition"
 	# AUBM_DECISION_DESC_MANUAL
@@ -441,6 +453,7 @@ event = {
 	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
+		trigger = { NOT = { flag = ind_aubm_realignment_cooldown } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } }
 		ai_chance = 85
 		name = "Join as a sovereign Allied great power"
 		command = { type = clrflag which = ind_v3_axis_orientation }
@@ -478,6 +491,11 @@ event = {
 
 	decision = {
 		NOT = { flag = ind_v43_war_cabinet }
+		NOT = { flag = ind_aubm_realignment_cooldown }
+		NOT = { participant = { country = IND value = 4 } }
+		NOT = { flag = ind_aubm_commitment_allied }
+		NOT = { flag = ind_aubm_commitment_soviet }
+		NOT = { flag = ind_aubm_commitment_japan }
 		NOT = { alliance = { country = IND country = GER } }
 		NOT = { war = { country = IND country = GER } }
 		OR = {
@@ -486,7 +504,14 @@ event = {
 			war = { country = GER country = SOV }
 		}
 	}
-	decision_trigger = { NOT = { alliance = { country = IND country = GER } } }
+	decision_trigger = {
+		NOT = { flag = ind_aubm_realignment_cooldown }
+		NOT = { participant = { country = IND value = 4 } }
+		NOT = { flag = ind_aubm_commitment_allied }
+		NOT = { flag = ind_aubm_commitment_soviet }
+		NOT = { flag = ind_aubm_commitment_japan }
+		NOT = { alliance = { country = IND country = GER } }
+	}
 
 	name = "Enter the Continental Coalition"
 	# AUBM_DECISION_DESC_MANUAL
@@ -500,6 +525,7 @@ event = {
 	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
+		trigger = { NOT = { flag = ind_aubm_realignment_cooldown } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } }
 		ai_chance = 75
 		name = "Join Germany as an equal strategic partner"
 		command = { type = clrflag which = ind_v3_allied_orientation }
@@ -537,6 +563,11 @@ event = {
 
 	decision = {
 		NOT = { flag = ind_v43_war_cabinet }
+		NOT = { flag = ind_aubm_realignment_cooldown }
+		NOT = { participant = { country = IND value = 4 } }
+		NOT = { flag = ind_aubm_commitment_allied }
+		NOT = { flag = ind_aubm_commitment_german }
+		NOT = { flag = ind_aubm_commitment_japan }
 		NOT = { alliance = { country = IND country = SOV } }
 		NOT = { war = { country = IND country = SOV } }
 		OR = {
@@ -544,7 +575,14 @@ event = {
 			war = { country = SOV country = JAP }
 		}
 	}
-	decision_trigger = { NOT = { alliance = { country = IND country = SOV } } }
+	decision_trigger = {
+		NOT = { flag = ind_aubm_realignment_cooldown }
+		NOT = { participant = { country = IND value = 4 } }
+		NOT = { flag = ind_aubm_commitment_allied }
+		NOT = { flag = ind_aubm_commitment_german }
+		NOT = { flag = ind_aubm_commitment_japan }
+		NOT = { alliance = { country = IND country = SOV } }
+	}
 
 	name = "Enter the Socialist Coalition"
 	# AUBM_DECISION_DESC_MANUAL
@@ -558,6 +596,7 @@ event = {
 	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
+		trigger = { NOT = { flag = ind_aubm_realignment_cooldown } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_japan } }
 		ai_chance = 80
 		name = "Join the Comintern as an autonomous power"
 		command = { type = clrflag which = ind_v3_allied_orientation }
@@ -596,6 +635,11 @@ event = {
 	decision = {
 		flag = ind_aubm_jp_partnership
 		NOT = { flag = ind_aubm_jp_rupture }
+		NOT = { flag = ind_aubm_realignment_cooldown }
+		NOT = { participant = { country = IND value = 4 } }
+		NOT = { flag = ind_aubm_commitment_allied }
+		NOT = { flag = ind_aubm_commitment_german }
+		NOT = { flag = ind_aubm_commitment_soviet }
 		NOT = { alliance = { country = IND country = JAP } }
 		NOT = { war = { country = IND country = JAP } }
 		OR = {
@@ -606,6 +650,11 @@ event = {
 	}
 	decision_trigger = {
 		flag = ind_aubm_jp_partnership
+		NOT = { flag = ind_aubm_realignment_cooldown }
+		NOT = { participant = { country = IND value = 4 } }
+		NOT = { flag = ind_aubm_commitment_allied }
+		NOT = { flag = ind_aubm_commitment_german }
+		NOT = { flag = ind_aubm_commitment_soviet }
 		NOT = { alliance = { country = IND country = JAP } }
 	}
 
@@ -621,6 +670,7 @@ event = {
 	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
+		trigger = { NOT = { flag = ind_aubm_realignment_cooldown } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } }
 		ai_chance = 70
 		name = "Accept one war system under the formal alliance"
 		command = { type = clrflag which = ind_v3_allied_orientation }
@@ -659,11 +709,25 @@ event = {
 
 	decision = {
 		NOT = { flag = ind_v43_war_cabinet }
+		NOT = { flag = ind_aubm_realignment_cooldown }
+		NOT = { participant = { country = IND value = 4 } }
+		NOT = { flag = ind_aubm_commitment_allied }
+		NOT = { flag = ind_aubm_commitment_german }
+		NOT = { flag = ind_aubm_commitment_soviet }
+		NOT = { flag = ind_aubm_commitment_japan }
 		war = { country = JAP country = CHI }
 		NOT = { alliance = { country = IND country = JAP } }
 		NOT = { war = { country = IND country = JAP } }
 	}
-	decision_trigger = { NOT = { war = { country = IND country = JAP } } }
+	decision_trigger = {
+		NOT = { flag = ind_aubm_realignment_cooldown }
+		NOT = { participant = { country = IND value = 4 } }
+		NOT = { flag = ind_aubm_commitment_allied }
+		NOT = { flag = ind_aubm_commitment_german }
+		NOT = { flag = ind_aubm_commitment_soviet }
+		NOT = { flag = ind_aubm_commitment_japan }
+		NOT = { war = { country = IND country = JAP } }
+	}
 
 	name = "Fight Japan Under Independent Command"
 	# AUBM_DECISION_DESC_MANUAL
@@ -677,6 +741,7 @@ event = {
 	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
+		trigger = { NOT = { flag = ind_aubm_realignment_cooldown } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } }
 		ai_chance = 80
 		name = "Declare an independent war against Japan"
 		command = { type = clrflag which = ind_v3_allied_orientation }
@@ -711,11 +776,25 @@ event = {
 
 	decision = {
 		NOT = { flag = ind_v43_war_cabinet }
+		NOT = { flag = ind_aubm_realignment_cooldown }
+		NOT = { participant = { country = IND value = 4 } }
+		NOT = { flag = ind_aubm_commitment_allied }
+		NOT = { flag = ind_aubm_commitment_german }
+		NOT = { flag = ind_aubm_commitment_soviet }
+		NOT = { flag = ind_aubm_commitment_japan }
 		war = { country = GER country = ENG }
 		NOT = { alliance = { country = IND country = GER } }
 		NOT = { war = { country = IND country = GER } }
 	}
-	decision_trigger = { NOT = { war = { country = IND country = GER } } }
+	decision_trigger = {
+		NOT = { flag = ind_aubm_realignment_cooldown }
+		NOT = { participant = { country = IND value = 4 } }
+		NOT = { flag = ind_aubm_commitment_allied }
+		NOT = { flag = ind_aubm_commitment_german }
+		NOT = { flag = ind_aubm_commitment_soviet }
+		NOT = { flag = ind_aubm_commitment_japan }
+		NOT = { war = { country = IND country = GER } }
+	}
 
 	name = "Fight the Axis Under Independent Command"
 	# AUBM_DECISION_DESC_MANUAL
@@ -729,6 +808,7 @@ event = {
 	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
+		trigger = { NOT = { flag = ind_aubm_realignment_cooldown } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } }
 		ai_chance = 80
 		name = "Declare an independent war against Germany"
 		command = { type = clrflag which = ind_v3_allied_orientation }

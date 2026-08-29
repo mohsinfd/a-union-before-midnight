@@ -17,6 +17,16 @@ EVENT_DIRS = (
     ROOT / "mod/db/events/aubm_v4",
     ROOT / "mod/db/events/india_v3",
 )
+SEA_ROUTE_FOCUSES = {
+    ("allied", "eastern"),
+    ("allied", "anticolonial"),
+    ("german", "imperial"),
+    ("german", "southern"),
+    ("soviet", "antiimperial"),
+    ("soviet", "republican"),
+    ("japan", "southern"),
+    ("sovereign", "ocean"),
+}
 
 
 def event_blocks(text: str) -> dict[int, str]:
@@ -223,6 +233,10 @@ def main() -> int:
                 errors.append(f"{route.key}/{focus.key} can award credit after the final congress")
             if "year = 1933" not in achievement:
                 errors.append(f"{route.key}/{focus.key} cannot acknowledge an early sovereign war")
+            if (route.key, focus.key) in SEA_ROUTE_FOCUSES:
+                checks += 1
+                if "ind_aubm_sea_theatre_achieved" not in achievement:
+                    errors.append(f"{route.key}/{focus.key} does not recognize the flexible Southeast Asian theatre")
 
         fallback = events.get(base + 4, "")
         checks += 8
