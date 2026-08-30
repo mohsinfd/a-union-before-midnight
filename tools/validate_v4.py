@@ -2011,6 +2011,89 @@ class Validator:
                             f"Province {row[0]} changes the world map outside the India scope.",
                         )
 
+    def validate_rebase_encoding_contract(self) -> None:
+        """Prove that the rebase preserved legacy cp1252 foundation text."""
+        rebase = self.root / "tools/Rebase-V4-DirectDH.ps1"
+        try:
+            rebase_text = rebase.read_text(encoding="utf-8")
+        except (OSError, UnicodeError) as exc:
+            self.error(rebase, 1, f"Cannot read rebase script: {exc}")
+            return
+
+        if "Get-Content -LiteralPath" in rebase_text:
+            self.error(
+                rebase,
+                1,
+                "Rebase reads legacy Darkest Hour text through locale-dependent Get-Content.",
+            )
+        for required in (
+            "GetEncoding(1252)",
+            "Read-LegacyTextLines",
+            "Read-LegacyTextRaw",
+        ):
+            if required not in rebase_text:
+                self.error(rebase, 1, f"Legacy-text encoding contract is missing {required}.")
+
+        # Compare raw legacy rows. Some stock tables contain reserved Windows
+        # code-page bytes (for example 0x81) that Python rightly refuses to
+        # decode as cp1252 but Darkest Hour and .NET preserve byte-for-byte.
+        def lines(path: pathlib.Path) -> list[bytes]:
+            return path.read_bytes().splitlines()
+
+        for relative in (
+            pathlib.Path("db/airnames.csv"),
+            pathlib.Path("db/armynames.csv"),
+            pathlib.Path("db/navynames.csv"),
+            pathlib.Path("db/unitnames.csv"),
+        ):
+            stock_path = self.stock / relative
+            mod_path = self.mod / relative
+            if not stock_path.is_file() or not mod_path.is_file():
+                self.error(mod_path, 1, "Legacy name-table encoding comparison input is missing.")
+                continue
+            stock_rows = [row for row in lines(stock_path) if not row.startswith(b"IND;")]
+            mod_rows = [row for row in lines(mod_path) if not row.startswith(b"IND;")]
+            if mod_rows != stock_rows:
+                self.error(
+                    mod_path,
+                    1,
+                    "Non-India rows differ from Darkest Hour Full; possible cp1252 loss.",
+                )
+
+        generic_relative = pathlib.Path("db/events/generic_decisions.txt")
+        generic_stock = self.stock / generic_relative
+        generic_mod = self.mod / generic_relative
+        if generic_stock.is_file() and generic_mod.is_file():
+            stock_rows = lines(generic_stock)
+            mod_rows = lines(generic_mod)
+            india_exclusion = b"\t\tNOT = { country = IND }"
+            exclusion_count = mod_rows.count(india_exclusion)
+            without_india = [row for row in mod_rows if row != india_exclusion]
+            if exclusion_count != 3 or without_india != stock_rows:
+                self.error(
+                    generic_mod,
+                    1,
+                    "Generic decisions are not an exact cp1252 stock file plus three India exclusions.",
+                )
+        else:
+            self.error(generic_mod, 1, "Generic-decision encoding comparison input is missing.")
+
+        ministers_relative = pathlib.Path("db/ministers/minister_personalities.txt")
+        ministers_stock = self.stock / ministers_relative
+        ministers_mod = self.mod / ministers_relative
+        if ministers_stock.is_file() and ministers_mod.is_file():
+            stock_rows = lines(ministers_stock)
+            mod_rows = lines(ministers_mod)
+            marker = b"####### India Mod V3: historical and alternate-history personalities #########"
+            if mod_rows[: len(stock_rows)] != stock_rows or marker not in mod_rows[len(stock_rows) :]:
+                self.error(
+                    ministers_mod,
+                    1,
+                    "Minister personalities lost the exact cp1252 stock prefix or India appendix.",
+                )
+        else:
+            self.error(ministers_mod, 1, "Minister encoding comparison input is missing.")
+
     def validate_installer_manifest(self) -> None:
         manifest_path = self.root / "installer/manifest.txt"
         hash_path = self.root / "installer/manifest-sha256.txt"
@@ -2176,6 +2259,7 @@ class Validator:
         self.validate_combat_rules()
         self.validate_naval_conversions()
         self.validate_direct_dh_provenance()
+        self.validate_rebase_encoding_contract()
         self.validate_installer_manifest()
 
         self.issues.sort(key=lambda item: (item.severity != "ERROR", str(item.path), item.line))

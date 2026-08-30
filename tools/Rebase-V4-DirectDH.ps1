@@ -5,6 +5,19 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
+$script:LegacyTextEncoding = [System.Text.Encoding]::GetEncoding(1252)
+
+function Read-LegacyTextLines {
+    param([string]$Path)
+
+    return [System.IO.File]::ReadAllLines($Path, $script:LegacyTextEncoding)
+}
+
+function Read-LegacyTextRaw {
+    param([string]$Path)
+
+    return [System.IO.File]::ReadAllText($Path, $script:LegacyTextEncoding)
+}
 
 function Resolve-GameRoot {
     param([string]$Requested)
@@ -33,7 +46,7 @@ function Write-Text {
     [System.IO.File]::WriteAllLines(
         $Path,
         $Lines,
-        [System.Text.Encoding]::GetEncoding(1252)
+        $script:LegacyTextEncoding
     )
 }
 
@@ -60,7 +73,7 @@ function Replace-TaggedRowsWithOverlayRows {
 
     $overlayPath = Join-Path $script:OverlayRoot $RelativePath
     $preservedRows = @(
-        Get-Content -LiteralPath $overlayPath |
+        Read-LegacyTextLines -Path $overlayPath |
             Where-Object { $_ -like "$Tag;*" }
     )
     if ($preservedRows.Count -eq 0) {
@@ -69,7 +82,7 @@ function Replace-TaggedRowsWithOverlayRows {
 
     Copy-StockFile $RelativePath
     $stockRows = @(
-        Get-Content -LiteralPath $overlayPath |
+        Read-LegacyTextLines -Path $overlayPath |
             Where-Object { $_ -notlike "$Tag;*" }
     )
 
@@ -88,7 +101,7 @@ function Replace-TaggedRowsWithOverlayRows {
 function Add-IndiaPersonalityDefinitions {
     $relativePath = "db\ministers\minister_personalities.txt"
     $overlayPath = Join-Path $script:OverlayRoot $relativePath
-    $current = Get-Content -LiteralPath $overlayPath
+    $current = Read-LegacyTextLines -Path $overlayPath
     $marker = "####### India Mod V3: historical and alternate-history personalities #########"
     $markerIndex = [Array]::IndexOf($current, $marker)
     if ($markerIndex -lt 0) {
@@ -97,7 +110,7 @@ function Add-IndiaPersonalityDefinitions {
     $indiaBlock = @($current[$markerIndex..($current.Count - 1)])
 
     Copy-StockFile $relativePath
-    $stock = @(Get-Content -LiteralPath $overlayPath)
+    $stock = @(Read-LegacyTextLines -Path $overlayPath)
     Write-Text -Path $overlayPath -Lines @($stock + "" + $indiaBlock)
 }
 
@@ -105,7 +118,7 @@ function Disable-GenericPurgeForIndia {
     $relativePath = "db\events\generic_decisions.txt"
     Copy-StockFile $relativePath
     $path = Join-Path $script:OverlayRoot $relativePath
-    $text = Get-Content -LiteralPath $path -Raw
+    $text = Read-LegacyTextRaw -Path $path
     $start = $text.IndexOf("#### Purge the Army")
     $end = $text.IndexOf("####", $start + 5)
     if ($start -lt 0 -or $end -lt 0) {
@@ -134,7 +147,7 @@ function Exclude-IndiaFromGenericMobilization {
     $relativePath = "db\events\Mobilization.txt"
     Copy-StockFile $relativePath
     $path = Join-Path $script:OverlayRoot $relativePath
-    $text = Get-Content -LiteralPath $path -Raw
+    $text = Read-LegacyTextRaw -Path $path
     $updated = [regex]::Replace(
         $text,
         '(?<![A-Z0-9])IND(?![A-Z0-9])',
@@ -154,7 +167,7 @@ function Exclude-IndiaFromGenericElections {
     $relativePath = "db\events\Election_day.txt"
     Copy-StockFile $relativePath
     $path = Join-Path $script:OverlayRoot $relativePath
-    $text = Get-Content -LiteralPath $path -Raw
+    $text = Read-LegacyTextRaw -Path $path
     $updated = [regex]::Replace(
         $text,
         '(?<![A-Z0-9])IND(?![A-Z0-9])',
@@ -190,7 +203,7 @@ function Add-SovereignIndiaToJapanAI {
     foreach ($relativePath in $relativePaths) {
         Copy-StockFile $relativePath
         $path = Join-Path $script:OverlayRoot $relativePath
-        $lines = @(Get-Content -LiteralPath $path)
+        $lines = @(Read-LegacyTextLines -Path $path)
         $updated = New-Object System.Collections.Generic.List[string]
         $replacements = 0
         foreach ($line in $lines) {
@@ -210,7 +223,7 @@ function Add-SovereignIndiaToJapanAI {
 function Build-EventsIndex {
     Copy-StockFile "db\events.txt"
     $path = Join-Path $script:OverlayRoot "db\events.txt"
-    $lines = @(Get-Content -LiteralPath $path)
+    $lines = @(Read-LegacyTextLines -Path $path)
     $lines += ""
     $lines += "# A Union Before Midnight: India"
     foreach ($name in @(
@@ -291,7 +304,7 @@ function Get-EventSleepTargets {
     )
 
     $path = Join-Path $script:OverlayRoot $RelativePath
-    $text = Get-Content -LiteralPath $path -Raw
+    $text = Read-LegacyTextRaw -Path $path
     $idMarker = "id = $EventId"
     $idIndex = $text.IndexOf($idMarker)
     if ($idIndex -lt 0) {
@@ -315,7 +328,7 @@ function Get-EventSleepTargets {
 function Build-Scenario {
     Copy-StockFile "scenarios\1933.eug"
     $path = Join-Path $script:OverlayRoot "scenarios\1933.eug"
-    $text = Get-Content -LiteralPath $path -Raw
+    $text = Read-LegacyTextRaw -Path $path
     $header = @'
 header =
 { name       = "A Union Before Midnight: India 1933"
@@ -404,7 +417,7 @@ globaldata =
 function Build-UnitedKingdomScenario {
     Copy-StockFile "scenarios\1933\united kingdom.inc"
     $path = Join-Path $script:OverlayRoot "scenarios\1933\united kingdom.inc"
-    $text = Get-Content -LiteralPath $path -Raw
+    $text = Read-LegacyTextRaw -Path $path
 
     $text = [regex]::Replace(
         $text,

@@ -4,6 +4,8 @@ map/Map_1/colorscales.csv
 map/Map_1/gfx/*
 map/Map_1/lightmap1.tbl
 map/Map_1/lightmap2.tbl
+map/Map_1/lightmap3.tbl
+map/Map_1/lightmap4.tbl
 map/Map_1/Terrain types.csv
 gfx/map/Snow.bmp
 gfx/map/airfield.bmp

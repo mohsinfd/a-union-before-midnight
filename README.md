@@ -21,13 +21,15 @@ second- or third-ranked power, but no route grants an automatic victory.
 - Darkest Hour 1.05.2
 - Darkest Hour Full, included with the game
 - A new 1933 campaign
+- Python 3.10 or newer for the post-install original terrain compiler only
 
 This repository contains only the **A Union Before Midnight overlay**. It does not
-redistribute Darkest Hour. Players do not need Blood and Iron to run an already
-built local installation. Rebuilding the personal animated-sprite overlay does
-require Blood and Iron v1.1 to be installed locally; the pipeline imports those
-assets and records their provenance. The donor binaries require author
-permission before redistribution.
+redistribute Darkest Hour. Players do not need Blood and Iron to play AUBM or
+to generate the original Alpha 26 terrain layer. Rebuilding the optional
+personal animated-sprite overlay does require Blood and Iron v1.1 to be
+installed locally; that separate pipeline imports those assets and records
+their provenance. The donor binaries require author permission before
+redistribution.
 
 ## Installation
 
@@ -61,6 +63,13 @@ installed mod. Developers with their own Blood and Iron v1.1 installation may
 add `-IncludePersonalSprites` to build and validate the local-only visual
 overlay; the default remains donor-free.
 
+After installing the public package, run
+`tools/Enable-Aubm-OriginalTerrainVisuals.ps1` to compile Alpha 26's original
+eight-terrain political-map layer from your own Darkest Hour Full map. The tool
+backs up the exact prior state, validates all four zoom levels, and can roll the
+change back. Generated Darkest Hour-derived lightmaps are deliberately not
+placed in GitHub or the public installer.
+
 ## V4 Direct-DH Alpha
 
 V4 rebases the campaign directly onto Darkest Hour Full and removes the
@@ -72,11 +81,23 @@ routine destruction. Twelve three-division field corps, faster prepared
 reserves, airfield security, dispersal fields and scramble missions reduce
 wartime micromanagement within the limits of the Darkest Hour executable.
 
-Alpha 25, dated **30 Aug 2026**, adds a release-safety identity generated from
-the single `VERSION` file. The exact full version now appears on the AUBM main
-menu, on the loading screen and at the end of the 1933 scenario title. The
-installer records that same value in its install marker. Alpha 25 does not
-change Alpha 24's gameplay systems or balance.
+Alpha 26, dated **30 Aug 2026**, replaces the local Blood and Iron terrain
+reference with an original AUBM all-terrain layer. Plains, forest, mountain,
+desert, marsh, hills, jungle and urban terrain now receive different restrained
+surface motifs across all four map zooms. The compiler uses the player's clean
+Darkest Hour map geometry, AUBM's current province terrain data and original
+deterministic recipes; it reads no Blood and Iron or DEC map pixels. The public
+repository ships the recipes, compiler, provenance and validation tools, while
+each player generates the Darkest Hour-derived lightmaps locally.
+See the [Alpha 26 terrain asset README](assets/v4_terrain/README.md) for the
+exact input/output boundary and [Visual Readability Pipeline](docs/VISUAL_READABILITY_PIPELINE.md)
+for the audit and human acceptance matrix. Exact hashes and full-map pixel
+counts are in the [Alpha 26 terrain validation record](docs/ALPHA26_TERRAIN_VALIDATION.md).
+
+Alpha 25 added a release-safety identity generated from the single `VERSION`
+file. The exact full version appears on the AUBM main menu, loading screen and
+1933 scenario title, so an Alpha 26 install can be identified before beginning
+a campaign. Alpha 26 does not change Alpha 24/25 gameplay systems or balance.
 
 Alpha 24, dated **30 Aug 2026**, adds an explicit **First Operational Air
 Group** after the Air Staff, Flying Schools and Airfield Security milestones.
@@ -88,7 +109,7 @@ granting free instant wings. India is also now **Indian indigo** on the
 political map, distinct from every immediate neighbour. The optional local
 terrain-reference tool and the donor-free original-map plan are documented in
 [Visual Readability Pipeline](docs/VISUAL_READABILITY_PIPELINE.md).
-Players who own Blood and Iron v1.1 and want the old personal India sprite
+Players who own Blood and Iron v1.1 and want the personal India sprite
 profile after a public update can run
 `tools/Enable-Aubm-PersonalIndiaSprites.ps1`; it restores the local 41-family
 overlay and local registry mapping without placing donor assets in GitHub.
@@ -204,7 +225,7 @@ naval, command and research improvements remain intact.
 
 For a player-facing explanation of the complete campaign loop, route choices,
 war economy, mobilisation, settlement rules, verification status and remaining
-playtest risks, see [Gameplay Changes and Alpha 25 Status](GAMEPLAY_CHANGES.md).
+playtest risks, see [Gameplay Changes and Alpha 26 Status](GAMEPLAY_CHANGES.md).
 The all-route authored objectives are summarized in the
 [Route Campaign Matrix](docs/ROUTE_CAMPAIGN_MATRIX.md), and the intended
 high-difficulty Tokyo campaign is covered by the

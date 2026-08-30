@@ -32,6 +32,8 @@ mod/map/Map_1/colorscales.csv
 mod/map/Map_1/gfx/
 mod/map/Map_1/lightmap1.tbl
 mod/map/Map_1/lightmap2.tbl
+mod/map/Map_1/lightmap3.tbl
+mod/map/Map_1/lightmap4.tbl
 mod/map/Map_1/Terrain types.csv
 mod/gfx/map/Snow.bmp
 mod/gfx/map/airfield.bmp

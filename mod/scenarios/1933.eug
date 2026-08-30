@@ -1,7 +1,7 @@
 name       = "1933_SCENARIO"
 panel      = "scenarios/data/scenario_1933.bmp"
 header =
-{ name       = "A Union Before Midnight: India 1933 [4.2.0-alpha.25]"
+{ name       = "A Union Before Midnight: India 1933 [4.2.0-alpha.26]"
   startdate  = { year = 1933 }
   selectable = { IND }
   IND        = { picture = "scenarios\data\propaganda_IND_V3.bmp" }

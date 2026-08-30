@@ -133,6 +133,9 @@ Invoke-Checked "Bespoke strategic-route campaign arcs" {
 Invoke-Checked "Bespoke regional armistice lifecycle" {
     & $python.Source (Join-Path $PSScriptRoot "generate_aubm_bespoke_armistices.py") --check
 }
+Invoke-Checked "Original all-terrain source pipeline" {
+    & $python.Source (Join-Path $PSScriptRoot "validate_aubm_terrain.py")
+}
 
 Write-Host ""
 Write-Host "[Installer manifest]"

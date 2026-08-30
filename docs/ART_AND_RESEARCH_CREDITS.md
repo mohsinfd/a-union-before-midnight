@@ -79,6 +79,31 @@ locally installed Blood and Iron v1.1 and one from Darkest Hour core. Those
 generated files have a separate hash/provenance manifest, are excluded from Git
 and public installer manifests, and are not redistribution-cleared.
 
+## Terrain-map motifs
+
+Alpha 26's eight terrain motifs, recipe data, clean-room lightmap codec/compiler
+and neutral-colour QA atlas are original AUBM project material. The visual
+language was designed specifically for plains, forest, mountain, desert, marsh,
+hills, jungle and urban terrain and is produced deterministically at all four
+Darkest Hour map zooms.
+
+The local compiler reads the player's own Darkest Hour Full lightmaps only for
+map geometry, province ownership encoding and base brightness. It reads AUBM's
+current `Province.csv` for the terrain assigned to each province. It does not
+read, copy, trace or blend a Blood and Iron or DEC Map lightmap, colour scale,
+screenshot crop or other donor pixel. The early Blood and Iron overlay was used
+as a private comparative reference and was rejected because it did not identify
+all eight terrain classes reliably; no part of that surface is reused in the
+finished Alpha 26 terrain layer.
+
+The generated `lightmap1.tbl` through `lightmap4.tbl` files derive from the
+player's Darkest Hour installation and are therefore kept local. GitHub and the
+public AUBM installer contain the original recipes, compiler, documentation and
+validation tooling, not the generated game lightmaps or a replacement
+`colorscales.csv`. The included AI-generated terrain moodboard is concept art
+used to discuss motif vocabulary; its bitmap pixels are not sampled by the
+deterministic runtime compiler.
+
 ## Historical Traits
 
 `india_historical_traits.csv` records the active game assignment, historical
@@ -101,8 +126,8 @@ only the files in the release manifest. The repository does not distribute the
 complete game.
 
 V3 was developed against Blood and Iron. Public V4 installs do not require it
-and deliberately exclude donor-derived model panels, map sprites, palettes, AI
-files and event art. The original V4 event art and archived map-sprite source
+and deliberately exclude donor-derived model panels, map sprites, palettes,
+lightmaps, AI files and event art. The original V4 event art and archived map-sprite source
 sheets described above replace the former public visual fallbacks. Darkest Hour
 Full model and production-screen panels remain the foundation for ordinary
 units; reserved models 33-40 use the engine placeholder until an original V4

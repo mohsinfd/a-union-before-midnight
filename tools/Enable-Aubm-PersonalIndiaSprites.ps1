@@ -1,5 +1,5 @@
 param(
-    [string]$RepositoryRoot = (Split-Path -Parent $PSScriptRoot),
+    [string]$RepositoryRoot,
     [string]$GameRoot,
     [string]$TargetName = "A Union Before Midnight V4.2",
     [string]$BloodAndIronPath,
@@ -7,6 +7,10 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
+
+if ([string]::IsNullOrWhiteSpace($RepositoryRoot)) {
+    $RepositoryRoot = Split-Path -Parent $PSScriptRoot
+}
 
 function Resolve-GameRoot {
     param([string]$Requested)

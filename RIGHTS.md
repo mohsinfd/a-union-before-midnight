@@ -5,8 +5,9 @@ content.
 
 ## Original Project Material
 
-Original event design, India-specific writing, validation logic, installer
-logic and project documentation are copyright Mohsin Dingankar.
+Original event design, India-specific writing, terrain motif recipes,
+clean-room compiler and validation logic, installer logic and project
+documentation are copyright Mohsin Dingankar.
 
 No general open-source or content licence is granted by this repository at
 this time. Permission is required before redistributing those materials outside
@@ -19,10 +20,17 @@ that local foundation and applies the files listed in the release manifest.
 The repository does not redistribute the complete game or complete foundation.
 
 The V3 history of this project depended on Blood and Iron. Donor-derived V3 map
-sprites, palettes and model panels are deliberately excluded from public V4
+sprites, lightmaps, palettes and model panels are deliberately excluded from public V4
 manifests and the current V4 Git tree. Any remaining archival or third-party material
 remains subject to the rights and permissions of its original author;
 publication here does not relicense it.
+
+Alpha 26's locally generated terrain lightmaps use the player's own Darkest
+Hour Full lightmaps as their encoded geometry and brightness foundation. Those
+generated binaries are not distributed by this repository or its public
+installer. The repository ships only AUBM's original motif recipes and tooling.
+No Blood and Iron or DEC Map lightmap, palette or pixel is an input to that
+compiler.
 
 External GitHub or ModDB publication should still follow Darkest Hour community
 rules and the audit in `docs/FORUM_RELEASE_AUDIT.md`.

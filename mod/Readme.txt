@@ -1,7 +1,7 @@
 =======================================================================
- A UNION BEFORE MIDNIGHT - V4.2.0 ALPHA 25 - 30 AUG 2026
+ A UNION BEFORE MIDNIGHT - V4.2.0 ALPHA 26 - 30 AUG 2026
  For Darkest Hour 1.05.2
- Source version 4.2.0-alpha.25
+ Source version 4.2.0-alpha.26
 =======================================================================
 
 Freedom came early. Unity came at a price.
@@ -11,10 +11,17 @@ beginning on 1 January 1933. India inherits a united but unsettled continental
 state from Ceylon to Burma and must build a working federation, modern economy
 and credible armed forces before the world crisis reaches Asia.
 
-Alpha 25 displays this exact full version on the AUBM main menu, loading screen
-and 1933 scenario title. Those labels are generated from one version file; the
-generic "V4.2" folder label shown by Darkest Hour is no longer the only cue.
-Alpha 25 makes no gameplay or balance changes beyond Alpha 24.
+Alpha 26 replaces the temporary Blood and Iron terrain reference with original
+AUBM visual motifs for all eight land terrain classes at all four map zooms.
+Run tools/Enable-Aubm-OriginalTerrainVisuals.ps1 after the public install; it
+generates the lightmaps locally from your own Darkest Hour Full map, validates
+them and backs up the prior state. It reads no Blood and Iron or DEC map pixels.
+The generated lightmaps do not ship in GitHub. Alpha 26 makes no gameplay or
+balance changes beyond Alpha 24/25.
+
+The exact full version is displayed on the AUBM main menu, loading screen and
+1933 scenario title. Those labels are generated from one version file; the
+generic "V4.2" folder label shown by Darkest Hour is not the only cue.
 
 The exact personal 41-family India sprite profile has been restored in the
 developer's local installation after the previous public deployment. It remains

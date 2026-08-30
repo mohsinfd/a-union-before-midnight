@@ -1,5 +1,88 @@
 # Release Notes
 
+## 4.2.0-alpha.26 / Alpha 26 - Original All-Terrain Political Map
+
+*30 Aug 2026*
+
+Alpha 26 replaces the temporary local Blood and Iron terrain reference with an
+original AUBM terrain-language layer. It changes visual readability only:
+province terrain mechanics, borders, ownership, weather, events and balance
+remain Alpha 24/25.
+
+### Eight terrains, four zooms
+
+- Added separate restrained brightness motifs for plains, forest, mountain,
+  desert, marsh, hills, jungle and urban terrain. Plains use sparse field marks;
+  forest and jungle use different canopy scales; mountains use broken ridges;
+  desert and hills use differently weighted broken contours; marsh uses short
+  water/reed marks; urban terrain uses compact built fragments.
+- Compile the motifs into `lightmap1.tbl` through `lightmap4.tbl`, so the visual
+  language does not disappear when the player zooms away from the closest map.
+- Preserve the underlying province word order, pixel ownership, borders,
+  special IDs and trailers while writing canonical padding. The compiler
+  changes brightness only inside eligible land pixels belonging to the current
+  AUBM terrain class.
+- Keep motif strength deliberately modest so political ownership colour,
+  borders, labels, units and weather remain the primary information hierarchy.
+
+### Clean provenance and local generation
+
+- Added a clean-room Python codec/compiler, the eight human-readable motif
+  recipes, a neutral-colour QA atlas and a static source/provenance validator.
+- Use the player's legally installed Darkest Hour core lightmaps for geometry
+  and base brightness, plus AUBM's current `Province.csv` for terrain identity.
+  The process reads no Blood and Iron or DEC map lightmap, palette or pixel.
+- Ship no compiled lightmap or colour-scale payload in GitHub or the public
+  installer. The generated files derive from Darkest Hour and are created only
+  on that player's machine.
+- Add `Enable-Aubm-OriginalTerrainVisuals.ps1` with preview, validation,
+  transactional backup, atomic install and rollback. It manages only the local
+  colour-scale override and four lightmaps; it does not touch saves, scenarios,
+  gameplay data or sprites.
+- Resolve the terrain and personal-sprite helpers' default repository root
+  after script initialization, so a normal `-GameRoot` invocation and the
+  explicit `-RepositoryRoot` form both pass the same path-safety contract.
+- Harden the direct-Darkest-Hour rebase for modern PowerShell: every legacy
+  foundation text read is now explicitly Windows-1252, including reserved
+  byte values that must survive untouched. A raw-byte regression gate proves
+  all non-India name rows, the generic-decision base and the minister base are
+  exact stock content around AUBM's scoped additions.
+- Retain the Blood and Iron helper as a historical/personal reference tool only.
+  Alpha 26's finished terrain surface reuses none of its pixels. The separate
+  optional 41-family India sprite profile remains local-only and unrelated.
+
+### Verification boundary
+
+- The codec has passed a canonical byte-identical no-op roundtrip over all four
+  clean Darkest Hour zoom levels.
+- Three independent full compiles produced the same four SHA-256 hashes. The
+  zero-motif fixture changed no raw brightness pixel, while the real build kept
+  ownership, special/protected pixels and trailers exact at every zoom.
+- Release gates check the exact eight terrain keys, province coverage, motif
+  density and neutrality, semantic distinctness, straight-run limits, seam
+  energy, protected-pixel identity, deterministic output and donor-hash denial.
+- The public 4,436-file repeat build, 344-entry donor-safe installer manifest,
+  visible-version gate and all gameplay/art/platform audits passed with 0
+  errors and 0 warnings. The public Alpha 26 base was installed with all 27
+  existing save files byte-identical to their verified backup.
+- The original terrain transaction was then installed locally: all four live
+  lightmaps match the verified hashes, all 447,525 encoded blocks decode, core
+  colour-scale fallback is active and no forbidden donor hash remains. The
+  independently restored 41-family India sprite profile is still intact.
+- The installed game reached its main menu in native 1024x768 fullscreen and
+  displayed `AUBM BUILD 4.2.0-ALPHA.26`. The host's legacy DirectDraw path
+  rejected windowed initialization before mod loading; fullscreen worked. A
+  detailed-debug launch also reported 444 pre-existing missing non-English
+  translations. Neither condition is a terrain/map parse error.
+- Static and rendered QA are engineering evidence, not a substitute for a human
+  campaign. The final installed/runtime status is recorded in
+  `GAMEPLAY_CHANGES.md`, with exact hashes and pixel counts in
+  `docs/ALPHA26_TERRAIN_VALIDATION.md`; a fresh 1933 playtest remains the
+  player's acceptance test for taste, long-session readability and campaign
+  stability. The campaign part of the local smoke was intentionally cancelled
+  while the player used the machine and is not recorded as either pass or
+  crash.
+
 ## 4.2.0-alpha.25 / Alpha 25 - Visible Build Identity
 
 *30 Aug 2026*
