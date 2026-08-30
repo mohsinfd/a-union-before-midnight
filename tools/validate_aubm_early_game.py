@@ -86,11 +86,11 @@ def main() -> int:
             errors.append("9280162 does not explain the security-versus-aircraft split")
 
         expected_contracts = {
-            "a": (["interceptor", "interceptor"], -350, -1250, "ind_v4_first_air_group_fighter"),
-            "b": (["interceptor", "tactical_bomber"], -325, -1150, "ind_v4_first_air_group_army"),
-            "c": (["interceptor", "naval_bomber"], -325, -1200, "ind_v4_first_air_group_maritime"),
+            "a": (["interceptor", "interceptor"], -350, -1250, 6, "ind_v4_first_air_group_fighter"),
+            "b": (["interceptor", "tactical_bomber"], -325, -1150, 7, "ind_v4_first_air_group_army"),
+            "c": (["interceptor", "naval_bomber"], -325, -1200, 8, "ind_v4_first_air_group_maritime"),
         }
-        for letter, (units, money, supplies, doctrine_flag) in expected_contracts.items():
+        for letter, (units, money, supplies, manpower, doctrine_flag) in expected_contracts.items():
             selected = action(air_group, letter)
             if queued_division_types(selected) != units:
                 errors.append(
@@ -104,6 +104,8 @@ def main() -> int:
                 errors.append(
                     f"9280162 action_{letter} double-charges manpower outside normal production"
                 )
+            if not re.search(rf"\bmanpower\s*=\s*{manpower}\b", selected):
+                errors.append(f"9280162 action_{letter} is missing its manpower eligibility gate")
             expected_flags = {doctrine_flag, "ind_v4_first_operational_air_group"}
             if not expected_flags.issubset(setflags(selected)):
                 errors.append(f"9280162 action_{letter} is missing its one-use doctrine flags")
@@ -115,11 +117,17 @@ def main() -> int:
             errors.append("9280162 doctrine-first action must grant exactly +1 air organization")
         if command_values(doctrine_first, "manpowerpool"):
             errors.append("9280162 doctrine-first action double-charges manpower")
+        if not re.search(r"\bmanpower\s*=\s*5\b", doctrine_first):
+            errors.append("9280162 doctrine-first action is missing its manpower eligibility gate")
         if not {
             "ind_v4_first_air_group_doctrine",
             "ind_v4_first_operational_air_group",
         }.issubset(setflags(doctrine_first)):
             errors.append("9280162 doctrine-first action is missing its one-use flags")
+        decision_ledger = scalar(air_group, "decision_desc") or ""
+        for manpower in (5, 6, 7, 8):
+            if f"manpower {manpower}" not in decision_ledger:
+                errors.append(f"9280162 decision ledger omits manpower {manpower}")
 
     budget = records[9280311]
     credit = action(budget, "c")

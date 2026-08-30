@@ -228,16 +228,16 @@ event = {
 	decision_trigger = {
 		# AUBM_FULL_OPTION_GATE_BEGIN
 		OR = {
-			AND = { money = 350 supplies = 1250 }
-			AND = { money = 325 supplies = 1150 }
-			AND = { money = 325 supplies = 1200 }
-			AND = { money = 250 supplies = 900 }
+			AND = { money = 350 supplies = 1250 manpower = 6 }
+			AND = { money = 325 supplies = 1150 manpower = 7 }
+			AND = { money = 325 supplies = 1200 manpower = 8 }
+			AND = { money = 250 supplies = 900 manpower = 5 }
 		}
 		# AUBM_FULL_OPTION_GATE_END
 	}
 
 	name = "The First Operational Air Group"
-	decision_desc = "Cabinet funding estimates: Fighter command [money 350, supplies 1,250]; Army cooperation: interceptor + tactical [325/1150] [money 325, supplies 1,150]; Maritime patrol: interceptor + naval [325/1200] [money 325, supplies 1,200]; Doctrine first: +1 air organization [250/900] [money 250, supplies 900]."
+	decision_desc = "Cabinet funding estimates: Fighter command [money 350, supplies 1,250, manpower 6]; Army cooperation: interceptor + tactical [325/1150] [money 325, supplies 1,150, manpower 7]; Maritime patrol: interceptor + naval [325/1200] [money 325, supplies 1,200, manpower 8]; Doctrine first: +1 air organization [250/900] [money 250, supplies 900, manpower 5]."
 	desc = "Airfield security protects aircraft; it does not create them. With staff, pilots and defended bases in place, Delhi can now place its first real air-production contracts. The selected wings enter the normal production queue using the current researched model and still consume their ordinary daily IC and manpower. Choosing doctrine first instead funds no aircraft and cannot be repeated."
 	style = 2
 	picture = "india_v3_armed_forces"
@@ -252,7 +252,10 @@ event = {
 			# AUBM_ACTION_RESERVE_BEGIN
 			money = 350
 			supplies = 1250
+			manpower = 6
 			# AUBM_ACTION_RESERVE_END
+			# Eligibility only; ordinary production consumes manpower once.
+			manpower = 6
 		}
 		ai_chance = 35
 		name = "Fighter command: 2 interceptors [350/1250]"
@@ -269,7 +272,10 @@ event = {
 			# AUBM_ACTION_RESERVE_BEGIN
 			money = 325
 			supplies = 1150
+			manpower = 7
 			# AUBM_ACTION_RESERVE_END
+			# Eligibility only; ordinary production consumes manpower once.
+			manpower = 7
 		}
 		ai_chance = 30
 		name = "Army cooperation: interceptor + tactical [325/1150]"
@@ -287,7 +293,10 @@ event = {
 			# AUBM_ACTION_RESERVE_BEGIN
 			money = 325
 			supplies = 1200
+			manpower = 8
 			# AUBM_ACTION_RESERVE_END
+			# Eligibility only; ordinary production consumes manpower once.
+			manpower = 8
 		}
 		ai_chance = 25
 		name = "Maritime patrol: interceptor + naval [325/1200]"
@@ -306,7 +315,10 @@ event = {
 			# AUBM_ACTION_RESERVE_BEGIN
 			money = 250
 			supplies = 900
+			manpower = 5
 			# AUBM_ACTION_RESERVE_END
+			# Eligibility only; ordinary production consumes manpower once.
+			manpower = 5
 		}
 		ai_chance = 10
 		name = "Doctrine first: +1 air organization [250/900]"
