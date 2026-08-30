@@ -10,6 +10,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 EVENT_FILE = ROOT / "mod/db/events/aubm_v4/35_japan_partnership.txt"
+WARTIME_STATE = ROOT / "mod/db/events/aubm_v4/41_wartime_state.txt"
 AI_ROOT = ROOT / "mod/ai"
 EVENTS_ROOT = ROOT / "mod/db/events"
 EVENT_LIST = ROOT / "mod/db/events.txt"
@@ -198,6 +199,23 @@ def main() -> int:
         for token in tokens:
             if token not in block:
                 errors.append(f"Tokyo callback {event_id} does not preserve global flag {token}")
+    china_policy = blocks_by_id.get(9281130, "")
+    for guard in (
+        "NOT = { alliance = { country = IND country = JAP } }",
+        "NOT = { flag = ind_aubm_jp_formal_alliance }",
+    ):
+        if guard not in china_policy:
+            errors.append(
+                f"Tokyo China-policy event 9281130 is not compact-only; missing {guard!r}"
+            )
+    southern_opening = blocks_by_id.get(9281140, "")
+    if "flag = ind_aubm_bespoke_route_contract_alpha23" not in southern_opening:
+        errors.append("Tokyo southern theatre 9281140 cannot recognize an Alpha 23 Indian compact war")
+    for opponent in ("ENG", "U05", "HOL", "AST"):
+        if f"war = {{ country = IND country = {opponent} }}" not in southern_opening:
+            errors.append(
+                f"Tokyo southern theatre 9281140 omits India's separate {opponent} war"
+            )
     if blocks_by_id.get(9281120, "").count("clrflag which = ind_aubm_jp_proposal_pending") < 3:
         errors.append("Tokyo counteroffer 9281120 does not close the Indian pending proposal in every outcome")
     if blocks_by_id.get(9281121, "").count("clrflag which = ind_aubm_jp_proposal_pending") < 3:
@@ -244,6 +262,75 @@ def main() -> int:
     ):
         if token not in resistance:
             errors.append(f"Indian Ocean resistance 9281169 omits global reply {token!r}")
+
+    southern_settlement = blocks_by_id.get(9281160, "")
+    settlement_text = {}
+    for field in ("decision_desc", "desc"):
+        match = re.search(rf'(?m)^\s*{field}\s*=\s*"([^"]*)"', southern_settlement)
+        settlement_text[field] = match.group(1) if match else ""
+    warning_tokens = (
+        "separate peace",
+        "ends formal shared-war membership",
+        "separate-command compact",
+    )
+    for field, value in settlement_text.items():
+        for token in warning_tokens:
+            if token not in value:
+                errors.append(
+                    f"Indian Ocean settlement 9281160 {field} omits warning token {token!r}"
+                )
+    for token in (
+        "type = setflag which = ind_aubm_jp_independent_cobelligerent",
+        "type = clrflag which = ind_aubm_jp_formal_alliance",
+        "type = leave_alliance when = 1",
+    ):
+        if southern_settlement.count(token) < 3:
+            errors.append(
+                f"Indian Ocean settlement 9281160 does not preserve its three-action transition {token!r}"
+            )
+
+    wartime_text = WARTIME_STATE.read_text(encoding="ascii")
+    balanced(wartime_text, WARTIME_STATE.name, errors)
+    wartime_blocks_by_id: dict[int, str] = {}
+    for block in event_blocks(wartime_text):
+        match = re.search(r"(?m)^\s*id\s*=\s*(\d+)", block)
+        if match:
+            wartime_blocks_by_id[int(match.group(1))] = block
+    formal_upgrade = wartime_blocks_by_id.get(9281914, "")
+    if not formal_upgrade:
+        errors.append("Tokyo formal-entry event 9281914 is missing from wartime state")
+    formal_join = formal_upgrade.split("\taction_b = {", 1)[0]
+    senior_guard = (
+        "trigger = { OR = { flag = ind_aubm_jp_tier_senior "
+        "flag = ind_aubm_jp_india_full_sphere } }"
+    )
+    fresh_guard = (
+        "trigger = { NOT = { flag = ind_aubm_jp_tier_senior } "
+        "NOT = { flag = ind_aubm_jp_india_full_sphere } }"
+    )
+    for command in (
+        "type = setflag which = ind_aubm_jp_tier_senior",
+        "type = setflag which = ind_aubm_jp_india_full_sphere",
+        "type = clrflag which = ind_aubm_jp_tier_peer",
+        "type = clrflag which = ind_aubm_jp_india_core_sphere",
+    ):
+        if f"{senior_guard} {command}" not in formal_join:
+            errors.append(
+                f"Tokyo formal-entry event 9281914 does not preserve senior/full-sphere state via {command!r}"
+            )
+    for command in (
+        "type = setflag which = ind_aubm_jp_tier_peer",
+        "type = setflag which = ind_aubm_jp_india_core_sphere",
+    ):
+        if f"{fresh_guard} {command}" not in formal_join:
+            errors.append(
+                f"Tokyo formal-entry event 9281914 does not give fresh entry peer/core via {command!r}"
+            )
+    for flag in ("ind_aubm_jp_tier_senior", "ind_aubm_jp_india_full_sphere"):
+        if f"command = {{ type = clrflag which = {flag} }}" in formal_join:
+            errors.append(
+                f"Tokyo formal-entry event 9281914 unconditionally downgrades existing {flag}"
+            )
 
     global_ids = all_event_ids()
     duplicates = {

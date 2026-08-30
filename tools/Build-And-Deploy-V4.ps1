@@ -51,6 +51,9 @@ Invoke-Checked "Complete global campaign matrix" {
 Invoke-Checked "Complete bespoke regional armistices" {
     & $python.Source (Join-Path $PSScriptRoot "generate_aubm_bespoke_armistices.py") --check
 }
+Invoke-Checked "Complete bespoke strategic route arcs" {
+    & $python.Source (Join-Path $PSScriptRoot "generate_aubm_bespoke_route_arcs.py") --check
+}
 
 Write-Host "Rebuilding the V4 overlay from Darkest Hour Full..."
 & (Join-Path $PSScriptRoot "Rebase-V4-DirectDH.ps1") @rebaseArguments
@@ -91,6 +94,9 @@ Invoke-Checked "Union integration review coverage" {
 Invoke-Checked "Fresh 1933 opening and old-save split" {
     & $python.Source (Join-Path $PSScriptRoot "validate_aubm_cold_start.py")
 }
+Invoke-Checked "Guided War Cabinet and unrestricted sandbox" {
+    & $python.Source (Join-Path $PSScriptRoot "validate_aubm_war_cabinet.py")
+}
 Invoke-Checked "Audited opening and early-game contracts" {
     & $python.Source (Join-Path $PSScriptRoot "validate_aubm_early_game.py")
 }
@@ -117,6 +123,12 @@ Invoke-Checked "Current route-specific wartime source" {
 }
 Invoke-Checked "Route-specific wartime consequences" {
     & $python.Source (Join-Path $PSScriptRoot "validate_aubm_route_consequences.py")
+}
+Invoke-Checked "Current bespoke strategic-route source" {
+    & $python.Source (Join-Path $PSScriptRoot "generate_aubm_bespoke_route_arcs.py") --check
+}
+Invoke-Checked "Bespoke strategic-route campaign arcs" {
+    & $python.Source (Join-Path $PSScriptRoot "validate_aubm_bespoke_routes.py")
 }
 Invoke-Checked "Bespoke regional armistice lifecycle" {
     & $python.Source (Join-Path $PSScriptRoot "generate_aubm_bespoke_armistices.py") --check

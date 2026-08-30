@@ -6,7 +6,7 @@ from __future__ import annotations
 import re
 from pathlib import Path
 
-from generate_aubm_route_consequences import LEGACY_WARTIME_IDS, ROUTES
+from generate_aubm_route_consequences import BESPOKE_ROUTE_CONTRACT, LEGACY_WARTIME_IDS, ROUTES
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -143,17 +143,25 @@ def main() -> int:
         charter = events.get(charter_id, "")
         congress = events.get(congress_id, "")
         autonomy = action_blocks(congress).get("c", "")
-        checks += 12
+        checks += 14
         if route.route_flag not in charter:
             errors.append(f"{route.key} charter omits canonical route flag")
         if "atwar = yes" not in charter:
             errors.append(f"{route.key} charter is not tied to a live war")
         if len(re.findall(r"(?m)^\s*action_[a-d]\s*=", charter)) != 4:
             errors.append(f"{route.key} charter does not offer four doctrines")
+        if charter.count(f"setflag which = {BESPOKE_ROUTE_CONTRACT}") != 4:
+            errors.append(f"{route.key} charter does not opt every new doctrine into Alpha 23 arcs")
         if f"ind_aubm_route_charter_{route.key}" not in charter:
             errors.append(f"{route.key} charter has no completion guard")
-        if route.route_flag not in congress or "atwar = no" not in congress:
-            errors.append(f"{route.key} congress is not a route-specific postwar event")
+        if "NOT = { flag = ind_aubm_postwar_congress_completed }" not in charter:
+            errors.append(f"{route.key} charter can reopen after the one permitted peace congress")
+        if "NOT = { flag = ind_aubm_route_war_achievement }" not in charter:
+            errors.append(f"{route.key} charter can reopen after earning a primary but before its peace congress")
+        if f"ind_aubm_congress_entitlement_{route.key}" not in congress or "atwar = no" not in congress:
+            errors.append(f"{route.key} congress does not use its recorded route entitlement")
+        if route.route_flag in re.sub(r"(?s)action_[a-d].*", "", congress):
+            errors.append(f"{route.key} congress can be relabelled by the current route")
         if len(re.findall(r"(?m)^\s*action_[a-c]\s*=", congress)) != 3:
             errors.append(f"{route.key} congress does not offer three postwar orders")
         if route.legacy_flag not in congress:
@@ -190,8 +198,8 @@ def main() -> int:
             checks += 4
             if "flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous" not in charter:
                 errors.append("autonomous socialism cannot select the Soviet-route wartime charter")
-            if "flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous" not in congress:
-                errors.append("autonomous socialism cannot reach the socialist peace congress")
+            if "ind_aubm_congress_entitlement_soviet" not in congress:
+                errors.append("autonomous socialism cannot retain a socialist congress entitlement")
             if "setflag which = ind_v4_sov_autonomous_socialism" not in congress or "setflag which = ind_aubm_socialist_autonomous" not in congress:
                 errors.append("socialist strategic autonomy erases India's domestic socialist course")
             if "setflag which = ind_v4_strategy_soviet" not in congress:
@@ -225,6 +233,10 @@ def main() -> int:
                 errors.append(f"{route.key}/{focus.key} achievement trigger drifted from the route map")
             if f"ind_aubm_route_achievement_{route.key}" not in achievement:
                 errors.append(f"{route.key}/{focus.key} does not unlock its peace congress")
+            if f"NOT = {{ flag = {BESPOKE_ROUTE_CONTRACT} }}" not in achievement:
+                errors.append(f"{route.key}/{focus.key} can race the Alpha 23 authored culmination")
+            if f"ind_aubm_congress_entitlement_{route.key}" not in achievement:
+                errors.append(f"{route.key}/{focus.key} does not record its route-specific congress entitlement")
             if "ind_aubm_route_war_achievement" not in achievement:
                 errors.append(f"{route.key}/{focus.key} does not enter the common war ledger")
             if "NOT = { flag = ind_aubm_route_war_achievement }" not in achievement:
@@ -239,19 +251,34 @@ def main() -> int:
                     errors.append(f"{route.key}/{focus.key} does not recognize the flexible Southeast Asian theatre")
 
         fallback = events.get(base + 4, "")
-        checks += 8
+        checks += 13 + len(route.focuses)
         if f"ind_aubm_route_charter_{route.key}" not in fallback:
             errors.append(f"{route.key} fallback achievement ignores its selected charter")
+        if f"NOT = {{ flag = {BESPOKE_ROUTE_CONTRACT} }}" not in fallback:
+            errors.append(f"{route.key} fallback can race the Alpha 23 authored campaign")
         if "ind_aubm_global_campaign_victory" not in fallback:
             errors.append(f"{route.key} fallback cannot recognize a generated-country victory")
         if f"ind_aubm_route_achievement_{route.key}_global" not in fallback:
             errors.append(f"{route.key} fallback has no one-time route guard")
-        if f"ind_aubm_route_achievement_{route.key}" not in fallback:
-            errors.append(f"{route.key} fallback does not unlock its congress")
-        if "ind_aubm_route_war_achievement" not in fallback:
-            errors.append(f"{route.key} fallback does not enter the common war ledger")
+        if f"setflag which = ind_aubm_route_achievement_{route.key} }}" in fallback:
+            errors.append(f"{route.key} fallback incorrectly unlocks its congress")
+        if "setflag which = ind_aubm_route_war_achievement" in fallback:
+            errors.append(f"{route.key} fallback incorrectly consumes the common primary ledger")
+        if f"ind_aubm_congress_entitlement_{route.key}" in fallback:
+            errors.append(f"{route.key} fallback incorrectly records a congress entitlement")
+        if "ind_aubm_secondary_campaign_credit" not in fallback:
+            errors.append(f"{route.key} fallback does not record secondary standing")
         if "NOT = { flag = ind_aubm_route_war_achievement }" not in fallback:
-            errors.append(f"{route.key} fallback can stack with a named achievement")
+            errors.append(f"{route.key} secondary fallback can reuse a stale primary victory")
+        for focus in route.focuses:
+            focus_exclusion = (
+                f"AND = {{ flag = ind_aubm_route_focus_{route.key}_{focus.key} "
+                f"{focus.trigger} }}"
+            )
+            if focus_exclusion not in fallback:
+                errors.append(
+                    f"{route.key} fallback can relabel the selected {focus.key} victory as secondary"
+                )
         if route.route_flag not in fallback:
             errors.append(f"{route.key} fallback can fire after India leaves its route")
         if "year = 1933" not in fallback:
@@ -259,11 +286,15 @@ def main() -> int:
 
         if route.key == "japan":
             dualfront = events.get(base + 1, "")
-            checks += 2
+            checks += 4
             if "ind_aubm_jp_independent_soviet_war" not in dualfront:
                 errors.append("Japan dual-front achievement does not require an independently declared Soviet war")
             if "NOT = { alliance = { country = IND country = JAP } }" not in dualfront:
-                errors.append("Japan dual-front achievement can be earned through inherited alliance wars")
+                errors.append("Japan northern achievement omits the compact's separate-war guard")
+            if "alliance = { country = IND country = JAP }" not in dualfront:
+                errors.append("formal Japanese allies cannot complete a joint northern campaign")
+            if "war = { country = IND country = SOV }" not in dualfront:
+                errors.append("formal Japanese northern credit does not require a real Soviet war")
 
     for event_id, block in events.items():
         checks += 3

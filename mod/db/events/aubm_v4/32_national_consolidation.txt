@@ -131,8 +131,53 @@ event = {
 	}
 }
 
+# The unrestricted country catalogue remains available for players who want a
+# sandbox campaign before the 1937 strategic phase, but it must be enabled
+# deliberately.  The opt-in carries no reward and cannot bypass legal-target
+# or commitment guards.
+event = {
+	id = 9281008
+	random = no
+	persistent = yes
+	country = IND
+
+	decision = {
+		flag = ind_v43_war_cabinet
+		flag = ind_v3_integrated
+		flag = aubm_v4_union_register_opened
+		atwar = no
+		NOT = { year = 1937 }
+		NOT = { flag = ind_aubm_unrestricted_sandbox }
+	}
+	decision_trigger = {
+		flag = ind_v43_war_cabinet
+		flag = ind_v3_integrated
+		flag = aubm_v4_union_register_opened
+		atwar = no
+		NOT = { year = 1937 }
+		NOT = { flag = ind_aubm_unrestricted_sandbox }
+	}
+
+	name = "Enable Unrestricted Early Campaigns"
+	decision_desc = "Optional permanent sandbox opt-in. This exposes the War Cabinet and arbitrary declarations before 1937. It grants no reward, does not waive alliance or legal-target guards, and can close peacetime development chains by starting an early war."
+	desc = "India's constitutional programme is designed to run at peace through 1936. Enabling the unrestricted catalogue early is for alternate starts and deliberate sandbox wars; it is not required for the normal campaign."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	date = { day = 0 month = january year = 1933 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Enable the early sandbox permanently (no reward)"
+		command = { type = setflag which = ind_aubm_unrestricted_sandbox }
+	}
+}
+
 # One permanent strategic doorway replaces six easy-to-miss decisions. The
-# underlying coalition events remain authoritative and retain their effects.
+# curated doorway opens in 1937, during a real Indian war, or after the explicit
+# unrestricted-sandbox opt-in. The underlying coalition events remain
+# authoritative and retain their effects.
 event = {
 	id = 9281001
 	random = no
@@ -143,16 +188,26 @@ event = {
 		flag = ind_v43_war_cabinet
 		flag = ind_v3_integrated
 		flag = aubm_v4_union_register_opened
+		OR = {
+			year = 1937
+			atwar = yes
+			flag = ind_aubm_unrestricted_sandbox
+		}
 	}
 	decision_trigger = {
 		flag = ind_v43_war_cabinet
 		flag = ind_v3_integrated
 		flag = aubm_v4_union_register_opened
+		OR = {
+			year = 1937
+			atwar = yes
+			flag = ind_aubm_unrestricted_sandbox
+		}
 	}
 
-	name = "Convene the Emergency War Cabinet"
-	decision_desc = "No fee to inspect strategy. Open coalition membership, great-power wars, regional campaigns, or the current campaign ledger. Binding alignments are exclusive; peaceful withdrawal begins a ninety-day realignment period."
-	desc = "The War Cabinet separates alliances from enemies and theatres. India may negotiate with London, Berlin, Moscow or Tokyo only while uncommitted, or upgrade a compact within the same route. A binding partner cannot be attacked or exchanged for another side during war."
+	name = "Convene the National War Cabinet"
+	decision_desc = "Available from 1937, during a real Indian war, or after the explicit early-sandbox opt-in. Inspection is free. Binding alignments are exclusive; peaceful withdrawal begins a ninety-day realignment period."
+	desc = "The War Cabinet separates authored route plans, alliances, enemies and active theatres. India may negotiate with London, Berlin, Moscow or Tokyo only while uncommitted, or upgrade a compact within the same route. A binding partner cannot be attacked or exchanged for another side during war."
 	style = 2
 	picture = "aubm_v4_india_world_war"
 
@@ -165,16 +220,15 @@ event = {
 		command = { type = event which = 9281910 where = IND when = 1 }
 	}
 	action_b = {
-		name = "War against a great power"
-		command = { type = event which = 9281911 where = IND when = 1 }
+		name = "Authored route campaigns and partner crises"
+		command = { type = event which = 9289499 where = IND when = 1 }
 	}
 	action_c = {
-		name = "Regional campaigns and ultimatums"
-		command = { type = event which = 9281912 where = IND when = 1 }
+		name = "Great-power, regional and active campaign dockets"
+		command = { type = event which = 9281012 where = IND when = 1 }
 	}
 	action_d = {
-		name = "Campaign ledger or any-country war"
-		command = { type = event which = 9281012 where = IND when = 1 }
+		name = "Close the Cabinet"
 	}
 }
 
@@ -183,8 +237,8 @@ event = {
 	random = no
 	persistent = yes
 	country = IND
-	name = "War Cabinet: Ledger and Global Targets"
-	desc = "Review live Indian objectives, or open the complete country index. The index includes every 1933 state and standard wartime successor not already handled by a bespoke great-power or regional docket. India's current alliance determines whether a new declaration is shared; sovereign and compact routes retain separate wars."
+	name = "War Cabinet: Campaign Dockets and Unrestricted Targets"
+	desc = "Review live Indian objectives, open authored great-power or regional dockets, or enter the unrestricted country index. The index is a sandbox catalogue for states not already handled by a bespoke docket. Formal alliances share declarations; sovereign and compact routes retain separate wars."
 	style = 2
 	picture = "aubm_v4_grand_strategy"
 	action_a = {
@@ -192,11 +246,41 @@ event = {
 		command = { type = event which = 9281913 where = IND when = 1 }
 	}
 	action_b = {
+		name = "Open great-power or regional campaign dockets"
+		command = { type = event which = 9281911 where = IND when = 1 }
+	}
+	action_c = {
+		name = "Open regional campaign dockets"
+		command = { type = event which = 9281912 where = IND when = 1 }
+	}
+	action_d = {
+		name = "Unrestricted targets or return"
+		command = { type = event which = 9281013 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9281013
+	random = no
+	persistent = yes
+	country = IND
+	name = "War Cabinet: Unrestricted Target Catalogue"
+	desc = "The complete 210-country catalogue is optional sandbox material beneath the authored great-power, regional and route campaigns. Enabling it is permanent, grants no reward and never bypasses alliance, legal-owner or current-partner guards."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+	action_a = {
+		trigger = { NOT = { flag = ind_aubm_unrestricted_sandbox } }
+		name = "Enable unrestricted targets permanently (no reward)"
+		command = { type = setflag which = ind_aubm_unrestricted_sandbox }
+		command = { type = event which = 9281013 where = IND when = 1 }
+	}
+	action_b = {
+		trigger = { flag = ind_aubm_unrestricted_sandbox }
 		name = "Open the complete country campaign index"
 		command = { type = event which = 9282300 where = IND when = 1 }
 	}
 	action_c = {
-		name = "Return to the War Cabinet"
+		name = "Return to the National War Cabinet"
 		command = { type = event which = 9281001 where = IND when = 1 }
 	}
 	action_d = { name = "Close the Cabinet" }
@@ -213,7 +297,7 @@ event = {
 	picture = "aubm_v4_india_world_war"
 	action_a = {
 		name = "Close retired menu; War Cabinet opens only after Union"
-		command = { trigger = { flag = ind_v3_integrated flag = aubm_v4_union_register_opened } type = event which = 9281001 where = IND when = 1 }
+		command = { trigger = { flag = ind_v3_integrated flag = aubm_v4_union_register_opened OR = { year = 1937 atwar = yes flag = ind_aubm_unrestricted_sandbox } } type = event which = 9281001 where = IND when = 1 }
 	}
 }
 
@@ -228,7 +312,7 @@ event = {
 	picture = "aubm_v4_india_world_war"
 	action_a = {
 		name = "Close retired menu; War Cabinet opens only after Union"
-		command = { trigger = { flag = ind_v3_integrated flag = aubm_v4_union_register_opened } type = event which = 9281001 where = IND when = 1 }
+		command = { trigger = { flag = ind_v3_integrated flag = aubm_v4_union_register_opened OR = { year = 1937 atwar = yes flag = ind_aubm_unrestricted_sandbox } } type = event which = 9281001 where = IND when = 1 }
 	}
 }
 
@@ -243,7 +327,7 @@ event = {
 	picture = "aubm_v4_india_world_war"
 	action_a = {
 		name = "Close retired menu; War Cabinet opens only after Union"
-		command = { trigger = { flag = ind_v3_integrated flag = aubm_v4_union_register_opened } type = event which = 9281001 where = IND when = 1 }
+		command = { trigger = { flag = ind_v3_integrated flag = aubm_v4_union_register_opened OR = { year = 1937 atwar = yes flag = ind_aubm_unrestricted_sandbox } } type = event which = 9281001 where = IND when = 1 }
 	}
 }
 

@@ -518,6 +518,10 @@ event = {
 
 	decision = {
 		flag = ind_v4_sov_regional_diplomacy
+		OR = {
+			flag = ind_aubm_route_soviet
+			AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous }
+		}
 		year = 1938
 		NOT = { flag = ind_v4_sov_persia_mandate }
 	}
@@ -541,6 +545,10 @@ event = {
 
 	action_a = {
 		trigger = {
+			OR = {
+				flag = ind_aubm_route_soviet
+				AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous }
+			}
 			# AUBM_ACTION_RESERVE_BEGIN
 			money = 250
 			supplies = 500
@@ -565,6 +573,10 @@ event = {
 
 	decision = {
 		flag = ind_v4_sov_regional_diplomacy
+		OR = {
+			flag = ind_aubm_route_soviet
+			AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous }
+		}
 		year = 1938
 		NOT = { flag = ind_v4_sov_tashkent_mandate }
 	}
@@ -588,6 +600,10 @@ event = {
 
 	action_a = {
 		trigger = {
+			OR = {
+				flag = ind_aubm_route_soviet
+				AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous }
+			}
 			# AUBM_ACTION_RESERVE_BEGIN
 			money = 250
 			supplies = 500
@@ -612,6 +628,10 @@ event = {
 
 	decision = {
 		flag = ind_v4_sov_regional_diplomacy
+		OR = {
+			flag = ind_aubm_route_soviet
+			AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous }
+		}
 		year = 1938
 		NOT = { flag = ind_v4_sov_xinjiang_mandate }
 		OR = {
@@ -640,6 +660,10 @@ event = {
 
 	action_a = {
 		trigger = {
+			OR = {
+				flag = ind_aubm_route_soviet
+				AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous }
+			}
 			# AUBM_ACTION_RESERVE_BEGIN
 			money = 200
 			supplies = 350
@@ -696,13 +720,31 @@ event = {
 	picture = "aubm_v4_grand_strategy"
 
 	action_a = {
-		trigger = { exists = SOV NOT = { war = { country = IND country = SOV } } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_realignment_cooldown } }
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } exists = SOV NOT = { war = { country = IND country = SOV } } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_realignment_cooldown } }
 		name = "Return to the negotiating table"
 		command = { type = clrflag which = ind_v4_sov_moscow_retry_pending }
 		command = { type = setflag which = ind_v4_sov_equal_compact_proposed }
 		command = { type = setflag which = ind_aubm_diplomatic_negotiation_pending }
 		command = { type = setflag which = ind_aubm_negotiation_soviet }
 		command = { type = event which = 9281401 where = SOV when = 2 }
+	}
+	action_b = {
+		trigger = {
+			OR = {
+				NOT = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
+				NOT = { exists = SOV }
+				war = { country = IND country = SOV }
+				participant = { country = IND value = 4 }
+				flag = ind_aubm_commitment_allied
+				flag = ind_aubm_commitment_german
+				flag = ind_aubm_commitment_soviet
+				flag = ind_aubm_commitment_japan
+				flag = ind_aubm_diplomatic_negotiation_pending
+				flag = ind_aubm_realignment_cooldown
+			}
+		}
+		name = "Let the obsolete Moscow retry lapse"
+		command = { type = clrflag which = ind_v4_sov_moscow_retry_pending }
 	}
 }
 
@@ -755,6 +797,7 @@ event = {
 	picture = "aubm_v4_grand_strategy"
 
 	action_a = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
 		name = "Guarantee Persia and organize the route"
 		command = { type = guarantee which = IND where = PER }
 		command = { type = relation which = PER value = 25 }
@@ -762,6 +805,10 @@ event = {
 		command = { type = setflag which = ind_v4_sov_persia_corridor_open }
 		command = { type = setflag which = ind_v4_sov_persia_sovereign_terms }
 		command = { type = ai which = "aubm/soviet/IND_persia_caucasus.ai" }
+	}
+	action_b = {
+		trigger = { NOT = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } } }
+		name = "Let the obsolete Persian corridor reply lapse"
 	}
 }
 
@@ -777,6 +824,7 @@ event = {
 	picture = "aubm_v4_grand_strategy"
 
 	action_a = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
 		ai_chance = 50
 		name = "Accept the limited sovereign corridor"
 		command = { type = money value = -200 }
@@ -787,12 +835,14 @@ event = {
 		command = { type = setflag which = ind_v4_sov_persia_corridor_limited }
 	}
 	action_b = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
 		ai_chance = 30
 		name = "Press for bases: full 35%, limited 45%, refuse 20%"
 		command = { type = relation which = PER value = -10 }
 		command = { type = event which = 9281424 where = PER when = 7 }
 	}
 	action_c = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
 		ai_chance = 20
 		name = "Redirect the command through Afghanistan"
 		command = { type = setflag which = ind_v4_sov_persia_bypassed }
@@ -800,6 +850,11 @@ event = {
 		command = { trigger = { exists = AFG } type = event which = 9281430 where = AFG when = 4 }
 		command = { trigger = { NOT = { exists = AFG } } type = event which = 9281436 where = IND when = 4 }
 		command = { type = ai which = "aubm/soviet/IND_tashkent_corridor.ai" }
+	}
+	action_d = {
+		trigger = { NOT = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } } }
+		ai_chance = 0
+		name = "Let the obsolete Persian counteroffer lapse"
 	}
 }
 
@@ -815,6 +870,7 @@ event = {
 	picture = "aubm_v4_grand_strategy"
 
 	action_a = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
 		ai_chance = 35
 		name = "Apply pressure and reopen talks in six months"
 		command = { type = money value = -300 }
@@ -825,6 +881,7 @@ event = {
 		command = { type = event which = 9281420 where = PER when = 180 }
 	}
 	action_b = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
 		ai_chance = 35
 		name = "Build a maritime Gulf bypass"
 		command = { type = money value = -350 }
@@ -835,6 +892,7 @@ event = {
 		command = { type = ai which = "aubm/soviet/IND_persia_caucasus.ai" }
 	}
 	action_c = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
 		ai_chance = 30
 		name = "Respect Persia and approach Afghanistan"
 		command = { type = relation which = PER value = 10 }
@@ -842,6 +900,11 @@ event = {
 		command = { type = setflag which = ind_v4_sov_tashkent_mandate }
 		command = { trigger = { exists = AFG } type = event which = 9281430 where = AFG when = 5 }
 		command = { trigger = { NOT = { exists = AFG } } type = event which = 9281436 where = IND when = 5 }
+	}
+	action_d = {
+		trigger = { NOT = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } } }
+		ai_chance = 0
+		name = "Let the obsolete Persian refusal lapse"
 	}
 }
 
@@ -889,6 +952,7 @@ event = {
 	picture = "aubm_v4_grand_strategy"
 
 	action_a = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
 		name = "Honor the guarantee and open the depots"
 		command = { type = guarantee which = IND where = PER }
 		command = { type = relation which = PER value = 30 }
@@ -896,6 +960,10 @@ event = {
 		command = { type = setflag which = ind_v4_sov_persia_corridor_open }
 		command = { type = setflag which = ind_v4_sov_persia_guaranteed }
 		command = { type = ai which = "aubm/soviet/IND_persia_caucasus.ai" }
+	}
+	action_b = {
+		trigger = { NOT = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } } }
+		name = "Let the obsolete Persian transit reply lapse"
 	}
 }
 
@@ -911,11 +979,16 @@ event = {
 	picture = "aubm_v4_grand_strategy"
 
 	action_a = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
 		name = "Work within the supervised corridor"
 		command = { type = relation which = PER value = 15 }
 		command = { type = tc_mod value = 1 }
 		command = { type = setflag which = ind_v4_sov_persia_corridor_limited }
 		command = { type = setflag which = ind_v4_sov_persia_depots }
+	}
+	action_b = {
+		trigger = { NOT = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } } }
+		name = "Let the obsolete Persian depot reply lapse"
 	}
 }
 
@@ -930,6 +1003,7 @@ event = {
 	picture = "aubm_v4_grand_strategy"
 
 	action_a = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
 		ai_chance = 45
 		name = "Make Persian restoration an Indian war aim"
 		command = { type = relation which = ENG value = -10 }
@@ -938,6 +1012,7 @@ event = {
 		command = { type = setflag which = ind_v4_sov_persia_occupied_route }
 	}
 	action_b = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
 		ai_chance = 30
 		name = "Use the occupied route under military authority"
 		command = { type = dissent value = 3 }
@@ -946,12 +1021,18 @@ event = {
 		command = { type = ai which = "aubm/soviet/IND_persia_caucasus.ai" }
 	}
 	action_c = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
 		ai_chance = 25
 		name = "Shift the mandate to Central Asia"
 		command = { type = setflag which = ind_v4_sov_persia_bypassed }
 		command = { type = setflag which = ind_v4_sov_tashkent_mandate }
 		command = { trigger = { exists = AFG } type = event which = 9281430 where = AFG when = 5 }
 		command = { trigger = { NOT = { exists = AFG } } type = event which = 9281436 where = IND when = 5 }
+	}
+	action_d = {
+		trigger = { NOT = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } } }
+		ai_chance = 0
+		name = "Let the obsolete Persian restoration question lapse"
 	}
 }
 
@@ -1004,6 +1085,7 @@ event = {
 	picture = "aubm_v4_grand_strategy"
 
 	action_a = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
 		name = "Guarantee Afghanistan and organize transit"
 		command = { type = guarantee which = IND where = AFG }
 		command = { type = relation which = AFG value = 25 }
@@ -1011,6 +1093,10 @@ event = {
 		command = { type = setflag which = ind_v4_sov_afghan_corridor_open }
 		command = { type = setflag which = ind_v4_sov_afghan_sovereign_terms }
 		command = { type = ai which = "aubm/soviet/IND_tashkent_corridor.ai" }
+	}
+	action_b = {
+		trigger = { NOT = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } } }
+		name = "Let the obsolete Afghan corridor reply lapse"
 	}
 }
 
@@ -1026,6 +1112,7 @@ event = {
 	picture = "aubm_v4_grand_strategy"
 
 	action_a = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
 		ai_chance = 50
 		name = "Guarantee neutrality and use supervised convoys"
 		command = { type = money value = -150 }
@@ -1036,12 +1123,14 @@ event = {
 		command = { type = setflag which = ind_v4_sov_afghan_corridor_limited }
 	}
 	action_b = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
 		ai_chance = 30
 		name = "Request full transit: Kabul accepts 45%, refuses 55%"
 		command = { type = relation which = AFG value = -5 }
 		command = { type = event which = 9281434 where = AFG when = 7 }
 	}
 	action_c = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
 		ai_chance = 20
 		name = "Redirect the mission toward Xinjiang"
 		command = { type = setflag which = ind_v4_sov_xinjiang_mandate }
@@ -1049,6 +1138,11 @@ event = {
 		command = { trigger = { owned = { province = 1281 data = CHI } } type = event which = 9281441 where = CHI when = 5 }
 		command = { trigger = { owned = { province = 1281 data = SOV } } type = event which = 9281442 where = SOV when = 5 }
 		command = { type = ai which = "aubm/soviet/IND_xinjiang_corridor.ai" }
+	}
+	action_d = {
+		trigger = { NOT = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } } }
+		ai_chance = 0
+		name = "Let the obsolete Afghan counteroffer lapse"
 	}
 }
 
@@ -1064,6 +1158,7 @@ event = {
 	picture = "aubm_v4_grand_strategy"
 
 	action_a = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
 		ai_chance = 35
 		name = "Fund Afghan roads and retry in six months"
 		command = { type = money value = -300 }
@@ -1072,6 +1167,7 @@ event = {
 		command = { type = event which = 9281430 where = AFG when = 180 }
 	}
 	action_b = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
 		ai_chance = 30
 		name = "Redirect the corridor through Persia"
 		command = { type = setflag which = ind_v4_sov_persia_mandate }
@@ -1080,6 +1176,7 @@ event = {
 		command = { type = ai which = "aubm/soviet/IND_persia_caucasus.ai" }
 	}
 	action_c = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
 		ai_chance = 35
 		name = "Approach the government controlling Urumqi"
 		command = { type = setflag which = ind_v4_sov_xinjiang_mandate }
@@ -1087,6 +1184,11 @@ event = {
 		command = { trigger = { owned = { province = 1281 data = CHI } } type = event which = 9281441 where = CHI when = 5 }
 		command = { trigger = { owned = { province = 1281 data = SOV } } type = event which = 9281442 where = SOV when = 5 }
 		command = { type = ai which = "aubm/soviet/IND_xinjiang_corridor.ai" }
+	}
+	action_d = {
+		trigger = { NOT = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } } }
+		ai_chance = 0
+		name = "Let the obsolete Afghan refusal lapse"
 	}
 }
 
@@ -1128,6 +1230,7 @@ event = {
 	picture = "aubm_v4_grand_strategy"
 
 	action_a = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
 		ai_chance = 50
 		name = "Subsidize an air bridge around Afghanistan"
 		command = { type = money value = -350 }
@@ -1137,6 +1240,16 @@ event = {
 		command = { type = ai which = "aubm/soviet/IND_tashkent_corridor.ai" }
 	}
 	action_b = {
+		trigger = {
+			OR = {
+				flag = ind_aubm_route_soviet
+				AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous }
+			}
+			exists = AFG
+			NOT = { war = { country = IND country = AFG } }
+			NOT = { alliance = { country = IND country = AFG } }
+			NOT = { flag = ind_v3_delhi_pact }
+		}
 		ai_chance = 15
 		name = "Force the frontier and accept the consequences"
 		command = { type = dissent value = 5 }
@@ -1147,6 +1260,7 @@ event = {
 		command = { type = ai which = "aubm/soviet/IND_tashkent_corridor.ai" }
 	}
 	action_c = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
 		ai_chance = 35
 		name = "Abandon the route and reinforce the east"
 		command = { type = dissent value = -1 }
@@ -1154,6 +1268,19 @@ event = {
 		command = { type = setflag which = ind_v4_sov_afghan_route_abandoned }
 		command = { type = setflag which = ind_v4_sov_east_requested }
 		command = { trigger = { exists = SOV } type = event which = 9281456 where = SOV when = 5 }
+	}
+	action_d = {
+		trigger = {
+			OR = {
+				NOT = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
+				NOT = { exists = AFG }
+				war = { country = IND country = AFG }
+				alliance = { country = IND country = AFG }
+				flag = ind_v3_delhi_pact
+			}
+		}
+		ai_chance = 0
+		name = "Cancel the overtaken Afghan frontier demand"
 	}
 }
 
@@ -1169,12 +1296,14 @@ event = {
 	picture = "aubm_v4_grand_strategy"
 
 	action_a = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
 		ai_chance = 40
 		name = "Make Afghan restoration a war aim"
 		command = { type = setflag which = ind_v4_sov_restore_afghanistan_aim }
 		command = { type = setflag which = ind_v4_sov_afghan_occupied_route }
 	}
 	action_b = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
 		ai_chance = 25
 		name = "Operate through the occupied mountain route"
 		command = { type = dissent value = 3 }
@@ -1183,6 +1312,7 @@ event = {
 		command = { type = ai which = "aubm/soviet/IND_tashkent_corridor.ai" }
 	}
 	action_c = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
 		ai_chance = 35
 		name = "Redirect the mission to Persia and Xinjiang"
 		command = { type = setflag which = ind_v4_sov_persia_mandate }
@@ -1191,6 +1321,11 @@ event = {
 		command = { trigger = { owned = { province = 1281 data = SIK } } type = event which = 9281440 where = SIK when = 7 }
 		command = { trigger = { owned = { province = 1281 data = CHI } } type = event which = 9281441 where = CHI when = 7 }
 		command = { trigger = { owned = { province = 1281 data = SOV } } type = event which = 9281442 where = SOV when = 7 }
+	}
+	action_d = {
+		trigger = { NOT = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } } }
+		ai_chance = 0
+		name = "Let the obsolete Afghan restoration question lapse"
 	}
 }
 
@@ -1306,10 +1441,15 @@ event = {
 	picture = "aubm_v4_china_interior"
 
 	action_a = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
 		name = "Open the mission and respect local sovereignty"
 		command = { type = tc_mod value = 1 }
 		command = { type = setflag which = ind_v4_sov_xinjiang_corridor_open }
 		command = { type = ai which = "aubm/soviet/IND_xinjiang_corridor.ai" }
+	}
+	action_b = {
+		trigger = { NOT = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } } }
+		name = "Let the obsolete Urumqi corridor reply lapse"
 	}
 }
 
@@ -1325,6 +1465,7 @@ event = {
 	picture = "aubm_v4_china_interior"
 
 	action_a = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
 		ai_chance = 50
 		name = "Accept civilian access and local sovereignty"
 		command = { type = money value = -150 }
@@ -1332,6 +1473,7 @@ event = {
 		command = { type = setflag which = ind_v4_sov_xinjiang_corridor_limited }
 	}
 	action_b = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
 		ai_chance = 25
 		name = "Fund an equal strategic partnership"
 		command = { type = money value = -350 }
@@ -1342,11 +1484,17 @@ event = {
 		command = { type = setflag which = ind_v4_sov_xinjiang_investment }
 	}
 	action_c = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
 		ai_chance = 25
 		name = "Redirect the mission to Burma and China"
 		command = { type = relation which = CHI value = 15 }
 		command = { type = setflag which = ind_v4_sov_east_requested }
 		command = { trigger = { exists = SOV } type = event which = 9281456 where = SOV when = 5 }
+	}
+	action_d = {
+		trigger = { NOT = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } } }
+		ai_chance = 0
+		name = "Let the obsolete Urumqi counteroffer lapse"
 	}
 }
 
@@ -1362,6 +1510,7 @@ event = {
 	picture = "aubm_v4_china_interior"
 
 	action_a = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
 		ai_chance = 30
 		name = "Improve the offer and retry in six months"
 		command = { type = money value = -250 }
@@ -1371,6 +1520,7 @@ event = {
 		command = { trigger = { owned = { province = 1281 data = SOV } } type = event which = 9281442 where = SOV when = 180 }
 	}
 	action_b = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
 		ai_chance = 35
 		name = "Use the Wakhan-Kondoz route instead"
 		command = { type = setflag which = ind_v4_sov_tashkent_mandate }
@@ -1379,12 +1529,18 @@ event = {
 		command = { type = ai which = "aubm/soviet/IND_tashkent_corridor.ai" }
 	}
 	action_c = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
 		ai_chance = 35
 		name = "Create a Burma-China command"
 		command = { type = supplies value = -350 }
 		command = { type = relation which = CHI value = 20 }
 		command = { type = setflag which = ind_v4_sov_east_requested }
 		command = { trigger = { exists = SOV } type = event which = 9281456 where = SOV when = 5 }
+	}
+	action_d = {
+		trigger = { NOT = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } } }
+		ai_chance = 0
+		name = "Let the obsolete Urumqi refusal lapse"
 	}
 }
 
@@ -1400,9 +1556,14 @@ event = {
 	picture = "aubm_v4_china_interior"
 
 	action_a = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
 		name = "Return the question to the strategic council"
 		command = { type = clrflag which = ind_v4_sov_east_deferred }
 		command = { type = clrflag which = ind_v4_sov_east_requested }
+	}
+	action_b = {
+		trigger = { NOT = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } } }
+		name = "Let the obsolete eastern review lapse"
 	}
 }
 

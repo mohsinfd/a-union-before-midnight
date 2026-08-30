@@ -1,5 +1,154 @@
 # Release Notes
 
+## 4.2.0-alpha.24 / Alpha 24 - Air Readiness and Map Readability
+
+*30 Aug 2026*
+
+Alpha 24 turns a confusing early air-force gap into a visible player choice and
+makes India substantially easier to pick out in a crowded political map. It
+builds on Alpha 23's uninstalled route-campaign source and has not yet had an
+executable smoke or human campaign playthrough.
+
+### First Real Air Group
+
+- Kept **The Airfield Security Act** as an explicitly ground-security choice:
+  its guards, AA and mobile formations protect airfields but do not create
+  aircraft.
+- Added **The First Operational Air Group** (`9280162`) once the Air Staff,
+  Flying Schools and Airfield Security are complete. It appears from July 1934
+  and plainly states that its choices queue ordinary aircraft contracts.
+- Added four one-use packages: two interceptors; interceptor plus tactical
+  bomber; interceptor plus naval bomber; or a doctrine-first option with no
+  aircraft and +1 air organization.
+- Kept the contracts at normal researched models, daily IC and normal
+  production manpower. The displayed manpower is an eligibility estimate, not
+  a second event deduction.
+- Blocked the package after its own use or once the later HAL, 1936 doctrine
+  or 1943 arsenal air programme has already supplied the opening force.
+
+### Readable Political Map
+
+- Changed India from washed-out LightRed to **Indian indigo** (`DarkBlue`). No
+  immediate Indian neighbour shares the colour.
+- Added an optional `Enable-Aubm-PersonalTerrainVisuals.ps1` tool for a player
+  who already owns Blood and Iron v1.1. It installs a hash-checked,
+  backup-backed personal reference overlay from that local copy only; it never
+  enters GitHub or the public installer.
+- Added `Enable-Aubm-PersonalIndiaSprites.ps1` for the same local-only case.
+  It rebuilds and hash-checks the 41-family India sprite profile, installs it
+  outside the public manifest and rewires only the installed unit registry.
+  Public updates can stay donor-free; rerun the tool after a public update to
+  restore the personal registry override.
+- Added the original, donor-free terrain-art plan in
+  `docs/VISUAL_READABILITY_PIPELINE.md`. The eventual AUBM terrain layer will
+  be generated from original masks and motifs only after a disposable-map
+  lightmap fixture has passed an executable test.
+
+### Verification Boundary
+
+- The dedicated early-game audit now verifies the first-air-group prerequisites,
+  contracts, costs, duplicate guards and no-double-manpower rule (**51
+  checks**).
+- The full Alpha 24 deterministic build passed repeat stability across 4,435
+  overlay files, static validation with 0 errors/warnings, art, economy,
+  resource, combat, construction and Steam Deck gates.
+- Alpha 24 is installed and hash-verified locally; all 27 existing save files
+  were separately backed up and verified unchanged. Executable launch and a
+  human campaign remain outstanding. The local terrain and sprite overlays are
+  personal test aids, not proof of a public visual release.
+
+## 4.2.0-alpha.23 / Alpha 23 - Every Route Is a Campaign
+
+*29 Aug 2026*
+
+Alpha 23 implements the wartime-guidance and primary-objective portion of the
+Gameplay Fun Rework. It keeps the existing legal country campaigns,
+armistices, ownership checks and settlements, but gives all five Indian command
+routes a human-readable strategic story. This source revision has not yet
+completed an executable launch or human wartime playthrough.
+
+### Twenty Authored Route Campaigns
+
+- Added module 51, a generated **141-event** authored route layer covering
+  Allied, German, Soviet, Japanese and sovereign command.
+- Added four primary campaigns per route--**20 in total**--with an activation,
+  intermediate operational milestone, three-way strategic dilemma and exact
+  culmination.
+- Added one route board, compact-partner war crisis, zero-reward secondary
+  ledger and partner-collapse response per strategic family.
+- Added partner recognition/counter/refusal callbacks. A refusal withholds aid
+  but does not invalidate an Indian campaign already in progress.
+- Kept declarations, peace, territorial transfer and legal ownership in the
+  existing country-specific systems. The authored layer grants no narrative
+  shortcut around them.
+
+### Protected Primary and Route Switching
+
+- Made victories outside the selected focus secondary standing only. They no
+  longer consume the one-primary flag, open the peace Congress or prevent the
+  chosen culmination.
+- Record the route-specific Congress entitlement when the primary is earned,
+  preventing a later alliance switch from relabelling the victory.
+- Added a centralized live-board reset to peaceful realignment. It abandons the
+  current charter/focus and pending live state while preserving historical
+  victories, paid dilemmas, partner responses and other one-time reward guards.
+- Blocked new charter selection as soon as any primary has been earned, not
+  merely after the delayed peace Congress. This closes the at-peace
+  withdrawal/new-war window for a second primary.
+- Partitioned the legacy German-collapse event from the Alpha 23 authored
+  contract so both handlers cannot queue on the same evaluation day.
+
+### Japanese Grand Campaign
+
+- Added an optional cumulative Delhi-Tokyo ledger for Southeast Asia and
+  Australia; China and the Philippines; Aden-Suez-East Africa; and the
+  Caucasus. It remains secondary to the selected Japanese charter.
+- Added a finite conditional Germany-relief decision. It requires an active
+  Japanese compact or alliance, Indian and German wars against the Soviet
+  Union, Germany still holding Berlin, and Indian control of Baku plus Tbilisi
+  or Astrakhan. India pays 1,200 supplies and 500 oil; a German-scoped callback
+  receives 900 supplies and 350 oil once.
+- Expanded the Japanese northern charter from compact-only service to a
+  **Northern Coalition Campaign** valid under either a separate compact or
+  formal Delhi-Tokyo alliance.
+- Allowed the India-led southern theatre to open from India's own qualifying
+  war under the compact, without pretending that Japan has automatically
+  joined it.
+- Preserved an earned senior/full-sphere Tokyo rank when formalizing. Fresh
+  formal entrants still begin at peer/core.
+- Prevented the compact-only China-policy event from appearing after formal
+  alliance entry.
+- Made every Indian Ocean separate-peace outcome leave the engine alliance
+  before continuing the Delhi-Tokyo relationship as a separate-command compact,
+  and disclosed that consequence in the decision text.
+
+### War Cabinet and Cold Start
+
+- Kept the War Cabinet behind the completed union and moved normal peacetime
+  availability to 1937. An active Indian war still opens it early.
+- Added an optional, permanent and reward-free **Unrestricted Early Campaigns**
+  opt-in for deliberate pre-1937 sandbox play.
+- Split the curated authored board, ordinary country dockets and unrestricted
+  catalogue into clearly named pages with an explicit sandbox warning.
+- Updated fresh-start retirement to **219 events total**: 217 retired legacy
+  wartime/route events plus the two generic V3 Gurkha/frontier decisions.
+
+### Verification Boundary
+
+Focused validators cover the cold start, War Cabinet, Japanese partnership,
+legacy route layer and all 20 authored arcs. The final post-fix donor-safe Alpha 23
+`-ValidateOnly` run completed a repeat-stable **4,435-file overlay**, generated
+a **343-entry public installer manifest** and ended static validation with **0
+errors and 0 warnings**. Art, economy, resource, campaign, combat,
+construction-cap and Steam Deck gates also passed.
+
+That run did not publish a package, install or deploy the mod, launch the
+executable or play a campaign. The current tree is therefore a clean
+deterministic package candidate. Installed-mod verification, executable smoke
+and a human wartime/postwar run remain separate release gates and must not be
+inferred from either the source-only run or the earlier Alpha 22 acceptance
+result.
+
 ## 4.2.0-alpha.22 / Alpha 22 - A Clean Opening and Audited Early Game
 
 *29 Aug 2026*

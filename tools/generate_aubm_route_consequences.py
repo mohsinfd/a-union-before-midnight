@@ -10,9 +10,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "mod/db/events/aubm_v4/48_route_wartime_consequences.txt"
+BESPOKE_ROUTE_CONTRACT = "ind_aubm_bespoke_route_contract_alpha23"
 
 
 LEGACY_WARTIME_IDS = (
+    9272005,
     *range(9280400, 9280406),
     9281220, 9281221, 9281222, 9281223, 9281224, 9281229,
     *range(9281230, 9281239), 9281240, 9281241, 9281242, 9281243,
@@ -46,6 +48,7 @@ class Route:
     congress_desc: str
     legacy_flag: str
     relations: tuple[str, ...]
+    congress_labels: tuple[str, str, str]
 
 
 ROUTES = (
@@ -65,6 +68,11 @@ ROUTES = (
         "India has ended an Allied-route war with a measurable independent achievement. The settlement now defines whether Delhi builds a concert of sovereign partners, a treaty sphere with forward responsibilities, or a self-contained arsenal that cooperates without permanent alignment.",
         "ind_v3_allied_settlement_1945",
         ("ENG", "USA", "AST", "CAN"),
+        (
+            "An equal Allied concert: -4 dissent, +1 research",
+            "An Indian Eastern Security Board: +2 dissent, +3 TC",
+            "Free India cooperation: +600 money, +3 supply output",
+        ),
     ),
     Route(
         "german",
@@ -82,6 +90,11 @@ ROUTES = (
         "India has completed a measurable campaign on the German route. Delhi can preserve a continental balance, construct an Indian security sphere from the Gulf to Southeast Asia, or end the partnership and retain only technical and commercial cooperation.",
         "ind_v3_axis_settlement_1945",
         ("GER", "ITA", "TUR", "JAP"),
+        (
+            "A continental balance treaty: -4 dissent, +1 research",
+            "An Indian Eurasian security sphere: +2 dissent, +3 TC",
+            "End pact; technical links: +600 money, +3 supply output",
+        ),
     ),
     Route(
         "soviet",
@@ -99,6 +112,11 @@ ROUTES = (
         "India has completed a measurable Soviet-route campaign. The postwar order may be a league of sovereign republics, a protected security belt, or autonomous Indian socialism with no permanent military bloc. Each outcome closes the missing Soviet postwar line used by the long campaign audit.",
         "ind_v3_soviet_postwar_line",
         ("SOV", "MON", "CHI", "CHC"),
+        (
+            "A league of sovereign republics: -4 dissent, +1 research",
+            "A protected republican belt: +2 dissent, +3 TC",
+            "Autonomous Indian socialism: +600 money, +3 supply output",
+        ),
     ),
     Route(
         "japan",
@@ -108,7 +126,7 @@ ROUTES = (
         "aubm_v4_japan_southern_choice",
         (
             Focus("southern", "Indian Southern Sphere", "Tokyo Recognizes the Indian Southern Sphere", "India has won either the flexible Southeast Asian land-and-sea theatre or the wider published southern command. The result confirms Indian primacy from Burma through Malaya and the East Indies; country-specific settlements still decide sovereignty.", "OR = { flag = ind_aubm_sea_theatre_achieved flag = ind_aubm_jp_southern_victory flag = ind_aubm_national_southern_victory }", ("supplies value = 800", "dissent value = -2", "setflag which = ind_aubm_jp_india_full_sphere")),
-            Focus("dualfront", "Independent Soviet campaign", "India Sustains a Second Continental War", "India has produced a Northern or Soviet result without surrendering the southern division of labour. Tokyo records the Soviet war as an Indian theatre rather than an automatic Japanese obligation.", "AND = { flag = ind_aubm_jp_independent_soviet_war NOT = { alliance = { country = IND country = JAP } } OR = { flag = ind_aubm_soviet_limited_victory flag = ind_aubm_soviet_major_victory flag = ind_aubm_major_annex_victory_sov flag = ind_aubm_national_northern_victory } }", ("money value = 250", "dissent value = -2", "setflag which = ind_aubm_victory_sovereign_credit")),
+            Focus("dualfront", "Northern Coalition Campaign", "India Opens the Northern Front", "Under a compact, Delhi has sustained an independent Soviet campaign; under formal alliance, Indian command has opened the Caucasus relief front shared with Tokyo. Either result is recorded as an Indian northern theatre rather than an uncredited coalition war.", "AND = { OR = { AND = { flag = ind_aubm_jp_independent_soviet_war NOT = { alliance = { country = IND country = JAP } } } AND = { alliance = { country = IND country = JAP } war = { country = IND country = SOV } } } OR = { flag = ind_aubm_soviet_limited_victory flag = ind_aubm_soviet_major_victory flag = ind_aubm_major_annex_victory_sov flag = ind_aubm_national_northern_victory } }", ("money value = 250", "dissent value = -2", "setflag which = ind_aubm_victory_sovereign_credit")),
             Focus("ocean", "Indian Ocean First", "India Opens the Western Ocean Road", "A western victory links the Gulf, Suez or East Africa to the Indian maritime system. Japan retains its Pacific focus while Delhi owns the western political consequences.", "OR = { flag = ind_aubm_national_western_victory flag = ind_aubm_britain_limited_victory flag = ind_aubm_britain_major_victory flag = ind_aubm_major_annex_victory_eng }", ("supplies value = 600", "money value = 200", "setflag which = ind_aubm_coalition_consultation")),
             Focus("equal", "Equal Asian Command", "Delhi Becomes Tokyo's Equal Asian Centre", "A decisive Indian result proves that the partnership has two strategic centres. The achievement strengthens every later armistice without predetermining occupation policy.", "OR = { flag = ind_aubm_decisive_great_power flag = ind_aubm_japan_major_victory flag = ind_aubm_britain_major_victory flag = ind_aubm_soviet_major_victory flag = ind_aubm_major_annex_victory_eng flag = ind_aubm_major_annex_victory_sov }", ("money value = 300", "supplies value = 500", "setflag which = ind_aubm_coalition_credit")),
         ),
@@ -116,6 +134,11 @@ ROUTES = (
         "India has completed a measurable campaign beside Japan. Delhi must choose an equal Asian concert, an Indian-led ocean sphere with Japanese Pacific primacy, or strategic separation after victory. Settlements already concluded remain intact; this decision defines the relationship that follows them.",
         "ind_v3_japan_settlement_1945",
         ("JAP", "SIA", "CHI", "AST"),
+        (
+            "An equal Delhi-Tokyo concert: -4 dissent, +1 research",
+            "An Indian Ocean security sphere: +2 dissent, +3 TC",
+            "Separate after victory: +600 money, +3 supply output",
+        ),
     ),
     Route(
         "sovereign",
@@ -133,6 +156,11 @@ ROUTES = (
         "India has completed a measurable war without accepting another capital's command. The postwar choice is an open league, a defended sphere, or a self-contained great-power republic. None changes a country's sovereignty without its separate settlement event.",
         "ind_v3_nam_settlement_1945",
         ("AFG", "PER", "SIA", "ETH"),
+        (
+            "An open Indian Ocean league: -4 dissent, +1 research",
+            "A defended republican sphere: +2 dissent, +3 TC",
+            "Independent republic: +600 money, +3 supply output",
+        ),
     ),
 )
 
@@ -283,7 +311,7 @@ def route_events() -> str:
         charter_id = 9283210 + route_index
         out.extend(header(charter_id))
         out.extend([
-            f"\ttrigger = {{ flag = ind_aubm_wartime_framework {current_route_trigger(route)} atwar = yes NOT = {{ flag = ind_aubm_route_charter_{route.key} }} }}",
+            f"\ttrigger = {{ flag = ind_aubm_wartime_framework {current_route_trigger(route)} atwar = yes NOT = {{ flag = ind_aubm_route_charter_{route.key} }} NOT = {{ flag = ind_aubm_route_war_achievement }} NOT = {{ flag = ind_aubm_postwar_congress_completed }} }}",
             f'\tname = "{route.charter_name}"',
             f'\tdesc = "{route.charter_desc}"',
             "\tstyle = 2",
@@ -298,6 +326,7 @@ def route_events() -> str:
                 f'\t\tname = "{focus.label}"',
                 f"\t\tcommand = {{ type = setflag which = ind_aubm_route_focus_{route.key}_{focus.key} }}",
                 f"\t\tcommand = {{ type = setflag which = ind_aubm_route_charter_{route.key} }}",
+                f"\t\tcommand = {{ type = setflag which = {BESPOKE_ROUTE_CONTRACT} }}",
                 "\t}",
             ])
         out.extend(["}", ""])
@@ -311,6 +340,7 @@ def route_events() -> str:
                 "\t\tflag = ind_aubm_wartime_framework",
                 f"\t\t{current_route_trigger(route)}",
                 f"\t\tflag = ind_aubm_route_focus_{route.key}_{focus.key}",
+                f"\t\tNOT = {{ flag = {BESPOKE_ROUTE_CONTRACT} }}",
                 f"\t\tNOT = {{ flag = ind_aubm_route_achievement_{route.key}_{focus.key} }}",
                 "\t\tNOT = { flag = ind_aubm_route_war_achievement }",
                 "\t\tNOT = { flag = ind_aubm_postwar_congress_completed }",
@@ -331,6 +361,7 @@ def route_events() -> str:
             out.extend([
                 f"\t\tcommand = {{ type = setflag which = ind_aubm_route_achievement_{route.key}_{focus.key} }}",
                 f"\t\tcommand = {{ type = setflag which = ind_aubm_route_achievement_{route.key} }}",
+                f"\t\tcommand = {{ type = setflag which = ind_aubm_congress_entitlement_{route.key} }}",
                 "\t\tcommand = { type = setflag which = ind_aubm_route_war_achievement }",
                 "\t}",
                 "}",
@@ -344,27 +375,38 @@ def route_events() -> str:
             "\t\tflag = ind_aubm_wartime_framework",
             f"\t\t{current_route_trigger(route)}",
             f"\t\tflag = ind_aubm_route_charter_{route.key}",
+            f"\t\tNOT = {{ flag = {BESPOKE_ROUTE_CONTRACT} }}",
             "\t\tflag = ind_aubm_global_campaign_victory",
             f"\t\tNOT = {{ flag = ind_aubm_route_achievement_{route.key}_global }}",
             "\t\tNOT = { flag = ind_aubm_route_war_achievement }",
-            "\t\tNOT = { flag = ind_aubm_postwar_congress_completed }",
+            "\t\t# Do not let the route-neutral victory flag race the selected",
+            "\t\t# focus achievement or reuse that same victory as secondary credit.",
+            "\t\tNOT = {",
+            "\t\t\tOR = {",
+        ])
+        for focus in route.focuses:
+            out.append(
+                f"\t\t\t\tAND = {{ flag = ind_aubm_route_focus_{route.key}_{focus.key} {focus.trigger} }}"
+            )
+        out.extend([
+            "\t\t\t}",
+            "\t\t}",
             "\t}",
-            '\tname = "India Wins Beyond the Charter\'s Named Front"',
-            f'\tdesc = "India has won a published campaign outside the four fronts named by {route.charter_name}. The War Cabinet records the result as a valid national achievement, so a distant or emergent-state war can still lead to India\'s peace congress."',
+            '\tname = "A Secondary Victory Beyond the Charter"',
+            f'\tdesc = "India has won a published campaign outside the primary front selected under {route.charter_name}. The War Cabinet records useful secondary standing, but this result cannot complete, block or relabel the selected primary focus and cannot unlock a peace congress by itself."',
             "\tstyle = 2",
             f'\tpicture = "{route.picture}"',
             "\tdate = { day = 0 month = january year = 1933 }",
             "\toffset = 2",
             "\tdeathdate = { day = 29 month = december year = 1964 }",
             "\taction_a = {",
-            '\t\tname = "Enter the wider victory in India\'s war ledger"',
+            '\t\tname = "Record secondary standing; keep the primary focus active"',
             "\t\tcommand = { type = money value = 100 }",
             "\t\tcommand = { type = supplies value = 300 }",
             "\t\tcommand = { type = dissent value = -1 }",
             "\t\tcommand = { type = setflag which = ind_aubm_victory_sovereign_credit }",
+            "\t\tcommand = { type = setflag which = ind_aubm_secondary_campaign_credit }",
             f"\t\tcommand = {{ type = setflag which = ind_aubm_route_achievement_{route.key}_global }}",
-            f"\t\tcommand = {{ type = setflag which = ind_aubm_route_achievement_{route.key} }}",
-            "\t\tcommand = { type = setflag which = ind_aubm_route_war_achievement }",
             "\t}",
             "}",
             "",
@@ -373,7 +415,7 @@ def route_events() -> str:
         congress_id = 9283270 + route_index
         out.extend(header(congress_id))
         out.extend([
-            f"\ttrigger = {{ flag = ind_aubm_wartime_framework {current_route_trigger(route)} flag = ind_aubm_route_war_achievement atwar = no NOT = {{ flag = ind_aubm_postwar_congress_completed }} NOT = {{ flag = ind_aubm_postwar_congress_{route.key} }} }}",
+            f"\ttrigger = {{ flag = ind_aubm_wartime_framework flag = ind_aubm_congress_entitlement_{route.key} flag = ind_aubm_route_war_achievement atwar = no NOT = {{ flag = ind_aubm_postwar_congress_completed }} NOT = {{ flag = ind_aubm_postwar_congress_{route.key} }} }}",
             f'\tname = "{route.congress_name}"',
             f'\tdesc = "{route.congress_desc}"',
             "\tstyle = 2",
@@ -382,7 +424,7 @@ def route_events() -> str:
             "\toffset = 10",
             "\tdeathdate = { day = 29 month = december year = 1964 }",
             "\taction_a = {",
-            '\t\tname = "A concert of sovereign partners: -4 dissent, +1 research"',
+            f'\t\tname = "{route.congress_labels[0]}"',
             "\t\tcommand = { type = dissent value = -4 }",
             "\t\tcommand = { type = belligerence value = -3 }",
             "\t\tcommand = { type = research_mod value = 1 }",
@@ -396,7 +438,7 @@ def route_events() -> str:
         out.extend([
             "\t}",
             "\taction_b = {",
-            '\t\tname = "An Indian security sphere: +2 dissent, +3 TC"',
+            f'\t\tname = "{route.congress_labels[1]}"',
             "\t\tcommand = { type = dissent value = 2 }",
             "\t\tcommand = { type = tc_mod value = 3 }",
             "\t\tcommand = { type = supplies value = 1000 }",
@@ -406,7 +448,7 @@ def route_events() -> str:
             "\t\tcommand = { type = setflag which = ind_aubm_postwar_security_sphere }",
             "\t}",
             "\taction_c = {",
-            '\t\tname = "Strategic autonomy: +600 money, +3 supply output"',
+            f'\t\tname = "{route.congress_labels[2]}"',
             "\t\tcommand = { type = money value = 600 }",
             "\t\tcommand = { type = industrial_modifier which = supplies value = 3 }",
             "\t\tcommand = { type = dissent value = -1 }",

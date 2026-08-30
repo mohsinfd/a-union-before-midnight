@@ -1514,6 +1514,8 @@ event = {
 
 	trigger = {
 		flag = ind_gc_campaign_active
+		# Alpha 23's authored route board owns partner-collapse handling.
+		NOT = { flag = ind_aubm_bespoke_route_contract_alpha23 }
 		war = { country = IND country = SOV }
 		NOT = { flag = ind_gc_german_collapse_answered }
 		NOT = { event = 2007033 }

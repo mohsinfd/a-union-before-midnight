@@ -60,6 +60,7 @@ REQUIRED_V4_MODULES = {
 	"48_route_wartime_consequences.txt",
 	"49_bespoke_armistices.txt",
 	"50_southeast_asia_operations.txt",
+	"51_bespoke_route_arcs.txt",
 }
 KNOWN_COMMANDS = {
     "access",

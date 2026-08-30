@@ -1,24 +1,29 @@
-# A Union Before Midnight: Gameplay Changes and Alpha 22 Status
+# A Union Before Midnight: Gameplay Changes and Alpha 24 Status
 
-This is the player-facing guide to the current **4.2.0-alpha.22** source of
+This is the player-facing guide to the current **4.2.0-alpha.24** source of
 *A Union Before Midnight*. It explains what changed, how the new systems are
 supposed to play, what has been verified, and what still needs a real campaign
 test.
 
-Updated: 29 Aug 2026.
+Updated: 30 Aug 2026.
 
 ## Current Status
 
 | Area | Status |
 | --- | --- |
-| Current source version | `4.2.0-alpha.22` |
-| Alpha 22 implementation | Clean-opening and focused early-event audit subset complete |
-| Alpha 22 build and public package | Passed: deterministic 4,434-file build, full release suite, 342-file donor-safe manifest, 0 static errors/warnings |
-| Personal deployment and executable smoke | Passed: 1,531/1,531 local files verified; fresh map reached; 0 exact `ERROR :` lines; no crash dump |
+| Current source version | `4.2.0-alpha.24` |
+| Alpha 24 implementation | First Operational Air Group, Indian indigo political colour and personal local terrain-reference tool implemented in source |
+| Alpha 24 focused validation | First-air-group regression gate passed: 51 checks; full 4,435-file deterministic build and all release gates passed |
+| Alpha 24 local deployment | Installed and hash-verified locally; 27 existing saves independently backed up and verified unchanged |
+| Alpha 24 runtime | Executable launch and human playthrough still pending |
+| Alpha 23 implementation | 20 authored route arcs, partner crises/collapse, strict primary lifecycle and optional Japan grand campaign implemented in source |
+| Alpha 23 deterministic validation | Final post-fix `-ValidateOnly` pass: repeat-stable 4,435-file overlay, 343-entry donor-safe manifest, 0 static errors/warnings and all named gates passed |
+| Alpha 23 publication and runtime | Not published, installed, deployed, executable-launched or human-playtested |
+| Latest personal deployment and executable smoke | Alpha 22 passed: 1,531/1,531 local files verified; fresh map reached; 0 exact `ERROR :` lines; no crash dump |
 | Personal sprite profile | Exact 41-family/591-descriptor profile verified locally; excluded from the current V4 Git tree and public packages |
 | Campaign compatibility | Start a fresh 1933 campaign |
-| Reviewed saves | 29 Aug Alpha 22 autosave reaches 1 Feb 1933 and proves the clean opening; earlier wartime saves remain compatibility evidence |
-| Human Alpha 22 playthrough | Opening run completed; a full wartime/postwar run is still required |
+| Reviewed saves | Newest 29 Aug Alpha 22 autosave is a separate 1 Dec 1934 campaign; the 23 Aug manual save remains the older Japan-compact wartime reference |
+| Human Alpha 23 playthrough | Not completed; the new wartime arcs require a fresh human campaign |
 | Source-control safety | Public-safe exclusions active; local-only assets remain excluded |
 
 The maintained source is the `v4-direct-dh` branch. Its public installer
@@ -26,9 +31,10 @@ manifest is designed to contain only AUBM gameplay, documentation and
 redistribution-cleared art. Darkest Hour foundation files, the restored local
 41-family donor-derived sprite and model-panel profile, unresolved leader
 portraits, manuals, screenshots and Steam test backups remain excluded. The
-current Alpha 22 public manifest contains 342 donor-safe files. The installed
-personal build contains 1,531 verified files because it also reconstructs the
-local-only visual profile.
+last published Alpha 22 manifest contains 342 donor-safe files. Alpha 23 has
+not yet replaced that package. The last installed personal Alpha 22 build
+contained 1,531 verified files because it also reconstructed the local-only
+visual profile.
 
 Alpha 18's first fresh engine launch exposed unsupported foreign-country flag
 scopes in the Japanese-partnership and wartime-settlement events. Alpha 19
@@ -37,15 +43,154 @@ regression check so the invalid form cannot return. Alpha 20 preserved that
 launch fix and introduced the commitment and local Southeast Asian foundation.
 Alpha 21 extends and hardens those systems as described below. Alpha 22 adds a
 clean cold start and repairs defects found by auditing the existing early game.
+Alpha 23 turns the five strategic routes into authored human campaigns and
+repairs route switching, Japan formalization and primary-objective ownership.
+Alpha 24 adds the missing early aircraft decision and a safe visual-readability
+pass without treating donor map art as distributable AUBM content.
 
-The practical verdict is: **Alpha 22 is built, locally deployed and
-launch-verified, but it is not yet a proven stable long campaign.** The opening
-run is complete; a human war and postwar run is still required for balance,
-pacing and narrative verification.
+The practical verdict is: **Alpha 24's source, deterministic package and local
+installation are verified, but it is not yet a proven stable long campaign.**
+A fresh executable launch plus a human wartime/postwar run remain required for
+AI timing, balance, naval survivability and narrative pacing.
 
 The old `India Mod` folder is the original/base workspace. The maintained V4
 source of truth is the sibling `India Ascendant` repository, and deployment
 targets the separately installed Steam mod listed above.
+
+## What Alpha 24 Changes
+
+### Airfield security is not an aircraft purchase
+
+The 1934 **Airfield Security Act** is intentionally a ground-security choice:
+it creates guards, AA or mobile security units. It did not and does not create
+air wings. This used to be mechanically correct but player-facingly confusing,
+because the future-design document described a separate first operational air
+group that had never been implemented.
+
+Alpha 24 implements that missing decision. After completing the Air Staff,
+Flying Schools and Airfield Security, **The First Operational Air Group** opens
+from July 1934. It offers:
+
+| Choice | Result |
+| --- | --- |
+| Fighter command | Two interceptor production contracts |
+| Army cooperation | One interceptor and one tactical-bomber contract |
+| Maritime patrol | One interceptor and one naval-bomber contract |
+| Doctrine first | No aircraft; +1 air organization |
+
+These are ordinary, current-model production lines. The event funds the
+contract's money and supply commitment, while the production system retains its
+normal daily IC and manpower cost. The one-use guard and the later HAL,
+doctrine and arsenal flags prevent a second opening package from being added.
+
+### A calmer, clearer political map
+
+India now uses an **Indian indigo** political colour rather than LightRed. It
+is distinct from all immediate neighbours, including Britain, China, Siam,
+Afghanistan, Nepal and Bhutan. The full donor-free terrain-map plan is in
+[Visual Readability Pipeline](docs/VISUAL_READABILITY_PIPELINE.md).
+
+For a local playtest only, a player who owns Blood and Iron v1.1 may run
+`tools/Enable-Aubm-PersonalTerrainVisuals.ps1` after installing AUBM. It copies
+the owner's local terrain reference files into the local AUBM folder, verifies
+them by hash and backs up any existing override. Those files are not part of
+the GitHub package, and the planned original AUBM terrain pipeline does not
+reuse them.
+
+The same local-only workflow now restores the unique India unit profile after a
+public update: `tools/Enable-Aubm-PersonalIndiaSprites.ps1` generates and
+installs 41 separate India families (591 descriptors, 553 bitmap strips and 44
+palettes), then switches only the *installed* registry to those keys. The
+public package keeps stock keys and remains donor-free. Run the local tool
+again after a public package update before judging the Gurkha, frontier and
+service sprites.
+
+## What Alpha 23 Changes
+
+### Every route is an authored campaign
+
+The War Cabinet now opens **Authored Strategic Campaigns**, a route-aware
+operations board rather than presenting every country declaration as if it
+were equally important. Allied, German, Soviet, Japanese and sovereign command
+each retain four doctrines--**20 primary arcs in total**. Every arc has the
+same readable lifecycle:
+
+1. an activation tied to an actual war that suits the doctrine;
+2. an intermediate operational milestone;
+3. a three-way command or political dilemma with disclosed costs; and
+4. a measurable culmination that records exactly one route primary and one
+   route-specific Delhi peace-congress entitlement.
+
+The underlying country dockets remain authoritative for declarations, legal
+ownership, armistices and territory. The authored layer guides the human
+campaign; it never uses narrative credit to bypass those safety rules.
+
+| Route | Four authored campaigns | Formal-alliance warning |
+| --- | --- | --- |
+| Allied | Eastern Ocean; Continental Expedition; Anti-Colonial Liberation; Sovereign Free Command | Entry inherits all British or American coalition wars. |
+| German | Eurasian Link; Imperial Dismantlement; Southern Resource Race; Sovereign Parallel War | Entry can immediately merge British, Soviet and American wars. |
+| Soviet | Anti-Fascist Expedition; Anti-Imperial Ocean War; Republican Asian Order; Autonomous Indian Socialism | Formal Comintern entry shares Moscow's wars; equal compact keeps Indian peace authority. |
+| Japanese | Indian Southern Sphere; Northern Coalition Campaign; Indian Ocean First; Equal Asian Command | Formal entry shares Tokyo's wars; compact preserves separate declarations. |
+| Sovereign | Indian Ocean League; Continental Arc; World Balancer; Republican Federation | No patron inherits India's wars; Delhi must authorize each opponent itself. |
+
+Each non-sovereign route also has a separate-command partner-war crisis. India
+may formalize and inherit all partner wars, authorize a selected Indian war,
+send limited material support or remain outside. The partner can recognize,
+counter or refuse India's operational doctrine. Loss of London/Washington,
+Berlin, Moscow or Tokyo produces a route-specific response instead of a generic
+alliance failure. Sovereign partners receive their own independent-plan and
+armed-neutrality choices rather than a fictitious coalition-withdrawal menu.
+
+### One primary means one primary
+
+- A victory outside the selected doctrine is secondary standing only. It
+  cannot consume, relabel or complete the primary and cannot open a congress.
+- The culmination records the route entitlement at the moment it is earned, so
+  later realignment cannot rename an Allied victory as German, Soviet,
+  Japanese or sovereign.
+- Peaceful withdrawal abandons the live campaign selection and starts the
+  existing 90-day realignment. Historical victories and already-paid dilemmas
+  remain recorded; their rewards cannot be replayed by leaving and rejoining.
+- Once a primary is earned--even during the ten-day wait for its peace
+  congress--no second charter can open. After the single congress, no route can
+  manufacture another primary.
+
+### The Japanese grand campaign is explicitly supported
+
+The optional Delhi-Tokyo multi-theatre ledger tracks a deliberately difficult
+human campaign without replacing the selected primary focus:
+
+1. a formal-alliance China command posture and an actual Chinese result;
+2. a Philippine allocation plus Southeast Asia/Australia standing;
+3. Aden, then Suez, then an East African or national western result; and
+4. a Soviet war reaching Baku plus Tbilisi or Astrakhan.
+
+If Germany still exists, holds Berlin and is fighting the Soviet Union, India
+may pay 1,200 supplies and 500 oil for one relief convoy. Germany receives only
+900 supplies and 350 oil through a German-scoped callback. It is a finite
+reward for real Indian success, not a passive German AI bonus. Completion of
+all four chapters is secondary acknowledgement and grants no automatic land or
+peace.
+
+Formalizing an earned senior/full-sphere Tokyo compact now preserves that rank;
+only a fresh formal entrant begins at peer/core. The compact-only China choice
+cannot appear after formal entry. Ratifying an Indian Ocean separate peace now
+leaves the engine alliance first and continues the Delhi-Tokyo relationship as
+a separate-command compact, with that consequence stated in the decision.
+
+### The opening War Cabinet is no longer an emergency button
+
+The permanent War Cabinet still requires the completed union, and now remains
+closed during normal peacetime until 1937. It can open earlier only because
+India is already at war or because the player deliberately enables the
+zero-reward **Unrestricted Early Campaigns** sandbox. The unrestricted country
+catalogue sits behind its own warning page; the authored board is the normal
+campaign path.
+
+For exact route milestones, see the
+[Route Campaign Matrix](docs/ROUTE_CAMPAIGN_MATRIX.md). For the staged
+high-difficulty Japanese run, see the
+[Japan Grand Campaign Guide](docs/JAPAN_GRAND_CAMPAIGN_GUIDE.md).
 
 ## What Alpha 22 Changes
 
@@ -138,8 +283,8 @@ The permanent State of the Union ledger, annual-budget redesign, peacetime
 objectives, broader force rebalance, guided operations board, staged Southeast
 Asian campaign and postwar-memory work remain specified but unimplemented.
 
-The deterministic build, deployment verification and fresh executable smoke
-have passed. The 1 February autosave confirms the three opening event IDs and
+Alpha 22's deterministic build, deployment verification and fresh executable
+smoke passed. The 1 February autosave confirms the three opening event IDs and
 contains none of the nine Compatibility Review IDs. Balance and the full
 wartime/postwar campaign still need a human playthrough.
 
@@ -273,10 +418,36 @@ never taken.
 
 ### Current save review
 
-The newest **28 Aug autosave** is only a fresh 1934 campaign. The **23 Aug
-manual save** has India non-aligned and not at war. Neither file exercises the
-reported alliance transition or the new operational chains, so Alpha 21 still
-needs a fresh wartime playthrough.
+The newest **29 Aug autosave** proves that another game was started after the
+23 Aug manual campaign. It is an Alpha 22 India game at **1 December 1934**,
+not a continuation of the December 1941 file. India is at peace, has no binding
+Allied, German, Soviet or Japanese commitment and therefore remains on the
+default sovereign route while the prewar programme runs.
+
+The save also reproduces the early War Cabinet complaint. Its installed Alpha
+22 event file exposes **Convene the Emergency War Cabinet** as soon as the
+union is complete. Alpha 23 moves the normal cabinet to 1937 or an actual
+Indian war and makes pre-1937 access a clearly labelled, permanent, reward-free
+sandbox opt-in.
+
+The military position is promising but not yet ready for the proposed global
+Japan campaign:
+
+- 57 land formations exist, but many are brigades, state forces or mobile
+  cadres rather than a concentrated expeditionary army;
+- only one transport flotilla and no combat surface fleet are deployed;
+- two air-defence wings are deployed;
+- production includes five transports, twelve destroyer flotillas, two
+  carriers, long interceptor and multi-role series, three marines, convoy and
+  escort capacity, and six parallel factory programmes;
+- no dedicated mountain formation is visible in the deployed army or current
+  queue.
+
+That queue supports Malaya, the East Indies and later Australia, but the player
+should add a 6-9 division mountain/mobile Caucasus group and preserve enough
+IC for reinforcement, upgrades and supplies. The save does not validate Alpha
+23's authored wartime arcs because it predates that source and has not joined
+or fought for Japan.
 
 ## What Alpha 20 Changes
 
@@ -465,7 +636,7 @@ India can operate in five strategic universes:
 | Allied | Formal coalition with Britain or the United States, or a separate-command treaty | Indian contribution to a wider Allied war without surrendering Indian campaign credit |
 | German | Formal Berlin coalition or co-belligerent compact | Anti-Soviet, anti-imperial or southern resource campaigns under Indian settlement authority |
 | Soviet | Formal coalition, equal compact, supervised compact or autonomous Indian socialism | Anti-fascist, anti-imperial or republican Asian war |
-| Japanese | Formal alliance or separate Delhi-Tokyo compact | Indian southern sphere, Indian Ocean war and an optional independent Soviet campaign |
+| Japanese | Formal alliance or separate Delhi-Tokyo compact | Indian southern sphere, Indian Ocean war, equal Asian command and a compact-or-formal northern coalition campaign |
 | Sovereign | No permanent great-power coalition | Country-by-country wars under Delhi's own command |
 
 The permanent **War Cabinet** is the control panel. It can inspect the current
@@ -490,7 +661,7 @@ buttons; they define which battlefield results build political standing.
   or Sovereign Parallel War.
 - **Soviet:** Anti-Fascist Expedition, Anti-Imperial Ocean War, Republican
   Asian Order, or Autonomous Indian Socialism.
-- **Japanese:** Indian Southern Sphere, Independent Soviet Campaign, Indian
+- **Japanese:** Indian Southern Sphere, Northern Coalition Campaign, Indian
   Ocean First, or Equal Asian Command.
 - **Sovereign:** Indian Ocean League, Continental Security Arc, World
   Balancer, or Republican Federation.
@@ -733,7 +904,7 @@ tier one remains while India still records direct rule. Administrative reform
 therefore reduces the burden without pretending retained territory has become
 free or sovereign.
 
-## Military Changes Retained Through Alpha 22
+## Military Changes Retained Through Alpha 23
 
 ### Leaders and Specialist Forces
 
@@ -805,21 +976,35 @@ free or sovereign.
 
 ## What Requires a Fresh Campaign
 
-Start a **new 1933 campaign** for the intended Alpha 22 playtest. The complete
+Start a **new 1933 campaign** for the intended Alpha 23 playtest. The complete
 route ledger, leader roster, scenario technologies, economy curve, campaign
 monitors and successor-state coverage cannot be reconstructed safely from an
 older save.
 
 - V3 saves are unsupported.
 - Earlier V4 alpha saves may receive individual migration or repair events,
-  but they are not complete tests of Alpha 22's fresh-only opening retirement
-  or Alpha 21's liberation, lane and armistice architecture.
+  but they are not complete tests of Alpha 23's authored-route contract,
+  Alpha 22's fresh-only opening retirement or Alpha 21's liberation, lane and
+  armistice architecture.
 - Existing ships already in production cannot receive a newly changed build
   schedule.
 - Personnel records are serialized into saves, so the expanded leader roster
   requires a new campaign.
 
 ## Verification State
+
+The final post-fix donor-safe **Alpha 23 `-ValidateOnly` run on 29 August 2026** passed:
+
+- deterministic repeat-build stability: **4,435 overlay files**;
+- generated public installer manifest: **343 donor-safe entries**;
+- complete static validation: **0 errors and 0 warnings**;
+- art, economy, resource, campaign, combat, construction-cap and Steam Deck
+  gates: passed.
+
+This was a source-only build and audit: it did not publish a package, install or
+deploy the mod, launch the executable or play a campaign. The current tree is a
+clean deterministic package candidate; runtime and human-campaign acceptance
+remain separate gates.
 
 The final **Alpha 22 acceptance run on 29 August 2026** passed:
 
@@ -892,55 +1077,66 @@ These are the important unfinished items, not hidden claims of completion:
    graphics are excluded, but a downloadable or forum package still needs a
    current V4 rights and provenance review.
 
-## Recommended First Alpha 22 Playtest
+## Recommended First Alpha 23 Playtest
 
-For the fastest coverage of the original complaints:
+For the fastest coverage of the new contract and the original complaints:
 
-1. Start a fresh 1933 campaign. Record every AUBM window through 10 January:
-   the premise should appear at scenario opening, the cabinet during the
-   opening 72 hours and the union choice on 6 January. Confirm no compatibility helper or one-button
-   Union Register appears, and save/reload once before choosing the union.
-2. Confirm the War Cabinet is unavailable before the union choice, becomes
-   reachable afterward, and the chosen cabinet and union costs match their
-   action text. Keep later milestone saves before the first commitment,
-   Japanese war, liberation, theatre award and armistice response.
-3. Select one named Southeast Asian focus on the chosen command route and
-   confirm the full theatre result feeds that focus; repeat from a save under a
-   second route if practical.
-4. Form the Delhi-Tokyo separate compact. Confirm rival formal and compact
-   entries disappear while the Japanese same-family upgrade remains. If the
-   wider factions merge, confirm the route remains Japanese rather than German.
-5. While fighting Japan, let Japan occupy a complete Indochina, Philippine,
-   Malayan or Batavia hub set, then restore it to its friendly legal owner. Keep
-   an Indian land division in a published hub until the liberation records.
-6. Repeat once without Indian control or a garrison and confirm another ally's
-   liberation gives India no credit. Verify no terms, transfer or peace opens
-   against the friendly owner.
-7. Use eligible liberation credit at a Malacca or South China Sea hinge. Then
-   verify Batavia-only liberation does not satisfy Java Sea without Soerabaja
-   and sixteen ready surface ships.
-8. Earn two distinct land categories plus one lane, or one land category plus
-   two lanes, and confirm the flexible theatre award. Confirm three land-only
-   or three lane-only results do not qualify.
-9. Offer the Japanese Southern Armistice once with the current direct Japan
-   claim and once with permanent theatre history plus a current friendly
-   liberation. Confirm theatre history alone is insufficient after loss or a
-   route switch. Test its 45/35/20 branches: refusal must wait 90 days, avoid a
-   duplicate initial/retry popup and reopen only with recovered live leverage;
-   acceptance must end only the Japanese war and transfer no friendly-owner
-   territory.
-10. After all Indian wars end, withdraw to sovereign command. Rival offers must
-   remain closed through the 90-day realignment and reopen afterward; repeat
-   from a save made during the cooldown.
-11. Complete one Batavia or Malaya pairwise docket, one annexation settlement,
-    one occupation year and one Delhi congress while recording treasury, debt,
-    manpower, dissent, effective IC and force totals.
+1. Start a fresh 1933 campaign. Through 10 January, expect only the premise,
+   Provisional Cabinet and union-method windows. Confirm no Compatibility
+   Review or one-button Union Register appears.
+2. After the union, confirm the emergency-looking War Cabinet is still hidden
+   during normal peacetime. Do not enable the optional early sandbox. It should
+   become available in 1937, or earlier only if India is already at war.
+3. Form the Delhi-Tokyo compact. Confirm Allied, German and Soviet commitments
+   are unavailable, while a same-family Japanese formalization remains legal.
+4. Enter a relevant war and choose **Equal Asian Command** for the full test.
+   Confirm its activation notice, intermediate China/Philippines/SEA milestone,
+   three-way Manila/China dilemma and culmination appear in that order.
+5. Earn an unrelated country victory before the selected culmination. It may be
+   recorded as secondary standing, but it must not consume the primary or open
+   the Delhi peace Congress.
+6. At peace before culmination, withdraw and verify the live charter is
+   abandoned, rival alignments remain closed for 90 days and already-paid
+   milestone/dilemma rewards cannot be replayed after rejoining. If a primary
+   was already earned, no new charter may open while its Congress waits.
+7. Re-form the Tokyo compact, earn senior/full-sphere terms if practical, then
+   formalize. Confirm formal entry preserves earned senior/full status; a fresh
+   direct formal entry should instead begin at peer/core.
+8. Under the compact, open the India-led southern board from India's own war
+   against Britain, U05, the Netherlands or Australia. Confirm Japan is not
+   falsely put into that war. Under formal alliance, confirm shared-war
+   inheritance is explicit and the compact-only China-policy event stays hidden.
+9. For the efficient Southeast Asian result, hold Rangoon/Imphal/Port Blair,
+   Singapore/Kuala Lumpur and Palembang/Batavia/Soerabaja. Confirm every Dutch
+   East Indies victory province is **not** required. Retain the separate
+   liberation, lane and mixed land/sea tests from the Alpha 21 matrix.
+10. Use the optional Japanese grand ledger to record the Philippines,
+    Southeast Asia plus Australia, then Aden -> Suez -> East Africa. Verify no
+    chapter transfers territory or signs peace.
+11. Open the Soviet front last. Take Baku plus Tbilisi or Astrakhan while
+    Germany still holds Berlin and both India and Germany fight Moscow. Test
+    defer, decline and dispatch from separate saves. Dispatch must charge India
+    1,200 supplies/500 oil and give Germany only 900 supplies/350 oil once.
+12. Complete an actual China/Communist China result and the formal-alliance
+    China posture. The four-theatre acknowledgement should require every
+    chapter, remain secondary and grant no second Congress.
+13. Ratify the Indian Ocean separate peace only after shared-war membership has
+    served its purpose. Confirm India leaves the engine alliance and continues
+    a separate-command Tokyo compact; unrelated wars and legal-owner rules must
+    remain intact.
+14. Finish one armistice, annexation settlement, occupation year and the one
+    route-entitled Delhi Congress while recording treasury, debt, manpower,
+    dissent, IC, force totals and any duplicate or mistimed popup.
 
 ## Detailed References
 
 - [Southeast Asia Victory Matrix](docs/SOUTHEAST_ASIA_VICTORY_MATRIX.md) is the
   canonical Alpha 21 specification for all-route focuses, liberation proof,
   sea lanes, the mixed theatre result and the Japanese Southern Armistice.
+- [Route Campaign Matrix](docs/ROUTE_CAMPAIGN_MATRIX.md) lists every Alpha 23
+  activation, milestone, dilemma, culmination, partner crisis and Congress.
+- [Japan Grand Campaign Guide](docs/JAPAN_GRAND_CAMPAIGN_GUIDE.md) is the exact
+  staged walkthrough for the China-SEA-Australia-Suez-Caucasus run.
 - [Release Notes](RELEASE_NOTES.md) records the cumulative release history.
 - [Alpha 20 Save and Playtest Review](docs/ALPHA20_SAVE_AND_PLAYTEST_REVIEW.md)
   preserves the previous release's installed-save chronology and diagnosis.

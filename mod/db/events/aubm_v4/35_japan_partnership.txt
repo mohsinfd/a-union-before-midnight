@@ -650,6 +650,8 @@ event = {
 	trigger = {
 		flag = ind_aubm_jp_partnership
 		exists = JAP
+		NOT = { alliance = { country = IND country = JAP } }
+		NOT = { flag = ind_aubm_jp_formal_alliance }
 		NOT = { flag = ind_aubm_jp_china_policy }
 		NOT = { flag = ind_aubm_jp_rupture }
 	}
@@ -1003,14 +1005,24 @@ event = {
 			war = { country = JAP country = U05 }
 			war = { country = JAP country = HOL }
 			war = { country = JAP country = AST }
+			AND = {
+				flag = ind_aubm_bespoke_route_contract_alpha23
+				flag = ind_aubm_route_japan
+				OR = {
+					war = { country = IND country = ENG }
+					war = { country = IND country = U05 }
+					war = { country = IND country = HOL }
+					war = { country = IND country = AST }
+				}
+			}
 		}
 	}
 	decision_trigger = { flag = ind_aubm_jp_partnership }
 
 	name = "Open the India-Led Southern Theatre"
 	# AUBM_DECISION_DESC_MANUAL
-	decision_desc = "No foreign roll applies and there is no additional command fee. A formal alliance records inherited wars; a strategic compact opens only Japan's current British, East Indies, Dutch and Australian wars."
-	desc = "The treaty map can now become an operational reality. Delhi activates its command from Burma across Malaya and the East Indies to Australia. A formal alliance already shares Tokyo's wars; a strategic compact preserves separate declarations. In either case, Indian battlefield control now counts toward an Indian Ocean settlement."
+	decision_desc = "No foreign roll or command fee applies. A formal alliance records inherited wars. Under Alpha 23's separate-command compact, Delhi may also open the ledger after India starts its own British, East Indies, Dutch or Australian war; this does not force Japan to join."
+	desc = "The treaty map can now become an operational reality. Delhi activates its command from Burma across Malaya and the East Indies to Australia. A formal alliance shares Tokyo's wars. A strategic compact preserves separate declarations and now recognizes a southern war opened by either partner. Indian battlefield control counts toward the Indian Ocean settlement."
 	style = 2
 	picture = "aubm_v4_japan_southern_choice"
 
@@ -1515,8 +1527,8 @@ event = {
 
 	name = "Convene the Indian Ocean Settlement"
 	# AUBM_DECISION_DESC_MANUAL
-	decision_desc = "Commonwealth costs 300; protectorates 700 money/1,200 supplies; mandates 1,000. Fixed accept/counter/reject rolls: Britain and Australia 55/30/15; Netherlands 50/35/15. Japan honours the treaty boundary without a roll."
-	desc = "India's southern campaign has created facts that neither the colonial governments nor Tokyo can ignore. Delhi must choose between influence through sovereign partners, an arc of protectorates, or direct administration of captured Malayan and Indonesian territory. Australia is too large for stable annexation and remains sovereign or protected."
+	decision_desc = "Commonwealth costs 300; protectorates 700 money/1,200 supplies; mandates 1,000. Fixed accept/counter/reject rolls: Britain and Australia 55/30/15; Netherlands 50/35/15. Japan honours the treaty boundary without a roll. Warning: ratifying this separate peace ends formal shared-war membership and continues the Tokyo relationship as a separate-command compact."
+	desc = "India's southern victories force a choice: sovereign partners, protectorates, or direct mandates for captured Malayan and Indonesian territory. Australia remains sovereign or protected. If India is formally allied to Japan, this separate peace ends formal shared-war membership and continues the Delhi-Tokyo relationship as a separate-command compact."
 	style = 2
 	picture = "india_v3_japan_settlement"
 
@@ -1535,6 +1547,7 @@ event = {
 		command = { trigger = { alliance = { country = IND country = JAP } } type = setflag which = ind_aubm_jp_partnership }
 		command = { trigger = { alliance = { country = IND country = JAP } } type = setflag which = ind_aubm_jp_independent_cobelligerent }
 		command = { trigger = { alliance = { country = IND country = JAP } } type = clrflag which = ind_aubm_jp_formal_alliance }
+		command = { trigger = { alliance = { country = IND country = JAP } } type = leave_alliance when = 1 }
 		command = { type = money value = -300 }
 		command = { type = dissent value = -2 }
 		command = { type = belligerence value = -3 }
@@ -1563,6 +1576,7 @@ event = {
 		command = { trigger = { alliance = { country = IND country = JAP } } type = setflag which = ind_aubm_jp_partnership }
 		command = { trigger = { alliance = { country = IND country = JAP } } type = setflag which = ind_aubm_jp_independent_cobelligerent }
 		command = { trigger = { alliance = { country = IND country = JAP } } type = clrflag which = ind_aubm_jp_formal_alliance }
+		command = { trigger = { alliance = { country = IND country = JAP } } type = leave_alliance when = 1 }
 		command = { type = money value = -700 }
 		command = { type = supplies value = -1200 }
 		command = { type = dissent value = 5 }
@@ -1591,6 +1605,7 @@ event = {
 		command = { trigger = { alliance = { country = IND country = JAP } } type = setflag which = ind_aubm_jp_partnership }
 		command = { trigger = { alliance = { country = IND country = JAP } } type = setflag which = ind_aubm_jp_independent_cobelligerent }
 		command = { trigger = { alliance = { country = IND country = JAP } } type = clrflag which = ind_aubm_jp_formal_alliance }
+		command = { trigger = { alliance = { country = IND country = JAP } } type = leave_alliance when = 1 }
 		command = { type = money value = -1000 }
 		command = { type = dissent value = 9 }
 		command = { type = belligerence value = 9 }

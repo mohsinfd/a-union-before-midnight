@@ -114,8 +114,9 @@ still counts toward the current route's Delhi congress.
 
 - **Indian Southern Sphere:** India leads in Burma, Malaya, the East Indies and
   Australia; Japan retains China, the Philippines and Pacific primacy.
-- **Independent Soviet Campaign:** India may fight the Soviet Union while the
-  separate-command Delhi-Tokyo compact keeps Japan outside that war.
+- **Northern Coalition Campaign:** India may fight the Soviet Union under a
+  separate-command Delhi-Tokyo compact or as part of a formal shared war. The
+  Indian result is measured through Baku, Central Asia and Northern Command.
 - **Indian Ocean First:** India campaigns through the Gulf, Suez and East
   Africa while Japan concentrates eastward.
 - **Equal Asian Command:** a decisive or two-theatre Indian result establishes

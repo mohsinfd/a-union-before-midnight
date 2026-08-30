@@ -212,6 +212,113 @@ event = {
 }
 
 event = {
+	id = 9280162
+	random = no
+	country = IND
+
+	decision = {
+		flag = ind_v3_air_staff_founded
+		flag = ind_v3_flying_schools
+		flag = ind_v4_airfield_security
+		NOT = { flag = ind_v4_first_operational_air_group }
+		NOT = { flag = ind_v3_hal_expansion }
+		NOT = { flag = ind_v3_air_doctrine_1936 }
+		NOT = { flag = ind_v3_arsenal_air }
+	}
+	decision_trigger = {
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		OR = {
+			AND = { money = 350 supplies = 1250 }
+			AND = { money = 325 supplies = 1150 }
+			AND = { money = 325 supplies = 1200 }
+			AND = { money = 250 supplies = 900 }
+		}
+		# AUBM_FULL_OPTION_GATE_END
+	}
+
+	name = "The First Operational Air Group"
+	decision_desc = "Cabinet funding estimates: Fighter command [money 350, supplies 1,250]; Army cooperation: interceptor + tactical [325/1150] [money 325, supplies 1,150]; Maritime patrol: interceptor + naval [325/1200] [money 325, supplies 1,200]; Doctrine first: +1 air organization [250/900] [money 250, supplies 900]."
+	desc = "Airfield security protects aircraft; it does not create them. With staff, pilots and defended bases in place, Delhi can now place its first real air-production contracts. The selected wings enter the normal production queue using the current researched model and still consume their ordinary daily IC and manpower. Choosing doctrine first instead funds no aircraft and cannot be repeated."
+	style = 2
+	picture = "india_v3_armed_forces"
+	decision_picture = "decision_wargames"
+
+	date = { day = 0 month = july year = 1934 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 350
+			supplies = 1250
+			# AUBM_ACTION_RESERVE_END
+		}
+		ai_chance = 35
+		name = "Fighter command: 2 interceptors [350/1250]"
+		command = { type = money value = -350 }
+		command = { type = supplies value = -1250 }
+		command = { type = activate_unit_type which = interceptor }
+		command = { type = build_division which = interceptor when = 1 where = 75 }
+		command = { type = build_division which = interceptor when = 1 where = 75 }
+		command = { type = setflag which = ind_v4_first_air_group_fighter }
+		command = { type = setflag which = ind_v4_first_operational_air_group }
+	}
+	action_b = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 325
+			supplies = 1150
+			# AUBM_ACTION_RESERVE_END
+		}
+		ai_chance = 30
+		name = "Army cooperation: interceptor + tactical [325/1150]"
+		command = { type = money value = -325 }
+		command = { type = supplies value = -1150 }
+		command = { type = activate_unit_type which = interceptor }
+		command = { type = activate_unit_type which = escort }
+		command = { type = build_division which = interceptor when = 1 where = 75 }
+		command = { type = build_division which = tactical_bomber value = escort when = 1 where = 105 }
+		command = { type = setflag which = ind_v4_first_air_group_army }
+		command = { type = setflag which = ind_v4_first_operational_air_group }
+	}
+	action_c = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 325
+			supplies = 1200
+			# AUBM_ACTION_RESERVE_END
+		}
+		ai_chance = 25
+		name = "Maritime patrol: interceptor + naval [325/1200]"
+		command = { type = money value = -325 }
+		command = { type = supplies value = -1200 }
+		command = { type = activate_unit_type which = interceptor }
+		command = { type = activate_unit_type which = naval_bomber }
+		command = { type = activate_unit_type which = escort }
+		command = { type = build_division which = interceptor when = 1 where = 75 }
+		command = { type = build_division which = naval_bomber value = escort when = 1 where = 105 }
+		command = { type = setflag which = ind_v4_first_air_group_maritime }
+		command = { type = setflag which = ind_v4_first_operational_air_group }
+	}
+	action_d = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 250
+			supplies = 900
+			# AUBM_ACTION_RESERVE_END
+		}
+		ai_chance = 10
+		name = "Doctrine first: +1 air organization [250/900]"
+		command = { type = money value = -250 }
+		command = { type = supplies value = -900 }
+		command = { type = max_organization which = air value = 1 }
+		command = { type = setflag which = ind_v4_first_air_group_doctrine }
+		command = { type = setflag which = ind_v4_first_operational_air_group }
+	}
+}
+
+event = {
 	id = 9280153
 	random = no
 	country = IND

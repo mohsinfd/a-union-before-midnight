@@ -1,17 +1,64 @@
 # Gameplay Fun Rework Specification
 
-- Status: Living implementation contract; Alpha 22 implements a focused first subset
+- Status: Living implementation contract; Alpha 23 implements the cold-start and authored-route subsets
 - Baseline: A Union Before Midnight 4.2.0-alpha.21
-- Current implementation: 4.2.0-alpha.22, built, locally deployed and fresh-start smoked
+- Current implementation: 4.2.0-alpha.23 source candidate; runtime playtest pending
 - Scope: Post-Alpha 21 player-experience, campaign-flow and balance pass
 - Last updated: 29 August 2026
 
 This document specifies the changes required to make the campaign more
 readable, deliberate and enjoyable for a human player. It remains the complete
-forward specification rather than a release note. Alpha 22 implements only the
-clean-opening and focused early-event-audit subset recorded below; unmarked
-requirements remain planned work. Alpha 22 is the current built and
-launch-smoked baseline for this focused subset.
+forward specification rather than a release note. Alpha 22 implemented the
+clean-opening and focused early-event-audit subset. Alpha 23 implements the
+guided War Cabinet, partner-crisis, primary-protection and authored-route arc
+subset recorded below; unmarked requirements remain planned work. The Alpha 22
+build is the latest launch-smoked baseline, while Alpha 23 still requires a
+fresh executable and human campaign test.
+
+## Alpha 23 Implementation Boundary
+
+Implemented in source for **Alpha 23 - Every Route Is a Campaign**:
+
+- STR-01: the normal War Cabinet opens the curated route board from 1937 or
+  during a real Indian war. A permanent zero-reward opt-in preserves deliberate
+  pre-1937 sandbox play, and the unrestricted catalogue has its own warning.
+- STR-02 (separate-command subset): Allied, German, Soviet and Japanese
+  separate-command partners receive a disclosed new-war crisis. Delhi can
+  formalize and inherit all wars,
+  authorize a selected Indian campaign, provide limited material support or
+  remain outside. Sovereign Delhi-system partners receive an independent-plan
+  and armed-neutrality version rather than a coalition-withdrawal fiction.
+- OPS-01: all five routes have a route-aware operations board plus a shared
+  national-ledger doorway. The new generated module contains 20 authored focus
+  arcs--four per route--with activation, intermediate milestone, three-way
+  dilemma and culmination.
+- OPS-02: the selected primary is protected. Secondary victories cannot consume
+  the primary or unlock a Congress; culmination records its route entitlement;
+  withdrawal abandons live selection without replaying paid/history rewards;
+  and an earned primary blocks every later charter before or after Congress.
+- Route collapse: London/Washington, Berlin, Moscow and Tokyo failure produces
+  route-specific relief, independent-command and disengagement choices.
+  Sovereign collapse is tied only to recognized Delhi-system members.
+- Japan: compact-to-formal entry preserves earned senior/full-sphere status;
+  the compact-only China choice is excluded after formal entry; a southern
+  campaign can open from India's own qualifying compact war; separate peace
+  leaves the engine alliance and continues the compact; and the northern focus
+  supports either compact or formal coalition service.
+- Japan grand campaign: an optional secondary ledger tracks Southeast
+  Asia/Australia, China/Philippines, Aden-Suez-East Africa and the Caucasus. A
+  one-time, German-scoped relief convoy requires India to hold Baku plus Tbilisi
+  or Astrakhan while Germany still holds Berlin and both fight the Soviet Union.
+- QA: dedicated generators and validators cover the 20 arcs, one-primary
+  lifecycle, affordability, relationship scopes, collapse ownership, Japan
+  relief and the Alpha 23 War Cabinet gate.
+
+Alpha 23 does **not** complete UX-02/03, OBJ-01/02, the wider BAL work,
+STR-02's separate formal-alliance new-war briefing and longer armed-neutrality
+programme, SEA-01's full staged-theatre redesign, SET-01, ECO-01, MEM-01 or
+general MIG-01. The
+existing Southeast Asian land, liberation and sea-lane system remains the
+authoritative battlefield layer. Static validation is not a substitute for a
+fresh executable launch and a human wartime/postwar acceptance run.
 
 ## Alpha 22 Implementation Boundary
 
@@ -660,6 +707,14 @@ By 1 January 1935, a player who completed the prerequisite institutions must
 either own a real air wing, have one under contract, or see the uncompleted
 decision prominently in the readiness ledger.
 
+**Implementation status (Alpha 24):** event `9280162`, *The First Operational
+Air Group*, now implements the four production/doctrine choices. It queues
+current-model normal production contracts, uses manpower only as an eligibility
+gate and blocks a duplicate package after later HAL, doctrine or arsenal-air
+programmes. The separate proposal to reduce legacy Airfield Security outcomes
+to a smaller 3/2/3 formation set remains intentionally deferred: changing those
+existing formations needs a dedicated balance pass and migration test.
+
 ### BAL-02: Gurkha progression
 
 Treat Constitute the Gurkha Brigade (9281800) as Stage I and rewrite The Gurkha
@@ -762,7 +817,7 @@ Each route retains its existing four identities:
   Sovereign Parallel War.
 - Soviet: Anti-Fascist Expedition, Anti-Imperial Ocean War, Republican Asian
   Order, Autonomous Indian Socialism.
-- Japanese: Indian Southern Sphere, Independent Soviet Campaign, Indian Ocean
+- Japanese: Indian Southern Sphere, Northern Coalition Campaign, Indian Ocean
   First, Equal Asian Command.
 - Sovereign: Indian Ocean League, Continental Security Arc, World Balancer,
   Republican Federation.
@@ -1352,7 +1407,10 @@ evidence that an event is safe.
 - No migration/correction title.
 - No one-button Union Register window; the integration state is available
   after the union choice.
-- War Cabinet is unavailable before union and available afterward.
+- The permanent State of the Union ledger is available after the union choice.
+- In a normal, peaceful January 1933 start, the curated War Cabinet remains
+  unavailable through 1936. The separate unrestricted-sandbox opt-in is visible
+  after union; leave it disabled for this test.
 - Save/reload after every opening choice.
 - Verify that selected cabinet and union identity appear correctly.
 
@@ -1497,12 +1555,20 @@ Gurkha choices are non-dominant, and old units remain untouched.
 
 ### Milestone 3: Guided war and Southeast Asia
 
-- STR-01 and STR-02.
-- OPS-01 and OPS-02.
-- SEA-01.
+- **Implemented in Alpha 23 source:** STR-01 guided versus unrestricted War
+  Cabinet; STR-02 separate-command partner crises; OPS-01 route operations boards and 20
+  authored arcs; OPS-02 primary ownership, route entitlement and safe
+  abandonment/reselection state.
+- **Still required for full Milestone 3:** STR-02's formal-alliance new-war
+  briefing and longer armed-neutrality programme; SEA-01's longer consolidation timers,
+  staged operation choices and suspended-progress presentation. Alpha 23 keeps
+  Alpha 21's existing mixed land/sea theatre as the authoritative operational
+  input.
 
-Release gate: all five routes, Japanese partnership fixture, focus protection
-and full SEA combination matrix.
+Alpha 23 source gate: all five routes, Japanese partnership fixture, focus
+protection, route switching and duplicate-reward prevention pass static
+validation. Runtime gate remains a fresh launch, save/reload at route stages
+and a human wartime/postwar playthrough.
 
 ### Milestone 4: Settlements and persistent consequences
 

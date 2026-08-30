@@ -1,7 +1,7 @@
 =======================================================================
- A UNION BEFORE MIDNIGHT - V4.2.0 ALPHA 22 - 29 AUG 2026
+ A UNION BEFORE MIDNIGHT - V4.2.0 ALPHA 24 - 30 AUG 2026
  For Darkest Hour 1.05.2
- Source version 4.2.0-alpha.22
+ Source version 4.2.0-alpha.24
 =======================================================================
 
 Freedom came early. Unity came at a price.
@@ -16,11 +16,13 @@ developer's local installation after the previous public deployment. It remains
 local-only: donor-derived sprites, palettes and model panels are excluded from
 the current V4 Git tree and do not ship in the public installer.
 
-Alpha 22 gives a fresh 1933 campaign a clean three-window opening and repairs
-existing early-game events found unsafe during the cold review. Alpha 21's
-all-route Southeast Asian theatre, proof-based friendly liberation, Japanese
-Southern Armistice and exclusive commitment rules remain intact. This remains
-an alpha playtest build.
+Alpha 24 turns the vague early-air promise into an actual decision. The
+Airfield Security Act remains ground protection; The First Operational Air
+Group is the separate July 1934 contract choice for fighter, army-cooperation,
+maritime-patrol or doctrine-first development. It also gives India a distinct
+indigo political-map colour. Alpha 23's 20 authored war arcs, partner crises,
+primary-objective ownership and optional four-theatre Delhi-Tokyo campaign
+remain in place. This is still an unproven alpha playtest build.
 
 -----------------------------------------------------------------------
  PLAYER REQUIREMENTS
@@ -67,7 +69,7 @@ Union Register opens inside the union choice, so a one-button register notice
 no longer interrupts the player. The War Cabinet remains closed until that
 union choice is complete.
 
-Fresh 1933 starts pre-sleep 218 events total: 216 retired legacy wartime/route
+Fresh 1933 starts pre-sleep 219 events total: 217 retired legacy wartime/route
 IDs plus the two generic V3 Gurkha and frontier decisions. Fresh games use the
 unique V4 specialist paths. Upgrade saves keep readable Compatibility Review
 events when they need repair, but those events do not replay fresh-start money
@@ -92,8 +94,63 @@ The audit of existing events also:
 - shows opening money, supply, manpower and dissent costs in action text.
 
 This is the first implemented subset of the larger Gameplay Fun Rework. The
-permanent ledger, national priorities, wider force rebalance, guided operations
-board, staged Southeast Asian play and postwar memory remain future work.
+permanent domestic ledger, national priorities, wider force rebalance, deeper
+settlement ambition and postwar memory remain future work. Alpha 23 implements
+the route-guidance and protected-primary portion described next.
+
+-----------------------------------------------------------------------
+ THE ALPHA 23 AUTHORED CAMPAIGNS
+-----------------------------------------------------------------------
+
+The permanent War Cabinet now opens its normal curated route board only from
+1937, during a real Indian war, or after an explicit zero-reward early-sandbox
+opt-in. A normal 1933 peacetime opening no longer presents an emergency-war
+decision. The unrestricted country catalogue remains available behind its own
+warning page for players who deliberately want sandbox declarations.
+
+Allied, German, Soviet, Japanese and sovereign command each have four authored
+primary campaigns. Every campaign announces:
+
+1. the war that activates it;
+2. the intermediate land, sea or regional milestone;
+3. a three-way command or political dilemma; and
+4. the exact culmination that earns one route-specific peace Congress.
+
+Secondary victories remain in the historical ledger but cannot steal the
+primary, open the Congress or relabel the result after a route switch. Peaceful
+withdrawal abandons the live board, preserves already-paid and historical
+credit, and starts the existing 90-day realignment. A primary already earned
+blocks every later charter even before its Congress appears.
+
+Separate-command partners can enter a new war without silently dragging India
+along. The resulting route crisis lets Delhi formalize and inherit all wars,
+open a selected Indian campaign, send limited support or remain outside. The
+partner can recognize, counter or refuse India's doctrine. Loss of the route's
+principal partner produces a route-specific relief, independent-command or
+disengagement choice. Sovereign Delhi-system partners use independent-plan and
+armed-neutrality choices rather than a fictional coalition withdrawal.
+
+The optional Japanese grand-campaign ledger records four linked chapters:
+
+- Southeast Asia plus Australia;
+- formal China field-command boundaries, a real Chinese result and the
+  Philippines allocation;
+- Aden, then Suez, then East African/western-ocean success; and
+- Baku plus Tbilisi or Astrakhan during an Indian-Soviet war.
+
+If Germany still holds Berlin and fights the Soviet Union, India may spend
+1,200 supplies and 500 oil on one finite Caucasus convoy; Germany receives 900
+supplies and 350 oil. This is not a passive German bonus. Grand completion is
+secondary acknowledgement only and transfers no province or peace authority.
+
+Formalizing an earned senior/full-sphere Tokyo compact now preserves that rank.
+A fresh formal entrant begins at peer/core. Compact-only China policy cannot
+appear after formal entry. Ratifying the Indian Ocean separate peace leaves the
+engine alliance and continues the Delhi-Tokyo relationship under separate
+command, with the consequence disclosed before selection.
+
+Exact route milestones are in docs/ROUTE_CAMPAIGN_MATRIX.md. The intended
+high-difficulty Tokyo run is in docs/JAPAN_GRAND_CAMPAIGN_GUIDE.md.
 
 -----------------------------------------------------------------------
  THE RETAINED ALPHA 21 GAMEPLAY PASS
@@ -344,17 +401,35 @@ forbid a Japanese, Allied, German, Soviet or sovereign foreign-policy route.
  COMPATIBILITY AND TESTING STATUS
 -----------------------------------------------------------------------
 
-Start a new 1933 campaign for the intended Alpha 22 test. V3 saves are
+Start a new 1933 campaign for the intended Alpha 23 test. V3 saves are
 unsupported, and earlier V4 alpha saves do not exercise the fresh-only opening
 retirement or contain the complete liberation, lane, armistice, economy and
-campaign state. The expanded leader roster and scenario research are
-serialized at game start.
+authored-route state. The expanded leader roster and scenario research are
+serialized at game start. Alpha 23 has not yet received an executable launch or
+human wartime playthrough; do not treat the Alpha 22 smoke result below as
+proof of this source revision.
 
-The current 29 Aug autosave is the Alpha 22 opening run at 1 February 1933.
-The 28 Aug autosave and 23 Aug manual save discussed in the retained Alpha 21
-review are historical snapshots; neither validates the new wartime behavior.
+The newest 29 Aug autosave is a separate Alpha 22 campaign at 1 December 1934.
+India is peaceful, uncommitted and still on the sovereign prewar route. Its
+maritime production is substantial, but only one transport flotilla, no combat
+surface fleet and no dedicated mountain formation are currently deployed.
+The 23 Aug manual save is the older December 1941 Japan-compact reference.
+Neither save validates the new Alpha 23 authored wartime behavior.
 
-The final Alpha 22 acceptance run on 29 Aug 2026 passed:
+The final post-fix donor-safe Alpha 23 -ValidateOnly run passed:
+
+- Deterministic repeat-build stability across 4,435 overlay files.
+- A generated 343-entry donor-safe public installer manifest.
+- Complete static validation with 0 errors and 0 warnings.
+- Art, economy, resource, campaign, combat, construction-cap and Steam Deck
+  gates.
+
+That source-only run did not publish a package, install or deploy the mod,
+launch the executable or play a campaign. The current tree is a clean
+deterministic package candidate; runtime and human-campaign acceptance remain
+separate gates.
+
+The last completed Alpha 22 acceptance run on 29 Aug 2026 passed:
 
 - 40,357 every-country checks across 210 generated countries.
 - 1,860 canonical wartime checks.
@@ -378,17 +453,20 @@ The final Alpha 22 acceptance run on 29 Aug 2026 passed:
 - Local-only personal visuals: 41 unique families, 591 descriptors, 553 bitmap
   strips and 44 palettes verified after deployment.
 
-These checks verify the build, parser, installer and initial launch. They do
-not replace a complete human wartime and postwar playthrough.
+Those Alpha 22 checks verify its build, parser, installer and initial launch.
+They do not validate Alpha 23 or replace a complete human wartime and postwar
+playthrough.
 
-Alpha 22's build, local deployment and fresh opening smoke are complete. A full
-human wartime and postwar playthrough remains outstanding. The maintained
-validate_v4.py pipeline is the
+Alpha 22's build, local deployment and fresh opening smoke are complete. Alpha
+23 has passed its final post-fix deterministic source-only run, but it has not
+been published, installed, deployed, executable-launched or human-playtested.
+The maintained validate_v4.py pipeline is the
 authoritative production validator; the obsolete validate_v3_legacy.py harness
 is not a release gate because its tools/v3_config.json input no longer exists.
 
 Still required:
 
+- A fresh Alpha 23 executable launch and opening smoke.
 - A controlled copied-old-save run confirming Compatibility Reviews repair
   only missing state and never replay fresh money or manpower.
 - A no-cheat 1940/1942 force and economy measurement.

@@ -71,15 +71,50 @@ routine destruction. Twelve three-division field corps, faster prepared
 reserves, airfield security, dispersal fields and scramble missions reduce
 wartime micromanagement within the limits of the Darkest Hour executable.
 
-Alpha 22, dated **29 Aug 2026**, is the first implemented subset of the
-Gameplay Fun Rework: **A Clean Opening and Audited Early Game**. A fresh 1933
+Alpha 24, dated **30 Aug 2026**, adds an explicit **First Operational Air
+Group** after the Air Staff, Flying Schools and Airfield Security milestones.
+The Security Act protects airfields; the new decision is the place to choose
+two interceptor contracts, an interceptor plus tactical-bomber contract, an
+interceptor plus naval-bomber contract, or a no-aircraft doctrine-first path.
+The contracts use current models and the normal production queue rather than
+granting free instant wings. India is also now **Indian indigo** on the
+political map, distinct from every immediate neighbour. The optional local
+terrain-reference tool and the donor-free original-map plan are documented in
+[Visual Readability Pipeline](docs/VISUAL_READABILITY_PIPELINE.md).
+Players who own Blood and Iron v1.1 and want the old personal India sprite
+profile after a public update can run
+`tools/Enable-Aubm-PersonalIndiaSprites.ps1`; it restores the local 41-family
+overlay and local registry mapping without placing donor assets in GitHub.
+
+Alpha 23, dated **29 Aug 2026**, is the second implemented subset of the
+Gameplay Fun Rework: **Every Route Is a Campaign**. The five command routes
+now contain **20 authored wartime arcs**--four per route--with an activation,
+an intermediate operational milestone, a three-way strategic dilemma and a
+measurable culmination. Separate-command partners can confront India with a
+new-war crisis, recognize or resist the selected doctrine, and trigger a
+route-specific collapse response. A withdrawal abandons the live board without
+erasing paid or historical credit, and a completed primary cannot be replaced
+by a convenient secondary victory or a later route switch.
+
+The Japanese route also has an optional four-theatre grand-campaign ledger for
+the exact human plan tested in development: Southeast Asia and Australia,
+China and the Philippines, Aden-Suez-East Africa, then a Caucasus road that can
+send one finite relief convoy to a still-fighting Germany. This ledger records
+command and progress; it does not transfer territory, sign peace or award a
+second primary victory. Formalizing an earned senior Delhi-Tokyo compact now
+preserves senior/full-sphere status, while a fresh formal entrant starts at
+peer/core. A Japanese-route separate peace explicitly leaves the engine
+alliance and continues the relationship as a separate-command compact.
+
+Alpha 22, also dated **29 Aug 2026**, implemented **A Clean Opening and Audited
+Early Game**. A fresh 1933
 campaign now has three pre-union windows instead of nine: one short premise
 acknowledgment at scenario opening, then genuine choices of cabinet during the
 opening 72 hours and union method on 6 January. Core state
 initialization and the Union Register are folded into those choices, while the
 War Cabinet remains unavailable until India has actually chosen its union.
 
-Fresh starts pre-sleep **218 events total**: 216 retired legacy wartime/route
+Fresh Alpha 23 starts pre-sleep **219 events total**: 217 retired legacy wartime/route
 IDs plus the two generic V3 Gurkha and frontier decisions, leaving the unique
 V4 paths. Upgrade saves retain compatibility helpers under clearer names,
 without receiving fresh-start money or manpower again. The accompanying
@@ -120,6 +155,14 @@ retained; the commitment is exclusive while active, not a lifetime lock. Alpha
 20's local Batavia and Malaya dockets, Alpha 19's 1933 parser correction and
 their regression gates remain part of the current source.
 
+The final post-fix Alpha 23 donor-safe `-ValidateOnly` run completed a repeat-stable
+**4,435-file overlay**, generated a **343-entry public installer manifest** and
+ended static validation with **0 errors and 0 warnings**. Its art, economy,
+resource, campaign, combat, construction-cap and Steam Deck gates all passed.
+That run did not publish, install, deploy or launch the mod. Alpha 23 therefore
+has a clean deterministic source/package candidate, but it remains without an
+executable smoke or human wartime/postwar playthrough.
+
 Alpha 21 passed its final deterministic build, complete static acceptance,
 public-manifest generation, deployment verification and fresh executable smoke
 on **29 Aug 2026**. The public installer manages **342 files** and excludes the
@@ -154,7 +197,11 @@ naval, command and research improvements remain intact.
 
 For a player-facing explanation of the complete campaign loop, route choices,
 war economy, mobilisation, settlement rules, verification status and remaining
-playtest risks, see [Gameplay Changes and Alpha 22 Status](GAMEPLAY_CHANGES.md).
+playtest risks, see [Gameplay Changes and Alpha 24 Status](GAMEPLAY_CHANGES.md).
+The all-route authored objectives are summarized in the
+[Route Campaign Matrix](docs/ROUTE_CAMPAIGN_MATRIX.md), and the intended
+high-difficulty Tokyo campaign is covered by the
+[Japan Grand Campaign Guide](docs/JAPAN_GRAND_CAMPAIGN_GUIDE.md).
 The all-route land, liberation, sea-lane and armistice rules are specified in
 the [Southeast Asia Victory Matrix](docs/SOUTHEAST_ASIA_VICTORY_MATRIX.md).
 The earlier reviewed-save chronology remains in
@@ -176,9 +223,13 @@ The earlier reviewed-save chronology remains in
   separate-command compact at a time, return to sovereign command while at
   peace, declare independent wars against non-partners and inspect every live
   theatre.
-- Route-specific wartime charters turn battlefield objectives into political
-  standing, then convert a completed war into a sovereign concert, security
-  sphere or renewed strategic autonomy at a Delhi peace congress.
+- Route-specific wartime charters open one of 20 authored campaigns. Each
+  publishes an opening condition, an intermediate milestone, a political or
+  command dilemma and a culmination before converting the earned result into a
+  sovereign concert, security sphere or renewed strategic autonomy at Delhi.
+- Partner-war crises disclose the difference between formal shared wars and
+  separate-command support; route-specific recognition and collapse reactions
+  keep Allied, German, Soviet, Japanese and sovereign play mechanically distinct.
 - Every major, regional and fallback opponent has a campaign brief, live
   objective, reversal, recovery, armistice response and post-annex settlement;
   old prerequisite chains no longer silently erase a campaign.

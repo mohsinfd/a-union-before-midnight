@@ -6,7 +6,7 @@ from __future__ import annotations
 import re
 import sys
 
-from validate_aubm_cold_start import action, command_values, events
+from validate_aubm_cold_start import action, command_values, events, setflags
 from validate_v4 import direct_scalar, extract_blocks, scalar
 
 
@@ -19,6 +19,15 @@ OPENING_LABELS = {
     (9270001, "b"): "Provincial: -75 money, -200 supplies, -3 dissent",
     (9270001, "c"): "Centralize: +150 money, -400 supplies, -5 MP, +4 dissent",
 }
+
+
+def queued_division_types(action_text: str) -> list[str]:
+    """Return the ordinary production contracts an action actually queues."""
+    return [
+        scalar(command.text, "which") or ""
+        for command in extract_blocks(action_text, "command")
+        if (scalar(command.text, "type") or "").lower() == "build_division"
+    ]
 
 
 def main() -> int:
@@ -49,6 +58,68 @@ def main() -> int:
         label = scalar(selected, "name") or ""
         if f"+{expected_reward} research" not in label:
             errors.append(f"9270102 action_{letter} does not disclose its research reward")
+
+    air_group = records.get(9280162)
+    checks += 27
+    if air_group is None:
+        errors.append("missing 9280162 First Operational Air Group decision")
+    else:
+        for required_flag in (
+            "ind_v3_air_staff_founded",
+            "ind_v3_flying_schools",
+            "ind_v4_airfield_security",
+        ):
+            if not re.search(rf"\bflag\s*=\s*{required_flag}\b", air_group):
+                errors.append(f"9280162 is missing prerequisite {required_flag}")
+        for blocker in (
+            "ind_v4_first_operational_air_group",
+            "ind_v3_hal_expansion",
+            "ind_v3_air_doctrine_1936",
+            "ind_v3_arsenal_air",
+        ):
+            if not re.search(
+                rf"NOT\s*=\s*\{{\s*flag\s*=\s*{blocker}\s*\}}", air_group
+            ):
+                errors.append(f"9280162 does not block duplicate air package {blocker}")
+
+        if "Airfield security protects aircraft; it does not create them." not in air_group:
+            errors.append("9280162 does not explain the security-versus-aircraft split")
+
+        expected_contracts = {
+            "a": (["interceptor", "interceptor"], -350, -1250, "ind_v4_first_air_group_fighter"),
+            "b": (["interceptor", "tactical_bomber"], -325, -1150, "ind_v4_first_air_group_army"),
+            "c": (["interceptor", "naval_bomber"], -325, -1200, "ind_v4_first_air_group_maritime"),
+        }
+        for letter, (units, money, supplies, doctrine_flag) in expected_contracts.items():
+            selected = action(air_group, letter)
+            if queued_division_types(selected) != units:
+                errors.append(
+                    f"9280162 action_{letter} queues {queued_division_types(selected)}, expected {units}"
+                )
+            if command_values(selected, "money") != [money]:
+                errors.append(f"9280162 action_{letter} has the wrong money cost")
+            if command_values(selected, "supplies") != [supplies]:
+                errors.append(f"9280162 action_{letter} has the wrong supply cost")
+            if command_values(selected, "manpowerpool"):
+                errors.append(
+                    f"9280162 action_{letter} double-charges manpower outside normal production"
+                )
+            expected_flags = {doctrine_flag, "ind_v4_first_operational_air_group"}
+            if not expected_flags.issubset(setflags(selected)):
+                errors.append(f"9280162 action_{letter} is missing its one-use doctrine flags")
+
+        doctrine_first = action(air_group, "d")
+        if queued_division_types(doctrine_first):
+            errors.append("9280162 doctrine-first action queues aircraft")
+        if command_values(doctrine_first, "max_organization") != [1]:
+            errors.append("9280162 doctrine-first action must grant exactly +1 air organization")
+        if command_values(doctrine_first, "manpowerpool"):
+            errors.append("9280162 doctrine-first action double-charges manpower")
+        if not {
+            "ind_v4_first_air_group_doctrine",
+            "ind_v4_first_operational_air_group",
+        }.issubset(setflags(doctrine_first)):
+            errors.append("9280162 doctrine-first action is missing its one-use flags")
 
     budget = records[9280311]
     credit = action(budget, "c")

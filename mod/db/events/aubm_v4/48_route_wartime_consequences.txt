@@ -18,6 +18,7 @@ event = {
 	deathdate = { day = 29 month = december year = 1964 }
 	action_a = {
 		name = "Retire the duplicate events (no cost)"
+		command = { type = sleepevent which = 9272005 }
 		command = { type = sleepevent which = 9280400 }
 		command = { type = sleepevent which = 9280401 }
 		command = { type = sleepevent which = 9280402 }
@@ -196,7 +197,7 @@ event = {
 	random = no
 	persistent = yes
 	country = IND
-	trigger = { flag = ind_aubm_wartime_framework flag = ind_aubm_route_allied atwar = yes NOT = { flag = ind_aubm_route_charter_allied } }
+	trigger = { flag = ind_aubm_wartime_framework flag = ind_aubm_route_allied atwar = yes NOT = { flag = ind_aubm_route_charter_allied } NOT = { flag = ind_aubm_route_war_achievement } NOT = { flag = ind_aubm_postwar_congress_completed } }
 	name = "The Delhi Allied War Charter"
 	desc = "India must decide what equality inside or beside the Allied system means in operations. Eastern Ocean Command makes Japan and the southern resource arc the test. Continental Command measures India in Europe. The Anti-Colonial Mandate makes liberation and regional settlements the test. Free Command asks only for a decisive Indian victory, independent of Allied priorities."
 	style = 2
@@ -208,21 +209,25 @@ event = {
 		name = "Eastern Ocean Command"
 		command = { type = setflag which = ind_aubm_route_focus_allied_eastern }
 		command = { type = setflag which = ind_aubm_route_charter_allied }
+		command = { type = setflag which = ind_aubm_bespoke_route_contract_alpha23 }
 	}
 	action_b = {
 		name = "Continental Expeditionary Command"
 		command = { type = setflag which = ind_aubm_route_focus_allied_continental }
 		command = { type = setflag which = ind_aubm_route_charter_allied }
+		command = { type = setflag which = ind_aubm_bespoke_route_contract_alpha23 }
 	}
 	action_c = {
 		name = "Anti-Colonial Liberation Mandate"
 		command = { type = setflag which = ind_aubm_route_focus_allied_anticolonial }
 		command = { type = setflag which = ind_aubm_route_charter_allied }
+		command = { type = setflag which = ind_aubm_bespoke_route_contract_alpha23 }
 	}
 	action_d = {
 		name = "Sovereign Free Command"
 		command = { type = setflag which = ind_aubm_route_focus_allied_free }
 		command = { type = setflag which = ind_aubm_route_charter_allied }
+		command = { type = setflag which = ind_aubm_bespoke_route_contract_alpha23 }
 	}
 }
 
@@ -235,6 +240,7 @@ event = {
 		flag = ind_aubm_wartime_framework
 		flag = ind_aubm_route_allied
 		flag = ind_aubm_route_focus_allied_eastern
+		NOT = { flag = ind_aubm_bespoke_route_contract_alpha23 }
 		NOT = { flag = ind_aubm_route_achievement_allied_eastern }
 		NOT = { flag = ind_aubm_route_war_achievement }
 		NOT = { flag = ind_aubm_postwar_congress_completed }
@@ -254,6 +260,7 @@ event = {
 		command = { type = setflag which = ind_aubm_coalition_credit }
 		command = { type = setflag which = ind_aubm_route_achievement_allied_eastern }
 		command = { type = setflag which = ind_aubm_route_achievement_allied }
+		command = { type = setflag which = ind_aubm_congress_entitlement_allied }
 		command = { type = setflag which = ind_aubm_route_war_achievement }
 	}
 }
@@ -267,6 +274,7 @@ event = {
 		flag = ind_aubm_wartime_framework
 		flag = ind_aubm_route_allied
 		flag = ind_aubm_route_focus_allied_continental
+		NOT = { flag = ind_aubm_bespoke_route_contract_alpha23 }
 		NOT = { flag = ind_aubm_route_achievement_allied_continental }
 		NOT = { flag = ind_aubm_route_war_achievement }
 		NOT = { flag = ind_aubm_postwar_congress_completed }
@@ -286,6 +294,7 @@ event = {
 		command = { type = setflag which = ind_aubm_coalition_consultation }
 		command = { type = setflag which = ind_aubm_route_achievement_allied_continental }
 		command = { type = setflag which = ind_aubm_route_achievement_allied }
+		command = { type = setflag which = ind_aubm_congress_entitlement_allied }
 		command = { type = setflag which = ind_aubm_route_war_achievement }
 	}
 }
@@ -299,6 +308,7 @@ event = {
 		flag = ind_aubm_wartime_framework
 		flag = ind_aubm_route_allied
 		flag = ind_aubm_route_focus_allied_anticolonial
+		NOT = { flag = ind_aubm_bespoke_route_contract_alpha23 }
 		NOT = { flag = ind_aubm_route_achievement_allied_anticolonial }
 		NOT = { flag = ind_aubm_route_war_achievement }
 		NOT = { flag = ind_aubm_postwar_congress_completed }
@@ -318,6 +328,7 @@ event = {
 		command = { type = setflag which = ind_aubm_coalition_consultation }
 		command = { type = setflag which = ind_aubm_route_achievement_allied_anticolonial }
 		command = { type = setflag which = ind_aubm_route_achievement_allied }
+		command = { type = setflag which = ind_aubm_congress_entitlement_allied }
 		command = { type = setflag which = ind_aubm_route_war_achievement }
 	}
 }
@@ -331,6 +342,7 @@ event = {
 		flag = ind_aubm_wartime_framework
 		flag = ind_aubm_route_allied
 		flag = ind_aubm_route_focus_allied_free
+		NOT = { flag = ind_aubm_bespoke_route_contract_alpha23 }
 		NOT = { flag = ind_aubm_route_achievement_allied_free }
 		NOT = { flag = ind_aubm_route_war_achievement }
 		NOT = { flag = ind_aubm_postwar_congress_completed }
@@ -350,6 +362,7 @@ event = {
 		command = { type = setflag which = ind_aubm_victory_sovereign_credit }
 		command = { type = setflag which = ind_aubm_route_achievement_allied_free }
 		command = { type = setflag which = ind_aubm_route_achievement_allied }
+		command = { type = setflag which = ind_aubm_congress_entitlement_allied }
 		command = { type = setflag which = ind_aubm_route_war_achievement }
 	}
 }
@@ -363,27 +376,36 @@ event = {
 		flag = ind_aubm_wartime_framework
 		flag = ind_aubm_route_allied
 		flag = ind_aubm_route_charter_allied
+		NOT = { flag = ind_aubm_bespoke_route_contract_alpha23 }
 		flag = ind_aubm_global_campaign_victory
 		NOT = { flag = ind_aubm_route_achievement_allied_global }
 		NOT = { flag = ind_aubm_route_war_achievement }
-		NOT = { flag = ind_aubm_postwar_congress_completed }
+		# Do not let the route-neutral victory flag race the selected
+		# focus achievement or reuse that same victory as secondary credit.
+		NOT = {
+			OR = {
+				AND = { flag = ind_aubm_route_focus_allied_eastern OR = { flag = ind_aubm_sea_theatre_achieved flag = ind_aubm_national_southern_victory flag = ind_aubm_japan_limited_victory flag = ind_aubm_japan_major_victory flag = ind_aubm_major_annex_victory_jap flag = ind_aubm_pacific_capital_victory flag = ind_aubm_regional_victory_sia flag = ind_aubm_regional_victory_u05 flag = ind_aubm_regional_victory_hol flag = ind_aubm_regional_victory_ast } }
+				AND = { flag = ind_aubm_route_focus_allied_continental OR = { flag = ind_aubm_germany_limited_victory flag = ind_aubm_germany_major_victory flag = ind_aubm_major_annex_victory_ger flag = ind_aubm_european_capital_victory flag = ind_aubm_regional_victory_ita flag = ind_aubm_regional_victory_fra flag = ind_aubm_regional_victory_tur } }
+				AND = { flag = ind_aubm_route_focus_allied_anticolonial OR = { flag = ind_aubm_sea_theatre_achieved flag = ind_aubm_national_western_victory flag = ind_aubm_regional_victory_eth flag = ind_aubm_regional_victory_saf flag = ind_aubm_regional_victory_per flag = ind_aubm_regional_victory_irq flag = ind_aubm_regional_victory_sau } }
+				AND = { flag = ind_aubm_route_focus_allied_free OR = { flag = ind_aubm_decisive_great_power flag = ind_aubm_britain_major_victory flag = ind_aubm_germany_major_victory flag = ind_aubm_japan_major_victory flag = ind_aubm_america_major_victory flag = ind_aubm_major_annex_victory_eng flag = ind_aubm_major_annex_victory_ger flag = ind_aubm_major_annex_victory_jap flag = ind_aubm_major_annex_victory_usa } }
+			}
+		}
 	}
-	name = "India Wins Beyond the Charter's Named Front"
-	desc = "India has won a published campaign outside the four fronts named by The Delhi Allied War Charter. The War Cabinet records the result as a valid national achievement, so a distant or emergent-state war can still lead to India's peace congress."
+	name = "A Secondary Victory Beyond the Charter"
+	desc = "India has won a published campaign outside the primary front selected under The Delhi Allied War Charter. The War Cabinet records useful secondary standing, but this result cannot complete, block or relabel the selected primary focus and cannot unlock a peace congress by itself."
 	style = 2
 	picture = "aubm_v4_london_settlement"
 	date = { day = 0 month = january year = 1933 }
 	offset = 2
 	deathdate = { day = 29 month = december year = 1964 }
 	action_a = {
-		name = "Enter the wider victory in India's war ledger"
+		name = "Record secondary standing; keep the primary focus active"
 		command = { type = money value = 100 }
 		command = { type = supplies value = 300 }
 		command = { type = dissent value = -1 }
 		command = { type = setflag which = ind_aubm_victory_sovereign_credit }
+		command = { type = setflag which = ind_aubm_secondary_campaign_credit }
 		command = { type = setflag which = ind_aubm_route_achievement_allied_global }
-		command = { type = setflag which = ind_aubm_route_achievement_allied }
-		command = { type = setflag which = ind_aubm_route_war_achievement }
 	}
 }
 
@@ -392,7 +414,7 @@ event = {
 	random = no
 	persistent = yes
 	country = IND
-	trigger = { flag = ind_aubm_wartime_framework flag = ind_aubm_route_allied flag = ind_aubm_route_war_achievement atwar = no NOT = { flag = ind_aubm_postwar_congress_completed } NOT = { flag = ind_aubm_postwar_congress_allied } }
+	trigger = { flag = ind_aubm_wartime_framework flag = ind_aubm_congress_entitlement_allied flag = ind_aubm_route_war_achievement atwar = no NOT = { flag = ind_aubm_postwar_congress_completed } NOT = { flag = ind_aubm_postwar_congress_allied } }
 	name = "The Delhi Allied Peace Congress"
 	desc = "India has ended an Allied-route war with a measurable independent achievement. The settlement now defines whether Delhi builds a concert of sovereign partners, a treaty sphere with forward responsibilities, or a self-contained arsenal that cooperates without permanent alignment."
 	style = 2
@@ -401,7 +423,7 @@ event = {
 	offset = 10
 	deathdate = { day = 29 month = december year = 1964 }
 	action_a = {
-		name = "A concert of sovereign partners: -4 dissent, +1 research"
+		name = "An equal Allied concert: -4 dissent, +1 research"
 		command = { type = dissent value = -4 }
 		command = { type = belligerence value = -3 }
 		command = { type = research_mod value = 1 }
@@ -415,7 +437,7 @@ event = {
 		command = { trigger = { exists = CAN } type = relation which = CAN value = 25 }
 	}
 	action_b = {
-		name = "An Indian security sphere: +2 dissent, +3 TC"
+		name = "An Indian Eastern Security Board: +2 dissent, +3 TC"
 		command = { type = dissent value = 2 }
 		command = { type = tc_mod value = 3 }
 		command = { type = supplies value = 1000 }
@@ -425,7 +447,7 @@ event = {
 		command = { type = setflag which = ind_aubm_postwar_security_sphere }
 	}
 	action_c = {
-		name = "Strategic autonomy: +600 money, +3 supply output"
+		name = "Free India cooperation: +600 money, +3 supply output"
 		command = { type = money value = 600 }
 		command = { type = industrial_modifier which = supplies value = 3 }
 		command = { type = dissent value = -1 }
@@ -515,7 +537,7 @@ event = {
 	random = no
 	persistent = yes
 	country = IND
-	trigger = { flag = ind_aubm_wartime_framework flag = ind_aubm_route_german atwar = yes NOT = { flag = ind_aubm_route_charter_german } }
+	trigger = { flag = ind_aubm_wartime_framework flag = ind_aubm_route_german atwar = yes NOT = { flag = ind_aubm_route_charter_german } NOT = { flag = ind_aubm_route_war_achievement } NOT = { flag = ind_aubm_postwar_congress_completed } }
 	name = "The Delhi-Berlin Division of War"
 	desc = "Cooperation with Germany does not decide India's enemy. The Eurasian Link makes the Soviet southern system the objective. Imperial Dismantlement targets Britain and the ocean routes. The Southern Race makes India, not Japan, master of the resource arc. Sovereign Parallel War accepts German coordination but reserves every Indian settlement claim."
 	style = 2
@@ -527,21 +549,25 @@ event = {
 		name = "The Eurasian Link against Moscow"
 		command = { type = setflag which = ind_aubm_route_focus_german_eurasian }
 		command = { type = setflag which = ind_aubm_route_charter_german }
+		command = { type = setflag which = ind_aubm_bespoke_route_contract_alpha23 }
 	}
 	action_b = {
 		name = "Dismantle Britain's imperial system"
 		command = { type = setflag which = ind_aubm_route_focus_german_imperial }
 		command = { type = setflag which = ind_aubm_route_charter_german }
+		command = { type = setflag which = ind_aubm_bespoke_route_contract_alpha23 }
 	}
 	action_c = {
 		name = "Win the southern resource race"
 		command = { type = setflag which = ind_aubm_route_focus_german_southern }
 		command = { type = setflag which = ind_aubm_route_charter_german }
+		command = { type = setflag which = ind_aubm_bespoke_route_contract_alpha23 }
 	}
 	action_d = {
 		name = "Sovereign parallel war"
 		command = { type = setflag which = ind_aubm_route_focus_german_parallel }
 		command = { type = setflag which = ind_aubm_route_charter_german }
+		command = { type = setflag which = ind_aubm_bespoke_route_contract_alpha23 }
 	}
 }
 
@@ -554,6 +580,7 @@ event = {
 		flag = ind_aubm_wartime_framework
 		flag = ind_aubm_route_german
 		flag = ind_aubm_route_focus_german_eurasian
+		NOT = { flag = ind_aubm_bespoke_route_contract_alpha23 }
 		NOT = { flag = ind_aubm_route_achievement_german_eurasian }
 		NOT = { flag = ind_aubm_route_war_achievement }
 		NOT = { flag = ind_aubm_postwar_congress_completed }
@@ -573,6 +600,7 @@ event = {
 		command = { type = setflag which = ind_aubm_coalition_credit }
 		command = { type = setflag which = ind_aubm_route_achievement_german_eurasian }
 		command = { type = setflag which = ind_aubm_route_achievement_german }
+		command = { type = setflag which = ind_aubm_congress_entitlement_german }
 		command = { type = setflag which = ind_aubm_route_war_achievement }
 	}
 }
@@ -586,6 +614,7 @@ event = {
 		flag = ind_aubm_wartime_framework
 		flag = ind_aubm_route_german
 		flag = ind_aubm_route_focus_german_imperial
+		NOT = { flag = ind_aubm_bespoke_route_contract_alpha23 }
 		NOT = { flag = ind_aubm_route_achievement_german_imperial }
 		NOT = { flag = ind_aubm_route_war_achievement }
 		NOT = { flag = ind_aubm_postwar_congress_completed }
@@ -605,6 +634,7 @@ event = {
 		command = { type = setflag which = ind_aubm_coalition_consultation }
 		command = { type = setflag which = ind_aubm_route_achievement_german_imperial }
 		command = { type = setflag which = ind_aubm_route_achievement_german }
+		command = { type = setflag which = ind_aubm_congress_entitlement_german }
 		command = { type = setflag which = ind_aubm_route_war_achievement }
 	}
 }
@@ -618,6 +648,7 @@ event = {
 		flag = ind_aubm_wartime_framework
 		flag = ind_aubm_route_german
 		flag = ind_aubm_route_focus_german_southern
+		NOT = { flag = ind_aubm_bespoke_route_contract_alpha23 }
 		NOT = { flag = ind_aubm_route_achievement_german_southern }
 		NOT = { flag = ind_aubm_route_war_achievement }
 		NOT = { flag = ind_aubm_postwar_congress_completed }
@@ -637,6 +668,7 @@ event = {
 		command = { type = setflag which = ind_aubm_victory_sovereign_credit }
 		command = { type = setflag which = ind_aubm_route_achievement_german_southern }
 		command = { type = setflag which = ind_aubm_route_achievement_german }
+		command = { type = setflag which = ind_aubm_congress_entitlement_german }
 		command = { type = setflag which = ind_aubm_route_war_achievement }
 	}
 }
@@ -650,6 +682,7 @@ event = {
 		flag = ind_aubm_wartime_framework
 		flag = ind_aubm_route_german
 		flag = ind_aubm_route_focus_german_parallel
+		NOT = { flag = ind_aubm_bespoke_route_contract_alpha23 }
 		NOT = { flag = ind_aubm_route_achievement_german_parallel }
 		NOT = { flag = ind_aubm_route_war_achievement }
 		NOT = { flag = ind_aubm_postwar_congress_completed }
@@ -669,6 +702,7 @@ event = {
 		command = { type = setflag which = ind_aubm_victory_sovereign_credit }
 		command = { type = setflag which = ind_aubm_route_achievement_german_parallel }
 		command = { type = setflag which = ind_aubm_route_achievement_german }
+		command = { type = setflag which = ind_aubm_congress_entitlement_german }
 		command = { type = setflag which = ind_aubm_route_war_achievement }
 	}
 }
@@ -682,27 +716,36 @@ event = {
 		flag = ind_aubm_wartime_framework
 		flag = ind_aubm_route_german
 		flag = ind_aubm_route_charter_german
+		NOT = { flag = ind_aubm_bespoke_route_contract_alpha23 }
 		flag = ind_aubm_global_campaign_victory
 		NOT = { flag = ind_aubm_route_achievement_german_global }
 		NOT = { flag = ind_aubm_route_war_achievement }
-		NOT = { flag = ind_aubm_postwar_congress_completed }
+		# Do not let the route-neutral victory flag race the selected
+		# focus achievement or reuse that same victory as secondary credit.
+		NOT = {
+			OR = {
+				AND = { flag = ind_aubm_route_focus_german_eurasian OR = { flag = ind_aubm_soviet_limited_victory flag = ind_aubm_soviet_major_victory flag = ind_aubm_major_annex_victory_sov flag = ind_aubm_national_northern_victory } }
+				AND = { flag = ind_aubm_route_focus_german_imperial OR = { flag = ind_aubm_sea_theatre_achieved flag = ind_aubm_britain_limited_victory flag = ind_aubm_britain_major_victory flag = ind_aubm_major_annex_victory_eng flag = ind_aubm_national_southern_victory flag = ind_aubm_national_western_victory } }
+				AND = { flag = ind_aubm_route_focus_german_southern OR = { flag = ind_aubm_sea_theatre_achieved flag = ind_aubm_national_southern_victory flag = ind_aubm_regional_victory_sia flag = ind_aubm_regional_victory_u05 flag = ind_aubm_regional_victory_hol flag = ind_aubm_regional_victory_ast } }
+				AND = { flag = ind_aubm_route_focus_german_parallel OR = { flag = ind_aubm_decisive_great_power flag = ind_aubm_britain_major_victory flag = ind_aubm_soviet_major_victory flag = ind_aubm_america_major_victory flag = ind_aubm_major_annex_victory_eng flag = ind_aubm_major_annex_victory_sov flag = ind_aubm_major_annex_victory_usa } }
+			}
+		}
 	}
-	name = "India Wins Beyond the Charter's Named Front"
-	desc = "India has won a published campaign outside the four fronts named by The Delhi-Berlin Division of War. The War Cabinet records the result as a valid national achievement, so a distant or emergent-state war can still lead to India's peace congress."
+	name = "A Secondary Victory Beyond the Charter"
+	desc = "India has won a published campaign outside the primary front selected under The Delhi-Berlin Division of War. The War Cabinet records useful secondary standing, but this result cannot complete, block or relabel the selected primary focus and cannot unlock a peace congress by itself."
 	style = 2
 	picture = "aubm_v4_barbarossa_reaction"
 	date = { day = 0 month = january year = 1933 }
 	offset = 2
 	deathdate = { day = 29 month = december year = 1964 }
 	action_a = {
-		name = "Enter the wider victory in India's war ledger"
+		name = "Record secondary standing; keep the primary focus active"
 		command = { type = money value = 100 }
 		command = { type = supplies value = 300 }
 		command = { type = dissent value = -1 }
 		command = { type = setflag which = ind_aubm_victory_sovereign_credit }
+		command = { type = setflag which = ind_aubm_secondary_campaign_credit }
 		command = { type = setflag which = ind_aubm_route_achievement_german_global }
-		command = { type = setflag which = ind_aubm_route_achievement_german }
-		command = { type = setflag which = ind_aubm_route_war_achievement }
 	}
 }
 
@@ -711,7 +754,7 @@ event = {
 	random = no
 	persistent = yes
 	country = IND
-	trigger = { flag = ind_aubm_wartime_framework flag = ind_aubm_route_german flag = ind_aubm_route_war_achievement atwar = no NOT = { flag = ind_aubm_postwar_congress_completed } NOT = { flag = ind_aubm_postwar_congress_german } }
+	trigger = { flag = ind_aubm_wartime_framework flag = ind_aubm_congress_entitlement_german flag = ind_aubm_route_war_achievement atwar = no NOT = { flag = ind_aubm_postwar_congress_completed } NOT = { flag = ind_aubm_postwar_congress_german } }
 	name = "The Delhi-Berlin Settlement Congress"
 	desc = "India has completed a measurable campaign on the German route. Delhi can preserve a continental balance, construct an Indian security sphere from the Gulf to Southeast Asia, or end the partnership and retain only technical and commercial cooperation."
 	style = 2
@@ -720,7 +763,7 @@ event = {
 	offset = 10
 	deathdate = { day = 29 month = december year = 1964 }
 	action_a = {
-		name = "A concert of sovereign partners: -4 dissent, +1 research"
+		name = "A continental balance treaty: -4 dissent, +1 research"
 		command = { type = dissent value = -4 }
 		command = { type = belligerence value = -3 }
 		command = { type = research_mod value = 1 }
@@ -734,7 +777,7 @@ event = {
 		command = { trigger = { exists = JAP } type = relation which = JAP value = 25 }
 	}
 	action_b = {
-		name = "An Indian security sphere: +2 dissent, +3 TC"
+		name = "An Indian Eurasian security sphere: +2 dissent, +3 TC"
 		command = { type = dissent value = 2 }
 		command = { type = tc_mod value = 3 }
 		command = { type = supplies value = 1000 }
@@ -744,7 +787,7 @@ event = {
 		command = { type = setflag which = ind_aubm_postwar_security_sphere }
 	}
 	action_c = {
-		name = "Strategic autonomy: +600 money, +3 supply output"
+		name = "End pact; technical links: +600 money, +3 supply output"
 		command = { type = money value = 600 }
 		command = { type = industrial_modifier which = supplies value = 3 }
 		command = { type = dissent value = -1 }
@@ -834,7 +877,7 @@ event = {
 	random = no
 	persistent = yes
 	country = IND
-	trigger = { flag = ind_aubm_wartime_framework OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } atwar = yes NOT = { flag = ind_aubm_route_charter_soviet } }
+	trigger = { flag = ind_aubm_wartime_framework OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } atwar = yes NOT = { flag = ind_aubm_route_charter_soviet } NOT = { flag = ind_aubm_route_war_achievement } NOT = { flag = ind_aubm_postwar_congress_completed } }
 	name = "The Delhi Socialist War Charter"
 	desc = "The Soviet relationship can produce very different wars. Anti-Fascist Expedition sends Indian command west. Anti-Imperial War targets colonial systems. Republican Asia ties victory to sovereign Asian governments. Autonomous Socialism cooperates where useful but measures success only by an independent Indian campaign."
 	style = 2
@@ -846,21 +889,25 @@ event = {
 		name = "Anti-Fascist Expedition"
 		command = { type = setflag which = ind_aubm_route_focus_soviet_antifascist }
 		command = { type = setflag which = ind_aubm_route_charter_soviet }
+		command = { type = setflag which = ind_aubm_bespoke_route_contract_alpha23 }
 	}
 	action_b = {
 		name = "Anti-Imperial Ocean War"
 		command = { type = setflag which = ind_aubm_route_focus_soviet_antiimperial }
 		command = { type = setflag which = ind_aubm_route_charter_soviet }
+		command = { type = setflag which = ind_aubm_bespoke_route_contract_alpha23 }
 	}
 	action_c = {
 		name = "A Republican Asian Order"
 		command = { type = setflag which = ind_aubm_route_focus_soviet_republican }
 		command = { type = setflag which = ind_aubm_route_charter_soviet }
+		command = { type = setflag which = ind_aubm_bespoke_route_contract_alpha23 }
 	}
 	action_d = {
 		name = "Autonomous Indian Socialism"
 		command = { type = setflag which = ind_aubm_route_focus_soviet_autonomous }
 		command = { type = setflag which = ind_aubm_route_charter_soviet }
+		command = { type = setflag which = ind_aubm_bespoke_route_contract_alpha23 }
 	}
 }
 
@@ -873,6 +920,7 @@ event = {
 		flag = ind_aubm_wartime_framework
 		OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } }
 		flag = ind_aubm_route_focus_soviet_antifascist
+		NOT = { flag = ind_aubm_bespoke_route_contract_alpha23 }
 		NOT = { flag = ind_aubm_route_achievement_soviet_antifascist }
 		NOT = { flag = ind_aubm_route_war_achievement }
 		NOT = { flag = ind_aubm_postwar_congress_completed }
@@ -892,6 +940,7 @@ event = {
 		command = { type = setflag which = ind_aubm_coalition_credit }
 		command = { type = setflag which = ind_aubm_route_achievement_soviet_antifascist }
 		command = { type = setflag which = ind_aubm_route_achievement_soviet }
+		command = { type = setflag which = ind_aubm_congress_entitlement_soviet }
 		command = { type = setflag which = ind_aubm_route_war_achievement }
 	}
 }
@@ -905,6 +954,7 @@ event = {
 		flag = ind_aubm_wartime_framework
 		OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } }
 		flag = ind_aubm_route_focus_soviet_antiimperial
+		NOT = { flag = ind_aubm_bespoke_route_contract_alpha23 }
 		NOT = { flag = ind_aubm_route_achievement_soviet_antiimperial }
 		NOT = { flag = ind_aubm_route_war_achievement }
 		NOT = { flag = ind_aubm_postwar_congress_completed }
@@ -924,6 +974,7 @@ event = {
 		command = { type = setflag which = ind_aubm_coalition_consultation }
 		command = { type = setflag which = ind_aubm_route_achievement_soviet_antiimperial }
 		command = { type = setflag which = ind_aubm_route_achievement_soviet }
+		command = { type = setflag which = ind_aubm_congress_entitlement_soviet }
 		command = { type = setflag which = ind_aubm_route_war_achievement }
 	}
 }
@@ -937,6 +988,7 @@ event = {
 		flag = ind_aubm_wartime_framework
 		OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } }
 		flag = ind_aubm_route_focus_soviet_republican
+		NOT = { flag = ind_aubm_bespoke_route_contract_alpha23 }
 		NOT = { flag = ind_aubm_route_achievement_soviet_republican }
 		NOT = { flag = ind_aubm_route_war_achievement }
 		NOT = { flag = ind_aubm_postwar_congress_completed }
@@ -956,6 +1008,7 @@ event = {
 		command = { type = setflag which = ind_aubm_coalition_consultation }
 		command = { type = setflag which = ind_aubm_route_achievement_soviet_republican }
 		command = { type = setflag which = ind_aubm_route_achievement_soviet }
+		command = { type = setflag which = ind_aubm_congress_entitlement_soviet }
 		command = { type = setflag which = ind_aubm_route_war_achievement }
 	}
 }
@@ -969,6 +1022,7 @@ event = {
 		flag = ind_aubm_wartime_framework
 		OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } }
 		flag = ind_aubm_route_focus_soviet_autonomous
+		NOT = { flag = ind_aubm_bespoke_route_contract_alpha23 }
 		NOT = { flag = ind_aubm_route_achievement_soviet_autonomous }
 		NOT = { flag = ind_aubm_route_war_achievement }
 		NOT = { flag = ind_aubm_postwar_congress_completed }
@@ -988,6 +1042,7 @@ event = {
 		command = { type = setflag which = ind_aubm_victory_sovereign_credit }
 		command = { type = setflag which = ind_aubm_route_achievement_soviet_autonomous }
 		command = { type = setflag which = ind_aubm_route_achievement_soviet }
+		command = { type = setflag which = ind_aubm_congress_entitlement_soviet }
 		command = { type = setflag which = ind_aubm_route_war_achievement }
 	}
 }
@@ -1001,27 +1056,36 @@ event = {
 		flag = ind_aubm_wartime_framework
 		OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } }
 		flag = ind_aubm_route_charter_soviet
+		NOT = { flag = ind_aubm_bespoke_route_contract_alpha23 }
 		flag = ind_aubm_global_campaign_victory
 		NOT = { flag = ind_aubm_route_achievement_soviet_global }
 		NOT = { flag = ind_aubm_route_war_achievement }
-		NOT = { flag = ind_aubm_postwar_congress_completed }
+		# Do not let the route-neutral victory flag race the selected
+		# focus achievement or reuse that same victory as secondary credit.
+		NOT = {
+			OR = {
+				AND = { flag = ind_aubm_route_focus_soviet_antifascist OR = { flag = ind_aubm_germany_limited_victory flag = ind_aubm_germany_major_victory flag = ind_aubm_major_annex_victory_ger flag = ind_aubm_european_capital_victory flag = ind_aubm_regional_victory_ita flag = ind_aubm_regional_victory_fra } }
+				AND = { flag = ind_aubm_route_focus_soviet_antiimperial OR = { flag = ind_aubm_sea_theatre_achieved flag = ind_aubm_britain_limited_victory flag = ind_aubm_britain_major_victory flag = ind_aubm_major_annex_victory_eng flag = ind_aubm_national_southern_victory flag = ind_aubm_national_western_victory } }
+				AND = { flag = ind_aubm_route_focus_soviet_republican OR = { flag = ind_aubm_sea_theatre_achieved flag = ind_aubm_japan_limited_victory flag = ind_aubm_japan_major_victory flag = ind_aubm_major_annex_victory_jap flag = ind_aubm_pacific_capital_victory flag = ind_aubm_regional_victory_chi flag = ind_aubm_regional_victory_chc flag = ind_aubm_regional_victory_sia } }
+				AND = { flag = ind_aubm_route_focus_soviet_autonomous OR = { flag = ind_aubm_decisive_great_power flag = ind_aubm_britain_major_victory flag = ind_aubm_germany_major_victory flag = ind_aubm_japan_major_victory flag = ind_aubm_america_major_victory flag = ind_aubm_major_annex_victory_eng flag = ind_aubm_major_annex_victory_ger flag = ind_aubm_major_annex_victory_jap flag = ind_aubm_major_annex_victory_usa } }
+			}
+		}
 	}
-	name = "India Wins Beyond the Charter's Named Front"
-	desc = "India has won a published campaign outside the four fronts named by The Delhi Socialist War Charter. The War Cabinet records the result as a valid national achievement, so a distant or emergent-state war can still lead to India's peace congress."
+	name = "A Secondary Victory Beyond the Charter"
+	desc = "India has won a published campaign outside the primary front selected under The Delhi Socialist War Charter. The War Cabinet records useful secondary standing, but this result cannot complete, block or relabel the selected primary focus and cannot unlock a peace congress by itself."
 	style = 2
 	picture = "aubm_v4_barbarossa_reaction"
 	date = { day = 0 month = january year = 1933 }
 	offset = 2
 	deathdate = { day = 29 month = december year = 1964 }
 	action_a = {
-		name = "Enter the wider victory in India's war ledger"
+		name = "Record secondary standing; keep the primary focus active"
 		command = { type = money value = 100 }
 		command = { type = supplies value = 300 }
 		command = { type = dissent value = -1 }
 		command = { type = setflag which = ind_aubm_victory_sovereign_credit }
+		command = { type = setflag which = ind_aubm_secondary_campaign_credit }
 		command = { type = setflag which = ind_aubm_route_achievement_soviet_global }
-		command = { type = setflag which = ind_aubm_route_achievement_soviet }
-		command = { type = setflag which = ind_aubm_route_war_achievement }
 	}
 }
 
@@ -1030,7 +1094,7 @@ event = {
 	random = no
 	persistent = yes
 	country = IND
-	trigger = { flag = ind_aubm_wartime_framework OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } flag = ind_aubm_route_war_achievement atwar = no NOT = { flag = ind_aubm_postwar_congress_completed } NOT = { flag = ind_aubm_postwar_congress_soviet } }
+	trigger = { flag = ind_aubm_wartime_framework flag = ind_aubm_congress_entitlement_soviet flag = ind_aubm_route_war_achievement atwar = no NOT = { flag = ind_aubm_postwar_congress_completed } NOT = { flag = ind_aubm_postwar_congress_soviet } }
 	name = "The Delhi Socialist Peace Congress"
 	desc = "India has completed a measurable Soviet-route campaign. The postwar order may be a league of sovereign republics, a protected security belt, or autonomous Indian socialism with no permanent military bloc. Each outcome closes the missing Soviet postwar line used by the long campaign audit."
 	style = 2
@@ -1039,7 +1103,7 @@ event = {
 	offset = 10
 	deathdate = { day = 29 month = december year = 1964 }
 	action_a = {
-		name = "A concert of sovereign partners: -4 dissent, +1 research"
+		name = "A league of sovereign republics: -4 dissent, +1 research"
 		command = { type = dissent value = -4 }
 		command = { type = belligerence value = -3 }
 		command = { type = research_mod value = 1 }
@@ -1053,7 +1117,7 @@ event = {
 		command = { trigger = { exists = CHC } type = relation which = CHC value = 25 }
 	}
 	action_b = {
-		name = "An Indian security sphere: +2 dissent, +3 TC"
+		name = "A protected republican belt: +2 dissent, +3 TC"
 		command = { type = dissent value = 2 }
 		command = { type = tc_mod value = 3 }
 		command = { type = supplies value = 1000 }
@@ -1063,7 +1127,7 @@ event = {
 		command = { type = setflag which = ind_aubm_postwar_security_sphere }
 	}
 	action_c = {
-		name = "Strategic autonomy: +600 money, +3 supply output"
+		name = "Autonomous Indian socialism: +600 money, +3 supply output"
 		command = { type = money value = 600 }
 		command = { type = industrial_modifier which = supplies value = 3 }
 		command = { type = dissent value = -1 }
@@ -1153,7 +1217,7 @@ event = {
 	random = no
 	persistent = yes
 	country = IND
-	trigger = { flag = ind_aubm_wartime_framework flag = ind_aubm_route_japan atwar = yes NOT = { flag = ind_aubm_route_charter_japan } }
+	trigger = { flag = ind_aubm_wartime_framework flag = ind_aubm_route_japan atwar = yes NOT = { flag = ind_aubm_route_charter_japan } NOT = { flag = ind_aubm_route_war_achievement } NOT = { flag = ind_aubm_postwar_congress_completed } }
 	name = "The Delhi-Tokyo Wartime Charter"
 	desc = "Partnership with Japan requires an explicit division of labour. Southern Sphere assigns Malaya, the East Indies and Australia to Indian influence. Dual Continental War permits an Indian Soviet campaign beside a Japanese non-aggression policy. Indian Ocean First pushes through the Gulf and Suez. Equal Asian Command measures status through any two-theatre or decisive Indian result."
 	style = 2
@@ -1165,21 +1229,25 @@ event = {
 		name = "Indian Southern Sphere"
 		command = { type = setflag which = ind_aubm_route_focus_japan_southern }
 		command = { type = setflag which = ind_aubm_route_charter_japan }
+		command = { type = setflag which = ind_aubm_bespoke_route_contract_alpha23 }
 	}
 	action_b = {
-		name = "Independent Soviet campaign"
+		name = "Northern Coalition Campaign"
 		command = { type = setflag which = ind_aubm_route_focus_japan_dualfront }
 		command = { type = setflag which = ind_aubm_route_charter_japan }
+		command = { type = setflag which = ind_aubm_bespoke_route_contract_alpha23 }
 	}
 	action_c = {
 		name = "Indian Ocean First"
 		command = { type = setflag which = ind_aubm_route_focus_japan_ocean }
 		command = { type = setflag which = ind_aubm_route_charter_japan }
+		command = { type = setflag which = ind_aubm_bespoke_route_contract_alpha23 }
 	}
 	action_d = {
 		name = "Equal Asian Command"
 		command = { type = setflag which = ind_aubm_route_focus_japan_equal }
 		command = { type = setflag which = ind_aubm_route_charter_japan }
+		command = { type = setflag which = ind_aubm_bespoke_route_contract_alpha23 }
 	}
 }
 
@@ -1192,6 +1260,7 @@ event = {
 		flag = ind_aubm_wartime_framework
 		flag = ind_aubm_route_japan
 		flag = ind_aubm_route_focus_japan_southern
+		NOT = { flag = ind_aubm_bespoke_route_contract_alpha23 }
 		NOT = { flag = ind_aubm_route_achievement_japan_southern }
 		NOT = { flag = ind_aubm_route_war_achievement }
 		NOT = { flag = ind_aubm_postwar_congress_completed }
@@ -1211,6 +1280,7 @@ event = {
 		command = { type = setflag which = ind_aubm_jp_india_full_sphere }
 		command = { type = setflag which = ind_aubm_route_achievement_japan_southern }
 		command = { type = setflag which = ind_aubm_route_achievement_japan }
+		command = { type = setflag which = ind_aubm_congress_entitlement_japan }
 		command = { type = setflag which = ind_aubm_route_war_achievement }
 	}
 }
@@ -1224,13 +1294,14 @@ event = {
 		flag = ind_aubm_wartime_framework
 		flag = ind_aubm_route_japan
 		flag = ind_aubm_route_focus_japan_dualfront
+		NOT = { flag = ind_aubm_bespoke_route_contract_alpha23 }
 		NOT = { flag = ind_aubm_route_achievement_japan_dualfront }
 		NOT = { flag = ind_aubm_route_war_achievement }
 		NOT = { flag = ind_aubm_postwar_congress_completed }
-		AND = { flag = ind_aubm_jp_independent_soviet_war NOT = { alliance = { country = IND country = JAP } } OR = { flag = ind_aubm_soviet_limited_victory flag = ind_aubm_soviet_major_victory flag = ind_aubm_major_annex_victory_sov flag = ind_aubm_national_northern_victory } }
+		AND = { OR = { AND = { flag = ind_aubm_jp_independent_soviet_war NOT = { alliance = { country = IND country = JAP } } } AND = { alliance = { country = IND country = JAP } war = { country = IND country = SOV } } } OR = { flag = ind_aubm_soviet_limited_victory flag = ind_aubm_soviet_major_victory flag = ind_aubm_major_annex_victory_sov flag = ind_aubm_national_northern_victory } }
 	}
-	name = "India Sustains a Second Continental War"
-	desc = "India has produced a Northern or Soviet result without surrendering the southern division of labour. Tokyo records the Soviet war as an Indian theatre rather than an automatic Japanese obligation."
+	name = "India Opens the Northern Front"
+	desc = "Under a compact, Delhi has sustained an independent Soviet campaign; under formal alliance, Indian command has opened the Caucasus relief front shared with Tokyo. Either result is recorded as an Indian northern theatre rather than an uncredited coalition war."
 	style = 2
 	picture = "aubm_v4_japan_southern_choice"
 	date = { day = 0 month = january year = 1933 }
@@ -1243,6 +1314,7 @@ event = {
 		command = { type = setflag which = ind_aubm_victory_sovereign_credit }
 		command = { type = setflag which = ind_aubm_route_achievement_japan_dualfront }
 		command = { type = setflag which = ind_aubm_route_achievement_japan }
+		command = { type = setflag which = ind_aubm_congress_entitlement_japan }
 		command = { type = setflag which = ind_aubm_route_war_achievement }
 	}
 }
@@ -1256,6 +1328,7 @@ event = {
 		flag = ind_aubm_wartime_framework
 		flag = ind_aubm_route_japan
 		flag = ind_aubm_route_focus_japan_ocean
+		NOT = { flag = ind_aubm_bespoke_route_contract_alpha23 }
 		NOT = { flag = ind_aubm_route_achievement_japan_ocean }
 		NOT = { flag = ind_aubm_route_war_achievement }
 		NOT = { flag = ind_aubm_postwar_congress_completed }
@@ -1275,6 +1348,7 @@ event = {
 		command = { type = setflag which = ind_aubm_coalition_consultation }
 		command = { type = setflag which = ind_aubm_route_achievement_japan_ocean }
 		command = { type = setflag which = ind_aubm_route_achievement_japan }
+		command = { type = setflag which = ind_aubm_congress_entitlement_japan }
 		command = { type = setflag which = ind_aubm_route_war_achievement }
 	}
 }
@@ -1288,6 +1362,7 @@ event = {
 		flag = ind_aubm_wartime_framework
 		flag = ind_aubm_route_japan
 		flag = ind_aubm_route_focus_japan_equal
+		NOT = { flag = ind_aubm_bespoke_route_contract_alpha23 }
 		NOT = { flag = ind_aubm_route_achievement_japan_equal }
 		NOT = { flag = ind_aubm_route_war_achievement }
 		NOT = { flag = ind_aubm_postwar_congress_completed }
@@ -1307,6 +1382,7 @@ event = {
 		command = { type = setflag which = ind_aubm_coalition_credit }
 		command = { type = setflag which = ind_aubm_route_achievement_japan_equal }
 		command = { type = setflag which = ind_aubm_route_achievement_japan }
+		command = { type = setflag which = ind_aubm_congress_entitlement_japan }
 		command = { type = setflag which = ind_aubm_route_war_achievement }
 	}
 }
@@ -1320,27 +1396,36 @@ event = {
 		flag = ind_aubm_wartime_framework
 		flag = ind_aubm_route_japan
 		flag = ind_aubm_route_charter_japan
+		NOT = { flag = ind_aubm_bespoke_route_contract_alpha23 }
 		flag = ind_aubm_global_campaign_victory
 		NOT = { flag = ind_aubm_route_achievement_japan_global }
 		NOT = { flag = ind_aubm_route_war_achievement }
-		NOT = { flag = ind_aubm_postwar_congress_completed }
+		# Do not let the route-neutral victory flag race the selected
+		# focus achievement or reuse that same victory as secondary credit.
+		NOT = {
+			OR = {
+				AND = { flag = ind_aubm_route_focus_japan_southern OR = { flag = ind_aubm_sea_theatre_achieved flag = ind_aubm_jp_southern_victory flag = ind_aubm_national_southern_victory } }
+				AND = { flag = ind_aubm_route_focus_japan_dualfront AND = { OR = { AND = { flag = ind_aubm_jp_independent_soviet_war NOT = { alliance = { country = IND country = JAP } } } AND = { alliance = { country = IND country = JAP } war = { country = IND country = SOV } } } OR = { flag = ind_aubm_soviet_limited_victory flag = ind_aubm_soviet_major_victory flag = ind_aubm_major_annex_victory_sov flag = ind_aubm_national_northern_victory } } }
+				AND = { flag = ind_aubm_route_focus_japan_ocean OR = { flag = ind_aubm_national_western_victory flag = ind_aubm_britain_limited_victory flag = ind_aubm_britain_major_victory flag = ind_aubm_major_annex_victory_eng } }
+				AND = { flag = ind_aubm_route_focus_japan_equal OR = { flag = ind_aubm_decisive_great_power flag = ind_aubm_japan_major_victory flag = ind_aubm_britain_major_victory flag = ind_aubm_soviet_major_victory flag = ind_aubm_major_annex_victory_eng flag = ind_aubm_major_annex_victory_sov } }
+			}
+		}
 	}
-	name = "India Wins Beyond the Charter's Named Front"
-	desc = "India has won a published campaign outside the four fronts named by The Delhi-Tokyo Wartime Charter. The War Cabinet records the result as a valid national achievement, so a distant or emergent-state war can still lead to India's peace congress."
+	name = "A Secondary Victory Beyond the Charter"
+	desc = "India has won a published campaign outside the primary front selected under The Delhi-Tokyo Wartime Charter. The War Cabinet records useful secondary standing, but this result cannot complete, block or relabel the selected primary focus and cannot unlock a peace congress by itself."
 	style = 2
 	picture = "aubm_v4_japan_southern_choice"
 	date = { day = 0 month = january year = 1933 }
 	offset = 2
 	deathdate = { day = 29 month = december year = 1964 }
 	action_a = {
-		name = "Enter the wider victory in India's war ledger"
+		name = "Record secondary standing; keep the primary focus active"
 		command = { type = money value = 100 }
 		command = { type = supplies value = 300 }
 		command = { type = dissent value = -1 }
 		command = { type = setflag which = ind_aubm_victory_sovereign_credit }
+		command = { type = setflag which = ind_aubm_secondary_campaign_credit }
 		command = { type = setflag which = ind_aubm_route_achievement_japan_global }
-		command = { type = setflag which = ind_aubm_route_achievement_japan }
-		command = { type = setflag which = ind_aubm_route_war_achievement }
 	}
 }
 
@@ -1349,7 +1434,7 @@ event = {
 	random = no
 	persistent = yes
 	country = IND
-	trigger = { flag = ind_aubm_wartime_framework flag = ind_aubm_route_japan flag = ind_aubm_route_war_achievement atwar = no NOT = { flag = ind_aubm_postwar_congress_completed } NOT = { flag = ind_aubm_postwar_congress_japan } }
+	trigger = { flag = ind_aubm_wartime_framework flag = ind_aubm_congress_entitlement_japan flag = ind_aubm_route_war_achievement atwar = no NOT = { flag = ind_aubm_postwar_congress_completed } NOT = { flag = ind_aubm_postwar_congress_japan } }
 	name = "The Delhi-Tokyo Asian Settlement Congress"
 	desc = "India has completed a measurable campaign beside Japan. Delhi must choose an equal Asian concert, an Indian-led ocean sphere with Japanese Pacific primacy, or strategic separation after victory. Settlements already concluded remain intact; this decision defines the relationship that follows them."
 	style = 2
@@ -1358,7 +1443,7 @@ event = {
 	offset = 10
 	deathdate = { day = 29 month = december year = 1964 }
 	action_a = {
-		name = "A concert of sovereign partners: -4 dissent, +1 research"
+		name = "An equal Delhi-Tokyo concert: -4 dissent, +1 research"
 		command = { type = dissent value = -4 }
 		command = { type = belligerence value = -3 }
 		command = { type = research_mod value = 1 }
@@ -1372,7 +1457,7 @@ event = {
 		command = { trigger = { exists = AST } type = relation which = AST value = 25 }
 	}
 	action_b = {
-		name = "An Indian security sphere: +2 dissent, +3 TC"
+		name = "An Indian Ocean security sphere: +2 dissent, +3 TC"
 		command = { type = dissent value = 2 }
 		command = { type = tc_mod value = 3 }
 		command = { type = supplies value = 1000 }
@@ -1382,7 +1467,7 @@ event = {
 		command = { type = setflag which = ind_aubm_postwar_security_sphere }
 	}
 	action_c = {
-		name = "Strategic autonomy: +600 money, +3 supply output"
+		name = "Separate after victory: +600 money, +3 supply output"
 		command = { type = money value = 600 }
 		command = { type = industrial_modifier which = supplies value = 3 }
 		command = { type = dissent value = -1 }
@@ -1472,7 +1557,7 @@ event = {
 	random = no
 	persistent = yes
 	country = IND
-	trigger = { flag = ind_aubm_wartime_framework AND = { flag = ind_aubm_route_sovereign NOT = { flag = ind_aubm_socialist_autonomous } } atwar = yes NOT = { flag = ind_aubm_route_charter_sovereign } }
+	trigger = { flag = ind_aubm_wartime_framework AND = { flag = ind_aubm_route_sovereign NOT = { flag = ind_aubm_socialist_autonomous } } atwar = yes NOT = { flag = ind_aubm_route_charter_sovereign } NOT = { flag = ind_aubm_route_war_achievement } NOT = { flag = ind_aubm_postwar_congress_completed } }
 	name = "The Sovereign Indian War Charter"
 	desc = "India answers to no coalition plan. Indian Ocean League makes southern and western settlements the goal. Continental Security Arc makes the Himalaya and Central Asia decisive. World Balancer seeks a great-power armistice. Republican Federation measures victory through sovereign governments rather than direct annexation."
 	style = 2
@@ -1484,21 +1569,25 @@ event = {
 		name = "Build an Indian Ocean League"
 		command = { type = setflag which = ind_aubm_route_focus_sovereign_ocean }
 		command = { type = setflag which = ind_aubm_route_charter_sovereign }
+		command = { type = setflag which = ind_aubm_bespoke_route_contract_alpha23 }
 	}
 	action_b = {
 		name = "Secure the Continental Arc"
 		command = { type = setflag which = ind_aubm_route_focus_sovereign_continental }
 		command = { type = setflag which = ind_aubm_route_charter_sovereign }
+		command = { type = setflag which = ind_aubm_bespoke_route_contract_alpha23 }
 	}
 	action_c = {
 		name = "Act as the World Balancer"
 		command = { type = setflag which = ind_aubm_route_focus_sovereign_balancer }
 		command = { type = setflag which = ind_aubm_route_charter_sovereign }
+		command = { type = setflag which = ind_aubm_bespoke_route_contract_alpha23 }
 	}
 	action_d = {
 		name = "Build a Republican Federation"
 		command = { type = setflag which = ind_aubm_route_focus_sovereign_republican }
 		command = { type = setflag which = ind_aubm_route_charter_sovereign }
+		command = { type = setflag which = ind_aubm_bespoke_route_contract_alpha23 }
 	}
 }
 
@@ -1511,6 +1600,7 @@ event = {
 		flag = ind_aubm_wartime_framework
 		AND = { flag = ind_aubm_route_sovereign NOT = { flag = ind_aubm_socialist_autonomous } }
 		flag = ind_aubm_route_focus_sovereign_ocean
+		NOT = { flag = ind_aubm_bespoke_route_contract_alpha23 }
 		NOT = { flag = ind_aubm_route_achievement_sovereign_ocean }
 		NOT = { flag = ind_aubm_route_war_achievement }
 		NOT = { flag = ind_aubm_postwar_congress_completed }
@@ -1530,6 +1620,7 @@ event = {
 		command = { type = setflag which = ind_aubm_victory_sovereign_credit }
 		command = { type = setflag which = ind_aubm_route_achievement_sovereign_ocean }
 		command = { type = setflag which = ind_aubm_route_achievement_sovereign }
+		command = { type = setflag which = ind_aubm_congress_entitlement_sovereign }
 		command = { type = setflag which = ind_aubm_route_war_achievement }
 	}
 }
@@ -1543,6 +1634,7 @@ event = {
 		flag = ind_aubm_wartime_framework
 		AND = { flag = ind_aubm_route_sovereign NOT = { flag = ind_aubm_socialist_autonomous } }
 		flag = ind_aubm_route_focus_sovereign_continental
+		NOT = { flag = ind_aubm_bespoke_route_contract_alpha23 }
 		NOT = { flag = ind_aubm_route_achievement_sovereign_continental }
 		NOT = { flag = ind_aubm_route_war_achievement }
 		NOT = { flag = ind_aubm_postwar_congress_completed }
@@ -1562,6 +1654,7 @@ event = {
 		command = { type = setflag which = ind_aubm_victory_sovereign_credit }
 		command = { type = setflag which = ind_aubm_route_achievement_sovereign_continental }
 		command = { type = setflag which = ind_aubm_route_achievement_sovereign }
+		command = { type = setflag which = ind_aubm_congress_entitlement_sovereign }
 		command = { type = setflag which = ind_aubm_route_war_achievement }
 	}
 }
@@ -1575,6 +1668,7 @@ event = {
 		flag = ind_aubm_wartime_framework
 		AND = { flag = ind_aubm_route_sovereign NOT = { flag = ind_aubm_socialist_autonomous } }
 		flag = ind_aubm_route_focus_sovereign_balancer
+		NOT = { flag = ind_aubm_bespoke_route_contract_alpha23 }
 		NOT = { flag = ind_aubm_route_achievement_sovereign_balancer }
 		NOT = { flag = ind_aubm_route_war_achievement }
 		NOT = { flag = ind_aubm_postwar_congress_completed }
@@ -1594,6 +1688,7 @@ event = {
 		command = { type = setflag which = ind_aubm_victory_sovereign_credit }
 		command = { type = setflag which = ind_aubm_route_achievement_sovereign_balancer }
 		command = { type = setflag which = ind_aubm_route_achievement_sovereign }
+		command = { type = setflag which = ind_aubm_congress_entitlement_sovereign }
 		command = { type = setflag which = ind_aubm_route_war_achievement }
 	}
 }
@@ -1607,6 +1702,7 @@ event = {
 		flag = ind_aubm_wartime_framework
 		AND = { flag = ind_aubm_route_sovereign NOT = { flag = ind_aubm_socialist_autonomous } }
 		flag = ind_aubm_route_focus_sovereign_republican
+		NOT = { flag = ind_aubm_bespoke_route_contract_alpha23 }
 		NOT = { flag = ind_aubm_route_achievement_sovereign_republican }
 		NOT = { flag = ind_aubm_route_war_achievement }
 		NOT = { flag = ind_aubm_postwar_congress_completed }
@@ -1626,6 +1722,7 @@ event = {
 		command = { type = setflag which = ind_aubm_victory_sovereign_credit }
 		command = { type = setflag which = ind_aubm_route_achievement_sovereign_republican }
 		command = { type = setflag which = ind_aubm_route_achievement_sovereign }
+		command = { type = setflag which = ind_aubm_congress_entitlement_sovereign }
 		command = { type = setflag which = ind_aubm_route_war_achievement }
 	}
 }
@@ -1639,27 +1736,36 @@ event = {
 		flag = ind_aubm_wartime_framework
 		AND = { flag = ind_aubm_route_sovereign NOT = { flag = ind_aubm_socialist_autonomous } }
 		flag = ind_aubm_route_charter_sovereign
+		NOT = { flag = ind_aubm_bespoke_route_contract_alpha23 }
 		flag = ind_aubm_global_campaign_victory
 		NOT = { flag = ind_aubm_route_achievement_sovereign_global }
 		NOT = { flag = ind_aubm_route_war_achievement }
-		NOT = { flag = ind_aubm_postwar_congress_completed }
+		# Do not let the route-neutral victory flag race the selected
+		# focus achievement or reuse that same victory as secondary credit.
+		NOT = {
+			OR = {
+				AND = { flag = ind_aubm_route_focus_sovereign_ocean OR = { flag = ind_aubm_sea_theatre_achieved flag = ind_aubm_national_southern_victory flag = ind_aubm_national_western_victory flag = ind_aubm_britain_limited_victory flag = ind_aubm_major_annex_victory_eng } }
+				AND = { flag = ind_aubm_route_focus_sovereign_continental OR = { flag = ind_aubm_national_northern_victory flag = ind_aubm_soviet_limited_victory flag = ind_aubm_soviet_major_victory flag = ind_aubm_major_annex_victory_sov flag = ind_aubm_regional_victory_afg flag = ind_aubm_regional_victory_tib flag = ind_aubm_regional_victory_sik } }
+				AND = { flag = ind_aubm_route_focus_sovereign_balancer OR = { flag = ind_aubm_decisive_great_power flag = ind_aubm_britain_major_victory flag = ind_aubm_germany_major_victory flag = ind_aubm_soviet_major_victory flag = ind_aubm_japan_major_victory flag = ind_aubm_america_major_victory flag = ind_aubm_major_annex_victory_eng flag = ind_aubm_major_annex_victory_ger flag = ind_aubm_major_annex_victory_sov flag = ind_aubm_major_annex_victory_jap flag = ind_aubm_major_annex_victory_usa } }
+				AND = { flag = ind_aubm_route_focus_sovereign_republican OR = { flag = ind_aubm_regional_victory_chi flag = ind_aubm_regional_victory_chc flag = ind_aubm_regional_victory_sia flag = ind_aubm_regional_victory_per flag = ind_aubm_regional_victory_afg flag = ind_aubm_regional_victory_eth flag = ind_aubm_regional_victory_saf } }
+			}
+		}
 	}
-	name = "India Wins Beyond the Charter's Named Front"
-	desc = "India has won a published campaign outside the four fronts named by The Sovereign Indian War Charter. The War Cabinet records the result as a valid national achievement, so a distant or emergent-state war can still lead to India's peace congress."
+	name = "A Secondary Victory Beyond the Charter"
+	desc = "India has won a published campaign outside the primary front selected under The Sovereign Indian War Charter. The War Cabinet records useful secondary standing, but this result cannot complete, block or relabel the selected primary focus and cannot unlock a peace congress by itself."
 	style = 2
 	picture = "aubm_v4_grand_strategy"
 	date = { day = 0 month = january year = 1933 }
 	offset = 2
 	deathdate = { day = 29 month = december year = 1964 }
 	action_a = {
-		name = "Enter the wider victory in India's war ledger"
+		name = "Record secondary standing; keep the primary focus active"
 		command = { type = money value = 100 }
 		command = { type = supplies value = 300 }
 		command = { type = dissent value = -1 }
 		command = { type = setflag which = ind_aubm_victory_sovereign_credit }
+		command = { type = setflag which = ind_aubm_secondary_campaign_credit }
 		command = { type = setflag which = ind_aubm_route_achievement_sovereign_global }
-		command = { type = setflag which = ind_aubm_route_achievement_sovereign }
-		command = { type = setflag which = ind_aubm_route_war_achievement }
 	}
 }
 
@@ -1668,7 +1774,7 @@ event = {
 	random = no
 	persistent = yes
 	country = IND
-	trigger = { flag = ind_aubm_wartime_framework AND = { flag = ind_aubm_route_sovereign NOT = { flag = ind_aubm_socialist_autonomous } } flag = ind_aubm_route_war_achievement atwar = no NOT = { flag = ind_aubm_postwar_congress_completed } NOT = { flag = ind_aubm_postwar_congress_sovereign } }
+	trigger = { flag = ind_aubm_wartime_framework flag = ind_aubm_congress_entitlement_sovereign flag = ind_aubm_route_war_achievement atwar = no NOT = { flag = ind_aubm_postwar_congress_completed } NOT = { flag = ind_aubm_postwar_congress_sovereign } }
 	name = "The Congress of India's Independent Peace"
 	desc = "India has completed a measurable war without accepting another capital's command. The postwar choice is an open league, a defended sphere, or a self-contained great-power republic. None changes a country's sovereignty without its separate settlement event."
 	style = 2
@@ -1677,7 +1783,7 @@ event = {
 	offset = 10
 	deathdate = { day = 29 month = december year = 1964 }
 	action_a = {
-		name = "A concert of sovereign partners: -4 dissent, +1 research"
+		name = "An open Indian Ocean league: -4 dissent, +1 research"
 		command = { type = dissent value = -4 }
 		command = { type = belligerence value = -3 }
 		command = { type = research_mod value = 1 }
@@ -1691,7 +1797,7 @@ event = {
 		command = { trigger = { exists = ETH } type = relation which = ETH value = 25 }
 	}
 	action_b = {
-		name = "An Indian security sphere: +2 dissent, +3 TC"
+		name = "A defended republican sphere: +2 dissent, +3 TC"
 		command = { type = dissent value = 2 }
 		command = { type = tc_mod value = 3 }
 		command = { type = supplies value = 1000 }
@@ -1701,7 +1807,7 @@ event = {
 		command = { type = setflag which = ind_aubm_postwar_security_sphere }
 	}
 	action_c = {
-		name = "Strategic autonomy: +600 money, +3 supply output"
+		name = "Independent republic: +600 money, +3 supply output"
 		command = { type = money value = 600 }
 		command = { type = industrial_modifier which = supplies value = 3 }
 		command = { type = dissent value = -1 }

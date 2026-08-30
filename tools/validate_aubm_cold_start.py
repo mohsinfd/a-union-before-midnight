@@ -7,7 +7,7 @@ import pathlib
 import re
 import sys
 
-from validate_v4 import extract_blocks, load_text, scalar
+from validate_v4 import direct_block_body, direct_nested_block, extract_blocks, load_text, scalar
 
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -51,6 +51,47 @@ UNION_FLAGS = {
     "aubm_v4_union_register_opened",
     "aubm_v4_integration_active",
 }
+WAR_CABINET_UNION_FLAGS = {
+    "ind_v3_integrated",
+    "aubm_v4_union_register_opened",
+}
+UNRESTRICTED_SANDBOX_FLAG = "ind_aubm_unrestricted_sandbox"
+
+
+def has_flag(text: str, flag: str) -> bool:
+    return bool(re.search(rf"\bflag\s*=\s*{re.escape(flag)}\b", text))
+
+
+def has_war_cabinet_access_gate(text: str) -> bool:
+    """Require Union settlement plus one explicit strategic-phase escape."""
+    gate = direct_nested_block(text, "trigger") or text
+    direct_gate = direct_block_body(gate)
+    if not all(has_flag(direct_gate, flag) for flag in WAR_CABINET_UNION_FLAGS):
+        return False
+    access_or = direct_nested_block(gate, "OR")
+    if access_or is None:
+        return False
+    assignments = sorted(
+        (key.lower(), value.strip('"').lower())
+        for key, value in re.findall(
+            r"\b([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(\"[^\"]*\"|[^\s\}]+)",
+            direct_block_body(access_or),
+        )
+    )
+    return assignments == sorted(
+        (
+            ("year", "1937"),
+            ("atwar", "yes"),
+            ("flag", UNRESTRICTED_SANDBOX_FLAG),
+        )
+    )
+
+
+def has_before_1937_guard(text: str) -> bool:
+    return any(
+        re.search(r"\byear\s*=\s*1937\b", block.text)
+        for block in extract_blocks(text, "NOT")
+    )
 
 
 def events() -> dict[int, str]:
@@ -119,10 +160,10 @@ def main() -> int:
     legacy_sleepers = sleep_targets(records[9281900]) | sleep_targets(records[9283200])
     expected_sleepers = legacy_sleepers | FRESH_ONLY_RETIRED
     checks += 4
-    if len(legacy_sleepers) != 216:
-        errors.append(f"legacy retirement source contract has {len(legacy_sleepers)} targets, expected 216")
-    if len(expected_sleepers) != 218:
-        errors.append(f"fresh retirement contract has {len(expected_sleepers)} targets, expected 218")
+    if len(legacy_sleepers) != 217:
+        errors.append(f"legacy retirement source contract has {len(legacy_sleepers)} targets, expected 217")
+    if len(expected_sleepers) != 219:
+        errors.append(f"fresh retirement contract has {len(expected_sleepers)} targets, expected 219")
     missing_sleepers = expected_sleepers - scenario_sleepers
     if missing_sleepers:
         errors.append(
@@ -178,11 +219,95 @@ def main() -> int:
     for block_name in ("decision", "decision_trigger"):
         checks += 1
         blocks = extract_blocks(war_cabinet, block_name)
-        if not blocks or not all(
-            re.search(rf"\bflag\s*=\s*{flag}\b", blocks[0].text)
-            for flag in ("ind_v3_integrated", "aubm_v4_union_register_opened")
-        ):
-            errors.append(f"9281001 {block_name} can open before the Union settlement")
+        if len(blocks) != 1 or not has_war_cabinet_access_gate(blocks[0].text):
+            errors.append(
+                f"9281001 {block_name} must require the Union and one of "
+                "year 1937, an active war or the unrestricted-sandbox opt-in"
+            )
+
+    checks += 1
+    sandbox = records.get(9281008)
+    if sandbox is None:
+        errors.append("missing optional early-campaign sandbox decision 9281008")
+    else:
+        checks += 10
+        if not re.search(r"\bpersistent\s*=\s*yes\b", sandbox):
+            errors.append("9281008 is consumable instead of a permanent opt-in")
+        if not re.search(r"\brandom\s*=\s*no\b", sandbox):
+            errors.append("9281008 is not a deterministic player decision")
+        if direct_nested_block(sandbox, "trigger"):
+            errors.append("9281008 has an automatic trigger instead of remaining optional")
+
+        sandbox_language = " ".join(
+            filter(
+                None,
+                (
+                    scalar(sandbox, "name"),
+                    scalar(sandbox, "decision_desc"),
+                    scalar(sandbox, "desc"),
+                    scalar(action(sandbox), "name"),
+                ),
+            )
+        ).lower()
+        for term in ("optional", "permanent", "no reward"):
+            if term not in sandbox_language:
+                errors.append(f"9281008 does not clearly disclose that it is {term}")
+        if "early" not in sandbox_language and "before 1937" not in sandbox_language:
+            errors.append("9281008 does not clearly disclose its pre-1937 purpose")
+
+        for block_name in ("decision", "decision_trigger"):
+            blocks = extract_blocks(sandbox, block_name)
+            if len(blocks) != 1:
+                errors.append(f"9281008 must have exactly one {block_name} block")
+                continue
+            block = blocks[0].text
+            if not all(has_flag(block, flag) for flag in WAR_CABINET_UNION_FLAGS):
+                errors.append(f"9281008 {block_name} can appear before the Union settlement")
+            if not re.search(r"\batwar\s*=\s*no\b", block):
+                errors.append(f"9281008 {block_name} is not restricted to peacetime")
+            if not has_before_1937_guard(block):
+                errors.append(f"9281008 {block_name} remains available in 1937 or later")
+            if not any(
+                has_flag(not_block.text, UNRESTRICTED_SANDBOX_FLAG)
+                for not_block in extract_blocks(block, "NOT")
+            ):
+                errors.append(f"9281008 {block_name} can be selected repeatedly")
+
+        deathdates = extract_blocks(sandbox, "deathdate")
+        if len(deathdates) != 1 or scalar(deathdates[0].text, "year") != "1964":
+            errors.append("9281008 must remain parser-valid through the campaign; its decision gate ends availability after 1936")
+
+        sandbox_actions = sum(
+            (extract_blocks(sandbox, f"action_{letter}") for letter in "abcd"),
+            [],
+        )
+        sandbox_commands = (
+            extract_blocks(sandbox_actions[0].text, "command")
+            if len(sandbox_actions) == 1
+            else []
+        )
+        no_reward_opt_in = (
+            len(sandbox_actions) == 1
+            and len(sandbox_commands) == 1
+            and (scalar(sandbox_commands[0].text, "type") or "").lower() == "setflag"
+            and scalar(sandbox_commands[0].text, "which") == UNRESTRICTED_SANDBOX_FLAG
+        )
+        if not no_reward_opt_in:
+            errors.append("9281008 must only set the permanent sandbox flag and grant no reward")
+
+        sandbox_clearers = []
+        for event_id, event in records.items():
+            for command in extract_blocks(event, "command"):
+                if (
+                    (scalar(command.text, "type") or "").lower() == "clrflag"
+                    and scalar(command.text, "which") == UNRESTRICTED_SANDBOX_FLAG
+                ):
+                    sandbox_clearers.append(event_id)
+        if sandbox_clearers:
+            errors.append(
+                "the permanent unrestricted-sandbox opt-in is cleared by events: "
+                + ", ".join(str(event_id) for event_id in sorted(set(sandbox_clearers)))
+            )
 
     for event_id in (9281002, 9281003, 9281004):
         checks += 1
@@ -202,14 +327,14 @@ def main() -> int:
             and len(commands) == 1
             and (scalar(commands[0].text, "type") or "").lower() == "event"
             and scalar(commands[0].text, "which") == "9281001"
-            and all(
-                re.search(rf"\bflag\s*=\s*{flag}\b", commands[0].text)
-                for flag in ("ind_v3_integrated", "aubm_v4_union_register_opened")
-            )
+            and has_war_cabinet_access_gate(commands[0].text)
             and not re.search(r"\btype\s*=\s*war\b", retired)
         )
         if not safe_redirect:
-            errors.append(f"retired War Cabinet event {event_id} is not a safe one-action redirect")
+            errors.append(
+                f"retired War Cabinet event {event_id} is not a safe one-action "
+                "redirect with the current Union/1937/war/sandbox access gate"
+            )
 
     # Fresh campaigns must use the reserved V4 families (and therefore their
     # distinct model/sprite slots), while upgraded saves still receive a
