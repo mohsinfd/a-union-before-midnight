@@ -4,6 +4,32 @@ Version: `4.2.0-alpha.26`
 Date: 30 Aug 2026
 Scope: original AUBM all-terrain political-map source and local compilation
 
+## Superseding human result: failed visibility
+
+The first real fresh-1933 human test on 30 Aug 2026 proved that Alpha 26 loaded
+correctly but **failed its intended readability goal**. India appeared in the
+expected indigo ownership colour, all four installed lightmaps matched the
+Alpha 26 hashes below, and the engine used the mod-local map files. The player
+nevertheless could not see the advertised terrain language in either political
+or terrain mode.
+
+A subsequent native-colour audit found the cause. At zoom 2, 84.33% of the
+India crop was unchanged, only 0.495% of all pixels reached DeltaE76 >= 2, no
+pixel reached DeltaE76 >= 5, and changed pixels had a median DeltaE76 of 1.63.
+Most marks were only 2x2 pixels before labels, counters, borders, weather and
+existing relief were composited over them. The earlier diagnostic preview had
+used an artificial three-RGB-units-per-index multiplier and terrain-specific
+display hues; it therefore overstated contrast relative to Darkest Hour's real
+`DarkBlue` colour scale. Coverage was also reported against a restricted
+brightness-anchor subset instead of all ordinary land, especially hiding
+distant-zoom gaps.
+
+Accordingly, this record remains valid evidence for Alpha 26's deterministic
+encoding, ownership preservation and donor-free provenance, but it is **not a
+visual acceptance pass**. Alpha 27 replaces the faulty preview and denominator
+with real-colour, all-land, per-terrain gates and a stronger original motif
+build. In-engine human acceptance remains separate from offline validation.
+
 ## Provenance result
 
 The finished terrain surface uses **no Blood and Iron or DEC Map pixel**.

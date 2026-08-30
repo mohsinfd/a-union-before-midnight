@@ -1,7 +1,7 @@
 =======================================================================
- A UNION BEFORE MIDNIGHT - V4.2.0 ALPHA 26 - 30 AUG 2026
+ A UNION BEFORE MIDNIGHT - V4.2.0 ALPHA 27 - 31 AUG 2026
  For Darkest Hour 1.05.2
- Source version 4.2.0-alpha.26
+ Source version 4.2.0-alpha.27
 =======================================================================
 
 Freedom came early. Unity came at a price.
@@ -11,17 +11,24 @@ beginning on 1 January 1933. India inherits a united but unsettled continental
 state from Ceylon to Burma and must build a working federation, modern economy
 and credible armed forces before the world crisis reaches Asia.
 
-Alpha 26 replaces the temporary Blood and Iron terrain reference with original
-AUBM visual motifs for all eight land terrain classes at all four map zooms.
-Run tools/Enable-Aubm-OriginalTerrainVisuals.ps1 after the public install; it
+Alpha 27 corrects the failed Alpha 26 terrain-visibility pass. Alpha 26 was the
+right installed build and its four mod lightmaps loaded, but the first human
+test could not see useful terrain cues in political or terrain mode. Alpha 27
+applies the original eight terrain motifs to all ordinary land, retains their
+strength at all four zooms and validates them through Darkest Hour's real
+political, terrain, Snow and Mud colour scales. Run
+tools/Enable-Aubm-OriginalTerrainVisuals.ps1 after the public install; it
 generates the lightmaps locally from your own Darkest Hour Full map, validates
 them and backs up the prior state. It reads no Blood and Iron or DEC map pixels.
-The generated lightmaps do not ship in GitHub. Alpha 26 makes no gameplay or
-balance changes beyond Alpha 24/25.
+The generated lightmaps do not ship in GitHub. Alpha 27 makes no gameplay or
+balance changes beyond Alpha 24/25, and human in-engine acceptance is still
+required before the visual correction is called successful.
 
-The exact full version is displayed on the AUBM main menu, loading screen and
-1933 scenario title. Those labels are generated from one version file; the
-generic "V4.2" folder label shown by Darkest Hour is not the only cue.
+The exact full version is displayed in a small bottom-right badge on the AUBM
+main menu and loading screen, and in the 1933 scenario title. The main artwork
+itself intentionally remains familiar. Those labels are generated from one
+version file; the generic "V4.2" folder label shown by Darkest Hour is not the
+only cue.
 
 The exact personal 41-family India sprite profile has been restored in the
 developer's local installation after the previous public deployment. It remains
@@ -42,7 +49,9 @@ remain in place. This is still an unproven alpha playtest build.
 
 - Darkest Hour 1.05.2.
 - Darkest Hour Full, included with the game.
-- A fresh 1933 campaign.
+- A fresh 1933 campaign for the complete authored gameplay test. An Alpha 26
+  save can be resumed for the Alpha 27 visual-only correction after a complete
+  game exit and cold restart.
 
 Blood and Iron is not a runtime foundation and is not required to play an
 already built local installation. The exact personal sprite profile uses a
@@ -414,13 +423,23 @@ forbid a Japanese, Allied, German, Soviet or sovereign foreign-policy route.
  COMPATIBILITY AND TESTING STATUS
 -----------------------------------------------------------------------
 
-Start a new 1933 campaign for the intended Alpha 23 test. V3 saves are
-unsupported, and earlier V4 alpha saves do not exercise the fresh-only opening
-retirement or contain the complete liberation, lane, armistice, economy and
-authored-route state. The expanded leader roster and scenario research are
-serialized at game start. Alpha 23 has not yet received an executable launch or
-human wartime playthrough; do not treat the Alpha 22 smoke result below as
-proof of this source revision.
+Alpha 27 is the current source and installed local build. It is a visual-only
+correction, so the Alpha 26 campaign just started can be resumed after a full
+game exit and cold restart. Start a new 1933 campaign when testing the complete
+Alpha 23 gameplay arcs: V3 saves are unsupported, and earlier V4 saves do not
+exercise the fresh-only opening retirement or contain the complete liberation,
+lane, armistice, economy and authored-route state. The expanded leader roster
+and scenario research are serialized at game start.
+
+The Alpha 27 source passed static validation with 0 errors and 0 warnings, the
+art and visible-version gates, all native political/terrain/Snow/Mud terrain
+gates, economy/resource/campaign/combat/construction checks and the Steam Deck
+test. Its public installer manifest contains 344 donor-safe files. The local
+terrain transaction decoded all 447,525 installed map blocks and verified all
+four live lightmap hashes. The 27 save/config files remain byte-identical at
+172,625,181 bytes, and the separate 41-family personal India sprite profile is
+also hash-exact. The game has not been launched since the Alpha 27 terrain
+installation, so a cold engine load and human map inspection remain pending.
 
 The newest 29 Aug autosave is a separate Alpha 22 campaign at 1 December 1934.
 India is peaceful, uncommitted and still on the sovereign prewar route. Its
@@ -470,16 +489,23 @@ Those Alpha 22 checks verify its build, parser, installer and initial launch.
 They do not validate Alpha 23 or replace a complete human wartime and postwar
 playthrough.
 
-Alpha 22's build, local deployment and fresh opening smoke are complete. Alpha
-23 has passed its final post-fix deterministic source-only run, but it has not
-been published, installed, deployed, executable-launched or human-playtested.
-The maintained validate_v4.py pipeline is the
+Alpha 22's build and fresh-opening smoke remain historical evidence. Alpha 23's
+authored gameplay source later passed its deterministic suite; Alpha 26 then
+failed its human terrain-visibility goal despite loading the correct files.
+Alpha 27 is installed and passes its offline/static release gates, but has not
+yet received the required post-install engine and human visual check. The
+maintained validate_v4.py pipeline is the
 authoritative production validator; the obsolete validate_v3_legacy.py harness
 is not a release gate because its tools/v3_config.json input no longer exists.
 
 Still required:
 
-- A fresh Alpha 23 executable launch and opening smoke.
+- A cold Alpha 27 launch confirming the bottom-right build badge, successful
+  1933 map entry and recognizable terrain cues in political and terrain mode at
+  all four zooms. This visual check may use the current Alpha 26 campaign; it
+  does not require another new game.
+- Representative Snow and Mud inspection in the actual engine compositor.
+- A fresh Alpha 23 gameplay campaign for the opening and authored-route arcs.
 - A controlled copied-old-save run confirming Compatibility Reviews repair
   only missing state and never replay fresh money or manpower.
 - A no-cheat 1940/1942 force and economy measurement.

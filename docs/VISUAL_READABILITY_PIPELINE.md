@@ -12,9 +12,9 @@ The eight required land classes are **Plains, Forest, Mountain, Desert, Marsh,
 Hills, Jungle and Urban**. Ocean is a separate background class. Snow is a
 weather state, not a ninth terrain class.
 
-## Alpha 26 composition and provenance
+## Alpha 27 composition and provenance
 
-Alpha 26's terrain surface is an original AUBM procedural layer generated
+Alpha 27's terrain surface is an original AUBM procedural layer generated
 locally from the player's Darkest Hour Full map. It does **not** reuse a Blood
 and Iron or DEC Map lightmap, colour scale, palette, screenshot crop or traced
 pixel. Blood and Iron was audited as the former private reference and then
@@ -25,8 +25,8 @@ removed from the runtime terrain path.
 | core `map/Map_1/lightmap1.tbl` through `lightmap4.tbl` | player's legally installed Darkest Hour Full | supplies encoded geometry, original leaf ownership and base 6-bit brightness to the local compiler | read locally; not redistributed |
 | core `colorscales.csv` fallback | player's Darkest Hour Full | converts the compiled 6-bit brightness into the normal political-map surface | inherited locally; no AUBM or donor replacement ships |
 | `mod/map/Map_1/Province.csv` | AUBM gameplay data | assigns each playable province to the current mechanical terrain class, including AUBM terrain corrections | public AUBM content |
-| `assets/v4_terrain/aubm_terrain_motifs.json` | original AUBM deterministic recipes | defines eight semantic brightness motifs and four restrained zoom strengths | public AUBM content |
-| `tools/aubm_lightmap.py` | clean-room AUBM codec/compiler | preserves the Darkest Hour encoding while applying only the current province's approved motif | public AUBM content |
+| `assets/v4_terrain/aubm_terrain_motifs.json` | original AUBM deterministic recipes | defines eight semantic brightness motifs, all-land density bands and native-colour contrast gates | public AUBM content |
+| `tools/aubm_lightmap.py` | clean-room AUBM codec/compiler | preserves ownership and protected/non-land pixels while applying an amplitude-safe motif to ordinary mechanical land | public AUBM content |
 | `tools/Enable-Aubm-OriginalTerrainVisuals.ps1` | AUBM transactional installer | compiles, validates, backs up, installs or rolls back exactly four lightmaps plus the local colour-scale override state | public tool; generated outputs stay local |
 | generated AUBM `lightmap1.tbl` through `lightmap4.tbl` | player-owned Darkest Hour input plus original AUBM recipes | supplies the finished eight-terrain surface at every zoom | local generated binaries; excluded from Git and public installer manifests |
 | `aubm_terrain_motif_moodboard.png` | original AI-assisted AUBM concept study | informed vocabulary such as ridges, arcs, reeds and canopy mass | public concept art; no moodboard pixel is sampled by the compiler |
@@ -39,13 +39,21 @@ gradient energy at coarse-cell boundaries than inside them. A second wave/grid
 study was also rejected because continuous bands and streets did not express
 the requested semantic terrain language. Neither rejected design is installed.
 
-The accepted Alpha 26 source instead uses sparse hash marks, separated canopy
-clumps, short ridge pairs, broken dune/contour arcs, short water and reed marks,
-dense irregular jungle masses and compact urban fragments. Motif density is
-kept stable across zooms while only the brightness amplitude reduces. The atlas
-uses one neutral Indian-indigo base for every class and the same 3x diagnostic
-contrast as the map renderer, so class identity is not faked by giving each
-terrain its own colour.
+Alpha 26 introduced sparse hash marks, separated canopy clumps, short ridge
+pairs, broken dune/contour arcs, short water and reed marks, dense irregular
+jungle masses and compact urban fragments. Its files loaded correctly, but the
+first real human test could not see that language in political or terrain mode.
+The cause was an acceptance error: the preview used terrain-specific diagnostic
+hues and an artificial three-RGB-units-per-index multiplier, while coverage was
+measured only against a fixed brightness-anchor subset. On the real `DarkBlue`
+scale at zoom 2, only 0.495% of the India crop reached DeltaE76 >= 2.
+
+Alpha 27 keeps the original motif vocabulary but removes the brightness-anchor
+restriction, measures coverage against every ordinary mechanical-land pixel,
+does not attenuate distant zooms, and increases per-class amplitude. Its atlas
+and crop renderer use the player's real named Darkest Hour colour scale with no
+contrast multiplier or invented terrain hue. Offline output is labelled as a
+native-colour mapping, not represented as an engine screenshot.
 
 An exhaustive encoded-layer audit of all 336,960 Blood and Iron `lightmap1`
 blocks confirms the coverage gap before runtime rendering. Mountain and Desert
@@ -61,7 +69,7 @@ practical terms, treat Mountain and Desert as the donor's clear successes,
 Forest as partial, and Plains/Marsh/Hills/Jungle/Urban as unresolved rather than
 claiming complete coverage.
 
-## Alpha 24 reference pass and Alpha 26 replacement
+## Alpha 24 reference pass, Alpha 26 replacement and Alpha 27 correction
 
 - India uses `DarkBlue` (described in the playtest guide as Indian indigo).
   None of India's immediate neighbours uses that country colour.
@@ -79,6 +87,8 @@ claiming complete coverage.
 - Alpha 26 supersedes that reference overlay with the original local compiler
   described above. The personal reference helper remains only for historical
   comparison and is not part of the finished Alpha 26 runtime terrain surface.
+- Alpha 26 then failed human visibility despite loading correctly. Alpha 27 is
+  the corrective pass; it still reuses no donor pixels or donor colour scale.
 
 ## Original AUBM terrain layer
 
@@ -123,19 +133,21 @@ new visual class; no hand-painted province list is allowed.
 The terrain class determines where a motif may alter the 6-bit brightness
 sample. The safest fixture mode preserves every offset, province ID, owner
 index, quadtree bit, border encoding, trailer and other non-colour byte exactly.
-Protect special border leaves and unsafe brightness ranges. Static map names,
-shadows and relief also live in the colour-scale samples, so their protected
-ranges need screenshot verification. Cities, railways, counters, ports,
-beaches and airfields are separate rendered layers; the executable and human
-gates must verify that motif contrast beneath them remains restrained.
+Special, sentinel, Ocean and non-land leaves are protected exactly. Ordinary
+land offsets are amplitude-safe at the 0 and 63 limits, and the actually applied
+source-to-result pair is included in native-colour measurement. Cities,
+railways, counters, ports, beaches and airfields are separate rendered layers;
+the executable and human gates must verify that motif contrast beneath them
+remains restrained.
 
 ### 2a. Refine coarse leaves only after the fixed-tree fixture passes
 
 The rejected checker fixture showed that changing one value per existing coarse
-leaf was not enough for organic 1-3 px cues. The Alpha 26 refinement compiler
-split eligible ordinary-land leaves larger than four pixels, inheriting the
-exact original owner index. It must not split Ocean, ID 0, protected/special
-leaves or protected static artwork.
+leaf was not enough for organic 1-3 px cues. The refinement compiler splits
+ordinary-land leaves larger than two pixels into two-pixel cells, inheriting the
+exact original owner index. Existing one- and two-pixel land leaves receive the
+same semantic motif directly. It must not alter Ocean, ID 0 or special/non-land
+leaves.
 
 This mode is structurally higher risk and must follow the binary format exactly:
 
@@ -154,20 +166,20 @@ acceptable only if its zero-motif owner and raw-brightness rasters are exact.
 
 ### 3. Generate eight restrained original motifs
 
-Alpha 26 uses small deterministic AUBM-owned procedural motifs quantized to the
-actual map brightness range and resolution. Every mechanical land class has a
+Alpha 27 uses deterministic AUBM-owned procedural motifs quantized to the actual
+map brightness range and resolution. Every mechanical land class must have a
 recognizable signal; “quiet” does not mean invisible.
 
 | Mechanical land class | Required political-map signal | Critical distinction |
 | --- | --- | --- |
-| Plains | fine irregular grain, offsets -1..+1, 25-35% coverage | not Urban, Desert or an unpainted gap |
-| Forest | rounded 1-3 px canopy clusters, offsets -2..+3, 40-55% coverage | lighter and at least 20 percentage points less dense than Jungle |
-| Mountain | broken diagonal ridge/shadow pairs, offsets -3..+4 | stronger than Hills; no mirrored X or checker hatch |
-| Desert | sparse staggered dune arcs/flecks, offsets -2..+2 | texture without a uniform pale wash |
-| Marsh | short horizontal water dashes plus isolated reeds | not Forest; no complete repeated row or column |
-| Hills | soft broken crescents/contours, offsets -2..+2 | RMS contrast at least 30% below Mountain |
-| Jungle | irregular interlocking clusters, offsets -3..+3, 60-75% coverage | at least 20 percentage points denser than Forest |
-| Urban | broken streets and 2x2 blocks, offsets -3..+3, 45-65% coverage | no continuous Cartesian grid; not a city icon by itself |
+| Plains | fine irregular grain, offsets -10..+10, 25-35% coverage | not Urban, Desert or an unpainted gap |
+| Forest | rounded 1-3 px canopy clusters, offsets -10..+10, 40-55% coverage | lighter and at least 20 percentage points less dense than Jungle |
+| Mountain | broken diagonal ridge/shadow pairs, offsets -10..+10 | stronger than Hills; no mirrored X or checker hatch |
+| Desert | sparse staggered dune arcs/flecks, offsets -10..+10 | texture without a uniform pale wash |
+| Marsh | short horizontal water dashes plus isolated reeds, offsets -9..+9 | not Forest; no complete repeated row or column |
+| Hills | soft broken crescents/contours, offsets -8..+8, 18-35% coverage | RMS contrast at least 30% below Mountain |
+| Jungle | irregular interlocking clusters, offsets -9..+9, 60-75% coverage | at least 20 percentage points denser than Forest |
+| Urban | broken streets and 2x2 blocks, offsets -8..+8, 45-65% coverage | no continuous Cartesian grid; not a city icon by itself |
 
 Ocean remains a quiet background and must not receive a land motif. Snow does
 not belong in this table: it is tested as a weather layer over the terrain.
@@ -177,10 +189,10 @@ released motifs must be original, reproducible build inputs. No Blood and Iron,
 DEC Map or other donor bitmap, palette, lightmap, screenshot crop or traced
 province illustration may enter the generator.
 
-Use a 16x16 one-pixel master motif where possible, or at minimum an 8x8 motif
-with two-pixel cells. Add deterministic low-amplitude irregularity so no global
-Cartesian grid is visible. Derive a separately simplified profile for each zoom
-instead of sampling one coarse grid unchanged at all four scales.
+Use two-screen-pixel motif cells phase-locked to world origin at every zoom.
+Add deterministic signed irregularity so no global Cartesian grid is visible.
+Keep semantic density and contrast usable at all four zooms rather than
+attenuating distant layers into a no-op.
 
 ### 4. Compile every zoom layer deterministically
 
@@ -260,8 +272,9 @@ readability gates below.
 - Keep every motif's absolute mean offset at or below 0.5 so it remains a
   texture rather than a replacement ownership colour. Reject a constant
   rectangular motif feature larger than three screen pixels at combat zoom.
-- Require the protected source-colour interval and every allowed motif offset
-  to remain inside the engine's 0-63 colour range without relying on clamping.
+- Require every applied motif offset to remain inside the engine's 0-63 colour
+  range using deterministic amplitude-safe saturation at the two endpoints;
+  record the actual source/result pair used by perceptual gates.
 - Parse `Province.csv` and require exactly the eight supported land values.
   Treat Ocean, the ID-zero sentinel, the terminal `-1` row and non-province
   pixels separately.
@@ -269,15 +282,33 @@ readability gates below.
   record and every playable CSV province ID to occur in at least one decoded
   zoom-one leaf. Report province, leaf and reconstructed pixel area for all
   eight classes, and fail if any class is empty.
-- Require every eligible land leaf to map to exactly one land-class mask at
-  every zoom. Pairwise intersections must be zero and the union must equal all
-  eligible land-leaf pixels.
+- Require every ordinary mechanical-land pixel to map to exactly one land-class
+  mask at every zoom. Pairwise intersections must be zero and the union must
+  equal all ordinary mechanical land; no fixed brightness-anchor denominator is
+  permitted.
 - Require non-zero eligible and modified pixels for each class at every zoom,
   and enforce that class's declared coverage band: Plains 25-35%, Forest
-  40-55%, Mountain 20-40%, Desert 12-24%, Marsh 15-30%, Hills 20-40%, Jungle
+  40-55%, Mountain 20-40%, Desert 12-24%, Marsh 15-30%, Hills 18-35%, Jungle
   60-75% and Urban 45-65%. Zoom strength changes magnitude rather than erasing
   marks. Coverage is still an absence/aliasing guard; the blind human gate
   remains the visibility proof.
+- Use MapUtility-compatible final-float truncation to expand the player's real
+  named colour scales. CIEDE2000 is the release metric; DeltaE76 is reported
+  only for comparison with Alpha 26.
+- Under India's `DarkBlue` political scale, require every class at every zoom
+  to have a marked-pixel median DeltaE00 of at least 3.0 and at least 80% of its
+  modified pixels at DeltaE00 >= 2. Require at least 18% of all ordinary land
+  to reach DeltaE00 >= 2.
+- Under the authoritative terrain-mode mapping (Orange/Clear, Green/Forest,
+  Gray/Mountains, Yellow/Desert, LightGreen/Marsh, DarkOrange/Hills,
+  DarkGreen/Jungle and DarkGray/Urban), require each class to have median
+  DeltaE00 at least 2.25 and 80% of modified pixels at DeltaE00 >= 2. The 2.25
+  target records the maximum honest common margin available under the reviewed
+  +/-10 shade-index cap; several official scales cannot reach 3.0 without
+  overdriving political mode or reversing the Hills/Mountain hierarchy.
+- Measure Snow/White and Mud/Brown separately with a provisional median 1.5 and
+  75% of modified pixels at DeltaE00 >= 1. A diagnostic palette or contrast
+  multiplier may not satisfy any native-colour gate.
 - Validate each province's declared fill coordinate against its own ID mask and
   report every mismatch. The exact ID raster remains authoritative; never
   repair geometry by assigning a province from a fill coordinate alone.

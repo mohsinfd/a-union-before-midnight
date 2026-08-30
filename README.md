@@ -25,7 +25,7 @@ second- or third-ranked power, but no route grants an automatic victory.
 
 This repository contains only the **A Union Before Midnight overlay**. It does not
 redistribute Darkest Hour. Players do not need Blood and Iron to play AUBM or
-to generate the original Alpha 26 terrain layer. Rebuilding the optional
+to generate the original Alpha 27 terrain layer. Rebuilding the optional
 personal animated-sprite overlay does require Blood and Iron v1.1 to be
 installed locally; that separate pipeline imports those assets and records
 their provenance. The donor binaries require author permission before
@@ -64,7 +64,7 @@ add `-IncludePersonalSprites` to build and validate the local-only visual
 overlay; the default remains donor-free.
 
 After installing the public package, run
-`tools/Enable-Aubm-OriginalTerrainVisuals.ps1` to compile Alpha 26's original
+`tools/Enable-Aubm-OriginalTerrainVisuals.ps1` to compile Alpha 27's original
 eight-terrain political-map layer from your own Darkest Hour Full map. The tool
 backs up the exact prior state, validates all four zoom levels, and can roll the
 change back. Generated Darkest Hour-derived lightmaps are deliberately not
@@ -81,23 +81,34 @@ routine destruction. Twelve three-division field corps, faster prepared
 reserves, airfield security, dispersal fields and scramble missions reduce
 wartime micromanagement within the limits of the Darkest Hour executable.
 
-Alpha 26, dated **30 Aug 2026**, replaces the local Blood and Iron terrain
-reference with an original AUBM all-terrain layer. Plains, forest, mountain,
-desert, marsh, hills, jungle and urban terrain now receive different restrained
-surface motifs across all four map zooms. The compiler uses the player's clean
-Darkest Hour map geometry, AUBM's current province terrain data and original
-deterministic recipes; it reads no Blood and Iron or DEC map pixels. The public
-repository ships the recipes, compiler, provenance and validation tools, while
-each player generates the Darkest Hour-derived lightmaps locally.
-See the [Alpha 26 terrain asset README](assets/v4_terrain/README.md) for the
-exact input/output boundary and [Visual Readability Pipeline](docs/VISUAL_READABILITY_PIPELINE.md)
-for the audit and human acceptance matrix. Exact hashes and full-map pixel
-counts are in the [Alpha 26 terrain validation record](docs/ALPHA26_TERRAIN_VALIDATION.md).
+Alpha 27, dated **30 Aug 2026**, is the visual-acceptance correction to the
+original AUBM all-terrain layer. Alpha 26's files loaded correctly, but its
+first human fresh-campaign test could not see the terrain language: the old
+preview exaggerated contrast and its coverage denominator omitted ordinary
+land outside a narrow brightness range. Alpha 27 applies motifs across all
+ordinary mechanical land, keeps full strength at every zoom and tests every
+terrain through both India's real `DarkBlue` political scale and Darkest Hour's
+official terrain-mode scale. Plains, forest, mountain, desert, marsh, hills,
+jungle and urban retain distinct original marks; the compiler reads no Blood
+and Iron or DEC map pixel.
+
+The public repository ships recipes, compiler, provenance and validation tools,
+while each player generates Darkest Hour-derived lightmaps locally. See the
+[Alpha 27 terrain asset README](assets/v4_terrain/README.md) for the exact
+input/output boundary, the [Visual Readability Pipeline](docs/VISUAL_READABILITY_PIPELINE.md)
+for the audit and human acceptance matrix, and the
+[Alpha 27 terrain validation record](docs/ALPHA27_TERRAIN_VALIDATION.md) for
+exact all-land/native-colour gates and output hashes. The
+[Alpha 26 validation addendum](docs/ALPHA26_TERRAIN_VALIDATION.md) records the
+failed human result that prompted the correction. Alpha 27's final in-engine
+readability verdict remains a human gate rather than an offline claim.
 
 Alpha 25 added a release-safety identity generated from the single `VERSION`
 file. The exact full version appears on the AUBM main menu, loading screen and
-1933 scenario title, so an Alpha 26 install can be identified before beginning
-a campaign. Alpha 26 does not change Alpha 24/25 gameplay systems or balance.
+1933 scenario title, so an Alpha 27 install can be identified before beginning
+a campaign. Alpha 27 does not change Alpha 24/25 gameplay systems or balance.
+Its lightmaps are save-neutral: after installation, an Alpha 26 campaign may be
+resumed following a complete game exit and cold restart.
 
 Alpha 24, dated **30 Aug 2026**, adds an explicit **First Operational Air
 Group** after the Air Staff, Flying Schools and Airfield Security milestones.

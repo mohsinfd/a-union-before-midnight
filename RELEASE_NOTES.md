@@ -1,5 +1,91 @@
 # Release Notes
 
+## 4.2.0-alpha.27 / Alpha 27 - Native-Contrast Terrain Correction
+
+*30 Aug 2026*
+
+Alpha 27 corrects a failed Alpha 26 human acceptance test. Alpha 26 was the
+right installed version—India was indigo, all four live lightmaps matched their
+release hashes and the engine loaded those mod files—but its terrain motifs
+were not visibly useful in either political or terrain mode. This remains a
+visual-only update: province terrain mechanics, ownership, borders, saves,
+events and balance do not change.
+
+### What failed in Alpha 26
+
+- The diagnostic renderer used terrain-specific display hues and an artificial
+  three-RGB-units-per-shade multiplier. Darkest Hour's real `DarkBlue` political
+  scale and most terrain-mode scales are substantially shallower.
+- Coverage was divided by pixels inside fixed brightness anchors 18-30 rather
+  than all ordinary mechanical land. That made especially weak zoom-3/4 output
+  look complete in reports.
+- At zoom 2, 84.33% of the audited India crop was unchanged. Only 0.495% of all
+  pixels reached DeltaE76 >= 2 in political mode; exact terrain mode was worse
+  at 0.0401%. No terrain-mode pixel reached DeltaE76 5.
+- The human result therefore supersedes the earlier static impression: Alpha
+  26 passed encoding/provenance tests but failed visual readability.
+
+### Schema-3 correction
+
+- Remove fixed brightness anchors. Every ordinary pixel belonging to Plains,
+  Forest, Mountain, Desert, Marsh, Hills, Jungle or Urban is now part of the
+  denominator and eligible for its deterministic motif; special, sentinel,
+  Ocean and non-land pixels remain exact.
+- Retain full amplitude at all four zooms and use amplitude-safe 0-63 endpoint
+  handling. Motif offsets are now Plains 10, Forest 10, Mountain 10, Desert 10,
+  Marsh 9, Hills 8, Jungle 9 and Urban 8. Hills use a sparser 18-35% contour
+  band and remain below 70% of Mountain RMS.
+- Replace the flattering preview with MapUtility-compatible final-float
+  truncation of the player's real Darkest Hour colour scales. Offline renders
+  identify themselves as native-colour mappings, never engine screenshots.
+- Use CIEDE2000 for release gates while retaining DeltaE76 only for historical
+  comparison. At every zoom and for every terrain, political `DarkBlue` must
+  reach marked median DeltaE00 3.0 with 80% of modified pixels at DeltaE00 >= 2.
+- Validate terrain mode through Darkest Hour's authoritative mapping from
+  `Map colors.txt`: Orange/Clear, Green/Forest, Gray/Mountains, Yellow/Desert,
+  LightGreen/Marsh, DarkOrange/Hills, DarkGreen/Jungle and DarkGray/Urban. Each
+  class must reach median 2.25 with the same 80% threshold.
+- Measure Snow/White and Mud/Brown separately under a provisional median-1.5,
+  75%-at-DeltaE00>=1 gate. Real weather compositing still requires engine review.
+- Hash both `colorscales.csv` and `Map colors.txt` in each local build manifest,
+  record both directions of the reviewed +/-10 technical contrast cap, and make
+  the mandatory human-engine gate explicit.
+
+### Compatibility and acceptance boundary
+
+- Generated lightmaps remain local-only and donor-free. No Blood and Iron or
+  DEC pixel, palette or colour scale is reused or published.
+- All offline/static gates pass: deterministic four-zoom output, per-terrain
+  native political/terrain/Snow/Mud thresholds and an independent exhaustive
+  comparison of all 447,525 encoded blocks. Protected pixels, ownership,
+  non-land data and trailers remain exact.
+- The normal Alpha 27 overlay is installed and its version assets are
+  hash-verified. The separate terrain transaction also completed successfully:
+  all four live lightmaps match their release hashes and all 447,525 installed
+  blocks decode. Its state record reports `installed` at
+  `2026-08-31T00:04:17.9217611+05:30`; the mod-local colour scale is absent and
+  the verified Darkest Hour core fallback remains active. The game has not been
+  launched after that deployment.
+- The current 27 save/config files were snapshotted before installation:
+  172,625,181 bytes with zero hash differences. Alpha 27's map-only correction
+  is compatible with the Alpha 26 campaign the player just started. The final
+  post-terrain comparison proves the live and snapshot sets still have the same
+  27 files and 172,625,181 bytes, with zero SHA-256 differences.
+- The separately installed personal-sprite profile remains intact: 41 unit
+  families, 591 descriptors, 553 unit BMPs and 44 palettes, with zero missing
+  files or hash mismatches.
+- A complete game exit and cold restart are required because Darkest Hour loads
+  all four lightmaps at process start. A new campaign is not required for this
+  visual hotfix.
+- Offline gates are fail-fast evidence, not a claim that the feature is now fun
+  or instantly readable. Alpha 27 is not human-accepted until the player sees
+  the installed result in political and terrain mode at all four zooms.
+
+The completed terrain receipt—including its backup directory, transaction
+state, colour-scale state and four verified live hashes—is recorded in
+`docs/ALPHA27_TERRAIN_VALIDATION.md`. Runtime and human acceptance remain
+pending.
+
 ## 4.2.0-alpha.26 / Alpha 26 - Original All-Terrain Political Map
 
 *30 Aug 2026*

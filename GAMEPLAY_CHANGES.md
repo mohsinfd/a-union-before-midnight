@@ -1,6 +1,6 @@
-# A Union Before Midnight: Gameplay Changes and Alpha 26 Status
+# A Union Before Midnight: Gameplay Changes and Alpha 27 Status
 
-This is the player-facing guide to the current **4.2.0-alpha.26** source of
+This is the player-facing guide to the current **4.2.0-alpha.27** source of
 *A Union Before Midnight*. It explains what changed, how the new systems are
 supposed to play, what has been verified, and what still needs a real campaign
 test.
@@ -11,13 +11,15 @@ Updated: 30 Aug 2026.
 
 | Area | Status |
 | --- | --- |
-| Current source version | `4.2.0-alpha.26` |
-| Alpha 26 implementation | Original deterministic visual motifs for all eight land terrains across all four map zooms; generated locally from the player's clean Darkest Hour map |
-| Alpha 26 gameplay delta | None; terrain mechanics, province ownership, borders and event balance remain unchanged |
-| Alpha 26 provenance | Zero Blood and Iron/DEC runtime pixels; public source contains recipes and tooling but excludes generated Darkest Hour-derived lightmaps |
-| Alpha 26 verification | Passed: byte-identical four-zoom codec roundtrip, three repeat-identical full compiles, exhaustive 447,525-block ownership/protection checks, motif quality gates, donor denial and the complete public release audit |
-| Alpha 26 local deployment | Installed: all four original AUBM lightmaps hash-match the verified compile; core colour-scale fallback is active; the 41-family personal India sprite profile is restored; all 27 saves remain byte-identical |
-| Alpha 26 runtime | The installed executable reached the main menu at native 1024x768 fullscreen and visibly reported `AUBM BUILD 4.2.0-ALPHA.26`; fresh-1933 map entry was intentionally cancelled while the player used the machine, so it is neither claimed passed nor recorded as a crash |
+| Current source version | `4.2.0-alpha.27` |
+| Alpha 27 implementation | Corrected original eight-terrain layer: every ordinary mechanical-land pixel is eligible, full contrast is retained at all four zooms, and political/terrain/Snow/Mud modes use exact native-colour gates |
+| Alpha 27 gameplay delta | None; terrain mechanics, province ownership, borders, saves, events and balance are unchanged |
+| Alpha 27 provenance | Zero Blood and Iron/DEC runtime pixels; public source contains recipes and tooling but excludes locally generated Darkest Hour-derived lightmaps and palettes |
+| Alpha 27 verification | Offline/static complete: schema-3 regressions, deterministic four-zoom compile, all native-colour gates and an independent 447,525-block exhaustive comparison passed; live human engine acceptance remains pending |
+| Alpha 27 local deployment | Installed: normal overlay/version assets verified, all four live lightmaps hash-match the release outputs, all 447,525 installed blocks decoded successfully, the mod-local colour-scale override is absent, and the verified core fallback remains active |
+| Alpha 27 runtime | Not launched after deployment; a cold start and political/terrain-mode inspection at all four zooms are still required |
+| Alpha 26 engineering result | Binary/provenance checks passed and the engine loaded the exact installed files, but the first real fresh-campaign visual test failed: the terrain language was not visible in political or terrain mode |
+| Alpha 26 failure cause | The diagnostic renderer exaggerated contrast and coverage used a restricted 18-30 brightness-anchor denominator; at zoom 2 only 0.495% of the India crop reached DeltaE76 >= 2 in political mode and 0.0401% in exact terrain mode |
 | Alpha 25 implementation | Exact full version generated onto the main menu, loading screen and 1933 scenario title from one source of truth |
 | Alpha 25 gameplay delta | None; gameplay and balance remain Alpha 24 |
 | Alpha 25 deterministic validation | Repeat-stable 4,436-file build, 344-entry donor-safe manifest, visible-identity gate and all gameplay/release gates passed with 0 errors/warnings |
@@ -30,11 +32,11 @@ Updated: 30 Aug 2026.
 | Alpha 23 implementation | 20 authored route arcs, partner crises/collapse, strict primary lifecycle and optional Japan grand campaign implemented in source |
 | Alpha 23 deterministic validation | Final post-fix `-ValidateOnly` pass: repeat-stable 4,435-file overlay, 343-entry donor-safe manifest, 0 static errors/warnings and all named gates passed |
 | Alpha 23 publication and runtime | Not published, installed, deployed, executable-launched or human-playtested |
-| Latest personal deployment and executable smoke | Alpha 26 installed and menu-launched; exact build badge visible; windowed legacy DirectDraw initialization is unsupported on this host, while native fullscreen works |
-| Personal sprite profile | Exact 41-family/591-descriptor/553-strip profile and 1,189 local installed files verified; excluded from the V4 Git tree and public packages |
-| Campaign compatibility | Start a fresh 1933 campaign |
+| Latest personal deployment and executable smoke | Alpha 26 loaded from the correct mod and exact four lightmaps; indigo India proved the right build, while human terrain visibility failed; Alpha 27 base files and corrected terrain are installed, while a new executable smoke remains pending |
+| Personal sprite profile | Installed 41-family/591-descriptor/553-BMP/44-palette profile hash-verified with zero missing files or mismatches; excluded from the V4 Git tree and public packages |
+| Campaign compatibility | A fresh 1933 campaign remains recommended for Alpha 23 gameplay validation; the Alpha 27 visual-only hotfix is save-compatible with the campaign just started |
 | Reviewed saves | Newest 29 Aug Alpha 22 autosave is a separate 1 Dec 1934 campaign; the 23 Aug manual save remains the older Japan-compact wartime reference |
-| Human Alpha 26 playthrough | Not completed; the route and wartime arcs plus the terrain/weather presentation require a fresh human campaign |
+| Human Alpha 27 playthrough | Pending; offline metrics are fail-fast evidence, not a substitute for the player's actual four-zoom political/terrain/weather review |
 | Source-control safety | Public-safe exclusions active; local-only assets remain excluded |
 
 The maintained source is the `v4-direct-dh` branch. Its public installer
@@ -42,7 +44,7 @@ manifest is designed to contain only AUBM gameplay, documentation and
 redistribution-cleared art. Darkest Hour foundation files, the restored local
 41-family donor-derived sprite and model-panel profile, unresolved leader
 portraits, manuals, screenshots and Steam test backups remain excluded. The
-current Alpha 26 public manifest contains 344 donor-safe files. The local
+current public manifest contains donor-safe source files only. The local
 installation then adds four player-generated lightmaps and the separately
 restored 41-family India sprite profile; neither payload is present in the Git
 tree or public package. The local sprite transaction currently verifies 1,189
@@ -60,28 +62,34 @@ repairs route switching, Japan formalization and primary-objective ownership.
 Alpha 24 adds the missing early aircraft decision and a safe visual-readability
 pass without treating donor map art as distributable AUBM content. Alpha 25
 adds an in-game build identity so the launcher folder's generic `V4.2` label
-can no longer be mistaken for the exact installed alpha. Alpha 26 replaces the
-temporary donor reference with original, locally compiled AUBM terrain motifs
-for every land class and every map zoom.
+can no longer be mistaken for the exact installed alpha. Alpha 26 replaced the
+temporary donor reference with original, locally compiled AUBM terrain motifs,
+but failed its first human visibility test. Alpha 27 corrects the renderer,
+all-land denominator, contrast calibration and map-mode acceptance gates.
 
-The practical verdict is: **Alpha 26 is installed, deterministically verified
-and menu-launched, but it is not yet a proven stable long campaign.** A fresh
-1933 map load and human wartime/postwar run remain required for terrain/weather
-acceptance, AI timing, balance, naval survivability and narrative pacing. The
-campaign portion of the local smoke was stopped at the player's request while
-the machine was in use; those manual process exits are not treated as crashes.
+The practical verdict is: **Alpha 26 was the correct installed build and its
+terrain files loaded, but its visual feature failed. Alpha 27 passes the full
+offline/static acceptance suite, its four corrected live lightmaps are
+installed and verified, but it is not yet human-accepted.** The current
+campaign does not need to be restarted for this visual-only change. The final
+save comparison proves the snapshot and live set each contain the same 27
+files and 172,625,181 bytes, with zero SHA-256 differences. The game has not
+been launched after deployment. A cold engine load and the player's direct
+review remain required before readability is called fixed; the longer
+wartime/postwar campaign is still required for AI timing, balance, naval
+survivability and narrative pacing.
 
 The old `India Mod` folder is the original/base workspace. The maintained V4
 source of truth is the sibling `India Ascendant` repository, and deployment
 targets the separately installed Steam mod listed above.
 
-## What Alpha 26 Changes
+## What Alpha 27 Changes
 
-Alpha 26 is a visual-readability release, not a rules or balance release. India
+Alpha 27 is a visual-readability correction, not a rules or balance release. India
 keeps the indigo ownership colour introduced in Alpha 24, while the normal
 political map gains a restrained terrain vocabulary underneath it:
 
-| Terrain | Alpha 26 normal-map cue |
+| Terrain | Alpha 27 normal-map cue |
 | --- | --- |
 | Plains | sparse irregular field/soil marks |
 | Forest | medium-density separated canopy clumps |
@@ -92,9 +100,10 @@ political map gains a restrained terrain vocabulary underneath it:
 | Jungle | dense irregular canopy masses with small gaps |
 | Urban | compact broken blocks and short road fragments, never a full grid |
 
-These cues are generated at all four engine zooms. Their mark density remains
-stable while the contrast is reduced at distance, so changing zoom does not
-silently return to the old unmarked surface.
+These cues are generated at all four engine zooms. Their mark density and full
+amplitude remain stable at distance, so changing zoom cannot silently return to
+the old unmarked surface. Coverage is measured against all ordinary land, not
+the restricted brightness anchors that hid Alpha 26's distant-zoom gaps.
 
 What comes from Darkest Hour is the player's own encoded map geometry, province
 ownership masks, base brightness and normal colour scale. What is new is the
@@ -144,14 +153,15 @@ is distinct from all immediate neighbours, including Britain, China, Siam,
 Afghanistan, Nepal and Bhutan. The full donor-free terrain-map plan is in
 [Visual Readability Pipeline](docs/VISUAL_READABILITY_PIPELINE.md).
 
-Alpha 26 supersedes the old local Blood and Iron terrain reference. Run
+Alpha 27 supersedes the failed Alpha 26 calibration and the older local Blood
+and Iron terrain reference. Run
 `tools/Enable-Aubm-OriginalTerrainVisuals.ps1` after installing AUBM. It reads
 only the player's Darkest Hour core lightmaps, combines their geometry with the
 current AUBM `Province.csv`, applies eight original procedural motif recipes,
 validates all four zoom levels and backs up the exact prior file-or-absence
 state. Its generated lightmaps remain local because they derive from the
 player's game installation. The old Blood and Iron helper remains historical;
-none of its terrain pixels are reused by Alpha 26.
+none of its terrain pixels or colour scales are reused by Alpha 27.
 
 The same local-only workflow now restores the unique India unit profile after a
 public update: `tools/Enable-Aubm-PersonalIndiaSprites.ps1` generates and

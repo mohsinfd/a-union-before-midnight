@@ -81,7 +81,7 @@ and public installer manifests, and are not redistribution-cleared.
 
 ## Terrain-map motifs
 
-Alpha 26's eight terrain motifs, recipe data, clean-room lightmap codec/compiler
+Alpha 27's eight terrain motifs, schema-3 recipe data, clean-room lightmap codec/compiler
 and neutral-colour QA atlas are original AUBM project material. The visual
 language was designed specifically for plains, forest, mountain, desert, marsh,
 hills, jungle and urban terrain and is produced deterministically at all four
@@ -89,12 +89,16 @@ Darkest Hour map zooms.
 
 The local compiler reads the player's own Darkest Hour Full lightmaps only for
 map geometry, province ownership encoding and base brightness. It reads AUBM's
-current `Province.csv` for the terrain assigned to each province. It does not
-read, copy, trace or blend a Blood and Iron or DEC Map lightmap, colour scale,
+current `Province.csv` for the terrain assigned to each province. It reads the
+player's core `colorscales.csv` and `Map colors.txt` only to reproduce native
+Darkest Hour contrast in offline release measurements; neither is installed or
+redistributed. It does not read, copy, trace or blend a Blood and Iron or DEC
+Map lightmap, colour scale,
 screenshot crop or other donor pixel. The early Blood and Iron overlay was used
 as a private comparative reference and was rejected because it did not identify
 all eight terrain classes reliably; no part of that surface is reused in the
-finished Alpha 26 terrain layer.
+finished Alpha 27 terrain layer. Alpha 26's own first calibration was likewise
+superseded after the player could not see it in either relevant map mode.
 
 The generated `lightmap1.tbl` through `lightmap4.tbl` files derive from the
 player's Darkest Hour installation and are therefore kept local. GitHub and the
