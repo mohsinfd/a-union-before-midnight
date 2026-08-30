@@ -35,7 +35,8 @@ permission before redistribution.
 2. Download and extract the latest A Union Before Midnight release.
 3. Run `INSTALL.bat`.
 4. Select **A Union Before Midnight V4.2** in the Darkest Hour launcher.
-5. Start **A Union Before Midnight: India 1933** in the scenario list.
+5. Start the **A Union Before Midnight: India 1933** scenario whose title ends
+   with the same full version shown on the AUBM main menu.
 
 The installer detects the standard Steam location, verifies every overlay file,
 copies Darkest Hour Full into an isolated mod folder and applies A Union Before
@@ -70,6 +71,12 @@ Air and naval combat now emphasizes organization loss and withdrawal over
 routine destruction. Twelve three-division field corps, faster prepared
 reserves, airfield security, dispersal fields and scramble missions reduce
 wartime micromanagement within the limits of the Darkest Hour executable.
+
+Alpha 25, dated **30 Aug 2026**, adds a release-safety identity generated from
+the single `VERSION` file. The exact full version now appears on the AUBM main
+menu, on the loading screen and at the end of the 1933 scenario title. The
+installer records that same value in its install marker. Alpha 25 does not
+change Alpha 24's gameplay systems or balance.
 
 Alpha 24, dated **30 Aug 2026**, adds an explicit **First Operational Air
 Group** after the Air Staff, Flying Schools and Airfield Security milestones.
@@ -197,7 +204,7 @@ naval, command and research improvements remain intact.
 
 For a player-facing explanation of the complete campaign loop, route choices,
 war economy, mobilisation, settlement rules, verification status and remaining
-playtest risks, see [Gameplay Changes and Alpha 24 Status](GAMEPLAY_CHANGES.md).
+playtest risks, see [Gameplay Changes and Alpha 25 Status](GAMEPLAY_CHANGES.md).
 The all-route authored objectives are summarized in the
 [Route Campaign Matrix](docs/ROUTE_CAMPAIGN_MATRIX.md), and the intended
 high-difficulty Tokyo campaign is covered by the

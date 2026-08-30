@@ -1,6 +1,6 @@
-# A Union Before Midnight: Gameplay Changes and Alpha 24 Status
+# A Union Before Midnight: Gameplay Changes and Alpha 25 Status
 
-This is the player-facing guide to the current **4.2.0-alpha.24** source of
+This is the player-facing guide to the current **4.2.0-alpha.25** source of
 *A Union Before Midnight*. It explains what changed, how the new systems are
 supposed to play, what has been verified, and what still needs a real campaign
 test.
@@ -11,7 +11,12 @@ Updated: 30 Aug 2026.
 
 | Area | Status |
 | --- | --- |
-| Current source version | `4.2.0-alpha.24` |
+| Current source version | `4.2.0-alpha.25` |
+| Alpha 25 implementation | Exact full version generated onto the main menu, loading screen and 1933 scenario title from one source of truth |
+| Alpha 25 gameplay delta | None; gameplay and balance remain Alpha 24 |
+| Alpha 25 deterministic validation | Repeat-stable 4,436-file build, 344-entry donor-safe manifest, visible-identity gate and all gameplay/release gates passed with 0 errors/warnings |
+| Alpha 25 local deployment | Installed; menu, loading screen and scenario title hash-matched to source; 27 saves backed up and verified unchanged; personal terrain and 41-family sprites restored |
+| Alpha 25 runtime | Executable menu smoke and human playthrough still pending |
 | Alpha 24 implementation | First Operational Air Group, Indian indigo political colour and personal local terrain-reference tool implemented in source |
 | Alpha 24 focused validation | First-air-group regression gate passed: 51 checks; full 4,435-file deterministic build and all release gates passed |
 | Alpha 24 local deployment | Installed and hash-verified locally; 27 existing saves independently backed up and verified unchanged |
@@ -46,10 +51,12 @@ clean cold start and repairs defects found by auditing the existing early game.
 Alpha 23 turns the five strategic routes into authored human campaigns and
 repairs route switching, Japan formalization and primary-objective ownership.
 Alpha 24 adds the missing early aircraft decision and a safe visual-readability
-pass without treating donor map art as distributable AUBM content.
+pass without treating donor map art as distributable AUBM content. Alpha 25
+adds an in-game build identity so the launcher folder's generic `V4.2` label
+can no longer be mistaken for the exact installed alpha.
 
-The practical verdict is: **Alpha 24's source, deterministic package and local
-installation are verified, but it is not yet a proven stable long campaign.**
+The practical verdict is: **Alpha 25 carries Alpha 24's verified gameplay
+source, but neither is yet a proven stable long campaign.**
 A fresh executable launch plus a human wartime/postwar run remain required for
 AI timing, balance, naval survivability and narrative pacing.
 

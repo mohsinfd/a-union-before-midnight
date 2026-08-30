@@ -1,11 +1,11 @@
 ﻿@echo off
 setlocal
 set "REPOROOT=%~dp0"
+set /p "AUBM_VERSION="<"%REPOROOT%VERSION"
 
 echo.
 echo ============================================================
-echo  A Union Before Midnight 4.2.0-alpha.24 - Installer
-echo  Alpha 24 - 30 Aug 2026
+echo  A Union Before Midnight %AUBM_VERSION% - Installer
 echo ============================================================
 echo.
 

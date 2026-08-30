@@ -252,6 +252,7 @@ gfx/events_pics/india_v3_world_spain.bmp
 gfx/events_pics/japan_cabinet.bmp
 gfx/events_pics/Russian_Airborne.bmp
 gfx/events_pics/Stalin_5YPlan.bmp
+gfx/interface/frontend/bg_start.bmp
 gfx/interface/pics/INDL251001.bmp
 gfx/interface/pics/INDL251002.bmp
 gfx/interface/pics/INDL251003.bmp

@@ -1,7 +1,7 @@
 =======================================================================
- A UNION BEFORE MIDNIGHT - V4.2.0 ALPHA 24 - 30 AUG 2026
+ A UNION BEFORE MIDNIGHT - V4.2.0 ALPHA 25 - 30 AUG 2026
  For Darkest Hour 1.05.2
- Source version 4.2.0-alpha.24
+ Source version 4.2.0-alpha.25
 =======================================================================
 
 Freedom came early. Unity came at a price.
@@ -10,6 +10,11 @@ A Union Before Midnight is an independent-India alternate-history campaign
 beginning on 1 January 1933. India inherits a united but unsettled continental
 state from Ceylon to Burma and must build a working federation, modern economy
 and credible armed forces before the world crisis reaches Asia.
+
+Alpha 25 displays this exact full version on the AUBM main menu, loading screen
+and 1933 scenario title. Those labels are generated from one version file; the
+generic "V4.2" folder label shown by Darkest Hour is no longer the only cue.
+Alpha 25 makes no gameplay or balance changes beyond Alpha 24.
 
 The exact personal 41-family India sprite profile has been restored in the
 developer's local installation after the previous public deployment. It remains
@@ -44,7 +49,8 @@ Those donor graphics are local-only and are not cleared for redistribution.
 1. Install Darkest Hour 1.05.2.
 2. Run INSTALL.bat from the A Union Before Midnight source/release folder.
 3. Select "A Union Before Midnight V4.2" in the launcher.
-4. Start "A Union Before Midnight: India 1933".
+4. Start the "A Union Before Midnight: India 1933" entry ending in the same
+   full version shown on the main menu.
 
 The installer creates or updates an isolated copy of Darkest Hour Full, checks
 every overlay hash before and after copying, removes stale managed files, and

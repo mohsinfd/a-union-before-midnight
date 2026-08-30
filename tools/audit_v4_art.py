@@ -116,7 +116,9 @@ def art_manifest_issues() -> list[str]:
         issues.append("docs/art_manifest.csv contains duplicate output rows")
 
     kinds = Counter(row.get("kind") or "" for row in rows)
-    if kinds != Counter({"event": 102, "tech_team": 31, "loading_screen": 1}):
+    if kinds != Counter(
+        {"event": 102, "tech_team": 31, "loading_screen": 1, "frontend": 1}
+    ):
         issues.append(f"unexpected art-manifest kind counts: {dict(kinds)}")
 
     loading_rows = [row for row in rows if row.get("kind") == "loading_screen"]
@@ -131,6 +133,21 @@ def art_manifest_issues() -> list[str]:
                 issues.append(
                     "gfx/load_1024.bmp must be a 1024x768 24-bit BMP, got "
                     f"{dimensions[0]}x{dimensions[1]} {dimensions[2]}-bit"
+                )
+
+    frontend_rows = [row for row in rows if row.get("kind") == "frontend"]
+    if len(frontend_rows) == 1:
+        frontend_output = (frontend_rows[0].get("output") or "").replace("\\", "/")
+        frontend_path = MOD / frontend_output
+        if frontend_output != "gfx/interface/frontend/bg_start.bmp":
+            issues.append(f"unexpected frontend output: {frontend_output}")
+        elif frontend_path.is_file():
+            dimensions = bmp_info(frontend_path)
+            if dimensions != (1024, 768, 24):
+                issues.append(
+                    "gfx/interface/frontend/bg_start.bmp must be a 1024x768 "
+                    f"24-bit BMP, got {dimensions[0]}x{dimensions[1]} "
+                    f"{dimensions[2]}-bit"
                 )
 
     referenced_custom = {

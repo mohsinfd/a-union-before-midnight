@@ -1,5 +1,39 @@
 # Release Notes
 
+## 4.2.0-alpha.25 / Alpha 25 - Visible Build Identity
+
+*30 Aug 2026*
+
+Alpha 25 makes the running mod identify itself before a campaign begins. This
+is a presentation and release-safety update; it does not change Alpha 24's
+gameplay balance or event logic.
+
+### Version shown in game
+
+- Added the exact full release number to AUBM's main-menu background, where it
+  remains visible beside the normal menu buttons.
+- Added the same release badge to the loading screen and the full version to
+  the 1933 scenario title.
+- Generate all three labels from the repository `VERSION` file during every
+  build. A version bump therefore cannot reuse an older in-game label.
+- Kept the installed folder name at `A Union Before Midnight V4.2` so updates
+  continue to use the same saves and launcher entry.
+
+### Release gate
+
+- Added an exact visible-build-identity check for both 1024x768, 24-bit menu
+  images, their artwork hashes and the scenario title.
+- The deterministic 4,436-file build and 344-file public manifest passed every
+  release gate with 0 static errors and 0 warnings.
+- The installer still records the same value independently in
+  `A_UNION_BEFORE_MIDNIGHT_INSTALL.json`, allowing installed-file verification
+  without trusting the folder name shown by Darkest Hour.
+- Alpha 25 is installed and its three visible identity surfaces are
+  hash-matched to source. All 27 existing save files were backed up and
+  verified unchanged; the personal terrain and 41-family sprite overlays were
+  restored afterward.
+- No executable launch or human campaign is claimed by this release.
+
 ## 4.2.0-alpha.24 / Alpha 24 - Air Readiness and Map Readability
 
 *30 Aug 2026*

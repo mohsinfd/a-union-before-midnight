@@ -146,6 +146,11 @@ Invoke-Checked "Static validation" {
 Invoke-Checked "Art release gate" {
     & $python.Source (Join-Path $PSScriptRoot "audit_v4_art.py") --strict
 }
+Invoke-Checked "Visible build identity" {
+    & $python.Source (Join-Path $PSScriptRoot "stamp_aubm_visible_version.py") `
+        --root $repositoryRoot `
+        --check
+}
 if ($IncludePersonalSprites) {
     Invoke-Checked "Personal India sprite integrity" {
         & $python.Source (Join-Path $PSScriptRoot "validate_aubm_sprites.py") `

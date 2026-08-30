@@ -581,5 +581,11 @@ if ($IncludePersonalSprites) {
     }
 }
 
+& $python.Source (Join-Path $repositoryFullPath "tools\stamp_aubm_visible_version.py") `
+    --root $repositoryFullPath
+if ($LASTEXITCODE -ne 0) {
+    throw "Visible build-identity stamping failed with exit code $LASTEXITCODE."
+}
+
 Write-Host "V4 overlay rebased onto Darkest Hour Full:"
 Write-Host "  $script:OverlayRoot"
