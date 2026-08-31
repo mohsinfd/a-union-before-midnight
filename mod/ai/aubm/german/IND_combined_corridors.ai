@@ -1,0 +1,47 @@
+# AUBM: Combined continental routes
+# India is more cautious when sustaining several mountain fronts.
+
+max_front_ratio = 1.70
+
+target = {
+	713 = 115  # Baku
+	709 = 90   # Tbilisi
+	711 = 85   # Yerevan
+	706 = 100  # Astrakhan
+	663 = 110  # Stalingrad
+	1097 = 90  # Ashkhabad
+	1098 = 90  # Merv
+	1105 = 80  # Dushanbe
+	1104 = 75  # Khorugh
+	1099 = 100 # Samarkand
+	1103 = 120 # Tashkent
+	1106 = 90  # Osh
+	1107 = 90  # Frunze
+	1110 = 75
+	1111 = 75
+	1112 = 80
+	1113 = 80
+	1114 = 75
+}
+
+front = {
+	recklessness = 1
+	distrib_vs_ai = op_defensive
+	distrib_vs_human = reactive
+	enemy_reinf_days = 6
+	reserve_prop = 0.22
+	panic_ratio_vs_ai = 2.8
+	panic_ratio_vs_human = 2.8
+	base_attack_odds = 1.14
+	min_attack_odds = 1.04
+	max_attack_odds = 3.7
+	reinforce_odds = 1.3
+	withdraw_odds = 0.70
+	strength = 0.92
+	organisation = 0.92
+	soft_attack = 1.10
+	hard_attack = 1.15
+	ground_defense = 1.05
+	dig_in = 1.05
+	mountain_attack = 1.25
+}

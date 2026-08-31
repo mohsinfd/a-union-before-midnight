@@ -20,7 +20,7 @@ event = {
 
 	date = { day = 0 month = january year = 1935 }
 	offset = 5
-	deathdate = { day = 29 month = december year = 1935 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		name = "Recognize the provincial recovery programme"
@@ -28,11 +28,11 @@ event = {
 		command = { type = dissent value = 3 }
 		command = { type = domestic which = free_market value = 1 }
 		command = { type = research_mod value = 1 }
-		command = { type = construct which = ic where = 1447 value = 1 }
-		command = { type = construct which = ic where = 1459 value = 1 }
-		command = { type = construct which = ic where = 1472 value = 1 }
-		command = { type = construct which = ic where = 1502 value = 1 }
-		command = { type = construct which = ic where = 1517 value = 1 }
+		command = { type = construct which = ic where = 1447 value = 1 trigger = { owned = { province = 1447 data = IND } } }
+		command = { type = construct which = ic where = 1459 value = 1 trigger = { owned = { province = 1459 data = IND } } }
+		command = { type = construct which = ic where = 1472 value = 1 trigger = { owned = { province = 1472 data = IND } } }
+		command = { type = construct which = ic where = 1502 value = 1 trigger = { owned = { province = 1502 data = IND } } }
+		command = { type = construct which = ic where = 1517 value = 1 trigger = { owned = { province = 1517 data = IND } } }
 		command = { type = setflag which = ind_v3_private_reconstruction }
 		command = { type = setflag which = ind_v3_reconstruction_1933 }
 		command = { type = setflag which = ind_v31_reconstruction_fallback }
@@ -56,16 +56,16 @@ event = {
 
 	date = { day = 0 month = january year = 1936 }
 	offset = 5
-	deathdate = { day = 29 month = december year = 1936 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		name = "Connect the regional systems"
 		command = { type = dissent value = 1 }
 		command = { type = tc_mod value = 1 }
-		command = { type = construct which = infrastructure where = 1447 value = 5 trigger = { NOT = { building = { province = 1447 type = infrastructure value = 0.96 } } } }
-		command = { type = construct which = infrastructure where = 1459 value = 5 trigger = { NOT = { building = { province = 1459 type = infrastructure value = 0.96 } } } }
-		command = { type = construct which = infrastructure where = 1517 value = 5 trigger = { NOT = { building = { province = 1517 type = infrastructure value = 0.96 } } } }
-		command = { type = construct which = infrastructure where = 1533 value = 5 trigger = { NOT = { building = { province = 1533 type = infrastructure value = 0.96 } } } }
+		command = { type = construct which = infrastructure where = 1447 value = 5 trigger = { owned = { province = 1447 data = IND } NOT = { building = { province = 1447 type = infrastructure value = 0.96 } } } }
+		command = { type = construct which = infrastructure where = 1459 value = 5 trigger = { owned = { province = 1459 data = IND } NOT = { building = { province = 1459 type = infrastructure value = 0.96 } } } }
+		command = { type = construct which = infrastructure where = 1517 value = 5 trigger = { owned = { province = 1517 data = IND } NOT = { building = { province = 1517 type = infrastructure value = 0.96 } } } }
+		command = { type = construct which = infrastructure where = 1533 value = 5 trigger = { owned = { province = 1533 data = IND } NOT = { building = { province = 1533 type = infrastructure value = 0.96 } } } }
 		command = { type = setflag which = ind_v3_frontier_transport }
 		command = { type = setflag which = ind_v3_transport_1934 }
 		command = { type = setflag which = ind_v31_transport_fallback }
@@ -89,7 +89,7 @@ event = {
 
 	date = { day = 0 month = january year = 1937 }
 	offset = 5
-	deathdate = { day = 29 month = december year = 1937 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		name = "Accept the private steel network"
@@ -97,10 +97,10 @@ event = {
 		command = { type = domestic which = free_market value = 1 }
 		command = { type = add_prov_resource which = 1472 value = 8 where = metal }
 		command = { type = add_prov_resource which = 1476 value = 12 where = energy }
-		command = { type = construct which = ic where = 1472 value = 1 }
-		command = { type = construct which = ic where = 1477 value = 1 }
-		command = { type = construct which = ic where = 1502 value = 1 }
-		command = { type = construct which = ic where = 1517 value = 1 }
+		command = { type = construct which = ic where = 1472 value = 1 trigger = { owned = { province = 1472 data = IND } } }
+		command = { type = construct which = ic where = 1477 value = 1 trigger = { owned = { province = 1477 data = IND } } }
+		command = { type = construct which = ic where = 1502 value = 1 trigger = { owned = { province = 1502 data = IND } } }
+		command = { type = construct which = ic where = 1517 value = 1 trigger = { owned = { province = 1517 data = IND } } }
 		command = { type = setflag which = ind_v3_private_steel }
 		command = { type = setflag which = ind_v3_steel_1935 }
 		command = { type = setflag which = ind_v31_steel_fallback }
@@ -124,17 +124,17 @@ event = {
 
 	date = { day = 0 month = january year = 1938 }
 	offset = 5
-	deathdate = { day = 29 month = december year = 1938 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		name = "Standardize the provincial grids"
 		command = { type = research_mod value = 1 }
 		command = { type = add_prov_resource which = 1476 value = 15 where = energy }
 		command = { type = add_prov_resource which = 1485 value = 10 where = energy }
-		command = { type = construct which = ic where = 1476 value = 1 }
-		command = { type = construct which = ic where = 1485 value = 1 }
-		command = { type = construct which = infrastructure where = 1476 value = 5 trigger = { NOT = { building = { province = 1476 type = infrastructure value = 0.96 } } } }
-		command = { type = construct which = infrastructure where = 1485 value = 5 trigger = { NOT = { building = { province = 1485 type = infrastructure value = 0.96 } } } }
+		command = { type = construct which = ic where = 1476 value = 1 trigger = { owned = { province = 1476 data = IND } } }
+		command = { type = construct which = ic where = 1485 value = 1 trigger = { owned = { province = 1485 data = IND } } }
+		command = { type = construct which = infrastructure where = 1476 value = 5 trigger = { owned = { province = 1476 data = IND } NOT = { building = { province = 1476 type = infrastructure value = 0.96 } } } }
+		command = { type = construct which = infrastructure where = 1485 value = 5 trigger = { owned = { province = 1485 data = IND } NOT = { building = { province = 1485 type = infrastructure value = 0.96 } } } }
 		command = { type = setflag which = ind_v3_rural_power }
 		command = { type = setflag which = ind_v3_power_1936 }
 		command = { type = setflag which = ind_v31_power_fallback }
@@ -158,13 +158,13 @@ event = {
 
 	date = { day = 0 month = january year = 1939 }
 	offset = 5
-	deathdate = { day = 29 month = december year = 1939 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		name = "Charter the voluntary research council"
 		command = { type = research_mod value = 2 }
-		command = { type = construct which = ic where = 1447 value = 1 }
-		command = { type = construct which = ic where = 1502 value = 1 }
+		command = { type = construct which = ic where = 1447 value = 1 trigger = { owned = { province = 1447 data = IND } } }
+		command = { type = construct which = ic where = 1502 value = 1 trigger = { owned = { province = 1502 data = IND } } }
 		command = { type = setflag which = ind_v3_university_science }
 		command = { type = setflag which = ind_v3_science_1937 }
 		command = { type = setflag which = ind_v31_science_fallback }
@@ -188,20 +188,20 @@ event = {
 
 	date = { day = 0 month = january year = 1940 }
 	offset = 5
-	deathdate = { day = 29 month = december year = 1940 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		name = "Proceed with the affordable programme"
 		command = { type = dissent value = 2 }
 		command = { type = research_mod value = 2 }
-		command = { type = construct which = ic where = 1447 value = 1 }
-		command = { type = construct which = ic where = 1459 value = 1 }
-		command = { type = construct which = ic where = 1472 value = 1 }
-		command = { type = construct which = ic where = 1477 value = 1 }
-		command = { type = construct which = ic where = 1485 value = 1 }
-		command = { type = construct which = ic where = 1502 value = 1 }
-		command = { type = construct which = ic where = 1517 value = 1 }
-		command = { type = construct which = ic where = 1533 value = 1 }
+		command = { type = construct which = ic where = 1447 value = 1 trigger = { owned = { province = 1447 data = IND } } }
+		command = { type = construct which = ic where = 1459 value = 1 trigger = { owned = { province = 1459 data = IND } } }
+		command = { type = construct which = ic where = 1472 value = 1 trigger = { owned = { province = 1472 data = IND } } }
+		command = { type = construct which = ic where = 1477 value = 1 trigger = { owned = { province = 1477 data = IND } } }
+		command = { type = construct which = ic where = 1485 value = 1 trigger = { owned = { province = 1485 data = IND } } }
+		command = { type = construct which = ic where = 1502 value = 1 trigger = { owned = { province = 1502 data = IND } } }
+		command = { type = construct which = ic where = 1517 value = 1 trigger = { owned = { province = 1517 data = IND } } }
+		command = { type = construct which = ic where = 1533 value = 1 trigger = { owned = { province = 1533 data = IND } } }
 		command = { type = setflag which = ind_v3_technology_second_plan }
 		command = { type = setflag which = ind_v3_second_plan_1938 }
 		command = { type = setflag which = ind_v31_second_plan_fallback }
@@ -225,7 +225,7 @@ event = {
 
 	date = { day = 0 month = january year = 1936 }
 	offset = 5
-	deathdate = { day = 29 month = december year = 1936 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		name = "Standardize the territorial system"
@@ -255,13 +255,13 @@ event = {
 
 	date = { day = 0 month = january year = 1937 }
 	offset = 5
-	deathdate = { day = 29 month = december year = 1937 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		name = "Place the civil reserve under Air Staff supervision"
 		command = { type = research_mod value = 1 }
 		command = { type = waketeam which = 250013 }
-		command = { type = construct which = air_base where = 1502 value = 3 trigger = { NOT = { building = { province = 1502 type = air_base value = 8 } } } }
+		command = { type = construct which = air_base where = 1502 value = 3 trigger = { owned = { province = 1502 data = IND } NOT = { building = { province = 1502 type = air_base value = 8 } } } }
 		command = { type = setflag which = ind_v3_civil_air_program }
 		command = { type = setflag which = ind_v3_air_program }
 		command = { type = setflag which = ind_v31_air_fallback }
@@ -285,13 +285,13 @@ event = {
 
 	date = { day = 0 month = january year = 1938 }
 	offset = 5
-	deathdate = { day = 29 month = december year = 1938 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		name = "Formalize the coastal denial doctrine"
 		command = { type = research_mod value = 1 }
 		command = { type = waketeam which = 250018 }
-		command = { type = construct which = naval_base where = 1517 value = 3 trigger = { NOT = { building = { province = 1517 type = naval_base value = 8 } } } }
+		command = { type = construct which = naval_base where = 1517 value = 3 trigger = { owned = { province = 1517 data = IND } NOT = { building = { province = 1517 type = naval_base value = 8 } } } }
 		command = { type = setflag which = ind_v3_denial_fleet }
 		command = { type = setflag which = ind_v3_naval_program }
 		command = { type = setflag which = ind_v31_navy_fallback }
@@ -316,15 +316,15 @@ event = {
 
 	date = { day = 0 month = january year = 1939 }
 	offset = 5
-	deathdate = { day = 29 month = december year = 1939 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		name = "Register the civilian arsenal network"
 		command = { type = supplies value = 1000 }
 		command = { type = research_mod value = 1 }
-		command = { type = construct which = ic where = 1472 value = 1 }
-		command = { type = construct which = ic where = 1502 value = 1 }
-		command = { type = construct which = ic where = 1517 value = 1 }
+		command = { type = construct which = ic where = 1472 value = 1 trigger = { owned = { province = 1472 data = IND } } }
+		command = { type = construct which = ic where = 1502 value = 1 trigger = { owned = { province = 1502 data = IND } } }
+		command = { type = construct which = ic where = 1517 value = 1 trigger = { owned = { province = 1517 data = IND } } }
 		command = { type = setflag which = ind_v3_civilian_armaments }
 		command = { type = setflag which = ind_v3_armaments_1937 }
 		command = { type = setflag which = ind_v31_armaments_fallback }
@@ -348,7 +348,7 @@ event = {
 
 	date = { day = 0 month = january year = 1940 }
 	offset = 5
-	deathdate = { day = 29 month = december year = 1940 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		name = "Prepare the cadres for wartime expansion"
@@ -379,7 +379,7 @@ event = {
 
 	date = { day = 0 month = january year = 1933 }
 	offset = 3
-	deathdate = { day = 29 month = december year = 1935 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		name = "Consolidate the emergency accounts"
@@ -403,27 +403,37 @@ event = {
 		NOT = { flag = ind_v31_high_command_purge }
 	}
 	decision_trigger = {
-		NOT = { government = democratic }
+# AUBM_FULL_OPTION_GATE_BEGIN
+money = 350
+supplies = 600
+# AUBM_FULL_OPTION_GATE_END
+NOT = { government = democratic }
 	}
 
-	name = "Purge the Indian High Command"
-	desc = "The executive can remove officers considered politically unreliable and reward a younger, more aggressive command culture. The army may gain cohesion, but neither the cabinet nor the player can control how much professional experience is lost."
+	name = "Reorganize the Indian High Command"
+	decision_desc = "Cabinet funding estimates: Fund a controlled retirement and staff reform [money 350, supplies 600]."
+	desc = "The executive can retire obsolete appointments and expand professional staff training without gambling away named commanders. The reform is politically divisive and consumes scarce administrative and military resources."
 	style = 2
 	picture = "purge_army"
 	decision_picture = "decision_purge_army"
 
 	date = { day = 0 month = january year = 1933 }
 	offset = 30
-	deathdate = { day = 29 month = december year = 1945 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
-		name = "Accept the risk and purge the command"
-		command = { type = dissent value = 2 }
-		command = { type = morale which = land value = 3 }
-		command = { type = sleepleader which = -1 }
-		command = { trigger = { random = 45 } type = sleepleader which = -1 }
-		command = { trigger = { random = 20 } type = sleepleader which = -1 }
-		command = { trigger = { random = 8 } type = sleepleader which = -1 }
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 350
+			supplies = 600
+			# AUBM_ACTION_RESERVE_END
+		}
+		name = "Fund a controlled retirement and staff reform"
+		command = { type = money value = -350 }
+		command = { type = supplies value = -600 }
+		command = { type = dissent value = 4 }
+		command = { type = morale which = land value = 1 }
+		command = { type = max_organization which = land value = 1 }
 		command = { type = setflag which = ind_v31_high_command_purge }
 	}
 }
@@ -437,23 +447,168 @@ event = {
 
 	trigger = {
 		flag = ind_v3_started
+		NOT = { flag = ind_aubm_fresh_1933_bootstrap }
 		NOT = { flag = ind_v32_roster_compatibility }
 	}
 
-	name = "The Corrected Constitutional and Service Lists"
-	desc = "The Union Gazette confirms Mahatma Gandhi as constitutional President above the federal cabinet and completes the register of the Indian Air Staff College. These appointments correct omissions in the first independence settlement without changing the cabinet's programme."
+	name = "Compatibility Review: Cabinet Records"
+	desc = "This save predates the current constitutional and service lists. The review preserves the chosen Cabinet and restores only any missing constitutional or Air Staff appointment."
 	style = 2
 	picture = "india_v3_independence"
 
 	date = { day = 0 month = january year = 1933 }
 	offset = 3
-	deathdate = { day = 29 month = december year = 1945 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
-		name = "Publish the corrected lists"
+		name = "Reconcile the old appointment record (no cost)"
 		command = { trigger = { flag = ind_v3_cabinet_federal headofstate = 251001 } type = headofstate which = 251041 }
 		command = { trigger = { flag = ind_v3_air_staff_founded } type = waketeam which = 250025 }
 		command = { type = setflag which = ind_v32_roster_compatibility }
+	}
+}
+
+# Personal-play hotfix: Darkest Hour's stock election chain can still disturb
+# old saves created before AUBM slept those events. Restore the chosen cabinet
+# once the player has made a provisional-government choice.
+event = {
+	id = 9270780
+	random = no
+	persistent = yes
+	country = IND
+
+	trigger = {
+		NOT = { flag = ind_v3_restored_coalition }
+		NOT = { flag = ind_v3_postwar_mandate }
+		OR = {
+			flag = ind_v3_gandhi_mandate
+			AND = {
+				flag = ind_v3_cabinet_federal
+				NOT = { flag = ind_v3_1936_mandate }
+			}
+		}
+		OR = {
+			NOT = { headofstate = 251041 }
+			NOT = { headofgovernment = 251002 }
+		}
+	}
+
+	name = "The Federal Cabinet Reconfirmed"
+	desc = "The Union Gazette voids stray election paperwork and reconfirms the constitutional executive chosen at independence. Other ministers remain answerable to Parliament."
+	style = 2
+	picture = "india_v3_independence"
+
+	date = { day = 0 month = january year = 1933 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Reconfirm the constitutional executive"
+		command = { type = headofstate which = 251041 }
+		command = { type = headofgovernment which = 251002 }
+	}
+}
+
+event = {
+	id = 9270781
+	random = no
+	persistent = yes
+	country = IND
+
+	trigger = {
+		NOT = { flag = ind_v3_restored_coalition }
+		NOT = { flag = ind_v3_postwar_mandate }
+		OR = {
+			flag = ind_v3_patel_mandate
+			AND = {
+				flag = ind_v3_cabinet_developmental
+				NOT = { flag = ind_v3_1936_mandate }
+			}
+		}
+		OR = {
+			NOT = { headofstate = 251011 }
+			NOT = { headofgovernment = 251012 }
+		}
+	}
+
+	name = "The Developmental Cabinet Reconfirmed"
+	desc = "The Union Gazette voids stray election paperwork and reconfirms the constitutional executive chosen at independence. Other ministers remain answerable to the governing coalition."
+	style = 2
+	picture = "india_v3_independence"
+
+	date = { day = 0 month = january year = 1933 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Reconfirm the constitutional executive"
+		command = { type = headofstate which = 251011 }
+		command = { type = headofgovernment which = 251012 }
+	}
+}
+
+event = {
+	id = 9270782
+	random = no
+	persistent = yes
+	country = IND
+
+	trigger = {
+		flag = ind_v3_cabinet_social
+		NOT = { flag = ind_v3_1936_mandate }
+		NOT = { flag = ind_v3_restored_coalition }
+		NOT = { flag = ind_v3_postwar_mandate }
+		OR = {
+			NOT = { headofstate = 251021 }
+			NOT = { headofgovernment = 251022 }
+		}
+	}
+
+	name = "The Mobilization Cabinet Reconfirmed"
+	desc = "The Union Gazette voids stray election paperwork and reconfirms the constitutional executive chosen at independence. Other ministers remain replaceable."
+	style = 2
+	picture = "india_v3_independence"
+
+	date = { day = 0 month = january year = 1933 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Reconfirm the constitutional executive"
+		command = { type = headofstate which = 251021 }
+		command = { type = headofgovernment which = 251022 }
+	}
+}
+
+event = {
+	id = 9270783
+	random = no
+	persistent = yes
+	country = IND
+
+	trigger = {
+		flag = ind_v3_bose_mandate
+		NOT = { flag = ind_v3_restored_coalition }
+		NOT = { flag = ind_v3_postwar_mandate }
+		OR = {
+			NOT = { headofstate = 251040 }
+			NOT = { headofgovernment = 251031 }
+		}
+	}
+
+	name = "The Bose-Patel Directorate Reconfirmed"
+	desc = "The Union Gazette voids stray election paperwork and reconfirms the constitutional executive chosen in the 1936 national mandate. Service and departmental ministers remain replaceable."
+	style = 2
+	picture = "india_v3_independence"
+
+	date = { day = 0 month = january year = 1937 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Reconfirm the 1936 mandate"
+		command = { type = headofstate which = 251040 }
+		command = { type = headofgovernment which = 251031 }
 	}
 }
 
@@ -478,7 +633,7 @@ event = {
 
 	date = { day = 0 month = january year = 1934 }
 	offset = 3
-	deathdate = { day = 29 month = december year = 1945 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		name = "Call the emergency register"
@@ -512,14 +667,12 @@ event = {
 
 	date = { day = 0 month = january year = 1934 }
 	offset = 2
-	deathdate = { day = 29 month = december year = 1945 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		name = "Publish the armoured establishment"
 		command = { type = activate_unit_type which = light_armor }
-		command = { type = new_model which = light_armor value = 0 }
 		command = { type = activate_unit_type which = armored_car }
-		command = { type = new_model which = armored_car value = 0 }
 		command = { type = setflag which = ind_v33_armoured_registry }
 	}
 }
@@ -546,14 +699,12 @@ event = {
 
 	date = { day = 0 month = january year = 1934 }
 	offset = 2
-	deathdate = { day = 29 month = december year = 1945 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		name = "Publish the transport-command establishment"
 		command = { type = activate_unit_type which = transport_plane }
-		command = { type = new_model which = transport_plane value = 0 }
 		command = { type = activate_unit_type which = escort }
-		command = { type = new_model which = escort value = 0 }
 		command = { type = setflag which = ind_v33_air_transport_registry }
 	}
 }
@@ -577,7 +728,7 @@ event = {
 
 	date = { day = 0 month = january year = 1935 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1938 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 60

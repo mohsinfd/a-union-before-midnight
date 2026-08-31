@@ -1,0 +1,35 @@
+# AUBM: Japan elects to enter India's independent Soviet war.
+
+combat = { IND = -1 SOV = 100 MON = 80 CHI = 80 CHC = 60 PHI = 90 USA = 70 }
+befriend = { IND = 200 MAN = 120 SIA = 80 }
+protect = { IND = 150 MAN = 120 SIA = 60 }
+
+max_front_ratios = { IND = 0.05 SOV = 3.0 MON = 2.0 CHI = 2.0 PHI = 3.0 USA = 1.5 }
+
+front = {
+	recklessness = 2
+	base_attack_odds = 1.20
+	min_attack_odds = 1.05
+	max_attack_odds = 3.0
+	passivity = { IND = 100 SOV = 0 MON = 0 }
+}
+
+target = {
+	1176 = 160 # Blagoveshchensk
+	1189 = 160 # Nikolayevsk-on-Amur
+	1190 = 220 # Khabarovsk
+	1191 = 260 # Vladivostok
+	1192 = 180 # Semyonovka
+	1193 = 180 # Nakhodka
+	1541 = 160 # Okha
+}
+
+garrison = {
+	defend_overseas_beaches = yes
+	home_multiplier = 3.0 overseas_multiplier = 1.0 home_peace_cap = 10
+	war_zone_odds = 2.0 key_point_prio_mult = 0.5 revolt_risk_mult = 0.5
+	beach = 100 capital = 75 human_border = 0 war_target = 60
+	opposing_alliance = 50 claim_threat = 0 unstable_border = 30
+	country_priorities = { IND = -1 MAN = -1 SIA = -1 SOV = 150 MON = 100 }
+	province_priorities = { 1541 = 100 1542 = 100 }
+}

@@ -20,7 +20,7 @@ event = {
 
 	date = { day = 0 month = september year = 1937 }
 	offset = 7
-	deathdate = { day = 29 month = december year = 1938 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 65
@@ -67,7 +67,7 @@ event = {
 
 	date = { day = 0 month = may year = 1938 }
 	offset = 7
-	deathdate = { day = 29 month = july year = 1938 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 60
@@ -78,9 +78,9 @@ event = {
 		command = { type = steal_tech which = ENG }
 		command = { type = waketeam which = 250025 }
 		command = { type = waketeam which = 250030 }
-		command = { type = construct which = radar_station where = 1415 value = 2 }
-		command = { type = construct which = radar_station where = 1493 value = 2 }
-		command = { type = construct which = radar_station where = 1533 value = 2 }
+		command = { type = construct which = radar_station where = 1415 value = 2 trigger = { owned = { province = 1415 data = IND } NOT = { building = { province = 1415 type = radar_station value = 9 } } } }
+		command = { type = construct which = radar_station where = 1493 value = 2 trigger = { owned = { province = 1493 data = IND } NOT = { building = { province = 1493 type = radar_station value = 9 } } } }
+		command = { type = construct which = radar_station where = 1533 value = 2 trigger = { owned = { province = 1533 data = IND } NOT = { building = { province = 1533 type = radar_station value = 9 } } } }
 		command = { type = setflag which = ind_v3_allied_air_integration }
 		command = { type = setflag which = ind_v3_allied_air_mission }
 	}
@@ -113,7 +113,7 @@ event = {
 
 	date = { day = 0 month = april year = 1939 }
 	offset = 7
-	deathdate = { day = 29 month = december year = 1940 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 55
@@ -159,9 +159,9 @@ event = {
 		NOT = { flag = ind_v3_allied_war_command }
 	# V3_ACTION_REACHABILITY_BEGIN
 	OR = {
-		AND = { manpower = 80 }
-		AND = { manpower = 86 }
-		}
+		AND = { manpower = 33 }
+		AND = { manpower = 36 }
+	}
 	# V3_ACTION_REACHABILITY_END
 }
 
@@ -172,19 +172,19 @@ event = {
 
 	date = { day = 0 month = january year = 1940 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1942 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 	trigger = {
-			# V3_QUEUE_MANPOWER = 80
-			manpower = 80
+			# V3_QUEUE_MANPOWER = 33
+			manpower = 33
 	}
 		ai_chance = 40
 		name = "Create a sovereign Middle East expeditionary army"
 		command = { type = money value = -425 }
 		command = { type = supplies value = -1250 }
-		command = { type = build_division which = infantry value = artillery when = 3 cost = -1.5 where = 60 }
-		command = { type = build_division which = motorized value = armored_car when = 2 cost = -1.8 where = 75 }
+		command = { type = build_division which = infantry value = artillery when = 1 where = 75 }
+		command = { type = build_division which = motorized value = armored_car when = 1 where = 105 }
 		command = { type = relation which = ENG value = 25 }
 		command = { type = ai which = "v3/IND_allied.ai" }
 		command = { type = setflag which = ind_v3_allied_middle_east_command }
@@ -192,16 +192,16 @@ event = {
 	}
 	action_b = {
 	trigger = {
-			# V3_QUEUE_MANPOWER = 86
-			manpower = 86
+			# V3_QUEUE_MANPOWER = 36
+			manpower = 36
 	}
 		ai_chance = 60
 		name = "Concentrate on the sovereign Eastern Command"
 		command = { type = money value = -375 }
 		command = { type = supplies value = -1200 }
-		command = { type = build_division which = bergsjaeger value = engineer when = 3 cost = -1.8 where = 60 }
-		command = { type = build_division which = marine value = artillery when = 2 cost = -1.8 where = 75 }
-		command = { type = construct which = air_base where = 1442 value = 3 trigger = { NOT = { building = { province = 1442 type = air_base value = 8 } } } }
+		command = { type = build_division which = bergsjaeger value = engineer when = 1 where = 105 }
+		command = { type = build_division which = marine value = artillery when = 1 where = 105 }
+		command = { type = construct which = air_base where = 1442 value = 3 trigger = { owned = { province = 1442 data = IND } NOT = { building = { province = 1442 type = air_base value = 8 } } } }
 		command = { type = ai which = "v3/IND_allied.ai" }
 		command = { type = setflag which = ind_v3_allied_eastern_command }
 		command = { type = setflag which = ind_v3_allied_war_command }
@@ -225,7 +225,7 @@ event = {
 
 	date = { day = 0 month = march year = 1942 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1943 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 60
@@ -270,7 +270,7 @@ event = {
 
 	date = { day = 0 month = may year = 1945 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1947 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 45

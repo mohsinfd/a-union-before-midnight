@@ -1,0 +1,112 @@
+# AUBM V4: liberation-coalition doctrine for colonial theatres.
+
+neutrality = 35
+war = 70
+max_front_ratio = 1.35
+exp_force_ratio = 0.02
+
+combat = {
+	JAP = 65
+	ENG = 35
+	U05 = 70
+	HOL = 55
+	ITA = 55
+}
+
+befriend = {
+	CHI = 75
+	SIA = 70
+	PER = 60
+	AFG = 60
+	ETH = 85
+}
+
+protect = {
+	CHI = 70
+	SIA = 75
+	ETH = 100
+	NEP = 120
+	BHU = 120
+	BUR = 100
+}
+
+military = {
+	relative_build_scheme = no
+	infantry = 22
+	cavalry = 1
+	motorized = 6
+	mechanized = 3
+	light_armor = 1
+	armor = 4
+	paratrooper = 1
+	marine = 6
+	bergsjaeger = 3
+	garrison = 1
+	hq = 4
+	militia = 0
+	interceptor = 6
+	multi_role = 4
+	cas = 3
+	strategic_bomber = 1
+	tactical_bomber = 4
+	naval_bomber = 3
+	transport_plane = 1
+	flying_bomb = 0
+	flying_rocket = 0
+	battleship = 1
+	carrier = 3
+	light_carrier = 1
+	escort_carrier = 1
+	destroyer = 6
+	light_cruiser = 4
+	heavy_cruiser = 1
+	battlecruiser = 0
+	submarine = 3
+	nuclear_submarine = 0
+	transports = 6
+}
+
+front = {
+	recklessness = 2
+	distrib_vs_ai = offensive
+	distrib_vs_human = reactive
+	base_attack_odds = 1.18
+	min_attack_odds = 1.02
+	max_attack_odds = 3.20
+	reserve_prop = 0.15
+}
+
+invasion = {
+	invasion = yes
+	base = 0.35
+	random = 4.0
+	coastal = 0.3
+	beach = 0.3
+	distance = 7.0
+	max_distance = 180.0
+	max_staging_distance = 40
+	pocket = 15.0
+	island = 2.5
+	enemy = 2.0
+	adjacentenemy = 2.0
+	air_base = 1.5
+	naval_base = 0.3
+	air_support = 3.0
+	redirect = priority
+	ignore = no
+	help_allies = no
+	staging_province = { 1421 1511 1533 1517 }
+}
+
+air_marshal = {
+	airsuperioritydesirability = 35.0
+	groundattackdesirability = 30.0
+	inderdictiondesirability = 35.0
+	navalstrikedesirability = 40.0
+}
+
+admiral = {
+	min_core_attack_fleets = 2
+	num_attack_fleets = 5
+	base = { 1421 1511 1517 1533 1612 }
+}

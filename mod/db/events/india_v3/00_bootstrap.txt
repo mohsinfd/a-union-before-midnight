@@ -7,19 +7,50 @@ event = {
 	id = 9270000
 	random = no
 	country = IND
+	trigger = { flag = ind_aubm_fresh_1933_bootstrap }
 
 	name = "A Union Before Midnight"
-	desc = "In our history, the Round Table Conferences ended in deadlock and London prepared another constitution on its own. Here, the deadlock broke Britain first. Depression, the cost of repression and a crisis over Indian financing of imperial defence forced the National Government back to the table in December 1932. The Poona settlement had shown that Indian leaders could negotiate their own guarantees; Congress, Muslim provincial leaders, Ambedkar's representatives, Sikh delegates and the Chamber of Princes assembled in Delhi for one final bargain. Britain transferred sovereignty at midnight on 1 January 1933 in return for debt guarantees, commercial access and an orderly military handover. Burma entered the Union before its planned separation, while the princely states acceded under temporary constitutional guarantees. The flag is Indian and the authority is real, but the settlement is only a bridge: provinces distrust Delhi, communal safeguards remain disputed, the army serves a government not yet defined, and the economy still points outward to London."
+	desc = "At midnight on 1 January 1933, the Lahore Accord ends British rule. India becomes sovereign with Burma, Ceylon and the princely states inside a provisional Union. Delhi inherits a large but uneven military and begins independent of every great-power bloc. The sterling reserve and national service register give the first Cabinet room to act; equipment modernization still uses the normal upgrade budget. Initial ties with Britain, the United States and China improve."
 	style = 2
 	picture = "india_v3_independence"
 
 	date = { day = 0 month = january year = 1933 }
 	offset = 1
-	deathdate = { day = 2 month = january year = 1933 }
+	deathdate = { day = 2 month = january year = 1964 }
 
 	action_a = {
-		name = "Freedom came early. Unity will have its price."
+		name = "Assume sovereignty: +1000 money, +250 manpower"
+		# Fresh-start grants formerly arrived in two separate housekeeping windows.
+		# Old saves use the compatibility events below without receiving either grant.
+		command = { type = money value = 1000 }
+		command = { type = manpowerpool value = 250 }
+		command = { type = relation which = ENG value = 10 }
+		command = { type = relation which = USA value = 5 }
+		command = { type = relation which = CHI value = 5 }
 		command = { type = setflag which = ind_v3_sovereignty_proclaimed }
+		command = { type = setflag which = ind_v4_direct_dh }
+		command = { type = setflag which = ind_v4_initialized }
+		command = { type = setflag which = ind_v32_roster_compatibility }
+		command = { type = setflag which = ind_v4_inherited_service_baseline }
+		command = { type = setflag which = ind_v41_strategy_ledger_reconciled }
+		command = { type = setflag which = ind_v43_war_cabinet }
+		command = { type = setflag which = ind_v43_upgrade_contract_final }
+		command = { type = setflag which = ind_v43_upgrade_contract_low_ic }
+		command = { type = setflag which = ind_v43_modernization_contract }
+		command = { type = setflag which = ind_v43_unit_build_restore }
+		command = { type = setflag which = ind_aubm_wartime_framework }
+		command = { type = setflag which = ind_aubm_route_sovereign }
+		command = { type = setflag which = ind_aubm_legacy_wartime_retired }
+		command = { type = setflag which = ind_aubm_commitment_migration_alpha20 }
+		command = { type = setflag which = ind_aubm_southern_refusal_migration_alpha20 }
+		command = { type = waketeam which = 250020 }
+		command = { type = waketeam which = 250021 }
+		command = { type = waketeam which = 250022 }
+		command = { type = waketeam which = 250023 }
+		command = { type = sleepevent which = 2900127 } # Stock Indian independence election
+		command = { type = sleepevent which = 2900128 }
+		command = { type = sleepevent which = 2900129 } # Stock 1950 election
+		command = { type = sleepevent which = 2051001 } # Stock minister-specific Gandhi event
 	}
 }
 
@@ -34,17 +65,17 @@ event = {
 	}
 
 	name = "The Provisional Cabinet"
-	desc = "The transfer agreement deliberately left India's permanent constitution unsettled. Gandhi and Nehru offer a federal civilian cabinet able to reconcile the provinces and reassure Britain. Patel and Visvesvaraya offer a disciplined developmental executive built around administration, industry and military reform. Bose and Saha demand social mobilization, rapid state planning and freedom from British influence. This cabinet will not decide every future election, but it will define who controls the first years of independence."
+	desc = "Choose the government that will shape independence. Gandhi and Nehru favour civilian federalism and market reform. Patel and Visvesvaraya favour a stronger executive and defence-led development. Bose and Saha favour state planning, mass mobilization and distance from Britain."
 	style = 2
 	picture = "india_v3_independence"
 
 	date = { day = 1 month = january year = 1933 }
 	offset = 1
-	deathdate = { day = 10 month = january year = 1933 }
+	deathdate = { day = 10 month = january year = 1964 }
 
 	action_a = {
 		ai_chance = 50
-		name = "Gandhi-Nehru: -3 dissent, open markets; costs 100 money/250 supplies"
+		name = "Gandhi-Nehru: -100 money, -250 supplies, -3 dissent"
 		command = { type = money value = -100 }
 		command = { type = supplies value = -250 }
 		command = { type = dissent value = -3 }
@@ -67,7 +98,7 @@ event = {
 	}
 	action_b = {
 		ai_chance = 35
-		name = "Patel-Visvesvaraya: +3 strategic sliders; costs 200 money/400 supplies"
+		name = "Patel: -200 money/-400 supplies/-1 dissent; defence reform"
 		command = { type = money value = -200 }
 		command = { type = supplies value = -400 }
 		command = { type = dissent value = -1 }
@@ -91,7 +122,7 @@ event = {
 	}
 	action_c = {
 		ai_chance = 15
-		name = "Bose-Saha: +30 manpower, Soviet opening; +2 dissent"
+		name = "Bose: -75 money, -200 supplies, +30 MP, +2 dissent"
 		command = { type = money value = -75 }
 		command = { type = supplies value = -200 }
 		command = { type = dissent value = 2 }
@@ -133,44 +164,50 @@ event = {
 
 	date = { day = 5 month = january year = 1933 }
 	offset = 3
-	deathdate = { day = 29 month = march year = 1933 }
+	deathdate = { day = 29 month = march year = 1964 }
 
 	action_a = {
 		ai_chance = 45
-		name = "Negotiated union: -5 dissent, four trunk routes; costs 150/350"
+		name = "Negotiate: -150 money, -350 supplies, -10 MP, -5 dissent"
 		command = { type = money value = -150 }
 		command = { type = supplies value = -350 }
 		command = { type = manpowerpool value = -10 }
 		command = { type = dissent value = -5 }
-		command = { type = construct which = infrastructure where = 1459 value = 10 trigger = { NOT = { building = { province = 1459 type = infrastructure value = 0.91 } } } }
-		command = { type = construct which = infrastructure where = 1447 value = 10 trigger = { NOT = { building = { province = 1447 type = infrastructure value = 0.91 } } } }
-		command = { type = construct which = infrastructure where = 1517 value = 10 trigger = { NOT = { building = { province = 1517 type = infrastructure value = 0.91 } } } }
-		command = { type = construct which = infrastructure where = 1533 value = 10 trigger = { NOT = { building = { province = 1533 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1459 value = 10 trigger = { owned = { province = 1459 data = IND } NOT = { building = { province = 1459 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1447 value = 10 trigger = { owned = { province = 1447 data = IND } NOT = { building = { province = 1447 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1517 value = 10 trigger = { owned = { province = 1517 data = IND } NOT = { building = { province = 1517 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1533 value = 10 trigger = { owned = { province = 1533 data = IND } NOT = { building = { province = 1533 type = infrastructure value = 0.91 } } } }
 		command = { type = setflag which = ind_v3_consensual_union }
 		command = { type = setflag which = ind_v3_integrated }
+		command = { type = setflag which = aubm_v4_union_register_opened }
+		command = { type = setflag which = aubm_v4_integration_active }
 	}
 	action_b = {
 		ai_chance = 35
-		name = "Provincial compact: -3 dissent, three regional routes; costs 75/200"
+		name = "Provincial: -75 money, -200 supplies, -3 dissent"
 		command = { type = money value = -75 }
 		command = { type = supplies value = -200 }
 		command = { type = dissent value = -3 }
-		command = { type = construct which = infrastructure where = 1445 value = 10 trigger = { NOT = { building = { province = 1445 type = infrastructure value = 0.91 } } } }
-		command = { type = construct which = infrastructure where = 1415 value = 10 trigger = { NOT = { building = { province = 1415 type = infrastructure value = 0.91 } } } }
-		command = { type = construct which = infrastructure where = 1530 value = 10 trigger = { NOT = { building = { province = 1530 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1445 value = 10 trigger = { owned = { province = 1445 data = IND } NOT = { building = { province = 1445 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1415 value = 10 trigger = { owned = { province = 1415 data = IND } NOT = { building = { province = 1415 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1530 value = 10 trigger = { owned = { province = 1530 data = IND } NOT = { building = { province = 1530 type = infrastructure value = 0.91 } } } }
 		command = { type = setflag which = ind_v3_provincial_union }
 		command = { type = setflag which = ind_v3_integrated }
+		command = { type = setflag which = aubm_v4_union_register_opened }
+		command = { type = setflag which = aubm_v4_integration_active }
 	}
 	action_c = {
 		ai_chance = 20
-		name = "Central decree: +150 money, army reform; +4 dissent"
+		name = "Centralize: +150 money, -400 supplies, -5 MP, +4 dissent"
 		command = { type = money value = 150 }
 		command = { type = supplies value = -400 }
 		command = { type = dissent value = 4 }
 		command = { type = manpowerpool value = -5 }
 		command = { type = domestic which = professional_army value = 1 }
-		command = { type = construct which = infrastructure where = 1459 value = 15 trigger = { NOT = { building = { province = 1459 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1459 value = 15 trigger = { owned = { province = 1459 data = IND } NOT = { building = { province = 1459 type = infrastructure value = 0.86 } } } }
 		command = { type = setflag which = ind_v3_central_union }
 		command = { type = setflag which = ind_v3_integrated }
+		command = { type = setflag which = aubm_v4_union_register_opened }
+		command = { type = setflag which = aubm_v4_integration_active }
 	}
 }

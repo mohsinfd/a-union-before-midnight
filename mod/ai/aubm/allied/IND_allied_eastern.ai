@@ -1,0 +1,83 @@
+# AUBM V4 Allied Eastern Command switch.
+# Partial AI profile: production and research remain defined by IND.ai.
+
+neutrality = 15
+war = 80
+max_front_ratio = 1.35
+
+combat = {
+	JAP = 110
+	SIA = 55
+	MAN = 25
+}
+
+max_front_ratios = {
+	JAP = 2.5
+	SIA = 2.0
+	MAN = 1.2
+}
+
+target = {
+	1415 = 120 # Rangoon
+	1442 = 100 # Imphal
+	1421 = 110 # Port Blair
+	1436 = 90  # Kuantan
+	1438 = 130 # Kuala Lumpur
+	1432 = 180 # Singapore
+	1624 = 85  # Kuching
+	1632 = 80  # Balikpapan
+	1647 = 70  # Batavia
+}
+
+front = {
+	recklessness = 1
+	distrib_vs_ai = offensive
+	distrib_vs_human = reactive
+	base_attack_odds = 1.20
+	min_attack_odds = 1.00
+	max_attack_odds = 3.00
+}
+
+invasion = {
+	invasion = yes
+	base = 0.4
+	random = 4.0
+	coastal = 0.3
+	beach = 0.3
+	distance = 8.0
+	max_distance = 90.0
+	max_staging_distance = 25
+	pocket = 15.0
+	island = 2.0
+	enemy = 2.0
+	adjacentenemy = 2.0
+	air_base = 1.5
+	naval_base = 0.3
+	air_support = 3.0
+	redirect = priority
+	ignore = no
+	help_allies = yes
+	staging_province = { 1415 1421 1511 }
+	target = {
+		1432 = 3000
+		1438 = 2600
+		1436 = 2200
+		1624 = 1800
+		1632 = 1600
+		1647 = 1500
+	}
+}
+
+air_marshal = {
+	airsuperioritydesirability = 45.0
+	groundattackdesirability = 35.0
+	interdictiondesirability = 35.0
+	navalstrikedesirability = 25.0
+	portstrikedesirability = 15.0
+}
+
+admiral = {
+	min_core_attack_fleets = 2
+	num_attack_fleets = 3
+	base = { 1421 1511 1493 1517 }
+}

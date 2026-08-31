@@ -19,23 +19,35 @@ second- or third-ranked power, but no route grants an automatic victory.
 ## Requirements
 
 - Darkest Hour 1.05.2
-- Blood and Iron v1.1 installed as `Mods\Blood and Iron v1.1`
-- A new 1933 campaign is required for the V3.4.1 balance and trigger changes
+- Darkest Hour Full, included with the game
+- A new 1933 campaign
+- Python 3.10 or newer for the post-install original terrain compiler only
 
 This repository contains only the **A Union Before Midnight overlay**. It does not
-redistribute Darkest Hour or the complete Blood and Iron mod.
+redistribute Darkest Hour. Players do not need Blood and Iron to play AUBM or
+to generate the original Alpha 27 terrain layer. Rebuilding the optional
+personal animated-sprite overlay does require Blood and Iron v1.1 to be
+installed locally; that separate pipeline imports those assets and records
+their provenance. The donor binaries require author permission before
+redistribution.
 
 ## Installation
 
-1. Install Darkest Hour and Blood and Iron v1.1.
+1. Install Darkest Hour.
 2. Download and extract the latest A Union Before Midnight release.
 3. Run `INSTALL.bat`.
-4. Select **A Union Before Midnight** in the Darkest Hour launcher.
-5. Start **A Union Before Midnight: India 1933** in the scenario list.
+4. Select **A Union Before Midnight V4.2** in the Darkest Hour launcher.
+5. Start the **A Union Before Midnight: India 1933** scenario whose title ends
+   with the same full version shown on the AUBM main menu.
 
 The installer detects the standard Steam location, verifies every overlay file,
-copies Blood and Iron into an isolated mod folder and applies A Union Before
+copies Darkest Hour Full into an isolated mod folder and applies A Union Before
 Midnight content. Existing saves in that mod folder are preserved during updates.
+Public installer manifests exclude copied foundation files, donor map payloads,
+donor-derived sprites and palettes, donor-derived model panels, unresolved art,
+temporary QA material and private test state. A developer build may reconstruct
+personal sprites from the user's own installed mods without committing those
+binaries.
 
 For a non-standard Steam library:
 
@@ -44,35 +56,240 @@ powershell -ExecutionPolicy Bypass -File installer\Install-A-Union-Before-Midnig
   -GameRoot "D:\SteamLibrary\steamapps\common\Darkest Hour A HOI Game"
 ```
 
-## V3.4.1 Open Beta
+For development, `BUILD_AND_DEPLOY_V4.bat` performs the complete public rebase,
+repeat-build stability check, static audit, manifest generation and verified
+deployment. Passing `-ValidateOnly` rebuilds and audits without touching the
+installed mod. Developers with their own Blood and Iron v1.1 installation may
+add `-IncludePersonalSprites` to build and validate the local-only visual
+overlay; the default remains donor-free.
 
-This hardening release closes the treasury, manpower, research and route
-exploits identified in the public review. It also adds mandatory-action
-reachability checks, corrects the submarine fleet package, replaces prohibited
-event imagery and completes Creative Commons creator attribution.
+After installing the public package, run
+`tools/Enable-Aubm-OriginalTerrainVisuals.ps1` to compile Alpha 27's original
+eight-terrain political-map layer from your own Darkest Hour Full map. The tool
+backs up the exact prior state, validates all four zoom levels, and can roll the
+change back. Generated Darkest Hour-derived lightmaps are deliberately not
+placed in GitHub or the public installer.
 
-The 1933-1940 source and installed-mod gates pass. Human playtesting reaches
-early 1937; the 1942-1964 campaign remains beta content pending complete war
-and postwar runs.
+## V4 Direct-DH Alpha
+
+V4 rebases the campaign directly onto Darkest Hour Full and removes the
+Blood and Iron runtime dependency. It adds a grounded union-integration layer,
+global reactions, operational command, procurement and war-settlement systems.
+
+Air and naval combat now emphasizes organization loss and withdrawal over
+routine destruction. Twelve three-division field corps, faster prepared
+reserves, airfield security, dispersal fields and scramble missions reduce
+wartime micromanagement within the limits of the Darkest Hour executable.
+
+Alpha 27, dated **30 Aug 2026**, is the visual-acceptance correction to the
+original AUBM all-terrain layer. Alpha 26's files loaded correctly, but its
+first human fresh-campaign test could not see the terrain language: the old
+preview exaggerated contrast and its coverage denominator omitted ordinary
+land outside a narrow brightness range. Alpha 27 applies motifs across all
+ordinary mechanical land, keeps full strength at every zoom and tests every
+terrain through both India's real `DarkBlue` political scale and Darkest Hour's
+official terrain-mode scale. Plains, forest, mountain, desert, marsh, hills,
+jungle and urban retain distinct original marks; the compiler reads no Blood
+and Iron or DEC map pixel.
+
+The public repository ships recipes, compiler, provenance and validation tools,
+while each player generates Darkest Hour-derived lightmaps locally. See the
+[Alpha 27 terrain asset README](assets/v4_terrain/README.md) for the exact
+input/output boundary, the [Visual Readability Pipeline](docs/VISUAL_READABILITY_PIPELINE.md)
+for the audit and human acceptance matrix, and the
+[Alpha 27 terrain validation record](docs/ALPHA27_TERRAIN_VALIDATION.md) for
+exact all-land/native-colour gates and output hashes. The
+[Alpha 26 validation addendum](docs/ALPHA26_TERRAIN_VALIDATION.md) records the
+failed human result that prompted the correction. Alpha 27's final in-engine
+readability verdict remains a human gate rather than an offline claim.
+
+Alpha 25 added a release-safety identity generated from the single `VERSION`
+file. The exact full version appears on the AUBM main menu, loading screen and
+1933 scenario title, so an Alpha 27 install can be identified before beginning
+a campaign. Alpha 27 does not change Alpha 24/25 gameplay systems or balance.
+Its lightmaps are save-neutral: after installation, an Alpha 26 campaign may be
+resumed following a complete game exit and cold restart.
+
+Alpha 24, dated **30 Aug 2026**, adds an explicit **First Operational Air
+Group** after the Air Staff, Flying Schools and Airfield Security milestones.
+The Security Act protects airfields; the new decision is the place to choose
+two interceptor contracts, an interceptor plus tactical-bomber contract, an
+interceptor plus naval-bomber contract, or a no-aircraft doctrine-first path.
+The contracts use current models and the normal production queue rather than
+granting free instant wings. India is also now **Indian indigo** on the
+political map, distinct from every immediate neighbour. The optional local
+terrain-reference tool and the donor-free original-map plan are documented in
+[Visual Readability Pipeline](docs/VISUAL_READABILITY_PIPELINE.md).
+Players who own Blood and Iron v1.1 and want the personal India sprite
+profile after a public update can run
+`tools/Enable-Aubm-PersonalIndiaSprites.ps1`; it restores the local 41-family
+overlay and local registry mapping without placing donor assets in GitHub.
+
+Alpha 23, dated **29 Aug 2026**, is the second implemented subset of the
+Gameplay Fun Rework: **Every Route Is a Campaign**. The five command routes
+now contain **20 authored wartime arcs**--four per route--with an activation,
+an intermediate operational milestone, a three-way strategic dilemma and a
+measurable culmination. Separate-command partners can confront India with a
+new-war crisis, recognize or resist the selected doctrine, and trigger a
+route-specific collapse response. A withdrawal abandons the live board without
+erasing paid or historical credit, and a completed primary cannot be replaced
+by a convenient secondary victory or a later route switch.
+
+The Japanese route also has an optional four-theatre grand-campaign ledger for
+the exact human plan tested in development: Southeast Asia and Australia,
+China and the Philippines, Aden-Suez-East Africa, then a Caucasus road that can
+send one finite relief convoy to a still-fighting Germany. This ledger records
+command and progress; it does not transfer territory, sign peace or award a
+second primary victory. Formalizing an earned senior Delhi-Tokyo compact now
+preserves senior/full-sphere status, while a fresh formal entrant starts at
+peer/core. A Japanese-route separate peace explicitly leaves the engine
+alliance and continues the relationship as a separate-command compact.
+
+Alpha 22, also dated **29 Aug 2026**, implemented **A Clean Opening and Audited
+Early Game**. A fresh 1933
+campaign now has three pre-union windows instead of nine: one short premise
+acknowledgment at scenario opening, then genuine choices of cabinet during the
+opening 72 hours and union method on 6 January. Core state
+initialization and the Union Register are folded into those choices, while the
+War Cabinet remains unavailable until India has actually chosen its union.
+
+Fresh Alpha 23 starts pre-sleep **219 events total**: 217 retired legacy wartime/route
+IDs plus the two generic V3 Gurkha and frontier decisions, leaving the unique
+V4 paths. Upgrade saves retain compatibility helpers under clearer names,
+without receiving fresh-start money or manpower again. The accompanying
+existing-event audit made the 1934 and 1936 constitutional reviews mutually
+exclusive, made all 18 founding branch identities pay one modest remembered
+dividend in the first July 1934 Union report, implemented two advertised
+research rewards that previously did nothing, stopped foreign credit charging
+its own prior-service fee, redirected unsafe old War Cabinet menus, disclosed
+opening costs and closed duplicate Gurkha/frontier entry paths.
+
+Alpha 21, dated **29 Aug 2026**, restores the developer's exact personal
+41-family India sprite profile locally after the previous public deployment.
+That profile remains a local-only overlay: donor-derived sprite and model-panel
+assets are excluded from the current V4 Git tree and do not ship in the public
+installer.
+
+Gameplay now applies one flexible Southeast Asian land-and-sea system under
+every Indian command route. Four anti-Japanese friendly-owner liberation
+chains require prior Japanese occupation plus direct Indian control or an
+Indian land garrison; their credit can support the appropriate sea-lane hinges
+without making peace with, or taking land from, the friendly owner. The full
+theatre result requires two distinct land categories plus one sea lane, or one
+land category plus two lanes. It can help unlock an optional weaker pairwise
+Japanese Southern Armistice only while the Japan war and current Japanese
+leverage remain live: either the recoverable direct limited-victory flag, or the
+permanent theatre award backed by at least one currently active anti-Japanese
+friendly liberation. An old route-neutral theatre award alone is insufficient.
+The response remains 45/35/20 accept/counter/refuse with a guarded 90-day
+refusal retry. Southern in-flight state plus a shared great-power terms-dispatch
+lock prevents initial, retry and cross-opponent popups racing; if live leverage
+has lapsed at day 90, the offer waits for recovery. Decisive
+victory uses the normal great-power board and supersedes this weaker path.
+
+Alliance synchronizers and every direct or retired legacy entry path now
+respect the current binding commitment, including Berlin-Tokyo faction-merger
+artifacts. Alpha 20's explicit at-peace withdrawal and 90-day realignment are
+retained; the commitment is exclusive while active, not a lifetime lock. Alpha
+20's local Batavia and Malaya dockets, Alpha 19's 1933 parser correction and
+their regression gates remain part of the current source.
+
+The final post-fix Alpha 23 donor-safe `-ValidateOnly` run completed a repeat-stable
+**4,435-file overlay**, generated a **343-entry public installer manifest** and
+ended static validation with **0 errors and 0 warnings**. Its art, economy,
+resource, campaign, combat, construction-cap and Steam Deck gates all passed.
+That run did not publish, install, deploy or launch the mod. Alpha 23 therefore
+has a clean deterministic source/package candidate, but it remains without an
+executable smoke or human wartime/postwar playthrough.
+
+Alpha 21 passed its final deterministic build, complete static acceptance,
+public-manifest generation, deployment verification and fresh executable smoke
+on **29 Aug 2026**. The public installer manages **342 files** and excludes the
+personal visual overlay. A fresh 1933 India campaign reached the playable map
+and opening AUBM events with **0 logged engine errors**, no new crash dump and
+all existing saves unchanged. A human wartime and postwar playthrough is still
+required before this alpha can be treated as a proven stable campaign.
+
+Alpha 22 passed its deterministic 4,434-file build, complete public and
+personal static suites, 342-file donor-safe manifest, 1,531-file personal local
+deployment and fresh executable smoke on **29 Aug 2026**. The user's 1 February
+1933 autosave records all three opening IDs followed only by the Army Oath
+(`9271200`), no Compatibility Review ID, an opened Union Register and the War
+Cabinet becoming available only after the union. The executable log contains 0 exact `ERROR :`
+lines, province validation reported no errors and no crash dump appeared. A
+complete human wartime and postwar playthrough is still required.
+
+Alpha 18 completed wartime play around a canonical War Cabinet. Allied, German,
+Soviet, Japanese and sovereign routes each receive a four-doctrine war charter,
+measurable battlefield achievements and a postwar Delhi congress. Great-power,
+regional and 210 generated country campaigns now open from live world state,
+survive reversals, permit country-specific armistices and require an explicit
+constitutional settlement after annexation. Together with 26 bespoke opponents,
+India can prosecute 236 country-specific campaigns without committing to a
+permanent bloc. At-peace withdrawal, partner collapse and Bitter Peace now
+preserve India's verified battlefield ledger. Mobilisation, annual war budgets,
+cumulative debt and scalable, reducible occupation upkeep make conquest
+consequential.
+
+Alpha 16's disclosed diplomatic odds and Alpha 15's specialist equipment,
+naval, command and research improvements remain intact.
+
+For a player-facing explanation of the complete campaign loop, route choices,
+war economy, mobilisation, settlement rules, verification status and remaining
+playtest risks, see [Gameplay Changes and Alpha 26 Status](GAMEPLAY_CHANGES.md).
+The all-route authored objectives are summarized in the
+[Route Campaign Matrix](docs/ROUTE_CAMPAIGN_MATRIX.md), and the intended
+high-difficulty Tokyo campaign is covered by the
+[Japan Grand Campaign Guide](docs/JAPAN_GRAND_CAMPAIGN_GUIDE.md).
+The all-route land, liberation, sea-lane and armistice rules are specified in
+the [Southeast Asia Victory Matrix](docs/SOUTHEAST_ASIA_VICTORY_MATRIX.md).
+The earlier reviewed-save chronology remains in
+[Alpha 20 Save and Playtest Review](docs/ALPHA20_SAVE_AND_PLAYTEST_REVIEW.md).
 
 ## Campaign
 
-- **210 India-focused entries** across 25 isolated event modules.
-- **41 player-timed decisions** for optional authorizations and **169 events**
-  for deadlines, crises, replies, implementation disputes and milestones.
+- A fresh 1933 start presents only the premise and cabinet in the first 72
+  hours, followed by the union choice on 6 January; compatibility bookkeeping
+  no longer competes with those decisions.
+- The retained Alpha 21 global fallback matrix validates **3,433 generated
+  campaign events** across 210 countries as part of **40,357 checks**; the
+  complete parser suite passes with 0 errors and 0 warnings.
 - Stable constitutional governments, complete cabinets and leadership
   transitions tied to genuine political milestones.
 - **Five strategic universes:** Allied, German, Japanese, Soviet and armed
   non-alignment.
+- A permanent War Cabinet can accept one binding coalition or
+  separate-command compact at a time, return to sovereign command while at
+  peace, declare independent wars against non-partners and inspect every live
+  theatre.
+- Route-specific wartime charters open one of 20 authored campaigns. Each
+  publishes an opening condition, an intermediate milestone, a political or
+  command dilemma and a culmination before converting the earned result into a
+  sovereign concert, security sphere or renewed strategic autonomy at Delhi.
+- Partner-war crises disclose the difference between formal shared wars and
+  separate-command support; route-specific recognition and collapse reactions
+  keep Allied, German, Soviet, Japanese and sovereign play mechanically distinct.
+- Every major, regional and fallback opponent has a campaign brief, live
+  objective, reversal, recovery, armistice response and post-annex settlement;
+  old prerequisite chains no longer silently erase a campaign.
+- Formal Allied, German, Soviet and Japanese alliances have deterministic
+  entry and current-commitment guards. Live synchronizers and legacy choices
+  cannot relabel a rival route, while at-peace withdrawal and the 90-day reset
+  still permit a legitimate later realignment.
 - Japan follows an independent India-facing route around China, Bose, the INA,
   Imphal, Burma and Asian leadership rather than acting as an appendage of
   Germany.
+- Batavia, Malaya, Indochina and the Philippines have direct and
+  friendly-liberation outcomes; Bay of Bengal, Malacca, Java Sea and South
+  China Sea milestones interoperate with eligible friendly-owner hubs and feed
+  the flexible three-result theatre victory under every route.
 - Indian responses to Abyssinia, Spain, China, Anschluss, Munich, Prague,
   Albania and the invasion of Poland.
 - Meaningful choices that trade money, supplies, manpower, dissent, autonomy
   and diplomatic freedom for distinct rewards.
-- Wartime finance, national service, women's service, logistics, science,
-  civil liberty, veterans and industrial reconversion.
+- Annual wartime finance, cumulative debt, emergency credit, national service,
+  scalable occupation upkeep, logistics, science, civil liberty, veterans and
+  industrial reconversion.
 - Postwar and Cold War content through 1964.
 
 ## Industry And Forces
@@ -89,6 +306,12 @@ and postwar runs.
   depending on doctrine.
 - Gurkhas, frontier forces, airborne formations, long-range penetration groups
   and Andaman marine charters.
+- Eight separately researchable Indian special-unit types and two half-built
+  super-heavy capital ships unlocked through late naval programmes.
+- The developer's exact **41-family personal India sprite profile** is restored
+  in the local installation with eight-direction movement and multi-frame
+  combat animation. It remains local-only; public builds inherit Darkest Hour
+  Full map sprites and do not contain its donor-derived assets.
 - Complete Indian naming pools for corps, divisions, air groups, wings, fleets,
   ships, submarines, transports and missiles.
 
@@ -110,38 +333,51 @@ and postwar runs.
 
 ## Visuals And World Events
 
-India has a complete `IND` visual namespace with Indian service palettes,
-model panels, production icons, national flags and dedicated Gurkha coverage.
-The map animation geometry remains compatible with Blood and Iron.
+V4 includes 102 byte-distinct custom event pictures covering the political
+routes, global crises, campaign system and elite formations. Generated scenes
+are explicitly disclosed as alternate-history reconstructions rather than
+archival photographs. The event-ID manifest, source sheets and review galleries
+are included in the repository.
 
-![Indian sprite comparison](assets/sprite-comparison.png)
+![India event art](assets/event-gallery.png)
 
-Major world events and strategic-route events use a curated visual library.
+Public builds inherit Darkest Hour Full unit sprites and production panels. The
+exact 41-family personal profile was restored locally after the previous public
+deployment, but its descriptors, animation strips, palettes and donor-derived
+model panels remain outside the current V4 Git tree and public manifests and
+are not cleared for redistribution. Every donor path and hash is recorded in the generated personal
+sprite manifest.
 
-<details>
-<summary>Open the event-art gallery</summary>
+![India service sprites](assets/sprite-comparison.png)
 
-![Event-art gallery](assets/event-gallery.png)
+India's eight special-unit families retain their gameplay, localization,
+counters and technology ladders. Original redistribution-safe India sprites
+and model panels remain future art work. Cleared India-specific counters,
+portraits, event art and flags remain part of the direct-DH package; copied
+foundation/donor map payloads and unresolved visual overrides do not.
 
-</details>
+India can react to the major crises of the 1930s and pursue separate Allied,
+German, Japanese, Soviet or armed non-aligned strategic relationships.
 
 ## Reliability
 
 The release pipeline rejects:
 
 - malformed events, duplicate IDs and unsupported commands;
+- unsupported foreign-country trigger scopes inside event commands;
 - non-owned or geographically invalid construction targets;
 - infrastructure above 100 and air or naval bases above level 10, including
   construction already in progress;
 - event force serials that lack the manpower required by Darkest Hour;
 - advanced units queued before their type and model are enabled;
 - invalid or display-string-less division attachments;
-- broken portraits, sprite palettes, model panels and production icons;
-- strategic paths that fail the deterministic economy and force-plan gates.
+- missing event pictures and malformed personnel records;
+- strategic paths that fail the deterministic economy and force-plan gates;
+- any file matching the nonredistributable or personal-overlay deny lists.
 
-The public release passed source and installed-mod validation, all five
-deterministic prewar simulations and a human campaign through January 1937
-without India-event namespace errors in `savedebug.txt`.
+The V4 build pipeline also verifies the opening treasury, event-built unit
+availability, combat pacing, cumulative construction caps and every installer
+file hash before deployment.
 
 See [Release Notes](RELEASE_NOTES.md), [Design Notes](docs/DESIGN.md) and
 [Art and Research Credits](docs/ART_AND_RESEARCH_CREDITS.md). The complete
@@ -150,12 +386,16 @@ See [Release Notes](RELEASE_NOTES.md), [Design Notes](docs/DESIGN.md) and
 [forum release audit](docs/FORUM_RELEASE_AUDIT.md) records the remaining
 permission and moderator-approval work.
 
+Current playtest changes are summarized at the top of the release notes. Steam
+Deck controls, installation standards and hardware checks are documented in the
+[Steam Deck Product Standard](docs/STEAM_DECK.md).
+
 ## Compatibility
 
 - A new campaign is required for the intended force, economy, route and
   research curve.
-- Earlier saves are not supported by the V3.4.1 Open Beta.
-- Other mods that replace the Blood and Iron 1933 scenario, India data or
+- V3 saves are not supported by V4.
+- Other mods that replace the Darkest Hour Full 1933 scenario, India data or
   global event files are not supported.
 
 ## Credits
@@ -163,9 +403,10 @@ permission and moderator-approval work.
 Design and India-specific content by **Mohsin Dingankar**, developed with Codex
 collaboration.
 
-Built on **Blood and Iron v1.1** by thewanderingknight, which incorporates work
-from the projects and contributors listed in the original Blood and Iron
-credits. See the full [credit and provenance record](docs/ART_AND_RESEARCH_CREDITS.md).
+V4 is built directly on the user's installed **Darkest Hour Full** foundation.
+V3 was developed against Blood and Iron; that historical dependency is not
+redistributed or required by V4. See the full
+[credit and provenance record](docs/ART_AND_RESEARCH_CREDITS.md).
 
 Darkest Hour and Hearts of Iron are trademarks of their respective owners.
 This is a non-commercial fan modification and is not affiliated with or

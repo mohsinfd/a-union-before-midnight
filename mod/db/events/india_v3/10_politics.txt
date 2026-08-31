@@ -20,7 +20,7 @@ event = {
 
 	date = { day = 0 month = april year = 1933 }
 	offset = 10
-	deathdate = { day = 29 month = june year = 1933 }
+	deathdate = { day = 29 month = june year = 1964 }
 
 	action_a = {
 		ai_chance = 45
@@ -72,7 +72,7 @@ event = {
 
 	date = { day = 0 month = september year = 1933 }
 	offset = 15
-	deathdate = { day = 29 month = december year = 1933 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 25
@@ -82,8 +82,8 @@ event = {
 		command = { type = dissent value = 5 }
 		command = { type = manpowerpool value = 45 }
 		command = { type = domestic which = free_market value = -1 }
-		command = { type = construct which = infrastructure where = 1465 value = 10 trigger = { NOT = { building = { province = 1465 type = infrastructure value = 0.91 } } } }
-		command = { type = construct which = infrastructure where = 1445 value = 10 trigger = { NOT = { building = { province = 1445 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1465 value = 10 trigger = { owned = { province = 1465 data = IND } NOT = { building = { province = 1465 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1445 value = 10 trigger = { owned = { province = 1445 data = IND } NOT = { building = { province = 1445 type = infrastructure value = 0.91 } } } }
 		command = { type = setflag which = ind_v3_land_redistribution }
 		command = { type = setflag which = ind_v3_land_settlement }
 	}
@@ -94,10 +94,10 @@ event = {
 		command = { type = supplies value = -550 }
 		command = { type = manpowerpool value = -10 }
 		command = { type = dissent value = -2 }
-		command = { type = construct which = infrastructure where = 1461 value = 15 trigger = { NOT = { building = { province = 1461 type = infrastructure value = 0.86 } } } }
-		command = { type = construct which = infrastructure where = 1465 value = 15 trigger = { NOT = { building = { province = 1465 type = infrastructure value = 0.86 } } } }
-		command = { type = construct which = infrastructure where = 1530 value = 15 trigger = { NOT = { building = { province = 1530 type = infrastructure value = 0.86 } } } }
-		command = { type = construct which = infrastructure where = 1445 value = 15 trigger = { NOT = { building = { province = 1445 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1461 value = 15 trigger = { owned = { province = 1461 data = IND } NOT = { building = { province = 1461 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1465 value = 15 trigger = { owned = { province = 1465 data = IND } NOT = { building = { province = 1465 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1530 value = 15 trigger = { owned = { province = 1530 data = IND } NOT = { building = { province = 1530 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1445 value = 15 trigger = { owned = { province = 1445 data = IND } NOT = { building = { province = 1445 type = infrastructure value = 0.86 } } } }
 		command = { type = setflag which = ind_v3_rural_investment }
 		command = { type = setflag which = ind_v3_land_settlement }
 	}
@@ -131,14 +131,14 @@ event = {
 
 	date = { day = 0 month = july year = 1934 }
 	offset = 20
-	deathdate = { day = 29 month = october year = 1934 }
+	deathdate = { day = 29 month = october year = 1964 }
 
 	action_a = {
 		ai_chance = 50
-		name = "Multilingual service: -3 dissent, +1 research; costs 250"
+		name = "Multilingual: -250 money, -3 dissent, +1 research"
 		command = { type = money value = -250 }
 		command = { type = dissent value = -3 }
-
+		command = { type = research_mod value = 1 }
 		command = { type = setflag which = ind_v3_multilingual }
 		command = { type = setflag which = ind_v3_language_settlement }
 	}
@@ -154,11 +154,11 @@ event = {
 	}
 	action_c = {
 		ai_chance = 20
-		name = "English service: +2 research, +20 UK; costs 300 supplies"
+		name = "English service: -300 supplies, +1 dissent, +2 research"
 		command = { type = supplies value = -300 }
 		command = { type = dissent value = 1 }
 		command = { type = relation which = ENG value = 20 }
-
+		command = { type = research_mod value = 2 }
 		command = { type = domestic which = interventionism value = -1 }
 		command = { type = setflag which = ind_v3_english_service }
 		command = { type = setflag which = ind_v3_language_settlement }
@@ -182,7 +182,7 @@ event = {
 
 	date = { day = 0 month = november year = 1936 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1936 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 35
@@ -225,7 +225,7 @@ event = {
 	}
 	action_c = {
 		ai_chance = 20
-		name = "Bose-Patel: army/intervention +1; +2 dissent, costs 700 supplies"
+		name = "Bose-Patel: -700 supplies, +2 dissent; mobilize"
 		command = { type = supplies value = -700 }
 		command = { type = dissent value = 2 }
 		command = { type = domestic which = professional_army value = 1 }

@@ -22,7 +22,7 @@
 	rare_materials         = 1200
 	oil                    = 450
 	supplies               = 4000
-	money                  = 2500
+	money                  = 3000
 	transports             = 130 
 	escorts                = 20 
   
@@ -44,6 +44,8 @@
   #Pakistan 
   1278 1529 1533 1534 1537 1538 1539 1540  
   1612
+  #Ceylon
+  1509 1510 1511
   } 
    ownedprovinces         = {   
   #Malaysia                 
@@ -53,6 +55,8 @@
   #Pakistan 
   1278 1529 1533 1534 1537 1538 1539 1540 
   1612
+  #Ceylon
+  1509 1510 1511
    } 
    controlledprovinces    = {    
   #Malaysia                 
@@ -62,6 +66,8 @@
   #Pakistan 
   1278 1529 1533 1534 1537 1538 1539 1540 
   1612
+  #Ceylon
+  1509 1510 1511
    } 
   
    SpyInfo                = {  country = "IND" NumberOfSpies = 3  }
@@ -87,15 +93,26 @@
 	# Static Anti-Air Artillery 
 	2800 2450
 	# Destroyer
-	3010 3020 3030 3040
+	3010 3020 3030 3040 3050
 	# Light Cruiser 
 	3110 3120 3130 3140
 	# Heavy Cruiser 
-	3210 3220 3230
+	3210 3220 3230 3240
+	# Battlecruiser foundations
+	3310 3320 3330
+	# Battleship foundations through the Washington era
+	3410 3420 3430 3440 3450 3456 3460
+	# Light carriers and converted carriers
+	12100 12110 12120 3510
+	# Submarines and modern troopships
+	3610 3620 3630 3640 3820
 	# Fighter 
-	4500 4510 4520 4530 4540 4550 4010
+	4500 4510 4520 4530 4540 4550 4010 4020
 	# Bomber 
-	4600 4610 4620 4630 4120
+	4600 4610 4620 4630 4120 4130
+	# Multirole, transport and maritime aviation
+	4290 4300 4310 4320 4330 4340
+	4700 4710 4740 4750 4760 4900
 	# Computers & cryptography
 	5310 54010 54020 54030 5316 5326
 	# Manufacturing
@@ -109,13 +126,27 @@
 	# Medicine
 	5600
 	# Naval Doctrines
-	8010 8020 8050
+	8010 8020 8030 8040 8050 8060 8070 8080
+	8100 8110 8120
+	8500 8510 8520
+	8900 8910 8920 8930
+	81650 82300 82500
 	# Air Doctrines 
 	27480 27490 27500 27510 27520 27530 27540 27550 27570 27580 27590 27600 9030 9020 27560 27460 27470 
 	# Great War Land Doctrines (entente)
 	6500 6510 6530 6580 6600 6610 6680 6620 6630 6640 6650 6660 6670 6540 6910
 	# Defensive Focus Grand Battleplan Path (FRA / UK)
 	6560
+	# Inherited British Indian service baseline. Independence transfers the
+	# institutions and archives already operating in India; it does not erase
+	# two decades of infantry, industrial, medical, armour, air or naval work.
+	1070 1080 1090 1560
+	2510 2630 2640 2646 2810 2820 2900 2910 2920
+	3060 3150 3250 3520 3650 12130
+	4800 4810 4820 4910
+	5010 5020 5060 5190 5327 5560 5610 5620 5630 5700 5710
+	8150 8160 8200 8210 8550 8560 8600 8610 8940 8950
+	14000 14010 14020 21180 21190
 } 
 	inventions = { 3000027 }
 	policy = 
@@ -146,489 +177,499 @@
       250021 250022 250023 250024 250025 250026 250027 250028
       250029 250030
    }
-  
-   landunit = 
-   {  name     = "Southern Command" 
-     location = 1516 
-     id       = {  type = 12700 id = 9001  } 
-     Division = 
-     {  id       = {  type = 12700 id = 9002  } 
-       name     = "4th Indian Division" 
-       type     = infantry 
-	   model    = 7
-       strength = 100 
-      } 
-	Division = 
-     {  id       = {  type = 12700 id = 9003  } 
-       name     = "4th Indian Cavalry Brigade" 
-       type     = cavalry 
-	   model    = 8
-       strength = 15 
-       }   	  
-    } 
-   landunit = 
-   {  name     = "Madras District" 
-     location = 1500
-     id       = {  type = 12700 id = 9004  } 
-     Division = 
-     {  id            = {  type = 12700 id = 9005  } 
-       name          = "Madras Brigade" 
-       type          = militia
-	   model    = 2
-       extra         = artillery 
-       brigade_model = 1
-       strength      = 80
-       } 
-    } 
-   landunit = 
-   {  name     = "Bombay District" 
-     location = 1517
-     id       = {  type = 12700 id = 9006  } 
-     Division = 
-     {  id            = {  type = 12700 id = 9007  } 
-       name          = "Mhow Brigade" 
-       type          = militia
-	   model    = 2
-       extra         = artillery 
-       brigade_model = 1
-       strength      = 80
-       } 
-    } 
-   landunit = 
-   {  name     = "Deccan District" 
-     location = 1503
-     id       = {  type = 12700 id = 9008  } 
-     Division = 
-     {  id            = {  type = 12700 id = 9009  } 
-       name          = "Deccan Brigade" 
-       type          = militia
-	   model    = 3
-       extra         = artillery 
-       brigade_model = 2
-       strength      = 80
-       } 
-    } 
-   landunit = 
-   {  name     = "Poona Brigade Area" 
-     location = 1516
-     id       = {  type = 12700 id = 9010  } 
-     Division = 
-     {  id       = {  type = 12700 id = 9011  } 
-       name     = "Poona Brigade" 
-       type     = garrison
-	   model    = 2
-       strength = 80        
-      } 
-    } 
-   landunit = 
-   {  name     = "Eastern Command" 
-     location = 1451 
-     id       = {  type = 12700 id = 9012  } 
-     Division = 
-     {  id       = {  type = 12700 id = 9013  } 
-       name     = "3rd Indian Division" 
-       type     = infantry 
-	   model    = 7
-       strength = 100 
-      } 
-	Division = 
-     {  id       = {  type = 12700 id = 9014  } 
-       name     = "3rd Indian Cavalry Brigade" 
-       type     = cavalry 
-	   model    = 8
-       strength = 15 
-       }   	  
-    } 
-   landunit = 
-   {  name     = "Presidency & Assam District" 
-     location = 1447
-     id       = {  type = 12700 id = 9015  } 
-     Division = 
-     {  id       = {  type = 12700 id = 9016  } 
-       name     = "Eastern Bengal Brigade" 
-       type     = militia
-	   model    = 2
-       extra         = artillery 
-       brigade_model = 1
-       strength      = 80        
-      }
-	       Division = 
-     {  id       = {  type = 12700 id = 9017  } 
-       name     = "Assam Brigade" 
-       type     = militia
-	   model    = 2
-       strength = 80 
-       } 	  
-    } 
-   landunit = 
-   {  name     = "Lucnow District" 
-     location = 1461
-     id       = {  type = 12700 id = 9018  } 
-     Division = 
-     {  id       = {  type = 12700 id = 9019  } 
-       name     = "Allahabad Brigade" 
-       type     = militia
-	   model    = 2
-       extra         = artillery 
-       brigade_model = 1
-       strength      = 80        
-      }
-	       Division = 
-     {  id       = {  type = 12700 id = 9020  } 
-       name     = "Lucknow Brigade" 
-       type     = militia
-	   model    = 2
-       strength = 80 
-       } 	  
-    } 
-   landunit = 
-   {  name     = "Delhi Brigade Area" 
-     location = 1459
-     id       = {  type = 12700 id = 9021  } 
-     Division = 
-     {  id       = {  type = 12700 id = 9022  } 
-       name     = "Delhi Brigade" 
-       type     = garrison
-	   model    = 2
-       strength = 80        
-      } 
-    } 
-   landunit = 
-   {  name     = "Meerut District" 
-     location = 1460 
-     id       = {  type = 12700 id = 9023  } 
-     Division = 
-     {  id       = {  type = 12700 id = 9024  } 
-       name     = "Meerut Brigade" 
-       type          = militia
-	   model    = 3
-       extra         = artillery 
-       brigade_model = 2
-       strength      = 80
-      } 
-    } 
-   landunit = 
-   {  name     = "Zhob Brigade Area" 
-     location = 1529
-     id       = {  type = 12700 id = 9025  } 
-     Division = 
-     {  id       = {  type = 12700 id = 9026  } 
-       name     = "Zhob Brigade" 
-       type     = garrison
-	   model    = 2
-       strength = 80        
-      } 
-    } 
-   landunit = 
-   {  name     = "Baluchistan District" 
-     location = 1529
-     id       = {  type = 12700 id = 9027  } 
-     Division = 
-     {  id       = {  type = 12700 id = 9028  } 
-       name     = "Quetta Brigade" 
-       type     = militia
-	   model    = 3
-       extra         = artillery 
-       brigade_model = 2
-       strength      = 80        
-      }
-	       Division = 
-     {  id       = {  type = 12700 id = 9029  } 
-       name     = "Khojak Brigade" 
-       type     = militia
-	   model    = 3
-       strength = 80 
-       } 	  
-    } 
-   landunit = 
-   {  name     = "Sind Brigade Area" 
-     location = 1533
-     id       = {  type = 12700 id = 9030  } 
-     Division = 
-     {  id       = {  type = 12700 id = 9031  } 
-       name     = "Sind Brigade" 
-       type     = garrison
-	   model    = 2
-       strength = 80        
-      } 
-    } 
-   landunit = 
-   {  name     = "Northern Command" 
-     location = 1534
-     id       = {  type = 12700 id = 9032  } 
-     Division = 
-     {  id       = {  type = 12700 id = 9033  } 
-       name     = "1st Indian Division" 
-       type     = infantry 
-	   model    = 7
-       strength = 100 
-      } 
-     Division = 
-     {  id       = {  type = 12700 id = 9034  } 
-       name     = "2nd Indian Division" 
-       type     = infantry 
-	   model    = 7
-       strength = 100 
-      } 
-	Division = 
-     {  id       = {  type = 12700 id = 9035  } 
-       name     = "2nd Indian Cavalry Brigade" 
-       type     = cavalry 
-	   model    = 8
-       strength = 15 
-       }   	  
-    } 
-   landunit = 
-   {  name     = "Lahore District" 
-     location = 1530
-     id       = {  type = 12700 id = 9036  } 
-     Division = 
-     {  id       = {  type = 12700 id = 9037  } 
-       name     = "Sialkot Brigade" 
-       type     = militia
-	   model    = 3
-       extra         = artillery 
-       brigade_model = 2
-       strength      = 80        
-      }
-	Division = 
-     {  id       = {  type = 12700 id = 9038  } 
-       name     = "Ferozepore Brigade" 
-       type     = militia
-	   model    = 3
-       strength = 80 
-       } 	
-	Division = 
-     {  id       = {  type = 12700 id = 9039  } 
-       name     = "Jullundur Brigade" 
-       type     = militia
-	   model    = 3
-       strength = 80 
-       } 	
-	Division = 
-     {  id       = {  type = 12700 id = 9040  } 
-       name     = "Lahore Brigade" 
-       type     = militia
-	   model    = 3
-       strength = 80 
-       } 	
-	Division = 
-     {  id       = {  type = 12700 id = 9041  } 
-       name     = "Ambala Brigade" 
-       type     = militia
-	   model    = 3
-       strength = 80 
-       } 	  
-    } 
-   landunit = 
-   {  name     = "Waziristan District" 
-     location = 1537
-     id       = {  type = 12700 id = 9042  } 
-     Division = 
-     {  id       = {  type = 12700 id = 9043  } 
-       name     = "Razmak Brigade" 
-       type     = militia
-	   model    = 2
-       extra         = artillery 
-       brigade_model = 1
-       strength      = 80
-      } 
-	Division = 
-     {  id       = {  type = 12700 id = 9044  } 
-       name     = "Bannu Brigade" 
-       type     = militia
-	   model    = 2
-       strength = 80 
-       } 
-	Division = 
-     {  id       = {  type = 12700 id = 9045  } 
-       name     = "Wana Brigade" 
-       type     = militia
-	   model    = 2
-       strength = 80 
-       } 		  
-    } 
-   landunit = 
-   {  name     = "Kohat District" 
-     location = 1537
-     id       = {  type = 12700 id = 9046  } 
-     Division = 
-     {  id       = {  type = 12700 id = 9047  } 
-       name     = "Thal Brigade" 
-       type     = militia
-		model    = 2	   
-       strength = 80
-       extra         = artillery 
-       brigade_model = 1        
-      } 
-	Division = 
-     {  id       = {  type = 12700 id = 9048  } 
-       name     = "Kohat Brigade" 
-       type     = militia
-	   model    = 2
-       strength = 80 
-       } 	
-    } 
-   landunit = 
-   {  name     = "Peshawar District" 
-     location = 1537
-     id       = {  type = 12700 id = 9049  } 
-     Division = 
-     {  id       = {  type = 12700 id = 9050  } 
-       name     = "Landikotal Brigade" 
-       type     = militia
-		model    = 3	   
-       strength = 80
-       extra         = artillery 
-       brigade_model = 2        
-      } 
-	Division = 
-     {  id       = {  type = 12700 id = 9051  } 
-       name     = "Peshawar Brigade" 
-       type     = militia
-	   model    = 3
-       strength = 80 
-       } 
-	Division = 
-     {  id       = {  type = 12700 id = 9052  } 
-       name     = "Nowshera Brigade" 
-       type     = militia
-	   model    = 3
-       strength = 80 
-       } 	
-	Division = 
-     {  id       = {  type = 12700 id = 9053  } 
-       name     = "1st Indian Cavalry Brigade" 
-       type     = cavalry 
-	   model    = 8
-       strength = 15 
-       }   	  	
-    } 
-   landunit = 
-   {  name     = "Rawalpindi District" 
-     location = 1534
-     id       = {  type = 12700 id = 9054  } 
-     Division = 
-     {  id       = {  type = 12700 id = 9055  } 
-       name     = "Rawalpindi Brigade" 
-       type     = militia
-		model    = 3	   
-       strength = 80
-       extra         = artillery 
-       brigade_model = 2        
-      } 
-    } 
 
-   landunit = 
-   {  name     = "Jammu & Kashmir State Forces" 
-     location = 1540
-     id       = {  type = 12700 id = 9056  } 
-     Division = 
-     {  id       = {  type = 12700 id = 9057  } 
-       name     = "Jammu Brigade" 
-       type     = militia
-	   model    = 2
-       strength = 100 
-	locked = yes
-      } 
-     Division = 
-     {  id       = {  type = 12700 id = 9058  } 
-       name     = "Kashmir Brigade" 
-       type     = militia
-	   model    = 2
-       strength = 100 
-	locked = yes
-      } 
-    } 
-   landunit = 
-   {  name     = "Gwalior State Forces" 
-     location = 1523
-     id       = {  type = 12700 id = 9059  } 
-	Division = 
-     {  id       = {  type = 12700 id = 9060  } 
-       name     = "Gwalior Cavalry Brigade" 
-       type     = cavalry 
-	   model    = 6
-       strength = 45 
-	locked = yes
-       }   	 
-     Division = 
-     {  id       = {  type = 12700 id = 9061  } 
-       name     = "Gwalior Infantry Brigade" 
-       type     = militia
-	   model    = 2
-       strength = 100 
-	locked = yes
-      } 
-    } 
-   landunit = 
-   {  name     = "Hyderabad State Forces" 
-     location = 1487
-     id       = {  type = 12700 id = 9062  } 
-     Division = 
-     {  id       = {  type = 12700 id = 9063  } 
-       name     = "Hyderabad State Forces" 
-       type     = militia
-	   model    = 2
-       strength = 100 
-	locked = yes
-      } 
-    } 
-   landunit = 
-   {  name     = "Bikaner State Forces" 
-     location = 1527
-     id       = {  type = 12700 id = 9064  } 
-     Division = 
-     {  id       = {  type = 12700 id = 9065  } 
-       name     = "Bikaner State Forces" 
-       type     = militia
-	   model    = 2
-       strength = 80
-	locked = yes
-      } 
-    } 
-   landunit = 
-   {  name     = "Patiala State Forces" 
-     location = 1531
-     id       = {  type = 12700 id = 9066  } 
-     Division = 
-     {  id       = {  type = 12700 id = 9067  } 
-       name     = "Patiala State Forces" 
-       type     = militia
-	   model    = 2
-       strength = 80
-	locked = yes
-      } 
-    } 
-   landunit = 
-   {  name     = "Mysore State Forces" 
-     location = 1507
-     id       = {  type = 12700 id = 9068  } 
-     Division = 
-     {  id       = {  type = 12700 id = 9069  } 
-       name     = "Mysore State Forces" 
-       type     = militia
-	   model    = 2
-       strength = 70
-	locked = yes
-      } 
-    } 
+   # V4 operational organization: three-unit corps reduce map micro.
+   # Darkest Hour cannot nest major-generals beneath a corps counter. Players
+   # can detach any division and assign a major-general when independent duty
+   # is required; institutional exercises represent the wider officer bench.
 
-   landunit = 
-   {  name     = "Burma Independent District" 
-     location = 1415
-     id       = {  type = 12700 id = 9070  } 
-     Division = 
-     {  id       = {  type = 12700 id = 9071  } 
-       name     = "Burma Brigade" 
-       type     = militia
-		model    = 2	   
-       strength = 80
-       extra         = artillery 
-       brigade_model = 1        
-      } 
-    } 
-  
+   landunit = {
+      name = "Ceylon Territorial Command"
+      location = 1511
+      id = { type = 12700 id = 14 }
+      Division = {
+         id = { type = 12700 id = 15 }
+         name = "Ceylon Defence Force"
+         type = militia
+         model = 3
+         strength = 70
+      }
+   }
+
+   landunit = {
+      name = "I Southern Corps"
+      location = 1516
+      leader = 250021
+      id = { type = 12700 id = 9001 }
+      Division = {
+         id = { type = 12700 id = 9002 }
+         name = "4th Indian Division"
+         type = infantry
+         model = 7
+         strength = 100
+      }
+      Division = {
+         id = { type = 12700 id = 9005 }
+         name = "Madras Brigade"
+         type = militia
+         model = 2
+         extra = artillery
+         brigade_model = 1
+         strength = 80
+      }
+      Division = {
+         id = { type = 12700 id = 9011 }
+         name = "Poona Brigade"
+         type = garrison
+         model = 2
+         strength = 80
+      }
+   }
+
+   landunit = {
+      name = "II Western Corps"
+      location = 1517
+      leader = 250070
+      id = { type = 12700 id = 9004 }
+      Division = {
+         id = { type = 12700 id = 9007 }
+         name = "Mhow Brigade"
+         type = militia
+         model = 2
+         extra = artillery
+         brigade_model = 1
+         strength = 80
+      }
+      Division = {
+         id = { type = 12700 id = 9009 }
+         name = "Deccan Brigade"
+         type = militia
+         model = 3
+         extra = artillery
+         brigade_model = 2
+         strength = 80
+      }
+      Division = {
+         id = { type = 12700 id = 9003 }
+         name = "4th Indian Cavalry Brigade"
+         type = cavalry
+         model = 8
+         strength = 15
+      }
+   }
+
+   landunit = {
+      name = "III Eastern Corps"
+      location = 1447
+      leader = 250074
+      id = { type = 12700 id = 9012 }
+      Division = {
+         id = { type = 12700 id = 9013 }
+         name = "3rd Indian Division"
+         type = infantry
+         model = 7
+         strength = 100
+      }
+      Division = {
+         id = { type = 12700 id = 9016 }
+         name = "Eastern Bengal Brigade"
+         type = militia
+         model = 2
+         extra = artillery
+         brigade_model = 1
+         strength = 80
+      }
+      Division = {
+         id = { type = 12700 id = 9017 }
+         name = "Assam Brigade"
+         type = militia
+         model = 2
+         strength = 80
+      }
+   }
+
+   landunit = {
+      name = "IV Central Corps"
+      location = 1461
+      leader = 251001
+      id = { type = 12700 id = 9018 }
+      Division = {
+         id = { type = 12700 id = 9019 }
+         name = "Allahabad Brigade"
+         type = militia
+         model = 2
+         extra = artillery
+         brigade_model = 1
+         strength = 80
+      }
+      Division = {
+         id = { type = 12700 id = 9020 }
+         name = "Lucknow Brigade"
+         type = militia
+         model = 2
+         strength = 80
+      }
+      Division = {
+         id = { type = 12700 id = 9014 }
+         name = "3rd Indian Cavalry Brigade"
+         type = cavalry
+         model = 8
+         strength = 15
+      }
+   }
+
+   landunit = {
+      name = "V Delhi Corps"
+      location = 1459
+      leader = 251002
+      id = { type = 12700 id = 9021 }
+      Division = {
+         id = { type = 12700 id = 9022 }
+         name = "Delhi Brigade"
+         type = garrison
+         model = 2
+         strength = 80
+      }
+      Division = {
+         id = { type = 12700 id = 9024 }
+         name = "Meerut Brigade"
+         type = militia
+         model = 3
+         extra = artillery
+         brigade_model = 2
+         strength = 80
+      }
+      Division = {
+         id = { type = 12700 id = 9055 }
+         name = "Rawalpindi Brigade"
+         type = militia
+         model = 3
+         extra = artillery
+         brigade_model = 2
+         strength = 80
+      }
+   }
+
+   landunit = {
+      name = "VI Baluchistan Corps"
+      location = 1529
+      leader = 251003
+      id = { type = 12700 id = 9025 }
+      Division = {
+         id = { type = 12700 id = 9026 }
+         name = "Zhob Brigade"
+         type = garrison
+         model = 2
+         strength = 80
+      }
+      Division = {
+         id = { type = 12700 id = 9028 }
+         name = "Quetta Brigade"
+         type = militia
+         model = 3
+         extra = artillery
+         brigade_model = 2
+         strength = 80
+      }
+      Division = {
+         id = { type = 12700 id = 9029 }
+         name = "Khojak Brigade"
+         type = militia
+         model = 3
+         strength = 80
+      }
+   }
+
+   landunit = {
+      name = "VII Indus Corps"
+      location = 1533
+      leader = 251004
+      id = { type = 12700 id = 9030 }
+      Division = {
+         id = { type = 12700 id = 9031 }
+         name = "Sind Brigade"
+         type = garrison
+         model = 2
+         strength = 80
+      }
+      Division = {
+         id = { type = 12700 id = 9035 }
+         name = "2nd Indian Cavalry Brigade"
+         type = cavalry
+         model = 8
+         strength = 15
+      }
+      Division = {
+         id = { type = 12700 id = 9041 }
+         name = "Ambala Brigade"
+         type = militia
+         model = 3
+         strength = 80
+      }
+   }
+
+   landunit = {
+      name = "VIII Northern Corps"
+      location = 1534
+      leader = 251007
+      id = { type = 12700 id = 9032 }
+      Division = {
+         id = { type = 12700 id = 9033 }
+         name = "1st Indian Division"
+         type = infantry
+         model = 7
+         strength = 100
+      }
+      Division = {
+         id = { type = 12700 id = 9034 }
+         name = "2nd Indian Division"
+         type = infantry
+         model = 7
+         strength = 100
+      }
+      Division = {
+         id = { type = 12700 id = 9037 }
+         name = "Sialkot Brigade"
+         type = militia
+         model = 3
+         extra = artillery
+         brigade_model = 2
+         strength = 80
+      }
+   }
+
+   landunit = {
+      name = "IX Lahore Corps"
+      location = 1530
+      leader = 251009
+      id = { type = 12700 id = 9036 }
+      Division = {
+         id = { type = 12700 id = 9038 }
+         name = "Ferozepore Brigade"
+         type = militia
+         model = 3
+         strength = 80
+      }
+      Division = {
+         id = { type = 12700 id = 9039 }
+         name = "Jullundur Brigade"
+         type = militia
+         model = 3
+         strength = 80
+      }
+      Division = {
+         id = { type = 12700 id = 9040 }
+         name = "Lahore Brigade"
+         type = militia
+         model = 3
+         strength = 80
+      }
+   }
+
+   landunit = {
+      name = "X Waziristan Corps"
+      location = 1537
+      leader = 251014
+      id = { type = 12700 id = 9042 }
+      Division = {
+         id = { type = 12700 id = 9043 }
+         name = "Razmak Brigade"
+         type = militia
+         model = 2
+         extra = artillery
+         brigade_model = 1
+         strength = 80
+      }
+      Division = {
+         id = { type = 12700 id = 9044 }
+         name = "Bannu Brigade"
+         type = militia
+         model = 2
+         strength = 80
+      }
+      Division = {
+         id = { type = 12700 id = 9045 }
+         name = "Wana Brigade"
+         type = militia
+         model = 2
+         strength = 80
+      }
+   }
+
+   landunit = {
+      name = "XI Peshawar Corps"
+      location = 1537
+      leader = 250171
+      id = { type = 12700 id = 9049 }
+      Division = {
+         id = { type = 12700 id = 9050 }
+         name = "Landikotal Brigade"
+         type = militia
+         model = 3
+         extra = artillery
+         brigade_model = 2
+         strength = 80
+      }
+      Division = {
+         id = { type = 12700 id = 9051 }
+         name = "Peshawar Brigade"
+         type = militia
+         model = 3
+         strength = 80
+      }
+      Division = {
+         id = { type = 12700 id = 9052 }
+         name = "Nowshera Brigade"
+         type = militia
+         model = 3
+         strength = 80
+      }
+   }
+
+   landunit = {
+      name = "XII Kohat Mobile Group"
+      location = 1537
+      leader = 250148
+      id = { type = 12700 id = 9046 }
+      Division = {
+         id = { type = 12700 id = 9047 }
+         name = "Thal Brigade"
+         type = militia
+         model = 2
+         extra = artillery
+         brigade_model = 1
+         strength = 80
+      }
+      Division = {
+         id = { type = 12700 id = 9048 }
+         name = "Kohat Brigade"
+         type = militia
+         model = 2
+         strength = 80
+      }
+      Division = {
+         id = { type = 12700 id = 9053 }
+         name = "1st Indian Cavalry Brigade"
+         type = cavalry
+         model = 8
+         strength = 15
+      }
+   }
+
+   landunit = {
+      name = "Jammu & Kashmir State Forces"
+      location = 1540
+      id = { type = 12700 id = 9056 }
+      Division = {
+         id = { type = 12700 id = 9057 }
+         name = "Jammu Brigade"
+         type = militia
+         model = 2
+         strength = 100
+         locked = yes
+      }
+      Division = {
+         id = { type = 12700 id = 9058 }
+         name = "Kashmir Brigade"
+         type = militia
+         model = 2
+         strength = 100
+         locked = yes
+      }
+   }
+
+   landunit = {
+      name = "Gwalior State Forces"
+      location = 1523
+      id = { type = 12700 id = 9059 }
+      Division = {
+         id = { type = 12700 id = 9060 }
+         name = "Gwalior Cavalry Brigade"
+         type = cavalry
+         model = 6
+         strength = 45
+         locked = yes
+      }
+      Division = {
+         id = { type = 12700 id = 9061 }
+         name = "Gwalior Infantry Brigade"
+         type = militia
+         model = 2
+         strength = 100
+         locked = yes
+      }
+   }
+
+   landunit = {
+      name = "Hyderabad State Forces"
+      location = 1487
+      id = { type = 12700 id = 9062 }
+      Division = {
+         id = { type = 12700 id = 9063 }
+         name = "Hyderabad State Forces"
+         type = militia
+         model = 2
+         strength = 100
+         locked = yes
+      }
+   }
+
+   landunit = {
+      name = "Bikaner State Forces"
+      location = 1527
+      id = { type = 12700 id = 9064 }
+      Division = {
+         id = { type = 12700 id = 9065 }
+         name = "Bikaner State Forces"
+         type = militia
+         model = 2
+         strength = 80
+         locked = yes
+      }
+   }
+
+   landunit = {
+      name = "Patiala State Forces"
+      location = 1531
+      id = { type = 12700 id = 9066 }
+      Division = {
+         id = { type = 12700 id = 9067 }
+         name = "Patiala State Forces"
+         type = militia
+         model = 2
+         strength = 80
+         locked = yes
+      }
+   }
+
+   landunit = {
+      name = "Mysore State Forces"
+      location = 1507
+      id = { type = 12700 id = 9068 }
+      Division = {
+         id = { type = 12700 id = 9069 }
+         name = "Mysore State Forces"
+         type = militia
+         model = 2
+         strength = 70
+         locked = yes
+      }
+   }
+
+   landunit = {
+      name = "Burma Independent District"
+      location = 1415
+      id = { type = 12700 id = 9070 }
+      Division = {
+         id = { type = 12700 id = 9071 }
+         name = "Burma Brigade"
+         type = militia
+         model = 2
+         extra = artillery
+         brigade_model = 1
+         strength = 80
+      }
+   }
 	navalunit = { 
 		id = { type = 12700 id = 9072 } 
 		name = "Royal Indian Marine" 

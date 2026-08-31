@@ -1,0 +1,17 @@
+# AUBM: Soviet posture toward a treaty-partner India
+# Partial switch: stock Soviet production and European fronts remain intact.
+
+exp_force_ratio = 0.10
+
+befriend = {
+	IND = 190
+	PER = 70
+	AFG = 60
+}
+
+protect = {
+	IND = 110
+	PER = 55
+	AFG = 45
+}
+

@@ -20,7 +20,7 @@ event = {
 
 	date = { day = 0 month = november year = 1934 }
 	offset = 7
-	deathdate = { day = 29 month = january year = 1935 }
+	deathdate = { day = 29 month = january year = 1964 }
 
 	action_a = {
 		ai_chance = 70
@@ -30,8 +30,8 @@ event = {
 		command = { type = manpowerpool value = -5 }
 		command = { type = waketeam which = 250023 }
 		command = { type = waketeam which = 250024 }
-		command = { type = construct which = naval_base where = 1533 value = 3 trigger = { NOT = { building = { province = 1533 type = naval_base value = 8 } } } }
-		command = { type = construct which = naval_base where = 1493 value = 3 trigger = { NOT = { building = { province = 1493 type = naval_base value = 8 } } } }
+		command = { type = construct which = naval_base where = 1533 value = 3 trigger = { owned = { province = 1533 data = IND } NOT = { building = { province = 1533 type = naval_base value = 8 } } } }
+		command = { type = construct which = naval_base where = 1493 value = 3 trigger = { owned = { province = 1493 data = IND } NOT = { building = { province = 1493 type = naval_base value = 8 } } } }
 		command = { type = setflag which = ind_v3_naval_staff }
 	}
 	action_b = {
@@ -63,7 +63,7 @@ event = {
 
 	date = { day = 0 month = november year = 1935 }
 	offset = 7
-	deathdate = { day = 29 month = january year = 1936 }
+	deathdate = { day = 29 month = january year = 1964 }
 
 	action_a = {
 		ai_chance = 75
@@ -71,9 +71,9 @@ event = {
 		command = { type = money value = -300 }
 		command = { type = supplies value = -400 }
 		command = { type = manpowerpool value = -6 }
-		command = { type = construct which = naval_base where = 1533 value = 3 trigger = { NOT = { building = { province = 1533 type = naval_base value = 8 } } } }
-		command = { type = construct which = naval_base where = 1493 value = 6 trigger = { NOT = { building = { province = 1493 type = naval_base value = 5 } } } }
-		command = { type = construct which = naval_base where = 1497 value = 6 trigger = { NOT = { building = { province = 1497 type = naval_base value = 5 } } } }
+		command = { type = construct which = naval_base where = 1533 value = 3 trigger = { owned = { province = 1533 data = IND } NOT = { building = { province = 1533 type = naval_base value = 8 } } } }
+		command = { type = construct which = naval_base where = 1493 value = 6 trigger = { owned = { province = 1493 data = IND } NOT = { building = { province = 1493 type = naval_base value = 5 } } } }
+		command = { type = construct which = naval_base where = 1497 value = 6 trigger = { owned = { province = 1497 data = IND } NOT = { building = { province = 1497 type = naval_base value = 5 } } } }
 		command = { type = domestic which = professional_army value = 1 }
 		command = { type = setflag which = ind_v3_three_fleet_doctrine }
 	}
@@ -82,8 +82,8 @@ event = {
 		name = "Keep one fleet with two regional stations"
 
 		command = { type = supplies value = -250 }
-		command = { type = construct which = naval_base where = 1533 value = 3 trigger = { NOT = { building = { province = 1533 type = naval_base value = 8 } } } }
-		command = { type = construct which = naval_base where = 1493 value = 3 trigger = { NOT = { building = { province = 1493 type = naval_base value = 8 } } } }
+		command = { type = construct which = naval_base where = 1533 value = 3 trigger = { owned = { province = 1533 data = IND } NOT = { building = { province = 1533 type = naval_base value = 8 } } } }
+		command = { type = construct which = naval_base where = 1493 value = 3 trigger = { owned = { province = 1493 data = IND } NOT = { building = { province = 1493 type = naval_base value = 8 } } } }
 		command = { type = setflag which = ind_v3_three_fleet_doctrine }
 	}
 }
@@ -105,7 +105,7 @@ event = {
 
 	date = { day = 0 month = june year = 1936 }
 	offset = 7
-	deathdate = { day = 29 month = august year = 1936 }
+	deathdate = { day = 29 month = august year = 1964 }
 
 	action_a = {
 		ai_chance = 65
@@ -114,12 +114,12 @@ event = {
 		command = { type = supplies value = -950 }
 		command = { type = manpowerpool value = -8 }
 		command = { type = waketeam which = 250021 }
-		command = { type = construct which = ic where = 1517 value = 2 }
-		command = { type = construct which = ic where = 1493 value = 2 }
-		command = { type = construct which = ic where = 1497 value = 2 }
-		command = { type = construct which = naval_base where = 1517 value = 3 trigger = { NOT = { building = { province = 1517 type = naval_base value = 8 } } } }
-		command = { type = construct which = naval_base where = 1493 value = 6 trigger = { NOT = { building = { province = 1493 type = naval_base value = 5 } } } }
-		command = { type = construct which = naval_base where = 1497 value = 6 trigger = { NOT = { building = { province = 1497 type = naval_base value = 5 } } } }
+		command = { type = construct which = ic where = 1517 value = 2 trigger = { owned = { province = 1517 data = IND } } }
+		command = { type = construct which = ic where = 1493 value = 2 trigger = { owned = { province = 1493 data = IND } } }
+		command = { type = construct which = ic where = 1497 value = 2 trigger = { owned = { province = 1497 data = IND } } }
+		command = { type = construct which = naval_base where = 1517 value = 3 trigger = { owned = { province = 1517 data = IND } NOT = { building = { province = 1517 type = naval_base value = 8 } } } }
+		command = { type = construct which = naval_base where = 1493 value = 6 trigger = { owned = { province = 1493 data = IND } NOT = { building = { province = 1493 type = naval_base value = 5 } } } }
+		command = { type = construct which = naval_base where = 1497 value = 6 trigger = { owned = { province = 1497 data = IND } NOT = { building = { province = 1497 type = naval_base value = 5 } } } }
 		command = { type = setflag which = ind_v3_three_coast_yards }
 		command = { type = setflag which = ind_v3_dockyard_act }
 	}
@@ -129,8 +129,8 @@ event = {
 
 		command = { type = supplies value = -700 }
 		command = { type = waketeam which = 250021 }
-		command = { type = construct which = ic where = 1517 value = 4 }
-		command = { type = construct which = naval_base where = 1517 value = 3 trigger = { NOT = { building = { province = 1517 type = naval_base value = 8 } } } }
+		command = { type = construct which = ic where = 1517 value = 4 trigger = { owned = { province = 1517 data = IND } } }
+		command = { type = construct which = naval_base where = 1517 value = 3 trigger = { owned = { province = 1517 data = IND } NOT = { building = { province = 1517 type = naval_base value = 8 } } } }
 		command = { type = dissent value = 1 }
 		command = { type = setflag which = ind_v3_bombay_yard }
 		command = { type = setflag which = ind_v3_dockyard_act }
@@ -142,25 +142,42 @@ event = {
 	random = no
 	country = IND
 
-	trigger = {
+	decision = {
 		flag = ind_v3_dockyard_act
 		NOT = { flag = ind_v3_carrier_decision }
 	}
+	decision_trigger = {
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		OR = {
+			AND = { money = 700 supplies = 1300 manpower = 8 }
+			AND = { money = 500 supplies = 900 manpower = 6 }
+			AND = { money = 300 supplies = 750 manpower = 2 }
+		}
+		# AUBM_FULL_OPTION_GATE_END
+	}
 
 	name = "The Carrier Question"
+	decision_desc = "Cabinet funding estimates: Authorize one fleet carrier [money 700, supplies 1,300, manpower 8]; Begin with two light carriers [money 500, supplies 900, manpower 6]; Build an ocean-denial submarine arm [money 300, supplies 750, manpower 2]."
 	desc = "Naval aviation officers argue that India cannot command the open ocean from land bases alone. A fleet carrier would announce great-power status, a light carrier would cover the regional fleets, while a submarine strategy would reject the expense and vulnerability of aviation ships."
 	style = 2
 	picture = "india_v3_armed_forces"
 
 	date = { day = 0 month = january year = 1937 }
 	offset = 7
-	deathdate = { day = 29 month = march year = 1937 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
+		trigger = {
+ # AUBM_ACTION_RESERVE_BEGIN
+ money = 700
+ supplies = 1300
+ manpower = 8
+ # AUBM_ACTION_RESERVE_END
+ money = 700 supplies = 1300 manpower = 8 }
 		ai_chance = 50
-		name = "Authorize one fleet carrier and one light carrier"
-		command = { type = money value = -775 }
-		command = { type = supplies value = -1450 }
+		name = "Authorize one fleet carrier: -700/-1300"
+		command = { type = money value = -700 }
+		command = { type = supplies value = -1300 }
 		command = { type = manpowerpool value = -8 }
 		command = { type = dissent value = 2 }
 		command = { type = gain_tech which = 3510 }
@@ -170,14 +187,20 @@ event = {
 		command = { type = waketeam which = 250022 }
 		command = { type = waketeam which = 250023 }
 		command = { type = setflag which = ind_v3_fleet_carrier_authorized }
-		command = { type = setflag which = ind_v3_light_carrier_authorized }
 		command = { type = setflag which = ind_v3_carrier_decision }
 	}
 	action_b = {
+		trigger = {
+ # AUBM_ACTION_RESERVE_BEGIN
+ money = 500
+ supplies = 900
+ manpower = 6
+ # AUBM_ACTION_RESERVE_END
+ money = 500 supplies = 900 manpower = 6 }
 		ai_chance = 35
-		name = "Begin with two light carriers"
-		command = { type = money value = -525 }
-		command = { type = supplies value = -1050 }
+		name = "Begin with two light carriers: -500/-900"
+		command = { type = money value = -500 }
+		command = { type = supplies value = -900 }
 		command = { type = manpowerpool value = -6 }
 		command = { type = gain_tech which = 3510 }
 		command = { type = gain_tech which = 4900 }
@@ -188,20 +211,102 @@ event = {
 		command = { type = setflag which = ind_v3_carrier_decision }
 	}
 	action_c = {
-	trigger = {
-			# V3_QUEUE_MANPOWER = 2
-			manpower = 2
-	}
+		trigger = {
+ # AUBM_ACTION_RESERVE_BEGIN
+ money = 300
+ supplies = 750
+ manpower = 2
+ # AUBM_ACTION_RESERVE_END
+ money = 300 supplies = 750 manpower = 2 }
 		ai_chance = 15
-		name = "Reject the fleet carrier and dominate below the surface"
-
-		command = { type = supplies value = -950 }
+		name = "Build an ocean-denial submarine arm: -300/-750"
+		command = { type = money value = -300 }
+		command = { type = supplies value = -750 }
 		command = { type = gain_tech which = 3510 }
 		command = { type = gain_tech which = 4900 }
 		command = { type = waketeam which = 250024 }
-		command = { type = build_division which = submarine value = naval_torpedoes_s when = 3 cost = -3.0 where = 90 }
+		command = { type = build_division which = submarine value = naval_improved_hull_s when = 1 where = 90 }
 		command = { type = setflag which = ind_v3_submarine_navy }
 		command = { type = setflag which = ind_v3_carrier_decision }
+	}
+}
+
+#########################################################################
+# National Dockyard Act: mature national yards halve new-hull schedules
+#########################################################################
+
+event = {
+	id = 9271111
+	random = no
+	one_action = yes
+	country = IND
+
+	trigger = {
+		flag = ind_v3_dockyard_act
+		NOT = { flag = ind_aubm_dockyard_efficiency_50 }
+	}
+
+	name = "The National Dockyard Construction Standard"
+	desc = "The new yards have standardized armour patterns, turbines, welding practice and escort machinery across all three coasts. Once the standard is adopted, a newly ordered Indian hull requires roughly half the model-zero construction schedule. Daily IC cost remains normal and existing contracts may retain their original completion date."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = july year = 1936 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Standardize the national yards"
+		command = { type = build_time which = carrier when = on_upgrade where = relative value = -50 }
+		command = { type = build_time which = light_carrier when = on_upgrade where = relative value = -50 }
+		command = { type = build_time which = escort_carrier when = on_upgrade where = relative value = -50 }
+		command = { type = build_time which = battleship when = on_upgrade where = relative value = -50 }
+		command = { type = build_time which = battlecruiser when = on_upgrade where = relative value = -50 }
+		command = { type = build_time which = heavy_cruiser when = on_upgrade where = relative value = -50 }
+		command = { type = build_time which = light_cruiser when = on_upgrade where = relative value = -50 }
+		command = { type = build_time which = destroyer when = on_upgrade where = relative value = -50 }
+		command = { type = build_time which = submarine when = on_upgrade where = relative value = -50 }
+		command = { type = build_time which = transport when = on_upgrade where = relative value = -50 }
+		command = { type = setflag which = ind_aubm_dockyard_efficiency_standard }
+		command = { type = setflag which = ind_aubm_dockyard_efficiency_50 }
+	}
+}
+
+# Save migration for campaigns in which the older 10/15/20-percent standard
+# already fired. Differential modifiers bring every hull to the same -50 target.
+event = {
+	id = 9271112
+	random = no
+	one_action = yes
+	country = IND
+
+	trigger = {
+		flag = ind_aubm_dockyard_efficiency_standard
+		NOT = { flag = ind_aubm_dockyard_efficiency_50 }
+	}
+
+	name = "The National Yards Complete Their Refit"
+	desc = "Experience with the first standardized contracts has allowed the national yards to reorganize slipways, prefabricate machinery and work in parallel across three coasts. New hulls now receive the full national construction standard; ships already in the queue may keep their original completion dates."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = january year = 1933 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Apply the mature-yard standard to new contracts"
+		command = { type = build_time which = carrier when = on_upgrade where = relative value = -40 }
+		command = { type = build_time which = light_carrier when = on_upgrade where = relative value = -40 }
+		command = { type = build_time which = escort_carrier when = on_upgrade where = relative value = -40 }
+		command = { type = build_time which = battleship when = on_upgrade where = relative value = -40 }
+		command = { type = build_time which = battlecruiser when = on_upgrade where = relative value = -40 }
+		command = { type = build_time which = heavy_cruiser when = on_upgrade where = relative value = -35 }
+		command = { type = build_time which = light_cruiser when = on_upgrade where = relative value = -35 }
+		command = { type = build_time which = destroyer when = on_upgrade where = relative value = -30 }
+		command = { type = build_time which = submarine when = on_upgrade where = relative value = -30 }
+		command = { type = build_time which = transport when = on_upgrade where = relative value = -30 }
+		command = { type = setflag which = ind_aubm_dockyard_efficiency_50 }
 	}
 }
 
@@ -215,35 +320,57 @@ event = {
 		NOT = { flag = ind_v3_arabian_fleet }
 	}
 	decision_trigger = {
-	OR = {
-		AND = { money = 525 supplies = 1300 manpower = 8 }
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		money = 650
+		supplies = 1500
+		manpower = 5
+		# AUBM_FULL_OPTION_GATE_END
 	}
-}
 
 	name = "The Arabian Sea Fleet"
-	desc = "Karachi's command requests a permanent force able to escort oil traffic, cover the western coast and contest raiders entering from the Gulf. The first operational fleet will also train the navy's new generation of captains."
+	decision_desc = "Cabinet funding estimates: Lay down the battleship-led Arabian Sea Fleet [money 650, supplies 1,500, manpower 5]."
+	desc = "Karachi's command rejects a cruiser flotilla as inadequate for the Gulf approaches. The Arabian Sea Fleet will be organized around a current-model battleship, two light cruisers and two destroyer flotillas. Fire control is fitted with each hull; the remaining legal radar, armour, anti-aircraft and aviation components are delivered to the deployment pool for installation."
 	style = 2
 	picture = "india_v3_armed_forces"
 
 	date = { day = 0 month = august year = 1937 }
 	offset = 7
-	deathdate = { day = 29 month = october year = 1937 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		trigger = {
-			money = 525
-			supplies = 1300
-			manpower = 8
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 650
+			supplies = 1500
+			manpower = 5
+			# AUBM_ACTION_RESERVE_END
+			money = 650
+			supplies = 1500
+			manpower = 5
 		}
 		ai_chance = 100
-		name = "Commission the Arabian Sea Fleet at Karachi"
-		command = { type = money value = -525 }
-		command = { type = supplies value = -1300 }
-		command = { type = manpowerpool value = -8 }
-		command = { type = add_corps which = "Arabian Sea Fleet" value = naval where = 1533 }
-		command = { type = add_division which = "INS Himalaya" value = battleship when = 0 where = naval_fire_controll_l }
-		command = { type = add_division which = "INS Delhi" value = light_cruiser when = 0 where = naval_fire_controll_s }
-		command = { type = add_division which = "INS Bombay" value = light_cruiser when = 0 where = naval_anti_air_s }
+		name = "Lay down the battleship-led Arabian Sea Fleet"
+		command = { type = money value = -650 }
+		command = { type = supplies value = -1500 }
+		command = { type = build_division which = battleship value = naval_fire_controll_l when = 1 where = 360 name = "INS Varuna" }
+		command = { type = build_division which = light_cruiser value = naval_fire_controll_s when = 1 where = 150 name = "INS Dwarka" }
+		command = { type = build_division which = light_cruiser value = naval_anti_air_s when = 1 where = 150 name = "INS Kavaratti" }
+		command = { type = build_division which = destroyer value = naval_asw when = 1 where = 90 name = "1st Arabian Escort Flotilla" }
+		command = { type = build_division which = destroyer value = naval_anti_air_s when = 1 where = 90 name = "2nd Arabian Escort Flotilla" }
+		# Event syntax permits one attached brigade per hull. These current-model
+		# components fill the remaining legal capital and cruiser slots from pool.
+		command = { type = add_brigade value = naval_anti_air_l }
+		command = { type = add_brigade value = naval_radar_l }
+		command = { type = add_brigade value = naval_improved_hull_l }
+		command = { type = add_brigade value = floatplane }
+		command = { type = add_brigade value = naval_anti_air_s }
+		command = { type = add_brigade value = naval_fire_controll_s }
+		command = { type = add_brigade value = naval_radar_s }
+		command = { type = add_brigade value = naval_radar_s }
+		command = { type = add_brigade value = naval_improved_hull_s }
+		command = { type = add_brigade value = naval_improved_hull_s }
+		command = { type = add_brigade value = floatplane }
+		command = { type = add_brigade value = floatplane }
 		command = { type = setflag which = ind_v3_arabian_fleet }
 	}
 }
@@ -258,35 +385,55 @@ event = {
 		NOT = { flag = ind_v3_bay_fleet }
 	}
 	decision_trigger = {
-	OR = {
-		AND = { money = 575 supplies = 1450 manpower = 8 }
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		money = 700
+		supplies = 1600
+		manpower = 5
+		# AUBM_FULL_OPTION_GATE_END
 	}
-}
 
 	name = "The Bay of Bengal Fleet"
-	desc = "Vizagapatam's command must protect Calcutta, Rangoon and the approaches to Malaya. Its cruisers and destroyers will operate with the naval air arm and prepare the service for carrier operations."
+	decision_desc = "Cabinet funding estimates: Lay down the battleship-led Bay of Bengal Fleet [money 700, supplies 1,600, manpower 5]."
+	desc = "Vizagapatam's command must protect Calcutta, Rangoon and the approaches to Malaya. The Bay of Bengal Fleet will therefore match the western command with a current-model battleship, two light cruisers and two destroyer flotillas, while training alongside the naval air arm for later carrier operations."
 	style = 2
 	picture = "india_v3_armed_forces"
 
 	date = { day = 0 month = april year = 1938 }
 	offset = 7
-	deathdate = { day = 29 month = june year = 1938 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		trigger = {
-			money = 575
-			supplies = 1450
-			manpower = 8
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 700
+			supplies = 1600
+			manpower = 5
+			# AUBM_ACTION_RESERVE_END
+			money = 700
+			supplies = 1600
+			manpower = 5
 		}
 		ai_chance = 100
-		name = "Commission the Bay of Bengal Fleet at Vizagapatam"
-		command = { type = money value = -575 }
-		command = { type = supplies value = -1450 }
-		command = { type = manpowerpool value = -8 }
-		command = { type = add_corps which = "Bay of Bengal Fleet" value = naval where = 1493 }
-		command = { type = add_division which = "INS Brahmaputra" value = battleship when = 0 where = naval_fire_controll_l }
-		command = { type = add_division which = "INS Calcutta" value = light_cruiser when = 0 where = naval_fire_controll_s }
-		command = { type = add_division which = "INS Madras" value = light_cruiser when = 0 where = naval_anti_air_s }
+		name = "Lay down the battleship-led Bay of Bengal Fleet"
+		command = { type = money value = -700 }
+		command = { type = supplies value = -1600 }
+		command = { type = build_division which = battleship value = naval_fire_controll_l when = 1 where = 360 name = "INS Purvasagar" }
+		command = { type = build_division which = light_cruiser value = naval_fire_controll_s when = 1 where = 150 name = "INS Chilika" }
+		command = { type = build_division which = light_cruiser value = naval_anti_air_s when = 1 where = 150 name = "INS Coromandel" }
+		command = { type = build_division which = destroyer value = naval_asw when = 1 where = 90 name = "1st Bengal Escort Flotilla" }
+		command = { type = build_division which = destroyer value = naval_anti_air_s when = 1 where = 90 name = "2nd Bengal Escort Flotilla" }
+		command = { type = add_brigade value = naval_anti_air_l }
+		command = { type = add_brigade value = naval_radar_l }
+		command = { type = add_brigade value = naval_improved_hull_l }
+		command = { type = add_brigade value = floatplane }
+		command = { type = add_brigade value = naval_anti_air_s }
+		command = { type = add_brigade value = naval_fire_controll_s }
+		command = { type = add_brigade value = naval_radar_s }
+		command = { type = add_brigade value = naval_radar_s }
+		command = { type = add_brigade value = naval_improved_hull_s }
+		command = { type = add_brigade value = naval_improved_hull_s }
+		command = { type = add_brigade value = floatplane }
+		command = { type = add_brigade value = floatplane }
 		command = { type = setflag which = ind_v3_bay_fleet }
 	}
 }
@@ -301,34 +448,91 @@ event = {
 		NOT = { flag = ind_v3_carrier_keels }
 	}
 	decision_trigger = {
-	OR = {
-		AND = { money = 950 supplies = 2100 manpower = 10 }
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		money = 900
+		supplies = 2100
+		manpower = 8
+		# AUBM_FULL_OPTION_GATE_END
 	}
-}
 
 	name = "The Oceanic Fleet Keels Are Laid"
+	decision_desc = "Cabinet funding estimates: Fund the capital keels, screens and fit-out packages [money 900, supplies 2,100, manpower 8]."
 	desc = "The slipways are ready, but armour plate, turbines and trained shipwrights must be diverted from every other programme. The exact hulls follow the 1937 doctrine: aviation ships for a carrier navy, or cruisers and long-range boats for an undersea strategy."
 	style = 2
 	picture = "india_v3_armed_forces"
 
 	date = { day = 0 month = october year = 1938 }
 	offset = 7
-	deathdate = { day = 29 month = december year = 1938 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		trigger = {
-			money = 950
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 900
 			supplies = 2100
-			manpower = 10
+			manpower = 8
+			# AUBM_ACTION_RESERVE_END
+			money = 900
+			supplies = 2100
+			manpower = 8
 		}
 		ai_chance = 100
-		name = "Fund the keels, escorts and naval aircraft"
-		command = { type = money value = -950 }
+		name = "Fund the capital keels, screens and fit-out packages"
+		command = { type = money value = -900 }
 		command = { type = supplies value = -2100 }
-		command = { type = manpowerpool value = -10 }
 		command = { type = dissent value = 2 }
-		command = { type = construct which = ic where = 1517 value = 2 }
-		command = { type = construct which = ic where = 1493 value = 2 }
+		command = { type = construct which = naval_base where = 1517 value = 1 trigger = { owned = { province = 1517 data = IND } NOT = { building = { province = 1517 type = naval_base value = 10 } } } }
+		command = { type = construct which = naval_base where = 1493 value = 1 trigger = { owned = { province = 1493 data = IND } NOT = { building = { province = 1493 type = naval_base value = 10 } } } }
+		command = { trigger = { flag = ind_v3_fleet_carrier_authorized } type = build_division which = carrier value = cag when = 1 where = 330 name = "INS Samudra" }
+		command = { trigger = { flag = ind_v3_fleet_carrier_authorized } type = build_division which = heavy_cruiser value = naval_fire_controll_s when = 1 where = 210 name = "INS Makran" }
+		command = { trigger = { flag = ind_v3_fleet_carrier_authorized } type = build_division which = heavy_cruiser value = naval_fire_controll_s when = 1 where = 210 name = "INS Malacca" }
+		command = { trigger = { flag = ind_v3_fleet_carrier_authorized } type = build_division which = destroyer value = naval_asw when = 1 where = 90 name = "1st Ocean Escort Flotilla" }
+		command = { trigger = { flag = ind_v3_fleet_carrier_authorized } type = build_division which = destroyer value = naval_asw when = 1 where = 90 name = "2nd Ocean Escort Flotilla" }
+		command = { trigger = { flag = ind_v3_fleet_carrier_authorized } type = add_brigade value = naval_anti_air_l }
+		command = { trigger = { flag = ind_v3_fleet_carrier_authorized } type = add_brigade value = naval_radar_l }
+		command = { trigger = { flag = ind_v3_fleet_carrier_authorized } type = add_brigade value = naval_improved_hull_l }
+		command = { trigger = { flag = ind_v3_fleet_carrier_authorized } type = add_brigade value = naval_anti_air_s }
+		command = { trigger = { flag = ind_v3_fleet_carrier_authorized } type = add_brigade value = naval_anti_air_s }
+		command = { trigger = { flag = ind_v3_fleet_carrier_authorized } type = add_brigade value = naval_radar_s }
+		command = { trigger = { flag = ind_v3_fleet_carrier_authorized } type = add_brigade value = naval_radar_s }
+		command = { trigger = { flag = ind_v3_fleet_carrier_authorized } type = add_brigade value = naval_improved_hull_s }
+		command = { trigger = { flag = ind_v3_fleet_carrier_authorized } type = add_brigade value = naval_improved_hull_s }
+		command = { trigger = { flag = ind_v3_fleet_carrier_authorized } type = add_brigade value = floatplane }
+		command = { trigger = { flag = ind_v3_fleet_carrier_authorized } type = add_brigade value = floatplane }
+		command = { trigger = { flag = ind_v3_two_light_carriers } type = build_division which = light_carrier value = light_cag when = 1 where = 270 name = "INS Garuda" }
+		command = { trigger = { flag = ind_v3_two_light_carriers } type = build_division which = light_carrier value = light_cag when = 1 where = 270 name = "INS Suparna" }
+		command = { trigger = { flag = ind_v3_two_light_carriers } type = build_division which = light_cruiser value = naval_fire_controll_s when = 1 where = 150 name = "INS Lakshadweep" }
+		command = { trigger = { flag = ind_v3_two_light_carriers } type = build_division which = light_cruiser value = naval_anti_air_s when = 1 where = 150 name = "INS Andaman" }
+		command = { trigger = { flag = ind_v3_two_light_carriers } type = build_division which = destroyer value = naval_asw when = 1 where = 90 name = "1st Ocean Escort Flotilla" }
+		command = { trigger = { flag = ind_v3_two_light_carriers } type = build_division which = destroyer value = naval_asw when = 1 where = 90 name = "2nd Ocean Escort Flotilla" }
+		command = { trigger = { flag = ind_v3_two_light_carriers } type = add_brigade value = naval_anti_air_l }
+		command = { trigger = { flag = ind_v3_two_light_carriers } type = add_brigade value = naval_anti_air_l }
+		command = { trigger = { flag = ind_v3_two_light_carriers } type = add_brigade value = naval_radar_l }
+		command = { trigger = { flag = ind_v3_two_light_carriers } type = add_brigade value = naval_radar_l }
+		command = { trigger = { flag = ind_v3_two_light_carriers } type = add_brigade value = naval_improved_hull_l }
+		command = { trigger = { flag = ind_v3_two_light_carriers } type = add_brigade value = naval_improved_hull_l }
+		command = { trigger = { flag = ind_v3_two_light_carriers } type = add_brigade value = naval_anti_air_s }
+		command = { trigger = { flag = ind_v3_two_light_carriers } type = add_brigade value = naval_fire_controll_s }
+		command = { trigger = { flag = ind_v3_two_light_carriers } type = add_brigade value = naval_radar_s }
+		command = { trigger = { flag = ind_v3_two_light_carriers } type = add_brigade value = naval_radar_s }
+		command = { trigger = { flag = ind_v3_two_light_carriers } type = add_brigade value = naval_improved_hull_s }
+		command = { trigger = { flag = ind_v3_two_light_carriers } type = add_brigade value = naval_improved_hull_s }
+		command = { trigger = { flag = ind_v3_two_light_carriers } type = add_brigade value = floatplane }
+		command = { trigger = { flag = ind_v3_two_light_carriers } type = add_brigade value = floatplane }
+		command = { trigger = { flag = ind_v3_submarine_navy } type = build_division which = battlecruiser value = naval_fire_controll_l when = 1 where = 330 name = "INS Mahasagar" }
+		command = { trigger = { flag = ind_v3_submarine_navy } type = build_division which = light_cruiser value = naval_anti_air_s when = 1 where = 150 name = "INS Nicobar" }
+		command = { trigger = { flag = ind_v3_submarine_navy } type = build_division which = destroyer value = naval_asw when = 1 where = 90 name = "Ocean Escort Flotilla" }
+		command = { trigger = { flag = ind_v3_submarine_navy } type = build_division which = submarine value = naval_improved_hull_s when = 1 where = 90 name = "Indian Ocean Submarine Squadron" }
+		command = { trigger = { flag = ind_v3_submarine_navy } type = build_division which = submarine value = naval_improved_hull_s when = 1 where = 90 name = "Arabian Submarine Squadron" }
+		command = { trigger = { flag = ind_v3_submarine_navy } type = add_brigade value = naval_anti_air_l }
+		command = { trigger = { flag = ind_v3_submarine_navy } type = add_brigade value = naval_radar_l }
+		command = { trigger = { flag = ind_v3_submarine_navy } type = add_brigade value = naval_improved_hull_l }
+		command = { trigger = { flag = ind_v3_submarine_navy } type = add_brigade value = floatplane }
+		command = { trigger = { flag = ind_v3_submarine_navy } type = add_brigade value = naval_fire_controll_s }
+		command = { trigger = { flag = ind_v3_submarine_navy } type = add_brigade value = naval_radar_s }
+		command = { trigger = { flag = ind_v3_submarine_navy } type = add_brigade value = naval_improved_hull_s }
+		command = { trigger = { flag = ind_v3_submarine_navy } type = add_brigade value = floatplane }
+		command = { type = repair_mod value = 2 }
 		command = { type = setflag which = ind_v3_carrier_keels }
 	}
 }
@@ -340,59 +544,44 @@ event = {
 
 	trigger = {
 		flag = ind_v3_carrier_keels
+		year = 1940
 		NOT = { flag = ind_v3_oceanic_fleet_commissioned }
 	}
 
-	name = "The Oceanic Fleet Commissions"
-	desc = "India's first aviation ships complete trials with their escort screen. The exact force reflects the 1937 decision, but in every case the navy now possesses three permanent commands and an ocean-going striking force."
+	name = "The Oceanic Fleet Works Mature"
+	desc = "The dockyards, naval air schools and escort establishments created by the oceanic programme now operate as a permanent command. Hulls remain subject to normal construction time and use the best model India can presently build."
 	style = 2
 	picture = "india_v3_armed_forces"
 
 	date = { day = 0 month = january year = 1940 }
 	offset = 7
-	deathdate = { day = 29 month = march year = 1940 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		trigger = { flag = ind_v3_fleet_carrier_authorized }
 		ai_chance = 34
-		name = "Commission INS Vikrant and its battle group"
-		command = { type = supplies value = -1250 }
-		command = { type = add_corps which = "Indian Ocean Fleet" value = naval where = 1517 }
-		command = { type = add_division which = "INS Vikrant" value = carrier when = 0 where = cag }
-		command = { type = add_division which = "INS Hindustan" value = heavy_cruiser when = 0 where = naval_fire_controll_l }
-		command = { type = add_division which = "INS Rajputana" value = heavy_cruiser when = 0 where = naval_anti_air_l }
-		command = { type = add_division which = "1st Ocean Escort Flotilla" value = destroyer when = 0 where = naval_asw }
-		command = { type = add_division which = "2nd Ocean Escort Flotilla" value = destroyer when = 0 where = naval_asw }
+		name = "Commission carrier support command"
+		command = { type = supplies value = -900 }
+		command = { type = max_organization which = naval value = 2 }
+		command = { type = morale which = naval value = 1 }
 		command = { type = setflag which = ind_v3_oceanic_fleet_commissioned }
 	}
 	action_b = {
 		trigger = { flag = ind_v3_two_light_carriers }
 		ai_chance = 33
-		name = "Commission the twin light carriers"
-		command = { type = supplies value = -1050 }
-		command = { type = add_corps which = "Indian Ocean Fleet" value = naval where = 1517 }
-		command = { type = add_division which = "INS Viraat" value = light_carrier when = 0 where = light_cag }
-		command = { type = add_division which = "INS Vikram" value = light_carrier when = 0 where = light_cag }
-		command = { type = add_division which = "INS Hindustan" value = heavy_cruiser when = 0 where = naval_fire_controll_l }
-		command = { type = add_division which = "INS Rajputana" value = heavy_cruiser when = 0 where = naval_anti_air_l }
-		command = { type = add_division which = "1st Ocean Escort Flotilla" value = destroyer when = 0 where = naval_asw }
-		command = { type = add_division which = "2nd Ocean Escort Flotilla" value = destroyer when = 0 where = naval_asw }
+		name = "Commission light-carrier support command"
+		command = { type = supplies value = -800 }
+		command = { type = max_organization which = naval value = 2 }
+		command = { type = repair_mod value = 1 }
 		command = { type = setflag which = ind_v3_oceanic_fleet_commissioned }
 	}
 	action_c = {
 		trigger = { flag = ind_v3_submarine_navy }
 		ai_chance = 33
-		name = "Commission the oceanic cruiser and submarine force"
-		command = { type = supplies value = -1000 }
-		command = { type = add_corps which = "Indian Ocean Fleet" value = naval where = 1517 }
-		command = { type = add_division which = "INS Hindustan" value = heavy_cruiser when = 0 where = naval_fire_controll_l }
-		command = { type = add_division which = "INS Rajputana" value = heavy_cruiser when = 0 where = naval_anti_air_l }
-		command = { type = add_division which = "1st Ocean Escort Flotilla" value = destroyer when = 0 where = naval_asw }
-		command = { type = add_division which = "2nd Ocean Escort Flotilla" value = destroyer when = 0 where = naval_asw }
-		command = { type = add_corps which = "Indian Ocean Submarine Command" value = naval where = 1517 }
-		command = { type = add_division which = "Indian Ocean Submarine Squadron" value = submarine when = 0 where = naval_torpedoes_s }
-		command = { type = add_division which = "Arabian Submarine Squadron" value = submarine when = 0 where = naval_torpedoes_s }
-		command = { type = add_division which = "Bay Submarine Squadron" value = submarine when = 0 where = naval_torpedoes_s }
+		name = "Commission submarine support command"
+		command = { type = supplies value = -700 }
+		command = { type = max_organization which = submarine value = 2 }
+		command = { type = morale which = submarine value = 2 }
 		command = { type = setflag which = ind_v3_oceanic_fleet_commissioned }
 	}
 }
@@ -416,23 +605,23 @@ event = {
 
 	date = { day = 0 month = april year = 1940 }
 	offset = 20
-	deathdate = { day = 29 month = december year = 1945 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 80
 		name = "Build the deep-ocean base at Colombo-Trincomalee"
 		command = { type = money value = -550 }
 		command = { type = supplies value = -900 }
-		command = { type = construct which = naval_base where = 1511 value = 6 trigger = { NOT = { building = { province = 1511 type = naval_base value = 5 } } } }
-		command = { type = construct which = air_base where = 1511 value = 3 trigger = { NOT = { building = { province = 1511 type = air_base value = 8 } } } }
-		command = { type = construct which = coastal_fort where = 1511 value = 2 }
+		command = { type = construct which = naval_base where = 1511 value = 6 trigger = { owned = { province = 1511 data = IND } NOT = { building = { province = 1511 type = naval_base value = 5 } } } }
+		command = { type = construct which = air_base where = 1511 value = 3 trigger = { owned = { province = 1511 data = IND } NOT = { building = { province = 1511 type = air_base value = 8 } } } }
+		command = { type = construct which = coastal_fort where = 1511 value = 2 trigger = { owned = { province = 1511 data = IND } NOT = { building = { province = 1511 type = coastal_fort value = 9 } } } }
 		command = { type = setflag which = ind_v3_trincomalee_command }
 	}
 	action_b = {
 		ai_chance = 20
 		name = "Keep oceanic command at Cochin and Bombay"
 		command = { type = money value = -250 }
-		command = { type = construct which = naval_base where = 1497 value = 3 trigger = { NOT = { building = { province = 1497 type = naval_base value = 8 } } } }
+		command = { type = construct which = naval_base where = 1497 value = 3 trigger = { owned = { province = 1497 data = IND } NOT = { building = { province = 1497 type = naval_base value = 8 } } } }
 		command = { type = relation which = ENG value = 10 }
 		command = { type = setflag which = ind_v3_trincomalee_command }
 	}
@@ -448,10 +637,10 @@ event = {
 		NOT = { flag = ind_v3_naval_board_1941 }
 	# V3_ACTION_REACHABILITY_BEGIN
 	OR = {
-		AND = { manpower = 4 }
-		AND = { manpower = 7 }
-		AND = { manpower = 3 }
-		}
+		AND = { manpower = 1 }
+		AND = { manpower = 2 }
+		AND = { manpower = 2 }
+	}
 	# V3_ACTION_REACHABILITY_END
 }
 
@@ -462,45 +651,47 @@ event = {
 
 	date = { day = 0 month = april year = 1941 }
 	offset = 8
-	deathdate = { day = 29 month = june year = 1941 }
+	deathdate = { day = 29 month = june year = 1964 }
 
 	action_a = {
 	trigger = {
-			# V3_QUEUE_MANPOWER = 4
-			manpower = 4
+			# V3_QUEUE_MANPOWER = 1
+			manpower = 1
 	}
 		ai_chance = 45
 		name = "Expand carrier aviation and fleet logistics"
 		command = { type = money value = -500 }
 		command = { type = supplies value = -1100 }
 
-		command = { type = build_division which = destroyer value = naval_asw when = 2 cost = -2.5 where = 90 }
+		command = { type = build_division which = destroyer value = naval_asw when = 1 where = 90 name = "3rd Ocean Escort Flotilla" }
 		command = { type = setflag which = ind_v3_carrier_navy_1941 }
 		command = { type = setflag which = ind_v3_naval_board_1941 }
 	}
 	action_b = {
 	trigger = {
-			# V3_QUEUE_MANPOWER = 7
-			manpower = 7
+			# V3_QUEUE_MANPOWER = 2
+			manpower = 2
 	}
 		ai_chance = 35
 		name = "Build an escort and anti-submarine navy"
 		command = { type = money value = -425 }
 		command = { type = supplies value = -1000 }
-		command = { type = build_division which = destroyer value = naval_asw when = 4 cost = -3.0 where = 75 }
+		command = { type = build_division which = destroyer value = naval_asw when = 1 where = 90 name = "3rd Arabian Escort Flotilla" }
+		command = { type = build_division which = destroyer value = naval_asw when = 1 where = 90 name = "3rd Bengal Escort Flotilla" }
 		command = { type = setflag which = ind_v3_escort_navy_1941 }
 		command = { type = setflag which = ind_v3_naval_board_1941 }
 	}
 	action_c = {
 	trigger = {
-			# V3_QUEUE_MANPOWER = 3
-			manpower = 3
+			# V3_QUEUE_MANPOWER = 2
+			manpower = 2
 	}
 		ai_chance = 20
 		name = "Expand the oceanic submarine arm"
 		command = { type = money value = -400 }
 		command = { type = supplies value = -950 }
-		command = { type = build_division which = submarine value = naval_torpedoes_s when = 4 cost = -3.0 where = 75 }
+		command = { type = build_division which = submarine value = naval_improved_hull_s when = 1 where = 90 name = "3rd Ocean Submarine Squadron" }
+		command = { type = build_division which = submarine value = naval_improved_hull_s when = 1 where = 90 name = "4th Ocean Submarine Squadron" }
 		command = { type = setflag which = ind_v3_submarine_navy_1941 }
 		command = { type = setflag which = ind_v3_naval_board_1941 }
 	}
@@ -514,47 +705,45 @@ event = {
 	trigger = {
 		flag = ind_v3_naval_board_1941
 		NOT = { flag = ind_v3_second_carrier }
-	# V3_ACTION_REACHABILITY_BEGIN
-	OR = {
-		AND = { manpower = 11 }
-		AND = { manpower = 9 }
-		}
-	# V3_ACTION_REACHABILITY_END
 }
 
-	name = "The Second Carrier Programme"
-	desc = "The first carrier generation has proven that India can sustain aviation ships. A second fleet carrier would give the oceanic command strategic depth; a modern light carrier is cheaper and can reinforce either regional fleet."
+	name = "The 1942 Fleet Modernisation Programme"
+	desc = "India's hull programme now exceeds the navy's supply of trained air groups, escorts and repair capacity. The next appropriation will modernize the fleet already in service instead of granting another capital ship after the player may have built one."
 	style = 2
 	picture = "india_v3_armed_forces"
 
 	date = { day = 0 month = july year = 1942 }
 	offset = 8
-	deathdate = { day = 29 month = september year = 1942 }
+	deathdate = { day = 29 month = september year = 1964 }
 
 	action_a = {
-	trigger = {
-			# V3_QUEUE_MANPOWER = 11
-			manpower = 11
-	}
-		ai_chance = 55
-		name = "Build a second fleet carrier"
-		command = { type = money value = -1025 }
-		command = { type = supplies value = -2200 }
-		command = { type = build_division which = carrier value = cag when = 1 cost = -3.0 where = 300 }
-		command = { type = build_division which = destroyer value = naval_asw when = 3 cost = -2.5 where = 120 }
+		ai_chance = 45
+		name = "Modernize carrier aviation: -650 money, -1400 supplies"
+		command = { type = money value = -650 }
+		command = { type = supplies value = -1400 }
+		command = { type = max_organization which = naval value = 3 }
+		command = { type = morale which = naval value = 2 }
+		command = { type = waketeam which = 250018 }
 		command = { type = setflag which = ind_v3_second_carrier }
 	}
 	action_b = {
-	trigger = {
-			# V3_QUEUE_MANPOWER = 9
-			manpower = 9
+		ai_chance = 35
+		name = "Escort fleet train: -500 money, -1200 supplies"
+		command = { type = money value = -500 }
+		command = { type = supplies value = -1200 }
+		command = { type = max_organization which = naval value = 2 }
+		command = { type = repair_mod value = 4 }
+		command = { type = morale which = naval value = 3 }
+		command = { type = setflag which = ind_v3_second_carrier }
 	}
-		ai_chance = 45
-		name = "Build a modern light carrier and escorts"
-		command = { type = money value = -675 }
-		command = { type = supplies value = -1650 }
-		command = { type = build_division which = light_carrier value = light_cag when = 1 cost = -3.0 where = 240 }
-		command = { type = build_division which = destroyer value = naval_asw when = 4 cost = -3.0 where = 90 }
+	action_c = {
+		ai_chance = 20
+		name = "Pause hulls and fund doctrine: -350 money, -800 supplies"
+		command = { type = money value = -350 }
+		command = { type = supplies value = -800 }
+		command = { type = research_mod value = 1 }
+		command = { type = max_organization which = naval value = 2 }
+		command = { type = dissent value = -1 }
 		command = { type = setflag which = ind_v3_second_carrier }
 	}
 }

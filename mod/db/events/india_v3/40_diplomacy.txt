@@ -14,18 +14,34 @@ event = {
 	}
 
 	name = "India and the Coming World Crisis"
-	desc = "The international order is breaking down. India can organize a non-aligned pole, seek leverage through European balance-of-power politics, turn toward an Asian security system, or align its development with the Soviet experiment. Orientation is not yet alliance, but it will decide which doors remain open."
+	desc = "This is a diplomatic programme, not alliance or war. The Delhi Conference opens non-aligned diplomacy; the European balance opens London and Berlin talks; Asian security opens Tokyo or Delhi Pact negotiations; socialism opens Moscow. Coalition entry, independent war and later reversal remain separate decisions with political costs."
 	style = 2
 	picture = "decision_diplomatic_campaign"
 
-	date = { day = 0 month = january year = 1936 }
+	date = { day = 0 month = january year = 1937 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1936 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 40
-		name = "Lead an independent non-aligned pole"
+		name = "Delhi Conference: independent diplomacy"
 
+		command = { type = clrflag which = ind_v3_european_balance }
+		command = { type = clrflag which = ind_v3_asian_security }
+		command = { type = clrflag which = ind_v3_socialist_compact }
+		command = { type = clrflag which = ind_v3_allied_orientation }
+		command = { type = clrflag which = ind_v3_axis_orientation }
+		command = { type = clrflag which = ind_v3_soviet_orientation }
+		command = { type = clrflag which = ind_v3_japanese_orientation }
+		command = { type = clrflag which = ind_v3_independent_asia }
+		command = { type = clrflag which = ind_v4_strategy_allied }
+		command = { type = clrflag which = ind_v4_strategy_axis }
+		command = { type = clrflag which = ind_v4_strategy_soviet }
+		command = { type = clrflag which = ind_v4_strategy_japan }
+		command = { type = clrflag which = ind_v4_strategy_independent_asia }
+		command = { type = clrflag which = ind_v42_program_european }
+		command = { type = clrflag which = ind_v42_program_asian }
+		command = { type = clrflag which = ind_v42_program_socialist }
 		command = { type = dissent value = -1 }
 		command = { type = domestic which = interventionism value = -1 }
 		command = { type = relation which = ENG value = 15 }
@@ -34,39 +50,96 @@ event = {
 		command = { type = relation which = JAP value = 15 }
 		command = { type = relation which = CHI value = 25 }
 		command = { type = setflag which = ind_v3_non_aligned }
+		command = { type = setflag which = ind_v4_strategy_nam }
+		command = { type = setflag which = ind_v42_program_nam }
 		command = { type = setflag which = ind_v3_world_role }
 	}
 	action_b = {
 		ai_chance = 30
-		name = "Seek leverage in the European balance"
+		name = "European balance: London or Berlin talks"
+		command = { type = clrflag which = ind_v3_non_aligned }
+		command = { type = clrflag which = ind_v3_asian_security }
+		command = { type = clrflag which = ind_v3_socialist_compact }
+		command = { type = clrflag which = ind_v3_allied_orientation }
+		command = { type = clrflag which = ind_v3_axis_orientation }
+		command = { type = clrflag which = ind_v3_soviet_orientation }
+		command = { type = clrflag which = ind_v3_japanese_orientation }
+		command = { type = clrflag which = ind_v3_independent_asia }
+		command = { type = clrflag which = ind_v4_strategy_nam }
+		command = { type = clrflag which = ind_v4_strategy_allied }
+		command = { type = clrflag which = ind_v4_strategy_axis }
+		command = { type = clrflag which = ind_v4_strategy_soviet }
+		command = { type = clrflag which = ind_v4_strategy_japan }
+		command = { type = clrflag which = ind_v4_strategy_independent_asia }
+		command = { type = clrflag which = ind_v42_program_nam }
+		command = { type = clrflag which = ind_v42_program_asian }
+		command = { type = clrflag which = ind_v42_program_socialist }
 		command = { type = money value = -175 }
 		command = { type = domestic which = interventionism value = 1 }
 		command = { type = relation which = ENG value = 30 }
 		command = { type = relation which = GER value = 30 }
 		command = { type = relation which = FRA value = 15 }
 		command = { type = setflag which = ind_v3_european_balance }
+		command = { type = setflag which = ind_v42_program_european }
 		command = { type = setflag which = ind_v3_world_role }
 	}
 	action_c = {
 		ai_chance = 20
-		name = "Build an Asian security system"
+		name = "Asian security: Tokyo or Delhi Pact"
+		command = { type = clrflag which = ind_v3_non_aligned }
+		command = { type = clrflag which = ind_v3_european_balance }
+		command = { type = clrflag which = ind_v3_socialist_compact }
+		command = { type = clrflag which = ind_v3_allied_orientation }
+		command = { type = clrflag which = ind_v3_axis_orientation }
+		command = { type = clrflag which = ind_v3_soviet_orientation }
+		command = { type = clrflag which = ind_v3_japanese_orientation }
+		command = { type = clrflag which = ind_v3_independent_asia }
+		command = { type = clrflag which = ind_v4_strategy_nam }
+		command = { type = clrflag which = ind_v4_strategy_allied }
+		command = { type = clrflag which = ind_v4_strategy_axis }
+		command = { type = clrflag which = ind_v4_strategy_soviet }
+		command = { type = clrflag which = ind_v4_strategy_japan }
+		command = { type = clrflag which = ind_v4_strategy_independent_asia }
+		command = { type = clrflag which = ind_v42_program_nam }
+		command = { type = clrflag which = ind_v42_program_european }
+		command = { type = clrflag which = ind_v42_program_socialist }
 		command = { type = money value = -175 }
 		command = { type = domestic which = interventionism value = 1 }
 		command = { type = relation which = JAP value = 30 }
 		command = { type = relation which = CHI value = 30 }
 		command = { type = relation which = SIA value = 20 }
 		command = { type = setflag which = ind_v3_asian_security }
+		command = { type = setflag which = ind_v42_program_asian }
 		command = { type = setflag which = ind_v3_world_role }
 	}
 	action_d = {
 		ai_chance = 10
-		name = "Negotiate a socialist development compact"
+		name = "Socialist programme: Moscow negotiations"
+		command = { type = clrflag which = ind_v3_non_aligned }
+		command = { type = clrflag which = ind_v3_european_balance }
+		command = { type = clrflag which = ind_v3_asian_security }
+		command = { type = clrflag which = ind_v3_allied_orientation }
+		command = { type = clrflag which = ind_v3_axis_orientation }
+		command = { type = clrflag which = ind_v3_soviet_orientation }
+		command = { type = clrflag which = ind_v3_japanese_orientation }
+		command = { type = clrflag which = ind_v3_independent_asia }
+		command = { type = clrflag which = ind_v4_strategy_nam }
+		command = { type = clrflag which = ind_v4_strategy_allied }
+		command = { type = clrflag which = ind_v4_strategy_axis }
+		command = { type = clrflag which = ind_v4_strategy_soviet }
+		command = { type = clrflag which = ind_v4_strategy_japan }
+		command = { type = clrflag which = ind_v4_strategy_independent_asia }
+		command = { type = clrflag which = ind_v42_program_nam }
+		command = { type = clrflag which = ind_v42_program_european }
+		command = { type = clrflag which = ind_v42_program_asian }
 		command = { type = money value = -125 }
 		command = { type = supplies value = -250 }
 		command = { type = domestic which = free_market value = -1 }
 		command = { type = relation which = SOV value = 60 }
 		command = { type = relation which = ENG value = -20 }
 		command = { type = setflag which = ind_v3_socialist_compact }
+		command = { type = setflag which = ind_v4_strategy_soviet }
+		command = { type = setflag which = ind_v42_program_socialist }
 		command = { type = setflag which = ind_v3_world_role }
 	}
 }
@@ -81,44 +154,63 @@ event = {
 		NOT = { flag = ind_v3_european_partner }
 	}
 	decision_trigger = {
-	OR = {
-		AND = { money = 275 supplies = 550 }
-		AND = { money = 350 supplies = 750 }
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		OR = {
+			AND = { money = 275 supplies = 550 }
+			AND = { money = 350 supplies = 750 }
+		}
+		# AUBM_FULL_OPTION_GATE_END
 	}
-}
 
 	name = "Choose a European Partner"
-	desc = "London offers naval coordination, markets and a familiar military relationship, but expects India to defend the imperial sea lanes. Berlin offers machine tools, doctrine and strategic autonomy against Britain, but its revisionism may lead India into a continental war."
+	# AUBM_DECISION_DESC_MANUAL
+	decision_desc = "London: 275 money, 550 supplies; 70% sovereign terms, 30% liaison terms. Berlin: 350 money, 750 supplies; 65% autonomous mission, 35% political demands."
+	desc = "London offers naval coordination and markets; Berlin offers machine tools and doctrine. These are opening negotiations, not alliance entry. The selected proposal fixes the response: London 70/30 and Berlin 65/35. Relations, IC and force size do not modify these opening rolls."
 	style = 2
 	picture = "diplomatic_campaign"
 
 	date = { day = 0 month = march year = 1937 }
 	offset = 5
-	deathdate = { day = 29 month = december year = 1938 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 275
+			supplies = 550
+			# AUBM_ACTION_RESERVE_END
 			money = 275
 			supplies = 550
 		}
 		ai_chance = 65
-		name = "Negotiate a Commonwealth defence partnership"
+		name = "London: -275 money/-550 supplies; sovereign terms 70%"
 		command = { type = money value = -275 }
 		command = { type = supplies value = -550 }
 		command = { type = relation which = ENG value = 80 }
 		command = { type = relation which = FRA value = 30 }
 		command = { type = relation which = GER value = -35 }
 		command = { type = dissent value = 2 }
+		command = { trigger = { exists = ENG } type = event which = 9280950 where = ENG when = 1 }
+		command = { type = clrflag which = ind_v4_strategy_axis }
+		command = { type = clrflag which = ind_v4_strategy_soviet }
+		command = { type = clrflag which = ind_v4_strategy_japan }
+		command = { type = clrflag which = ind_v4_strategy_nam }
+		command = { type = clrflag which = ind_v4_strategy_independent_asia }
 		command = { type = setflag which = ind_v3_allied_orientation }
+		command = { type = setflag which = ind_v4_strategy_allied }
 		command = { type = setflag which = ind_v3_european_partner }
 	}
 	action_b = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 350
+			supplies = 750
+			# AUBM_ACTION_RESERVE_END
 			money = 350
 			supplies = 750
 		}
 		ai_chance = 35
-		name = "Invite a German industrial and military mission"
+		name = "Berlin: -350 money/-750 supplies; autonomous terms 65%"
 		command = { type = money value = -350 }
 		command = { type = supplies value = -750 }
 		command = { type = relation which = GER value = 90 }
@@ -127,7 +219,14 @@ event = {
 		command = { type = dissent value = 3 }
 
 		command = { type = domestic which = professional_army value = 1 }
+		command = { trigger = { exists = GER } type = event which = 9280953 where = GER when = 1 }
+		command = { type = clrflag which = ind_v4_strategy_allied }
+		command = { type = clrflag which = ind_v4_strategy_soviet }
+		command = { type = clrflag which = ind_v4_strategy_japan }
+		command = { type = clrflag which = ind_v4_strategy_nam }
+		command = { type = clrflag which = ind_v4_strategy_independent_asia }
 		command = { type = setflag which = ind_v3_axis_orientation }
+		command = { type = setflag which = ind_v4_strategy_axis }
 		command = { type = setflag which = ind_v3_european_partner }
 	}
 }
@@ -142,28 +241,36 @@ event = {
 		NOT = { flag = ind_v3_asian_partner }
 	}
 	decision_trigger = {
-	OR = {
-		AND = { money = 250 supplies = 650 }
-		AND = { money = 325 supplies = 450 }
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		OR = {
+			AND = { money = 250 supplies = 650 }
+			AND = { money = 325 supplies = 450 }
+		}
+		# AUBM_FULL_OPTION_GATE_END
 	}
-}
 
 	name = "The Shape of Asian Security"
-	desc = "Tokyo proposes an anti-colonial strategic partnership under Japanese leadership. Chinese and Southeast Asian envoys instead urge India to organize an autonomous Asian coalition able to resist both empire and Japanese domination."
+	# AUBM_DECISION_DESC_MANUAL
+	decision_desc = "Tokyo: 250 money, 650 supplies; 55% equal compact, 45% China condition. Delhi Pact: 325 money, 450 supplies; China accepts 70%, Siam 60%, rolled separately."
+	desc = "Tokyo offers a bilateral naval opening; China and Siam offer an independent Asian coalition. The selected proposal fixes these preliminary rolls; hidden relations or force totals do not modify them. A Tokyo opening can later build influence for the deeper strategic conference."
 	style = 2
 	picture = "japan_cabinet"
 
 	date = { day = 0 month = march year = 1937 }
 	offset = 5
-	deathdate = { day = 29 month = december year = 1938 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 250
+			supplies = 650
+			# AUBM_ACTION_RESERVE_END
 			money = 250
 			supplies = 650
 		}
 		ai_chance = 35
-		name = "Accept Japan as the senior naval partner"
+		name = "Approach Tokyo: -250 money, -650 supplies; 55% equal terms"
 		command = { type = money value = -250 }
 		command = { type = supplies value = -650 }
 		command = { type = relation which = JAP value = 90 }
@@ -171,16 +278,27 @@ event = {
 		command = { type = relation which = ENG value = -30 }
 		command = { type = dissent value = 4 }
 		command = { type = domestic which = interventionism value = 1 }
+		command = { trigger = { exists = JAP } type = event which = 9280956 where = JAP when = 1 }
+		command = { type = clrflag which = ind_v4_strategy_allied }
+		command = { type = clrflag which = ind_v4_strategy_axis }
+		command = { type = clrflag which = ind_v4_strategy_soviet }
+		command = { type = clrflag which = ind_v4_strategy_nam }
+		command = { type = clrflag which = ind_v4_strategy_independent_asia }
 		command = { type = setflag which = ind_v3_japanese_orientation }
+		command = { type = setflag which = ind_v4_strategy_japan }
 		command = { type = setflag which = ind_v3_asian_partner }
 	}
 	action_b = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 325
+			supplies = 450
+			# AUBM_ACTION_RESERVE_END
 			money = 325
 			supplies = 450
 		}
 		ai_chance = 65
-		name = "Organize an independent Asian coalition"
+		name = "Delhi Pact: -325/-450; China 70%, Siam 60%"
 		command = { type = money value = -325 }
 		command = { type = supplies value = -450 }
 		command = { type = relation which = CHI value = 70 }
@@ -188,7 +306,15 @@ event = {
 		command = { type = relation which = JAP value = -35 }
 		command = { type = relation which = ENG value = 10 }
 		command = { type = dissent value = -1 }
+		command = { trigger = { exists = CHI } type = event which = 9280959 where = CHI when = 1 }
+		command = { trigger = { exists = SIA } type = event which = 9280962 where = SIA when = 1 }
+		command = { type = clrflag which = ind_v4_strategy_allied }
+		command = { type = clrflag which = ind_v4_strategy_axis }
+		command = { type = clrflag which = ind_v4_strategy_soviet }
+		command = { type = clrflag which = ind_v4_strategy_japan }
+		command = { type = clrflag which = ind_v4_strategy_nam }
 		command = { type = setflag which = ind_v3_independent_asia }
+		command = { type = setflag which = ind_v4_strategy_independent_asia }
 		command = { type = setflag which = ind_v3_asian_partner }
 	}
 }
@@ -201,30 +327,45 @@ event = {
 	decision = {
 		flag = ind_v3_socialist_compact
 		NOT = { flag = ind_v3_soviet_compact_settled }
+		NOT = { participant = { country = IND value = 4 } }
+		NOT = { flag = ind_aubm_commitment_allied }
+		NOT = { flag = ind_aubm_commitment_german }
+		NOT = { flag = ind_aubm_commitment_soviet }
+		NOT = { flag = ind_aubm_commitment_japan }
+		NOT = { flag = ind_aubm_diplomatic_negotiation_pending }
+		NOT = { flag = ind_aubm_realignment_cooldown }
 	}
 	decision_trigger = {
-	OR = {
-		AND = { money = 325 supplies = 850 }
-		AND = { money = 250 supplies = 500 }
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		OR = {
+			AND = { money = 325 supplies = 850 }
+			AND = { money = 250 supplies = 500 }
+		}
+		# AUBM_FULL_OPTION_GATE_END
 	}
-}
 
 	name = "The Delhi-Moscow Technical Compact"
-	desc = "Moscow will exchange industrial planning, aviation experience and military doctrine for a clear strategic commitment. Accepting accelerates state development but alarms Britain, Indian business and anti-communist provincial leaders."
+	# AUBM_DECISION_DESC_MANUAL
+	decision_desc = "Full compact: 325 money, 850 supplies; 70% sovereign terms, 30% political demands. Civilian exchange: 250 money, 500 supplies and no foreign roll."
+	desc = "Moscow will exchange industrial planning, aviation experience and military doctrine for strategic commitment. The full compact uses a fixed 70/30 opening response; relations and force totals do not modify it. The civilian programme is deterministic and keeps India non-aligned."
 	style = 2
 	picture = "Stalin_5YPlan"
 
 	date = { day = 0 month = march year = 1937 }
 	offset = 5
-	deathdate = { day = 29 month = december year = 1938 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 325
+			supplies = 850
+			# AUBM_ACTION_RESERVE_END
 			money = 325
 			supplies = 850
 		}
 		ai_chance = 70
-		name = "Sign the full technical and strategic compact"
+		name = "Moscow compact: -325/-850; sovereign terms 70%"
 		command = { type = money value = -325 }
 		command = { type = supplies value = -850 }
 		command = { type = dissent value = 4 }
@@ -232,11 +373,24 @@ event = {
 		command = { type = relation which = ENG value = -45 }
 		command = { type = research_mod value = 1 }
 		command = { type = domestic which = free_market value = -1 }
+		command = { type = setflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = setflag which = ind_aubm_negotiation_soviet }
+		command = { trigger = { exists = SOV } type = event which = 9280965 where = SOV when = 1 }
+		command = { type = clrflag which = ind_v4_strategy_allied }
+		command = { type = clrflag which = ind_v4_strategy_axis }
+		command = { type = clrflag which = ind_v4_strategy_japan }
+		command = { type = clrflag which = ind_v4_strategy_nam }
+		command = { type = clrflag which = ind_v4_strategy_independent_asia }
 		command = { type = setflag which = ind_v3_soviet_orientation }
+		command = { type = setflag which = ind_v4_strategy_soviet }
 		command = { type = setflag which = ind_v3_soviet_compact_settled }
 	}
 	action_b = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 250
+			supplies = 500
+			# AUBM_ACTION_RESERVE_END
 			money = 250
 			supplies = 500
 		}
@@ -247,7 +401,11 @@ event = {
 		command = { type = relation which = SOV value = 45 }
 		command = { type = relation which = ENG value = 10 }
 		command = { type = research_mod value = 1 }
+		command = { type = clrflag which = ind_v3_soviet_orientation }
+		command = { type = clrflag which = ind_v4_strategy_soviet }
 		command = { type = setflag which = ind_v3_non_aligned }
+		command = { type = setflag which = ind_v4_strategy_nam }
+		command = { type = setflag which = ind_v42_program_nam }
 		command = { type = setflag which = ind_v3_soviet_civilian_exchange }
 		command = { type = setflag which = ind_v3_soviet_compact_settled }
 	}
@@ -256,184 +414,423 @@ event = {
 event = {
 	id = 9270404
 	random = no
+	persistent = yes
 	country = IND
 
 	decision = {
-		flag = ind_v3_allied_orientation
+		NOT = { flag = ind_v43_war_cabinet }
+		NOT = { flag = ind_aubm_realignment_cooldown }
+		NOT = { participant = { country = IND value = 4 } }
+		NOT = { flag = ind_aubm_commitment_german }
+		NOT = { flag = ind_aubm_commitment_soviet }
+		NOT = { flag = ind_aubm_commitment_japan }
 		NOT = { alliance = { country = IND country = ENG } }
-		atwar = no
+		NOT = { war = { country = IND country = ENG } }
+		OR = {
+			war = { country = ENG country = GER }
+			war = { country = ENG country = ITA }
+			war = { country = ENG country = JAP }
+		}
 	}
 	decision_trigger = {
-		war = { country = ENG country = GER }
-		policy = { type = interventionism value = 5 }
+		NOT = { flag = ind_aubm_realignment_cooldown }
+		NOT = { participant = { country = IND value = 4 } }
+		NOT = { flag = ind_aubm_commitment_german }
+		NOT = { flag = ind_aubm_commitment_soviet }
+		NOT = { flag = ind_aubm_commitment_japan }
+		NOT = { alliance = { country = IND country = ENG } }
 	}
 
 	name = "Enter the Allied Coalition"
+	# AUBM_DECISION_DESC_MANUAL
+	decision_desc = "No foreign roll: choosing entry immediately allies India with Britain and merges all current and future Allied wars. Deferring leaves the decision available."
 	desc = "Britain is at war with Germany and invokes the defence partnership. Joining offers naval support, markets and a place in the peace settlement, but places Indian forces in a global war under an alliance still dominated by former imperial powers."
 	style = 2
 	picture = "English_declaration_war"
 
 	date = { day = 0 month = january year = 1939 }
 	offset = 3
-	deathdate = { day = 29 month = december year = 1944 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
+		trigger = { NOT = { flag = ind_aubm_realignment_cooldown } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } }
 		ai_chance = 85
 		name = "Join as a sovereign Allied great power"
+		command = { type = clrflag which = ind_v3_axis_orientation }
+		command = { type = clrflag which = ind_v3_soviet_orientation }
+		command = { type = clrflag which = ind_v3_japanese_orientation }
+		command = { type = clrflag which = ind_v3_non_aligned }
+		command = { type = clrflag which = ind_v3_independent_asia }
+		command = { type = clrflag which = ind_v3_joined_axis }
+		command = { type = clrflag which = ind_v3_joined_comintern }
+		command = { type = clrflag which = ind_v3_joined_japan }
+		command = { type = clrflag which = ind_v4_strategy_axis }
+		command = { type = clrflag which = ind_v4_strategy_soviet }
+		command = { type = clrflag which = ind_v4_strategy_japan }
+		command = { type = clrflag which = ind_v4_strategy_nam }
+		command = { type = clrflag which = ind_v4_strategy_independent_asia }
+		command = { type = setflag which = ind_v3_allied_orientation }
+		command = { type = setflag which = ind_v4_strategy_allied }
 		command = { type = alliance which = ENG }
 		command = { type = dissent value = 2 }
 		command = { type = relation which = ENG value = 40 }
 		command = { type = setflag which = ind_v3_joined_allies }
+		command = { type = event which = 9280630 where = ENG when = 1 }
 	}
 	action_b = {
-		trigger = {
-			supplies = 1650
-		}
 		ai_chance = 15
-		name = "Offer material support but remain outside"
-		command = { type = supplies value = -1650 }
-		command = { type = money value = 500 }
-		command = { type = relation which = ENG value = 30 }
-		command = { type = setflag which = ind_v3_armed_neutrality }
+		name = "Not yet; keep the sovereign channel open"
 	}
 }
 
 event = {
 	id = 9270405
 	random = no
+	persistent = yes
 	country = IND
 
 	decision = {
-		flag = ind_v3_axis_orientation
+		NOT = { flag = ind_v43_war_cabinet }
+		NOT = { flag = ind_aubm_realignment_cooldown }
+		NOT = { participant = { country = IND value = 4 } }
+		NOT = { flag = ind_aubm_commitment_allied }
+		NOT = { flag = ind_aubm_commitment_soviet }
+		NOT = { flag = ind_aubm_commitment_japan }
 		NOT = { alliance = { country = IND country = GER } }
-		atwar = no
+		NOT = { war = { country = IND country = GER } }
+		OR = {
+			war = { country = GER country = ENG }
+			war = { country = GER country = FRA }
+			war = { country = GER country = SOV }
+		}
 	}
 	decision_trigger = {
-		war = { country = GER country = ENG }
-		policy = { type = interventionism value = 5 }
+		NOT = { flag = ind_aubm_realignment_cooldown }
+		NOT = { participant = { country = IND value = 4 } }
+		NOT = { flag = ind_aubm_commitment_allied }
+		NOT = { flag = ind_aubm_commitment_soviet }
+		NOT = { flag = ind_aubm_commitment_japan }
+		NOT = { alliance = { country = IND country = GER } }
 	}
 
 	name = "Enter the Continental Coalition"
+	# AUBM_DECISION_DESC_MANUAL
+	decision_desc = "No foreign roll: choosing entry immediately allies India with Germany and merges all current and future Axis wars. Deferring leaves the decision available."
 	desc = "Berlin asks India to turn the Indian Ocean and Middle East against Britain. Alliance promises technology and the destruction of the old imperial order, but ties India to Germany's wars and political reputation."
 	style = 2
 	picture = "Pact_of_Steel"
 
 	date = { day = 0 month = january year = 1939 }
 	offset = 3
-	deathdate = { day = 29 month = december year = 1944 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
+		trigger = { NOT = { flag = ind_aubm_realignment_cooldown } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } }
 		ai_chance = 75
 		name = "Join Germany as an equal strategic partner"
+		command = { type = clrflag which = ind_v3_allied_orientation }
+		command = { type = clrflag which = ind_v3_soviet_orientation }
+		command = { type = clrflag which = ind_v3_japanese_orientation }
+		command = { type = clrflag which = ind_v3_non_aligned }
+		command = { type = clrflag which = ind_v3_independent_asia }
+		command = { type = clrflag which = ind_v3_joined_allies }
+		command = { type = clrflag which = ind_v3_joined_comintern }
+		command = { type = clrflag which = ind_v3_joined_japan }
+		command = { type = clrflag which = ind_v4_strategy_allied }
+		command = { type = clrflag which = ind_v4_strategy_soviet }
+		command = { type = clrflag which = ind_v4_strategy_japan }
+		command = { type = clrflag which = ind_v4_strategy_nam }
+		command = { type = clrflag which = ind_v4_strategy_independent_asia }
+		command = { type = setflag which = ind_v3_axis_orientation }
+		command = { type = setflag which = ind_v4_strategy_axis }
 		command = { type = alliance which = GER }
 		command = { type = dissent value = 5 }
 		command = { type = relation which = GER value = 40 }
 		command = { type = setflag which = ind_v3_joined_axis }
+		command = { type = event which = 9280631 where = GER when = 1 }
 	}
 	action_b = {
-		trigger = {
-			money = 325
-		}
 		ai_chance = 25
-		name = "Use the mission, avoid the war"
-		command = { type = money value = -325 }
-
-		command = { type = relation which = GER value = 20 }
-		command = { type = setflag which = ind_v3_armed_neutrality }
+		name = "Not yet; keep the continental channel open"
 	}
 }
 
 event = {
 	id = 9270406
 	random = no
+	persistent = yes
 	country = IND
 
 	decision = {
-		flag = ind_v3_soviet_orientation
+		NOT = { flag = ind_v43_war_cabinet }
+		NOT = { flag = ind_aubm_realignment_cooldown }
+		NOT = { participant = { country = IND value = 4 } }
+		NOT = { flag = ind_aubm_commitment_allied }
+		NOT = { flag = ind_aubm_commitment_german }
+		NOT = { flag = ind_aubm_commitment_japan }
 		NOT = { alliance = { country = IND country = SOV } }
-		atwar = no
-	}
-	decision_trigger = {
+		NOT = { war = { country = IND country = SOV } }
 		OR = {
 			war = { country = SOV country = GER }
 			war = { country = SOV country = JAP }
 		}
-		policy = { type = interventionism value = 5 }
+	}
+	decision_trigger = {
+		NOT = { flag = ind_aubm_realignment_cooldown }
+		NOT = { participant = { country = IND value = 4 } }
+		NOT = { flag = ind_aubm_commitment_allied }
+		NOT = { flag = ind_aubm_commitment_german }
+		NOT = { flag = ind_aubm_commitment_japan }
+		NOT = { alliance = { country = IND country = SOV } }
 	}
 
 	name = "Enter the Socialist Coalition"
+	# AUBM_DECISION_DESC_MANUAL
+	decision_desc = "No foreign roll: choosing entry immediately allies India with the Soviet Union and merges all current and future Comintern wars. Deferring leaves the decision available."
 	desc = "The Soviet Union faces a great-power war and asks India to convert the technical compact into alliance. The pact offers industrial and military cooperation but commits India to an ideological camp and may trigger conflict on distant fronts."
 	style = 2
 	picture = "Russian_Airborne"
 
 	date = { day = 0 month = january year = 1939 }
 	offset = 3
-	deathdate = { day = 29 month = december year = 1944 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
+		trigger = { NOT = { flag = ind_aubm_realignment_cooldown } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_japan } }
 		ai_chance = 80
 		name = "Join the Comintern as an autonomous power"
+		command = { type = clrflag which = ind_v3_allied_orientation }
+		command = { type = clrflag which = ind_v3_axis_orientation }
+		command = { type = clrflag which = ind_v3_japanese_orientation }
+		command = { type = clrflag which = ind_v3_non_aligned }
+		command = { type = clrflag which = ind_v3_independent_asia }
+		command = { type = clrflag which = ind_v3_joined_allies }
+		command = { type = clrflag which = ind_v3_joined_axis }
+		command = { type = clrflag which = ind_v3_joined_japan }
+		command = { type = clrflag which = ind_v4_strategy_allied }
+		command = { type = clrflag which = ind_v4_strategy_axis }
+		command = { type = clrflag which = ind_v4_strategy_japan }
+		command = { type = clrflag which = ind_v4_strategy_nam }
+		command = { type = clrflag which = ind_v4_strategy_independent_asia }
+		command = { type = setflag which = ind_v3_soviet_orientation }
+		command = { type = setflag which = ind_v4_strategy_soviet }
 		command = { type = alliance which = SOV }
 		command = { type = dissent value = 3 }
 		command = { type = relation which = SOV value = 40 }
 		command = { type = setflag which = ind_v3_joined_comintern }
+		command = { type = event which = 9280632 where = SOV when = 1 }
 	}
 	action_b = {
-		trigger = {
-			supplies = 1650
-		}
 		ai_chance = 20
-		name = "Supply Moscow while preserving neutrality"
-		command = { type = supplies value = -1650 }
-		command = { type = money value = 400 }
-		command = { type = relation which = SOV value = 25 }
-		command = { type = setflag which = ind_v3_armed_neutrality }
+		name = "Not yet; keep the Moscow channel open"
 	}
 }
 
 event = {
 	id = 9270407
 	random = no
+	persistent = yes
 	country = IND
 
 	decision = {
-		flag = ind_v3_japanese_orientation
+		flag = ind_aubm_jp_partnership
+		NOT = { flag = ind_aubm_jp_rupture }
+		NOT = { flag = ind_aubm_realignment_cooldown }
+		NOT = { participant = { country = IND value = 4 } }
+		NOT = { flag = ind_aubm_commitment_allied }
+		NOT = { flag = ind_aubm_commitment_german }
+		NOT = { flag = ind_aubm_commitment_soviet }
 		NOT = { alliance = { country = IND country = JAP } }
-		atwar = no
-	}
-	decision_trigger = {
+		NOT = { war = { country = IND country = JAP } }
 		OR = {
 			war = { country = JAP country = CHI }
 			war = { country = JAP country = ENG }
 			war = { country = JAP country = USA }
 		}
-		policy = { type = interventionism value = 5 }
+	}
+	decision_trigger = {
+		flag = ind_aubm_jp_partnership
+		NOT = { flag = ind_aubm_realignment_cooldown }
+		NOT = { participant = { country = IND value = 4 } }
+		NOT = { flag = ind_aubm_commitment_allied }
+		NOT = { flag = ind_aubm_commitment_german }
+		NOT = { flag = ind_aubm_commitment_soviet }
+		NOT = { alliance = { country = IND country = JAP } }
 	}
 
-	name = "Enter the Co-Prosperity Coalition"
-	desc = "Tokyo asks India to make the Asian partnership a military alliance. It promises naval cooperation and the expulsion of European power from Asia, but also demands acceptance of Japanese leadership and its war in China."
+	name = "Convert the Delhi-Tokyo Compact into an Alliance"
+	# AUBM_DECISION_DESC_MANUAL
+	decision_desc = "No foreign roll: accepting creates a true alliance immediately. India inherits every Japanese war and Japan inherits every Indian war, including a separate Soviet campaign. Keeping the strategic compact preserves independent declarations."
+	desc = "Tokyo proposes converting the bilateral compact into a formal military alliance. The engine treats this as a single war system: every existing and future war of either signatory becomes the war of both. The gain is automatic coalition warfare; the price is the end of separate Indian and Japanese theatres."
 	style = 2
 	picture = "japan_cabinet"
 
 	date = { day = 0 month = january year = 1939 }
 	offset = 3
-	deathdate = { day = 29 month = december year = 1944 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
+		trigger = { NOT = { flag = ind_aubm_realignment_cooldown } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } }
 		ai_chance = 70
-		name = "Join Japan and overturn the Asian order"
+		name = "Accept one war system under the formal alliance"
+		command = { type = clrflag which = ind_v3_allied_orientation }
+		command = { type = clrflag which = ind_v3_axis_orientation }
+		command = { type = clrflag which = ind_v3_soviet_orientation }
+		command = { type = clrflag which = ind_v3_non_aligned }
+		command = { type = clrflag which = ind_v3_independent_asia }
+		command = { type = clrflag which = ind_v3_joined_allies }
+		command = { type = clrflag which = ind_v3_joined_axis }
+		command = { type = clrflag which = ind_v3_joined_comintern }
+		command = { type = clrflag which = ind_v4_strategy_allied }
+		command = { type = clrflag which = ind_v4_strategy_axis }
+		command = { type = clrflag which = ind_v4_strategy_soviet }
+		command = { type = clrflag which = ind_v4_strategy_nam }
+		command = { type = clrflag which = ind_v4_strategy_independent_asia }
+		command = { type = setflag which = ind_v3_japanese_orientation }
+		command = { type = setflag which = ind_v4_strategy_japan }
 		command = { type = alliance which = JAP }
 		command = { type = dissent value = 6 }
 		command = { type = relation which = JAP value = 40 }
 		command = { type = setflag which = ind_v3_joined_japan }
+		command = { type = setflag which = ind_aubm_jp_formal_alliance }
+		command = { type = event which = 9280633 where = JAP when = 1 }
 	}
 	action_b = {
 		ai_chance = 30
-		name = "Refuse subordination and stand armed"
-		command = { type = relation which = JAP value = -50 }
-		command = { type = relation which = CHI value = 35 }
-		command = { type = domestic which = defense_lobby value = 1 }
-		command = { type = setflag which = ind_v3_armed_neutrality }
+		name = "Keep separate wars under the strategic compact"
+	}
+}
+
+event = {
+	id = 9270408
+	random = no
+	persistent = yes
+	country = IND
+
+	decision = {
+		NOT = { flag = ind_v43_war_cabinet }
+		NOT = { flag = ind_aubm_realignment_cooldown }
+		NOT = { participant = { country = IND value = 4 } }
+		NOT = { flag = ind_aubm_commitment_allied }
+		NOT = { flag = ind_aubm_commitment_german }
+		NOT = { flag = ind_aubm_commitment_soviet }
+		NOT = { flag = ind_aubm_commitment_japan }
+		war = { country = JAP country = CHI }
+		NOT = { alliance = { country = IND country = JAP } }
+		NOT = { war = { country = IND country = JAP } }
+	}
+	decision_trigger = {
+		NOT = { flag = ind_aubm_realignment_cooldown }
+		NOT = { participant = { country = IND value = 4 } }
+		NOT = { flag = ind_aubm_commitment_allied }
+		NOT = { flag = ind_aubm_commitment_german }
+		NOT = { flag = ind_aubm_commitment_soviet }
+		NOT = { flag = ind_aubm_commitment_japan }
+		NOT = { war = { country = IND country = JAP } }
+	}
+
+	name = "Fight Japan Under Independent Command"
+	# AUBM_DECISION_DESC_MANUAL
+	decision_desc = "No foreign roll: choosing war immediately declares against Japan without joining another coalition. Deferring preserves armed neutrality and leaves the decision available."
+	desc = "India can enter the Asian war without joining London, Moscow or any rival coalition. Delhi will fight Japan and its partners under sovereign command while retaining freedom over peace aims and theatres."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+
+	date = { day = 0 month = january year = 1937 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		trigger = { NOT = { flag = ind_aubm_realignment_cooldown } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } }
+		ai_chance = 80
+		name = "Declare an independent war against Japan"
+		command = { type = clrflag which = ind_v3_allied_orientation }
+		command = { type = clrflag which = ind_v3_axis_orientation }
+		command = { type = clrflag which = ind_v3_soviet_orientation }
+		command = { type = clrflag which = ind_v3_japanese_orientation }
+		command = { type = clrflag which = ind_v4_strategy_allied }
+		command = { type = clrflag which = ind_v4_strategy_axis }
+		command = { type = clrflag which = ind_v4_strategy_soviet }
+		command = { type = clrflag which = ind_v4_strategy_japan }
+		command = { type = clrflag which = ind_v4_strategy_nam }
+		command = { type = setflag which = ind_v3_non_aligned }
+		command = { type = setflag which = ind_v3_independent_asia }
+		command = { type = setflag which = ind_v4_strategy_independent_asia }
+		command = { type = setflag which = ind_v41_independent_war_japan }
+		command = { type = relation which = CHI value = 40 }
+		command = { type = relation which = JAP value = -100 }
+		command = { type = dissent value = 2 }
+		command = { type = war which = JAP }
+	}
+	action_b = {
+		ai_chance = 20
+		name = "Not yet; retain armed neutrality"
+	}
+}
+
+event = {
+	id = 9270409
+	random = no
+	persistent = yes
+	country = IND
+
+	decision = {
+		NOT = { flag = ind_v43_war_cabinet }
+		NOT = { flag = ind_aubm_realignment_cooldown }
+		NOT = { participant = { country = IND value = 4 } }
+		NOT = { flag = ind_aubm_commitment_allied }
+		NOT = { flag = ind_aubm_commitment_german }
+		NOT = { flag = ind_aubm_commitment_soviet }
+		NOT = { flag = ind_aubm_commitment_japan }
+		war = { country = GER country = ENG }
+		NOT = { alliance = { country = IND country = GER } }
+		NOT = { war = { country = IND country = GER } }
+	}
+	decision_trigger = {
+		NOT = { flag = ind_aubm_realignment_cooldown }
+		NOT = { participant = { country = IND value = 4 } }
+		NOT = { flag = ind_aubm_commitment_allied }
+		NOT = { flag = ind_aubm_commitment_german }
+		NOT = { flag = ind_aubm_commitment_soviet }
+		NOT = { flag = ind_aubm_commitment_japan }
+		NOT = { war = { country = IND country = GER } }
+	}
+
+	name = "Fight the Axis Under Independent Command"
+	# AUBM_DECISION_DESC_MANUAL
+	decision_desc = "No foreign roll: choosing war immediately declares against Germany without joining Britain or Moscow. Deferring preserves armed neutrality and leaves the decision available."
+	desc = "India can oppose the continental coalition without accepting British or Soviet alliance command. The declaration preserves a non-aligned diplomatic identity but commits Indian forces to a global war."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+
+	date = { day = 0 month = january year = 1939 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		trigger = { NOT = { flag = ind_aubm_realignment_cooldown } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } }
+		ai_chance = 80
+		name = "Declare an independent war against Germany"
+		command = { type = clrflag which = ind_v3_allied_orientation }
+		command = { type = clrflag which = ind_v3_axis_orientation }
+		command = { type = clrflag which = ind_v3_soviet_orientation }
+		command = { type = clrflag which = ind_v3_japanese_orientation }
+		command = { type = clrflag which = ind_v4_strategy_allied }
+		command = { type = clrflag which = ind_v4_strategy_axis }
+		command = { type = clrflag which = ind_v4_strategy_soviet }
+		command = { type = clrflag which = ind_v4_strategy_japan }
+		command = { type = clrflag which = ind_v4_strategy_independent_asia }
+		command = { type = setflag which = ind_v3_non_aligned }
+		command = { type = setflag which = ind_v4_strategy_nam }
+		command = { type = setflag which = ind_v41_independent_war_axis }
+		command = { type = relation which = ENG value = 20 }
+		command = { type = relation which = GER value = -100 }
+		command = { type = dissent value = 2 }
+		command = { type = war which = GER }
+	}
+	action_b = {
+		ai_chance = 20
+		name = "Not yet; retain armed neutrality"
 	}
 }
 
@@ -448,22 +845,27 @@ event = {
 		atwar = no
 	}
 	decision_trigger = {
-
-}
+# AUBM_FULL_OPTION_GATE_BEGIN
+# A programme without a resource threshold is available.
+# AUBM_FULL_OPTION_GATE_END
+# The guarantee is free; paid offers are filtered on their actions.
+	}
 
 	name = "The Himalayan Settlement"
-	desc = "Nepal and Bhutan are independent buffer kingdoms tied to India by geography, trade and security. Delhi can guarantee their sovereignty, invite one kingdom into the federation, or undertake the expensive diplomacy needed to offer both full constituent status."
+	# AUBM_DECISION_DESC_MANUAL
+	decision_desc = "Guarantee both: free. Bhutan: 200 money, 300 supplies (60% accept). Nepal: 275 money, 400 supplies (45%). Grand offer: 500 money, 750 supplies, +2 dissent; Bhutan 75%, Nepal 60%."
+	desc = "Nepal and Bhutan are sovereign Himalayan kingdoms tied to India by geography, trade and security. The selected offer alone sets each fixed roll; relations, IC and force size do not secretly modify it. The grand dual settlement improves both independent rolls but does not guarantee that both courts agree."
 	style = 2
 	picture = "diplomatic_campaign"
 
 	date = { day = 0 month = january year = 1935 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1938 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 
 		ai_chance = 45
-		name = "Guarantee both kingdoms and respect the frontier"
+		name = "Guarantee both kingdoms and respect the frontier (no cost)"
 
 		command = { type = relation which = NEP value = 60 }
 		command = { type = relation which = BHU value = 60 }
@@ -473,40 +875,57 @@ event = {
 	}
 	action_b = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 200
+			supplies = 300
+			# AUBM_ACTION_RESERVE_END
 			money = 200
 			supplies = 300
 		}
 		ai_chance = 15
-		name = "Invite Bhutan into the federation"
+		name = "Invite Bhutan: -200 money, -300 supplies; 60% accept"
 		command = { type = money value = -200 }
 		command = { type = supplies value = -300 }
+		command = { type = setflag which = ind_v3_bhutan_offered }
 		command = { type = trigger which = 9270411 }
 		command = { type = setflag which = ind_v3_himalayan_policy }
 	}
 	action_c = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 275
+			supplies = 400
+			# AUBM_ACTION_RESERVE_END
 			money = 275
 			supplies = 400
 		}
 		ai_chance = 20
-		name = "Invite Nepal into the federation"
+		name = "Invite Nepal: -275 money, -400 supplies; 45% accept"
 		command = { type = money value = -275 }
 		command = { type = supplies value = -400 }
+		command = { type = setflag which = ind_v3_nepal_offered }
 		command = { type = trigger which = 9270414 }
 		command = { type = setflag which = ind_v3_himalayan_policy }
 	}
 	action_d = {
 		trigger = {
-			money = 400
-			supplies = 650
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 500
+			supplies = 750
+			# AUBM_ACTION_RESERVE_END
+			money = 500
+			supplies = 750
 		}
 		ai_chance = 20
-		name = "Offer both kingdoms constituent status"
-		command = { type = money value = -400 }
-		command = { type = supplies value = -650 }
+		name = "Grand offer to both: -500 money, -750 supplies, +2 dissent"
+		command = { type = money value = -500 }
+		command = { type = supplies value = -750 }
 		command = { type = dissent value = 2 }
-		command = { type = trigger which = 9270411 }
-		command = { type = trigger which = 9270414 }
+		command = { type = setflag which = ind_v43_himalayan_grand_offer }
+		command = { type = setflag which = ind_v3_bhutan_offered }
+		command = { type = setflag which = ind_v3_nepal_offered }
+		command = { type = trigger which = 9270419 }
+		command = { type = trigger which = 9270424 }
 		command = { type = setflag which = ind_v3_himalayan_policy }
 	}
 }
@@ -523,12 +942,35 @@ event = {
 
 	action_a = {
 		ai_chance = 60
-		name = "Enter the Indian federation"
+		name = "Enter the Indian federation (ordinary offer: 60%)"
 		command = { type = trigger which = 9270412 }
 	}
 	action_b = {
 		ai_chance = 40
-		name = "Bhutan must remain independent"
+		name = "Bhutan must remain independent (ordinary offer: 40%)"
+		command = { type = relation which = IND value = -25 }
+		command = { type = trigger which = 9270413 }
+	}
+}
+
+event = {
+	id = 9270419
+	random = no
+	country = BHU
+
+	name = "India's Grand Himalayan Offer to Bhutan"
+	desc = "Delhi's dual settlement adds infrastructure guarantees, protected royal institutions and a larger federal appropriation. Bhutan has a 75% chance to accept constituent status and a 25% chance to remain sovereign."
+	style = 2
+	picture = "diplomatic_campaign"
+
+	action_a = {
+		ai_chance = 75
+		name = "Enter the Indian federation (75%)"
+		command = { type = trigger which = 9270412 }
+	}
+	action_b = {
+		ai_chance = 25
+		name = "Bhutan must remain independent (25%)"
 		command = { type = relation which = IND value = -25 }
 		command = { type = trigger which = 9270413 }
 	}
@@ -560,14 +1002,40 @@ event = {
 	country = IND
 
 	name = "Bhutan Rejects Federation"
-	desc = "The Bhutanese court chooses sovereign isolation. Delhi can preserve a friendly frontier without forcing the question."
+	desc = "The Bhutanese court chooses sovereign isolation. Delhi may recognize a protected neighbour, apply customs and diplomatic pressure, or declare that Himalayan defence cannot remain outside the union."
 	style = 2
 	picture = "diplomatic_campaign"
 
 	action_a = {
-		name = "Respect the decision"
-		command = { type = relation which = BHU value = 20 }
+		ai_chance = 70
+		name = "Guarantee a sovereign Bhutan"
+		command = { type = relation which = BHU value = 35 }
+		command = { type = guarantee which = IND where = BHU }
+		command = { type = non_aggression which = IND where = BHU when = 1080 }
+		command = { type = dissent value = -1 }
 		command = { type = setflag which = ind_v3_bhutan_refused }
+	}
+	action_b = {
+		ai_chance = 20
+		name = "Apply frontier and customs pressure"
+		command = { type = relation which = BHU value = -50 }
+		command = { type = embargo which = IND where = BHU value = 1 }
+		command = { type = addclaim which = 1456 }
+		command = { type = dissent value = 1 }
+		command = { type = belligerence value = 2 }
+		command = { type = setflag which = ind_v43_bhutan_pressure }
+		command = { type = setflag which = ind_v3_bhutan_refused }
+	}
+	action_c = {
+		ai_chance = 10
+		name = "Enforce the Himalayan settlement by arms"
+		command = { type = relation which = BHU value = -100 }
+		command = { type = addcore which = 1456 }
+		command = { type = dissent value = 5 }
+		command = { type = belligerence value = 5 }
+		command = { type = setflag which = ind_v43_bhutan_enforcement }
+		command = { type = setflag which = ind_v3_bhutan_refused }
+		command = { type = war which = BHU }
 	}
 }
 
@@ -583,12 +1051,35 @@ event = {
 
 	action_a = {
 		ai_chance = 45
-		name = "Enter the Indian federation"
+		name = "Enter the Indian federation (ordinary offer: 45%)"
 		command = { type = trigger which = 9270415 }
 	}
 	action_b = {
 		ai_chance = 55
-		name = "Nepal will remain sovereign"
+		name = "Nepal will remain sovereign (ordinary offer: 55%)"
+		command = { type = relation which = IND value = -20 }
+		command = { type = trigger which = 9270416 }
+	}
+}
+
+event = {
+	id = 9270424
+	random = no
+	country = NEP
+
+	name = "India's Grand Himalayan Offer to Nepal"
+	desc = "Delhi's dual settlement funds Nepalese command appointments, frontier roads and protected royal institutions. Nepal has a 60% chance to accept constituent status and a 40% chance to remain sovereign."
+	style = 2
+	picture = "diplomatic_campaign"
+
+	action_a = {
+		ai_chance = 60
+		name = "Enter the Indian federation (60%)"
+		command = { type = trigger which = 9270415 }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Nepal will remain sovereign (40%)"
 		command = { type = relation which = IND value = -20 }
 		command = { type = trigger which = 9270416 }
 	}
@@ -620,14 +1111,150 @@ event = {
 	country = IND
 
 	name = "Nepal Rejects Federation"
-	desc = "Kathmandu rejects constituent status but remains willing to discuss trade and mutual defence."
+	desc = "Kathmandu rejects constituent status. Delhi may build an equal defence partnership, use economic pressure to reopen the settlement, or attempt to impose union by force against a proud mountain army."
 	style = 2
 	picture = "diplomatic_campaign"
 
 	action_a = {
-		name = "Keep the mountain frontier peaceful"
-		command = { type = relation which = NEP value = 20 }
+		ai_chance = 65
+		name = "Offer an equal Himalayan defence pact"
+		command = { type = relation which = NEP value = 35 }
+		command = { type = guarantee which = IND where = NEP }
+		command = { type = non_aggression which = IND where = NEP when = 1080 }
+		command = { type = dissent value = -1 }
 		command = { type = setflag which = ind_v3_nepal_refused }
+	}
+	action_b = {
+		ai_chance = 25
+		name = "Apply trade pressure and reopen the frontier question"
+		command = { type = relation which = NEP value = -50 }
+		command = { type = embargo which = IND where = NEP value = 1 }
+		command = { type = addclaim which = 1457 }
+		command = { type = dissent value = 2 }
+		command = { type = belligerence value = 2 }
+		command = { type = setflag which = ind_v43_nepal_pressure }
+		command = { type = setflag which = ind_v3_nepal_refused }
+	}
+	action_c = {
+		ai_chance = 10
+		name = "Enforce the settlement against Kathmandu"
+		command = { type = relation which = NEP value = -100 }
+		command = { type = addcore which = 1457 }
+		command = { type = dissent value = 7 }
+		command = { type = belligerence value = 7 }
+		command = { type = setflag which = ind_v43_nepal_enforcement }
+		command = { type = setflag which = ind_v3_nepal_refused }
+		command = { type = war which = NEP }
+	}
+}
+
+# A single-country settlement no longer closes the other Himalayan question.
+# The outcome flags also make these decisions compatible with older saves.
+event = {
+	id = 9270417
+	random = no
+	country = IND
+
+	decision = {
+		flag = ind_v3_himalayan_policy
+		NOT = { flag = ind_v3_himalayan_guarantee }
+		exists = BHU
+		NOT = { flag = ind_v3_bhutan_integrated }
+		NOT = { flag = ind_v3_bhutan_refused }
+		OR = {
+			flag = ind_v3_nepal_offered
+			flag = ind_v3_nepal_integrated
+			flag = ind_v3_nepal_refused
+			NOT = { exists = NEP }
+		}
+		atwar = no
+	}
+	decision_trigger = {
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		money = 250
+		supplies = 350
+		# AUBM_FULL_OPTION_GATE_END
+	}
+
+	name = "Complete the Himalayan Settlement: Bhutan"
+	# AUBM_DECISION_DESC_MANUAL
+	decision_desc = "Approach Bhutan: 250 money and 350 supplies. Bhutan has a 60% chance to accept and a 40% chance to refuse."
+	desc = "The earlier settlement addressed Nepal but left Bhutan unresolved. This ordinary mission uses a fixed 60% acceptance and 40% refusal roll. Relations, IC and force size do not modify it."
+	style = 2
+	picture = "diplomatic_campaign"
+
+	date = { day = 0 month = january year = 1935 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 250
+			supplies = 350
+			# AUBM_ACTION_RESERVE_END
+			money = 250
+			supplies = 350
+		}
+		name = "Approach Bhutan: -250 money, -350 supplies; 60% accept"
+		command = { type = money value = -250 }
+		command = { type = supplies value = -350 }
+		command = { type = setflag which = ind_v3_bhutan_offered }
+		command = { type = trigger which = 9270411 }
+	}
+}
+
+event = {
+	id = 9270418
+	random = no
+	country = IND
+
+	decision = {
+		flag = ind_v3_himalayan_policy
+		NOT = { flag = ind_v3_himalayan_guarantee }
+		exists = NEP
+		NOT = { flag = ind_v3_nepal_integrated }
+		NOT = { flag = ind_v3_nepal_refused }
+		OR = {
+			flag = ind_v3_bhutan_offered
+			flag = ind_v3_bhutan_integrated
+			flag = ind_v3_bhutan_refused
+			NOT = { exists = BHU }
+		}
+		atwar = no
+	}
+	decision_trigger = {
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		money = 325
+		supplies = 450
+		# AUBM_FULL_OPTION_GATE_END
+	}
+
+	name = "Complete the Himalayan Settlement: Nepal"
+	# AUBM_DECISION_DESC_MANUAL
+	decision_desc = "Approach Nepal: 325 money and 450 supplies. Nepal has a 45% chance to accept and a 55% chance to refuse."
+	desc = "The earlier settlement addressed Bhutan but left Nepal unresolved. This ordinary mission uses a fixed 45% acceptance and 55% refusal roll. Relations, IC and force size do not modify it."
+	style = 2
+	picture = "diplomatic_campaign"
+
+	date = { day = 0 month = january year = 1935 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 325
+			supplies = 450
+			# AUBM_ACTION_RESERVE_END
+			money = 325
+			supplies = 450
+		}
+		name = "Approach Nepal: -325 money, -450 supplies; 45% accept"
+		command = { type = money value = -325 }
+		command = { type = supplies value = -450 }
+		command = { type = setflag which = ind_v3_nepal_offered }
+		command = { type = trigger which = 9270414 }
 	}
 }
 
@@ -639,27 +1266,37 @@ event = {
 	decision = {
 		flag = ind_v3_world_role
 		NOT = { flag = ind_v3_ceylon_requested }
+		NOT = { owned = { province = 1509 data = IND } }
 		atwar = no
 	}
 	decision_trigger = {
+# AUBM_FULL_OPTION_GATE_BEGIN
+# A programme without a resource threshold is available.
+# AUBM_FULL_OPTION_GATE_END
 relation = { which = ENG value = 25 }
 	}
 
 	name = "Negotiate the Ceylon Settlement"
-	desc = "Ceylon controls the centre of the Indian Ocean sea lanes. Delhi can offer debt assumption, port guarantees and political autonomy in exchange for a peaceful British transfer to the union."
+	# AUBM_DECISION_DESC_MANUAL
+	decision_desc = "Offer 500 money and 650 supplies for a 55% British acceptance chance, or preserve relations at no cost."
+	desc = "Ceylon controls the centre of the Indian Ocean sea lanes. Delhi can offer debt assumption, port guarantees and political autonomy for a peaceful transfer. London's fixed roll is 55% accept and 45% refuse; relations, IC and force size do not modify it."
 	style = 2
 	picture = "British_Navy"
 
 	date = { day = 0 month = january year = 1937 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1941 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 500
+			supplies = 650
+			# AUBM_ACTION_RESERVE_END
 			money = 500
 			supplies = 650
 		}
-		name = "Offer generous terms for a peaceful transfer"
+		name = "Offer -500 money, -650 supplies; Britain accepts 55%"
 		command = { type = money value = -500 }
 		command = { type = supplies value = -650 }
 		command = { type = trigger which = 9270421 }
@@ -751,23 +1388,31 @@ event = {
 		atwar = no
 	}
 	decision_trigger = {
+# AUBM_FULL_OPTION_GATE_BEGIN
+# A programme without a resource threshold is available.
+# AUBM_FULL_OPTION_GATE_END
 relation = { which = POR value = 0 }
 	}
 
 	name = "The Question of Goa"
-	desc = "Portuguese Goa is a small enclave with deep commercial and cultural ties to western India. Delhi can offer compensation, religious guarantees and free-port rights for a peaceful transfer."
+	# AUBM_DECISION_DESC_MANUAL
+	decision_desc = "Offer 275 money for a 50% Portuguese acceptance chance, or preserve relations at no cost. Refusal opens pressure, resistance, ultimatum and mediation routes with stated odds."
+	desc = "Portuguese Goa is a small enclave with deep commercial and cultural ties to western India. Lisbon's opening roll is fixed at 50/50. Refusal opens pressure, resistance, ultimatum and mediation routes with their own stated fixed odds; relations and force totals do not alter them."
 	style = 2
 	picture = "diplomatic_campaign"
 
 	date = { day = 0 month = january year = 1937 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1941 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 275
+			# AUBM_ACTION_RESERVE_END
 			money = 275
 		}
-		name = "Offer compensation and autonomy"
+		name = "Offer -275 money; Portugal accepts 50%"
 		command = { type = money value = -275 }
 		command = { type = trigger which = 9270431 }
 		command = { type = setflag which = ind_v3_goa_requested }
@@ -830,13 +1475,303 @@ event = {
 	country = IND
 
 	name = "Portugal Refuses the Goa Settlement"
-	desc = "Lisbon rejects compensation and insists that Goa is an inseparable Portuguese possession."
+	desc = "Lisbon rejects compensation and insists that Goa is an inseparable Portuguese possession. Delhi must now choose whether to build leverage, support a Goan civil campaign, issue an immediate ultimatum or leave the enclave question dormant."
 	style = 2
 	picture = "diplomatic_campaign"
 
 	action_a = {
-		name = "The dispute remains open"
-		command = { type = relation which = POR value = -20 }
+		ai_chance = 40
+		name = "Customs pressure: -200/-300; accept 55% in 120 days"
+		command = { type = money value = -200 }
+		command = { type = supplies value = -300 }
+		command = { type = relation which = POR value = -40 }
+		command = { type = belligerence value = 1 }
+		command = { type = setflag which = ind_v43_goa_pressure }
 		command = { type = setflag which = ind_v3_goa_refused }
+		command = { type = event which = 9270434 where = POR when = 120 }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Civil resistance: -300 money; 65% in 180 days"
+		command = { type = money value = -300 }
+		command = { type = dissent value = -1 }
+		command = { type = relation which = POR value = -50 }
+		command = { type = setflag which = ind_v43_goa_resistance }
+		command = { type = setflag which = ind_v3_goa_refused }
+		command = { type = event which = 9270434 where = POR when = 180 }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Immediate ultimatum: +2 dissent, +2 belligerence; 35% now"
+		command = { type = dissent value = 2 }
+		command = { type = belligerence value = 2 }
+		command = { type = setflag which = ind_v43_goa_ultimatum }
+		command = { type = setflag which = ind_v3_goa_refused }
+		command = { type = trigger which = 9270434 }
+	}
+	action_d = {
+		ai_chance = 10
+		name = "Defer the confrontation"
+		command = { type = relation which = POR value = -10 }
+		command = { type = setflag which = ind_v3_goa_refused }
+		command = { type = setflag which = ind_v43_goa_dormant }
+	}
+}
+
+event = {
+	id = 9270434
+	random = no
+	one_action = yes
+	country = POR
+
+	name = "India Escalates the Goa Question"
+	desc = "Indian pressure has transformed Goa into a strategic liability. Lisbon's response now reflects Delhi's chosen instrument: customs pressure 55%, civil resistance 65%, immediate ultimatum 35%, or sustained blockade 75%."
+	style = 2
+	picture = "diplomatic_campaign"
+
+	action_a = {
+		name = "Measure the chosen Indian campaign"
+		command = {
+			trigger = {
+				flag = ind_v43_goa_pressure
+				NOT = { flag = ind_v43_goa_resistance }
+				NOT = { flag = ind_v43_goa_ultimatum }
+				NOT = { flag = ind_v43_goa_blockade }
+			}
+			type = event which = 9270440 where = POR when = 1
+		}
+		command = {
+			trigger = {
+				flag = ind_v43_goa_resistance
+				NOT = { flag = ind_v43_goa_ultimatum }
+				NOT = { flag = ind_v43_goa_blockade }
+			}
+			type = event which = 9270441 where = POR when = 1
+		}
+		command = {
+			trigger = {
+				flag = ind_v43_goa_ultimatum
+				NOT = { flag = ind_v43_goa_blockade }
+			}
+			type = event which = 9270442 where = POR when = 1
+		}
+		command = { trigger = { flag = ind_v43_goa_blockade } type = event which = 9270443 where = POR when = 1 }
+	}
+}
+
+event = {
+	id = 9270440
+	random = no
+	country = POR
+	name = "The Customs Campaign over Goa"
+	desc = "Indian customs and maritime pressure makes the enclave increasingly expensive to hold. Lisbon has a 55% chance to accept the guaranteed transfer and a 45% chance to resist."
+	style = 2
+	picture = "diplomatic_campaign"
+	action_a = {
+		ai_chance = 55
+		name = "Accept the guaranteed transfer (55%)"
+		command = { type = secedeprovince which = IND value = 1513 }
+		command = { type = relation which = IND value = 20 }
+		command = { type = trigger which = 9270432 }
+	}
+	action_b = {
+		ai_chance = 45
+		name = "Resist Indian customs pressure (45%)"
+		command = { type = relation which = IND value = -40 }
+		command = { type = trigger which = 9270435 }
+	}
+}
+
+event = {
+	id = 9270441
+	random = no
+	country = POR
+	name = "The Goan Civil Campaign"
+	desc = "Civil resistance and Indian support undermine Lisbon's position inside the enclave. Portugal has a 65% chance to transfer Goa and a 35% chance to suppress the campaign."
+	style = 2
+	picture = "diplomatic_campaign"
+	action_a = {
+		ai_chance = 65
+		name = "Accept a protected transfer (65%)"
+		command = { type = secedeprovince which = IND value = 1513 }
+		command = { type = relation which = IND value = 20 }
+		command = { type = trigger which = 9270432 }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Suppress the civil campaign (35%)"
+		command = { type = relation which = IND value = -40 }
+		command = { type = trigger which = 9270435 }
+	}
+}
+
+event = {
+	id = 9270442
+	random = no
+	country = POR
+	name = "India's Immediate Goa Ultimatum"
+	desc = "Delhi has issued an ultimatum without first building sustained leverage. Portugal has a 35% chance to yield and a 65% chance to defy India."
+	style = 2
+	picture = "diplomatic_campaign"
+	action_a = {
+		ai_chance = 35
+		name = "Yield to the ultimatum (35%)"
+		command = { type = secedeprovince which = IND value = 1513 }
+		command = { type = relation which = IND value = 20 }
+		command = { type = trigger which = 9270432 }
+	}
+	action_b = {
+		ai_chance = 65
+		name = "Defy Delhi (65%)"
+		command = { type = relation which = IND value = -40 }
+		command = { type = trigger which = 9270435 }
+	}
+}
+
+event = {
+	id = 9270443
+	random = no
+	country = POR
+	name = "The Sustained Blockade of Goa"
+	desc = "Six months of renewed pressure leave Lisbon isolated and the enclave costly to supply. Portugal has a 75% chance to accept transfer and a 25% chance to continue defiance."
+	style = 2
+	picture = "diplomatic_campaign"
+	action_a = {
+		ai_chance = 75
+		name = "Accept transfer under guarantees (75%)"
+		command = { type = secedeprovince which = IND value = 1513 }
+		command = { type = relation which = IND value = 20 }
+		command = { type = trigger which = 9270432 }
+	}
+	action_b = {
+		ai_chance = 25
+		name = "Continue defiance (25%)"
+		command = { type = relation which = IND value = -40 }
+		command = { type = trigger which = 9270435 }
+	}
+}
+
+event = {
+	id = 9270435
+	random = no
+	country = IND
+
+	name = "Lisbon Defies the Ultimatum"
+	desc = "Portugal has rejected the final demand. War and freezing are deterministic. A blockade reruns Portugal's fixed 75/25 transfer roll. British mediation uses fixed 65/35 support/refusal, followed on support by Portugal's fixed 70/30 transfer roll."
+	style = 2
+	picture = "diplomatic_campaign"
+
+	action_a = {
+		ai_chance = 30
+		name = "Liberate Goa by force"
+		command = { type = addcore which = 1513 }
+		command = { type = dissent value = 4 }
+		command = { type = belligerence value = 5 }
+		command = { type = relation which = POR value = -100 }
+		command = { type = setflag which = ind_v43_goa_enforcement }
+		command = { type = war which = POR }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Sustained blockade: -250/-350; accept 75% in 180d"
+		command = { type = money value = -250 }
+		command = { type = supplies value = -350 }
+		command = { type = relation which = POR value = -20 }
+		command = { type = clrflag which = ind_v43_goa_pressure }
+		command = { type = clrflag which = ind_v43_goa_resistance }
+		command = { type = clrflag which = ind_v43_goa_ultimatum }
+		command = { type = setflag which = ind_v43_goa_blockade }
+		command = { type = event which = 9270434 where = POR when = 180 }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "British mediation: 65% support, then Portugal 70%"
+		command = { type = relation which = ENG value = 10 }
+		command = { type = event which = 9270436 where = ENG when = 5 }
+	}
+	action_d = {
+		ai_chance = 10
+		name = "Freeze the dispute but retain the claim"
+		command = { type = addclaim which = 1513 }
+		command = { type = dissent value = 1 }
+		command = { type = setflag which = ind_v43_goa_dormant }
+	}
+}
+
+event = {
+	id = 9270436
+	random = no
+	country = ENG
+
+	name = "India Requests Mediation over Goa"
+	desc = "Delhi asks Britain to persuade Portugal that a guaranteed transfer is preferable to a colonial war in the Arabian Sea. Mediation improves Anglo-Indian relations but antagonizes Lisbon."
+	style = 2
+	picture = "british_parliament"
+
+	action_a = {
+		ai_chance = 65
+		name = "Press Lisbon to accept a treaty transfer"
+		command = { type = relation which = IND value = 15 }
+		command = { type = relation which = POR value = -15 }
+		command = { type = event which = 9270437 where = POR when = 7 }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Britain will not arbitrate colonial sovereignty"
+		command = { type = relation which = IND value = -15 }
+		command = { type = event which = 9270435 where = IND when = 3 }
+	}
+}
+
+event = {
+	id = 9270437
+	random = no
+	country = POR
+
+	name = "Britain Supports an Indian Settlement"
+	desc = "British mediation leaves Lisbon diplomatically isolated. Portugal can accept a face-saving treaty transfer or defy both Delhi and London."
+	style = 2
+	picture = "diplomatic_campaign"
+
+	action_a = {
+		ai_chance = 70
+		name = "Accept the mediated transfer"
+		command = { type = secedeprovince which = IND value = 1513 }
+		command = { type = relation which = IND value = 25 }
+		command = { type = trigger which = 9270432 }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Defy the mediation"
+		command = { type = relation which = IND value = -30 }
+		command = { type = trigger which = 9270435 }
+	}
+}
+
+# Save-compatible integration for players who acquired Goa through diplomacy
+# before this escalation ladder existed.
+event = {
+	id = 9270438
+	random = no
+	country = IND
+
+	trigger = {
+		owned = { province = 1513 data = IND }
+		NOT = { flag = ind_v3_goa_integrated }
+	}
+
+	name = "The Goan Union Settlement"
+	desc = "Goa is under Indian sovereignty but its federal settlement was never entered in the Union Gazette. Cultural guarantees and free-port rights now complete the integration."
+	style = 2
+	picture = "all_india_party"
+	date = { day = 0 month = january year = 1933 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Enter Goa in the federal union"
+		command = { type = addcore which = 1513 }
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_v3_goa_integrated }
 	}
 }

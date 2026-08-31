@@ -1,0 +1,2663 @@
+#########################################################################
+# A Union Before Midnight V4: Delhi-Tokyo strategic partnership
+# Reserved event range: 9281100-9281199
+#
+# This is deliberately a treaty system, not an engine alliance. India and
+# Japan may coordinate in Asia while retaining separate war declarations.
+#########################################################################
+
+#########################################################################
+# Opening conference and earned seniority assessment
+#########################################################################
+
+event = {
+	id = 9281100
+	random = no
+	persistent = yes
+	country = IND
+
+	decision = {
+		year = 1937
+		exists = JAP
+		NOT = { war = { country = IND country = JAP } }
+		NOT = { alliance = { country = IND country = JAP } }
+		NOT = { alliance = { country = IND country = ENG } }
+		NOT = { alliance = { country = IND country = USA } }
+		NOT = { alliance = { country = IND country = GER } }
+		NOT = { alliance = { country = IND country = SOV } }
+		NOT = { participant = { country = IND value = 4 } }
+		NOT = { flag = ind_aubm_commitment_allied }
+		NOT = { flag = ind_aubm_commitment_german }
+		NOT = { flag = ind_aubm_commitment_soviet }
+		NOT = { flag = ind_aubm_commitment_japan }
+		NOT = { flag = ind_v4a_treaty_commonwealth }
+		NOT = { flag = ind_v4a_treaty_naval_compact }
+		NOT = { flag = ind_v4a_treaty_formal_alliance }
+		NOT = { flag = ind_v4a_treaty_cobelligerent }
+		NOT = { flag = ind_gc_formal_axis }
+		NOT = { flag = ind_gc_cobelligerent }
+		NOT = { flag = ind_v4_sov_equal_compact }
+		NOT = { flag = ind_v4_sov_supervised_compact }
+		NOT = { flag = ind_aubm_diplomatic_negotiation_pending }
+		NOT = { flag = ind_aubm_realignment_cooldown }
+		NOT = { flag = ind_v4_japan_commercial_channel }
+		OR = {
+			NOT = { flag = ind_v4_japan_conditional_engagement }
+			NOT = { war = { country = JAP country = CHI } }
+		}
+		NOT = { flag = ind_aubm_jp_partnership }
+		NOT = { flag = ind_aubm_jp_proposal_pending }
+		OR = {
+			flag = ind_v4_strategy_japan
+			flag = ind_v3_japanese_orientation
+			flag = ind_v4_japan_bilateral_channel
+			flag = ind_aubm_jp_retry_ready
+		}
+		OR = {
+			NOT = { flag = ind_aubm_jp_rejected }
+			flag = ind_aubm_jp_retry_ready
+		}
+	}
+	decision_trigger = {
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		money = 350
+		supplies = 600
+		# AUBM_FULL_OPTION_GATE_END
+	}
+
+	name = "Open the Delhi-Tokyo Strategic Conference"
+	# AUBM_DECISION_DESC_MANUAL
+	decision_desc = "Proposal: 350 money and 600 supplies. Peer terms require influence 4 and 110 IC. Senior terms require influence 7, 160 IC, and a credible army, navy or 12-wing air force. A 1935 China condition requires peace before talks; a trade-only policy excludes a strategic conference."
+	desc = "Delhi proposes cooperation without an engine alliance, so neither state inherits the other's wars. Influence starts at 1. Add +1 for the bilateral channel, equal terms or mission, courting Tokyo in China, recognizing Japan's China policy or leading Imphal; +2 for a full mission, wartime trade or direct China-war support; -2 for resisting pressure. Senior odds are 70% accept, 25% counter, 5% reject. Peer: 40/45/15. Aspirant: 15/50/35."
+	style = 2
+	picture = "aubm_v4_tokyo_proposition"
+
+	date = { day = 0 month = january year = 1937 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 350
+			supplies = 600
+			# AUBM_ACTION_RESERVE_END
+			NOT = { participant = { country = IND value = 4 } }
+			NOT = { flag = ind_aubm_commitment_allied }
+			NOT = { flag = ind_aubm_commitment_german }
+			NOT = { flag = ind_aubm_commitment_soviet }
+			NOT = { flag = ind_aubm_commitment_japan }
+			NOT = { flag = ind_v4a_treaty_commonwealth }
+			NOT = { flag = ind_v4a_treaty_naval_compact }
+			NOT = { flag = ind_v4a_treaty_formal_alliance }
+			NOT = { flag = ind_v4a_treaty_cobelligerent }
+			NOT = { flag = ind_gc_formal_axis }
+			NOT = { flag = ind_gc_cobelligerent }
+			NOT = { flag = ind_v4_sov_equal_compact }
+			NOT = { flag = ind_v4_sov_supervised_compact }
+			NOT = { flag = ind_aubm_diplomatic_negotiation_pending }
+			NOT = { flag = ind_aubm_realignment_cooldown }
+		}
+		name = "Send proposal: -350 money, -600 supplies"
+		command = { type = money value = -350 }
+		command = { type = supplies value = -600 }
+		command = { type = clrflag which = ind_aubm_jp_retry_ready }
+		command = { type = clrflag which = ind_aubm_jp_rejected }
+		command = { type = setflag which = ind_aubm_jp_proposal_pending }
+		command = { type = setflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = setflag which = ind_aubm_negotiation_japan }
+		command = { type = setflag which = ind_aubm_jp_score_ledger_v2 }
+		command = { type = setflag which = ind_aubm_jp_influence value = 1 }
+		command = { trigger = { flag = ind_v4_japan_bilateral_channel } type = setflag which = ind_aubm_jp_influence when = 1 value = 1 }
+		command = { trigger = { flag = ind_v4_tokyo_equal_terms } type = setflag which = ind_aubm_jp_influence when = 1 value = 1 }
+		command = { trigger = { flag = ind_v3_japanese_equal_mission } type = setflag which = ind_aubm_jp_influence when = 1 value = 1 }
+		command = { trigger = { flag = ind_v3_japanese_full_mission } type = setflag which = ind_aubm_jp_influence when = 1 value = 2 }
+		command = { trigger = { flag = ind_v4_japan_war_trade } type = setflag which = ind_aubm_jp_influence when = 1 value = 2 }
+		command = { trigger = { flag = ind_v3_backed_japan_in_china } type = setflag which = ind_aubm_jp_influence when = 1 value = 2 }
+		command = { trigger = { flag = ind_v3_china_backed_japan NOT = { flag = ind_v3_backed_japan_in_china } } type = setflag which = ind_aubm_jp_influence when = 1 value = 1 }
+		command = { trigger = { flag = ind_v42_recognized_japanese_china_policy } type = setflag which = ind_aubm_jp_influence when = 1 value = 1 }
+		command = { trigger = { flag = ind_v3_indian_led_imphal } type = setflag which = ind_aubm_jp_influence when = 1 value = 1 }
+		command = { trigger = { flag = ind_v4_japan_pressure_resisted } type = setflag which = ind_aubm_jp_influence when = 1 value = -2 }
+		command = { type = relation which = JAP value = 15 }
+		command = { type = event which = 9281101 where = IND when = 1 }
+	}
+}
+
+# Triggered dispatcher. The three command gates are mutually exclusive.
+event = {
+	id = 9281101
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+
+	name = "Tokyo Measures India's Weight"
+	desc = "The Japanese cabinet compares India's diplomatic investment with its industrial base and deployable forces. This assessment determines Tokyo's negotiating posture, not an automatic alliance or declaration of war."
+	style = 2
+	picture = "aubm_v4_tokyo_proposition"
+
+	action_a = {
+		name = "Receive Tokyo's assessment"
+		command = {
+			trigger = {
+				flag = { which = ind_aubm_jp_influence when = 1 value = 7 }
+				ic = 160
+				OR = {
+					land_percentage = { country = JAP value = 0.75 }
+					naval_percentage = { country = JAP value = 0.45 }
+					air = { size = 12 type = 1 when = 1 where = 1 }
+				}
+			}
+			type = event which = 9281110 where = JAP when = 1
+		}
+		command = {
+			trigger = {
+				flag = { which = ind_aubm_jp_influence when = 1 value = 4 }
+				ic = 110
+				NOT = {
+					AND = {
+						flag = { which = ind_aubm_jp_influence when = 1 value = 7 }
+						ic = 160
+						OR = {
+							land_percentage = { country = JAP value = 0.75 }
+							naval_percentage = { country = JAP value = 0.45 }
+							air = { size = 12 type = 1 when = 1 where = 1 }
+						}
+					}
+				}
+			}
+			type = event which = 9281111 where = JAP when = 1
+		}
+		command = {
+			trigger = {
+				NOT = {
+					AND = {
+						flag = { which = ind_aubm_jp_influence when = 1 value = 7 }
+						ic = 160
+						OR = {
+							land_percentage = { country = JAP value = 0.75 }
+							naval_percentage = { country = JAP value = 0.45 }
+							air = { size = 12 type = 1 when = 1 where = 1 }
+						}
+					}
+				}
+				OR = {
+					NOT = { flag = { which = ind_aubm_jp_influence when = 1 value = 4 } }
+					NOT = { ic = 110 }
+				}
+			}
+			type = event which = 9281112 where = JAP when = 1
+		}
+	}
+}
+
+event = {
+	id = 9281110
+	random = no
+	country = JAP
+
+	name = "India Demands the Senior Asian Command"
+	desc = "India arrives with accumulated political credit, a major industrial base and credible armed strength. Delhi demands responsibility for Burma, Malaya, Singapore, the Netherlands East Indies, Australia and the Indian Ocean. Japan would retain China, the Philippines and the Pacific. Acceptance creates a strategic partnership, not an alliance, and preserves separate war declarations."
+	style = 2
+	picture = "aubm_v4_tokyo_proposition"
+
+	action_a = {
+		ai_chance = 70
+		name = "Accept India's senior southern command"
+		command = { type = clrflag which = ind_aubm_jp_proposal_pending }
+		command = { type = non_aggression which = IND where = JAP when = 1440 }
+		command = { type = relation which = IND value = 45 }
+		command = { type = ai which = "aubm/japan/JAP_india_senior.ai" }
+		command = { type = event which = 9281113 where = IND when = 2 }
+	}
+	action_b = {
+		ai_chance = 25
+		name = "Counter with a divided southern command"
+		command = { type = clrflag which = ind_aubm_jp_proposal_pending }
+		command = { type = setflag which = ind_aubm_jp_counteroffer }
+		command = { type = relation which = IND value = 10 }
+		command = { type = event which = 9281120 where = IND when = 2 }
+	}
+	action_c = {
+		ai_chance = 5
+		name = "Reject a rival Asian centre"
+		command = { type = clrflag which = ind_aubm_jp_proposal_pending }
+		command = { type = setflag which = ind_aubm_jp_rejected }
+		command = { type = relation which = IND value = -35 }
+		command = { type = ai which = "aubm/japan/JAP_india_rupture.ai" }
+		command = { type = event which = 9281121 where = IND when = 2 }
+	}
+}
+
+event = {
+	id = 9281111
+	random = no
+	country = JAP
+
+	name = "India Proposes an Equal Asian Compact"
+	desc = "India can sustain a major regional command but has not yet demonstrated overwhelming leverage. Delhi asks Japan to recognize Indian primacy from Burma to Singapore while leaving the East Indies and Australia open to later review. The compact remains outside the alliance system."
+	style = 2
+	picture = "aubm_v4_tokyo_proposition"
+
+	action_a = {
+		ai_chance = 40
+		name = "Accept an equal compact and review the wider sphere later"
+		command = { type = clrflag which = ind_aubm_jp_proposal_pending }
+		command = { type = non_aggression which = IND where = JAP when = 1440 }
+		command = { type = relation which = IND value = 30 }
+		command = { type = ai which = "aubm/japan/JAP_india_peer.ai" }
+		command = { type = event which = 9281114 where = IND when = 2 }
+	}
+	action_b = {
+		ai_chance = 45
+		name = "Counter: India takes Burma-Malaya; Japan takes DEI"
+		command = { type = clrflag which = ind_aubm_jp_proposal_pending }
+		command = { type = setflag which = ind_aubm_jp_counteroffer }
+		command = { type = relation which = IND value = 10 }
+		command = { type = event which = 9281120 where = IND when = 2 }
+	}
+	action_c = {
+		ai_chance = 15
+		name = "Reject the compact"
+		command = { type = clrflag which = ind_aubm_jp_proposal_pending }
+		command = { type = setflag which = ind_aubm_jp_rejected }
+		command = { type = relation which = IND value = -30 }
+		command = { type = ai which = "aubm/japan/JAP_india_rupture.ai" }
+		command = { type = event which = 9281121 where = IND when = 2 }
+	}
+}
+
+event = {
+	id = 9281112
+	random = no
+	country = JAP
+
+	name = "An Aspirant India Seeks Japanese Recognition"
+	desc = "Delhi offers partnership before Indian influence and force structure can compel equality. Tokyo can accept a limited maritime compact, demand a subordinate division of theatres, or reject the proposal. India may later purchase leverage and demand a formal review."
+	style = 2
+	picture = "aubm_v4_tokyo_proposition"
+
+	action_a = {
+		ai_chance = 15
+		name = "Accept a limited sovereign partnership"
+		command = { type = clrflag which = ind_aubm_jp_proposal_pending }
+		command = { type = non_aggression which = IND where = JAP when = 1080 }
+		command = { type = relation which = IND value = 20 }
+		command = { type = ai which = "aubm/japan/JAP_india_peer.ai" }
+		command = { type = event which = 9281115 where = IND when = 2 }
+	}
+	action_b = {
+		ai_chance = 50
+		name = "Offer India only Burma, Malaya and the Indian Ocean"
+		command = { type = clrflag which = ind_aubm_jp_proposal_pending }
+		command = { type = setflag which = ind_aubm_jp_counteroffer }
+		command = { type = relation which = IND value = 5 }
+		command = { type = event which = 9281120 where = IND when = 2 }
+	}
+	action_c = {
+		ai_chance = 35
+		name = "Reject India's premature bid"
+		command = { type = clrflag which = ind_aubm_jp_proposal_pending }
+		command = { type = setflag which = ind_aubm_jp_rejected }
+		command = { type = relation which = IND value = -25 }
+		command = { type = ai which = "aubm/japan/JAP_india_rupture.ai" }
+		command = { type = event which = 9281121 where = IND when = 2 }
+	}
+}
+
+event = {
+	id = 9281113
+	random = no
+	one_action = yes
+	country = IND
+
+	name = "The Senior Delhi-Tokyo Partnership"
+	desc = "Tokyo recognizes India as senior commander from Burma through Malaya, Singapore, the East Indies and Australia, including the Indian Ocean approaches. Japan retains China, the Philippines and the Pacific. This treaty creates no engine alliance: each power chooses its own wars, and occupation transfers and the peace settlement will test whether Japan honours the map."
+	style = 2
+	picture = "aubm_v4_japan_southern_choice"
+
+	action_a = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_japan exists = JAP NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { war = { country = IND country = JAP } } }
+		name = "Prepare separate China and theatre policies"
+		command = { type = clrflag which = ind_aubm_jp_proposal_pending }
+		command = { type = clrflag which = ind_aubm_jp_counteroffer }
+		command = { type = clrflag which = ind_aubm_jp_rejected }
+		command = { type = clrflag which = ind_aubm_jp_rupture }
+		command = { type = clrflag which = ind_aubm_jp_tier_peer }
+		command = { type = clrflag which = ind_aubm_jp_tier_junior }
+		command = { type = clrflag which = ind_aubm_jp_tier_counter }
+		command = { type = clrflag which = ind_aubm_jp_india_core_sphere }
+		command = { type = setflag which = ind_aubm_jp_partnership }
+		command = { type = setflag which = ind_aubm_commitment_japan }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_japan }
+		command = { type = setflag which = ind_aubm_jp_tier_senior }
+		command = { type = setflag which = ind_aubm_jp_india_full_sphere }
+		command = { type = dissent value = -2 }
+		command = { type = relation which = JAP value = 20 }
+	}
+	action_b = {
+		trigger = { OR = { NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_negotiation_japan } NOT = { exists = JAP } participant = { country = IND value = 4 } flag = ind_aubm_commitment_allied flag = ind_aubm_commitment_german flag = ind_aubm_commitment_soviet war = { country = IND country = JAP } } }
+		name = "File the obsolete reply without changing India's alignment"
+		command = { type = clrflag which = ind_aubm_jp_proposal_pending }
+		command = { type = clrflag which = ind_aubm_jp_counteroffer }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_japan }
+	}
+}
+
+event = {
+	id = 9281114
+	random = no
+	one_action = yes
+	country = IND
+
+	name = "An Equal Delhi-Tokyo Compact"
+	desc = "Tokyo recognizes Indian command in Burma, Malaya, Singapore and the Indian Ocean. The East Indies and Australia remain unsettled until India demonstrates greater influence or wins them through its own campaign. The compact creates no automatic war obligations."
+	style = 2
+	picture = "aubm_v4_japan_southern_choice"
+
+	action_a = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_japan exists = JAP NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { war = { country = IND country = JAP } } }
+		name = "Build leverage before the southern campaign"
+		command = { type = clrflag which = ind_aubm_jp_proposal_pending }
+		command = { type = clrflag which = ind_aubm_jp_counteroffer }
+		command = { type = clrflag which = ind_aubm_jp_rejected }
+		command = { type = clrflag which = ind_aubm_jp_rupture }
+		command = { type = clrflag which = ind_aubm_jp_tier_senior }
+		command = { type = clrflag which = ind_aubm_jp_tier_junior }
+		command = { type = clrflag which = ind_aubm_jp_tier_counter }
+		command = { type = clrflag which = ind_aubm_jp_india_full_sphere }
+		command = { type = setflag which = ind_aubm_jp_partnership }
+		command = { type = setflag which = ind_aubm_commitment_japan }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_japan }
+		command = { type = setflag which = ind_aubm_jp_tier_peer }
+		command = { type = setflag which = ind_aubm_jp_india_core_sphere }
+		command = { type = dissent value = -1 }
+		command = { type = relation which = JAP value = 15 }
+	}
+	action_b = {
+		trigger = { OR = { NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_negotiation_japan } NOT = { exists = JAP } participant = { country = IND value = 4 } flag = ind_aubm_commitment_allied flag = ind_aubm_commitment_german flag = ind_aubm_commitment_soviet war = { country = IND country = JAP } } }
+		name = "File the obsolete reply without changing India's alignment"
+		command = { type = clrflag which = ind_aubm_jp_proposal_pending }
+		command = { type = clrflag which = ind_aubm_jp_counteroffer }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_japan }
+	}
+}
+
+event = {
+	id = 9281115
+	random = no
+	one_action = yes
+	country = IND
+
+	name = "The Limited Maritime Compact"
+	desc = "Japan accepts India as a sovereign partner but not yet as an equal strategic centre. India is assigned Burma, Malaya and the Indian Ocean; Japan expects to retain the East Indies. Resource guarantees, carrier investment and battlefield achievement can force a seniority review."
+	style = 2
+	picture = "aubm_v4_japan_southern_choice"
+
+	action_a = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_japan exists = JAP NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { war = { country = IND country = JAP } } }
+		name = "Earn the wider sphere"
+		command = { type = clrflag which = ind_aubm_jp_proposal_pending }
+		command = { type = clrflag which = ind_aubm_jp_counteroffer }
+		command = { type = clrflag which = ind_aubm_jp_rejected }
+		command = { type = clrflag which = ind_aubm_jp_rupture }
+		command = { type = clrflag which = ind_aubm_jp_tier_senior }
+		command = { type = clrflag which = ind_aubm_jp_tier_peer }
+		command = { type = clrflag which = ind_aubm_jp_tier_counter }
+		command = { type = clrflag which = ind_aubm_jp_india_full_sphere }
+		command = { type = setflag which = ind_aubm_jp_partnership }
+		command = { type = setflag which = ind_aubm_commitment_japan }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_japan }
+		command = { type = setflag which = ind_aubm_jp_tier_junior }
+		command = { type = setflag which = ind_aubm_jp_india_core_sphere }
+		command = { type = dissent value = 1 }
+		command = { type = relation which = JAP value = 10 }
+	}
+	action_b = {
+		trigger = { OR = { NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_negotiation_japan } NOT = { exists = JAP } participant = { country = IND value = 4 } flag = ind_aubm_commitment_allied flag = ind_aubm_commitment_german flag = ind_aubm_commitment_soviet war = { country = IND country = JAP } } }
+		name = "File the obsolete reply without changing India's alignment"
+		command = { type = clrflag which = ind_aubm_jp_proposal_pending }
+		command = { type = clrflag which = ind_aubm_jp_counteroffer }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_japan }
+	}
+}
+
+#########################################################################
+# Counteroffers, rejection and retry
+#########################################################################
+
+event = {
+	id = 9281120
+	random = no
+	country = IND
+
+	name = "Tokyo's Divided-Theatre Counteroffer"
+	desc = "Japan offers India Burma, Malaya, Singapore and the Indian Ocean but reserves the East Indies, New Guinea and Australia for Japanese operations. India may accept and later earn a review, underwrite Japan's resource security to buy the full sphere now, or reject the hierarchy. All three choices are visible and have downstream consequences."
+	style = 2
+	picture = "aubm_v4_tokyo_proposition"
+
+	action_a = {
+		ai_chance = 45
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_japan exists = JAP NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { war = { country = IND country = JAP } } }
+		name = "Accept the limited division and earn a review"
+		command = { type = clrflag which = ind_aubm_jp_proposal_pending }
+		command = { type = clrflag which = ind_aubm_jp_counteroffer }
+		command = { type = setflag which = ind_aubm_jp_partnership }
+		command = { type = setflag which = ind_aubm_commitment_japan }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_japan }
+		command = { type = setflag which = ind_aubm_jp_tier_counter }
+		command = { type = setflag which = ind_aubm_jp_india_core_sphere }
+		command = { type = non_aggression which = IND where = JAP when = 1080 }
+		command = { type = relation which = JAP value = 15 }
+		command = { type = event which = 9281123 where = JAP when = 2 }
+	}
+	action_b = {
+		ai_chance = 35
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_japan exists = JAP NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { war = { country = IND country = JAP } } }
+		name = "Buy full sphere at severe resource and dissent cost"
+		command = { type = clrflag which = ind_aubm_jp_proposal_pending }
+		command = { type = money value = -1500 }
+		command = { type = supplies value = -3000 }
+		command = { type = oilpool value = -1500 }
+		command = { type = dissent value = 4 }
+		command = { type = clrflag which = ind_aubm_jp_counteroffer }
+		command = { type = setflag which = ind_aubm_jp_influence when = 1 value = 2 }
+		command = { type = setflag which = ind_aubm_jp_partnership }
+		command = { type = setflag which = ind_aubm_commitment_japan }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_japan }
+		command = { type = setflag which = ind_aubm_jp_tier_senior }
+		command = { type = setflag which = ind_aubm_jp_india_full_sphere }
+		command = { type = non_aggression which = IND where = JAP when = 1440 }
+		command = { type = relation which = JAP value = 35 }
+		command = { type = relation which = USA value = -20 }
+		command = { type = relation which = CHI value = -20 }
+		command = { type = event which = 9281123 where = JAP when = 2 }
+	}
+	action_c = {
+		ai_chance = 20
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_japan exists = JAP NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { war = { country = IND country = JAP } } }
+		name = "Reject hierarchy; build an independent Asian order"
+		command = { type = clrflag which = ind_aubm_jp_proposal_pending }
+		command = { type = clrflag which = ind_aubm_jp_counteroffer }
+		command = { type = clrflag which = ind_v4_strategy_japan }
+		command = { type = clrflag which = ind_v3_japanese_orientation }
+		command = { type = setflag which = ind_aubm_jp_rupture }
+		command = { type = setflag which = ind_v3_independent_asia }
+		command = { type = setflag which = ind_v4_strategy_independent_asia }
+		command = { type = relation which = JAP value = -50 }
+		command = { type = relation which = CHI value = 30 }
+		command = { type = dissent value = -1 }
+		command = { type = event which = 9281124 where = JAP when = 2 }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_japan }
+	}
+	action_d = {
+		ai_chance = 0
+		trigger = { OR = { NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_negotiation_japan } NOT = { exists = JAP } participant = { country = IND value = 4 } flag = ind_aubm_commitment_allied flag = ind_aubm_commitment_german flag = ind_aubm_commitment_soviet war = { country = IND country = JAP } } }
+		name = "Let the overtaken counteroffer lapse"
+		command = { type = clrflag which = ind_aubm_jp_proposal_pending }
+		command = { type = clrflag which = ind_aubm_jp_counteroffer }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_japan }
+	}
+}
+
+event = {
+	id = 9281121
+	random = no
+	country = IND
+
+	name = "Tokyo Rejects the Delhi Compact"
+	desc = "Rejection is not a dead end. India may retaliate by sustaining China, construct an independent southern deterrent, or leave a diplomatic channel open for one year. Sanctions invite Japanese pressure; deterrence costs readiness and money; patience sacrifices immediate leverage."
+	style = 2
+	picture = "aubm_v4_tokyo_proposition"
+
+	action_a = {
+		ai_chance = 35
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_japan exists = JAP NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { war = { country = IND country = JAP } } }
+		name = "Embargo Japan and sustain China: -700 supplies, +3 dissent"
+		command = { type = clrflag which = ind_aubm_jp_proposal_pending }
+		command = { type = setflag which = ind_aubm_jp_rejected }
+		command = { type = supplies value = -700 }
+		command = { type = dissent value = 3 }
+		command = { type = relation which = JAP value = -60 }
+		command = { type = relation which = CHI value = 40 }
+		command = { type = embargo which = IND where = JAP value = 1 }
+		command = { type = setflag which = ind_aubm_jp_rupture }
+		command = { type = setflag which = ind_aubm_jp_rejection_sanctions }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_japan }
+	}
+	action_b = {
+		ai_chance = 40
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_japan exists = JAP NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { war = { country = IND country = JAP } } }
+		name = "Build deterrent: -600 money, -1200 supplies"
+		command = { type = clrflag which = ind_aubm_jp_proposal_pending }
+		command = { type = setflag which = ind_aubm_jp_rejected }
+		command = { type = money value = -600 }
+		command = { type = supplies value = -1200 }
+		command = { type = max_organization which = naval value = 1 }
+		command = { type = max_organization which = air value = 1 }
+		command = { type = relation which = JAP value = -25 }
+		command = { type = setflag which = ind_aubm_jp_rejection_deterrent }
+		command = { type = setflag which = ind_aubm_jp_retry_cooldown }
+		command = { type = event which = 9281122 where = IND when = 540 }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_japan }
+	}
+	action_c = {
+		ai_chance = 25
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_japan exists = JAP NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { war = { country = IND country = JAP } } }
+		name = "Leave the invitation open for one year"
+		command = { type = clrflag which = ind_aubm_jp_proposal_pending }
+		command = { type = setflag which = ind_aubm_jp_rejected }
+		command = { type = dissent value = 1 }
+		command = { type = relation which = JAP value = 5 }
+		command = { type = setflag which = ind_aubm_jp_retry_cooldown }
+		command = { type = event which = 9281122 where = IND when = 360 }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_japan }
+	}
+	action_d = {
+		ai_chance = 0
+		trigger = { OR = { NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_negotiation_japan } NOT = { exists = JAP } participant = { country = IND value = 4 } flag = ind_aubm_commitment_allied flag = ind_aubm_commitment_german flag = ind_aubm_commitment_soviet war = { country = IND country = JAP } } }
+		name = "File the obsolete rejection"
+		command = { type = clrflag which = ind_aubm_jp_proposal_pending }
+		command = { type = clrflag which = ind_aubm_jp_counteroffer }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_japan }
+	}
+}
+
+event = {
+	id = 9281122
+	random = no
+	one_action = yes
+	country = IND
+
+	name = "The Tokyo Channel Reopens"
+	desc = "The cooling-off period has expired. If India still wants a bilateral compact, Delhi may submit a new proposal. The next Japanese assessment will again use current influence, industry and armed strength."
+	style = 2
+	picture = "aubm_v4_tokyo_proposition"
+
+	action_a = {
+		name = "Permit a fresh strategic conference"
+		command = { type = clrflag which = ind_aubm_jp_retry_cooldown }
+		command = { type = setflag which = ind_aubm_jp_retry_ready }
+	}
+}
+
+event = {
+	id = 9281123
+	random = no
+	one_action = yes
+	country = JAP
+
+	name = "India Answers the Counteroffer"
+	desc = "Delhi accepts a non-alliance partnership. Indian and Japanese wars remain legally separate. The operational map now depends on whether India accepted a limited division or financed recognition of the full Indian sphere."
+	style = 2
+	picture = "aubm_v4_tokyo_proposition"
+
+	action_a = {
+		name = "Issue the appropriate southern orders"
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = setflag which = ind_aubm_jp_partnership }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = setflag which = ind_aubm_jp_tier_senior }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = setflag which = ind_aubm_jp_india_full_sphere }
+		command = { trigger = { flag = ind_aubm_jp_india_core_sphere } type = setflag which = ind_aubm_jp_partnership }
+		command = { trigger = { flag = ind_aubm_jp_india_core_sphere } type = setflag which = ind_aubm_jp_tier_counter }
+		command = { trigger = { flag = ind_aubm_jp_india_core_sphere } type = setflag which = ind_aubm_jp_india_core_sphere }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = ai which = "aubm/japan/JAP_india_senior.ai" }
+		command = { trigger = { flag = ind_aubm_jp_india_core_sphere } type = ai which = "aubm/japan/JAP_india_peer.ai" }
+		command = { type = relation which = IND value = 15 }
+	}
+}
+
+event = {
+	id = 9281124
+	random = no
+	one_action = yes
+	country = JAP
+
+	name = "Delhi Rejects Japanese Hierarchy"
+	desc = "India has abandoned the bilateral compact and begun organizing an independent Asian coalition. Japanese plans again include the full southern resource zone; future reconciliation requires a new Indian strategic review."
+	style = 2
+	picture = "aubm_v4_tokyo_proposition"
+
+	action_a = {
+		name = "Restore independent Japanese planning"
+		command = { type = ai which = "aubm/japan/JAP_india_rupture.ai" }
+		command = { type = relation which = IND value = -25 }
+	}
+}
+
+#########################################################################
+# Separate China policy and investments that raise Indian influence
+#########################################################################
+
+event = {
+	id = 9281130
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_aubm_jp_partnership
+		exists = JAP
+		NOT = { alliance = { country = IND country = JAP } }
+		NOT = { flag = ind_aubm_jp_formal_alliance }
+		NOT = { flag = ind_aubm_jp_china_policy }
+		NOT = { flag = ind_aubm_jp_rupture }
+	}
+
+	name = "China Is Not Part of the Compact"
+	desc = "The Delhi-Tokyo treaty left China outside the theatre division. Backing Japan deterministically adds 2 influence; supplying China removes 2. Mediation uses a fixed Chinese roll: 45% conference, 40% demand a Japanese pause and 15% refusal. Relations and force size do not modify that roll."
+	style = 2
+	picture = "aubm_v4_china_war_deepens"
+
+	date = { day = 0 month = january year = 1937 }
+	offset = 8
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		ai_chance = 30
+		name = "Back Japan in China: +2 influence, +4 dissent"
+		command = { type = dissent value = 4 }
+		command = { type = relation which = JAP value = 35 }
+		command = { type = relation which = CHI value = -60 }
+		command = { type = setflag which = ind_aubm_jp_influence when = 1 value = 2 }
+		command = { type = setflag which = ind_aubm_jp_china_support_japan }
+		command = { type = setflag which = ind_aubm_jp_china_policy }
+	}
+	action_b = {
+		ai_chance = 45
+		name = "Mediate: -400 money; conference 45%, pause 40%, refuse 15%"
+		command = { type = money value = -400 }
+		command = { type = setflag which = ind_aubm_jp_china_mediation }
+		command = { type = setflag which = ind_aubm_jp_china_policy }
+		command = { trigger = { exists = CHI } type = event which = 9281131 where = CHI when = 4 }
+		command = { trigger = { NOT = { exists = CHI } } type = setflag which = ind_aubm_jp_mediation_impossible }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "Supply China: -900 supplies, -2 influence"
+		command = { type = supplies value = -900 }
+		command = { type = relation which = CHI value = 40 }
+		command = { type = relation which = JAP value = -35 }
+		command = { type = setflag which = ind_aubm_jp_influence when = 1 value = -2 }
+		command = { type = setflag which = ind_aubm_jp_china_independent }
+		command = { type = setflag which = ind_aubm_jp_china_policy }
+	}
+}
+
+event = {
+	id = 9281131
+	random = no
+	country = CHI
+
+	name = "India Offers to Mediate with Japan"
+	desc = "India offers neither surrender terms nor unlimited aid. Delhi proposes a ceasefire conference that recognizes Chinese sovereignty while acknowledging the military balance. Accepting may divide Tokyo; demanding a Japanese pause tests Indian leverage; refusing preserves freedom but isolates China from its strongest potential Asian intermediary."
+	style = 2
+	picture = "aubm_v4_china_war_deepens"
+
+	action_a = {
+		ai_chance = 45
+		name = "Attend the Delhi conference"
+		command = { type = relation which = IND value = 30 }
+		command = { type = clrflag which = ind_aubm_jp_mediation_counter }
+		command = { type = clrflag which = ind_aubm_jp_mediation_failed }
+		command = { type = setflag which = ind_aubm_jp_mediation_success }
+		command = { type = event which = 9281132 where = IND when = 3 }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Demand a Japanese operational pause first"
+		command = { type = relation which = IND value = 10 }
+		command = { type = clrflag which = ind_aubm_jp_mediation_success }
+		command = { type = clrflag which = ind_aubm_jp_mediation_failed }
+		command = { type = setflag which = ind_aubm_jp_mediation_counter }
+		command = { type = event which = 9281132 where = IND when = 3 }
+	}
+	action_c = {
+		ai_chance = 15
+		name = "Refuse talks arranged by Japan's partner"
+		command = { type = relation which = IND value = -20 }
+		command = { type = clrflag which = ind_aubm_jp_mediation_success }
+		command = { type = clrflag which = ind_aubm_jp_mediation_counter }
+		command = { type = setflag which = ind_aubm_jp_mediation_failed }
+		command = { type = event which = 9281132 where = IND when = 3 }
+	}
+}
+
+event = {
+	id = 9281132
+	random = no
+	one_action = yes
+	country = IND
+
+	name = "China Answers the Delhi Mediation"
+	desc = "China's answer determines whether mediation adds Indian leverage or exposes its limits. A conference raises influence with Tokyo and China; a demand for a Japanese pause creates a harder follow-up; refusal closes this channel without cancelling the wider partnership."
+	style = 2
+	picture = "aubm_v4_china_war_deepens"
+
+	action_a = {
+		name = "Incorporate the result into Asian policy"
+		command = { trigger = { flag = ind_aubm_jp_mediation_success } type = setflag which = ind_aubm_jp_mediation_success }
+		command = { trigger = { flag = ind_aubm_jp_mediation_success } type = setflag which = ind_aubm_jp_influence when = 1 value = 1 }
+		command = { trigger = { flag = ind_aubm_jp_mediation_success } type = relation which = JAP value = 10 }
+		command = { trigger = { flag = ind_aubm_jp_mediation_success } type = relation which = CHI value = 15 }
+		command = { trigger = { flag = ind_aubm_jp_mediation_counter } type = setflag which = ind_aubm_jp_mediation_counter }
+		command = { trigger = { flag = ind_aubm_jp_mediation_counter } type = relation which = JAP value = -10 }
+		command = { trigger = { flag = ind_aubm_jp_mediation_counter } type = relation which = CHI value = 10 }
+		command = { trigger = { flag = ind_aubm_jp_mediation_failed } type = setflag which = ind_aubm_jp_mediation_failed }
+		command = { trigger = { flag = ind_aubm_jp_mediation_failed } type = dissent value = 1 }
+	}
+}
+
+event = {
+	id = 9281133
+	random = no
+	country = IND
+
+	decision = {
+		flag = ind_aubm_jp_partnership
+		NOT = { flag = ind_aubm_jp_resource_guarantee }
+		NOT = { flag = ind_aubm_jp_rupture }
+	}
+	decision_trigger = {
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		money = 500
+		supplies = 1000
+		oil = 1500
+		# AUBM_FULL_OPTION_GATE_END
+	}
+
+	name = "Guarantee Japan's Indian Ocean Resource Credit"
+	# AUBM_DECISION_DESC_MANUAL
+	decision_desc = "No immediate foreign roll. Underwriting costs 500 money, 1,000 supplies and 1,500 oil and adds +2 Tokyo influence. Influence 7 is required for a later seniority review."
+	desc = "India can replace part of Japan's southern resource gamble with a state-backed credit carried through Indian ports. The guarantee gives Delhi measurable leverage but associates India with Japanese strategy and consumes stocks needed by its own forces."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+
+	date = { day = 0 month = january year = 1937 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 500
+			supplies = 1000
+			oil = 1500
+			# AUBM_ACTION_RESERVE_END
+		}
+		name = "Underwrite: -500 money/-1000 supplies/-1500 oil"
+		command = { type = money value = -500 }
+		command = { type = supplies value = -1000 }
+		command = { type = oilpool value = -1500 }
+		command = { type = setflag which = ind_aubm_jp_influence when = 1 value = 2 }
+		command = { type = setflag which = ind_aubm_jp_resource_guarantee }
+		command = { type = relation which = JAP value = 25 }
+		command = { type = relation which = USA value = -15 }
+		command = { type = relation which = CHI value = -10 }
+	}
+}
+
+event = {
+	id = 9281134
+	random = no
+	country = IND
+
+	decision = {
+		flag = ind_aubm_jp_partnership
+		NOT = { flag = ind_aubm_jp_equal_carrier_command }
+		NOT = { flag = ind_aubm_jp_rupture }
+	}
+	decision_trigger = {
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		money = 700
+		supplies = 1400
+		# AUBM_FULL_OPTION_GATE_END
+	}
+
+	name = "Create the Equal Carrier Command"
+	# AUBM_DECISION_DESC_MANUAL
+	decision_desc = "No immediate foreign roll. Equal carrier command costs 700 money and 1,400 supplies and adds +2 Tokyo influence. Influence 7 is required for a later seniority review."
+	desc = "A joint carrier and long-range reconnaissance school can make equality operational rather than ceremonial. India will pay for the bases and fuel while insisting that Indian officers command Indian task forces."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+
+	date = { day = 0 month = january year = 1937 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 700
+			supplies = 1400
+			# AUBM_ACTION_RESERVE_END
+		}
+		name = "Fund the equal command: -700 money, -1400 supplies"
+		command = { type = money value = -700 }
+		command = { type = supplies value = -1400 }
+		command = { type = max_organization which = naval value = 1 }
+		command = { type = max_organization which = air value = 1 }
+		command = { type = setflag which = ind_aubm_jp_influence when = 1 value = 2 }
+		command = { type = setflag which = ind_aubm_jp_equal_carrier_command }
+		command = { type = relation which = JAP value = 20 }
+		command = { type = relation which = ENG value = -10 }
+		command = { type = relation which = CHI value = -10 }
+	}
+}
+
+event = {
+	id = 9281135
+	random = no
+	persistent = yes
+	country = IND
+
+	decision = {
+		flag = ind_aubm_jp_partnership
+		flag = { which = ind_aubm_jp_influence when = 1 value = 7 }
+		NOT = { flag = ind_aubm_jp_tier_senior }
+		NOT = { flag = ind_aubm_jp_seniority_review_pending }
+		NOT = { flag = ind_aubm_jp_seniority_review_failed }
+		NOT = { flag = ind_aubm_jp_rupture }
+		ic = 140
+		OR = {
+			land_percentage = { country = JAP value = 0.65 }
+			naval_percentage = { country = JAP value = 0.35 }
+			air = { size = 10 type = 1 when = 1 where = 1 }
+		}
+	}
+	decision_trigger = {
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		money = 300
+		supplies = 500
+		# AUBM_FULL_OPTION_GATE_END
+	}
+
+	name = "Demand a Seniority Review from Tokyo"
+	# AUBM_DECISION_DESC_MANUAL
+	decision_desc = "Requires influence 7, IC 140, and either 65% of Japan's army, 35% of its navy or 10 air wings. Cost: 300 money and 500 supplies. Once available, Tokyo's fixed roll is 60% accept, 30% defer and 10% reject."
+	desc = "Indian investment and force growth have overtaken the treaty originally signed. Delhi can now demand formal command over the entire southern and Indian Ocean theatre while leaving China, the Philippines and the Pacific to Japan."
+	style = 2
+	picture = "aubm_v4_tokyo_proposition"
+
+	date = { day = 0 month = january year = 1938 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 300
+			supplies = 500
+			# AUBM_ACTION_RESERVE_END
+		}
+		name = "Demand recognition: -300 money, -500 supplies"
+		command = { type = money value = -300 }
+		command = { type = supplies value = -500 }
+		command = { type = setflag which = ind_aubm_jp_seniority_review_pending }
+		command = { type = event which = 9281136 where = JAP when = 3 }
+	}
+}
+
+event = {
+	id = 9281136
+	random = no
+	country = JAP
+
+	name = "India Demands the Full Southern Sphere"
+	desc = "India has converted treaty language into industrial, naval and military weight. Delhi demands responsibility for Burma, Malaya, Singapore, the East Indies, Australia and the Indian Ocean. Refusal may preserve Japanese claims but risks paralysing the partnership before war."
+	style = 2
+	picture = "aubm_v4_tokyo_proposition"
+
+	action_a = {
+		ai_chance = 60
+		name = "Recognize India's senior command"
+		command = { type = clrflag which = ind_aubm_jp_seniority_review_pending }
+		command = { type = clrflag which = ind_aubm_jp_tier_peer }
+		command = { type = clrflag which = ind_aubm_jp_tier_junior }
+		command = { type = clrflag which = ind_aubm_jp_tier_counter }
+		command = { type = clrflag which = ind_aubm_jp_india_core_sphere }
+		command = { type = clrflag which = ind_aubm_jp_seniority_deferred }
+		command = { type = clrflag which = ind_aubm_jp_seniority_review_failed }
+		command = { type = setflag which = ind_aubm_jp_tier_senior }
+		command = { type = setflag which = ind_aubm_jp_india_full_sphere }
+		command = { type = relation which = IND value = 25 }
+		command = { type = ai which = "aubm/japan/JAP_india_senior.ai" }
+		command = { type = event which = 9281137 where = IND when = 2 }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Preserve the compact and promise a battlefield review"
+		command = { type = clrflag which = ind_aubm_jp_seniority_review_pending }
+		command = { type = clrflag which = ind_aubm_jp_seniority_review_failed }
+		command = { type = setflag which = ind_aubm_jp_seniority_deferred }
+		command = { type = relation which = IND value = -5 }
+		command = { type = event which = 9281137 where = IND when = 2 }
+	}
+	action_c = {
+		ai_chance = 10
+		name = "Reject the Indian claim"
+		command = { type = clrflag which = ind_aubm_jp_seniority_review_pending }
+		command = { type = clrflag which = ind_aubm_jp_seniority_deferred }
+		command = { type = setflag which = ind_aubm_jp_seniority_review_failed }
+		command = { type = setflag which = ind_aubm_jp_partnership_strained }
+		command = { type = relation which = IND value = -30 }
+		command = { type = event which = 9281137 where = IND when = 2 }
+	}
+}
+
+event = {
+	id = 9281137
+	random = no
+	one_action = yes
+	country = IND
+
+	name = "Tokyo Answers the Seniority Review"
+	desc = "Tokyo's answer is now part of the treaty record. Recognition activates India's full southern sphere. Deferral leaves the East Indies and Australia to battlefield bargaining. Rejection strains cooperation and makes every later occupation transfer contested."
+	style = 2
+	picture = "aubm_v4_tokyo_proposition"
+
+	action_a = {
+		name = "Adjust Indian plans to the answer"
+		command = { type = clrflag which = ind_aubm_jp_seniority_review_pending }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = clrflag which = ind_aubm_jp_tier_peer }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = clrflag which = ind_aubm_jp_tier_junior }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = clrflag which = ind_aubm_jp_tier_counter }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = clrflag which = ind_aubm_jp_india_core_sphere }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = setflag which = ind_aubm_jp_tier_senior }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = setflag which = ind_aubm_jp_india_full_sphere }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = dissent value = -2 }
+		command = { trigger = { flag = ind_aubm_jp_seniority_deferred } type = setflag which = ind_aubm_jp_seniority_deferred }
+		command = { trigger = { flag = ind_aubm_jp_seniority_deferred } type = dissent value = 1 }
+		command = { trigger = { flag = ind_aubm_jp_seniority_review_failed } type = setflag which = ind_aubm_jp_seniority_review_failed }
+		command = { trigger = { flag = ind_aubm_jp_seniority_review_failed } type = setflag which = ind_aubm_jp_partnership_strained }
+		command = { trigger = { flag = ind_aubm_jp_seniority_review_failed } type = dissent value = 2 }
+	}
+}
+
+#########################################################################
+# Independent southern campaign and measurable theatre objectives
+#########################################################################
+
+event = {
+	id = 9281140
+	random = no
+	persistent = yes
+	country = IND
+
+	decision = {
+		flag = ind_aubm_jp_partnership
+		NOT = { flag = ind_aubm_jp_rupture }
+		NOT = { flag = ind_aubm_jp_southern_theatre }
+		OR = {
+			war = { country = JAP country = ENG }
+			war = { country = JAP country = U05 }
+			war = { country = JAP country = HOL }
+			war = { country = JAP country = AST }
+			AND = {
+				flag = ind_aubm_bespoke_route_contract_alpha23
+				flag = ind_aubm_route_japan
+				OR = {
+					war = { country = IND country = ENG }
+					war = { country = IND country = U05 }
+					war = { country = IND country = HOL }
+					war = { country = IND country = AST }
+				}
+			}
+		}
+	}
+	decision_trigger = { flag = ind_aubm_jp_partnership }
+
+	name = "Open the India-Led Southern Theatre"
+	# AUBM_DECISION_DESC_MANUAL
+	decision_desc = "No foreign roll or command fee applies. A formal alliance records inherited wars. Under Alpha 23's separate-command compact, Delhi may also open the ledger after India starts its own British, East Indies, Dutch or Australian war; this does not force Japan to join."
+	desc = "The treaty map can now become an operational reality. Delhi activates its command from Burma across Malaya and the East Indies to Australia. A formal alliance shares Tokyo's wars. A strategic compact preserves separate declarations and now recognizes a southern war opened by either partner. Indian battlefield control counts toward the Indian Ocean settlement."
+	style = 2
+	picture = "aubm_v4_japan_southern_choice"
+
+	date = { day = 0 month = january year = 1938 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Activate India's southern command ledger"
+		command = { trigger = { NOT = { alliance = { country = IND country = JAP } } } type = dissent value = 2 }
+		command = { trigger = { war = { country = JAP country = ENG } NOT = { war = { country = IND country = ENG } } } type = war which = ENG }
+		command = { trigger = { exists = U05 war = { country = JAP country = U05 } NOT = { war = { country = IND country = U05 } } } type = war which = U05 }
+		command = { trigger = { exists = HOL war = { country = JAP country = HOL } NOT = { war = { country = IND country = HOL } } } type = war which = HOL }
+		command = { trigger = { exists = AST war = { country = JAP country = AST } NOT = { war = { country = IND country = AST } } } type = war which = AST }
+		command = { type = clrflag which = ind_aubm_jp_theatre_score }
+		command = { type = setflag which = ind_aubm_jp_southern_theatre }
+		command = { trigger = { NOT = { alliance = { country = IND country = JAP } } } type = setflag which = ind_aubm_jp_independent_cobelligerent }
+		command = { trigger = { alliance = { country = IND country = JAP } } type = setflag which = ind_aubm_jp_formal_alliance }
+		command = { type = setflag which = ind_v4_maritime_war_aims }
+		command = { type = setflag which = ind_v4_war_aims }
+		command = { type = event which = 9281141 where = IND when = 2 }
+	}
+}
+
+event = {
+	id = 9281141
+	random = no
+	one_action = yes
+	country = IND
+
+	name = "Southern Theatre Directive No. 1"
+	desc = "Indian command will be judged by controlled objectives, not by Japanese victories elsewhere. Burma and Port Blair secure the approach; Singapore and Kuala Lumpur open Malaya; Palembang, Batavia and Soerabaja decide the East Indies; Darwin, Canberra and Sydney decide Australia. Six theatre points and control of Malaya plus either the East Indies or Australia qualify India to dictate a settlement."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+
+	action_a = {
+		name = "Issue the objective ledger"
+		command = { type = setflag which = ind_aubm_jp_objective_ledger }
+	}
+}
+
+event = {
+	id = 9281142
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_aubm_jp_southern_theatre
+		NOT = { flag = ind_aubm_jp_objective_burma }
+		control = { province = 1415 data = IND } # Rangoon
+		control = { province = 1442 data = IND } # Imphal
+		control = { province = 1421 data = IND } # Port Blair
+	}
+
+	name = "The Burma-Andaman Approach Is Secure"
+	desc = "Indian control of Rangoon, Imphal and Port Blair joins the land and maritime approaches into one command. Burma can now support the advance toward Malaya without surrendering the Bay of Bengal to Japanese direction."
+	style = 2
+	picture = "india_v3_japan_imphal_victory"
+
+	date = { day = 0 month = january year = 1938 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Record one theatre point"
+		command = { type = setflag which = ind_aubm_jp_theatre_score when = 1 value = 1 }
+		command = { type = setflag which = ind_aubm_jp_objective_burma }
+		command = { type = supplies value = 300 }
+	}
+}
+
+event = {
+	id = 9281143
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_aubm_jp_southern_theatre
+		NOT = { flag = ind_aubm_jp_objective_malaya }
+		control = { province = 1432 data = IND } # Singapore
+		control = { province = 1438 data = IND } # Kuala Lumpur
+	}
+
+	name = "India Controls Singapore and Malaya"
+	desc = "Singapore and Kuala Lumpur are under Indian command. The central promise of the compact has become a battlefield fact, giving Delhi a position from which to contest every later claim over the East Indies and Australia."
+	style = 2
+	picture = "aubm_v4_japan_southern_choice"
+
+	date = { day = 0 month = january year = 1938 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Record two theatre points"
+		command = { type = setflag which = ind_aubm_jp_theatre_score when = 1 value = 2 }
+		command = { type = setflag which = ind_aubm_jp_objective_malaya }
+		command = { type = dissent value = -1 }
+	}
+}
+
+event = {
+	id = 9281144
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_aubm_jp_southern_theatre
+		NOT = { flag = ind_aubm_jp_objective_dei }
+		control = { province = 1636 data = IND } # Palembang
+		control = { province = 1647 data = IND } # Batavia
+		control = { province = 1653 data = IND } # Soerabaja
+	}
+
+	name = "The East Indies Resource Arc Is Indian"
+	desc = "Indian forces control Palembang, Batavia and Soerabaja. Oil, ports and sea lanes now give Delhi the material leverage behind its claim to the Netherlands East Indies. Japan can no longer argue that the islands were won solely by Japanese arms."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+
+	date = { day = 0 month = january year = 1938 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Record three theatre points"
+		command = { type = setflag which = ind_aubm_jp_theatre_score when = 1 value = 3 }
+		command = { type = setflag which = ind_aubm_jp_objective_dei }
+		command = { type = oilpool value = 500 }
+		command = { type = rarematerialspool value = 200 }
+	}
+}
+
+event = {
+	id = 9281145
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_aubm_jp_southern_theatre
+		NOT = { flag = ind_aubm_jp_objective_australia }
+		control = { province = 1697 data = IND } # Darwin
+		control = { province = 1707 data = IND } # Canberra
+		control = { province = 1705 data = IND } # Sydney
+	}
+
+	name = "Australia Accepts the Reality of Indian Command"
+	desc = "Darwin, Canberra and Sydney are under Indian military control. India can impose a settlement, but permanent annexation of a continental society would create resistance and international alarm. Partnership, protection and direct rule will carry very different costs."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+
+	date = { day = 0 month = january year = 1938 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Record three theatre points"
+		command = { type = setflag which = ind_aubm_jp_theatre_score when = 1 value = 3 }
+		command = { type = setflag which = ind_aubm_jp_objective_australia }
+		command = { type = dissent value = -2 }
+	}
+}
+
+event = {
+	id = 9281146
+	random = no
+	one_action = yes
+	country = IND
+
+	trigger = {
+		flag = ind_aubm_jp_southern_theatre
+		flag = ind_aubm_jp_objective_malaya
+		control = { province = 1432 data = IND } # Singapore
+		control = { province = 1438 data = IND } # Kuala Lumpur
+		OR = {
+			AND = {
+				flag = ind_aubm_jp_objective_dei
+				control = { province = 1636 data = IND } # Palembang
+				control = { province = 1647 data = IND } # Batavia
+				control = { province = 1653 data = IND } # Soerabaja
+			}
+			AND = {
+				flag = ind_aubm_jp_objective_australia
+				control = { province = 1697 data = IND } # Darwin
+				control = { province = 1707 data = IND } # Canberra
+				control = { province = 1705 data = IND } # Sydney
+			}
+		}
+		flag = { which = ind_aubm_jp_theatre_score when = 1 value = 6 }
+		NOT = { flag = ind_aubm_jp_southern_victory }
+	}
+
+	name = "India Has Won the Southern Command"
+	desc = "India has secured Malaya and at least one wider theatre while accumulating the operational record needed to impose a peace. Delhi may settle the Indian Ocean separately even if Japan continues its Pacific war or India simultaneously fights the Soviet Union. The partnership's Himalayan clause now places Tibet in India's postwar security sphere."
+	style = 2
+	picture = "india_v3_japan_settlement"
+
+	date = { day = 0 month = january year = 1938 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Open the Indian Ocean and Himalayan settlements"
+		command = { type = setflag which = ind_aubm_jp_southern_victory }
+		command = { type = setflag which = ind_aubm_national_southern_victory }
+		command = { type = setflag which = ind_aubm_national_southern_current }
+		command = { type = setflag which = ind_aubm_south_malaya_held }
+		command = { trigger = { flag = ind_aubm_jp_objective_dei control = { province = 1636 data = IND } control = { province = 1647 data = IND } control = { province = 1653 data = IND } } type = setflag which = ind_aubm_south_dei_held }
+		command = { trigger = { flag = ind_aubm_jp_objective_australia control = { province = 1697 data = IND } control = { province = 1707 data = IND } control = { province = 1705 data = IND } } type = setflag which = ind_aubm_south_australia_held }
+		command = { type = setflag which = ind_v4_strategic_weight_2 }
+		command = { type = dissent value = -3 }
+		command = { type = money value = 400 }
+	}
+}
+
+#########################################################################
+# Wartime occupation correction: controller only, never ownership
+#########################################################################
+
+event = {
+	id = 9281150
+	random = no
+	persistent = yes
+	one_action = yes
+	country = JAP
+
+	trigger = {
+		flag = ind_aubm_jp_partnership
+		flag = ind_aubm_jp_southern_theatre
+		NOT = { flag = ind_aubm_jp_partnership_strained }
+		war = { country = JAP country = ENG }
+		war = { country = IND country = ENG }
+		OR = {
+			control = { province = 1415 data = JAP }
+			control = { province = 1421 data = JAP }
+			control = { province = 1407 data = JAP }
+		}
+	}
+
+	name = "Return the Burma-Andaman Occupation to India"
+	desc = "Japanese formations have entered territory assigned to India's southern command. The treaty transfers military administration to India while leaving legal ownership for the peace settlement."
+	style = 2
+	picture = "aubm_v4_japan_southern_choice"
+
+	date = { day = 0 month = january year = 1938 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Honour the Burma-Andaman boundary"
+		command = { trigger = { control = { province = 1406 data = JAP } } type = control which = IND value = 1406 }
+		command = { trigger = { control = { province = 1407 data = JAP } } type = control which = IND value = 1407 }
+		command = { trigger = { control = { province = 1408 data = JAP } } type = control which = IND value = 1408 }
+		command = { trigger = { control = { province = 1409 data = JAP } } type = control which = IND value = 1409 }
+		command = { trigger = { control = { province = 1410 data = JAP } } type = control which = IND value = 1410 }
+		command = { trigger = { control = { province = 1411 data = JAP } } type = control which = IND value = 1411 }
+		command = { trigger = { control = { province = 1412 data = JAP } } type = control which = IND value = 1412 }
+		command = { trigger = { control = { province = 1413 data = JAP } } type = control which = IND value = 1413 }
+		command = { trigger = { control = { province = 1414 data = JAP } } type = control which = IND value = 1414 }
+		command = { trigger = { control = { province = 1415 data = JAP } } type = control which = IND value = 1415 }
+		command = { trigger = { control = { province = 1416 data = JAP } } type = control which = IND value = 1416 }
+		command = { trigger = { control = { province = 1417 data = JAP } } type = control which = IND value = 1417 }
+		command = { trigger = { control = { province = 1418 data = JAP } } type = control which = IND value = 1418 }
+		command = { trigger = { control = { province = 1419 data = JAP } } type = control which = IND value = 1419 }
+		command = { trigger = { control = { province = 1420 data = JAP } } type = control which = IND value = 1420 }
+		command = { trigger = { control = { province = 1421 data = JAP } } type = control which = IND value = 1421 }
+	}
+}
+
+event = {
+	id = 9281151
+	random = no
+	persistent = yes
+	one_action = yes
+	country = JAP
+
+	trigger = {
+		flag = ind_aubm_jp_partnership
+		flag = ind_aubm_jp_southern_theatre
+		NOT = { flag = ind_aubm_jp_partnership_strained }
+		OR = {
+			flag = ind_aubm_jp_india_full_sphere
+			flag = ind_aubm_jp_india_core_sphere
+		}
+		OR = {
+			control = { province = 1432 data = JAP }
+			control = { province = 1438 data = JAP }
+			control = { province = 1624 data = JAP }
+		}
+	}
+
+	name = "Return Malaya and British Borneo to Indian Command"
+	desc = "Japan has occupied territory assigned to India under every version of the compact. Controller status transfers to India; sovereignty remains unresolved until peace."
+	style = 2
+	picture = "aubm_v4_japan_southern_choice"
+
+	date = { day = 0 month = january year = 1938 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Apply the Malaya boundary"
+		command = { trigger = { control = { province = 1432 data = JAP } } type = control which = IND value = 1432 }
+		command = { trigger = { control = { province = 1433 data = JAP } } type = control which = IND value = 1433 }
+		command = { trigger = { control = { province = 1434 data = JAP } } type = control which = IND value = 1434 }
+		command = { trigger = { control = { province = 1435 data = JAP } } type = control which = IND value = 1435 }
+		command = { trigger = { control = { province = 1436 data = JAP } } type = control which = IND value = 1436 }
+		command = { trigger = { control = { province = 1437 data = JAP } } type = control which = IND value = 1437 }
+		command = { trigger = { control = { province = 1438 data = JAP } } type = control which = IND value = 1438 }
+		command = { trigger = { control = { province = 1624 data = JAP } } type = control which = IND value = 1624 }
+		command = { trigger = { control = { province = 1625 data = JAP } } type = control which = IND value = 1625 }
+		command = { trigger = { control = { province = 1626 data = JAP } } type = control which = IND value = 1626 }
+		command = { trigger = { control = { province = 1629 data = JAP } } type = control which = IND value = 1629 }
+	}
+}
+
+event = {
+	id = 9281152
+	random = no
+	persistent = yes
+	one_action = yes
+	country = JAP
+
+	trigger = {
+		flag = ind_aubm_jp_partnership
+		flag = ind_aubm_jp_southern_theatre
+		flag = ind_aubm_jp_india_full_sphere
+		NOT = { flag = ind_aubm_jp_partnership_strained }
+		OR = {
+			control = { province = 1636 data = JAP }
+			control = { province = 1647 data = JAP }
+			control = { province = 1653 data = JAP }
+			control = { province = 1657 data = JAP }
+		}
+	}
+
+	name = "Return the East Indies Occupation to India"
+	desc = "The senior compact assigns the Netherlands East Indies and western New Guinea to India's theatre. Japanese occupation authorities transfer control while the legal settlement waits for peace."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+
+	date = { day = 0 month = january year = 1938 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Apply the East Indies boundary"
+		command = { trigger = { control = { province = 1594 data = JAP } } type = control which = IND value = 1594 }
+		command = { trigger = { control = { province = 1595 data = JAP } } type = control which = IND value = 1595 }
+		command = { trigger = { control = { province = 1596 data = JAP } } type = control which = IND value = 1596 }
+		command = { trigger = { control = { province = 1597 data = JAP } } type = control which = IND value = 1597 }
+		command = { trigger = { control = { province = 1598 data = JAP } } type = control which = IND value = 1598 }
+		command = { trigger = { control = { province = 1599 data = JAP } } type = control which = IND value = 1599 }
+		command = { trigger = { control = { province = 1600 data = JAP } } type = control which = IND value = 1600 }
+		command = { trigger = { control = { province = 1601 data = JAP } } type = control which = IND value = 1601 }
+		command = { trigger = { control = { province = 1602 data = JAP } } type = control which = IND value = 1602 }
+		command = { trigger = { control = { province = 1603 data = JAP } } type = control which = IND value = 1603 }
+		command = { trigger = { control = { province = 1604 data = JAP } } type = control which = IND value = 1604 }
+		command = { trigger = { control = { province = 1605 data = JAP } } type = control which = IND value = 1605 }
+		command = { trigger = { control = { province = 1606 data = JAP } } type = control which = IND value = 1606 }
+		command = { trigger = { control = { province = 1607 data = JAP } } type = control which = IND value = 1607 }
+		command = { trigger = { control = { province = 1608 data = JAP } } type = control which = IND value = 1608 }
+		command = { trigger = { control = { province = 1609 data = JAP } } type = control which = IND value = 1609 }
+		command = { trigger = { control = { province = 1610 data = JAP } } type = control which = IND value = 1610 }
+		command = { trigger = { control = { province = 1615 data = JAP } } type = control which = IND value = 1615 }
+		command = { trigger = { control = { province = 1616 data = JAP } } type = control which = IND value = 1616 }
+		command = { trigger = { control = { province = 1617 data = JAP } } type = control which = IND value = 1617 }
+		command = { trigger = { control = { province = 1618 data = JAP } } type = control which = IND value = 1618 }
+		command = { trigger = { control = { province = 1619 data = JAP } } type = control which = IND value = 1619 }
+		command = { trigger = { control = { province = 1620 data = JAP } } type = control which = IND value = 1620 }
+		command = { trigger = { control = { province = 1621 data = JAP } } type = control which = IND value = 1621 }
+		command = { trigger = { control = { province = 1622 data = JAP } } type = control which = IND value = 1622 }
+		command = { trigger = { control = { province = 1623 data = JAP } } type = control which = IND value = 1623 }
+		command = { trigger = { control = { province = 1627 data = JAP } } type = control which = IND value = 1627 }
+		command = { trigger = { control = { province = 1628 data = JAP } } type = control which = IND value = 1628 }
+		command = { trigger = { control = { province = 1630 data = JAP } } type = control which = IND value = 1630 }
+		command = { trigger = { control = { province = 1631 data = JAP } } type = control which = IND value = 1631 }
+		command = { trigger = { control = { province = 1632 data = JAP } } type = control which = IND value = 1632 }
+		command = { trigger = { control = { province = 1633 data = JAP } } type = control which = IND value = 1633 }
+		command = { trigger = { control = { province = 1634 data = JAP } } type = control which = IND value = 1634 }
+		command = { trigger = { control = { province = 1635 data = JAP } } type = control which = IND value = 1635 }
+		command = { trigger = { control = { province = 1636 data = JAP } } type = control which = IND value = 1636 }
+		command = { trigger = { control = { province = 1637 data = JAP } } type = control which = IND value = 1637 }
+		command = { trigger = { control = { province = 1638 data = JAP } } type = control which = IND value = 1638 }
+		command = { trigger = { control = { province = 1639 data = JAP } } type = control which = IND value = 1639 }
+		command = { trigger = { control = { province = 1640 data = JAP } } type = control which = IND value = 1640 }
+		command = { trigger = { control = { province = 1641 data = JAP } } type = control which = IND value = 1641 }
+		command = { trigger = { control = { province = 1642 data = JAP } } type = control which = IND value = 1642 }
+		command = { trigger = { control = { province = 1643 data = JAP } } type = control which = IND value = 1643 }
+		command = { trigger = { control = { province = 1644 data = JAP } } type = control which = IND value = 1644 }
+		command = { trigger = { control = { province = 1645 data = JAP } } type = control which = IND value = 1645 }
+		command = { trigger = { control = { province = 1646 data = JAP } } type = control which = IND value = 1646 }
+		command = { trigger = { control = { province = 1647 data = JAP } } type = control which = IND value = 1647 }
+		command = { trigger = { control = { province = 1648 data = JAP } } type = control which = IND value = 1648 }
+		command = { trigger = { control = { province = 1649 data = JAP } } type = control which = IND value = 1649 }
+		command = { trigger = { control = { province = 1650 data = JAP } } type = control which = IND value = 1650 }
+		command = { trigger = { control = { province = 1651 data = JAP } } type = control which = IND value = 1651 }
+		command = { trigger = { control = { province = 1652 data = JAP } } type = control which = IND value = 1652 }
+		command = { trigger = { control = { province = 1653 data = JAP } } type = control which = IND value = 1653 }
+		command = { trigger = { control = { province = 1654 data = JAP } } type = control which = IND value = 1654 }
+		command = { trigger = { control = { province = 1655 data = JAP } } type = control which = IND value = 1655 }
+		command = { trigger = { control = { province = 1656 data = JAP } } type = control which = IND value = 1656 }
+		command = { trigger = { control = { province = 1657 data = JAP } } type = control which = IND value = 1657 }
+		command = { trigger = { control = { province = 1658 data = JAP } } type = control which = IND value = 1658 }
+		command = { trigger = { control = { province = 1659 data = JAP } } type = control which = IND value = 1659 }
+		command = { trigger = { control = { province = 1660 data = JAP } } type = control which = IND value = 1660 }
+		command = { trigger = { control = { province = 1234 data = JAP } } type = control which = IND value = 1234 }
+	}
+}
+
+event = {
+	id = 9281153
+	random = no
+	persistent = yes
+	one_action = yes
+	country = JAP
+
+	trigger = {
+		flag = ind_aubm_jp_partnership
+		flag = ind_aubm_jp_southern_theatre
+		flag = ind_aubm_jp_india_full_sphere
+		NOT = { flag = ind_aubm_jp_partnership_strained }
+		OR = {
+			control = { province = 1697 data = JAP }
+			control = { province = 1707 data = JAP }
+			control = { province = 1705 data = JAP }
+		}
+	}
+
+	name = "Return the Australian Occupation to India"
+	desc = "The senior compact assigns Australia to India's theatre. Japanese occupation authorities transfer controller status while the postwar political settlement remains open."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+
+	date = { day = 0 month = january year = 1938 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Apply the Australian boundary"
+		command = { trigger = { control = { province = 1688 data = JAP } } type = control which = IND value = 1688 }
+		command = { trigger = { control = { province = 1689 data = JAP } } type = control which = IND value = 1689 }
+		command = { trigger = { control = { province = 1690 data = JAP } } type = control which = IND value = 1690 }
+		command = { trigger = { control = { province = 1691 data = JAP } } type = control which = IND value = 1691 }
+		command = { trigger = { control = { province = 1692 data = JAP } } type = control which = IND value = 1692 }
+		command = { trigger = { control = { province = 1693 data = JAP } } type = control which = IND value = 1693 }
+		command = { trigger = { control = { province = 1694 data = JAP } } type = control which = IND value = 1694 }
+		command = { trigger = { control = { province = 1695 data = JAP } } type = control which = IND value = 1695 }
+		command = { trigger = { control = { province = 1696 data = JAP } } type = control which = IND value = 1696 }
+		command = { trigger = { control = { province = 1697 data = JAP } } type = control which = IND value = 1697 }
+		command = { trigger = { control = { province = 1698 data = JAP } } type = control which = IND value = 1698 }
+		command = { trigger = { control = { province = 1699 data = JAP } } type = control which = IND value = 1699 }
+		command = { trigger = { control = { province = 1700 data = JAP } } type = control which = IND value = 1700 }
+		command = { trigger = { control = { province = 1701 data = JAP } } type = control which = IND value = 1701 }
+		command = { trigger = { control = { province = 1702 data = JAP } } type = control which = IND value = 1702 }
+		command = { trigger = { control = { province = 1703 data = JAP } } type = control which = IND value = 1703 }
+		command = { trigger = { control = { province = 1704 data = JAP } } type = control which = IND value = 1704 }
+		command = { trigger = { control = { province = 1705 data = JAP } } type = control which = IND value = 1705 }
+		command = { trigger = { control = { province = 1706 data = JAP } } type = control which = IND value = 1706 }
+		command = { trigger = { control = { province = 1707 data = JAP } } type = control which = IND value = 1707 }
+		command = { trigger = { control = { province = 1708 data = JAP } } type = control which = IND value = 1708 }
+		command = { trigger = { control = { province = 1709 data = JAP } } type = control which = IND value = 1709 }
+		command = { trigger = { control = { province = 1710 data = JAP } } type = control which = IND value = 1710 }
+		command = { trigger = { control = { province = 1711 data = JAP } } type = control which = IND value = 1711 }
+		command = { trigger = { control = { province = 1712 data = JAP } } type = control which = IND value = 1712 }
+		command = { trigger = { control = { province = 1713 data = JAP } } type = control which = IND value = 1713 }
+		command = { trigger = { control = { province = 1714 data = JAP } } type = control which = IND value = 1714 }
+		command = { trigger = { control = { province = 1715 data = JAP } } type = control which = IND value = 1715 }
+		command = { trigger = { control = { province = 1716 data = JAP } } type = control which = IND value = 1716 }
+		command = { trigger = { control = { province = 1717 data = JAP } } type = control which = IND value = 1717 }
+	}
+}
+
+#########################################################################
+# Indian Ocean peace: commonwealth, protectorates or direct mandates
+#########################################################################
+
+event = {
+	id = 9281160
+	random = no
+	persistent = yes
+	country = IND
+
+	decision = {
+		flag = ind_aubm_route_japan
+		flag = ind_aubm_jp_partnership
+		exists = JAP
+		NOT = { war = { country = IND country = JAP } }
+		NOT = { flag = ind_aubm_jp_rupture }
+		flag = ind_aubm_jp_southern_victory
+		flag = ind_aubm_national_southern_current
+		NOT = { flag = ind_aubm_jp_settlement_pending }
+		NOT = { flag = ind_aubm_jp_settlement_complete }
+	}
+	decision_trigger = {
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		OR = {
+			AND = { money = 300 }
+			AND = { money = 700 supplies = 1200 }
+			AND = { money = 1000 }
+		}
+		# AUBM_FULL_OPTION_GATE_END
+	}
+
+	name = "Convene the Indian Ocean Settlement"
+	# AUBM_DECISION_DESC_MANUAL
+	decision_desc = "Commonwealth costs 300; protectorates 700 money/1,200 supplies; mandates 1,000. Fixed accept/counter/reject rolls: Britain and Australia 55/30/15; Netherlands 50/35/15. Japan honours the treaty boundary without a roll. Warning: ratifying this separate peace ends formal shared-war membership and continues the Tokyo relationship as a separate-command compact."
+	desc = "India's southern victories force a choice: sovereign partners, protectorates, or direct mandates for captured Malayan and Indonesian territory. Australia remains sovereign or protected. If India is formally allied to Japan, this separate peace ends formal shared-war membership and continues the Delhi-Tokyo relationship as a separate-command compact."
+	style = 2
+	picture = "india_v3_japan_settlement"
+
+	date = { day = 0 month = january year = 1938 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 300
+			# AUBM_ACTION_RESERVE_END
+		}
+		ai_chance = 45
+		name = "Sovereign Commonwealth: -300 money, -2 dissent"
+		command = { trigger = { alliance = { country = IND country = JAP } } type = setflag which = ind_aubm_jp_partnership }
+		command = { trigger = { alliance = { country = IND country = JAP } } type = setflag which = ind_aubm_jp_independent_cobelligerent }
+		command = { trigger = { alliance = { country = IND country = JAP } } type = clrflag which = ind_aubm_jp_formal_alliance }
+		command = { trigger = { alliance = { country = IND country = JAP } } type = leave_alliance when = 1 }
+		command = { type = money value = -300 }
+		command = { type = dissent value = -2 }
+		command = { type = belligerence value = -3 }
+		command = { type = setflag which = ind_aubm_jp_settlement_commonwealth }
+		command = { type = setflag which = ind_aubm_jp_settlement_pending }
+		command = { trigger = { exists = ENG war = { country = IND country = ENG } } type = peace which = ENG value = 1 }
+		command = { trigger = { flag = ind_aubm_jp_objective_dei exists = U05 war = { country = IND country = U05 } } type = peace which = U05 value = 1 }
+		command = { trigger = { flag = ind_aubm_jp_objective_dei exists = HOL war = { country = IND country = HOL } } type = peace which = HOL value = 1 }
+		command = { trigger = { flag = ind_aubm_jp_objective_australia exists = AST war = { country = IND country = AST } } type = peace which = AST value = 1 }
+		command = { trigger = { exists = ENG } type = event which = 9281161 where = ENG when = 3 }
+		command = { trigger = { flag = ind_aubm_jp_objective_dei exists = U05 } type = event which = 9282000 where = U05 when = 3 }
+		command = { trigger = { flag = ind_aubm_jp_objective_dei exists = HOL } type = event which = 9281162 where = HOL when = 3 }
+		command = { trigger = { flag = ind_aubm_jp_objective_australia exists = AST } type = event which = 9281163 where = AST when = 3 }
+		command = { trigger = { exists = JAP } type = event which = 9281164 where = JAP when = 6 }
+		command = { type = event which = 9281165 where = IND when = 12 }
+	}
+	action_b = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 700
+			supplies = 1200
+			# AUBM_ACTION_RESERVE_END
+		}
+		ai_chance = 35
+		name = "Protectorates: -700 money/-1200 supplies/+5 dissent"
+		command = { trigger = { alliance = { country = IND country = JAP } } type = setflag which = ind_aubm_jp_partnership }
+		command = { trigger = { alliance = { country = IND country = JAP } } type = setflag which = ind_aubm_jp_independent_cobelligerent }
+		command = { trigger = { alliance = { country = IND country = JAP } } type = clrflag which = ind_aubm_jp_formal_alliance }
+		command = { trigger = { alliance = { country = IND country = JAP } } type = leave_alliance when = 1 }
+		command = { type = money value = -700 }
+		command = { type = supplies value = -1200 }
+		command = { type = dissent value = 5 }
+		command = { type = belligerence value = 4 }
+		command = { type = setflag which = ind_aubm_jp_settlement_protectorates }
+		command = { type = setflag which = ind_aubm_jp_settlement_pending }
+		command = { trigger = { exists = ENG war = { country = IND country = ENG } } type = peace which = ENG value = 1 }
+		command = { trigger = { flag = ind_aubm_jp_objective_dei exists = U05 war = { country = IND country = U05 } } type = peace which = U05 value = 1 }
+		command = { trigger = { flag = ind_aubm_jp_objective_dei exists = HOL war = { country = IND country = HOL } } type = peace which = HOL value = 1 }
+		command = { trigger = { flag = ind_aubm_jp_objective_australia exists = AST war = { country = IND country = AST } } type = peace which = AST value = 1 }
+		command = { trigger = { exists = ENG } type = event which = 9281161 where = ENG when = 3 }
+		command = { trigger = { flag = ind_aubm_jp_objective_dei exists = U05 } type = event which = 9282000 where = U05 when = 3 }
+		command = { trigger = { flag = ind_aubm_jp_objective_dei exists = HOL } type = event which = 9281162 where = HOL when = 3 }
+		command = { trigger = { flag = ind_aubm_jp_objective_australia exists = AST } type = event which = 9281163 where = AST when = 3 }
+		command = { trigger = { exists = JAP } type = event which = 9281164 where = JAP when = 6 }
+		command = { type = event which = 9281165 where = IND when = 12 }
+	}
+	action_c = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 1000
+			# AUBM_ACTION_RESERVE_END
+		}
+		ai_chance = 20
+		name = "Direct mandates: -1000 money, +9 dissent"
+		command = { trigger = { alliance = { country = IND country = JAP } } type = setflag which = ind_aubm_jp_partnership }
+		command = { trigger = { alliance = { country = IND country = JAP } } type = setflag which = ind_aubm_jp_independent_cobelligerent }
+		command = { trigger = { alliance = { country = IND country = JAP } } type = clrflag which = ind_aubm_jp_formal_alliance }
+		command = { trigger = { alliance = { country = IND country = JAP } } type = leave_alliance when = 1 }
+		command = { type = money value = -1000 }
+		command = { type = dissent value = 9 }
+		command = { type = belligerence value = 9 }
+		command = { type = tc_mod value = -4 }
+		command = { type = setflag which = ind_aubm_jp_settlement_direct }
+		command = { type = setflag which = ind_aubm_jp_settlement_pending }
+		command = { type = setflag which = ind_aubm_occupation_upkeep }
+		command = { type = event which = 9282093 where = IND when = 1 }
+		command = { trigger = { exists = ENG war = { country = IND country = ENG } } type = peace which = ENG value = 1 }
+		command = { trigger = { flag = ind_aubm_jp_objective_dei exists = U05 war = { country = IND country = U05 } } type = peace which = U05 value = 1 }
+		command = { trigger = { flag = ind_aubm_jp_objective_dei exists = HOL war = { country = IND country = HOL } } type = peace which = HOL value = 1 }
+		command = { trigger = { flag = ind_aubm_jp_objective_australia exists = AST war = { country = IND country = AST } } type = peace which = AST value = 1 }
+		command = { trigger = { exists = ENG } type = event which = 9281161 where = ENG when = 3 }
+		command = { trigger = { flag = ind_aubm_jp_objective_dei exists = U05 } type = event which = 9282000 where = U05 when = 3 }
+		command = { trigger = { flag = ind_aubm_jp_objective_dei exists = HOL } type = event which = 9281162 where = HOL when = 3 }
+		command = { trigger = { flag = ind_aubm_jp_objective_australia exists = AST } type = event which = 9281163 where = AST when = 3 }
+		command = { trigger = { exists = JAP } type = event which = 9281164 where = JAP when = 6 }
+		command = { type = event which = 9281165 where = IND when = 12 }
+	}
+}
+
+event = {
+	id = 9281161
+	random = no
+	persistent = yes
+	country = ENG
+
+	name = "India Demands the Malayan Settlement"
+	desc = "India has secured the Malayan command and concluded a separate peace. London can recognize the transfer, demand continuing British access in return, or refuse and risk a renewed Indian war over Singapore. Only provinces Britain actually owns will change ownership."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+
+	action_a = {
+		ai_chance = 55
+		name = "Recognize the Indian settlement"
+		command = { type = secedeprovince which = IND value = 1432 when = 1 }
+		command = { type = secedeprovince which = IND value = 1433 when = 1 }
+		command = { type = secedeprovince which = IND value = 1434 when = 1 }
+		command = { type = secedeprovince which = IND value = 1435 when = 1 }
+		command = { type = secedeprovince which = IND value = 1436 when = 1 }
+		command = { type = secedeprovince which = IND value = 1437 when = 1 }
+		command = { type = secedeprovince which = IND value = 1438 when = 1 }
+		command = { type = secedeprovince which = IND value = 1624 when = 1 }
+		command = { type = secedeprovince which = IND value = 1625 when = 1 }
+		command = { type = secedeprovince which = IND value = 1626 when = 1 }
+		command = { type = secedeprovince which = IND value = 1629 when = 1 }
+		command = { type = relation which = IND value = 15 }
+		command = { type = clrflag which = ind_aubm_jp_britain_base_counter }
+		command = { type = clrflag which = ind_aubm_jp_britain_settlement_reject }
+		command = { type = setflag which = ind_aubm_jp_britain_settlement_accept }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Concede Malaya for continuing British access"
+		command = { type = secedeprovince which = IND value = 1432 when = 1 }
+		command = { type = secedeprovince which = IND value = 1433 when = 1 }
+		command = { type = secedeprovince which = IND value = 1434 when = 1 }
+		command = { type = secedeprovince which = IND value = 1435 when = 1 }
+		command = { type = secedeprovince which = IND value = 1436 when = 1 }
+		command = { type = secedeprovince which = IND value = 1437 when = 1 }
+		command = { type = secedeprovince which = IND value = 1438 when = 1 }
+		command = { type = secedeprovince which = IND value = 1624 when = 1 }
+		command = { type = secedeprovince which = IND value = 1625 when = 1 }
+		command = { type = secedeprovince which = IND value = 1626 when = 1 }
+		command = { type = secedeprovince which = IND value = 1629 when = 1 }
+		command = { type = clrflag which = ind_aubm_jp_britain_settlement_accept }
+		command = { type = clrflag which = ind_aubm_jp_britain_settlement_reject }
+		command = { type = setflag which = ind_aubm_jp_britain_base_counter }
+		command = { type = relation which = IND value = 5 }
+	}
+	action_c = {
+		ai_chance = 15
+		name = "Reject India's settlement"
+		command = { type = relation which = IND value = -40 }
+		command = { type = clrflag which = ind_aubm_jp_britain_settlement_accept }
+		command = { type = clrflag which = ind_aubm_jp_britain_base_counter }
+		command = { type = setflag which = ind_aubm_jp_britain_settlement_reject }
+	}
+}
+
+event = {
+	id = 9281162
+	random = no
+	persistent = yes
+	country = HOL
+
+	name = "India Demands the East Indies Settlement"
+	desc = "Indian armies control the principal resource and administrative centres of the East Indies. The Netherlands can recognize an Indian-sponsored settlement, demand commercial rights in return, or refuse and risk renewed war. Only Dutch-owned provinces are ceded."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+
+	action_a = {
+		ai_chance = 50
+		name = "Recognize the Indian settlement"
+		command = { type = secedeprovince which = IND value = 1648 when = 1 }
+		command = { type = secedeprovince which = IND value = 1651 when = 1 }
+		command = { type = secedeprovince which = IND value = 1649 when = 1 }
+		command = { type = secedeprovince which = IND value = 1654 when = 1 }
+		command = { type = secedeprovince which = IND value = 1653 when = 1 }
+		command = { type = secedeprovince which = IND value = 1655 when = 1 }
+		command = { type = secedeprovince which = IND value = 1656 when = 1 }
+		command = { type = secedeprovince which = IND value = 1639 when = 1 }
+		command = { type = secedeprovince which = IND value = 1640 when = 1 }
+		command = { type = secedeprovince which = IND value = 1635 when = 1 }
+		command = { type = secedeprovince which = IND value = 1637 when = 1 }
+		command = { type = secedeprovince which = IND value = 1636 when = 1 }
+		command = { type = secedeprovince which = IND value = 1638 when = 1 }
+		command = { type = secedeprovince which = IND value = 1650 when = 1 }
+		command = { type = secedeprovince which = IND value = 1647 when = 1 }
+		command = { type = secedeprovince which = IND value = 1634 when = 1 }
+		command = { type = secedeprovince which = IND value = 1643 when = 1 }
+		command = { type = secedeprovince which = IND value = 1619 when = 1 }
+		command = { type = secedeprovince which = IND value = 1644 when = 1 }
+		command = { type = secedeprovince which = IND value = 1645 when = 1 }
+		command = { type = secedeprovince which = IND value = 1615 when = 1 }
+		command = { type = secedeprovince which = IND value = 1657 when = 1 }
+		command = { type = secedeprovince which = IND value = 1630 when = 1 }
+		command = { type = secedeprovince which = IND value = 1631 when = 1 }
+		command = { type = secedeprovince which = IND value = 1628 when = 1 }
+		command = { type = secedeprovince which = IND value = 1627 when = 1 }
+		command = { type = secedeprovince which = IND value = 1632 when = 1 }
+		command = { type = secedeprovince which = IND value = 1633 when = 1 }
+		command = { type = secedeprovince which = IND value = 1660 when = 1 }
+		command = { type = secedeprovince which = IND value = 1658 when = 1 }
+		command = { type = secedeprovince which = IND value = 1659 when = 1 }
+		command = { type = secedeprovince which = IND value = 1620 when = 1 }
+		command = { type = secedeprovince which = IND value = 1621 when = 1 }
+		command = { type = secedeprovince which = IND value = 1622 when = 1 }
+		command = { type = secedeprovince which = IND value = 1616 when = 1 }
+		command = { type = secedeprovince which = IND value = 1617 when = 1 }
+		command = { type = secedeprovince which = IND value = 1599 when = 1 }
+		command = { type = secedeprovince which = IND value = 1600 when = 1 }
+		command = { type = secedeprovince which = IND value = 1641 when = 1 }
+		command = { type = secedeprovince which = IND value = 1601 when = 1 }
+		command = { type = secedeprovince which = IND value = 1642 when = 1 }
+		command = { type = secedeprovince which = IND value = 1595 when = 1 }
+		command = { type = secedeprovince which = IND value = 1596 when = 1 }
+		command = { type = secedeprovince which = IND value = 1598 when = 1 }
+		command = { type = secedeprovince which = IND value = 1597 when = 1 }
+		command = { type = secedeprovince which = IND value = 1602 when = 1 }
+		command = { type = secedeprovince which = IND value = 1234 when = 1 }
+		command = { type = secedeprovince which = IND value = 1603 when = 1 }
+		command = { type = secedeprovince which = IND value = 1604 when = 1 }
+		command = { type = secedeprovince which = IND value = 1606 when = 1 }
+		command = { type = secedeprovince which = IND value = 1607 when = 1 }
+		command = { type = secedeprovince which = IND value = 1610 when = 1 }
+		command = { type = secedeprovince which = IND value = 1608 when = 1 }
+		command = { type = secedeprovince which = IND value = 1609 when = 1 }
+		command = { type = secedeprovince which = IND value = 1605 when = 1 }
+		command = { type = secedeprovince which = IND value = 1652 when = 1 }
+		command = { type = secedeprovince which = IND value = 1618 when = 1 }
+		command = { type = secedeprovince which = IND value = 1623 when = 1 }
+		command = { type = secedeprovince which = IND value = 1594 when = 1 }
+		command = { type = secedeprovince which = IND value = 1646 when = 1 }
+		command = { type = relation which = IND value = 10 }
+		command = { type = clrflag which = ind_aubm_jp_dutch_oil_counter }
+		command = { type = clrflag which = ind_aubm_jp_dutch_settlement_reject }
+		command = { type = setflag which = ind_aubm_jp_dutch_settlement_accept }
+		command = { type = event which = 9282053 where = IND when = 3 }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Concede sovereignty for commercial oil rights"
+		command = { type = clrflag which = ind_aubm_jp_dutch_settlement_accept }
+		command = { type = clrflag which = ind_aubm_jp_dutch_settlement_reject }
+		command = { type = setflag which = ind_aubm_jp_dutch_oil_counter }
+		command = { type = event which = 9281166 where = HOL when = 1 }
+	}
+	action_c = {
+		ai_chance = 15
+		name = "Reject the Indian settlement"
+		command = { type = relation which = IND value = -40 }
+		command = { type = clrflag which = ind_aubm_jp_dutch_settlement_accept }
+		command = { type = clrflag which = ind_aubm_jp_dutch_oil_counter }
+		command = { type = setflag which = ind_aubm_jp_dutch_settlement_reject }
+	}
+}
+
+event = {
+	id = 9281163
+	random = no
+	persistent = yes
+	country = AST
+
+	name = "Australia Faces the Indian Ocean Settlement"
+	desc = "India has ended its southern war and offers Australia continued sovereignty inside an Indian-led security order. Canberra may accept Indian protection and basing, insist on armed neutrality, or reject the settlement and return to British alignment. India will not annex Australia under the direct-mandate option."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+
+	action_a = {
+		ai_chance = 55
+		name = "Accept Indian protection and basing"
+		command = { type = access which = IND }
+		command = { type = relation which = IND value = 35 }
+		command = { type = clrflag which = ind_aubm_jp_australia_neutral }
+		command = { type = clrflag which = ind_aubm_jp_australia_reject }
+		command = { type = setflag which = ind_aubm_jp_australia_accept }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Accept peace but remain armed and neutral"
+		command = { type = relation which = IND value = 5 }
+		command = { type = clrflag which = ind_aubm_jp_australia_accept }
+		command = { type = clrflag which = ind_aubm_jp_australia_reject }
+		command = { type = setflag which = ind_aubm_jp_australia_neutral }
+	}
+	action_c = {
+		ai_chance = 15
+		name = "Reject India's regional order"
+		command = { type = relation which = IND value = -35 }
+		command = { type = clrflag which = ind_aubm_jp_australia_accept }
+		command = { type = clrflag which = ind_aubm_jp_australia_neutral }
+		command = { type = setflag which = ind_aubm_jp_australia_reject }
+	}
+}
+
+event = {
+	id = 9281164
+	random = no
+	one_action = yes
+	country = JAP
+
+	name = "Japan Implements the Partnership Settlement"
+	desc = "Japan retains China, the Philippines and the Pacific. It now transfers Japanese-held territory inside India's recognized sphere. A senior compact includes the East Indies; every compact includes Malaya, Singapore and British Borneo. Australia remains a sovereign state whose terms are negotiated directly with Delhi."
+	style = 2
+	picture = "india_v3_japan_settlement"
+
+	action_a = {
+		name = "Honour the agreed theatre boundary"
+		command = { type = secedeprovince which = IND value = 1432 when = 1 }
+		command = { type = secedeprovince which = IND value = 1433 when = 1 }
+		command = { type = secedeprovince which = IND value = 1434 when = 1 }
+		command = { type = secedeprovince which = IND value = 1435 when = 1 }
+		command = { type = secedeprovince which = IND value = 1436 when = 1 }
+		command = { type = secedeprovince which = IND value = 1437 when = 1 }
+		command = { type = secedeprovince which = IND value = 1438 when = 1 }
+		command = { type = secedeprovince which = IND value = 1624 when = 1 }
+		command = { type = secedeprovince which = IND value = 1625 when = 1 }
+		command = { type = secedeprovince which = IND value = 1626 when = 1 }
+		command = { type = secedeprovince which = IND value = 1629 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1648 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1651 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1649 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1654 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1653 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1655 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1656 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1639 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1640 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1635 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1637 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1636 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1638 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1650 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1647 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1634 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1643 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1619 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1644 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1645 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1615 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1657 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1630 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1631 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1628 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1627 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1632 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1633 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1660 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1658 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1659 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1620 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1621 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1622 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1616 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1617 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1599 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1600 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1641 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1601 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1642 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1595 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1596 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1598 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1597 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1602 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1234 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1603 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1604 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1606 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1607 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1610 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1608 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1609 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1605 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1652 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1618 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1623 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1594 when = 1 }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere } type = secedeprovince which = IND value = 1646 when = 1 }
+		command = { type = setflag which = ind_aubm_jp_japan_honoured_settlement }
+	}
+}
+
+event = {
+	id = 9281165
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+
+	name = "Implement the Indian Ocean Political Order"
+	desc = "The territorial replies are assembled. Sovereign-commonwealth and protectorate policies release Malaysia and Indonesia wherever India owns the required territory; direct mandates retain Indian-owned Malayan and Indonesian land. Australia remains sovereign unless it accepted protection. Foreign rejection leaves an enforcement decision rather than silently ending the chain."
+	style = 2
+	picture = "india_v3_japan_settlement"
+
+	action_a = {
+		name = "Publish the settlement instruments"
+		command = { trigger = { NOT = { flag = ind_aubm_jp_settlement_direct } NOT = { exists = MLY } owned = { province = 1438 data = IND } } type = independence which = MLY value = 1 when = 0 }
+		command = { trigger = { NOT = { flag = ind_aubm_jp_settlement_direct } NOT = { exists = INO } owned = { province = 1654 data = IND } } type = independence which = INO value = 1 when = 0 }
+		command = { trigger = { flag = ind_aubm_jp_settlement_protectorates exists = MLY } type = make_puppet which = MLY }
+		command = { trigger = { flag = ind_aubm_jp_settlement_protectorates exists = INO } type = make_puppet which = INO }
+		command = { trigger = { flag = ind_aubm_jp_settlement_commonwealth exists = MLY } type = guarantee which = IND where = MLY }
+		command = { trigger = { flag = ind_aubm_jp_settlement_commonwealth exists = INO } type = guarantee which = IND where = INO }
+		command = { trigger = { exists = AST flag = ind_aubm_jp_australia_accept flag = ind_aubm_jp_settlement_commonwealth } type = guarantee which = IND where = AST }
+		command = { trigger = { exists = AST flag = ind_aubm_jp_australia_accept OR = { flag = ind_aubm_jp_settlement_protectorates flag = ind_aubm_jp_settlement_direct } } type = make_puppet which = AST }
+		command = { trigger = { exists = ENG flag = ind_aubm_jp_britain_base_counter } type = access which = ENG }
+		command = { trigger = { flag = ind_aubm_jp_dutch_oil_counter exists = HOL } type = relation which = HOL value = 15 }
+		command = { trigger = { flag = ind_aubm_south_u05_counter exists = U05 } type = relation which = U05 value = 15 }
+		command = { trigger = { exists = MLY } type = event which = 9281167 where = MLY when = 3 }
+		command = { trigger = { exists = INO } type = event which = 9281168 where = INO when = 3 }
+		command = { type = clrflag which = ind_aubm_regional_pending_u05 }
+		command = { type = clrflag which = ind_aubm_regional_current_u05 }
+		command = { type = clrflag which = ind_aubm_regional_victory_u05 }
+		command = { type = clrflag which = ind_aubm_regional_pending_hol }
+		command = { type = clrflag which = ind_aubm_regional_current_hol }
+		command = { type = clrflag which = ind_aubm_regional_victory_hol }
+		command = { type = clrflag which = ind_aubm_regional_pending_ast }
+		command = { type = clrflag which = ind_aubm_regional_current_ast }
+		command = { type = clrflag which = ind_aubm_regional_victory_ast }
+		command = { type = clrflag which = ind_aubm_jp_settlement_pending }
+		command = { type = setflag which = ind_aubm_jp_settlement_complete }
+	}
+}
+
+# Dutch commercial counteroffer helper. This event is delayed, not force-fired.
+event = {
+	id = 9281166
+	random = no
+	one_action = yes
+	country = HOL
+
+	name = "The Commercial East Indies Transfer"
+	desc = "The Netherlands concedes sovereignty while reserving commercial oil contracts. The transfer applies only to Dutch-owned provinces and therefore cannot seize land from an unrelated owner."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+
+	action_a = {
+		name = "Execute the commercial transfer"
+		command = { type = secedeprovince which = IND value = 1648 when = 1 }
+		command = { type = secedeprovince which = IND value = 1651 when = 1 }
+		command = { type = secedeprovince which = IND value = 1649 when = 1 }
+		command = { type = secedeprovince which = IND value = 1654 when = 1 }
+		command = { type = secedeprovince which = IND value = 1653 when = 1 }
+		command = { type = secedeprovince which = IND value = 1655 when = 1 }
+		command = { type = secedeprovince which = IND value = 1656 when = 1 }
+		command = { type = secedeprovince which = IND value = 1639 when = 1 }
+		command = { type = secedeprovince which = IND value = 1640 when = 1 }
+		command = { type = secedeprovince which = IND value = 1635 when = 1 }
+		command = { type = secedeprovince which = IND value = 1637 when = 1 }
+		command = { type = secedeprovince which = IND value = 1636 when = 1 }
+		command = { type = secedeprovince which = IND value = 1638 when = 1 }
+		command = { type = secedeprovince which = IND value = 1650 when = 1 }
+		command = { type = secedeprovince which = IND value = 1647 when = 1 }
+		command = { type = secedeprovince which = IND value = 1634 when = 1 }
+		command = { type = secedeprovince which = IND value = 1643 when = 1 }
+		command = { type = secedeprovince which = IND value = 1619 when = 1 }
+		command = { type = secedeprovince which = IND value = 1644 when = 1 }
+		command = { type = secedeprovince which = IND value = 1645 when = 1 }
+		command = { type = secedeprovince which = IND value = 1615 when = 1 }
+		command = { type = secedeprovince which = IND value = 1657 when = 1 }
+		command = { type = secedeprovince which = IND value = 1630 when = 1 }
+		command = { type = secedeprovince which = IND value = 1631 when = 1 }
+		command = { type = secedeprovince which = IND value = 1628 when = 1 }
+		command = { type = secedeprovince which = IND value = 1627 when = 1 }
+		command = { type = secedeprovince which = IND value = 1632 when = 1 }
+		command = { type = secedeprovince which = IND value = 1633 when = 1 }
+		command = { type = secedeprovince which = IND value = 1660 when = 1 }
+		command = { type = secedeprovince which = IND value = 1658 when = 1 }
+		command = { type = secedeprovince which = IND value = 1659 when = 1 }
+		command = { type = secedeprovince which = IND value = 1620 when = 1 }
+		command = { type = secedeprovince which = IND value = 1621 when = 1 }
+		command = { type = secedeprovince which = IND value = 1622 when = 1 }
+		command = { type = secedeprovince which = IND value = 1616 when = 1 }
+		command = { type = secedeprovince which = IND value = 1617 when = 1 }
+		command = { type = secedeprovince which = IND value = 1599 when = 1 }
+		command = { type = secedeprovince which = IND value = 1600 when = 1 }
+		command = { type = secedeprovince which = IND value = 1641 when = 1 }
+		command = { type = secedeprovince which = IND value = 1601 when = 1 }
+		command = { type = secedeprovince which = IND value = 1642 when = 1 }
+		command = { type = secedeprovince which = IND value = 1595 when = 1 }
+		command = { type = secedeprovince which = IND value = 1596 when = 1 }
+		command = { type = secedeprovince which = IND value = 1598 when = 1 }
+		command = { type = secedeprovince which = IND value = 1597 when = 1 }
+		command = { type = secedeprovince which = IND value = 1602 when = 1 }
+		command = { type = secedeprovince which = IND value = 1234 when = 1 }
+		command = { type = secedeprovince which = IND value = 1603 when = 1 }
+		command = { type = secedeprovince which = IND value = 1604 when = 1 }
+		command = { type = secedeprovince which = IND value = 1606 when = 1 }
+		command = { type = secedeprovince which = IND value = 1607 when = 1 }
+		command = { type = secedeprovince which = IND value = 1610 when = 1 }
+		command = { type = secedeprovince which = IND value = 1608 when = 1 }
+		command = { type = secedeprovince which = IND value = 1609 when = 1 }
+		command = { type = secedeprovince which = IND value = 1605 when = 1 }
+		command = { type = secedeprovince which = IND value = 1652 when = 1 }
+		command = { type = secedeprovince which = IND value = 1618 when = 1 }
+		command = { type = secedeprovince which = IND value = 1623 when = 1 }
+		command = { type = secedeprovince which = IND value = 1594 when = 1 }
+		command = { type = secedeprovince which = IND value = 1646 when = 1 }
+		command = { type = relation which = IND value = 5 }
+		command = { type = event which = 9282053 where = IND when = 3 }
+	}
+}
+
+event = {
+	id = 9281167
+	random = no
+	one_action = yes
+	country = MLY
+
+	name = "Malaysia Enters the Indian Ocean Order"
+	desc = "The Malaysian government accepts Indian access and protection under the settlement. Puppet status, where chosen by Delhi, is already established; otherwise Malaysia remains sovereign under an Indian guarantee."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+
+	action_a = {
+		name = "Grant India strategic access"
+		command = { type = access which = IND }
+		command = { type = relation which = IND value = 50 }
+	}
+}
+
+event = {
+	id = 9281168
+	random = no
+	one_action = yes
+	country = INO
+
+	name = "Indonesia Enters the Indian Ocean Order"
+	desc = "The Indonesian government accepts Indian access and protection under the settlement. Puppet status, where chosen by Delhi, is already established; otherwise Indonesia remains sovereign under an Indian guarantee."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+
+	action_a = {
+		name = "Grant India strategic access"
+		command = { type = access which = IND }
+		command = { type = relation which = IND value = 50 }
+	}
+}
+
+event = {
+	id = 9281169
+	random = no
+	persistent = yes
+	country = IND
+
+	decision = {
+		flag = ind_aubm_jp_settlement_complete
+		NOT = { flag = ind_aubm_jp_settlement_resistance_resolved }
+		OR = {
+			AND = { exists = ENG flag = ind_aubm_jp_britain_settlement_reject }
+			AND = { exists = HOL flag = ind_aubm_jp_dutch_settlement_reject }
+			AND = { exists = U05 flag = ind_aubm_south_u05_reject }
+			AND = { exists = AST flag = ind_aubm_jp_australia_reject }
+		}
+	}
+	decision_trigger = {
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		# A programme without a resource threshold is available.
+		# AUBM_FULL_OPTION_GATE_END
+	}
+
+	name = "Answer Resistance to the Indian Ocean Settlement"
+	# AUBM_DECISION_DESC_MANUAL
+	decision_desc = "Coercion costs 700 money/1,000 supplies and rerolls rejected parties after 90 days at the same fixed odds: Britain/Australia 55/30/15 and Netherlands 50/35/15. Ultimatums guarantee war; accepting limits has no roll."
+	desc = "One or more governments have rejected India's settlement. Delhi must now pay to isolate them, enforce the result militarily, or accept that battlefield success did not produce every political demand."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+
+	date = { day = 0 month = january year = 1938 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 700
+			supplies = 1000
+			# AUBM_ACTION_RESERVE_END
+		}
+		ai_chance = 45
+		name = "Coerce: -700 money/-1000 supplies; retry in 90 days"
+		command = { type = money value = -700 }
+		command = { type = supplies value = -1000 }
+		command = { type = relation which = USA value = -10 }
+		command = { trigger = { flag = ind_aubm_jp_britain_settlement_reject exists = ENG } type = event which = 9281161 where = ENG when = 90 }
+		command = { trigger = { flag = ind_aubm_jp_dutch_settlement_reject exists = HOL } type = event which = 9281162 where = HOL when = 90 }
+		command = { trigger = { flag = ind_aubm_south_u05_reject exists = U05 } type = event which = 9282000 where = U05 when = 90 }
+		command = { trigger = { flag = ind_aubm_jp_australia_reject exists = AST } type = event which = 9281163 where = AST when = 90 }
+		command = { type = event which = 9281165 where = IND when = 105 }
+	}
+	action_b = {
+		ai_chance = 25
+		name = "Issue military ultimatums and renew the rejected wars"
+		command = { trigger = { flag = ind_aubm_jp_britain_settlement_reject exists = ENG NOT = { war = { country = IND country = ENG } } } type = war which = ENG }
+		command = { trigger = { flag = ind_aubm_jp_dutch_settlement_reject exists = HOL NOT = { war = { country = IND country = HOL } } } type = war which = HOL }
+		command = { trigger = { flag = ind_aubm_south_u05_reject exists = U05 NOT = { war = { country = IND country = U05 } } } type = war which = U05 }
+		command = { trigger = { flag = ind_aubm_jp_australia_reject exists = AST NOT = { war = { country = IND country = AST } } } type = war which = AST }
+		command = { type = dissent value = 4 }
+		command = { type = belligerence value = 5 }
+		command = { type = setflag which = ind_aubm_jp_settlement_resistance_resolved }
+	}
+	action_c = {
+		ai_chance = 30
+		name = "Accept limited settlement: -2 dissent"
+		command = { type = dissent value = -2 }
+		command = { type = belligerence value = -2 }
+		command = { type = setflag which = ind_aubm_jp_settlement_resistance_resolved }
+	}
+}
+
+#########################################################################
+# Mandatory Himalayan clause after a qualifying southern victory
+#########################################################################
+
+event = {
+	id = 9281170
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_wartime_framework
+		flag = ind_aubm_route_japan
+		flag = ind_aubm_jp_southern_victory
+		flag = ind_aubm_regional_current_tib
+		control = { province = 1289 data = IND }
+		NOT = { flag = ind_aubm_jp_tibet_clause }
+	}
+
+	name = "The Himalayan Clause Has Been Earned"
+	desc = "India has won the southern partnership campaign and now controls Lhasa in a separate Tibetan war. Tokyo recognizes an Indian Himalayan protectorate, waiving the normal political cost. No territory changes hands here: the Tibetan settlement board still verifies control, ownership, peace and release before protection is established."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	date = { day = 0 month = january year = 1933 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Open the verified Tibetan settlement"
+		command = { type = setflag which = ind_aubm_jp_tibet_clause }
+		command = { type = event which = 9282276 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9281171
+	random = no
+	one_action = yes
+	country = CHI
+
+	name = "The Himalayan Settlement Reaches China"
+	desc = "India invokes the Himalayan clause of its victorious partnership. China must transfer any Tibetan revolt provinces it actually owns; unrelated Chinese territory is unaffected. The result will make Tibet an Indian puppet and sharply worsen relations with Delhi."
+	style = 2
+	picture = "aubm_v4_china_war_deepens"
+
+	action_a = {
+		name = "Comply with the imposed Tibetan settlement"
+		command = { type = secedeprovince which = IND value = 1285 when = 1 }
+		command = { type = secedeprovince which = IND value = 1286 when = 1 }
+		command = { type = secedeprovince which = IND value = 1287 when = 1 }
+		command = { type = secedeprovince which = IND value = 1288 when = 1 }
+		command = { type = secedeprovince which = IND value = 1289 when = 1 }
+		command = { type = secedeprovince which = IND value = 1290 when = 1 }
+		command = { type = secedeprovince which = IND value = 1294 when = 1 }
+		command = { type = secedeprovince which = IND value = 1295 when = 1 }
+		command = { type = secedeprovince which = IND value = 1278 when = 1 }
+		command = { type = relation which = IND value = -75 }
+	}
+}
+
+event = {
+	id = 9281172
+	random = no
+	one_action = yes
+	country = JAP
+
+	name = "Japan Recognizes India's Tibetan Protectorate"
+	desc = "The partnership assigns the Himalayan settlement to India. Japan transfers only Tibetan revolt provinces it actually owns or controls and recognizes the resulting Indian puppet."
+	style = 2
+	picture = "aubm_v4_tokyo_proposition"
+
+	action_a = {
+		name = "Honour the Himalayan clause"
+		command = { type = secedeprovince which = IND value = 1285 when = 1 }
+		command = { type = secedeprovince which = IND value = 1286 when = 1 }
+		command = { type = secedeprovince which = IND value = 1287 when = 1 }
+		command = { type = secedeprovince which = IND value = 1288 when = 1 }
+		command = { type = secedeprovince which = IND value = 1289 when = 1 }
+		command = { type = secedeprovince which = IND value = 1290 when = 1 }
+		command = { type = secedeprovince which = IND value = 1294 when = 1 }
+		command = { type = secedeprovince which = IND value = 1295 when = 1 }
+		command = { type = secedeprovince which = IND value = 1278 when = 1 }
+		command = { type = relation which = IND value = 15 }
+	}
+}
+
+event = {
+	id = 9281173
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+
+	name = "Establish the Tibetan Protectorate"
+	desc = "India now releases Tibet from Indian-owned Tibetan revolt provinces and places it under Indian protection. If Lhasa remains in the hands of an unhandled third-party owner, the protectorate stays unresolved rather than forcing unsafe ownership changes."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+
+	action_a = {
+		name = "Create the protected Tibetan state"
+		command = { trigger = { NOT = { exists = TIB } owned = { province = 1289 data = IND } } type = independence which = TIB value = 1 when = 0 }
+		command = { trigger = { exists = TIB } type = make_puppet which = TIB }
+		command = { trigger = { exists = TIB } type = guarantee which = IND where = TIB }
+		command = { trigger = { exists = TIB } type = event which = 9281174 where = TIB when = 3 }
+		command = { trigger = { exists = TIB } type = setflag which = ind_aubm_jp_tibet_protectorate }
+		command = { trigger = { NOT = { exists = TIB } } type = setflag which = ind_aubm_jp_tibet_unresolved }
+	}
+}
+
+event = {
+	id = 9281174
+	random = no
+	one_action = yes
+	country = TIB
+
+	name = "The Indian Security Mission Arrives in Lhasa"
+	desc = "Tibet enters India's protected Himalayan system. Indian access, training and foreign-policy control accompany the puppet relationship, while day-to-day Tibetan administration remains in Lhasa."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+
+	action_a = {
+		name = "Receive the Indian security mission"
+		command = { type = access which = IND }
+		command = { type = relation which = IND value = 75 }
+	}
+}
+
+event = {
+	id = 9281175
+	random = no
+	one_action = yes
+	country = SOV
+
+	name = "The Tibetan Provinces in the Indian Settlement"
+	desc = "Any Tibetan revolt provinces under Soviet ownership are transferred to India for the protected Tibetan state. No Soviet province outside the verified Tibetan revolt definition is affected."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+
+	action_a = {
+		name = "Transfer the Tibetan territory"
+		command = { type = secedeprovince which = IND value = 1285 when = 1 }
+		command = { type = secedeprovince which = IND value = 1286 when = 1 }
+		command = { type = secedeprovince which = IND value = 1287 when = 1 }
+		command = { type = secedeprovince which = IND value = 1288 when = 1 }
+		command = { type = secedeprovince which = IND value = 1289 when = 1 }
+		command = { type = secedeprovince which = IND value = 1290 when = 1 }
+		command = { type = secedeprovince which = IND value = 1294 when = 1 }
+		command = { type = secedeprovince which = IND value = 1295 when = 1 }
+		command = { type = secedeprovince which = IND value = 1278 when = 1 }
+		command = { type = relation which = IND value = -30 }
+	}
+}
+
+event = {
+	id = 9281176
+	random = no
+	one_action = yes
+	country = ENG
+
+	name = "The Tibetan Provinces in the Indian Settlement"
+	desc = "Any Tibetan revolt provinces under British ownership are transferred to India for the protected Tibetan state. No British territory outside the verified Tibetan revolt definition is affected."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+
+	action_a = {
+		name = "Transfer the Tibetan territory"
+		command = { type = secedeprovince which = IND value = 1285 when = 1 }
+		command = { type = secedeprovince which = IND value = 1286 when = 1 }
+		command = { type = secedeprovince which = IND value = 1287 when = 1 }
+		command = { type = secedeprovince which = IND value = 1288 when = 1 }
+		command = { type = secedeprovince which = IND value = 1289 when = 1 }
+		command = { type = secedeprovince which = IND value = 1290 when = 1 }
+		command = { type = secedeprovince which = IND value = 1294 when = 1 }
+		command = { type = secedeprovince which = IND value = 1295 when = 1 }
+		command = { type = secedeprovince which = IND value = 1278 when = 1 }
+		command = { type = relation which = IND value = -25 }
+	}
+}
+
+#########################################################################
+# Simultaneous independent Soviet campaign and Japanese neutrality choice
+#########################################################################
+
+event = {
+	id = 9281180
+	random = no
+	persistent = yes
+	country = IND
+
+	decision = {
+		year = 1940
+		flag = ind_aubm_jp_partnership
+		exists = SOV
+		NOT = { war = { country = IND country = SOV } }
+		NOT = { alliance = { country = IND country = JAP } }
+		NOT = { participant = { country = IND value = 4 } }
+		NOT = { flag = ind_aubm_jp_northern_campaign }
+		NOT = { flag = ind_aubm_jp_rupture }
+	}
+	decision_trigger = {
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		money = 700
+		supplies = 1800
+		# AUBM_FULL_OPTION_GATE_END
+	}
+
+	name = "Open an Independent Northern War against the Soviet Union"
+	# AUBM_DECISION_DESC_MANUAL
+	decision_desc = "The 700 money/1,800 supplies declaration is immediate. Japan then makes a fixed roll: preserve neutrality and supply India 55%, exert pressure 25%, join the Soviet war 15%, or condemn India 5%."
+	desc = "India can fight two campaigns at once because the Delhi-Tokyo compact is not an engine alliance. Delhi will open a separate northern war while retaining its southern command. Tokyo's non-aggression pact with Moscow remains Japan's decision and does not bind India."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	date = { day = 0 month = january year = 1940 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 700
+			supplies = 1800
+			# AUBM_ACTION_RESERVE_END
+		}
+		name = "Northern war: -700 money/-1800 supplies/+5 dissent"
+		command = { type = money value = -700 }
+		command = { type = supplies value = -1800 }
+		command = { type = dissent value = 5 }
+		command = { type = war which = SOV }
+		command = { type = setflag which = ind_aubm_jp_northern_campaign }
+		command = { type = setflag which = ind_aubm_jp_independent_soviet_war }
+		command = { type = event which = 9281181 where = JAP when = 3 }
+	}
+}
+
+event = {
+	id = 9281181
+	random = no
+	country = JAP
+
+	name = "India Opens a Separate War against the Soviet Union"
+	desc = "India's declaration creates no automatic Japanese obligation. Tokyo may preserve or renew Soviet neutrality while quietly supplying India, exert frontier pressure without war, abandon neutrality and intervene, or condemn Delhi. The southern compact survives unless Japan chooses confrontation."
+	style = 2
+	picture = "aubm_v4_tokyo_proposition"
+
+	action_a = {
+		ai_chance = 55
+		name = "Honour Soviet neutrality and supply India discreetly"
+		command = { type = non_aggression which = JAP where = SOV when = 1440 }
+		command = { type = supplies value = -500 }
+		command = { type = setflag which = ind_aubm_jp_japan_soviet_neutrality }
+		command = { type = ai which = "aubm/japan/JAP_india_neutrality.ai" }
+		command = { type = event which = 9281182 where = IND when = 2 }
+	}
+	action_b = {
+		ai_chance = 25
+		name = "Preserve peace but pressure the Soviet Far East"
+		command = { type = non_aggression which = JAP where = SOV when = 720 }
+		command = { type = relation which = SOV value = -35 }
+		command = { type = setflag which = ind_aubm_jp_japan_soviet_pressure }
+		command = { type = ai which = "aubm/japan/JAP_india_north_pressure.ai" }
+		command = { type = event which = 9281183 where = IND when = 2 }
+	}
+	action_c = {
+		ai_chance = 15
+		name = "Abandon neutrality and enter the northern war"
+		command = { type = war which = SOV }
+		command = { type = setflag which = ind_aubm_jp_japan_north_intervention }
+		command = { type = ai which = "aubm/japan/JAP_india_north_strike.ai" }
+		command = { type = event which = 9281184 where = IND when = 2 }
+	}
+	action_d = {
+		ai_chance = 5
+		name = "Condemn India's continental war"
+		command = { type = relation which = IND value = -40 }
+		command = { type = setflag which = ind_aubm_jp_partnership_strained }
+		command = { type = setflag which = ind_aubm_jp_japan_condemns_north }
+		command = { type = ai which = "aubm/japan/JAP_india_neutrality.ai" }
+		command = { type = event which = 9281185 where = IND when = 2 }
+	}
+}
+
+event = {
+	id = 9281182
+	random = no
+	one_action = yes
+	country = IND
+
+	name = "Japan Preserves Soviet Neutrality"
+	desc = "Tokyo will not enter India's Soviet war, but discreet supplies arrive and the southern partnership continues. Japan remains focused on China, the Philippines and the Pacific while India bears the full northern operational burden."
+	style = 2
+	picture = "aubm_v4_tokyo_proposition"
+
+	action_a = {
+		name = "Receive discreet Japanese stores: +500 supplies"
+		command = { type = supplies value = 500 }
+		command = { type = relation which = JAP value = 10 }
+	}
+}
+
+event = {
+	id = 9281183
+	random = no
+	one_action = yes
+	country = IND
+
+	name = "Japan Applies Pressure without War"
+	desc = "Japan reinforces and threatens the Soviet Far East but remains legally neutral. Soviet planning must account for Tokyo, yet India cannot count Japanese victories or forces as part of its northern campaign."
+	style = 2
+	picture = "aubm_v4_tokyo_proposition"
+
+	action_a = {
+		name = "Exploit the diversion without claiming Japanese command"
+		command = { type = relation which = JAP value = 15 }
+		command = { type = dissent value = -1 }
+	}
+}
+
+event = {
+	id = 9281184
+	random = no
+	one_action = yes
+	country = IND
+
+	name = "Japan Enters the Northern War"
+	desc = "Tokyo abandons Soviet neutrality and opens a Far Eastern front. India still remains outside a formal alliance, so each country retains separate peace and war decisions, but Soviet force allocation now becomes a shared strategic fact."
+	style = 2
+	picture = "aubm_v4_tokyo_proposition"
+
+	action_a = {
+		name = "Coordinate intelligence, retain separate command"
+		command = { type = intelligence which = us value = 1 }
+		command = { type = relation which = JAP value = 25 }
+	}
+}
+
+event = {
+	id = 9281185
+	random = no
+	one_action = yes
+	country = IND
+
+	name = "Tokyo Condemns India's Northern War"
+	desc = "Japan preserves neutrality and publicly rejects India's continental campaign. The southern partnership continues only in strained form: automatic occupation transfers stop, and Delhi must rely on its own victories until relations recover."
+	style = 2
+	picture = "aubm_v4_tokyo_proposition"
+
+	action_a = {
+		name = "Fight north without Japanese approval: +2 dissent"
+		command = { type = dissent value = 2 }
+		command = { type = relation which = JAP value = -15 }
+	}
+}
+
+#########################################################################
+# Legacy-save recovery: a retry could call the original one-shot dispatcher
+# after the engine had slept it. Reconcile only saves created before ledger v2.
+#########################################################################
+
+event = {
+	id = 9281191
+	random = no
+	one_action = yes
+	country = IND
+
+	trigger = {
+		flag = ind_aubm_jp_proposal_pending
+		event = 9281122
+		NOT = { flag = ind_aubm_jp_score_ledger_v2 }
+		NOT = { flag = ind_aubm_jp_partnership }
+		NOT = { flag = ind_aubm_jp_counteroffer }
+		NOT = { flag = ind_aubm_jp_rejected }
+		NOT = { flag = ind_aubm_jp_rupture }
+		NOT = { flag = ind_aubm_jp_retry_recovery_dispatched }
+	}
+
+	name = "The Tokyo Dossier Is Reconciled"
+	desc = "Delhi's second proposal stalled because an obsolete diplomatic file never reached the Japanese cabinet. The corrected assessment restores credit for India's China policy and operational commitments, then sends the proposal through a fresh Tokyo channel. No new payment is required."
+	style = 2
+	picture = "aubm_v4_tokyo_proposition"
+
+	date = { day = 0 month = january year = 1937 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Send the corrected assessment to Tokyo"
+		command = { type = setflag which = ind_aubm_jp_score_ledger_v2 }
+		command = { type = setflag which = ind_aubm_jp_retry_recovery_dispatched }
+		command = { trigger = { flag = ind_v3_china_backed_japan NOT = { flag = ind_v3_backed_japan_in_china } } type = setflag which = ind_aubm_jp_influence when = 1 value = 1 }
+		command = { trigger = { flag = ind_v42_recognized_japanese_china_policy } type = setflag which = ind_aubm_jp_influence when = 1 value = 1 }
+		command = { trigger = { flag = ind_v3_indian_led_imphal } type = setflag which = ind_aubm_jp_influence when = 1 value = 1 }
+		command = { type = event which = 9281192 where = IND when = 1 }
+	}
+}
+
+# Separate dispatcher ID is intentional: legacy saves may have slept 9281101.
+event = {
+	id = 9281192
+	random = no
+	one_action = yes
+	country = IND
+
+	name = "Tokyo Reopens the Strategic Assessment"
+	desc = "The corrected Indian proposal has reached the Japanese cabinet. Tokyo will now answer according to India's restored influence, industrial weight and armed strength."
+	style = 2
+	picture = "aubm_v4_tokyo_proposition"
+
+	action_a = {
+		name = "Receive Tokyo's corrected assessment"
+		command = {
+			trigger = {
+				flag = { which = ind_aubm_jp_influence when = 1 value = 7 }
+				ic = 160
+				OR = {
+					land_percentage = { country = JAP value = 0.75 }
+					naval_percentage = { country = JAP value = 0.45 }
+					air = { size = 12 type = 1 when = 1 where = 1 }
+				}
+			}
+			type = event which = 9281110 where = JAP when = 1
+		}
+		command = {
+			trigger = {
+				flag = { which = ind_aubm_jp_influence when = 1 value = 4 }
+				ic = 110
+				NOT = {
+					AND = {
+						flag = { which = ind_aubm_jp_influence when = 1 value = 7 }
+						ic = 160
+						OR = {
+							land_percentage = { country = JAP value = 0.75 }
+							naval_percentage = { country = JAP value = 0.45 }
+							air = { size = 12 type = 1 when = 1 where = 1 }
+						}
+					}
+				}
+			}
+			type = event which = 9281111 where = JAP when = 1
+		}
+		command = {
+			trigger = {
+				NOT = {
+					AND = {
+						flag = { which = ind_aubm_jp_influence when = 1 value = 4 }
+						ic = 110
+					}
+				}
+			}
+			type = event which = 9281112 where = JAP when = 1
+		}
+	}
+}
+
+# Direct formal entry bypasses the bilateral conference, so initialize the
+# same one-point influence base without duplicating any previously scored pact.
+event = {
+	id = 9281193
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+
+	trigger = {
+		exists = JAP
+		alliance = { country = IND country = JAP }
+		flag = ind_aubm_jp_partnership
+		flag = ind_aubm_jp_formal_alliance
+		NOT = { flag = ind_aubm_jp_score_ledger_v2 }
+		NOT = { flag = ind_aubm_jp_rupture }
+	}
+
+	name = "Formal Delhi-Tokyo Influence Ledger"
+	desc = "Formal entry skipped the bilateral conference's opening credit. Tokyo now records the same legitimate one-point base before India earns further influence through China policy, resource guarantees and equal carrier command."
+	style = 2
+	picture = "aubm_v4_tokyo_proposition"
+
+	date = { day = 0 month = january year = 1937 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Open the formal partnership ledger at one influence"
+		command = { type = setflag which = ind_aubm_jp_score_ledger_v2 }
+		command = { type = setflag which = ind_aubm_jp_influence value = 1 }
+	}
+}
+
+#########################################################################
+# AI guard: stock Japanese AI switches otherwise overwrite treaty orders
+#########################################################################
+
+event = {
+	id = 9281190
+	random = no
+	persistent = yes
+	one_action = yes
+	country = JAP
+
+	trigger = {
+		ai = yes
+		flag = ind_aubm_jp_partnership
+		NOT = { flag = ind_aubm_jp_rupture }
+	}
+
+	name = "Maintain the Delhi-Tokyo Operational Map"
+	desc = "Periodic AI maintenance preserves the treaty's theatre division when stock Japanese AI switches run. It does not create wars, alliances, ownership changes or free forces."
+	style = 2
+	picture = "aubm_v4_tokyo_proposition"
+
+	date = { day = 0 month = january year = 1937 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Refresh the current Japanese posture"
+		command = { trigger = { flag = ind_aubm_jp_japan_north_intervention } type = ai which = "aubm/japan/JAP_india_north_strike.ai" }
+		command = { trigger = { flag = ind_aubm_jp_japan_soviet_pressure NOT = { flag = ind_aubm_jp_japan_north_intervention } } type = ai which = "aubm/japan/JAP_india_north_pressure.ai" }
+		command = { trigger = { flag = ind_aubm_jp_japan_soviet_neutrality NOT = { flag = ind_aubm_jp_japan_north_intervention } NOT = { flag = ind_aubm_jp_japan_soviet_pressure } } type = ai which = "aubm/japan/JAP_india_neutrality.ai" }
+		command = { trigger = { flag = ind_aubm_jp_partnership_strained NOT = { flag = ind_aubm_jp_japan_north_intervention } } type = ai which = "aubm/japan/JAP_india_rupture.ai" }
+		command = { trigger = { flag = ind_aubm_jp_india_full_sphere NOT = { flag = ind_aubm_jp_japan_north_intervention } NOT = { flag = ind_aubm_jp_japan_soviet_pressure } NOT = { flag = ind_aubm_jp_japan_soviet_neutrality } NOT = { flag = ind_aubm_jp_partnership_strained } } type = ai which = "aubm/japan/JAP_india_senior.ai" }
+		command = { trigger = { flag = ind_aubm_jp_india_core_sphere NOT = { flag = ind_aubm_jp_japan_north_intervention } NOT = { flag = ind_aubm_jp_japan_soviet_pressure } NOT = { flag = ind_aubm_jp_japan_soviet_neutrality } NOT = { flag = ind_aubm_jp_partnership_strained } } type = ai which = "aubm/japan/JAP_india_peer.ai" }
+	}
+}

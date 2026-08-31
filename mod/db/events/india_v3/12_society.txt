@@ -20,7 +20,7 @@ event = {
 
 	date = { day = 0 month = february year = 1933 }
 	offset = 5
-	deathdate = { day = 29 month = april year = 1933 }
+	deathdate = { day = 29 month = april year = 1964 }
 
 	action_a = {
 		ai_chance = 65
@@ -62,7 +62,7 @@ event = {
 
 	date = { day = 0 month = may year = 1933 }
 	offset = 7
-	deathdate = { day = 29 month = july year = 1933 }
+	deathdate = { day = 29 month = july year = 1964 }
 
 	action_a = {
 		ai_chance = 55
@@ -104,7 +104,7 @@ event = {
 
 	date = { day = 0 month = november year = 1933 }
 	offset = 7
-	deathdate = { day = 29 month = january year = 1934 }
+	deathdate = { day = 29 month = january year = 1964 }
 
 	action_a = {
 		ai_chance = 60
@@ -112,9 +112,9 @@ event = {
 		command = { type = money value = -200 }
 		command = { type = dissent value = -4 }
 		command = { type = manpowerpool value = 15 }
-		command = { type = construct which = infrastructure where = 1480 value = 10 trigger = { NOT = { building = { province = 1480 type = infrastructure value = 0.91 } } } }
-		command = { type = construct which = infrastructure where = 1487 value = 10 trigger = { NOT = { building = { province = 1487 type = infrastructure value = 0.91 } } } }
-		command = { type = construct which = infrastructure where = 1507 value = 10 trigger = { NOT = { building = { province = 1507 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1480 value = 10 trigger = { owned = { province = 1480 data = IND } NOT = { building = { province = 1480 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1487 value = 10 trigger = { owned = { province = 1487 data = IND } NOT = { building = { province = 1487 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1507 value = 10 trigger = { owned = { province = 1507 data = IND } NOT = { building = { province = 1507 type = infrastructure value = 0.91 } } } }
 		command = { type = setflag which = ind_v3_negotiated_princely_union }
 		command = { type = setflag which = ind_v3_princely_settlement }
 	}
@@ -142,17 +142,17 @@ event = {
 	}
 
 	name = "The Delhi Communal Compact"
-	desc = "Independence has not erased disputes over representation, personal law and provincial power. A binding all-party compact can protect plural citizenship; a strong secular code promises equal law but will be resisted by religious establishments."
+	desc = "Independence has not erased disputes over representation, personal law and provincial power. Plural safeguards reduce dissent but cost money and leave provincial bargains intact. A secular civil code is disruptive now, but it adds manpower and opens a later Ambedkarite reform route."
 	style = 2
 	picture = "india_v3_independence"
 
 	date = { day = 0 month = february year = 1934 }
 	offset = 7
-	deathdate = { day = 29 month = april year = 1934 }
+	deathdate = { day = 29 month = april year = 1964 }
 
 	action_a = {
 		ai_chance = 60
-		name = "Guarantee plural citizenship and provincial safeguards"
+		name = "Plural safeguards: -5 dissent; costs 150 money"
 		command = { type = money value = -150 }
 		command = { type = dissent value = -5 }
 		command = { type = relation which = AFG value = 10 }
@@ -161,11 +161,11 @@ event = {
 	}
 	action_b = {
 		ai_chance = 40
-		name = "Adopt one secular civil code"
-
-		command = { type = dissent value = 4 }
-		command = { type = manpowerpool value = 20 }
-
+		name = "Secular code: +30 MP, +1 research; +2 dissent"
+		command = { type = money value = -75 }
+		command = { type = dissent value = 2 }
+		command = { type = manpowerpool value = 30 }
+		command = { type = research_mod value = 1 }
 		command = { type = setflag which = ind_v3_uniform_civil_code }
 		command = { type = setflag which = ind_v3_communal_compact }
 	}
@@ -188,7 +188,7 @@ event = {
 
 	date = { day = 0 month = august year = 1934 }
 	offset = 7
-	deathdate = { day = 29 month = october year = 1934 }
+	deathdate = { day = 29 month = october year = 1964 }
 
 	action_a = {
 		ai_chance = 70
@@ -228,15 +228,15 @@ event = {
 
 	date = { day = 0 month = january year = 1935 }
 	offset = 7
-	deathdate = { day = 29 month = march year = 1935 }
+	deathdate = { day = 29 month = march year = 1964 }
 
 	action_a = {
 		ai_chance = 65
 		name = "Grant Burma constituent autonomy"
 		command = { type = money value = -225 }
 		command = { type = dissent value = -4 }
-		command = { type = construct which = infrastructure where = 1415 value = 15 trigger = { NOT = { building = { province = 1415 type = infrastructure value = 0.86 } } } }
-		command = { type = construct which = infrastructure where = 1442 value = 10 trigger = { NOT = { building = { province = 1442 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1415 value = 15 trigger = { owned = { province = 1415 data = IND } NOT = { building = { province = 1415 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1442 value = 10 trigger = { owned = { province = 1442 data = IND } NOT = { building = { province = 1442 type = infrastructure value = 0.91 } } } }
 		command = { type = tc_mod value = 2 }
 		command = { type = setflag which = ind_v3_burmese_autonomy }
 		command = { type = setflag which = ind_v3_burma_compact }
@@ -247,7 +247,7 @@ event = {
 
 		command = { type = supplies value = -300 }
 		command = { type = dissent value = 3 }
-		command = { type = construct which = infrastructure where = 1415 value = 20 trigger = { NOT = { building = { province = 1415 type = infrastructure value = 0.81 } } } }
+		command = { type = construct which = infrastructure where = 1415 value = 20 trigger = { owned = { province = 1415 data = IND } NOT = { building = { province = 1415 type = infrastructure value = 0.81 } } } }
 		command = { type = domestic which = interventionism value = 1 }
 		command = { type = setflag which = ind_v3_eastern_administration }
 		command = { type = setflag which = ind_v3_burma_compact }
@@ -271,7 +271,7 @@ event = {
 
 	date = { day = 0 month = september year = 1935 }
 	offset = 7
-	deathdate = { day = 29 month = november year = 1935 }
+	deathdate = { day = 29 month = november year = 1964 }
 
 	action_a = {
 		ai_chance = 55
@@ -312,7 +312,7 @@ event = {
 
 	date = { day = 0 month = april year = 1936 }
 	offset = 7
-	deathdate = { day = 29 month = june year = 1936 }
+	deathdate = { day = 29 month = june year = 1964 }
 
 	action_a = {
 		ai_chance = 55
@@ -331,7 +331,7 @@ event = {
 
 		command = { type = manpowerpool value = -8 }
 		command = { type = research_mod value = 4 }
-		command = { type = construct which = ic where = 1502 value = 2 }
+		command = { type = construct which = ic where = 1502 value = 2 trigger = { owned = { province = 1502 data = IND } } }
 		command = { type = setflag which = ind_v3_technical_education }
 		command = { type = setflag which = ind_v3_education_act }
 	}
@@ -354,7 +354,7 @@ event = {
 
 	date = { day = 0 month = december year = 1936 }
 	offset = 7
-	deathdate = { day = 29 month = february year = 1937 }
+	deathdate = { day = 29 month = february year = 1964 }
 
 	action_a = {
 		ai_chance = 65
@@ -395,20 +395,20 @@ event = {
 
 	date = { day = 0 month = july year = 1937 }
 	offset = 7
-	deathdate = { day = 29 month = september year = 1937 }
+	deathdate = { day = 29 month = september year = 1964 }
 
 	action_a = {
 	trigger = {
-			# V3_QUEUE_MANPOWER = 2
-			manpower = 2
+			# V3_QUEUE_MANPOWER = 1
+			manpower = 1
 	}
 		ai_chance = 65
 		name = "Subsidize a national merchant fleet"
 		command = { type = money value = -425 }
 		command = { type = supplies value = -500 }
-		command = { type = build_division which = transport value = none when = 3 cost = -1.5 where = 90 }
-		command = { type = construct which = naval_base where = 1517 value = 3 trigger = { NOT = { building = { province = 1517 type = naval_base value = 8 } } } }
-		command = { type = construct which = naval_base where = 1533 value = 3 trigger = { NOT = { building = { province = 1533 type = naval_base value = 8 } } } }
+		command = { type = build_division which = transport value = none when = 1 where = 105 }
+		command = { type = construct which = naval_base where = 1517 value = 3 trigger = { owned = { province = 1517 data = IND } NOT = { building = { province = 1517 type = naval_base value = 8 } } } }
+		command = { type = construct which = naval_base where = 1533 value = 3 trigger = { owned = { province = 1533 data = IND } NOT = { building = { province = 1533 type = naval_base value = 8 } } } }
 		command = { type = industrial_modifier which = money value = 3 }
 		command = { type = setflag which = ind_v3_merchant_marine }
 	}
@@ -441,7 +441,7 @@ event = {
 
 	date = { day = 0 month = february year = 1938 }
 	offset = 7
-	deathdate = { day = 29 month = april year = 1938 }
+	deathdate = { day = 29 month = april year = 1964 }
 
 	action_a = {
 		ai_chance = 70
@@ -481,14 +481,14 @@ event = {
 
 	date = { day = 0 month = october year = 1938 }
 	offset = 7
-	deathdate = { day = 29 month = december year = 1938 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 60
-		name = "Create a universal civic and technical service"
+		name = "Universal civic service: +100 now, +60/year; +2 dissent"
 		command = { type = money value = -400 }
 		command = { type = supplies value = -300 }
-		command = { type = manpowerpool value = 70 }
+		command = { type = manpowerpool value = 100 }
 		command = { type = dissent value = 2 }
 		command = { type = tc_mod value = 3 }
 		command = { type = setflag which = ind_v3_universal_national_service }
@@ -496,10 +496,10 @@ event = {
 	}
 	action_b = {
 		ai_chance = 40
-		name = "Create a voluntary technical reserve"
+		name = "Technical reserve: +50 now, +30 to every annual class"
 
 		command = { type = supplies value = -200 }
-		command = { type = manpowerpool value = 30 }
+		command = { type = manpowerpool value = 50 }
 
 		command = { type = dissent value = -1 }
 		command = { type = setflag which = ind_v3_technical_reserve }

@@ -1,0 +1,16 @@
+# AUBM: Xinjiang-Central Asia operational route
+
+max_front_ratio = 1.50
+
+target = {
+	1106 = 110 # Osh
+	1107 = 105 # Frunze
+	1103 = 120 # Tashkent
+	1099 = 100 # Samarkand
+	1110 = 85
+	1111 = 85
+	1112 = 90
+	1113 = 90
+	1114 = 85
+	663 = 80   # Stalingrad
+}

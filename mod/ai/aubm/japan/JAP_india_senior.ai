@@ -1,0 +1,119 @@
+# AUBM Delhi-Tokyo compact: India is senior in the southern theatre.
+# Switch fragment. Japan retains China, the Philippines and the Pacific.
+
+combat = {
+	IND = -1
+	SOV = -1
+	CHI = 100
+	CHC = 70
+	PHI = 100
+	USA = 80
+	ENG = 35
+	HOL = -1
+	AST = -1
+}
+
+befriend = { IND = 200 SIA = 80 MAN = 100 }
+protect = { IND = 150 SIA = 60 MAN = 100 }
+
+max_front_ratios = {
+	IND = 0.05
+	SOV = 0.05
+	CHI = 3.0
+	PHI = 4.0
+	USA = 2.0
+	ENG = 0.5
+	HOL = 0.1
+	AST = 0.1
+}
+
+front = {
+	recklessness = 1
+	base_attack_odds = 1.25
+	min_attack_odds = 1.10
+	passivity = {
+		IND = 100
+		SOV = 100
+		HOL = 100
+		AST = 100
+		ENG = 75
+	}
+}
+
+target = {
+	1371 = 180 # Hong Kong
+	1565 = 350 # Manila
+	1567 = 300 # Baguio
+	1568 = 300 # Legazpi
+	1572 = 260 # Palawan
+	1579 = 300 # Davao
+}
+
+invasion = {
+	invasion = yes
+	base = 0.3
+	random = 4.0
+	coastal = 0.3
+	beach = 0.2
+	max_distance = 800.0
+	max_staging_distance = 90
+	distance = 2.0
+	pocket = 15.0
+	island = 3.0
+	enemy = 2.0
+	adjacentenemy = 2.0
+	air_base = 2.0
+	naval_base = 1.5
+	air_support = 3.0
+	redirect = priority
+	ignore = no
+	help_allies = no
+	staging_province = { 1361 1553 1667 1670 1685 1726 }
+	target = {
+		1565 = 4000 # Manila
+		1567 = 3750 # Baguio
+		1568 = 3750 # Legazpi
+		1572 = 3500 # Palawan
+		1579 = 3750 # Davao
+		1661 = 3250 # Iwo Jima
+		1662 = 3250 # Chichi Jima
+		1667 = 3250 # Truk
+		1670 = 3250 # Peleliu
+		1671 = 3000 # Kloulklubed
+		1672 = 3000 # Minami Torishima
+		1683 = 3400 # Guam
+		1684 = 3200 # Rota
+		1685 = 3300 # Saipan
+		1686 = 3100 # Pagan
+		1687 = 2800 # Funafuti
+		1726 = 3500 # Rabaul
+	}
+}
+
+admiral = {
+	min_org = 90
+	min_dmg = 90
+	return_org = 55
+	return_dmg = 80
+	min_core_attack_fleets = 2
+	num_attack_fleets = 4
+	ignore = {
+		"Persian Gulf"
+		"North Arabian Sea"
+		"South Arabian Sea"
+		"Coast of Ceylon"
+		"East Bay of Bengal"
+		"West Bay of Bengal"
+		"Mascarene Plateau"
+		"Mid-Indian Ridge"
+		"Ninetyeast Ridge"
+		"Southeast Indian Ocean"
+		"Southwest Indian Ocean"
+		"Java Trench"
+		"Timor Sea"
+		"West Coast of Australia"
+		"East Great Australian Bight"
+		"West Great Australian Bight"
+	}
+	base = { 1361 1553 1667 1670 1685 1726 }
+}

@@ -20,7 +20,7 @@ event = {
 
 	date = { day = 0 month = february year = 1934 }
 	offset = 8
-	deathdate = { day = 29 month = april year = 1934 }
+	deathdate = { day = 29 month = april year = 1964 }
 
 	action_a = {
 		ai_chance = 60
@@ -62,7 +62,7 @@ event = {
 
 	date = { day = 0 month = october year = 1934 }
 	offset = 8
-	deathdate = { day = 29 month = december year = 1934 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 65
@@ -72,9 +72,9 @@ event = {
 		command = { type = manpowerpool value = -8 }
 		command = { type = add_prov_resource which = 1476 value = 38 where = energy }
 		command = { type = add_prov_resource which = 1476 value = 12 where = metal }
-		command = { type = construct which = infrastructure where = 1476 value = 15 trigger = { NOT = { building = { province = 1476 type = infrastructure value = 0.86 } } } }
-		command = { type = construct which = infrastructure where = 1472 value = 15 trigger = { NOT = { building = { province = 1472 type = infrastructure value = 0.86 } } } }
-		command = { type = construct which = infrastructure where = 1447 value = 10 trigger = { NOT = { building = { province = 1447 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1476 value = 15 trigger = { owned = { province = 1476 data = IND } NOT = { building = { province = 1476 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1472 value = 15 trigger = { owned = { province = 1472 data = IND } NOT = { building = { province = 1472 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1447 value = 10 trigger = { owned = { province = 1447 data = IND } NOT = { building = { province = 1447 type = infrastructure value = 0.91 } } } }
 		command = { type = setflag which = ind_v3_coalfield_modernization }
 	}
 	action_b = {
@@ -107,7 +107,7 @@ event = {
 
 	date = { day = 0 month = may year = 1935 }
 	offset = 8
-	deathdate = { day = 29 month = july year = 1935 }
+	deathdate = { day = 29 month = july year = 1964 }
 
 	action_a = {
 		ai_chance = 55
@@ -118,8 +118,8 @@ event = {
 		command = { type = add_prov_resource which = 1472 value = 24 where = metal }
 		command = { type = add_prov_resource which = 1477 value = 20 where = metal }
 		command = { type = add_prov_resource which = 1476 value = 20 where = energy }
-		command = { type = construct which = infrastructure where = 1472 value = 10 trigger = { NOT = { building = { province = 1472 type = infrastructure value = 0.91 } } } }
-		command = { type = construct which = infrastructure where = 1477 value = 10 trigger = { NOT = { building = { province = 1477 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1472 value = 10 trigger = { owned = { province = 1472 data = IND } NOT = { building = { province = 1472 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1477 value = 10 trigger = { owned = { province = 1477 data = IND } NOT = { building = { province = 1477 type = infrastructure value = 0.91 } } } }
 		command = { type = industrial_modifier which = total value = 2 }
 		command = { type = setflag which = ind_v3_steel_security }
 	}
@@ -153,7 +153,7 @@ event = {
 
 	date = { day = 0 month = december year = 1935 }
 	offset = 8
-	deathdate = { day = 29 month = february year = 1936 }
+	deathdate = { day = 29 month = february year = 1964 }
 
 	action_a = {
 		ai_chance = 70
@@ -162,9 +162,9 @@ event = {
 		command = { type = supplies value = -550 }
 		command = { type = add_prov_resource which = 1441 value = 22 where = oil }
 		command = { type = add_prov_resource which = 1441 value = 18 where = energy }
-		command = { type = construct which = infrastructure where = 1441 value = 15 trigger = { NOT = { building = { province = 1441 type = infrastructure value = 0.86 } } } }
-		command = { type = construct which = infrastructure where = 1439 value = 15 trigger = { NOT = { building = { province = 1439 type = infrastructure value = 0.86 } } } }
-		command = { type = construct which = infrastructure where = 1445 value = 10 trigger = { NOT = { building = { province = 1445 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1441 value = 15 trigger = { owned = { province = 1441 data = IND } NOT = { building = { province = 1441 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1439 value = 15 trigger = { owned = { province = 1439 data = IND } NOT = { building = { province = 1439 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1445 value = 10 trigger = { owned = { province = 1445 data = IND } NOT = { building = { province = 1445 type = infrastructure value = 0.91 } } } }
 		command = { type = setflag which = ind_v3_assam_oil }
 	}
 	action_b = {
@@ -195,7 +195,7 @@ event = {
 
 	date = { day = 0 month = august year = 1936 }
 	offset = 8
-	deathdate = { day = 29 month = october year = 1936 }
+	deathdate = { day = 29 month = october year = 1964 }
 
 	action_a = {
 		ai_chance = 65
@@ -206,9 +206,9 @@ event = {
 		command = { type = add_prov_resource which = 1476 value = 30 where = energy }
 		command = { type = add_prov_resource which = 1485 value = 20 where = energy }
 		command = { type = add_prov_resource which = 1477 value = 16 where = metal }
-		command = { type = construct which = infrastructure where = 1476 value = 10 trigger = { NOT = { building = { province = 1476 type = infrastructure value = 0.91 } } } }
-		command = { type = construct which = infrastructure where = 1477 value = 15 trigger = { NOT = { building = { province = 1477 type = infrastructure value = 0.86 } } } }
-		command = { type = construct which = infrastructure where = 1485 value = 15 trigger = { NOT = { building = { province = 1485 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1476 value = 10 trigger = { owned = { province = 1476 data = IND } NOT = { building = { province = 1476 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1477 value = 15 trigger = { owned = { province = 1477 data = IND } NOT = { building = { province = 1477 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1485 value = 15 trigger = { owned = { province = 1485 data = IND } NOT = { building = { province = 1485 type = infrastructure value = 0.86 } } } }
 		command = { type = setflag which = ind_v3_central_mineral_grid }
 	}
 	action_b = {
@@ -240,7 +240,7 @@ event = {
 
 	date = { day = 0 month = april year = 1937 }
 	offset = 8
-	deathdate = { day = 29 month = june year = 1937 }
+	deathdate = { day = 29 month = june year = 1964 }
 
 	action_a = {
 		ai_chance = 55
@@ -250,9 +250,9 @@ event = {
 		command = { type = add_prov_resource which = 1517 value = 8 where = oil }
 		command = { type = add_prov_resource which = 1447 value = 6 where = oil }
 		command = { type = add_prov_resource which = 1415 value = 6 where = oil }
-		command = { type = construct which = infrastructure where = 1517 value = 10 trigger = { NOT = { building = { province = 1517 type = infrastructure value = 0.91 } } } }
-		command = { type = construct which = infrastructure where = 1447 value = 10 trigger = { NOT = { building = { province = 1447 type = infrastructure value = 0.91 } } } }
-		command = { type = construct which = infrastructure where = 1415 value = 10 trigger = { NOT = { building = { province = 1415 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1517 value = 10 trigger = { owned = { province = 1517 data = IND } NOT = { building = { province = 1517 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1447 value = 10 trigger = { owned = { province = 1447 data = IND } NOT = { building = { province = 1447 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1415 value = 10 trigger = { owned = { province = 1415 data = IND } NOT = { building = { province = 1415 type = infrastructure value = 0.91 } } } }
 		command = { type = setflag which = ind_v3_refinery_program }
 	}
 	action_b = {
@@ -263,8 +263,8 @@ event = {
 		command = { type = add_prov_resource which = 1477 value = 8 where = oil }
 		command = { type = add_prov_resource which = 1485 value = 8 where = oil }
 		command = { type = add_prov_resource which = 1476 value = 20 where = energy }
-		command = { type = construct which = infrastructure where = 1477 value = 10 trigger = { NOT = { building = { province = 1477 type = infrastructure value = 0.91 } } } }
-		command = { type = construct which = infrastructure where = 1485 value = 10 trigger = { NOT = { building = { province = 1485 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1477 value = 10 trigger = { owned = { province = 1477 data = IND } NOT = { building = { province = 1477 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1485 value = 10 trigger = { owned = { province = 1485 data = IND } NOT = { building = { province = 1485 type = infrastructure value = 0.91 } } } }
 
 		command = { type = setflag which = ind_v3_synthetic_fuel }
 		command = { type = setflag which = ind_v3_refinery_program }
@@ -288,7 +288,7 @@ event = {
 
 	date = { day = 0 month = january year = 1938 }
 	offset = 8
-	deathdate = { day = 29 month = march year = 1938 }
+	deathdate = { day = 29 month = march year = 1964 }
 
 	action_a = {
 		ai_chance = 60
@@ -331,7 +331,7 @@ event = {
 
 	date = { day = 0 month = march year = 1939 }
 	offset = 8
-	deathdate = { day = 29 month = may year = 1939 }
+	deathdate = { day = 29 month = may year = 1964 }
 
 	action_a = {
 		ai_chance = 60
@@ -372,22 +372,28 @@ event = {
 		NOT = { flag = ind_v3_resource_review_1940 }
 	}
 	decision_trigger = {
-	OR = {
-		AND = { money = 450 supplies = 650 }
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		money = 450
+		supplies = 650
+		# AUBM_FULL_OPTION_GATE_END
 	}
-}
 
 	name = "The 1940 Resource Balance"
+	decision_desc = "Cabinet funding estimates: Build resilience into the national resource grid [money 450, supplies 650]."
 	desc = "The national plans have created a true industrial economy. Engineers now recommend a final programme of mine safety, reserve stocks and duplicated power links so that one raid or regional crisis cannot halt the whole system."
 	style = 2
 	picture = "india_v3_industry"
 
 	date = { day = 0 month = june year = 1940 }
 	offset = 10
-	deathdate = { day = 29 month = august year = 1940 }
+	deathdate = { day = 29 month = august year = 1964 }
 
 	action_a = {
 		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 450
+			supplies = 650
+			# AUBM_ACTION_RESERVE_END
 			money = 450
 			supplies = 650
 		}

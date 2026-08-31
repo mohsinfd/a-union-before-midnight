@@ -121,11 +121,11 @@ construction = {
 
 	air_base = yes
 	max_air_base = 4
-	air_base_provs = { 1421 1439 1442 1447 1459 1502 1517 1530 1533 }
+	air_base_provs = { 1421 1439 1442 1447 1459 1502 1517 1530 1533 1612 }
 
 	naval_base = yes
 	max_naval_base = 5 
-	naval_base_provs = { 1421 1447 1493 1497 1500 1517 1533 }
+	naval_base_provs = { 1421 1447 1493 1497 1500 1517 1533 1612 }
 
 	land_fort = yes
 	max_land_level = 5
@@ -440,6 +440,7 @@ admiral = {
 		1500 # Madras
 		1517 # Bombay
 		1533 # Karachi
+		1612 # Kavaratti
 	}
 	target = { } 
 	core = { } 

@@ -1,0 +1,23 @@
+# AUBM: Soviet support for India's separate Burma-China command
+# Partial switch: Japan is prioritized without rewriting Soviet production.
+
+exp_force_ratio = 0.10
+
+combat = {
+	JAP = 100
+	MAN = 65
+	GER = 70
+}
+
+befriend = {
+	IND = 190
+	CHI = 145
+	CHC = 90
+}
+
+protect = {
+	IND = 120
+	CHI = 110
+	CHC = 55
+}
+

@@ -23,7 +23,7 @@ event = {
 
 	date = { day = 0 month = january year = 1943 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1945 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 40
@@ -36,7 +36,7 @@ event = {
 	}
 	action_b = {
 		ai_chance = 30
-		name = "Permanent mobilization: -900 supplies, industry, +4 dissent"
+		name = "Permanent mobilization"
 		command = { type = supplies value = -900 }
 		command = { type = dissent value = 4 }
 		command = { type = industrial_modifier which = supplies value = 8 }
@@ -86,7 +86,7 @@ event = {
 
 	date = { day = 0 month = may year = 1945 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1948 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 40
@@ -100,7 +100,7 @@ event = {
 	}
 	action_b = {
 		ai_chance = 35
-		name = "Indian Ocean sphere: -800 money, -1200 supplies, +5 belligerence"
+		name = "Indian Ocean sphere"
 		command = { type = money value = -800 }
 		command = { type = supplies value = -1200 }
 		command = { type = tc_mod value = 4 }

@@ -1,0 +1,1289 @@
+#########################################################################
+# A Union Before Midnight V4: opponent-specific great-power campaigns
+# Reserved event IDs: 9282120-9282199
+#########################################################################
+
+event = {
+	id = 9282120
+	random = no
+	persistent = yes
+	country = IND
+	trigger = { flag = ind_aubm_wartime_framework war = { country = IND country = ENG } NOT = { flag = ind_aubm_campaign_britain_active } }
+	name = "Campaign Brief: The British War"
+	desc = "India is now at war with Britain. Limited victory requires Singapore 1432, Kuala Lumpur 1438 and one western hinge among Aden 1053, Suez 900 or Mombasa 842. Decisive victory requires the limited result plus any two among Aden, Suez, Cape Town 880 and London 29. Loss of the Straits suspends bargaining leverage until recovered."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+	date = { day = 0 month = january year = 1933 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Open the British campaign ledger"
+		command = { type = clrflag which = ind_aubm_major_annex_resolved_eng }
+		command = { type = setflag which = ind_aubm_campaign_britain_active }
+		command = { type = setflag which = ind_aubm_enemy_britain }
+	}
+}
+
+event = {
+	id = 9282121
+	random = no
+	persistent = yes
+	country = IND
+	trigger = { flag = ind_aubm_wartime_framework war = { country = IND country = GER } NOT = { flag = ind_aubm_campaign_germany_active } }
+	name = "Campaign Brief: The German War"
+	desc = "India is now at war with Germany. A limited Indian expedition holds any two among Athens 377, Belgrade 338, Vienna 195 and Rome 419. Decisive victory requires Berlin 163 plus one of Vienna, Belgrade or Rome. These are Indian-command objectives: allied occupation alone does not earn Delhi the result."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+	date = { day = 0 month = january year = 1933 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Open the German campaign ledger"
+		command = { type = clrflag which = ind_aubm_major_annex_resolved_ger }
+		command = { type = setflag which = ind_aubm_campaign_germany_active }
+		command = { type = setflag which = ind_aubm_enemy_germany }
+	}
+}
+
+event = {
+	id = 9282122
+	random = no
+	persistent = yes
+	country = IND
+	trigger = { flag = ind_aubm_wartime_framework war = { country = IND country = SOV } NOT = { flag = ind_aubm_campaign_soviet_active } }
+	name = "Campaign Brief: The Soviet War"
+	desc = "India is now at war with the Soviet Union. Limited victory requires Baku 713 with Tashkent 1103 or Astrakhan 706. Decisive victory requires Moscow 572 plus one among Stalingrad 663, Baku or Tashkent. Afghanistan, Tibet, Xinjiang and complete Central Asian republics use separate provisional settlements."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+	date = { day = 0 month = january year = 1933 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Open the Soviet campaign ledger"
+		command = { type = clrflag which = ind_aubm_major_annex_resolved_sov }
+		command = { type = setflag which = ind_aubm_campaign_soviet_active }
+		command = { type = setflag which = ind_aubm_enemy_soviet }
+	}
+}
+
+event = {
+	id = 9282123
+	random = no
+	persistent = yes
+	country = IND
+	trigger = { flag = ind_aubm_wartime_framework war = { country = IND country = JAP } NOT = { flag = ind_aubm_campaign_japan_active } }
+	name = "Campaign Brief: The Japanese War"
+	desc = "India is now at war with Japan. Holding Rangoon 1415, Imphal 1442 and Port Blair 1421 for the first ninety-day review earns a defensive success. Limited victory requires Singapore 1432 and Kuala Lumpur 1438 plus either Palembang-Batavia-Soerabaja 1636/1647/1653 or Manila-Davao 1565/1579. Decisive victory requires both Okinawa provinces 1563/1564 or Tokyo-Osaka 1552/1553."
+	style = 2
+	picture = "aubm_v4_japan_southern_choice"
+	date = { day = 0 month = january year = 1933 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Open the Japanese campaign ledger"
+		command = { type = clrflag which = ind_aubm_major_annex_resolved_jap }
+		command = { type = setflag which = ind_aubm_campaign_japan_active }
+		command = { type = setflag which = ind_aubm_enemy_japan }
+		command = { type = event which = 9282125 where = IND when = 90 }
+	}
+}
+
+event = {
+	id = 9282124
+	random = no
+	persistent = yes
+	country = IND
+	trigger = { flag = ind_aubm_wartime_framework war = { country = IND country = USA } NOT = { flag = ind_aubm_campaign_america_active } }
+	name = "Campaign Brief: The American War"
+	desc = "India is now at war with the United States. Limited victory requires Manila 1565 and Davao 1579 plus Guam 1683 or Wake 1673. Decisive victory requires Pearl Harbor 1734 plus Washington 1809, Los Angeles 1887 or San Francisco 1889. American mainland occupation is never annexed automatically."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	date = { day = 0 month = january year = 1933 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Open the American campaign ledger"
+		command = { type = clrflag which = ind_aubm_major_annex_resolved_usa }
+		command = { type = setflag which = ind_aubm_campaign_america_active }
+		command = { type = setflag which = ind_aubm_enemy_america }
+	}
+}
+
+event = {
+	id = 9282125
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	name = "The Ninety-Day Eastern Defence Review"
+	desc = "The first Japanese campaign review is due. If war still continues, the map now determines whether Rangoon, Imphal and Port Blair held through the opening shock."
+	style = 2
+	picture = "aubm_v4_burma_road_refugees"
+	action_a = {
+		name = "Submit the eastern defence map"
+		command = { trigger = { war = { country = IND country = JAP } } type = setflag which = ind_aubm_japan_defence_review_open }
+	}
+}
+
+#########################################################################
+# Limited and decisive opponent-specific victories
+#########################################################################
+
+event = {
+	id = 9282130
+	random = no
+	persistent = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_campaign_britain_active
+		war = { country = IND country = ENG }
+		NOT = { flag = ind_aubm_britain_limited_victory }
+		control = { province = 1432 data = IND }
+		control = { province = 1438 data = IND }
+		OR = { control = { province = 1053 data = IND } control = { province = 900 data = IND } control = { province = 842 data = IND } }
+	}
+	name = "India Breaks Britain's Indian Ocean System"
+	desc = "Singapore, Kuala Lumpur and a western hinge answer to Indian command. Britain can no longer treat the war as a colonial police action. Delhi earns a local settlement docket, coalition recognition and a recoverable limited-victory claim."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	date = { day = 0 month = january year = 1933 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Claim limited victory against Britain"
+		command = { type = setflag which = ind_aubm_britain_limited_victory }
+		command = { type = setflag which = ind_aubm_britain_current }
+		command = { type = dissent value = -1 }
+		command = { type = money value = 200 }
+		command = { type = event which = 9282170 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9282131
+	random = no
+	persistent = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_britain_limited_victory
+		war = { country = IND country = ENG }
+		NOT = { flag = ind_aubm_britain_major_victory }
+		OR = {
+			AND = { control = { province = 1053 data = IND } control = { province = 900 data = IND } }
+			AND = { control = { province = 1053 data = IND } control = { province = 880 data = IND } }
+			AND = { control = { province = 1053 data = IND } control = { province = 29 data = IND } }
+			AND = { control = { province = 900 data = IND } control = { province = 880 data = IND } }
+			AND = { control = { province = 900 data = IND } control = { province = 29 data = IND } }
+			AND = { control = { province = 880 data = IND } control = { province = 29 data = IND } }
+		}
+	}
+	name = "Britain Must Negotiate with Delhi"
+	desc = "India has paired the Straits victory with two decisive imperial hinges among Aden, Suez, Cape Town and London. This is a major Indian victory. A separate British armistice can now be proposed without waiting for every Allied war to end."
+	style = 2
+	picture = "aubm_v4_london_settlement"
+	date = { day = 0 month = january year = 1933 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Claim decisive victory against Britain"
+		command = { type = setflag which = ind_aubm_britain_major_victory }
+		command = { type = setflag which = ind_aubm_major_victory_pending }
+		command = { type = dissent value = -2 }
+		command = { type = money value = 300 }
+		command = { type = event which = 9282170 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9282132
+	random = no
+	persistent = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_campaign_germany_active
+		war = { country = IND country = GER }
+		NOT = { flag = ind_aubm_germany_limited_victory }
+		OR = {
+			AND = { control = { province = 377 data = IND } control = { province = 338 data = IND } }
+			AND = { control = { province = 377 data = IND } control = { province = 195 data = IND } }
+			AND = { control = { province = 377 data = IND } control = { province = 419 data = IND } }
+			AND = { control = { province = 338 data = IND } control = { province = 195 data = IND } }
+			AND = { control = { province = 338 data = IND } control = { province = 419 data = IND } }
+			AND = { control = { province = 195 data = IND } control = { province = 419 data = IND } }
+		}
+	}
+	name = "The Indian Expedition Breaks into Europe"
+	desc = "Indian command holds two European approach centres. The expedition is now a measurable independent contribution rather than a transported auxiliary. Delhi earns limited-victory standing and a recoverable claim in the German settlement."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	date = { day = 0 month = january year = 1933 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Claim limited victory against Germany"
+		command = { type = setflag which = ind_aubm_germany_limited_victory }
+		command = { type = setflag which = ind_aubm_germany_current }
+		command = { type = dissent value = -1 }
+		command = { type = money value = 200 }
+		command = { type = event which = 9282170 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9282133
+	random = no
+	persistent = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_campaign_germany_active
+		war = { country = IND country = GER }
+		NOT = { flag = ind_aubm_germany_major_victory }
+		control = { province = 163 data = IND }
+		OR = { control = { province = 195 data = IND } control = { province = 338 data = IND } control = { province = 419 data = IND } }
+	}
+	name = "Indian Command Enters Berlin"
+	desc = "Berlin and a second European centre are under Indian command. Germany must now answer Delhi directly. India may seek a separate armistice, reserve its claim for a coalition conference or continue to total defeat."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	date = { day = 0 month = january year = 1933 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Claim decisive victory against Germany"
+		command = { type = setflag which = ind_aubm_germany_major_victory }
+		command = { type = setflag which = ind_aubm_germany_current }
+		command = { type = setflag which = ind_aubm_major_victory_pending }
+		command = { type = dissent value = -2 }
+		command = { type = money value = 300 }
+		command = { type = event which = 9282170 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9282134
+	random = no
+	persistent = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_campaign_soviet_active
+		war = { country = IND country = SOV }
+		NOT = { flag = ind_aubm_soviet_limited_victory }
+		control = { province = 713 data = IND }
+		OR = { control = { province = 1103 data = IND } control = { province = 706 data = IND } }
+	}
+	name = "India Breaks the Soviet Southern System"
+	desc = "Baku and either Tashkent or Astrakhan are under Indian command. The southern Soviet war is now a continental campaign with an immediate Central Asian settlement docket. The claim remains live only while the operational pair is held."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+	date = { day = 0 month = january year = 1933 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Claim limited victory against Moscow"
+		command = { type = setflag which = ind_aubm_soviet_limited_victory }
+		command = { type = setflag which = ind_aubm_soviet_current }
+		command = { type = dissent value = -1 }
+		command = { type = money value = 200 }
+		command = { type = event which = 9282170 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9282135
+	random = no
+	persistent = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_soviet_limited_victory
+		war = { country = IND country = SOV }
+		NOT = { flag = ind_aubm_soviet_major_victory }
+		control = { province = 572 data = IND }
+		OR = { control = { province = 663 data = IND } control = { province = 713 data = IND } control = { province = 1103 data = IND } }
+	}
+	name = "Moscow Must Answer the Indian Advance"
+	desc = "Moscow and a second continental objective are under Indian command. India has earned a decisive Soviet settlement claim and may open a separate armistice while local governments are established behind the front."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+	date = { day = 0 month = january year = 1933 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Claim decisive victory against Moscow"
+		command = { type = setflag which = ind_aubm_soviet_major_victory }
+		command = { type = setflag which = ind_aubm_major_victory_pending }
+		command = { type = dissent value = -2 }
+		command = { type = money value = 300 }
+		command = { type = event which = 9282170 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9282136
+	random = no
+	country = IND
+	trigger = {
+		flag = ind_aubm_japan_defence_review_open
+		war = { country = IND country = JAP }
+		NOT = { flag = ind_aubm_japan_defence_success }
+		control = { province = 1415 data = IND }
+		control = { province = 1442 data = IND }
+		control = { province = 1421 data = IND }
+	}
+	name = "The Eastern Shield Holds"
+	desc = "Rangoon, Imphal and Port Blair remained under Indian command through the opening Japanese review. The public sees a defended frontier rather than another imperial collapse. This defensive success is permanent campaign credit even if later offensives move elsewhere."
+	style = 2
+	picture = "aubm_v4_burma_road_refugees"
+	date = { day = 0 month = january year = 1933 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Recognize the defence of the eastern shield"
+		command = { type = setflag which = ind_aubm_japan_defence_success }
+		command = { type = dissent value = -2 }
+		command = { type = supplies value = 400 }
+		command = { type = event which = 9282170 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9282137
+	random = no
+	persistent = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_campaign_japan_active
+		war = { country = IND country = JAP }
+		NOT = { flag = ind_aubm_japan_limited_victory }
+		control = { province = 1432 data = IND }
+		control = { province = 1438 data = IND }
+		OR = {
+			AND = { control = { province = 1636 data = IND } control = { province = 1647 data = IND } control = { province = 1653 data = IND } }
+			AND = { control = { province = 1565 data = IND } control = { province = 1579 data = IND } }
+		}
+	}
+	name = "India Takes the Offensive Against Japan"
+	desc = "The Straits and either the East Indies core or the southern Philippines are under Indian command. Japan's southern strategy has failed against an Indian-led counteroffensive. Delhi gains a recoverable limited-victory claim and immediate occupation settlements."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	date = { day = 0 month = january year = 1933 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Claim limited victory against Japan"
+		command = { type = setflag which = ind_aubm_japan_limited_victory }
+		command = { type = setflag which = ind_aubm_japan_current }
+		command = { trigger = { control = { province = 1636 data = IND } control = { province = 1647 data = IND } control = { province = 1653 data = IND } } type = setflag which = ind_aubm_japan_dei_current }
+		command = { trigger = { control = { province = 1565 data = IND } control = { province = 1579 data = IND } } type = setflag which = ind_aubm_japan_philippines_current }
+		command = { type = dissent value = -1 }
+		command = { type = money value = 200 }
+		command = { type = event which = 9282170 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9282138
+	random = no
+	persistent = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_campaign_japan_active
+		war = { country = IND country = JAP }
+		NOT = { flag = ind_aubm_japan_major_victory }
+		OR = {
+			AND = { control = { province = 1563 data = IND } control = { province = 1564 data = IND } }
+			AND = { control = { province = 1552 data = IND } control = { province = 1553 data = IND } }
+		}
+	}
+	name = "Japan's Inner Perimeter Falls to India"
+	desc = "Indian command holds Okinawa or the Tokyo-Osaka core. Japan must answer a separate Indian armistice proposal. The peace will not automatically annex the home islands; it settles Indian security claims and transfers only specifically negotiated overseas positions."
+	style = 2
+	picture = "aubm_v4_japan_southern_choice"
+	date = { day = 0 month = january year = 1933 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Claim decisive victory against Japan"
+		command = { type = setflag which = ind_aubm_japan_major_victory }
+		command = { type = setflag which = ind_aubm_japan_current }
+		command = { type = setflag which = ind_aubm_major_victory_pending }
+		command = { type = dissent value = -2 }
+		command = { type = money value = 300 }
+		command = { type = event which = 9282170 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9282139
+	random = no
+	persistent = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_campaign_america_active
+		war = { country = IND country = USA }
+		NOT = { flag = ind_aubm_america_limited_victory }
+		control = { province = 1565 data = IND }
+		control = { province = 1579 data = IND }
+		OR = { control = { province = 1683 data = IND } control = { province = 1673 data = IND } }
+	}
+	name = "India Breaks the American Western Pacific Line"
+	desc = "Manila, Davao and Guam or Wake are under Indian command. India has created a real Pacific bargaining position and can demand recognition as a naval great power. The claim is suspended if the Philippine base is lost."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	date = { day = 0 month = january year = 1933 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Claim limited victory against America"
+		command = { type = setflag which = ind_aubm_america_limited_victory }
+		command = { type = setflag which = ind_aubm_america_current }
+		command = { type = dissent value = -1 }
+		command = { type = money value = 200 }
+		command = { type = event which = 9282170 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9282140
+	random = no
+	persistent = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_america_limited_victory
+		war = { country = IND country = USA }
+		NOT = { flag = ind_aubm_america_major_victory }
+		control = { province = 1734 data = IND }
+		OR = { control = { province = 1809 data = IND } control = { province = 1887 data = IND } control = { province = 1889 data = IND } }
+	}
+	name = "Washington Must Answer India's Pacific War"
+	desc = "Pearl Harbor and an American mainland objective are under Indian command. The United States must answer Delhi directly. The mainland is not an Indian annexation claim; the armistice concerns peace, bases and the overseas security order."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	date = { day = 0 month = january year = 1933 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Claim decisive victory against America"
+		command = { type = setflag which = ind_aubm_america_major_victory }
+		command = { type = setflag which = ind_aubm_major_victory_pending }
+		command = { type = dissent value = -2 }
+		command = { type = money value = 300 }
+		command = { type = event which = 9282170 where = IND when = 1 }
+	}
+}
+
+#########################################################################
+# One reversible leverage system for all five campaigns
+#########################################################################
+
+event = {
+	id = 9282141
+	random = no
+	persistent = yes
+	country = IND
+	trigger = {
+		OR = {
+			AND = { flag = ind_aubm_britain_current OR = { NOT = { control = { province = 1432 data = IND } } NOT = { control = { province = 1438 data = IND } } NOT = { OR = { control = { province = 1053 data = IND } control = { province = 900 data = IND } control = { province = 842 data = IND } } } } }
+			AND = { flag = ind_aubm_germany_current NOT = { OR = { AND = { control = { province = 377 data = IND } control = { province = 338 data = IND } } AND = { control = { province = 377 data = IND } control = { province = 195 data = IND } } AND = { control = { province = 377 data = IND } control = { province = 419 data = IND } } AND = { control = { province = 338 data = IND } control = { province = 195 data = IND } } AND = { control = { province = 338 data = IND } control = { province = 419 data = IND } } AND = { control = { province = 195 data = IND } control = { province = 419 data = IND } } AND = { control = { province = 163 data = IND } OR = { control = { province = 195 data = IND } control = { province = 338 data = IND } control = { province = 419 data = IND } } } } } }
+			AND = { flag = ind_aubm_soviet_current OR = { NOT = { control = { province = 713 data = IND } } NOT = { OR = { control = { province = 1103 data = IND } control = { province = 706 data = IND } } } } }
+			AND = { flag = ind_aubm_japan_current NOT = { OR = { AND = { control = { province = 1432 data = IND } control = { province = 1438 data = IND } OR = { AND = { control = { province = 1636 data = IND } control = { province = 1647 data = IND } control = { province = 1653 data = IND } } AND = { control = { province = 1565 data = IND } control = { province = 1579 data = IND } } } } AND = { control = { province = 1563 data = IND } control = { province = 1564 data = IND } } AND = { control = { province = 1552 data = IND } control = { province = 1553 data = IND } } } } }
+			AND = { flag = ind_aubm_america_current OR = { NOT = { control = { province = 1565 data = IND } } NOT = { control = { province = 1579 data = IND } } NOT = { OR = { control = { province = 1683 data = IND } control = { province = 1673 data = IND } } } } }
+		}
+	}
+	name = "A Great-Power Campaign Loses Its Leverage"
+	desc = "One opponent-specific objective system has broken. Historical victory credit remains, but the corresponding separate armistice is suspended until Indian command restores a qualifying limited- or decisive-victory map."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+	date = { day = 0 month = january year = 1933 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Suspend the broken campaign claim"
+		command = { trigger = { flag = ind_aubm_britain_current OR = { NOT = { control = { province = 1432 data = IND } } NOT = { control = { province = 1438 data = IND } } NOT = { OR = { control = { province = 1053 data = IND } control = { province = 900 data = IND } control = { province = 842 data = IND } } } } } type = clrflag which = ind_aubm_britain_current }
+		command = { trigger = { flag = ind_aubm_britain_limited_victory NOT = { flag = ind_aubm_britain_current } } type = setflag which = ind_aubm_britain_suspended }
+		command = { trigger = { flag = ind_aubm_germany_current NOT = { OR = { AND = { control = { province = 377 data = IND } control = { province = 338 data = IND } } AND = { control = { province = 377 data = IND } control = { province = 195 data = IND } } AND = { control = { province = 377 data = IND } control = { province = 419 data = IND } } AND = { control = { province = 338 data = IND } control = { province = 195 data = IND } } AND = { control = { province = 338 data = IND } control = { province = 419 data = IND } } AND = { control = { province = 195 data = IND } control = { province = 419 data = IND } } AND = { control = { province = 163 data = IND } OR = { control = { province = 195 data = IND } control = { province = 338 data = IND } control = { province = 419 data = IND } } } } } } type = clrflag which = ind_aubm_germany_current }
+		command = { trigger = { OR = { flag = ind_aubm_germany_limited_victory flag = ind_aubm_germany_major_victory } NOT = { flag = ind_aubm_germany_current } } type = setflag which = ind_aubm_germany_suspended }
+		command = { trigger = { flag = ind_aubm_soviet_current OR = { NOT = { control = { province = 713 data = IND } } NOT = { OR = { control = { province = 1103 data = IND } control = { province = 706 data = IND } } } } } type = clrflag which = ind_aubm_soviet_current }
+		command = { trigger = { flag = ind_aubm_soviet_limited_victory NOT = { flag = ind_aubm_soviet_current } } type = setflag which = ind_aubm_soviet_suspended }
+		command = { trigger = { flag = ind_aubm_japan_current NOT = { OR = { AND = { control = { province = 1432 data = IND } control = { province = 1438 data = IND } OR = { AND = { control = { province = 1636 data = IND } control = { province = 1647 data = IND } control = { province = 1653 data = IND } } AND = { control = { province = 1565 data = IND } control = { province = 1579 data = IND } } } } AND = { control = { province = 1563 data = IND } control = { province = 1564 data = IND } } AND = { control = { province = 1552 data = IND } control = { province = 1553 data = IND } } } } } type = clrflag which = ind_aubm_japan_current }
+		command = { trigger = { OR = { flag = ind_aubm_japan_limited_victory flag = ind_aubm_japan_major_victory } NOT = { flag = ind_aubm_japan_current } } type = setflag which = ind_aubm_japan_suspended }
+		command = { trigger = { flag = ind_aubm_america_current OR = { NOT = { control = { province = 1565 data = IND } } NOT = { control = { province = 1579 data = IND } } NOT = { OR = { control = { province = 1683 data = IND } control = { province = 1673 data = IND } } } } } type = clrflag which = ind_aubm_america_current }
+		command = { trigger = { flag = ind_aubm_america_limited_victory NOT = { flag = ind_aubm_america_current } } type = setflag which = ind_aubm_america_suspended }
+		command = { type = dissent value = 2 }
+	}
+}
+
+event = {
+	id = 9282142
+	random = no
+	persistent = yes
+	country = IND
+	trigger = {
+		OR = {
+			AND = { flag = ind_aubm_britain_suspended control = { province = 1432 data = IND } control = { province = 1438 data = IND } OR = { control = { province = 1053 data = IND } control = { province = 900 data = IND } control = { province = 842 data = IND } } }
+			AND = { flag = ind_aubm_germany_suspended OR = { AND = { control = { province = 377 data = IND } control = { province = 338 data = IND } } AND = { control = { province = 377 data = IND } control = { province = 195 data = IND } } AND = { control = { province = 377 data = IND } control = { province = 419 data = IND } } AND = { control = { province = 338 data = IND } control = { province = 195 data = IND } } AND = { control = { province = 338 data = IND } control = { province = 419 data = IND } } AND = { control = { province = 195 data = IND } control = { province = 419 data = IND } } AND = { control = { province = 163 data = IND } OR = { control = { province = 195 data = IND } control = { province = 338 data = IND } control = { province = 419 data = IND } } } } }
+			AND = { flag = ind_aubm_soviet_suspended control = { province = 713 data = IND } OR = { control = { province = 1103 data = IND } control = { province = 706 data = IND } } }
+			AND = { flag = ind_aubm_japan_suspended OR = { AND = { control = { province = 1432 data = IND } control = { province = 1438 data = IND } OR = { AND = { control = { province = 1636 data = IND } control = { province = 1647 data = IND } control = { province = 1653 data = IND } } AND = { control = { province = 1565 data = IND } control = { province = 1579 data = IND } } } } AND = { control = { province = 1563 data = IND } control = { province = 1564 data = IND } } AND = { control = { province = 1552 data = IND } control = { province = 1553 data = IND } } } }
+			AND = { flag = ind_aubm_america_suspended control = { province = 1565 data = IND } control = { province = 1579 data = IND } OR = { control = { province = 1683 data = IND } control = { province = 1673 data = IND } } }
+		}
+	}
+	name = "Indian Command Restores a Great-Power Campaign"
+	desc = "A qualifying limited- or decisive-victory map has been restored. The corresponding separate armistice and coalition claim are live again; the earlier reversal remains part of the campaign record."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	date = { day = 0 month = january year = 1933 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Restore the recovered campaign claim"
+		command = { trigger = { flag = ind_aubm_britain_suspended control = { province = 1432 data = IND } control = { province = 1438 data = IND } OR = { control = { province = 1053 data = IND } control = { province = 900 data = IND } control = { province = 842 data = IND } } } type = clrflag which = ind_aubm_britain_suspended }
+		command = { trigger = { flag = ind_aubm_britain_limited_victory NOT = { flag = ind_aubm_britain_suspended } } type = setflag which = ind_aubm_britain_current }
+		command = { trigger = { flag = ind_aubm_germany_suspended OR = { AND = { control = { province = 377 data = IND } control = { province = 338 data = IND } } AND = { control = { province = 377 data = IND } control = { province = 195 data = IND } } AND = { control = { province = 377 data = IND } control = { province = 419 data = IND } } AND = { control = { province = 338 data = IND } control = { province = 195 data = IND } } AND = { control = { province = 338 data = IND } control = { province = 419 data = IND } } AND = { control = { province = 195 data = IND } control = { province = 419 data = IND } } AND = { control = { province = 163 data = IND } OR = { control = { province = 195 data = IND } control = { province = 338 data = IND } control = { province = 419 data = IND } } } } } type = clrflag which = ind_aubm_germany_suspended }
+		command = { trigger = { OR = { flag = ind_aubm_germany_limited_victory flag = ind_aubm_germany_major_victory } NOT = { flag = ind_aubm_germany_suspended } } type = setflag which = ind_aubm_germany_current }
+		command = { trigger = { flag = ind_aubm_soviet_suspended control = { province = 713 data = IND } OR = { control = { province = 1103 data = IND } control = { province = 706 data = IND } } } type = clrflag which = ind_aubm_soviet_suspended }
+		command = { trigger = { flag = ind_aubm_soviet_limited_victory NOT = { flag = ind_aubm_soviet_suspended } } type = setflag which = ind_aubm_soviet_current }
+		command = { trigger = { flag = ind_aubm_japan_suspended OR = { AND = { control = { province = 1432 data = IND } control = { province = 1438 data = IND } OR = { AND = { control = { province = 1636 data = IND } control = { province = 1647 data = IND } control = { province = 1653 data = IND } } AND = { control = { province = 1565 data = IND } control = { province = 1579 data = IND } } } } AND = { control = { province = 1563 data = IND } control = { province = 1564 data = IND } } AND = { control = { province = 1552 data = IND } control = { province = 1553 data = IND } } } } type = clrflag which = ind_aubm_japan_suspended }
+		command = { trigger = { OR = { flag = ind_aubm_japan_limited_victory flag = ind_aubm_japan_major_victory } NOT = { flag = ind_aubm_japan_suspended } } type = setflag which = ind_aubm_japan_current }
+		command = { trigger = { flag = ind_aubm_america_suspended control = { province = 1565 data = IND } control = { province = 1579 data = IND } OR = { control = { province = 1683 data = IND } control = { province = 1673 data = IND } } } type = clrflag which = ind_aubm_america_suspended }
+		command = { trigger = { flag = ind_aubm_america_limited_victory NOT = { flag = ind_aubm_america_suspended } } type = setflag which = ind_aubm_america_current }
+		command = { type = dissent value = -1 }
+	}
+}
+
+#########################################################################
+# Coalition recognition after Indian battlefield results
+#########################################################################
+
+event = {
+	id = 9282170
+	random = no
+	persistent = yes
+	country = IND
+	name = "Delhi Presents Its Battlefield Claim"
+	desc = "India can present the result to its current partner, reserve it as a sovereign claim, or open a separate armistice after a decisive victory. Partner responses are fixed at recognition 60%, conditioned support 25%, refusal 15%. A partner that is itself India's enemy receives no request."
+	style = 2
+	picture = "aubm_v4_war_aims"
+	action_a = {
+		name = "Ask the current partner: 60/25/15"
+		command = { trigger = { flag = ind_aubm_route_allied flag = ind_aubm_allied_partner_eng exists = ENG NOT = { war = { country = IND country = ENG } } } type = event which = 9282171 where = ENG when = 3 }
+		command = { trigger = { flag = ind_aubm_route_allied flag = ind_aubm_allied_partner_usa exists = USA NOT = { war = { country = IND country = USA } } } type = event which = 9282175 where = USA when = 3 }
+		command = { trigger = { flag = ind_aubm_route_allied NOT = { flag = ind_aubm_allied_partner_eng } NOT = { flag = ind_aubm_allied_partner_usa } exists = ENG NOT = { war = { country = IND country = ENG } } } type = event which = 9282171 where = ENG when = 3 }
+		command = { trigger = { flag = ind_aubm_route_allied NOT = { flag = ind_aubm_allied_partner_eng } NOT = { flag = ind_aubm_allied_partner_usa } NOT = { exists = ENG } exists = USA NOT = { war = { country = IND country = USA } } } type = event which = 9282175 where = USA when = 3 }
+		command = { trigger = { flag = ind_aubm_route_german exists = GER NOT = { war = { country = IND country = GER } } } type = event which = 9282172 where = GER when = 3 }
+		command = { trigger = { flag = ind_aubm_route_soviet exists = SOV NOT = { war = { country = IND country = SOV } } } type = event which = 9282173 where = SOV when = 3 }
+		command = { trigger = { flag = ind_aubm_route_japan exists = JAP NOT = { war = { country = IND country = JAP } } } type = event which = 9282174 where = JAP when = 3 }
+		command = { trigger = { flag = ind_aubm_route_sovereign } type = setflag which = ind_aubm_victory_sovereign_credit }
+	}
+	action_b = {
+		name = "Reserve the result for India's separate peace"
+		command = { type = setflag which = ind_aubm_victory_sovereign_credit }
+		command = { type = dissent value = -1 }
+	}
+	action_c = {
+		trigger = { flag = ind_aubm_major_victory_pending }
+		name = "Open the great-power armistice board"
+		command = { type = setflag which = ind_aubm_major_armistice_terms_dispatching }
+		command = { type = event which = 9282180 where = IND when = 1 }
+		command = { type = clrflag which = ind_aubm_major_victory_pending }
+	}
+	action_d = { name = "Continue operations before making a claim" }
+}
+
+event = {
+	id = 9282171
+	random = no
+	persistent = yes
+	country = ENG
+	name = "India Claims Coalition Credit"
+	desc = "Delhi presents a verified battlefield result and asks Britain to recognize an Indian settlement voice. The response is fixed: recognize 60%, condition support 25%, refuse 15%."
+	style = 2
+	picture = "aubm_v4_london_settlement"
+	action_a = { ai_chance = 60 name = "Recognize India's principal claim" command = { type = event which = 9282143 where = IND when = 3 } }
+	action_b = { ai_chance = 25 name = "Condition support on joint consultation" command = { type = event which = 9282144 where = IND when = 3 } }
+	action_c = { ai_chance = 15 name = "Refuse a separate Indian claim" command = { type = event which = 9282145 where = IND when = 3 } }
+}
+
+event = {
+	id = 9282172
+	random = no
+	persistent = yes
+	country = GER
+	name = "India Claims Coalition Credit"
+	desc = "Delhi presents a verified battlefield result and asks Berlin to recognize an Indian settlement voice. The response is fixed: recognize 60%, condition support 25%, refuse 15%."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+	action_a = { ai_chance = 60 name = "Recognize India's principal claim" command = { type = event which = 9282143 where = IND when = 3 } }
+	action_b = { ai_chance = 25 name = "Condition support on joint consultation" command = { type = event which = 9282144 where = IND when = 3 } }
+	action_c = { ai_chance = 15 name = "Refuse a separate Indian claim" command = { type = event which = 9282145 where = IND when = 3 } }
+}
+
+event = {
+	id = 9282173
+	random = no
+	persistent = yes
+	country = SOV
+	name = "India Claims Coalition Credit"
+	desc = "Delhi presents a verified battlefield result and asks Moscow to recognize an Indian settlement voice. The response is fixed: recognize 60%, condition support 25%, refuse 15%."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+	action_a = { ai_chance = 60 name = "Recognize India's principal claim" command = { type = event which = 9282143 where = IND when = 3 } }
+	action_b = { ai_chance = 25 name = "Condition support on joint consultation" command = { type = event which = 9282144 where = IND when = 3 } }
+	action_c = { ai_chance = 15 name = "Refuse a separate Indian claim" command = { type = event which = 9282145 where = IND when = 3 } }
+}
+
+event = {
+	id = 9282174
+	random = no
+	persistent = yes
+	country = JAP
+	name = "India Claims Coalition Credit"
+	desc = "Delhi presents a verified battlefield result and asks Tokyo to recognize an Indian settlement voice. The response is fixed: recognize 60%, condition support 25%, refuse 15%."
+	style = 2
+	picture = "aubm_v4_tokyo_proposition"
+	action_a = { ai_chance = 60 name = "Recognize India's principal claim" command = { type = event which = 9282143 where = IND when = 3 } }
+	action_b = { ai_chance = 25 name = "Condition support on joint consultation" command = { type = event which = 9282144 where = IND when = 3 } }
+	action_c = { ai_chance = 15 name = "Refuse a separate Indian claim" command = { type = event which = 9282145 where = IND when = 3 } }
+}
+
+event = {
+	id = 9282175
+	random = no
+	persistent = yes
+	country = USA
+	name = "India Claims Coalition Credit"
+	desc = "Delhi presents a verified battlefield result and asks Washington to recognize an Indian settlement voice. The response is fixed: recognize 60%, condition support 25%, refuse 15%."
+	style = 2
+	picture = "aubm_v4_london_settlement"
+	action_a = { ai_chance = 60 name = "Recognize India's principal claim" command = { type = event which = 9282143 where = IND when = 3 } }
+	action_b = { ai_chance = 25 name = "Condition support on joint consultation" command = { type = event which = 9282144 where = IND when = 3 } }
+	action_c = { ai_chance = 15 name = "Refuse a separate Indian claim" command = { type = event which = 9282145 where = IND when = 3 } }
+}
+
+event = {
+	id = 9282143
+	random = no
+	persistent = yes
+	country = IND
+	name = "The Coalition Recognizes India's Battlefield Claim"
+	desc = "India's current partner recognizes Delhi's verified result and its principal voice in the eventual settlement."
+	style = 2
+	picture = "aubm_v4_war_aims"
+	action_a = {
+		name = "Bank recognized coalition credit"
+		command = { type = dissent value = -1 }
+		command = { type = supplies value = 400 }
+		command = { type = setflag which = ind_aubm_coalition_credit }
+	}
+}
+
+event = {
+	id = 9282144
+	random = no
+	persistent = yes
+	country = IND
+	name = "The Coalition Conditions Support"
+	desc = "India's current partner accepts Delhi's battlefield importance but requires joint consultation before supporting separate Indian terms."
+	style = 2
+	picture = "aubm_v4_war_aims"
+	action_a = {
+		name = "Accept conditioned support"
+		command = { type = supplies value = 250 }
+		command = { type = setflag which = ind_aubm_coalition_consultation }
+	}
+}
+
+event = {
+	id = 9282145
+	random = no
+	persistent = yes
+	country = IND
+	name = "The Coalition Refuses India's Separate Claim"
+	desc = "India's current partner refuses to recognize a separate Indian settlement claim. Delhi retains the battlefield result and may pursue a pairwise peace."
+	style = 2
+	picture = "aubm_v4_war_aims"
+	action_a = {
+		name = "Reserve India's right to a separate peace"
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_aubm_victory_sovereign_credit }
+	}
+}
+
+#########################################################################
+# Separate great-power armistices
+#########################################################################
+
+event = {
+	id = 9282180
+	random = no
+	persistent = yes
+	country = IND
+	name = "Great-Power Armistice Board"
+	desc = "A decisive opponent-specific victory unlocks a pairwise armistice. It does not end unrelated wars or wait for global peace. Britain, Germany, Japan, America and the Soviet Union each answer separately."
+	style = 2
+	picture = "aubm_v4_war_aims"
+	action_a = { trigger = { flag = ind_aubm_britain_current war = { country = IND country = ENG } } name = "Open the British armistice" command = { type = setflag which = ind_aubm_major_armistice_terms_dispatching } command = { type = event which = 9282181 where = IND when = 1 } }
+	action_b = { trigger = { flag = ind_aubm_germany_current war = { country = IND country = GER } } name = "Open the German armistice" command = { type = setflag which = ind_aubm_major_armistice_terms_dispatching } command = { type = event which = 9282182 where = IND when = 1 } }
+	action_c = { trigger = { OR = { AND = { flag = ind_aubm_japan_current war = { country = IND country = JAP } } AND = { flag = ind_aubm_america_current war = { country = IND country = USA } } } } name = "Open the Pacific armistices" command = { type = setflag which = ind_aubm_major_armistice_terms_dispatching } command = { type = event which = 9282183 where = IND when = 1 } }
+	action_d = {
+		name = "Open the Soviet armistice or close the board"
+		command = { type = clrflag which = ind_aubm_major_armistice_terms_dispatching }
+		command = { trigger = { flag = ind_aubm_soviet_current war = { country = IND country = SOV } } type = setflag which = ind_aubm_major_armistice_terms_dispatching }
+		command = { trigger = { flag = ind_aubm_soviet_current war = { country = IND country = SOV } } type = event which = 9282036 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9282181
+	random = no
+	persistent = yes
+	country = IND
+	name = "Terms for a Separate British Armistice"
+	desc = "Britain's fixed response is accept 55%, counter with peace and reciprocal access 30%, refuse 15%. Acceptance transfers only British-owned Malayan settlement territory; other local owners answer separately."
+	style = 2
+	picture = "aubm_v4_london_settlement"
+	action_a = {
+		trigger = { flag = ind_aubm_britain_current war = { country = IND country = ENG } NOT = { flag = ind_aubm_major_armistice_outstanding } NOT = { flag = ind_aubm_major_armistice_retry_pending } }
+		name = "Submit the terms: 55/30/15"
+		command = { type = clrflag which = ind_aubm_major_armistice_terms_dispatching }
+		command = { type = setflag which = ind_aubm_major_armistice_target_eng }
+		command = { type = setflag which = ind_aubm_major_armistice_outstanding }
+		command = { type = event which = 9282184 where = ENG when = 3 }
+	}
+	action_b = { name = "Continue the war" command = { type = clrflag which = ind_aubm_major_armistice_terms_dispatching } command = { type = event which = 9282180 where = IND when = 90 } }
+}
+
+event = {
+	id = 9282182
+	random = no
+	persistent = yes
+	country = IND
+	name = "Terms for a Separate German Armistice"
+	desc = "Germany's fixed response is accept peace and Indian standing 50%, counter with peace but no political recognition 35%, refuse 15%. No European mainland province is annexed automatically."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+	action_a = {
+		trigger = { flag = ind_aubm_germany_current war = { country = IND country = GER } NOT = { flag = ind_aubm_major_armistice_outstanding } NOT = { flag = ind_aubm_major_armistice_retry_pending } }
+		name = "Submit the terms: 50/35/15"
+		command = { type = clrflag which = ind_aubm_major_armistice_terms_dispatching }
+		command = { type = setflag which = ind_aubm_major_armistice_target_ger }
+		command = { type = setflag which = ind_aubm_major_armistice_outstanding }
+		command = { type = event which = 9282185 where = GER when = 3 }
+	}
+	action_b = { name = "Continue the war" command = { type = clrflag which = ind_aubm_major_armistice_terms_dispatching } command = { type = event which = 9282180 where = IND when = 90 } }
+}
+
+event = {
+	id = 9282183
+	random = no
+	persistent = yes
+	country = IND
+	name = "Pacific Great-Power Armistices"
+	desc = "Japan answers at fixed odds 45/35/20; America answers at 40/40/20. Each armistice is pairwise. Japan may transfer specifically listed southern positions it legally owns. America may transfer the Philippines, Guam and Wake, never its mainland."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	action_a = { trigger = { flag = ind_aubm_japan_current war = { country = IND country = JAP } } name = "Submit terms to Japan: 45/35/20" command = { type = setflag which = ind_aubm_major_armistice_terms_dispatching } command = { trigger = { NOT = { flag = ind_aubm_japan_major_victory } } type = setflag which = ind_aubm_japan_southern_armistice_inflight } command = { type = event which = 9282188 where = IND when = 1 } }
+	action_b = { trigger = { flag = ind_aubm_america_current war = { country = IND country = USA } } name = "Submit terms to America: 40/40/20" command = { type = setflag which = ind_aubm_major_armistice_terms_dispatching } command = { type = event which = 9282189 where = IND when = 1 } }
+	action_c = { name = "Return to the armistice board" command = { type = setflag which = ind_aubm_major_armistice_terms_dispatching } command = { type = event which = 9282180 where = IND when = 1 } }
+}
+
+event = {
+	id = 9282188
+	random = no
+	persistent = yes
+	country = IND
+	name = "Terms for a Separate Japanese Armistice"
+	desc = "Japan's fixed response is accept 45%, counter with peace and base access 35%, refuse 20%. Acceptance transfers only listed southern positions Japan legally owns."
+	style = 2
+	picture = "aubm_v4_japan_southern_choice"
+	action_a = {
+		trigger = { OR = { flag = ind_aubm_japan_current AND = { flag = ind_aubm_sea_theatre_achieved OR = { flag = ind_aubm_sea_land_malaya_liberated_current flag = ind_aubm_sea_land_dei_liberated_current flag = ind_aubm_sea_land_indochina_liberated_current flag = ind_aubm_sea_land_philippines_liberated_current } } } war = { country = IND country = JAP } NOT = { flag = ind_aubm_major_armistice_outstanding } NOT = { flag = ind_aubm_major_armistice_retry_pending } }
+		name = "Submit the terms: 45/35/20"
+		command = { type = clrflag which = ind_aubm_major_armistice_terms_dispatching }
+		command = { trigger = { NOT = { flag = ind_aubm_japan_major_victory } } type = setflag which = ind_aubm_japan_southern_armistice_inflight }
+		command = { type = setflag which = ind_aubm_major_armistice_target_jap }
+		command = { type = setflag which = ind_aubm_major_armistice_outstanding }
+		command = { type = event which = 9282186 where = JAP when = 3 }
+	}
+	action_b = {
+		name = "Continue the war"
+		command = { type = clrflag which = ind_aubm_major_armistice_terms_dispatching }
+		command = { trigger = { OR = { NOT = { flag = ind_aubm_japan_southern_armistice_inflight } flag = ind_aubm_japan_major_victory } } type = event which = 9282180 where = IND when = 90 }
+		command = { trigger = { flag = ind_aubm_japan_southern_armistice_inflight NOT = { flag = ind_aubm_japan_major_victory } war = { country = IND country = JAP } OR = { flag = ind_aubm_japan_current AND = { flag = ind_aubm_sea_theatre_achieved OR = { flag = ind_aubm_sea_land_malaya_liberated_current flag = ind_aubm_sea_land_dei_liberated_current flag = ind_aubm_sea_land_indochina_liberated_current flag = ind_aubm_sea_land_philippines_liberated_current } } } } type = setflag which = ind_aubm_japan_southern_armistice_declined }
+		command = { type = clrflag which = ind_aubm_japan_southern_armistice_inflight }
+	}
+}
+
+event = {
+	id = 9282189
+	random = no
+	persistent = yes
+	country = IND
+	name = "Terms for a Separate American Armistice"
+	desc = "America's fixed response is accept 40%, counter with peace and reciprocal access 40%, refuse 20%. Acceptance can transfer the Philippines, Guam and Wake if America legally owns them; the mainland and Hawaii remain American."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	action_a = {
+		trigger = { flag = ind_aubm_america_current war = { country = IND country = USA } NOT = { flag = ind_aubm_major_armistice_outstanding } NOT = { flag = ind_aubm_major_armistice_retry_pending } }
+		name = "Submit the terms: 40/40/20"
+		command = { type = clrflag which = ind_aubm_major_armistice_terms_dispatching }
+		command = { type = setflag which = ind_aubm_major_armistice_target_usa }
+		command = { type = setflag which = ind_aubm_major_armistice_outstanding }
+		command = { type = event which = 9282187 where = USA when = 3 }
+	}
+	action_b = { name = "Continue the war" command = { type = clrflag which = ind_aubm_major_armistice_terms_dispatching } command = { type = event which = 9282180 where = IND when = 90 } }
+}
+
+event = {
+	id = 9282184
+	random = no
+	persistent = yes
+	country = ENG
+	name = "India Offers a Separate British Armistice"
+	desc = "India offers pairwise peace and a Malayan provisional transfer. The fixed response is accept 55%, counter with peace and reciprocal access 30%, refuse 15%."
+	style = 2
+	picture = "aubm_v4_london_settlement"
+	action_a = {
+		ai_chance = 55
+		name = "Accept peace and the occupied Malayan transfer"
+		command = { trigger = { owned = { province = 1432 data = ENG } control = { province = 1432 data = IND } } type = secedeprovince which = IND value = 1432 when = 1 }
+		command = { trigger = { owned = { province = 1438 data = ENG } control = { province = 1438 data = IND } } type = secedeprovince which = IND value = 1438 when = 1 }
+		command = { type = event which = 9282146 where = IND when = 3 }
+	}
+	action_b = { ai_chance = 30 name = "Accept peace with reciprocal access" command = { type = access which = IND } command = { type = event which = 9282150 where = IND when = 3 } }
+	action_c = { ai_chance = 15 name = "Refuse and continue the war" command = { type = event which = 9282151 where = IND when = 3 } }
+}
+
+event = {
+	id = 9282185
+	random = no
+	persistent = yes
+	country = GER
+	name = "India Offers a Separate German Armistice"
+	desc = "India offers pairwise peace without automatic European annexation. The fixed response is accept Indian standing 50%, counter with peace only 35%, refuse 15%."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+	action_a = { ai_chance = 50 name = "Accept peace and recognize Indian standing" command = { type = relation which = IND value = 20 } command = { type = event which = 9282147 where = IND when = 3 } }
+	action_b = { ai_chance = 35 name = "Accept peace without political recognition" command = { type = event which = 9282150 where = IND when = 3 } }
+	action_c = { ai_chance = 15 name = "Refuse and continue the war" command = { type = event which = 9282151 where = IND when = 3 } }
+}
+
+event = {
+	id = 9282186
+	random = no
+	persistent = yes
+	country = JAP
+	name = "India Offers a Separate Japanese Armistice"
+	desc = "India offers pairwise peace and transfer of specifically listed southern positions Japan legally owns. The fixed response is accept 45%, counter with peace and access 35%, refuse 20%."
+	style = 2
+	picture = "aubm_v4_japan_southern_choice"
+	action_a = {
+		ai_chance = 45
+		name = "Accept peace and transfer the southern positions"
+		command = { trigger = { owned = { province = 1415 data = JAP } control = { province = 1415 data = IND } } type = secedeprovince which = IND value = 1415 when = 1 }
+		command = { trigger = { owned = { province = 1421 data = JAP } control = { province = 1421 data = IND } } type = secedeprovince which = IND value = 1421 when = 1 }
+		command = { trigger = { owned = { province = 1432 data = JAP } control = { province = 1432 data = IND } } type = secedeprovince which = IND value = 1432 when = 1 }
+		command = { trigger = { owned = { province = 1438 data = JAP } control = { province = 1438 data = IND } } type = secedeprovince which = IND value = 1438 when = 1 }
+		command = { trigger = { owned = { province = 1636 data = JAP } control = { province = 1636 data = IND } } type = secedeprovince which = IND value = 1636 when = 1 }
+		command = { trigger = { owned = { province = 1647 data = JAP } control = { province = 1647 data = IND } } type = secedeprovince which = IND value = 1647 when = 1 }
+		command = { trigger = { owned = { province = 1653 data = JAP } control = { province = 1653 data = IND } } type = secedeprovince which = IND value = 1653 when = 1 }
+		command = { type = event which = 9282148 where = IND when = 3 }
+	}
+	action_b = { ai_chance = 35 name = "Accept peace and reciprocal base access" command = { type = access which = IND } command = { type = event which = 9282150 where = IND when = 3 } }
+	action_c = { ai_chance = 20 name = "Refuse and continue the war" command = { type = event which = 9282151 where = IND when = 3 } }
+}
+
+event = {
+	id = 9282187
+	random = no
+	persistent = yes
+	country = USA
+	name = "India Offers a Separate American Armistice"
+	desc = "India offers pairwise peace and transfer of specified Pacific positions America legally owns. The fixed response is accept 40%, counter with peace and access 40%, refuse 20%."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	action_a = {
+		ai_chance = 40
+		name = "Accept peace and transfer the overseas positions"
+		command = { trigger = { owned = { province = 1565 data = USA } control = { province = 1565 data = IND } } type = secedeprovince which = IND value = 1565 when = 1 }
+		command = { trigger = { owned = { province = 1579 data = USA } control = { province = 1579 data = IND } } type = secedeprovince which = IND value = 1579 when = 1 }
+		command = { trigger = { owned = { province = 1683 data = USA } control = { province = 1683 data = IND } } type = secedeprovince which = IND value = 1683 when = 1 }
+		command = { trigger = { owned = { province = 1673 data = USA } control = { province = 1673 data = IND } } type = secedeprovince which = IND value = 1673 when = 1 }
+		command = { type = event which = 9282149 where = IND when = 3 }
+	}
+	action_b = { ai_chance = 40 name = "Accept peace and reciprocal base access" command = { type = access which = IND } command = { type = event which = 9282150 where = IND when = 3 } }
+	action_c = { ai_chance = 20 name = "Refuse and continue the war" command = { type = event which = 9282151 where = IND when = 3 } }
+}
+
+event = {
+	id = 9282146
+	random = no
+	persistent = yes
+	country = IND
+	name = "Britain Accepts India's Separate Armistice"
+	desc = "The British war with India ends. London's legal Malayan transfer is recorded, while every unrelated Indian war continues."
+	style = 2
+	picture = "aubm_v4_london_settlement"
+	action_a = {
+		name = "Publish the accepted British armistice"
+		command = { type = dissent value = -3 }
+		command = { type = setflag which = ind_aubm_great_power_armistice }
+		command = { type = setflag which = ind_aubm_armistice_britain }
+		command = { type = setflag which = ind_aubm_major_armistice_full }
+		command = { type = event which = 9282160 where = IND when = 1 }
+		command = { type = event which = 9282001 where = IND when = 3 }
+	}
+}
+
+event = {
+	id = 9282147
+	random = no
+	persistent = yes
+	country = IND
+	name = "Germany Accepts India's Separate Armistice"
+	desc = "The German war with India ends and Berlin recognizes Indian great-power standing. No European mainland province changes owner automatically."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+	action_a = {
+		name = "Publish the accepted German armistice"
+		command = { type = dissent value = -3 }
+		command = { type = setflag which = ind_aubm_great_power_armistice }
+		command = { type = setflag which = ind_aubm_armistice_germany }
+		command = { type = setflag which = ind_aubm_major_armistice_full }
+		command = { type = event which = 9282160 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9282148
+	random = no
+	persistent = yes
+	country = IND
+	name = "Japan Accepts India's Separate Armistice"
+	desc = "The Japanese war with India ends. Tokyo's legal southern transfers are recorded, while every unrelated Indian war continues."
+	style = 2
+	picture = "aubm_v4_japan_southern_choice"
+	action_a = {
+		name = "Publish the accepted Japanese armistice"
+		command = { type = dissent value = -3 }
+		command = { type = setflag which = ind_aubm_great_power_armistice }
+		command = { type = setflag which = ind_aubm_armistice_japan }
+		command = { type = setflag which = ind_aubm_major_armistice_full }
+		command = { type = event which = 9282160 where = IND when = 1 }
+		command = { type = event which = 9282001 where = IND when = 3 }
+	}
+}
+
+event = {
+	id = 9282149
+	random = no
+	persistent = yes
+	country = IND
+	name = "America Accepts India's Separate Armistice"
+	desc = "The American war with India ends. The specified western Pacific positions are recorded without any transfer of the mainland or Hawaii."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	action_a = {
+		name = "Publish the accepted American armistice"
+		command = { type = dissent value = -3 }
+		command = { type = setflag which = ind_aubm_great_power_armistice }
+		command = { type = setflag which = ind_aubm_armistice_america }
+		command = { type = setflag which = ind_aubm_major_armistice_full }
+		command = { type = event which = 9282160 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9282150
+	random = no
+	persistent = yes
+	country = IND
+	name = "A Great Power Counters Delhi's Armistice"
+	desc = "The opponent accepts pairwise peace and access but withholds India's wider political terms. Every unrelated war continues."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Accept the limited peace and access settlement"
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_aubm_great_power_armistice_limited }
+		command = { type = setflag which = ind_aubm_major_armistice_limited }
+		command = { type = event which = 9282160 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9282151
+	random = no
+	persistent = yes
+	country = IND
+	name = "A Great Power Refuses Delhi's Armistice"
+	desc = "The opponent refuses pairwise peace. India's campaign remains active and its battlefield result remains on the ledger."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Record the refusal and continue operations"
+		command = { type = dissent value = 1 }
+		command = { type = setflag which = ind_aubm_armistice_refused }
+		command = { trigger = { flag = ind_aubm_major_armistice_target_eng } type = setflag which = ind_aubm_major_armistice_retry_eng }
+		command = { trigger = { flag = ind_aubm_major_armistice_target_ger } type = setflag which = ind_aubm_major_armistice_retry_ger }
+		command = { trigger = { flag = ind_aubm_major_armistice_target_jap } type = setflag which = ind_aubm_major_armistice_retry_jap }
+		command = { trigger = { flag = ind_aubm_major_armistice_target_usa } type = setflag which = ind_aubm_major_armistice_retry_usa }
+		command = { type = setflag which = ind_aubm_major_armistice_retry_pending }
+		command = { type = clrflag which = ind_aubm_major_armistice_target_eng }
+		command = { type = clrflag which = ind_aubm_major_armistice_target_ger }
+		command = { type = clrflag which = ind_aubm_major_armistice_target_jap }
+		command = { type = clrflag which = ind_aubm_major_armistice_target_usa }
+		command = { type = clrflag which = ind_aubm_major_armistice_outstanding }
+		command = { type = event which = 9282161 where = IND when = 90 }
+	}
+}
+
+#########################################################################
+# India-scoped great-power peace protocol
+#########################################################################
+
+event = {
+	id = 9282160
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	name = "Delhi Ratifies the Great-Power Armistice"
+	desc = "The foreign government has answered, but Delhi executes the peace. Darkest Hour requires India to leave a formal coalition when making a separate peace, so any surviving partnership becomes its named strategic compact first. Only the selected opponent's campaign is closed; every unrelated war and settlement remains live."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Ratify this armistice under the compact rule"
+		command = { trigger = { OR = { alliance = { country = IND country = ENG } alliance = { country = IND country = USA } } } type = setflag which = ind_v4a_treaty_cobelligerent }
+		command = { trigger = { OR = { alliance = { country = IND country = ENG } alliance = { country = IND country = USA } } } type = clrflag which = ind_v4a_treaty_formal_alliance }
+		command = { trigger = { alliance = { country = IND country = GER } } type = setflag which = ind_gc_cobelligerent }
+		command = { trigger = { alliance = { country = IND country = GER } } type = clrflag which = ind_gc_formal_axis }
+		command = { trigger = { alliance = { country = IND country = SOV } } type = setflag which = ind_v4_sov_equal_compact }
+		command = { trigger = { alliance = { country = IND country = SOV } } type = clrflag which = ind_v4_sov_supervised_compact }
+		command = { trigger = { alliance = { country = IND country = JAP } } type = setflag which = ind_aubm_jp_partnership }
+		command = { trigger = { alliance = { country = IND country = JAP } } type = setflag which = ind_aubm_jp_independent_cobelligerent }
+		command = { trigger = { alliance = { country = IND country = JAP } } type = clrflag which = ind_aubm_jp_formal_alliance }
+		command = { trigger = { flag = ind_aubm_major_armistice_target_eng war = { country = IND country = ENG } } type = peace which = ENG value = 1 }
+		command = { trigger = { flag = ind_aubm_major_armistice_target_ger war = { country = IND country = GER } } type = peace which = GER value = 1 }
+		command = { trigger = { flag = ind_aubm_major_armistice_target_jap war = { country = IND country = JAP } } type = peace which = JAP value = 1 }
+		command = { trigger = { flag = ind_aubm_major_armistice_target_usa war = { country = IND country = USA } } type = peace which = USA value = 1 }
+		command = { trigger = { flag = ind_aubm_major_armistice_target_eng } type = setflag which = ind_aubm_armistice_britain }
+		command = { trigger = { flag = ind_aubm_major_armistice_target_eng } type = clrflag which = ind_aubm_campaign_britain_active }
+		command = { trigger = { flag = ind_aubm_major_armistice_target_eng } type = clrflag which = ind_aubm_britain_limited_victory }
+		command = { trigger = { flag = ind_aubm_major_armistice_target_eng } type = clrflag which = ind_aubm_britain_major_victory }
+		command = { trigger = { flag = ind_aubm_major_armistice_target_eng } type = clrflag which = ind_aubm_britain_current }
+		command = { trigger = { flag = ind_aubm_major_armistice_target_eng } type = clrflag which = ind_aubm_britain_suspended }
+		command = { trigger = { flag = ind_aubm_major_armistice_target_ger } type = setflag which = ind_aubm_armistice_germany }
+		command = { trigger = { flag = ind_aubm_major_armistice_target_ger } type = clrflag which = ind_aubm_campaign_germany_active }
+		command = { trigger = { flag = ind_aubm_major_armistice_target_ger } type = clrflag which = ind_aubm_germany_limited_victory }
+		command = { trigger = { flag = ind_aubm_major_armistice_target_ger } type = clrflag which = ind_aubm_germany_major_victory }
+		command = { trigger = { flag = ind_aubm_major_armistice_target_ger } type = clrflag which = ind_aubm_germany_current }
+		command = { trigger = { flag = ind_aubm_major_armistice_target_ger } type = clrflag which = ind_aubm_germany_suspended }
+		command = { trigger = { flag = ind_aubm_major_armistice_target_jap } type = setflag which = ind_aubm_armistice_japan }
+		command = { trigger = { flag = ind_aubm_major_armistice_target_jap } type = clrflag which = ind_aubm_campaign_japan_active }
+		command = { trigger = { flag = ind_aubm_major_armistice_target_jap } type = clrflag which = ind_aubm_japan_limited_victory }
+		command = { trigger = { flag = ind_aubm_major_armistice_target_jap } type = clrflag which = ind_aubm_japan_major_victory }
+		command = { trigger = { flag = ind_aubm_major_armistice_target_jap } type = clrflag which = ind_aubm_japan_current }
+		command = { trigger = { flag = ind_aubm_major_armistice_target_jap } type = clrflag which = ind_aubm_japan_suspended }
+		command = { trigger = { flag = ind_aubm_major_armistice_target_jap } type = clrflag which = ind_aubm_japan_southern_armistice_inflight }
+		command = { trigger = { flag = ind_aubm_major_armistice_target_usa } type = setflag which = ind_aubm_armistice_america }
+		command = { trigger = { flag = ind_aubm_major_armistice_target_usa } type = clrflag which = ind_aubm_campaign_america_active }
+		command = { trigger = { flag = ind_aubm_major_armistice_target_usa } type = clrflag which = ind_aubm_america_limited_victory }
+		command = { trigger = { flag = ind_aubm_major_armistice_target_usa } type = clrflag which = ind_aubm_america_major_victory }
+		command = { trigger = { flag = ind_aubm_major_armistice_target_usa } type = clrflag which = ind_aubm_america_current }
+		command = { trigger = { flag = ind_aubm_major_armistice_target_usa } type = clrflag which = ind_aubm_america_suspended }
+		command = { type = clrflag which = ind_aubm_major_armistice_target_eng }
+		command = { type = clrflag which = ind_aubm_major_armistice_target_ger }
+		command = { type = clrflag which = ind_aubm_major_armistice_target_jap }
+		command = { type = clrflag which = ind_aubm_major_armistice_target_usa }
+		command = { type = clrflag which = ind_aubm_major_armistice_outstanding }
+		command = { type = clrflag which = ind_aubm_major_armistice_retry_pending }
+		command = { type = clrflag which = ind_aubm_major_armistice_terms_dispatching }
+		command = { type = clrflag which = ind_aubm_major_armistice_full }
+		command = { type = clrflag which = ind_aubm_major_armistice_limited }
+		command = { type = clrflag which = ind_v3_joined_allies }
+		command = { type = clrflag which = ind_v3_joined_axis }
+		command = { type = clrflag which = ind_v3_joined_comintern }
+		command = { type = clrflag which = ind_v3_joined_japan }
+	}
+}
+
+event = {
+	id = 9282161
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	name = "The Great-Power Armistice File Returns"
+	desc = "Only the opponent that refused Delhi's terms returns. The docket opens again only if the war and India's current battlefield leverage both survive."
+	style = 2
+	picture = "aubm_v4_war_aims"
+	action_a = {
+		name = "Review the recorded opponent"
+		command = { type = clrflag which = ind_aubm_major_armistice_retry_pending }
+		command = { trigger = { OR = { AND = { flag = ind_aubm_major_armistice_retry_eng flag = ind_aubm_britain_current war = { country = IND country = ENG } } AND = { flag = ind_aubm_major_armistice_retry_ger flag = ind_aubm_germany_current war = { country = IND country = GER } } AND = { flag = ind_aubm_major_armistice_retry_jap war = { country = IND country = JAP } OR = { flag = ind_aubm_japan_current AND = { flag = ind_aubm_sea_theatre_achieved OR = { flag = ind_aubm_sea_land_malaya_liberated_current flag = ind_aubm_sea_land_dei_liberated_current flag = ind_aubm_sea_land_indochina_liberated_current flag = ind_aubm_sea_land_philippines_liberated_current } } } } AND = { flag = ind_aubm_major_armistice_retry_usa flag = ind_aubm_america_current war = { country = IND country = USA } } } } type = setflag which = ind_aubm_major_armistice_terms_dispatching }
+		command = { trigger = { flag = ind_aubm_major_armistice_retry_eng flag = ind_aubm_britain_current war = { country = IND country = ENG } } type = event which = 9282181 where = IND when = 1 }
+		command = { trigger = { flag = ind_aubm_major_armistice_retry_ger flag = ind_aubm_germany_current war = { country = IND country = GER } } type = event which = 9282182 where = IND when = 1 }
+		command = { trigger = { flag = ind_aubm_major_armistice_retry_jap flag = ind_aubm_japan_southern_armistice_inflight OR = { flag = ind_aubm_japan_major_victory NOT = { AND = { war = { country = IND country = JAP } OR = { flag = ind_aubm_japan_current AND = { flag = ind_aubm_sea_theatre_achieved OR = { flag = ind_aubm_sea_land_malaya_liberated_current flag = ind_aubm_sea_land_dei_liberated_current flag = ind_aubm_sea_land_indochina_liberated_current flag = ind_aubm_sea_land_philippines_liberated_current } } } } } } } type = clrflag which = ind_aubm_japan_southern_armistice_inflight }
+		command = { trigger = { flag = ind_aubm_major_armistice_retry_jap NOT = { flag = ind_aubm_japan_major_victory } war = { country = IND country = JAP } OR = { flag = ind_aubm_japan_current AND = { flag = ind_aubm_sea_theatre_achieved OR = { flag = ind_aubm_sea_land_malaya_liberated_current flag = ind_aubm_sea_land_dei_liberated_current flag = ind_aubm_sea_land_indochina_liberated_current flag = ind_aubm_sea_land_philippines_liberated_current } } } } type = setflag which = ind_aubm_japan_southern_armistice_inflight }
+		command = { trigger = { flag = ind_aubm_major_armistice_retry_jap OR = { flag = ind_aubm_japan_current AND = { flag = ind_aubm_sea_theatre_achieved OR = { flag = ind_aubm_sea_land_malaya_liberated_current flag = ind_aubm_sea_land_dei_liberated_current flag = ind_aubm_sea_land_indochina_liberated_current flag = ind_aubm_sea_land_philippines_liberated_current } } } war = { country = IND country = JAP } } type = event which = 9282188 where = IND when = 1 }
+		command = { trigger = { flag = ind_aubm_major_armistice_retry_usa flag = ind_aubm_america_current war = { country = IND country = USA } } type = event which = 9282189 where = IND when = 1 }
+		command = { type = clrflag which = ind_aubm_major_armistice_retry_eng }
+		command = { type = clrflag which = ind_aubm_major_armistice_retry_ger }
+		command = { type = clrflag which = ind_aubm_major_armistice_retry_jap }
+		command = { type = clrflag which = ind_aubm_major_armistice_retry_usa }
+	}
+}
+
+#########################################################################
+# Mandatory post-annexation constitutional settlements
+#########################################################################
+
+event = {
+	id = 9282162
+	random = no
+	persistent = yes
+	country = IND
+	trigger = { flag = ind_aubm_wartime_framework NOT = { exists = ENG } owned = { province = 29 data = IND } NOT = { flag = ind_aubm_major_annex_resolved_eng } }
+	name = "Constitutional Settlement of Britain"
+	desc = "Britain no longer exists and India legally owns London. Annexation is not the end of the campaign: Delhi must restore a sovereign Britain, establish an Indian-protected government, or accept the political and annual burden of direct administration."
+	style = 2
+	picture = "aubm_v4_london_settlement"
+	date = { day = 0 month = january year = 1933 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = { name = "Restore sovereign Britain: -3 dissent" command = { type = independence which = ENG value = 1 when = 0 } command = { trigger = { exists = ENG } type = guarantee which = IND where = ENG } command = { type = dissent value = -3 } command = { type = setflag which = ind_aubm_major_annex_sovereign_eng } command = { type = setflag which = ind_aubm_major_annex_cleanup_eng } command = { type = event which = 9282169 where = IND when = 1 } }
+	action_b = { name = "Establish a British protectorate: +3 dissent" command = { type = independence which = ENG value = 1 when = 0 } command = { trigger = { exists = ENG } type = make_puppet which = ENG } command = { type = dissent value = 3 } command = { type = setflag which = ind_aubm_major_annex_protected_eng } command = { type = setflag which = ind_aubm_major_annex_cleanup_eng } command = { type = event which = 9282169 where = IND when = 1 } }
+	action_c = { name = "Retain direct administration: +7 dissent" command = { type = dissent value = 7 } command = { type = belligerence value = 4 } command = { type = setflag which = ind_aubm_occupation_upkeep } command = { type = event which = 9282093 where = IND when = 1 } command = { type = setflag which = ind_aubm_major_annex_direct_eng } command = { type = setflag which = ind_aubm_major_annex_cleanup_eng } command = { type = event which = 9282169 where = IND when = 1 } }
+}
+
+event = {
+	id = 9282163
+	random = no
+	persistent = yes
+	country = IND
+	trigger = { flag = ind_aubm_wartime_framework NOT = { exists = GER } owned = { province = 163 data = IND } NOT = { flag = ind_aubm_major_annex_resolved_ger } }
+	name = "Constitutional Settlement of Germany"
+	desc = "Germany no longer exists and India legally owns Berlin. Delhi must restore German sovereignty, construct a protected government, or retain direct administration with its political and annual occupation burden."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	date = { day = 0 month = january year = 1933 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = { name = "Restore sovereign Germany: -3 dissent" command = { type = independence which = GER value = 1 when = 0 } command = { trigger = { exists = GER } type = guarantee which = IND where = GER } command = { type = dissent value = -3 } command = { type = setflag which = ind_aubm_major_annex_sovereign_ger } command = { type = setflag which = ind_aubm_major_annex_cleanup_ger } command = { type = event which = 9282169 where = IND when = 1 } }
+	action_b = { name = "Establish a German protectorate: +3 dissent" command = { type = independence which = GER value = 1 when = 0 } command = { trigger = { exists = GER } type = make_puppet which = GER } command = { type = dissent value = 3 } command = { type = setflag which = ind_aubm_major_annex_protected_ger } command = { type = setflag which = ind_aubm_major_annex_cleanup_ger } command = { type = event which = 9282169 where = IND when = 1 } }
+	action_c = { name = "Retain direct administration: +7 dissent" command = { type = dissent value = 7 } command = { type = belligerence value = 4 } command = { type = setflag which = ind_aubm_occupation_upkeep } command = { type = event which = 9282093 where = IND when = 1 } command = { type = setflag which = ind_aubm_major_annex_direct_ger } command = { type = setflag which = ind_aubm_major_annex_cleanup_ger } command = { type = event which = 9282169 where = IND when = 1 } }
+}
+
+event = {
+	id = 9282164
+	random = no
+	persistent = yes
+	country = IND
+	trigger = { flag = ind_aubm_wartime_framework NOT = { exists = SOV } owned = { province = 572 data = IND } NOT = { flag = ind_aubm_major_annex_resolved_sov } }
+	name = "Constitutional Settlement of the Soviet Union"
+	desc = "The Soviet Union no longer exists and India legally owns Moscow. Delhi must restore a sovereign Soviet government, establish a protected federation, or retain direct administration across a vast and expensive occupation."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+	date = { day = 0 month = january year = 1933 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = { name = "Restore Soviet sovereignty: -3 dissent" command = { type = independence which = SOV value = 1 when = 0 } command = { trigger = { exists = SOV } type = guarantee which = IND where = SOV } command = { type = dissent value = -3 } command = { type = setflag which = ind_aubm_major_annex_sovereign_sov } command = { type = setflag which = ind_aubm_major_annex_cleanup_sov } command = { type = event which = 9282169 where = IND when = 1 } }
+	action_b = { name = "Establish a Soviet protectorate: +4 dissent" command = { type = independence which = SOV value = 1 when = 0 } command = { trigger = { exists = SOV } type = make_puppet which = SOV } command = { type = dissent value = 4 } command = { type = setflag which = ind_aubm_major_annex_protected_sov } command = { type = setflag which = ind_aubm_major_annex_cleanup_sov } command = { type = event which = 9282169 where = IND when = 1 } }
+	action_c = { name = "Retain direct administration: +9 dissent" command = { type = dissent value = 9 } command = { type = belligerence value = 5 } command = { type = setflag which = ind_aubm_occupation_upkeep } command = { type = event which = 9282093 where = IND when = 1 } command = { type = setflag which = ind_aubm_major_annex_direct_sov } command = { type = setflag which = ind_aubm_major_annex_cleanup_sov } command = { type = event which = 9282169 where = IND when = 1 } }
+}
+
+event = {
+	id = 9282165
+	random = no
+	persistent = yes
+	country = IND
+	trigger = { flag = ind_aubm_wartime_framework NOT = { exists = JAP } owned = { province = 1552 data = IND } NOT = { flag = ind_aubm_major_annex_resolved_jap } }
+	name = "Constitutional Settlement of Japan"
+	desc = "Japan no longer exists and India legally owns Tokyo. Delhi must restore Japanese sovereignty, establish a protected government, or retain direct administration with sustained resistance and occupation costs."
+	style = 2
+	picture = "aubm_v4_japan_southern_choice"
+	date = { day = 0 month = january year = 1933 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = { name = "Restore sovereign Japan: -3 dissent" command = { type = independence which = JAP value = 1 when = 0 } command = { trigger = { exists = JAP } type = guarantee which = IND where = JAP } command = { type = dissent value = -3 } command = { type = setflag which = ind_aubm_major_annex_sovereign_jap } command = { type = setflag which = ind_aubm_major_annex_cleanup_jap } command = { type = event which = 9282169 where = IND when = 1 } }
+	action_b = { name = "Establish a Japanese protectorate: +3 dissent" command = { type = independence which = JAP value = 1 when = 0 } command = { trigger = { exists = JAP } type = make_puppet which = JAP } command = { type = dissent value = 3 } command = { type = setflag which = ind_aubm_major_annex_protected_jap } command = { type = setflag which = ind_aubm_major_annex_cleanup_jap } command = { type = event which = 9282169 where = IND when = 1 } }
+	action_c = { name = "Retain direct administration: +7 dissent" command = { type = dissent value = 7 } command = { type = belligerence value = 4 } command = { type = setflag which = ind_aubm_occupation_upkeep } command = { type = event which = 9282093 where = IND when = 1 } command = { type = setflag which = ind_aubm_major_annex_direct_jap } command = { type = setflag which = ind_aubm_major_annex_cleanup_jap } command = { type = event which = 9282169 where = IND when = 1 } }
+}
+
+event = {
+	id = 9282166
+	random = no
+	persistent = yes
+	country = IND
+	trigger = { flag = ind_aubm_wartime_framework NOT = { exists = USA } owned = { province = 1809 data = IND } NOT = { flag = ind_aubm_major_annex_resolved_usa } }
+	name = "Constitutional Settlement of the United States"
+	desc = "The United States no longer exists and India legally owns Washington. Delhi must restore American sovereignty, create a protected government, or retain a continental occupation whose political and administrative cost will be severe."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	date = { day = 0 month = january year = 1933 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = { name = "Restore American sovereignty: -3 dissent" command = { type = independence which = USA value = 1 when = 0 } command = { trigger = { exists = USA } type = guarantee which = IND where = USA } command = { type = dissent value = -3 } command = { type = setflag which = ind_aubm_major_annex_sovereign_usa } command = { type = setflag which = ind_aubm_major_annex_cleanup_usa } command = { type = event which = 9282169 where = IND when = 1 } }
+	action_b = { name = "Establish an American protectorate: +4 dissent" command = { type = independence which = USA value = 1 when = 0 } command = { trigger = { exists = USA } type = make_puppet which = USA } command = { type = dissent value = 4 } command = { type = setflag which = ind_aubm_major_annex_protected_usa } command = { type = setflag which = ind_aubm_major_annex_cleanup_usa } command = { type = event which = 9282169 where = IND when = 1 } }
+	action_c = { name = "Retain direct administration: +9 dissent" command = { type = dissent value = 9 } command = { type = belligerence value = 5 } command = { type = setflag which = ind_aubm_occupation_upkeep } command = { type = event which = 9282093 where = IND when = 1 } command = { type = setflag which = ind_aubm_major_annex_direct_usa } command = { type = setflag which = ind_aubm_major_annex_cleanup_usa } command = { type = event which = 9282169 where = IND when = 1 } }
+}
+
+event = {
+	id = 9282169
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	name = "The Great-Power War Receives Its Settlement"
+	desc = "The annexed great power now has a declared constitutional status. India receives public victory credit and captured war stores, while the resolved opponent leaves the active campaign ledger."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Publish the constitutional settlement"
+		command = { trigger = { OR = { flag = ind_aubm_major_annex_cleanup_eng flag = ind_aubm_major_annex_cleanup_ger flag = ind_aubm_major_annex_cleanup_sov flag = ind_aubm_major_annex_cleanup_jap flag = ind_aubm_major_annex_cleanup_usa } } type = setflag which = ind_aubm_major_annex_reward_due }
+		command = { trigger = { flag = ind_aubm_major_annex_cleanup_eng } type = setflag which = ind_aubm_major_annex_resolved_eng }
+		command = { trigger = { flag = ind_aubm_major_annex_cleanup_eng } type = setflag which = ind_aubm_major_annex_victory_eng }
+		command = { trigger = { flag = ind_aubm_major_annex_cleanup_eng } type = clrflag which = ind_aubm_campaign_britain_active }
+		command = { trigger = { flag = ind_aubm_major_annex_cleanup_eng } type = setflag which = ind_aubm_britain_major_victory }
+		command = { trigger = { flag = ind_aubm_major_annex_cleanup_eng } type = clrflag which = ind_aubm_britain_current }
+		command = { trigger = { flag = ind_aubm_major_annex_cleanup_eng } type = clrflag which = ind_aubm_britain_suspended }
+		command = { trigger = { flag = ind_aubm_major_annex_cleanup_ger } type = setflag which = ind_aubm_major_annex_resolved_ger }
+		command = { trigger = { flag = ind_aubm_major_annex_cleanup_ger } type = setflag which = ind_aubm_major_annex_victory_ger }
+		command = { trigger = { flag = ind_aubm_major_annex_cleanup_ger } type = clrflag which = ind_aubm_campaign_germany_active }
+		command = { trigger = { flag = ind_aubm_major_annex_cleanup_ger } type = setflag which = ind_aubm_germany_major_victory }
+		command = { trigger = { flag = ind_aubm_major_annex_cleanup_ger } type = clrflag which = ind_aubm_germany_current }
+		command = { trigger = { flag = ind_aubm_major_annex_cleanup_ger } type = clrflag which = ind_aubm_germany_suspended }
+		command = { trigger = { flag = ind_aubm_major_annex_cleanup_sov } type = setflag which = ind_aubm_major_annex_resolved_sov }
+		command = { trigger = { flag = ind_aubm_major_annex_cleanup_sov } type = setflag which = ind_aubm_major_annex_victory_sov }
+		command = { trigger = { flag = ind_aubm_major_annex_cleanup_sov } type = clrflag which = ind_aubm_campaign_soviet_active }
+		command = { trigger = { flag = ind_aubm_major_annex_cleanup_sov } type = setflag which = ind_aubm_soviet_major_victory }
+		command = { trigger = { flag = ind_aubm_major_annex_cleanup_sov } type = clrflag which = ind_aubm_soviet_current }
+		command = { trigger = { flag = ind_aubm_major_annex_cleanup_sov } type = clrflag which = ind_aubm_soviet_suspended }
+		command = { trigger = { flag = ind_aubm_major_annex_cleanup_jap } type = setflag which = ind_aubm_major_annex_resolved_jap }
+		command = { trigger = { flag = ind_aubm_major_annex_cleanup_jap } type = setflag which = ind_aubm_major_annex_victory_jap }
+		command = { trigger = { flag = ind_aubm_major_annex_cleanup_jap } type = clrflag which = ind_aubm_campaign_japan_active }
+		command = { trigger = { flag = ind_aubm_major_annex_cleanup_jap } type = setflag which = ind_aubm_japan_major_victory }
+		command = { trigger = { flag = ind_aubm_major_annex_cleanup_jap } type = clrflag which = ind_aubm_japan_current }
+		command = { trigger = { flag = ind_aubm_major_annex_cleanup_jap } type = clrflag which = ind_aubm_japan_suspended }
+		command = { trigger = { flag = ind_aubm_major_annex_cleanup_usa } type = setflag which = ind_aubm_major_annex_resolved_usa }
+		command = { trigger = { flag = ind_aubm_major_annex_cleanup_usa } type = setflag which = ind_aubm_major_annex_victory_usa }
+		command = { trigger = { flag = ind_aubm_major_annex_cleanup_usa } type = clrflag which = ind_aubm_campaign_america_active }
+		command = { trigger = { flag = ind_aubm_major_annex_cleanup_usa } type = setflag which = ind_aubm_america_major_victory }
+		command = { trigger = { flag = ind_aubm_major_annex_cleanup_usa } type = clrflag which = ind_aubm_america_current }
+		command = { trigger = { flag = ind_aubm_major_annex_cleanup_usa } type = clrflag which = ind_aubm_america_suspended }
+		command = { type = clrflag which = ind_aubm_major_annex_cleanup_eng }
+		command = { type = clrflag which = ind_aubm_major_annex_cleanup_ger }
+		command = { type = clrflag which = ind_aubm_major_annex_cleanup_sov }
+		command = { type = clrflag which = ind_aubm_major_annex_cleanup_jap }
+		command = { type = clrflag which = ind_aubm_major_annex_cleanup_usa }
+		command = { type = clrflag which = ind_aubm_major_armistice_target_eng }
+		command = { type = clrflag which = ind_aubm_major_armistice_target_ger }
+		command = { type = clrflag which = ind_aubm_major_armistice_target_jap }
+		command = { type = clrflag which = ind_aubm_major_armistice_target_usa }
+		command = { type = clrflag which = ind_aubm_major_armistice_outstanding }
+		command = { trigger = { flag = ind_aubm_major_annex_reward_due } type = setflag which = ind_aubm_decisive_great_power }
+		command = { trigger = { flag = ind_aubm_major_annex_reward_due } type = money value = 300 }
+		command = { trigger = { flag = ind_aubm_major_annex_reward_due } type = supplies value = 500 }
+		command = { trigger = { flag = ind_aubm_major_annex_reward_due } type = event which = 9281913 where = IND when = 3 }
+		command = { type = clrflag which = ind_aubm_major_annex_reward_due }
+	}
+}
