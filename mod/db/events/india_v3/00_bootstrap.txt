@@ -9,7 +9,7 @@ event = {
 	country = IND
 	trigger = { flag = ind_aubm_fresh_1933_bootstrap }
 
-	name = "A Union Before Midnight"
+	name = "AUBM 28-GERCOMPACT1 - New Campaign"
 	desc = "At midnight on 1 January 1933, the Lahore Accord ends British rule. India becomes sovereign with Burma, Ceylon and the princely states inside a provisional Union. Delhi inherits a large but uneven military and begins independent of every great-power bloc. The sterling reserve and national service register give the first Cabinet room to act; equipment modernization still uses the normal upgrade budget. Initial ties with Britain, the United States and China improve."
 	style = 2
 	picture = "india_v3_independence"
