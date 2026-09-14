@@ -19,7 +19,7 @@ event = {
 
 	date = { day = 0 month = july year = 1946 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1946 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 45
@@ -94,7 +94,7 @@ event = {
 
 	date = { day = 0 month = march year = 1947 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1948 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 45
@@ -147,7 +147,7 @@ event = {
 
 	date = { day = 0 month = october year = 1948 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1949 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 60
@@ -156,7 +156,7 @@ event = {
 		command = { type = relation which = CHI value = 30 }
 		command = { type = relation which = TIB value = 35 }
 		command = { type = dissent value = -1 }
-		command = { type = construct which = infrastructure where = 1540 value = 10 trigger = { NOT = { building = { province = 1540 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1540 value = 10 trigger = { owned = { province = 1540 data = IND } NOT = { building = { province = 1540 type = infrastructure value = 0.91 } } } }
 		command = { type = setflag which = ind_v3_negotiated_himalayan_border }
 		command = { type = setflag which = ind_v3_himalayan_border_commission }
 	}
@@ -166,10 +166,10 @@ event = {
 		command = { type = money value = -650 }
 		command = { type = supplies value = -900 }
 		command = { type = relation which = CHI value = -20 }
-		command = { type = construct which = infrastructure where = 1439 value = 15 trigger = { NOT = { building = { province = 1439 type = infrastructure value = 0.86 } } } }
-		command = { type = construct which = infrastructure where = 1442 value = 15 trigger = { NOT = { building = { province = 1442 type = infrastructure value = 0.86 } } } }
-		command = { type = construct which = infrastructure where = 1540 value = 15 trigger = { NOT = { building = { province = 1540 type = infrastructure value = 0.86 } } } }
-		command = { type = construct which = land_fort where = 1540 value = 2 }
+		command = { type = construct which = infrastructure where = 1439 value = 15 trigger = { owned = { province = 1439 data = IND } NOT = { building = { province = 1439 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1442 value = 15 trigger = { owned = { province = 1442 data = IND } NOT = { building = { province = 1442 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1540 value = 15 trigger = { owned = { province = 1540 data = IND } NOT = { building = { province = 1540 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = land_fort where = 1540 value = 2 trigger = { owned = { province = 1540 data = IND } NOT = { building = { province = 1540 type = land_fort value = 9 } } } }
 		command = { type = setflag which = ind_v3_forward_himalayan_border }
 		command = { type = setflag which = ind_v3_himalayan_border_commission }
 	}
@@ -192,7 +192,7 @@ event = {
 
 	date = { day = 25 month = january year = 1950 }
 	offset = 5
-	deathdate = { day = 29 month = june year = 1950 }
+	deathdate = { day = 29 month = june year = 1964 }
 
 	action_a = {
 		ai_chance = 60
@@ -236,18 +236,18 @@ event = {
 
 	date = { day = 0 month = april year = 1951 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1951 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 40
 		name = "Build dams, power and continental transport"
 		command = { type = money value = -1400 }
 		command = { type = supplies value = -1300 }
-		command = { type = construct which = ic where = 1461 value = 3 }
-		command = { type = construct which = ic where = 1465 value = 3 }
-		command = { type = construct which = ic where = 1485 value = 3 }
-		command = { type = construct which = infrastructure where = 1461 value = 15 trigger = { NOT = { building = { province = 1461 type = infrastructure value = 0.86 } } } }
-		command = { type = construct which = infrastructure where = 1465 value = 15 trigger = { NOT = { building = { province = 1465 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = ic where = 1461 value = 3 trigger = { owned = { province = 1461 data = IND } } }
+		command = { type = construct which = ic where = 1465 value = 3 trigger = { owned = { province = 1465 data = IND } } }
+		command = { type = construct which = ic where = 1485 value = 3 trigger = { owned = { province = 1485 data = IND } } }
+		command = { type = construct which = infrastructure where = 1461 value = 15 trigger = { owned = { province = 1461 data = IND } NOT = { building = { province = 1461 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1465 value = 15 trigger = { owned = { province = 1465 data = IND } NOT = { building = { province = 1465 type = infrastructure value = 0.86 } } } }
 		command = { type = add_prov_resource which = 1476 value = 25 where = energy }
 		command = { type = setflag which = ind_v3_postwar_infrastructure_plan }
 		command = { type = setflag which = ind_v3_fourth_national_plan }
@@ -257,9 +257,9 @@ event = {
 		name = "Build jets, electronics and strategic industry"
 		command = { type = money value = -1500 }
 		command = { type = supplies value = -1500 }
-		command = { type = construct which = ic where = 1502 value = 4 }
-		command = { type = construct which = ic where = 1472 value = 3 }
-		command = { type = construct which = rocket_test where = 1502 value = 2 }
+		command = { type = construct which = ic where = 1502 value = 4 trigger = { owned = { province = 1502 data = IND } } }
+		command = { type = construct which = ic where = 1472 value = 3 trigger = { owned = { province = 1472 data = IND } } }
+		command = { type = construct which = rocket_test where = 1502 value = 2 trigger = { owned = { province = 1502 data = IND } NOT = { building = { province = 1502 type = rocket_test value = 9 } } } }
 		command = { type = research_mod value = 4 }
 		command = { type = setflag which = ind_v3_postwar_strategic_plan }
 		command = { type = setflag which = ind_v3_fourth_national_plan }
@@ -269,8 +269,8 @@ event = {
 		name = "Build a mixed consumer and export economy"
 		command = { type = money value = -900 }
 		command = { type = supplies value = -700 }
-		command = { type = construct which = ic where = 1447 value = 3 }
-		command = { type = construct which = ic where = 1517 value = 3 }
+		command = { type = construct which = ic where = 1447 value = 3 trigger = { owned = { province = 1447 data = IND } } }
+		command = { type = construct which = ic where = 1517 value = 3 trigger = { owned = { province = 1517 data = IND } } }
 		command = { type = industrial_modifier which = money value = 6 }
 		command = { type = dissent value = -3 }
 		command = { type = setflag which = ind_v3_postwar_mixed_plan }
@@ -295,7 +295,7 @@ event = {
 
 	date = { day = 0 month = february year = 1952 }
 	offset = 10
-	deathdate = { day = 29 month = june year = 1952 }
+	deathdate = { day = 29 month = june year = 1964 }
 
 	action_a = {
 		ai_chance = 45
@@ -346,22 +346,21 @@ event = {
 
 	date = { day = 0 month = march year = 1953 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1954 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 	trigger = {
-			# V3_QUEUE_MANPOWER = 4
-			manpower = 4
+			manpower = 1
 	}
 		ai_chance = 45
-		name = "Buy proven jets and modernize immediately"
+		name = "Buy one field-ready current-model jet wing"
 		command = { type = money value = -1400 }
 		command = { type = supplies value = -1000 }
+		command = { type = manpowerpool value = -1 }
 		command = { type = steal_tech which = ENG }
 		command = { type = steal_tech which = USA }
-		command = { type = activate_unit_type which = escort }
-		command = { type = new_model which = escort value = 0 }
-		command = { type = build_division which = multi_role value = escort when = 3 cost = -2.5 where = 90 }
+		command = { type = add_corps which = "No. 1 Jet Conversion Group" value = air where = 1459 }
+		command = { type = add_division which = "No. 1 Indian Jet Wing" value = multi_role when = -1 }
 		command = { type = setflag which = ind_v3_imported_jet_age }
 		command = { type = setflag which = ind_v3_jet_age }
 	}
@@ -371,7 +370,7 @@ event = {
 		command = { type = money value = -1600 }
 		command = { type = supplies value = -1300 }
 		command = { type = waketeam which = 250028 }
-		command = { type = construct which = rocket_test where = 1502 value = 3 }
+		command = { type = construct which = rocket_test where = 1502 value = 3 trigger = { owned = { province = 1502 data = IND } NOT = { building = { province = 1502 type = rocket_test value = 8 } } } }
 		command = { type = research_mod value = 5 }
 		command = { type = dissent value = 1 }
 		command = { type = setflag which = ind_v3_indigenous_jet_age }
@@ -396,7 +395,7 @@ event = {
 
 	date = { day = 0 month = april year = 1955 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1955 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 45
@@ -449,7 +448,7 @@ event = {
 
 	date = { day = 0 month = october year = 1956 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1957 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 50
@@ -502,15 +501,15 @@ event = {
 
 	date = { day = 0 month = march year = 1957 }
 	offset = 10
-	deathdate = { day = 29 month = july year = 1957 }
+	deathdate = { day = 29 month = july year = 1964 }
 
 	action_a = {
 		ai_chance = 35
 		name = "Accelerate heavy industry"
 		command = { type = money value = -1100 }
 		command = { type = supplies value = -1000 }
-		command = { type = construct which = ic where = 1472 value = 4 }
-		command = { type = construct which = ic where = 1477 value = 4 }
+		command = { type = construct which = ic where = 1472 value = 4 trigger = { owned = { province = 1472 data = IND } } }
+		command = { type = construct which = ic where = 1477 value = 4 trigger = { owned = { province = 1477 data = IND } } }
 		command = { type = add_prov_resource which = 1476 value = 20 where = energy }
 		command = { type = setflag which = ind_v3_1957_heavy_industry }
 		command = { type = setflag which = ind_v3_election_1957 }
@@ -522,8 +521,8 @@ event = {
 		command = { type = supplies value = -700 }
 		command = { type = manpowerpool value = 90 }
 		command = { type = dissent value = -4 }
-		command = { type = construct which = infrastructure where = 1461 value = 15 trigger = { NOT = { building = { province = 1461 type = infrastructure value = 0.86 } } } }
-		command = { type = construct which = infrastructure where = 1465 value = 15 trigger = { NOT = { building = { province = 1465 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1461 value = 15 trigger = { owned = { province = 1461 data = IND } NOT = { building = { province = 1461 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1465 value = 15 trigger = { owned = { province = 1465 data = IND } NOT = { building = { province = 1465 type = infrastructure value = 0.86 } } } }
 		command = { type = setflag which = ind_v3_green_revolution }
 		command = { type = setflag which = ind_v3_election_1957 }
 	}
@@ -537,7 +536,7 @@ event = {
 		command = { type = money value = -1200 }
 		command = { type = supplies value = -1400 }
 		command = { type = research_mod value = 4 }
-		command = { type = build_division which = light_carrier value = light_cag when = 1 cost = -3.0 where = 300 }
+		command = { type = build_division which = light_carrier value = light_cag when = 1 where = 270 name = "INS Shakti" }
 		command = { type = setflag which = ind_v3_1957_strategic_modernization }
 		command = { type = setflag which = ind_v3_election_1957 }
 	}
@@ -560,20 +559,20 @@ event = {
 
 	date = { day = 0 month = march year = 1959 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1960 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 	trigger = {
-			# V3_QUEUE_MANPOWER = 33
-			manpower = 33
+			# V3_QUEUE_MANPOWER = 17
+			manpower = 17
 	}
 		ai_chance = 45
 		name = "Offer asylum and reinforce the frontier"
 		command = { type = relation which = CHI value = -50 }
 		command = { type = manpowerpool value = 15 }
-		command = { type = construct which = land_fort where = 1439 value = 2 }
-		command = { type = construct which = land_fort where = 1540 value = 2 }
-		command = { type = build_division which = bergsjaeger value = engineer when = 2 cost = -1.8 where = 75 }
+		command = { type = construct which = land_fort where = 1439 value = 2 trigger = { owned = { province = 1439 data = IND } NOT = { building = { province = 1439 type = land_fort value = 9 } } } }
+		command = { type = construct which = land_fort where = 1540 value = 2 trigger = { owned = { province = 1540 data = IND } NOT = { building = { province = 1540 type = land_fort value = 9 } } } }
+		command = { type = build_division which = bergsjaeger value = engineer when = 1 where = 105 }
 		command = { type = setflag which = ind_v3_tibet_asylum }
 		command = { type = setflag which = ind_v3_tibet_crisis }
 	}
@@ -615,7 +614,7 @@ event = {
 
 	date = { day = 0 month = april year = 1960 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1960 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 70
@@ -655,7 +654,7 @@ event = {
 
 	date = { day = 0 month = january year = 1961 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1962 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 50
@@ -706,23 +705,22 @@ event = {
 
 	date = { day = 0 month = october year = 1962 }
 	offset = 7
-	deathdate = { day = 29 month = december year = 1963 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 	trigger = {
-			# V3_QUEUE_MANPOWER = 53
-			manpower = 53
+			# V3_QUEUE_MANPOWER = 18
+			manpower = 18
 	}
 		ai_chance = 55
 		name = "Reinforce, mobilize and negotiate from strength"
 		command = { type = money value = -700 }
 		command = { type = supplies value = -1800 }
 		command = { type = activate_unit_type which = escort }
-		command = { type = new_model which = escort value = 0 }
-		command = { type = build_division which = bergsjaeger value = engineer when = 3 cost = -1.8 where = 60 }
-		command = { type = build_division which = tactical_bomber value = escort when = 1 cost = -2.5 where = 75 }
-		command = { type = construct which = air_base where = 1439 value = 3 trigger = { NOT = { building = { province = 1439 type = air_base value = 8 } } } }
-		command = { type = construct which = land_fort where = 1540 value = 2 }
+		command = { type = build_division which = bergsjaeger value = engineer when = 1 where = 105 }
+		command = { type = build_division which = tactical_bomber value = escort when = 1 where = 105 }
+		command = { type = construct which = air_base where = 1439 value = 3 trigger = { owned = { province = 1439 data = IND } NOT = { building = { province = 1439 type = air_base value = 8 } } } }
+		command = { type = construct which = land_fort where = 1540 value = 2 trigger = { owned = { province = 1540 data = IND } NOT = { building = { province = 1540 type = land_fort value = 9 } } } }
 		command = { type = relation which = CHI value = -35 }
 		command = { type = setflag which = ind_v3_border_strength_policy }
 		command = { type = setflag which = ind_v3_border_crisis_1962 }
@@ -734,8 +732,8 @@ event = {
 		command = { type = dissent value = 3 }
 		command = { type = relation which = CHI value = -80 }
 		command = { type = belligerence value = 5 }
-		command = { type = construct which = land_fort where = 1439 value = 3 }
-		command = { type = construct which = land_fort where = 1540 value = 3 }
+		command = { type = construct which = land_fort where = 1439 value = 3 trigger = { owned = { province = 1439 data = IND } NOT = { building = { province = 1439 type = land_fort value = 8 } } } }
+		command = { type = construct which = land_fort where = 1540 value = 3 trigger = { owned = { province = 1540 data = IND } NOT = { building = { province = 1540 type = land_fort value = 8 } } } }
 		command = { type = setflag which = ind_v3_border_forward_policy }
 		command = { type = setflag which = ind_v3_border_crisis_1962 }
 	}
@@ -768,7 +766,7 @@ event = {
 
 	date = { day = 0 month = july year = 1963 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1963 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 60
@@ -778,7 +776,7 @@ event = {
 		command = { type = research_mod value = 5 }
 		command = { type = relation which = USA value = 15 }
 		command = { type = relation which = SOV value = 15 }
-		command = { type = construct which = rocket_test where = 1502 value = 2 }
+		command = { type = construct which = rocket_test where = 1502 value = 2 trigger = { owned = { province = 1502 data = IND } NOT = { building = { province = 1502 type = rocket_test value = 9 } } } }
 		command = { type = setflag which = ind_v3_civil_space_program }
 		command = { type = setflag which = ind_v3_space_program }
 	}
@@ -789,7 +787,7 @@ event = {
 		command = { type = supplies value = -1200 }
 		command = { type = research_mod value = 4 }
 		command = { type = domestic which = defense_lobby value = 1 }
-		command = { type = construct which = rocket_test where = 1502 value = 3 }
+		command = { type = construct which = rocket_test where = 1502 value = 3 trigger = { owned = { province = 1502 data = IND } NOT = { building = { province = 1502 type = rocket_test value = 8 } } } }
 		command = { type = dissent value = 2 }
 		command = { type = setflag which = ind_v3_strategic_space_program }
 		command = { type = setflag which = ind_v3_space_program }

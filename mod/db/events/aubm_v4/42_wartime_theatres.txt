@@ -1,0 +1,620 @@
+#########################################################################
+# A Union Before Midnight V4: live wartime theatres
+#########################################################################
+# These events do not care which speech or negotiation opened a war. The
+# current alliance defines partners, current wars define enemies, and the
+# map defines performance. Cumulative victories survive; current settlement
+# leverage can be lost and recovered.
+#########################################################################
+
+#########################################################################
+# Permanent campaign ledger
+#########################################################################
+
+event = {
+	id = 9281930
+	random = no
+	persistent = yes
+	country = IND
+	name = "Campaign Ledger: Southern Command"
+	desc = "Burma line: Rangoon, Imphal and Port Blair. Malayan hinge: Singapore and Kuala Lumpur. East Indies: Palembang, Batavia and Soerabaja. Australia is optional: Darwin, Canberra and Sydney. An anti-Japanese campaign culminates at Tokyo and Osaka. Recognition is automatic and free; a provisional settlement requires Malaya plus the East Indies, Australia or Japan."
+	style = 2
+	picture = "aubm_v4_japan_southern_choice"
+	action_a = {
+		name = "Review war finance and mobilisation"
+		command = { type = event which = 9282089 where = IND when = 1 }
+	}
+	action_b = {
+		trigger = { flag = ind_aubm_national_southern_current }
+		name = "Open the Southern settlement docket"
+		command = { type = event which = 9282001 where = IND when = 1 }
+	}
+	action_c = {
+		name = "Inspect India's current coalition"
+		command = { type = event which = 9281980 where = IND when = 1 }
+	}
+	action_d = {
+		name = "Return to the campaign ledger"
+		command = { type = event which = 9281913 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9281931
+	random = no
+	persistent = yes
+	country = IND
+	name = "Campaign Ledger: Western Command"
+	desc = "Persian gate: Zahedan and Teheran. Gulf hinge: Basrah, Baghdad and Kuwait. Red Sea hinge: Aden and Suez. Egyptian command: Cairo and Alexandria. East African coast: Mogadishu, Mombasa and Dar es Salaam. Durban or Cape Town extends the system to the Cape. Two connected arcs create a provisional western victory."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	action_a = { name = "Keep these objectives on the operations map" }
+	action_b = {
+		trigger = { flag = ind_aubm_national_western_victory }
+		name = "Open the Western settlement docket"
+		command = { type = event which = 9282002 where = IND when = 1 }
+	}
+	action_c = {
+		name = "Inspect India's current coalition"
+		command = { type = event which = 9281980 where = IND when = 1 }
+	}
+	action_d = {
+		name = "Return to the campaign ledger"
+		command = { type = event which = 9281913 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9281932
+	random = no
+	persistent = yes
+	country = IND
+	name = "Campaign Ledger: Northern Command"
+	desc = "Mountain gates: Kabul and Herat; Lhasa; Urumqi. Central Asia: Samarkand and Tashkent. Caucasus: Baku and Astrakhan. Moscow is the culminating Soviet objective. Northern victory requires two connected strategic centres, not a diplomatic preparation flag. Tokyo remains outside an Indian-Soviet war unless alliance mechanics or a later Japanese decision bring it in."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+	action_a = { name = "Keep these objectives on the operations map" }
+	action_b = {
+		trigger = { flag = ind_aubm_national_northern_victory }
+		name = "Open the Northern settlement docket"
+		command = { type = event which = 9282003 where = IND when = 1 }
+	}
+	action_c = {
+		name = "Inspect India's current coalition"
+		command = { type = event which = 9281980 where = IND when = 1 }
+	}
+	action_d = {
+		name = "Return to the campaign ledger"
+		command = { type = event which = 9281913 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9281933
+	random = no
+	persistent = yes
+	country = IND
+	name = "Campaign Ledger: Global Command"
+	desc = "European enemy capitals are Berlin, Rome, Paris and London. Pacific great-power objectives are Tokyo, Pearl Harbor and Washington. Occupying one enemy capital earns a continental or oceanic claim; holding two national theatre victories establishes India as a decisive great power. Capital occupation never grants territory automatically: the legal owner and the chosen peace doctrine still govern settlement."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+	action_a = {
+		name = "Open the great-power armistice board"
+		command = { type = event which = 9282180 where = IND when = 1 }
+	}
+	action_b = {
+		trigger = { flag = ind_aubm_decisive_great_power }
+		name = "Review India's great-power standing"
+		command = { type = event which = 9281982 where = IND when = 1 }
+	}
+	action_c = {
+		name = "Inspect India's current coalition"
+		command = { type = event which = 9281980 where = IND when = 1 }
+	}
+	action_d = {
+		name = "Return to the War Cabinet"
+		command = { type = event which = 9281001 where = IND when = 1 }
+	}
+}
+
+#########################################################################
+# National theatre recognition. Route modules may provide additional
+# coalition reactions; these events recognize India's map result itself.
+#########################################################################
+
+event = {
+	id = 9281940
+	random = no
+	country = IND
+	trigger = {
+		flag = ind_aubm_wartime_framework
+		atwar = yes
+		NOT = { flag = ind_aubm_route_japan }
+		NOT = { flag = ind_aubm_national_southern_victory }
+		OR = {
+			AND = { control = { province = 1432 data = IND } control = { province = 1438 data = IND } }
+			AND = { flag = ind_aubm_south_malaya_secured exists = MLY control = { province = 1432 data = MLY } control = { province = 1438 data = MLY } }
+		}
+		OR = {
+			AND = {
+				OR = {
+					AND = { control = { province = 1636 data = IND } control = { province = 1647 data = IND } control = { province = 1653 data = IND } }
+					AND = { flag = ind_aubm_south_dei_secured exists = INO control = { province = 1636 data = INO } control = { province = 1647 data = INO } control = { province = 1653 data = INO } }
+				}
+			}
+			AND = { control = { province = 1697 data = IND } control = { province = 1707 data = IND } control = { province = 1705 data = IND } }
+			AND = { war = { country = IND country = JAP } control = { province = 1552 data = IND } control = { province = 1553 data = IND } }
+		}
+	}
+	name = "Southern Command Has Changed the War"
+	desc = "India holds Singapore and Kuala Lumpur together with a decisive wider objective in the East Indies, Australia or Japan. The campaign is now a political fact. Delhi can establish provisional administrations immediately and negotiate a local armistice without waiting for every global war to end. Losing the Straits or the wider objective will suspend that leverage until recovered."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	date = { day = 0 month = january year = 1933 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Recognize victory; open provisional settlement"
+		command = { type = setflag which = ind_aubm_national_southern_victory }
+		command = { type = setflag which = ind_aubm_national_southern_current }
+		command = { type = dissent value = -1 }
+		command = { type = money value = 150 }
+	}
+}
+
+event = {
+	id = 9281941
+	random = no
+	country = IND
+	trigger = {
+		flag = ind_aubm_wartime_framework
+		atwar = yes
+		NOT = { flag = ind_aubm_national_western_victory }
+		OR = {
+			AND = { control = { province = 900 data = IND } OR = { control = { province = 1053 data = IND } control = { province = 1034 data = IND } control = { province = 1085 data = IND } } }
+			AND = { control = { province = 900 data = IND } OR = { control = { province = 836 data = IND } control = { province = 842 data = IND } control = { province = 850 data = IND } } }
+			AND = { OR = { control = { province = 1053 data = IND } control = { province = 1034 data = IND } control = { province = 1085 data = IND } } OR = { control = { province = 836 data = IND } control = { province = 842 data = IND } control = { province = 850 data = IND } } }
+		}
+	}
+	name = "Western Command Links Two Strategic Arcs"
+	desc = "Indian command now connects two of the Persian-Gulf, Suez-Red Sea and East African systems. This is more than occupation of a single port: India can sustain a theatre, negotiate local governments and force every coalition to account for Delhi's position. A provisional western conference is available while the connecting objectives remain held."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	date = { day = 0 month = january year = 1933 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Recognize victory; open provisional settlement"
+		command = { type = setflag which = ind_aubm_national_western_victory }
+		command = { type = setflag which = ind_aubm_national_western_current }
+		command = { type = dissent value = -1 }
+		command = { type = money value = 150 }
+	}
+}
+
+event = {
+	id = 9281942
+	random = no
+	country = IND
+	trigger = {
+		flag = ind_aubm_wartime_framework
+		war = { country = IND country = SOV }
+		NOT = { flag = ind_aubm_national_northern_victory }
+		OR = {
+			AND = { control = { province = 713 data = IND } control = { province = 1103 data = IND } }
+			AND = { control = { province = 713 data = IND } control = { province = 706 data = IND } }
+			AND = { control = { province = 713 data = IND } control = { province = 572 data = IND } }
+			AND = { control = { province = 1103 data = IND } control = { province = 706 data = IND } }
+			AND = { control = { province = 1103 data = IND } control = { province = 572 data = IND } }
+			AND = { control = { province = 706 data = IND } control = { province = 572 data = IND } }
+		}
+	}
+	name = "Northern Command Becomes a Continental Power"
+	desc = "Indian forces hold two connected strategic centres among Baku, Tashkent, Astrakhan and Moscow. Delhi has earned a continental settlement claim independently of German, Soviet or Japanese propaganda. Local administrations can begin now; final sovereignty remains a separate political choice."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+	date = { day = 0 month = january year = 1933 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Recognize victory; open provisional settlement"
+		command = { type = setflag which = ind_aubm_national_northern_victory }
+		command = { type = setflag which = ind_aubm_national_northern_current }
+		command = { trigger = { control = { province = 713 data = IND } } type = setflag which = ind_aubm_north_baku_held }
+		command = { trigger = { control = { province = 1103 data = IND } } type = setflag which = ind_aubm_north_tashkent_held }
+		command = { trigger = { control = { province = 706 data = IND } } type = setflag which = ind_aubm_north_astrakhan_held }
+		command = { trigger = { control = { province = 572 data = IND } } type = setflag which = ind_aubm_north_moscow_held }
+		command = { type = dissent value = -1 }
+		command = { type = money value = 150 }
+	}
+}
+
+event = {
+	id = 9281943
+	random = no
+	country = IND
+	trigger = {
+		flag = ind_aubm_wartime_framework
+		NOT = { flag = ind_aubm_european_capital_victory }
+		OR = {
+			AND = { war = { country = IND country = GER } control = { province = 163 data = IND } }
+			AND = { war = { country = IND country = ITA } control = { province = 419 data = IND } }
+			AND = { war = { country = IND country = FRA } control = { province = 55 data = IND } }
+			AND = { war = { country = IND country = ENG } control = { province = 29 data = IND } }
+		}
+	}
+	name = "An Enemy Capital Falls to Indian Command"
+	desc = "Indian forces have occupied the capital of a European enemy. This is a global contribution, not an automatic annexation. Delhi gains a principal seat in that enemy's settlement and a stronger claim that its regional victories be recognized by every coalition partner."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	date = { day = 0 month = january year = 1933 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Record India's European strategic victory"
+		command = { type = setflag which = ind_aubm_european_capital_victory }
+		command = { type = dissent value = -2 }
+		command = { type = money value = 200 }
+	}
+}
+
+event = {
+	id = 9281944
+	random = no
+	country = IND
+	trigger = {
+		flag = ind_aubm_wartime_framework
+		NOT = { flag = ind_aubm_pacific_capital_victory }
+		OR = {
+			AND = { war = { country = IND country = JAP } control = { province = 1552 data = IND } control = { province = 1553 data = IND } }
+			AND = { war = { country = IND country = USA } control = { province = 1734 data = IND } OR = { control = { province = 1809 data = IND } control = { province = 1887 data = IND } control = { province = 1889 data = IND } } }
+		}
+	}
+	name = "India Breaks a Pacific Great Power's Inner Perimeter"
+	desc = "Indian forces have secured the Japanese home command or combined Pearl Harbor with a major American mainland objective. The achievement establishes an Indian voice in the Pacific settlement. It does not erase the agreed Japanese sphere or create territorial rights beyond places India actually controls."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	date = { day = 0 month = january year = 1933 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Record India's Pacific strategic victory"
+		command = { type = setflag which = ind_aubm_pacific_capital_victory }
+		command = { type = dissent value = -2 }
+		command = { type = money value = 200 }
+	}
+}
+
+#########################################################################
+# Reversals and recoveries. Victory history remains, but current leverage
+# is suspended when the geographic system breaks.
+#########################################################################
+
+event = {
+	id = 9281950
+	random = no
+	persistent = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_national_southern_current
+		NOT = {
+			AND = {
+				OR = {
+					AND = { control = { province = 1432 data = IND } control = { province = 1438 data = IND } }
+					AND = { flag = ind_aubm_south_malaya_secured exists = MLY control = { province = 1432 data = MLY } control = { province = 1438 data = MLY } }
+				}
+				OR = {
+					AND = {
+						OR = {
+							AND = { control = { province = 1636 data = IND } control = { province = 1647 data = IND } control = { province = 1653 data = IND } }
+							AND = { flag = ind_aubm_south_dei_secured exists = INO control = { province = 1636 data = INO } control = { province = 1647 data = INO } control = { province = 1653 data = INO } }
+						}
+					}
+					AND = { control = { province = 1697 data = IND } control = { province = 1707 data = IND } control = { province = 1705 data = IND } }
+					AND = { war = { country = IND country = JAP } control = { province = 1552 data = IND } control = { province = 1553 data = IND } }
+				}
+			}
+		}
+	}
+	name = "Southern Command's Settlement Leverage Breaks"
+	desc = "The Straits or the wider southern objective has been lost. India's cumulative contribution remains on record, but no government will implement a provisional ocean settlement while the operational hinge is insecure. Retake Singapore, Kuala Lumpur and the lost wider objective to restore the conference."
+	style = 2
+	picture = "aubm_v4_japan_southern_choice"
+	date = { day = 0 month = january year = 1933 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Suspend the settlement; prepare the counterstroke"
+		command = { type = clrflag which = ind_aubm_national_southern_current }
+		command = { type = setflag which = ind_aubm_national_southern_suspended }
+		command = { type = clrflag which = ind_aubm_south_malaya_held }
+		command = { type = clrflag which = ind_aubm_south_dei_held }
+		command = { type = clrflag which = ind_aubm_south_australia_held }
+		command = { type = clrflag which = ind_aubm_south_japan_held }
+		command = { type = dissent value = 2 }
+	}
+}
+
+event = {
+	id = 9281951
+	random = no
+	persistent = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_national_southern_suspended
+		OR = {
+			AND = { control = { province = 1432 data = IND } control = { province = 1438 data = IND } }
+			AND = { flag = ind_aubm_south_malaya_secured exists = MLY control = { province = 1432 data = MLY } control = { province = 1438 data = MLY } }
+		}
+		OR = {
+			AND = {
+				OR = {
+					AND = { control = { province = 1636 data = IND } control = { province = 1647 data = IND } control = { province = 1653 data = IND } }
+					AND = { flag = ind_aubm_south_dei_secured exists = INO control = { province = 1636 data = INO } control = { province = 1647 data = INO } control = { province = 1653 data = INO } }
+				}
+			}
+			AND = { control = { province = 1697 data = IND } control = { province = 1707 data = IND } control = { province = 1705 data = IND } }
+			AND = { war = { country = IND country = JAP } control = { province = 1552 data = IND } control = { province = 1553 data = IND } }
+		}
+	}
+	name = "Southern Command Restores the Operational Map"
+	desc = "Indian forces have recovered the Straits and a decisive wider objective. The provisional conference can resume. The reversal remains part of the campaign story, but it no longer blocks settlement or great-power standing."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	date = { day = 0 month = january year = 1933 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Reopen the Southern settlement"
+		command = { type = clrflag which = ind_aubm_national_southern_suspended }
+		command = { type = setflag which = ind_aubm_national_southern_current }
+		command = { type = clrflag which = ind_aubm_south_malaya_held }
+		command = { type = clrflag which = ind_aubm_south_dei_held }
+		command = { type = clrflag which = ind_aubm_south_australia_held }
+		command = { type = clrflag which = ind_aubm_south_japan_held }
+		command = { type = dissent value = -1 }
+	}
+}
+
+event = {
+	id = 9281952
+	random = no
+	persistent = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_national_western_current
+		NOT = {
+			OR = {
+				AND = { control = { province = 900 data = IND } OR = { control = { province = 1053 data = IND } control = { province = 1034 data = IND } control = { province = 1085 data = IND } } }
+				AND = { control = { province = 900 data = IND } OR = { control = { province = 836 data = IND } control = { province = 842 data = IND } control = { province = 850 data = IND } } }
+				AND = { OR = { control = { province = 1053 data = IND } control = { province = 1034 data = IND } control = { province = 1085 data = IND } } OR = { control = { province = 836 data = IND } control = { province = 842 data = IND } control = { province = 850 data = IND } } }
+			}
+		}
+	}
+	name = "The Western Corridor Is Cut"
+	desc = "India no longer links two live western arcs. India retains credit for creating the theatre, but provisional terms are suspended until two among Suez, the Aden-Gulf-Persian system and East Africa are secure again."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	date = { day = 0 month = january year = 1933 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Suspend the Western settlement"
+		command = { type = clrflag which = ind_aubm_national_western_current }
+		command = { type = setflag which = ind_aubm_national_western_suspended }
+		command = { type = clrflag which = ind_aubm_west_persia_held }
+		command = { type = clrflag which = ind_aubm_west_gulf_held }
+		command = { type = clrflag which = ind_aubm_west_suez_held }
+		command = { type = clrflag which = ind_aubm_west_africa_held }
+		command = { type = dissent value = 1 }
+	}
+}
+
+event = {
+	id = 9281953
+	random = no
+	persistent = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_national_western_suspended
+		OR = {
+			AND = { control = { province = 900 data = IND } OR = { control = { province = 1053 data = IND } control = { province = 1034 data = IND } control = { province = 1085 data = IND } } }
+			AND = { control = { province = 900 data = IND } OR = { control = { province = 836 data = IND } control = { province = 842 data = IND } control = { province = 850 data = IND } } }
+			AND = { OR = { control = { province = 1053 data = IND } control = { province = 1034 data = IND } control = { province = 1085 data = IND } } OR = { control = { province = 836 data = IND } control = { province = 842 data = IND } control = { province = 850 data = IND } } }
+		}
+	}
+	name = "Western Command Reopens the Corridor"
+	desc = "Indian control once again links two western strategic arcs. Provisional diplomacy resumes and the temporary loss no longer suppresses local settlement decisions."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	date = { day = 0 month = january year = 1933 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Reopen the Western settlement"
+		command = { type = clrflag which = ind_aubm_national_western_suspended }
+		command = { type = setflag which = ind_aubm_national_western_current }
+		command = { type = clrflag which = ind_aubm_west_persia_held }
+		command = { type = clrflag which = ind_aubm_west_gulf_held }
+		command = { type = clrflag which = ind_aubm_west_suez_held }
+		command = { type = clrflag which = ind_aubm_west_africa_held }
+		command = { type = dissent value = -1 }
+	}
+}
+
+event = {
+	id = 9281954
+	random = no
+	persistent = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_national_northern_current
+		NOT = {
+			OR = {
+				AND = { control = { province = 713 data = IND } control = { province = 1103 data = IND } }
+				AND = { control = { province = 713 data = IND } control = { province = 706 data = IND } }
+				AND = { control = { province = 713 data = IND } control = { province = 572 data = IND } }
+				AND = { control = { province = 1103 data = IND } control = { province = 706 data = IND } }
+				AND = { control = { province = 1103 data = IND } control = { province = 572 data = IND } }
+				AND = { control = { province = 706 data = IND } control = { province = 572 data = IND } }
+			}
+		}
+	}
+	name = "Northern Command Falls Back to One Strategic Centre"
+	desc = "India no longer holds two connected continental objectives. The victory remains in the national record, but the northern settlement is suspended until a second centre is recovered. This prevents an old Baku or Tashkent flag from granting permanent leverage after the front collapses."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+	date = { day = 0 month = january year = 1933 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Suspend the Northern settlement"
+		command = { type = clrflag which = ind_aubm_national_northern_current }
+		command = { type = setflag which = ind_aubm_national_northern_suspended }
+		command = { type = dissent value = 2 }
+	}
+}
+
+event = {
+	id = 9281955
+	random = no
+	persistent = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_national_northern_suspended
+		OR = {
+			AND = { control = { province = 713 data = IND } control = { province = 1103 data = IND } }
+			AND = { control = { province = 713 data = IND } control = { province = 706 data = IND } }
+			AND = { control = { province = 713 data = IND } control = { province = 572 data = IND } }
+			AND = { control = { province = 1103 data = IND } control = { province = 706 data = IND } }
+			AND = { control = { province = 1103 data = IND } control = { province = 572 data = IND } }
+			AND = { control = { province = 706 data = IND } control = { province = 572 data = IND } }
+		}
+	}
+	name = "Northern Command Recovers the Continental Line"
+	desc = "Two strategic centres again answer to Indian command. The northern settlement reopens and India's continental contribution is once more backed by a live operational position."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+	date = { day = 0 month = january year = 1933 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Reopen the Northern settlement"
+		command = { type = clrflag which = ind_aubm_national_northern_suspended }
+		command = { type = setflag which = ind_aubm_national_northern_current }
+		command = { type = dissent value = -1 }
+	}
+}
+
+#########################################################################
+# Coalition status pages and final national recognition
+#########################################################################
+
+event = {
+	id = 9281980
+	random = no
+	persistent = yes
+	country = IND
+	name = "India's Current War System"
+	desc = "The displayed route follows the alliance or bilateral compact that exists now. It does not erase independent enemies, completed campaigns or local settlement rights. The War Cabinet can change coalition or open a separate war at any time."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+	action_a = {
+		trigger = { flag = ind_aubm_route_allied }
+		name = "Allied coalition: shared wars, Indian campaign ledger"
+	}
+	action_b = {
+		trigger = { flag = ind_aubm_route_german }
+		name = "German coalition: shared or coordinated wars"
+	}
+	action_c = {
+		trigger = { flag = ind_aubm_route_soviet }
+		name = "Soviet coalition: shared wars, separate Indian claims"
+	}
+	action_d = {
+		name = "Tokyo, sovereign command or change coalition"
+		command = { type = event which = 9281981 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9281981
+	random = no
+	persistent = yes
+	country = IND
+	name = "India's Asian or Sovereign War System"
+	desc = "A formal Japanese alliance merges every war. A Delhi-Tokyo strategic compact preserves separate declarations while recognizing the Indian southern sphere. Sovereign command has no automatic partner and can combine any campaigns chosen by the War Cabinet."
+	style = 2
+	picture = "aubm_v4_tokyo_proposition"
+	action_a = {
+		trigger = { flag = ind_aubm_route_japan alliance = { country = IND country = JAP } }
+		name = "Tokyo alliance: every war is shared"
+	}
+	action_b = {
+		trigger = { flag = ind_aubm_route_japan NOT = { alliance = { country = IND country = JAP } } }
+		name = "Tokyo compact: wars remain separate"
+	}
+	action_c = {
+		trigger = { flag = ind_aubm_route_sovereign }
+		name = "Sovereign command: India chooses every enemy"
+	}
+	action_d = {
+		name = "Open the coalition docket"
+		command = { type = event which = 9281910 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9281982
+	random = no
+	persistent = yes
+	country = IND
+	name = "India Is a Decisive Great Power"
+	desc = "India has carried at least two national theatres or combined a theatre victory with occupation of a great-power capital. Delhi's standing is now earned by battlefield control, logistics and recoverable fronts. The reward is political: every provisional and final conference recognizes the decisive tier, while direct annexation still carries resistance and occupation costs."
+	style = 2
+	picture = "aubm_v4_war_aims"
+	action_a = { name = "The world must negotiate with Delhi" }
+	action_b = {
+		name = "Review all active theatres"
+		command = { type = event which = 9281913 where = IND when = 1 }
+	}
+	action_c = {
+		name = "Review provisional settlements"
+		command = { type = event which = 9282004 where = IND when = 1 }
+	}
+	action_d = {
+		name = "Return to the War Cabinet"
+		command = { type = event which = 9281001 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9281983
+	random = no
+	country = IND
+	trigger = {
+		flag = ind_aubm_wartime_framework
+		NOT = { flag = ind_aubm_decisive_great_power }
+		OR = {
+			AND = { flag = ind_aubm_national_southern_victory flag = ind_aubm_national_western_victory }
+			AND = { flag = ind_aubm_national_southern_victory flag = ind_aubm_national_northern_victory }
+			AND = { flag = ind_aubm_national_western_victory flag = ind_aubm_national_northern_victory }
+			AND = { flag = ind_aubm_european_capital_victory OR = { flag = ind_aubm_national_southern_victory flag = ind_aubm_national_western_victory flag = ind_aubm_national_northern_victory } }
+			AND = { flag = ind_aubm_pacific_capital_victory OR = { flag = ind_aubm_national_southern_victory flag = ind_aubm_national_western_victory flag = ind_aubm_national_northern_victory } }
+		}
+	}
+	name = "Two Theatres Put India at the Centre of the War"
+	desc = "Indian command has achieved decisive results in two theatres, or paired a theatre victory with the fall of an enemy great-power capital. This is the moment the campaign should feel different: coalition partners must answer Indian proposals, local occupations gain provisional governments, and final peace can no longer treat India as an auxiliary."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+	date = { day = 0 month = january year = 1933 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Claim decisive great-power standing"
+		command = { type = setflag which = ind_aubm_decisive_great_power }
+		command = { type = setflag which = ind_v4_strategic_weight_3 }
+		command = { type = dissent value = -2 }
+		command = { type = money value = 250 }
+	}
+}

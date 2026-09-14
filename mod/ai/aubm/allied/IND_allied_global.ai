@@ -1,0 +1,107 @@
+# AUBM V4 three-theatre Allied global switch.
+# Partial AI profile: production and research remain defined by IND.ai.
+
+neutrality = 5
+war = 95
+max_front_ratio = 1.40
+exp_force_ratio = 0.05
+
+combat = {
+	JAP = 110
+	ITA = 85
+	GER = 65
+	SIA = 40
+}
+
+max_front_ratios = {
+	JAP = 2.5
+	ITA = 2.0
+	GER = 1.6
+	SIA = 1.6
+}
+
+target = {
+	1415 = 100
+	1421 = 130
+	1432 = 190
+	1438 = 140
+	1053 = 150
+	1032 = 130
+	1041 = 100
+	900  = 150
+	833  = 70
+	836  = 90
+	841  = 80
+	842  = 110
+	850  = 90
+	852  = 80
+	1624 = 90
+	1632 = 110
+	1636 = 120
+	1642 = 90
+	1647 = 140
+	1653 = 135
+	1657 = 90
+}
+
+front = {
+	recklessness = 1
+	distrib_vs_ai = offensive
+	distrib_vs_human = offensive
+	base_attack_odds = 1.25
+	min_attack_odds = 1.00
+	max_attack_odds = 3.20
+}
+
+invasion = {
+	invasion = yes
+	base = 0.30
+	random = 4.0
+	coastal = 0.3
+	beach = 0.3
+	distance = 7.5
+	max_distance = 200.0
+	max_staging_distance = 40
+	pocket = 15.0
+	island = 2.5
+	enemy = 2.0
+	adjacentenemy = 2.0
+	air_base = 1.5
+	naval_base = 0.2
+	air_support = 3.0
+	redirect = priority
+	ignore = no
+	help_allies = yes
+	staging_province = { 1415 1421 1511 1533 1517 1432 }
+	target = {
+		1432 = 3600
+		1438 = 2800
+		1053 = 3000
+		1032 = 2600
+		900 = 3000
+		833 = 1500
+		836 = 1900
+		842 = 2200
+		850 = 1800
+		1632 = 2300
+		1636 = 2500
+		1647 = 2800
+		1653 = 2700
+		1657 = 1900
+	}
+}
+
+air_marshal = {
+	airsuperioritydesirability = 42.0
+	groundattackdesirability = 32.0
+	interdictiondesirability = 36.0
+	navalstrikedesirability = 42.0
+	portstrikedesirability = 28.0
+	convoyraiddesirability = 18.0
+}
+
+admiral = {
+	min_core_attack_fleets = 3
+	num_attack_fleets = 6
+	base = { 1421 1511 1533 1517 1493 1497 1432 }
+}

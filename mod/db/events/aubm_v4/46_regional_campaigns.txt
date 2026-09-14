@@ -1,0 +1,1997 @@
+#########################################################################
+# A Union Before Midnight V4: regional campaigns and immediate settlements
+# Reserved event IDs: 9282200-9282299
+#########################################################################
+
+event = {
+	id = 9282200
+	random = no
+	persistent = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_wartime_framework
+		OR = {
+			AND = { NOT = { flag = ind_aubm_regional_settled_per } NOT = { flag = ind_aubm_regional_victory_per } control = { province = 1085 data = IND } OR = { AND = { exists = PER owned = { province = 1085 data = PER } war = { country = IND country = PER } } AND = { NOT = { exists = PER } owned = { province = 1085 data = IND } } } }
+			AND = { NOT = { flag = ind_aubm_regional_settled_irq } NOT = { flag = ind_aubm_regional_victory_irq } control = { province = 1034 data = IND } OR = { AND = { exists = IRQ owned = { province = 1034 data = IRQ } war = { country = IND country = IRQ } } AND = { NOT = { exists = IRQ } owned = { province = 1034 data = IND } } } }
+			AND = { NOT = { flag = ind_aubm_regional_settled_sau } NOT = { flag = ind_aubm_regional_victory_sau } control = { province = 1045 data = IND } OR = { AND = { exists = SAU owned = { province = 1045 data = SAU } war = { country = IND country = SAU } } AND = { NOT = { exists = SAU } owned = { province = 1045 data = IND } } } }
+			AND = { NOT = { flag = ind_aubm_regional_settled_afg } NOT = { flag = ind_aubm_regional_victory_afg } control = { province = 2171 data = IND } OR = { AND = { exists = AFG owned = { province = 2171 data = AFG } war = { country = IND country = AFG } } AND = { NOT = { exists = AFG } owned = { province = 2171 data = IND } } } }
+			AND = { NOT = { flag = ind_aubm_regional_settled_tib } NOT = { flag = ind_aubm_regional_victory_tib } control = { province = 1289 data = IND } OR = { AND = { exists = TIB owned = { province = 1289 data = TIB } war = { country = IND country = TIB } } AND = { NOT = { exists = TIB } owned = { province = 1289 data = IND } } } }
+			AND = { NOT = { flag = ind_aubm_regional_settled_sik } NOT = { flag = ind_aubm_regional_victory_sik } control = { province = 1281 data = IND } OR = { AND = { exists = SIK owned = { province = 1281 data = SIK } war = { country = IND country = SIK } } AND = { NOT = { exists = SIK } owned = { province = 1281 data = IND } } } }
+			AND = { NOT = { flag = ind_aubm_regional_settled_chi } NOT = { flag = ind_aubm_regional_victory_chi } control = { province = 1337 data = IND } OR = { AND = { exists = CHI owned = { province = 1337 data = CHI } war = { country = IND country = CHI } } AND = { NOT = { exists = CHI } owned = { province = 1337 data = IND } } } }
+			AND = { NOT = { flag = ind_aubm_regional_settled_chc } NOT = { flag = ind_aubm_regional_victory_chc } control = { province = 1354 data = IND } OR = { AND = { exists = CHC owned = { province = 1354 data = CHC } war = { country = IND country = CHC } } AND = { NOT = { exists = CHC } owned = { province = 1354 data = IND } } } }
+			AND = { NOT = { flag = ind_aubm_regional_settled_sia } NOT = { flag = ind_aubm_regional_victory_sia } control = { province = 1423 data = IND } OR = { AND = { exists = SIA owned = { province = 1423 data = SIA } war = { country = IND country = SIA } } AND = { NOT = { exists = SIA } owned = { province = 1423 data = IND } } } }
+			AND = { NOT = { flag = ind_aubm_regional_settled_ita } NOT = { flag = ind_aubm_regional_victory_ita } control = { province = 419 data = IND } OR = { AND = { exists = ITA owned = { province = 419 data = ITA } war = { country = IND country = ITA } } AND = { NOT = { exists = ITA } owned = { province = 419 data = IND } } } }
+			AND = { NOT = { flag = ind_aubm_regional_settled_fra } NOT = { flag = ind_aubm_regional_victory_fra } control = { province = 55 data = IND } OR = { AND = { exists = FRA owned = { province = 55 data = FRA } war = { country = IND country = FRA } } AND = { NOT = { exists = FRA } owned = { province = 55 data = IND } } } }
+			AND = { NOT = { flag = ind_aubm_regional_settled_tur } NOT = { flag = ind_aubm_regional_victory_tur } control = { province = 1075 data = IND } OR = { AND = { exists = TUR owned = { province = 1075 data = TUR } war = { country = IND country = TUR } } AND = { NOT = { exists = TUR } owned = { province = 1075 data = IND } } } }
+			AND = { NOT = { flag = ind_aubm_regional_settled_u05 } NOT = { flag = ind_aubm_regional_refused_u05 } NOT = { flag = ind_aubm_regional_victory_u05 } NOT = { flag = ind_aubm_south_dei_secured } exists = U05 owned = { province = 1647 data = U05 } war = { country = IND country = U05 } control = { province = 1647 data = IND } }
+			AND = { NOT = { flag = ind_aubm_regional_settled_hol_colonial } NOT = { flag = ind_aubm_regional_refused_hol_colonial } NOT = { flag = ind_aubm_regional_victory_hol_colonial } NOT = { flag = ind_aubm_south_dei_secured } exists = HOL owned = { province = 1647 data = HOL } war = { country = IND country = HOL } control = { province = 1647 data = IND } }
+			AND = { NOT = { flag = ind_aubm_regional_settled_eng_malaya } NOT = { flag = ind_aubm_regional_refused_eng_malaya } NOT = { flag = ind_aubm_regional_victory_eng_malaya } NOT = { flag = ind_aubm_south_malaya_secured } exists = ENG owned = { province = 1432 data = ENG } owned = { province = 1438 data = ENG } war = { country = IND country = ENG } control = { province = 1432 data = IND } control = { province = 1438 data = IND } }
+			AND = { NOT = { flag = ind_aubm_regional_settled_hol } NOT = { flag = ind_aubm_regional_refused_hol } NOT = { flag = ind_aubm_regional_victory_hol } control = { province = 122 data = IND } OR = { AND = { exists = HOL owned = { province = 122 data = HOL } war = { country = IND country = HOL } } AND = { NOT = { exists = HOL } owned = { province = 122 data = IND } } } }
+			AND = { NOT = { flag = ind_aubm_regional_settled_ast } NOT = { flag = ind_aubm_regional_victory_ast } exists = AST owned = { province = 1707 data = AST } war = { country = IND country = AST } control = { province = 1707 data = IND } }
+			AND = { NOT = { flag = ind_aubm_regional_settled_por } NOT = { flag = ind_aubm_regional_victory_por } control = { province = 476 data = IND } OR = { AND = { exists = POR owned = { province = 476 data = POR } war = { country = IND country = POR } } AND = { NOT = { exists = POR } owned = { province = 476 data = IND } } } }
+			AND = { NOT = { flag = ind_aubm_regional_settled_nzl } NOT = { flag = ind_aubm_regional_victory_nzl } control = { province = 1721 data = IND } OR = { AND = { exists = NZL owned = { province = 1721 data = NZL } war = { country = IND country = NZL } } AND = { NOT = { exists = NZL } owned = { province = 1721 data = IND } } } }
+			AND = { NOT = { flag = ind_aubm_regional_settled_omn } NOT = { flag = ind_aubm_regional_victory_omn } control = { province = 1052 data = IND } OR = { AND = { exists = OMN owned = { province = 1052 data = OMN } war = { country = IND country = OMN } } AND = { NOT = { exists = OMN } owned = { province = 1052 data = IND } } } }
+			AND = { NOT = { flag = ind_aubm_regional_settled_yem } NOT = { flag = ind_aubm_regional_victory_yem } control = { province = 1050 data = IND } OR = { AND = { exists = YEM owned = { province = 1050 data = YEM } war = { country = IND country = YEM } } AND = { NOT = { exists = YEM } owned = { province = 1050 data = IND } } } }
+			AND = { NOT = { flag = ind_aubm_regional_settled_eth } NOT = { flag = ind_aubm_regional_victory_eth } control = { province = 825 data = IND } OR = { AND = { exists = ETH owned = { province = 825 data = ETH } war = { country = IND country = ETH } } AND = { NOT = { exists = ETH } owned = { province = 825 data = IND } } } }
+			AND = { NOT = { flag = ind_aubm_regional_settled_saf } NOT = { flag = ind_aubm_regional_victory_saf } control = { province = 876 data = IND } OR = { AND = { exists = SAF owned = { province = 876 data = SAF } war = { country = IND country = SAF } } AND = { NOT = { exists = SAF } owned = { province = 876 data = IND } } } }
+		}
+	}
+	name = "A Regional Capital Falls to Indian Command"
+	desc = "India has captured a regional enemy capital, or annexed that country and now legally owns its capital. The result is recognized immediately. The permanent regional board separates restoration, protection, negotiated peace and direct administration; unrelated wars continue."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	date = { day = 0 month = january year = 1933 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Record the victory and open its settlement"
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_regional_settled_per } NOT = { flag = ind_aubm_regional_victory_per } control = { province = 1085 data = IND } OR = { AND = { exists = PER owned = { province = 1085 data = PER } war = { country = IND country = PER } } AND = { NOT = { exists = PER } owned = { province = 1085 data = IND } } } } } type = setflag which = ind_aubm_regional_pending_per }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_regional_settled_per } NOT = { flag = ind_aubm_regional_victory_per } control = { province = 1085 data = IND } OR = { AND = { exists = PER owned = { province = 1085 data = PER } war = { country = IND country = PER } } AND = { NOT = { exists = PER } owned = { province = 1085 data = IND } } } } } type = setflag which = ind_aubm_regional_victory_per }
+		command = { trigger = { AND = { flag = ind_aubm_regional_victory_per control = { province = 1085 data = IND } OR = { AND = { exists = PER owned = { province = 1085 data = PER } war = { country = IND country = PER } } AND = { NOT = { exists = PER } owned = { province = 1085 data = IND } } } } } type = setflag which = ind_aubm_regional_current_per }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_regional_settled_irq } NOT = { flag = ind_aubm_regional_victory_irq } control = { province = 1034 data = IND } OR = { AND = { exists = IRQ owned = { province = 1034 data = IRQ } war = { country = IND country = IRQ } } AND = { NOT = { exists = IRQ } owned = { province = 1034 data = IND } } } } } type = setflag which = ind_aubm_regional_pending_irq }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_regional_settled_irq } NOT = { flag = ind_aubm_regional_victory_irq } control = { province = 1034 data = IND } OR = { AND = { exists = IRQ owned = { province = 1034 data = IRQ } war = { country = IND country = IRQ } } AND = { NOT = { exists = IRQ } owned = { province = 1034 data = IND } } } } } type = setflag which = ind_aubm_regional_victory_irq }
+		command = { trigger = { AND = { flag = ind_aubm_regional_victory_irq control = { province = 1034 data = IND } OR = { AND = { exists = IRQ owned = { province = 1034 data = IRQ } war = { country = IND country = IRQ } } AND = { NOT = { exists = IRQ } owned = { province = 1034 data = IND } } } } } type = setflag which = ind_aubm_regional_current_irq }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_regional_settled_sau } NOT = { flag = ind_aubm_regional_victory_sau } control = { province = 1045 data = IND } OR = { AND = { exists = SAU owned = { province = 1045 data = SAU } war = { country = IND country = SAU } } AND = { NOT = { exists = SAU } owned = { province = 1045 data = IND } } } } } type = setflag which = ind_aubm_regional_pending_sau }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_regional_settled_sau } NOT = { flag = ind_aubm_regional_victory_sau } control = { province = 1045 data = IND } OR = { AND = { exists = SAU owned = { province = 1045 data = SAU } war = { country = IND country = SAU } } AND = { NOT = { exists = SAU } owned = { province = 1045 data = IND } } } } } type = setflag which = ind_aubm_regional_victory_sau }
+		command = { trigger = { AND = { flag = ind_aubm_regional_victory_sau control = { province = 1045 data = IND } OR = { AND = { exists = SAU owned = { province = 1045 data = SAU } war = { country = IND country = SAU } } AND = { NOT = { exists = SAU } owned = { province = 1045 data = IND } } } } } type = setflag which = ind_aubm_regional_current_sau }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_regional_settled_afg } NOT = { flag = ind_aubm_regional_victory_afg } control = { province = 2171 data = IND } OR = { AND = { exists = AFG owned = { province = 2171 data = AFG } war = { country = IND country = AFG } } AND = { NOT = { exists = AFG } owned = { province = 2171 data = IND } } } } } type = setflag which = ind_aubm_regional_pending_afg }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_regional_settled_afg } NOT = { flag = ind_aubm_regional_victory_afg } control = { province = 2171 data = IND } OR = { AND = { exists = AFG owned = { province = 2171 data = AFG } war = { country = IND country = AFG } } AND = { NOT = { exists = AFG } owned = { province = 2171 data = IND } } } } } type = setflag which = ind_aubm_regional_victory_afg }
+		command = { trigger = { AND = { flag = ind_aubm_regional_victory_afg control = { province = 2171 data = IND } OR = { AND = { exists = AFG owned = { province = 2171 data = AFG } war = { country = IND country = AFG } } AND = { NOT = { exists = AFG } owned = { province = 2171 data = IND } } } } } type = setflag which = ind_aubm_regional_current_afg }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_regional_settled_tib } NOT = { flag = ind_aubm_regional_victory_tib } control = { province = 1289 data = IND } OR = { AND = { exists = TIB owned = { province = 1289 data = TIB } war = { country = IND country = TIB } } AND = { NOT = { exists = TIB } owned = { province = 1289 data = IND } } } } } type = setflag which = ind_aubm_regional_pending_tib }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_regional_settled_tib } NOT = { flag = ind_aubm_regional_victory_tib } control = { province = 1289 data = IND } OR = { AND = { exists = TIB owned = { province = 1289 data = TIB } war = { country = IND country = TIB } } AND = { NOT = { exists = TIB } owned = { province = 1289 data = IND } } } } } type = setflag which = ind_aubm_regional_victory_tib }
+		command = { trigger = { AND = { flag = ind_aubm_regional_victory_tib control = { province = 1289 data = IND } OR = { AND = { exists = TIB owned = { province = 1289 data = TIB } war = { country = IND country = TIB } } AND = { NOT = { exists = TIB } owned = { province = 1289 data = IND } } } } } type = setflag which = ind_aubm_regional_current_tib }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_regional_settled_sik } NOT = { flag = ind_aubm_regional_victory_sik } control = { province = 1281 data = IND } OR = { AND = { exists = SIK owned = { province = 1281 data = SIK } war = { country = IND country = SIK } } AND = { NOT = { exists = SIK } owned = { province = 1281 data = IND } } } } } type = setflag which = ind_aubm_regional_pending_sik }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_regional_settled_sik } NOT = { flag = ind_aubm_regional_victory_sik } control = { province = 1281 data = IND } OR = { AND = { exists = SIK owned = { province = 1281 data = SIK } war = { country = IND country = SIK } } AND = { NOT = { exists = SIK } owned = { province = 1281 data = IND } } } } } type = setflag which = ind_aubm_regional_victory_sik }
+		command = { trigger = { AND = { flag = ind_aubm_regional_victory_sik control = { province = 1281 data = IND } OR = { AND = { exists = SIK owned = { province = 1281 data = SIK } war = { country = IND country = SIK } } AND = { NOT = { exists = SIK } owned = { province = 1281 data = IND } } } } } type = setflag which = ind_aubm_regional_current_sik }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_regional_settled_chi } NOT = { flag = ind_aubm_regional_victory_chi } control = { province = 1337 data = IND } OR = { AND = { exists = CHI owned = { province = 1337 data = CHI } war = { country = IND country = CHI } } AND = { NOT = { exists = CHI } owned = { province = 1337 data = IND } } } } } type = setflag which = ind_aubm_regional_pending_chi }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_regional_settled_chi } NOT = { flag = ind_aubm_regional_victory_chi } control = { province = 1337 data = IND } OR = { AND = { exists = CHI owned = { province = 1337 data = CHI } war = { country = IND country = CHI } } AND = { NOT = { exists = CHI } owned = { province = 1337 data = IND } } } } } type = setflag which = ind_aubm_regional_victory_chi }
+		command = { trigger = { AND = { flag = ind_aubm_regional_victory_chi control = { province = 1337 data = IND } OR = { AND = { exists = CHI owned = { province = 1337 data = CHI } war = { country = IND country = CHI } } AND = { NOT = { exists = CHI } owned = { province = 1337 data = IND } } } } } type = setflag which = ind_aubm_regional_current_chi }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_regional_settled_chc } NOT = { flag = ind_aubm_regional_victory_chc } control = { province = 1354 data = IND } OR = { AND = { exists = CHC owned = { province = 1354 data = CHC } war = { country = IND country = CHC } } AND = { NOT = { exists = CHC } owned = { province = 1354 data = IND } } } } } type = setflag which = ind_aubm_regional_pending_chc }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_regional_settled_chc } NOT = { flag = ind_aubm_regional_victory_chc } control = { province = 1354 data = IND } OR = { AND = { exists = CHC owned = { province = 1354 data = CHC } war = { country = IND country = CHC } } AND = { NOT = { exists = CHC } owned = { province = 1354 data = IND } } } } } type = setflag which = ind_aubm_regional_victory_chc }
+		command = { trigger = { AND = { flag = ind_aubm_regional_victory_chc control = { province = 1354 data = IND } OR = { AND = { exists = CHC owned = { province = 1354 data = CHC } war = { country = IND country = CHC } } AND = { NOT = { exists = CHC } owned = { province = 1354 data = IND } } } } } type = setflag which = ind_aubm_regional_current_chc }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_regional_settled_sia } NOT = { flag = ind_aubm_regional_victory_sia } control = { province = 1423 data = IND } OR = { AND = { exists = SIA owned = { province = 1423 data = SIA } war = { country = IND country = SIA } } AND = { NOT = { exists = SIA } owned = { province = 1423 data = IND } } } } } type = setflag which = ind_aubm_regional_pending_sia }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_regional_settled_sia } NOT = { flag = ind_aubm_regional_victory_sia } control = { province = 1423 data = IND } OR = { AND = { exists = SIA owned = { province = 1423 data = SIA } war = { country = IND country = SIA } } AND = { NOT = { exists = SIA } owned = { province = 1423 data = IND } } } } } type = setflag which = ind_aubm_regional_victory_sia }
+		command = { trigger = { AND = { flag = ind_aubm_regional_victory_sia control = { province = 1423 data = IND } OR = { AND = { exists = SIA owned = { province = 1423 data = SIA } war = { country = IND country = SIA } } AND = { NOT = { exists = SIA } owned = { province = 1423 data = IND } } } } } type = setflag which = ind_aubm_regional_current_sia }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_regional_settled_ita } NOT = { flag = ind_aubm_regional_victory_ita } control = { province = 419 data = IND } OR = { AND = { exists = ITA owned = { province = 419 data = ITA } war = { country = IND country = ITA } } AND = { NOT = { exists = ITA } owned = { province = 419 data = IND } } } } } type = setflag which = ind_aubm_regional_pending_ita }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_regional_settled_ita } NOT = { flag = ind_aubm_regional_victory_ita } control = { province = 419 data = IND } OR = { AND = { exists = ITA owned = { province = 419 data = ITA } war = { country = IND country = ITA } } AND = { NOT = { exists = ITA } owned = { province = 419 data = IND } } } } } type = setflag which = ind_aubm_regional_victory_ita }
+		command = { trigger = { AND = { flag = ind_aubm_regional_victory_ita control = { province = 419 data = IND } OR = { AND = { exists = ITA owned = { province = 419 data = ITA } war = { country = IND country = ITA } } AND = { NOT = { exists = ITA } owned = { province = 419 data = IND } } } } } type = setflag which = ind_aubm_regional_current_ita }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_regional_settled_fra } NOT = { flag = ind_aubm_regional_victory_fra } control = { province = 55 data = IND } OR = { AND = { exists = FRA owned = { province = 55 data = FRA } war = { country = IND country = FRA } } AND = { NOT = { exists = FRA } owned = { province = 55 data = IND } } } } } type = setflag which = ind_aubm_regional_pending_fra }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_regional_settled_fra } NOT = { flag = ind_aubm_regional_victory_fra } control = { province = 55 data = IND } OR = { AND = { exists = FRA owned = { province = 55 data = FRA } war = { country = IND country = FRA } } AND = { NOT = { exists = FRA } owned = { province = 55 data = IND } } } } } type = setflag which = ind_aubm_regional_victory_fra }
+		command = { trigger = { AND = { flag = ind_aubm_regional_victory_fra control = { province = 55 data = IND } OR = { AND = { exists = FRA owned = { province = 55 data = FRA } war = { country = IND country = FRA } } AND = { NOT = { exists = FRA } owned = { province = 55 data = IND } } } } } type = setflag which = ind_aubm_regional_current_fra }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_regional_settled_tur } NOT = { flag = ind_aubm_regional_victory_tur } control = { province = 1075 data = IND } OR = { AND = { exists = TUR owned = { province = 1075 data = TUR } war = { country = IND country = TUR } } AND = { NOT = { exists = TUR } owned = { province = 1075 data = IND } } } } } type = setflag which = ind_aubm_regional_pending_tur }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_regional_settled_tur } NOT = { flag = ind_aubm_regional_victory_tur } control = { province = 1075 data = IND } OR = { AND = { exists = TUR owned = { province = 1075 data = TUR } war = { country = IND country = TUR } } AND = { NOT = { exists = TUR } owned = { province = 1075 data = IND } } } } } type = setflag which = ind_aubm_regional_victory_tur }
+		command = { trigger = { AND = { flag = ind_aubm_regional_victory_tur control = { province = 1075 data = IND } OR = { AND = { exists = TUR owned = { province = 1075 data = TUR } war = { country = IND country = TUR } } AND = { NOT = { exists = TUR } owned = { province = 1075 data = IND } } } } } type = setflag which = ind_aubm_regional_current_tur }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_regional_settled_u05 } NOT = { flag = ind_aubm_regional_refused_u05 } NOT = { flag = ind_aubm_regional_victory_u05 } NOT = { flag = ind_aubm_south_dei_secured } exists = U05 owned = { province = 1647 data = U05 } war = { country = IND country = U05 } control = { province = 1647 data = IND } } } type = setflag which = ind_aubm_regional_pending_u05 }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_regional_settled_u05 } NOT = { flag = ind_aubm_regional_refused_u05 } NOT = { flag = ind_aubm_regional_victory_u05 } NOT = { flag = ind_aubm_south_dei_secured } exists = U05 owned = { province = 1647 data = U05 } war = { country = IND country = U05 } control = { province = 1647 data = IND } } } type = setflag which = ind_aubm_regional_victory_u05 }
+		command = { trigger = { flag = ind_aubm_regional_victory_u05 exists = U05 owned = { province = 1647 data = U05 } war = { country = IND country = U05 } control = { province = 1647 data = IND } } type = setflag which = ind_aubm_regional_current_u05 }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_regional_settled_hol_colonial } NOT = { flag = ind_aubm_regional_refused_hol_colonial } NOT = { flag = ind_aubm_regional_victory_hol_colonial } NOT = { flag = ind_aubm_south_dei_secured } exists = HOL owned = { province = 1647 data = HOL } war = { country = IND country = HOL } control = { province = 1647 data = IND } } } type = setflag which = ind_aubm_regional_pending_hol_colonial }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_regional_settled_hol_colonial } NOT = { flag = ind_aubm_regional_refused_hol_colonial } NOT = { flag = ind_aubm_regional_victory_hol_colonial } NOT = { flag = ind_aubm_south_dei_secured } exists = HOL owned = { province = 1647 data = HOL } war = { country = IND country = HOL } control = { province = 1647 data = IND } } } type = setflag which = ind_aubm_regional_victory_hol_colonial }
+		command = { trigger = { flag = ind_aubm_regional_victory_hol_colonial exists = HOL owned = { province = 1647 data = HOL } war = { country = IND country = HOL } control = { province = 1647 data = IND } } type = setflag which = ind_aubm_regional_current_hol_colonial }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_regional_settled_eng_malaya } NOT = { flag = ind_aubm_regional_refused_eng_malaya } NOT = { flag = ind_aubm_regional_victory_eng_malaya } NOT = { flag = ind_aubm_south_malaya_secured } exists = ENG owned = { province = 1432 data = ENG } owned = { province = 1438 data = ENG } war = { country = IND country = ENG } control = { province = 1432 data = IND } control = { province = 1438 data = IND } } } type = setflag which = ind_aubm_regional_pending_eng_malaya }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_regional_settled_eng_malaya } NOT = { flag = ind_aubm_regional_refused_eng_malaya } NOT = { flag = ind_aubm_regional_victory_eng_malaya } NOT = { flag = ind_aubm_south_malaya_secured } exists = ENG owned = { province = 1432 data = ENG } owned = { province = 1438 data = ENG } war = { country = IND country = ENG } control = { province = 1432 data = IND } control = { province = 1438 data = IND } } } type = setflag which = ind_aubm_regional_victory_eng_malaya }
+		command = { trigger = { flag = ind_aubm_regional_victory_eng_malaya exists = ENG owned = { province = 1432 data = ENG } owned = { province = 1438 data = ENG } war = { country = IND country = ENG } control = { province = 1432 data = IND } control = { province = 1438 data = IND } } type = setflag which = ind_aubm_regional_current_eng_malaya }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_regional_settled_hol } NOT = { flag = ind_aubm_regional_refused_hol } NOT = { flag = ind_aubm_regional_victory_hol } control = { province = 122 data = IND } OR = { AND = { exists = HOL owned = { province = 122 data = HOL } war = { country = IND country = HOL } } AND = { NOT = { exists = HOL } owned = { province = 122 data = IND } } } } } type = setflag which = ind_aubm_regional_pending_hol }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_regional_settled_hol } NOT = { flag = ind_aubm_regional_refused_hol } NOT = { flag = ind_aubm_regional_victory_hol } control = { province = 122 data = IND } OR = { AND = { exists = HOL owned = { province = 122 data = HOL } war = { country = IND country = HOL } } AND = { NOT = { exists = HOL } owned = { province = 122 data = IND } } } } } type = setflag which = ind_aubm_regional_victory_hol }
+		command = { trigger = { AND = { flag = ind_aubm_regional_victory_hol control = { province = 122 data = IND } OR = { AND = { exists = HOL owned = { province = 122 data = HOL } war = { country = IND country = HOL } } AND = { NOT = { exists = HOL } owned = { province = 122 data = IND } } } } } type = setflag which = ind_aubm_regional_current_hol }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_regional_settled_ast } NOT = { flag = ind_aubm_regional_victory_ast } exists = AST owned = { province = 1707 data = AST } war = { country = IND country = AST } control = { province = 1707 data = IND } } } type = setflag which = ind_aubm_regional_pending_ast }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_regional_settled_ast } NOT = { flag = ind_aubm_regional_victory_ast } exists = AST owned = { province = 1707 data = AST } war = { country = IND country = AST } control = { province = 1707 data = IND } } } type = setflag which = ind_aubm_regional_victory_ast }
+		command = { trigger = { flag = ind_aubm_regional_victory_ast exists = AST owned = { province = 1707 data = AST } war = { country = IND country = AST } control = { province = 1707 data = IND } } type = setflag which = ind_aubm_regional_current_ast }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_regional_settled_por } NOT = { flag = ind_aubm_regional_victory_por } control = { province = 476 data = IND } OR = { AND = { exists = POR owned = { province = 476 data = POR } war = { country = IND country = POR } } AND = { NOT = { exists = POR } owned = { province = 476 data = IND } } } } } type = setflag which = ind_aubm_regional_pending_por }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_regional_settled_por } NOT = { flag = ind_aubm_regional_victory_por } control = { province = 476 data = IND } OR = { AND = { exists = POR owned = { province = 476 data = POR } war = { country = IND country = POR } } AND = { NOT = { exists = POR } owned = { province = 476 data = IND } } } } } type = setflag which = ind_aubm_regional_victory_por }
+		command = { trigger = { AND = { flag = ind_aubm_regional_victory_por control = { province = 476 data = IND } OR = { AND = { exists = POR owned = { province = 476 data = POR } war = { country = IND country = POR } } AND = { NOT = { exists = POR } owned = { province = 476 data = IND } } } } } type = setflag which = ind_aubm_regional_current_por }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_regional_settled_nzl } NOT = { flag = ind_aubm_regional_victory_nzl } control = { province = 1721 data = IND } OR = { AND = { exists = NZL owned = { province = 1721 data = NZL } war = { country = IND country = NZL } } AND = { NOT = { exists = NZL } owned = { province = 1721 data = IND } } } } } type = setflag which = ind_aubm_regional_pending_nzl }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_regional_settled_nzl } NOT = { flag = ind_aubm_regional_victory_nzl } control = { province = 1721 data = IND } OR = { AND = { exists = NZL owned = { province = 1721 data = NZL } war = { country = IND country = NZL } } AND = { NOT = { exists = NZL } owned = { province = 1721 data = IND } } } } } type = setflag which = ind_aubm_regional_victory_nzl }
+		command = { trigger = { AND = { flag = ind_aubm_regional_victory_nzl control = { province = 1721 data = IND } OR = { AND = { exists = NZL owned = { province = 1721 data = NZL } war = { country = IND country = NZL } } AND = { NOT = { exists = NZL } owned = { province = 1721 data = IND } } } } } type = setflag which = ind_aubm_regional_current_nzl }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_regional_settled_omn } NOT = { flag = ind_aubm_regional_victory_omn } control = { province = 1052 data = IND } OR = { AND = { exists = OMN owned = { province = 1052 data = OMN } war = { country = IND country = OMN } } AND = { NOT = { exists = OMN } owned = { province = 1052 data = IND } } } } } type = setflag which = ind_aubm_regional_pending_omn }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_regional_settled_omn } NOT = { flag = ind_aubm_regional_victory_omn } control = { province = 1052 data = IND } OR = { AND = { exists = OMN owned = { province = 1052 data = OMN } war = { country = IND country = OMN } } AND = { NOT = { exists = OMN } owned = { province = 1052 data = IND } } } } } type = setflag which = ind_aubm_regional_victory_omn }
+		command = { trigger = { AND = { flag = ind_aubm_regional_victory_omn control = { province = 1052 data = IND } OR = { AND = { exists = OMN owned = { province = 1052 data = OMN } war = { country = IND country = OMN } } AND = { NOT = { exists = OMN } owned = { province = 1052 data = IND } } } } } type = setflag which = ind_aubm_regional_current_omn }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_regional_settled_yem } NOT = { flag = ind_aubm_regional_victory_yem } control = { province = 1050 data = IND } OR = { AND = { exists = YEM owned = { province = 1050 data = YEM } war = { country = IND country = YEM } } AND = { NOT = { exists = YEM } owned = { province = 1050 data = IND } } } } } type = setflag which = ind_aubm_regional_pending_yem }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_regional_settled_yem } NOT = { flag = ind_aubm_regional_victory_yem } control = { province = 1050 data = IND } OR = { AND = { exists = YEM owned = { province = 1050 data = YEM } war = { country = IND country = YEM } } AND = { NOT = { exists = YEM } owned = { province = 1050 data = IND } } } } } type = setflag which = ind_aubm_regional_victory_yem }
+		command = { trigger = { AND = { flag = ind_aubm_regional_victory_yem control = { province = 1050 data = IND } OR = { AND = { exists = YEM owned = { province = 1050 data = YEM } war = { country = IND country = YEM } } AND = { NOT = { exists = YEM } owned = { province = 1050 data = IND } } } } } type = setflag which = ind_aubm_regional_current_yem }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_regional_settled_eth } NOT = { flag = ind_aubm_regional_victory_eth } control = { province = 825 data = IND } OR = { AND = { exists = ETH owned = { province = 825 data = ETH } war = { country = IND country = ETH } } AND = { NOT = { exists = ETH } owned = { province = 825 data = IND } } } } } type = setflag which = ind_aubm_regional_pending_eth }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_regional_settled_eth } NOT = { flag = ind_aubm_regional_victory_eth } control = { province = 825 data = IND } OR = { AND = { exists = ETH owned = { province = 825 data = ETH } war = { country = IND country = ETH } } AND = { NOT = { exists = ETH } owned = { province = 825 data = IND } } } } } type = setflag which = ind_aubm_regional_victory_eth }
+		command = { trigger = { AND = { flag = ind_aubm_regional_victory_eth control = { province = 825 data = IND } OR = { AND = { exists = ETH owned = { province = 825 data = ETH } war = { country = IND country = ETH } } AND = { NOT = { exists = ETH } owned = { province = 825 data = IND } } } } } type = setflag which = ind_aubm_regional_current_eth }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_regional_settled_saf } NOT = { flag = ind_aubm_regional_victory_saf } control = { province = 876 data = IND } OR = { AND = { exists = SAF owned = { province = 876 data = SAF } war = { country = IND country = SAF } } AND = { NOT = { exists = SAF } owned = { province = 876 data = IND } } } } } type = setflag which = ind_aubm_regional_pending_saf }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_regional_settled_saf } NOT = { flag = ind_aubm_regional_victory_saf } control = { province = 876 data = IND } OR = { AND = { exists = SAF owned = { province = 876 data = SAF } war = { country = IND country = SAF } } AND = { NOT = { exists = SAF } owned = { province = 876 data = IND } } } } } type = setflag which = ind_aubm_regional_victory_saf }
+		command = { trigger = { AND = { flag = ind_aubm_regional_victory_saf control = { province = 876 data = IND } OR = { AND = { exists = SAF owned = { province = 876 data = SAF } war = { country = IND country = SAF } } AND = { NOT = { exists = SAF } owned = { province = 876 data = IND } } } } } type = setflag which = ind_aubm_regional_current_saf }
+		command = { type = dissent value = -1 }
+		command = { type = money value = 100 }
+		command = { trigger = { OR = { flag = ind_aubm_regional_pending_u05 flag = ind_aubm_regional_pending_hol_colonial flag = ind_aubm_regional_pending_eng_malaya } } type = event which = 9287600 where = IND when = 1 }
+		command = { trigger = { OR = { flag = ind_aubm_regional_pending_per flag = ind_aubm_regional_pending_irq flag = ind_aubm_regional_pending_sau flag = ind_aubm_regional_pending_afg flag = ind_aubm_regional_pending_tib flag = ind_aubm_regional_pending_sik flag = ind_aubm_regional_pending_chi flag = ind_aubm_regional_pending_chc flag = ind_aubm_regional_pending_sia flag = ind_aubm_regional_pending_ita flag = ind_aubm_regional_pending_fra flag = ind_aubm_regional_pending_tur flag = ind_aubm_regional_pending_hol flag = ind_aubm_regional_pending_ast flag = ind_aubm_regional_pending_por flag = ind_aubm_regional_pending_nzl flag = ind_aubm_regional_pending_omn flag = ind_aubm_regional_pending_yem flag = ind_aubm_regional_pending_eth flag = ind_aubm_regional_pending_saf } } type = event which = 9282201 where = IND when = 1 }
+	} # regional objective detector action
+}
+
+#########################################################################
+# Alpha 20: clear stale southern claims after external peace or ownership
+# changes when no response or ratification is still in flight.
+#########################################################################
+
+event = {
+	id = 9287612
+	random = no
+	persistent = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_wartime_framework
+		NOT = { flag = ind_aubm_southern_local_lock }
+		NOT = { flag = ind_aubm_common_south_pending }
+		NOT = { flag = ind_aubm_jp_settlement_pending }
+		NOT = { OR = { flag = ind_aubm_south_grand_u05_dispatch flag = ind_aubm_south_grand_eng_dispatch flag = ind_aubm_south_grand_ast_dispatch flag = ind_aubm_south_grand_hol_dispatch flag = ind_aubm_south_legacy_u05_dispatch flag = ind_aubm_south_legacy_hol_dispatch } }
+		NOT = { OR = { flag = ind_aubm_local_armistice_target_u05 flag = ind_aubm_local_armistice_target_eng flag = ind_aubm_local_armistice_target_ast flag = ind_aubm_local_armistice_target_hol flag = ind_aubm_local_armistice_target_sov } }
+		NOT = { OR = { flag = ind_aubm_southern_lapse_u05 flag = ind_aubm_southern_lapse_eng flag = ind_aubm_southern_lapse_ast flag = ind_aubm_southern_lapse_hol flag = ind_aubm_southern_lapse_sov flag = ind_aubm_southern_lapse_noop } }
+		OR = {
+			AND = { OR = { flag = ind_aubm_regional_current_u05 flag = ind_aubm_regional_pending_u05 } NOT = { OR = { AND = { exists = U05 war = { country = IND country = U05 } owned = { province = 1647 data = U05 } control = { province = 1647 data = IND } } AND = { NOT = { exists = U05 } owned = { province = 1647 data = IND } control = { province = 1647 data = IND } } } } }
+			AND = { OR = { flag = ind_aubm_regional_current_hol_colonial flag = ind_aubm_regional_pending_hol_colonial } NOT = { AND = { exists = HOL war = { country = IND country = HOL } owned = { province = 1647 data = HOL } control = { province = 1647 data = IND } } } }
+			AND = { OR = { flag = ind_aubm_regional_current_eng_malaya flag = ind_aubm_regional_pending_eng_malaya } NOT = { AND = { exists = ENG war = { country = IND country = ENG } owned = { province = 1432 data = ENG } owned = { province = 1438 data = ENG } control = { province = 1432 data = IND } control = { province = 1438 data = IND } } } }
+			AND = { OR = { flag = ind_aubm_regional_current_hol flag = ind_aubm_regional_pending_hol } NOT = { OR = { AND = { exists = HOL war = { country = IND country = HOL } owned = { province = 122 data = HOL } control = { province = 122 data = IND } } AND = { NOT = { exists = HOL } owned = { province = 122 data = IND } control = { province = 122 data = IND } } } } }
+			AND = { OR = { flag = ind_aubm_regional_current_ast flag = ind_aubm_regional_pending_ast } NOT = { AND = { exists = AST war = { country = IND country = AST } owned = { province = 1707 data = AST } control = { province = 1707 data = IND } } } }
+		}
+	}
+	name = "A Southern Claim Expires Outside Negotiations"
+	desc = "A pairwise war or legal claim ended while no southern response was outstanding. The historical victory remains recorded, but its current offer is suspended until a renewed war and recapture restore valid leverage."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+	date = { day = 0 month = january year = 1933 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Archive the stale offer without a new reward"
+		command = { trigger = { OR = { flag = ind_aubm_regional_current_u05 flag = ind_aubm_regional_pending_u05 } NOT = { OR = { AND = { exists = U05 war = { country = IND country = U05 } owned = { province = 1647 data = U05 } control = { province = 1647 data = IND } } AND = { NOT = { exists = U05 } owned = { province = 1647 data = IND } control = { province = 1647 data = IND } } } } flag = ind_aubm_regional_victory_u05 } type = setflag which = ind_aubm_regional_suspended_u05 }
+		command = { trigger = { flag = ind_aubm_regional_suspended_u05 } type = clrflag which = ind_aubm_regional_current_u05 }
+		command = { trigger = { flag = ind_aubm_regional_suspended_u05 } type = clrflag which = ind_aubm_regional_pending_u05 }
+		command = { trigger = { OR = { flag = ind_aubm_regional_current_hol_colonial flag = ind_aubm_regional_pending_hol_colonial } NOT = { AND = { exists = HOL war = { country = IND country = HOL } owned = { province = 1647 data = HOL } control = { province = 1647 data = IND } } } flag = ind_aubm_regional_victory_hol_colonial } type = setflag which = ind_aubm_regional_suspended_hol_colonial }
+		command = { trigger = { flag = ind_aubm_regional_suspended_hol_colonial } type = clrflag which = ind_aubm_regional_current_hol_colonial }
+		command = { trigger = { flag = ind_aubm_regional_suspended_hol_colonial } type = clrflag which = ind_aubm_regional_pending_hol_colonial }
+		command = { trigger = { OR = { flag = ind_aubm_regional_current_eng_malaya flag = ind_aubm_regional_pending_eng_malaya } NOT = { AND = { exists = ENG war = { country = IND country = ENG } owned = { province = 1432 data = ENG } owned = { province = 1438 data = ENG } control = { province = 1432 data = IND } control = { province = 1438 data = IND } } } flag = ind_aubm_regional_victory_eng_malaya } type = setflag which = ind_aubm_regional_suspended_eng_malaya }
+		command = { trigger = { flag = ind_aubm_regional_suspended_eng_malaya } type = clrflag which = ind_aubm_regional_current_eng_malaya }
+		command = { trigger = { flag = ind_aubm_regional_suspended_eng_malaya } type = clrflag which = ind_aubm_regional_pending_eng_malaya }
+		command = { trigger = { OR = { flag = ind_aubm_regional_current_hol flag = ind_aubm_regional_pending_hol } NOT = { OR = { AND = { exists = HOL war = { country = IND country = HOL } owned = { province = 122 data = HOL } control = { province = 122 data = IND } } AND = { NOT = { exists = HOL } owned = { province = 122 data = IND } control = { province = 122 data = IND } } } } flag = ind_aubm_regional_victory_hol } type = setflag which = ind_aubm_regional_suspended_hol }
+		command = { trigger = { flag = ind_aubm_regional_suspended_hol } type = clrflag which = ind_aubm_regional_current_hol }
+		command = { trigger = { flag = ind_aubm_regional_suspended_hol } type = clrflag which = ind_aubm_regional_pending_hol }
+		command = { trigger = { OR = { flag = ind_aubm_regional_current_ast flag = ind_aubm_regional_pending_ast } NOT = { AND = { exists = AST war = { country = IND country = AST } owned = { province = 1707 data = AST } control = { province = 1707 data = IND } } } flag = ind_aubm_regional_victory_ast } type = setflag which = ind_aubm_regional_suspended_ast }
+		command = { trigger = { flag = ind_aubm_regional_suspended_ast } type = clrflag which = ind_aubm_regional_current_ast }
+		command = { trigger = { flag = ind_aubm_regional_suspended_ast } type = clrflag which = ind_aubm_regional_pending_ast }
+	}
+}
+
+event = {
+	id = 9282201
+	random = no
+	persistent = yes
+	country = IND
+	name = "Regional Victory Settlement Board"
+	desc = "Every listed settlement is available from a capital India actually controls or owns. Existing local systems handle Persia, Iraq, Arabia, Afghanistan, Tibet, Xinjiang and the southern ocean states. China, Siam, Europe, New Zealand, Ethiopia and South Africa receive pairwise fixed 60/25/15 armistice responses while they still exist, or restoration and protection choices after annexation."
+	style = 2
+	picture = "aubm_v4_war_aims"
+	action_a = {
+		trigger = { OR = { flag = ind_aubm_regional_pending_per flag = ind_aubm_regional_pending_irq flag = ind_aubm_regional_pending_sau flag = ind_aubm_regional_pending_omn flag = ind_aubm_regional_pending_yem flag = ind_aubm_regional_pending_afg flag = ind_aubm_regional_pending_tib flag = ind_aubm_regional_pending_sik flag = ind_aubm_regional_pending_u05 flag = ind_aubm_regional_pending_hol_colonial flag = ind_aubm_regional_pending_eng_malaya flag = ind_aubm_regional_pending_hol flag = ind_aubm_regional_pending_ast } }
+		name = "Local western, northern and southern settlements"
+		command = { type = event which = 9282205 where = IND when = 1 }
+	}
+	action_b = {
+		trigger = { OR = { flag = ind_aubm_regional_pending_chi flag = ind_aubm_regional_pending_chc flag = ind_aubm_regional_pending_sia } }
+		name = "China and Siam settlements"
+		command = { type = event which = 9282202 where = IND when = 1 }
+	}
+	action_c = {
+		trigger = { OR = { flag = ind_aubm_regional_pending_ita flag = ind_aubm_regional_pending_fra flag = ind_aubm_regional_pending_tur flag = ind_aubm_regional_pending_por } }
+		name = "European regional settlements"
+		command = { type = event which = 9282203 where = IND when = 1 }
+	}
+	action_d = {
+		trigger = { OR = { flag = ind_aubm_regional_pending_nzl flag = ind_aubm_regional_pending_eth flag = ind_aubm_regional_pending_saf } }
+		name = "Pacific and African settlements"
+		command = { type = event which = 9282204 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9282202
+	random = no
+	persistent = yes
+	country = IND
+	name = "Regional Board: China and Siam"
+	desc = "Each existing government answers fixed odds of accept 60%, counter with peace but no Indian access 25%, refuse 15%. An annexed state can instead be restored sovereign, restored under protection, or left under direct administration."
+	style = 2
+	picture = "aubm_v4_china_war_deepens"
+	action_a = { trigger = { flag = ind_aubm_regional_pending_chi } name = "Settle Nationalist China" command = { type = event which = 9282210 where = IND when = 1 } }
+	action_b = { trigger = { flag = ind_aubm_regional_pending_chc } name = "Settle Communist China" command = { type = event which = 9282211 where = IND when = 1 } }
+	action_c = { trigger = { flag = ind_aubm_regional_pending_sia } name = "Settle Siam" command = { type = event which = 9282212 where = IND when = 1 } }
+	action_d = { name = "Return to the regional board" command = { type = event which = 9282201 where = IND when = 1 } }
+}
+
+event = {
+	id = 9282203
+	random = no
+	persistent = yes
+	country = IND
+	name = "Regional Board: Europe"
+	desc = "Italy, France, Turkey and Portugal answer separate fixed 60/25/15 armistices. European mainland occupation never transfers automatically; annexed states may be restored, protected, or retained at political cost."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = { trigger = { flag = ind_aubm_regional_pending_ita } name = "Settle Italy" command = { type = event which = 9282213 where = IND when = 1 } }
+	action_b = { trigger = { flag = ind_aubm_regional_pending_fra } name = "Settle France" command = { type = event which = 9282214 where = IND when = 1 } }
+	action_c = { trigger = { flag = ind_aubm_regional_pending_tur } name = "Settle Turkey" command = { type = event which = 9282215 where = IND when = 1 } }
+	action_d = { trigger = { flag = ind_aubm_regional_pending_por } name = "Settle Portugal" command = { type = event which = 9282216 where = IND when = 1 } }
+}
+
+event = {
+	id = 9282204
+	random = no
+	persistent = yes
+	country = IND
+	name = "Regional Board: Pacific and Africa"
+	desc = "New Zealand, Ethiopia and South Africa answer separate fixed 60/25/15 armistices. Australia and the colonial ocean states use the Southern provisional settlement because their regional order depends on the wider maritime map."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	action_a = { trigger = { flag = ind_aubm_regional_pending_nzl } name = "Settle New Zealand" command = { type = event which = 9282217 where = IND when = 1 } }
+	action_b = { trigger = { flag = ind_aubm_regional_pending_eth } name = "Settle Ethiopia" command = { type = event which = 9282218 where = IND when = 1 } }
+	action_c = { trigger = { flag = ind_aubm_regional_pending_saf } name = "Settle South Africa" command = { type = event which = 9282219 where = IND when = 1 } }
+	action_d = { name = "Return to the regional board" command = { type = event which = 9282201 where = IND when = 1 } }
+}
+
+event = {
+	id = 9282205
+	random = no
+	persistent = yes
+	country = IND
+	name = "Regional Board: Existing Local Settlements"
+	desc = "Western settlements cover Persia, Iraq and Arabia. Northern settlements cover Afghanistan, Tibet and Xinjiang. Batavia, Malaya and occupied Amsterdam have independent local conventions; Australia remains part of the wider ocean settlement."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+	action_a = {
+		trigger = { OR = { flag = ind_aubm_regional_pending_per flag = ind_aubm_regional_pending_irq flag = ind_aubm_regional_pending_sau flag = ind_aubm_regional_pending_omn flag = ind_aubm_regional_pending_yem } }
+		name = "Open Western local settlements"
+		command = { type = event which = 9282002 where = IND when = 1 }
+	}
+	action_b = {
+		trigger = { OR = { flag = ind_aubm_regional_pending_afg flag = ind_aubm_regional_pending_tib flag = ind_aubm_regional_pending_sik } }
+		name = "Open Northern local settlements"
+		command = { type = event which = 9282003 where = IND when = 1 }
+	}
+	action_c = {
+		trigger = { OR = { flag = ind_aubm_regional_pending_u05 flag = ind_aubm_regional_pending_hol_colonial flag = ind_aubm_regional_pending_eng_malaya flag = ind_aubm_regional_pending_hol flag = ind_aubm_regional_pending_ast } }
+		name = "Open Southern local settlements"
+		command = { trigger = { OR = { flag = ind_aubm_regional_pending_u05 flag = ind_aubm_regional_pending_hol_colonial flag = ind_aubm_regional_pending_eng_malaya flag = ind_aubm_regional_pending_hol } } type = event which = 9287600 where = IND when = 1 }
+		command = { trigger = { flag = ind_aubm_regional_pending_ast flag = ind_aubm_regional_current_ast NOT = { flag = ind_aubm_common_south_ast_reject } exists = AST war = { country = IND country = AST } owned = { province = 1707 data = AST } control = { province = 1707 data = IND } } type = setflag which = ind_aubm_south_grand_ast_dispatch }
+		command = { trigger = { flag = ind_aubm_south_grand_ast_dispatch } type = event which = 9282006 where = AST when = 0 }
+	}
+	action_d = { name = "Return to the regional board" command = { type = event which = 9282201 where = IND when = 1 } }
+}
+
+event = {
+	id = 9282210
+	random = no
+	persistent = yes
+	country = IND
+	name = "Settlement of Nationalist China"
+	desc = "If Nationalist China still exists and is at war with India, Delhi can offer a fixed accept/counter/refuse armistice of 60/25/15. If annexed and its capital is Indian-owned, India may restore sovereignty, create a protectorate at 4 dissent, or retain direct administration at 7 dissent and recurring occupation cost."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		trigger = { exists = CHI war = { country = IND country = CHI } flag = ind_aubm_regional_current_chi NOT = { flag = ind_aubm_regional_armistice_outstanding } NOT = { flag = ind_aubm_regional_armistice_retry_pending } }
+		name = "Offer pairwise peace: fixed 60/25/15"
+		command = { type = setflag which = ind_aubm_regional_armistice_target_chi }
+		command = { type = setflag which = ind_aubm_regional_armistice_outstanding }
+		command = { type = event which = 9282220 where = CHI when = 3 }
+	}
+	action_b = {
+		trigger = { NOT = { exists = CHI } owned = { province = 1337 data = IND } }
+		name = "Restore a sovereign government"
+		command = { type = independence which = CHI value = 1 when = 0 }
+		command = { trigger = { exists = CHI } type = guarantee which = IND where = CHI }
+		command = { type = clrflag which = ind_aubm_regional_pending_chi }
+		command = { type = clrflag which = ind_aubm_regional_current_chi }
+		command = { type = clrflag which = ind_aubm_regional_victory_chi }
+		command = { type = setflag which = ind_aubm_regional_sovereign_chi }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+	action_c = {
+		trigger = { NOT = { exists = CHI } owned = { province = 1337 data = IND } }
+		name = "Create a protectorate: +4 dissent"
+		command = { type = independence which = CHI value = 1 when = 0 }
+		command = { trigger = { exists = CHI } type = make_puppet which = CHI }
+		command = { type = dissent value = 4 }
+		command = { type = clrflag which = ind_aubm_regional_pending_chi }
+		command = { type = clrflag which = ind_aubm_regional_current_chi }
+		command = { type = clrflag which = ind_aubm_regional_victory_chi }
+		command = { type = setflag which = ind_aubm_regional_protected_chi }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+	action_d = {
+		trigger = { NOT = { exists = CHI } owned = { province = 1337 data = IND } }
+		name = "Retain direct administration: +7 dissent"
+		command = { type = dissent value = 7 }
+		command = { type = belligerence value = 3 }
+		command = { type = setflag which = ind_aubm_occupation_upkeep }
+		command = { type = event which = 9282093 where = IND when = 1 }
+		command = { type = clrflag which = ind_aubm_regional_pending_chi }
+		command = { type = setflag which = ind_aubm_regional_direct_chi }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9282211
+	random = no
+	persistent = yes
+	country = IND
+	name = "Settlement of Communist China"
+	desc = "If Communist China still exists and is at war with India, Delhi can offer a fixed accept/counter/refuse armistice of 60/25/15. If annexed and its capital is Indian-owned, India may restore sovereignty, create a protectorate at 4 dissent, or retain direct administration at 7 dissent and recurring occupation cost."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		trigger = { exists = CHC war = { country = IND country = CHC } flag = ind_aubm_regional_current_chc NOT = { flag = ind_aubm_regional_armistice_outstanding } NOT = { flag = ind_aubm_regional_armistice_retry_pending } }
+		name = "Offer pairwise peace: fixed 60/25/15"
+		command = { type = setflag which = ind_aubm_regional_armistice_target_chc }
+		command = { type = setflag which = ind_aubm_regional_armistice_outstanding }
+		command = { type = event which = 9282221 where = CHC when = 3 }
+	}
+	action_b = {
+		trigger = { NOT = { exists = CHC } owned = { province = 1354 data = IND } }
+		name = "Restore a sovereign government"
+		command = { type = independence which = CHC value = 1 when = 0 }
+		command = { trigger = { exists = CHC } type = guarantee which = IND where = CHC }
+		command = { type = clrflag which = ind_aubm_regional_pending_chc }
+		command = { type = clrflag which = ind_aubm_regional_current_chc }
+		command = { type = clrflag which = ind_aubm_regional_victory_chc }
+		command = { type = setflag which = ind_aubm_regional_sovereign_chc }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+	action_c = {
+		trigger = { NOT = { exists = CHC } owned = { province = 1354 data = IND } }
+		name = "Create a protectorate: +4 dissent"
+		command = { type = independence which = CHC value = 1 when = 0 }
+		command = { trigger = { exists = CHC } type = make_puppet which = CHC }
+		command = { type = dissent value = 4 }
+		command = { type = clrflag which = ind_aubm_regional_pending_chc }
+		command = { type = clrflag which = ind_aubm_regional_current_chc }
+		command = { type = clrflag which = ind_aubm_regional_victory_chc }
+		command = { type = setflag which = ind_aubm_regional_protected_chc }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+	action_d = {
+		trigger = { NOT = { exists = CHC } owned = { province = 1354 data = IND } }
+		name = "Retain direct administration: +7 dissent"
+		command = { type = dissent value = 7 }
+		command = { type = belligerence value = 3 }
+		command = { type = setflag which = ind_aubm_occupation_upkeep }
+		command = { type = event which = 9282093 where = IND when = 1 }
+		command = { type = clrflag which = ind_aubm_regional_pending_chc }
+		command = { type = setflag which = ind_aubm_regional_direct_chc }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9282212
+	random = no
+	persistent = yes
+	country = IND
+	name = "Settlement of Siam"
+	desc = "If Siam still exists and is at war with India, Delhi can offer a fixed accept/counter/refuse armistice of 60/25/15. If annexed and its capital is Indian-owned, India may restore sovereignty, create a protectorate at 4 dissent, or retain direct administration at 7 dissent and recurring occupation cost."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		trigger = { exists = SIA war = { country = IND country = SIA } flag = ind_aubm_regional_current_sia NOT = { flag = ind_aubm_regional_armistice_outstanding } NOT = { flag = ind_aubm_regional_armistice_retry_pending } }
+		name = "Offer pairwise peace: fixed 60/25/15"
+		command = { type = setflag which = ind_aubm_regional_armistice_target_sia }
+		command = { type = setflag which = ind_aubm_regional_armistice_outstanding }
+		command = { type = event which = 9282222 where = SIA when = 3 }
+	}
+	action_b = {
+		trigger = { NOT = { exists = SIA } owned = { province = 1423 data = IND } }
+		name = "Restore a sovereign government"
+		command = { type = independence which = SIA value = 1 when = 0 }
+		command = { trigger = { exists = SIA } type = guarantee which = IND where = SIA }
+		command = { type = clrflag which = ind_aubm_regional_pending_sia }
+		command = { type = clrflag which = ind_aubm_regional_current_sia }
+		command = { type = clrflag which = ind_aubm_regional_victory_sia }
+		command = { type = setflag which = ind_aubm_regional_sovereign_sia }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+	action_c = {
+		trigger = { NOT = { exists = SIA } owned = { province = 1423 data = IND } }
+		name = "Create a protectorate: +4 dissent"
+		command = { type = independence which = SIA value = 1 when = 0 }
+		command = { trigger = { exists = SIA } type = make_puppet which = SIA }
+		command = { type = dissent value = 4 }
+		command = { type = clrflag which = ind_aubm_regional_pending_sia }
+		command = { type = clrflag which = ind_aubm_regional_current_sia }
+		command = { type = clrflag which = ind_aubm_regional_victory_sia }
+		command = { type = setflag which = ind_aubm_regional_protected_sia }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+	action_d = {
+		trigger = { NOT = { exists = SIA } owned = { province = 1423 data = IND } }
+		name = "Retain direct administration: +7 dissent"
+		command = { type = dissent value = 7 }
+		command = { type = belligerence value = 3 }
+		command = { type = setflag which = ind_aubm_occupation_upkeep }
+		command = { type = event which = 9282093 where = IND when = 1 }
+		command = { type = clrflag which = ind_aubm_regional_pending_sia }
+		command = { type = setflag which = ind_aubm_regional_direct_sia }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9282213
+	random = no
+	persistent = yes
+	country = IND
+	name = "Settlement of Italy"
+	desc = "If Italy still exists and is at war with India, Delhi can offer a fixed accept/counter/refuse armistice of 60/25/15. If annexed and its capital is Indian-owned, India may restore sovereignty, create a protectorate at 4 dissent, or retain direct administration at 7 dissent and recurring occupation cost."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		trigger = { exists = ITA war = { country = IND country = ITA } flag = ind_aubm_regional_current_ita NOT = { flag = ind_aubm_regional_armistice_outstanding } NOT = { flag = ind_aubm_regional_armistice_retry_pending } }
+		name = "Offer pairwise peace: fixed 60/25/15"
+		command = { type = setflag which = ind_aubm_regional_armistice_target_ita }
+		command = { type = setflag which = ind_aubm_regional_armistice_outstanding }
+		command = { type = event which = 9282223 where = ITA when = 3 }
+	}
+	action_b = {
+		trigger = { NOT = { exists = ITA } owned = { province = 419 data = IND } }
+		name = "Restore a sovereign government"
+		command = { type = independence which = ITA value = 1 when = 0 }
+		command = { trigger = { exists = ITA } type = guarantee which = IND where = ITA }
+		command = { type = clrflag which = ind_aubm_regional_pending_ita }
+		command = { type = clrflag which = ind_aubm_regional_current_ita }
+		command = { type = clrflag which = ind_aubm_regional_victory_ita }
+		command = { type = setflag which = ind_aubm_regional_sovereign_ita }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+	action_c = {
+		trigger = { NOT = { exists = ITA } owned = { province = 419 data = IND } }
+		name = "Create a protectorate: +4 dissent"
+		command = { type = independence which = ITA value = 1 when = 0 }
+		command = { trigger = { exists = ITA } type = make_puppet which = ITA }
+		command = { type = dissent value = 4 }
+		command = { type = clrflag which = ind_aubm_regional_pending_ita }
+		command = { type = clrflag which = ind_aubm_regional_current_ita }
+		command = { type = clrflag which = ind_aubm_regional_victory_ita }
+		command = { type = setflag which = ind_aubm_regional_protected_ita }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+	action_d = {
+		trigger = { NOT = { exists = ITA } owned = { province = 419 data = IND } }
+		name = "Retain direct administration: +7 dissent"
+		command = { type = dissent value = 7 }
+		command = { type = belligerence value = 3 }
+		command = { type = setflag which = ind_aubm_occupation_upkeep }
+		command = { type = event which = 9282093 where = IND when = 1 }
+		command = { type = clrflag which = ind_aubm_regional_pending_ita }
+		command = { type = setflag which = ind_aubm_regional_direct_ita }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9282214
+	random = no
+	persistent = yes
+	country = IND
+	name = "Settlement of France"
+	desc = "If France still exists and is at war with India, Delhi can offer a fixed accept/counter/refuse armistice of 60/25/15. If annexed and its capital is Indian-owned, India may restore sovereignty, create a protectorate at 4 dissent, or retain direct administration at 7 dissent and recurring occupation cost."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		trigger = { exists = FRA war = { country = IND country = FRA } flag = ind_aubm_regional_current_fra NOT = { flag = ind_aubm_regional_armistice_outstanding } NOT = { flag = ind_aubm_regional_armistice_retry_pending } }
+		name = "Offer pairwise peace: fixed 60/25/15"
+		command = { type = setflag which = ind_aubm_regional_armistice_target_fra }
+		command = { type = setflag which = ind_aubm_regional_armistice_outstanding }
+		command = { type = event which = 9282224 where = FRA when = 3 }
+	}
+	action_b = {
+		trigger = { NOT = { exists = FRA } owned = { province = 55 data = IND } }
+		name = "Restore a sovereign government"
+		command = { type = independence which = FRA value = 1 when = 0 }
+		command = { trigger = { exists = FRA } type = guarantee which = IND where = FRA }
+		command = { type = clrflag which = ind_aubm_regional_pending_fra }
+		command = { type = clrflag which = ind_aubm_regional_current_fra }
+		command = { type = clrflag which = ind_aubm_regional_victory_fra }
+		command = { type = setflag which = ind_aubm_regional_sovereign_fra }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+	action_c = {
+		trigger = { NOT = { exists = FRA } owned = { province = 55 data = IND } }
+		name = "Create a protectorate: +4 dissent"
+		command = { type = independence which = FRA value = 1 when = 0 }
+		command = { trigger = { exists = FRA } type = make_puppet which = FRA }
+		command = { type = dissent value = 4 }
+		command = { type = clrflag which = ind_aubm_regional_pending_fra }
+		command = { type = clrflag which = ind_aubm_regional_current_fra }
+		command = { type = clrflag which = ind_aubm_regional_victory_fra }
+		command = { type = setflag which = ind_aubm_regional_protected_fra }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+	action_d = {
+		trigger = { NOT = { exists = FRA } owned = { province = 55 data = IND } }
+		name = "Retain direct administration: +7 dissent"
+		command = { type = dissent value = 7 }
+		command = { type = belligerence value = 3 }
+		command = { type = setflag which = ind_aubm_occupation_upkeep }
+		command = { type = event which = 9282093 where = IND when = 1 }
+		command = { type = clrflag which = ind_aubm_regional_pending_fra }
+		command = { type = setflag which = ind_aubm_regional_direct_fra }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9282215
+	random = no
+	persistent = yes
+	country = IND
+	name = "Settlement of Turkey"
+	desc = "If Turkey still exists and is at war with India, Delhi can offer a fixed accept/counter/refuse armistice of 60/25/15. If annexed and its capital is Indian-owned, India may restore sovereignty, create a protectorate at 4 dissent, or retain direct administration at 7 dissent and recurring occupation cost."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		trigger = { exists = TUR war = { country = IND country = TUR } flag = ind_aubm_regional_current_tur NOT = { flag = ind_aubm_regional_armistice_outstanding } NOT = { flag = ind_aubm_regional_armistice_retry_pending } }
+		name = "Offer pairwise peace: fixed 60/25/15"
+		command = { type = setflag which = ind_aubm_regional_armistice_target_tur }
+		command = { type = setflag which = ind_aubm_regional_armistice_outstanding }
+		command = { type = event which = 9282225 where = TUR when = 3 }
+	}
+	action_b = {
+		trigger = { NOT = { exists = TUR } owned = { province = 1075 data = IND } }
+		name = "Restore a sovereign government"
+		command = { type = independence which = TUR value = 1 when = 0 }
+		command = { trigger = { exists = TUR } type = guarantee which = IND where = TUR }
+		command = { type = clrflag which = ind_aubm_regional_pending_tur }
+		command = { type = clrflag which = ind_aubm_regional_current_tur }
+		command = { type = clrflag which = ind_aubm_regional_victory_tur }
+		command = { type = setflag which = ind_aubm_regional_sovereign_tur }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+	action_c = {
+		trigger = { NOT = { exists = TUR } owned = { province = 1075 data = IND } }
+		name = "Create a protectorate: +4 dissent"
+		command = { type = independence which = TUR value = 1 when = 0 }
+		command = { trigger = { exists = TUR } type = make_puppet which = TUR }
+		command = { type = dissent value = 4 }
+		command = { type = clrflag which = ind_aubm_regional_pending_tur }
+		command = { type = clrflag which = ind_aubm_regional_current_tur }
+		command = { type = clrflag which = ind_aubm_regional_victory_tur }
+		command = { type = setflag which = ind_aubm_regional_protected_tur }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+	action_d = {
+		trigger = { NOT = { exists = TUR } owned = { province = 1075 data = IND } }
+		name = "Retain direct administration: +7 dissent"
+		command = { type = dissent value = 7 }
+		command = { type = belligerence value = 3 }
+		command = { type = setflag which = ind_aubm_occupation_upkeep }
+		command = { type = event which = 9282093 where = IND when = 1 }
+		command = { type = clrflag which = ind_aubm_regional_pending_tur }
+		command = { type = setflag which = ind_aubm_regional_direct_tur }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9282216
+	random = no
+	persistent = yes
+	country = IND
+	name = "Settlement of Portugal"
+	desc = "If Portugal still exists and is at war with India, Delhi can offer a fixed accept/counter/refuse armistice of 60/25/15. If annexed and its capital is Indian-owned, India may restore sovereignty, create a protectorate at 4 dissent, or retain direct administration at 7 dissent and recurring occupation cost."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		trigger = { exists = POR war = { country = IND country = POR } flag = ind_aubm_regional_current_por NOT = { flag = ind_aubm_regional_armistice_outstanding } NOT = { flag = ind_aubm_regional_armistice_retry_pending } }
+		name = "Offer pairwise peace: fixed 60/25/15"
+		command = { type = setflag which = ind_aubm_regional_armistice_target_por }
+		command = { type = setflag which = ind_aubm_regional_armistice_outstanding }
+		command = { type = event which = 9282226 where = POR when = 3 }
+	}
+	action_b = {
+		trigger = { NOT = { exists = POR } owned = { province = 476 data = IND } }
+		name = "Restore a sovereign government"
+		command = { type = independence which = POR value = 1 when = 0 }
+		command = { trigger = { exists = POR } type = guarantee which = IND where = POR }
+		command = { type = clrflag which = ind_aubm_regional_pending_por }
+		command = { type = clrflag which = ind_aubm_regional_current_por }
+		command = { type = clrflag which = ind_aubm_regional_victory_por }
+		command = { type = setflag which = ind_aubm_regional_sovereign_por }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+	action_c = {
+		trigger = { NOT = { exists = POR } owned = { province = 476 data = IND } }
+		name = "Create a protectorate: +4 dissent"
+		command = { type = independence which = POR value = 1 when = 0 }
+		command = { trigger = { exists = POR } type = make_puppet which = POR }
+		command = { type = dissent value = 4 }
+		command = { type = clrflag which = ind_aubm_regional_pending_por }
+		command = { type = clrflag which = ind_aubm_regional_current_por }
+		command = { type = clrflag which = ind_aubm_regional_victory_por }
+		command = { type = setflag which = ind_aubm_regional_protected_por }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+	action_d = {
+		trigger = { NOT = { exists = POR } owned = { province = 476 data = IND } }
+		name = "Retain direct administration: +7 dissent"
+		command = { type = dissent value = 7 }
+		command = { type = belligerence value = 3 }
+		command = { type = setflag which = ind_aubm_occupation_upkeep }
+		command = { type = event which = 9282093 where = IND when = 1 }
+		command = { type = clrflag which = ind_aubm_regional_pending_por }
+		command = { type = setflag which = ind_aubm_regional_direct_por }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9282217
+	random = no
+	persistent = yes
+	country = IND
+	name = "Settlement of New Zealand"
+	desc = "If New Zealand still exists and is at war with India, Delhi can offer a fixed accept/counter/refuse armistice of 60/25/15. If annexed and its capital is Indian-owned, India may restore sovereignty, create a protectorate at 4 dissent, or retain direct administration at 7 dissent and recurring occupation cost."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		trigger = { exists = NZL war = { country = IND country = NZL } flag = ind_aubm_regional_current_nzl NOT = { flag = ind_aubm_regional_armistice_outstanding } NOT = { flag = ind_aubm_regional_armistice_retry_pending } }
+		name = "Offer pairwise peace: fixed 60/25/15"
+		command = { type = setflag which = ind_aubm_regional_armistice_target_nzl }
+		command = { type = setflag which = ind_aubm_regional_armistice_outstanding }
+		command = { type = event which = 9282227 where = NZL when = 3 }
+	}
+	action_b = {
+		trigger = { NOT = { exists = NZL } owned = { province = 1721 data = IND } }
+		name = "Restore a sovereign government"
+		command = { type = independence which = NZL value = 1 when = 0 }
+		command = { trigger = { exists = NZL } type = guarantee which = IND where = NZL }
+		command = { type = clrflag which = ind_aubm_regional_pending_nzl }
+		command = { type = clrflag which = ind_aubm_regional_current_nzl }
+		command = { type = clrflag which = ind_aubm_regional_victory_nzl }
+		command = { type = setflag which = ind_aubm_regional_sovereign_nzl }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+	action_c = {
+		trigger = { NOT = { exists = NZL } owned = { province = 1721 data = IND } }
+		name = "Create a protectorate: +4 dissent"
+		command = { type = independence which = NZL value = 1 when = 0 }
+		command = { trigger = { exists = NZL } type = make_puppet which = NZL }
+		command = { type = dissent value = 4 }
+		command = { type = clrflag which = ind_aubm_regional_pending_nzl }
+		command = { type = clrflag which = ind_aubm_regional_current_nzl }
+		command = { type = clrflag which = ind_aubm_regional_victory_nzl }
+		command = { type = setflag which = ind_aubm_regional_protected_nzl }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+	action_d = {
+		trigger = { NOT = { exists = NZL } owned = { province = 1721 data = IND } }
+		name = "Retain direct administration: +7 dissent"
+		command = { type = dissent value = 7 }
+		command = { type = belligerence value = 3 }
+		command = { type = setflag which = ind_aubm_occupation_upkeep }
+		command = { type = event which = 9282093 where = IND when = 1 }
+		command = { type = clrflag which = ind_aubm_regional_pending_nzl }
+		command = { type = setflag which = ind_aubm_regional_direct_nzl }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9282218
+	random = no
+	persistent = yes
+	country = IND
+	name = "Settlement of Ethiopia"
+	desc = "If Ethiopia still exists and is at war with India, Delhi can offer a fixed accept/counter/refuse armistice of 60/25/15. If annexed and its capital is Indian-owned, India may restore sovereignty, create a protectorate at 4 dissent, or retain direct administration at 7 dissent and recurring occupation cost."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		trigger = { exists = ETH war = { country = IND country = ETH } flag = ind_aubm_regional_current_eth NOT = { flag = ind_aubm_regional_armistice_outstanding } NOT = { flag = ind_aubm_regional_armistice_retry_pending } }
+		name = "Offer pairwise peace: fixed 60/25/15"
+		command = { type = setflag which = ind_aubm_regional_armistice_target_eth }
+		command = { type = setflag which = ind_aubm_regional_armistice_outstanding }
+		command = { type = event which = 9282228 where = ETH when = 3 }
+	}
+	action_b = {
+		trigger = { NOT = { exists = ETH } owned = { province = 825 data = IND } }
+		name = "Restore a sovereign government"
+		command = { type = independence which = ETH value = 1 when = 0 }
+		command = { trigger = { exists = ETH } type = guarantee which = IND where = ETH }
+		command = { type = clrflag which = ind_aubm_regional_pending_eth }
+		command = { type = clrflag which = ind_aubm_regional_current_eth }
+		command = { type = clrflag which = ind_aubm_regional_victory_eth }
+		command = { type = setflag which = ind_aubm_regional_sovereign_eth }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+	action_c = {
+		trigger = { NOT = { exists = ETH } owned = { province = 825 data = IND } }
+		name = "Create a protectorate: +4 dissent"
+		command = { type = independence which = ETH value = 1 when = 0 }
+		command = { trigger = { exists = ETH } type = make_puppet which = ETH }
+		command = { type = dissent value = 4 }
+		command = { type = clrflag which = ind_aubm_regional_pending_eth }
+		command = { type = clrflag which = ind_aubm_regional_current_eth }
+		command = { type = clrflag which = ind_aubm_regional_victory_eth }
+		command = { type = setflag which = ind_aubm_regional_protected_eth }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+	action_d = {
+		trigger = { NOT = { exists = ETH } owned = { province = 825 data = IND } }
+		name = "Retain direct administration: +7 dissent"
+		command = { type = dissent value = 7 }
+		command = { type = belligerence value = 3 }
+		command = { type = setflag which = ind_aubm_occupation_upkeep }
+		command = { type = event which = 9282093 where = IND when = 1 }
+		command = { type = clrflag which = ind_aubm_regional_pending_eth }
+		command = { type = setflag which = ind_aubm_regional_direct_eth }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9282219
+	random = no
+	persistent = yes
+	country = IND
+	name = "Settlement of South Africa"
+	desc = "If South Africa still exists and is at war with India, Delhi can offer a fixed accept/counter/refuse armistice of 60/25/15. If annexed and its capital is Indian-owned, India may restore sovereignty, create a protectorate at 4 dissent, or retain direct administration at 7 dissent and recurring occupation cost."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		trigger = { exists = SAF war = { country = IND country = SAF } flag = ind_aubm_regional_current_saf NOT = { flag = ind_aubm_regional_armistice_outstanding } NOT = { flag = ind_aubm_regional_armistice_retry_pending } }
+		name = "Offer pairwise peace: fixed 60/25/15"
+		command = { type = setflag which = ind_aubm_regional_armistice_target_saf }
+		command = { type = setflag which = ind_aubm_regional_armistice_outstanding }
+		command = { type = event which = 9282229 where = SAF when = 3 }
+	}
+	action_b = {
+		trigger = { NOT = { exists = SAF } owned = { province = 876 data = IND } }
+		name = "Restore a sovereign government"
+		command = { type = independence which = SAF value = 1 when = 0 }
+		command = { trigger = { exists = SAF } type = guarantee which = IND where = SAF }
+		command = { type = clrflag which = ind_aubm_regional_pending_saf }
+		command = { type = clrflag which = ind_aubm_regional_current_saf }
+		command = { type = clrflag which = ind_aubm_regional_victory_saf }
+		command = { type = setflag which = ind_aubm_regional_sovereign_saf }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+	action_c = {
+		trigger = { NOT = { exists = SAF } owned = { province = 876 data = IND } }
+		name = "Create a protectorate: +4 dissent"
+		command = { type = independence which = SAF value = 1 when = 0 }
+		command = { trigger = { exists = SAF } type = make_puppet which = SAF }
+		command = { type = dissent value = 4 }
+		command = { type = clrflag which = ind_aubm_regional_pending_saf }
+		command = { type = clrflag which = ind_aubm_regional_current_saf }
+		command = { type = clrflag which = ind_aubm_regional_victory_saf }
+		command = { type = setflag which = ind_aubm_regional_protected_saf }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+	action_d = {
+		trigger = { NOT = { exists = SAF } owned = { province = 876 data = IND } }
+		name = "Retain direct administration: +7 dissent"
+		command = { type = dissent value = 7 }
+		command = { type = belligerence value = 3 }
+		command = { type = setflag which = ind_aubm_occupation_upkeep }
+		command = { type = event which = 9282093 where = IND when = 1 }
+		command = { type = clrflag which = ind_aubm_regional_pending_saf }
+		command = { type = setflag which = ind_aubm_regional_direct_saf }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9282220
+	random = no
+	persistent = yes
+	country = CHI
+	name = "India Offers a Regional Armistice"
+	desc = "Delhi offers pairwise peace and reciprocal Indian access without automatic territorial transfer. The fixed response is accept 60%, counter with peace but no access 25%, refuse 15%."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		ai_chance = 60
+		name = "Accept peace and reciprocal Indian access"
+		command = { type = access which = IND }
+		command = { type = relation which = IND value = 25 }
+		command = { type = event which = 9282261 where = IND when = 3 }
+	}
+	action_b = {
+		ai_chance = 25
+		name = "Accept peace without Indian access"
+		command = { type = event which = 9282262 where = IND when = 3 }
+	}
+	action_c = {
+		ai_chance = 15
+		name = "Refuse and continue the war"
+		command = { type = event which = 9282263 where = IND when = 3 }
+	}
+}
+
+event = {
+	id = 9282221
+	random = no
+	persistent = yes
+	country = CHC
+	name = "India Offers a Regional Armistice"
+	desc = "Delhi offers pairwise peace and reciprocal Indian access without automatic territorial transfer. The fixed response is accept 60%, counter with peace but no access 25%, refuse 15%."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		ai_chance = 60
+		name = "Accept peace and reciprocal Indian access"
+		command = { type = access which = IND }
+		command = { type = relation which = IND value = 25 }
+		command = { type = event which = 9282261 where = IND when = 3 }
+	}
+	action_b = {
+		ai_chance = 25
+		name = "Accept peace without Indian access"
+		command = { type = event which = 9282262 where = IND when = 3 }
+	}
+	action_c = {
+		ai_chance = 15
+		name = "Refuse and continue the war"
+		command = { type = event which = 9282263 where = IND when = 3 }
+	}
+}
+
+event = {
+	id = 9282222
+	random = no
+	persistent = yes
+	country = SIA
+	name = "India Offers a Regional Armistice"
+	desc = "Delhi offers pairwise peace and reciprocal Indian access without automatic territorial transfer. The fixed response is accept 60%, counter with peace but no access 25%, refuse 15%."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		ai_chance = 60
+		name = "Accept peace and reciprocal Indian access"
+		command = { type = access which = IND }
+		command = { type = relation which = IND value = 25 }
+		command = { type = event which = 9282261 where = IND when = 3 }
+	}
+	action_b = {
+		ai_chance = 25
+		name = "Accept peace without Indian access"
+		command = { type = event which = 9282262 where = IND when = 3 }
+	}
+	action_c = {
+		ai_chance = 15
+		name = "Refuse and continue the war"
+		command = { type = event which = 9282263 where = IND when = 3 }
+	}
+}
+
+event = {
+	id = 9282223
+	random = no
+	persistent = yes
+	country = ITA
+	name = "India Offers a Regional Armistice"
+	desc = "Delhi offers pairwise peace and reciprocal Indian access without automatic territorial transfer. The fixed response is accept 60%, counter with peace but no access 25%, refuse 15%."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		ai_chance = 60
+		name = "Accept peace and reciprocal Indian access"
+		command = { type = access which = IND }
+		command = { type = relation which = IND value = 25 }
+		command = { type = event which = 9282261 where = IND when = 3 }
+	}
+	action_b = {
+		ai_chance = 25
+		name = "Accept peace without Indian access"
+		command = { type = event which = 9282262 where = IND when = 3 }
+	}
+	action_c = {
+		ai_chance = 15
+		name = "Refuse and continue the war"
+		command = { type = event which = 9282263 where = IND when = 3 }
+	}
+}
+
+event = {
+	id = 9282224
+	random = no
+	persistent = yes
+	country = FRA
+	name = "India Offers a Regional Armistice"
+	desc = "Delhi offers pairwise peace and reciprocal Indian access without automatic territorial transfer. The fixed response is accept 60%, counter with peace but no access 25%, refuse 15%."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		ai_chance = 60
+		name = "Accept peace and reciprocal Indian access"
+		command = { type = access which = IND }
+		command = { type = relation which = IND value = 25 }
+		command = { type = event which = 9282261 where = IND when = 3 }
+	}
+	action_b = {
+		ai_chance = 25
+		name = "Accept peace without Indian access"
+		command = { type = event which = 9282262 where = IND when = 3 }
+	}
+	action_c = {
+		ai_chance = 15
+		name = "Refuse and continue the war"
+		command = { type = event which = 9282263 where = IND when = 3 }
+	}
+}
+
+event = {
+	id = 9282225
+	random = no
+	persistent = yes
+	country = TUR
+	name = "India Offers a Regional Armistice"
+	desc = "Delhi offers pairwise peace and reciprocal Indian access without automatic territorial transfer. The fixed response is accept 60%, counter with peace but no access 25%, refuse 15%."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		ai_chance = 60
+		name = "Accept peace and reciprocal Indian access"
+		command = { type = access which = IND }
+		command = { type = relation which = IND value = 25 }
+		command = { type = event which = 9282261 where = IND when = 3 }
+	}
+	action_b = {
+		ai_chance = 25
+		name = "Accept peace without Indian access"
+		command = { type = event which = 9282262 where = IND when = 3 }
+	}
+	action_c = {
+		ai_chance = 15
+		name = "Refuse and continue the war"
+		command = { type = event which = 9282263 where = IND when = 3 }
+	}
+}
+
+event = {
+	id = 9282226
+	random = no
+	persistent = yes
+	country = POR
+	name = "India Offers a Regional Armistice"
+	desc = "Delhi offers pairwise peace and reciprocal Indian access without automatic territorial transfer. The fixed response is accept 60%, counter with peace but no access 25%, refuse 15%."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		ai_chance = 60
+		name = "Accept peace and reciprocal Indian access"
+		command = { type = access which = IND }
+		command = { type = relation which = IND value = 25 }
+		command = { type = event which = 9282261 where = IND when = 3 }
+	}
+	action_b = {
+		ai_chance = 25
+		name = "Accept peace without Indian access"
+		command = { type = event which = 9282262 where = IND when = 3 }
+	}
+	action_c = {
+		ai_chance = 15
+		name = "Refuse and continue the war"
+		command = { type = event which = 9282263 where = IND when = 3 }
+	}
+}
+
+event = {
+	id = 9282227
+	random = no
+	persistent = yes
+	country = NZL
+	name = "India Offers a Regional Armistice"
+	desc = "Delhi offers pairwise peace and reciprocal Indian access without automatic territorial transfer. The fixed response is accept 60%, counter with peace but no access 25%, refuse 15%."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		ai_chance = 60
+		name = "Accept peace and reciprocal Indian access"
+		command = { type = access which = IND }
+		command = { type = relation which = IND value = 25 }
+		command = { type = event which = 9282261 where = IND when = 3 }
+	}
+	action_b = {
+		ai_chance = 25
+		name = "Accept peace without Indian access"
+		command = { type = event which = 9282262 where = IND when = 3 }
+	}
+	action_c = {
+		ai_chance = 15
+		name = "Refuse and continue the war"
+		command = { type = event which = 9282263 where = IND when = 3 }
+	}
+}
+
+event = {
+	id = 9282228
+	random = no
+	persistent = yes
+	country = ETH
+	name = "India Offers a Regional Armistice"
+	desc = "Delhi offers pairwise peace and reciprocal Indian access without automatic territorial transfer. The fixed response is accept 60%, counter with peace but no access 25%, refuse 15%."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		ai_chance = 60
+		name = "Accept peace and reciprocal Indian access"
+		command = { type = access which = IND }
+		command = { type = relation which = IND value = 25 }
+		command = { type = event which = 9282261 where = IND when = 3 }
+	}
+	action_b = {
+		ai_chance = 25
+		name = "Accept peace without Indian access"
+		command = { type = event which = 9282262 where = IND when = 3 }
+	}
+	action_c = {
+		ai_chance = 15
+		name = "Refuse and continue the war"
+		command = { type = event which = 9282263 where = IND when = 3 }
+	}
+}
+
+event = {
+	id = 9282229
+	random = no
+	persistent = yes
+	country = SAF
+	name = "India Offers a Regional Armistice"
+	desc = "Delhi offers pairwise peace and reciprocal Indian access without automatic territorial transfer. The fixed response is accept 60%, counter with peace but no access 25%, refuse 15%."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		ai_chance = 60
+		name = "Accept peace and reciprocal Indian access"
+		command = { type = access which = IND }
+		command = { type = relation which = IND value = 25 }
+		command = { type = event which = 9282261 where = IND when = 3 }
+	}
+	action_b = {
+		ai_chance = 25
+		name = "Accept peace without Indian access"
+		command = { type = event which = 9282262 where = IND when = 3 }
+	}
+	action_c = {
+		ai_chance = 15
+		name = "Refuse and continue the war"
+		command = { type = event which = 9282263 where = IND when = 3 }
+	}
+}
+
+event = {
+	id = 9282230
+	random = no
+	country = IND
+	name = "Nationalist China Accepts Delhi's Regional Peace"
+	desc = "Nationalist China has accepted pairwise peace and reciprocal Indian access. This war ends without affecting any other campaign, and the regional settlement is recorded."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Publish the regional peace and access treaty"
+		command = { type = dissent value = -2 }
+		command = { type = setflag which = ind_aubm_regional_armistice }
+		command = { type = setflag which = ind_aubm_regional_settled_chi }
+		command = { type = clrflag which = ind_aubm_regional_pending_chi }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9282231
+	random = no
+	country = IND
+	name = "Communist China Accepts Delhi's Regional Peace"
+	desc = "Communist China has accepted pairwise peace and reciprocal Indian access. This war ends without affecting any other campaign, and the regional settlement is recorded."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Publish the regional peace and access treaty"
+		command = { type = dissent value = -2 }
+		command = { type = setflag which = ind_aubm_regional_armistice }
+		command = { type = setflag which = ind_aubm_regional_settled_chc }
+		command = { type = clrflag which = ind_aubm_regional_pending_chc }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9282232
+	random = no
+	country = IND
+	name = "Siam Accepts Delhi's Regional Peace"
+	desc = "Siam has accepted pairwise peace and reciprocal Indian access. This war ends without affecting any other campaign, and the regional settlement is recorded."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Publish the regional peace and access treaty"
+		command = { type = dissent value = -2 }
+		command = { type = setflag which = ind_aubm_regional_armistice }
+		command = { type = setflag which = ind_aubm_regional_settled_sia }
+		command = { type = clrflag which = ind_aubm_regional_pending_sia }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9282233
+	random = no
+	country = IND
+	name = "Italy Accepts Delhi's Regional Peace"
+	desc = "Italy has accepted pairwise peace and reciprocal Indian access. This war ends without affecting any other campaign, and the regional settlement is recorded."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Publish the regional peace and access treaty"
+		command = { type = dissent value = -2 }
+		command = { type = setflag which = ind_aubm_regional_armistice }
+		command = { type = setflag which = ind_aubm_regional_settled_ita }
+		command = { type = clrflag which = ind_aubm_regional_pending_ita }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9282234
+	random = no
+	country = IND
+	name = "France Accepts Delhi's Regional Peace"
+	desc = "France has accepted pairwise peace and reciprocal Indian access. This war ends without affecting any other campaign, and the regional settlement is recorded."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Publish the regional peace and access treaty"
+		command = { type = dissent value = -2 }
+		command = { type = setflag which = ind_aubm_regional_armistice }
+		command = { type = setflag which = ind_aubm_regional_settled_fra }
+		command = { type = clrflag which = ind_aubm_regional_pending_fra }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9282235
+	random = no
+	country = IND
+	name = "Turkey Accepts Delhi's Regional Peace"
+	desc = "Turkey has accepted pairwise peace and reciprocal Indian access. This war ends without affecting any other campaign, and the regional settlement is recorded."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Publish the regional peace and access treaty"
+		command = { type = dissent value = -2 }
+		command = { type = setflag which = ind_aubm_regional_armistice }
+		command = { type = setflag which = ind_aubm_regional_settled_tur }
+		command = { type = clrflag which = ind_aubm_regional_pending_tur }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9282236
+	random = no
+	country = IND
+	name = "Portugal Accepts Delhi's Regional Peace"
+	desc = "Portugal has accepted pairwise peace and reciprocal Indian access. This war ends without affecting any other campaign, and the regional settlement is recorded."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Publish the regional peace and access treaty"
+		command = { type = dissent value = -2 }
+		command = { type = setflag which = ind_aubm_regional_armistice }
+		command = { type = setflag which = ind_aubm_regional_settled_por }
+		command = { type = clrflag which = ind_aubm_regional_pending_por }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9282237
+	random = no
+	country = IND
+	name = "New Zealand Accepts Delhi's Regional Peace"
+	desc = "New Zealand has accepted pairwise peace and reciprocal Indian access. This war ends without affecting any other campaign, and the regional settlement is recorded."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Publish the regional peace and access treaty"
+		command = { type = dissent value = -2 }
+		command = { type = setflag which = ind_aubm_regional_armistice }
+		command = { type = setflag which = ind_aubm_regional_settled_nzl }
+		command = { type = clrflag which = ind_aubm_regional_pending_nzl }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9282238
+	random = no
+	country = IND
+	name = "Ethiopia Accepts Delhi's Regional Peace"
+	desc = "Ethiopia has accepted pairwise peace and reciprocal Indian access. This war ends without affecting any other campaign, and the regional settlement is recorded."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Publish the regional peace and access treaty"
+		command = { type = dissent value = -2 }
+		command = { type = setflag which = ind_aubm_regional_armistice }
+		command = { type = setflag which = ind_aubm_regional_settled_eth }
+		command = { type = clrflag which = ind_aubm_regional_pending_eth }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9282239
+	random = no
+	country = IND
+	name = "South Africa Accepts Delhi's Regional Peace"
+	desc = "South Africa has accepted pairwise peace and reciprocal Indian access. This war ends without affecting any other campaign, and the regional settlement is recorded."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Publish the regional peace and access treaty"
+		command = { type = dissent value = -2 }
+		command = { type = setflag which = ind_aubm_regional_armistice }
+		command = { type = setflag which = ind_aubm_regional_settled_saf }
+		command = { type = clrflag which = ind_aubm_regional_pending_saf }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9282240
+	random = no
+	country = IND
+	name = "Nationalist China Counters Delhi's Regional Terms"
+	desc = "Nationalist China accepts pairwise peace but withholds Indian access. The limited settlement ends only this war and leaves every other Indian campaign unchanged."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Accept the limited regional peace"
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_aubm_regional_armistice_limited }
+		command = { type = setflag which = ind_aubm_regional_settled_chi }
+		command = { type = clrflag which = ind_aubm_regional_pending_chi }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9282241
+	random = no
+	country = IND
+	name = "Communist China Counters Delhi's Regional Terms"
+	desc = "Communist China accepts pairwise peace but withholds Indian access. The limited settlement ends only this war and leaves every other Indian campaign unchanged."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Accept the limited regional peace"
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_aubm_regional_armistice_limited }
+		command = { type = setflag which = ind_aubm_regional_settled_chc }
+		command = { type = clrflag which = ind_aubm_regional_pending_chc }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9282242
+	random = no
+	country = IND
+	name = "Siam Counters Delhi's Regional Terms"
+	desc = "Siam accepts pairwise peace but withholds Indian access. The limited settlement ends only this war and leaves every other Indian campaign unchanged."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Accept the limited regional peace"
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_aubm_regional_armistice_limited }
+		command = { type = setflag which = ind_aubm_regional_settled_sia }
+		command = { type = clrflag which = ind_aubm_regional_pending_sia }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9282243
+	random = no
+	country = IND
+	name = "Italy Counters Delhi's Regional Terms"
+	desc = "Italy accepts pairwise peace but withholds Indian access. The limited settlement ends only this war and leaves every other Indian campaign unchanged."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Accept the limited regional peace"
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_aubm_regional_armistice_limited }
+		command = { type = setflag which = ind_aubm_regional_settled_ita }
+		command = { type = clrflag which = ind_aubm_regional_pending_ita }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9282244
+	random = no
+	country = IND
+	name = "France Counters Delhi's Regional Terms"
+	desc = "France accepts pairwise peace but withholds Indian access. The limited settlement ends only this war and leaves every other Indian campaign unchanged."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Accept the limited regional peace"
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_aubm_regional_armistice_limited }
+		command = { type = setflag which = ind_aubm_regional_settled_fra }
+		command = { type = clrflag which = ind_aubm_regional_pending_fra }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9282245
+	random = no
+	country = IND
+	name = "Turkey Counters Delhi's Regional Terms"
+	desc = "Turkey accepts pairwise peace but withholds Indian access. The limited settlement ends only this war and leaves every other Indian campaign unchanged."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Accept the limited regional peace"
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_aubm_regional_armistice_limited }
+		command = { type = setflag which = ind_aubm_regional_settled_tur }
+		command = { type = clrflag which = ind_aubm_regional_pending_tur }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9282246
+	random = no
+	country = IND
+	name = "Portugal Counters Delhi's Regional Terms"
+	desc = "Portugal accepts pairwise peace but withholds Indian access. The limited settlement ends only this war and leaves every other Indian campaign unchanged."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Accept the limited regional peace"
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_aubm_regional_armistice_limited }
+		command = { type = setflag which = ind_aubm_regional_settled_por }
+		command = { type = clrflag which = ind_aubm_regional_pending_por }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9282247
+	random = no
+	country = IND
+	name = "New Zealand Counters Delhi's Regional Terms"
+	desc = "New Zealand accepts pairwise peace but withholds Indian access. The limited settlement ends only this war and leaves every other Indian campaign unchanged."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Accept the limited regional peace"
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_aubm_regional_armistice_limited }
+		command = { type = setflag which = ind_aubm_regional_settled_nzl }
+		command = { type = clrflag which = ind_aubm_regional_pending_nzl }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9282248
+	random = no
+	country = IND
+	name = "Ethiopia Counters Delhi's Regional Terms"
+	desc = "Ethiopia accepts pairwise peace but withholds Indian access. The limited settlement ends only this war and leaves every other Indian campaign unchanged."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Accept the limited regional peace"
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_aubm_regional_armistice_limited }
+		command = { type = setflag which = ind_aubm_regional_settled_eth }
+		command = { type = clrflag which = ind_aubm_regional_pending_eth }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9282249
+	random = no
+	country = IND
+	name = "South Africa Counters Delhi's Regional Terms"
+	desc = "South Africa accepts pairwise peace but withholds Indian access. The limited settlement ends only this war and leaves every other Indian campaign unchanged."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Accept the limited regional peace"
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_aubm_regional_armistice_limited }
+		command = { type = setflag which = ind_aubm_regional_settled_saf }
+		command = { type = clrflag which = ind_aubm_regional_pending_saf }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9282250
+	random = no
+	country = IND
+	name = "Nationalist China Refuses Delhi's Regional Terms"
+	desc = "Nationalist China refuses the armistice and the war continues. The settlement docket remains open and returns to the Cabinet after ninety days; no unrelated war or alliance is changed."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Record the refusal and continue the campaign"
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_aubm_regional_refused_chi }
+		command = { type = setflag which = ind_aubm_regional_pending_chi }
+		command = { type = event which = 9282201 where = IND when = 90 }
+	}
+}
+
+event = {
+	id = 9282251
+	random = no
+	country = IND
+	name = "Communist China Refuses Delhi's Regional Terms"
+	desc = "Communist China refuses the armistice and the war continues. The settlement docket remains open and returns to the Cabinet after ninety days; no unrelated war or alliance is changed."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Record the refusal and continue the campaign"
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_aubm_regional_refused_chc }
+		command = { type = setflag which = ind_aubm_regional_pending_chc }
+		command = { type = event which = 9282201 where = IND when = 90 }
+	}
+}
+
+event = {
+	id = 9282252
+	random = no
+	country = IND
+	name = "Siam Refuses Delhi's Regional Terms"
+	desc = "Siam refuses the armistice and the war continues. The settlement docket remains open and returns to the Cabinet after ninety days; no unrelated war or alliance is changed."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Record the refusal and continue the campaign"
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_aubm_regional_refused_sia }
+		command = { type = setflag which = ind_aubm_regional_pending_sia }
+		command = { type = event which = 9282201 where = IND when = 90 }
+	}
+}
+
+event = {
+	id = 9282253
+	random = no
+	country = IND
+	name = "Italy Refuses Delhi's Regional Terms"
+	desc = "Italy refuses the armistice and the war continues. The settlement docket remains open and returns to the Cabinet after ninety days; no unrelated war or alliance is changed."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Record the refusal and continue the campaign"
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_aubm_regional_refused_ita }
+		command = { type = setflag which = ind_aubm_regional_pending_ita }
+		command = { type = event which = 9282201 where = IND when = 90 }
+	}
+}
+
+event = {
+	id = 9282254
+	random = no
+	country = IND
+	name = "France Refuses Delhi's Regional Terms"
+	desc = "France refuses the armistice and the war continues. The settlement docket remains open and returns to the Cabinet after ninety days; no unrelated war or alliance is changed."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Record the refusal and continue the campaign"
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_aubm_regional_refused_fra }
+		command = { type = setflag which = ind_aubm_regional_pending_fra }
+		command = { type = event which = 9282201 where = IND when = 90 }
+	}
+}
+
+event = {
+	id = 9282255
+	random = no
+	country = IND
+	name = "Turkey Refuses Delhi's Regional Terms"
+	desc = "Turkey refuses the armistice and the war continues. The settlement docket remains open and returns to the Cabinet after ninety days; no unrelated war or alliance is changed."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Record the refusal and continue the campaign"
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_aubm_regional_refused_tur }
+		command = { type = setflag which = ind_aubm_regional_pending_tur }
+		command = { type = event which = 9282201 where = IND when = 90 }
+	}
+}
+
+event = {
+	id = 9282256
+	random = no
+	country = IND
+	name = "Portugal Refuses Delhi's Regional Terms"
+	desc = "Portugal refuses the armistice and the war continues. The settlement docket remains open and returns to the Cabinet after ninety days; no unrelated war or alliance is changed."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Record the refusal and continue the campaign"
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_aubm_regional_refused_por }
+		command = { type = setflag which = ind_aubm_regional_pending_por }
+		command = { type = event which = 9282201 where = IND when = 90 }
+	}
+}
+
+event = {
+	id = 9282257
+	random = no
+	country = IND
+	name = "New Zealand Refuses Delhi's Regional Terms"
+	desc = "New Zealand refuses the armistice and the war continues. The settlement docket remains open and returns to the Cabinet after ninety days; no unrelated war or alliance is changed."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Record the refusal and continue the campaign"
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_aubm_regional_refused_nzl }
+		command = { type = setflag which = ind_aubm_regional_pending_nzl }
+		command = { type = event which = 9282201 where = IND when = 90 }
+	}
+}
+
+event = {
+	id = 9282258
+	random = no
+	country = IND
+	name = "Ethiopia Refuses Delhi's Regional Terms"
+	desc = "Ethiopia refuses the armistice and the war continues. The settlement docket remains open and returns to the Cabinet after ninety days; no unrelated war or alliance is changed."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Record the refusal and continue the campaign"
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_aubm_regional_refused_eth }
+		command = { type = setflag which = ind_aubm_regional_pending_eth }
+		command = { type = event which = 9282201 where = IND when = 90 }
+	}
+}
+
+event = {
+	id = 9282259
+	random = no
+	country = IND
+	name = "South Africa Refuses Delhi's Regional Terms"
+	desc = "South Africa refuses the armistice and the war continues. The settlement docket remains open and returns to the Cabinet after ninety days; no unrelated war or alliance is changed."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Record the refusal and continue the campaign"
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_aubm_regional_refused_saf }
+		command = { type = setflag which = ind_aubm_regional_pending_saf }
+		command = { type = event which = 9282201 where = IND when = 90 }
+	}
+}
+
+#########################################################################
+# Shared India-scoped regional armistice protocol
+#########################################################################
+
+event = {
+	id = 9282260
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	name = "Delhi Ratifies the Regional Armistice"
+	desc = "The respondent has accepted peace, but Delhi executes it. Any formal coalition first becomes its named strategic compact, as Darkest Hour requires for an Indian separate peace. Only the selected regional campaign closes; all other wars, occupations and settlement dockets remain live."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Ratify this country-specific peace"
+		command = { trigger = { OR = { alliance = { country = IND country = ENG } alliance = { country = IND country = USA } } } type = setflag which = ind_v4a_treaty_cobelligerent }
+		command = { trigger = { OR = { alliance = { country = IND country = ENG } alliance = { country = IND country = USA } } } type = clrflag which = ind_v4a_treaty_formal_alliance }
+		command = { trigger = { alliance = { country = IND country = GER } } type = setflag which = ind_gc_cobelligerent }
+		command = { trigger = { alliance = { country = IND country = GER } } type = clrflag which = ind_gc_formal_axis }
+		command = { trigger = { alliance = { country = IND country = SOV } } type = setflag which = ind_v4_sov_equal_compact }
+		command = { trigger = { alliance = { country = IND country = SOV } } type = clrflag which = ind_v4_sov_supervised_compact }
+		command = { trigger = { alliance = { country = IND country = JAP } } type = setflag which = ind_aubm_jp_partnership }
+		command = { trigger = { alliance = { country = IND country = JAP } } type = setflag which = ind_aubm_jp_independent_cobelligerent }
+		command = { trigger = { alliance = { country = IND country = JAP } } type = clrflag which = ind_aubm_jp_formal_alliance }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_chi war = { country = IND country = CHI } } type = peace which = CHI value = 1 }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_chc war = { country = IND country = CHC } } type = peace which = CHC value = 1 }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_sia war = { country = IND country = SIA } } type = peace which = SIA value = 1 }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_ita war = { country = IND country = ITA } } type = peace which = ITA value = 1 }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_fra war = { country = IND country = FRA } } type = peace which = FRA value = 1 }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_tur war = { country = IND country = TUR } } type = peace which = TUR value = 1 }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_por war = { country = IND country = POR } } type = peace which = POR value = 1 }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_nzl war = { country = IND country = NZL } } type = peace which = NZL value = 1 }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_eth war = { country = IND country = ETH } } type = peace which = ETH value = 1 }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_saf war = { country = IND country = SAF } } type = peace which = SAF value = 1 }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_chi } type = setflag which = ind_aubm_regional_settled_chi }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_chi } type = clrflag which = ind_aubm_regional_pending_chi }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_chi } type = clrflag which = ind_aubm_regional_current_chi }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_chi } type = clrflag which = ind_aubm_regional_victory_chi }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_chc } type = setflag which = ind_aubm_regional_settled_chc }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_chc } type = clrflag which = ind_aubm_regional_pending_chc }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_chc } type = clrflag which = ind_aubm_regional_current_chc }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_chc } type = clrflag which = ind_aubm_regional_victory_chc }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_sia } type = setflag which = ind_aubm_regional_settled_sia }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_sia } type = clrflag which = ind_aubm_regional_pending_sia }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_sia } type = clrflag which = ind_aubm_regional_current_sia }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_sia } type = clrflag which = ind_aubm_regional_victory_sia }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_ita } type = setflag which = ind_aubm_regional_settled_ita }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_ita } type = clrflag which = ind_aubm_regional_pending_ita }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_ita } type = clrflag which = ind_aubm_regional_current_ita }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_ita } type = clrflag which = ind_aubm_regional_victory_ita }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_fra } type = setflag which = ind_aubm_regional_settled_fra }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_fra } type = clrflag which = ind_aubm_regional_pending_fra }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_fra } type = clrflag which = ind_aubm_regional_current_fra }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_fra } type = clrflag which = ind_aubm_regional_victory_fra }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_tur } type = setflag which = ind_aubm_regional_settled_tur }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_tur } type = clrflag which = ind_aubm_regional_pending_tur }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_tur } type = clrflag which = ind_aubm_regional_current_tur }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_tur } type = clrflag which = ind_aubm_regional_victory_tur }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_por } type = setflag which = ind_aubm_regional_settled_por }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_por } type = clrflag which = ind_aubm_regional_pending_por }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_por } type = clrflag which = ind_aubm_regional_current_por }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_por } type = clrflag which = ind_aubm_regional_victory_por }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_nzl } type = setflag which = ind_aubm_regional_settled_nzl }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_nzl } type = clrflag which = ind_aubm_regional_pending_nzl }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_nzl } type = clrflag which = ind_aubm_regional_current_nzl }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_nzl } type = clrflag which = ind_aubm_regional_victory_nzl }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_eth } type = setflag which = ind_aubm_regional_settled_eth }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_eth } type = clrflag which = ind_aubm_regional_pending_eth }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_eth } type = clrflag which = ind_aubm_regional_current_eth }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_eth } type = clrflag which = ind_aubm_regional_victory_eth }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_saf } type = setflag which = ind_aubm_regional_settled_saf }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_saf } type = clrflag which = ind_aubm_regional_pending_saf }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_saf } type = clrflag which = ind_aubm_regional_current_saf }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_saf } type = clrflag which = ind_aubm_regional_victory_saf }
+		command = { type = clrflag which = ind_aubm_regional_armistice_target_chi }
+		command = { type = clrflag which = ind_aubm_regional_armistice_target_chc }
+		command = { type = clrflag which = ind_aubm_regional_armistice_target_sia }
+		command = { type = clrflag which = ind_aubm_regional_armistice_target_ita }
+		command = { type = clrflag which = ind_aubm_regional_armistice_target_fra }
+		command = { type = clrflag which = ind_aubm_regional_armistice_target_tur }
+		command = { type = clrflag which = ind_aubm_regional_armistice_target_por }
+		command = { type = clrflag which = ind_aubm_regional_armistice_target_nzl }
+		command = { type = clrflag which = ind_aubm_regional_armistice_target_eth }
+		command = { type = clrflag which = ind_aubm_regional_armistice_target_saf }
+		command = { type = clrflag which = ind_aubm_regional_armistice_outstanding }
+		command = { type = clrflag which = ind_aubm_regional_armistice_retry_pending }
+		command = { type = clrflag which = ind_aubm_regional_armistice_full }
+		command = { type = clrflag which = ind_aubm_regional_armistice_limited }
+		command = { type = clrflag which = ind_v3_joined_allies }
+		command = { type = clrflag which = ind_v3_joined_axis }
+		command = { type = clrflag which = ind_v3_joined_comintern }
+		command = { type = clrflag which = ind_v3_joined_japan }
+		command = { type = event which = 9282201 where = IND when = 3 }
+	}
+}
+
+event = {
+	id = 9282261
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	name = "A Regional Government Accepts Delhi's Terms"
+	desc = "The selected regional opponent accepts peace, reciprocal Indian access and the public settlement. Delhi now ratifies the country-specific armistice without touching any unrelated war."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = { name = "Publish and ratify the full settlement" command = { type = dissent value = -2 } command = { type = setflag which = ind_aubm_regional_armistice } command = { type = setflag which = ind_aubm_regional_armistice_full } command = { type = event which = 9282260 where = IND when = 1 } }
+}
+
+event = {
+	id = 9282262
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	name = "A Regional Government Counters Delhi's Terms"
+	desc = "The selected opponent accepts peace but withholds Indian access. Delhi can still ratify the limited country-specific settlement without changing any unrelated war."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = { name = "Ratify the limited regional peace" command = { type = dissent value = -1 } command = { type = setflag which = ind_aubm_regional_armistice_limited } command = { type = event which = 9282260 where = IND when = 1 } }
+}
+
+event = {
+	id = 9282263
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	name = "A Regional Government Refuses Delhi's Terms"
+	desc = "The selected opponent refuses the armistice. Its current battlefield claim remains valid only while India holds the published capital; the same country file returns after ninety days."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Record the refusal and continue operations"
+		command = { type = dissent value = 1 }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_chi } type = setflag which = ind_aubm_regional_retry_chi }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_chc } type = setflag which = ind_aubm_regional_retry_chc }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_sia } type = setflag which = ind_aubm_regional_retry_sia }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_ita } type = setflag which = ind_aubm_regional_retry_ita }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_fra } type = setflag which = ind_aubm_regional_retry_fra }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_tur } type = setflag which = ind_aubm_regional_retry_tur }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_por } type = setflag which = ind_aubm_regional_retry_por }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_nzl } type = setflag which = ind_aubm_regional_retry_nzl }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_eth } type = setflag which = ind_aubm_regional_retry_eth }
+		command = { trigger = { flag = ind_aubm_regional_armistice_target_saf } type = setflag which = ind_aubm_regional_retry_saf }
+		command = { type = setflag which = ind_aubm_regional_armistice_retry_pending }
+		command = { type = clrflag which = ind_aubm_regional_armistice_target_chi }
+		command = { type = clrflag which = ind_aubm_regional_armistice_target_chc }
+		command = { type = clrflag which = ind_aubm_regional_armistice_target_sia }
+		command = { type = clrflag which = ind_aubm_regional_armistice_target_ita }
+		command = { type = clrflag which = ind_aubm_regional_armistice_target_fra }
+		command = { type = clrflag which = ind_aubm_regional_armistice_target_tur }
+		command = { type = clrflag which = ind_aubm_regional_armistice_target_por }
+		command = { type = clrflag which = ind_aubm_regional_armistice_target_nzl }
+		command = { type = clrflag which = ind_aubm_regional_armistice_target_eth }
+		command = { type = clrflag which = ind_aubm_regional_armistice_target_saf }
+		command = { type = clrflag which = ind_aubm_regional_armistice_outstanding }
+		command = { type = event which = 9282264 where = IND when = 90 }
+	}
+}
+
+event = {
+	id = 9282264
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	name = "The Deferred Regional Armistice File Returns"
+	desc = "Only the government that refused Delhi's terms returns, and only if India still controls its capital and remains at war with it."
+	style = 2
+	picture = "aubm_v4_war_aims"
+	action_a = {
+		name = "Reopen the recorded country file"
+		command = { type = clrflag which = ind_aubm_regional_armistice_retry_pending }
+		command = { trigger = { flag = ind_aubm_regional_retry_chi flag = ind_aubm_regional_current_chi war = { country = IND country = CHI } } type = event which = 9282210 where = IND when = 1 }
+		command = { trigger = { flag = ind_aubm_regional_retry_chc flag = ind_aubm_regional_current_chc war = { country = IND country = CHC } } type = event which = 9282211 where = IND when = 1 }
+		command = { trigger = { flag = ind_aubm_regional_retry_sia flag = ind_aubm_regional_current_sia war = { country = IND country = SIA } } type = event which = 9282212 where = IND when = 1 }
+		command = { trigger = { flag = ind_aubm_regional_retry_ita flag = ind_aubm_regional_current_ita war = { country = IND country = ITA } } type = event which = 9282213 where = IND when = 1 }
+		command = { trigger = { flag = ind_aubm_regional_retry_fra flag = ind_aubm_regional_current_fra war = { country = IND country = FRA } } type = event which = 9282214 where = IND when = 1 }
+		command = { trigger = { flag = ind_aubm_regional_retry_tur flag = ind_aubm_regional_current_tur war = { country = IND country = TUR } } type = event which = 9282215 where = IND when = 1 }
+		command = { trigger = { flag = ind_aubm_regional_retry_por flag = ind_aubm_regional_current_por war = { country = IND country = POR } } type = event which = 9282216 where = IND when = 1 }
+		command = { trigger = { flag = ind_aubm_regional_retry_nzl flag = ind_aubm_regional_current_nzl war = { country = IND country = NZL } } type = event which = 9282217 where = IND when = 1 }
+		command = { trigger = { flag = ind_aubm_regional_retry_eth flag = ind_aubm_regional_current_eth war = { country = IND country = ETH } } type = event which = 9282218 where = IND when = 1 }
+		command = { trigger = { flag = ind_aubm_regional_retry_saf flag = ind_aubm_regional_current_saf war = { country = IND country = SAF } } type = event which = 9282219 where = IND when = 1 }
+		command = { type = clrflag which = ind_aubm_regional_retry_chi }
+		command = { type = clrflag which = ind_aubm_regional_retry_chc }
+		command = { type = clrflag which = ind_aubm_regional_retry_sia }
+		command = { type = clrflag which = ind_aubm_regional_retry_ita }
+		command = { type = clrflag which = ind_aubm_regional_retry_fra }
+		command = { type = clrflag which = ind_aubm_regional_retry_tur }
+		command = { type = clrflag which = ind_aubm_regional_retry_por }
+		command = { type = clrflag which = ind_aubm_regional_retry_nzl }
+		command = { type = clrflag which = ind_aubm_regional_retry_eth }
+		command = { type = clrflag which = ind_aubm_regional_retry_saf }
+	}
+}
+
+event = {
+	id = 9282265
+	random = no
+	persistent = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_wartime_framework
+		OR = {
+			AND = { flag = ind_aubm_regional_current_per exists = PER war = { country = IND country = PER } OR = { NOT = { control = { province = 1085 data = IND } } NOT = { owned = { province = 1085 data = PER } } } }
+			AND = { flag = ind_aubm_regional_current_irq exists = IRQ war = { country = IND country = IRQ } OR = { NOT = { control = { province = 1034 data = IND } } NOT = { owned = { province = 1034 data = IRQ } } } }
+			AND = { flag = ind_aubm_regional_current_sau exists = SAU war = { country = IND country = SAU } OR = { NOT = { control = { province = 1045 data = IND } } NOT = { owned = { province = 1045 data = SAU } } } }
+			AND = { flag = ind_aubm_regional_current_afg exists = AFG war = { country = IND country = AFG } OR = { NOT = { control = { province = 2171 data = IND } } NOT = { owned = { province = 2171 data = AFG } } } }
+			AND = { flag = ind_aubm_regional_current_tib exists = TIB war = { country = IND country = TIB } OR = { NOT = { control = { province = 1289 data = IND } } NOT = { owned = { province = 1289 data = TIB } } } }
+			AND = { flag = ind_aubm_regional_current_sik exists = SIK war = { country = IND country = SIK } OR = { NOT = { control = { province = 1281 data = IND } } NOT = { owned = { province = 1281 data = SIK } } } }
+			AND = { flag = ind_aubm_regional_current_u05 exists = U05 war = { country = IND country = U05 } OR = { NOT = { control = { province = 1647 data = IND } } NOT = { owned = { province = 1647 data = U05 } } } }
+			AND = { flag = ind_aubm_regional_current_hol_colonial exists = HOL war = { country = IND country = HOL } OR = { NOT = { control = { province = 1647 data = IND } } NOT = { owned = { province = 1647 data = HOL } } } }
+			AND = { flag = ind_aubm_regional_current_eng_malaya exists = ENG war = { country = IND country = ENG } OR = { NOT = { control = { province = 1432 data = IND } } NOT = { control = { province = 1438 data = IND } } NOT = { owned = { province = 1432 data = ENG } } NOT = { owned = { province = 1438 data = ENG } } } }
+			AND = { flag = ind_aubm_regional_current_hol exists = HOL war = { country = IND country = HOL } OR = { NOT = { control = { province = 122 data = IND } } NOT = { owned = { province = 122 data = HOL } } } }
+			AND = { flag = ind_aubm_regional_current_ast exists = AST war = { country = IND country = AST } OR = { NOT = { control = { province = 1707 data = IND } } NOT = { owned = { province = 1707 data = AST } } } }
+			AND = { flag = ind_aubm_regional_current_omn exists = OMN war = { country = IND country = OMN } OR = { NOT = { control = { province = 1052 data = IND } } NOT = { owned = { province = 1052 data = OMN } } } }
+			AND = { flag = ind_aubm_regional_current_yem exists = YEM war = { country = IND country = YEM } OR = { NOT = { control = { province = 1050 data = IND } } NOT = { owned = { province = 1050 data = YEM } } } }
+			AND = { flag = ind_aubm_regional_current_chi exists = CHI war = { country = IND country = CHI } OR = { NOT = { control = { province = 1337 data = IND } } NOT = { owned = { province = 1337 data = CHI } } } }
+			AND = { flag = ind_aubm_regional_current_chc exists = CHC war = { country = IND country = CHC } OR = { NOT = { control = { province = 1354 data = IND } } NOT = { owned = { province = 1354 data = CHC } } } }
+			AND = { flag = ind_aubm_regional_current_sia exists = SIA war = { country = IND country = SIA } OR = { NOT = { control = { province = 1423 data = IND } } NOT = { owned = { province = 1423 data = SIA } } } }
+			AND = { flag = ind_aubm_regional_current_ita exists = ITA war = { country = IND country = ITA } OR = { NOT = { control = { province = 419 data = IND } } NOT = { owned = { province = 419 data = ITA } } } }
+			AND = { flag = ind_aubm_regional_current_fra exists = FRA war = { country = IND country = FRA } OR = { NOT = { control = { province = 55 data = IND } } NOT = { owned = { province = 55 data = FRA } } } }
+			AND = { flag = ind_aubm_regional_current_tur exists = TUR war = { country = IND country = TUR } OR = { NOT = { control = { province = 1075 data = IND } } NOT = { owned = { province = 1075 data = TUR } } } }
+			AND = { flag = ind_aubm_regional_current_por exists = POR war = { country = IND country = POR } OR = { NOT = { control = { province = 476 data = IND } } NOT = { owned = { province = 476 data = POR } } } }
+			AND = { flag = ind_aubm_regional_current_nzl exists = NZL war = { country = IND country = NZL } OR = { NOT = { control = { province = 1721 data = IND } } NOT = { owned = { province = 1721 data = NZL } } } }
+			AND = { flag = ind_aubm_regional_current_eth exists = ETH war = { country = IND country = ETH } OR = { NOT = { control = { province = 825 data = IND } } NOT = { owned = { province = 825 data = ETH } } } }
+			AND = { flag = ind_aubm_regional_current_saf exists = SAF war = { country = IND country = SAF } OR = { NOT = { control = { province = 876 data = IND } } NOT = { owned = { province = 876 data = SAF } } } }
+		}
+	}
+	name = "A Regional Settlement Claim Is Suspended"
+	desc = "India has lost control of a published regional objective. Historical victory remains recorded, but no armistice can rely on that capital until Indian command recovers it."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+	date = { day = 0 month = january year = 1933 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Suspend only the broken regional claim"
+		command = { trigger = { flag = ind_aubm_regional_current_per exists = PER war = { country = IND country = PER } OR = { NOT = { control = { province = 1085 data = IND } } NOT = { owned = { province = 1085 data = PER } } } } type = clrflag which = ind_aubm_regional_current_per }
+		command = { trigger = { flag = ind_aubm_regional_victory_per NOT = { flag = ind_aubm_regional_current_per } exists = PER war = { country = IND country = PER } OR = { NOT = { control = { province = 1085 data = IND } } NOT = { owned = { province = 1085 data = PER } } } } type = setflag which = ind_aubm_regional_suspended_per }
+		command = { trigger = { flag = ind_aubm_regional_current_irq exists = IRQ war = { country = IND country = IRQ } OR = { NOT = { control = { province = 1034 data = IND } } NOT = { owned = { province = 1034 data = IRQ } } } } type = clrflag which = ind_aubm_regional_current_irq }
+		command = { trigger = { flag = ind_aubm_regional_victory_irq NOT = { flag = ind_aubm_regional_current_irq } exists = IRQ war = { country = IND country = IRQ } OR = { NOT = { control = { province = 1034 data = IND } } NOT = { owned = { province = 1034 data = IRQ } } } } type = setflag which = ind_aubm_regional_suspended_irq }
+		command = { trigger = { flag = ind_aubm_regional_current_sau exists = SAU war = { country = IND country = SAU } OR = { NOT = { control = { province = 1045 data = IND } } NOT = { owned = { province = 1045 data = SAU } } } } type = clrflag which = ind_aubm_regional_current_sau }
+		command = { trigger = { flag = ind_aubm_regional_victory_sau NOT = { flag = ind_aubm_regional_current_sau } exists = SAU war = { country = IND country = SAU } OR = { NOT = { control = { province = 1045 data = IND } } NOT = { owned = { province = 1045 data = SAU } } } } type = setflag which = ind_aubm_regional_suspended_sau }
+		command = { trigger = { flag = ind_aubm_regional_current_afg exists = AFG war = { country = IND country = AFG } OR = { NOT = { control = { province = 2171 data = IND } } NOT = { owned = { province = 2171 data = AFG } } } } type = clrflag which = ind_aubm_regional_current_afg }
+		command = { trigger = { flag = ind_aubm_regional_victory_afg NOT = { flag = ind_aubm_regional_current_afg } exists = AFG war = { country = IND country = AFG } OR = { NOT = { control = { province = 2171 data = IND } } NOT = { owned = { province = 2171 data = AFG } } } } type = setflag which = ind_aubm_regional_suspended_afg }
+		command = { trigger = { flag = ind_aubm_regional_current_tib exists = TIB war = { country = IND country = TIB } OR = { NOT = { control = { province = 1289 data = IND } } NOT = { owned = { province = 1289 data = TIB } } } } type = clrflag which = ind_aubm_regional_current_tib }
+		command = { trigger = { flag = ind_aubm_regional_victory_tib NOT = { flag = ind_aubm_regional_current_tib } exists = TIB war = { country = IND country = TIB } OR = { NOT = { control = { province = 1289 data = IND } } NOT = { owned = { province = 1289 data = TIB } } } } type = setflag which = ind_aubm_regional_suspended_tib }
+		command = { trigger = { flag = ind_aubm_regional_current_sik exists = SIK war = { country = IND country = SIK } OR = { NOT = { control = { province = 1281 data = IND } } NOT = { owned = { province = 1281 data = SIK } } } } type = clrflag which = ind_aubm_regional_current_sik }
+		command = { trigger = { flag = ind_aubm_regional_victory_sik NOT = { flag = ind_aubm_regional_current_sik } exists = SIK war = { country = IND country = SIK } OR = { NOT = { control = { province = 1281 data = IND } } NOT = { owned = { province = 1281 data = SIK } } } } type = setflag which = ind_aubm_regional_suspended_sik }
+		command = { trigger = { flag = ind_aubm_regional_current_u05 exists = U05 war = { country = IND country = U05 } OR = { NOT = { control = { province = 1647 data = IND } } NOT = { owned = { province = 1647 data = U05 } } } } type = clrflag which = ind_aubm_regional_current_u05 }
+		command = { trigger = { flag = ind_aubm_regional_victory_u05 NOT = { flag = ind_aubm_regional_current_u05 } exists = U05 war = { country = IND country = U05 } OR = { NOT = { control = { province = 1647 data = IND } } NOT = { owned = { province = 1647 data = U05 } } } } type = setflag which = ind_aubm_regional_suspended_u05 }
+		command = { trigger = { flag = ind_aubm_regional_current_hol_colonial exists = HOL war = { country = IND country = HOL } OR = { NOT = { control = { province = 1647 data = IND } } NOT = { owned = { province = 1647 data = HOL } } } } type = clrflag which = ind_aubm_regional_current_hol_colonial }
+		command = { trigger = { flag = ind_aubm_regional_victory_hol_colonial NOT = { flag = ind_aubm_regional_current_hol_colonial } exists = HOL war = { country = IND country = HOL } OR = { NOT = { control = { province = 1647 data = IND } } NOT = { owned = { province = 1647 data = HOL } } } } type = setflag which = ind_aubm_regional_suspended_hol_colonial }
+		command = { trigger = { flag = ind_aubm_regional_current_eng_malaya exists = ENG war = { country = IND country = ENG } OR = { NOT = { control = { province = 1432 data = IND } } NOT = { control = { province = 1438 data = IND } } NOT = { owned = { province = 1432 data = ENG } } NOT = { owned = { province = 1438 data = ENG } } } } type = clrflag which = ind_aubm_regional_current_eng_malaya }
+		command = { trigger = { flag = ind_aubm_regional_victory_eng_malaya NOT = { flag = ind_aubm_regional_current_eng_malaya } exists = ENG war = { country = IND country = ENG } OR = { NOT = { control = { province = 1432 data = IND } } NOT = { control = { province = 1438 data = IND } } NOT = { owned = { province = 1432 data = ENG } } NOT = { owned = { province = 1438 data = ENG } } } } type = setflag which = ind_aubm_regional_suspended_eng_malaya }
+		command = { trigger = { flag = ind_aubm_regional_current_hol exists = HOL war = { country = IND country = HOL } OR = { NOT = { control = { province = 122 data = IND } } NOT = { owned = { province = 122 data = HOL } } } } type = clrflag which = ind_aubm_regional_current_hol }
+		command = { trigger = { flag = ind_aubm_regional_victory_hol NOT = { flag = ind_aubm_regional_current_hol } exists = HOL war = { country = IND country = HOL } OR = { NOT = { control = { province = 122 data = IND } } NOT = { owned = { province = 122 data = HOL } } } } type = setflag which = ind_aubm_regional_suspended_hol }
+		command = { trigger = { flag = ind_aubm_regional_current_ast exists = AST war = { country = IND country = AST } OR = { NOT = { control = { province = 1707 data = IND } } NOT = { owned = { province = 1707 data = AST } } } } type = clrflag which = ind_aubm_regional_current_ast }
+		command = { trigger = { flag = ind_aubm_regional_victory_ast NOT = { flag = ind_aubm_regional_current_ast } exists = AST war = { country = IND country = AST } OR = { NOT = { control = { province = 1707 data = IND } } NOT = { owned = { province = 1707 data = AST } } } } type = setflag which = ind_aubm_regional_suspended_ast }
+		command = { trigger = { flag = ind_aubm_regional_current_omn exists = OMN war = { country = IND country = OMN } OR = { NOT = { control = { province = 1052 data = IND } } NOT = { owned = { province = 1052 data = OMN } } } } type = clrflag which = ind_aubm_regional_current_omn }
+		command = { trigger = { flag = ind_aubm_regional_victory_omn NOT = { flag = ind_aubm_regional_current_omn } exists = OMN war = { country = IND country = OMN } OR = { NOT = { control = { province = 1052 data = IND } } NOT = { owned = { province = 1052 data = OMN } } } } type = setflag which = ind_aubm_regional_suspended_omn }
+		command = { trigger = { flag = ind_aubm_regional_current_yem exists = YEM war = { country = IND country = YEM } OR = { NOT = { control = { province = 1050 data = IND } } NOT = { owned = { province = 1050 data = YEM } } } } type = clrflag which = ind_aubm_regional_current_yem }
+		command = { trigger = { flag = ind_aubm_regional_victory_yem NOT = { flag = ind_aubm_regional_current_yem } exists = YEM war = { country = IND country = YEM } OR = { NOT = { control = { province = 1050 data = IND } } NOT = { owned = { province = 1050 data = YEM } } } } type = setflag which = ind_aubm_regional_suspended_yem }
+		command = { trigger = { flag = ind_aubm_regional_current_chi exists = CHI war = { country = IND country = CHI } OR = { NOT = { control = { province = 1337 data = IND } } NOT = { owned = { province = 1337 data = CHI } } } } type = clrflag which = ind_aubm_regional_current_chi }
+		command = { trigger = { flag = ind_aubm_regional_victory_chi NOT = { flag = ind_aubm_regional_current_chi } exists = CHI war = { country = IND country = CHI } OR = { NOT = { control = { province = 1337 data = IND } } NOT = { owned = { province = 1337 data = CHI } } } } type = setflag which = ind_aubm_regional_suspended_chi }
+		command = { trigger = { flag = ind_aubm_regional_current_chc exists = CHC war = { country = IND country = CHC } OR = { NOT = { control = { province = 1354 data = IND } } NOT = { owned = { province = 1354 data = CHC } } } } type = clrflag which = ind_aubm_regional_current_chc }
+		command = { trigger = { flag = ind_aubm_regional_victory_chc NOT = { flag = ind_aubm_regional_current_chc } exists = CHC war = { country = IND country = CHC } OR = { NOT = { control = { province = 1354 data = IND } } NOT = { owned = { province = 1354 data = CHC } } } } type = setflag which = ind_aubm_regional_suspended_chc }
+		command = { trigger = { flag = ind_aubm_regional_current_sia exists = SIA war = { country = IND country = SIA } OR = { NOT = { control = { province = 1423 data = IND } } NOT = { owned = { province = 1423 data = SIA } } } } type = clrflag which = ind_aubm_regional_current_sia }
+		command = { trigger = { flag = ind_aubm_regional_victory_sia NOT = { flag = ind_aubm_regional_current_sia } exists = SIA war = { country = IND country = SIA } OR = { NOT = { control = { province = 1423 data = IND } } NOT = { owned = { province = 1423 data = SIA } } } } type = setflag which = ind_aubm_regional_suspended_sia }
+		command = { trigger = { flag = ind_aubm_regional_current_ita exists = ITA war = { country = IND country = ITA } OR = { NOT = { control = { province = 419 data = IND } } NOT = { owned = { province = 419 data = ITA } } } } type = clrflag which = ind_aubm_regional_current_ita }
+		command = { trigger = { flag = ind_aubm_regional_victory_ita NOT = { flag = ind_aubm_regional_current_ita } exists = ITA war = { country = IND country = ITA } OR = { NOT = { control = { province = 419 data = IND } } NOT = { owned = { province = 419 data = ITA } } } } type = setflag which = ind_aubm_regional_suspended_ita }
+		command = { trigger = { flag = ind_aubm_regional_current_fra exists = FRA war = { country = IND country = FRA } OR = { NOT = { control = { province = 55 data = IND } } NOT = { owned = { province = 55 data = FRA } } } } type = clrflag which = ind_aubm_regional_current_fra }
+		command = { trigger = { flag = ind_aubm_regional_victory_fra NOT = { flag = ind_aubm_regional_current_fra } exists = FRA war = { country = IND country = FRA } OR = { NOT = { control = { province = 55 data = IND } } NOT = { owned = { province = 55 data = FRA } } } } type = setflag which = ind_aubm_regional_suspended_fra }
+		command = { trigger = { flag = ind_aubm_regional_current_tur exists = TUR war = { country = IND country = TUR } OR = { NOT = { control = { province = 1075 data = IND } } NOT = { owned = { province = 1075 data = TUR } } } } type = clrflag which = ind_aubm_regional_current_tur }
+		command = { trigger = { flag = ind_aubm_regional_victory_tur NOT = { flag = ind_aubm_regional_current_tur } exists = TUR war = { country = IND country = TUR } OR = { NOT = { control = { province = 1075 data = IND } } NOT = { owned = { province = 1075 data = TUR } } } } type = setflag which = ind_aubm_regional_suspended_tur }
+		command = { trigger = { flag = ind_aubm_regional_current_por exists = POR war = { country = IND country = POR } OR = { NOT = { control = { province = 476 data = IND } } NOT = { owned = { province = 476 data = POR } } } } type = clrflag which = ind_aubm_regional_current_por }
+		command = { trigger = { flag = ind_aubm_regional_victory_por NOT = { flag = ind_aubm_regional_current_por } exists = POR war = { country = IND country = POR } OR = { NOT = { control = { province = 476 data = IND } } NOT = { owned = { province = 476 data = POR } } } } type = setflag which = ind_aubm_regional_suspended_por }
+		command = { trigger = { flag = ind_aubm_regional_current_nzl exists = NZL war = { country = IND country = NZL } OR = { NOT = { control = { province = 1721 data = IND } } NOT = { owned = { province = 1721 data = NZL } } } } type = clrflag which = ind_aubm_regional_current_nzl }
+		command = { trigger = { flag = ind_aubm_regional_victory_nzl NOT = { flag = ind_aubm_regional_current_nzl } exists = NZL war = { country = IND country = NZL } OR = { NOT = { control = { province = 1721 data = IND } } NOT = { owned = { province = 1721 data = NZL } } } } type = setflag which = ind_aubm_regional_suspended_nzl }
+		command = { trigger = { flag = ind_aubm_regional_current_eth exists = ETH war = { country = IND country = ETH } OR = { NOT = { control = { province = 825 data = IND } } NOT = { owned = { province = 825 data = ETH } } } } type = clrflag which = ind_aubm_regional_current_eth }
+		command = { trigger = { flag = ind_aubm_regional_victory_eth NOT = { flag = ind_aubm_regional_current_eth } exists = ETH war = { country = IND country = ETH } OR = { NOT = { control = { province = 825 data = IND } } NOT = { owned = { province = 825 data = ETH } } } } type = setflag which = ind_aubm_regional_suspended_eth }
+		command = { trigger = { flag = ind_aubm_regional_current_saf exists = SAF war = { country = IND country = SAF } OR = { NOT = { control = { province = 876 data = IND } } NOT = { owned = { province = 876 data = SAF } } } } type = clrflag which = ind_aubm_regional_current_saf }
+		command = { trigger = { flag = ind_aubm_regional_victory_saf NOT = { flag = ind_aubm_regional_current_saf } exists = SAF war = { country = IND country = SAF } OR = { NOT = { control = { province = 876 data = IND } } NOT = { owned = { province = 876 data = SAF } } } } type = setflag which = ind_aubm_regional_suspended_saf }
+		command = { type = dissent value = 1 }
+	}
+}
+
+event = {
+	id = 9282266
+	random = no
+	persistent = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_wartime_framework
+		OR = {
+			AND = { flag = ind_aubm_regional_suspended_per exists = PER owned = { province = 1085 data = PER } war = { country = IND country = PER } control = { province = 1085 data = IND } }
+			AND = { flag = ind_aubm_regional_suspended_irq exists = IRQ owned = { province = 1034 data = IRQ } war = { country = IND country = IRQ } control = { province = 1034 data = IND } }
+			AND = { flag = ind_aubm_regional_suspended_sau exists = SAU owned = { province = 1045 data = SAU } war = { country = IND country = SAU } control = { province = 1045 data = IND } }
+			AND = { flag = ind_aubm_regional_suspended_afg exists = AFG owned = { province = 2171 data = AFG } war = { country = IND country = AFG } control = { province = 2171 data = IND } }
+			AND = { flag = ind_aubm_regional_suspended_tib exists = TIB owned = { province = 1289 data = TIB } war = { country = IND country = TIB } control = { province = 1289 data = IND } }
+			AND = { flag = ind_aubm_regional_suspended_sik exists = SIK owned = { province = 1281 data = SIK } war = { country = IND country = SIK } control = { province = 1281 data = IND } }
+			AND = { flag = ind_aubm_regional_suspended_u05 control = { province = 1647 data = IND } OR = { AND = { exists = U05 owned = { province = 1647 data = U05 } war = { country = IND country = U05 } } AND = { NOT = { exists = U05 } owned = { province = 1647 data = IND } } } }
+			AND = { flag = ind_aubm_regional_suspended_hol_colonial exists = HOL owned = { province = 1647 data = HOL } war = { country = IND country = HOL } control = { province = 1647 data = IND } }
+			AND = { flag = ind_aubm_regional_suspended_eng_malaya exists = ENG owned = { province = 1432 data = ENG } owned = { province = 1438 data = ENG } war = { country = IND country = ENG } control = { province = 1432 data = IND } control = { province = 1438 data = IND } }
+			AND = { flag = ind_aubm_regional_suspended_hol control = { province = 122 data = IND } OR = { AND = { exists = HOL owned = { province = 122 data = HOL } war = { country = IND country = HOL } } AND = { NOT = { exists = HOL } owned = { province = 122 data = IND } } } }
+			AND = { flag = ind_aubm_regional_suspended_ast NOT = { flag = ind_aubm_common_south_ast_reject } exists = AST owned = { province = 1707 data = AST } war = { country = IND country = AST } control = { province = 1707 data = IND } }
+			AND = { flag = ind_aubm_regional_suspended_omn exists = OMN owned = { province = 1052 data = OMN } war = { country = IND country = OMN } control = { province = 1052 data = IND } }
+			AND = { flag = ind_aubm_regional_suspended_yem exists = YEM owned = { province = 1050 data = YEM } war = { country = IND country = YEM } control = { province = 1050 data = IND } }
+			AND = { flag = ind_aubm_regional_suspended_chi exists = CHI owned = { province = 1337 data = CHI } war = { country = IND country = CHI } control = { province = 1337 data = IND } }
+			AND = { flag = ind_aubm_regional_suspended_chc exists = CHC owned = { province = 1354 data = CHC } war = { country = IND country = CHC } control = { province = 1354 data = IND } }
+			AND = { flag = ind_aubm_regional_suspended_sia exists = SIA owned = { province = 1423 data = SIA } war = { country = IND country = SIA } control = { province = 1423 data = IND } }
+			AND = { flag = ind_aubm_regional_suspended_ita exists = ITA owned = { province = 419 data = ITA } war = { country = IND country = ITA } control = { province = 419 data = IND } }
+			AND = { flag = ind_aubm_regional_suspended_fra exists = FRA owned = { province = 55 data = FRA } war = { country = IND country = FRA } control = { province = 55 data = IND } }
+			AND = { flag = ind_aubm_regional_suspended_tur exists = TUR owned = { province = 1075 data = TUR } war = { country = IND country = TUR } control = { province = 1075 data = IND } }
+			AND = { flag = ind_aubm_regional_suspended_por exists = POR owned = { province = 476 data = POR } war = { country = IND country = POR } control = { province = 476 data = IND } }
+			AND = { flag = ind_aubm_regional_suspended_nzl exists = NZL owned = { province = 1721 data = NZL } war = { country = IND country = NZL } control = { province = 1721 data = IND } }
+			AND = { flag = ind_aubm_regional_suspended_eth exists = ETH owned = { province = 825 data = ETH } war = { country = IND country = ETH } control = { province = 825 data = IND } }
+			AND = { flag = ind_aubm_regional_suspended_saf exists = SAF owned = { province = 876 data = SAF } war = { country = IND country = SAF } control = { province = 876 data = IND } }
+		}
+	}
+	name = "Indian Command Recovers a Regional Objective"
+	desc = "India again controls a published regional capital. Current leverage returns and the corresponding settlement remains available on the permanent regional board."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	date = { day = 0 month = january year = 1933 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Restore the recovered regional claim"
+		command = { trigger = { AND = { flag = ind_aubm_regional_suspended_per exists = PER owned = { province = 1085 data = PER } war = { country = IND country = PER } control = { province = 1085 data = IND } } } type = clrflag which = ind_aubm_regional_suspended_per }
+		command = { trigger = { flag = ind_aubm_regional_victory_per NOT = { flag = ind_aubm_regional_suspended_per } control = { province = 1085 data = IND } OR = { AND = { exists = PER owned = { province = 1085 data = PER } war = { country = IND country = PER } } AND = { NOT = { exists = PER } owned = { province = 1085 data = IND } } } } type = setflag which = ind_aubm_regional_current_per }
+		command = { trigger = { AND = { flag = ind_aubm_regional_suspended_irq exists = IRQ owned = { province = 1034 data = IRQ } war = { country = IND country = IRQ } control = { province = 1034 data = IND } } } type = clrflag which = ind_aubm_regional_suspended_irq }
+		command = { trigger = { flag = ind_aubm_regional_victory_irq NOT = { flag = ind_aubm_regional_suspended_irq } control = { province = 1034 data = IND } OR = { AND = { exists = IRQ owned = { province = 1034 data = IRQ } war = { country = IND country = IRQ } } AND = { NOT = { exists = IRQ } owned = { province = 1034 data = IND } } } } type = setflag which = ind_aubm_regional_current_irq }
+		command = { trigger = { AND = { flag = ind_aubm_regional_suspended_sau exists = SAU owned = { province = 1045 data = SAU } war = { country = IND country = SAU } control = { province = 1045 data = IND } } } type = clrflag which = ind_aubm_regional_suspended_sau }
+		command = { trigger = { flag = ind_aubm_regional_victory_sau NOT = { flag = ind_aubm_regional_suspended_sau } control = { province = 1045 data = IND } OR = { AND = { exists = SAU owned = { province = 1045 data = SAU } war = { country = IND country = SAU } } AND = { NOT = { exists = SAU } owned = { province = 1045 data = IND } } } } type = setflag which = ind_aubm_regional_current_sau }
+		command = { trigger = { AND = { flag = ind_aubm_regional_suspended_afg exists = AFG owned = { province = 2171 data = AFG } war = { country = IND country = AFG } control = { province = 2171 data = IND } } } type = clrflag which = ind_aubm_regional_suspended_afg }
+		command = { trigger = { flag = ind_aubm_regional_victory_afg NOT = { flag = ind_aubm_regional_suspended_afg } control = { province = 2171 data = IND } OR = { AND = { exists = AFG owned = { province = 2171 data = AFG } war = { country = IND country = AFG } } AND = { NOT = { exists = AFG } owned = { province = 2171 data = IND } } } } type = setflag which = ind_aubm_regional_current_afg }
+		command = { trigger = { AND = { flag = ind_aubm_regional_suspended_tib exists = TIB owned = { province = 1289 data = TIB } war = { country = IND country = TIB } control = { province = 1289 data = IND } } } type = clrflag which = ind_aubm_regional_suspended_tib }
+		command = { trigger = { flag = ind_aubm_regional_victory_tib NOT = { flag = ind_aubm_regional_suspended_tib } control = { province = 1289 data = IND } OR = { AND = { exists = TIB owned = { province = 1289 data = TIB } war = { country = IND country = TIB } } AND = { NOT = { exists = TIB } owned = { province = 1289 data = IND } } } } type = setflag which = ind_aubm_regional_current_tib }
+		command = { trigger = { AND = { flag = ind_aubm_regional_suspended_sik exists = SIK owned = { province = 1281 data = SIK } war = { country = IND country = SIK } control = { province = 1281 data = IND } } } type = clrflag which = ind_aubm_regional_suspended_sik }
+		command = { trigger = { flag = ind_aubm_regional_victory_sik NOT = { flag = ind_aubm_regional_suspended_sik } control = { province = 1281 data = IND } OR = { AND = { exists = SIK owned = { province = 1281 data = SIK } war = { country = IND country = SIK } } AND = { NOT = { exists = SIK } owned = { province = 1281 data = IND } } } } type = setflag which = ind_aubm_regional_current_sik }
+		command = { trigger = { flag = ind_aubm_regional_suspended_u05 control = { province = 1647 data = IND } OR = { AND = { exists = U05 owned = { province = 1647 data = U05 } war = { country = IND country = U05 } } AND = { NOT = { exists = U05 } owned = { province = 1647 data = IND } } } } type = clrflag which = ind_aubm_regional_suspended_u05 }
+		command = { trigger = { flag = ind_aubm_regional_victory_u05 NOT = { flag = ind_aubm_regional_suspended_u05 } control = { province = 1647 data = IND } OR = { AND = { exists = U05 owned = { province = 1647 data = U05 } war = { country = IND country = U05 } } AND = { NOT = { exists = U05 } owned = { province = 1647 data = IND } } } } type = setflag which = ind_aubm_regional_current_u05 }
+		command = { trigger = { flag = ind_aubm_regional_victory_u05 flag = ind_aubm_regional_current_u05 NOT = { flag = ind_aubm_regional_settled_u05 } NOT = { flag = ind_aubm_regional_refused_u05 } } type = setflag which = ind_aubm_regional_pending_u05 }
+		command = { trigger = { AND = { flag = ind_aubm_regional_suspended_hol_colonial exists = HOL owned = { province = 1647 data = HOL } war = { country = IND country = HOL } control = { province = 1647 data = IND } } } type = clrflag which = ind_aubm_regional_suspended_hol_colonial }
+		command = { trigger = { flag = ind_aubm_regional_victory_hol_colonial NOT = { flag = ind_aubm_regional_suspended_hol_colonial } exists = HOL owned = { province = 1647 data = HOL } war = { country = IND country = HOL } control = { province = 1647 data = IND } } type = setflag which = ind_aubm_regional_current_hol_colonial }
+		command = { trigger = { flag = ind_aubm_regional_victory_hol_colonial flag = ind_aubm_regional_current_hol_colonial NOT = { flag = ind_aubm_regional_settled_hol_colonial } NOT = { flag = ind_aubm_regional_refused_hol_colonial } } type = setflag which = ind_aubm_regional_pending_hol_colonial }
+		command = { trigger = { AND = { flag = ind_aubm_regional_suspended_eng_malaya exists = ENG owned = { province = 1432 data = ENG } owned = { province = 1438 data = ENG } war = { country = IND country = ENG } control = { province = 1432 data = IND } control = { province = 1438 data = IND } } } type = clrflag which = ind_aubm_regional_suspended_eng_malaya }
+		command = { trigger = { flag = ind_aubm_regional_victory_eng_malaya NOT = { flag = ind_aubm_regional_suspended_eng_malaya } exists = ENG owned = { province = 1432 data = ENG } owned = { province = 1438 data = ENG } war = { country = IND country = ENG } control = { province = 1432 data = IND } control = { province = 1438 data = IND } } type = setflag which = ind_aubm_regional_current_eng_malaya }
+		command = { trigger = { flag = ind_aubm_regional_victory_eng_malaya flag = ind_aubm_regional_current_eng_malaya NOT = { flag = ind_aubm_regional_settled_eng_malaya } NOT = { flag = ind_aubm_regional_refused_eng_malaya } } type = setflag which = ind_aubm_regional_pending_eng_malaya }
+		command = { trigger = { flag = ind_aubm_regional_suspended_hol control = { province = 122 data = IND } OR = { AND = { exists = HOL owned = { province = 122 data = HOL } war = { country = IND country = HOL } } AND = { NOT = { exists = HOL } owned = { province = 122 data = IND } } } } type = clrflag which = ind_aubm_regional_suspended_hol }
+		command = { trigger = { flag = ind_aubm_regional_victory_hol NOT = { flag = ind_aubm_regional_suspended_hol } control = { province = 122 data = IND } OR = { AND = { exists = HOL owned = { province = 122 data = HOL } war = { country = IND country = HOL } } AND = { NOT = { exists = HOL } owned = { province = 122 data = IND } } } } type = setflag which = ind_aubm_regional_current_hol }
+		command = { trigger = { flag = ind_aubm_regional_victory_hol flag = ind_aubm_regional_current_hol NOT = { flag = ind_aubm_regional_settled_hol } NOT = { flag = ind_aubm_regional_refused_hol } } type = setflag which = ind_aubm_regional_pending_hol }
+		command = { trigger = { AND = { flag = ind_aubm_regional_suspended_ast NOT = { flag = ind_aubm_common_south_ast_reject } exists = AST owned = { province = 1707 data = AST } war = { country = IND country = AST } control = { province = 1707 data = IND } } } type = clrflag which = ind_aubm_regional_suspended_ast }
+		command = { trigger = { flag = ind_aubm_regional_victory_ast NOT = { flag = ind_aubm_regional_suspended_ast } NOT = { flag = ind_aubm_common_south_ast_reject } exists = AST owned = { province = 1707 data = AST } war = { country = IND country = AST } control = { province = 1707 data = IND } } type = setflag which = ind_aubm_regional_current_ast }
+		command = { trigger = { flag = ind_aubm_regional_victory_ast flag = ind_aubm_regional_current_ast NOT = { flag = ind_aubm_regional_settled_ast } NOT = { flag = ind_aubm_common_south_ast_reject } } type = setflag which = ind_aubm_regional_pending_ast }
+		command = { trigger = { AND = { flag = ind_aubm_regional_suspended_omn exists = OMN owned = { province = 1052 data = OMN } war = { country = IND country = OMN } control = { province = 1052 data = IND } } } type = clrflag which = ind_aubm_regional_suspended_omn }
+		command = { trigger = { flag = ind_aubm_regional_victory_omn NOT = { flag = ind_aubm_regional_suspended_omn } control = { province = 1052 data = IND } OR = { AND = { exists = OMN owned = { province = 1052 data = OMN } war = { country = IND country = OMN } } AND = { NOT = { exists = OMN } owned = { province = 1052 data = IND } } } } type = setflag which = ind_aubm_regional_current_omn }
+		command = { trigger = { AND = { flag = ind_aubm_regional_suspended_yem exists = YEM owned = { province = 1050 data = YEM } war = { country = IND country = YEM } control = { province = 1050 data = IND } } } type = clrflag which = ind_aubm_regional_suspended_yem }
+		command = { trigger = { flag = ind_aubm_regional_victory_yem NOT = { flag = ind_aubm_regional_suspended_yem } control = { province = 1050 data = IND } OR = { AND = { exists = YEM owned = { province = 1050 data = YEM } war = { country = IND country = YEM } } AND = { NOT = { exists = YEM } owned = { province = 1050 data = IND } } } } type = setflag which = ind_aubm_regional_current_yem }
+		command = { trigger = { AND = { flag = ind_aubm_regional_suspended_chi exists = CHI owned = { province = 1337 data = CHI } war = { country = IND country = CHI } control = { province = 1337 data = IND } } } type = clrflag which = ind_aubm_regional_suspended_chi }
+		command = { trigger = { flag = ind_aubm_regional_victory_chi NOT = { flag = ind_aubm_regional_suspended_chi } control = { province = 1337 data = IND } OR = { AND = { exists = CHI owned = { province = 1337 data = CHI } war = { country = IND country = CHI } } AND = { NOT = { exists = CHI } owned = { province = 1337 data = IND } } } } type = setflag which = ind_aubm_regional_current_chi }
+		command = { trigger = { AND = { flag = ind_aubm_regional_suspended_chc exists = CHC owned = { province = 1354 data = CHC } war = { country = IND country = CHC } control = { province = 1354 data = IND } } } type = clrflag which = ind_aubm_regional_suspended_chc }
+		command = { trigger = { flag = ind_aubm_regional_victory_chc NOT = { flag = ind_aubm_regional_suspended_chc } control = { province = 1354 data = IND } OR = { AND = { exists = CHC owned = { province = 1354 data = CHC } war = { country = IND country = CHC } } AND = { NOT = { exists = CHC } owned = { province = 1354 data = IND } } } } type = setflag which = ind_aubm_regional_current_chc }
+		command = { trigger = { AND = { flag = ind_aubm_regional_suspended_sia exists = SIA owned = { province = 1423 data = SIA } war = { country = IND country = SIA } control = { province = 1423 data = IND } } } type = clrflag which = ind_aubm_regional_suspended_sia }
+		command = { trigger = { flag = ind_aubm_regional_victory_sia NOT = { flag = ind_aubm_regional_suspended_sia } control = { province = 1423 data = IND } OR = { AND = { exists = SIA owned = { province = 1423 data = SIA } war = { country = IND country = SIA } } AND = { NOT = { exists = SIA } owned = { province = 1423 data = IND } } } } type = setflag which = ind_aubm_regional_current_sia }
+		command = { trigger = { AND = { flag = ind_aubm_regional_suspended_ita exists = ITA owned = { province = 419 data = ITA } war = { country = IND country = ITA } control = { province = 419 data = IND } } } type = clrflag which = ind_aubm_regional_suspended_ita }
+		command = { trigger = { flag = ind_aubm_regional_victory_ita NOT = { flag = ind_aubm_regional_suspended_ita } control = { province = 419 data = IND } OR = { AND = { exists = ITA owned = { province = 419 data = ITA } war = { country = IND country = ITA } } AND = { NOT = { exists = ITA } owned = { province = 419 data = IND } } } } type = setflag which = ind_aubm_regional_current_ita }
+		command = { trigger = { AND = { flag = ind_aubm_regional_suspended_fra exists = FRA owned = { province = 55 data = FRA } war = { country = IND country = FRA } control = { province = 55 data = IND } } } type = clrflag which = ind_aubm_regional_suspended_fra }
+		command = { trigger = { flag = ind_aubm_regional_victory_fra NOT = { flag = ind_aubm_regional_suspended_fra } control = { province = 55 data = IND } OR = { AND = { exists = FRA owned = { province = 55 data = FRA } war = { country = IND country = FRA } } AND = { NOT = { exists = FRA } owned = { province = 55 data = IND } } } } type = setflag which = ind_aubm_regional_current_fra }
+		command = { trigger = { AND = { flag = ind_aubm_regional_suspended_tur exists = TUR owned = { province = 1075 data = TUR } war = { country = IND country = TUR } control = { province = 1075 data = IND } } } type = clrflag which = ind_aubm_regional_suspended_tur }
+		command = { trigger = { flag = ind_aubm_regional_victory_tur NOT = { flag = ind_aubm_regional_suspended_tur } control = { province = 1075 data = IND } OR = { AND = { exists = TUR owned = { province = 1075 data = TUR } war = { country = IND country = TUR } } AND = { NOT = { exists = TUR } owned = { province = 1075 data = IND } } } } type = setflag which = ind_aubm_regional_current_tur }
+		command = { trigger = { AND = { flag = ind_aubm_regional_suspended_por exists = POR owned = { province = 476 data = POR } war = { country = IND country = POR } control = { province = 476 data = IND } } } type = clrflag which = ind_aubm_regional_suspended_por }
+		command = { trigger = { flag = ind_aubm_regional_victory_por NOT = { flag = ind_aubm_regional_suspended_por } control = { province = 476 data = IND } OR = { AND = { exists = POR owned = { province = 476 data = POR } war = { country = IND country = POR } } AND = { NOT = { exists = POR } owned = { province = 476 data = IND } } } } type = setflag which = ind_aubm_regional_current_por }
+		command = { trigger = { AND = { flag = ind_aubm_regional_suspended_nzl exists = NZL owned = { province = 1721 data = NZL } war = { country = IND country = NZL } control = { province = 1721 data = IND } } } type = clrflag which = ind_aubm_regional_suspended_nzl }
+		command = { trigger = { flag = ind_aubm_regional_victory_nzl NOT = { flag = ind_aubm_regional_suspended_nzl } control = { province = 1721 data = IND } OR = { AND = { exists = NZL owned = { province = 1721 data = NZL } war = { country = IND country = NZL } } AND = { NOT = { exists = NZL } owned = { province = 1721 data = IND } } } } type = setflag which = ind_aubm_regional_current_nzl }
+		command = { trigger = { AND = { flag = ind_aubm_regional_suspended_eth exists = ETH owned = { province = 825 data = ETH } war = { country = IND country = ETH } control = { province = 825 data = IND } } } type = clrflag which = ind_aubm_regional_suspended_eth }
+		command = { trigger = { flag = ind_aubm_regional_victory_eth NOT = { flag = ind_aubm_regional_suspended_eth } control = { province = 825 data = IND } OR = { AND = { exists = ETH owned = { province = 825 data = ETH } war = { country = IND country = ETH } } AND = { NOT = { exists = ETH } owned = { province = 825 data = IND } } } } type = setflag which = ind_aubm_regional_current_eth }
+		command = { trigger = { AND = { flag = ind_aubm_regional_suspended_saf exists = SAF owned = { province = 876 data = SAF } war = { country = IND country = SAF } control = { province = 876 data = IND } } } type = clrflag which = ind_aubm_regional_suspended_saf }
+		command = { trigger = { flag = ind_aubm_regional_victory_saf NOT = { flag = ind_aubm_regional_suspended_saf } control = { province = 876 data = IND } OR = { AND = { exists = SAF owned = { province = 876 data = SAF } war = { country = IND country = SAF } } AND = { NOT = { exists = SAF } owned = { province = 876 data = IND } } } } type = setflag which = ind_aubm_regional_current_saf }
+		command = { type = event which = 9282201 where = IND when = 1 }
+	}
+}

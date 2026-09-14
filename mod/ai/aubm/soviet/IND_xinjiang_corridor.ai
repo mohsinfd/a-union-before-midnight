@@ -1,0 +1,53 @@
+# AUBM: Xinjiang and inland-China liaison posture
+
+neutrality = 25
+war = 75
+max_front_ratio = 1.45
+
+combat = {
+	JAP = 75
+	GER = 45
+}
+
+befriend = {
+	CHI = 140
+	SIK = 130
+	SOV = 110
+	AFG = 80
+}
+
+protect = {
+	CHI = 90
+	SIK = 100
+	AFG = 70
+}
+
+target = {
+	1281 = 100 # Urumqi
+	1279 = 80  # Kashgar; no false Khorugh crossing is assumed
+	1390 = 85  # Kunming
+	1299 = 70  # Chongqing
+}
+
+front = {
+	recklessness = 1
+	distrib_vs_ai = op_defensive
+	distrib_vs_human = reactive
+	enemy_reinf_days = 6
+	reserve_prop = 0.20
+	panic_ratio_vs_ai = 2.8
+	panic_ratio_vs_human = 2.8
+	base_attack_odds = 1.12
+	min_attack_odds = 1.02
+	max_attack_odds = 3.5
+	reinforce_odds = 1.25
+	withdraw_odds = 0.70
+	strength = 0.9
+	organisation = 0.9
+	soft_attack = 1.05
+	hard_attack = 1.1
+	ground_defense = 1.0
+	dig_in = 1.0
+	mountain_attack = 1.30
+}
+

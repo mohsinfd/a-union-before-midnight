@@ -1,0 +1,322 @@
+#!/usr/bin/env python3
+"""Validate AUBM's five route-specific wartime lifecycles."""
+
+from __future__ import annotations
+
+import re
+from pathlib import Path
+
+from generate_aubm_route_consequences import BESPOKE_ROUTE_CONTRACT, LEGACY_WARTIME_IDS, ROUTES
+
+
+ROOT = Path(__file__).resolve().parents[1]
+MODULE = ROOT / "mod/db/events/aubm_v4/48_route_wartime_consequences.txt"
+INDEX = ROOT / "mod/db/events.txt"
+VICTORY_AUDIT = ROOT / "mod/db/events/india_v3/62_victory.txt"
+EVENT_DIRS = (
+    ROOT / "mod/db/events/aubm_v4",
+    ROOT / "mod/db/events/india_v3",
+)
+SEA_ROUTE_FOCUSES = {
+    ("allied", "eastern"),
+    ("allied", "anticolonial"),
+    ("german", "imperial"),
+    ("german", "southern"),
+    ("soviet", "antiimperial"),
+    ("soviet", "republican"),
+    ("japan", "southern"),
+    ("sovereign", "ocean"),
+}
+
+
+def event_blocks(text: str) -> dict[int, str]:
+    clean = "\n".join(line.split("#", 1)[0] for line in text.splitlines())
+    events: dict[int, str] = {}
+    for match in re.finditer(r"(?m)^\s*event\s*=\s*\{", clean):
+        opening = clean.find("{", match.start())
+        depth = 0
+        quoted = False
+        escaped = False
+        for position in range(opening, len(clean)):
+            char = clean[position]
+            if quoted:
+                if escaped:
+                    escaped = False
+                elif char == "\\":
+                    escaped = True
+                elif char == '"':
+                    quoted = False
+                continue
+            if char == '"':
+                quoted = True
+            elif char == "{":
+                depth += 1
+            elif char == "}":
+                depth -= 1
+                if depth == 0:
+                    block = clean[match.start() : position + 1]
+                    event_id = re.search(r"(?m)^\s*id\s*=\s*(\d+)", block)
+                    if event_id:
+                        events[int(event_id.group(1))] = block
+                    break
+    return events
+
+
+def action_blocks(event: str) -> dict[str, str]:
+    actions: dict[str, str] = {}
+    for match in re.finditer(r"(?m)^\s*action_([a-d])\s*=\s*\{", event):
+        opening = event.find("{", match.start())
+        depth = 0
+        quoted = False
+        escaped = False
+        for position in range(opening, len(event)):
+            char = event[position]
+            if quoted:
+                if escaped:
+                    escaped = False
+                elif char == "\\":
+                    escaped = True
+                elif char == '"':
+                    quoted = False
+                continue
+            if char == '"':
+                quoted = True
+            elif char == "{":
+                depth += 1
+            elif char == "}":
+                depth -= 1
+                if depth == 0:
+                    actions[match.group(1)] = event[match.start() : position + 1]
+                    break
+    return actions
+
+
+def main() -> int:
+    errors: list[str] = []
+    checks = 0
+    if not MODULE.exists():
+        print(f"ERROR: missing {MODULE.relative_to(ROOT)}")
+        return 1
+
+    text = MODULE.read_text(encoding="ascii")
+    events = event_blocks(text)
+    initializer = events.get(9283200, "")
+    index = INDEX.read_text(encoding="cp1252").replace("\\", "/")
+    audit = VICTORY_AUDIT.read_text(encoding="cp1252")
+
+    checks += 3
+    if index.count('event = "db/events/aubm_v4/48_route_wartime_consequences.txt"') != 1:
+        errors.append("route consequences module is not loaded exactly once")
+    if "ind_aubm_legacy_wartime_retired" not in initializer:
+        errors.append("canonical initializer has no one-time retirement guard")
+    if "ind_aubm_occupation_tier_1" not in initializer:
+        errors.append("canonical initializer does not migrate old occupation saves")
+
+    for event_id in LEGACY_WARTIME_IDS:
+        checks += 1
+        if f"sleepevent which = {event_id}" not in initializer:
+            errors.append(f"legacy wartime event {event_id} is not retired")
+
+    for live_callback in (9281349, 9281353, 9281390):
+        checks += 2
+        if live_callback in LEGACY_WARTIME_IDS:
+            errors.append(f"live callback {live_callback} remains in the retirement list")
+        if f"sleepevent which = {live_callback}" in initializer:
+            errors.append(f"live callback {live_callback} is still slept by the initializer")
+
+    loaded_events: dict[int, str] = {}
+    for directory in EVENT_DIRS:
+        for path in directory.glob("*.txt"):
+            loaded_events.update(event_blocks(path.read_text(encoding="cp1252")))
+    slept = set(LEGACY_WARTIME_IDS)
+    for source_id, block in loaded_events.items():
+        if source_id in slept:
+            continue
+        targets = {int(value) for value in re.findall(r"\btype\s*=\s*event\s+which\s*=\s*(\d+)", block)}
+        for target_id in sorted(targets & slept):
+            checks += 1
+            errors.append(f"live event {source_id} still calls retired callback {target_id}")
+
+    for route_index, route in enumerate(ROUTES):
+        charter_id = 9283210 + route_index
+        congress_id = 9283270 + route_index
+        charter = events.get(charter_id, "")
+        congress = events.get(congress_id, "")
+        autonomy = action_blocks(congress).get("c", "")
+        checks += 14
+        if route.route_flag not in charter:
+            errors.append(f"{route.key} charter omits canonical route flag")
+        if "atwar = yes" not in charter:
+            errors.append(f"{route.key} charter is not tied to a live war")
+        if len(re.findall(r"(?m)^\s*action_[a-d]\s*=", charter)) != 4:
+            errors.append(f"{route.key} charter does not offer four doctrines")
+        if charter.count(f"setflag which = {BESPOKE_ROUTE_CONTRACT}") != 4:
+            errors.append(f"{route.key} charter does not opt every new doctrine into Alpha 23 arcs")
+        if f"ind_aubm_route_charter_{route.key}" not in charter:
+            errors.append(f"{route.key} charter has no completion guard")
+        if "NOT = { flag = ind_aubm_postwar_congress_completed }" not in charter:
+            errors.append(f"{route.key} charter can reopen after the one permitted peace congress")
+        if "NOT = { flag = ind_aubm_route_war_achievement }" not in charter:
+            errors.append(f"{route.key} charter can reopen after earning a primary but before its peace congress")
+        if f"ind_aubm_congress_entitlement_{route.key}" not in congress or "atwar = no" not in congress:
+            errors.append(f"{route.key} congress does not use its recorded route entitlement")
+        if route.route_flag in re.sub(r"(?s)action_[a-d].*", "", congress):
+            errors.append(f"{route.key} congress can be relabelled by the current route")
+        if len(re.findall(r"(?m)^\s*action_[a-c]\s*=", congress)) != 3:
+            errors.append(f"{route.key} congress does not offer three postwar orders")
+        if route.legacy_flag not in congress:
+            errors.append(f"{route.key} congress does not close the long-campaign audit")
+        if "ind_aubm_route_war_achievement" not in congress:
+            errors.append(f"{route.key} congress can fire without a common war achievement")
+        if "ind_aubm_postwar_congress_completed" not in congress:
+            errors.append(f"{route.key} congress lacks the global one-congress guard")
+        if "year = 1933" not in charter or "year = 1933" not in congress:
+            errors.append(f"{route.key} lifecycle cannot acknowledge an early sovereign war")
+        if "leave_alliance when = 1" not in congress or "setflag which = ind_aubm_route_sovereign" not in congress:
+            errors.append(f"{route.key} strategic-autonomy outcome does not leave its bloc")
+        autonomy_requirements = (
+            "atwar = no",
+            "leave_alliance when = 1",
+            "clrflag which = ind_aubm_commitment_allied",
+            "clrflag which = ind_aubm_commitment_german",
+            "clrflag which = ind_aubm_commitment_soviet",
+            "clrflag which = ind_aubm_commitment_japan",
+            "clrflag which = ind_aubm_negotiation_allied",
+            "clrflag which = ind_aubm_negotiation_german",
+            "clrflag which = ind_aubm_negotiation_soviet",
+            "clrflag which = ind_aubm_negotiation_japan",
+            "clrflag which = ind_aubm_diplomatic_negotiation_pending",
+            "setflag which = ind_aubm_realignment_cooldown",
+            "event which = 9281938 where = IND when = 90",
+        )
+        checks += len(autonomy_requirements)
+        for requirement in autonomy_requirements:
+            source = congress if requirement == "atwar = no" else autonomy
+            if requirement not in source:
+                errors.append(f"{route.key} strategic-autonomy withdrawal omits {requirement}")
+        if route.key == "soviet":
+            checks += 4
+            if "flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous" not in charter:
+                errors.append("autonomous socialism cannot select the Soviet-route wartime charter")
+            if "ind_aubm_congress_entitlement_soviet" not in congress:
+                errors.append("autonomous socialism cannot retain a socialist congress entitlement")
+            if "setflag which = ind_v4_sov_autonomous_socialism" not in congress or "setflag which = ind_aubm_socialist_autonomous" not in congress:
+                errors.append("socialist strategic autonomy erases India's domestic socialist course")
+            if "setflag which = ind_v4_strategy_soviet" not in congress:
+                errors.append("socialist strategic autonomy is mislabeled as ordinary non-alignment")
+        if route.key == "sovereign":
+            checks += 3
+            if "NOT = { flag = ind_aubm_socialist_autonomous }" not in charter:
+                errors.append("autonomous socialism can receive both socialist and sovereign charters")
+            if "clrflag which = ind_aubm_socialist_autonomous" not in congress:
+                errors.append("ordinary sovereign autonomy does not clear a stale socialist route marker")
+            if "setflag which = ind_v4_strategy_nam" not in congress:
+                errors.append("ordinary sovereign autonomy does not restore non-aligned strategy")
+        if route.legacy_flag not in audit:
+            errors.append(f"1945 audit does not recognize {route.key} settlement flag")
+
+        base = 9283220 + route_index * 10
+        for focus_index, focus in enumerate(route.focuses):
+            achievement = events.get(base + focus_index, "")
+            checks += 10
+            focus_flag = f"ind_aubm_route_focus_{route.key}_{focus.key}"
+            achievement_flag = f"ind_aubm_route_achievement_{route.key}_{focus.key}"
+            if focus_flag not in charter:
+                errors.append(f"{route.key}/{focus.key} is missing from its charter")
+            if focus_flag not in achievement:
+                errors.append(f"{route.key}/{focus.key} achievement lacks its selected doctrine")
+            if route.route_flag not in achievement:
+                errors.append(f"{route.key}/{focus.key} achievement can fire after India leaves its route")
+            if achievement_flag not in achievement:
+                errors.append(f"{route.key}/{focus.key} achievement has no one-time guard")
+            if focus.trigger not in achievement:
+                errors.append(f"{route.key}/{focus.key} achievement trigger drifted from the route map")
+            if f"ind_aubm_route_achievement_{route.key}" not in achievement:
+                errors.append(f"{route.key}/{focus.key} does not unlock its peace congress")
+            if f"NOT = {{ flag = {BESPOKE_ROUTE_CONTRACT} }}" not in achievement:
+                errors.append(f"{route.key}/{focus.key} can race the Alpha 23 authored culmination")
+            if f"ind_aubm_congress_entitlement_{route.key}" not in achievement:
+                errors.append(f"{route.key}/{focus.key} does not record its route-specific congress entitlement")
+            if "ind_aubm_route_war_achievement" not in achievement:
+                errors.append(f"{route.key}/{focus.key} does not enter the common war ledger")
+            if "NOT = { flag = ind_aubm_route_war_achievement }" not in achievement:
+                errors.append(f"{route.key}/{focus.key} can stack a second route achievement")
+            if "NOT = { flag = ind_aubm_postwar_congress_completed }" not in achievement:
+                errors.append(f"{route.key}/{focus.key} can award credit after the final congress")
+            if "year = 1933" not in achievement:
+                errors.append(f"{route.key}/{focus.key} cannot acknowledge an early sovereign war")
+            if (route.key, focus.key) in SEA_ROUTE_FOCUSES:
+                checks += 1
+                if "ind_aubm_sea_theatre_achieved" not in achievement:
+                    errors.append(f"{route.key}/{focus.key} does not recognize the flexible Southeast Asian theatre")
+
+        fallback = events.get(base + 4, "")
+        checks += 13 + len(route.focuses)
+        if f"ind_aubm_route_charter_{route.key}" not in fallback:
+            errors.append(f"{route.key} fallback achievement ignores its selected charter")
+        if f"NOT = {{ flag = {BESPOKE_ROUTE_CONTRACT} }}" not in fallback:
+            errors.append(f"{route.key} fallback can race the Alpha 23 authored campaign")
+        if "ind_aubm_global_campaign_victory" not in fallback:
+            errors.append(f"{route.key} fallback cannot recognize a generated-country victory")
+        if f"ind_aubm_route_achievement_{route.key}_global" not in fallback:
+            errors.append(f"{route.key} fallback has no one-time route guard")
+        if f"setflag which = ind_aubm_route_achievement_{route.key} }}" in fallback:
+            errors.append(f"{route.key} fallback incorrectly unlocks its congress")
+        if "setflag which = ind_aubm_route_war_achievement" in fallback:
+            errors.append(f"{route.key} fallback incorrectly consumes the common primary ledger")
+        if f"ind_aubm_congress_entitlement_{route.key}" in fallback:
+            errors.append(f"{route.key} fallback incorrectly records a congress entitlement")
+        if "ind_aubm_secondary_campaign_credit" not in fallback:
+            errors.append(f"{route.key} fallback does not record secondary standing")
+        if "NOT = { flag = ind_aubm_route_war_achievement }" not in fallback:
+            errors.append(f"{route.key} secondary fallback can reuse a stale primary victory")
+        for focus in route.focuses:
+            focus_exclusion = (
+                f"AND = {{ flag = ind_aubm_route_focus_{route.key}_{focus.key} "
+                f"{focus.trigger} }}"
+            )
+            if focus_exclusion not in fallback:
+                errors.append(
+                    f"{route.key} fallback can relabel the selected {focus.key} victory as secondary"
+                )
+        if route.route_flag not in fallback:
+            errors.append(f"{route.key} fallback can fire after India leaves its route")
+        if "year = 1933" not in fallback:
+            errors.append(f"{route.key} fallback cannot acknowledge an early war")
+
+        if route.key == "japan":
+            dualfront = events.get(base + 1, "")
+            checks += 4
+            if "ind_aubm_jp_independent_soviet_war" not in dualfront:
+                errors.append("Japan dual-front achievement does not require an independently declared Soviet war")
+            if "NOT = { alliance = { country = IND country = JAP } }" not in dualfront:
+                errors.append("Japan northern achievement omits the compact's separate-war guard")
+            if "alliance = { country = IND country = JAP }" not in dualfront:
+                errors.append("formal Japanese allies cannot complete a joint northern campaign")
+            if "war = { country = IND country = SOV }" not in dualfront:
+                errors.append("formal Japanese northern credit does not require a real Soviet war")
+
+    for event_id, block in events.items():
+        checks += 3
+        if "persistent = yes" not in block:
+            errors.append(f"route lifecycle event {event_id} is not persistent")
+        if re.search(r"\btype\s*=\s*war\b", block):
+            errors.append(f"route lifecycle event {event_id} declares war outside the War Cabinet")
+        if re.search(r"\btype\s*=\s*peace\b", block):
+            errors.append(f"route lifecycle event {event_id} bypasses country-specific settlement")
+
+    if len(ROUTES) != 5:
+        errors.append(f"expected five strategic routes, found {len(ROUTES)}")
+    checks += 1
+
+    if errors:
+        print(f"AUBM route consequence validation failed ({len(errors)} errors, {checks} checks):")
+        for error in errors:
+            print(f"  ERROR: {error}")
+        return 1
+    print(f"AUBM route consequence validation passed ({checks} checks, five routes).")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

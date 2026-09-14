@@ -1,0 +1,636 @@
+#########################################################################
+# A Union Before Midnight V4: Indian special formations and capital ships
+#########################################################################
+# Reserved event IDs: 9281800-9281899
+#
+# The AUBM_APPROVED_SHBB_HALF_COMPLETE markers protect two deliberate
+# normal-cost contracts. Ensure-V4-EventProcurement.ps1 must be taught to
+# preserve marked commands before this file is added to the live event index.
+
+event = {
+	id = 9281800
+	random = no
+	country = IND
+
+	decision = {
+		technology = 1240
+		control = { province = 1451 data = IND }
+		NOT = { flag = ind_v3_gurkha_arm }
+		NOT = { flag = ind_aubm_gurkha_rifles_commissioned }
+	}
+	decision_trigger = {
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		money = 250
+		supplies = 700
+		manpower = 11
+		# AUBM_FULL_OPTION_GATE_END
+	}
+
+	name = "Constitute the Gurkha Brigade"
+	decision_desc = "Cabinet funding estimates: Raise the Dehradun Gurkha Brigade [money 250, supplies 700, manpower 11]."
+	desc = "Independence leaves Delhi responsible for agreements, pensions and recruiting arrangements once handled through the Raj. A sovereign Gurkha charter can preserve the regimental tradition under Indian command, but selective recruitment and mountain training make these formations expensive to expand."
+	style = 2
+	picture = "Gurkha"
+
+	date = { day = 0 month = january year = 1933 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 250
+			supplies = 700
+			manpower = 11
+			# AUBM_ACTION_RESERVE_END
+		}
+		ai_chance = 100
+		name = "Raise the Dehradun Gurkha Brigade"
+		command = { type = money value = -250 }
+		command = { type = supplies value = -700 }
+		command = { type = manpowerpool value = -11 }
+		command = { type = activate_unit_type which = d_rsv_33 }
+		command = { type = mountain_attack which = d_rsv_33 value = 20 }
+		command = { type = mountain_defense which = d_rsv_33 value = 25 }
+		command = { type = mountain_move which = d_rsv_33 value = 15 }
+		command = { type = hill_attack which = d_rsv_33 value = 15 }
+		command = { type = hill_defense which = d_rsv_33 value = 20 }
+		command = { type = hill_move which = d_rsv_33 value = 10 }
+		command = { type = snow_attack which = d_rsv_33 value = 10 }
+		command = { type = snow_defense which = d_rsv_33 value = 10 }
+		command = { type = setflag which = ind_aubm_gurkha_doctrine }
+		command = { type = add_corps which = "Dehradun Gurkha Brigade" value = land where = 1451 }
+		command = { type = add_division which = "1st Independent Gurkha Rifles Division" value = d_rsv_33 when = 0 }
+		command = { type = setflag which = ind_v3_gurkha_arm }
+		command = { type = setflag which = ind_aubm_gurkha_rifles_commissioned }
+	}
+}
+
+event = {
+	id = 9281801
+	random = no
+	country = IND
+
+	decision = {
+		technology = 1240
+		control = { province = 1459 data = IND }
+		NOT = { flag = ind_v3_frontier_force }
+		NOT = { flag = ind_aubm_frontier_force_commissioned }
+	}
+	decision_trigger = {
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		money = 220
+		supplies = 600
+		manpower = 10
+		# AUBM_FULL_OPTION_GATE_END
+	}
+
+	name = "Federalize the Frontier Force Rifles"
+	decision_desc = "Cabinet funding estimates: Establish the Frontier Forces Command [money 220, supplies 600, manpower 10]."
+	desc = "The Khyber, Waziristan, Baluchistan and Assam frontiers require formations that can patrol, gather local intelligence and operate with a lighter tail than the line army. A federal charter will unite selected scouts and rifles without turning every frontier battalion into a full division."
+	style = 2
+	picture = "india_v3_elite_frontier"
+
+	date = { day = 0 month = april year = 1934 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 220
+			supplies = 600
+			manpower = 10
+			# AUBM_ACTION_RESERVE_END
+		}
+		ai_chance = 100
+		name = "Establish the Frontier Forces Command"
+		command = { type = money value = -220 }
+		command = { type = supplies value = -600 }
+		command = { type = manpowerpool value = -10 }
+		command = { type = activate_unit_type which = d_rsv_34 }
+		command = { type = mountain_defense which = d_rsv_34 value = 10 }
+		command = { type = mountain_move which = d_rsv_34 value = 20 }
+		command = { type = hill_defense which = d_rsv_34 value = 15 }
+		command = { type = hill_move which = d_rsv_34 value = 20 }
+		command = { type = desert_defense which = d_rsv_34 value = 15 }
+		command = { type = desert_move which = d_rsv_34 value = 15 }
+		command = { type = setflag which = ind_aubm_frontier_doctrine }
+		command = { type = add_corps which = "Frontier Forces Command" value = land where = 1459 }
+		command = { type = add_division which = "1st Frontier Force Rifles Division" value = d_rsv_34 when = 0 }
+		command = { type = setflag which = ind_v3_frontier_force }
+		command = { type = setflag which = ind_aubm_frontier_force_commissioned }
+	}
+}
+
+event = {
+	id = 9281802
+	random = no
+	country = IND
+
+	decision = {
+		year = 1939
+		technology = 1100
+		control = { province = 1459 data = IND }
+		NOT = { flag = ind_aubm_chindit_columns_commissioned }
+		OR = {
+			atwar = yes
+			war = { country = JAP country = CHI }
+			year = 1941
+		}
+	}
+	decision_trigger = {
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		money = 420
+		supplies = 1100
+		manpower = 9
+		# AUBM_FULL_OPTION_GATE_END
+	}
+
+	name = "Authorize Long-Range Penetration Groups"
+	# AUBM_DECISION_DESC_MANUAL
+	decision_desc = "Available from 1939 during an Indian war or the Sino-Japanese War, and unconditionally from 1941. Form the Eastern Long-Range Group: 420 money, 1,100 supplies and 9 manpower."
+	desc = "War in China, Burma or beyond the north-eastern frontier may demand columns that can live by air supply, cut roads and force the enemy to guard an enormous rear area. India may prepare them before entering the war. Their operational freedom comes at the cost of heavy training, communications equipment and limited ability against armour."
+	style = 2
+	picture = "india_v3_elite_penetration"
+
+	date = { day = 0 month = january year = 1939 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 420
+			supplies = 1100
+			manpower = 9
+			# AUBM_ACTION_RESERVE_END
+		}
+		ai_chance = 100
+		name = "Form the Eastern Long-Range Group"
+		command = { type = money value = -420 }
+		command = { type = supplies value = -1100 }
+		command = { type = manpowerpool value = -9 }
+		command = { type = activate_unit_type which = d_rsv_35 }
+		command = { type = jungle_attack which = d_rsv_35 value = 25 }
+		command = { type = jungle_defense which = d_rsv_35 value = 20 }
+		command = { type = jungle_move which = d_rsv_35 value = 25 }
+		command = { type = forest_attack which = d_rsv_35 value = 15 }
+		command = { type = forest_defense which = d_rsv_35 value = 15 }
+		command = { type = forest_move which = d_rsv_35 value = 20 }
+		command = { type = swamp_attack which = d_rsv_35 value = 10 }
+		command = { type = swamp_move which = d_rsv_35 value = 20 }
+		command = { type = night_attack which = d_rsv_35 value = 10 }
+		command = { type = night_move which = d_rsv_35 value = 10 }
+		command = { type = setflag which = ind_aubm_chindit_doctrine }
+		command = { type = add_corps which = "Eastern Long-Range Group" value = land where = 1459 }
+		command = { type = add_division which = "77th Indian Penetration Division" value = d_rsv_35 when = 0 }
+		command = { type = setflag which = ind_aubm_chindit_columns_commissioned }
+	}
+}
+
+event = {
+	id = 9281803
+	random = no
+	country = IND
+
+	decision = {
+		technology = 1670
+		control = { province = 1459 data = IND }
+		NOT = { flag = ind_aubm_airborne_commissioned }
+	}
+	decision_trigger = {
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		money = 500
+		supplies = 1000
+		manpower = 9
+		# AUBM_FULL_OPTION_GATE_END
+	}
+
+	name = "Create the Indian Airborne Division"
+	decision_desc = "Cabinet funding estimates: Commission the 50th Parachute Brigade Group [money 500, supplies 1,000, manpower 9]."
+	desc = "A volunteer parachute formation would let Delhi reinforce the Himalayas, Burma or an island base before a conventional corps could arrive. It is not a substitute for transport aircraft, and the selection and training burden limits how quickly the arm can grow."
+	style = 2
+	picture = "india_v3_elite_airborne"
+
+	date = { day = 0 month = january year = 1938 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 500
+			supplies = 1000
+			manpower = 9
+			# AUBM_ACTION_RESERVE_END
+		}
+		ai_chance = 100
+		name = "Commission the 50th Parachute Brigade Group"
+		command = { type = money value = -500 }
+		command = { type = supplies value = -1000 }
+		command = { type = manpowerpool value = -9 }
+		command = { type = activate_unit_type which = d_rsv_36 }
+		command = { type = paradrop_attack which = d_rsv_36 value = 20 }
+		command = { type = hill_move which = d_rsv_36 value = 10 }
+		command = { type = urban_attack which = d_rsv_36 value = 10 }
+		command = { type = setflag which = ind_aubm_airborne_doctrine }
+		command = { type = add_corps which = "50th Parachute Brigade Group" value = land where = 1459 }
+		command = { type = add_division which = "1st Indian Airborne Division" value = d_rsv_36 when = 0 }
+		command = { type = setflag which = ind_aubm_airborne_commissioned }
+	}
+}
+
+event = {
+	id = 9281804
+	random = no
+	country = IND
+
+	decision = {
+		technology = 1590
+		control = { province = 1459 data = IND }
+		NOT = { flag = ind_aubm_coromandel_marines_commissioned }
+	}
+	decision_trigger = {
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		money = 450
+		supplies = 1100
+		manpower = 13
+		# AUBM_FULL_OPTION_GATE_END
+	}
+
+	name = "Establish the Coromandel Marines"
+	decision_desc = "Cabinet funding estimates: Commission the Coromandel Marine Force [money 450, supplies 1,100, manpower 13]."
+	desc = "A blue-water navy needs troops that can seize a jetty, reinforce an island and secure a port before the line army arrives. The proposed Coromandel Marines expand wartime landing institutions into a permanent Indian naval infantry arm."
+	style = 2
+	picture = "india_v3_elite_marines"
+
+	date = { day = 0 month = january year = 1937 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 450
+			supplies = 1100
+			manpower = 13
+			# AUBM_ACTION_RESERVE_END
+		}
+		ai_chance = 100
+		name = "Commission the Coromandel Marine Force"
+		command = { type = money value = -450 }
+		command = { type = supplies value = -1100 }
+		command = { type = manpowerpool value = -13 }
+		command = { type = activate_unit_type which = d_rsv_37 }
+		command = { type = shore_attack which = d_rsv_37 value = 25 }
+		command = { type = river_attack which = d_rsv_37 value = 15 }
+		command = { type = swamp_move which = d_rsv_37 value = 15 }
+		command = { type = setflag which = ind_aubm_coromandel_doctrine }
+		command = { type = add_corps which = "Coromandel Marine Force" value = land where = 1459 }
+		command = { type = add_division which = "1st Coromandel Marine Division" value = d_rsv_37 when = 0 }
+		command = { type = setflag which = ind_aubm_coromandel_marines_commissioned }
+	}
+}
+
+event = {
+	id = 9281805
+	random = no
+	country = IND
+
+	decision = {
+		technology = 2070
+		control = { province = 1459 data = IND }
+		NOT = { flag = ind_aubm_guards_armour_commissioned }
+	}
+	decision_trigger = {
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		money = 650
+		supplies = 1500
+		manpower = 8
+		# AUBM_FULL_OPTION_GATE_END
+	}
+
+	name = "Form the Guards Armoured Division"
+	decision_desc = "Cabinet funding estimates: Commission the Guards Armoured Corps [money 650, supplies 1,500, manpower 8]."
+	desc = "India can concentrate its best crews, signals personnel and workshops in a single armoured reserve. The result will be more cohesive than a line tank division, but it consumes the same scarce machines and fuel and cannot be multiplied cheaply."
+	style = 2
+	picture = "aubm_v4_army_commands"
+
+	date = { day = 0 month = january year = 1939 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 650
+			supplies = 1500
+			manpower = 8
+			# AUBM_ACTION_RESERVE_END
+		}
+		ai_chance = 100
+		name = "Commission the Guards Armoured Corps"
+		command = { type = money value = -650 }
+		command = { type = supplies value = -1500 }
+		command = { type = manpowerpool value = -8 }
+		command = { type = activate_unit_type which = d_rsv_38 }
+		command = { type = add_corps which = "Guards Armoured Corps" value = land where = 1459 }
+		command = { type = add_division which = "1st Guards Armoured Division" value = d_rsv_38 when = 0 }
+		command = { type = setflag which = ind_aubm_guards_armour_commissioned }
+	}
+}
+
+event = {
+	id = 9281806
+	random = no
+	country = IND
+
+	decision = {
+		technology = 1396
+		control = { province = 1459 data = IND }
+		NOT = { flag = ind_aubm_guards_motorised_commissioned }
+	}
+	decision_trigger = {
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		money = 420
+		supplies = 1000
+		manpower = 12
+		# AUBM_FULL_OPTION_GATE_END
+	}
+
+	name = "Create the Guards Motorised Reserve"
+	decision_desc = "Cabinet funding estimates: Commission the Guards Mobile Corps [money 420, supplies 1,000, manpower 12]."
+	desc = "The army requires a mobile reserve that can reinforce a threatened front without consuming a full tank establishment. A Guards motorised division offers speed and command cohesion, but trucks do not provide the protection or striking power of armour."
+	style = 2
+	picture = "aubm_v4_army_commands"
+
+	date = { day = 0 month = january year = 1936 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 420
+			supplies = 1000
+			manpower = 12
+			# AUBM_ACTION_RESERVE_END
+		}
+		ai_chance = 100
+		name = "Commission the Guards Mobile Corps"
+		command = { type = money value = -420 }
+		command = { type = supplies value = -1000 }
+		command = { type = manpowerpool value = -12 }
+		command = { type = activate_unit_type which = d_rsv_39 }
+		command = { type = add_corps which = "Guards Mobile Corps" value = land where = 1459 }
+		command = { type = add_division which = "1st Guards Motorised Division" value = d_rsv_39 when = 0 }
+		command = { type = setflag which = ind_aubm_guards_motorised_commissioned }
+	}
+}
+
+event = {
+	id = 9281807
+	random = no
+	country = IND
+
+	decision = {
+		technology = 1860
+		control = { province = 1459 data = IND }
+		NOT = { flag = ind_aubm_pioneers_commissioned }
+	}
+	decision_trigger = {
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		money = 280
+		supplies = 750
+		manpower = 10
+		# AUBM_FULL_OPTION_GATE_END
+	}
+
+	name = "Restore the Indian Pioneer Tradition"
+	decision_desc = "Cabinet funding estimates: Commission the Indian Pioneer Group [money 280, supplies 750, manpower 10]."
+	desc = "The old pioneer regiments supplied soldiers who could bridge rivers, open roads and fight as infantry when required. Rebuilding that tradition as a divisional engineering formation will improve prepared operations without creating another elite assault army."
+	style = 2
+	picture = "aubm_v4_army_commands"
+
+	date = { day = 0 month = january year = 1936 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 280
+			supplies = 750
+			manpower = 10
+			# AUBM_ACTION_RESERVE_END
+		}
+		ai_chance = 100
+		name = "Commission the Indian Pioneer Group"
+		command = { type = money value = -280 }
+		command = { type = supplies value = -750 }
+		command = { type = manpowerpool value = -10 }
+		command = { type = activate_unit_type which = d_rsv_40 }
+		command = { type = river_attack which = d_rsv_40 value = 30 }
+		command = { type = urban_attack which = d_rsv_40 value = 15 }
+		command = { type = urban_defense which = d_rsv_40 value = 20 }
+		command = { type = shore_attack which = d_rsv_40 value = 10 }
+		command = { type = setflag which = ind_aubm_pioneer_doctrine }
+		command = { type = add_corps which = "Indian Pioneer Group" value = land where = 1459 }
+		command = { type = add_division which = "1st Indian Pioneer Division" value = d_rsv_40 when = 0 }
+		command = { type = setflag which = ind_aubm_pioneers_commissioned }
+	}
+}
+
+#########################################################################
+# Existing-save doctrine migration for already commissioned formations
+#########################################################################
+
+event = {
+	id = 9281808
+	random = no
+	one_action = yes
+	country = IND
+
+	trigger = {
+		OR = {
+			AND = { flag = ind_aubm_gurkha_rifles_commissioned NOT = { flag = ind_aubm_gurkha_doctrine } }
+			AND = { flag = ind_aubm_frontier_force_commissioned NOT = { flag = ind_aubm_frontier_doctrine } }
+			AND = { flag = ind_aubm_chindit_columns_commissioned NOT = { flag = ind_aubm_chindit_doctrine } }
+			AND = { flag = ind_aubm_airborne_commissioned NOT = { flag = ind_aubm_airborne_doctrine } }
+			AND = { flag = ind_aubm_coromandel_marines_commissioned NOT = { flag = ind_aubm_coromandel_doctrine } }
+			AND = { flag = ind_aubm_pioneers_commissioned NOT = { flag = ind_aubm_pioneer_doctrine } }
+		}
+	}
+
+	name = "The Army Codifies Its Specialist Doctrines"
+	desc = "Field exercises have exposed the error of treating every specialist formation as slightly better infantry. The General Staff now issues separate mountain, frontier, penetration, airborne, amphibious and assault-engineer doctrine tables to formations already in service."
+	style = 2
+	picture = "aubm_v4_army_commands"
+
+	date = { day = 0 month = january year = 1933 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Apply the specialist doctrine tables"
+		command = { trigger = { flag = ind_aubm_gurkha_rifles_commissioned NOT = { flag = ind_aubm_gurkha_doctrine } } type = mountain_attack which = d_rsv_33 value = 20 }
+		command = { trigger = { flag = ind_aubm_gurkha_rifles_commissioned NOT = { flag = ind_aubm_gurkha_doctrine } } type = mountain_defense which = d_rsv_33 value = 25 }
+		command = { trigger = { flag = ind_aubm_gurkha_rifles_commissioned NOT = { flag = ind_aubm_gurkha_doctrine } } type = mountain_move which = d_rsv_33 value = 15 }
+		command = { trigger = { flag = ind_aubm_gurkha_rifles_commissioned NOT = { flag = ind_aubm_gurkha_doctrine } } type = hill_attack which = d_rsv_33 value = 15 }
+		command = { trigger = { flag = ind_aubm_gurkha_rifles_commissioned NOT = { flag = ind_aubm_gurkha_doctrine } } type = hill_defense which = d_rsv_33 value = 20 }
+		command = { trigger = { flag = ind_aubm_gurkha_rifles_commissioned NOT = { flag = ind_aubm_gurkha_doctrine } } type = hill_move which = d_rsv_33 value = 10 }
+		command = { trigger = { flag = ind_aubm_gurkha_rifles_commissioned NOT = { flag = ind_aubm_gurkha_doctrine } } type = snow_attack which = d_rsv_33 value = 10 }
+		command = { trigger = { flag = ind_aubm_gurkha_rifles_commissioned NOT = { flag = ind_aubm_gurkha_doctrine } } type = snow_defense which = d_rsv_33 value = 10 }
+		command = { trigger = { flag = ind_aubm_gurkha_rifles_commissioned NOT = { flag = ind_aubm_gurkha_doctrine } } type = setflag which = ind_aubm_gurkha_doctrine }
+
+		command = { trigger = { flag = ind_aubm_frontier_force_commissioned NOT = { flag = ind_aubm_frontier_doctrine } } type = mountain_defense which = d_rsv_34 value = 10 }
+		command = { trigger = { flag = ind_aubm_frontier_force_commissioned NOT = { flag = ind_aubm_frontier_doctrine } } type = mountain_move which = d_rsv_34 value = 20 }
+		command = { trigger = { flag = ind_aubm_frontier_force_commissioned NOT = { flag = ind_aubm_frontier_doctrine } } type = hill_defense which = d_rsv_34 value = 15 }
+		command = { trigger = { flag = ind_aubm_frontier_force_commissioned NOT = { flag = ind_aubm_frontier_doctrine } } type = hill_move which = d_rsv_34 value = 20 }
+		command = { trigger = { flag = ind_aubm_frontier_force_commissioned NOT = { flag = ind_aubm_frontier_doctrine } } type = desert_defense which = d_rsv_34 value = 15 }
+		command = { trigger = { flag = ind_aubm_frontier_force_commissioned NOT = { flag = ind_aubm_frontier_doctrine } } type = desert_move which = d_rsv_34 value = 15 }
+		command = { trigger = { flag = ind_aubm_frontier_force_commissioned NOT = { flag = ind_aubm_frontier_doctrine } } type = setflag which = ind_aubm_frontier_doctrine }
+
+		command = { trigger = { flag = ind_aubm_chindit_columns_commissioned NOT = { flag = ind_aubm_chindit_doctrine } } type = jungle_attack which = d_rsv_35 value = 25 }
+		command = { trigger = { flag = ind_aubm_chindit_columns_commissioned NOT = { flag = ind_aubm_chindit_doctrine } } type = jungle_defense which = d_rsv_35 value = 20 }
+		command = { trigger = { flag = ind_aubm_chindit_columns_commissioned NOT = { flag = ind_aubm_chindit_doctrine } } type = jungle_move which = d_rsv_35 value = 25 }
+		command = { trigger = { flag = ind_aubm_chindit_columns_commissioned NOT = { flag = ind_aubm_chindit_doctrine } } type = forest_attack which = d_rsv_35 value = 15 }
+		command = { trigger = { flag = ind_aubm_chindit_columns_commissioned NOT = { flag = ind_aubm_chindit_doctrine } } type = forest_defense which = d_rsv_35 value = 15 }
+		command = { trigger = { flag = ind_aubm_chindit_columns_commissioned NOT = { flag = ind_aubm_chindit_doctrine } } type = forest_move which = d_rsv_35 value = 20 }
+		command = { trigger = { flag = ind_aubm_chindit_columns_commissioned NOT = { flag = ind_aubm_chindit_doctrine } } type = swamp_attack which = d_rsv_35 value = 10 }
+		command = { trigger = { flag = ind_aubm_chindit_columns_commissioned NOT = { flag = ind_aubm_chindit_doctrine } } type = swamp_move which = d_rsv_35 value = 20 }
+		command = { trigger = { flag = ind_aubm_chindit_columns_commissioned NOT = { flag = ind_aubm_chindit_doctrine } } type = night_attack which = d_rsv_35 value = 10 }
+		command = { trigger = { flag = ind_aubm_chindit_columns_commissioned NOT = { flag = ind_aubm_chindit_doctrine } } type = night_move which = d_rsv_35 value = 10 }
+		command = { trigger = { flag = ind_aubm_chindit_columns_commissioned NOT = { flag = ind_aubm_chindit_doctrine } } type = setflag which = ind_aubm_chindit_doctrine }
+
+		command = { trigger = { flag = ind_aubm_airborne_commissioned NOT = { flag = ind_aubm_airborne_doctrine } } type = paradrop_attack which = d_rsv_36 value = 20 }
+		command = { trigger = { flag = ind_aubm_airborne_commissioned NOT = { flag = ind_aubm_airborne_doctrine } } type = hill_move which = d_rsv_36 value = 10 }
+		command = { trigger = { flag = ind_aubm_airborne_commissioned NOT = { flag = ind_aubm_airborne_doctrine } } type = urban_attack which = d_rsv_36 value = 10 }
+		command = { trigger = { flag = ind_aubm_airborne_commissioned NOT = { flag = ind_aubm_airborne_doctrine } } type = setflag which = ind_aubm_airborne_doctrine }
+
+		command = { trigger = { flag = ind_aubm_coromandel_marines_commissioned NOT = { flag = ind_aubm_coromandel_doctrine } } type = shore_attack which = d_rsv_37 value = 25 }
+		command = { trigger = { flag = ind_aubm_coromandel_marines_commissioned NOT = { flag = ind_aubm_coromandel_doctrine } } type = river_attack which = d_rsv_37 value = 15 }
+		command = { trigger = { flag = ind_aubm_coromandel_marines_commissioned NOT = { flag = ind_aubm_coromandel_doctrine } } type = swamp_move which = d_rsv_37 value = 15 }
+		command = { trigger = { flag = ind_aubm_coromandel_marines_commissioned NOT = { flag = ind_aubm_coromandel_doctrine } } type = setflag which = ind_aubm_coromandel_doctrine }
+
+		command = { trigger = { flag = ind_aubm_pioneers_commissioned NOT = { flag = ind_aubm_pioneer_doctrine } } type = river_attack which = d_rsv_40 value = 30 }
+		command = { trigger = { flag = ind_aubm_pioneers_commissioned NOT = { flag = ind_aubm_pioneer_doctrine } } type = urban_attack which = d_rsv_40 value = 15 }
+		command = { trigger = { flag = ind_aubm_pioneers_commissioned NOT = { flag = ind_aubm_pioneer_doctrine } } type = urban_defense which = d_rsv_40 value = 20 }
+		command = { trigger = { flag = ind_aubm_pioneers_commissioned NOT = { flag = ind_aubm_pioneer_doctrine } } type = shore_attack which = d_rsv_40 value = 10 }
+		command = { trigger = { flag = ind_aubm_pioneers_commissioned NOT = { flag = ind_aubm_pioneer_doctrine } } type = setflag which = ind_aubm_pioneer_doctrine }
+	}
+}
+
+#########################################################################
+# Two normal-cost, half-complete super-heavy battleship contracts
+#########################################################################
+
+event = {
+	id = 9281880
+	random = no
+	country = IND
+
+	decision = {
+		year = 1939
+		ic = 140
+		technology = 3490
+		NOT = { flag = ind_aubm_shbb_himalaya_contract }
+	}
+	decision_trigger = {
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		money = 900
+		supplies = 2200
+		manpower = 3
+		# AUBM_FULL_OPTION_GATE_END
+	}
+
+	name = "Project Himalaya"
+	# AUBM_DECISION_DESC_MANUAL
+	decision_desc = "From 1939 at 140 IC: 900 money, 2,200 supplies, 3 manpower and +2 dissent. INS Meru enters production with 420 days remaining and normal daily IC cost."
+	desc = "The 460-millimetre design is now technically possible. Naval constructors propose that the state fund the design work, armour forgings and first half of a single fully fitted hull. The shipyard receives a genuine half-complete contract with 420 days remaining; the player still funds its normal daily production IC."
+	style = 2
+	picture = "aubm_v4_fleet_tactical_units"
+
+	date = { day = 0 month = january year = 1937 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 900
+			supplies = 2200
+			manpower = 3
+			# AUBM_ACTION_RESERVE_END
+		}
+		ai_chance = 100
+		name = "Authorize INS Meru: 420 days remain at normal IC"
+		command = { type = money value = -900 }
+		command = { type = supplies value = -2200 }
+		command = { type = dissent value = 2 }
+		# AUBM_APPROVED_SHBB_HALF_COMPLETE_BEGIN
+		command = { type = build_division which = battleship value = naval_fire_controll_l when = 1 where = 420 name = "INS Meru" }
+		# AUBM_APPROVED_SHBB_HALF_COMPLETE_END
+		command = { type = add_brigade value = naval_anti_air_l }
+		command = { type = add_brigade value = naval_radar_l }
+		command = { type = add_brigade value = naval_improved_hull_l }
+		command = { type = add_brigade value = floatplane }
+		command = { type = setflag which = ind_aubm_shbb_himalaya_contract }
+	}
+}
+
+event = {
+	id = 9281881
+	random = no
+	country = IND
+
+	decision = {
+		year = 1941
+		ic = 180
+		technology = 3490
+		flag = ind_aubm_shbb_himalaya_contract
+		NOT = { flag = ind_aubm_shbb_vindhyagiri_contract }
+	}
+	decision_trigger = {
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		money = 1000
+		supplies = 2400
+		manpower = 3
+		# AUBM_FULL_OPTION_GATE_END
+	}
+
+	name = "The Vindhyagiri Sister Ship"
+	# AUBM_DECISION_DESC_MANUAL
+	decision_desc = "From 1941 at 180 IC: 1,000 money, 2,400 supplies, 3 manpower and +1 dissent. INS Trikuta enters production with 420 days remaining and normal daily IC cost."
+	desc = "The Himalaya design can support a sister ship while its armour patterns and heavy tooling remain in use. Common tooling reduces the second appropriation, but the ship still enters a capital slip with 420 days remaining and must be funded through the normal production budget."
+	style = 2
+	picture = "aubm_v4_fleet_tactical_units"
+
+	date = { day = 0 month = january year = 1937 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 1000
+			supplies = 2400
+			manpower = 3
+			# AUBM_ACTION_RESERVE_END
+		}
+		ai_chance = 100
+		name = "Authorize INS Trikuta: 420 days remain at normal IC"
+		command = { type = money value = -1000 }
+		command = { type = supplies value = -2400 }
+		command = { type = dissent value = 1 }
+		# AUBM_APPROVED_SHBB_HALF_COMPLETE_BEGIN
+		command = { type = build_division which = battleship value = naval_fire_controll_l when = 1 where = 420 name = "INS Trikuta" }
+		# AUBM_APPROVED_SHBB_HALF_COMPLETE_END
+		command = { type = add_brigade value = naval_anti_air_l }
+		command = { type = add_brigade value = naval_radar_l }
+		command = { type = add_brigade value = naval_improved_hull_l }
+		command = { type = add_brigade value = floatplane }
+		command = { type = setflag which = ind_aubm_shbb_vindhyagiri_contract }
+	}
+}

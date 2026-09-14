@@ -14,3 +14,4 @@
 
 # Darkest Hour consumes legacy encodings and the installer verifies exact bytes.
 mod/** -text
+mod/** whitespace=cr-at-eol

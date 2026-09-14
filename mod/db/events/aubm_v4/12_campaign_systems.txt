@@ -1,0 +1,570 @@
+#########################################################################
+# A Union Before Midnight V4: campaign finance, inherited knowledge,
+# growth limits and the island-base network
+#########################################################################
+
+event = {
+	id = 9280310
+	random = no
+	persistent = yes
+	country = IND
+
+	decision = {
+		flag = ind_v4_initialized
+		year = 1934
+		NOT = { flag = ind_v4_budget_cycle_cooldown }
+	}
+	decision_trigger = { }
+
+	name = "Present the Union Budget"
+	desc = "The Reserve Bank can finance national power, but not without choosing who pays. Parliament may broaden taxation, borrow from Indian savers, seek foreign credit, or slow the programme of state construction. Each budget also services any outstanding development debt."
+	style = 2
+	picture = "aubm_v4_budget_conference"
+
+	date = { day = 0 month = january year = 1934 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Open the annual budget conference"
+		command = { type = setflag which = ind_v4_budget_cycle_cooldown }
+		command = { type = trigger which = 9280311 }
+	}
+}
+
+event = {
+	id = 9280311
+	random = no
+	persistent = yes
+	country = IND
+
+	name = "The Union Budget"
+	desc = "Four workable budgets reach the Cabinet. Tax reform builds durable revenue but provokes resistance. Domestic bonds provide the largest immediate reserve and deepen debt. Foreign credit buys flexibility at a diplomatic price. Austerity preserves cash by slowing industrial expansion."
+	style = 2
+	picture = "aubm_v4_union_budget_choices"
+
+	action_a = {
+		ai_chance = 35
+		name = "Broaden taxation: +700 money, +2 dissent"
+		command = { type = money value = 700 }
+		command = { type = dissent value = 2 }
+		command = { trigger = { NOT = { flag = ind_v4_tax_reform } } type = industrial_modifier which = money value = 5 }
+		command = { type = setflag which = ind_v4_tax_reform }
+		command = { trigger = { flag = ind_v4_budget_debt_1 } type = money value = -150 }
+		command = { trigger = { flag = ind_v4_budget_debt_2 } type = money value = -175 }
+		command = { trigger = { flag = ind_v4_budget_debt_3 } type = money value = -225 }
+		command = { trigger = { flag = ind_v4_foreign_credit } type = money value = -175 }
+	}
+	action_b = {
+		trigger = { NOT = { flag = ind_v4_budget_debt_3 } }
+		ai_chance = 25
+		name = "Issue development bonds: +1250 money, deeper debt"
+		command = { trigger = { flag = ind_v4_budget_debt_1 } type = money value = -150 }
+		command = { trigger = { flag = ind_v4_budget_debt_2 } type = money value = -175 }
+		command = { trigger = { flag = ind_v4_budget_debt_3 } type = money value = -225 }
+		command = { trigger = { flag = ind_v4_foreign_credit } type = money value = -175 }
+		command = { type = money value = 1250 }
+		command = { type = dissent value = 1 }
+		command = { trigger = { AND = { flag = ind_v4_budget_debt_2 NOT = { flag = ind_v4_budget_debt_3 } } } type = setflag which = ind_v4_budget_debt_3 }
+		command = { trigger = { AND = { flag = ind_v4_budget_debt_1 NOT = { flag = ind_v4_budget_debt_2 } } } type = setflag which = ind_v4_budget_debt_2 }
+		command = { trigger = { NOT = { flag = ind_v4_budget_debt_1 } } type = setflag which = ind_v4_budget_debt_1 }
+	}
+	action_c = {
+		trigger = { NOT = { flag = ind_v4_foreign_credit } }
+		ai_chance = 25
+		name = "Take foreign credit: +1100 money, diplomatic dependence"
+		command = { type = money value = 1100 }
+		command = { type = supplies value = 300 }
+		command = { type = dissent value = 1 }
+		command = { type = relation which = ENG value = 15 }
+		command = { type = relation which = USA value = 15 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { trigger = { flag = ind_v4_budget_debt_1 } type = money value = -150 }
+		command = { trigger = { flag = ind_v4_budget_debt_2 } type = money value = -175 }
+		command = { trigger = { flag = ind_v4_budget_debt_3 } type = money value = -225 }
+		command = { trigger = { flag = ind_v4_foreign_credit } type = money value = -175 }
+		command = { type = setflag which = ind_v4_foreign_credit }
+	}
+	action_d = {
+		trigger = { NOT = { flag = ind_v4_austerity_program } }
+		ai_chance = 15
+		name = "Impose one austerity settlement: +700 money, -5% total IC"
+		command = { type = money value = 700 }
+		command = { type = dissent value = 3 }
+		command = { type = industrial_modifier which = total value = -5 }
+		command = { type = industrial_modifier which = money value = 5 }
+		command = { trigger = { flag = ind_v4_budget_debt_1 } type = money value = -150 }
+		command = { trigger = { flag = ind_v4_budget_debt_2 } type = money value = -175 }
+		command = { trigger = { flag = ind_v4_budget_debt_3 } type = money value = -225 }
+		command = { trigger = { flag = ind_v4_foreign_credit } type = money value = -175 }
+		command = { type = setflag which = ind_v4_austerity_program }
+	}
+}
+
+event = {
+	id = 9280312
+	random = no
+	persistent = yes
+	country = IND
+
+	trigger = { flag = ind_v4_budget_cycle_cooldown }
+
+	name = "The Next Budget Year"
+	desc = "The Finance Ministry opens the books for another annual settlement."
+	style = 2
+	picture = "aubm_v4_next_budget_year"
+
+	date = { day = 0 month = january year = 1934 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Prepare the estimates"
+		command = { type = clrflag which = ind_v4_budget_cycle_cooldown }
+	}
+}
+
+event = {
+	id = 9280313
+	random = no
+	persistent = yes
+	country = IND
+
+	decision = {
+		OR = {
+			flag = ind_v4_budget_debt_1
+			flag = ind_v4_foreign_credit
+		}
+	}
+	decision_trigger = {
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		OR = {
+			AND = { money = 900 }
+			AND = { money = 1100 }
+		}
+		# AUBM_FULL_OPTION_GATE_END
+	}
+
+	name = "Retire Development Debt"
+	decision_desc = "Cabinet funding estimates: Redeem one domestic tranche [money 900]; Settle foreign credit [money 1,100]."
+	desc = "The Reserve Bank can redeem one domestic bond tranche at a time or settle the foreign credit agreement separately. Debt relief is deliberately staged: borrowing created several obligations, not one inexpensive switch that erases them all."
+	style = 2
+	picture = "aubm_v4_retire_development_debt"
+
+	date = { day = 0 month = january year = 1938 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		trigger = {
+ # AUBM_ACTION_RESERVE_BEGIN
+ money = 900
+ # AUBM_ACTION_RESERVE_END
+ flag = ind_v4_budget_debt_1 }
+		name = "Redeem one domestic tranche: -900 money, -1 dissent"
+		command = { type = money value = -900 }
+		command = { type = dissent value = -1 }
+		command = { trigger = { AND = { flag = ind_v4_budget_debt_1 NOT = { flag = ind_v4_budget_debt_2 } } } type = clrflag which = ind_v4_budget_debt_1 }
+		command = { trigger = { AND = { flag = ind_v4_budget_debt_2 NOT = { flag = ind_v4_budget_debt_3 } } } type = clrflag which = ind_v4_budget_debt_2 }
+		command = { trigger = { flag = ind_v4_budget_debt_3 } type = clrflag which = ind_v4_budget_debt_3 }
+	}
+	action_b = {
+		trigger = {
+ # AUBM_ACTION_RESERVE_BEGIN
+ money = 1100
+ # AUBM_ACTION_RESERVE_END
+ flag = ind_v4_foreign_credit }
+		name = "Settle foreign credit: -1100 money, restore autonomy"
+		command = { type = money value = -1100 }
+		command = { type = relation which = ENG value = -5 }
+		command = { type = relation which = USA value = -5 }
+		command = { type = domestic which = interventionism value = -1 }
+		command = { type = clrflag which = ind_v4_foreign_credit }
+	}
+}
+
+event = {
+	id = 9280314
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_industrial_maturity
+		IC = 200
+		NOT = { flag = ind_v4_growth_normalized }
+	}
+
+	name = "The Economy at Full Stretch"
+	desc = "A decade of forced construction has produced a great-power economy, but workshops, railways and skilled labour are overcommitted. India can consolidate the boom into a stronger treasury, reserve capacity for defence, or convert part of the expansion into household prosperity. None preserves every temporary wartime subsidy."
+	style = 2
+	picture = "aubm_v4_economy_full_stretch"
+
+	date = { day = 0 month = january year = 1940 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		ai_chance = 45
+		name = "Fiscal consolidation: +1500 money, -15% total IC"
+		command = { type = money value = 1500 }
+		command = { type = dissent value = 1 }
+		command = { type = industrial_modifier which = total value = -15 }
+		command = { type = industrial_modifier which = money value = 6 }
+		command = { type = setflag which = ind_v4_growth_normalized }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Defence capacity: +900 money, -12% total IC, +800 supplies"
+		command = { type = money value = 900 }
+		command = { type = supplies value = 800 }
+		command = { type = industrial_modifier which = total value = -12 }
+		command = { type = max_organization which = land value = 1 }
+		command = { type = max_organization which = air value = 1 }
+		command = { type = setflag which = ind_v4_growth_normalized }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Consumer prosperity: +600 money, -10% total IC, -4 dissent"
+		command = { type = money value = 600 }
+		command = { type = dissent value = -4 }
+		command = { type = industrial_modifier which = total value = -10 }
+		command = { type = industrial_modifier which = money value = 4 }
+		command = { type = domestic which = free_market value = 1 }
+		command = { type = setflag which = ind_v4_growth_normalized }
+	}
+}
+
+event = {
+	id = 9280315
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_sovereignty_proclaimed
+		NOT = { flag = ind_aubm_fresh_1933_bootstrap }
+		NOT = { flag = ind_v4_inherited_service_baseline }
+		OR = {
+			NOT = { technology = 1070 }
+			NOT = { technology = 2510 }
+			NOT = { technology = 3060 }
+			NOT = { technology = 3820 }
+			NOT = { technology = 4800 }
+			NOT = { technology = 8030 }
+			NOT = { technology = 8500 }
+			NOT = { technology = 8900 }
+		}
+	}
+
+	name = "Compatibility Review: Service Archives"
+	desc = "This save is missing part of the technical baseline already present in a new 1933 campaign. The review restores only mature Great War and early interwar designs formerly used in India; it grants no future-generation technology."
+	style = 2
+	picture = "aubm_v4_inherited_archives"
+
+	date = { day = 0 month = january year = 1933 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Restore the missing inherited record (no cost)"
+		# These blueprints are a compatibility bridge for campaigns begun before
+		# the 1933 scenario received full Raj service parity. New campaigns own
+		# the applications already, so the commands are harmless no-ops.
+		command = { type = gain_tech which = 1070 }
+		command = { type = gain_tech which = 1080 }
+		command = { type = gain_tech which = 1090 }
+		command = { type = gain_tech which = 1560 }
+		command = { type = gain_tech which = 2510 }
+		command = { type = gain_tech which = 2630 }
+		command = { type = gain_tech which = 2640 }
+		command = { type = gain_tech which = 2646 }
+		command = { type = gain_tech which = 2810 }
+		command = { type = gain_tech which = 2820 }
+		command = { type = gain_tech which = 2900 }
+		command = { type = gain_tech which = 2910 }
+		command = { type = gain_tech which = 2920 }
+		command = { type = gain_tech which = 3060 }
+		command = { type = gain_tech which = 3150 }
+		command = { type = gain_tech which = 3250 }
+		command = { type = gain_tech which = 3520 }
+		command = { type = gain_tech which = 3650 }
+		command = { type = gain_tech which = 4800 }
+		command = { type = gain_tech which = 4810 }
+		command = { type = gain_tech which = 4820 }
+		command = { type = gain_tech which = 4910 }
+		command = { type = gain_tech which = 5010 }
+		command = { type = gain_tech which = 5020 }
+		command = { type = gain_tech which = 5060 }
+		command = { type = gain_tech which = 5190 }
+		command = { type = gain_tech which = 5327 }
+		command = { type = gain_tech which = 5560 }
+		command = { type = gain_tech which = 5610 }
+		command = { type = gain_tech which = 5620 }
+		command = { type = gain_tech which = 5630 }
+		command = { type = gain_tech which = 5700 }
+		command = { type = gain_tech which = 5710 }
+		command = { type = gain_tech which = 8150 }
+		command = { type = gain_tech which = 8160 }
+		command = { type = gain_tech which = 8200 }
+		command = { type = gain_tech which = 8210 }
+		command = { type = gain_tech which = 8550 }
+		command = { type = gain_tech which = 8560 }
+		command = { type = gain_tech which = 8600 }
+		command = { type = gain_tech which = 8610 }
+		command = { type = gain_tech which = 8940 }
+		command = { type = gain_tech which = 8950 }
+		command = { type = gain_tech which = 12130 }
+		command = { type = gain_tech which = 14000 }
+		command = { type = gain_tech which = 14010 }
+		command = { type = gain_tech which = 14020 }
+		command = { type = gain_tech which = 21180 }
+		command = { type = gain_tech which = 21190 }
+		command = { type = gain_tech which = 3050 }
+		command = { type = gain_tech which = 3140 }
+		command = { type = gain_tech which = 3240 }
+		command = { type = gain_tech which = 3310 }
+		command = { type = gain_tech which = 3320 }
+		command = { type = gain_tech which = 3330 }
+		command = { type = gain_tech which = 3410 }
+		command = { type = gain_tech which = 3420 }
+		command = { type = gain_tech which = 3430 }
+		command = { type = gain_tech which = 3440 }
+		command = { type = gain_tech which = 3450 }
+		command = { type = gain_tech which = 3456 }
+		command = { type = gain_tech which = 3460 }
+		command = { type = gain_tech which = 3510 }
+		command = { type = gain_tech which = 3610 }
+		command = { type = gain_tech which = 3620 }
+		command = { type = gain_tech which = 3630 }
+		command = { type = gain_tech which = 3640 }
+		command = { type = gain_tech which = 3820 }
+		command = { type = gain_tech which = 12100 }
+		command = { type = gain_tech which = 12110 }
+		command = { type = gain_tech which = 12120 }
+		command = { type = gain_tech which = 4020 }
+		command = { type = gain_tech which = 4130 }
+		command = { type = gain_tech which = 4290 }
+		command = { type = gain_tech which = 4300 }
+		command = { type = gain_tech which = 4310 }
+		command = { type = gain_tech which = 4320 }
+		command = { type = gain_tech which = 4330 }
+		command = { type = gain_tech which = 4340 }
+		command = { type = gain_tech which = 4700 }
+		command = { type = gain_tech which = 4710 }
+		command = { type = gain_tech which = 4740 }
+		command = { type = gain_tech which = 4750 }
+		command = { type = gain_tech which = 4760 }
+		command = { type = gain_tech which = 4900 }
+		command = { type = gain_tech which = 8030 }
+		command = { type = gain_tech which = 8040 }
+		command = { type = gain_tech which = 8060 }
+		command = { type = gain_tech which = 8070 }
+		command = { type = gain_tech which = 8080 }
+		command = { type = gain_tech which = 8100 }
+		command = { type = gain_tech which = 8110 }
+		command = { type = gain_tech which = 8120 }
+		command = { type = gain_tech which = 8500 }
+		command = { type = gain_tech which = 8510 }
+		command = { type = gain_tech which = 8520 }
+		command = { type = gain_tech which = 8900 }
+		command = { type = gain_tech which = 8910 }
+		command = { type = gain_tech which = 8920 }
+		command = { type = gain_tech which = 8930 }
+		command = { type = gain_tech which = 81650 }
+		command = { type = gain_tech which = 82300 }
+		command = { type = gain_tech which = 82500 }
+		command = { type = setflag which = ind_v4_inherited_service_baseline }
+	}
+}
+
+event = {
+	id = 9280316
+	random = no
+	country = IND
+
+	trigger = {
+		year = 1934
+		NOT = { flag = ind_v42_revenue_service }
+	}
+
+	name = "The All-India Revenue Service"
+	desc = "Provincial tax departments, customs houses and the new Reserve Bank are consolidated into a permanent federal revenue service. The reform does not pay for every national project, but ordinary administration will no longer depend entirely on emergency decisions and foreign credit."
+	style = 2
+	picture = "aubm_v4_budget_conference"
+
+	date = { day = 0 month = january year = 1934 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Establish a dependable daily revenue base"
+		command = { type = free_money value = 2 }
+		command = { type = dissent value = 1 }
+		command = { type = setflag which = ind_v42_revenue_service }
+	}
+}
+
+event = {
+	id = 9280320
+	random = no
+	country = IND
+
+	decision = {
+		flag = ind_v3_naval_program
+		NOT = { flag = ind_v4_island_base_stage_1 }
+	}
+	decision_trigger = {
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		OR = {
+			AND = { money = 550 supplies = 1800 }
+			AND = { money = 450 supplies = 1600 }
+			AND = { money = 450 supplies = 1600 }
+		}
+		# AUBM_FULL_OPTION_GATE_END
+	}
+
+	name = "The Island Base Network"
+	decision_desc = "Cabinet funding estimates: Balanced network [money 550, supplies 1,800]; Port Blair first [money 450, supplies 1,600]; Kavaratti first [money 450, supplies 1,600]."
+	desc = "Port Blair guards the eastern approaches; Kavaratti supports Arabian Sea patrols and replenishment. The first stage can develop both nodes or concentrate scarce engineers on one theatre. Every option remains visible only when the most expensive programme is affordable."
+	style = 2
+	picture = "aubm_v4_island_base_stage_one"
+
+	date = { day = 0 month = january year = 1937 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 550
+			supplies = 1800
+			# AUBM_ACTION_RESERVE_END
+		}
+		ai_chance = 50
+		name = "Balanced network: -550 money, -1800 supplies"
+		command = { type = money value = -550 }
+		command = { type = supplies value = -1800 }
+		command = { type = construct which = naval_base where = 1421 value = 3 trigger = { owned = { province = 1421 data = IND } NOT = { building = { province = 1421 type = naval_base value = 8 } } } }
+		command = { type = construct which = air_base where = 1421 value = 3 trigger = { owned = { province = 1421 data = IND } NOT = { building = { province = 1421 type = air_base value = 8 } } } }
+		command = { type = construct which = naval_base where = 1612 value = 3 trigger = { owned = { province = 1612 data = IND } NOT = { building = { province = 1612 type = naval_base value = 8 } } } }
+		command = { type = construct which = air_base where = 1612 value = 3 trigger = { owned = { province = 1612 data = IND } NOT = { building = { province = 1612 type = air_base value = 8 } } } }
+		command = { type = setflag which = ind_v4_dual_island_bases }
+		command = { type = setflag which = ind_v4_island_base_stage_1 }
+	}
+	action_b = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 450
+			supplies = 1600
+			# AUBM_ACTION_RESERVE_END
+		}
+		ai_chance = 30
+		name = "Port Blair first: -450 money, -1600 supplies"
+		command = { type = money value = -450 }
+		command = { type = supplies value = -1600 }
+		command = { type = construct which = naval_base where = 1421 value = 5 trigger = { owned = { province = 1421 data = IND } NOT = { building = { province = 1421 type = naval_base value = 6 } } } }
+		command = { type = construct which = air_base where = 1421 value = 5 trigger = { owned = { province = 1421 data = IND } NOT = { building = { province = 1421 type = air_base value = 6 } } } }
+		command = { type = construct which = naval_base where = 1612 value = 2 trigger = { owned = { province = 1612 data = IND } NOT = { building = { province = 1612 type = naval_base value = 9 } } } }
+		command = { type = construct which = air_base where = 1612 value = 2 trigger = { owned = { province = 1612 data = IND } NOT = { building = { province = 1612 type = air_base value = 9 } } } }
+		command = { type = setflag which = ind_v4_port_blair_priority }
+		command = { type = setflag which = ind_v4_island_base_stage_1 }
+	}
+	action_c = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 450
+			supplies = 1600
+			# AUBM_ACTION_RESERVE_END
+		}
+		ai_chance = 20
+		name = "Kavaratti first: -450 money, -1600 supplies"
+		command = { type = money value = -450 }
+		command = { type = supplies value = -1600 }
+		command = { type = construct which = naval_base where = 1612 value = 5 trigger = { owned = { province = 1612 data = IND } NOT = { building = { province = 1612 type = naval_base value = 6 } } } }
+		command = { type = construct which = air_base where = 1612 value = 5 trigger = { owned = { province = 1612 data = IND } NOT = { building = { province = 1612 type = air_base value = 6 } } } }
+		command = { type = construct which = naval_base where = 1421 value = 2 trigger = { owned = { province = 1421 data = IND } NOT = { building = { province = 1421 type = naval_base value = 9 } } } }
+		command = { type = construct which = air_base where = 1421 value = 2 trigger = { owned = { province = 1421 data = IND } NOT = { building = { province = 1421 type = air_base value = 9 } } } }
+		command = { type = setflag which = ind_v4_kavaratti_priority }
+		command = { type = setflag which = ind_v4_island_base_stage_1 }
+	}
+}
+
+event = {
+	id = 9280321
+	random = no
+	country = IND
+
+	decision = {
+		flag = ind_v4_island_base_stage_1
+		year = 1940
+		NOT = { flag = ind_v4_island_base_stage_2 }
+	}
+	decision_trigger = {
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		OR = {
+			AND = { money = 700 supplies = 2400 }
+			AND = { money = 525 supplies = 1900 }
+			AND = { money = 525 supplies = 1900 }
+		}
+		# AUBM_FULL_OPTION_GATE_END
+	}
+
+	name = "Blue-Water Island Stations"
+	decision_desc = "Cabinet funding estimates: Complete both stations [money 700, supplies 2,400]; Eastern fleet station [money 525, supplies 1,900]; Western fleet station [money 525, supplies 1,900]."
+	desc = "Wartime traffic now justifies full fleet support, long-range air patrols and protected fuel stores on the islands. A dual-ocean system is costly; concentrating on one station leaves the other as a patrol base."
+	style = 2
+	picture = "aubm_v4_island_base_stage_two"
+
+	date = { day = 0 month = january year = 1940 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 700
+			supplies = 2400
+			# AUBM_ACTION_RESERVE_END
+		}
+		ai_chance = 50
+		name = "Complete both stations: -700 money, -2400 supplies"
+		command = { type = money value = -700 }
+		command = { type = supplies value = -2400 }
+		command = { type = construct which = naval_base where = 1421 value = 4 trigger = { owned = { province = 1421 data = IND } NOT = { building = { province = 1421 type = naval_base value = 7 } } } }
+		command = { type = construct which = air_base where = 1421 value = 4 trigger = { owned = { province = 1421 data = IND } NOT = { building = { province = 1421 type = air_base value = 7 } } } }
+		command = { type = construct which = naval_base where = 1612 value = 4 trigger = { owned = { province = 1612 data = IND } NOT = { building = { province = 1612 type = naval_base value = 7 } } } }
+		command = { type = construct which = air_base where = 1612 value = 4 trigger = { owned = { province = 1612 data = IND } NOT = { building = { province = 1612 type = air_base value = 7 } } } }
+		command = { type = setflag which = ind_v4_island_base_stage_2 }
+	}
+	action_b = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 525
+			supplies = 1900
+			# AUBM_ACTION_RESERVE_END
+		}
+		ai_chance = 30
+		name = "Eastern fleet station: -525 money, -1900 supplies"
+		command = { type = money value = -525 }
+		command = { type = supplies value = -1900 }
+		command = { type = construct which = naval_base where = 1421 value = 4 trigger = { owned = { province = 1421 data = IND } NOT = { building = { province = 1421 type = naval_base value = 7 } } } }
+		command = { type = construct which = air_base where = 1421 value = 4 trigger = { owned = { province = 1421 data = IND } NOT = { building = { province = 1421 type = air_base value = 7 } } } }
+		command = { type = construct which = radar_station where = 1421 value = 2 trigger = { owned = { province = 1421 data = IND } NOT = { building = { province = 1421 type = radar_station value = 9 } } } }
+		command = { type = setflag which = ind_v4_island_base_stage_2 }
+	}
+	action_c = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 525
+			supplies = 1900
+			# AUBM_ACTION_RESERVE_END
+		}
+		ai_chance = 20
+		name = "Western fleet station: -525 money, -1900 supplies"
+		command = { type = money value = -525 }
+		command = { type = supplies value = -1900 }
+		command = { type = construct which = naval_base where = 1612 value = 4 trigger = { owned = { province = 1612 data = IND } NOT = { building = { province = 1612 type = naval_base value = 7 } } } }
+		command = { type = construct which = air_base where = 1612 value = 4 trigger = { owned = { province = 1612 data = IND } NOT = { building = { province = 1612 type = air_base value = 7 } } } }
+		command = { type = construct which = radar_station where = 1612 value = 2 trigger = { owned = { province = 1612 data = IND } NOT = { building = { province = 1612 type = radar_station value = 9 } } } }
+		command = { type = setflag which = ind_v4_island_base_stage_2 }
+	}
+}

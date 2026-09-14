@@ -1,0 +1,2539 @@
+#########################################################################
+# A Union Before Midnight V4: authoritative wartime state and war cabinet
+#########################################################################
+# Historical diplomacy remains history. These events derive current policy
+# from the alliance, wars and explicit bilateral compacts that exist now.
+# Route flags describe partners; war flags describe enemies; neither implies
+# a theatre result. The theatre and settlement modules use live map state.
+#########################################################################
+
+event = {
+	id = 9281900
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v4_initialized
+		NOT = { flag = ind_aubm_fresh_1933_bootstrap }
+		NOT = { flag = ind_aubm_wartime_framework }
+	}
+
+	name = "Compatibility Review: War Cabinet"
+	desc = "This save predates the current War Cabinet. The review preserves live alliances, wars and battlefield results, then retires overlapping old war-entry and reward files. It does not change forces, resources, research or earned victories."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+
+	date = { day = 0 month = january year = 1933 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Reconcile the old wartime record (no cost)"
+		command = { type = setflag which = ind_aubm_wartime_framework }
+		command = { type = setflag which = ind_v43_war_cabinet }
+
+		# Retire competing war-entry, generic war-plan and calendar home-front chains.
+		command = { type = sleepevent which = 9270404 }
+		command = { type = sleepevent which = 9270405 }
+		command = { type = sleepevent which = 9270406 }
+		command = { type = sleepevent which = 9270407 }
+		command = { type = sleepevent which = 9270408 }
+		command = { type = sleepevent which = 9270409 }
+		command = { type = sleepevent which = 9270456 }
+		command = { type = sleepevent which = 9280940 }
+		command = { type = sleepevent which = 9270503 }
+		command = { type = sleepevent which = 9270505 }
+		command = { type = sleepevent which = 9272003 }
+		command = { type = sleepevent which = 9272204 }
+		command = { type = sleepevent which = 9272205 }
+		command = { type = sleepevent which = 9272213 }
+		command = { type = sleepevent which = 9272214 }
+		command = { type = sleepevent which = 9272215 }
+		command = { type = sleepevent which = 9272403 }
+		command = { type = sleepevent which = 9272404 }
+		command = { type = sleepevent which = 9272405 }
+		command = { type = sleepevent which = 9272604 }
+		command = { type = sleepevent which = 9272605 }
+		command = { type = sleepevent which = 9272606 }
+		command = { type = sleepevent which = 9273000 }
+		command = { type = sleepevent which = 9273001 }
+		command = { type = sleepevent which = 9273002 }
+		command = { type = sleepevent which = 9273003 }
+		command = { type = sleepevent which = 9273004 }
+		command = { type = sleepevent which = 9273005 }
+		command = { type = sleepevent which = 9273006 }
+		command = { type = sleepevent which = 9273007 }
+		command = { type = sleepevent which = 9273200 }
+		command = { type = sleepevent which = 9273201 }
+		command = { type = sleepevent which = 9273202 }
+		command = { type = sleepevent which = 9273203 }
+		command = { type = sleepevent which = 9273208 }
+		command = { type = sleepevent which = 9280401 }
+		command = { type = sleepevent which = 9280530 }
+		command = { type = sleepevent which = 9280531 }
+		command = { type = sleepevent which = 9280532 }
+		command = { type = sleepevent which = 9280533 }
+		command = { type = sleepevent which = 9280534 }
+		command = { type = sleepevent which = 9280801 }
+		command = { type = sleepevent which = 9280802 }
+		command = { type = sleepevent which = 9281217 }
+		command = { type = sleepevent which = 9281218 }
+		command = { type = sleepevent which = 9281219 }
+		command = { type = sleepevent which = 9281460 }
+		command = { type = sleepevent which = 9281461 }
+		command = { type = sleepevent which = 9281462 }
+		command = { type = sleepevent which = 9281463 }
+		command = { type = sleepevent which = 9281464 }
+		command = { type = sleepevent which = 9281465 }
+		command = { type = sleepevent which = 9281466 }
+		command = { type = sleepevent which = 9281467 }
+		command = { type = sleepevent which = 9281468 }
+		command = { type = sleepevent which = 9281541 }
+		command = { type = sleepevent which = 9281542 }
+		command = { type = sleepevent which = 9281543 }
+
+		# Derive one canonical partner before clearing contradictory legacy flags.
+		command = { type = clrflag which = ind_aubm_route_allied }
+		command = { type = clrflag which = ind_aubm_route_german }
+		command = { type = clrflag which = ind_aubm_route_soviet }
+		command = { type = clrflag which = ind_aubm_route_japan }
+		command = { type = clrflag which = ind_aubm_route_sovereign }
+		# Formal-coalition precedence is deterministic if major alliances merge:
+		# Allied > German > Soviet > Japanese. Germany therefore remains the
+		# current route inside a joint Berlin-Tokyo alliance.
+		command = { trigger = { OR = { alliance = { country = IND country = ENG } alliance = { country = IND country = USA } } } type = setflag which = ind_aubm_route_allied }
+		command = { trigger = { NOT = { flag = ind_aubm_route_allied } alliance = { country = IND country = GER } } type = setflag which = ind_aubm_route_german }
+		command = { trigger = { NOT = { flag = ind_aubm_route_allied } NOT = { flag = ind_aubm_route_german } alliance = { country = IND country = SOV } } type = setflag which = ind_aubm_route_soviet }
+		command = { trigger = { NOT = { flag = ind_aubm_route_allied } NOT = { flag = ind_aubm_route_german } NOT = { flag = ind_aubm_route_soviet } alliance = { country = IND country = JAP } } type = setflag which = ind_aubm_route_japan }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_route_allied } NOT = { flag = ind_aubm_route_german } NOT = { flag = ind_aubm_route_soviet } NOT = { flag = ind_aubm_route_japan } flag = ind_aubm_jp_partnership NOT = { flag = ind_aubm_jp_rupture } } } type = setflag which = ind_aubm_route_japan }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_route_allied } NOT = { flag = ind_aubm_route_german } NOT = { flag = ind_aubm_route_soviet } NOT = { flag = ind_aubm_route_japan } OR = { flag = ind_v4a_treaty_commonwealth flag = ind_v4a_treaty_naval_compact flag = ind_v4a_treaty_cobelligerent } } } type = setflag which = ind_aubm_route_allied }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_route_allied } NOT = { flag = ind_aubm_route_german } NOT = { flag = ind_aubm_route_soviet } NOT = { flag = ind_aubm_route_japan } flag = ind_gc_cobelligerent } } type = setflag which = ind_aubm_route_german }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_route_allied } NOT = { flag = ind_aubm_route_german } NOT = { flag = ind_aubm_route_soviet } NOT = { flag = ind_aubm_route_japan } OR = { flag = ind_v4_sov_equal_compact flag = ind_v4_sov_supervised_compact } NOT = { war = { country = IND country = SOV } } } } type = setflag which = ind_aubm_route_soviet }
+		command = { trigger = { flag = ind_v4_sov_autonomous_socialism } type = setflag which = ind_aubm_socialist_autonomous }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_route_allied } NOT = { flag = ind_aubm_route_german } NOT = { flag = ind_aubm_route_soviet } NOT = { flag = ind_aubm_route_japan } flag = ind_aubm_socialist_autonomous } } type = setflag which = ind_aubm_route_sovereign }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_route_allied } NOT = { flag = ind_aubm_route_german } NOT = { flag = ind_aubm_route_soviet } NOT = { flag = ind_aubm_route_japan } flag = ind_v4_strategy_allied } } type = setflag which = ind_aubm_route_allied }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_route_allied } NOT = { flag = ind_aubm_route_german } NOT = { flag = ind_aubm_route_soviet } NOT = { flag = ind_aubm_route_japan } flag = ind_v4_strategy_axis } } type = setflag which = ind_aubm_route_german }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_route_allied } NOT = { flag = ind_aubm_route_german } NOT = { flag = ind_aubm_route_soviet } NOT = { flag = ind_aubm_route_japan } flag = ind_v4_strategy_soviet NOT = { flag = ind_aubm_socialist_autonomous } NOT = { war = { country = IND country = SOV } } } } type = setflag which = ind_aubm_route_soviet }
+		command = { trigger = { AND = { NOT = { flag = ind_aubm_route_allied } NOT = { flag = ind_aubm_route_german } NOT = { flag = ind_aubm_route_soviet } NOT = { flag = ind_aubm_route_japan } } } type = setflag which = ind_aubm_route_sovereign }
+		command = { trigger = { NOT = { flag = ind_aubm_route_japan } } type = clrflag which = ind_aubm_jp_partnership }
+		command = { trigger = { NOT = { flag = ind_aubm_route_japan } } type = clrflag which = ind_aubm_jp_formal_alliance }
+
+		# Canonical commitments are reconstructed for old saves from live engine
+		# membership and from the binding compact flags.  Orientation alone is
+		# deliberately insufficient: it opens talks but does not lock a bloc.
+		command = { type = clrflag which = ind_aubm_commitment_allied }
+		command = { type = clrflag which = ind_aubm_commitment_german }
+		command = { type = clrflag which = ind_aubm_commitment_soviet }
+		command = { type = clrflag which = ind_aubm_commitment_japan }
+		command = { trigger = { OR = { alliance = { country = IND country = ENG } alliance = { country = IND country = USA } flag = ind_v4a_treaty_commonwealth flag = ind_v4a_treaty_naval_compact flag = ind_v4a_treaty_cobelligerent } } type = setflag which = ind_aubm_commitment_allied }
+		command = { trigger = { NOT = { flag = ind_aubm_commitment_allied } OR = { alliance = { country = IND country = GER } flag = ind_gc_cobelligerent } } type = setflag which = ind_aubm_commitment_german }
+		command = { trigger = { NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } OR = { alliance = { country = IND country = SOV } flag = ind_v4_sov_equal_compact flag = ind_v4_sov_supervised_compact } } type = setflag which = ind_aubm_commitment_soviet }
+		command = { trigger = { NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } OR = { alliance = { country = IND country = JAP } AND = { flag = ind_aubm_jp_partnership NOT = { flag = ind_aubm_jp_rupture } } } } type = setflag which = ind_aubm_commitment_japan }
+
+		# Current strategy flags mirror only the canonical partner.
+		command = { type = clrflag which = ind_v3_allied_orientation }
+		command = { type = clrflag which = ind_v3_axis_orientation }
+		command = { type = clrflag which = ind_v3_soviet_orientation }
+		command = { type = clrflag which = ind_v3_japanese_orientation }
+		command = { type = clrflag which = ind_v3_non_aligned }
+		command = { type = clrflag which = ind_v3_independent_asia }
+		command = { type = clrflag which = ind_v3_joined_allies }
+		command = { type = clrflag which = ind_v3_joined_axis }
+		command = { type = clrflag which = ind_v3_joined_comintern }
+		command = { type = clrflag which = ind_v3_joined_japan }
+		command = { type = clrflag which = ind_v4_strategy_allied }
+		command = { type = clrflag which = ind_v4_strategy_axis }
+		command = { type = clrflag which = ind_v4_strategy_soviet }
+		command = { type = clrflag which = ind_v4_strategy_japan }
+		command = { type = clrflag which = ind_v4_strategy_nam }
+		command = { type = clrflag which = ind_v4_strategy_independent_asia }
+		command = { type = clrflag which = ind_v3_prewar_armed_neutrality }
+		command = { type = clrflag which = ind_v3_wartime_armed_neutrality }
+		command = { type = clrflag which = ind_v3_nam_war_posture }
+		command = { trigger = { flag = ind_aubm_route_allied } type = setflag which = ind_v3_allied_orientation }
+		command = { trigger = { flag = ind_aubm_route_allied } type = setflag which = ind_v4_strategy_allied }
+		command = { trigger = { OR = { alliance = { country = IND country = ENG } alliance = { country = IND country = USA } } } type = setflag which = ind_v3_joined_allies }
+		command = { trigger = { flag = ind_aubm_route_allied alliance = { country = IND country = ENG } } type = setflag which = ind_aubm_allied_partner_eng }
+		command = { trigger = { flag = ind_aubm_route_allied NOT = { alliance = { country = IND country = ENG } } alliance = { country = IND country = USA } } type = setflag which = ind_aubm_allied_partner_usa }
+		command = { trigger = { flag = ind_aubm_route_german } type = setflag which = ind_v3_axis_orientation }
+		command = { trigger = { flag = ind_aubm_route_german } type = setflag which = ind_v4_strategy_axis }
+		command = { trigger = { alliance = { country = IND country = GER } } type = setflag which = ind_v3_joined_axis }
+		command = { trigger = { flag = ind_aubm_route_soviet } type = setflag which = ind_v3_soviet_orientation }
+		command = { trigger = { flag = ind_aubm_route_soviet } type = setflag which = ind_v4_strategy_soviet }
+		command = { trigger = { alliance = { country = IND country = SOV } } type = setflag which = ind_v3_joined_comintern }
+		command = { trigger = { flag = ind_aubm_route_japan } type = setflag which = ind_v3_japanese_orientation }
+		command = { trigger = { flag = ind_aubm_route_japan } type = setflag which = ind_v4_strategy_japan }
+		command = { trigger = { alliance = { country = IND country = JAP } } type = setflag which = ind_v3_joined_japan }
+		command = { trigger = { alliance = { country = IND country = JAP } } type = setflag which = ind_aubm_jp_formal_alliance }
+		command = { trigger = { flag = ind_aubm_route_sovereign NOT = { flag = ind_aubm_socialist_autonomous } } type = setflag which = ind_v3_non_aligned }
+		command = { trigger = { flag = ind_aubm_route_sovereign NOT = { flag = ind_aubm_socialist_autonomous } } type = setflag which = ind_v4_strategy_nam }
+		command = { trigger = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } type = setflag which = ind_v3_soviet_orientation }
+		command = { trigger = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } type = setflag which = ind_v4_strategy_soviet }
+		command = { trigger = { atwar = yes } type = clrflag which = ind_v4_commitment_observing }
+
+		# A live Tokyo war opens the ledger immediately, including old formal-alliance saves.
+		command = { trigger = { flag = ind_aubm_route_japan OR = { war = { country = IND country = ENG } war = { country = IND country = U05 } war = { country = IND country = HOL } war = { country = IND country = AST } } } type = setflag which = ind_aubm_jp_southern_theatre }
+		command = { trigger = { flag = ind_aubm_route_japan flag = ind_aubm_jp_southern_theatre NOT = { flag = ind_aubm_jp_objective_ledger } } type = event which = 9281141 where = IND when = 1 }
+	}
+}
+
+#########################################################################
+# Live alliance and compact state repairs an obsolete route flag only when it
+# does not overwrite a current rival commitment.  A commitment remains binding
+# through faction-merger artifacts until an explicit withdrawal or rupture.
+#########################################################################
+
+event = {
+	id = 9281901
+	random = no
+	persistent = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_wartime_framework
+		NOT = { flag = ind_aubm_commitment_german }
+		NOT = { flag = ind_aubm_commitment_soviet }
+		NOT = { flag = ind_aubm_commitment_japan }
+		OR = { alliance = { country = IND country = ENG } alliance = { country = IND country = USA } }
+		NOT = { alliance = { country = IND country = GER } }
+		NOT = { alliance = { country = IND country = SOV } }
+		OR = { NOT = { flag = ind_aubm_route_allied } NOT = { flag = ind_v4a_treaty_formal_alliance } }
+	}
+	name = "India Enters the Allied War System"
+	desc = "The signed alliance, not an earlier orientation speech, now governs India's obligations. British and American coalition wars merge with India's wars, while completed Indian campaigns remain on the national ledger."
+	style = 2
+	picture = "aubm_v4_london_settlement"
+	date = { day = 0 month = january year = 1933 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Record the Allied alliance"
+		command = { type = setflag which = ind_aubm_commitment_allied }
+		command = { type = clrflag which = ind_aubm_commitment_german }
+		command = { type = clrflag which = ind_aubm_commitment_soviet }
+		command = { type = clrflag which = ind_aubm_commitment_japan }
+		command = { type = clrflag which = ind_v4a_treaty_commonwealth }
+		command = { type = clrflag which = ind_v4a_treaty_naval_compact }
+		command = { type = clrflag which = ind_v4a_treaty_cobelligerent }
+		command = { type = setflag which = ind_v4a_treaty_formal_alliance }
+		command = { type = clrflag which = ind_gc_formal_axis }
+		command = { type = clrflag which = ind_gc_cobelligerent }
+		command = { type = clrflag which = ind_gc_sovereign }
+		command = { type = clrflag which = ind_v4_sov_equal_compact }
+		command = { type = clrflag which = ind_v4_sov_supervised_compact }
+		command = { type = clrflag which = ind_v4_sov_autonomous_socialism }
+		command = { type = clrflag which = ind_aubm_route_german }
+		command = { type = clrflag which = ind_aubm_route_soviet }
+		command = { type = clrflag which = ind_aubm_route_japan }
+		command = { type = clrflag which = ind_aubm_route_sovereign }
+		command = { type = setflag which = ind_aubm_route_allied }
+		command = { trigger = { NOT = { flag = ind_aubm_allied_partner_eng } NOT = { flag = ind_aubm_allied_partner_usa } alliance = { country = IND country = ENG } } type = setflag which = ind_aubm_allied_partner_eng }
+		command = { trigger = { NOT = { flag = ind_aubm_allied_partner_eng } NOT = { flag = ind_aubm_allied_partner_usa } alliance = { country = IND country = USA } } type = setflag which = ind_aubm_allied_partner_usa }
+		command = { type = setflag which = ind_v3_allied_orientation }
+		command = { type = setflag which = ind_v3_joined_allies }
+		command = { type = setflag which = ind_v4_strategy_allied }
+		command = { type = clrflag which = ind_v3_joined_axis }
+		command = { type = clrflag which = ind_v3_joined_comintern }
+		command = { type = clrflag which = ind_v3_joined_japan }
+		command = { type = clrflag which = ind_aubm_jp_partnership }
+		command = { type = clrflag which = ind_aubm_jp_formal_alliance }
+		command = { type = clrflag which = ind_aubm_jp_independent_cobelligerent }
+		command = { type = clrflag which = ind_aubm_jp_tier_senior }
+		command = { type = clrflag which = ind_aubm_jp_tier_peer }
+		command = { type = clrflag which = ind_aubm_jp_tier_junior }
+		command = { type = clrflag which = ind_aubm_jp_tier_counter }
+		command = { type = clrflag which = ind_aubm_jp_india_full_sphere }
+		command = { type = clrflag which = ind_aubm_jp_india_core_sphere }
+		command = { type = setflag which = ind_aubm_jp_rupture }
+		command = { type = clrflag which = ind_aubm_socialist_autonomous }
+		command = { type = clrflag which = ind_v3_axis_orientation }
+		command = { type = clrflag which = ind_v3_soviet_orientation }
+		command = { type = clrflag which = ind_v3_japanese_orientation }
+		command = { type = clrflag which = ind_v3_non_aligned }
+		command = { type = clrflag which = ind_v4_strategy_axis }
+		command = { type = clrflag which = ind_v4_strategy_soviet }
+		command = { type = clrflag which = ind_v4_strategy_japan }
+		command = { type = clrflag which = ind_v4_strategy_nam }
+	}
+}
+
+event = {
+	id = 9281902
+	random = no
+	persistent = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_wartime_framework
+		NOT = { flag = ind_aubm_commitment_allied }
+		NOT = { flag = ind_aubm_commitment_soviet }
+		NOT = { flag = ind_aubm_commitment_japan }
+		alliance = { country = IND country = GER }
+		NOT = { alliance = { country = IND country = ENG } }
+		NOT = { alliance = { country = IND country = USA } }
+		OR = { NOT = { flag = ind_aubm_route_german } NOT = { flag = ind_gc_formal_axis } }
+	}
+	name = "India Enters Berlin's Coalition"
+	desc = "Formal coalition membership merges Germany's wars with India's. Delhi retains its own campaign score and settlement claims, but it can no longer describe German enemies as somebody else's war."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+	date = { day = 0 month = january year = 1933 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Record the German alliance"
+		command = { type = clrflag which = ind_aubm_commitment_allied }
+		command = { type = setflag which = ind_aubm_commitment_german }
+		command = { type = clrflag which = ind_aubm_commitment_soviet }
+		command = { type = clrflag which = ind_aubm_commitment_japan }
+		command = { type = clrflag which = ind_v4a_treaty_commonwealth }
+		command = { type = clrflag which = ind_v4a_treaty_naval_compact }
+		command = { type = clrflag which = ind_v4a_treaty_formal_alliance }
+		command = { type = clrflag which = ind_v4a_treaty_cobelligerent }
+		command = { type = setflag which = ind_gc_formal_axis }
+		command = { type = clrflag which = ind_gc_cobelligerent }
+		command = { type = clrflag which = ind_gc_sovereign }
+		command = { type = clrflag which = ind_v4_sov_equal_compact }
+		command = { type = clrflag which = ind_v4_sov_supervised_compact }
+		command = { type = clrflag which = ind_v4_sov_autonomous_socialism }
+		command = { type = clrflag which = ind_aubm_route_allied }
+		command = { type = clrflag which = ind_aubm_route_soviet }
+		command = { type = clrflag which = ind_aubm_route_japan }
+		command = { type = clrflag which = ind_aubm_route_sovereign }
+		command = { type = setflag which = ind_aubm_route_german }
+		command = { type = setflag which = ind_v3_axis_orientation }
+		command = { type = setflag which = ind_v3_joined_axis }
+		command = { type = setflag which = ind_v4_strategy_axis }
+		command = { type = clrflag which = ind_v3_joined_allies }
+		command = { type = clrflag which = ind_v3_joined_comintern }
+		command = { type = clrflag which = ind_v3_joined_japan }
+		command = { type = clrflag which = ind_aubm_jp_partnership }
+		command = { type = clrflag which = ind_aubm_jp_formal_alliance }
+		command = { type = clrflag which = ind_aubm_jp_independent_cobelligerent }
+		command = { type = clrflag which = ind_aubm_jp_tier_senior }
+		command = { type = clrflag which = ind_aubm_jp_tier_peer }
+		command = { type = clrflag which = ind_aubm_jp_tier_junior }
+		command = { type = clrflag which = ind_aubm_jp_tier_counter }
+		command = { type = clrflag which = ind_aubm_jp_india_full_sphere }
+		command = { type = clrflag which = ind_aubm_jp_india_core_sphere }
+		command = { type = setflag which = ind_aubm_jp_rupture }
+		command = { type = clrflag which = ind_aubm_socialist_autonomous }
+		command = { type = clrflag which = ind_v3_allied_orientation }
+		command = { type = clrflag which = ind_v3_soviet_orientation }
+		command = { type = clrflag which = ind_v3_japanese_orientation }
+		command = { type = clrflag which = ind_v3_non_aligned }
+		command = { type = clrflag which = ind_v4_strategy_allied }
+		command = { type = clrflag which = ind_v4_strategy_soviet }
+		command = { type = clrflag which = ind_v4_strategy_japan }
+		command = { type = clrflag which = ind_v4_strategy_nam }
+	}
+}
+
+event = {
+	id = 9281903
+	random = no
+	persistent = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_wartime_framework
+		NOT = { flag = ind_aubm_commitment_allied }
+		NOT = { flag = ind_aubm_commitment_german }
+		NOT = { flag = ind_aubm_commitment_japan }
+		alliance = { country = IND country = SOV }
+		NOT = { alliance = { country = IND country = ENG } }
+		NOT = { alliance = { country = IND country = USA } }
+		NOT = { alliance = { country = IND country = GER } }
+		OR = { NOT = { flag = ind_aubm_route_soviet } NOT = { flag = ind_v3_joined_comintern } }
+	}
+	name = "India Enters the Soviet Coalition"
+	desc = "Formal coalition membership merges Moscow's wars with India's. Autonomous socialist diplomacy remains part of the historical record, but the current alliance now defines consultation and war obligations."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+	date = { day = 0 month = january year = 1933 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Record the Soviet alliance"
+		command = { type = clrflag which = ind_aubm_commitment_allied }
+		command = { type = clrflag which = ind_aubm_commitment_german }
+		command = { type = setflag which = ind_aubm_commitment_soviet }
+		command = { type = clrflag which = ind_aubm_commitment_japan }
+		command = { type = clrflag which = ind_v4a_treaty_commonwealth }
+		command = { type = clrflag which = ind_v4a_treaty_naval_compact }
+		command = { type = clrflag which = ind_v4a_treaty_formal_alliance }
+		command = { type = clrflag which = ind_v4a_treaty_cobelligerent }
+		command = { type = clrflag which = ind_v4a_allied_framework_started }
+		command = { type = clrflag which = ind_v4a_allied_framework_settled }
+		command = { type = clrflag which = ind_v4a_proposal_commonwealth }
+		command = { type = clrflag which = ind_v4a_proposal_naval_compact }
+		command = { type = clrflag which = ind_v4a_proposal_formal_alliance }
+		command = { type = clrflag which = ind_v4a_proposal_cobelligerent }
+		command = { type = clrflag which = ind_gc_formal_axis }
+		command = { type = clrflag which = ind_gc_cobelligerent }
+		command = { type = clrflag which = ind_gc_sovereign }
+		command = { type = clrflag which = ind_gc_berlin_negotiating }
+		command = { type = clrflag which = ind_gc_berlin_cooldown }
+		command = { type = clrflag which = ind_gc_berlin_aloof }
+		command = { type = clrflag which = ind_v4_sov_equal_compact }
+		command = { type = clrflag which = ind_v4_sov_supervised_compact }
+		command = { type = clrflag which = ind_v4_sov_equal_compact_proposed }
+		command = { type = clrflag which = ind_v4_sov_technical_only }
+		command = { type = setflag which = ind_v4_sov_program_defined }
+		command = { type = clrflag which = ind_v4_sov_autonomous_socialism }
+		command = { type = clrflag which = ind_aubm_route_allied }
+		command = { type = clrflag which = ind_aubm_route_german }
+		command = { type = clrflag which = ind_aubm_route_japan }
+		command = { type = clrflag which = ind_aubm_route_sovereign }
+		command = { type = setflag which = ind_aubm_route_soviet }
+		command = { type = setflag which = ind_v3_soviet_orientation }
+		command = { type = setflag which = ind_v3_joined_comintern }
+		command = { type = setflag which = ind_v4_strategy_soviet }
+		command = { type = clrflag which = ind_v3_joined_allies }
+		command = { type = clrflag which = ind_v3_joined_axis }
+		command = { type = clrflag which = ind_v3_joined_japan }
+		command = { type = clrflag which = ind_aubm_jp_partnership }
+		command = { type = clrflag which = ind_aubm_jp_formal_alliance }
+		command = { type = clrflag which = ind_aubm_jp_independent_cobelligerent }
+		command = { type = clrflag which = ind_aubm_jp_tier_senior }
+		command = { type = clrflag which = ind_aubm_jp_tier_peer }
+		command = { type = clrflag which = ind_aubm_jp_tier_junior }
+		command = { type = clrflag which = ind_aubm_jp_tier_counter }
+		command = { type = clrflag which = ind_aubm_jp_india_full_sphere }
+		command = { type = clrflag which = ind_aubm_jp_india_core_sphere }
+		command = { type = clrflag which = ind_aubm_jp_proposal_pending }
+		command = { type = clrflag which = ind_aubm_jp_retry_cooldown }
+		command = { type = clrflag which = ind_aubm_jp_retry_ready }
+		command = { type = setflag which = ind_aubm_jp_rupture }
+		command = { type = clrflag which = ind_aubm_socialist_autonomous }
+		command = { type = clrflag which = ind_v3_allied_orientation }
+		command = { type = clrflag which = ind_v3_axis_orientation }
+		command = { type = clrflag which = ind_v3_japanese_orientation }
+		command = { type = clrflag which = ind_v3_non_aligned }
+		command = { type = clrflag which = ind_v4_strategy_allied }
+		command = { type = clrflag which = ind_v4_strategy_axis }
+		command = { type = clrflag which = ind_v4_strategy_japan }
+		command = { type = clrflag which = ind_v4_strategy_nam }
+	}
+}
+
+event = {
+	id = 9281904
+	random = no
+	persistent = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_wartime_framework
+		NOT = { flag = ind_aubm_commitment_allied }
+		NOT = { flag = ind_aubm_commitment_german }
+		NOT = { flag = ind_aubm_commitment_soviet }
+		exists = JAP
+		NOT = { war = { country = IND country = JAP } }
+		NOT = { alliance = { country = IND country = ENG } }
+		NOT = { alliance = { country = IND country = USA } }
+		NOT = { alliance = { country = IND country = GER } }
+		NOT = { alliance = { country = IND country = SOV } }
+		OR = {
+			alliance = { country = IND country = JAP }
+			AND = {
+				flag = ind_aubm_jp_partnership
+				NOT = { flag = ind_aubm_jp_rupture }
+				NOT = { alliance = { country = IND country = ENG } }
+				NOT = { alliance = { country = IND country = GER } }
+				NOT = { alliance = { country = IND country = SOV } }
+			}
+		}
+		OR = {
+			NOT = { flag = ind_aubm_route_japan }
+			AND = { alliance = { country = IND country = JAP } NOT = { flag = ind_aubm_jp_formal_alliance } }
+		}
+	}
+	name = "The Delhi-Tokyo Compact Governs the Asian War"
+	desc = "India's Japanese route may be a formal alliance or a strategic compact. A formal alliance merges every war; the compact preserves separate declarations. Both arrangements now use the same Indian battlefield ledger and no longer trigger anti-Japanese threat events unless India actually fights Japan."
+	style = 2
+	picture = "aubm_v4_tokyo_proposition"
+	date = { day = 0 month = january year = 1933 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Record the Delhi-Tokyo relationship"
+		command = { type = clrflag which = ind_aubm_commitment_allied }
+		command = { type = clrflag which = ind_aubm_commitment_german }
+		command = { type = clrflag which = ind_aubm_commitment_soviet }
+		command = { type = setflag which = ind_aubm_commitment_japan }
+		command = { type = clrflag which = ind_v4a_treaty_commonwealth }
+		command = { type = clrflag which = ind_v4a_treaty_naval_compact }
+		command = { type = clrflag which = ind_v4a_treaty_formal_alliance }
+		command = { type = clrflag which = ind_v4a_treaty_cobelligerent }
+		command = { type = clrflag which = ind_gc_formal_axis }
+		command = { type = clrflag which = ind_gc_cobelligerent }
+		command = { type = clrflag which = ind_gc_sovereign }
+		command = { type = clrflag which = ind_v4_sov_equal_compact }
+		command = { type = clrflag which = ind_v4_sov_supervised_compact }
+		command = { type = clrflag which = ind_v4_sov_autonomous_socialism }
+		command = { type = clrflag which = ind_aubm_route_allied }
+		command = { type = clrflag which = ind_aubm_route_german }
+		command = { type = clrflag which = ind_aubm_route_soviet }
+		command = { type = clrflag which = ind_aubm_route_sovereign }
+		command = { type = setflag which = ind_aubm_route_japan }
+		command = { type = setflag which = ind_aubm_jp_partnership }
+		command = { type = setflag which = ind_v3_japanese_orientation }
+		command = { type = setflag which = ind_v4_strategy_japan }
+		command = { trigger = { alliance = { country = IND country = JAP } } type = setflag which = ind_v3_joined_japan }
+		command = { trigger = { alliance = { country = IND country = JAP } } type = setflag which = ind_aubm_jp_formal_alliance }
+		command = { trigger = { alliance = { country = IND country = JAP } } type = clrflag which = ind_aubm_jp_independent_cobelligerent }
+		command = { trigger = { NOT = { alliance = { country = IND country = JAP } } } type = clrflag which = ind_aubm_jp_formal_alliance }
+		command = { trigger = { NOT = { alliance = { country = IND country = JAP } } } type = setflag which = ind_aubm_jp_independent_cobelligerent }
+		command = { type = clrflag which = ind_aubm_jp_rupture }
+		command = { type = clrflag which = ind_aubm_socialist_autonomous }
+		command = { type = clrflag which = ind_v3_joined_allies }
+		command = { type = clrflag which = ind_v3_joined_axis }
+		command = { type = clrflag which = ind_v3_joined_comintern }
+		command = { type = clrflag which = ind_v3_allied_orientation }
+		command = { type = clrflag which = ind_v3_axis_orientation }
+		command = { type = clrflag which = ind_v3_soviet_orientation }
+		command = { type = clrflag which = ind_v3_non_aligned }
+		command = { type = clrflag which = ind_v4_strategy_allied }
+		command = { type = clrflag which = ind_v4_strategy_axis }
+		command = { type = clrflag which = ind_v4_strategy_soviet }
+		command = { type = clrflag which = ind_v4_strategy_nam }
+		command = { trigger = { OR = { war = { country = IND country = ENG } war = { country = IND country = U05 } war = { country = IND country = HOL } war = { country = IND country = AST } } } type = setflag which = ind_aubm_jp_southern_theatre }
+		command = { trigger = { flag = ind_aubm_jp_southern_theatre NOT = { flag = ind_aubm_jp_objective_ledger } } type = event which = 9281141 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9281905
+	random = no
+	persistent = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_wartime_framework
+		NOT = { flag = ind_aubm_commitment_allied }
+		NOT = { flag = ind_aubm_commitment_german }
+		NOT = { flag = ind_aubm_commitment_soviet }
+		NOT = { flag = ind_aubm_commitment_japan }
+		NOT = { alliance = { country = IND country = ENG } }
+		NOT = { alliance = { country = IND country = USA } }
+		NOT = { alliance = { country = IND country = GER } }
+		NOT = { alliance = { country = IND country = SOV } }
+		NOT = { alliance = { country = IND country = JAP } }
+		NOT = { flag = ind_aubm_jp_partnership }
+		NOT = { flag = ind_v4a_treaty_commonwealth }
+		NOT = { flag = ind_v4a_treaty_naval_compact }
+		NOT = { flag = ind_v4a_treaty_cobelligerent }
+		NOT = { flag = ind_gc_cobelligerent }
+		NOT = { flag = ind_v4_sov_equal_compact }
+		NOT = { flag = ind_v4_sov_supervised_compact }
+		NOT = { flag = ind_v4_sov_autonomous_socialism }
+		NOT = { flag = ind_aubm_route_sovereign }
+	}
+	name = "India Returns to Sovereign Command"
+	desc = "India belongs to no great-power alliance and has no active Delhi-Tokyo compact. Existing wars continue only if Delhi declared them independently. The War Cabinet can seek another coalition or prosecute each enemy under sovereign command."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+	date = { day = 0 month = january year = 1933 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Record sovereign command"
+		command = { type = clrflag which = ind_aubm_commitment_allied }
+		command = { type = clrflag which = ind_aubm_commitment_german }
+		command = { type = clrflag which = ind_aubm_commitment_soviet }
+		command = { type = clrflag which = ind_aubm_commitment_japan }
+		command = { type = clrflag which = ind_aubm_route_allied }
+		command = { type = clrflag which = ind_aubm_route_german }
+		command = { type = clrflag which = ind_aubm_route_soviet }
+		command = { type = clrflag which = ind_aubm_route_japan }
+		command = { type = setflag which = ind_aubm_route_sovereign }
+		command = { type = clrflag which = ind_aubm_commitment_allied }
+		command = { type = clrflag which = ind_aubm_commitment_german }
+		command = { type = clrflag which = ind_aubm_commitment_soviet }
+		command = { type = clrflag which = ind_aubm_commitment_japan }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_allied }
+		command = { type = clrflag which = ind_aubm_negotiation_german }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
+		command = { type = clrflag which = ind_aubm_negotiation_japan }
+		command = { type = setflag which = ind_v3_non_aligned }
+		command = { type = setflag which = ind_v4_strategy_nam }
+		command = { type = clrflag which = ind_v3_joined_allies }
+		command = { type = clrflag which = ind_v3_joined_axis }
+		command = { type = clrflag which = ind_v3_joined_comintern }
+		command = { type = clrflag which = ind_v3_joined_japan }
+		command = { type = clrflag which = ind_aubm_jp_formal_alliance }
+		command = { type = clrflag which = ind_v3_allied_orientation }
+		command = { type = clrflag which = ind_v3_axis_orientation }
+		command = { type = clrflag which = ind_v3_soviet_orientation }
+		command = { type = clrflag which = ind_v3_japanese_orientation }
+		command = { type = clrflag which = ind_v4_strategy_allied }
+		command = { type = clrflag which = ind_v4_strategy_axis }
+		command = { type = clrflag which = ind_v4_strategy_soviet }
+		command = { type = clrflag which = ind_v4_strategy_japan }
+	}
+}
+
+event = {
+	id = 9281906
+	random = no
+	persistent = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_wartime_framework
+		OR = { flag = ind_v4a_treaty_commonwealth flag = ind_v4a_treaty_naval_compact flag = ind_v4a_treaty_cobelligerent }
+		NOT = { alliance = { country = IND country = ENG } }
+		NOT = { alliance = { country = IND country = USA } }
+		NOT = { alliance = { country = IND country = GER } }
+		NOT = { alliance = { country = IND country = SOV } }
+		NOT = { alliance = { country = IND country = JAP } }
+		NOT = { flag = ind_aubm_jp_partnership }
+		NOT = { flag = ind_aubm_commitment_german }
+		NOT = { flag = ind_aubm_commitment_soviet }
+		NOT = { flag = ind_aubm_commitment_japan }
+		NOT = { war = { country = IND country = ENG } }
+		NOT = { war = { country = IND country = USA } }
+		NOT = { flag = ind_aubm_route_allied }
+	}
+	name = "The Allied Compact Becomes Current Policy"
+	desc = "India has a live Commonwealth, naval or co-belligerent treaty without formal faction membership. It is now the current Allied partnership, but wars remain separate until Delhi declares them or joins the coalition."
+	style = 2
+	picture = "aubm_v4_london_settlement"
+	date = { day = 0 month = january year = 1933 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Record the separate-command Allied compact"
+		command = { type = setflag which = ind_aubm_commitment_allied }
+		command = { type = clrflag which = ind_aubm_commitment_german }
+		command = { type = clrflag which = ind_aubm_commitment_soviet }
+		command = { type = clrflag which = ind_aubm_commitment_japan }
+		command = { type = clrflag which = ind_v4a_treaty_formal_alliance }
+		command = { type = clrflag which = ind_gc_formal_axis }
+		command = { type = clrflag which = ind_gc_cobelligerent }
+		command = { type = clrflag which = ind_gc_sovereign }
+		command = { type = clrflag which = ind_v4_sov_equal_compact }
+		command = { type = clrflag which = ind_v4_sov_supervised_compact }
+		command = { type = clrflag which = ind_v4_sov_autonomous_socialism }
+		command = { type = clrflag which = ind_aubm_socialist_autonomous }
+		command = { type = clrflag which = ind_aubm_jp_partnership }
+		command = { type = clrflag which = ind_aubm_jp_formal_alliance }
+		command = { type = clrflag which = ind_aubm_jp_independent_cobelligerent }
+		command = { type = clrflag which = ind_aubm_jp_tier_senior }
+		command = { type = clrflag which = ind_aubm_jp_tier_peer }
+		command = { type = clrflag which = ind_aubm_jp_tier_junior }
+		command = { type = clrflag which = ind_aubm_jp_tier_counter }
+		command = { type = clrflag which = ind_aubm_jp_india_full_sphere }
+		command = { type = clrflag which = ind_aubm_jp_india_core_sphere }
+		command = { type = setflag which = ind_aubm_jp_rupture }
+		command = { type = clrflag which = ind_aubm_route_german }
+		command = { type = clrflag which = ind_aubm_route_soviet }
+		command = { type = clrflag which = ind_aubm_route_japan }
+		command = { type = clrflag which = ind_aubm_route_sovereign }
+		command = { type = setflag which = ind_aubm_route_allied }
+		command = { trigger = { flag = ind_v4a_treaty_naval_compact } type = clrflag which = ind_aubm_allied_partner_eng }
+		command = { trigger = { flag = ind_v4a_treaty_naval_compact } type = setflag which = ind_aubm_allied_partner_usa }
+		command = { trigger = { NOT = { flag = ind_v4a_treaty_naval_compact } exists = ENG } type = clrflag which = ind_aubm_allied_partner_usa }
+		command = { trigger = { NOT = { flag = ind_v4a_treaty_naval_compact } exists = ENG } type = setflag which = ind_aubm_allied_partner_eng }
+		command = { type = setflag which = ind_v3_allied_orientation }
+		command = { type = setflag which = ind_v4_strategy_allied }
+		command = { type = clrflag which = ind_v3_axis_orientation }
+		command = { type = clrflag which = ind_v3_soviet_orientation }
+		command = { type = clrflag which = ind_v3_japanese_orientation }
+		command = { type = clrflag which = ind_v3_non_aligned }
+		command = { type = clrflag which = ind_v4_strategy_axis }
+		command = { type = clrflag which = ind_v4_strategy_soviet }
+		command = { type = clrflag which = ind_v4_strategy_japan }
+		command = { type = clrflag which = ind_v4_strategy_nam }
+	}
+}
+
+event = {
+	id = 9281907
+	random = no
+	persistent = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_wartime_framework
+		exists = GER
+		flag = ind_gc_cobelligerent
+		NOT = { alliance = { country = IND country = ENG } }
+		NOT = { alliance = { country = IND country = USA } }
+		NOT = { alliance = { country = IND country = GER } }
+		NOT = { alliance = { country = IND country = SOV } }
+		NOT = { alliance = { country = IND country = JAP } }
+		NOT = { flag = ind_aubm_jp_partnership }
+		NOT = { flag = ind_aubm_commitment_allied }
+		NOT = { flag = ind_aubm_commitment_soviet }
+		NOT = { flag = ind_aubm_commitment_japan }
+		NOT = { war = { country = IND country = GER } }
+		NOT = { flag = ind_aubm_route_german }
+	}
+	name = "The Berlin Co-belligerency Becomes Current Policy"
+	desc = "India and Germany coordinate against common enemies without merging every war. The Berlin relationship is current, but India retains separate declarations and its own settlement claims."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+	date = { day = 0 month = january year = 1933 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Record the separate-command German compact"
+		command = { type = clrflag which = ind_aubm_commitment_allied }
+		command = { type = setflag which = ind_aubm_commitment_german }
+		command = { type = clrflag which = ind_aubm_commitment_soviet }
+		command = { type = clrflag which = ind_aubm_commitment_japan }
+		command = { type = clrflag which = ind_v4a_treaty_commonwealth }
+		command = { type = clrflag which = ind_v4a_treaty_naval_compact }
+		command = { type = clrflag which = ind_v4a_treaty_formal_alliance }
+		command = { type = clrflag which = ind_v4a_treaty_cobelligerent }
+		command = { type = clrflag which = ind_v4_sov_equal_compact }
+		command = { type = clrflag which = ind_v4_sov_supervised_compact }
+		command = { type = clrflag which = ind_v4_sov_autonomous_socialism }
+		command = { type = clrflag which = ind_aubm_socialist_autonomous }
+		command = { type = clrflag which = ind_aubm_jp_partnership }
+		command = { type = clrflag which = ind_aubm_jp_formal_alliance }
+		command = { type = clrflag which = ind_aubm_jp_independent_cobelligerent }
+		command = { type = clrflag which = ind_aubm_jp_tier_senior }
+		command = { type = clrflag which = ind_aubm_jp_tier_peer }
+		command = { type = clrflag which = ind_aubm_jp_tier_junior }
+		command = { type = clrflag which = ind_aubm_jp_tier_counter }
+		command = { type = clrflag which = ind_aubm_jp_india_full_sphere }
+		command = { type = clrflag which = ind_aubm_jp_india_core_sphere }
+		command = { type = setflag which = ind_aubm_jp_rupture }
+		command = { type = setflag which = ind_gc_cobelligerent }
+		command = { type = setflag which = ind_gc_campaign_active }
+		command = { type = clrflag which = ind_gc_formal_axis }
+		command = { type = clrflag which = ind_gc_sovereign }
+		command = { type = clrflag which = ind_aubm_route_allied }
+		command = { type = clrflag which = ind_aubm_route_soviet }
+		command = { type = clrflag which = ind_aubm_route_japan }
+		command = { type = clrflag which = ind_aubm_route_sovereign }
+		command = { type = setflag which = ind_aubm_route_german }
+		command = { type = setflag which = ind_v3_axis_orientation }
+		command = { type = setflag which = ind_v4_strategy_axis }
+		command = { type = clrflag which = ind_v3_allied_orientation }
+		command = { type = clrflag which = ind_v3_soviet_orientation }
+		command = { type = clrflag which = ind_v3_japanese_orientation }
+		command = { type = clrflag which = ind_v3_non_aligned }
+		command = { type = clrflag which = ind_v4_strategy_allied }
+		command = { type = clrflag which = ind_v4_strategy_soviet }
+		command = { type = clrflag which = ind_v4_strategy_japan }
+		command = { type = clrflag which = ind_v4_strategy_nam }
+	}
+}
+
+event = {
+	id = 9281908
+	random = no
+	persistent = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_wartime_framework
+		exists = SOV
+		OR = { flag = ind_v4_sov_equal_compact flag = ind_v4_sov_supervised_compact }
+		NOT = { alliance = { country = IND country = ENG } }
+		NOT = { alliance = { country = IND country = USA } }
+		NOT = { alliance = { country = IND country = GER } }
+		NOT = { alliance = { country = IND country = SOV } }
+		NOT = { alliance = { country = IND country = JAP } }
+		NOT = { flag = ind_aubm_jp_partnership }
+		NOT = { flag = ind_aubm_commitment_allied }
+		NOT = { flag = ind_aubm_commitment_german }
+		NOT = { flag = ind_aubm_commitment_japan }
+		NOT = { war = { country = IND country = SOV } }
+		NOT = { flag = ind_aubm_route_soviet }
+	}
+	name = "The Moscow Compact Becomes Current Policy"
+	desc = "India and the Soviet Union now have a live compact without formal Comintern membership. Consultation is current policy, but each state retains separate declarations unless Delhi later joins Moscow's coalition."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+	date = { day = 0 month = january year = 1933 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Record the separate-command Soviet compact"
+		command = { type = clrflag which = ind_aubm_commitment_allied }
+		command = { type = clrflag which = ind_aubm_commitment_german }
+		command = { type = setflag which = ind_aubm_commitment_soviet }
+		command = { type = clrflag which = ind_aubm_commitment_japan }
+		command = { type = clrflag which = ind_v4a_treaty_commonwealth }
+		command = { type = clrflag which = ind_v4a_treaty_naval_compact }
+		command = { type = clrflag which = ind_v4a_treaty_formal_alliance }
+		command = { type = clrflag which = ind_v4a_treaty_cobelligerent }
+		command = { type = clrflag which = ind_gc_formal_axis }
+		command = { type = clrflag which = ind_gc_cobelligerent }
+		command = { type = clrflag which = ind_gc_sovereign }
+		command = { type = clrflag which = ind_aubm_jp_partnership }
+		command = { type = clrflag which = ind_aubm_jp_formal_alliance }
+		command = { type = clrflag which = ind_aubm_jp_independent_cobelligerent }
+		command = { type = clrflag which = ind_aubm_jp_tier_senior }
+		command = { type = clrflag which = ind_aubm_jp_tier_peer }
+		command = { type = clrflag which = ind_aubm_jp_tier_junior }
+		command = { type = clrflag which = ind_aubm_jp_tier_counter }
+		command = { type = clrflag which = ind_aubm_jp_india_full_sphere }
+		command = { type = clrflag which = ind_aubm_jp_india_core_sphere }
+		command = { type = setflag which = ind_aubm_jp_rupture }
+		command = { trigger = { flag = ind_v4_sov_equal_compact } type = clrflag which = ind_v4_sov_supervised_compact }
+		command = { type = clrflag which = ind_v4_sov_autonomous_socialism }
+		command = { type = clrflag which = ind_aubm_socialist_autonomous }
+		command = { type = clrflag which = ind_aubm_route_allied }
+		command = { type = clrflag which = ind_aubm_route_german }
+		command = { type = clrflag which = ind_aubm_route_japan }
+		command = { type = clrflag which = ind_aubm_route_sovereign }
+		command = { type = setflag which = ind_aubm_route_soviet }
+		command = { type = setflag which = ind_v3_soviet_orientation }
+		command = { type = setflag which = ind_v4_strategy_soviet }
+		command = { type = clrflag which = ind_v3_allied_orientation }
+		command = { type = clrflag which = ind_v3_axis_orientation }
+		command = { type = clrflag which = ind_v3_japanese_orientation }
+		command = { type = clrflag which = ind_v3_non_aligned }
+		command = { type = clrflag which = ind_v4_strategy_allied }
+		command = { type = clrflag which = ind_v4_strategy_axis }
+		command = { type = clrflag which = ind_v4_strategy_japan }
+		command = { type = clrflag which = ind_v4_strategy_nam }
+	}
+}
+
+event = {
+	id = 9281909
+	random = no
+	persistent = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_wartime_framework
+		flag = ind_v4_sov_autonomous_socialism
+		NOT = { alliance = { country = IND country = ENG } }
+		NOT = { alliance = { country = IND country = USA } }
+		NOT = { alliance = { country = IND country = GER } }
+		NOT = { alliance = { country = IND country = SOV } }
+		NOT = { alliance = { country = IND country = JAP } }
+		NOT = { flag = ind_aubm_jp_partnership }
+		NOT = { flag = ind_aubm_commitment_allied }
+		NOT = { flag = ind_aubm_commitment_german }
+		NOT = { flag = ind_aubm_commitment_soviet }
+		NOT = { flag = ind_aubm_commitment_japan }
+		NOT = { war = { country = IND country = SOV } }
+		NOT = { flag = ind_aubm_socialist_autonomous }
+	}
+	name = "Autonomous Socialism Becomes Current Policy"
+	desc = "India follows a socialist diplomatic programme without joining Moscow or inheriting Soviet wars. It remains under sovereign command and can cooperate with, oppose or fight any power through separate Cabinet decisions."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+	date = { day = 0 month = january year = 1933 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Record autonomous socialist sovereign command"
+		command = { type = clrflag which = ind_aubm_commitment_allied }
+		command = { type = clrflag which = ind_aubm_commitment_german }
+		command = { type = clrflag which = ind_aubm_commitment_soviet }
+		command = { type = clrflag which = ind_aubm_commitment_japan }
+		command = { type = clrflag which = ind_v4a_treaty_commonwealth }
+		command = { type = clrflag which = ind_v4a_treaty_naval_compact }
+		command = { type = clrflag which = ind_v4a_treaty_formal_alliance }
+		command = { type = clrflag which = ind_v4a_treaty_cobelligerent }
+		command = { type = clrflag which = ind_gc_formal_axis }
+		command = { type = clrflag which = ind_gc_cobelligerent }
+		command = { type = clrflag which = ind_gc_sovereign }
+		command = { type = clrflag which = ind_aubm_jp_partnership }
+		command = { type = clrflag which = ind_aubm_jp_formal_alliance }
+		command = { type = clrflag which = ind_aubm_jp_independent_cobelligerent }
+		command = { type = clrflag which = ind_aubm_jp_tier_senior }
+		command = { type = clrflag which = ind_aubm_jp_tier_peer }
+		command = { type = clrflag which = ind_aubm_jp_tier_junior }
+		command = { type = clrflag which = ind_aubm_jp_tier_counter }
+		command = { type = clrflag which = ind_aubm_jp_india_full_sphere }
+		command = { type = clrflag which = ind_aubm_jp_india_core_sphere }
+		command = { type = setflag which = ind_aubm_jp_rupture }
+		command = { type = clrflag which = ind_v4_sov_equal_compact }
+		command = { type = clrflag which = ind_v4_sov_supervised_compact }
+		command = { type = clrflag which = ind_aubm_route_allied }
+		command = { type = clrflag which = ind_aubm_route_german }
+		command = { type = clrflag which = ind_aubm_route_soviet }
+		command = { type = clrflag which = ind_aubm_route_japan }
+		command = { type = setflag which = ind_aubm_route_sovereign }
+		command = { type = clrflag which = ind_aubm_commitment_allied }
+		command = { type = clrflag which = ind_aubm_commitment_german }
+		command = { type = clrflag which = ind_aubm_commitment_soviet }
+		command = { type = clrflag which = ind_aubm_commitment_japan }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_allied }
+		command = { type = clrflag which = ind_aubm_negotiation_german }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
+		command = { type = clrflag which = ind_aubm_negotiation_japan }
+		command = { type = setflag which = ind_aubm_socialist_autonomous }
+		command = { type = setflag which = ind_v3_soviet_orientation }
+		command = { type = setflag which = ind_v4_strategy_soviet }
+		command = { type = clrflag which = ind_v3_allied_orientation }
+		command = { type = clrflag which = ind_v3_axis_orientation }
+		command = { type = clrflag which = ind_v3_japanese_orientation }
+		command = { type = clrflag which = ind_v3_non_aligned }
+		command = { type = clrflag which = ind_v4_strategy_allied }
+		command = { type = clrflag which = ind_v4_strategy_axis }
+		command = { type = clrflag which = ind_v4_strategy_japan }
+		command = { type = clrflag which = ind_v4_strategy_nam }
+	}
+}
+
+#########################################################################
+# Permanent War Cabinet menus. Opening a docket never costs money.
+#########################################################################
+
+event = {
+	id = 9281910
+	random = no
+	persistent = yes
+	country = IND
+	name = "War Cabinet: Coalition Membership"
+	desc = "A formal alliance merges all current wars. India may enter a coalition only while uncommitted, or upgrade a compact with that same bloc. A rival coalition remains unavailable until an at-peace withdrawal and ninety-day realignment have been completed."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+	action_a = {
+		trigger = { year = 1937 OR = { exists = ENG exists = USA } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } NOT = { flag = ind_gc_formal_axis } NOT = { flag = ind_gc_cobelligerent } NOT = { flag = ind_v4_sov_equal_compact } NOT = { flag = ind_v4_sov_supervised_compact } NOT = { flag = ind_aubm_jp_partnership } NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_realignment_cooldown } }
+		name = "Choose London or Washington"
+		command = { type = event which = 9281934 where = IND when = 1 }
+	}
+	action_b = {
+		trigger = { year = 1937 exists = GER NOT = { war = { country = IND country = GER } } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } NOT = { flag = ind_v4a_treaty_commonwealth } NOT = { flag = ind_v4a_treaty_naval_compact } NOT = { flag = ind_v4a_treaty_formal_alliance } NOT = { flag = ind_v4a_treaty_cobelligerent } NOT = { flag = ind_v4_sov_equal_compact } NOT = { flag = ind_v4_sov_supervised_compact } NOT = { flag = ind_aubm_jp_partnership } NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_realignment_cooldown } }
+		name = "Join Germany: merge wars, +4 dissent"
+		command = { type = alliance which = GER when = 1 }
+		command = { type = setflag which = ind_aubm_commitment_german }
+		command = { type = setflag which = ind_gc_formal_axis }
+		command = { type = setflag which = ind_gc_campaign_active }
+		command = { type = clrflag which = ind_gc_cobelligerent }
+		command = { type = clrflag which = ind_gc_sovereign }
+		command = { type = clrflag which = ind_v4a_treaty_commonwealth }
+		command = { type = clrflag which = ind_v4a_treaty_naval_compact }
+		command = { type = clrflag which = ind_v4a_treaty_formal_alliance }
+		command = { type = clrflag which = ind_v4a_treaty_cobelligerent }
+		command = { type = clrflag which = ind_v4_sov_equal_compact }
+		command = { type = clrflag which = ind_v4_sov_supervised_compact }
+		command = { type = clrflag which = ind_v4_sov_autonomous_socialism }
+		command = { type = clrflag which = ind_aubm_route_allied }
+		command = { type = clrflag which = ind_aubm_route_soviet }
+		command = { type = clrflag which = ind_aubm_route_japan }
+		command = { type = clrflag which = ind_aubm_route_sovereign }
+		command = { type = setflag which = ind_aubm_route_german }
+		command = { type = clrflag which = ind_aubm_socialist_autonomous }
+		command = { type = clrflag which = ind_aubm_jp_partnership }
+		command = { type = clrflag which = ind_aubm_jp_formal_alliance }
+		command = { type = clrflag which = ind_aubm_jp_independent_cobelligerent }
+		command = { type = clrflag which = ind_aubm_jp_tier_senior }
+		command = { type = clrflag which = ind_aubm_jp_tier_peer }
+		command = { type = clrflag which = ind_aubm_jp_tier_junior }
+		command = { type = clrflag which = ind_aubm_jp_tier_counter }
+		command = { type = clrflag which = ind_aubm_jp_india_full_sphere }
+		command = { type = clrflag which = ind_aubm_jp_india_core_sphere }
+		command = { type = setflag which = ind_aubm_jp_rupture }
+		command = { type = clrflag which = ind_v3_allied_orientation }
+		command = { type = clrflag which = ind_v3_soviet_orientation }
+		command = { type = clrflag which = ind_v3_japanese_orientation }
+		command = { type = clrflag which = ind_v3_non_aligned }
+		command = { type = clrflag which = ind_v3_joined_allies }
+		command = { type = clrflag which = ind_v3_joined_comintern }
+		command = { type = clrflag which = ind_v3_joined_japan }
+		command = { type = clrflag which = ind_v4_strategy_allied }
+		command = { type = clrflag which = ind_v4_strategy_soviet }
+		command = { type = clrflag which = ind_v4_strategy_japan }
+		command = { type = clrflag which = ind_v4_strategy_nam }
+		command = { type = setflag which = ind_v3_axis_orientation }
+		command = { type = setflag which = ind_v3_joined_axis }
+		command = { type = setflag which = ind_v4_strategy_axis }
+		command = { type = dissent value = 4 }
+	}
+	action_c = {
+		trigger = { year = 1937 exists = SOV NOT = { war = { country = IND country = SOV } } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_japan } NOT = { flag = ind_v4a_treaty_commonwealth } NOT = { flag = ind_v4a_treaty_naval_compact } NOT = { flag = ind_v4a_treaty_formal_alliance } NOT = { flag = ind_v4a_treaty_cobelligerent } NOT = { flag = ind_gc_formal_axis } NOT = { flag = ind_gc_cobelligerent } NOT = { flag = ind_aubm_jp_partnership } NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_realignment_cooldown } }
+		name = "Join the Soviet coalition: merge wars, +4 dissent"
+		command = { type = alliance which = SOV when = 1 }
+		command = { type = setflag which = ind_aubm_commitment_soviet }
+		command = { type = clrflag which = ind_v4_sov_equal_compact }
+		command = { type = clrflag which = ind_v4_sov_supervised_compact }
+		command = { type = clrflag which = ind_v4_sov_autonomous_socialism }
+		command = { type = clrflag which = ind_v4a_treaty_commonwealth }
+		command = { type = clrflag which = ind_v4a_treaty_naval_compact }
+		command = { type = clrflag which = ind_v4a_treaty_formal_alliance }
+		command = { type = clrflag which = ind_v4a_treaty_cobelligerent }
+		command = { type = clrflag which = ind_gc_formal_axis }
+		command = { type = clrflag which = ind_gc_cobelligerent }
+		command = { type = clrflag which = ind_gc_sovereign }
+		command = { type = clrflag which = ind_aubm_route_allied }
+		command = { type = clrflag which = ind_aubm_route_german }
+		command = { type = clrflag which = ind_aubm_route_japan }
+		command = { type = clrflag which = ind_aubm_route_sovereign }
+		command = { type = setflag which = ind_aubm_route_soviet }
+		command = { type = clrflag which = ind_aubm_socialist_autonomous }
+		command = { type = clrflag which = ind_aubm_jp_partnership }
+		command = { type = clrflag which = ind_aubm_jp_formal_alliance }
+		command = { type = clrflag which = ind_aubm_jp_independent_cobelligerent }
+		command = { type = clrflag which = ind_aubm_jp_tier_senior }
+		command = { type = clrflag which = ind_aubm_jp_tier_peer }
+		command = { type = clrflag which = ind_aubm_jp_tier_junior }
+		command = { type = clrflag which = ind_aubm_jp_tier_counter }
+		command = { type = clrflag which = ind_aubm_jp_india_full_sphere }
+		command = { type = clrflag which = ind_aubm_jp_india_core_sphere }
+		command = { type = setflag which = ind_aubm_jp_rupture }
+		command = { type = clrflag which = ind_v3_allied_orientation }
+		command = { type = clrflag which = ind_v3_axis_orientation }
+		command = { type = clrflag which = ind_v3_japanese_orientation }
+		command = { type = clrflag which = ind_v3_non_aligned }
+		command = { type = clrflag which = ind_v3_joined_allies }
+		command = { type = clrflag which = ind_v3_joined_axis }
+		command = { type = clrflag which = ind_v3_joined_japan }
+		command = { type = clrflag which = ind_v4_strategy_allied }
+		command = { type = clrflag which = ind_v4_strategy_axis }
+		command = { type = clrflag which = ind_v4_strategy_japan }
+		command = { type = clrflag which = ind_v4_strategy_nam }
+		command = { type = setflag which = ind_v3_soviet_orientation }
+		command = { type = setflag which = ind_v3_joined_comintern }
+		command = { type = setflag which = ind_v4_strategy_soviet }
+		command = { type = dissent value = 4 }
+	}
+	action_d = {
+		name = "Strategic compacts and sovereign command"
+		command = { type = event which = 9281919 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9281919
+	random = no
+	persistent = yes
+	country = IND
+	name = "War Cabinet: Strategic Compacts"
+	desc = "Formal membership is not the only way to cooperate. These conferences open the existing Allied, German and Soviet treaty systems, including co-belligerency and autonomous arrangements with disclosed foreign response odds. The Tokyo page also offers Japan, autonomous socialism and fully sovereign command."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+	action_a = {
+		trigger = { year = 1938 exists = ENG NOT = { war = { country = IND country = ENG } } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } NOT = { flag = ind_gc_formal_axis } NOT = { flag = ind_gc_cobelligerent } NOT = { flag = ind_v4_sov_equal_compact } NOT = { flag = ind_v4_sov_supervised_compact } NOT = { flag = ind_aubm_jp_partnership } NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_realignment_cooldown } }
+		name = "Open the Allied treaty conference"
+		command = { type = event which = 9281200 where = IND when = 1 }
+	}
+	action_b = {
+		trigger = { year = 1940 exists = GER exists = SOV OR = { war = { country = GER country = SOV } war = { country = IND country = SOV } } NOT = { war = { country = IND country = GER } } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } NOT = { flag = ind_v4a_treaty_commonwealth } NOT = { flag = ind_v4a_treaty_naval_compact } NOT = { flag = ind_v4a_treaty_formal_alliance } NOT = { flag = ind_v4a_treaty_cobelligerent } NOT = { flag = ind_v4_sov_equal_compact } NOT = { flag = ind_v4_sov_supervised_compact } NOT = { flag = ind_aubm_jp_partnership } NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_realignment_cooldown } NOT = { ispuppet = IND } NOT = { flag = ind_gc_formal_axis } NOT = { flag = ind_gc_cobelligerent } NOT = { flag = ind_gc_sovereign } NOT = { flag = ind_gc_berlin_negotiating } NOT = { flag = ind_gc_berlin_cooldown } }
+		name = "Open the Delhi-Berlin conference"
+		command = { type = event which = 9281300 where = IND when = 1 }
+	}
+	action_c = {
+		trigger = { year = 1937 exists = SOV flag = ind_v3_world_role NOT = { war = { country = IND country = SOV } } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_japan } NOT = { flag = ind_v4a_treaty_commonwealth } NOT = { flag = ind_v4a_treaty_naval_compact } NOT = { flag = ind_v4a_treaty_formal_alliance } NOT = { flag = ind_v4a_treaty_cobelligerent } NOT = { flag = ind_gc_formal_axis } NOT = { flag = ind_gc_cobelligerent } NOT = { flag = ind_aubm_jp_partnership } NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_realignment_cooldown } NOT = { flag = ind_v4_sov_program_defined } }
+		name = "Open the Delhi socialist conference"
+		command = { type = event which = 9281400 where = IND when = 1 }
+	}
+	action_d = {
+		name = "Tokyo, autonomous socialism or sovereign command"
+		command = { type = event which = 9281914 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9281914
+	random = no
+	persistent = yes
+	country = IND
+	name = "War Cabinet: Tokyo or Sovereign Command"
+	desc = "Joining Japan creates one shared war system and is available only from sovereign command or an existing Tokyo compact. Formalizing an existing senior/full-sphere compact preserves that earned rank; fresh formal entry begins at peer/core. Autonomous socialism is available only while uncommitted. A voluntary withdrawal requires peace and starts a ninety-day realignment period before another alliance or compact can be negotiated."
+	style = 2
+	picture = "aubm_v4_tokyo_proposition"
+	action_a = {
+		trigger = { year = 1937 exists = JAP NOT = { war = { country = IND country = JAP } } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_v4a_treaty_commonwealth } NOT = { flag = ind_v4a_treaty_naval_compact } NOT = { flag = ind_v4a_treaty_formal_alliance } NOT = { flag = ind_v4a_treaty_cobelligerent } NOT = { flag = ind_gc_formal_axis } NOT = { flag = ind_gc_cobelligerent } NOT = { flag = ind_v4_sov_equal_compact } NOT = { flag = ind_v4_sov_supervised_compact } NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_realignment_cooldown } OR = { NOT = { flag = ind_v4_japan_commercial_channel } money = 300 } OR = { flag = ind_v4_japan_bilateral_channel NOT = { flag = ind_v4_early_japan_policy } flag = ind_v4_japan_commercial_channel AND = { flag = ind_v4_japan_conditional_engagement NOT = { war = { country = JAP country = CHI } } NOT = { war = { country = JAP country = CHC } } } } }
+		name = "Join Japan: +4 dissent; trade reversal +3, costs 300"
+		command = { trigger = { flag = ind_v4_japan_commercial_channel } type = dissent value = 3 }
+		command = { trigger = { flag = ind_v4_japan_commercial_channel } type = money value = -300 }
+		command = { trigger = { flag = ind_v4_japan_commercial_channel } type = relation which = CHI value = -20 }
+		command = { trigger = { flag = ind_v4_japan_commercial_channel } type = setflag which = ind_aubm_jp_early_policy_reversed }
+		command = { trigger = { NOT = { flag = ind_v4_early_japan_policy } } type = dissent value = 2 }
+		command = { trigger = { NOT = { flag = ind_v4_early_japan_policy } } type = setflag which = ind_aubm_jp_late_strategic_opening }
+		command = { type = alliance which = JAP when = 1 }
+		command = { type = setflag which = ind_aubm_commitment_japan }
+		command = { type = clrflag which = ind_v4a_treaty_commonwealth }
+		command = { type = clrflag which = ind_v4a_treaty_naval_compact }
+		command = { type = clrflag which = ind_v4a_treaty_formal_alliance }
+		command = { type = clrflag which = ind_v4a_treaty_cobelligerent }
+		command = { type = clrflag which = ind_v4a_allied_framework_started }
+		command = { type = clrflag which = ind_v4a_allied_framework_settled }
+		command = { type = clrflag which = ind_v4a_proposal_commonwealth }
+		command = { type = clrflag which = ind_v4a_proposal_naval_compact }
+		command = { type = clrflag which = ind_v4a_proposal_formal_alliance }
+		command = { type = clrflag which = ind_v4a_proposal_cobelligerent }
+		command = { type = clrflag which = ind_gc_formal_axis }
+		command = { type = clrflag which = ind_gc_cobelligerent }
+		command = { type = clrflag which = ind_gc_sovereign }
+		command = { type = clrflag which = ind_gc_berlin_negotiating }
+		command = { type = clrflag which = ind_gc_berlin_cooldown }
+		command = { type = clrflag which = ind_gc_berlin_aloof }
+		command = { type = clrflag which = ind_v4_sov_equal_compact }
+		command = { type = clrflag which = ind_v4_sov_supervised_compact }
+		command = { type = clrflag which = ind_v4_sov_autonomous_socialism }
+		command = { type = clrflag which = ind_v4_sov_program_defined }
+		command = { type = clrflag which = ind_v4_sov_equal_compact_proposed }
+		command = { type = clrflag which = ind_v4_sov_technical_only }
+		command = { type = clrflag which = ind_v4_sov_formal_alliance }
+		command = { type = clrflag which = ind_v4_sov_independent_cobelligerent }
+		command = { type = clrflag which = ind_v4_sov_separate_command }
+		command = { type = clrflag which = ind_v4_sov_moscow_consultation }
+		command = { type = clrflag which = ind_v4_sov_moscow_retry_pending }
+		command = { type = clrflag which = ind_v4_sov_moscow_terms_rejected }
+		command = { type = clrflag which = ind_aubm_route_allied }
+		command = { type = clrflag which = ind_aubm_route_german }
+		command = { type = clrflag which = ind_aubm_route_soviet }
+		command = { type = clrflag which = ind_aubm_route_sovereign }
+		command = { type = setflag which = ind_aubm_route_japan }
+		command = { type = setflag which = ind_aubm_jp_partnership }
+		command = { type = setflag which = ind_aubm_jp_formal_alliance }
+		command = { type = clrflag which = ind_aubm_jp_independent_cobelligerent }
+		command = { type = clrflag which = ind_aubm_jp_tier_junior }
+		command = { type = clrflag which = ind_aubm_jp_tier_counter }
+		command = { trigger = { OR = { flag = ind_aubm_jp_tier_senior flag = ind_aubm_jp_india_full_sphere } } type = setflag which = ind_aubm_jp_tier_senior }
+		command = { trigger = { OR = { flag = ind_aubm_jp_tier_senior flag = ind_aubm_jp_india_full_sphere } } type = setflag which = ind_aubm_jp_india_full_sphere }
+		command = { trigger = { OR = { flag = ind_aubm_jp_tier_senior flag = ind_aubm_jp_india_full_sphere } } type = clrflag which = ind_aubm_jp_tier_peer }
+		command = { trigger = { OR = { flag = ind_aubm_jp_tier_senior flag = ind_aubm_jp_india_full_sphere } } type = clrflag which = ind_aubm_jp_india_core_sphere }
+		command = { trigger = { NOT = { flag = ind_aubm_jp_tier_senior } NOT = { flag = ind_aubm_jp_india_full_sphere } } type = setflag which = ind_aubm_jp_tier_peer }
+		command = { trigger = { NOT = { flag = ind_aubm_jp_tier_senior } NOT = { flag = ind_aubm_jp_india_full_sphere } } type = setflag which = ind_aubm_jp_india_core_sphere }
+		command = { type = setflag which = ind_aubm_jp_influence }
+		command = { type = clrflag which = ind_aubm_jp_rupture }
+		command = { type = clrflag which = ind_aubm_socialist_autonomous }
+		command = { type = clrflag which = ind_v3_allied_orientation }
+		command = { type = clrflag which = ind_v3_axis_orientation }
+		command = { type = clrflag which = ind_v3_soviet_orientation }
+		command = { type = clrflag which = ind_v3_non_aligned }
+		command = { type = clrflag which = ind_v3_joined_allies }
+		command = { type = clrflag which = ind_v3_joined_axis }
+		command = { type = clrflag which = ind_v3_joined_comintern }
+		command = { type = clrflag which = ind_v4_strategy_allied }
+		command = { type = clrflag which = ind_v4_strategy_axis }
+		command = { type = clrflag which = ind_v4_strategy_soviet }
+		command = { type = clrflag which = ind_v4_strategy_nam }
+		command = { type = setflag which = ind_v3_japanese_orientation }
+		command = { type = setflag which = ind_v3_joined_japan }
+		command = { type = setflag which = ind_v4_strategy_japan }
+		command = { type = dissent value = 4 }
+	}
+	action_b = {
+		trigger = { year = 1937 exists = SOV NOT = { war = { country = IND country = SOV } } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } NOT = { flag = ind_v4a_treaty_commonwealth } NOT = { flag = ind_v4a_treaty_naval_compact } NOT = { flag = ind_v4a_treaty_formal_alliance } NOT = { flag = ind_v4a_treaty_cobelligerent } NOT = { flag = ind_gc_formal_axis } NOT = { flag = ind_gc_cobelligerent } NOT = { flag = ind_v4_sov_equal_compact } NOT = { flag = ind_v4_sov_supervised_compact } NOT = { flag = ind_aubm_jp_partnership } NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_realignment_cooldown } }
+		name = "Autonomous socialism: cooperate, share no wars"
+		command = { type = clrflag which = ind_v4a_treaty_commonwealth }
+		command = { type = clrflag which = ind_v4a_treaty_naval_compact }
+		command = { type = clrflag which = ind_v4a_treaty_formal_alliance }
+		command = { type = clrflag which = ind_v4a_treaty_cobelligerent }
+		command = { type = clrflag which = ind_v4a_allied_framework_started }
+		command = { type = clrflag which = ind_v4a_allied_framework_settled }
+		command = { type = clrflag which = ind_v4a_proposal_commonwealth }
+		command = { type = clrflag which = ind_v4a_proposal_naval_compact }
+		command = { type = clrflag which = ind_v4a_proposal_formal_alliance }
+		command = { type = clrflag which = ind_v4a_proposal_cobelligerent }
+		command = { type = clrflag which = ind_gc_formal_axis }
+		command = { type = clrflag which = ind_gc_cobelligerent }
+		command = { type = clrflag which = ind_gc_sovereign }
+		command = { type = clrflag which = ind_gc_berlin_negotiating }
+		command = { type = clrflag which = ind_gc_berlin_cooldown }
+		command = { type = clrflag which = ind_gc_berlin_aloof }
+		command = { type = clrflag which = ind_v4_sov_equal_compact }
+		command = { type = clrflag which = ind_v4_sov_supervised_compact }
+		command = { type = clrflag which = ind_v4_sov_equal_compact_proposed }
+		command = { type = clrflag which = ind_v4_sov_technical_only }
+		command = { type = setflag which = ind_v4_sov_program_defined }
+		command = { type = clrflag which = ind_aubm_route_allied }
+		command = { type = clrflag which = ind_aubm_route_german }
+		command = { type = clrflag which = ind_aubm_route_soviet }
+		command = { type = clrflag which = ind_aubm_route_japan }
+		command = { type = setflag which = ind_aubm_route_sovereign }
+		command = { type = setflag which = ind_aubm_socialist_autonomous }
+		command = { type = setflag which = ind_v4_sov_autonomous_socialism }
+		command = { type = clrflag which = ind_aubm_jp_partnership }
+		command = { type = clrflag which = ind_aubm_jp_formal_alliance }
+		command = { type = clrflag which = ind_aubm_jp_independent_cobelligerent }
+		command = { type = clrflag which = ind_aubm_jp_tier_senior }
+		command = { type = clrflag which = ind_aubm_jp_tier_peer }
+		command = { type = clrflag which = ind_aubm_jp_tier_junior }
+		command = { type = clrflag which = ind_aubm_jp_tier_counter }
+		command = { type = clrflag which = ind_aubm_jp_india_full_sphere }
+		command = { type = clrflag which = ind_aubm_jp_india_core_sphere }
+		command = { type = clrflag which = ind_aubm_jp_proposal_pending }
+		command = { type = clrflag which = ind_aubm_jp_retry_cooldown }
+		command = { type = clrflag which = ind_aubm_jp_retry_ready }
+		command = { type = setflag which = ind_aubm_jp_rupture }
+		command = { type = clrflag which = ind_v3_allied_orientation }
+		command = { type = clrflag which = ind_v3_axis_orientation }
+		command = { type = clrflag which = ind_v3_japanese_orientation }
+		command = { type = clrflag which = ind_v3_non_aligned }
+		command = { type = clrflag which = ind_v3_joined_allies }
+		command = { type = clrflag which = ind_v3_joined_axis }
+		command = { type = clrflag which = ind_v3_joined_comintern }
+		command = { type = clrflag which = ind_v3_joined_japan }
+		command = { type = clrflag which = ind_v4_strategy_allied }
+		command = { type = clrflag which = ind_v4_strategy_axis }
+		command = { type = clrflag which = ind_v4_strategy_japan }
+		command = { type = clrflag which = ind_v4_strategy_nam }
+		command = { type = setflag which = ind_v3_soviet_orientation }
+		command = { type = setflag which = ind_v4_strategy_soviet }
+		command = { type = dissent value = 2 }
+	}
+	action_c = {
+		trigger = { atwar = no NOT = { flag = ind_aubm_realignment_cooldown } OR = { participant = { country = IND value = 4 } flag = ind_aubm_commitment_allied flag = ind_aubm_commitment_german flag = ind_aubm_commitment_soviet flag = ind_aubm_commitment_japan } }
+		name = "Withdraw at peace; begin ninety-day realignment"
+		command = { trigger = { participant = { country = IND value = 4 } } type = leave_alliance when = 1 }
+		command = { type = clrflag which = ind_aubm_commitment_allied }
+		command = { type = clrflag which = ind_aubm_commitment_german }
+		command = { type = clrflag which = ind_aubm_commitment_soviet }
+		command = { type = clrflag which = ind_aubm_commitment_japan }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_allied }
+		command = { type = clrflag which = ind_aubm_negotiation_german }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
+		command = { type = clrflag which = ind_aubm_negotiation_japan }
+		command = { type = clrflag which = ind_v4a_treaty_commonwealth }
+		command = { type = clrflag which = ind_v4a_treaty_naval_compact }
+		command = { type = clrflag which = ind_v4a_treaty_formal_alliance }
+		command = { type = clrflag which = ind_v4a_treaty_cobelligerent }
+		command = { type = clrflag which = ind_v4a_allied_framework_started }
+		command = { type = clrflag which = ind_v4a_allied_framework_settled }
+		command = { type = clrflag which = ind_v4a_proposal_commonwealth }
+		command = { type = clrflag which = ind_v4a_proposal_naval_compact }
+		command = { type = clrflag which = ind_v4a_proposal_formal_alliance }
+		command = { type = clrflag which = ind_v4a_proposal_cobelligerent }
+		command = { type = clrflag which = ind_gc_formal_axis }
+		command = { type = clrflag which = ind_gc_cobelligerent }
+		command = { type = clrflag which = ind_gc_sovereign }
+		command = { type = clrflag which = ind_gc_berlin_negotiating }
+		command = { type = clrflag which = ind_gc_berlin_cooldown }
+		command = { type = clrflag which = ind_gc_berlin_aloof }
+		command = { type = clrflag which = ind_v4_sov_equal_compact }
+		command = { type = clrflag which = ind_v4_sov_supervised_compact }
+		command = { type = clrflag which = ind_v4_sov_autonomous_socialism }
+		command = { type = clrflag which = ind_v4_sov_program_defined }
+		command = { type = clrflag which = ind_v4_sov_equal_compact_proposed }
+		command = { type = clrflag which = ind_v4_sov_technical_only }
+		command = { type = clrflag which = ind_v4_sov_formal_alliance }
+		command = { type = clrflag which = ind_v4_sov_independent_cobelligerent }
+		command = { type = clrflag which = ind_v4_sov_separate_command }
+		command = { type = clrflag which = ind_v4_sov_moscow_consultation }
+		command = { type = clrflag which = ind_v4_sov_moscow_retry_pending }
+		command = { type = clrflag which = ind_v4_sov_moscow_terms_rejected }
+		command = { type = clrflag which = ind_aubm_route_allied }
+		command = { type = clrflag which = ind_aubm_route_german }
+		command = { type = clrflag which = ind_aubm_route_soviet }
+		command = { type = clrflag which = ind_aubm_route_japan }
+		command = { type = setflag which = ind_aubm_route_sovereign }
+		command = { type = clrflag which = ind_aubm_socialist_autonomous }
+		command = { type = clrflag which = ind_aubm_jp_partnership }
+		command = { type = clrflag which = ind_aubm_jp_formal_alliance }
+		command = { type = clrflag which = ind_aubm_jp_independent_cobelligerent }
+		command = { type = clrflag which = ind_aubm_jp_tier_senior }
+		command = { type = clrflag which = ind_aubm_jp_tier_peer }
+		command = { type = clrflag which = ind_aubm_jp_tier_junior }
+		command = { type = clrflag which = ind_aubm_jp_tier_counter }
+		command = { type = clrflag which = ind_aubm_jp_india_full_sphere }
+		command = { type = clrflag which = ind_aubm_jp_india_core_sphere }
+		command = { type = clrflag which = ind_aubm_jp_proposal_pending }
+		command = { type = clrflag which = ind_aubm_jp_retry_cooldown }
+		command = { type = clrflag which = ind_aubm_jp_retry_ready }
+		command = { type = setflag which = ind_aubm_jp_rupture }
+		command = { type = clrflag which = ind_v3_allied_orientation }
+		command = { type = clrflag which = ind_v3_axis_orientation }
+		command = { type = clrflag which = ind_v3_soviet_orientation }
+		command = { type = clrflag which = ind_v3_japanese_orientation }
+		command = { type = clrflag which = ind_v3_joined_allies }
+		command = { type = clrflag which = ind_v3_joined_axis }
+		command = { type = clrflag which = ind_v3_joined_comintern }
+		command = { type = clrflag which = ind_v3_joined_japan }
+		command = { type = clrflag which = ind_v4_strategy_allied }
+		command = { type = clrflag which = ind_v4_strategy_axis }
+		command = { type = clrflag which = ind_v4_strategy_soviet }
+		command = { type = clrflag which = ind_v4_strategy_japan }
+		command = { type = setflag which = ind_v3_non_aligned }
+		command = { type = setflag which = ind_v4_strategy_nam }
+		# Alpha 23 keeps historical victories but abandons the live route board.
+		command = { type = event which = 9289699 where = IND when = 1 }
+		command = { type = dissent value = 2 }
+		command = { type = setflag which = ind_aubm_realignment_cooldown }
+		command = { type = event which = 9281938 where = IND when = 90 }
+	}
+	action_d = {
+		trigger = { year = 1937 exists = JAP NOT = { war = { country = IND country = JAP } } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } NOT = { flag = ind_v4a_treaty_commonwealth } NOT = { flag = ind_v4a_treaty_naval_compact } NOT = { flag = ind_v4a_treaty_formal_alliance } NOT = { flag = ind_v4a_treaty_cobelligerent } NOT = { flag = ind_gc_formal_axis } NOT = { flag = ind_gc_cobelligerent } NOT = { flag = ind_v4_sov_equal_compact } NOT = { flag = ind_v4_sov_supervised_compact } NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_realignment_cooldown } NOT = { flag = ind_aubm_jp_partnership } }
+		name = "Negotiate a separate Tokyo compact"
+		command = { type = event which = 9281100 where = IND when = 1 }
+	}
+}
+
+#########################################################################
+# Explicit Allied partner selection and negotiation recovery.
+#########################################################################
+
+event = {
+	id = 9281934
+	random = no
+	persistent = yes
+	country = IND
+	name = "War Cabinet: Choose the Allied Partner"
+	desc = "London and Washington are separate diplomatic choices within the same Allied route. India may join only from sovereign command or upgrade an existing Allied compact; a rival commitment must first be withdrawn at peace."
+	style = 2
+	picture = "aubm_v4_london_settlement"
+	action_a = {
+		trigger = { exists = ENG NOT = { war = { country = IND country = ENG } } NOT = { war = { country = IND country = USA } } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } NOT = { flag = ind_gc_formal_axis } NOT = { flag = ind_gc_cobelligerent } NOT = { flag = ind_v4_sov_equal_compact } NOT = { flag = ind_v4_sov_supervised_compact } NOT = { flag = ind_aubm_jp_partnership } NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_realignment_cooldown } }
+		name = "Join Britain's coalition: +3 dissent"
+		command = { type = clrflag which = ind_aubm_allied_partner_usa }
+		command = { type = setflag which = ind_aubm_allied_partner_eng }
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = setflag which = ind_aubm_commitment_allied }
+		command = { type = dissent value = 3 }
+		command = { type = event which = 9281901 where = IND when = 1 }
+	}
+	action_b = {
+		trigger = { exists = USA NOT = { war = { country = IND country = ENG } } NOT = { war = { country = IND country = USA } } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } NOT = { flag = ind_gc_formal_axis } NOT = { flag = ind_gc_cobelligerent } NOT = { flag = ind_v4_sov_equal_compact } NOT = { flag = ind_v4_sov_supervised_compact } NOT = { flag = ind_aubm_jp_partnership } NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_realignment_cooldown } }
+		name = "Join Washington's coalition: +3 dissent"
+		command = { type = clrflag which = ind_aubm_allied_partner_eng }
+		command = { type = setflag which = ind_aubm_allied_partner_usa }
+		command = { type = alliance which = USA when = 1 }
+		command = { type = setflag which = ind_aubm_commitment_allied }
+		command = { type = dissent value = 3 }
+		command = { type = event which = 9281901 where = IND when = 1 }
+	}
+	action_c = {
+		name = "Return to the coalition docket"
+		command = { type = event which = 9281910 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9281935
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	trigger = { flag = ind_v4a_allied_framework_started flag = ind_v4a_allied_framework_settled }
+	name = "The Allied Conference File Is Closed"
+	desc = "The negotiated Allied formula has been recorded. The temporary diplomatic lock is removed; the accepted treaty, rather than an obsolete pending proposal, now governs the relationship."
+	style = 2
+	picture = "aubm_v4_london_settlement"
+	date = { day = 0 month = january year = 1938 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Close the completed file"
+		command = { type = clrflag which = ind_v4a_allied_framework_started }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_allied }
+	}
+}
+
+event = {
+	id = 9281936
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	trigger = {
+		flag = ind_v4a_allied_framework_started
+		NOT = { flag = ind_v4a_allied_framework_settled }
+		OR = {
+			AND = { flag = ind_v4a_proposal_naval_compact NOT = { exists = USA } }
+			AND = { OR = { flag = ind_v4a_proposal_commonwealth flag = ind_v4a_proposal_formal_alliance flag = ind_v4a_proposal_cobelligerent } NOT = { exists = ENG } }
+		}
+	}
+	name = "An Allied Negotiation Lapses"
+	desc = "The government that was considering India's proposal no longer exists. Delhi closes that specific file without treating silence as acceptance or allowing a vanished response to block every later diplomatic choice."
+	style = 2
+	picture = "aubm_v4_london_settlement"
+	date = { day = 0 month = january year = 1938 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Release the negotiating docket"
+		command = { type = clrflag which = ind_v4a_allied_framework_started }
+		command = { type = clrflag which = ind_v4a_proposal_commonwealth }
+		command = { type = clrflag which = ind_v4a_proposal_naval_compact }
+		command = { type = clrflag which = ind_v4a_proposal_formal_alliance }
+		command = { type = clrflag which = ind_v4a_proposal_cobelligerent }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_allied }
+	}
+}
+
+event = {
+	id = 9281937
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_wartime_framework
+		flag = ind_aubm_route_allied
+		OR = {
+			AND = { flag = ind_aubm_allied_partner_eng NOT = { exists = ENG } exists = USA }
+			AND = { flag = ind_aubm_allied_partner_usa NOT = { exists = USA } exists = ENG }
+		}
+	}
+	name = "Allied Command Passes to the Surviving Capital"
+	desc = "India's chosen Allied partner has fallen, but the other Allied great power remains. Delhi transfers consultation and battlefield reporting to the surviving capital instead of losing all coalition feedback or waiting for both governments to disappear."
+	style = 2
+	picture = "aubm_v4_london_settlement"
+	date = { day = 0 month = january year = 1933 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Transfer the Allied file to the surviving government"
+		command = { trigger = { flag = ind_aubm_allied_partner_eng NOT = { exists = ENG } exists = USA } type = clrflag which = ind_aubm_allied_partner_eng }
+		command = { trigger = { NOT = { exists = ENG } exists = USA } type = setflag which = ind_aubm_allied_partner_usa }
+		command = { trigger = { flag = ind_aubm_allied_partner_usa NOT = { exists = USA } exists = ENG } type = clrflag which = ind_aubm_allied_partner_usa }
+		command = { trigger = { NOT = { exists = USA } exists = ENG } type = setflag which = ind_aubm_allied_partner_eng }
+		command = { trigger = { exists = USA } type = relation which = USA value = 10 }
+		command = { trigger = { exists = ENG } type = relation which = ENG value = 10 }
+	}
+}
+
+event = {
+	id = 9281938
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	name = "The Sovereign Command Cooling-Off Period Ends"
+	desc = "Ninety days have passed since India withdrew peacefully from its former strategic alignment. The government may now open a new coalition or compact negotiation, provided India remains outside every formal alliance and binding compact."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+	action_a = {
+		name = "Reopen the diplomatic docket"
+		command = { type = clrflag which = ind_aubm_realignment_cooldown }
+	}
+}
+
+event = {
+	id = 9281939
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_wartime_framework
+		NOT = { flag = ind_aubm_diplomatic_negotiation_pending }
+		OR = {
+			AND = { flag = ind_v4a_allied_framework_started NOT = { flag = ind_v4a_allied_framework_settled } }
+			flag = ind_gc_berlin_negotiating
+			flag = ind_aubm_jp_proposal_pending
+			AND = { flag = ind_v4_sov_equal_compact_proposed NOT = { flag = ind_v4_sov_equal_compact } NOT = { flag = ind_v4_sov_supervised_compact } }
+		}
+	}
+	name = "India Reconstructs Its Open Diplomatic File"
+	desc = "A negotiation begun before the modern diplomatic ledger was introduced is still awaiting an answer. Delhi marks that file as pending so no second coalition can be negotiated while the first capital is considering its reply."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+	date = { day = 0 month = january year = 1933 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Reconstruct the pending file"
+		command = { type = setflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { trigger = { flag = ind_v4a_allied_framework_started NOT = { flag = ind_v4a_allied_framework_settled } } type = setflag which = ind_aubm_negotiation_allied }
+		command = { trigger = { flag = ind_gc_berlin_negotiating } type = setflag which = ind_aubm_negotiation_german }
+		command = { trigger = { flag = ind_v4_sov_equal_compact_proposed NOT = { flag = ind_v4_sov_equal_compact } NOT = { flag = ind_v4_sov_supervised_compact } } type = setflag which = ind_aubm_negotiation_soviet }
+		command = { trigger = { flag = ind_aubm_jp_proposal_pending } type = setflag which = ind_aubm_negotiation_japan }
+	}
+}
+
+event = {
+	id = 9281948
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_wartime_framework
+		flag = ind_aubm_diplomatic_negotiation_pending
+		OR = {
+			AND = {
+				flag = ind_aubm_negotiation_allied
+				OR = { NOT = { exists = ENG } participant = { country = IND value = 4 } flag = ind_aubm_commitment_german flag = ind_aubm_commitment_soviet flag = ind_aubm_commitment_japan war = { country = IND country = ENG } war = { country = IND country = USA } }
+			}
+			AND = {
+				flag = ind_aubm_negotiation_german
+				OR = { NOT = { exists = GER } participant = { country = IND value = 4 } flag = ind_aubm_commitment_allied flag = ind_aubm_commitment_soviet flag = ind_aubm_commitment_japan war = { country = IND country = GER } }
+			}
+			AND = {
+				flag = ind_aubm_negotiation_soviet
+				OR = { NOT = { exists = SOV } participant = { country = IND value = 4 } flag = ind_aubm_commitment_allied flag = ind_aubm_commitment_german flag = ind_aubm_commitment_japan war = { country = IND country = SOV } }
+			}
+			AND = {
+				flag = ind_aubm_negotiation_japan
+				OR = { NOT = { exists = JAP } participant = { country = IND value = 4 } flag = ind_aubm_commitment_allied flag = ind_aubm_commitment_german flag = ind_aubm_commitment_soviet war = { country = IND country = JAP } }
+			}
+		}
+	}
+	name = "A Diplomatic Reply Arrives Too Late"
+	desc = "The state of India's alliances changed while a foreign reply was in transit, or the negotiating partner ceased to exist. The obsolete proposal lapses; it cannot override the commitment now governing Indian strategy."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+	date = { day = 0 month = january year = 1933 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Close every stale diplomatic file"
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_allied }
+		command = { type = clrflag which = ind_aubm_negotiation_german }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
+		command = { type = clrflag which = ind_aubm_negotiation_japan }
+		command = { type = clrflag which = ind_v4a_allied_framework_started }
+		command = { type = clrflag which = ind_v4a_proposal_commonwealth }
+		command = { type = clrflag which = ind_v4a_proposal_naval_compact }
+		command = { type = clrflag which = ind_v4a_proposal_formal_alliance }
+		command = { type = clrflag which = ind_v4a_proposal_cobelligerent }
+		command = { type = clrflag which = ind_gc_berlin_negotiating }
+		command = { type = clrflag which = ind_v4_sov_equal_compact_proposed }
+		command = { type = clrflag which = ind_aubm_jp_proposal_pending }
+		command = { type = clrflag which = ind_aubm_jp_counteroffer_pending }
+	}
+}
+
+event = {
+	id = 9281949
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_wartime_framework
+		NOT = { flag = ind_aubm_fresh_1933_bootstrap }
+		NOT = { flag = ind_aubm_commitment_migration_alpha20 }
+	}
+	name = "Compatibility Review: Strategic Commitments"
+	desc = "This save predates the exclusive commitment record. The review preserves the live alliance or strongest existing compact, removes contradictory old entries and keeps current wars and battlefield credit unchanged."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+	date = { day = 0 month = january year = 1933 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Preserve the binding commitment (no cost)"
+		command = { type = sleepevent which = 9270404 }
+		command = { type = sleepevent which = 9270405 }
+		command = { type = sleepevent which = 9270406 }
+		command = { type = sleepevent which = 9270407 }
+		command = { type = sleepevent which = 9270408 }
+		command = { type = sleepevent which = 9270409 }
+		command = { type = sleepevent which = 9270456 }
+		command = { type = sleepevent which = 9280940 }
+		command = { type = clrflag which = ind_aubm_commitment_allied }
+		command = { type = clrflag which = ind_aubm_commitment_german }
+		command = { type = clrflag which = ind_aubm_commitment_soviet }
+		command = { type = clrflag which = ind_aubm_commitment_japan }
+		# A live formal alliance outranks stale compact state. If old data somehow
+		# places India in a merged coalition, its deterministic precedence is
+		# Allied > German > Soviet > Japanese. With no recognized live alliance,
+		# binding compacts use the same family precedence.
+		command = { trigger = { OR = { alliance = { country = IND country = ENG } alliance = { country = IND country = USA } } } type = setflag which = ind_aubm_commitment_allied }
+		command = { trigger = { NOT = { flag = ind_aubm_commitment_allied } alliance = { country = IND country = GER } } type = setflag which = ind_aubm_commitment_german }
+		command = { trigger = { NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } alliance = { country = IND country = SOV } } type = setflag which = ind_aubm_commitment_soviet }
+		command = { trigger = { NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } alliance = { country = IND country = JAP } } type = setflag which = ind_aubm_commitment_japan }
+		command = { trigger = { NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } OR = { flag = ind_v4a_treaty_commonwealth flag = ind_v4a_treaty_naval_compact flag = ind_v4a_treaty_formal_alliance flag = ind_v4a_treaty_cobelligerent } } type = setflag which = ind_aubm_commitment_allied }
+		command = { trigger = { NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } OR = { flag = ind_gc_formal_axis flag = ind_gc_cobelligerent } } type = setflag which = ind_aubm_commitment_german }
+		command = { trigger = { NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } OR = { flag = ind_v4_sov_equal_compact flag = ind_v4_sov_supervised_compact flag = ind_v4_sov_formal_alliance flag = ind_v4_sov_independent_cobelligerent } } type = setflag which = ind_aubm_commitment_soviet }
+		command = { trigger = { NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } OR = { flag = ind_aubm_jp_formal_alliance flag = ind_aubm_jp_independent_cobelligerent AND = { flag = ind_aubm_jp_partnership NOT = { flag = ind_aubm_jp_rupture } } } } type = setflag which = ind_aubm_commitment_japan }
+
+		# Rebuild exactly one current route from the selected commitment. Completed
+		# campaign and achievement flags are deliberately left untouched.
+		command = { type = clrflag which = ind_aubm_route_allied }
+		command = { type = clrflag which = ind_aubm_route_german }
+		command = { type = clrflag which = ind_aubm_route_soviet }
+		command = { type = clrflag which = ind_aubm_route_japan }
+		command = { type = clrflag which = ind_aubm_route_sovereign }
+		command = { trigger = { flag = ind_aubm_commitment_allied } type = setflag which = ind_aubm_route_allied }
+		command = { trigger = { flag = ind_aubm_commitment_german } type = setflag which = ind_aubm_route_german }
+		command = { trigger = { flag = ind_aubm_commitment_soviet } type = setflag which = ind_aubm_route_soviet }
+		command = { trigger = { flag = ind_aubm_commitment_japan } type = setflag which = ind_aubm_route_japan }
+		command = { trigger = { NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } } type = setflag which = ind_aubm_route_sovereign }
+
+		# Remove only rival binding relationship state. This closes the Alpha19
+		# Japan-to-Germany exploit without erasing completed campaign credit.
+		command = { trigger = { NOT = { flag = ind_aubm_commitment_allied } } type = clrflag which = ind_v4a_treaty_commonwealth }
+		command = { trigger = { NOT = { flag = ind_aubm_commitment_allied } } type = clrflag which = ind_v4a_treaty_naval_compact }
+		command = { trigger = { NOT = { flag = ind_aubm_commitment_allied } } type = clrflag which = ind_v4a_treaty_formal_alliance }
+		command = { trigger = { NOT = { flag = ind_aubm_commitment_allied } } type = clrflag which = ind_v4a_treaty_cobelligerent }
+		command = { trigger = { NOT = { flag = ind_aubm_commitment_german } } type = clrflag which = ind_gc_formal_axis }
+		command = { trigger = { NOT = { flag = ind_aubm_commitment_german } } type = clrflag which = ind_gc_cobelligerent }
+		command = { trigger = { OR = { flag = ind_aubm_commitment_allied flag = ind_aubm_commitment_german flag = ind_aubm_commitment_soviet flag = ind_aubm_commitment_japan } } type = clrflag which = ind_gc_sovereign }
+		command = { trigger = { NOT = { flag = ind_aubm_commitment_soviet } } type = clrflag which = ind_v4_sov_equal_compact }
+		command = { trigger = { NOT = { flag = ind_aubm_commitment_soviet } } type = clrflag which = ind_v4_sov_supervised_compact }
+		command = { trigger = { NOT = { flag = ind_aubm_commitment_soviet } } type = clrflag which = ind_v4_sov_formal_alliance }
+		command = { trigger = { NOT = { flag = ind_aubm_commitment_soviet } } type = clrflag which = ind_v4_sov_independent_cobelligerent }
+		command = { trigger = { NOT = { flag = ind_aubm_commitment_japan } } type = clrflag which = ind_aubm_jp_partnership }
+		command = { trigger = { NOT = { flag = ind_aubm_commitment_japan } } type = clrflag which = ind_aubm_jp_formal_alliance }
+		command = { trigger = { NOT = { flag = ind_aubm_commitment_japan } } type = clrflag which = ind_aubm_jp_independent_cobelligerent }
+		command = { trigger = { flag = ind_aubm_commitment_japan } type = clrflag which = ind_aubm_jp_rupture }
+		command = { type = setflag which = ind_aubm_commitment_migration_alpha20 }
+	}
+}
+
+event = {
+	id = 9281911
+	random = no
+	persistent = yes
+	country = IND
+	name = "War Cabinet: Great-Power Enemies"
+	desc = "These declarations remain available outside the target's own alliance or binding compact. A commitment cannot be dissolved by declaring war on its partner: India must withdraw peacefully through the strategic-alignment cabinet before the war begins."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+	action_a = {
+		trigger = { exists = ENG NOT = { war = { country = IND country = ENG } } NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_allied } }
+		name = "Prepare war against the British-led coalition"
+		command = { type = event which = 9281920 where = IND when = 1 }
+	}
+	action_b = {
+		trigger = { exists = GER NOT = { war = { country = IND country = GER } } NOT = { alliance = { country = IND country = GER } } NOT = { flag = ind_aubm_commitment_german } }
+		name = "Prepare war against Germany"
+		command = { type = event which = 9281921 where = IND when = 1 }
+	}
+	action_c = {
+		trigger = { exists = SOV NOT = { war = { country = IND country = SOV } } NOT = { alliance = { country = IND country = SOV } } NOT = { flag = ind_aubm_commitment_soviet } }
+		name = "Prepare war against the Soviet Union"
+		command = { type = event which = 9281922 where = IND when = 1 }
+	}
+	action_d = {
+		name = "Japan, the United States and return"
+		command = { type = event which = 9281915 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9281915
+	random = no
+	persistent = yes
+	country = IND
+	name = "War Cabinet: Pacific Great Powers"
+	desc = "A binding commitment cannot be broken by a declaration of war. India must leave a formal alliance or compact peacefully, observe the cooling-off period, and only then open war against that former partner."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	action_a = {
+		trigger = { exists = JAP NOT = { war = { country = IND country = JAP } } NOT = { alliance = { country = IND country = JAP } } NOT = { flag = ind_aubm_commitment_japan } }
+		name = "Prepare war against Japan"
+		command = { type = event which = 9281923 where = IND when = 1 }
+	}
+	action_b = {
+		trigger = { exists = USA NOT = { war = { country = IND country = USA } } NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_allied } }
+		name = "Prepare war against the United States"
+		command = { type = event which = 9281924 where = IND when = 1 }
+	}
+	action_c = {
+		name = "Return to the great-power docket"
+		command = { type = event which = 9281911 where = IND when = 1 }
+	}
+	action_d = { name = "Close the Cabinet" }
+}
+
+event = {
+	id = 9281912
+	random = no
+	persistent = yes
+	country = IND
+	name = "War Cabinet: Regional Campaigns"
+	desc = "Regional wars remain separate questions. Open a geographic docket to declare war on a state that exists and is not already at war with India. Campaign objectives and provisional settlements then derive from live control rather than from the declaration event."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+	action_a = {
+		name = "Persia, Iraq and Arabia"
+		command = { type = event which = 9281916 where = IND when = 1 }
+	}
+	action_b = {
+		name = "Afghanistan, Tibet and Xinjiang"
+		command = { type = event which = 9281917 where = IND when = 1 }
+	}
+	action_c = {
+		name = "China and Siam"
+		command = { type = event which = 9281918 where = IND when = 1 }
+	}
+	action_d = {
+		name = "Europe, the oceans and Africa"
+		command = { type = event which = 9281926 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9281916
+	random = no
+	persistent = yes
+	country = IND
+	name = "Regional Docket: Persia, Iraq and Arabia"
+	desc = "Each action is a confirmed declaration. Published objectives are Tehran, Baghdad and Riyadh. A Delhi Pact partner cannot be attacked from this board. Taking the named capital opens that country's armistice or, after annexation, its constitutional settlement."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	action_a = {
+		trigger = { exists = PER NOT = { war = { country = IND country = PER } } NOT = { alliance = { country = IND country = PER } } NOT = { flag = ind_v3_delhi_pact } }
+		name = "Declare war on Persia: +2 dissent"
+		command = { type = setflag which = ind_aubm_declare_per }
+		command = { type = dissent value = 2 }
+		command = { type = event which = 9281925 where = IND when = 1 }
+	}
+	action_b = {
+		trigger = { exists = IRQ NOT = { war = { country = IND country = IRQ } } NOT = { alliance = { country = IND country = IRQ } } }
+		name = "Declare war on Iraq: +2 dissent"
+		command = { type = setflag which = ind_aubm_declare_irq }
+		command = { type = dissent value = 2 }
+		command = { type = event which = 9281925 where = IND when = 1 }
+	}
+	action_c = {
+		trigger = { exists = SAU NOT = { war = { country = IND country = SAU } } NOT = { alliance = { country = IND country = SAU } } }
+		name = "Declare war on Saudi Arabia: +3 dissent"
+		command = { type = setflag which = ind_aubm_declare_sau }
+		command = { type = dissent value = 3 }
+		command = { type = event which = 9281925 where = IND when = 1 }
+	}
+	action_d = {
+		name = "Return to regional campaigns"
+		command = { type = event which = 9281912 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9281917
+	random = no
+	persistent = yes
+	country = IND
+	name = "Regional Docket: The Northern Approaches"
+	desc = "Each action is a confirmed declaration. Published objectives are Kabul, Lhasa and Urumqi. A Delhi Pact partner cannot be attacked from this board. Choosing war here replaces negotiation; taking the named capital opens an immediate settlement."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+	action_a = {
+		trigger = { exists = AFG NOT = { war = { country = IND country = AFG } } NOT = { alliance = { country = IND country = AFG } } NOT = { flag = ind_v3_delhi_pact } }
+		name = "Declare war on Afghanistan: +3 dissent"
+		command = { type = setflag which = ind_aubm_declare_afg }
+		command = { type = dissent value = 3 }
+		command = { type = event which = 9281925 where = IND when = 1 }
+	}
+	action_b = {
+		trigger = { exists = TIB NOT = { war = { country = IND country = TIB } } NOT = { alliance = { country = IND country = TIB } } }
+		name = "Declare war on Tibet: +4 dissent"
+		command = { type = setflag which = ind_aubm_declare_tib }
+		command = { type = dissent value = 4 }
+		command = { type = event which = 9281925 where = IND when = 1 }
+	}
+	action_c = {
+		trigger = { exists = SIK NOT = { war = { country = IND country = SIK } } NOT = { alliance = { country = IND country = SIK } } }
+		name = "Declare war on Xinjiang: +3 dissent"
+		command = { type = setflag which = ind_aubm_declare_sik }
+		command = { type = dissent value = 3 }
+		command = { type = event which = 9281925 where = IND when = 1 }
+	}
+	action_d = {
+		name = "Return to regional campaigns"
+		command = { type = event which = 9281912 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9281918
+	random = no
+	persistent = yes
+	country = IND
+	name = "Regional Docket: China and Siam"
+	desc = "Published objectives are Nanjing, Yan'an and Bangkok. A formal Japanese alliance inherits these wars; a Delhi-Tokyo compact does not. China or Siam cannot be attacked while protected by India's Delhi Pact."
+	style = 2
+	picture = "aubm_v4_china_interior"
+	action_a = {
+		trigger = {
+			exists = CHI
+			NOT = { war = { country = IND country = CHI } }
+			NOT = { alliance = { country = IND country = CHI } }
+			NOT = { flag = ind_v3_delhi_pact }
+			NOT = { flag = ind_v42_delhi_pact_alliance }
+			NOT = { flag = ind_v42_delhi_china_alliance }
+			NOT = { AND = { flag = ind_v42_delhi_pact_consultative flag = ind_v42_china_accepts_delhi_pact } }
+		}
+		name = "Declare war on Nationalist China: +3 dissent"
+		command = { type = setflag which = ind_aubm_declare_chi }
+		command = { type = dissent value = 3 }
+		command = { type = event which = 9281925 where = IND when = 1 }
+	}
+	action_b = {
+		trigger = { exists = CHC NOT = { war = { country = IND country = CHC } } NOT = { alliance = { country = IND country = CHC } } }
+		name = "Declare war on Communist China: +3 dissent"
+		command = { type = setflag which = ind_aubm_declare_chc }
+		command = { type = dissent value = 3 }
+		command = { type = event which = 9281925 where = IND when = 1 }
+	}
+	action_c = {
+		trigger = {
+			exists = SIA
+			NOT = { war = { country = IND country = SIA } }
+			NOT = { alliance = { country = IND country = SIA } }
+			NOT = { flag = ind_v3_delhi_pact }
+			NOT = { flag = ind_v42_delhi_pact_alliance }
+			NOT = { flag = ind_v42_delhi_siam_alliance }
+			NOT = { AND = { flag = ind_v42_delhi_pact_consultative flag = ind_v42_siam_accepts_delhi_pact } }
+		}
+		name = "Declare war on Siam: +3 dissent"
+		command = { type = setflag which = ind_aubm_declare_sia }
+		command = { type = dissent value = 3 }
+		command = { type = event which = 9281925 where = IND when = 1 }
+	}
+	action_d = {
+		name = "Return to regional campaigns"
+		command = { type = event which = 9281912 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9281913
+	random = no
+	persistent = yes
+	country = IND
+	name = "India's Live Campaign Ledger"
+	desc = "The ledger is geographic rather than ideological. Southern Command covers Burma, Malaya, Indonesia, Australia and Japan. Western Command covers Persia, the Gulf, Suez and East Africa. Northern Command covers Afghanistan, Tibet, Xinjiang, Central Asia and the Caucasus. Global Command covers Europe, Britain and the Pacific approaches."
+	style = 2
+	picture = "aubm_v4_war_aims"
+	action_a = {
+		name = "Inspect Southern Command"
+		command = { type = event which = 9281930 where = IND when = 1 }
+	}
+	action_b = {
+		name = "Inspect Western Command"
+		command = { type = event which = 9281931 where = IND when = 1 }
+	}
+	action_c = {
+		name = "Inspect Northern Command"
+		command = { type = event which = 9281932 where = IND when = 1 }
+	}
+	action_d = {
+		name = "Inspect Global Command"
+		command = { type = event which = 9281933 where = IND when = 1 }
+	}
+}
+
+#########################################################################
+# Confirmed declarations against the five great powers.
+#########################################################################
+
+event = {
+	id = 9281920
+	random = no
+	persistent = yes
+	country = IND
+	name = "Confirm War Against Britain"
+	desc = "War with Britain normally brings the British-led coalition. India cannot issue this declaration while bound to Britain, the United States or an Allied compact; that relationship must first be ended peacefully through the strategic-alignment cabinet."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+	action_a = {
+		trigger = { NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_allied } }
+		name = "Declare war on Britain: +4 dissent"
+		command = { type = setflag which = ind_aubm_declare_eng }
+		command = { type = dissent value = 4 }
+		command = { type = event which = 9281925 where = IND when = 1 }
+	}
+	action_b = { name = "Cancel" }
+}
+
+event = {
+	id = 9281921
+	random = no
+	persistent = yes
+	country = IND
+	name = "Confirm War Against Germany"
+	desc = "War with Germany normally brings the European Axis. India cannot issue this declaration while bound to Berlin; every other coalition or sovereign India keeps its diplomatic system and adds Germany as an enemy."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+	action_a = {
+		trigger = { NOT = { alliance = { country = IND country = GER } } NOT = { flag = ind_aubm_commitment_german } }
+		name = "Declare war on Germany: +4 dissent"
+		command = { type = setflag which = ind_aubm_declare_ger }
+		command = { type = dissent value = 4 }
+		command = { type = event which = 9281925 where = IND when = 1 }
+	}
+	action_b = { name = "Cancel" }
+}
+
+event = {
+	id = 9281922
+	random = no
+	persistent = yes
+	country = IND
+	name = "Confirm War Against the Soviet Union"
+	desc = "A declaration inside a formal alliance is inherited by every ally. India cannot declare against Moscow while bound to the Soviet route. Under the Delhi-Tokyo strategic compact, however, India remains outside Japan's formal alliance and may open a separate Soviet war without rupturing the Tokyo compact."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+	action_a = {
+		trigger = { NOT = { alliance = { country = IND country = SOV } } NOT = { flag = ind_aubm_commitment_soviet } }
+		name = "Declare within the current war system: +5 dissent"
+		command = { type = setflag which = ind_aubm_declare_sov }
+		command = { type = dissent value = 5 }
+		command = { type = event which = 9281925 where = IND when = 1 }
+	}
+	action_b = { name = "Cancel" }
+}
+
+event = {
+	id = 9281923
+	random = no
+	persistent = yes
+	country = IND
+	name = "Confirm War Against Japan"
+	desc = "India cannot declare war on Japan while bound by the Delhi-Tokyo compact or a formal Japanese alliance. Delhi must withdraw peacefully and complete the cooling-off period before an anti-Japanese war can be authorized."
+	style = 2
+	picture = "aubm_v4_japan_southern_choice"
+	action_a = {
+		trigger = { NOT = { alliance = { country = IND country = JAP } } NOT = { flag = ind_aubm_commitment_japan } }
+		name = "Repudiate Tokyo and declare war: +6 dissent"
+		command = { type = setflag which = ind_aubm_declare_jap }
+		command = { type = dissent value = 6 }
+		command = { type = event which = 9281925 where = IND when = 1 }
+	}
+	action_b = { name = "Cancel" }
+}
+
+event = {
+	id = 9281924
+	random = no
+	persistent = yes
+	country = IND
+	name = "Confirm War Against the United States"
+	desc = "War with the United States can widen into a global naval conflict. India cannot issue this declaration while bound to the Allied route; Japan, Germany, the Soviet Union or a sovereign India otherwise keeps its current partnership."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	action_a = {
+		trigger = { NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_allied } }
+		name = "Declare war on the United States: +6 dissent"
+		command = { type = setflag which = ind_aubm_declare_usa }
+		command = { type = dissent value = 6 }
+		command = { type = event which = 9281925 where = IND when = 1 }
+	}
+	action_b = { name = "Cancel" }
+}
+
+event = {
+	id = 9281925
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	name = "The Declaration Reaches the Foreign Ministry"
+	desc = "The constitutional and alliance formalities are complete. India now enters only the war authorized by the Cabinet, except where its surviving formal alliance automatically merges that war."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+	action_a = {
+		trigger = {
+			NOT = {
+				OR = {
+					AND = { flag = ind_aubm_declare_eng OR = { alliance = { country = IND country = ENG } alliance = { country = IND country = USA } flag = ind_aubm_commitment_allied } }
+					AND = { flag = ind_aubm_declare_ger OR = { alliance = { country = IND country = GER } flag = ind_aubm_commitment_german } }
+					AND = { flag = ind_aubm_declare_sov OR = { alliance = { country = IND country = SOV } flag = ind_aubm_commitment_soviet } }
+					AND = { flag = ind_aubm_declare_jap OR = { alliance = { country = IND country = JAP } flag = ind_aubm_commitment_japan } }
+					AND = { flag = ind_aubm_declare_usa OR = { alliance = { country = IND country = ENG } alliance = { country = IND country = USA } flag = ind_aubm_commitment_allied } }
+				}
+			}
+		}
+		name = "Issue the declaration"
+		command = { trigger = { flag = ind_aubm_declare_eng exists = ENG NOT = { war = { country = IND country = ENG } } NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_allied } } type = war which = ENG }
+		command = { trigger = { flag = ind_aubm_declare_ger exists = GER NOT = { war = { country = IND country = GER } } NOT = { alliance = { country = IND country = GER } } NOT = { flag = ind_aubm_commitment_german } } type = war which = GER }
+		command = { trigger = { flag = ind_aubm_declare_sov exists = SOV NOT = { war = { country = IND country = SOV } } NOT = { alliance = { country = IND country = SOV } } NOT = { flag = ind_aubm_commitment_soviet } } type = war which = SOV }
+		command = { trigger = { flag = ind_aubm_declare_jap exists = JAP NOT = { war = { country = IND country = JAP } } NOT = { alliance = { country = IND country = JAP } } NOT = { flag = ind_aubm_commitment_japan } } type = war which = JAP }
+		command = { trigger = { flag = ind_aubm_declare_usa exists = USA NOT = { war = { country = IND country = USA } } NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_allied } } type = war which = USA }
+		command = { trigger = { flag = ind_aubm_declare_per exists = PER NOT = { war = { country = IND country = PER } } NOT = { alliance = { country = IND country = PER } } NOT = { flag = ind_v3_delhi_pact } } type = war which = PER }
+		command = { trigger = { flag = ind_aubm_declare_irq exists = IRQ NOT = { war = { country = IND country = IRQ } } NOT = { alliance = { country = IND country = IRQ } } } type = war which = IRQ }
+		command = { trigger = { flag = ind_aubm_declare_sau exists = SAU NOT = { war = { country = IND country = SAU } } NOT = { alliance = { country = IND country = SAU } } } type = war which = SAU }
+		command = { trigger = { flag = ind_aubm_declare_afg exists = AFG NOT = { war = { country = IND country = AFG } } NOT = { alliance = { country = IND country = AFG } } NOT = { flag = ind_v3_delhi_pact } } type = war which = AFG }
+		command = { trigger = { flag = ind_aubm_declare_tib exists = TIB NOT = { war = { country = IND country = TIB } } NOT = { alliance = { country = IND country = TIB } } } type = war which = TIB }
+		command = { trigger = { flag = ind_aubm_declare_sik exists = SIK NOT = { war = { country = IND country = SIK } } NOT = { alliance = { country = IND country = SIK } } } type = war which = SIK }
+		command = { trigger = { flag = ind_aubm_declare_chi exists = CHI NOT = { war = { country = IND country = CHI } } NOT = { alliance = { country = IND country = CHI } } NOT = { flag = ind_v3_delhi_pact } NOT = { flag = ind_v42_delhi_pact_alliance } NOT = { flag = ind_v42_delhi_china_alliance } NOT = { AND = { flag = ind_v42_delhi_pact_consultative flag = ind_v42_china_accepts_delhi_pact } } } type = war which = CHI }
+		command = { trigger = { flag = ind_aubm_declare_chc exists = CHC NOT = { war = { country = IND country = CHC } } NOT = { alliance = { country = IND country = CHC } } } type = war which = CHC }
+		command = { trigger = { flag = ind_aubm_declare_sia exists = SIA NOT = { war = { country = IND country = SIA } } NOT = { alliance = { country = IND country = SIA } } NOT = { flag = ind_v3_delhi_pact } NOT = { flag = ind_v42_delhi_pact_alliance } NOT = { flag = ind_v42_delhi_siam_alliance } NOT = { AND = { flag = ind_v42_delhi_pact_consultative flag = ind_v42_siam_accepts_delhi_pact } } } type = war which = SIA }
+		command = { trigger = { flag = ind_aubm_declare_ita exists = ITA NOT = { war = { country = IND country = ITA } } NOT = { alliance = { country = IND country = ITA } } } type = war which = ITA }
+		command = { trigger = { flag = ind_aubm_declare_fra exists = FRA NOT = { war = { country = IND country = FRA } } NOT = { alliance = { country = IND country = FRA } } } type = war which = FRA }
+		command = { trigger = { flag = ind_aubm_declare_por exists = POR NOT = { war = { country = IND country = POR } } NOT = { alliance = { country = IND country = POR } } } type = war which = POR }
+		command = { trigger = { flag = ind_aubm_declare_tur exists = TUR NOT = { war = { country = IND country = TUR } } NOT = { alliance = { country = IND country = TUR } } } type = war which = TUR }
+		command = { trigger = { flag = ind_aubm_declare_u05 exists = U05 NOT = { war = { country = IND country = U05 } } NOT = { alliance = { country = IND country = U05 } } } type = war which = U05 }
+		command = { trigger = { flag = ind_aubm_declare_hol exists = HOL NOT = { war = { country = IND country = HOL } } NOT = { alliance = { country = IND country = HOL } } } type = war which = HOL }
+		command = { trigger = { flag = ind_aubm_declare_ast exists = AST NOT = { war = { country = IND country = AST } } NOT = { alliance = { country = IND country = AST } } } type = war which = AST }
+		command = { trigger = { flag = ind_aubm_declare_nzl exists = NZL NOT = { war = { country = IND country = NZL } } NOT = { alliance = { country = IND country = NZL } } } type = war which = NZL }
+		command = { trigger = { flag = ind_aubm_declare_omn exists = OMN NOT = { war = { country = IND country = OMN } } NOT = { alliance = { country = IND country = OMN } } } type = war which = OMN }
+		command = { trigger = { flag = ind_aubm_declare_yem exists = YEM NOT = { war = { country = IND country = YEM } } NOT = { alliance = { country = IND country = YEM } } } type = war which = YEM }
+		command = { trigger = { flag = ind_aubm_declare_eth exists = ETH NOT = { war = { country = IND country = ETH } } NOT = { alliance = { country = IND country = ETH } } } type = war which = ETH }
+		command = { trigger = { flag = ind_aubm_declare_saf exists = SAF NOT = { war = { country = IND country = SAF } } NOT = { alliance = { country = IND country = SAF } } } type = war which = SAF }
+
+		# Normalize the partner after the declaration. The declaration and
+		# coalition are separate state: remaining allies stay, otherwise India
+		# becomes sovereign. A Tokyo compact survives only if Japan was not the
+		# declared enemy; autonomous socialism survives only outside a Soviet war.
+		command = { trigger = { flag = ind_aubm_declare_jap } type = clrflag which = ind_aubm_jp_partnership }
+		command = { trigger = { flag = ind_aubm_declare_jap } type = clrflag which = ind_aubm_jp_formal_alliance }
+		command = { trigger = { flag = ind_aubm_declare_jap } type = setflag which = ind_aubm_jp_rupture }
+		command = { trigger = { flag = ind_aubm_declare_jap } type = clrflag which = ind_aubm_jp_proposal_pending }
+		command = { trigger = { flag = ind_aubm_declare_jap } type = clrflag which = ind_aubm_jp_retry_cooldown }
+		command = { trigger = { flag = ind_aubm_declare_jap } type = clrflag which = ind_aubm_jp_retry_ready }
+		# A declaration against either Allied leader terminates every Allied
+		# compact. Otherwise the surviving treaty monitor would restore the route.
+		command = { trigger = { OR = { flag = ind_aubm_declare_eng flag = ind_aubm_declare_usa } } type = clrflag which = ind_v4a_treaty_commonwealth }
+		command = { trigger = { OR = { flag = ind_aubm_declare_eng flag = ind_aubm_declare_usa } } type = clrflag which = ind_v4a_treaty_naval_compact }
+		command = { trigger = { OR = { flag = ind_aubm_declare_eng flag = ind_aubm_declare_usa } } type = clrflag which = ind_v4a_treaty_formal_alliance }
+		command = { trigger = { OR = { flag = ind_aubm_declare_eng flag = ind_aubm_declare_usa } } type = clrflag which = ind_v4a_treaty_cobelligerent }
+		command = { trigger = { OR = { flag = ind_aubm_declare_eng flag = ind_aubm_declare_usa } } type = clrflag which = ind_aubm_allied_partner_eng }
+		command = { trigger = { OR = { flag = ind_aubm_declare_eng flag = ind_aubm_declare_usa } } type = clrflag which = ind_aubm_allied_partner_usa }
+		command = { trigger = { OR = { flag = ind_aubm_declare_eng flag = ind_aubm_declare_usa } } type = clrflag which = ind_v4a_allied_framework_started }
+		command = { trigger = { OR = { flag = ind_aubm_declare_eng flag = ind_aubm_declare_usa } } type = clrflag which = ind_v4a_allied_framework_settled }
+		command = { trigger = { OR = { flag = ind_aubm_declare_eng flag = ind_aubm_declare_usa } } type = clrflag which = ind_v4a_proposal_commonwealth }
+		command = { trigger = { OR = { flag = ind_aubm_declare_eng flag = ind_aubm_declare_usa } } type = clrflag which = ind_v4a_proposal_naval_compact }
+		command = { trigger = { OR = { flag = ind_aubm_declare_eng flag = ind_aubm_declare_usa } } type = clrflag which = ind_v4a_proposal_formal_alliance }
+		command = { trigger = { OR = { flag = ind_aubm_declare_eng flag = ind_aubm_declare_usa } } type = clrflag which = ind_v4a_proposal_cobelligerent }
+		command = { trigger = { flag = ind_aubm_declare_ger } type = clrflag which = ind_gc_formal_axis }
+		command = { trigger = { flag = ind_aubm_declare_ger } type = clrflag which = ind_gc_cobelligerent }
+		command = { trigger = { flag = ind_aubm_declare_ger } type = clrflag which = ind_gc_sovereign }
+		command = { trigger = { flag = ind_aubm_declare_ger } type = clrflag which = ind_gc_berlin_negotiating }
+		command = { trigger = { flag = ind_aubm_declare_ger } type = clrflag which = ind_gc_berlin_cooldown }
+		command = { trigger = { flag = ind_aubm_declare_ger } type = clrflag which = ind_gc_berlin_aloof }
+		# War with Moscow terminates Soviet treaties, not India's domestic socialist identity.
+		command = { trigger = { flag = ind_aubm_declare_sov } type = clrflag which = ind_v4_sov_equal_compact }
+		command = { trigger = { flag = ind_aubm_declare_sov } type = clrflag which = ind_v4_sov_supervised_compact }
+		command = { trigger = { flag = ind_aubm_declare_sov } type = clrflag which = ind_v4_sov_program_defined }
+		command = { trigger = { flag = ind_aubm_declare_sov } type = clrflag which = ind_v4_sov_equal_compact_proposed }
+		command = { trigger = { flag = ind_aubm_declare_sov } type = clrflag which = ind_v4_sov_technical_only }
+		command = { trigger = { flag = ind_aubm_declare_sov } type = clrflag which = ind_v4_sov_formal_alliance }
+		command = { trigger = { flag = ind_aubm_declare_sov } type = clrflag which = ind_v4_sov_independent_cobelligerent }
+		command = { trigger = { flag = ind_aubm_declare_sov } type = clrflag which = ind_v4_sov_separate_command }
+		command = { trigger = { flag = ind_aubm_declare_sov } type = clrflag which = ind_v4_sov_moscow_consultation }
+		command = { trigger = { flag = ind_aubm_declare_sov } type = clrflag which = ind_v4_sov_moscow_retry_pending }
+		command = { trigger = { flag = ind_aubm_declare_sov } type = clrflag which = ind_v4_sov_moscow_terms_rejected }
+
+		command = { type = clrflag which = ind_aubm_route_allied }
+		command = { type = clrflag which = ind_aubm_route_german }
+		command = { type = clrflag which = ind_aubm_route_soviet }
+		command = { type = clrflag which = ind_aubm_route_japan }
+		command = { type = clrflag which = ind_aubm_route_sovereign }
+		command = { trigger = { OR = { alliance = { country = IND country = ENG } alliance = { country = IND country = USA } } } type = setflag which = ind_aubm_route_allied }
+		command = { trigger = { NOT = { flag = ind_aubm_route_allied } alliance = { country = IND country = GER } } type = setflag which = ind_aubm_route_german }
+		command = { trigger = { NOT = { flag = ind_aubm_route_allied } NOT = { flag = ind_aubm_route_german } alliance = { country = IND country = SOV } } type = setflag which = ind_aubm_route_soviet }
+		command = { trigger = { NOT = { flag = ind_aubm_route_allied } NOT = { flag = ind_aubm_route_german } NOT = { flag = ind_aubm_route_soviet } alliance = { country = IND country = JAP } } type = setflag which = ind_aubm_route_japan }
+		command = { trigger = { NOT = { flag = ind_aubm_route_allied } NOT = { flag = ind_aubm_route_german } NOT = { flag = ind_aubm_route_soviet } NOT = { flag = ind_aubm_route_japan } OR = { exists = ENG exists = USA } OR = { flag = ind_v4a_treaty_commonwealth flag = ind_v4a_treaty_naval_compact flag = ind_v4a_treaty_cobelligerent } NOT = { war = { country = IND country = ENG } } NOT = { war = { country = IND country = USA } } } type = setflag which = ind_aubm_route_allied }
+		command = { trigger = { NOT = { flag = ind_aubm_route_allied } NOT = { flag = ind_aubm_route_german } NOT = { flag = ind_aubm_route_soviet } NOT = { flag = ind_aubm_route_japan } exists = GER flag = ind_gc_cobelligerent NOT = { war = { country = IND country = GER } } } type = setflag which = ind_aubm_route_german }
+		command = { trigger = { NOT = { flag = ind_aubm_route_allied } NOT = { flag = ind_aubm_route_german } NOT = { flag = ind_aubm_route_soviet } NOT = { flag = ind_aubm_route_japan } exists = SOV OR = { flag = ind_v4_sov_equal_compact flag = ind_v4_sov_supervised_compact } NOT = { war = { country = IND country = SOV } } } type = setflag which = ind_aubm_route_soviet }
+		command = { trigger = { NOT = { flag = ind_aubm_route_allied } NOT = { flag = ind_aubm_route_german } NOT = { flag = ind_aubm_route_soviet } NOT = { flag = ind_aubm_route_japan } exists = JAP flag = ind_aubm_jp_partnership NOT = { flag = ind_aubm_jp_rupture } } type = setflag which = ind_aubm_route_japan }
+		command = { trigger = { NOT = { flag = ind_aubm_route_allied } NOT = { flag = ind_aubm_route_german } NOT = { flag = ind_aubm_route_soviet } NOT = { flag = ind_aubm_route_japan } } type = setflag which = ind_aubm_route_sovereign }
+		command = { trigger = { NOT = { flag = ind_aubm_route_japan } } type = clrflag which = ind_aubm_jp_partnership }
+		command = { trigger = { NOT = { flag = ind_aubm_route_japan } } type = clrflag which = ind_aubm_jp_formal_alliance }
+		command = { trigger = { NOT = { flag = ind_aubm_route_sovereign } } type = clrflag which = ind_aubm_socialist_autonomous }
+
+		command = { type = clrflag which = ind_v3_allied_orientation }
+		command = { type = clrflag which = ind_v3_axis_orientation }
+		command = { type = clrflag which = ind_v3_soviet_orientation }
+		command = { type = clrflag which = ind_v3_japanese_orientation }
+		command = { type = clrflag which = ind_v3_non_aligned }
+		command = { type = clrflag which = ind_v3_joined_allies }
+		command = { type = clrflag which = ind_v3_joined_axis }
+		command = { type = clrflag which = ind_v3_joined_comintern }
+		command = { type = clrflag which = ind_v3_joined_japan }
+		command = { type = clrflag which = ind_v4_strategy_allied }
+		command = { type = clrflag which = ind_v4_strategy_axis }
+		command = { type = clrflag which = ind_v4_strategy_soviet }
+		command = { type = clrflag which = ind_v4_strategy_japan }
+		command = { type = clrflag which = ind_v4_strategy_nam }
+		command = { trigger = { flag = ind_aubm_route_allied } type = setflag which = ind_v3_allied_orientation }
+		command = { trigger = { OR = { alliance = { country = IND country = ENG } alliance = { country = IND country = USA } } } type = setflag which = ind_v3_joined_allies }
+		command = { trigger = { flag = ind_aubm_route_allied } type = setflag which = ind_v4_strategy_allied }
+		command = { trigger = { flag = ind_aubm_route_german } type = setflag which = ind_v3_axis_orientation }
+		command = { trigger = { alliance = { country = IND country = GER } } type = setflag which = ind_v3_joined_axis }
+		command = { trigger = { flag = ind_aubm_route_german } type = setflag which = ind_v4_strategy_axis }
+		command = { trigger = { flag = ind_aubm_route_soviet } type = setflag which = ind_v3_soviet_orientation }
+		command = { trigger = { alliance = { country = IND country = SOV } } type = setflag which = ind_v3_joined_comintern }
+		command = { trigger = { flag = ind_aubm_route_soviet } type = setflag which = ind_v4_strategy_soviet }
+		command = { trigger = { flag = ind_aubm_route_japan } type = setflag which = ind_v3_japanese_orientation }
+		command = { trigger = { alliance = { country = IND country = JAP } } type = setflag which = ind_v3_joined_japan }
+		command = { trigger = { flag = ind_aubm_route_japan } type = setflag which = ind_v4_strategy_japan }
+		command = { trigger = { flag = ind_aubm_route_sovereign NOT = { flag = ind_aubm_socialist_autonomous } } type = setflag which = ind_v3_non_aligned }
+		command = { trigger = { flag = ind_aubm_route_sovereign NOT = { flag = ind_aubm_socialist_autonomous } } type = setflag which = ind_v4_strategy_nam }
+		command = { trigger = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } type = setflag which = ind_v3_soviet_orientation }
+		command = { trigger = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } type = setflag which = ind_v4_strategy_soviet }
+
+		command = { type = clrflag which = ind_aubm_declare_eng }
+		command = { type = clrflag which = ind_aubm_declare_ger }
+		command = { type = clrflag which = ind_aubm_declare_sov }
+		command = { type = clrflag which = ind_aubm_declare_jap }
+		command = { type = clrflag which = ind_aubm_declare_usa }
+		command = { type = clrflag which = ind_aubm_declare_per }
+		command = { type = clrflag which = ind_aubm_declare_irq }
+		command = { type = clrflag which = ind_aubm_declare_sau }
+		command = { type = clrflag which = ind_aubm_declare_afg }
+		command = { type = clrflag which = ind_aubm_declare_tib }
+		command = { type = clrflag which = ind_aubm_declare_sik }
+		command = { type = clrflag which = ind_aubm_declare_chi }
+		command = { type = clrflag which = ind_aubm_declare_chc }
+		command = { type = clrflag which = ind_aubm_declare_sia }
+		command = { type = clrflag which = ind_aubm_declare_ita }
+		command = { type = clrflag which = ind_aubm_declare_fra }
+		command = { type = clrflag which = ind_aubm_declare_por }
+		command = { type = clrflag which = ind_aubm_declare_tur }
+		command = { type = clrflag which = ind_aubm_declare_u05 }
+		command = { type = clrflag which = ind_aubm_declare_hol }
+		command = { type = clrflag which = ind_aubm_declare_ast }
+		command = { type = clrflag which = ind_aubm_declare_nzl }
+		command = { type = clrflag which = ind_aubm_declare_omn }
+		command = { type = clrflag which = ind_aubm_declare_yem }
+		command = { type = clrflag which = ind_aubm_declare_eth }
+		command = { type = clrflag which = ind_aubm_declare_saf }
+		command = { type = setflag which = ind_aubm_war_declared_by_cabinet }
+	}
+	action_b = {
+		trigger = {
+			OR = {
+				AND = { flag = ind_aubm_declare_eng OR = { alliance = { country = IND country = ENG } alliance = { country = IND country = USA } flag = ind_aubm_commitment_allied } }
+				AND = { flag = ind_aubm_declare_ger OR = { alliance = { country = IND country = GER } flag = ind_aubm_commitment_german } }
+				AND = { flag = ind_aubm_declare_sov OR = { alliance = { country = IND country = SOV } flag = ind_aubm_commitment_soviet } }
+				AND = { flag = ind_aubm_declare_jap OR = { alliance = { country = IND country = JAP } flag = ind_aubm_commitment_japan } }
+				AND = { flag = ind_aubm_declare_usa OR = { alliance = { country = IND country = ENG } alliance = { country = IND country = USA } flag = ind_aubm_commitment_allied } }
+			}
+		}
+		name = "A new treaty supersedes the declaration"
+		command = { type = clrflag which = ind_aubm_declare_eng }
+		command = { type = clrflag which = ind_aubm_declare_ger }
+		command = { type = clrflag which = ind_aubm_declare_sov }
+		command = { type = clrflag which = ind_aubm_declare_jap }
+		command = { type = clrflag which = ind_aubm_declare_usa }
+		command = { type = clrflag which = ind_aubm_declare_per }
+		command = { type = clrflag which = ind_aubm_declare_irq }
+		command = { type = clrflag which = ind_aubm_declare_sau }
+		command = { type = clrflag which = ind_aubm_declare_afg }
+		command = { type = clrflag which = ind_aubm_declare_tib }
+		command = { type = clrflag which = ind_aubm_declare_sik }
+		command = { type = clrflag which = ind_aubm_declare_chi }
+		command = { type = clrflag which = ind_aubm_declare_chc }
+		command = { type = clrflag which = ind_aubm_declare_sia }
+		command = { type = clrflag which = ind_aubm_declare_ita }
+		command = { type = clrflag which = ind_aubm_declare_fra }
+		command = { type = clrflag which = ind_aubm_declare_por }
+		command = { type = clrflag which = ind_aubm_declare_tur }
+		command = { type = clrflag which = ind_aubm_declare_u05 }
+		command = { type = clrflag which = ind_aubm_declare_hol }
+		command = { type = clrflag which = ind_aubm_declare_ast }
+		command = { type = clrflag which = ind_aubm_declare_nzl }
+		command = { type = clrflag which = ind_aubm_declare_omn }
+		command = { type = clrflag which = ind_aubm_declare_yem }
+		command = { type = clrflag which = ind_aubm_declare_eth }
+		command = { type = clrflag which = ind_aubm_declare_saf }
+	}
+}
+
+#########################################################################
+# Additional country dockets. These are explicit wars, not route gates.
+#########################################################################
+
+event = {
+	id = 9281926
+	random = no
+	persistent = yes
+	country = IND
+	name = "Regional Docket: Europe and the Mediterranean"
+	desc = "Published objectives are Rome, Paris and Ankara. India keeps its current coalition; a country sharing India's formal alliance cannot be targeted from this docket. Capturing the named capital opens that country's response and settlement without ending another Indian campaign."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+	action_a = {
+		trigger = { exists = ITA NOT = { war = { country = IND country = ITA } } NOT = { alliance = { country = IND country = ITA } } }
+		name = "Declare war on Italy: +3 dissent"
+		command = { type = setflag which = ind_aubm_declare_ita }
+		command = { type = dissent value = 3 }
+		command = { type = event which = 9281925 where = IND when = 1 }
+	}
+	action_b = {
+		trigger = { exists = FRA NOT = { war = { country = IND country = FRA } } NOT = { alliance = { country = IND country = FRA } } }
+		name = "Declare war on France: +4 dissent"
+		command = { type = setflag which = ind_aubm_declare_fra }
+		command = { type = dissent value = 4 }
+		command = { type = event which = 9281925 where = IND when = 1 }
+	}
+	action_c = {
+		trigger = { exists = TUR NOT = { war = { country = IND country = TUR } } NOT = { alliance = { country = IND country = TUR } } }
+		name = "Declare war on Turkey: +4 dissent"
+		command = { type = setflag which = ind_aubm_declare_tur }
+		command = { type = dissent value = 4 }
+		command = { type = event which = 9281925 where = IND when = 1 }
+	}
+	action_d = {
+		name = "Colonial and ocean powers"
+		command = { type = event which = 9281927 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9281927
+	random = no
+	persistent = yes
+	country = IND
+	name = "Regional Docket: Colonial and Ocean Powers"
+	desc = "Published objectives are Batavia for the East Indies, Amsterdam for the Netherlands and Canberra for Australia. The East Indies authority is this scenario's legal owner. Each country is an independent war and settlement, never an automatic shared annexation claim."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	action_a = {
+		trigger = { exists = U05 NOT = { war = { country = IND country = U05 } } NOT = { alliance = { country = IND country = U05 } } }
+		name = "Declare war on the East Indies: +3 dissent"
+		command = { type = setflag which = ind_aubm_declare_u05 }
+		command = { type = dissent value = 3 }
+		command = { type = event which = 9281925 where = IND when = 1 }
+	}
+	action_b = {
+		trigger = { exists = HOL NOT = { war = { country = IND country = HOL } } NOT = { alliance = { country = IND country = HOL } } }
+		name = "Declare war on the Netherlands: +3 dissent"
+		command = { type = setflag which = ind_aubm_declare_hol }
+		command = { type = dissent value = 3 }
+		command = { type = event which = 9281925 where = IND when = 1 }
+	}
+	action_c = {
+		trigger = { exists = AST NOT = { war = { country = IND country = AST } } NOT = { alliance = { country = IND country = AST } } }
+		name = "Declare war on Australia: +4 dissent"
+		command = { type = setflag which = ind_aubm_declare_ast }
+		command = { type = dissent value = 4 }
+		command = { type = event which = 9281925 where = IND when = 1 }
+	}
+	action_d = {
+		name = "Portugal, New Zealand and Africa"
+		command = { type = event which = 9281928 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9281928
+	random = no
+	persistent = yes
+	country = IND
+	name = "Regional Docket: Remaining Ocean States"
+	desc = "Published objectives are Lisbon for Portugal and Wellington for New Zealand. Portugal remains available after an unresolved Goa confrontation; New Zealand is a separate Pacific campaign. The next page maps Muscat, Sana'a, Addis Ababa and Pretoria."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		trigger = { exists = POR NOT = { war = { country = IND country = POR } } NOT = { alliance = { country = IND country = POR } } }
+		name = "Declare war on Portugal: +2 dissent"
+		command = { type = setflag which = ind_aubm_declare_por }
+		command = { type = dissent value = 2 }
+		command = { type = event which = 9281925 where = IND when = 1 }
+	}
+	action_b = {
+		trigger = { exists = NZL NOT = { war = { country = IND country = NZL } } NOT = { alliance = { country = IND country = NZL } } }
+		name = "Declare war on New Zealand: +4 dissent"
+		command = { type = setflag which = ind_aubm_declare_nzl }
+		command = { type = dissent value = 4 }
+		command = { type = event which = 9281925 where = IND when = 1 }
+	}
+	action_c = {
+		name = "Arabia, the Horn and South Africa"
+		command = { type = event which = 9281929 where = IND when = 1 }
+	}
+	action_d = {
+		name = "Return to regional campaigns"
+		command = { type = event which = 9281912 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9281929
+	random = no
+	persistent = yes
+	country = IND
+	name = "Regional Docket: Arabia and Africa"
+	desc = "Published objectives are Muscat for Oman and Sana'a for Yemen; the next file covers Addis Ababa and Pretoria. Each campaign is scored from live capital control and receives its own response roll, regardless of which alliance or sovereign route opened the war."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	action_a = {
+		trigger = { exists = OMN NOT = { war = { country = IND country = OMN } } NOT = { alliance = { country = IND country = OMN } } }
+		name = "Declare war on Oman: +2 dissent"
+		command = { type = setflag which = ind_aubm_declare_omn }
+		command = { type = dissent value = 2 }
+		command = { type = event which = 9281925 where = IND when = 1 }
+	}
+	action_b = {
+		trigger = { exists = YEM NOT = { war = { country = IND country = YEM } } NOT = { alliance = { country = IND country = YEM } } }
+		name = "Declare war on Yemen: +2 dissent"
+		command = { type = setflag which = ind_aubm_declare_yem }
+		command = { type = dissent value = 2 }
+		command = { type = event which = 9281925 where = IND when = 1 }
+	}
+	action_c = {
+		name = "Ethiopia and South Africa"
+		command = { type = event which = 9281999 where = IND when = 1 }
+	}
+	action_d = {
+		name = "Return to regional campaigns"
+		command = { type = event which = 9281912 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9281999
+	random = no
+	persistent = yes
+	country = IND
+	name = "Regional Docket: The Horn and the Cape"
+	desc = "Published objectives are Addis Ababa for Ethiopia and Pretoria for South Africa. A declaration is separate from occupation policy: capturing the named capital first earns leverage, then opens a foreign armistice or post-annexation constitutional choice."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	action_a = {
+		trigger = { exists = ETH NOT = { war = { country = IND country = ETH } } NOT = { alliance = { country = IND country = ETH } } }
+		name = "Declare war on Ethiopia: +3 dissent"
+		command = { type = setflag which = ind_aubm_declare_eth }
+		command = { type = dissent value = 3 }
+		command = { type = event which = 9281925 where = IND when = 1 }
+	}
+	action_b = {
+		trigger = { exists = SAF NOT = { war = { country = IND country = SAF } } NOT = { alliance = { country = IND country = SAF } } }
+		name = "Declare war on South Africa: +4 dissent"
+		command = { type = setflag which = ind_aubm_declare_saf }
+		command = { type = dissent value = 4 }
+		command = { type = event which = 9281925 where = IND when = 1 }
+	}
+	action_c = {
+		name = "Open the unrestricted target catalogue"
+		command = { type = event which = 9281013 where = IND when = 1 }
+	}
+	action_d = {
+		name = "Return to regional campaigns"
+		command = { type = event which = 9281912 where = IND when = 1 }
+	}
+}
+
+#########################################################################
+# A strategic partner cannot remain India's partner after entering the
+# opposing war. Campaign credit survives; only the command relationship ends.
+#########################################################################
+
+event = {
+	id = 9281996
+	random = no
+	persistent = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_wartime_framework
+		event = 2007033
+		OR = {
+			war = { country = IND country = SOV }
+			flag = ind_aubm_route_german
+			flag = ind_gc_campaign_active
+			flag = ind_aubm_soviet_current
+			flag = ind_aubm_soviet_limited_victory
+			flag = ind_aubm_soviet_major_victory
+			flag = ind_aubm_national_northern_victory
+		}
+		NOT = { flag = ind_aubm_bitter_peace_answered }
+	}
+	name = "The Bitter Peace Reaches Delhi"
+	desc = "Berlin and Moscow have ended their continental war, but India's legal position depends on whether Delhi still fights the Soviet Union. India may enter the armistice without surrendering verified battlefield credit, continue a separate war under Indian command, or simply record a peace already inherited from the coalition."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+	date = { day = 0 month = january year = 1940 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		trigger = { war = { country = IND country = SOV } }
+		name = "Enter the armistice; retain verified claims"
+		command = { type = peace which = SOV value = 1 }
+		command = { type = dissent value = -2 }
+		command = { type = relation which = GER value = 15 }
+		command = { type = setflag which = ind_aubm_bitter_peace_answered }
+		command = { trigger = { flag = ind_aubm_soviet_current } type = event which = 9282003 where = IND when = 1 }
+	}
+	action_b = {
+		trigger = { war = { country = IND country = SOV } }
+		name = "Continue India's separate Soviet war: +3 dissent"
+		command = { type = dissent value = 3 }
+		command = { type = supplies value = 500 }
+		command = { type = relation which = GER value = -20 }
+		command = { type = setflag which = ind_aubm_bitter_peace_independent_war }
+		command = { type = setflag which = ind_aubm_bitter_peace_answered }
+	}
+	action_c = {
+		trigger = { NOT = { war = { country = IND country = SOV } } }
+		name = "Record the inherited peace and India's ledger"
+		command = { type = setflag which = ind_aubm_bitter_peace_answered }
+		command = { trigger = { flag = ind_aubm_soviet_current } type = event which = 9282003 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9281997
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_wartime_framework
+		OR = {
+			AND = { flag = ind_aubm_route_allied NOT = { exists = ENG } NOT = { exists = USA } }
+			AND = { flag = ind_aubm_route_german NOT = { exists = GER } }
+			AND = { flag = ind_aubm_route_soviet NOT = { exists = SOV } }
+			AND = { flag = ind_aubm_route_japan NOT = { exists = JAP } }
+		}
+	}
+	name = "India's Strategic Partner Has Fallen"
+	desc = "The government anchoring India's current coalition or compact has ceased to exist. Delhi cannot inherit a dead partner's command indefinitely. India returns to sovereign command, keeps every battlefield achievement already earned, and observes a ninety-day reset before negotiating with a successor order."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+	date = { day = 0 month = january year = 1933 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Assume sovereign command; preserve the war ledger"
+		command = { type = leave_alliance when = 1 }
+		command = { type = clrflag which = ind_aubm_route_allied }
+		command = { type = clrflag which = ind_aubm_route_german }
+		command = { type = clrflag which = ind_aubm_route_soviet }
+		command = { type = clrflag which = ind_aubm_route_japan }
+		command = { type = setflag which = ind_aubm_route_sovereign }
+		command = { type = clrflag which = ind_aubm_commitment_allied }
+		command = { type = clrflag which = ind_aubm_commitment_german }
+		command = { type = clrflag which = ind_aubm_commitment_soviet }
+		command = { type = clrflag which = ind_aubm_commitment_japan }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_allied }
+		command = { type = clrflag which = ind_aubm_negotiation_german }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
+		command = { type = clrflag which = ind_aubm_negotiation_japan }
+		command = { type = clrflag which = ind_v4a_treaty_commonwealth }
+		command = { type = clrflag which = ind_v4a_treaty_naval_compact }
+		command = { type = clrflag which = ind_v4a_treaty_formal_alliance }
+		command = { type = clrflag which = ind_v4a_treaty_cobelligerent }
+		command = { type = clrflag which = ind_aubm_allied_partner_eng }
+		command = { type = clrflag which = ind_aubm_allied_partner_usa }
+		command = { type = clrflag which = ind_v4a_allied_framework_started }
+		command = { type = clrflag which = ind_v4a_allied_framework_settled }
+		command = { type = clrflag which = ind_v4a_proposal_commonwealth }
+		command = { type = clrflag which = ind_v4a_proposal_naval_compact }
+		command = { type = clrflag which = ind_v4a_proposal_formal_alliance }
+		command = { type = clrflag which = ind_v4a_proposal_cobelligerent }
+		command = { type = clrflag which = ind_gc_formal_axis }
+		command = { type = clrflag which = ind_gc_cobelligerent }
+		command = { type = clrflag which = ind_gc_sovereign }
+		command = { type = clrflag which = ind_gc_berlin_negotiating }
+		command = { type = clrflag which = ind_gc_berlin_cooldown }
+		command = { type = clrflag which = ind_gc_berlin_aloof }
+		command = { type = clrflag which = ind_v4_sov_equal_compact }
+		command = { type = clrflag which = ind_v4_sov_supervised_compact }
+		command = { type = clrflag which = ind_v4_sov_autonomous_socialism }
+		command = { type = clrflag which = ind_v4_sov_program_defined }
+		command = { type = clrflag which = ind_v4_sov_equal_compact_proposed }
+		command = { type = clrflag which = ind_v4_sov_technical_only }
+		command = { type = clrflag which = ind_v4_sov_formal_alliance }
+		command = { type = clrflag which = ind_v4_sov_independent_cobelligerent }
+		command = { type = clrflag which = ind_v4_sov_separate_command }
+		command = { type = clrflag which = ind_v4_sov_moscow_consultation }
+		command = { type = clrflag which = ind_v4_sov_moscow_retry_pending }
+		command = { type = clrflag which = ind_v4_sov_moscow_terms_rejected }
+		command = { type = clrflag which = ind_aubm_socialist_autonomous }
+		command = { type = clrflag which = ind_aubm_jp_partnership }
+		command = { type = clrflag which = ind_aubm_jp_formal_alliance }
+		command = { type = clrflag which = ind_aubm_jp_independent_cobelligerent }
+		command = { type = clrflag which = ind_aubm_jp_proposal_pending }
+		command = { type = clrflag which = ind_aubm_jp_retry_cooldown }
+		command = { type = clrflag which = ind_aubm_jp_retry_ready }
+		command = { type = clrflag which = ind_aubm_jp_tier_senior }
+		command = { type = clrflag which = ind_aubm_jp_tier_peer }
+		command = { type = clrflag which = ind_aubm_jp_tier_junior }
+		command = { type = clrflag which = ind_aubm_jp_tier_counter }
+		command = { type = clrflag which = ind_aubm_jp_india_full_sphere }
+		command = { type = clrflag which = ind_aubm_jp_india_core_sphere }
+		command = { type = setflag which = ind_aubm_jp_rupture }
+		command = { type = clrflag which = ind_v3_allied_orientation }
+		command = { type = clrflag which = ind_v3_axis_orientation }
+		command = { type = clrflag which = ind_v3_soviet_orientation }
+		command = { type = clrflag which = ind_v3_japanese_orientation }
+		command = { type = clrflag which = ind_v3_joined_allies }
+		command = { type = clrflag which = ind_v3_joined_axis }
+		command = { type = clrflag which = ind_v3_joined_comintern }
+		command = { type = clrflag which = ind_v3_joined_japan }
+		command = { type = clrflag which = ind_v4_strategy_allied }
+		command = { type = clrflag which = ind_v4_strategy_axis }
+		command = { type = clrflag which = ind_v4_strategy_soviet }
+		command = { type = clrflag which = ind_v4_strategy_japan }
+		command = { type = setflag which = ind_v3_non_aligned }
+		command = { type = setflag which = ind_v4_strategy_nam }
+		command = { type = setflag which = ind_aubm_realignment_cooldown }
+		command = { type = event which = 9281938 where = IND when = 90 }
+		command = { type = setflag which = ind_aubm_partner_collapse_recorded }
+	}
+}
+
+event = {
+	id = 9281998
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_wartime_framework
+		OR = {
+			AND = { flag = ind_aubm_route_allied OR = { war = { country = IND country = ENG } war = { country = IND country = USA } } }
+			AND = { flag = ind_aubm_route_german war = { country = IND country = GER } }
+			AND = { flag = ind_aubm_route_soviet war = { country = IND country = SOV } }
+			AND = { flag = ind_aubm_route_japan war = { country = IND country = JAP } }
+		}
+	}
+	name = "A Strategic Partnership Collapses Under Enemy Fire"
+	desc = "A country recorded as India's strategic partner has entered the opposing war. Delhi cannot remain inside a compact with an active enemy. The partnership ends immediately, India assumes sovereign command, and every earned campaign result remains on the national ledger. A new alignment remains blocked through a ninety-day reset and cannot silently restore the old relationship."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+	date = { day = 0 month = january year = 1933 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Record the rupture; preserve India's campaigns"
+		command = { type = leave_alliance when = 1 }
+		command = { type = clrflag which = ind_aubm_route_allied }
+		command = { type = clrflag which = ind_aubm_route_german }
+		command = { type = clrflag which = ind_aubm_route_soviet }
+		command = { type = clrflag which = ind_aubm_route_japan }
+		command = { type = setflag which = ind_aubm_route_sovereign }
+		command = { type = clrflag which = ind_aubm_commitment_allied }
+		command = { type = clrflag which = ind_aubm_commitment_german }
+		command = { type = clrflag which = ind_aubm_commitment_soviet }
+		command = { type = clrflag which = ind_aubm_commitment_japan }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_allied }
+		command = { type = clrflag which = ind_aubm_negotiation_german }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
+		command = { type = clrflag which = ind_aubm_negotiation_japan }
+		command = { type = clrflag which = ind_v4a_treaty_commonwealth }
+		command = { type = clrflag which = ind_v4a_treaty_naval_compact }
+		command = { type = clrflag which = ind_v4a_treaty_formal_alliance }
+		command = { type = clrflag which = ind_v4a_treaty_cobelligerent }
+		command = { type = clrflag which = ind_aubm_allied_partner_eng }
+		command = { type = clrflag which = ind_aubm_allied_partner_usa }
+		command = { type = clrflag which = ind_v4a_allied_framework_started }
+		command = { type = clrflag which = ind_v4a_allied_framework_settled }
+		command = { type = clrflag which = ind_v4a_proposal_commonwealth }
+		command = { type = clrflag which = ind_v4a_proposal_naval_compact }
+		command = { type = clrflag which = ind_v4a_proposal_formal_alliance }
+		command = { type = clrflag which = ind_v4a_proposal_cobelligerent }
+		command = { type = clrflag which = ind_gc_formal_axis }
+		command = { type = clrflag which = ind_gc_cobelligerent }
+		command = { type = clrflag which = ind_gc_sovereign }
+		command = { type = clrflag which = ind_gc_berlin_negotiating }
+		command = { type = clrflag which = ind_gc_berlin_cooldown }
+		command = { type = clrflag which = ind_gc_berlin_aloof }
+		command = { type = clrflag which = ind_v4_sov_equal_compact }
+		command = { type = clrflag which = ind_v4_sov_supervised_compact }
+		command = { type = clrflag which = ind_v4_sov_autonomous_socialism }
+		command = { type = clrflag which = ind_v4_sov_program_defined }
+		command = { type = clrflag which = ind_v4_sov_equal_compact_proposed }
+		command = { type = clrflag which = ind_v4_sov_technical_only }
+		command = { type = clrflag which = ind_v4_sov_formal_alliance }
+		command = { type = clrflag which = ind_v4_sov_independent_cobelligerent }
+		command = { type = clrflag which = ind_v4_sov_separate_command }
+		command = { type = clrflag which = ind_v4_sov_moscow_consultation }
+		command = { type = clrflag which = ind_v4_sov_moscow_retry_pending }
+		command = { type = clrflag which = ind_v4_sov_moscow_terms_rejected }
+		command = { type = clrflag which = ind_aubm_socialist_autonomous }
+		command = { type = clrflag which = ind_aubm_jp_partnership }
+		command = { type = clrflag which = ind_aubm_jp_formal_alliance }
+		command = { type = clrflag which = ind_aubm_jp_independent_cobelligerent }
+		command = { type = clrflag which = ind_aubm_jp_proposal_pending }
+		command = { type = clrflag which = ind_aubm_jp_retry_cooldown }
+		command = { type = clrflag which = ind_aubm_jp_retry_ready }
+		command = { type = clrflag which = ind_aubm_jp_tier_senior }
+		command = { type = clrflag which = ind_aubm_jp_tier_peer }
+		command = { type = clrflag which = ind_aubm_jp_tier_junior }
+		command = { type = clrflag which = ind_aubm_jp_tier_counter }
+		command = { type = clrflag which = ind_aubm_jp_india_full_sphere }
+		command = { type = clrflag which = ind_aubm_jp_india_core_sphere }
+		command = { type = setflag which = ind_aubm_jp_rupture }
+		command = { type = clrflag which = ind_v3_allied_orientation }
+		command = { type = clrflag which = ind_v3_axis_orientation }
+		command = { type = clrflag which = ind_v3_soviet_orientation }
+		command = { type = clrflag which = ind_v3_japanese_orientation }
+		command = { type = clrflag which = ind_v3_joined_allies }
+		command = { type = clrflag which = ind_v3_joined_axis }
+		command = { type = clrflag which = ind_v3_joined_comintern }
+		command = { type = clrflag which = ind_v3_joined_japan }
+		command = { type = clrflag which = ind_v4_strategy_allied }
+		command = { type = clrflag which = ind_v4_strategy_axis }
+		command = { type = clrflag which = ind_v4_strategy_soviet }
+		command = { type = clrflag which = ind_v4_strategy_japan }
+		command = { type = setflag which = ind_v3_non_aligned }
+		command = { type = setflag which = ind_v4_strategy_nam }
+		command = { type = setflag which = ind_aubm_realignment_cooldown }
+		command = { type = event which = 9281938 where = IND when = 90 }
+	}
+}

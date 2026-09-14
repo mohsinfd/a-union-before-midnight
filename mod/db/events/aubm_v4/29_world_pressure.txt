@@ -1,0 +1,661 @@
+#########################################################################
+# A Union Before Midnight V4: world milestones and pressure on India
+#########################################################################
+
+event = {
+	id = 9280700
+	random = no
+	country = IND
+
+	trigger = {
+		OR = {
+			control = { province = 55 data = GER }
+			control = { province = 55 data = ITA }
+			exists = VIC
+		}
+		NOT = { flag = ind_v4_fall_of_france_policy }
+	}
+
+	name = "France Falls"
+	desc = "The collapse of France transforms India's strategic calculation. Britain is exposed, Mediterranean routes are uncertain and every colonial government in Asia now knows that European power can fail quickly. Delhi must decide whether to sustain Britain, exploit the commercial opening, or accelerate defence without accepting any alliance."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+
+	date = { day = 0 month = may year = 1940 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		ai_chance = 35
+		name = "Emergency aid to Britain: -600 supplies"
+		command = { type = supplies value = -600 }
+		command = { type = relation which = ENG value = 30 }
+		command = { type = relation which = USA value = 10 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = event which = 9280620 where = ENG when = 1 }
+		command = { type = setflag which = ind_v4_fall_of_france_policy }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Replace lost European trade: +450 money, +2 dissent"
+		command = { type = money value = 450 }
+		command = { type = dissent value = 2 }
+		command = { type = relation which = ENG value = -10 }
+		command = { type = relation which = GER value = 10 }
+		command = { type = setflag which = ind_v4_fall_of_france_policy }
+	}
+	action_c = {
+		ai_chance = 30
+		name = "Indian defence first: -200 money, -350 supplies"
+		command = { type = money value = -200 }
+		command = { type = supplies value = -350 }
+		command = { type = max_organization which = land value = 1 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = setflag which = ind_v4_fall_of_france_policy }
+	}
+}
+
+event = {
+	id = 9280701
+	random = no
+	country = IND
+
+	trigger = {
+		war = { country = ITA country = ENG }
+		NOT = { flag = ind_v4_italian_war_policy }
+	}
+
+	name = "Italy Enters the War"
+	desc = "Italian entry closes the Mediterranean and threatens Suez, Aden and the Red Sea. The result reaches India through longer voyages, higher insurance and British requests for access. Delhi can reinforce the western sea route, profit from scarcity, or establish a strictly Indian Gulf command."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+
+	date = { day = 0 month = june year = 1940 }
+	offset = 9
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		ai_chance = 35
+		name = "Support the Red Sea route: -250/-600"
+		command = { type = money value = -250 }
+		command = { type = supplies value = -600 }
+		command = { type = relation which = ENG value = 20 }
+		command = { type = max_organization which = naval value = 1 }
+		command = { type = setflag which = ind_v4_italian_war_policy }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Sell scarce shipping: +500 money, +3 dissent"
+		command = { type = money value = 500 }
+		command = { type = dissent value = 3 }
+		command = { type = relation which = ENG value = -10 }
+		command = { type = setflag which = ind_v4_italian_war_policy }
+	}
+	action_c = {
+		ai_chance = 35
+		name = "Create an Indian Gulf command: -450 supplies"
+		command = { type = supplies value = -450 }
+		command = { type = tc_mod value = 1 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = setflag which = ind_v4_italian_war_policy }
+	}
+}
+
+event = {
+	id = 9280702
+	random = no
+	country = IND
+
+	trigger = {
+		OR = {
+			war = { country = IRQ country = ENG }
+			AND = {
+				year = 1941
+				NOT = { year = 1943 }
+				alliance = { country = IRQ country = GER }
+			}
+		}
+		NOT = { flag = ind_v4_iraq_crisis_policy }
+	}
+
+	name = "Crisis in Iraq"
+	desc = "Conflict in Iraq places the Gulf air route and oil fields between Britain, Germany and regional nationalism. India can support British logistics, recognize Iraqi sovereignty and mediate, or build a separate Indian position around the Gulf without endorsing either claimant."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+
+	date = { day = 0 month = january year = 1941 }
+	offset = 11
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		ai_chance = 35
+		name = "Support Gulf logistics: -500 supplies"
+		command = { type = supplies value = -500 }
+		command = { type = relation which = ENG value = 20 }
+		command = { type = relation which = IRQ value = -15 }
+		command = { type = setflag which = ind_v4_iraq_crisis_policy }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Mediate for Iraqi sovereignty: -175 money"
+		command = { type = money value = -175 }
+		command = { type = relation which = IRQ value = 30 }
+		command = { type = relation which = ENG value = -5 }
+		command = { type = event which = 9280621 where = IRQ when = 2 }
+		command = { type = setflag which = ind_v4_iraq_crisis_policy }
+	}
+	action_c = {
+		ai_chance = 30
+		name = "Indian Gulf security only: -300 supplies"
+		command = { type = supplies value = -300 }
+		command = { type = max_organization which = air value = 1 }
+		command = { type = setflag which = ind_v4_iraq_crisis_policy }
+	}
+}
+
+event = {
+	id = 9280703
+	random = no
+	country = IND
+
+	trigger = {
+		war = { country = GER country = SOV }
+		exists = PER
+		NOT = { flag = ind_v4_persian_corridor_policy }
+	}
+
+	name = "The Persian Corridor"
+	desc = "The German-Soviet war makes Persia the shortest route between Indian industry and the Soviet front. Britain and Moscow demand secure transit; Tehran fears occupation. India can supply a negotiated corridor, support coercive access, or insist that Persia remain outside the great-power war."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+
+	date = { day = 0 month = june year = 1941 }
+	offset = 13
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		ai_chance = 40
+		name = "Fund a sovereign corridor: -300/-700"
+		command = { type = money value = -300 }
+		command = { type = supplies value = -700 }
+		command = { type = relation which = PER value = 25 }
+		command = { type = relation which = SOV value = 20 }
+		command = { type = event which = 9280622 where = PER when = 2 }
+		command = { type = setflag which = ind_v4_persian_corridor_policy }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Back immediate Allied-Soviet access: -500 supplies"
+		command = { type = supplies value = -500 }
+		command = { type = relation which = ENG value = 15 }
+		command = { type = relation which = SOV value = 20 }
+		command = { type = relation which = PER value = -25 }
+		command = { type = setflag which = ind_v4_persian_corridor_policy }
+	}
+	action_c = {
+		ai_chance = 30
+		name = "Guarantee Persian neutrality"
+		command = { type = relation which = PER value = 30 }
+		command = { type = relation which = ENG value = -10 }
+		command = { type = relation which = SOV value = -10 }
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_v4_persian_corridor_policy }
+	}
+}
+
+event = {
+	id = 9280704
+	random = no
+	country = IND
+
+	trigger = {
+		war = { country = JAP country = USA }
+		NOT = { alliance = { country = IND country = JAP } }
+		NOT = { flag = ind_aubm_jp_partnership }
+		NOT = { flag = ind_aubm_route_japan }
+		NOT = { flag = ind_v4_pacific_war_policy }
+	}
+
+	name = "War Across the Pacific"
+	desc = "Japan and the United States are at war. No declaration made in the Pacific can leave India untouched: Malaya, Singapore, Burma and the Indian Ocean now form one strategic arc. Delhi can coordinate with the maritime powers, preserve armed neutrality, or call for an independent Asian settlement."
+	style = 2
+	picture = "aubm_v4_japan_southern_choice"
+
+	date = { day = 0 month = january year = 1941 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		ai_chance = 40
+		name = "Coordinate Pacific defence: -350/-900"
+		command = { type = money value = -350 }
+		command = { type = supplies value = -900 }
+		command = { type = relation which = USA value = 30 }
+		command = { type = relation which = ENG value = 20 }
+		command = { type = relation which = JAP value = -35 }
+		command = { type = event which = 9280623 where = USA when = 1 }
+		command = { type = setflag which = ind_v4_pacific_war_policy }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Declare armed neutrality: -500 supplies"
+		command = { type = supplies value = -500 }
+		command = { type = max_organization which = air value = 1 }
+		command = { type = max_organization which = naval value = 1 }
+		command = { type = domestic which = interventionism value = -1 }
+		command = { type = setflag which = ind_v4_pacific_war_policy }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "Call an Asian ceasefire conference: -200 money"
+		command = { type = money value = -200 }
+		command = { type = relation which = CHI value = 20 }
+		command = { type = relation which = JAP value = -10 }
+		command = { type = setflag which = ind_v3_independent_asia }
+		command = { type = setflag which = ind_v4_pacific_war_policy }
+	}
+}
+
+event = {
+	id = 9280705
+	random = no
+	country = IND
+
+	trigger = {
+		control = { province = 1432 data = JAP }
+		owned = { province = 1415 data = IND }
+		NOT = { alliance = { country = IND country = JAP } }
+		NOT = { flag = ind_aubm_jp_partnership }
+		NOT = { flag = ind_aubm_route_japan }
+		NOT = { flag = ind_v4_singapore_fallen }
+	}
+
+	name = "Singapore Falls"
+	desc = "The fortress at Singapore has fallen and British Malaya is open to Japanese occupation. Refugees, aircraft and ships seek routes toward India while Rangoon becomes the next great port on the strategic map. Delhi must decide how much of the collapsing British position it will absorb and defend."
+	style = 2
+	picture = "aubm_v4_japan_southern_choice"
+
+	date = { day = 0 month = january year = 1941 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		ai_chance = 45
+		name = "Receive forces and defend Burma: -300/-800"
+		command = { type = money value = -300 }
+		command = { type = supplies value = -800 }
+		command = { type = manpowerpool value = 8 }
+		command = { type = max_organization which = land value = 2 }
+		command = { type = relation which = ENG value = 20 }
+		command = { type = setflag which = ind_v4_singapore_fallen }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Evacuate specialists, not formations: -200 money"
+		command = { type = money value = -200 }
+		command = { type = manpowerpool value = 4 }
+		command = { type = research_mod value = 1 }
+		command = { type = relation which = ENG value = 5 }
+		command = { type = setflag which = ind_v4_singapore_fallen }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "Close the frontier: +2 dissent"
+		command = { type = dissent value = 2 }
+		command = { type = relation which = ENG value = -15 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = setflag which = ind_v4_singapore_fallen }
+	}
+}
+
+event = {
+	id = 9280706
+	random = no
+	country = IND
+
+	trigger = {
+		war = { country = JAP country = ENG }
+		year = 1942
+		NOT = { alliance = { country = IND country = JAP } }
+		NOT = { flag = ind_aubm_jp_partnership }
+		NOT = { flag = ind_aubm_route_japan }
+		NOT = { flag = ind_v4_indian_ocean_raid_policy }
+	}
+
+	name = "Japanese Carriers Enter the Indian Ocean"
+	desc = "Japanese carrier forces raid the Bay of Bengal and threaten Ceylon, Port Blair and the shipping lanes. The encounter proves that a distant fleet can impose strategic effects in hours. India can disperse and preserve its forces, seek battle under land-based air cover, or protect convoy routes while avoiding a decisive engagement."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+
+	date = { day = 0 month = january year = 1942 }
+	offset = 9
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		ai_chance = 40
+		name = "Disperse the fleet and air arm: -500 supplies"
+		command = { type = supplies value = -500 }
+		command = { type = repair_mod value = 3 }
+		command = { type = max_organization which = air value = 1 }
+		command = { type = setflag which = ind_v4_indian_ocean_raid_policy }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Seek battle under air cover: -250/-700"
+		command = { type = money value = -250 }
+		command = { type = supplies value = -700 }
+		command = { type = max_organization which = naval value = 2 }
+		command = { type = dissent value = 1 }
+		command = { type = setflag which = ind_v4_indian_ocean_raid_policy }
+	}
+	action_c = {
+		ai_chance = 30
+		name = "Protect convoys, avoid decision: -350 supplies"
+		command = { type = supplies value = -350 }
+		command = { type = repair_mod value = 2 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = setflag which = ind_v4_indian_ocean_raid_policy }
+	}
+}
+
+event = {
+	id = 9280707
+	random = no
+	country = IND
+
+	trigger = {
+		war = { country = IND country = JAP }
+		NOT = { control = { province = 1415 data = IND } }
+		NOT = { flag = ind_v4_rangoon_lost }
+	}
+
+	name = "Rangoon Is Lost"
+	desc = "Rangoon has fallen or been cut off from Indian command. Burma's road, rice exports and principal port are now in enemy hands. The Cabinet can establish a hard Imphal line, organize a counter-offensive from the interior, or preserve the army while accepting a temporary loss of Burma."
+	style = 2
+	picture = "aubm_v4_japan_southern_choice"
+
+	date = { day = 0 month = january year = 1941 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		ai_chance = 45
+		name = "Hold Imphal: -300 money, -900 supplies"
+		command = { type = money value = -300 }
+		command = { type = supplies value = -900 }
+		command = { type = construct which = land_fort where = 1442 value = 2 trigger = { owned = { province = 1442 data = IND } NOT = { building = { province = 1442 type = land_fort value = 9 } } } }
+		command = { type = max_organization which = land value = 1 }
+		command = { type = setflag which = ind_v4_rangoon_lost }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Prepare the Burma counter-offensive: -1100 supplies"
+		command = { type = supplies value = -1100 }
+		command = { type = morale which = land value = 2 }
+		command = { type = dissent value = 2 }
+		command = { type = setflag which = ind_v4_rangoon_lost }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Save the army: +4 dissent"
+		command = { type = dissent value = 4 }
+		command = { type = manpowerpool value = 20 }
+		command = { type = setflag which = ind_v4_rangoon_lost }
+	}
+}
+
+event = {
+	id = 9280708
+	random = no
+	country = IND
+
+	trigger = {
+		war = { country = IND country = JAP }
+		control = { province = 1442 data = IND }
+		year = 1944
+		NOT = { flag = ind_v4_imphal_campaign }
+	}
+
+	name = "The Battle for Imphal"
+	desc = "Japanese forces and their allies test the mountain approaches at Imphal. Victory can restore Indian confidence and open the road back into Burma, but only if Delhi commits transport, air supply and experienced formations. A defensive success and a full counter-offensive are not the same undertaking."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+
+	date = { day = 0 month = january year = 1944 }
+	offset = 8
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		ai_chance = 45
+		name = "Launch the Burma return: -400/-1400"
+		command = { type = money value = -400 }
+		command = { type = supplies value = -1400 }
+		command = { type = max_organization which = land value = 2 }
+		command = { type = max_organization which = air value = 1 }
+		command = { type = setflag which = ind_v4_strategic_weight_3 }
+		command = { type = setflag which = ind_v4_imphal_campaign }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Break the attack, consolidate: -800 supplies"
+		command = { type = supplies value = -800 }
+		command = { type = morale which = land value = 2 }
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_v4_imphal_campaign }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Preserve the reserve: +2 dissent"
+		command = { type = dissent value = 2 }
+		command = { type = setflag which = ind_v4_imphal_campaign }
+	}
+}
+
+event = {
+	id = 9280709
+	random = no
+	country = IND
+
+	trigger = {
+		year = 1944
+		war = { country = GER country = USA }
+		lost_national = { country = GER value = 20 }
+		NOT = { flag = ind_v4_western_liberation_policy }
+	}
+
+	name = "The War Turns in Western Europe"
+	desc = "Allied armies have established a durable return to Western Europe while the Soviet advance continues from the east. Victory is no longer abstract. India must decide whether to increase its contribution for a voice at the peace, reserve strength for Asia, or begin organizing an independent postwar bloc."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+
+	date = { day = 0 month = january year = 1944 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		ai_chance = 35
+		name = "Buy a seat at the peace: -350/-1000"
+		command = { type = money value = -350 }
+		command = { type = supplies value = -1000 }
+		command = { type = relation which = ENG value = 20 }
+		command = { type = relation which = USA value = 20 }
+		command = { type = setflag which = ind_v4_strategic_weight_3 }
+		command = { type = setflag which = ind_v4_western_liberation_policy }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Asia remains India's war: -600 supplies"
+		command = { type = supplies value = -600 }
+		command = { type = relation which = CHI value = 20 }
+		command = { type = max_organization which = land value = 1 }
+		command = { type = setflag which = ind_v4_western_liberation_policy }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "Prepare an independent postwar bloc: -200 money"
+		command = { type = money value = -200 }
+		command = { type = relation which = CHI value = 15 }
+		command = { type = relation which = SIA value = 10 }
+		command = { type = setflag which = ind_v3_independent_asia }
+		command = { type = setflag which = ind_v4_western_liberation_policy }
+	}
+}
+
+event = {
+	id = 9280710
+	random = no
+	country = IND
+
+	trigger = {
+		year = 1944
+		OR = {
+			NOT = { exists = GER }
+			control = { province = 163 data = SOV }
+			control = { province = 163 data = USA }
+			control = { province = 163 data = ENG }
+			control = { province = 163 data = FRA }
+		}
+		NOT = { flag = ind_v4_germany_defeated }
+	}
+
+	name = "Germany Is Defeated"
+	desc = "The European war has reached its decisive settlement. Indian troops, supplies or neutrality will now be measured against the record. Delhi can demand recognition as a great power, concentrate every claim on Asian decolonization, or avoid the European settlement and preserve freedom for the final war against Japan."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+
+	date = { day = 0 month = january year = 1944 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		ai_chance = 35
+		name = "Claim great-power recognition"
+		command = { type = dissent value = -1 }
+		command = { type = relation which = USA value = 15 }
+		command = { type = relation which = SOV value = 10 }
+		command = { type = setflag which = ind_v4_claim_great_power_seat }
+		command = { type = setflag which = ind_v4_germany_defeated }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Make Asian decolonization the price"
+		command = { type = relation which = ENG value = -20 }
+		command = { type = relation which = CHI value = 25 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = setflag which = ind_v4_claim_asian_decolonization }
+		command = { type = setflag which = ind_v4_germany_defeated }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "Reserve every claim for the Asian war"
+		command = { type = relation which = ENG value = -5 }
+		command = { type = relation which = USA value = -5 }
+		command = { type = setflag which = ind_v4_claim_asian_priority }
+		command = { type = setflag which = ind_v4_germany_defeated }
+	}
+}
+
+event = {
+	id = 9280711
+	random = no
+	country = IND
+
+	trigger = {
+		year = 1945
+		OR = {
+			nuked = { country = JAP data = -1 where = 1554 }
+			nuked = { country = JAP data = -1 where = 1552 }
+			lost_national = { country = JAP value = 40 }
+		}
+		NOT = { flag = ind_v4_atomic_japan_policy }
+	}
+
+	name = "The Atomic Threshold and Japan"
+	desc = "The destruction inflicted on Japan has opened a political and scientific threshold that no great power can ignore. India can condemn attacks on cities, demand immediate surrender while beginning strategic research, or concentrate on ending the war before more of Asia is devastated."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+
+	date = { day = 0 month = january year = 1945 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		ai_chance = 30
+		name = "Condemn attacks on cities: -1 dissent"
+		command = { type = dissent value = -1 }
+		command = { type = relation which = USA value = -20 }
+		command = { type = relation which = JAP value = 10 }
+		command = { type = setflag which = ind_v4_atomic_japan_policy }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Demand surrender and fund research: -400 money"
+		command = { type = money value = -400 }
+		command = { type = relation which = USA value = 15 }
+		command = { type = research_mod value = 1 }
+		command = { type = setflag which = ind_v4_atomic_japan_policy }
+	}
+	action_c = {
+		ai_chance = 35
+		name = "End the Asian war first: -500 supplies"
+		command = { type = supplies value = -500 }
+		command = { type = relation which = CHI value = 15 }
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_v4_atomic_japan_policy }
+	}
+}
+
+event = {
+	id = 9280712
+	random = no
+	country = IND
+
+	trigger = {
+		year = 1945
+		OR = {
+			NOT = { exists = JAP }
+			control = { province = 1552 data = USA }
+			control = { province = 1552 data = SOV }
+			control = { province = 1552 data = CHI }
+		}
+		NOT = { flag = ind_v4_japan_defeated }
+	}
+
+	name = "Japan Is Defeated"
+	desc = "Japan's defeat ends the great war but not the struggle over Asia. British and Dutch administrations expect restoration, Chinese leaders expect security, and anti-colonial movements expect India to act on its wartime language. Delhi's record and strategic weight will determine how seriously those expectations are treated."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+
+	date = { day = 0 month = january year = 1945 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		ai_chance = 40
+		name = "Convene an Asian settlement conference"
+		command = { type = relation which = CHI value = 20 }
+		command = { type = relation which = USA value = 10 }
+		command = { type = relation which = ENG value = -10 }
+		command = { type = setflag which = ind_v4_asian_settlement_conference }
+		command = { type = setflag which = ind_v4_japan_defeated }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Support orderly restoration, demand timetables"
+		command = { type = relation which = ENG value = 10 }
+		command = { type = relation which = USA value = 10 }
+		command = { type = dissent value = 1 }
+		command = { type = setflag which = ind_v4_restoration_with_timetables }
+		command = { type = setflag which = ind_v4_japan_defeated }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "Back immediate Asian independence: +3 dissent"
+		command = { type = dissent value = 3 }
+		command = { type = relation which = ENG value = -30 }
+		command = { type = relation which = HOL value = -25 }
+		command = { type = relation which = CHI value = 25 }
+		command = { type = setflag which = ind_v4_immediate_asian_independence }
+		command = { type = setflag which = ind_v4_japan_defeated }
+	}
+}

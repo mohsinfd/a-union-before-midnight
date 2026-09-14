@@ -104,5 +104,5 @@ air_marshal = {
 admiral = {
 	min_core_attack_fleets = 1
 	num_attack_fleets = 2
-	base = { 1421 1493 1497 1517 1533 }
+	base = { 1421 1493 1497 1517 1533 1612 }
 }

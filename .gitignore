@@ -13,6 +13,53 @@ dist/
 *.7z
 *.rar
 *.tmp
+construction_caps.txt
+v4_validation.txt
+
+# Local visual research and superseded generation drafts
+tools/data/*.png
+tools/art_sources/v4_events/*_draft.png
+
+# Personal donor-derived sprite payload (rebuilt locally from installed mods)
+mod/gfx/map/units/AUBM-IND-GENERATED-MANIFEST.json
+mod/gfx/map/units/T-d_* C-IND L-1*.spr
+mod/gfx/map/units/T-d_rsv_* C-IND L-1*.spr
+mod/gfx/map/units/bmp/AUBM-IND-*.bmp
+mod/gfx/palette/AUBM-IND-*.bmp
+
+# Local foundation/donor map payload (never redistributed)
+mod/map/Map_1/colorscales.csv
+mod/map/Map_1/gfx/
+mod/map/Map_1/lightmap1.tbl
+mod/map/Map_1/lightmap2.tbl
+mod/map/Map_1/lightmap3.tbl
+mod/map/Map_1/lightmap4.tbl
+mod/map/Map_1/Terrain types.csv
+mod/gfx/map/Snow.bmp
+mod/gfx/map/airfield.bmp
+mod/gfx/map/beach.bmp
+mod/gfx/map/harbour.bmp
+mod/gfx/map/rain.bmp
+mod/gfx/map/storm.bmp
+
+# Local or unresolved visual payload (never published)
+mod/gfx/interface/models/
+mod/gfx/interface/pics/INDL251018.bmp
+mod/gfx/interface/pics/INDL251019.bmp
+mod/gfx/interface/pics/INDL251020.bmp
+mod/gfx/interface/pics/INDL251021.bmp
+mod/gfx/interface/pics/INDL251022.bmp
+mod/gfx/interface/pics/INDL251023.bmp
+mod/gfx/interface/pics/INDL251025.bmp
+mod/gfx/interface/pics/INDL251107.bmp
+mod/gfx/interface/pics/INDL251108.bmp
+mod/gfx/events_pics/aubm_v4_india_japan_compact.bmp
+mod/gfx/events_pics/aubm_v4_non_aligned_delegation.bmp
+
+# Local QA captures, device backups and reference manuals
+deck-backups/
+tmp/
+tmp-*.png
 
 # Editor and OS state
 .idea/

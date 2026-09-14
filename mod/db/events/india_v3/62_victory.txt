@@ -22,7 +22,7 @@ event = {
 
 	date = { day = 0 month = july year = 1940 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1941 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 100
@@ -50,6 +50,7 @@ event = {
 			flag = ind_v3_axis_settlement_1945
 			flag = ind_v3_soviet_postwar_line
 			flag = ind_v3_nam_settlement_1945
+			flag = ind_v3_japan_settlement_1945
 		}
 		NOT = { flag = ind_v3_audit_1945 }
 	}
@@ -61,7 +62,7 @@ event = {
 
 	date = { day = 0 month = november year = 1945 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1947 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 100
@@ -93,7 +94,7 @@ event = {
 
 	date = { day = 0 month = august year = 1952 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1953 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 100

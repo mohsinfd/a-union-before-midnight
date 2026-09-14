@@ -1,0 +1,43 @@
+# AUBM: no partnership restraint. Restore Japan's independent southern plan.
+
+combat = { IND = 70 SOV = 35 CHI = 100 CHC = 70 PHI = 100 USA = 90 ENG = 90 HOL = 90 AST = 70 }
+befriend = { MAN = 120 SIA = 100 }
+protect = { MAN = 120 SIA = 80 }
+
+max_front_ratios = { IND = 1.5 SOV = 0.5 CHI = 3.0 PHI = 4.0 USA = 2.0 ENG = 3.0 HOL = 3.0 AST = 2.0 }
+
+front = {
+	recklessness = 1
+	base_attack_odds = 1.20
+	min_attack_odds = 1.05
+	passivity = { IND = 20 SOV = 70 }
+}
+
+target = {
+	1371 = 180 # Hong Kong
+	1432 = 240 # Singapore
+	1438 = 220 # Kuala Lumpur
+	1565 = 350 # Manila
+	1579 = 300 # Davao
+	1636 = 260 # Palembang
+	1647 = 280 # Batavia
+	1653 = 280 # Soerabaja
+	1697 = 140 # Darwin
+}
+
+invasion = {
+	invasion = yes
+	base = 0.2 random = 6.0 coastal = 0.2 beach = 0.2
+	max_distance = 1000.0 max_staging_distance = 100 distance = 1.0
+	pocket = 15.0 island = 3.0 enemy = 2.0 adjacentenemy = 2.0
+	air_base = 2.0 naval_base = 2.0 air_support = 3.0
+	redirect = priority ignore = no help_allies = no
+	staging_province = { 1361 1553 1667 1670 1685 1726 }
+	target = {
+		1432 = 3000 1438 = 2800
+		1565 = 4000 1567 = 3750 1568 = 3750 1572 = 3500 1579 = 3750
+		1636 = 3000 1642 = 2800 1647 = 3200 1653 = 3200 1657 = 2500
+		1661 = 3250 1662 = 3250 1667 = 3250 1670 = 3250
+		1683 = 3400 1685 = 3300 1697 = 2400 1705 = 2200 1726 = 3500
+	}
+}

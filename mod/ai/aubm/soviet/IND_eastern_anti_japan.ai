@@ -1,0 +1,58 @@
+# AUBM: Burma-China anti-Japanese command
+
+neutrality = 10
+war = 90
+max_front_ratio = 1.65
+
+combat = {
+	JAP = 100
+	MAN = 55
+	MEN = 30
+	SIA = 20
+}
+
+befriend = {
+	CHI = 170
+	CHC = 90
+	SOV = 120
+	SIA = 50
+}
+
+protect = {
+	CHI = 140
+	CHC = 60
+	SIA = 50
+}
+
+target = {
+	1442 = 90  # Imphal
+	1415 = 100 # Rangoon
+	1410 = 95  # Mandalay
+	1409 = 80  # Lashio
+	1408 = 75  # Myitkyina
+	1390 = 90  # Kunming
+	1299 = 80  # Chongqing
+}
+
+front = {
+	recklessness = 2
+	distrib_vs_ai = offensive
+	distrib_vs_human = reactive
+	enemy_reinf_days = 5
+	reserve_prop = 0.13
+	panic_ratio_vs_ai = 2.3
+	panic_ratio_vs_human = 2.3
+	base_attack_odds = 1.18
+	min_attack_odds = 1.05
+	max_attack_odds = 4.0
+	reinforce_odds = 1.2
+	withdraw_odds = 0.65
+	strength = 0.9
+	organisation = 0.9
+	soft_attack = 1.15
+	hard_attack = 1.1
+	ground_defense = 1.0
+	dig_in = 1.0
+	jungle_attack = 1.30
+}
+
