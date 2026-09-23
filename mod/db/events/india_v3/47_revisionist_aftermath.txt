@@ -1,3 +1,4 @@
+# AUBM_CONTEXT_GUARDS_V1
 #########################################################################
 # India Mod V3: Common aftermath of revisionist alignments
 #########################################################################
@@ -16,18 +17,19 @@ event = {
 		NOT = { flag = ind_v3_authoritarian_reckoning }
 	}
 
-	name = "The Authoritarian Reckoning"
-	desc = "Alliance mobilization has strengthened the executive, military police and war industries. India can constitutionalize emergency institutions, double down on permanent mobilization, or restore a national coalition before war ends."
+	name = "Review the Emergency Government"
+	desc = "Earlier German or Japanese war plans strengthened India's emergency government. Delhi can place those powers under constitutional limits, maintain them, or restore the Gandhi-Nehru cabinet. This domestic review does not renew an old alliance or change India's current wars."
 	style = 2
 	picture = "india_v3_revisionist_reckoning"
 
 	date = { day = 0 month = january year = 1943 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1945 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
+		trigger = {   money = 375 }
 		ai_chance = 40
-		name = "Constitutionalize mobilization: -375 money, -3 dissent"
+		name = "Limit emergency powers: -375 money, -3 dissent"
 		command = { type = money value = -375 }
 		command = { type = dissent value = -3 }
 		command = { type = research_mod value = 1 }
@@ -35,8 +37,9 @@ event = {
 		command = { type = setflag which = ind_v3_authoritarian_reckoning }
 	}
 	action_b = {
+		trigger = {   supplies = 900 }
 		ai_chance = 30
-		name = "Permanent mobilization: -900 supplies, industry, +4 dissent"
+		name = "Keep emergency production: -900 supplies, +4 dissent"
 		command = { type = supplies value = -900 }
 		command = { type = dissent value = 4 }
 		command = { type = industrial_modifier which = supplies value = 8 }
@@ -45,6 +48,7 @@ event = {
 		command = { type = setflag which = ind_v3_authoritarian_reckoning }
 	}
 	action_c = {
+		trigger = {   money = 525 }
 		ai_chance = 30
 		name = "Restore Gandhi-Nehru coalition: -525 money, -5 dissent"
 		command = { type = money value = -525 }
@@ -62,6 +66,12 @@ event = {
 		command = { type = setflag which = ind_v3_restored_coalition }
 		command = { type = setflag which = ind_v3_authoritarian_reckoning }
 	}
+
+	action = {
+		ai_chance = 0
+		name = "Keep current orders; no new spending"
+		command = { type = setflag which = ind_v3_authoritarian_reckoning }
+	}
 }
 
 event = {
@@ -69,7 +79,7 @@ event = {
 	random = no
 	country = IND
 
-	trigger = {
+	trigger = { NOT = { flag = ind_aubm_wartime_framework }
 		flag = ind_v3_axis_war_aims
 		flag = ind_v3_authoritarian_reckoning
 		flag = ind_v3_joined_axis
@@ -80,17 +90,17 @@ event = {
 	}
 
 	name = "India After the Revisionist War"
-	desc = "Whether its coalition triumphed or fractured, India emerges armed, industrial and politically transformed. Delhi must define victory as the destruction of colonial rule, control of the Indian Ocean, or survival as an autonomous great power."
+	desc = "India is at peace and still allied with Germany. Delhi can press for Asian independence, fund Indian Ocean logistics or improve relations with other powers. These policies do not transfer territory or end the alliance."
 	style = 2
 	picture = "india_v3_revisionist_settlement"
 
 	date = { day = 0 month = may year = 1945 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1948 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 40
-		name = "End European empire in Asia: -4 dissent, colonial rupture"
+		name = "Press for Asian independence: -4 dissent"
 		command = { type = dissent value = -4 }
 		command = { type = relation which = ENG value = -30 }
 		command = { type = relation which = FRA value = -25 }
@@ -99,8 +109,9 @@ event = {
 		command = { type = setflag which = ind_v3_revisionist_settlement_1945 }
 	}
 	action_b = {
+		trigger = {   money = 800 supplies = 1200 }
 		ai_chance = 35
-		name = "Indian Ocean sphere: -800 money, -1200 supplies, +5 belligerence"
+		name = "Fund ocean logistics: -800 money, -1200 supplies"
 		command = { type = money value = -800 }
 		command = { type = supplies value = -1200 }
 		command = { type = tc_mod value = 4 }
@@ -110,14 +121,21 @@ event = {
 		command = { type = setflag which = ind_v3_revisionist_settlement_1945 }
 	}
 	action_c = {
+		trigger = { exists = USA NOT = { war = { country = IND country = USA } } exists = SOV NOT = { war = { country = IND country = SOV } }   }
 		ai_chance = 25
-		name = "Autonomous great power: -2 dissent, global normalization"
+		name = "Improve foreign relations: -2 dissent"
 		command = { type = dissent value = -2 }
 		command = { type = belligerence value = -5 }
 		command = { type = relation which = USA value = 20 }
 		command = { type = relation which = SOV value = 15 }
 		command = { type = setflag which = ind_v3_revisionist_autonomous_victory }
 		command = { type = setflag which = ind_v3_axis_settlement_1945 }
+		command = { type = setflag which = ind_v3_revisionist_settlement_1945 }
+	}
+
+	action = {
+		ai_chance = 0
+		name = "Keep current orders; no new spending"
 		command = { type = setflag which = ind_v3_revisionist_settlement_1945 }
 	}
 }

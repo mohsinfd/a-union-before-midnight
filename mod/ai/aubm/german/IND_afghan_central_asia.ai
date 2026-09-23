@@ -1,0 +1,16 @@
+# AUBM: Afghanistan-Central Asia operational route
+
+max_front_ratio = 1.55
+
+target = {
+	1097 = 100 # Ashkhabad
+	1098 = 100 # Merv
+	1105 = 90  # Dushanbe
+	1104 = 85  # Khorugh
+	1099 = 105 # Samarkand
+	1103 = 120 # Tashkent
+	1106 = 90  # Osh
+	1107 = 90  # Frunze
+	706 = 80   # Astrakhan
+	663 = 90   # Stalingrad
+}

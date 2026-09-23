@@ -1,0 +1,7 @@
+# Personal sprite outputs reconstructed from locally installed donor assets.
+# Public manifests omit them; developer builds may opt in after reconstruction.
+gfx/map/units/AUBM-IND-GENERATED-MANIFEST.json
+gfx/map/units/T-d_* C-IND L-1*.spr
+gfx/map/units/T-d_rsv_* C-IND L-1*.spr
+gfx/map/units/bmp/AUBM-IND-*.bmp
+gfx/palette/AUBM-IND-*.bmp

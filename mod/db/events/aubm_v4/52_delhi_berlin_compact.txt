@@ -1,0 +1,1006 @@
+#########################################################################
+# A Union Before Midnight: The Delhi-Berlin Compact
+# Reserved event IDs: 9281600-9281699
+#
+# This is a separate-command partnership. It creates neither an engine
+# alliance nor an automatic war. Existing German campaign and settlement
+# files remain authoritative once India opens a war.
+#########################################################################
+
+#########################################################################
+# Chapter I: Berlin must treat Delhi as a capital, not a client
+#########################################################################
+
+event = {
+	id = 9281600
+	random = no
+	persistent = yes
+	country = IND
+	decision = {
+		year = 1937
+		exists = GER
+		NOT = { war = { country = IND country = GER } }
+		NOT = { participant = { country = IND value = 4 } }
+		NOT = { alliance = { country = IND country = GER } }
+		NOT = { flag = ind_aubm_commitment_allied }
+		NOT = { flag = ind_aubm_commitment_german }
+		NOT = { flag = ind_aubm_commitment_soviet }
+		NOT = { flag = ind_aubm_commitment_japan }
+		NOT = { flag = ind_aubm_diplomatic_negotiation_pending }
+		NOT = { flag = ind_aubm_realignment_cooldown }
+		NOT = { flag = ind_db_compact_active }
+		NOT = { flag = ind_db_compact_closed }
+		OR = { flag = ind_aubm_route_german flag = ind_v3_axis_orientation flag = ind_v4_strategy_axis flag = ind_db_retry_ready }
+	}
+	decision_trigger = { money = 350 supplies = 600 }
+	name = "Open the Delhi-Berlin Strategic Conference"
+	decision_desc = "Cost: 350 money and 600 supplies. This seeks a separate-command compact. It does not join the Axis and does not declare war. A German mission and a mobile-army programme improve Berlin's offer."
+	desc = "The German mission has shown what Berlin can build. The conference will decide something harder: whether Germany can work with an independent India. Delhi asks for technology, consultation and separate command. Berlin receives no right to choose India's wars or peace."
+	style = 2
+	picture = "aubm_ger_compact_signing"
+	date = { day = 0 month = january year = 1937 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1964 }
+	action = { trigger = { ai = no } name = "Cancel - keep the file open" }
+	action_a = {
+		trigger = { money = 350 supplies = 600 NOT = { flag = ind_aubm_diplomatic_negotiation_pending } }
+		name = "Send the equal-partner proposal: -350 money, -600 supplies"
+		command = { type = money value = -350 }
+		command = { type = supplies value = -600 }
+		command = { type = clrflag which = ind_db_retry_ready }
+		command = { type = setflag which = ind_db_proposal_pending }
+		command = { type = setflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = setflag which = ind_aubm_negotiation_german }
+		command = { type = event which = 9281601 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9281601
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	name = "Berlin Measures India's Weight"
+	desc = "A full German mission and a mobile Indian army earn the strongest hearing. One of those achievements earns a credible place at the table. Without either, Berlin is more likely to offer a narrow technical pact."
+	style = 2
+	picture = "aubm_ger_compact_signing"
+	action_a = {
+		name = "Receive Berlin's assessment"
+		command = { trigger = { flag = ind_v3_german_full_mission flag = ind_v3_axis_mobile_army } type = event which = 9281602 where = GER when = 1 }
+		command = { trigger = { OR = { AND = { flag = ind_v3_german_mission NOT = { flag = ind_v3_axis_mobile_army } } AND = { flag = ind_v3_axis_mobile_army NOT = { flag = ind_v3_german_full_mission } } } } type = event which = 9281603 where = GER when = 1 }
+		command = { trigger = { NOT = { flag = ind_v3_german_mission } NOT = { flag = ind_v3_axis_mobile_army } } type = event which = 9281604 where = GER when = 1 }
+	}
+}
+
+event = {
+	id = 9281602
+	random = no
+	country = GER
+	name = "India Demands an Equal Continental Compact"
+	desc = "India has already paid for German cooperation and built a force able to act beyond the subcontinent. Berlin can recognize Delhi's separate command, limit the offer to arms and markets, or reject equality."
+	style = 2
+	picture = "aubm_ger_compact_signing"
+	action_a = { ai_chance = 65 name = "Recognize India as an equal Asian power" command = { type = relation which = IND value = 35 } command = { type = event which = 9281605 where = IND when = 2 } }
+	action_b = { ai_chance = 25 name = "Offer arms and markets, not equality" command = { type = relation which = IND value = 10 } command = { type = event which = 9281606 where = IND when = 2 } }
+	action_c = { ai_chance = 10 name = "Reject Delhi's terms" command = { type = relation which = IND value = -20 } command = { type = event which = 9281607 where = IND when = 2 } }
+}
+
+event = {
+	id = 9281603
+	random = no
+	country = GER
+	name = "A Serious Indian Offer"
+	desc = "Delhi has proved either political commitment or military capacity, but not both. Berlin must decide whether early equality is worth the risk."
+	style = 2
+	picture = "aubm_ger_compact_signing"
+	action_a = { ai_chance = 35 name = "Take the risk and grant equal terms" command = { type = relation which = IND value = 30 } command = { type = event which = 9281605 where = IND when = 2 } }
+	action_b = { ai_chance = 50 name = "Begin with a limited compact" command = { type = relation which = IND value = 15 } command = { type = event which = 9281606 where = IND when = 2 } }
+	action_c = { ai_chance = 15 name = "Decline the proposal" command = { type = relation which = IND value = -15 } command = { type = event which = 9281607 where = IND when = 2 } }
+}
+
+event = {
+	id = 9281604
+	random = no
+	country = GER
+	name = "Berlin Sees an Aspirant"
+	desc = "India has ambition, but the German cabinet sees little proof behind it. An equal compact is possible, though a restricted technical agreement is far more likely."
+	style = 2
+	picture = "aubm_ger_compact_signing"
+	action_a = { ai_chance = 15 name = "Make a bold equal offer" command = { type = relation which = IND value = 25 } command = { type = event which = 9281605 where = IND when = 2 } }
+	action_b = { ai_chance = 55 name = "Offer only technical cooperation" command = { type = relation which = IND value = 10 } command = { type = event which = 9281606 where = IND when = 2 } }
+	action_c = { ai_chance = 30 name = "Close the talks" command = { type = relation which = IND value = -20 } command = { type = event which = 9281607 where = IND when = 2 } }
+}
+
+event = {
+	id = 9281605
+	random = no
+	persistent = yes
+	country = IND
+	name = "The Equal Delhi-Berlin Compact"
+	desc = "Berlin accepts India's separate command. The compact shares plans and technology but creates no alliance and no war. India will decide separately whether and when to fight Britain, the Soviet Union, America or Japan."
+	style = 2
+	picture = "aubm_ger_compact_signing"
+	action_a = {
+		trigger = { flag = ind_db_proposal_pending flag = ind_aubm_diplomatic_negotiation_pending NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } }
+		name = "Sign as equal partners - no alliance, no war"
+		command = { type = setflag which = ind_db_compact_active }
+		command = { type = setflag which = ind_db_compact_equal }
+		command = { type = setflag which = ind_aubm_route_german }
+		command = { type = setflag which = ind_aubm_commitment_german }
+		command = { type = setflag which = ind_v3_axis_orientation }
+		command = { type = setflag which = ind_v4_strategy_axis }
+		command = { type = setflag which = ind_aubm_bespoke_partner_crisis_german_resolved }
+		command = { type = setflag which = ind_aubm_bespoke_partner_collapse_german_handled }
+		command = { type = sleepevent which = 9281300 }
+		command = { type = clrflag which = ind_db_proposal_pending }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_german }
+		command = { type = relation which = GER value = 25 }
+	}
+	action_b = {
+		name = "Refuse even favourable terms"
+		command = { type = clrflag which = ind_db_proposal_pending }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_german }
+		command = { type = setflag which = ind_db_retry_cooldown }
+		command = { type = event which = 9281608 where = IND when = 180 }
+	}
+}
+
+event = {
+	id = 9281606
+	random = no
+	persistent = yes
+	country = IND
+	name = "The Arms-and-Markets Counteroffer"
+	desc = "Berlin offers useful cooperation but avoids the word equal. Delhi can accept a limited compact and earn a later review, demand equality now, or walk away. None of these choices starts a war."
+	style = 2
+	picture = "aubm_ger_compact_signing"
+	action_a = {
+		name = "Accept the limited compact and prove our weight"
+		command = { type = setflag which = ind_db_compact_active }
+		command = { type = setflag which = ind_db_compact_limited }
+		command = { type = setflag which = ind_aubm_route_german }
+		command = { type = setflag which = ind_aubm_commitment_german }
+		command = { type = setflag which = ind_v3_axis_orientation }
+		command = { type = setflag which = ind_v4_strategy_axis }
+		command = { type = setflag which = ind_aubm_bespoke_partner_crisis_german_resolved }
+		command = { type = setflag which = ind_aubm_bespoke_partner_collapse_german_handled }
+		command = { type = sleepevent which = 9281300 }
+		command = { type = clrflag which = ind_db_proposal_pending }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_german }
+	}
+	action_b = {
+		name = "Demand equality: 45% accept, 40% delay, 15% close"
+		command = { type = event which = 9281609 where = GER when = 1 }
+	}
+	action_c = {
+		name = "Walk away and reopen talks in six months"
+		command = { type = clrflag which = ind_db_proposal_pending }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_german }
+		command = { type = setflag which = ind_db_retry_cooldown }
+		command = { type = event which = 9281608 where = IND when = 180 }
+	}
+}
+
+event = {
+	id = 9281607
+	random = no
+	persistent = yes
+	country = IND
+	name = "Berlin Closes the Door"
+	desc = "The refusal is not a route trap. India may reopen the channel after six months or close it permanently and remain free to choose another alignment."
+	style = 2
+	picture = "aubm_ger_independent_command"
+	action_a = {
+		name = "Return with a stronger case in six months"
+		command = { type = clrflag which = ind_db_proposal_pending }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_german }
+		command = { type = setflag which = ind_db_retry_cooldown }
+		command = { type = event which = 9281608 where = IND when = 180 }
+	}
+	action_b = {
+		name = "Close the German file and keep full freedom"
+		command = { type = clrflag which = ind_db_proposal_pending }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_german }
+		command = { type = setflag which = ind_db_compact_closed }
+	}
+}
+
+event = {
+	id = 9281608
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	name = "The Berlin Channel Reopens"
+	desc = "Six months have changed the balance. The strategic conference may be proposed again if India is still uncommitted."
+	style = 2
+	picture = "aubm_ger_compact_signing"
+	action_a = { name = "Return the proposal to Cabinet" command = { type = clrflag which = ind_db_retry_cooldown } command = { type = setflag which = ind_db_retry_ready } }
+}
+
+event = {
+	id = 9281609
+	random = no
+	country = GER
+	name = "Delhi Refuses a Junior Seat"
+	desc = "India will cooperate only if the compact recognizes separate command and an equal voice. Berlin can concede, postpone equality until India completes two joint projects, or end the negotiation."
+	style = 2
+	picture = "aubm_ger_compact_signing"
+	action_a = { ai_chance = 45 name = "Concede equal terms" command = { type = event which = 9281605 where = IND when = 2 } }
+	action_b = { ai_chance = 40 name = "Offer a limited compact with a binding review" command = { type = event which = 9281606 where = IND when = 2 } }
+	action_c = { ai_chance = 15 name = "End the negotiation" command = { type = event which = 9281607 where = IND when = 2 } }
+}
+
+#########################################################################
+# Chapter II: useful cooperation with real trade-offs
+#########################################################################
+
+event = {
+	id = 9281610
+	random = no
+	persistent = yes
+	country = IND
+	decision = { flag = ind_db_compact_active NOT = { flag = ind_db_project_industry } exists = GER NOT = { war = { country = IND country = GER } } }
+	decision_trigger = { money = 350 supplies = 500 }
+	name = "Factories Without Masters"
+	decision_desc = "Choose German machine tools or a resource survey. Both count toward an equality review. Neither gives free permanent IC."
+	desc = "German engineers offer two useful programmes. Machine tools accelerate difficult research. A synthetic-fuel survey eases India's oil shortage. The budget can support one first priority."
+	style = 2
+	picture = "aubm_ger_machines_for_ore"
+	date = { day = 0 month = january year = 1937 }
+	offset = 11
+	deathdate = { day = 29 month = december year = 1964 }
+	action = { trigger = { ai = no } name = "Cancel - decide later" }
+	action_a = { trigger = { money = 500 supplies = 700 } name = "Machine tools: -500 money/-700 supplies, two advances" command = { type = money value = -500 } command = { type = supplies value = -700 } command = { type = steal_tech which = GER } command = { type = steal_tech which = GER } command = { type = setflag which = ind_db_project_industry } command = { type = setflag which = ind_db_proof_industry } }
+	action_b = { trigger = { money = 350 supplies = 500 } name = "Synthetic fuel: -350 money/-500 supplies, +300 oil" command = { type = money value = -350 } command = { type = supplies value = -500 } command = { type = oilpool value = 300 } command = { type = setflag which = ind_db_project_industry } command = { type = setflag which = ind_db_proof_industry } }
+}
+
+event = {
+	id = 9281611
+	random = no
+	persistent = yes
+	country = IND
+	decision = { flag = ind_db_compact_active NOT = { flag = ind_db_project_staff } exists = GER NOT = { war = { country = IND country = GER } } }
+	decision_trigger = { money = 350 supplies = 650 }
+	name = "The Quetta-Berlin Staff Exchange"
+	decision_desc = "Choose doctrine study or frontier logistics. Both build compact standing, but only one permanent strength is granted."
+	desc = "German officers think in rail timetables and armoured thrusts. Quetta's staff thinks in mountains, deserts and weak roads. The exchange will be valuable only if India chooses what it actually needs."
+	style = 2
+	picture = "aubm_ger_monsoon_armour"
+	date = { day = 0 month = march year = 1937 }
+	offset = 11
+	deathdate = { day = 29 month = december year = 1964 }
+	action = { trigger = { ai = no } name = "Cancel - decide later" }
+	action_a = { trigger = { money = 400 supplies = 700 } name = "Doctrine: -400 money/-700 supplies, +1 land org" command = { type = money value = -400 } command = { type = supplies value = -700 } command = { type = max_organization which = land value = 1 } command = { type = setflag which = ind_db_project_staff } command = { type = setflag which = ind_db_proof_staff } }
+	action_b = { trigger = { money = 350 supplies = 650 } name = "Logistics: -350 money/-650 supplies, +3% TC" command = { type = money value = -350 } command = { type = supplies value = -650 } command = { type = tc_mod value = 3 } command = { type = setflag which = ind_db_project_staff } command = { type = setflag which = ind_db_proof_staff } }
+}
+
+event = {
+	id = 9281612
+	random = no
+	persistent = yes
+	country = IND
+	decision = { flag = ind_db_compact_active NOT = { flag = ind_db_project_naval } exists = GER NOT = { war = { country = IND country = GER } } }
+	decision_trigger = { money = 400 supplies = 700 }
+	name = "The Cape Raider School"
+	decision_desc = "Choose submarine doctrine or long-range maritime reconnaissance. This is training, not a free fleet."
+	desc = "India cannot copy Germany's navy, and should not try. German raider experience can instead teach Indian officers how to survive against larger fleets or how to find them before they strike."
+	style = 2
+	picture = "aubm_ger_independent_command"
+	date = { day = 0 month = june year = 1937 }
+	offset = 13
+	deathdate = { day = 29 month = december year = 1964 }
+	action = { trigger = { ai = no } name = "Cancel - decide later" }
+	action_a = { trigger = { money = 450 supplies = 800 } name = "Raiders: -450 money/-800 supplies, +1 sub morale" command = { type = money value = -450 } command = { type = supplies value = -800 } command = { type = morale which = submarine value = 1 } command = { type = setflag which = ind_db_project_naval } command = { type = setflag which = ind_db_proof_naval } }
+	action_b = { trigger = { money = 400 supplies = 700 } name = "Sea scouts: -400 money/-700 supplies, two advances" command = { type = money value = -400 } command = { type = supplies value = -700 } command = { type = steal_tech which = GER } command = { type = steal_tech which = GER } command = { type = setflag which = ind_db_project_naval } command = { type = setflag which = ind_db_proof_naval } }
+}
+
+event = {
+	id = 9281613
+	random = no
+	persistent = yes
+	country = IND
+	trigger = { year = 1938 flag = ind_db_compact_active NOT = { flag = ind_db_legion_handled } }
+	name = "The Indian Legion Comes Home"
+	desc = "Berlin offers to return Indian volunteers as a political formation. Delhi can absorb the men, use only the trained officers, or refuse a force raised under foreign slogans."
+	style = 2
+	picture = "aubm_ger_independent_command"
+	date = { day = 0 month = january year = 1938 }
+	offset = 17
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = { ai_chance = 35 name = "Bring every cadre home: +12 manpower, +2 dissent" command = { type = manpowerpool value = 12 } command = { type = dissent value = 2 } command = { type = setflag which = ind_db_proof_legion } command = { type = setflag which = ind_db_legion_handled } }
+	action_b = { ai_chance = 45 name = "Take officers: +5 manpower, +1% TC, +1 dissent" command = { type = manpowerpool value = 5 } command = { type = tc_mod value = 1 } command = { type = dissent value = 1 } command = { type = setflag which = ind_db_proof_legion } command = { type = setflag which = ind_db_legion_handled } }
+	action_c = { ai_chance = 20 name = "Refuse foreign-raised formations: -1 dissent" command = { type = dissent value = -1 } command = { type = setflag which = ind_db_legion_handled } }
+}
+
+event = {
+	id = 9281614
+	random = no
+	persistent = yes
+	country = IND
+	trigger = { year = 1938 flag = ind_db_compact_active NOT = { flag = ind_db_colour_line_handled } exists = GER NOT = { war = { country = IND country = GER } } }
+	name = "A Seat, Not a Salute"
+	desc = "German protocol places Indian officers behind Europeans of lower rank. Delhi can force the question, avoid a public quarrel while lodging a protest, or accept the insult for easier access."
+	style = 2
+	picture = "aubm_ger_independent_command"
+	date = { day = 0 month = april year = 1938 }
+	offset = 17
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = { ai_chance = 55 name = "Demand equal rank and risk the compact" command = { type = setflag which = ind_db_colour_line_handled } command = { type = event which = 9281615 where = GER when = 1 } }
+	action_b = { ai_chance = 35 name = "Private protest: -10 relations, one compact proof" command = { type = relation which = GER value = -10 } command = { type = setflag which = ind_db_proof_equality } command = { type = setflag which = ind_db_colour_line_handled } }
+	action_c = { ai_chance = 10 name = "Accept the slight: +20 relations, +2 dissent" command = { type = relation which = GER value = 20 } command = { type = dissent value = 2 } command = { type = setflag which = ind_db_colour_line_handled } }
+}
+
+event = {
+	id = 9281615
+	random = no
+	country = GER
+	name = "Delhi Draws the Colour Line"
+	desc = "India refuses ceremonial subordination. A concession will strengthen the compact; evasion will preserve trade but weaken trust; an insult may end the relationship."
+	style = 2
+	picture = "aubm_ger_independent_command"
+	action_a = { ai_chance = 60 name = "Rank follows command, not race" command = { type = relation which = IND value = 25 } command = { type = event which = 9281617 where = IND when = 2 } }
+	action_b = { ai_chance = 30 name = "Avoid the principle and repair the ceremony" command = { type = relation which = IND value = -5 } command = { type = event which = 9281618 where = IND when = 2 } }
+	action_c = { ai_chance = 10 name = "India will accept the order Berlin gives it" command = { type = relation which = IND value = -40 } command = { type = event which = 9281619 where = IND when = 2 } }
+}
+
+event = {
+	id = 9281616
+	random = no
+	persistent = yes
+	country = IND
+	decision = {
+		flag = ind_db_compact_active
+		flag = ind_db_compact_limited
+		NOT = { flag = ind_db_equality_reviewed }
+		OR = {
+			AND = { flag = ind_db_proof_industry flag = ind_db_proof_staff }
+			AND = { flag = ind_db_proof_industry flag = ind_db_proof_naval }
+			AND = { flag = ind_db_proof_industry flag = ind_db_proof_legion }
+			AND = { flag = ind_db_proof_staff flag = ind_db_proof_naval }
+			AND = { flag = ind_db_proof_staff flag = ind_db_proof_legion }
+			AND = { flag = ind_db_proof_naval flag = ind_db_proof_legion }
+			AND = { flag = ind_db_proof_equality OR = { flag = ind_db_proof_industry flag = ind_db_proof_staff flag = ind_db_proof_naval flag = ind_db_proof_legion } }
+		}
+		exists = GER
+		NOT = { war = { country = IND country = GER } }
+	}
+	decision_trigger = { money = 250 supplies = 400 }
+	name = "Demand the Equality Review"
+	decision_desc = "Requires two compact proofs. Cost: 250 money and 400 supplies. Berlin accepts equality 65%, delays it until a battlefield victory 25%, or refuses 10%."
+	desc = "India has delivered more than promises. Delhi now invokes the written review and asks Berlin to choose between a real partnership and a merely useful customer."
+	style = 2
+	picture = "aubm_ger_compact_signing"
+	date = { day = 0 month = january year = 1938 }
+	offset = 11
+	deathdate = { day = 29 month = december year = 1964 }
+	action = { trigger = { ai = no } name = "Cancel - present the case later" }
+	action_a = { trigger = { money = 250 supplies = 400 } name = "Present the equality case: -250 money, -400 supplies" command = { type = money value = -250 } command = { type = supplies value = -400 } command = { type = setflag which = ind_db_equality_reviewed } command = { type = event which = 9281620 where = GER when = 1 } }
+}
+
+event = {
+	id = 9281617
+	random = no
+	one_action = yes
+	country = IND
+	name = "Berlin Yields on Rank"
+	desc = "The protocol changes. It is a small victory, but officers in both capitals understand what it means: India has made equality a working condition of the compact."
+	style = 2
+	picture = "aubm_ger_independent_command"
+	action_a = { name = "Record the precedent" command = { type = setflag which = ind_db_proof_equality } command = { type = dissent value = -1 } }
+}
+
+event = {
+	id = 9281618
+	random = no
+	one_action = yes
+	country = IND
+	name = "Berlin Repairs the Room, Not the Rule"
+	desc = "The immediate insult is removed, but Berlin refuses the principle. The compact continues. India gains no equality proof and loses no right to leave."
+	style = 2
+	picture = "aubm_ger_independent_command"
+	action_a = { name = "Continue with eyes open" command = { type = dissent value = 1 } }
+}
+
+event = {
+	id = 9281619
+	random = no
+	persistent = yes
+	country = IND
+	name = "Berlin Chooses the Insult"
+	desc = "Germany has made the hierarchy plain. Delhi can end the compact without ending any war, or keep the machinery running until a better moment."
+	style = 2
+	picture = "aubm_ger_independent_command"
+	action_a = { name = "End the compact; preserve every Indian war" command = { type = clrflag which = ind_db_compact_active } command = { type = clrflag which = ind_db_compact_equal } command = { type = clrflag which = ind_db_compact_limited } command = { type = clrflag which = ind_aubm_commitment_german } command = { type = clrflag which = ind_gc_cobelligerent } command = { type = setflag which = ind_gc_sovereign } command = { type = setflag which = ind_db_compact_broken } command = { type = setflag which = ind_aubm_realignment_cooldown } command = { type = event which = 9281661 where = IND when = 90 } }
+	action_b = { name = "Keep the compact, but prepare an exit: +2 dissent" command = { type = dissent value = 2 } command = { type = setflag which = ind_db_exit_unlocked } }
+}
+
+event = {
+	id = 9281620
+	random = no
+	country = GER
+	name = "India Invokes the Equality Clause"
+	desc = "Delhi has completed the work demanded by the limited compact. Berlin can honour the clause, delay it until India takes a major objective, or refuse and risk losing the relationship."
+	style = 2
+	picture = "aubm_ger_compact_signing"
+	action_a = { ai_chance = 65 name = "Honour the clause" command = { type = relation which = IND value = 25 } command = { type = event which = 9281621 where = IND when = 2 } }
+	action_b = { ai_chance = 25 name = "Equality follows a battlefield victory" command = { type = relation which = IND value = 5 } command = { type = event which = 9281622 where = IND when = 2 } }
+	action_c = { ai_chance = 10 name = "Refuse the clause" command = { type = relation which = IND value = -35 } command = { type = event which = 9281623 where = IND when = 2 } }
+}
+
+event = {
+	id = 9281621
+	random = no
+	one_action = yes
+	country = IND
+	name = "India Wins Equal Standing"
+	desc = "The compact is amended. Delhi's command and settlement voice are equal in writing as well as practice. This changes diplomacy, not India's wars."
+	style = 2
+	picture = "aubm_ger_compact_signing"
+	action_a = { name = "Sign the equality amendment" command = { type = clrflag which = ind_db_compact_limited } command = { type = setflag which = ind_db_compact_equal } command = { type = setflag which = ind_aubm_coalition_consultation } command = { type = dissent value = -1 } }
+}
+
+event = {
+	id = 9281622
+	random = no
+	one_action = yes
+	country = IND
+	name = "Berlin Demands Proof in War"
+	desc = "Berlin postpones equality until India takes a major continental or maritime objective. Baku, Tashkent, Suez or Singapore will settle the argument."
+	style = 2
+	picture = "aubm_ger_independent_command"
+	action_a = { name = "Let the map answer" command = { type = setflag which = ind_db_equality_after_victory } }
+}
+
+event = {
+	id = 9281623
+	random = no
+	persistent = yes
+	country = IND
+	name = "Berlin Breaks the Equality Clause"
+	desc = "Germany refuses the written review. Delhi may keep a useful but unequal pact, or leave cleanly. No option makes peace with India's enemies."
+	style = 2
+	picture = "aubm_ger_independent_command"
+	action_a = { name = "Keep the limited pact for now: +1 dissent" command = { type = dissent value = 1 } command = { type = setflag which = ind_db_exit_unlocked } }
+	action_b = { name = "End the compact and keep our wars" command = { type = clrflag which = ind_db_compact_active } command = { type = clrflag which = ind_db_compact_limited } command = { type = clrflag which = ind_aubm_commitment_german } command = { type = clrflag which = ind_gc_cobelligerent } command = { type = setflag which = ind_gc_sovereign } command = { type = setflag which = ind_db_compact_broken } command = { type = setflag which = ind_aubm_realignment_cooldown } command = { type = event which = 9281661 where = IND when = 90 } }
+}
+
+#########################################################################
+# Chapter III: every war remains Delhi's decision
+#########################################################################
+
+event = {
+	id = 9281630
+	random = no
+	persistent = yes
+	country = IND
+	trigger = { year = 1939 flag = ind_db_compact_active flag = ind_aubm_commitment_german war = { country = GER country = ENG } NOT = { war = { country = IND country = ENG } } NOT = { alliance = { country = IND country = GER } } NOT = { flag = ind_db_crisis_eng_seen } }
+	name = "Germany Goes to War with Britain"
+	desc = "The compact does not carry India into Germany's war. Delhi may review its own British campaign, send finite support while staying neutral, remain outside, or consider formal Axis membership with every inherited war shown in advance."
+	style = 2
+	picture = "aubm_ger_suez_road"
+	date = { day = 0 month = january year = 1939 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = { name = "Review an independent war on Britain" command = { type = event which = 9281634 where = IND when = 1 } }
+	action_b = { trigger = { money = 200 supplies = 800 } name = "Send stores, stay out: -200 money, -800 supplies" command = { type = money value = -200 } command = { type = supplies value = -800 } command = { type = relation which = GER value = 20 } command = { type = setflag which = ind_db_crisis_eng_seen } command = { type = setflag which = ind_aubm_coalition_consultation } }
+	action_c = { name = "Stay outside the British war; keep the compact" command = { type = setflag which = ind_db_crisis_eng_seen } }
+	action_d = { name = "Review formal Axis entry and every inherited war" command = { type = event which = 9281638 where = IND when = 1 } }
+}
+
+event = {
+	id = 9281631
+	random = no
+	persistent = yes
+	country = IND
+	trigger = { year = 1940 flag = ind_db_compact_active flag = ind_aubm_commitment_german war = { country = GER country = SOV } NOT = { war = { country = IND country = SOV } } NOT = { alliance = { country = IND country = GER } } NOT = { flag = ind_db_crisis_sov_seen } }
+	name = "Germany Goes to War with the Soviet Union"
+	desc = "Berlin asks for a southern front. India is not bound to provide one. Delhi may open its own Soviet war, send supplies, stay out, or review full Axis membership."
+	style = 2
+	picture = "aubm_ger_caucasus_lifeline"
+	date = { day = 0 month = january year = 1940 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = { name = "Review an independent Soviet war" command = { type = event which = 9281635 where = IND when = 1 } }
+	action_b = { trigger = { money = 200 supplies = 1000 } name = "Send stores, stay out: -200 money, -1000 supplies" command = { type = money value = -200 } command = { type = supplies value = -1000 } command = { type = relation which = GER value = 20 } command = { type = setflag which = ind_db_crisis_sov_seen } command = { type = setflag which = ind_aubm_coalition_consultation } }
+	action_c = { name = "Stay outside the Soviet war; keep the compact" command = { type = setflag which = ind_db_crisis_sov_seen } }
+	action_d = { name = "Review formal Axis entry and every inherited war" command = { type = event which = 9281638 where = IND when = 1 } }
+}
+
+event = {
+	id = 9281632
+	random = no
+	persistent = yes
+	country = IND
+	trigger = { year = 1941 flag = ind_db_compact_active flag = ind_aubm_commitment_german war = { country = GER country = USA } NOT = { war = { country = IND country = USA } } NOT = { alliance = { country = IND country = GER } } NOT = { flag = ind_db_crisis_usa_seen } }
+	name = "Germany Goes to War with America"
+	desc = "A global war has begun, but India remains outside it. Delhi can review a separate American war, support Germany without declaring, remain neutral, or join the Axis after a final warning."
+	style = 2
+	picture = "aubm_ger_independent_command"
+	date = { day = 0 month = january year = 1941 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = { name = "Review an independent war on America" command = { type = event which = 9281636 where = IND when = 1 } }
+	action_b = { trigger = { money = 250 supplies = 900 } name = "Send stores, stay out: -250 money, -900 supplies" command = { type = money value = -250 } command = { type = supplies value = -900 } command = { type = relation which = GER value = 15 } command = { type = setflag which = ind_db_crisis_usa_seen } command = { type = setflag which = ind_aubm_coalition_consultation } }
+	action_c = { name = "Stay outside the American war; keep the compact" command = { type = setflag which = ind_db_crisis_usa_seen } }
+	action_d = { name = "Review formal Axis entry and every inherited war" command = { type = event which = 9281638 where = IND when = 1 } }
+}
+
+event = {
+	id = 9281634
+	random = no
+	persistent = yes
+	country = IND
+	decision = { year = 1939 flag = ind_db_compact_active flag = ind_aubm_commitment_german exists = ENG NOT = { war = { country = IND country = ENG } } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ENG } } }
+	decision_trigger = { money = 500 supplies = 1200 }
+	name = "Open an Independent War on Britain"
+	decision_desc = "Immediate pairwise war with Britain. Cost: 500 money, 1200 supplies and 4 dissent. The compact survives, and India inherits no other German war."
+	desc = "Britain is the natural maritime enemy of an Indian-German compact, but the date belongs to Delhi. Confirmation opens only the Indian-British war and activates India's established western and ocean campaign systems."
+	style = 2
+	picture = "aubm_ger_suez_road"
+	date = { day = 0 month = january year = 1939 }
+	offset = 11
+	deathdate = { day = 29 month = december year = 1964 }
+	action = { trigger = { ai = no } name = "Cancel - Britain remains at peace" }
+	action_a = { trigger = { money = 500 supplies = 1200 } name = "Confirm: -500 money/-1200 supplies, +4 dissent" command = { type = money value = -500 } command = { type = supplies value = -1200 } command = { type = dissent value = 4 } command = { type = war which = ENG } command = { type = setflag which = ind_db_war_eng } command = { type = setflag which = ind_db_crisis_eng_seen } command = { type = setflag which = ind_gc_cobelligerent } command = { type = setflag which = ind_gc_campaign_active } command = { type = event which = 9281641 where = GER when = 2 } }
+}
+
+event = {
+	id = 9281635
+	random = no
+	persistent = yes
+	country = IND
+	decision = { year = 1940 flag = ind_db_compact_active flag = ind_aubm_commitment_german exists = SOV NOT = { war = { country = IND country = SOV } } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = SOV } } }
+	decision_trigger = { money = 700 supplies = 1800 }
+	name = "Open an Independent War on the Soviet Union"
+	decision_desc = "Immediate pairwise war with the USSR. Cost: 700 money, 1800 supplies and 5 dissent. Germany need not already be at war with Moscow."
+	desc = "India can open the northern campaign on its own timetable. This is not Axis entry. Berlin may help, press for wider war or remain aloof, but it cannot make peace for India."
+	style = 2
+	picture = "aubm_ger_caucasus_lifeline"
+	date = { day = 0 month = january year = 1940 }
+	offset = 11
+	deathdate = { day = 29 month = december year = 1964 }
+	action = { trigger = { ai = no } name = "Cancel - Moscow remains at peace" }
+	action_a = { trigger = { money = 700 supplies = 1800 } name = "Confirm: -700 money/-1800 supplies, +5 dissent" command = { type = money value = -700 } command = { type = supplies value = -1800 } command = { type = dissent value = 5 } command = { type = war which = SOV } command = { type = setflag which = ind_db_war_sov } command = { type = setflag which = ind_db_crisis_sov_seen } command = { type = setflag which = ind_gc_cobelligerent } command = { type = setflag which = ind_gc_campaign_active } command = { type = event which = 9281640 where = GER when = 2 } }
+}
+
+event = {
+	id = 9281636
+	random = no
+	persistent = yes
+	country = IND
+	decision = { year = 1941 flag = ind_db_compact_active flag = ind_aubm_commitment_german exists = USA war = { country = GER country = USA } NOT = { war = { country = IND country = USA } } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = USA } } }
+	decision_trigger = { money = 600 supplies = 1500 }
+	name = "Open an Independent War on America"
+	decision_desc = "Immediate pairwise war with the United States. Cost: 600 money, 1500 supplies and 5 dissent. Germany must already be fighting America."
+	desc = "An American war is a global commitment, not a gesture to Berlin. India can enter separately only after the German-American war exists and only by an explicit confirmation."
+	style = 2
+	picture = "aubm_ger_independent_command"
+	date = { day = 0 month = january year = 1941 }
+	offset = 11
+	deathdate = { day = 29 month = december year = 1964 }
+	action = { trigger = { ai = no } name = "Cancel - America remains at peace" }
+	action_a = { trigger = { money = 600 supplies = 1500 war = { country = GER country = USA } } name = "Confirm: -600 money/-1500 supplies, +5 dissent" command = { type = money value = -600 } command = { type = supplies value = -1500 } command = { type = dissent value = 5 } command = { type = war which = USA } command = { type = setflag which = ind_db_war_usa } command = { type = setflag which = ind_db_crisis_usa_seen } command = { type = setflag which = ind_gc_cobelligerent } command = { type = setflag which = ind_gc_campaign_active } command = { type = event which = 9281643 where = GER when = 2 } }
+}
+
+event = {
+	id = 9281637
+	random = no
+	persistent = yes
+	country = IND
+	decision = { year = 1940 flag = ind_db_compact_active flag = ind_aubm_commitment_german exists = JAP NOT = { war = { country = IND country = JAP } } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = JAP } } }
+	decision_trigger = { money = 600 supplies = 1400 }
+	name = "Open an Independent War on Japan"
+	decision_desc = "Immediate pairwise war with Japan. Cost: 600 money, 1400 supplies and 4 dissent. No German war is inherited."
+	desc = "The compact with Berlin does not make Tokyo India's friend. If Japan threatens India's Asian order, Delhi can open a separate war while preserving German technical cooperation."
+	style = 2
+	picture = "aubm_ger_three_capitals"
+	date = { day = 0 month = january year = 1940 }
+	offset = 11
+	deathdate = { day = 29 month = december year = 1964 }
+	action = { trigger = { ai = no } name = "Cancel - Tokyo remains at peace" }
+	action_a = { trigger = { money = 600 supplies = 1400 } name = "Confirm: -600 money/-1400 supplies, +4 dissent" command = { type = money value = -600 } command = { type = supplies value = -1400 } command = { type = dissent value = 4 } command = { type = war which = JAP } command = { type = setflag which = ind_db_war_jap } command = { type = setflag which = ind_gc_cobelligerent } command = { type = setflag which = ind_gc_campaign_active } command = { type = event which = 9281642 where = GER when = 2 } }
+}
+
+event = {
+	id = 9281638
+	random = no
+	persistent = yes
+	country = IND
+	name = "Formal Axis Entry: Final Warning"
+	desc = "Formal entry is different from the Delhi-Berlin compact. The engine alliance merges India's wars with Germany's current wars and may bind India to Italy or other Axis partners. Cancel leaves the compact unchanged and consumes no war choice."
+	style = 2
+	picture = "aubm_ger_compact_signing"
+	action = { trigger = { ai = no } name = "Cancel - keep separate command" }
+	action_a = {
+		trigger = { exists = GER flag = ind_db_compact_active NOT = { participant = { country = IND value = 4 } } NOT = { war = { country = IND country = GER } } }
+		name = "Confirm formal Axis membership and inherit every war"
+		command = { type = alliance which = GER when = 1 }
+		command = { type = setflag which = ind_gc_formal_axis }
+		command = { type = setflag which = ind_v3_joined_axis }
+		command = { type = setflag which = ind_db_formal_axis }
+		command = { type = clrflag which = ind_gc_cobelligerent }
+	}
+}
+
+#########################################################################
+# Berlin reacts to Indian wars; Delhi keeps command
+#########################################################################
+
+event = {
+	id = 9281640
+	random = no
+	country = GER
+	name = "India Opens the Northern War"
+	desc = "Delhi has declared war on the Soviet Union without joining the Axis. Germany can recognize the separate front, send a finite mission, or condemn a war it does not control."
+	style = 2
+	picture = "aubm_ger_caucasus_lifeline"
+	action_a = { ai_chance = 55 name = "Recognize India's separate command" command = { type = relation which = IND value = 25 } command = { type = non_aggression which = GER where = IND when = 720 } }
+	action_b = { ai_chance = 30 name = "Send a finite doctrine mission" command = { type = relation which = IND value = 15 } command = { type = event which = 9281644 where = IND when = 2 } }
+	action_c = { ai_chance = 15 name = "Condemn an unscheduled war" command = { type = relation which = IND value = -20 } command = { type = event which = 9281645 where = IND when = 2 } }
+}
+
+event = {
+	id = 9281641
+	random = no
+	country = GER
+	name = "India Opens the Ocean War"
+	desc = "India has entered war with Britain under separate command. Berlin may recognize India's claim east of Suez, send finite stores, or demand formal entry."
+	style = 2
+	picture = "aubm_ger_suez_road"
+	action_a = { ai_chance = 55 name = "Recognize India's ocean command" command = { type = relation which = IND value = 25 } }
+	action_b = { ai_chance = 30 name = "Release a finite supply package" command = { type = relation which = IND value = 15 } command = { type = event which = 9281644 where = IND when = 2 } }
+	action_c = { ai_chance = 15 name = "Demand full Axis entry" command = { type = relation which = IND value = -10 } command = { type = event which = 9281645 where = IND when = 2 } }
+}
+
+event = {
+	id = 9281642
+	random = no
+	country = GER
+	name = "Delhi Turns against Tokyo"
+	desc = "India has chosen war with Japan while remaining Germany's compact partner. Berlin can recognize separate Asian interests, press Delhi to narrow the war, or break technical cooperation."
+	style = 2
+	picture = "aubm_ger_three_capitals"
+	action_a = { ai_chance = 50 name = "Asia is India's theatre" command = { type = relation which = IND value = 20 } }
+	action_b = { ai_chance = 35 name = "Press Delhi to limit its claims" command = { type = relation which = IND value = -10 } command = { type = event which = 9281645 where = IND when = 2 } }
+	action_c = { ai_chance = 15 name = "Suspend technical cooperation" command = { type = relation which = IND value = -35 } command = { type = event which = 9281646 where = IND when = 2 } }
+}
+
+event = {
+	id = 9281643
+	random = no
+	country = GER
+	name = "India Enters the Atlantic War"
+	desc = "Delhi has opened a separate war with the United States. Berlin may recognize the decision, release finite naval intelligence, or insist that only formal allies deserve support."
+	style = 2
+	picture = "aubm_ger_independent_command"
+	action_a = { ai_chance = 50 name = "Recognize the separate war" command = { type = relation which = IND value = 20 } }
+	action_b = { ai_chance = 30 name = "Share finite naval intelligence" command = { type = relation which = IND value = 10 } command = { type = event which = 9281644 where = IND when = 2 } }
+	action_c = { ai_chance = 20 name = "Withhold support" command = { type = relation which = IND value = -15 } command = { type = event which = 9281645 where = IND when = 2 } }
+}
+
+event = {
+	id = 9281644
+	random = no
+	one_action = yes
+	country = IND
+	name = "A Finite German Mission Arrives"
+	desc = "The compact produces help, not a permanent multiplier. A small mission brings current plans, spare parts and one research advance."
+	style = 2
+	picture = "aubm_ger_machines_for_ore"
+	action_a = { name = "Absorb the mission: +400 supplies, one advance" command = { type = supplies value = 400 } command = { type = steal_tech which = GER } command = { type = setflag which = ind_db_german_war_aid } }
+}
+
+event = {
+	id = 9281645
+	random = no
+	persistent = yes
+	country = IND
+	name = "Berlin Presses for a Wider Commitment"
+	desc = "Germany wants authority over India's war. Delhi can ignore the pressure, send a face-saving shipment, or review formal Axis entry. India's present war continues under every option."
+	style = 2
+	picture = "aubm_ger_independent_command"
+	action_a = { name = "Our war, our command: -20 relations, +1 dissent" command = { type = relation which = GER value = -20 } command = { type = dissent value = 1 } }
+	action_b = { trigger = { money = 150 supplies = 600 } name = "Send a face-saving shipment: -150 money, -600 supplies" command = { type = money value = -150 } command = { type = supplies value = -600 } command = { type = relation which = GER value = 15 } }
+	action_c = { name = "Review formal Axis entry" command = { type = event which = 9281638 where = IND when = 1 } }
+}
+
+event = {
+	id = 9281646
+	random = no
+	persistent = yes
+	country = IND
+	name = "Berlin Suspends the Technical Channel"
+	desc = "Germany objects to India's Asian war and suspends new technical exchanges. Existing Indian wars and completed projects are untouched. Delhi may wait for a battlefield review or end the compact."
+	style = 2
+	picture = "aubm_ger_independent_command"
+	action_a = { name = "Win first and reopen the channel later" command = { type = setflag which = ind_db_support_suspended } command = { type = setflag which = ind_db_exit_unlocked } }
+	action_b = { name = "End the compact; continue every Indian war" command = { type = clrflag which = ind_db_compact_active } command = { type = clrflag which = ind_db_compact_equal } command = { type = clrflag which = ind_db_compact_limited } command = { type = clrflag which = ind_aubm_commitment_german } command = { type = clrflag which = ind_gc_cobelligerent } command = { type = setflag which = ind_gc_sovereign } command = { type = setflag which = ind_db_compact_broken } command = { type = setflag which = ind_aubm_realignment_cooldown } command = { type = event which = 9281661 where = IND when = 90 } }
+}
+
+#########################################################################
+# Chapter IV: the compact has politics, not only bonuses
+#########################################################################
+
+event = {
+	id = 9281647
+	random = no
+	persistent = yes
+	country = IND
+	trigger = { year = 1939 flag = ind_db_compact_active NOT = { flag = ind_db_asian_spheres_handled } exists = GER exists = JAP }
+	name = "Two Axis Cast Shadows over Asia"
+	desc = "Berlin proposes a loose division of labour with Tokyo. India can accept consultation without recognizing Japanese claims, draw a hard Indian sphere east of Suez, or avoid the quarrel by keeping the compact strictly continental."
+	style = 2
+	picture = "aubm_ger_three_capitals"
+	date = { day = 0 month = january year = 1939 }
+	offset = 19
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = { ai_chance = 40 name = "Consult all three; recognize no automatic claims" command = { type = relation which = GER value = 10 } command = { type = relation which = JAP value = 5 } command = { type = setflag which = ind_db_tripartite_consultation } command = { type = setflag which = ind_db_asian_spheres_handled } }
+	action_b = { ai_chance = 40 name = "Asia east of Suez needs an Indian veto" command = { type = relation which = GER value = -5 } command = { type = relation which = JAP value = -25 } command = { type = dissent value = -1 } command = { type = setflag which = ind_db_indian_asian_sphere } command = { type = setflag which = ind_db_asian_spheres_handled } }
+	action_c = { ai_chance = 20 name = "Keep Berlin's pact strictly continental" command = { type = relation which = GER value = 5 } command = { type = setflag which = ind_db_continental_only } command = { type = setflag which = ind_db_asian_spheres_handled } }
+}
+
+event = {
+	id = 9281648
+	random = no
+	persistent = yes
+	country = IND
+	trigger = { year = 1939 flag = ind_db_compact_active NOT = { flag = ind_db_rome_map_handled } exists = ITA }
+	name = "Rome Draws Lines across the Indian Ocean"
+	desc = "Italy asks Berlin to endorse its claims in East Africa and the Red Sea. India can recognize Italian holdings for immediate access, reject every European sphere in the ocean, or trade recognition for an Indian command east of Aden."
+	style = 2
+	picture = "aubm_ger_three_capitals"
+	date = { day = 0 month = april year = 1939 }
+	offset = 19
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = { ai_chance = 25 name = "Recognize Rome for access: +20 Italy, +2 dissent" command = { type = relation which = ITA value = 20 } command = { type = dissent value = 2 } command = { type = setflag which = ind_db_italian_access } command = { type = setflag which = ind_db_rome_map_handled } }
+	action_b = { ai_chance = 40 name = "No European owns the Indian Ocean: -20 Italy, -1 dissent" command = { type = relation which = ITA value = -20 } command = { type = dissent value = -1 } command = { type = setflag which = ind_db_ocean_no_spheres } command = { type = setflag which = ind_db_rome_map_handled } }
+	action_c = { ai_chance = 35 name = "Trade recognition for command east of Aden" command = { type = relation which = ITA value = 10 } command = { type = relation which = GER value = 5 } command = { type = setflag which = ind_db_aden_command_claim } command = { type = setflag which = ind_db_rome_map_handled } }
+}
+
+#########################################################################
+# Chapter V: compact-specific milestones; existing settlements stay final
+#########################################################################
+
+event = {
+	id = 9281650
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	trigger = { flag = ind_db_compact_active flag = ind_db_compact_limited flag = ind_db_equality_after_victory NOT = { flag = ind_db_equality_victory_awarded } OR = { control = { province = 713 data = IND } control = { province = 1103 data = IND } control = { province = 900 data = IND } control = { province = 1432 data = IND } } }
+	name = "The Map Settles the Equality Debate"
+	desc = "Indian command now holds Baku, Tashkent, Suez or Singapore. Berlin's delay has expired: performance, not protocol, has made India the senior Asian partner."
+	style = 2
+	picture = "aubm_ger_independent_command"
+	action_a = { name = "Amend the compact to equal status" command = { type = clrflag which = ind_db_compact_limited } command = { type = setflag which = ind_db_compact_equal } command = { type = setflag which = ind_db_equality_victory_awarded } command = { type = setflag which = ind_aubm_coalition_consultation } command = { type = dissent value = -2 } }
+}
+
+event = {
+	id = 9281651
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	trigger = { flag = ind_db_compact_active war = { country = IND country = SOV } control = { province = 713 data = IND } OR = { control = { province = 709 data = IND } control = { province = 706 data = IND } } NOT = { flag = ind_db_caucasus_gate } }
+	name = "Baku Opens the Southern Front"
+	desc = "India controls Baku and either Tbilisi or Astrakhan. The achievement opens a real fuel corridor and proves that the northern campaign is more than a diversion. It transfers no province and signs no peace."
+	style = 2
+	picture = "aubm_ger_caucasus_lifeline"
+	action_a = { name = "Route fuel south: +500 oil, +300 supplies" command = { type = oilpool value = 500 } command = { type = supplies value = 300 } command = { type = setflag which = ind_db_caucasus_gate } command = { type = setflag which = ind_gc_performance_1 } }
+}
+
+event = {
+	id = 9281652
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	trigger = { flag = ind_db_compact_active war = { country = IND country = SOV } flag = ind_db_caucasus_gate NOT = { flag = ind_db_deep_soviet_front } OR = { AND = { control = { province = 713 data = IND } control = { province = 1103 data = IND } control = { province = 706 data = IND } } AND = { control = { province = 713 data = IND } control = { province = 1103 data = IND } control = { province = 663 data = IND } } } }
+	name = "The Soviet War Becomes a Second Continent"
+	desc = "Baku and Tashkent are linked to a deeper Soviet objective. India has earned major northern standing, but the distance still demands supplies and manpower; it does not award free armies."
+	style = 2
+	picture = "aubm_ger_caucasus_lifeline"
+	action_a = { name = "Recognize the deep war: +3% TC, -2 dissent" command = { type = tc_mod value = 3 } command = { type = dissent value = -2 } command = { type = setflag which = ind_db_deep_soviet_front } command = { type = setflag which = ind_gc_performance_2 } command = { type = setflag which = ind_aubm_coalition_credit } }
+}
+
+event = {
+	id = 9281653
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	trigger = { flag = ind_db_compact_active war = { country = IND country = ENG } control = { province = 1053 data = IND } control = { province = 900 data = IND } NOT = { flag = ind_db_red_sea_gate } }
+	name = "The Ocean Road Breaks at Suez"
+	desc = "Aden and Suez are under Indian command. Britain has lost the hinge between the Mediterranean and Indian Ocean, but East Africa and the Gulf still decide whether this is a raid or a new system."
+	style = 2
+	picture = "aubm_ger_suez_road"
+	action_a = { name = "Open the Red Sea command: +500 supplies, +150 money" command = { type = supplies value = 500 } command = { type = money value = 150 } command = { type = setflag which = ind_db_red_sea_gate } command = { type = setflag which = ind_aubm_coalition_consultation } }
+}
+
+event = {
+	id = 9281654
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	trigger = { flag = ind_db_compact_active OR = { war = { country = IND country = JAP } war = { country = IND country = ENG } war = { country = IND country = USA } } flag = ind_aubm_sea_lane_malacca_achieved NOT = { flag = ind_db_malacca_gate } }
+	name = "Delhi Wins the Straits Race"
+	desc = "The Malacca sea gate is secure under Indian command. Berlin and Tokyo cannot convert the achievement into their own territorial claim. Existing Southeast Asian settlement events remain authoritative."
+	style = 2
+	picture = "aubm_ger_independent_command"
+	action_a = { name = "Record India's southern command: +300 supplies, -1 dissent" command = { type = supplies value = 300 } command = { type = dissent value = -1 } command = { type = setflag which = ind_db_malacca_gate } command = { type = setflag which = ind_aubm_victory_sovereign_credit } }
+}
+
+event = {
+	id = 9281655
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	trigger = { flag = ind_db_compact_active flag = ind_db_caucasus_gate flag = ind_db_red_sea_gate flag = ind_db_malacca_gate NOT = { flag = ind_db_three_theatre_command } }
+	name = "Three Theatres Answer to Delhi"
+	desc = "India has linked the Caucasus, Red Sea and Malacca commands in one war. This is compact prestige and secondary campaign credit, not another settlement reward."
+	style = 2
+	picture = "aubm_ger_three_capitals"
+	action_a = { name = "Record the three-theatre command: -3 dissent, +2% TC" command = { type = dissent value = -3 } command = { type = tc_mod value = 2 } command = { type = setflag which = ind_db_three_theatre_command } command = { type = setflag which = ind_aubm_secondary_campaign_credit } }
+}
+
+#########################################################################
+# Chapter VI: Germany can fail, and India can outgrow it
+#########################################################################
+
+event = {
+	id = 9281660
+	random = no
+	persistent = yes
+	country = IND
+	trigger = { year = 1941 flag = ind_db_compact_active NOT = { flag = ind_db_german_collapse_handled } OR = { AND = { exists = GER NOT = { control = { province = 163 data = GER } } } NOT = { exists = GER } } }
+	name = "Berlin Is Falling"
+	desc = "The continental partner is collapsing. India may fund one finite lifeline, redirect effort to its own ocean war, or end German authority while continuing every Indian war. No option creates peace with India's enemies."
+	style = 2
+	picture = "aubm_ger_independent_command"
+	date = { day = 0 month = january year = 1941 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = { trigger = { exists = GER money = 300 supplies = 1500 } name = "Fund one Caucasus lifeline: -300 money, -1500 supplies" command = { type = money value = -300 } command = { type = supplies value = -1500 } command = { type = dissent value = 2 } command = { type = event which = 9281666 where = GER when = 2 } command = { type = setflag which = ind_db_german_collapse_handled } }
+	action_b = { trigger = { supplies = 900 } name = "Save India's own fronts: -900 supplies, +2% TC" command = { type = supplies value = -900 } command = { type = tc_mod value = 2 } command = { type = setflag which = ind_db_german_collapse_handled } command = { type = setflag which = ind_db_senior_successor } }
+	action_c = { name = "Continue every war under sovereign command" command = { type = clrflag which = ind_db_compact_active } command = { type = clrflag which = ind_db_compact_equal } command = { type = clrflag which = ind_db_compact_limited } command = { type = clrflag which = ind_aubm_commitment_german } command = { type = clrflag which = ind_gc_cobelligerent } command = { type = setflag which = ind_gc_sovereign } command = { type = setflag which = ind_db_senior_successor } command = { type = setflag which = ind_db_german_collapse_handled } command = { type = setflag which = ind_aubm_victory_sovereign_credit } }
+}
+
+event = {
+	id = 9281661
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	name = "The Realignment Cooling Period Ends"
+	desc = "Ninety days have passed since the compact ended. India may again consider another strategic relationship if its other conditions allow it."
+	style = 2
+	picture = "aubm_ger_independent_command"
+	action_a = { name = "Return foreign policy to Cabinet" command = { type = clrflag which = ind_aubm_realignment_cooldown } }
+}
+
+event = {
+	id = 9281662
+	random = no
+	persistent = yes
+	country = IND
+	decision = { flag = ind_db_compact_active flag = ind_aubm_commitment_german atwar = no NOT = { alliance = { country = IND country = GER } } }
+	name = "Withdraw from the Delhi-Berlin Compact"
+	decision_desc = "Peace only. Ends the compact and starts a 90-day realignment cooling period. Historical victories remain recorded."
+	desc = "The separate-command compact can be ended cleanly while India is at peace. Technical history and campaign achievements remain; German commitment and future compact events stop."
+	style = 2
+	picture = "aubm_ger_independent_command"
+	date = { day = 0 month = january year = 1937 }
+	offset = 13
+	deathdate = { day = 29 month = december year = 1964 }
+	action = { trigger = { ai = no } name = "Cancel - keep the compact" }
+	action_a = { name = "Withdraw peacefully; 90-day realignment cooldown" command = { type = clrflag which = ind_db_compact_active } command = { type = clrflag which = ind_db_compact_equal } command = { type = clrflag which = ind_db_compact_limited } command = { type = clrflag which = ind_aubm_commitment_german } command = { type = clrflag which = ind_gc_cobelligerent } command = { type = setflag which = ind_db_compact_withdrawn } command = { type = setflag which = ind_aubm_realignment_cooldown } command = { type = event which = 9281661 where = IND when = 90 } }
+}
+
+event = {
+	id = 9281663
+	random = no
+	persistent = yes
+	country = IND
+	trigger = { year = 1943 flag = ind_db_compact_active NOT = { alliance = { country = IND country = GER } } NOT = { flag = ind_db_berlin_price_handled } exists = GER OR = { flag = ind_db_three_theatre_command flag = ind_aubm_route_war_achievement control = { province = 900 data = IND } control = { province = 713 data = IND } } }
+	name = "Berlin Claims the Price of Victory"
+	desc = "Germany wants India to accept limits east of Suez in return for postwar recognition. Delhi can accept a narrow map, end the compact peacefully, or prepare to fight a former partner."
+	style = 2
+	picture = "aubm_ger_independent_command"
+	date = { day = 0 month = january year = 1943 }
+	offset = 17
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = { ai_chance = 20 name = "Accept a narrow sphere: +25 Germany, +2 dissent" command = { type = relation which = GER value = 25 } command = { type = dissent value = 2 } command = { type = setflag which = ind_db_narrow_spheres } command = { type = setflag which = ind_db_berlin_price_handled } }
+	action_b = { ai_chance = 50 name = "End the compact; preserve every current war" command = { type = clrflag which = ind_db_compact_active } command = { type = clrflag which = ind_db_compact_equal } command = { type = clrflag which = ind_db_compact_limited } command = { type = clrflag which = ind_aubm_commitment_german } command = { type = clrflag which = ind_gc_cobelligerent } command = { type = setflag which = ind_gc_sovereign } command = { type = setflag which = ind_db_berlin_price_handled } command = { type = setflag which = ind_aubm_realignment_cooldown } command = { type = event which = 9281661 where = IND when = 90 } }
+	action_c = { ai_chance = 30 name = "Reject Berlin's veto and unlock a German war" command = { type = relation which = GER value = -50 } command = { type = setflag which = ind_db_break_war_unlocked } command = { type = setflag which = ind_db_berlin_price_handled } }
+}
+
+event = {
+	id = 9281664
+	random = no
+	persistent = yes
+	country = IND
+	decision = { year = 1943 flag = ind_db_compact_active flag = ind_db_break_war_unlocked exists = GER NOT = { alliance = { country = IND country = GER } } NOT = { war = { country = IND country = GER } } }
+	decision_trigger = { money = 500 supplies = 1200 }
+	name = "Settle Accounts with Berlin"
+	decision_desc = "Immediate pairwise war with Germany. Cost: 500 money, 1200 supplies and 5 dissent. The compact ends first; India's other wars continue."
+	desc = "The former partners now dispute the order they helped create. Delhi can wait, or break the compact and open a separate German war without making peace anywhere else."
+	style = 2
+	picture = "aubm_ger_independent_command"
+	date = { day = 0 month = january year = 1943 }
+	offset = 11
+	deathdate = { day = 29 month = december year = 1964 }
+	action = { trigger = { ai = no } name = "Cancel - keep the armed peace" }
+	action_a = { trigger = { money = 500 supplies = 1200 } name = "Break the compact and declare war on Germany" command = { type = money value = -500 } command = { type = supplies value = -1200 } command = { type = dissent value = 5 } command = { type = clrflag which = ind_db_compact_active } command = { type = clrflag which = ind_db_compact_equal } command = { type = clrflag which = ind_db_compact_limited } command = { type = clrflag which = ind_aubm_commitment_german } command = { type = clrflag which = ind_gc_cobelligerent } command = { type = setflag which = ind_gc_sovereign } command = { type = setflag which = ind_db_war_ger } command = { type = war which = GER } }
+}
+
+event = {
+	id = 9281665
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	trigger = { flag = ind_db_war_ger war = { country = IND country = GER } control = { province = 163 data = IND } OR = { control = { province = 175 data = IND } control = { province = 300 data = IND } } NOT = { flag = ind_db_berlin_victory } }
+	name = "Indian Armies Reach the Heart of Europe"
+	desc = "Indian forces hold Berlin and another major European capital. The former compact has ended in a decisive Indian victory. Territory and peace remain governed by the existing legal settlement system."
+	style = 2
+	picture = "aubm_ger_independent_command"
+	action_a = { name = "Record the reckoning with Berlin" command = { type = dissent value = -4 } command = { type = belligerence value = -2 } command = { type = setflag which = ind_db_berlin_victory } command = { type = setflag which = ind_aubm_decisive_great_power } command = { type = setflag which = ind_aubm_victory_sovereign_credit } }
+}
+
+event = {
+	id = 9281666
+	random = no
+	one_action = yes
+	country = GER
+	name = "Indian Relief Reaches the German Front"
+	desc = "A finite Indian shipment reaches the failing German front. It may delay collapse; it cannot guarantee German survival and grants no global modifier."
+	style = 2
+	picture = "aubm_ger_caucasus_lifeline"
+	action_a = { name = "Receive 1000 supplies and 300 oil" command = { type = supplies value = 1000 } command = { type = oilpool value = 300 } command = { type = relation which = IND value = 20 } }
+}
+
+event = {
+	id = 9281667
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	trigger = { flag = ind_db_compact_active flag = ind_aubm_postwar_congress_completed NOT = { flag = ind_db_final_clause_handled } }
+	name = "The Compact's Last Clause"
+	desc = "The war settlement is complete. India can keep a small technical relationship, preserve the full equal compact, or close the German chapter without losing any earned campaign result."
+	style = 2
+	picture = "aubm_ger_independent_command"
+	action_a = { name = "Keep only technical cooperation" command = { type = clrflag which = ind_db_compact_active } command = { type = clrflag which = ind_db_compact_equal } command = { type = clrflag which = ind_db_compact_limited } command = { type = clrflag which = ind_aubm_commitment_german } command = { type = clrflag which = ind_gc_cobelligerent } command = { type = setflag which = ind_db_postwar_technical } command = { type = setflag which = ind_db_final_clause_handled } }
+	action_b = { name = "Preserve the equal compact" command = { type = relation which = GER value = 20 } command = { type = setflag which = ind_db_final_clause_handled } }
+	action_c = { name = "Close the German chapter" command = { type = clrflag which = ind_db_compact_active } command = { type = clrflag which = ind_db_compact_equal } command = { type = clrflag which = ind_db_compact_limited } command = { type = clrflag which = ind_aubm_commitment_german } command = { type = setflag which = ind_db_final_clause_handled } }
+}
+
+# Compatibility guard for the shared peace-withdrawal system. If another
+# authoritative event clears the German commitment, the additive compact
+# shuts down instead of leaving orphaned project decisions behind.
+event = {
+	id = 9281668
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	trigger = { flag = ind_db_compact_active NOT = { flag = ind_aubm_commitment_german } }
+	name = "The German Compact Ledger Closes"
+	desc = "A shared withdrawal or route change has ended India's German commitment. The compact's active files close automatically; completed projects and campaign history remain recorded."
+	style = 2
+	picture = "aubm_ger_independent_command"
+	date = { day = 0 month = january year = 1937 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = { name = "Close only the active compact files" command = { type = clrflag which = ind_db_compact_active } command = { type = clrflag which = ind_db_compact_equal } command = { type = clrflag which = ind_db_compact_limited } command = { type = clrflag which = ind_db_proposal_pending } }
+}

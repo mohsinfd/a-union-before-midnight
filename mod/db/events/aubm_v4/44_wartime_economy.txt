@@ -1,0 +1,590 @@
+#########################################################################
+# A Union Before Midnight V4: wartime finance, mobilisation and occupation
+# Reserved event IDs: 9282080-9282099
+#########################################################################
+
+event = {
+	id = 9282080
+	random = no
+	persistent = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_wartime_framework
+		atwar = yes
+		NOT = { flag = ind_aubm_war_finance_active }
+	}
+	name = "The Indian War Finance Act"
+	desc = "War has begun. Ordinary peacetime revenue cannot fund expeditionary supply, replacement aircraft and overseas administrations at once. Defence bonds provide 2,200 money for 1 dissent and recorded postwar debt. A progressive levy provides 1,500 money for 3 dissent without debt. External credit provides 2,600 money for 2 dissent and recorded foreign debt. Borrowing advances a four-tier debt register; every choice opens exactly one annual budget review."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+	date = { day = 0 month = january year = 1933 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Defence bonds: +2,200 money, +1 dissent, debt tier"
+		command = { type = money value = 2200 }
+		command = { type = dissent value = 1 }
+		command = { type = setflag which = ind_aubm_debt_bonds }
+		command = { type = setflag which = ind_aubm_war_finance_active }
+		command = { type = setflag which = ind_aubm_budget_review_pending }
+		command = { type = event which = 9282090 where = IND when = 1 }
+		command = { type = event which = 9282081 where = IND when = 360 }
+	}
+	action_b = {
+		name = "Progressive levy: +1,500 money, +3 dissent, no debt"
+		command = { type = money value = 1500 }
+		command = { type = dissent value = 3 }
+		command = { type = setflag which = ind_aubm_war_taxation }
+		command = { type = setflag which = ind_aubm_war_finance_active }
+		command = { type = setflag which = ind_aubm_budget_review_pending }
+		command = { type = event which = 9282081 where = IND when = 360 }
+	}
+	action_c = {
+		name = "External credit: +2,600 money, +2 dissent, debt tier"
+		command = { type = money value = 2600 }
+		command = { type = dissent value = 2 }
+		command = { type = setflag which = ind_aubm_debt_foreign }
+		command = { type = setflag which = ind_aubm_war_finance_active }
+		command = { type = setflag which = ind_aubm_budget_review_pending }
+		command = { trigger = { flag = ind_aubm_route_allied exists = ENG } type = relation which = ENG value = 10 }
+		command = { trigger = { flag = ind_aubm_route_german exists = GER } type = relation which = GER value = 10 }
+		command = { trigger = { flag = ind_aubm_route_soviet exists = SOV } type = relation which = SOV value = 10 }
+		command = { trigger = { flag = ind_aubm_route_japan exists = JAP } type = relation which = JAP value = 10 }
+		command = { type = event which = 9282090 where = IND when = 1 }
+		command = { type = event which = 9282081 where = IND when = 360 }
+	}
+	action_d = {
+		name = "Ordinary revenue: no cash, -1 dissent"
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_aubm_war_finance_active }
+		command = { type = setflag which = ind_aubm_budget_review_pending }
+		command = { type = event which = 9282081 where = IND when = 360 }
+	}
+}
+
+event = {
+	id = 9282081
+	random = no
+	persistent = yes
+	country = IND
+	name = "The Annual Wartime Budget"
+	desc = "The single scheduled campaign-year review is due. Bonds provide 1,800 money for 1 dissent and advance the debt register. Taxation and rationing provide 1,300 money plus 500 supplies for 3 dissent without debt. Foreign credit provides 2,200 money for 2 dissent and advances debt. Ordinary revenue adds no cash and reduces dissent by 1. At peace, the account closes and any recorded debt becomes payable."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+	action_a = {
+		trigger = { atwar = yes }
+		name = "Renew bonds: +1,800 money, +1 dissent, debt tier"
+		command = { type = clrflag which = ind_aubm_budget_review_pending }
+		command = { type = money value = 1800 }
+		command = { type = dissent value = 1 }
+		command = { type = setflag which = ind_aubm_debt_bonds }
+		command = { type = setflag which = ind_aubm_budget_review_pending }
+		command = { type = event which = 9282090 where = IND when = 1 }
+		command = { type = event which = 9282081 where = IND when = 360 }
+	}
+	action_b = {
+		trigger = { atwar = yes }
+		name = "War levy: +1,300 money, +500 supplies, +3 dissent"
+		command = { type = clrflag which = ind_aubm_budget_review_pending }
+		command = { type = money value = 1300 }
+		command = { type = supplies value = 500 }
+		command = { type = dissent value = 3 }
+		command = { type = setflag which = ind_aubm_war_taxation }
+		command = { type = setflag which = ind_aubm_budget_review_pending }
+		command = { type = event which = 9282081 where = IND when = 360 }
+	}
+	action_c = {
+		trigger = { atwar = yes }
+		name = "Foreign credit: +2,200 money, +2 dissent, debt tier"
+		command = { type = clrflag which = ind_aubm_budget_review_pending }
+		command = { type = money value = 2200 }
+		command = { type = dissent value = 2 }
+		command = { type = setflag which = ind_aubm_debt_foreign }
+		command = { type = setflag which = ind_aubm_budget_review_pending }
+		command = { type = event which = 9282090 where = IND when = 1 }
+		command = { type = event which = 9282081 where = IND when = 360 }
+	}
+	action_d = {
+		name = "No new borrowing; close the account if at peace"
+		command = { type = clrflag which = ind_aubm_budget_review_pending }
+		command = { trigger = { atwar = yes } type = dissent value = -1 }
+		command = { trigger = { atwar = yes } type = setflag which = ind_aubm_budget_review_pending }
+		command = { trigger = { atwar = yes } type = event which = 9282081 where = IND when = 360 }
+		command = { trigger = { atwar = no } type = clrflag which = ind_aubm_war_finance_active }
+		command = { trigger = { atwar = no OR = { flag = ind_aubm_debt_tier_1 flag = ind_aubm_debt_tier_2 flag = ind_aubm_debt_tier_3 flag = ind_aubm_debt_tier_4 } } type = event which = 9282082 where = IND when = 3 }
+	}
+}
+
+event = {
+	id = 9282082
+	random = no
+	persistent = yes
+	country = IND
+	name = "The Postwar Debt Settlement"
+	desc = "The emergency accounts are due. Recorded principal is 1,000 money at tier one, 2,000 at tier two, 3,000 at tier three and 4,000 at tier four; repeated borrowing beyond tier four adds a 500 overhang. Immediate redemption removes 2 dissent. Conversion begins annual service and adds 1 dissent. Repudiation removes the debt at 7 dissent and damages every wartime relationship."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		trigger = { OR = { AND = { flag = ind_aubm_debt_overhang money = 4500 } AND = { NOT = { flag = ind_aubm_debt_overhang } flag = ind_aubm_debt_tier_4 money = 4000 } AND = { NOT = { flag = ind_aubm_debt_tier_4 } flag = ind_aubm_debt_tier_3 money = 3000 } AND = { NOT = { flag = ind_aubm_debt_tier_3 } flag = ind_aubm_debt_tier_2 money = 2000 } AND = { NOT = { flag = ind_aubm_debt_tier_2 } flag = ind_aubm_debt_tier_1 money = 1000 } } }
+		name = "Redeem all recorded principal: -1,000 to -4,500"
+		command = { trigger = { flag = ind_aubm_debt_overhang } type = money value = -4500 }
+		command = { trigger = { NOT = { flag = ind_aubm_debt_overhang } flag = ind_aubm_debt_tier_4 } type = money value = -4000 }
+		command = { trigger = { NOT = { flag = ind_aubm_debt_tier_4 } flag = ind_aubm_debt_tier_3 } type = money value = -3000 }
+		command = { trigger = { NOT = { flag = ind_aubm_debt_tier_3 } flag = ind_aubm_debt_tier_2 } type = money value = -2000 }
+		command = { trigger = { NOT = { flag = ind_aubm_debt_tier_2 } flag = ind_aubm_debt_tier_1 } type = money value = -1000 }
+		command = { type = dissent value = -2 }
+		command = { type = clrflag which = ind_aubm_debt_bonds }
+		command = { type = clrflag which = ind_aubm_debt_foreign }
+		command = { type = clrflag which = ind_aubm_debt_tier_1 }
+		command = { type = clrflag which = ind_aubm_debt_tier_2 }
+		command = { type = clrflag which = ind_aubm_debt_tier_3 }
+		command = { type = clrflag which = ind_aubm_debt_tier_4 }
+		command = { type = clrflag which = ind_aubm_debt_overhang }
+		command = { type = setflag which = ind_aubm_war_debt_settled }
+	}
+	action_b = {
+		trigger = { OR = { flag = ind_aubm_debt_tier_1 flag = ind_aubm_debt_tier_2 flag = ind_aubm_debt_tier_3 flag = ind_aubm_debt_tier_4 } }
+		name = "Convert to serviced long bonds: +1 dissent"
+		command = { type = dissent value = 1 }
+		command = { type = setflag which = ind_aubm_debt_converted }
+		command = { type = event which = 9282091 where = IND when = 360 }
+	}
+	action_c = {
+		trigger = { OR = { flag = ind_aubm_debt_tier_1 flag = ind_aubm_debt_tier_2 flag = ind_aubm_debt_tier_3 flag = ind_aubm_debt_tier_4 } }
+		name = "Repudiate the debt: +7 dissent, foreign rupture"
+		command = { type = dissent value = 7 }
+		command = { trigger = { exists = ENG } type = relation which = ENG value = -25 }
+		command = { trigger = { exists = GER } type = relation which = GER value = -25 }
+		command = { trigger = { exists = SOV } type = relation which = SOV value = -25 }
+		command = { trigger = { exists = JAP } type = relation which = JAP value = -25 }
+		command = { type = clrflag which = ind_aubm_debt_bonds }
+		command = { type = clrflag which = ind_aubm_debt_foreign }
+		command = { type = clrflag which = ind_aubm_debt_tier_1 }
+		command = { type = clrflag which = ind_aubm_debt_tier_2 }
+		command = { type = clrflag which = ind_aubm_debt_tier_3 }
+		command = { type = clrflag which = ind_aubm_debt_tier_4 }
+		command = { type = clrflag which = ind_aubm_debt_overhang }
+		command = { type = setflag which = ind_aubm_war_debt_repudiated }
+	}
+	action_d = {
+		trigger = { NOT = { flag = ind_aubm_debt_tier_1 } NOT = { flag = ind_aubm_debt_tier_2 } NOT = { flag = ind_aubm_debt_tier_3 } NOT = { flag = ind_aubm_debt_tier_4 } }
+		name = "Close the balanced wartime accounts"
+		command = { type = setflag which = ind_aubm_war_debt_settled }
+	}
+}
+
+event = {
+	id = 9282083
+	random = no
+	persistent = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_wartime_framework
+		atwar = yes
+		NOT = { money = 0 }
+		NOT = { flag = ind_aubm_emergency_credit_cooldown }
+	}
+	name = "Emergency Treasury Credit"
+	desc = "The treasury balance has fallen below zero during war. The Reserve Bank can bridge six months of emergency expenditure with 750 money. This prevents a negative-balance spiral, but adds 1 dissent and cannot be repeated until the credit window reopens in 180 days."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+	date = { day = 0 month = january year = 1933 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Issue emergency credit: +750 money, +1 dissent"
+		command = { type = money value = 750 }
+		command = { type = dissent value = 1 }
+		command = { type = setflag which = ind_aubm_emergency_credit_cooldown }
+		command = { type = event which = 9282084 where = IND when = 180 }
+	}
+}
+
+event = {
+	id = 9282084
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	name = "AI_EVENT"
+	style = 2
+	action_a = {
+		name = "AI_EVENT"
+		command = { type = clrflag which = ind_aubm_emergency_credit_cooldown }
+	}
+}
+
+event = {
+	id = 9282085
+	random = no
+	persistent = yes
+	country = IND
+	trigger = { flag = ind_aubm_occupation_upkeep }
+	name = "The Cost of Direct Occupation"
+	desc = "Direct mandates require administrators, garrisons and shipping. Annual costs scale from 300 money and 500 supplies at tier one to 1,200 and 2,000 at tier four; overextension adds 300 and 500. Funding reduces dissent. Deferral adds 2, 4, 6 or 8 dissent by tier, plus 2 for overextension, and raises belligerence. Each new direct settlement advances the register. Civilianization can remove overextension or lower a higher tier, but cannot remove tier one or change sovereignty."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	date = { day = 0 month = january year = 1933 }
+	offset = 360
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		trigger = { OR = { AND = { flag = ind_aubm_occupation_overhang money = 1500 supplies = 2500 } AND = { NOT = { flag = ind_aubm_occupation_overhang } flag = ind_aubm_occupation_tier_4 money = 1200 supplies = 2000 } AND = { NOT = { flag = ind_aubm_occupation_tier_4 } flag = ind_aubm_occupation_tier_3 money = 850 supplies = 1400 } AND = { NOT = { flag = ind_aubm_occupation_tier_3 } flag = ind_aubm_occupation_tier_2 money = 550 supplies = 900 } AND = { NOT = { flag = ind_aubm_occupation_tier_2 } flag = ind_aubm_occupation_tier_1 money = 300 supplies = 500 } AND = { NOT = { OR = { flag = ind_aubm_occupation_tier_1 flag = ind_aubm_occupation_tier_2 flag = ind_aubm_occupation_tier_3 flag = ind_aubm_occupation_tier_4 } } money = 300 supplies = 500 } } }
+		name = "Fund the mandate register: -300/-500 to -1,500/-2,500"
+		command = { trigger = { flag = ind_aubm_occupation_overhang } type = money value = -1500 }
+		command = { trigger = { flag = ind_aubm_occupation_overhang } type = supplies value = -2500 }
+		command = { trigger = { NOT = { flag = ind_aubm_occupation_overhang } flag = ind_aubm_occupation_tier_4 } type = money value = -1200 }
+		command = { trigger = { NOT = { flag = ind_aubm_occupation_overhang } flag = ind_aubm_occupation_tier_4 } type = supplies value = -2000 }
+		command = { trigger = { NOT = { flag = ind_aubm_occupation_tier_4 } flag = ind_aubm_occupation_tier_3 } type = money value = -850 }
+		command = { trigger = { NOT = { flag = ind_aubm_occupation_tier_4 } flag = ind_aubm_occupation_tier_3 } type = supplies value = -1400 }
+		command = { trigger = { NOT = { flag = ind_aubm_occupation_tier_3 } flag = ind_aubm_occupation_tier_2 } type = money value = -550 }
+		command = { trigger = { NOT = { flag = ind_aubm_occupation_tier_3 } flag = ind_aubm_occupation_tier_2 } type = supplies value = -900 }
+		command = { trigger = { NOT = { flag = ind_aubm_occupation_tier_2 } flag = ind_aubm_occupation_tier_1 } type = money value = -300 }
+		command = { trigger = { NOT = { flag = ind_aubm_occupation_tier_2 } flag = ind_aubm_occupation_tier_1 } type = supplies value = -500 }
+		command = { trigger = { NOT = { OR = { flag = ind_aubm_occupation_tier_1 flag = ind_aubm_occupation_tier_2 flag = ind_aubm_occupation_tier_3 flag = ind_aubm_occupation_tier_4 } } } type = money value = -300 }
+		command = { trigger = { NOT = { OR = { flag = ind_aubm_occupation_tier_1 flag = ind_aubm_occupation_tier_2 flag = ind_aubm_occupation_tier_3 flag = ind_aubm_occupation_tier_4 } } } type = supplies value = -500 }
+		command = { type = dissent value = -1 }
+	}
+	action_b = {
+		name = "Defer funding: +2 to +10 dissent by mandate tier"
+		command = { trigger = { flag = ind_aubm_occupation_overhang } type = dissent value = 10 }
+		command = { trigger = { NOT = { flag = ind_aubm_occupation_overhang } flag = ind_aubm_occupation_tier_4 } type = dissent value = 8 }
+		command = { trigger = { NOT = { flag = ind_aubm_occupation_tier_4 } flag = ind_aubm_occupation_tier_3 } type = dissent value = 6 }
+		command = { trigger = { NOT = { flag = ind_aubm_occupation_tier_3 } flag = ind_aubm_occupation_tier_2 } type = dissent value = 4 }
+		command = { trigger = { NOT = { flag = ind_aubm_occupation_tier_2 } flag = ind_aubm_occupation_tier_1 } type = dissent value = 2 }
+		command = { trigger = { NOT = { OR = { flag = ind_aubm_occupation_tier_1 flag = ind_aubm_occupation_tier_2 flag = ind_aubm_occupation_tier_3 flag = ind_aubm_occupation_tier_4 } } } type = dissent value = 2 }
+		command = { type = belligerence value = 2 }
+	}
+	action_c = {
+		trigger = { money = 300 supplies = 300 OR = { flag = ind_aubm_occupation_overhang flag = ind_aubm_occupation_tier_4 flag = ind_aubm_occupation_tier_3 flag = ind_aubm_occupation_tier_2 } }
+		name = "Civilianize one tier: -300 money/-300 supplies"
+		command = { type = money value = -300 }
+		command = { type = supplies value = -300 }
+		command = { type = dissent value = -1 }
+		command = { type = belligerence value = -1 }
+		command = { type = event which = 9282094 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9282086
+	random = no
+	persistent = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_wartime_framework
+		atwar = yes
+		NOT = { flag = ind_aubm_wartime_mobilised }
+		NOT = { flag = ind_aubm_mobilisation_delay_cooldown }
+	}
+	name = "Mobilisation of the Indian Union"
+	desc = "India's population is not the bottleneck; trained establishments, equipment and political consent are. Limited service adds 260 manpower for 800 supplies and 2 dissent. National service adds 450 manpower for 1,200 supplies and 5 dissent. A technical reserve adds 190 manpower for 600 supplies without dissent. The annual trained reserve class continues separately."
+	style = 2
+	picture = "india_v3_armed_forces"
+	date = { day = 0 month = january year = 1933 }
+	offset = 4
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		trigger = { supplies = 800 }
+		name = "Limited service: +260 MP, -800 supplies, +2 dissent"
+		command = { type = supplies value = -800 }
+		command = { type = manpowerpool value = 260 }
+		command = { type = dissent value = 2 }
+		command = { type = setflag which = ind_aubm_wartime_mobilised }
+		command = { type = setflag which = ind_aubm_mobilisation_limited }
+		command = { type = clrflag which = ind_aubm_demobilisation_reviewed }
+		command = { type = clrflag which = ind_aubm_wartime_establishment_retained }
+	}
+	action_b = {
+		trigger = { supplies = 1200 }
+		name = "National service: +450 MP, -1,200 supplies, +5 dissent"
+		command = { type = supplies value = -1200 }
+		command = { type = manpowerpool value = 450 }
+		command = { type = dissent value = 5 }
+		command = { type = setflag which = ind_aubm_wartime_mobilised }
+		command = { type = setflag which = ind_aubm_mobilisation_national }
+		command = { type = clrflag which = ind_aubm_demobilisation_reviewed }
+		command = { type = clrflag which = ind_aubm_wartime_establishment_retained }
+	}
+	action_c = {
+		trigger = { supplies = 600 }
+		name = "Technical reserve: +190 MP, -600 supplies"
+		command = { type = supplies value = -600 }
+		command = { type = manpowerpool value = 190 }
+		command = { type = setflag which = ind_aubm_wartime_mobilised }
+		command = { type = setflag which = ind_aubm_mobilisation_technical }
+		command = { type = clrflag which = ind_aubm_demobilisation_reviewed }
+		command = { type = clrflag which = ind_aubm_wartime_establishment_retained }
+	}
+	action_d = {
+		name = "Delay mobilisation: +2 dissent"
+		command = { type = dissent value = 2 }
+		command = { type = setflag which = ind_aubm_mobilisation_deferred }
+		command = { type = setflag which = ind_aubm_mobilisation_delay_cooldown }
+		command = { type = event which = 9282092 where = IND when = 60 }
+	}
+}
+
+event = {
+	id = 9282087
+	random = no
+	persistent = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_wartime_mobilised
+		atwar = yes
+		NOT = { manpower = 150 }
+		NOT = { flag = ind_aubm_service_escalated }
+	}
+	name = "The Second Service Debate"
+	desc = "Active war has reduced the trained pool below 150 manpower despite mobilisation. A second national call adds 350 manpower at 6 dissent and 1,000 supplies. Recalling veterans adds 220 manpower at 3 dissent and 650 supplies. Colonial and overseas volunteers add 140 manpower at 1 dissent and 400 supplies. This escalation can occur only once."
+	style = 2
+	picture = "india_v3_armed_forces"
+	date = { day = 0 month = january year = 1938 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		trigger = { supplies = 1000 }
+		name = "Second national call: +350 MP, +6 dissent"
+		command = { type = supplies value = -1000 }
+		command = { type = manpowerpool value = 350 }
+		command = { type = dissent value = 6 }
+		command = { type = setflag which = ind_aubm_service_escalated }
+	}
+	action_b = {
+		trigger = { supplies = 650 }
+		name = "Recall veterans: +220 MP, +3 dissent"
+		command = { type = supplies value = -650 }
+		command = { type = manpowerpool value = 220 }
+		command = { type = dissent value = 3 }
+		command = { type = setflag which = ind_aubm_service_escalated }
+	}
+	action_c = {
+		trigger = { supplies = 400 }
+		name = "Overseas volunteers: +140 MP, +1 dissent"
+		command = { type = supplies value = -400 }
+		command = { type = manpowerpool value = 140 }
+		command = { type = dissent value = 1 }
+		command = { type = setflag which = ind_aubm_service_escalated }
+	}
+	action_d = {
+		name = "Hold the present establishment"
+		command = { type = setflag which = ind_aubm_service_escalated }
+	}
+}
+
+event = {
+	id = 9282088
+	random = no
+	persistent = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_wartime_mobilised
+		atwar = no
+		NOT = { flag = ind_aubm_wartime_establishment_retained }
+	}
+	name = "The Demobilisation Review"
+	desc = "The immediate war has ended. Rapid demobilisation reduces dissent by 4 but costs 500 supplies to transport and discharge formations. A standing expeditionary reserve costs 300 supplies and reduces dissent by 1. Retaining the full wartime establishment adds 3 dissent but preserves readiness for another campaign."
+	style = 2
+	picture = "india_v3_armed_forces"
+	date = { day = 0 month = january year = 1933 }
+	offset = 15
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		trigger = { supplies = 500 }
+		name = "Rapid demobilisation: -500 supplies, -4 dissent"
+		command = { type = supplies value = -500 }
+		command = { type = dissent value = -4 }
+		command = { type = setflag which = ind_aubm_demobilisation_reviewed }
+		command = { type = clrflag which = ind_aubm_wartime_mobilised }
+		command = { type = clrflag which = ind_aubm_service_escalated }
+	}
+	action_b = {
+		trigger = { supplies = 300 }
+		name = "Expeditionary reserve: -300 supplies, -1 dissent"
+		command = { type = supplies value = -300 }
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_aubm_demobilisation_reviewed }
+		command = { type = clrflag which = ind_aubm_wartime_mobilised }
+		command = { type = clrflag which = ind_aubm_service_escalated }
+	}
+	action_c = {
+		name = "Retain wartime readiness: +3 dissent"
+		command = { type = dissent value = 3 }
+		command = { type = setflag which = ind_aubm_demobilisation_reviewed }
+		command = { type = setflag which = ind_aubm_wartime_establishment_retained }
+	}
+}
+
+event = {
+	id = 9282089
+	random = no
+	persistent = yes
+	country = IND
+	name = "War Economy Ledger"
+	desc = "The annual budget arrives automatically every 360 days while the war account remains active. A negative treasury balance unlocks 750 emergency credit once per 180 days. Mobilisation is one initial service decision, followed by one escalation only if the pool falls below 150. The ordinary annual trained reserve class remains active. Direct occupations create separate annual upkeep."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+	action_a = { name = "Keep the finance cycle on the Cabinet calendar" }
+	action_b = {
+		trigger = { NOT = { money = 0 } NOT = { flag = ind_aubm_emergency_credit_cooldown } }
+		name = "Request emergency credit now"
+		command = { type = event which = 9282083 where = IND when = 1 }
+	}
+	action_c = {
+		trigger = { atwar = yes NOT = { flag = ind_aubm_wartime_mobilised } }
+		name = "Open the mobilisation debate now"
+		command = { type = event which = 9282086 where = IND when = 1 }
+	}
+	action_d = {
+		name = "Return to Global Command"
+		command = { type = event which = 9281933 where = IND when = 1 }
+	}
+}
+
+#########################################################################
+# Reusable finance and mobilisation helpers
+#########################################################################
+
+event = {
+	id = 9282090
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	name = "The War Debt Register Advances"
+	desc = "Each new bond or foreign-credit draw advances one cumulative debt tier. A fifth or later draw records a consolidated overhang rather than pretending that repeated wartime borrowing is free."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+	action_a = {
+		name = "Enter the borrowing in the emergency accounts"
+		command = { trigger = { flag = ind_aubm_debt_tier_4 } type = setflag which = ind_aubm_debt_overhang }
+		command = { trigger = { flag = ind_aubm_debt_tier_3 NOT = { flag = ind_aubm_debt_tier_4 } } type = setflag which = ind_aubm_debt_tier_4 }
+		command = { trigger = { flag = ind_aubm_debt_tier_2 NOT = { flag = ind_aubm_debt_tier_3 } } type = setflag which = ind_aubm_debt_tier_3 }
+		command = { trigger = { flag = ind_aubm_debt_tier_1 NOT = { flag = ind_aubm_debt_tier_2 } } type = setflag which = ind_aubm_debt_tier_2 }
+		command = { trigger = { NOT = { flag = ind_aubm_debt_tier_1 } } type = setflag which = ind_aubm_debt_tier_1 }
+	}
+}
+
+event = {
+	id = 9282091
+	random = no
+	persistent = yes
+	country = IND
+	name = "Annual Service on the Converted War Debt"
+	desc = "Converted bonds require annual service: 250 money at tier one, 450 at tier two, 650 at tier three and 850 at tier four, plus 200 for an overhang. Servicing also amortizes one tier. Rollover preserves principal for 1 dissent; full redemption or repudiation closes the account."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Service and amortize one tier: -250 to -1,050 money"
+		command = { trigger = { flag = ind_aubm_debt_overhang } type = setflag which = ind_aubm_debt_amortize_overhang }
+		command = { trigger = { NOT = { flag = ind_aubm_debt_overhang } flag = ind_aubm_debt_tier_4 } type = setflag which = ind_aubm_debt_amortize_4 }
+		command = { trigger = { NOT = { flag = ind_aubm_debt_tier_4 } flag = ind_aubm_debt_tier_3 } type = setflag which = ind_aubm_debt_amortize_3 }
+		command = { trigger = { NOT = { flag = ind_aubm_debt_tier_3 } flag = ind_aubm_debt_tier_2 } type = setflag which = ind_aubm_debt_amortize_2 }
+		command = { trigger = { NOT = { flag = ind_aubm_debt_tier_2 } flag = ind_aubm_debt_tier_1 } type = setflag which = ind_aubm_debt_amortize_1 }
+		command = { trigger = { flag = ind_aubm_debt_overhang } type = money value = -1050 }
+		command = { trigger = { NOT = { flag = ind_aubm_debt_overhang } flag = ind_aubm_debt_tier_4 } type = money value = -850 }
+		command = { trigger = { NOT = { flag = ind_aubm_debt_tier_4 } flag = ind_aubm_debt_tier_3 } type = money value = -650 }
+		command = { trigger = { NOT = { flag = ind_aubm_debt_tier_3 } flag = ind_aubm_debt_tier_2 } type = money value = -450 }
+		command = { trigger = { NOT = { flag = ind_aubm_debt_tier_2 } flag = ind_aubm_debt_tier_1 } type = money value = -250 }
+		command = { trigger = { flag = ind_aubm_debt_amortize_overhang } type = clrflag which = ind_aubm_debt_overhang }
+		command = { trigger = { flag = ind_aubm_debt_amortize_4 } type = clrflag which = ind_aubm_debt_tier_4 }
+		command = { trigger = { flag = ind_aubm_debt_amortize_3 } type = clrflag which = ind_aubm_debt_tier_3 }
+		command = { trigger = { flag = ind_aubm_debt_amortize_2 } type = clrflag which = ind_aubm_debt_tier_2 }
+		command = { trigger = { flag = ind_aubm_debt_amortize_1 } type = clrflag which = ind_aubm_debt_tier_1 }
+		command = { type = clrflag which = ind_aubm_debt_amortize_overhang }
+		command = { type = clrflag which = ind_aubm_debt_amortize_4 }
+		command = { type = clrflag which = ind_aubm_debt_amortize_3 }
+		command = { type = clrflag which = ind_aubm_debt_amortize_2 }
+		command = { type = clrflag which = ind_aubm_debt_amortize_1 }
+		command = { trigger = { OR = { flag = ind_aubm_debt_tier_1 flag = ind_aubm_debt_tier_2 flag = ind_aubm_debt_tier_3 flag = ind_aubm_debt_tier_4 flag = ind_aubm_debt_overhang } } type = event which = 9282091 where = IND when = 360 }
+		command = { trigger = { NOT = { OR = { flag = ind_aubm_debt_tier_1 flag = ind_aubm_debt_tier_2 flag = ind_aubm_debt_tier_3 flag = ind_aubm_debt_tier_4 flag = ind_aubm_debt_overhang } } } type = clrflag which = ind_aubm_debt_converted }
+	}
+	action_b = {
+		name = "Roll the service forward: +1 dissent"
+		command = { type = dissent value = 1 }
+		command = { type = event which = 9282091 where = IND when = 360 }
+	}
+	action_c = {
+		name = "Reopen full redemption terms"
+		command = { type = event which = 9282082 where = IND when = 1 }
+	}
+	action_d = {
+		name = "Repudiate the converted debt: +7 dissent"
+		command = { type = dissent value = 7 }
+		command = { type = clrflag which = ind_aubm_debt_bonds }
+		command = { type = clrflag which = ind_aubm_debt_foreign }
+		command = { type = clrflag which = ind_aubm_debt_tier_1 }
+		command = { type = clrflag which = ind_aubm_debt_tier_2 }
+		command = { type = clrflag which = ind_aubm_debt_tier_3 }
+		command = { type = clrflag which = ind_aubm_debt_tier_4 }
+		command = { type = clrflag which = ind_aubm_debt_overhang }
+		command = { type = clrflag which = ind_aubm_debt_converted }
+		command = { type = setflag which = ind_aubm_war_debt_repudiated }
+	}
+}
+
+event = {
+	id = 9282092
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	name = "The Mobilisation Debate Returns"
+	desc = "The sixty-day delay has expired. If India remains at war and has not mobilised, the service question returns through the normal mobilisation event."
+	style = 2
+	picture = "india_v3_armed_forces"
+	action_a = {
+		name = "Return the service bill to Cabinet"
+		command = { type = clrflag which = ind_aubm_mobilisation_delay_cooldown }
+	}
+}
+
+event = {
+	id = 9282093
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	name = "A Direct Mandate Enters the Occupation Register"
+	desc = "Every newly retained direct administration advances the recurring occupation tier once. Four or more mandates create the maximum tier; further expansion creates an overextension premium."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	action_a = {
+		name = "Register the new administration"
+		command = { trigger = { flag = ind_aubm_occupation_tier_4 } type = setflag which = ind_aubm_occupation_overhang }
+		command = { trigger = { flag = ind_aubm_occupation_tier_3 NOT = { flag = ind_aubm_occupation_tier_4 } } type = setflag which = ind_aubm_occupation_tier_4 }
+		command = { trigger = { flag = ind_aubm_occupation_tier_2 NOT = { flag = ind_aubm_occupation_tier_3 } } type = setflag which = ind_aubm_occupation_tier_3 }
+		command = { trigger = { flag = ind_aubm_occupation_tier_1 NOT = { flag = ind_aubm_occupation_tier_2 } } type = setflag which = ind_aubm_occupation_tier_2 }
+		command = { trigger = { NOT = { flag = ind_aubm_occupation_tier_1 } } type = setflag which = ind_aubm_occupation_tier_1 }
+	}
+}
+
+event = {
+	id = 9282094
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	name = "Civilian Administration Reduces the Occupation Register"
+	desc = "Administrative civilianization reduces the intensity of direct rule without releasing territory or changing a government's constitutional status. Overextension falls first, followed by tier four to three, three to two and two to one. Tier one remains the irreducible burden while any direct administration is still recorded, so annual occupation upkeep stays active."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Reduce administrative intensity one tier"
+		command = { trigger = { flag = ind_aubm_occupation_overhang } type = setflag which = ind_aubm_devolve_overhang }
+		command = { trigger = { NOT = { flag = ind_aubm_occupation_overhang } flag = ind_aubm_occupation_tier_4 } type = setflag which = ind_aubm_devolve_tier_4 }
+		command = { trigger = { NOT = { flag = ind_aubm_occupation_overhang } NOT = { flag = ind_aubm_occupation_tier_4 } flag = ind_aubm_occupation_tier_3 } type = setflag which = ind_aubm_devolve_tier_3 }
+		command = { trigger = { NOT = { flag = ind_aubm_occupation_overhang } NOT = { flag = ind_aubm_occupation_tier_4 } NOT = { flag = ind_aubm_occupation_tier_3 } flag = ind_aubm_occupation_tier_2 } type = setflag which = ind_aubm_devolve_tier_2 }
+		command = { trigger = { flag = ind_aubm_devolve_overhang } type = clrflag which = ind_aubm_occupation_overhang }
+		command = { trigger = { flag = ind_aubm_devolve_tier_4 } type = clrflag which = ind_aubm_occupation_tier_4 }
+		command = { trigger = { flag = ind_aubm_devolve_tier_4 } type = setflag which = ind_aubm_occupation_tier_3 }
+		command = { trigger = { flag = ind_aubm_devolve_tier_3 } type = clrflag which = ind_aubm_occupation_tier_3 }
+		command = { trigger = { flag = ind_aubm_devolve_tier_3 } type = setflag which = ind_aubm_occupation_tier_2 }
+		command = { trigger = { flag = ind_aubm_devolve_tier_2 } type = clrflag which = ind_aubm_occupation_tier_2 }
+		command = { trigger = { flag = ind_aubm_devolve_tier_2 } type = setflag which = ind_aubm_occupation_tier_1 }
+		command = { type = clrflag which = ind_aubm_devolve_overhang }
+		command = { type = clrflag which = ind_aubm_devolve_tier_4 }
+		command = { type = clrflag which = ind_aubm_devolve_tier_3 }
+		command = { type = clrflag which = ind_aubm_devolve_tier_2 }
+	}
+}

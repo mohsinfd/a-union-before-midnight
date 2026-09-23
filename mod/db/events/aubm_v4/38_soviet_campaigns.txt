@@ -1,0 +1,3329 @@
+#########################################################################
+# A Union Before Midnight V4: Soviet and autonomous-socialist campaigns
+# Reserved event range: 9281400-9281499
+#
+# Design rule: policy, treaty, war, theatre and settlement are separate.
+# India can cooperate with Moscow without entering the Comintern, and the
+# three operational theatres remain independently selectable.
+#########################################################################
+
+#########################################################################
+# Strategic programme and Moscow's first answer
+#########################################################################
+
+event = {
+	id = 9281400
+	random = no
+	country = IND
+
+	decision = {
+		OR = { NOT = { flag = ind_aubm_wartime_framework } flag = ind_aubm_route_soviet flag = ind_aubm_socialist_autonomous flag = ind_v3_soviet_orientation flag = ind_v4_strategy_soviet }
+		flag = ind_v3_world_role
+		year = 1937
+		exists = SOV
+		NOT = { war = { country = IND country = SOV } }
+		NOT = { participant = { country = IND value = 4 } }
+		NOT = { flag = ind_aubm_commitment_allied }
+		NOT = { flag = ind_aubm_commitment_german }
+		NOT = { flag = ind_aubm_commitment_japan }
+		NOT = { flag = ind_v4a_treaty_commonwealth }
+		NOT = { flag = ind_v4a_treaty_naval_compact }
+		NOT = { flag = ind_v4a_treaty_formal_alliance }
+		NOT = { flag = ind_v4a_treaty_cobelligerent }
+		NOT = { flag = ind_gc_formal_axis }
+		NOT = { flag = ind_gc_cobelligerent }
+		NOT = { flag = ind_aubm_jp_partnership }
+		NOT = { flag = ind_aubm_diplomatic_negotiation_pending }
+		NOT = { flag = ind_aubm_realignment_cooldown }
+		NOT = { alliance = { country = IND country = ENG } }
+		NOT = { alliance = { country = IND country = USA } }
+		NOT = { alliance = { country = IND country = GER } }
+		NOT = { alliance = { country = IND country = JAP } }
+		NOT = { flag = ind_v4_sov_program_defined }
+	}
+	decision_trigger = {
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		OR = {
+			AND = { money = 200 supplies = 300 }
+			AND = { money = 200 supplies = 300 }
+			AND = { money = 200 supplies = 300 }
+		}
+		# AUBM_FULL_OPTION_GATE_END
+	}
+
+	name = "The Delhi Socialist Conference"
+	# AUBM_DECISION_DESC_MANUAL
+	decision_desc = "Each route costs 200 money and 300 supplies. Equal compact and autonomous socialism both receive a Moscow response: accept/coexist 55%, consultation demand 30%, rejection/opposition 15%. Science and trade is deterministic."
+	desc = "Indian planners disagree about Moscow. Equal compact and autonomous socialism each use a fixed 55/30/15 response roll; relations, IC and force size do not modify it. Technical cooperation has no foreign roll or faction commitment."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	date = { day = 0 month = january year = 1937 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 200
+			supplies = 300
+			# AUBM_ACTION_RESERVE_END
+			NOT = { participant = { country = IND value = 4 } }
+			NOT = { flag = ind_aubm_commitment_allied }
+			NOT = { flag = ind_aubm_commitment_german }
+			NOT = { flag = ind_aubm_commitment_japan }
+			NOT = { flag = ind_aubm_diplomatic_negotiation_pending }
+			NOT = { flag = ind_aubm_realignment_cooldown }
+		}
+		ai_chance = 45
+		name = "Equal compact: accept 55%, consult 30%, reject 15%"
+		command = { type = money value = -200 }
+		command = { type = supplies value = -300 }
+		command = { type = relation which = SOV value = 25 }
+		command = { type = setflag which = ind_v4_sov_equal_compact_proposed }
+		command = { type = setflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = setflag which = ind_aubm_negotiation_soviet }
+		command = { type = setflag which = ind_v4_sov_program_defined }
+		command = { type = event which = 9281401 where = SOV when = 2 }
+	}
+	action_b = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 200
+			supplies = 300
+			# AUBM_ACTION_RESERVE_END
+			NOT = { participant = { country = IND value = 4 } }
+			NOT = { flag = ind_aubm_commitment_allied }
+			NOT = { flag = ind_aubm_commitment_german }
+			NOT = { flag = ind_aubm_commitment_japan }
+			NOT = { flag = ind_aubm_diplomatic_negotiation_pending }
+			NOT = { flag = ind_aubm_realignment_cooldown }
+		}
+		ai_chance = 35
+		name = "Autonomous course: coexist 55%, consult 30%, oppose 15%"
+		command = { type = money value = -200 }
+		command = { type = supplies value = -300 }
+		command = { type = dissent value = 2 }
+		command = { type = relation which = SOV value = 10 }
+		command = { type = relation which = CHI value = 15 }
+		command = { type = domestic which = free_market value = -1 }
+		command = { type = clrflag which = ind_v4_sov_equal_compact }
+		command = { type = clrflag which = ind_v4_sov_supervised_compact }
+		command = { type = setflag which = ind_v4_sov_autonomous_socialism }
+		command = { type = setflag which = ind_v4_sov_regional_diplomacy }
+		command = { type = setflag which = ind_v4_sov_program_defined }
+		command = { type = setflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = setflag which = ind_aubm_negotiation_soviet }
+		command = { type = event which = 9281408 where = SOV when = 7 }
+	}
+	action_c = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 200
+			supplies = 300
+			# AUBM_ACTION_RESERVE_END
+			NOT = { participant = { country = IND value = 4 } }
+			NOT = { flag = ind_aubm_commitment_allied }
+			NOT = { flag = ind_aubm_commitment_german }
+			NOT = { flag = ind_aubm_commitment_japan }
+			NOT = { flag = ind_aubm_diplomatic_negotiation_pending }
+			NOT = { flag = ind_aubm_realignment_cooldown }
+		}
+		ai_chance = 20
+		name = "Science and trade: deterministic, no Moscow roll"
+		command = { type = money value = -200 }
+		command = { type = supplies value = -300 }
+		command = { type = research_mod value = 1 }
+		command = { type = relation which = SOV value = 5 }
+		command = { type = setflag which = ind_v4_sov_technical_only }
+		command = { type = setflag which = ind_v4_sov_regional_diplomacy }
+		command = { type = setflag which = ind_v4_sov_program_defined }
+	}
+}
+
+event = {
+	id = 9281401
+	random = no
+	persistent = yes
+	country = SOV
+
+	name = "India Proposes an Equal Socialist Compact"
+	desc = "Delhi offers technical exchange, mutual consultation and separate national command. The proposal could secure the Soviet southern flank, but it denies Moscow authority over Indian strategy and Central Asian policy."
+	style = 2
+	picture = "Stalin_5YPlan"
+
+	action_a = {
+		ai_chance = 55
+		name = "Accept India as an equal socialist power"
+		command = { type = relation which = IND value = 35 }
+		command = { type = access which = IND }
+		command = { type = ai which = "aubm/soviet/SOV_india_compact.ai" }
+		command = { type = event which = 9281402 where = IND when = 3 }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Demand strategic consultation and base access"
+		command = { type = relation which = IND value = 5 }
+		command = { type = event which = 9281403 where = IND when = 3 }
+	}
+	action_c = {
+		ai_chance = 15
+		name = "Reject a rival socialist centre in Asia"
+		command = { type = relation which = IND value = -25 }
+		command = { type = event which = 9281404 where = IND when = 3 }
+	}
+}
+
+event = {
+	id = 9281402
+	random = no
+	persistent = yes
+	country = IND
+
+	name = "Moscow Accepts Equality"
+	desc = "The Soviet government recognizes India as an equal socialist power with separate command. Technical missions, transit and consultation begin, but neither state is obliged to inherit the other's wars."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	action_a = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_soviet exists = SOV NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = SOV } } }
+		name = "Ratify the equal compact"
+		command = { type = relation which = SOV value = 25 }
+		command = { type = non_aggression which = IND where = SOV when = 1440 }
+		command = { type = access which = SOV }
+		command = { type = supplies value = 350 }
+		command = { type = clrflag which = ind_v4_sov_supervised_compact }
+		command = { type = clrflag which = ind_v4_sov_autonomous_socialism }
+		command = { type = setflag which = ind_v4_sov_equal_compact }
+		command = { type = setflag which = ind_aubm_commitment_soviet }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
+		command = { type = setflag which = ind_v4_sov_regional_diplomacy }
+		command = { type = setflag which = ind_v4_sov_separate_command }
+		command = { type = setflag which = ind_v4_strategic_weight_1 }
+		command = { type = ai which = "aubm/soviet/IND_socialist_autonomous.ai" }
+	}
+	action_b = {
+		trigger = { OR = { NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_negotiation_soviet } NOT = { exists = SOV } participant = { country = IND value = 4 } flag = ind_aubm_commitment_allied flag = ind_aubm_commitment_german flag = ind_aubm_commitment_japan war = { country = IND country = SOV } } }
+		name = "Let Moscow's obsolete acceptance lapse"
+		command = { type = clrflag which = ind_v4_sov_equal_compact_proposed }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
+	}
+}
+
+event = {
+	id = 9281403
+	random = no
+	persistent = yes
+	country = IND
+
+	name = "Moscow Demands a Consultative Veto"
+	desc = "Moscow will cooperate only if Soviet advisers receive secure access. Accepting or walking away are deterministic Indian choices. A strict-equality counterproposal produces a fixed Soviet roll: 50% accept, 35% demand consultation and 15% reject; relations and force size do not modify it."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	action_a = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_soviet exists = SOV NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = SOV } } }
+		ai_chance = 25
+		name = "Accept consultation and Soviet access"
+		command = { type = dissent value = 4 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = relation which = SOV value = 35 }
+		command = { type = access which = SOV }
+		command = { type = non_aggression which = IND where = SOV when = 1440 }
+		command = { type = clrflag which = ind_v4_sov_equal_compact }
+		command = { type = clrflag which = ind_v4_sov_autonomous_socialism }
+		command = { type = setflag which = ind_v4_sov_supervised_compact }
+		command = { type = setflag which = ind_aubm_commitment_soviet }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
+		command = { type = setflag which = ind_v4_sov_regional_diplomacy }
+		command = { type = event which = 9281405 where = SOV when = 2 }
+	}
+	action_b = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_soviet exists = SOV NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = SOV } } }
+		ai_chance = 50
+		name = "Equality counter: fixed Moscow roll 50/35/15"
+		command = { type = money value = -150 }
+		command = { type = relation which = SOV value = -5 }
+		command = { type = event which = 9281406 where = SOV when = 5 }
+	}
+	action_c = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_soviet exists = SOV NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = SOV } } }
+		ai_chance = 25
+		name = "Walk away and organize independently"
+		command = { type = dissent value = -1 }
+		command = { type = relation which = SOV value = -25 }
+		command = { type = clrflag which = ind_v4_sov_equal_compact }
+		command = { type = clrflag which = ind_v4_sov_supervised_compact }
+		command = { type = setflag which = ind_v4_sov_autonomous_socialism }
+		command = { type = setflag which = ind_v4_sov_regional_diplomacy }
+		command = { type = setflag which = ind_v4_sov_moscow_terms_rejected }
+		command = { type = ai which = "aubm/soviet/IND_socialist_autonomous.ai" }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
+	}
+	action_d = {
+		ai_chance = 0
+		trigger = { OR = { NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_negotiation_soviet } NOT = { exists = SOV } participant = { country = IND value = 4 } flag = ind_aubm_commitment_allied flag = ind_aubm_commitment_german flag = ind_aubm_commitment_japan war = { country = IND country = SOV } } }
+		name = "Let Moscow's obsolete counteroffer lapse"
+		command = { type = clrflag which = ind_v4_sov_equal_compact_proposed }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
+	}
+}
+
+event = {
+	id = 9281404
+	random = no
+	persistent = yes
+	country = IND
+
+	name = "Moscow Refuses the Compact"
+	desc = "The Soviet refusal does not end India's continental options. Delhi can create an autonomous socialist network, negotiate directly with the corridor states, or reopen the Moscow channel after both governments have absorbed the failure."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	action_a = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_soviet exists = SOV NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = SOV } } }
+		ai_chance = 45
+		name = "Build an independent socialist network"
+		command = { type = dissent value = 2 }
+		command = { type = relation which = CHI value = 20 }
+		command = { type = relation which = SOV value = -15 }
+		command = { type = clrflag which = ind_v4_sov_equal_compact }
+		command = { type = clrflag which = ind_v4_sov_supervised_compact }
+		command = { type = setflag which = ind_v4_sov_autonomous_socialism }
+		command = { type = setflag which = ind_v4_sov_regional_diplomacy }
+		command = { type = setflag which = ind_v4_sov_moscow_refused }
+		command = { type = ai which = "aubm/soviet/IND_socialist_autonomous.ai" }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
+	}
+	action_b = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_soviet exists = SOV NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = SOV } } }
+		ai_chance = 35
+		name = "Negotiate directly with the corridor states"
+		command = { type = money value = -150 }
+		command = { type = relation which = PER value = 15 }
+		command = { type = relation which = AFG value = 15 }
+		command = { type = setflag which = ind_v4_sov_technical_only }
+		command = { type = setflag which = ind_v4_sov_regional_diplomacy }
+		command = { type = setflag which = ind_v4_sov_moscow_refused }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
+	}
+	action_c = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_soviet exists = SOV NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = SOV } } }
+		ai_chance = 20
+		name = "Reopen negotiations after one year"
+		command = { type = relation which = SOV value = -5 }
+		command = { type = clrflag which = ind_v4_sov_equal_compact }
+		command = { type = clrflag which = ind_v4_sov_supervised_compact }
+		command = { type = setflag which = ind_v4_sov_autonomous_socialism }
+		command = { type = setflag which = ind_v4_sov_regional_diplomacy }
+		command = { type = setflag which = ind_v4_sov_moscow_retry_pending }
+		command = { type = event which = 9281414 where = IND when = 360 }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
+	}
+	action_d = {
+		ai_chance = 0
+		trigger = { OR = { NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_negotiation_soviet } NOT = { exists = SOV } participant = { country = IND value = 4 } flag = ind_aubm_commitment_allied flag = ind_aubm_commitment_german flag = ind_aubm_commitment_japan war = { country = IND country = SOV } } }
+		name = "File Moscow's obsolete refusal"
+		command = { type = clrflag which = ind_v4_sov_equal_compact_proposed }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
+	}
+}
+
+event = {
+	id = 9281405
+	random = no
+	country = SOV
+
+	name = "India Accepts the Consultative Charter"
+	desc = "Delhi accepts strategic consultation and Soviet access while retaining its own armed forces. Moscow releases a first equipment mission and treats India as a coordinated, though not fully equal, continental partner."
+	style = 2
+	picture = "Stalin_5YPlan"
+
+	action_a = {
+		name = "Open Tashkent to Indian liaison"
+		command = { type = supplies value = -450 }
+		command = { type = relation which = IND value = 25 }
+		command = { type = access which = IND }
+		command = { type = ai which = "aubm/soviet/SOV_india_compact.ai" }
+		command = { type = event which = 9281413 where = IND when = 5 }
+	}
+}
+
+event = {
+	id = 9281406
+	random = no
+	persistent = yes
+	country = SOV
+
+	name = "Delhi Insists on Sovereign Equality"
+	desc = "India rejects a Soviet veto but keeps technical cooperation and continental transit on the table. Moscow must decide whether equality is preferable to losing the entire southern partnership."
+	style = 2
+	picture = "Stalin_5YPlan"
+
+	action_a = {
+		ai_chance = 50
+		name = "Accept equality and preserve the compact"
+		command = { type = relation which = IND value = 20 }
+		command = { type = access which = IND }
+		command = { type = ai which = "aubm/soviet/SOV_india_compact.ai" }
+		command = { type = event which = 9281402 where = IND when = 4 }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Offer technical cooperation without a treaty"
+		command = { type = relation which = IND value = 5 }
+		command = { type = event which = 9281407 where = IND when = 4 }
+	}
+	action_c = {
+		ai_chance = 15
+		name = "End the negotiation"
+		command = { type = relation which = IND value = -20 }
+		command = { type = event which = 9281404 where = IND when = 4 }
+	}
+}
+
+event = {
+	id = 9281407
+	random = no
+	persistent = yes
+	country = IND
+
+	name = "A Treatyless Soviet Offer"
+	desc = "Moscow offers industrial contracts and intelligence exchange without recognizing an equal compact. India may accept the useful parts, organize independently, or defer the political question and try again later."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	action_a = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_soviet exists = SOV NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = SOV } } }
+		ai_chance = 45
+		name = "Accept contracts without political obligations"
+		command = { type = money value = -250 }
+		command = { type = supplies value = 300 }
+		command = { type = research_mod value = 1 }
+		command = { type = setflag which = ind_v4_sov_technical_only }
+		command = { type = setflag which = ind_v4_sov_regional_diplomacy }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
+	}
+	action_b = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_soviet exists = SOV NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = SOV } } }
+		ai_chance = 35
+		name = "Create an autonomous socialist programme"
+		command = { type = dissent value = 1 }
+		command = { type = relation which = SOV value = -10 }
+		command = { type = clrflag which = ind_v4_sov_equal_compact }
+		command = { type = clrflag which = ind_v4_sov_supervised_compact }
+		command = { type = setflag which = ind_v4_sov_autonomous_socialism }
+		command = { type = setflag which = ind_v4_sov_regional_diplomacy }
+		command = { type = ai which = "aubm/soviet/IND_socialist_autonomous.ai" }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
+	}
+	action_c = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_soviet exists = SOV NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = SOV } } }
+		ai_chance = 20
+		name = "Defer the treaty and try again next year"
+		command = { type = setflag which = ind_v4_sov_technical_only }
+		command = { type = setflag which = ind_v4_sov_regional_diplomacy }
+		command = { type = setflag which = ind_v4_sov_moscow_retry_pending }
+		command = { type = event which = 9281414 where = IND when = 360 }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
+	}
+	action_d = {
+		ai_chance = 0
+		trigger = { OR = { NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_negotiation_soviet } NOT = { exists = SOV } participant = { country = IND value = 4 } flag = ind_aubm_commitment_allied flag = ind_aubm_commitment_german flag = ind_aubm_commitment_japan war = { country = IND country = SOV } } }
+		name = "Let Moscow's obsolete treatyless offer lapse"
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
+	}
+}
+
+event = {
+	id = 9281408
+	random = no
+	country = SOV
+
+	name = "India Proclaims an Autonomous Socialist Course"
+	desc = "Delhi adopts socialist planning without accepting Moscow's political leadership. The new centre could complement Soviet security, compete for Asian movements, or become an ideological rival along the Central Asian frontier."
+	style = 2
+	picture = "Stalin_5YPlan"
+
+	action_a = {
+		ai_chance = 55
+		name = "Accept peaceful coexistence between equals"
+		command = { type = relation which = IND value = 20 }
+		command = { type = event which = 9281409 where = IND when = 5 }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Demand consultation on continental policy"
+		command = { type = relation which = IND value = -5 }
+		command = { type = event which = 9281403 where = IND when = 5 }
+	}
+	action_c = {
+		ai_chance = 15
+		name = "Oppose an independent socialist centre"
+		command = { type = relation which = IND value = -30 }
+		command = { type = event which = 9281404 where = IND when = 5 }
+	}
+}
+
+event = {
+	id = 9281409
+	random = no
+	country = IND
+
+	name = "Moscow Recognizes India's Separate Road"
+	desc = "Moscow accepts that socialist cooperation need not mean political subordination. The result is not an alliance, but it opens direct diplomacy with Persia, Afghanistan and the Central Asian frontier."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	action_a = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_soviet exists = SOV NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = SOV } } }
+		name = "Build cooperation without subordination"
+		command = { type = dissent value = -1 }
+		command = { type = relation which = SOV value = 15 }
+		command = { type = setflag which = ind_v4_sov_autonomy_recognized }
+		command = { type = setflag which = ind_v4_sov_regional_diplomacy }
+		command = { type = ai which = "aubm/soviet/IND_socialist_autonomous.ai" }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
+	}
+	action_b = {
+		trigger = { OR = { NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_negotiation_soviet } NOT = { exists = SOV } participant = { country = IND value = 4 } flag = ind_aubm_commitment_allied flag = ind_aubm_commitment_german flag = ind_aubm_commitment_japan war = { country = IND country = SOV } } }
+		name = "Let Moscow's obsolete recognition lapse"
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
+	}
+}
+
+#########################################################################
+# Independent theatre mandates
+#########################################################################
+
+event = {
+	id = 9281410
+	random = no
+	country = IND
+
+	decision = {
+		flag = ind_v4_sov_regional_diplomacy
+		OR = {
+			flag = ind_aubm_route_soviet
+			AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous }
+		}
+		year = 1938
+		NOT = { flag = ind_v4_sov_persia_mandate }
+	}
+	decision_trigger = {
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		money = 250
+		supplies = 500
+		# AUBM_FULL_OPTION_GATE_END
+	}
+
+	name = "Authorize the Persia-Caucasus Mandate"
+	# AUBM_DECISION_DESC_MANUAL
+	decision_desc = "Cost: 250 money and 500 supplies. If Persia exists, its fixed accept/counter/refuse roll is 50/35/15. If Persia has ceased to exist, India receives a separate player-chosen restoration policy instead."
+	desc = "A western command can connect India to Persia, the Gulf and the Caucasus. The mandate authorizes diplomacy first; control of Tehran, Baku and Astrakhan will determine India's eventual influence."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	date = { day = 0 month = january year = 1938 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		trigger = {
+			OR = {
+				flag = ind_aubm_route_soviet
+				AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous }
+			}
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 250
+			supplies = 500
+			# AUBM_ACTION_RESERVE_END
+		}
+		name = "Open the Persia-Caucasus mandate"
+		command = { type = money value = -250 }
+		command = { type = supplies value = -500 }
+		command = { type = setflag which = ind_v4_sov_persia_mandate }
+		command = { trigger = { exists = PER } type = event which = 9281420 where = PER when = 3 }
+		command = { trigger = { NOT = { exists = PER } } type = event which = 9281427 where = IND when = 3 }
+		command = { trigger = { flag = ind_v4_sov_east_active } type = ai which = "aubm/soviet/IND_three_theatre.ai" }
+		command = { trigger = { flag = ind_v4_sov_tashkent_mandate NOT = { flag = ind_v4_sov_east_active } } type = ai which = "aubm/soviet/IND_dual_west.ai" }
+		command = { trigger = { NOT = { flag = ind_v4_sov_tashkent_mandate } NOT = { flag = ind_v4_sov_east_active } } type = ai which = "aubm/soviet/IND_persia_caucasus.ai" }
+	}
+}
+
+event = {
+	id = 9281411
+	random = no
+	country = IND
+
+	decision = {
+		flag = ind_v4_sov_regional_diplomacy
+		OR = {
+			flag = ind_aubm_route_soviet
+			AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous }
+		}
+		year = 1938
+		NOT = { flag = ind_v4_sov_tashkent_mandate }
+	}
+	decision_trigger = {
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		money = 250
+		supplies = 500
+		# AUBM_FULL_OPTION_GATE_END
+	}
+
+	name = "Authorize the Delhi-Tashkent Corridor"
+	# AUBM_DECISION_DESC_MANUAL
+	decision_desc = "Cost: 250 money and 500 supplies. If Afghanistan exists, its fixed accept/counter/refuse roll is 45/40/15. If Afghanistan has ceased to exist, India receives a separate player-chosen corridor policy instead."
+	desc = "The Central Asian route depends on Afghan sovereignty, mountain logistics and political patience. Its progress will be measured by actual control of Herat or Kondoz, then Samarkand and Tashkent."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	date = { day = 0 month = january year = 1938 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		trigger = {
+			OR = {
+				flag = ind_aubm_route_soviet
+				AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous }
+			}
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 250
+			supplies = 500
+			# AUBM_ACTION_RESERVE_END
+		}
+		name = "Open the Delhi-Tashkent corridor"
+		command = { type = money value = -250 }
+		command = { type = supplies value = -500 }
+		command = { type = setflag which = ind_v4_sov_tashkent_mandate }
+		command = { trigger = { exists = AFG } type = event which = 9281430 where = AFG when = 3 }
+		command = { trigger = { NOT = { exists = AFG } } type = event which = 9281436 where = IND when = 3 }
+		command = { trigger = { flag = ind_v4_sov_east_active } type = ai which = "aubm/soviet/IND_three_theatre.ai" }
+		command = { trigger = { flag = ind_v4_sov_persia_mandate NOT = { flag = ind_v4_sov_east_active } } type = ai which = "aubm/soviet/IND_dual_west.ai" }
+		command = { trigger = { NOT = { flag = ind_v4_sov_persia_mandate } NOT = { flag = ind_v4_sov_east_active } } type = ai which = "aubm/soviet/IND_tashkent_corridor.ai" }
+	}
+}
+
+event = {
+	id = 9281412
+	random = no
+	country = IND
+
+	decision = {
+		flag = ind_v4_sov_regional_diplomacy
+		OR = {
+			flag = ind_aubm_route_soviet
+			AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous }
+		}
+		year = 1938
+		NOT = { flag = ind_v4_sov_xinjiang_mandate }
+		OR = {
+			owned = { province = 1281 data = SIK }
+			owned = { province = 1281 data = CHI }
+			owned = { province = 1281 data = SOV }
+		}
+	}
+	decision_trigger = {
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		money = 200
+		supplies = 350
+		# AUBM_FULL_OPTION_GATE_END
+	}
+
+	name = "Send the Xinjiang Railway Mission"
+	# AUBM_DECISION_DESC_MANUAL
+	decision_desc = "Cost: 200 money/350 supplies. Actual Urumqi controller selects the fixed accept/counter/refuse roll: Sinkiang 45/35/20; China 55/30/15; Soviet Union 45/40/15. No valid controller ends the mission without a roll."
+	desc = "Xinjiang can connect India to inland China and Soviet Central Asia, but only through real roads and the government that actually controls Urumqi. Delhi will approach that government rather than rely on a brittle event chain."
+	style = 2
+	picture = "aubm_v4_china_interior"
+
+	date = { day = 0 month = january year = 1938 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		trigger = {
+			OR = {
+				flag = ind_aubm_route_soviet
+				AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous }
+			}
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 200
+			supplies = 350
+			# AUBM_ACTION_RESERVE_END
+		}
+		name = "Dispatch the railway and trade mission"
+		command = { type = money value = -200 }
+		command = { type = supplies value = -350 }
+		command = { type = setflag which = ind_v4_sov_xinjiang_mandate }
+		command = { trigger = { owned = { province = 1281 data = SIK } } type = event which = 9281440 where = SIK when = 4 }
+		command = { trigger = { owned = { province = 1281 data = CHI } } type = event which = 9281441 where = CHI when = 4 }
+		command = { trigger = { owned = { province = 1281 data = SOV } } type = event which = 9281442 where = SOV when = 4 }
+		command = { type = ai which = "aubm/soviet/IND_xinjiang_corridor.ai" }
+	}
+}
+
+event = {
+	id = 9281413
+	random = no
+	country = IND
+
+	name = "The Consultative Compact Is Ratified"
+	desc = "Soviet transit and equipment arrive under the consultative charter. India keeps its armed forces, but Moscow now expects prior consultation on continental strategy and enjoys broader access than under an equal compact."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	action_a = {
+		trigger = { flag = ind_aubm_commitment_soviet exists = SOV NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = SOV } } }
+		name = "Put the supervised compact into operation"
+		command = { type = supplies value = 450 }
+		command = { type = relation which = SOV value = 20 }
+		command = { type = clrflag which = ind_v4_sov_equal_compact }
+		command = { type = clrflag which = ind_v4_sov_autonomous_socialism }
+		command = { type = setflag which = ind_v4_sov_supervised_compact }
+		command = { type = setflag which = ind_v4_sov_regional_diplomacy }
+		command = { type = setflag which = ind_v4_sov_moscow_consultation }
+		command = { type = ai which = "aubm/soviet/IND_socialist_autonomous.ai" }
+	}
+	action_b = {
+		trigger = { OR = { NOT = { flag = ind_aubm_commitment_soviet } NOT = { exists = SOV } participant = { country = IND value = 4 } flag = ind_aubm_commitment_allied flag = ind_aubm_commitment_german flag = ind_aubm_commitment_japan war = { country = IND country = SOV } } }
+		name = "File the overtaken equipment protocol"
+	}
+}
+
+event = {
+	id = 9281414
+	random = no
+	persistent = yes
+	country = IND
+
+	name = "The Moscow Channel Reopens"
+	desc = "A year of regional diplomacy has changed the balance. Delhi may again test whether Moscow will accept an equal compact; another refusal will still leave every autonomous corridor available."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	action_a = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } exists = SOV NOT = { war = { country = IND country = SOV } } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_realignment_cooldown } }
+		name = "Return to the negotiating table"
+		command = { type = clrflag which = ind_v4_sov_moscow_retry_pending }
+		command = { type = setflag which = ind_v4_sov_equal_compact_proposed }
+		command = { type = setflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = setflag which = ind_aubm_negotiation_soviet }
+		command = { type = event which = 9281401 where = SOV when = 2 }
+	}
+	action_b = {
+		trigger = {
+			OR = {
+				NOT = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
+				NOT = { exists = SOV }
+				war = { country = IND country = SOV }
+				participant = { country = IND value = 4 }
+				flag = ind_aubm_commitment_allied
+				flag = ind_aubm_commitment_german
+				flag = ind_aubm_commitment_soviet
+				flag = ind_aubm_commitment_japan
+				flag = ind_aubm_diplomatic_negotiation_pending
+				flag = ind_aubm_realignment_cooldown
+			}
+		}
+		name = "Let the obsolete Moscow retry lapse"
+		command = { type = clrflag which = ind_v4_sov_moscow_retry_pending }
+	}
+}
+
+#########################################################################
+# Persia and the Caucasus
+#########################################################################
+
+event = {
+	id = 9281420
+	random = no
+	persistent = yes
+	country = PER
+
+	name = "India Proposes a Sovereign Persian Corridor"
+	desc = "Delhi offers investment and a guarantee in exchange for Indian transit from Zahedan toward Tehran and the Caucasus. Persia can accept armed transit, counter with logistics-only cooperation, or keep every foreign army outside its borders."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	action_a = {
+		ai_chance = 50
+		name = "Accept sovereignty, investment and armed transit"
+		command = { type = relation which = IND value = 35 }
+		command = { type = access which = IND }
+		command = { type = non_aggression which = IND where = PER when = 1080 }
+		command = { type = event which = 9281421 where = IND when = 4 }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Offer rail and depot access, but no bases"
+		command = { type = relation which = IND value = 15 }
+		command = { type = event which = 9281422 where = IND when = 4 }
+	}
+	action_c = {
+		ai_chance = 15
+		name = "Reject every foreign military corridor"
+		command = { type = relation which = IND value = -25 }
+		command = { type = event which = 9281423 where = IND when = 4 }
+	}
+}
+
+event = {
+	id = 9281421
+	random = no
+	persistent = yes
+	country = IND
+
+	name = "Tehran Opens the Sovereign Corridor"
+	desc = "Persia grants armed transit while retaining its government and territory. India now has a legal route toward Tehran and the Caucasus; battlefield performance, not the treaty alone, will determine postwar influence."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	action_a = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
+		name = "Guarantee Persia and organize the route"
+		command = { type = guarantee which = IND where = PER }
+		command = { type = relation which = PER value = 25 }
+		command = { type = tc_mod value = 2 }
+		command = { type = setflag which = ind_v4_sov_persia_corridor_open }
+		command = { type = setflag which = ind_v4_sov_persia_sovereign_terms }
+		command = { type = ai which = "aubm/soviet/IND_persia_caucasus.ai" }
+	}
+	action_b = {
+		trigger = { NOT = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } } }
+		name = "Let the obsolete Persian corridor reply lapse"
+	}
+}
+
+event = {
+	id = 9281422
+	random = no
+	persistent = yes
+	country = IND
+
+	name = "Tehran Offers Logistics Without Bases"
+	desc = "Persia will carry Indian goods but not grant unrestricted transit. Accepting or redirecting are deterministic. Pressing for bases uses a fixed Persian roll: 35% full rights, 45% limited counteroffer and 20% refusal; relations and force size do not modify it."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	action_a = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
+		ai_chance = 50
+		name = "Accept the limited sovereign corridor"
+		command = { type = money value = -200 }
+		command = { type = supplies value = -300 }
+		command = { type = guarantee which = IND where = PER }
+		command = { type = relation which = PER value = 20 }
+		command = { type = tc_mod value = 1 }
+		command = { type = setflag which = ind_v4_sov_persia_corridor_limited }
+	}
+	action_b = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
+		ai_chance = 30
+		name = "Press for bases: full 35%, limited 45%, refuse 20%"
+		command = { type = relation which = PER value = -10 }
+		command = { type = event which = 9281424 where = PER when = 7 }
+	}
+	action_c = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
+		ai_chance = 20
+		name = "Redirect the command through Afghanistan"
+		command = { type = setflag which = ind_v4_sov_persia_bypassed }
+		command = { type = setflag which = ind_v4_sov_tashkent_mandate }
+		command = { trigger = { exists = AFG } type = event which = 9281430 where = AFG when = 4 }
+		command = { trigger = { NOT = { exists = AFG } } type = event which = 9281436 where = IND when = 4 }
+		command = { type = ai which = "aubm/soviet/IND_tashkent_corridor.ai" }
+	}
+	action_d = {
+		trigger = { NOT = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } } }
+		ai_chance = 0
+		name = "Let the obsolete Persian counteroffer lapse"
+	}
+}
+
+event = {
+	id = 9281423
+	random = no
+	persistent = yes
+	country = IND
+
+	name = "Tehran Refuses the Corridor"
+	desc = "Persia refuses Indian transit. Delhi can fund political and economic pressure before trying again, establish a more expensive maritime Gulf route, or respect Tehran's refusal and shift the continental effort to Afghanistan."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	action_a = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
+		ai_chance = 35
+		name = "Apply pressure and reopen talks in six months"
+		command = { type = money value = -300 }
+		command = { type = supplies value = -250 }
+		command = { type = relation which = PER value = -20 }
+		command = { type = dissent value = 1 }
+		command = { type = setflag which = ind_v4_sov_persia_pressure }
+		command = { type = event which = 9281420 where = PER when = 180 }
+	}
+	action_b = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
+		ai_chance = 35
+		name = "Build a maritime Gulf bypass"
+		command = { type = money value = -350 }
+		command = { type = supplies value = -700 }
+		command = { type = tc_mod value = 1 }
+		command = { type = max_organization which = naval value = 1 }
+		command = { type = setflag which = ind_v4_sov_persia_maritime_bypass }
+		command = { type = ai which = "aubm/soviet/IND_persia_caucasus.ai" }
+	}
+	action_c = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
+		ai_chance = 30
+		name = "Respect Persia and approach Afghanistan"
+		command = { type = relation which = PER value = 10 }
+		command = { type = setflag which = ind_v4_sov_persia_refusal_respected }
+		command = { type = setflag which = ind_v4_sov_tashkent_mandate }
+		command = { trigger = { exists = AFG } type = event which = 9281430 where = AFG when = 5 }
+		command = { trigger = { NOT = { exists = AFG } } type = event which = 9281436 where = IND when = 5 }
+	}
+	action_d = {
+		trigger = { NOT = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } } }
+		ai_chance = 0
+		name = "Let the obsolete Persian refusal lapse"
+	}
+}
+
+event = {
+	id = 9281424
+	random = no
+	persistent = yes
+	country = PER
+
+	name = "Delhi Presses for Wartime Base Rights"
+	desc = "India argues that a real Caucasus campaign requires depots and unrestricted wartime transit. Persia can grant the request under a sovereignty guarantee, allow only supervised depots, or refuse the pressure."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	action_a = {
+		ai_chance = 35
+		name = "Grant transit under a Persian guarantee"
+		command = { type = relation which = IND value = 25 }
+		command = { type = access which = IND }
+		command = { type = event which = 9281425 where = IND when = 4 }
+	}
+	action_b = {
+		ai_chance = 45
+		name = "Permit supervised depots only"
+		command = { type = relation which = IND value = 5 }
+		command = { type = event which = 9281426 where = IND when = 4 }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Refuse Indian bases"
+		command = { type = relation which = IND value = -30 }
+		command = { type = event which = 9281423 where = IND when = 4 }
+	}
+}
+
+event = {
+	id = 9281425
+	random = no
+	persistent = yes
+	country = IND
+
+	name = "Persia Grants Wartime Transit"
+	desc = "Tehran accepts unrestricted wartime transit in exchange for a public Indian guarantee. The route is operational, but any later attempt to dominate Persia will carry a sharper political cost."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	action_a = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
+		name = "Honor the guarantee and open the depots"
+		command = { type = guarantee which = IND where = PER }
+		command = { type = relation which = PER value = 30 }
+		command = { type = tc_mod value = 3 }
+		command = { type = setflag which = ind_v4_sov_persia_corridor_open }
+		command = { type = setflag which = ind_v4_sov_persia_guaranteed }
+		command = { type = ai which = "aubm/soviet/IND_persia_caucasus.ai" }
+	}
+	action_b = {
+		trigger = { NOT = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } } }
+		name = "Let the obsolete Persian transit reply lapse"
+	}
+}
+
+event = {
+	id = 9281426
+	random = no
+	persistent = yes
+	country = IND
+
+	name = "Persia Permits Supervised Depots"
+	desc = "Persian officers retain control of the depots and deny India an unrestricted military corridor. The compromise supports supply and intelligence while preserving a real operational constraint."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	action_a = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
+		name = "Work within the supervised corridor"
+		command = { type = relation which = PER value = 15 }
+		command = { type = tc_mod value = 1 }
+		command = { type = setflag which = ind_v4_sov_persia_corridor_limited }
+		command = { type = setflag which = ind_v4_sov_persia_depots }
+	}
+	action_b = {
+		trigger = { NOT = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } } }
+		name = "Let the obsolete Persian depot reply lapse"
+	}
+}
+
+event = {
+	id = 9281427
+	random = no
+	country = IND
+
+	name = "Persia Has Ceased to Exist"
+	desc = "No sovereign Persian government can answer Delhi. India may declare restoration its war aim, operate through occupied territory and accept diplomatic risk, or abandon the route for Afghanistan and Xinjiang."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	action_a = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
+		ai_chance = 45
+		name = "Make Persian restoration an Indian war aim"
+		command = { type = relation which = ENG value = -10 }
+		command = { type = relation which = SOV value = -10 }
+		command = { type = setflag which = ind_v4_sov_restore_persia_aim }
+		command = { type = setflag which = ind_v4_sov_persia_occupied_route }
+	}
+	action_b = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
+		ai_chance = 30
+		name = "Use the occupied route under military authority"
+		command = { type = dissent value = 3 }
+		command = { type = belligerence value = 2 }
+		command = { type = setflag which = ind_v4_sov_persia_occupied_route }
+		command = { type = ai which = "aubm/soviet/IND_persia_caucasus.ai" }
+	}
+	action_c = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
+		ai_chance = 25
+		name = "Shift the mandate to Central Asia"
+		command = { type = setflag which = ind_v4_sov_persia_bypassed }
+		command = { type = setflag which = ind_v4_sov_tashkent_mandate }
+		command = { trigger = { exists = AFG } type = event which = 9281430 where = AFG when = 5 }
+		command = { trigger = { NOT = { exists = AFG } } type = event which = 9281436 where = IND when = 5 }
+	}
+	action_d = {
+		trigger = { NOT = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } } }
+		ai_chance = 0
+		name = "Let the obsolete Persian restoration question lapse"
+	}
+}
+
+#########################################################################
+# Afghanistan and the Delhi-Tashkent corridor
+#########################################################################
+
+event = {
+	id = 9281430
+	random = no
+	persistent = yes
+	country = AFG
+
+	name = "India Proposes a Delhi-Tashkent Corridor"
+	desc = "Delhi requests armed transit and supply rights toward Kondoz and Soviet Central Asia while guaranteeing Afghan sovereignty. Kabul may accept, counter with strict neutrality, or refuse every foreign corridor."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	action_a = {
+		ai_chance = 45
+		name = "Accept armed transit under a sovereignty pact"
+		command = { type = relation which = IND value = 35 }
+		command = { type = access which = IND }
+		command = { type = non_aggression which = IND where = AFG when = 1080 }
+		command = { type = event which = 9281431 where = IND when = 4 }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Offer neutral trade and supervised convoys"
+		command = { type = relation which = IND value = 15 }
+		command = { type = event which = 9281432 where = IND when = 4 }
+	}
+	action_c = {
+		ai_chance = 15
+		name = "Refuse every military corridor"
+		command = { type = relation which = IND value = -20 }
+		command = { type = event which = 9281433 where = IND when = 4 }
+	}
+}
+
+event = {
+	id = 9281431
+	random = no
+	persistent = yes
+	country = IND
+
+	name = "Kabul Opens the Mountain Corridor"
+	desc = "Afghanistan grants armed transit under an Indian guarantee. The road is difficult but real: Herat and Kondoz lead toward Samarkand and Tashkent without relying on an impassable shortcut into Kashgar."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	action_a = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
+		name = "Guarantee Afghanistan and organize transit"
+		command = { type = guarantee which = IND where = AFG }
+		command = { type = relation which = AFG value = 25 }
+		command = { type = tc_mod value = 2 }
+		command = { type = setflag which = ind_v4_sov_afghan_corridor_open }
+		command = { type = setflag which = ind_v4_sov_afghan_sovereign_terms }
+		command = { type = ai which = "aubm/soviet/IND_tashkent_corridor.ai" }
+	}
+	action_b = {
+		trigger = { NOT = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } } }
+		name = "Let the obsolete Afghan corridor reply lapse"
+	}
+}
+
+event = {
+	id = 9281432
+	random = no
+	persistent = yes
+	country = IND
+
+	name = "Kabul Offers a Neutral Corridor"
+	desc = "Afghanistan permits supervised convoys but not unrestricted troops. Accepting or redirecting are deterministic. Requesting full transit uses a fixed Afghan roll: 45% acceptance and 55% refusal; relations and force size do not modify it."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	action_a = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
+		ai_chance = 50
+		name = "Guarantee neutrality and use supervised convoys"
+		command = { type = money value = -150 }
+		command = { type = supplies value = -250 }
+		command = { type = guarantee which = IND where = AFG }
+		command = { type = relation which = AFG value = 20 }
+		command = { type = tc_mod value = 1 }
+		command = { type = setflag which = ind_v4_sov_afghan_corridor_limited }
+	}
+	action_b = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
+		ai_chance = 30
+		name = "Request full transit: Kabul accepts 45%, refuses 55%"
+		command = { type = relation which = AFG value = -5 }
+		command = { type = event which = 9281434 where = AFG when = 7 }
+	}
+	action_c = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
+		ai_chance = 20
+		name = "Redirect the mission toward Xinjiang"
+		command = { type = setflag which = ind_v4_sov_xinjiang_mandate }
+		command = { trigger = { owned = { province = 1281 data = SIK } } type = event which = 9281440 where = SIK when = 5 }
+		command = { trigger = { owned = { province = 1281 data = CHI } } type = event which = 9281441 where = CHI when = 5 }
+		command = { trigger = { owned = { province = 1281 data = SOV } } type = event which = 9281442 where = SOV when = 5 }
+		command = { type = ai which = "aubm/soviet/IND_xinjiang_corridor.ai" }
+	}
+	action_d = {
+		trigger = { NOT = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } } }
+		ai_chance = 0
+		name = "Let the obsolete Afghan counteroffer lapse"
+	}
+}
+
+event = {
+	id = 9281433
+	random = no
+	persistent = yes
+	country = IND
+
+	name = "Kabul Refuses Transit"
+	desc = "Afghanistan closes the corridor. Delhi can finance roads and return with a better offer, redirect the mandate through Persia, or open a Xinjiang mission. Refusal changes the route; it does not silently end the campaign."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	action_a = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
+		ai_chance = 35
+		name = "Fund Afghan roads and retry in six months"
+		command = { type = money value = -300 }
+		command = { type = supplies value = -250 }
+		command = { type = relation which = AFG value = 10 }
+		command = { type = event which = 9281430 where = AFG when = 180 }
+	}
+	action_b = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
+		ai_chance = 30
+		name = "Redirect the corridor through Persia"
+		command = { type = setflag which = ind_v4_sov_persia_mandate }
+		command = { trigger = { exists = PER } type = event which = 9281420 where = PER when = 5 }
+		command = { trigger = { NOT = { exists = PER } } type = event which = 9281427 where = IND when = 5 }
+		command = { type = ai which = "aubm/soviet/IND_persia_caucasus.ai" }
+	}
+	action_c = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
+		ai_chance = 35
+		name = "Approach the government controlling Urumqi"
+		command = { type = setflag which = ind_v4_sov_xinjiang_mandate }
+		command = { trigger = { owned = { province = 1281 data = SIK } } type = event which = 9281440 where = SIK when = 5 }
+		command = { trigger = { owned = { province = 1281 data = CHI } } type = event which = 9281441 where = CHI when = 5 }
+		command = { trigger = { owned = { province = 1281 data = SOV } } type = event which = 9281442 where = SOV when = 5 }
+		command = { type = ai which = "aubm/soviet/IND_xinjiang_corridor.ai" }
+	}
+	action_d = {
+		trigger = { NOT = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } } }
+		ai_chance = 0
+		name = "Let the obsolete Afghan refusal lapse"
+	}
+}
+
+event = {
+	id = 9281434
+	random = no
+	persistent = yes
+	country = AFG
+
+	name = "India Requests Full Wartime Transit"
+	desc = "Delhi renews its guarantee but argues that supervised convoys cannot sustain a real Central Asian front. Kabul must choose between armed transit and strict neutrality."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	action_a = {
+		ai_chance = 45
+		name = "Grant emergency transit under Afghan command"
+		command = { type = relation which = IND value = 20 }
+		command = { type = access which = IND }
+		command = { type = event which = 9281431 where = IND when = 4 }
+	}
+	action_b = {
+		ai_chance = 55
+		name = "Maintain strict neutrality"
+		command = { type = relation which = IND value = -20 }
+		command = { type = event which = 9281435 where = IND when = 4 }
+	}
+}
+
+event = {
+	id = 9281435
+	random = no
+	persistent = yes
+	country = IND
+
+	name = "Afghanistan Maintains Strict Neutrality"
+	desc = "Kabul refuses full transit after a second negotiation. India may build an expensive air bridge, coerce the frontier and accept war, or abandon the western route for the Burma-China theatre."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	action_a = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
+		ai_chance = 50
+		name = "Subsidize an air bridge around Afghanistan"
+		command = { type = money value = -350 }
+		command = { type = supplies value = -650 }
+		command = { type = max_organization which = air value = 1 }
+		command = { type = setflag which = ind_v4_sov_afghan_air_bridge }
+		command = { type = ai which = "aubm/soviet/IND_tashkent_corridor.ai" }
+	}
+	action_b = {
+		trigger = {
+			OR = {
+				flag = ind_aubm_route_soviet
+				AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous }
+			}
+			exists = AFG
+			NOT = { war = { country = IND country = AFG } }
+			NOT = { alliance = { country = IND country = AFG } }
+			NOT = { flag = ind_v3_delhi_pact }
+		}
+		ai_chance = 15
+		name = "Force the frontier and accept the consequences"
+		command = { type = dissent value = 5 }
+		command = { type = belligerence value = 5 }
+		command = { type = relation which = AFG value = -80 }
+		command = { type = war which = AFG }
+		command = { type = setflag which = ind_v4_sov_afghan_coercion }
+		command = { type = ai which = "aubm/soviet/IND_tashkent_corridor.ai" }
+	}
+	action_c = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
+		ai_chance = 35
+		name = "Abandon the route and reinforce the east"
+		command = { type = dissent value = -1 }
+		command = { type = relation which = AFG value = 15 }
+		command = { type = setflag which = ind_v4_sov_afghan_route_abandoned }
+		command = { type = setflag which = ind_v4_sov_east_requested }
+		command = { trigger = { exists = SOV } type = event which = 9281456 where = SOV when = 5 }
+	}
+	action_d = {
+		trigger = {
+			OR = {
+				NOT = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
+				NOT = { exists = AFG }
+				war = { country = IND country = AFG }
+				alliance = { country = IND country = AFG }
+				flag = ind_v3_delhi_pact
+			}
+		}
+		ai_chance = 0
+		name = "Cancel the overtaken Afghan frontier demand"
+	}
+}
+
+event = {
+	id = 9281436
+	random = no
+	persistent = yes
+	country = IND
+
+	name = "Afghanistan Has Ceased to Exist"
+	desc = "No Afghan government can negotiate the corridor. India can treat restoration as a war aim, operate through occupied territory, or redirect the campaign toward Persia or Xinjiang."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	action_a = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
+		ai_chance = 40
+		name = "Make Afghan restoration a war aim"
+		command = { type = setflag which = ind_v4_sov_restore_afghanistan_aim }
+		command = { type = setflag which = ind_v4_sov_afghan_occupied_route }
+	}
+	action_b = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
+		ai_chance = 25
+		name = "Operate through the occupied mountain route"
+		command = { type = dissent value = 3 }
+		command = { type = belligerence value = 2 }
+		command = { type = setflag which = ind_v4_sov_afghan_occupied_route }
+		command = { type = ai which = "aubm/soviet/IND_tashkent_corridor.ai" }
+	}
+	action_c = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
+		ai_chance = 35
+		name = "Redirect the mission to Persia and Xinjiang"
+		command = { type = setflag which = ind_v4_sov_persia_mandate }
+		command = { type = setflag which = ind_v4_sov_xinjiang_mandate }
+		command = { trigger = { exists = PER } type = event which = 9281420 where = PER when = 5 }
+		command = { trigger = { owned = { province = 1281 data = SIK } } type = event which = 9281440 where = SIK when = 7 }
+		command = { trigger = { owned = { province = 1281 data = CHI } } type = event which = 9281441 where = CHI when = 7 }
+		command = { trigger = { owned = { province = 1281 data = SOV } } type = event which = 9281442 where = SOV when = 7 }
+	}
+	action_d = {
+		trigger = { NOT = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } } }
+		ai_chance = 0
+		name = "Let the obsolete Afghan restoration question lapse"
+	}
+}
+
+#########################################################################
+# Xinjiang diplomacy
+#########################################################################
+
+event = {
+	id = 9281440
+	random = no
+	persistent = yes
+	country = SIK
+
+	name = "The Indian Mission Reaches Urumqi"
+	desc = "India proposes railway surveys, trade credit and a sovereign logistics agreement. Xinjiang can accept, restrict the mission to commerce, or refuse a new great power on its frontier."
+	style = 2
+	picture = "aubm_v4_china_interior"
+
+	action_a = {
+		ai_chance = 45
+		name = "Accept the sovereign corridor"
+		command = { type = relation which = IND value = 35 }
+		command = { type = access which = IND }
+		command = { type = event which = 9281443 where = IND when = 4 }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Permit trade but no Indian troops"
+		command = { type = relation which = IND value = 15 }
+		command = { type = event which = 9281444 where = IND when = 4 }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Refuse the Indian mission"
+		command = { type = relation which = IND value = -25 }
+		command = { type = event which = 9281445 where = IND when = 4 }
+	}
+}
+
+event = {
+	id = 9281441
+	random = no
+	persistent = yes
+	country = CHI
+
+	name = "India Seeks a Xinjiang Corridor from China"
+	desc = "Delhi recognizes Chinese sovereignty over Urumqi and asks for railway surveys, trade access and wartime liaison. China can accept, limit the mission to civilian commerce, or refuse foreign influence in the interior."
+	style = 2
+	picture = "aubm_v4_china_interior"
+
+	action_a = {
+		ai_chance = 55
+		name = "Accept under an explicit sovereignty clause"
+		command = { type = relation which = IND value = 35 }
+		command = { type = access which = IND }
+		command = { type = event which = 9281443 where = IND when = 4 }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Allow trade and surveys, but no troops"
+		command = { type = relation which = IND value = 15 }
+		command = { type = event which = 9281444 where = IND when = 4 }
+	}
+	action_c = {
+		ai_chance = 15
+		name = "Keep India outside Xinjiang"
+		command = { type = relation which = IND value = -20 }
+		command = { type = event which = 9281445 where = IND when = 4 }
+	}
+}
+
+event = {
+	id = 9281442
+	random = no
+	persistent = yes
+	country = SOV
+
+	name = "India Seeks Access Through Soviet Xinjiang"
+	desc = "Urumqi is under Soviet authority. Delhi requests a corridor governed by equal consultation rather than unilateral Soviet control. Moscow may accept, demand customs supervision, or exclude India."
+	style = 2
+	picture = "Stalin_5YPlan"
+
+	action_a = {
+		ai_chance = 45
+		name = "Accept an equal liaison corridor"
+		command = { type = relation which = IND value = 25 }
+		command = { type = access which = IND }
+		command = { type = event which = 9281443 where = IND when = 4 }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Demand Soviet customs and security control"
+		command = { type = relation which = IND value = 5 }
+		command = { type = event which = 9281444 where = IND when = 4 }
+	}
+	action_c = {
+		ai_chance = 15
+		name = "Exclude India from Xinjiang"
+		command = { type = relation which = IND value = -25 }
+		command = { type = event which = 9281445 where = IND when = 4 }
+	}
+}
+
+event = {
+	id = 9281443
+	random = no
+	persistent = yes
+	country = IND
+
+	name = "The Urumqi Corridor Opens"
+	desc = "The government controlling Urumqi accepts Indian liaison and transit. The route supplements, rather than replaces, the real Afghan and Chinese roads; its military value will depend on control of the surrounding provinces."
+	style = 2
+	picture = "aubm_v4_china_interior"
+
+	action_a = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
+		name = "Open the mission and respect local sovereignty"
+		command = { type = tc_mod value = 1 }
+		command = { type = setflag which = ind_v4_sov_xinjiang_corridor_open }
+		command = { type = ai which = "aubm/soviet/IND_xinjiang_corridor.ai" }
+	}
+	action_b = {
+		trigger = { NOT = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } } }
+		name = "Let the obsolete Urumqi corridor reply lapse"
+	}
+}
+
+event = {
+	id = 9281444
+	random = no
+	persistent = yes
+	country = IND
+
+	name = "Urumqi Offers Commerce Without Troops"
+	desc = "The corridor authority accepts trade and surveys but refuses unrestricted Indian forces. Delhi can accept the limited route, finance a stronger equal partnership, or redirect the effort to Burma and inland China."
+	style = 2
+	picture = "aubm_v4_china_interior"
+
+	action_a = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
+		ai_chance = 50
+		name = "Accept civilian access and local sovereignty"
+		command = { type = money value = -150 }
+		command = { type = research_mod value = 1 }
+		command = { type = setflag which = ind_v4_sov_xinjiang_corridor_limited }
+	}
+	action_b = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
+		ai_chance = 25
+		name = "Fund an equal strategic partnership"
+		command = { type = money value = -350 }
+		command = { type = supplies value = -450 }
+		command = { type = tc_mod value = 1 }
+		command = { type = dissent value = 1 }
+		command = { type = setflag which = ind_v4_sov_xinjiang_corridor_open }
+		command = { type = setflag which = ind_v4_sov_xinjiang_investment }
+	}
+	action_c = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
+		ai_chance = 25
+		name = "Redirect the mission to Burma and China"
+		command = { type = relation which = CHI value = 15 }
+		command = { type = setflag which = ind_v4_sov_east_requested }
+		command = { trigger = { exists = SOV } type = event which = 9281456 where = SOV when = 5 }
+	}
+	action_d = {
+		trigger = { NOT = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } } }
+		ai_chance = 0
+		name = "Let the obsolete Urumqi counteroffer lapse"
+	}
+}
+
+event = {
+	id = 9281445
+	random = no
+	persistent = yes
+	country = IND
+
+	name = "The Urumqi Mission Is Refused"
+	desc = "The authority controlling Urumqi refuses Indian access. Delhi can improve the offer and retry, use the valid Wakhan-Kondoz-Dushanbe route, or place the resources into a Burma-China command."
+	style = 2
+	picture = "aubm_v4_china_interior"
+
+	action_a = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
+		ai_chance = 30
+		name = "Improve the offer and retry in six months"
+		command = { type = money value = -250 }
+		command = { type = supplies value = -200 }
+		command = { trigger = { owned = { province = 1281 data = SIK } } type = event which = 9281440 where = SIK when = 180 }
+		command = { trigger = { owned = { province = 1281 data = CHI } } type = event which = 9281441 where = CHI when = 180 }
+		command = { trigger = { owned = { province = 1281 data = SOV } } type = event which = 9281442 where = SOV when = 180 }
+	}
+	action_b = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
+		ai_chance = 35
+		name = "Use the Wakhan-Kondoz route instead"
+		command = { type = setflag which = ind_v4_sov_tashkent_mandate }
+		command = { trigger = { exists = AFG } type = event which = 9281430 where = AFG when = 5 }
+		command = { trigger = { NOT = { exists = AFG } } type = event which = 9281436 where = IND when = 5 }
+		command = { type = ai which = "aubm/soviet/IND_tashkent_corridor.ai" }
+	}
+	action_c = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
+		ai_chance = 35
+		name = "Create a Burma-China command"
+		command = { type = supplies value = -350 }
+		command = { type = relation which = CHI value = 20 }
+		command = { type = setflag which = ind_v4_sov_east_requested }
+		command = { trigger = { exists = SOV } type = event which = 9281456 where = SOV when = 5 }
+	}
+	action_d = {
+		trigger = { NOT = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } } }
+		ai_chance = 0
+		name = "Let the obsolete Urumqi refusal lapse"
+	}
+}
+
+event = {
+	id = 9281446
+	random = no
+	persistent = yes
+	country = IND
+
+	name = "The Eastern Cooperation Window Reopens"
+	desc = "A year has passed since eastern cooperation was deferred. India may again propose anti-Japanese coordination if the war in China, Burma or the Soviet Far East still requires it."
+	style = 2
+	picture = "aubm_v4_china_interior"
+
+	action_a = {
+		trigger = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } }
+		name = "Return the question to the strategic council"
+		command = { type = clrflag which = ind_v4_sov_east_deferred }
+		command = { type = clrflag which = ind_v4_sov_east_requested }
+	}
+	action_b = {
+		trigger = { NOT = { OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } } }
+		name = "Let the obsolete eastern review lapse"
+	}
+}
+
+#########################################################################
+# Independent anti-German co-belligerency
+#########################################################################
+
+event = {
+	id = 9281450
+	random = no
+	country = IND
+
+	decision = {
+		NOT = { participant = { country = IND value = 4 } }
+		NOT = { flag = ind_aubm_commitment_allied }
+		NOT = { flag = ind_aubm_commitment_german }
+		NOT = { flag = ind_aubm_commitment_japan }
+		NOT = { flag = ind_v4a_treaty_commonwealth }
+		NOT = { flag = ind_v4a_treaty_naval_compact }
+		NOT = { flag = ind_v4a_treaty_formal_alliance }
+		NOT = { flag = ind_v4a_treaty_cobelligerent }
+		NOT = { flag = ind_gc_formal_axis }
+		NOT = { flag = ind_gc_cobelligerent }
+		NOT = { flag = ind_aubm_jp_partnership }
+		NOT = { flag = ind_aubm_diplomatic_negotiation_pending }
+		NOT = { flag = ind_aubm_realignment_cooldown }
+		OR = {
+			flag = ind_v4_sov_equal_compact
+			flag = ind_v4_sov_supervised_compact
+			flag = ind_v4_sov_autonomous_socialism
+			flag = ind_v4_sov_technical_only
+		}
+		war = { country = GER country = SOV }
+		NOT = { war = { country = IND country = GER } }
+		NOT = { alliance = { country = IND country = GER } }
+		NOT = { alliance = { country = IND country = JAP } }
+		NOT = { flag = ind_v4_sov_anti_german_committed }
+	}
+	decision_trigger = {
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		money = 300
+		supplies = 900
+		# AUBM_FULL_OPTION_GATE_END
+	}
+
+	name = "Enter the Anti-German War Independently"
+	# AUBM_DECISION_DESC_MANUAL
+	decision_desc = "The 300 money/900 supplies declaration is immediate. Moscow then makes a fixed roll: accept separate Indian command 55%, demand formal alliance 30%, or refuse coordination 15%."
+	desc = "Germany and the Soviet Union are at war. India can enter as an independent co-belligerent, preserving national command and avoiding automatic inheritance of every Soviet obligation."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+
+	date = { day = 0 month = january year = 1941 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 300
+			supplies = 900
+			# AUBM_ACTION_RESERVE_END
+			NOT = { participant = { country = IND value = 4 } }
+			NOT = { flag = ind_aubm_commitment_allied }
+			NOT = { flag = ind_aubm_commitment_german }
+			NOT = { flag = ind_aubm_commitment_japan }
+			NOT = { flag = ind_aubm_diplomatic_negotiation_pending }
+			NOT = { flag = ind_aubm_realignment_cooldown }
+		}
+		name = "Declare an independent Indian war on Germany"
+		command = { type = money value = -300 }
+		command = { type = supplies value = -900 }
+		command = { type = dissent value = 2 }
+		command = { type = war which = GER }
+		command = { type = setflag which = ind_v4_sov_anti_german_committed }
+		command = { type = setflag which = ind_v4_sov_independent_cobelligerent }
+		command = { type = setflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = setflag which = ind_aubm_negotiation_soviet }
+		command = { type = event which = 9281451 where = SOV when = 4 }
+	}
+}
+
+event = {
+	id = 9281451
+	random = no
+	country = SOV
+
+	name = "India Enters the War Under Separate Command"
+	desc = "India declares war on Germany without entering the Comintern. Moscow can recognize separate Indian command, demand a formal alliance and integrated planning, or withhold coordination from an ideologically independent partner."
+	style = 2
+	picture = "Stalin_5YPlan"
+
+	action_a = {
+		ai_chance = 55
+		name = "Recognize India as an equal co-belligerent"
+		command = { type = supplies value = -500 }
+		command = { type = relation which = IND value = 35 }
+		command = { type = access which = IND }
+		command = { type = ai which = "aubm/soviet/SOV_india_war.ai" }
+		command = { type = event which = 9281452 where = IND when = 5 }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Demand formal alliance and integrated planning"
+		command = { type = relation which = IND value = 10 }
+		command = { type = event which = 9281453 where = IND when = 5 }
+	}
+	action_c = {
+		ai_chance = 15
+		name = "Refuse operational coordination"
+		command = { type = relation which = IND value = -25 }
+		command = { type = event which = 9281454 where = IND when = 5 }
+	}
+}
+
+event = {
+	id = 9281452
+	random = no
+	country = IND
+
+	name = "Moscow Accepts Separate Indian Command"
+	desc = "Moscow recognizes India as an equal co-belligerent and releases matériel without demanding political subordination. The Persian, Central Asian and eastern commands remain under Delhi."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+
+	action_a = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_soviet exists = SOV NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = SOV } } }
+		name = "Coordinate objectives, not governments"
+		command = { type = supplies value = 500 }
+		command = { type = relation which = SOV value = 25 }
+		command = { type = max_organization which = land value = 1 }
+		command = { type = setflag which = ind_v4_sov_cobelligerency_recognized }
+		command = { type = setflag which = ind_aubm_commitment_soviet }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
+		command = { type = setflag which = ind_v4_strategic_weight_1 }
+	}
+	action_b = {
+		trigger = { OR = { NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_negotiation_soviet } NOT = { exists = SOV } participant = { country = IND value = 4 } flag = ind_aubm_commitment_allied flag = ind_aubm_commitment_german flag = ind_aubm_commitment_japan war = { country = IND country = SOV } } }
+		name = "Let Moscow's obsolete wartime acceptance lapse"
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
+	}
+}
+
+event = {
+	id = 9281453
+	random = no
+	country = IND
+
+	name = "Moscow Demands a Formal Alliance"
+	desc = "The Soviet government will provide full operational support only if India enters the Comintern. Delhi can accept and inherit alliance wars, maintain separate command with less aid, or continue entirely alone."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+
+	action_a = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_soviet exists = SOV NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = SOV } } }
+		ai_chance = 25
+		name = "Join the Comintern and integrate planning"
+		command = { type = dissent value = 4 }
+		command = { type = alliance which = SOV when = 1 }
+		command = { type = setflag which = ind_v3_soviet_orientation }
+		command = { type = setflag which = ind_v3_joined_comintern }
+		command = { type = setflag which = ind_v4_strategy_soviet }
+		command = { type = setflag which = ind_v4_sov_formal_alliance }
+		command = { type = setflag which = ind_aubm_commitment_soviet }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
+	}
+	action_b = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_soviet exists = SOV NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = SOV } } }
+		ai_chance = 55
+		name = "Keep separate command and accept less aid"
+		command = { type = relation which = SOV value = -20 }
+		command = { type = supplies value = -300 }
+		command = { type = setflag which = ind_v4_sov_independent_cobelligerent }
+		command = { type = setflag which = ind_v4_sov_moscow_support_limited }
+		command = { type = setflag which = ind_aubm_commitment_soviet }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
+	}
+	action_c = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_soviet exists = SOV NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = SOV } } }
+		ai_chance = 20
+		name = "Continue the war without Soviet coordination"
+		command = { type = relation which = SOV value = -45 }
+		command = { type = dissent value = 1 }
+		command = { type = setflag which = ind_v4_sov_autonomous_war }
+		command = { type = ai which = "aubm/soviet/IND_socialist_autonomous.ai" }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
+	}
+	action_d = {
+		ai_chance = 0
+		trigger = { OR = { NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_negotiation_soviet } NOT = { exists = SOV } participant = { country = IND value = 4 } flag = ind_aubm_commitment_allied flag = ind_aubm_commitment_german flag = ind_aubm_commitment_japan war = { country = IND country = SOV } } }
+		name = "Let Moscow's obsolete alliance demand lapse"
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
+	}
+}
+
+event = {
+	id = 9281454
+	random = no
+	country = IND
+
+	name = "Moscow Refuses Operational Coordination"
+	desc = "Moscow withholds liaison despite India's entry into the anti-German war. Delhi can continue independently, strengthen direct Persian and Afghan diplomacy, or make the refusal public and compete openly for Asian leadership."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+
+	action_a = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_soviet exists = SOV NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = SOV } } }
+		ai_chance = 45
+		name = "Continue the war under Indian command"
+		command = { type = dissent value = -1 }
+		command = { type = relation which = SOV value = -10 }
+		command = { type = setflag which = ind_v4_sov_autonomous_war }
+		command = { type = setflag which = ind_v4_strategic_weight_1 }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
+	}
+	action_b = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_soviet exists = SOV NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = SOV } } }
+		ai_chance = 35
+		name = "Build direct Tehran and Tashkent links"
+		command = { type = money value = -250 }
+		command = { type = supplies value = -450 }
+		command = { type = setflag which = ind_v4_sov_persia_mandate }
+		command = { type = setflag which = ind_v4_sov_tashkent_mandate }
+		command = { trigger = { exists = PER } type = event which = 9281420 where = PER when = 5 }
+		command = { trigger = { exists = AFG } type = event which = 9281430 where = AFG when = 7 }
+		command = { type = ai which = "aubm/soviet/IND_dual_west.ai" }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
+	}
+	action_c = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_soviet exists = SOV NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = SOV } } }
+		ai_chance = 20
+		name = "Publicly challenge Moscow for Asian leadership"
+		command = { type = dissent value = 3 }
+		command = { type = belligerence value = 2 }
+		command = { type = relation which = SOV value = -50 }
+		command = { type = relation which = CHI value = 20 }
+		command = { type = setflag which = ind_v4_sov_socialist_competition }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
+	}
+	action_d = {
+		ai_chance = 0
+		trigger = { OR = { NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_negotiation_soviet } NOT = { exists = SOV } participant = { country = IND value = 4 } flag = ind_aubm_commitment_allied flag = ind_aubm_commitment_german flag = ind_aubm_commitment_japan war = { country = IND country = SOV } } }
+		name = "File Moscow's obsolete refusal"
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
+	}
+}
+
+#########################################################################
+# Eastern anti-Japanese cooperation
+#########################################################################
+
+event = {
+	id = 9281455
+	random = no
+	country = IND
+
+	decision = {
+		exists = SOV
+		OR = {
+			flag = ind_v4_sov_equal_compact
+			flag = ind_v4_sov_supervised_compact
+			flag = ind_v4_sov_autonomous_socialism
+			flag = ind_v4_sov_technical_only
+		}
+		OR = {
+			war = { country = IND country = JAP }
+			war = { country = CHI country = JAP }
+			war = { country = SOV country = JAP }
+		}
+		OR = {
+			war = { country = IND country = JAP }
+			AND = {
+				NOT = { flag = ind_v4_strategy_japan }
+				NOT = { flag = ind_v3_japanese_orientation }
+				NOT = { alliance = { country = IND country = JAP } }
+			}
+		}
+		NOT = { flag = ind_v4_sov_east_requested }
+		NOT = { flag = ind_v4_sov_east_deferred }
+	}
+	decision_trigger = {
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		money = 250
+		supplies = 650
+		# AUBM_FULL_OPTION_GATE_END
+	}
+
+	name = "Propose Eastern Anti-Japanese Cooperation"
+	# AUBM_DECISION_DESC_MANUAL
+	decision_desc = "Cost: 250 money and 650 supplies. Moscow's fixed response is 50% support Delhi's eastern command, 30% claim primacy in Xinjiang and 20% refuse. Relations, IC and force size do not modify it."
+	desc = "War in China, Burma or the Soviet Far East makes eastern coordination possible. India can ask Moscow to support a Delhi-led command without entering a formal alliance."
+	style = 2
+	picture = "aubm_v4_burma_road_refugees"
+
+	date = { day = 0 month = january year = 1937 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 250
+			supplies = 650
+			# AUBM_ACTION_RESERVE_END
+		}
+		name = "Propose the eastern cooperation charter"
+		command = { type = money value = -250 }
+		command = { type = supplies value = -650 }
+		command = { type = setflag which = ind_v4_sov_east_requested }
+		command = { type = event which = 9281456 where = SOV when = 4 }
+	}
+}
+
+event = {
+	id = 9281456
+	random = no
+	persistent = yes
+	country = SOV
+
+	name = "India Proposes an Eastern Cooperation Charter"
+	desc = "Delhi proposes a separate Indian command in Burma and inland China, with Soviet matériel and intelligence. Moscow can accept equality, demand primacy over Xinjiang and the interior routes, or refuse the arrangement."
+	style = 2
+	picture = "Stalin_5YPlan"
+
+	action_a = {
+		ai_chance = 50
+		name = "Accept a separate Indian eastern command"
+		command = { type = supplies value = -450 }
+		command = { type = relation which = IND value = 30 }
+		command = { type = ai which = "aubm/soviet/SOV_india_asia.ai" }
+		command = { type = event which = 9281457 where = IND when = 5 }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Demand Soviet primacy in Xinjiang"
+		command = { type = relation which = IND value = 5 }
+		command = { type = event which = 9281458 where = IND when = 5 }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Refuse support for an Indian command"
+		command = { type = relation which = IND value = -25 }
+		command = { type = event which = 9281459 where = IND when = 5 }
+	}
+}
+
+event = {
+	id = 9281457
+	random = no
+	country = IND
+
+	name = "Moscow Supports the Eastern Command"
+	desc = "Soviet matériel and intelligence arrive without a demand for political control. India retains command in Burma and along the China road while Moscow focuses on the Soviet Far East."
+	style = 2
+	picture = "aubm_v4_burma_road_refugees"
+
+	action_a = {
+		name = "Organize the Burma-China command"
+		command = { type = supplies value = 450 }
+		command = { type = relation which = SOV value = 25 }
+		command = { type = relation which = CHI value = 20 }
+		command = { type = max_organization which = land value = 1 }
+		command = { type = max_organization which = air value = 1 }
+		command = { type = setflag which = ind_v4_sov_east_active }
+		command = { type = setflag which = ind_v4_sov_east_equal_command }
+		command = { trigger = { OR = { flag = ind_v4_sov_persia_mandate flag = ind_v4_sov_tashkent_mandate } } type = ai which = "aubm/soviet/IND_three_theatre.ai" }
+		command = { trigger = { NOT = { flag = ind_v4_sov_persia_mandate } NOT = { flag = ind_v4_sov_tashkent_mandate } } type = ai which = "aubm/soviet/IND_eastern_anti_japan.ai" }
+	}
+}
+
+event = {
+	id = 9281458
+	random = no
+	country = IND
+
+	name = "Moscow Claims Primacy in Xinjiang"
+	desc = "Moscow will support the eastern command only if India accepts Soviet primacy over Xinjiang. Delhi may concede, insist on equal liaison with less aid, or reject Moscow and work directly with China."
+	style = 2
+	picture = "aubm_v4_burma_road_refugees"
+
+	action_a = {
+		ai_chance = 25
+		name = "Accept Soviet primacy in Xinjiang"
+		command = { type = dissent value = 3 }
+		command = { type = relation which = SOV value = 30 }
+		command = { type = relation which = CHI value = -15 }
+		command = { type = setflag which = ind_v4_sov_east_active }
+		command = { type = setflag which = ind_v4_sov_xinjiang_conceded }
+		command = { type = ai which = "aubm/soviet/IND_eastern_anti_japan.ai" }
+	}
+	action_b = {
+		ai_chance = 45
+		name = "Insist on equality and accept less aid"
+		command = { type = supplies value = -250 }
+		command = { type = relation which = SOV value = -15 }
+		command = { type = relation which = CHI value = 15 }
+		command = { type = setflag which = ind_v4_sov_east_active }
+		command = { type = setflag which = ind_v4_sov_east_autonomous }
+		command = { type = ai which = "aubm/soviet/IND_eastern_anti_japan.ai" }
+	}
+	action_c = {
+		ai_chance = 30
+		name = "Reject Moscow and partner directly with China"
+		command = { type = relation which = SOV value = -35 }
+		command = { type = relation which = CHI value = 35 }
+		command = { type = guarantee which = IND where = CHI }
+		command = { type = setflag which = ind_v4_sov_east_active }
+		command = { type = setflag which = ind_v4_sov_east_china_bilateral }
+		command = { type = ai which = "aubm/soviet/IND_eastern_anti_japan.ai" }
+	}
+}
+
+event = {
+	id = 9281459
+	random = no
+	persistent = yes
+	country = IND
+
+	name = "Moscow Refuses the Eastern Charter"
+	desc = "Moscow refuses to support a separate Indian command. Delhi can form a bilateral China command, proceed alone from Imphal and Rangoon, or defer the proposal for a year while preserving the option to return."
+	style = 2
+	picture = "aubm_v4_burma_road_refugees"
+
+	action_a = {
+		ai_chance = 40
+		name = "Form a bilateral command with China"
+		command = { type = money value = -200 }
+		command = { type = supplies value = -450 }
+		command = { type = relation which = CHI value = 35 }
+		command = { type = guarantee which = IND where = CHI }
+		command = { type = setflag which = ind_v4_sov_east_active }
+		command = { type = setflag which = ind_v4_sov_east_china_bilateral }
+		command = { type = ai which = "aubm/soviet/IND_eastern_anti_japan.ai" }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Proceed under independent Indian command"
+		command = { type = dissent value = 1 }
+		command = { type = supplies value = -350 }
+		command = { type = setflag which = ind_v4_sov_east_active }
+		command = { type = setflag which = ind_v4_sov_east_autonomous }
+		command = { type = ai which = "aubm/soviet/IND_eastern_anti_japan.ai" }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Defer the proposal and review it next year"
+		command = { type = setflag which = ind_v4_sov_east_deferred }
+		command = { type = event which = 9281446 where = IND when = 360 }
+	}
+}
+
+#########################################################################
+# State-based theatre performance
+#########################################################################
+
+event = {
+	id = 9281460
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v4_sov_persia_mandate
+		OR = {
+			control = { province = 1093 data = IND }
+			control = { province = 1085 data = IND }
+		}
+		NOT = { flag = ind_v4_sov_persia_phase_1 }
+	}
+
+	name = "The Persian Gate Is Secured"
+	desc = "Indian forces or missions have secured Zahedan or Tehran. The Persia-Caucasus mandate now has a real line of communication rather than a paper promise, increasing India's claim to shape the Gulf settlement."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	date = { day = 0 month = january year = 1938 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Establish the Persian forward command"
+		command = { type = tc_mod value = 1 }
+		command = { type = relation which = PER value = 10 }
+		command = { type = setflag which = ind_v4_sov_persia_phase_1 }
+		command = { type = setflag which = ind_v4_sov_performance_1 }
+		command = { type = setflag which = ind_v4_strategic_weight_1 }
+		command = { type = ai which = "aubm/soviet/IND_persia_caucasus.ai" }
+	}
+}
+
+event = {
+	id = 9281461
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v4_sov_persia_phase_1
+		control = { province = 713 data = IND }
+		NOT = { flag = ind_v4_sov_persia_phase_2 }
+	}
+
+	name = "Indian Forces Reach Baku"
+	desc = "Indian command has reached Baku and the Caspian oil hinge. This is the first decisive continental result and gives Delhi a substantial voice over Caucasus security, Persian sovereignty and postwar access."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+
+	date = { day = 0 month = january year = 1939 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Claim a principal seat in the Caucasus settlement"
+		command = { type = supplies value = 500 }
+		command = { type = max_organization which = land value = 1 }
+		command = { type = relation which = SOV value = 10 }
+		command = { type = setflag which = ind_v4_sov_persia_phase_2 }
+		command = { type = setflag which = ind_v4_sov_performance_2 }
+		command = { type = setflag which = ind_v4_strategic_weight_2 }
+	}
+}
+
+event = {
+	id = 9281462
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v4_sov_persia_phase_2
+		OR = {
+			control = { province = 706 data = IND }
+			control = { province = 663 data = IND }
+		}
+		NOT = { flag = ind_v4_sov_persia_phase_3 }
+	}
+
+	name = "The Caucasus Front Becomes a Continental Victory"
+	desc = "Indian command has advanced to Astrakhan or Stalingrad after securing Baku. Delhi can no longer be treated as an auxiliary power; its forces have created a settlement claim extending from the Gulf into Central Asia."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+
+	date = { day = 0 month = january year = 1940 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Record India's continental victory"
+		command = { type = dissent value = -2 }
+		command = { type = supplies value = 750 }
+		command = { type = relation which = SOV value = 15 }
+		command = { type = setflag which = ind_v4_sov_persia_phase_3 }
+		command = { type = setflag which = ind_v4_sov_performance_3 }
+		command = { type = setflag which = ind_v4_strategic_weight_3 }
+	}
+}
+
+event = {
+	id = 9281463
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v4_sov_tashkent_mandate
+		OR = {
+			control = { province = 2172 data = IND }
+			control = { province = 2168 data = IND }
+			control = { province = 2173 data = IND }
+		}
+		NOT = { flag = ind_v4_sov_tashkent_phase_1 }
+	}
+
+	name = "The Mountain Gate Is Open"
+	desc = "Indian forces or liaison commands hold Herat, Kondoz or Wakhan. The Delhi-Tashkent corridor has crossed its first real geographic barrier, and Afghan cooperation or resistance will shape what follows."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	date = { day = 0 month = january year = 1938 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Organize the Central Asian mountain command"
+		command = { type = max_organization which = land value = 1 }
+		command = { type = relation which = AFG value = 10 }
+		command = { type = setflag which = ind_v4_sov_tashkent_phase_1 }
+		command = { type = setflag which = ind_v4_sov_performance_1 }
+		command = { type = setflag which = ind_v4_strategic_weight_1 }
+		command = { type = ai which = "aubm/soviet/IND_tashkent_corridor.ai" }
+	}
+}
+
+event = {
+	id = 9281464
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v4_sov_tashkent_phase_1
+		OR = {
+			control = { province = 1099 data = IND }
+			control = { province = 1103 data = IND }
+		}
+		NOT = { flag = ind_v4_sov_tashkent_phase_2 }
+	}
+
+	name = "India Reaches Samarkand and Tashkent"
+	desc = "Indian command has reached Samarkand or Tashkent. Delhi now has a measurable claim in the Central Asian settlement, but Moscow and the local republics will contest whether influence means partnership, bases or protectorates."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+
+	date = { day = 0 month = january year = 1939 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Establish the Tashkent liaison command"
+		command = { type = supplies value = 500 }
+		command = { type = relation which = SOV value = 10 }
+		command = { type = setflag which = ind_v4_sov_tashkent_phase_2 }
+		command = { type = setflag which = ind_v4_sov_performance_2 }
+		command = { type = setflag which = ind_v4_strategic_weight_2 }
+	}
+}
+
+event = {
+	id = 9281465
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v4_sov_tashkent_phase_2
+		control = { province = 1103 data = IND }
+		OR = {
+			control = { province = 1105 data = IND }
+			control = { province = 1097 data = IND }
+			control = { province = 506 data = IND }
+		}
+		NOT = { flag = ind_v4_sov_tashkent_phase_3 }
+	}
+
+	name = "The Central Asian Command Is Decisive"
+	desc = "India holds Tashkent and a second regional centre at Dushanbe, Ashkhabad or in Kazakhstan. Delhi has earned a senior settlement position, though turning victory into puppets will carry ideological and diplomatic costs."
+	style = 2
+	picture = "aubm_v4_barbarossa_reaction"
+
+	date = { day = 0 month = january year = 1940 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Record India's Central Asian victory"
+		command = { type = dissent value = -2 }
+		command = { type = supplies value = 700 }
+		command = { type = setflag which = ind_v4_sov_tashkent_phase_3 }
+		command = { type = setflag which = ind_v4_sov_performance_3 }
+		command = { type = setflag which = ind_v4_strategic_weight_3 }
+	}
+}
+
+event = {
+	id = 9281466
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v4_sov_east_active
+		control = { province = 1442 data = IND }
+		control = { province = 1415 data = IND }
+		OR = {
+			war = { country = IND country = JAP }
+			war = { country = CHI country = JAP }
+			war = { country = SOV country = JAP }
+		}
+		NOT = { flag = ind_v4_sov_east_phase_1 }
+	}
+
+	name = "Imphal and Rangoon Hold"
+	desc = "Indian command controls both Imphal and Rangoon while the Japanese war continues. The eastern theatre has survived its first test and can now support the Burma Road rather than merely defend Assam."
+	style = 2
+	picture = "aubm_v4_burma_road_refugees"
+
+	date = { day = 0 month = january year = 1937 }
+	offset = 4
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Open the forward Burma command"
+		command = { type = relation which = CHI value = 15 }
+		command = { type = max_organization which = land value = 1 }
+		command = { type = setflag which = ind_v4_sov_east_phase_1 }
+		command = { type = setflag which = ind_v4_sov_performance_1 }
+		command = { type = setflag which = ind_v4_strategic_weight_1 }
+		command = { type = ai which = "aubm/soviet/IND_eastern_anti_japan.ai" }
+	}
+}
+
+event = {
+	id = 9281467
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v4_sov_east_phase_1
+		control = { province = 1410 data = IND }
+		NOT = { control = { province = 1390 data = JAP } }
+		NOT = { flag = ind_v4_sov_east_phase_2 }
+	}
+
+	name = "The Burma Road Is Secure"
+	desc = "Indian command controls Mandalay while Japan no longer controls Kunming. The Burma-China artery is operational, giving Delhi a substantive claim to lead the eastern settlement and support China's survival."
+	style = 2
+	picture = "aubm_v4_burma_road_refugees"
+
+	date = { day = 0 month = january year = 1938 }
+	offset = 4
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Recognize the Burma Road achievement"
+		command = { type = supplies value = 450 }
+		command = { type = relation which = CHI value = 25 }
+		command = { type = setflag which = ind_v4_sov_east_phase_2 }
+		command = { type = setflag which = ind_v4_sov_performance_2 }
+		command = { type = setflag which = ind_v4_strategic_weight_2 }
+	}
+}
+
+event = {
+	id = 9281468
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v4_sov_east_phase_2
+		OR = {
+			control = { province = 1390 data = IND }
+			control = { province = 1299 data = IND }
+			lost_national = { country = JAP value = 35 }
+		}
+		NOT = { flag = ind_v4_sov_east_phase_3 }
+	}
+
+	name = "India Shapes the War in China"
+	desc = "Indian operations have reached Kunming or Chongqing, or Japan has lost more than a third of its national territory while the Burma command stands. Delhi has earned a senior Asian settlement claim."
+	style = 2
+	picture = "aubm_v4_china_war_deepens"
+
+	date = { day = 0 month = january year = 1939 }
+	offset = 4
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Record India's eastern strategic victory"
+		command = { type = dissent value = -2 }
+		command = { type = supplies value = 650 }
+		command = { type = relation which = CHI value = 30 }
+		command = { type = setflag which = ind_v4_sov_east_phase_3 }
+		command = { type = setflag which = ind_v4_sov_performance_3 }
+		command = { type = setflag which = ind_v4_strategic_weight_3 }
+	}
+}
+
+#########################################################################
+# Central Asian settlement and competition with Moscow
+#########################################################################
+
+event = {
+	id = 9281470
+	random = no
+	country = IND
+
+	trigger = {
+		year = 1942
+		OR = {
+			flag = ind_v4_sov_tashkent_phase_2
+			flag = ind_v4_sov_tashkent_phase_3
+			flag = ind_v4_sov_persia_phase_3
+		}
+		NOT = { war = { country = IND country = SOV } }
+		NOT = { war = { country = IND country = GER } }
+		NOT = { war = { country = GER country = SOV } }
+		NOT = { flag = ind_v4_sov_central_asia_settlement_opened }
+	}
+
+	name = "The Central Asian Settlement"
+	desc = "Indian performance has earned a Central Asian claim. Moscow's fixed accept/counter/refuse rolls are: sovereign republics 40/45/15; protectorates 15/55/30; retained bases 45/40/15. The selected formula sets the roll; relations and force size do not modify it."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	date = { day = 0 month = january year = 1942 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		ai_chance = 50
+		name = "Sovereign republics: Moscow 40/45/15"
+		command = { type = setflag which = ind_v4_sov_central_asia_sovereign_bid }
+		command = { type = setflag which = ind_v4_sov_central_asia_settlement_opened }
+		command = { trigger = { exists = SOV } type = event which = 9281471 where = SOV when = 5 }
+		command = { trigger = { NOT = { exists = SOV } } type = event which = 9281474 where = IND when = 5 }
+	}
+	action_b = {
+		ai_chance = 20
+		name = "Protectorates: Moscow 15/55/30"
+		command = { type = dissent value = 3 }
+		command = { type = setflag which = ind_v4_sov_central_asia_protectorate_bid }
+		command = { type = setflag which = ind_v4_sov_central_asia_settlement_opened }
+		command = { trigger = { exists = SOV } type = event which = 9281472 where = SOV when = 5 }
+		command = { trigger = { NOT = { exists = SOV } } type = event which = 9281477 where = IND when = 5 }
+	}
+	action_c = {
+		ai_chance = 30
+		name = "Retained bases: Moscow 45/40/15"
+		command = { type = setflag which = ind_v4_sov_central_asia_bases_bid }
+		command = { type = setflag which = ind_v4_sov_central_asia_settlement_opened }
+		command = { trigger = { exists = SOV } type = event which = 9281473 where = SOV when = 5 }
+		command = { trigger = { NOT = { exists = SOV } } type = event which = 9281480 where = IND when = 5 }
+	}
+}
+
+event = {
+	id = 9281471
+	random = no
+	country = SOV
+
+	name = "India Proposes Sovereign Central Asian Republics"
+	desc = "Delhi asks Moscow to release Turkmenistan, Uzbekistan, Tajikistan, Kyrgyzstan and Kazakhstan as sovereign states under Indian guarantees. Moscow can accept, demand joint guarantees, or refuse to dissolve Soviet authority."
+	style = 2
+	picture = "Stalin_5YPlan"
+
+	action_a = {
+		ai_chance = 40
+		name = "Accept sovereign republics under Indian guarantees"
+		command = { trigger = { NOT = { exists = TRK } owned = { province = 1097 data = SOV } } type = independence which = TRK value = 1 when = 0 }
+		command = { trigger = { NOT = { exists = UZB } owned = { province = 1103 data = SOV } } type = independence which = UZB value = 1 when = 0 }
+		command = { trigger = { NOT = { exists = TAJ } owned = { province = 1105 data = SOV } } type = independence which = TAJ value = 1 when = 0 }
+		command = { trigger = { NOT = { exists = KYG } owned = { province = 1107 data = SOV } } type = independence which = KYG value = 1 when = 0 }
+		command = { trigger = { NOT = { exists = KAZ } owned = { province = 506 data = SOV } } type = independence which = KAZ value = 1 when = 0 }
+		command = { type = relation which = IND value = 20 }
+		command = { type = event which = 9281474 where = IND when = 7 }
+	}
+	action_b = {
+		ai_chance = 45
+		name = "Release them only under joint guarantees"
+		command = { trigger = { NOT = { exists = TRK } owned = { province = 1097 data = SOV } } type = independence which = TRK value = 1 when = 0 }
+		command = { trigger = { NOT = { exists = UZB } owned = { province = 1103 data = SOV } } type = independence which = UZB value = 1 when = 0 }
+		command = { trigger = { NOT = { exists = TAJ } owned = { province = 1105 data = SOV } } type = independence which = TAJ value = 1 when = 0 }
+		command = { trigger = { NOT = { exists = KYG } owned = { province = 1107 data = SOV } } type = independence which = KYG value = 1 when = 0 }
+		command = { trigger = { NOT = { exists = KAZ } owned = { province = 506 data = SOV } } type = independence which = KAZ value = 1 when = 0 }
+		command = { type = event which = 9281475 where = IND when = 7 }
+	}
+	action_c = {
+		ai_chance = 15
+		name = "Refuse to dissolve Soviet Central Asia"
+		command = { type = relation which = IND value = -35 }
+		command = { type = event which = 9281476 where = IND when = 5 }
+	}
+}
+
+event = {
+	id = 9281472
+	random = no
+	country = SOV
+
+	name = "India Demands Central Asian Protectorates"
+	desc = "Delhi claims that Indian armies created the victory and asks Moscow to release five republics into India's strategic system. The demand conflicts directly with Soviet security and socialist legitimacy."
+	style = 2
+	picture = "Stalin_5YPlan"
+
+	action_a = {
+		ai_chance = 15
+		name = "Accept Indian protectorates as the price of victory"
+		command = { trigger = { NOT = { exists = TRK } owned = { province = 1097 data = SOV } } type = independence which = TRK value = 1 when = 0 }
+		command = { trigger = { NOT = { exists = UZB } owned = { province = 1103 data = SOV } } type = independence which = UZB value = 1 when = 0 }
+		command = { trigger = { NOT = { exists = TAJ } owned = { province = 1105 data = SOV } } type = independence which = TAJ value = 1 when = 0 }
+		command = { trigger = { NOT = { exists = KYG } owned = { province = 1107 data = SOV } } type = independence which = KYG value = 1 when = 0 }
+		command = { trigger = { NOT = { exists = KAZ } owned = { province = 506 data = SOV } } type = independence which = KAZ value = 1 when = 0 }
+		command = { type = relation which = IND value = -15 }
+		command = { type = event which = 9281477 where = IND when = 7 }
+	}
+	action_b = {
+		ai_chance = 55
+		name = "Counter with sovereign republics"
+		command = { trigger = { NOT = { exists = TRK } owned = { province = 1097 data = SOV } } type = independence which = TRK value = 1 when = 0 }
+		command = { trigger = { NOT = { exists = UZB } owned = { province = 1103 data = SOV } } type = independence which = UZB value = 1 when = 0 }
+		command = { trigger = { NOT = { exists = TAJ } owned = { province = 1105 data = SOV } } type = independence which = TAJ value = 1 when = 0 }
+		command = { trigger = { NOT = { exists = KYG } owned = { province = 1107 data = SOV } } type = independence which = KYG value = 1 when = 0 }
+		command = { trigger = { NOT = { exists = KAZ } owned = { province = 506 data = SOV } } type = independence which = KAZ value = 1 when = 0 }
+		command = { type = event which = 9281478 where = IND when = 7 }
+	}
+	action_c = {
+		ai_chance = 30
+		name = "Reject Indian protectorates"
+		command = { type = relation which = IND value = -45 }
+		command = { type = event which = 9281479 where = IND when = 5 }
+	}
+}
+
+event = {
+	id = 9281473
+	random = no
+	country = SOV
+
+	name = "India Requests Retained Central Asian Bases"
+	desc = "Delhi asks for long-term access to the Tashkent and Ashkhabad corridors rather than territorial clients. Moscow can grant broad access, offer restricted liaison rights, or close Soviet Central Asia to India."
+	style = 2
+	picture = "Stalin_5YPlan"
+
+	action_a = {
+		ai_chance = 45
+		name = "Grant broad access under a joint defence charter"
+		command = { type = access which = IND }
+		command = { type = supplies value = -400 }
+		command = { type = relation which = IND value = 25 }
+		command = { type = event which = 9281480 where = IND when = 5 }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Offer restricted liaison and depot rights"
+		command = { type = access which = IND }
+		command = { type = relation which = IND value = 5 }
+		command = { type = event which = 9281481 where = IND when = 5 }
+	}
+	action_c = {
+		ai_chance = 15
+		name = "Refuse permanent Indian access"
+		command = { type = relation which = IND value = -30 }
+		command = { type = event which = 9281482 where = IND when = 5 }
+	}
+}
+
+event = {
+	id = 9281474
+	random = no
+	persistent = yes
+	country = IND
+
+	name = "A Sovereign Central Asian Charter"
+	desc = "The five republics can now stand as sovereign partners. Where India itself holds releasable territory, Delhi restores local governments; otherwise it guarantees the states already created by the settlement."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	action_a = {
+		name = "Guarantee sovereignty from Ashkhabad to Kazakhstan"
+		command = { trigger = { NOT = { exists = TRK } owned = { province = 1097 data = IND } } type = independence which = TRK value = 1 when = 0 }
+		command = { trigger = { NOT = { exists = UZB } owned = { province = 1103 data = IND } } type = independence which = UZB value = 1 when = 0 }
+		command = { trigger = { NOT = { exists = TAJ } owned = { province = 1105 data = IND } } type = independence which = TAJ value = 1 when = 0 }
+		command = { trigger = { NOT = { exists = KYG } owned = { province = 1107 data = IND } } type = independence which = KYG value = 1 when = 0 }
+		command = { trigger = { NOT = { exists = KAZ } owned = { province = 506 data = IND } } type = independence which = KAZ value = 1 when = 0 }
+		command = { trigger = { exists = TRK } type = guarantee which = IND where = TRK }
+		command = { trigger = { exists = UZB } type = guarantee which = IND where = UZB }
+		command = { trigger = { exists = TAJ } type = guarantee which = IND where = TAJ }
+		command = { trigger = { exists = KYG } type = guarantee which = IND where = KYG }
+		command = { trigger = { exists = KAZ } type = guarantee which = IND where = KAZ }
+		command = { type = dissent value = -2 }
+		command = { type = relation which = SOV value = 15 }
+		command = { type = setflag which = ind_v4_sov_central_asia_sovereign }
+		command = { type = setflag which = ind_v4_sov_central_asia_settled }
+	}
+}
+
+event = {
+	id = 9281475
+	random = no
+	country = IND
+
+	name = "Moscow Demands Joint Guarantees"
+	desc = "Moscow releases the republics only if India accepts joint guarantees and Soviet consultation. Delhi can share influence, fund an independent regional council, or reduce its ambitions to trade and reconstruction."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	action_a = {
+		ai_chance = 50
+		name = "Accept joint guarantees with Moscow"
+		command = { type = relation which = SOV value = 25 }
+		command = { trigger = { exists = TRK } type = guarantee which = IND where = TRK }
+		command = { trigger = { exists = UZB } type = guarantee which = IND where = UZB }
+		command = { trigger = { exists = TAJ } type = guarantee which = IND where = TAJ }
+		command = { trigger = { exists = KYG } type = guarantee which = IND where = KYG }
+		command = { trigger = { exists = KAZ } type = guarantee which = IND where = KAZ }
+		command = { type = setflag which = ind_v4_sov_central_asia_joint_guarantees }
+		command = { type = setflag which = ind_v4_sov_central_asia_settled }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Fund a Delhi-led council instead"
+		command = { type = money value = -600 }
+		command = { type = supplies value = -800 }
+		command = { type = dissent value = 2 }
+		command = { type = relation which = SOV value = -30 }
+		command = { trigger = { exists = TRK } type = guarantee which = IND where = TRK }
+		command = { trigger = { exists = UZB } type = guarantee which = IND where = UZB }
+		command = { trigger = { exists = TAJ } type = guarantee which = IND where = TAJ }
+		command = { trigger = { exists = KYG } type = guarantee which = IND where = KYG }
+		command = { trigger = { exists = KAZ } type = guarantee which = IND where = KAZ }
+		command = { type = setflag which = ind_v4_sov_central_asia_indian_council }
+		command = { type = setflag which = ind_v4_sov_central_asia_settled }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Limit India to trade and reconstruction"
+		command = { type = money value = 400 }
+		command = { type = relation which = SOV value = 10 }
+		command = { type = setflag which = ind_v4_sov_central_asia_trade_sphere }
+		command = { type = setflag which = ind_v4_sov_central_asia_settled }
+	}
+}
+
+event = {
+	id = 9281476
+	random = no
+	persistent = yes
+	country = IND
+
+	name = "Moscow Refuses a Central Asian Settlement"
+	desc = "Moscow refuses to alter Central Asia despite Indian battlefield performance. Delhi can accept a technical sphere, support local sovereignty movements and risk a long rivalry, or abandon the claim for a diplomatic settlement."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	action_a = {
+		ai_chance = 45
+		name = "Accept a technical and commercial sphere"
+		command = { type = relation which = SOV value = 10 }
+		command = { type = money value = 300 }
+		command = { type = setflag which = ind_v4_sov_central_asia_trade_sphere }
+		command = { type = setflag which = ind_v4_sov_central_asia_settled }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Support local sovereignty movements"
+		command = { type = money value = -500 }
+		command = { type = supplies value = -700 }
+		command = { type = dissent value = 4 }
+		command = { type = belligerence value = 3 }
+		command = { type = relation which = SOV value = -60 }
+		command = { type = setflag which = ind_v4_sov_socialist_competition }
+		command = { type = setflag which = ind_v4_sov_central_asia_unsettled }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "Abandon the claim for a wider peace"
+		command = { type = dissent value = 2 }
+		command = { type = relation which = SOV value = 25 }
+		command = { type = setflag which = ind_v4_sov_central_asia_claim_abandoned }
+		command = { type = setflag which = ind_v4_sov_central_asia_settled }
+	}
+}
+
+event = {
+	id = 9281477
+	random = no
+	persistent = yes
+	country = IND
+
+	name = "The Indian Central Asian Protectorates"
+	desc = "Moscow has released the republics for Indian alignment, or India holds territory from which they can be restored. Delhi may now impose protectorate treaties, accepting domestic dissent and international suspicion."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	action_a = {
+		name = "Create the Indian-aligned protectorate system"
+		command = { trigger = { NOT = { exists = TRK } owned = { province = 1097 data = IND } } type = independence which = TRK value = 1 when = 0 }
+		command = { trigger = { NOT = { exists = UZB } owned = { province = 1103 data = IND } } type = independence which = UZB value = 1 when = 0 }
+		command = { trigger = { NOT = { exists = TAJ } owned = { province = 1105 data = IND } } type = independence which = TAJ value = 1 when = 0 }
+		command = { trigger = { NOT = { exists = KYG } owned = { province = 1107 data = IND } } type = independence which = KYG value = 1 when = 0 }
+		command = { trigger = { NOT = { exists = KAZ } owned = { province = 506 data = IND } } type = independence which = KAZ value = 1 when = 0 }
+		command = { trigger = { exists = TRK } type = make_puppet which = TRK }
+		command = { trigger = { exists = UZB } type = make_puppet which = UZB }
+		command = { trigger = { exists = TAJ } type = make_puppet which = TAJ }
+		command = { trigger = { exists = KYG } type = make_puppet which = KYG }
+		command = { trigger = { exists = KAZ } type = make_puppet which = KAZ }
+		command = { type = dissent value = 7 }
+		command = { type = belligerence value = 5 }
+		command = { type = domestic which = democratic value = -1 }
+		command = { type = relation which = SOV value = -25 }
+		command = { type = relation which = USA value = -20 }
+		command = { type = setflag which = ind_v4_sov_central_asia_protectorates }
+		command = { type = setflag which = ind_v4_sov_central_asia_settled }
+	}
+}
+
+event = {
+	id = 9281478
+	random = no
+	country = IND
+
+	name = "Moscow Counters with Sovereign Republics"
+	desc = "Moscow releases the republics but rejects Indian protectorates. Delhi can accept sovereign partners, impose protectorate treaties unilaterally, or create a shared socialist council."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	action_a = {
+		ai_chance = 50
+		name = "Accept sovereign partners under guarantees"
+		command = { trigger = { exists = TRK } type = guarantee which = IND where = TRK }
+		command = { trigger = { exists = UZB } type = guarantee which = IND where = UZB }
+		command = { trigger = { exists = TAJ } type = guarantee which = IND where = TAJ }
+		command = { trigger = { exists = KYG } type = guarantee which = IND where = KYG }
+		command = { trigger = { exists = KAZ } type = guarantee which = IND where = KAZ }
+		command = { type = dissent value = -1 }
+		command = { type = relation which = SOV value = 15 }
+		command = { type = setflag which = ind_v4_sov_central_asia_sovereign }
+		command = { type = setflag which = ind_v4_sov_central_asia_settled }
+	}
+	action_b = {
+		ai_chance = 20
+		name = "Impose protectorates without Moscow"
+		command = { trigger = { exists = TRK } type = make_puppet which = TRK }
+		command = { trigger = { exists = UZB } type = make_puppet which = UZB }
+		command = { trigger = { exists = TAJ } type = make_puppet which = TAJ }
+		command = { trigger = { exists = KYG } type = make_puppet which = KYG }
+		command = { trigger = { exists = KAZ } type = make_puppet which = KAZ }
+		command = { type = dissent value = 9 }
+		command = { type = belligerence value = 7 }
+		command = { type = relation which = SOV value = -70 }
+		command = { type = relation which = USA value = -30 }
+		command = { type = setflag which = ind_v4_sov_central_asia_protectorates }
+		command = { type = setflag which = ind_v4_sov_socialist_competition }
+		command = { type = setflag which = ind_v4_sov_central_asia_settled }
+	}
+	action_c = {
+		ai_chance = 30
+		name = "Create a joint socialist development council"
+		command = { type = money value = -350 }
+		command = { type = supplies value = -500 }
+		command = { type = relation which = SOV value = 25 }
+		command = { type = industrial_modifier which = supplies value = 1 }
+		command = { type = setflag which = ind_v4_sov_central_asia_joint_council }
+		command = { type = setflag which = ind_v4_sov_central_asia_settled }
+	}
+}
+
+event = {
+	id = 9281479
+	random = no
+	persistent = yes
+	country = IND
+
+	name = "Moscow Rejects Indian Protectorates"
+	desc = "The protectorate demand fails. Delhi can reopen talks for sovereign republics, support independence movements without an immediate war, or abandon the imperial claim and preserve the compact."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	action_a = {
+		ai_chance = 45
+		name = "Reopen sovereign talks: fixed Moscow roll 40/45/15"
+		command = { type = relation which = SOV value = 5 }
+		command = { type = event which = 9281471 where = SOV when = 30 }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Support independence movements instead"
+		command = { type = money value = -450 }
+		command = { type = supplies value = -600 }
+		command = { type = dissent value = 4 }
+		command = { type = relation which = SOV value = -55 }
+		command = { type = setflag which = ind_v4_sov_socialist_competition }
+		command = { type = setflag which = ind_v4_sov_central_asia_unsettled }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "Abandon protectorates and preserve the compact"
+		command = { type = dissent value = 2 }
+		command = { type = relation which = SOV value = 30 }
+		command = { type = setflag which = ind_v4_sov_central_asia_claim_abandoned }
+		command = { type = setflag which = ind_v4_sov_central_asia_settled }
+	}
+}
+
+event = {
+	id = 9281480
+	random = no
+	persistent = yes
+	country = IND
+
+	name = "India Retains Central Asian Base Rights"
+	desc = "Indian liaison, transit and depot rights survive the war. These are strategic rights rather than annexations, preserving access while avoiding the full political cost of protectorates."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	action_a = {
+		name = "Maintain Tashkent and Ashkhabad access"
+		command = { type = relation which = SOV value = 20 }
+		command = { type = tc_mod value = 2 }
+		command = { type = setflag which = ind_v4_sov_central_asia_base_rights }
+		command = { type = setflag which = ind_v4_sov_central_asia_settled }
+	}
+}
+
+event = {
+	id = 9281481
+	random = no
+	country = IND
+
+	name = "Moscow Offers Restricted Base Rights"
+	desc = "Moscow permits liaison and supervised depots but denies an autonomous Indian base system. Delhi can accept the restriction, fund bilateral ties with the republics, or reject the arrangement."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	action_a = {
+		ai_chance = 50
+		name = "Accept supervised liaison rights"
+		command = { type = supplies value = -250 }
+		command = { type = relation which = SOV value = 15 }
+		command = { type = tc_mod value = 1 }
+		command = { type = setflag which = ind_v4_sov_central_asia_liaison_rights }
+		command = { type = setflag which = ind_v4_sov_central_asia_settled }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Fund independent regional relationships"
+		command = { type = money value = -500 }
+		command = { type = supplies value = -400 }
+		command = { type = relation which = SOV value = -25 }
+		command = { type = setflag which = ind_v4_sov_central_asia_indian_council }
+		command = { type = setflag which = ind_v4_sov_central_asia_settled }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Reject symbolic rights"
+		command = { type = dissent value = 1 }
+		command = { type = relation which = SOV value = -20 }
+		command = { type = setflag which = ind_v4_sov_central_asia_unsettled }
+	}
+}
+
+event = {
+	id = 9281482
+	random = no
+	persistent = yes
+	country = IND
+
+	name = "Moscow Refuses Permanent Indian Access"
+	desc = "Moscow closes Central Asia to permanent Indian access. Delhi can substitute Persian and Afghan bases, maintain a civilian mission and retry later, or abandon the continental presence."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	action_a = {
+		ai_chance = 45
+		name = "Build Persian and Afghan alternatives"
+		command = { type = money value = -350 }
+		command = { type = supplies value = -500 }
+		command = { type = setflag which = ind_v4_sov_persia_mandate }
+		command = { type = setflag which = ind_v4_sov_tashkent_mandate }
+		command = { trigger = { exists = PER } type = event which = 9281420 where = PER when = 5 }
+		command = { trigger = { exists = AFG } type = event which = 9281430 where = AFG when = 7 }
+		command = { type = setflag which = ind_v4_sov_central_asia_bases_refused }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Keep civilian missions and defer the dispute"
+		command = { type = relation which = SOV value = 5 }
+		command = { type = research_mod value = 1 }
+		command = { type = setflag which = ind_v4_sov_central_asia_trade_sphere }
+		command = { type = setflag which = ind_v4_sov_central_asia_settled }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Abandon the continental base system"
+		command = { type = dissent value = 1 }
+		command = { type = relation which = SOV value = 20 }
+		command = { type = setflag which = ind_v4_sov_central_asia_claim_abandoned }
+		command = { type = setflag which = ind_v4_sov_central_asia_settled }
+	}
+}
+
+#########################################################################
+# Persian and Gulf settlement
+#########################################################################
+
+event = {
+	id = 9281483
+	random = no
+	country = IND
+
+	trigger = {
+		year = 1942
+		OR = {
+			flag = ind_v4_sov_persia_phase_2
+			flag = ind_v4_sov_persia_phase_3
+		}
+		NOT = { war = { country = IND country = PER } }
+		NOT = { flag = ind_v4_sov_gulf_settlement_opened }
+	}
+
+	name = "The Persian and Gulf Settlement"
+	desc = "India's western performance supports three claims. Tehran's fixed accept/counter/refuse rolls are: sovereign partnership 50/35/15; protectorate 20/55/25; retained bases 30/50/20. Relations and force size do not modify them; absent Persia creates a separate restoration policy."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+
+	date = { day = 0 month = january year = 1942 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		ai_chance = 50
+		name = "Sovereign partnership: Tehran 50/35/15"
+		command = { type = setflag which = ind_v4_sov_gulf_sovereign_bid }
+		command = { type = setflag which = ind_v4_sov_gulf_settlement_opened }
+		command = { trigger = { exists = PER } type = event which = 9281484 where = PER when = 5 }
+		command = { trigger = { NOT = { exists = PER } } type = event which = 9281487 where = IND when = 5 }
+	}
+	action_b = {
+		ai_chance = 20
+		name = "Persian protectorate: Tehran 20/55/25"
+		command = { type = dissent value = 3 }
+		command = { type = setflag which = ind_v4_sov_gulf_protectorate_bid }
+		command = { type = setflag which = ind_v4_sov_gulf_settlement_opened }
+		command = { trigger = { exists = PER } type = event which = 9281485 where = PER when = 5 }
+		command = { trigger = { NOT = { exists = PER } } type = event which = 9281487 where = IND when = 5 }
+	}
+	action_c = {
+		ai_chance = 30
+		name = "Retained Gulf bases: Tehran 30/50/20"
+		command = { type = setflag which = ind_v4_sov_gulf_bases_bid }
+		command = { type = setflag which = ind_v4_sov_gulf_settlement_opened }
+		command = { trigger = { exists = PER } type = event which = 9281486 where = PER when = 5 }
+		command = { trigger = { NOT = { exists = PER } } type = event which = 9281487 where = IND when = 5 }
+	}
+}
+
+event = {
+	id = 9281484
+	random = no
+	persistent = yes
+	country = PER
+
+	name = "India Offers a Sovereign Gulf Partnership"
+	desc = "Delhi offers a guarantee, reconstruction credit and Indian Ocean defence while recognizing full Persian sovereignty. Tehran may accept, demand a larger economic package, or refuse Indian leadership in the Gulf."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+
+	action_a = {
+		ai_chance = 50
+		name = "Accept sovereignty and mutual defence"
+		command = { type = relation which = IND value = 40 }
+		command = { type = access which = IND }
+		command = { type = event which = 9281488 where = IND when = 5 }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Demand reconstruction credit first"
+		command = { type = relation which = IND value = 10 }
+		command = { type = event which = 9281489 where = IND when = 5 }
+	}
+	action_c = {
+		ai_chance = 15
+		name = "Refuse Indian leadership in the Gulf"
+		command = { type = relation which = IND value = -30 }
+		command = { type = event which = 9281490 where = IND when = 5 }
+	}
+}
+
+event = {
+	id = 9281485
+	random = no
+	persistent = yes
+	country = PER
+
+	name = "India Demands a Persian Protectorate"
+	desc = "Delhi asks Persia to accept Indian control of foreign and defence policy. Tehran can concede after India's victory, counter with a sovereign defence pact, or reject the demand and prepare for coercion."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+
+	action_a = {
+		ai_chance = 20
+		name = "Accept Indian protection"
+		command = { type = relation which = IND value = 10 }
+		command = { type = event which = 9281491 where = IND when = 5 }
+	}
+	action_b = {
+		ai_chance = 55
+		name = "Counter with a sovereign defence pact"
+		command = { type = relation which = IND value = 20 }
+		command = { type = access which = IND }
+		command = { type = event which = 9281492 where = IND when = 5 }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "Reject the protectorate demand"
+		command = { type = relation which = IND value = -45 }
+		command = { type = event which = 9281493 where = IND when = 5 }
+	}
+}
+
+event = {
+	id = 9281486
+	random = no
+	persistent = yes
+	country = PER
+
+	name = "India Requests Permanent Gulf Bases"
+	desc = "Delhi asks Persia to transfer Busehr and Gameroon as permanent Indian naval and air stations. Tehran can cede the bases, grant military access without cession, or refuse a postwar foreign presence."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+
+	action_a = {
+		ai_chance = 30
+		name = "Cede the bases under a defence guarantee"
+		command = { type = access which = IND }
+		command = { trigger = { owned = { province = 1090 data = PER } } type = secedeprovince which = IND value = 1090 when = 1 }
+		command = { trigger = { owned = { province = 1091 data = PER } } type = secedeprovince which = IND value = 1091 when = 1 }
+		command = { type = relation which = IND value = 10 }
+		command = { type = event which = 9281494 where = IND when = 5 }
+	}
+	action_b = {
+		ai_chance = 50
+		name = "Grant access but retain Persian territory"
+		command = { type = access which = IND }
+		command = { type = relation which = IND value = 20 }
+		command = { type = event which = 9281495 where = IND when = 5 }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Refuse permanent Indian bases"
+		command = { type = relation which = IND value = -30 }
+		command = { type = event which = 9281496 where = IND when = 5 }
+	}
+}
+
+event = {
+	id = 9281487
+	random = no
+	country = IND
+
+	name = "There Is No Persian Government to Sign"
+	desc = "Persia no longer exists, so no treaty can settle the Gulf. India may restore Persia where it holds releasable territory, retain strategic stations under military administration, or sponsor a future local trusteeship."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+
+	action_a = {
+		ai_chance = 50
+		name = "Restore a sovereign Persia where possible"
+		command = { trigger = { NOT = { exists = PER } owned = { province = 1085 data = IND } } type = independence which = PER value = 1 when = 0 }
+		command = { trigger = { exists = PER } type = guarantee which = IND where = PER }
+		command = { type = dissent value = -2 }
+		command = { type = setflag which = ind_v4_sov_restore_persia_aim }
+		command = { type = setflag which = ind_v4_sov_gulf_sovereign }
+		command = { type = setflag which = ind_v4_sov_gulf_settled }
+	}
+	action_b = {
+		ai_chance = 25
+		name = "Retain the corridor under military authority"
+		command = { type = dissent value = 5 }
+		command = { type = belligerence value = 4 }
+		command = { type = relation which = ENG value = -20 }
+		command = { type = relation which = USA value = -15 }
+		command = { type = setflag which = ind_v4_sov_gulf_military_administration }
+		command = { type = setflag which = ind_v4_sov_gulf_settled }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "Sponsor a local Gulf trusteeship"
+		command = { type = money value = -350 }
+		command = { type = relation which = IRQ value = 15 }
+		command = { type = relation which = SAU value = 15 }
+		command = { type = relation which = OMN value = 20 }
+		command = { type = relation which = YEM value = 15 }
+		command = { type = setflag which = ind_v4_sov_gulf_trusteeship }
+		command = { type = setflag which = ind_v4_sov_gulf_settled }
+	}
+}
+
+event = {
+	id = 9281488
+	random = no
+	country = IND
+
+	name = "The Sovereign Persian-Gulf Partnership"
+	desc = "Persia accepts Indian guarantees and maritime coordination without surrendering sovereignty. India gains a durable Gulf partner and greater influence along the Arabian coast without annexation."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+
+	action_a = {
+		name = "Formalize the partnership and Arabian liaison"
+		command = { type = guarantee which = IND where = PER }
+		command = { type = relation which = PER value = 35 }
+		command = { type = relation which = IRQ value = 15 }
+		command = { type = relation which = SAU value = 15 }
+		command = { type = relation which = OMN value = 20 }
+		command = { type = relation which = YEM value = 15 }
+		command = { type = dissent value = -2 }
+		command = { type = setflag which = ind_v4_sov_gulf_sovereign }
+		command = { type = setflag which = ind_v4_sov_arabian_influence }
+		command = { type = setflag which = ind_v4_sov_gulf_settled }
+	}
+}
+
+event = {
+	id = 9281489
+	random = no
+	country = IND
+
+	name = "Tehran Demands Reconstruction Credit"
+	desc = "Persia will accept Indian leadership only after receiving substantial reconstruction finance. Delhi can pay for a deep partnership, offer limited trade credit, or withdraw the proposal."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+
+	action_a = {
+		ai_chance = 45
+		name = "Fund reconstruction and secure the partnership"
+		command = { type = money value = -700 }
+		command = { type = supplies value = -900 }
+		command = { type = guarantee which = IND where = PER }
+		command = { type = relation which = PER value = 45 }
+		command = { type = industrial_modifier which = supplies value = 1 }
+		command = { type = setflag which = ind_v4_sov_gulf_sovereign }
+		command = { type = setflag which = ind_v4_sov_arabian_influence }
+		command = { type = setflag which = ind_v4_sov_gulf_settled }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Offer limited trade credit"
+		command = { type = money value = -300 }
+		command = { type = relation which = PER value = 20 }
+		command = { type = setflag which = ind_v4_sov_gulf_trade_partnership }
+		command = { type = setflag which = ind_v4_sov_gulf_settled }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Withdraw rather than purchase influence"
+		command = { type = dissent value = 1 }
+		command = { type = relation which = PER value = -10 }
+		command = { type = setflag which = ind_v4_sov_gulf_claim_abandoned }
+		command = { type = setflag which = ind_v4_sov_gulf_settled }
+	}
+}
+
+event = {
+	id = 9281490
+	random = no
+	persistent = yes
+	country = IND
+
+	name = "Persia Refuses Indian Gulf Leadership"
+	desc = "Tehran rejects the sovereign partnership. Delhi can apply economic pressure and retry, build influence directly along the Arabian coast, or accept Persia's decision and preserve ordinary relations."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+
+	action_a = {
+		ai_chance = 30
+		name = "Pressure and retry: fixed Tehran roll 50/35/15"
+		command = { type = money value = -300 }
+		command = { type = supplies value = -300 }
+		command = { type = relation which = PER value = -25 }
+		command = { type = event which = 9281484 where = PER when = 180 }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Build an Arabian maritime network instead"
+		command = { type = money value = -450 }
+		command = { type = relation which = IRQ value = 20 }
+		command = { type = relation which = SAU value = 20 }
+		command = { type = relation which = OMN value = 25 }
+		command = { type = relation which = YEM value = 20 }
+		command = { type = max_organization which = naval value = 1 }
+		command = { type = setflag which = ind_v4_sov_arabian_influence }
+		command = { type = setflag which = ind_v4_sov_gulf_settled }
+	}
+	action_c = {
+		ai_chance = 30
+		name = "Respect the refusal and preserve relations"
+		command = { type = relation which = PER value = 15 }
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_v4_sov_gulf_claim_abandoned }
+		command = { type = setflag which = ind_v4_sov_gulf_settled }
+	}
+}
+
+event = {
+	id = 9281491
+	random = no
+	country = IND
+
+	name = "Persia Accepts Indian Protection"
+	desc = "Tehran accepts Indian control of defence and foreign policy. The protectorate secures the Gulf corridor but contradicts anti-imperial rhetoric and alarms Moscow, London, Washington and the Arabian states."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+
+	action_a = {
+		name = "Establish the Persian protectorate"
+		command = { type = make_puppet which = PER }
+		command = { type = dissent value = 7 }
+		command = { type = belligerence value = 5 }
+		command = { type = relation which = SOV value = -20 }
+		command = { type = relation which = ENG value = -25 }
+		command = { type = relation which = USA value = -20 }
+		command = { type = relation which = SAU value = -15 }
+		command = { type = setflag which = ind_v4_sov_gulf_protectorate }
+		command = { type = setflag which = ind_v4_sov_gulf_settled }
+	}
+}
+
+event = {
+	id = 9281492
+	random = no
+	country = IND
+
+	name = "Persia Offers a Sovereign Defence Pact"
+	desc = "Tehran rejects protectorate status but grants Indian access and accepts a mutual defence guarantee. Delhi can preserve influence without acquiring an imperial dependency."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+
+	action_a = {
+		name = "Accept the sovereign defence pact"
+		command = { type = guarantee which = IND where = PER }
+		command = { type = relation which = PER value = 30 }
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_v4_sov_gulf_sovereign }
+		command = { type = setflag which = ind_v4_sov_gulf_defence_pact }
+		command = { type = setflag which = ind_v4_sov_gulf_settled }
+	}
+}
+
+event = {
+	id = 9281493
+	random = no
+	persistent = yes
+	country = IND
+
+	name = "Persia Rejects Protectorate Status"
+	desc = "Tehran rejects subordination. India can attempt coercion and accept war, reopen negotiations for a sovereign partnership, or redirect influence toward the Arabian coast."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+
+	action_a = {
+		ai_chance = 15
+		name = "Impose the demand by force"
+		command = { type = dissent value = 7 }
+		command = { type = belligerence value = 7 }
+		command = { type = relation which = PER value = -100 }
+		command = { type = war which = PER }
+		command = { type = setflag which = ind_v4_sov_gulf_coercion }
+	}
+	action_b = {
+		ai_chance = 50
+		name = "Offer sovereign partnership: fixed Tehran roll 50/35/15"
+		command = { type = relation which = PER value = 10 }
+		command = { type = event which = 9281484 where = PER when = 30 }
+	}
+	action_c = {
+		ai_chance = 35
+		name = "Turn toward the Arabian coast"
+		command = { type = money value = -350 }
+		command = { type = relation which = IRQ value = 20 }
+		command = { type = relation which = SAU value = 20 }
+		command = { type = relation which = OMN value = 25 }
+		command = { type = relation which = YEM value = 20 }
+		command = { type = setflag which = ind_v4_sov_arabian_influence }
+		command = { type = setflag which = ind_v4_sov_gulf_settled }
+	}
+}
+
+event = {
+	id = 9281494
+	random = no
+	country = IND
+
+	name = "India Retains Busehr and Gameroon"
+	desc = "Persia transfers Busehr and Gameroon as permanent Indian bases under a defence guarantee. The stations anchor Gulf power but impose an overt territorial and anti-imperial cost."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+
+	action_a = {
+		name = "Establish the retained Gulf stations"
+		command = { type = guarantee which = IND where = PER }
+		command = { type = dissent value = 4 }
+		command = { type = belligerence value = 3 }
+		command = { type = relation which = ENG value = -15 }
+		command = { type = relation which = USA value = -10 }
+		command = { type = relation which = OMN value = 15 }
+		command = { type = setflag which = ind_v4_sov_gulf_base_rights }
+		command = { type = setflag which = ind_v4_sov_arabian_influence }
+		command = { type = setflag which = ind_v4_sov_gulf_settled }
+	}
+}
+
+event = {
+	id = 9281495
+	random = no
+	persistent = yes
+	country = IND
+
+	name = "Persia Grants Access but Retains the Ports"
+	desc = "Tehran grants military access but refuses to cede Busehr and Gameroon. Delhi can accept sovereign access, finance a second basing proposal, or withdraw the permanent presence."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+
+	action_a = {
+		ai_chance = 55
+		name = "Accept access without territorial cession"
+		command = { type = supplies value = -300 }
+		command = { type = relation which = PER value = 25 }
+		command = { type = guarantee which = IND where = PER }
+		command = { type = setflag which = ind_v4_sov_gulf_access_rights }
+		command = { type = setflag which = ind_v4_sov_gulf_settled }
+	}
+	action_b = {
+		ai_chance = 25
+		name = "Retry bases: fixed Tehran roll 30/50/20"
+		command = { type = money value = -500 }
+		command = { type = supplies value = -500 }
+		command = { type = relation which = PER value = 5 }
+		command = { type = event which = 9281486 where = PER when = 180 }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Withdraw the permanent presence"
+		command = { type = relation which = PER value = 20 }
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_v4_sov_gulf_claim_abandoned }
+		command = { type = setflag which = ind_v4_sov_gulf_settled }
+	}
+}
+
+event = {
+	id = 9281496
+	random = no
+	persistent = yes
+	country = IND
+
+	name = "Persia Refuses Permanent Indian Bases"
+	desc = "Tehran refuses both cession and permanent basing. India can construct an Arabian maritime network, apply pressure and retry, or respect Persian sovereignty and preserve the partnership."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+
+	action_a = {
+		ai_chance = 40
+		name = "Build an Arabian maritime network instead"
+		command = { type = money value = -450 }
+		command = { type = relation which = IRQ value = 20 }
+		command = { type = relation which = SAU value = 20 }
+		command = { type = relation which = OMN value = 30 }
+		command = { type = relation which = YEM value = 20 }
+		command = { type = max_organization which = naval value = 1 }
+		command = { type = setflag which = ind_v4_sov_arabian_influence }
+		command = { type = setflag which = ind_v4_sov_gulf_settled }
+	}
+	action_b = {
+		ai_chance = 25
+		name = "Apply pressure and retry: fixed Tehran roll 30/50/20"
+		command = { type = money value = -300 }
+		command = { type = supplies value = -300 }
+		command = { type = relation which = PER value = -25 }
+		command = { type = event which = 9281486 where = PER when = 180 }
+	}
+	action_c = {
+		ai_chance = 35
+		name = "Respect Persian sovereignty"
+		command = { type = relation which = PER value = 25 }
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_v4_sov_gulf_sovereign }
+		command = { type = setflag which = ind_v4_sov_gulf_settled }
+	}
+}

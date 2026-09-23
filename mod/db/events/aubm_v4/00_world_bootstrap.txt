@@ -1,0 +1,31 @@
+#########################################################################
+# A Union Before Midnight V4: direct-Darkest-Hour foundation
+#########################################################################
+
+event = {
+	id = 9280000
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_started
+		NOT = { flag = ind_aubm_fresh_1933_bootstrap }
+		NOT = { flag = ind_v4_initialized }
+	}
+
+	name = "Compatibility Review: V4 Campaign State"
+	desc = "This save began before the current campaign state was introduced. The review enables the present India systems without changing money, manpower, forces, research or diplomatic relations."
+	style = 2
+	picture = "aubm_v4_continental_state"
+
+	date = { day = 1 month = january year = 1933 }
+	offset = 1
+	deathdate = { day = 15 month = january year = 1964 }
+
+	action_a = {
+		ai_chance = 100
+		name = "Initialize the current campaign state (no cost)"
+		command = { type = setflag which = ind_v4_direct_dh }
+		command = { type = setflag which = ind_v4_initialized }
+	}
+}

@@ -21,7 +21,7 @@ event = {
 
 	date = { day = 0 month = september year = 1939 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1942 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 60
@@ -64,17 +64,17 @@ event = {
 
 	date = { day = 0 month = march year = 1940 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1942 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 55
 		name = "Build the Quetta-Karachi forward logistics system"
 		command = { type = money value = -450 }
 		command = { type = supplies value = -850 }
-		command = { type = construct which = infrastructure where = 1529 value = 15 trigger = { NOT = { building = { province = 1529 type = infrastructure value = 0.86 } } } }
-		command = { type = construct which = infrastructure where = 1534 value = 15 trigger = { NOT = { building = { province = 1534 type = infrastructure value = 0.86 } } } }
-		command = { type = construct which = infrastructure where = 1533 value = 15 trigger = { NOT = { building = { province = 1533 type = infrastructure value = 0.86 } } } }
-		command = { type = construct which = air_base where = 1529 value = 3 trigger = { NOT = { building = { province = 1529 type = air_base value = 8 } } } }
+		command = { type = construct which = infrastructure where = 1529 value = 15 trigger = { owned = { province = 1529 data = IND } NOT = { building = { province = 1529 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1534 value = 15 trigger = { owned = { province = 1534 data = IND } NOT = { building = { province = 1534 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1533 value = 15 trigger = { owned = { province = 1533 data = IND } NOT = { building = { province = 1533 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = air_base where = 1529 value = 3 trigger = { owned = { province = 1529 data = IND } NOT = { building = { province = 1529 type = air_base value = 8 } } } }
 		command = { type = tc_mod value = 3 }
 		command = { type = setflag which = ind_v3_western_theatre_logistics }
 	}
@@ -83,9 +83,9 @@ event = {
 		name = "Fortify the Indus and conserve fuel"
 		command = { type = money value = -350 }
 		command = { type = supplies value = -700 }
-		command = { type = construct which = land_fort where = 1529 value = 2 }
-		command = { type = construct which = land_fort where = 1534 value = 2 }
-		command = { type = construct which = air_base where = 1533 value = 3 trigger = { NOT = { building = { province = 1533 type = air_base value = 8 } } } }
+		command = { type = construct which = land_fort where = 1529 value = 2 trigger = { owned = { province = 1529 data = IND } NOT = { building = { province = 1529 type = land_fort value = 9 } } } }
+		command = { type = construct which = land_fort where = 1534 value = 2 trigger = { owned = { province = 1534 data = IND } NOT = { building = { province = 1534 type = land_fort value = 9 } } } }
+		command = { type = construct which = air_base where = 1533 value = 3 trigger = { owned = { province = 1533 data = IND } NOT = { building = { province = 1533 type = air_base value = 8 } } } }
 		command = { type = setflag which = ind_v3_western_theatre_logistics }
 	}
 }
@@ -107,18 +107,18 @@ event = {
 
 	date = { day = 0 month = october year = 1940 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1943 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 55
 		name = "Build the forward Rangoon-Imphal network"
 		command = { type = money value = -525 }
 		command = { type = supplies value = -1000 }
-		command = { type = construct which = infrastructure where = 1415 value = 15 trigger = { NOT = { building = { province = 1415 type = infrastructure value = 0.86 } } } }
-		command = { type = construct which = infrastructure where = 1442 value = 15 trigger = { NOT = { building = { province = 1442 type = infrastructure value = 0.86 } } } }
-		command = { type = construct which = infrastructure where = 1439 value = 15 trigger = { NOT = { building = { province = 1439 type = infrastructure value = 0.86 } } } }
-		command = { type = construct which = air_base where = 1415 value = 3 trigger = { NOT = { building = { province = 1415 type = air_base value = 8 } } } }
-		command = { type = construct which = air_base where = 1442 value = 6 trigger = { NOT = { building = { province = 1442 type = air_base value = 5 } } } }
+		command = { type = construct which = infrastructure where = 1415 value = 15 trigger = { owned = { province = 1415 data = IND } NOT = { building = { province = 1415 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1442 value = 15 trigger = { owned = { province = 1442 data = IND } NOT = { building = { province = 1442 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1439 value = 15 trigger = { owned = { province = 1439 data = IND } NOT = { building = { province = 1439 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = air_base where = 1415 value = 3 trigger = { owned = { province = 1415 data = IND } NOT = { building = { province = 1415 type = air_base value = 8 } } } }
+		command = { type = construct which = air_base where = 1442 value = 6 trigger = { owned = { province = 1442 data = IND } NOT = { building = { province = 1442 type = air_base value = 5 } } } }
 		command = { type = setflag which = ind_v3_forward_eastern_theatre }
 		command = { type = setflag which = ind_v3_eastern_theatre_logistics }
 	}
@@ -127,10 +127,10 @@ event = {
 		name = "Prepare the Assam-Imphal defence in depth"
 		command = { type = money value = -375 }
 		command = { type = supplies value = -750 }
-		command = { type = construct which = infrastructure where = 1439 value = 15 trigger = { NOT = { building = { province = 1439 type = infrastructure value = 0.86 } } } }
-		command = { type = construct which = infrastructure where = 1442 value = 15 trigger = { NOT = { building = { province = 1442 type = infrastructure value = 0.86 } } } }
-		command = { type = construct which = land_fort where = 1442 value = 3 }
-		command = { type = construct which = air_base where = 1439 value = 3 trigger = { NOT = { building = { province = 1439 type = air_base value = 8 } } } }
+		command = { type = construct which = infrastructure where = 1439 value = 15 trigger = { owned = { province = 1439 data = IND } NOT = { building = { province = 1439 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = infrastructure where = 1442 value = 15 trigger = { owned = { province = 1442 data = IND } NOT = { building = { province = 1442 type = infrastructure value = 0.86 } } } }
+		command = { type = construct which = land_fort where = 1442 value = 3 trigger = { owned = { province = 1442 data = IND } NOT = { building = { province = 1442 type = land_fort value = 8 } } } }
+		command = { type = construct which = air_base where = 1439 value = 3 trigger = { owned = { province = 1439 data = IND } NOT = { building = { province = 1439 type = air_base value = 8 } } } }
 		command = { type = setflag which = ind_v3_defensive_eastern_theatre }
 		command = { type = setflag which = ind_v3_eastern_theatre_logistics }
 	}
@@ -146,9 +146,9 @@ event = {
 		NOT = { flag = ind_v3_convoy_emergency }
 	# V3_ACTION_REACHABILITY_BEGIN
 	OR = {
-		AND = { manpower = 9 }
-		AND = { manpower = 6 }
-		}
+		AND = { manpower = 1 }
+		AND = { manpower = 1 }
+	}
 	# V3_ACTION_REACHABILITY_END
 }
 
@@ -159,36 +159,34 @@ event = {
 
 	date = { day = 0 month = april year = 1941 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1943 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 	trigger = {
-			# V3_QUEUE_MANPOWER = 9
-			manpower = 9
+			# V3_QUEUE_MANPOWER = 1
+			manpower = 1
 	}
 		ai_chance = 55
 		name = "Build mass escorts and convoy-control commands"
 		command = { type = money value = -500 }
 		command = { type = supplies value = -1300 }
-		command = { type = build_division which = destroyer value = naval_asw when = 5 cost = -2.0 where = 60 }
+		command = { type = build_division which = destroyer value = naval_asw when = 1 where = 90 }
 
 		command = { type = setflag which = ind_v3_mass_convoy_escort }
 		command = { type = setflag which = ind_v3_convoy_emergency }
 	}
 	action_b = {
 	trigger = {
-			# V3_QUEUE_MANPOWER = 6
-			manpower = 6
+			# V3_QUEUE_MANPOWER = 1
+			manpower = 1
 	}
 		ai_chance = 45
 		name = "Disperse routes, stockpile and patrol from the air"
 		command = { type = money value = -425 }
 		command = { type = supplies value = 2000 }
 		command = { type = activate_unit_type which = naval_bomber }
-		command = { type = new_model which = naval_bomber value = 0 }
 		command = { type = activate_unit_type which = escort }
-		command = { type = new_model which = escort value = 0 }
-		command = { type = build_division which = naval_bomber value = escort when = 2 cost = -2.5 where = 75 }
+		command = { type = build_division which = naval_bomber value = escort when = 1 where = 105 }
 		command = { type = tc_mod value = 3 }
 		command = { type = setflag which = ind_v3_air_convoy_defence }
 		command = { type = setflag which = ind_v3_convoy_emergency }
@@ -212,7 +210,7 @@ event = {
 
 	date = { day = 0 month = january year = 1942 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1943 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 60
@@ -266,7 +264,7 @@ event = {
 
 	date = { day = 0 month = october year = 1943 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1945 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 60
@@ -309,7 +307,7 @@ event = {
 
 	date = { day = 0 month = april year = 1944 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1946 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 60
@@ -352,7 +350,7 @@ event = {
 
 	date = { day = 0 month = january year = 1946 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1948 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 30
@@ -383,8 +381,8 @@ event = {
 		command = { type = manpowerpool value = 90 }
 		command = { type = dissent value = -3 }
 		command = { type = tc_mod value = 5 }
-		command = { type = construct which = infrastructure where = 1439 value = 10 trigger = { NOT = { building = { province = 1439 type = infrastructure value = 0.91 } } } }
-		command = { type = construct which = infrastructure where = 1529 value = 10 trigger = { NOT = { building = { province = 1529 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1439 value = 10 trigger = { owned = { province = 1439 data = IND } NOT = { building = { province = 1439 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1529 value = 10 trigger = { owned = { province = 1529 data = IND } NOT = { building = { province = 1529 type = infrastructure value = 0.91 } } } }
 		command = { type = setflag which = ind_v3_development_corps }
 		command = { type = setflag which = ind_v3_demobilization_plan }
 	}

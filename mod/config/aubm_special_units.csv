@@ -1,0 +1,41 @@
+# A Union Before Midnight: Indian special-unit text;;;;;;;;;;;X
+AUBM_NAME_GURKHA_RIFLES;Gurkha Rifles;;;;;;;;;;X
+AUBM_SNAME_GURKHA_RIFLES;Gurkhas;;;;;;;;;;X
+AUBM_SDESC_GURKHA_RIFLES;Elite mountain infantry recruited through the Indian-Nepalese military tradition.;;;;;;;;;;X
+AUBM_LDESC_GURKHA_RIFLES;The Gurkha Rifles combine selective recruitment, mountain training and unusually cohesive regimental traditions. They are formidable in difficult country, but their longer training cycle prevents mass production.;;;;;;;;;;X
+MODEL_33_0;Gurkha Rifles Division;;;;;;;;;;X
+AUBM_NAME_FRONTIER_FORCE;Frontier Force Rifles;;;;;;;;;;X
+AUBM_SNAME_FRONTIER_FORCE;Frontier Rifles;;;;;;;;;;X
+AUBM_SDESC_FRONTIER_FORCE;Mobile frontier infantry trained for patrol, intelligence and mountain security.;;;;;;;;;;X
+AUBM_LDESC_FRONTIER_FORCE;The Frontier Force Rifles unite the scouts and rifle traditions of the north-western and north-eastern marches. They trade heavy firepower for mobility, local intelligence and dependable fieldcraft.;;;;;;;;;;X
+MODEL_34_0;Frontier Force Division;;;;;;;;;;X
+AUBM_NAME_CHINDIT_COLUMNS;Long-Range Penetration Columns;;;;;;;;;;X
+AUBM_SNAME_CHINDIT_COLUMNS;Chindit Columns;;;;;;;;;;X
+AUBM_SDESC_CHINDIT_COLUMNS;Air-supplied columns organized for deep operations in jungle and broken terrain.;;;;;;;;;;X
+AUBM_LDESC_CHINDIT_COLUMNS;The long-range penetration columns operate beyond conventional supply lines, cutting communications and forcing an enemy to disperse. Their endurance and initiative are exceptional, but they lack the weight of a conventional division.;;;;;;;;;;X
+MODEL_35_0;Chindit Penetration Group;;;;;;;;;;X
+AUBM_NAME_INDIAN_AIRBORNE;Indian Airborne Division;;;;;;;;;;X
+AUBM_SNAME_INDIAN_AIRBORNE;Indian Airborne;;;;;;;;;;X
+AUBM_SDESC_INDIAN_AIRBORNE;A volunteer airborne formation built around the 50th Parachute Brigade tradition.;;;;;;;;;;X
+AUBM_LDESC_INDIAN_AIRBORNE;India's distances and vulnerable island bases reward a disciplined airborne arm. These troops can intervene quickly, but require costly selection, lift capacity and specialist training.;;;;;;;;;;X
+MODEL_36_0;Indian Airborne Division;;;;;;;;;;X
+AUBM_NAME_COROMANDEL_MARINES;Coromandel Marines;;;;;;;;;;X
+AUBM_SNAME_COROMANDEL_MARINES;Coromandel Marines;;;;;;;;;;X
+AUBM_SDESC_COROMANDEL_MARINES;Indian naval infantry trained for littoral and island operations.;;;;;;;;;;X
+AUBM_LDESC_COROMANDEL_MARINES;The Coromandel Marines are an alternate-history expansion of India's wartime amphibious institutions. They are designed to seize ports, reinforce islands and secure the approaches to the Indian Ocean.;;;;;;;;;;X
+MODEL_37_0;Coromandel Marine Division;;;;;;;;;;X
+AUBM_NAME_GUARDS_ARMOUR;Guards Armoured Division;;;;;;;;;;X
+AUBM_SNAME_GUARDS_ARMOUR;Guards Armour;;;;;;;;;;X
+AUBM_SDESC_GUARDS_ARMOUR;A selectively manned armoured formation held as the army's decisive reserve.;;;;;;;;;;X
+AUBM_LDESC_GUARDS_ARMOUR;The Guards Armoured Division concentrates India's best crews, signals personnel and maintenance establishments. Its battlefield quality is high, but so are its industrial and fuel demands.;;;;;;;;;;X
+MODEL_38_0;Guards Armoured Division;;;;;;;;;;X
+AUBM_NAME_GUARDS_MOTORISED;Guards Motorised Division;;;;;;;;;;X
+AUBM_SNAME_GUARDS_MOTORISED;Guards Motorised;;;;;;;;;;X
+AUBM_SDESC_GUARDS_MOTORISED;A professional mobile formation for reinforcement and operational exploitation.;;;;;;;;;;X
+AUBM_LDESC_GUARDS_MOTORISED;The Guards Motorised Division gives the field army a reliable mobile reserve without pretending that trucks are tanks. It is faster and more cohesive than line infantry, while remaining vulnerable to heavy armour.;;;;;;;;;;X
+MODEL_39_0;Guards Motorised Division;;;;;;;;;;X
+AUBM_NAME_INDIAN_PIONEERS;Indian Pioneer Division;;;;;;;;;;X
+AUBM_SNAME_INDIAN_PIONEERS;Indian Pioneers;;;;;;;;;;X
+AUBM_SDESC_INDIAN_PIONEERS;Combat engineers and pioneer infantry organized for bridging, field works and assault support.;;;;;;;;;;X
+AUBM_LDESC_INDIAN_PIONEERS;Drawing on the Indian Pioneer Corps and the older Madras Pioneers, this formation combines infantry with an unusually large engineering establishment. It excels at prepared operations rather than raw offensive firepower.;;;;;;;;;;X
+MODEL_40_0;Indian Pioneer Division;;;;;;;;;;X

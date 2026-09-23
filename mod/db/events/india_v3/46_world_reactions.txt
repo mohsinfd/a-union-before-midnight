@@ -1,3 +1,4 @@
+# AUBM_CONTEXT_GUARDS_V1
 #########################################################################
 # India Mod V3: India and the prewar world crisis
 #########################################################################
@@ -17,46 +18,58 @@ event = {
 	}
 
 	name = "India and the Abyssinian Crisis"
-	desc = "Italy's attack on Ethiopia turns the League's promises into a test. India can champion sanctions, attempt a Red Sea mediation, or study the campaign while preserving trade. Each course will be remembered in London, Rome and across the colonized world."
+	desc = "Italy's attack on Ethiopia tests the League. Sanctions produce a fixed 65/35 absorb-or-reroute roll. Mediation has a fixed 25/75 armistice-or-rejection roll. Relations and force size do not modify either. Military observers are deterministic and return one Italian technology at the stated cost."
 	style = 2
 	picture = "india_v3_world_abyssinia"
 
 	date = { day = 0 month = october year = 1935 }
 	offset = 5
-	deathdate = { day = 29 month = december year = 1936 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
+		trigger = { exists = ITA NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } }  money = 300 }
 		ai_chance = 40
-		name = "Lead sanctions: -300 money, anti-colonial prestige"
+		name = "Sanctions: -300 money; Rome absorbs 65%, reroutes 35%"
 		command = { type = money value = -300 }
 		command = { type = relation which = ITA value = -45 }
 		command = { type = relation which = ENG value = 15 }
 		command = { type = relation which = FRA value = 10 }
 		command = { type = dissent value = -2 }
 		command = { type = domestic which = interventionism value = 1 }
+		command = { trigger = { exists = ITA } type = event which = 9280900 where = ITA when = 1 }
 		command = { type = setflag which = ind_v3_abyssinia_sanctions }
 		command = { type = setflag which = ind_v3_reacted_abyssinia }
 	}
 	action_b = {
+		trigger = { NOT = { atwar = IND } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } } NOT = { flag = ind_aubm_commitment_soviet } NOT = { alliance = { country = IND country = SOV } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } exists = ITA NOT = { war = { country = IND country = ITA } } exists = ETH NOT = { war = { country = IND country = ETH } }  money = 225 }
 		ai_chance = 35
-		name = "Mediate at Aden: -225 money, improve both relationships"
+		name = "Mediate at Aden: -225 money; 25% armistice, 75% rejection"
 		command = { type = money value = -225 }
 		command = { type = relation which = ITA value = 10 }
 		command = { type = relation which = ETH value = 25 }
 		command = { type = relation which = ENG value = 5 }
 		command = { type = belligerence value = -1 }
+		command = { trigger = { exists = ITA } type = event which = 9280902 where = ITA when = 1 }
 		command = { type = setflag which = ind_v3_abyssinia_mediation }
 		command = { type = setflag which = ind_v3_reacted_abyssinia }
 	}
 	action_c = {
+		trigger = { exists = ITA NOT = { war = { country = IND country = ITA } } NOT = { flag = ind_aubm_commitment_allied } NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_soviet } NOT = { alliance = { country = IND country = SOV } }  supplies = 500 }
 		ai_chance = 25
-		name = "Military observers: -500 supplies, doctrine and Rome ties"
+		name = "Observers: -500 supplies, +2 dissent; Italian report"
 		command = { type = supplies value = -500 }
 		command = { type = relation which = ITA value = 25 }
 		command = { type = relation which = ENG value = -10 }
 
 		command = { type = dissent value = 2 }
+		command = { trigger = { exists = ITA } type = event which = 9280905 where = ITA when = 1 }
 		command = { type = setflag which = ind_v3_abyssinia_observers }
+		command = { type = setflag which = ind_v3_reacted_abyssinia }
+	}
+
+	action = {
+		ai_chance = 0
+		name = "Keep current orders; no new spending"
 		command = { type = setflag which = ind_v3_reacted_abyssinia }
 	}
 }
@@ -81,11 +94,12 @@ event = {
 
 	date = { day = 16 month = july year = 1936 }
 	offset = 5
-	deathdate = { day = 29 month = december year = 1938 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
+		trigger = { exists = SPR NOT = { war = { country = IND country = SPR } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } }  money = 350 supplies = 800 manpower = 5 }
 		ai_chance = 35
-		name = "Aid the Republic: -350 money, -800 supplies, combat lessons"
+		name = "Aid the Republic"
 		command = { type = money value = -350 }
 		command = { type = supplies value = -800 }
 		command = { type = manpowerpool value = -5 }
@@ -93,11 +107,13 @@ event = {
 		command = { type = relation which = SPA value = -45 }
 		command = { type = relation which = SOV value = 15 }
 		command = { type = relation which = GER value = -15 }
+		command = { trigger = { exists = SPR } type = event which = 9280910 where = SPR when = 1 }
 
 		command = { type = setflag which = ind_v3_spain_republic }
 		command = { type = setflag which = ind_v3_reacted_spain }
 	}
 	action_b = {
+		trigger = { exists = SPR NOT = { war = { country = IND country = SPR } } exists = SPA NOT = { war = { country = IND country = SPA } }  money = 300 supplies = 350 }
 		ai_chance = 40
 		name = "Gandhian medical mission: -300 money, -1 dissent"
 		command = { type = money value = -300 }
@@ -107,10 +123,13 @@ event = {
 		command = { type = relation which = ENG value = 10 }
 		command = { type = dissent value = -1 }
 		command = { type = manpowerpool value = 5 }
+		command = { trigger = { exists = SPR } type = event which = 9280911 where = SPR when = 1 }
+		command = { trigger = { exists = SPA } type = event which = 9280912 where = SPA when = 1 }
 		command = { type = setflag which = ind_v3_spain_medical }
 		command = { type = setflag which = ind_v3_reacted_spain }
 	}
 	action_c = {
+		trigger = { exists = SPA NOT = { war = { country = IND country = SPA } } exists = GER NOT = { war = { country = IND country = GER } } exists = ITA NOT = { war = { country = IND country = ITA } } NOT = { flag = ind_aubm_commitment_allied } NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_soviet } NOT = { alliance = { country = IND country = SOV } }  supplies = 450 }
 		ai_chance = 25
 		name = "Observe Nationalist operations: -450 supplies, Axis access"
 		command = { type = supplies value = -450 }
@@ -120,7 +139,14 @@ event = {
 		command = { type = relation which = SPR value = -40 }
 		command = { type = steal_tech which = GER }
 		command = { type = dissent value = 2 }
+		command = { trigger = { exists = SPA } type = event which = 9280913 where = SPA when = 1 }
 		command = { type = setflag which = ind_v3_spain_nationalist_observers }
+		command = { type = setflag which = ind_v3_reacted_spain }
+	}
+
+	action = {
+		ai_chance = 0
+		name = "Keep current orders; no new spending"
 		command = { type = setflag which = ind_v3_reacted_spain }
 	}
 }
@@ -139,15 +165,16 @@ event = {
 	}
 
 	name = "War Comes to China"
-	desc = "Fighting at Marco Polo Bridge has become a continental war. India controls the Burma Road and cannot pretend the conflict is distant. Delhi can supply China, mediate between Nanjing and Tokyo, or court Japan as the naval counterweight to Europe."
+	desc = "Fighting at Marco Polo Bridge has become a continental war. Supplying China and courting Tokyo are deterministic. Mediation uses a fixed Japanese response: 20% immediate ceasefire, 30% talks without a ceasefire and 50% rejection. Relations and force size do not modify that roll."
 	style = 2
 	picture = "india_v3_world_china"
 
 	date = { day = 0 month = july year = 1937 }
 	offset = 5
-	deathdate = { day = 29 month = december year = 1939 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
+		trigger = { exists = CHI NOT = { war = { country = IND country = CHI } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } }  supplies = 900 money = 200 }
 		ai_chance = 40
 		name = "Keep China supplied: -900 supplies, China +60, Japan -45"
 		command = { type = supplies value = -900 }
@@ -156,20 +183,26 @@ event = {
 		command = { type = relation which = JAP value = -45 }
 		command = { type = dissent value = -1 }
 		command = { type = domestic which = interventionism value = 1 }
+		command = { type = guarantee which = IND where = CHI }
+		command = { type = access which = CHI }
+		command = { trigger = { exists = CHI } type = event which = 9280920 where = CHI when = 1 }
 		command = { type = setflag which = ind_v3_china_supported }
 		command = { type = setflag which = ind_v3_reacted_china }
 	}
 	action_b = {
+		trigger = { NOT = { atwar = IND } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } } NOT = { flag = ind_aubm_commitment_soviet } NOT = { alliance = { country = IND country = SOV } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } exists = CHI NOT = { war = { country = IND country = CHI } } exists = JAP NOT = { war = { country = IND country = JAP } }  money = 350 }
 		ai_chance = 35
-		name = "Offer Delhi mediation: -350 money, balanced diplomacy"
+		name = "Mediate: -350 money; ceasefire 20%, talks 30%, reject 50%"
 		command = { type = money value = -350 }
 		command = { type = relation which = CHI value = 25 }
 		command = { type = relation which = JAP value = 10 }
 		command = { type = belligerence value = -1 }
+		command = { trigger = { exists = JAP } type = event which = 9280922 where = JAP when = 1 }
 		command = { type = setflag which = ind_v3_china_mediation_offer }
 		command = { type = setflag which = ind_v3_reacted_china }
 	}
 	action_c = {
+		trigger = { exists = JAP NOT = { war = { country = IND country = JAP } } NOT = { flag = ind_aubm_commitment_allied } NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_soviet } NOT = { alliance = { country = IND country = SOV } }  supplies = 600 }
 		ai_chance = 25
 		name = "Court Tokyo: -600 supplies, naval advance, +3 dissent"
 		command = { type = supplies value = -600 }
@@ -177,7 +210,15 @@ event = {
 		command = { type = relation which = CHI value = -55 }
 		command = { type = steal_tech which = JAP }
 		command = { type = dissent value = 3 }
+		command = { type = non_aggression which = IND where = JAP when = 720 }
+		command = { trigger = { exists = JAP } type = event which = 9280923 where = JAP when = 1 }
 		command = { type = setflag which = ind_v3_china_backed_japan }
+		command = { type = setflag which = ind_v3_reacted_china }
+	}
+
+	action = {
+		ai_chance = 0
+		name = "Keep current orders; no new spending"
 		command = { type = setflag which = ind_v3_reacted_china }
 	}
 }
@@ -199,45 +240,59 @@ event = {
 	}
 
 	name = "The Anschluss"
-	desc = "Germany's absorption of Austria demonstrates how quickly treaties can be replaced by force and plebiscite. India can reject annexation, recognize it as a European fait accompli, or treat it as the signal for an immediate defence appropriation."
+	desc = "Germany's absorption of Austria demonstrates how quickly treaties can be replaced by force. Recognition and rearmament are deterministic. If India protests, Berlin's fixed response is 70% dismissal and 30% temporary assurances; relations and force size do not modify the roll."
 	style = 2
 	picture = "india_v3_world_anschluss"
 
 	date = { day = 0 month = march year = 1938 }
 	offset = 5
-	deathdate = { day = 29 month = december year = 1938 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
+		trigger = { exists = GER NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } }   }
 		ai_chance = 35
-		name = "Reject annexation: Germany -40, democracies +15"
+		name = "Protest: Germany -40; Berlin dismisses 70%, assures 30%"
 		command = { type = relation which = GER value = -40 }
 		command = { type = relation which = ENG value = 15 }
 		command = { type = relation which = FRA value = 15 }
 		command = { type = dissent value = -1 }
 		command = { type = domestic which = interventionism value = 1 }
+		command = { trigger = { exists = GER } type = event which = 9280932 where = GER when = 1 }
 		command = { type = setflag which = ind_v3_anschluss_rejected }
 		command = { type = setflag which = ind_v3_reacted_anschluss }
 	}
 	action_b = {
+		trigger = { exists = GER NOT = { war = { country = IND country = GER } } NOT = { flag = ind_aubm_commitment_allied } NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_soviet } NOT = { alliance = { country = IND country = SOV } }   }
 		ai_chance = 25
 		name = "Recognize the fait accompli: Germany +30, +250 money"
 		command = { type = relation which = GER value = 30 }
 		command = { type = relation which = ENG value = -10 }
 		command = { type = money value = 250 }
 		command = { type = dissent value = 2 }
+		command = { type = non_aggression which = IND where = GER when = 720 }
+		command = { trigger = { exists = GER } type = event which = 9280933 where = GER when = 1 }
 		command = { type = setflag which = ind_v3_anschluss_recognized }
 		command = { type = setflag which = ind_v3_reacted_anschluss }
 	}
 	action_c = {
+		trigger = { exists = CZE NOT = { war = { country = IND country = CZE } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } }  money = 500 }
 		ai_chance = 40
-		name = "Emergency appropriation: -500 money, +900 supplies, hawk"
+		name = "Emergency appropriation: rearm India and aid Prague"
 		command = { type = money value = -500 }
-		command = { type = supplies value = 900 }
+		command = { type = supplies value = 400 }
 		command = { type = relation which = GER value = -15 }
 		command = { type = relation which = ENG value = 10 }
 		command = { type = domestic which = defense_lobby value = 1 }
 		command = { type = dissent value = 1 }
+		command = { trigger = { exists = CZE } type = guarantee which = IND where = CZE }
+		command = { trigger = { exists = CZE } type = event which = 9280934 where = CZE when = 1 }
 		command = { type = setflag which = ind_v3_anschluss_rearmament }
+		command = { type = setflag which = ind_v3_reacted_anschluss }
+	}
+
+	action = {
+		ai_chance = 0
+		name = "Keep current orders; no new spending"
 		command = { type = setflag which = ind_v3_reacted_anschluss }
 	}
 }
@@ -264,9 +319,10 @@ event = {
 
 	date = { day = 0 month = september year = 1938 }
 	offset = 5
-	deathdate = { day = 29 month = december year = 1939 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
+		trigger = { exists = CZE NOT = { war = { country = IND country = CZE } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } }  money = 250 }
 		ai_chance = 35
 		name = "Condemn great-power bargaining: -250 money, autonomy"
 		command = { type = money value = -250 }
@@ -274,12 +330,15 @@ event = {
 		command = { type = relation which = ENG value = -15 }
 		command = { type = relation which = FRA value = -15 }
 		command = { type = dissent value = -2 }
+		command = { trigger = { exists = CZE } type = guarantee which = IND where = CZE }
+		command = { trigger = { exists = CZE } type = event which = 9280930 where = CZE when = 1 }
 		command = { type = setflag which = ind_v3_munich_condemned }
 		command = { type = setflag which = ind_v3_reacted_munich }
 	}
 	action_b = {
+		trigger = {   supplies = 800 money = 250 }
 		ai_chance = 40
-		name = "Rearm without alignment: -800 supplies, research and hawk"
+		name = "Fund Indian rearmament: -800 supplies"
 		command = { type = supplies value = -800 }
 		command = { type = money value = -250 }
 		command = { type = relation which = GER value = -10 }
@@ -290,14 +349,21 @@ event = {
 		command = { type = setflag which = ind_v3_reacted_munich }
 	}
 	action_c = {
+		trigger = { exists = ENG NOT = { war = { country = IND country = ENG } } exists = FRA NOT = { war = { country = IND country = FRA } }   }
 		ai_chance = 25
-		name = "Support the settlement: +350 money, Allied ties, +2 dissent"
+		name = "Support the settlement"
 		command = { type = money value = 350 }
 		command = { type = relation which = ENG value = 25 }
 		command = { type = relation which = FRA value = 20 }
 		command = { type = dissent value = 2 }
 		command = { type = domestic which = interventionism value = -1 }
 		command = { type = setflag which = ind_v3_munich_supported }
+		command = { type = setflag which = ind_v3_reacted_munich }
+	}
+
+	action = {
+		ai_chance = 0
+		name = "Keep current orders; no new spending"
 		command = { type = setflag which = ind_v3_reacted_munich }
 	}
 }
@@ -326,9 +392,10 @@ event = {
 
 	date = { day = 0 month = march year = 1939 }
 	offset = 5
-	deathdate = { day = 29 month = december year = 1940 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
+		trigger = { exists = ENG NOT = { war = { country = IND country = ENG } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } exists = FRA NOT = { war = { country = IND country = FRA } }  money = 500 }
 		ai_chance = 35
 		name = "Collective security: -500 money, Allied ties, intervention"
 		command = { type = money value = -500 }
@@ -337,24 +404,34 @@ event = {
 		command = { type = relation which = GER value = -35 }
 		command = { type = relation which = ITA value = -25 }
 		command = { type = domestic which = interventionism value = 1 }
+		command = { trigger = { exists = POL } type = guarantee which = IND where = POL }
+		command = { trigger = { exists = CHI } type = guarantee which = IND where = CHI }
+		command = { trigger = { exists = PER } type = guarantee which = IND where = PER }
+		command = { trigger = { exists = SIA } type = guarantee which = IND where = SIA }
+		command = { trigger = { exists = POL } type = event which = 9280931 where = POL when = 1 }
 		command = { type = setflag which = ind_v3_collective_security }
 		command = { type = setflag which = ind_v3_reacted_empires_march }
 	}
 	action_b = {
+		trigger = { NOT = { atwar = IND } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } } NOT = { flag = ind_aubm_commitment_soviet } NOT = { alliance = { country = IND country = SOV } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } exists = ENG NOT = { war = { country = IND country = ENG } } exists = GER NOT = { war = { country = IND country = GER } } exists = SOV NOT = { war = { country = IND country = SOV } }  supplies = 1100 }
 		ai_chance = 45
 		name = "Armed neutrality: -1100 supplies, forts and mobilization"
 		command = { type = supplies value = -1100 }
 		command = { type = relation which = ENG value = -5 }
 		command = { type = relation which = GER value = -5 }
 		command = { type = relation which = SOV value = -5 }
-		command = { type = construct which = land_fort where = 1537 value = 3 }
-		command = { type = construct which = land_fort where = 1442 value = 3 }
+		command = { type = construct which = land_fort where = 1537 value = 3 trigger = { owned = { province = 1537 data = IND } NOT = { building = { province = 1537 type = land_fort value = 8 } } } }
+		command = { type = construct which = land_fort where = 1442 value = 3 trigger = { owned = { province = 1442 data = IND } NOT = { building = { province = 1442 type = land_fort value = 8 } } } }
 		command = { type = domestic which = defense_lobby value = 1 }
 		command = { type = dissent value = -1 }
+		command = { type = non_aggression which = IND where = ENG when = 720 }
+		command = { type = non_aggression which = IND where = GER when = 720 }
+		command = { type = non_aggression which = IND where = SOV when = 720 }
 		command = { type = setflag which = ind_v3_prewar_armed_neutrality }
 		command = { type = setflag which = ind_v3_reacted_empires_march }
 	}
 	action_c = {
+		trigger = { exists = GER NOT = { war = { country = IND country = GER } } exists = ITA NOT = { war = { country = IND country = ITA } } NOT = { flag = ind_aubm_commitment_allied } NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_soviet } NOT = { alliance = { country = IND country = SOV } }   }
 		ai_chance = 20
 		name = "Revisionist channels: +500 money, Axis ties, +3 dissent"
 		command = { type = money value = 500 }
@@ -362,7 +439,15 @@ event = {
 		command = { type = relation which = ITA value = 25 }
 		command = { type = relation which = ENG value = -25 }
 		command = { type = dissent value = 3 }
+		command = { type = non_aggression which = IND where = GER when = 720 }
+		command = { type = non_aggression which = IND where = ITA when = 720 }
 		command = { type = setflag which = ind_v3_revisionist_channels }
+		command = { type = setflag which = ind_v3_reacted_empires_march }
+	}
+
+	action = {
+		ai_chance = 0
+		name = "Keep current orders; no new spending"
 		command = { type = setflag which = ind_v3_reacted_empires_march }
 	}
 }
@@ -373,6 +458,7 @@ event = {
 	country = IND
 
 	trigger = {
+		NOT = { flag = ind_aubm_wartime_framework }
 		OR = {
 			event = 2003036
 			war = { country = GER country = POL }
@@ -387,32 +473,36 @@ event = {
 
 	date = { day = 0 month = august year = 1939 }
 	offset = 3
-	deathdate = { day = 29 month = december year = 1940 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
+		trigger = {   supplies = 500 }
 		ai_chance = 40
-		name = "Honour existing commitments: -1200 supplies, mobilize"
-		command = { type = supplies value = -1200 }
+		name = "Convene the War Cabinet: -500 supplies, mobilize"
+		command = { type = supplies value = -500 }
 		command = { type = manpowerpool value = 30 }
 		command = { type = belligerence value = 1 }
 		command = { type = domestic which = defense_lobby value = 1 }
 		command = { type = dissent value = -2 }
+		command = { type = trigger which = 9280940 }
 		command = { type = setflag which = ind_v3_honoured_commitments }
 		command = { type = setflag which = ind_v3_reacted_poland }
 	}
 	action_b = {
+		trigger = { NOT = { atwar = IND } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } } NOT = { flag = ind_aubm_commitment_soviet } NOT = { alliance = { country = IND country = SOV } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } }  money = 600 }
 		ai_chance = 40
 		name = "Armed neutrality: -600 money, +1000 supplies, forts"
 		command = { type = money value = -600 }
 		command = { type = supplies value = 1000 }
 		command = { type = belligerence value = -1 }
-		command = { type = construct which = land_fort where = 1537 value = 3 }
-		command = { type = construct which = coastal_fort where = 1533 value = 3 }
+		command = { type = construct which = land_fort where = 1537 value = 3 trigger = { owned = { province = 1537 data = IND } NOT = { building = { province = 1537 type = land_fort value = 8 } } } }
+		command = { type = construct which = coastal_fort where = 1533 value = 3 trigger = { owned = { province = 1533 data = IND } NOT = { building = { province = 1533 type = coastal_fort value = 8 } } } }
 		command = { type = dissent value = 1 }
 		command = { type = setflag which = ind_v3_wartime_armed_neutrality }
 		command = { type = setflag which = ind_v3_reacted_poland }
 	}
 	action_c = {
+		trigger = { NOT = { atwar = IND } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } } NOT = { flag = ind_aubm_commitment_soviet } NOT = { alliance = { country = IND country = SOV } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } exists = ENG NOT = { war = { country = IND country = ENG } } exists = GER NOT = { war = { country = IND country = GER } } exists = SOV NOT = { war = { country = IND country = SOV } }  money = 500 }
 		ai_chance = 20
 		name = "Delhi peace conference: -500 money, relations and dissent"
 		command = { type = money value = -500 }
@@ -422,6 +512,12 @@ event = {
 		command = { type = belligerence value = -2 }
 		command = { type = dissent value = -1 }
 		command = { type = setflag which = ind_v3_delhi_peace_conference }
+		command = { type = setflag which = ind_v3_reacted_poland }
+	}
+
+	action = {
+		ai_chance = 0
+		name = "Keep current orders; no new spending"
 		command = { type = setflag which = ind_v3_reacted_poland }
 	}
 }

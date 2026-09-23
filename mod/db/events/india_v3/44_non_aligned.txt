@@ -23,7 +23,7 @@ event = {
 
 	date = { day = 0 month = september year = 1937 }
 	offset = 7
-	deathdate = { day = 29 month = december year = 1938 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 55
@@ -70,7 +70,7 @@ event = {
 
 	date = { day = 0 month = march year = 1938 }
 	offset = 7
-	deathdate = { day = 29 month = may year = 1938 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 45
@@ -117,7 +117,7 @@ event = {
 
 	date = { day = 0 month = october year = 1938 }
 	offset = 7
-	deathdate = { day = 29 month = december year = 1938 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 55
@@ -163,7 +163,7 @@ event = {
 
 	date = { day = 0 month = april year = 1939 }
 	offset = 7
-	deathdate = { day = 29 month = december year = 1941 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 55
@@ -212,22 +212,21 @@ event = {
 
 	date = { day = 0 month = january year = 1940 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1942 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 	trigger = {
-			# V3_QUEUE_MANPOWER = 100
-			manpower = 100
+			# V3_QUEUE_MANPOWER = 34
+			manpower = 34
 	}
 		ai_chance = 60
 		name = "Build a mobile two-front deterrent"
 		command = { type = money value = -525 }
 		command = { type = supplies value = -1600 }
 		command = { type = activate_unit_type which = escort }
-		command = { type = new_model which = escort value = 0 }
-		command = { type = build_division which = motorized value = armored_car when = 3 cost = -1.8 where = 60 }
-		command = { type = build_division which = bergsjaeger value = engineer when = 3 cost = -1.8 where = 60 }
-		command = { type = build_division which = interceptor value = escort when = 2 cost = -2.0 where = 75 }
+		command = { type = build_division which = motorized value = armored_car when = 1 where = 105 }
+		command = { type = build_division which = bergsjaeger value = engineer when = 1 where = 105 }
+		command = { type = build_division which = interceptor when = 1 where = 75 }
 		command = { type = ai which = "v3/IND_nam.ai" }
 		command = { type = setflag which = ind_v3_mobile_non_aligned_deterrent }
 		command = { type = setflag which = ind_v3_nam_war_posture }
@@ -264,7 +263,7 @@ event = {
 
 	date = { day = 0 month = march year = 1942 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1944 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 55
@@ -311,7 +310,7 @@ event = {
 
 	date = { day = 0 month = may year = 1945 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1947 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 45

@@ -1,0 +1,1224 @@
+#########################################################################
+# A Union Before Midnight V4.2: India changes the prewar world
+#########################################################################
+
+# Italy must now react to Indian sanctions instead of existing only as a
+# relation modifier in an Indian event.
+event = {
+	id = 9280900
+	random = no
+	country = ITA
+
+	name = "Delhi Organizes Indian Ocean Sanctions"
+	desc = "India has closed its ports and financial channels to the Ethiopian campaign and is asking other Asian governments to do the same. Rome can absorb the immediate losses or divert trade through Germany at a political and logistical cost."
+	style = 2
+	picture = "india_v3_world_abyssinia"
+
+	action_a = {
+		ai_chance = 65
+		name = "Defy Delhi and absorb the sanctions"
+		command = { type = money value = -350 }
+		command = { type = supplies value = -700 }
+		command = { type = dissent value = 2 }
+		command = { type = relation which = IND value = -40 }
+		command = { type = end_trades which = ITA where = IND }
+		command = { type = event which = 9280901 where = IND when = 1 }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Route the campaign economy through Germany"
+		command = { type = money value = -175 }
+		command = { type = supplies value = -350 }
+		command = { type = dissent value = 1 }
+		command = { type = relation which = GER value = 15 }
+		command = { type = relation which = IND value = -25 }
+		command = { type = event which = 9280901 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9280901
+	random = no
+	country = IND
+
+	name = "Rome Defies the Sanctions"
+	desc = "Italy refuses to alter the Ethiopian campaign, but Indian control of the central ocean has made defiance materially expensive. Delhi's stand is now a fact in the diplomacy of the war rather than a speech at Geneva."
+	style = 2
+	picture = "india_v3_world_abyssinia"
+
+	action_a = {
+		name = "Maintain the maritime restrictions"
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_v42_italy_sanctioned }
+	}
+}
+
+event = {
+	id = 9280902
+	random = no
+	country = ITA
+
+	name = "India Offers an Aden Armistice"
+	desc = "Delhi proposes an immediate ceasefire, recognition of Ethiopian sovereignty and an international economic conference at Aden. Acceptance sacrifices the conquest but prevents prolonged isolation; rejection risks turning India into an active supplier of Addis Ababa."
+	style = 2
+	picture = "india_v3_world_abyssinia"
+
+	action_a = {
+		trigger = { war = { country = ITA country = ETH } }
+		ai_chance = 25
+		name = "Accept the Indian armistice"
+		command = { type = peace which = ETH value = 1 }
+		command = { type = dissent value = 4 }
+		command = { type = relation which = IND value = 30 }
+		command = { type = event which = 9280903 where = IND when = 1 }
+	}
+	action_b = {
+		ai_chance = 75
+		name = "Reject mediation and continue the campaign"
+		command = { type = dissent value = 1 }
+		command = { type = relation which = IND value = -30 }
+		command = { type = event which = 9280904 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9280903
+	random = no
+	country = IND
+	name = "The Aden Armistice Is Accepted"
+	desc = "Rome accepts India's armistice formula. Ethiopia survives, Italy retreats from an expensive war and Delhi has demonstrated that an Asian power can change a European campaign without firing a shot."
+	style = 2
+	picture = "india_v3_world_abyssinia"
+	action_a = {
+		name = "Guarantee the settlement"
+		command = { trigger = { exists = ETH } type = guarantee which = IND where = ETH }
+		command = { type = dissent value = -3 }
+		command = { type = setflag which = ind_v42_aden_armistice }
+	}
+}
+
+event = {
+	id = 9280904
+	random = no
+	country = IND
+	name = "Rome Rejects the Aden Armistice"
+	desc = "Italy rejects mediation. Delhi must accept that diplomacy has limits, but the refusal strengthens the case for material aid and a permanent Indian Ocean security policy."
+	style = 2
+	picture = "india_v3_world_abyssinia"
+	action_a = {
+		name = "Record the refusal"
+		command = { type = relation which = ETH value = 20 }
+		command = { type = setflag which = ind_v42_aden_rejected }
+	}
+}
+
+event = {
+	id = 9280905
+	random = no
+	country = ITA
+	name = "Indian Officers Observe the Ethiopian Campaign"
+	desc = "An Indian observer group arrives with fuel, medical stores and transport purchased by Delhi. Rome gains immediate logistical relief while India studies mechanized operations, air-ground coordination and desert supply."
+	style = 2
+	picture = "india_v3_world_abyssinia"
+	action_a = {
+		name = "Attach the mission to the field army"
+		command = { type = supplies value = 500 }
+		command = { type = relation which = IND value = 20 }
+		command = { type = event which = 9280906 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9280906
+	random = no
+	country = IND
+	name = "Lessons from the Ethiopian Campaign"
+	desc = "The observer group returns with Italian field reports and captured technical material. The knowledge is useful, although Parliament remains divided over the price at which it was obtained."
+	style = 2
+	picture = "india_v3_world_abyssinia"
+	action_a = {
+		name = "Distribute the reports to the staff colleges"
+		command = { type = steal_tech which = ITA }
+		command = { type = setflag which = ind_v42_italian_field_reports }
+	}
+}
+
+# Spain receives formations and stores, making the Indian choice visible on
+# the battlefield rather than only in Delhi's relations ledger.
+event = {
+	id = 9280910
+	random = no
+	country = SPR
+	name = "The Azad Hind Volunteers Reach Spain"
+	desc = "Indian volunteers, artillery instructors and a large shipment of ammunition reach the Republic. They are organized as a single international brigade so the commitment matters without allowing Delhi to decide the Spanish war by itself."
+	style = 2
+	picture = "india_v3_world_spain"
+	action_a = {
+		name = "Deploy the volunteers"
+		command = { type = supplies value = 1200 }
+		command = { type = manpowerpool value = 10 }
+		command = { type = add_division which = "Azad Hind International Brigade" value = infantry when = -1 where = artillery }
+		command = { type = relation which = IND value = 40 }
+		command = { type = setflag which = ind_v42_india_aided_republic }
+	}
+}
+
+event = {
+	id = 9280911
+	random = no
+	country = SPR
+	name = "The Indian Medical Mission"
+	desc = "Indian surgeons and relief workers establish neutral hospitals behind Republican lines. The mission is small but preserves manpower and creates a rare channel across the civil war."
+	style = 2
+	picture = "india_v3_world_spain"
+	action_a = {
+		name = "Protect the hospitals"
+		command = { type = supplies value = 350 }
+		command = { type = manpowerpool value = 5 }
+		command = { type = dissent value = -1 }
+		command = { type = relation which = IND value = 15 }
+	}
+}
+
+event = {
+	id = 9280912
+	random = no
+	country = SPA
+	name = "The Indian Medical Mission"
+	desc = "Indian surgeons and relief workers establish neutral hospitals behind Nationalist lines. Delhi's refusal to make humanitarian relief partisan opens a channel that neither Spanish camp expected."
+	style = 2
+	picture = "india_v3_world_spain"
+	action_a = {
+		name = "Protect the hospitals"
+		command = { type = supplies value = 300 }
+		command = { type = manpowerpool value = 4 }
+		command = { type = dissent value = -1 }
+		command = { type = relation which = IND value = 10 }
+	}
+}
+
+event = {
+	id = 9280913
+	random = no
+	country = SPA
+	name = "The Indian Observer Mission"
+	desc = "Indian officers arrive with transport, signals stores and instructors. The Nationalists gain a modest field formation while Delhi receives access to German and Italian operational methods."
+	style = 2
+	picture = "india_v3_world_spain"
+	action_a = {
+		name = "Attach the mission to the northern army"
+		command = { type = supplies value = 750 }
+		command = { type = add_division which = "Indian Observer Group" value = infantry when = -1 where = engineer }
+		command = { type = relation which = IND value = 30 }
+		command = { type = setflag which = ind_v42_india_aided_nationalists }
+	}
+}
+
+# China and Japan now receive actual consequences from the Burma Road choice.
+event = {
+	id = 9280920
+	random = no
+	country = CHI
+	name = "India Opens the Burma Road"
+	desc = "Indian customs authorities open a sovereign supply corridor from Rangoon and Assam. Trucks, medical stores and machine tools reach China while Indian officers coordinate transit without placing the route under British control."
+	style = 2
+	picture = "india_v3_world_china"
+	action_a = {
+		name = "Put the corridor into service"
+		command = { type = supplies value = 2500 }
+		command = { type = money value = 250 }
+		command = { type = manpowerpool value = 10 }
+		command = { type = tc_mod value = 5 }
+		command = { type = access which = IND }
+		command = { type = relation which = IND value = 50 }
+		command = { trigger = { exists = JAP } type = event which = 9280921 where = JAP when = 1 }
+		command = { type = setflag which = ind_v42_burma_road_open }
+	}
+}
+
+event = {
+	id = 9280921
+	random = no
+	country = JAP
+	name = "India Opens the Burma Road"
+	desc = "Delhi has become China's principal southern supply route and has guaranteed Chinese sovereignty. Tokyo must decide whether to punish India, issue an ultimatum or tolerate the corridor while concentrating on the Chinese armies."
+	style = 2
+	picture = "india_v3_world_china"
+	action_a = {
+		ai_chance = 60
+		name = "Impose an embargo on India"
+		command = { type = end_trades which = JAP where = IND }
+		command = { type = relation which = IND value = -60 }
+		command = { type = belligerence value = 1 }
+		command = { type = event which = 9280924 where = IND when = 1 }
+	}
+	action_b = {
+		ai_chance = 25
+		name = "Issue a frontier ultimatum"
+		command = { type = relation which = IND value = -80 }
+		command = { type = event which = 9280925 where = IND when = 1 }
+	}
+	action_c = {
+		ai_chance = 15
+		name = "Tolerate the route for now"
+		command = { type = relation which = IND value = -15 }
+		command = { type = event which = 9280926 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9280922
+	random = no
+	country = JAP
+	name = "Delhi Offers Mediation in China"
+	desc = "India offers a ceasefire conference that would recognize Japanese commercial interests but preserve Chinese sovereignty. The proposal is risky for Delhi and unexpectedly difficult for Tokyo to dismiss outright."
+	style = 2
+	picture = "india_v3_world_china"
+	action_a = {
+		trigger = { war = { country = JAP country = CHI } }
+		ai_chance = 20
+		name = "Accept an immediate ceasefire"
+		command = { type = peace which = CHI value = 1 }
+		command = { type = dissent value = 4 }
+		command = { type = relation which = IND value = 30 }
+		command = { type = event which = 9280927 where = IND when = 1 }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Enter talks without stopping operations"
+		command = { type = relation which = IND value = 10 }
+		command = { type = event which = 9280928 where = IND when = 1 }
+	}
+	action_c = {
+		ai_chance = 50
+		name = "Reject Indian interference"
+		command = { type = relation which = IND value = -35 }
+		command = { type = event which = 9280929 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9280923
+	random = no
+	country = JAP
+	name = "India Courts Tokyo"
+	desc = "Delhi offers naval stores, commercial access and a temporary neutrality pact. Japan gains a useful southern relationship, but accepting it confirms that India is an autonomous Asian power rather than a subordinate member of Berlin's coalition."
+	style = 2
+	picture = "india_v3_japan_china"
+	action_a = {
+		name = "Accept the bilateral Asian channel"
+		command = { type = supplies value = 600 }
+		command = { type = non_aggression which = JAP where = IND when = 720 }
+		command = { type = relation which = IND value = 35 }
+		command = { type = setflag which = ind_v42_tokyo_delhi_channel }
+	}
+}
+
+event = {
+	id = 9280924
+	random = no
+	country = IND
+	name = "Tokyo Embargoes India"
+	desc = "Japan closes commercial channels in retaliation for the Burma Road. The immediate loss is manageable; the strategic consequence is that Indian aid to China can no longer be mistaken for cost-free diplomacy."
+	style = 2
+	picture = "india_v3_world_china"
+	action_a = {
+		name = "Replace Japanese imports and hold the line"
+		command = { type = dissent value = -1 }
+		command = { type = relation which = USA value = 10 }
+		command = { type = setflag which = ind_v42_japanese_embargo }
+	}
+}
+
+event = {
+	id = 9280925
+	random = no
+	country = IND
+	name = "Tokyo's Frontier Ultimatum"
+	desc = "Japan demands closure of the Burma Road and an end to Indian guarantees. Delhi refuses to decide the matter in a foreign capital; the eastern commands begin contingency planning."
+	style = 2
+	picture = "india_v3_world_china"
+	action_a = {
+		name = "Reject the ultimatum"
+		command = { type = dissent value = 1 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = setflag which = ind_v42_japanese_ultimatum }
+	}
+}
+
+event = {
+	id = 9280926
+	random = no
+	country = IND
+	name = "Tokyo Tolerates the Burma Road"
+	desc = "Japan protests but avoids a direct rupture. Delhi has bought China time and demonstrated influence, although no one expects Tokyo's restraint to be permanent."
+	style = 2
+	picture = "india_v3_world_china"
+	action_a = {
+		name = "Keep the corridor open"
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_v42_burma_road_tolerated }
+	}
+}
+
+event = {
+	id = 9280927
+	random = no
+	country = IND
+	name = "Japan Accepts the Delhi Ceasefire"
+	desc = "Tokyo accepts a ceasefire with China. The settlement may not endure, but India has changed the course of the Asian war and gained diplomatic authority no amount of domestic construction could provide."
+	style = 2
+	picture = "india_v3_world_china"
+	action_a = {
+		name = "Convene the settlement conference"
+		command = { type = dissent value = -3 }
+		command = { type = setflag which = ind_v42_china_ceasefire }
+	}
+}
+
+event = {
+	id = 9280928
+	random = no
+	country = IND
+	name = "Tokyo Enters the Delhi Talks"
+	desc = "Japan sends delegates but continues military operations. India gains a channel and some influence, not peace; future Japanese choices will reveal whether the talks were diplomacy or delay."
+	style = 2
+	picture = "india_v3_world_china"
+	action_a = {
+		name = "Keep the channel open"
+		command = { type = relation which = CHI value = 10 }
+		command = { type = setflag which = ind_v42_china_talks }
+	}
+}
+
+event = {
+	id = 9280929
+	random = no
+	country = IND
+	name = "Japan Rejects Delhi's Mediation"
+	desc = "Tokyo rejects the conference and warns India against further involvement. The refusal narrows Delhi's choices but clarifies that neutrality alone will not protect the eastern approaches."
+	style = 2
+	picture = "india_v3_world_china"
+	action_a = {
+		name = "Prepare for a longer Asian war"
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = setflag which = ind_v42_china_mediation_rejected }
+	}
+}
+
+event = {
+	id = 9280930
+	random = no
+	country = CZE
+	name = "India Rejects the Munich Settlement"
+	desc = "Delhi extends a guarantee and releases ammunition, machine tools and credit to Prague. India cannot replace the absent European guarantees, but Czechoslovakia will face the crisis with a larger reserve and an external diplomatic option."
+	style = 2
+	picture = "india_v3_world_munich"
+	action_a = {
+		name = "Accept the Indian guarantee"
+		command = { type = supplies value = 1200 }
+		command = { type = money value = 200 }
+		command = { type = manpowerpool value = 10 }
+		command = { type = tc_mod value = 3 }
+		command = { type = relation which = IND value = 45 }
+		command = { type = setflag which = ind_v42_india_backed_czechoslovakia }
+	}
+}
+
+event = {
+	id = 9280931
+	random = no
+	country = POL
+	name = "The Delhi Guarantee"
+	desc = "India adds its guarantee to Poland and releases stores from the continental reserve. The commitment does not place Indian formations under European command, but it makes the coming crisis part of Delhi's own strategic debate."
+	style = 2
+	picture = "india_v3_world_poland"
+	action_a = {
+		name = "Receive the Indian stores"
+		command = { type = supplies value = 1000 }
+		command = { type = manpowerpool value = 8 }
+		command = { type = relation which = IND value = 40 }
+		command = { type = setflag which = ind_v42_delhi_guarantee_poland }
+	}
+}
+
+# Delhi's protest is not a relation modifier in a vacuum. Berlin can harden
+# its line or offer temporary assurances, and India receives the answer.
+event = {
+	id = 9280932
+	random = no
+	country = GER
+
+	name = "Delhi Protests the Anschluss"
+	desc = "Independent India has publicly rejected the annexation of Austria and is asking European capitals to oppose further territorial revisions. Berlin must decide whether to dismiss Delhi as an irrelevant former colony or offer assurances to keep an Asian great power neutral."
+	style = 2
+	picture = "india_v3_world_anschluss"
+
+	action_a = {
+		ai_chance = 70
+		name = "Dismiss the Indian protest"
+		command = { type = relation which = IND value = -25 }
+		command = { type = belligerence value = 1 }
+		command = { trigger = { exists = IND } type = event which = 9280935 where = IND when = 1 }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Offer Delhi temporary assurances"
+		command = { type = relation which = IND value = 15 }
+		command = { type = non_aggression which = GER where = IND when = 360 }
+		command = { trigger = { exists = IND } type = event which = 9280936 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9280933
+	random = no
+	country = GER
+
+	name = "India Recognizes the Anschluss"
+	desc = "Delhi has recognized the annexation of Austria as a European fait accompli and opened a temporary non-aggression channel. The gesture weakens efforts to isolate Germany and offers Berlin a useful commercial opening in Asia."
+	style = 2
+	picture = "india_v3_world_anschluss"
+
+	action_a = {
+		name = "Open the Berlin-Delhi commercial channel"
+		command = { type = money value = 100 }
+		command = { type = supplies value = 200 }
+		command = { type = relation which = IND value = 25 }
+	}
+}
+
+event = {
+	id = 9280934
+	random = no
+	country = CZE
+
+	name = "Indian Aid Reaches Prague"
+	desc = "India has paired its emergency rearmament vote with a sovereign guarantee and a shipment of military stores to Czechoslovakia. The commitment cannot replace nearby allies, but it gives Prague material support and raises the diplomatic cost of another settlement made without it."
+	style = 2
+	picture = "india_v3_world_anschluss"
+
+	action_a = {
+		name = "Receive the Indian stores"
+		command = { type = supplies value = 500 }
+		command = { type = manpowerpool value = 3 }
+		command = { type = relation which = IND value = 35 }
+	}
+}
+
+event = {
+	id = 9280935
+	random = no
+	country = IND
+
+	name = "Berlin Rejects Delhi's Protest"
+	desc = "Germany has dismissed India's protest as posturing by a former colony. The rebuff vindicates advocates of faster rearmament and leaves the Cabinet with fewer illusions about treaty revision by negotiation."
+	style = 2
+	picture = "india_v3_world_anschluss"
+
+	action_a = {
+		name = "Record Berlin's answer"
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = relation which = GER value = -15 }
+		command = { type = setflag which = ind_v42_berlin_rebuff }
+	}
+}
+
+event = {
+	id = 9280936
+	random = no
+	country = IND
+
+	name = "Berlin Offers Temporary Assurances"
+	desc = "Germany has answered India's protest with a limited non-aggression assurance. It may be sincere, tactical, or merely an effort to divide possible opponents; Delhi gains time but no guarantee that the next European crisis will be contained."
+	style = 2
+	picture = "india_v3_world_anschluss"
+
+	action_a = {
+		name = "Use the time without trusting the promise"
+		command = { type = relation which = GER value = 10 }
+		command = { type = belligerence value = -1 }
+		command = { type = setflag which = ind_v42_berlin_assurances }
+	}
+}
+
+# The player can now turn the 1939 reaction into war immediately, without
+# hunting through a crowded decision list or being trapped by an old path flag.
+event = {
+	id = 9280940
+	random = no
+	country = IND
+
+	name = "The War Cabinet Convenes"
+	desc = "Mobilization is not a strategy. The Cabinet must decide whether India joins Britain as a sovereign ally, joins Germany to destroy the imperial order, fights Germany under independent command, or remains an armed neutral. Earlier diplomacy changes the political price, but it no longer hides the decision itself."
+	style = 2
+	picture = "india_v3_world_poland"
+
+	action_a = {
+		trigger = {
+			exists = ENG
+			NOT = { alliance = { country = IND country = ENG } }
+			NOT = { war = { country = IND country = ENG } }
+			NOT = { participant = { country = IND value = 4 } }
+			NOT = { flag = ind_aubm_commitment_allied }
+			NOT = { flag = ind_aubm_commitment_german }
+			NOT = { flag = ind_aubm_commitment_soviet }
+			NOT = { flag = ind_aubm_commitment_japan }
+			NOT = { flag = ind_v4a_treaty_commonwealth }
+			NOT = { flag = ind_v4a_treaty_naval_compact }
+			NOT = { flag = ind_v4a_treaty_cobelligerent }
+			NOT = { flag = ind_gc_cobelligerent }
+			NOT = { flag = ind_v4_sov_equal_compact }
+			NOT = { flag = ind_v4_sov_supervised_compact }
+			NOT = { flag = ind_aubm_jp_partnership }
+			NOT = { flag = ind_aubm_diplomatic_negotiation_pending }
+			NOT = { flag = ind_aubm_realignment_cooldown }
+		}
+		ai_chance = 40
+		name = "Join Britain as a sovereign Allied power"
+		command = { type = clrflag which = ind_v3_axis_orientation }
+		command = { type = clrflag which = ind_v3_soviet_orientation }
+		command = { type = clrflag which = ind_v3_japanese_orientation }
+		command = { type = clrflag which = ind_v3_non_aligned }
+		command = { type = clrflag which = ind_v3_independent_asia }
+		command = { type = clrflag which = ind_v3_joined_axis }
+		command = { type = clrflag which = ind_v3_joined_comintern }
+		command = { type = clrflag which = ind_v3_joined_japan }
+		command = { type = clrflag which = ind_v4_strategy_axis }
+		command = { type = clrflag which = ind_v4_strategy_soviet }
+		command = { type = clrflag which = ind_v4_strategy_japan }
+		command = { type = clrflag which = ind_v4_strategy_nam }
+		command = { type = clrflag which = ind_v4_strategy_independent_asia }
+		command = { type = alliance which = ENG when = 1 }
+		command = { type = setflag which = ind_aubm_commitment_allied }
+		command = { type = dissent value = 2 }
+		command = { type = setflag which = ind_v3_allied_orientation }
+		command = { type = setflag which = ind_v3_joined_allies }
+		command = { type = setflag which = ind_v4_strategy_allied }
+	}
+	action_b = {
+		trigger = {
+			exists = GER
+			NOT = { alliance = { country = IND country = GER } }
+			NOT = { war = { country = IND country = GER } }
+			NOT = { participant = { country = IND value = 4 } }
+			NOT = { flag = ind_aubm_commitment_allied }
+			NOT = { flag = ind_aubm_commitment_german }
+			NOT = { flag = ind_aubm_commitment_soviet }
+			NOT = { flag = ind_aubm_commitment_japan }
+			NOT = { flag = ind_v4a_treaty_commonwealth }
+			NOT = { flag = ind_v4a_treaty_naval_compact }
+			NOT = { flag = ind_v4a_treaty_cobelligerent }
+			NOT = { flag = ind_gc_cobelligerent }
+			NOT = { flag = ind_v4_sov_equal_compact }
+			NOT = { flag = ind_v4_sov_supervised_compact }
+			NOT = { flag = ind_aubm_jp_partnership }
+			NOT = { flag = ind_aubm_diplomatic_negotiation_pending }
+			NOT = { flag = ind_aubm_realignment_cooldown }
+		}
+		ai_chance = 15
+		name = "Join Germany against the imperial coalition"
+		command = { type = clrflag which = ind_v3_allied_orientation }
+		command = { type = clrflag which = ind_v3_soviet_orientation }
+		command = { type = clrflag which = ind_v3_japanese_orientation }
+		command = { type = clrflag which = ind_v3_non_aligned }
+		command = { type = clrflag which = ind_v3_independent_asia }
+		command = { type = clrflag which = ind_v3_joined_allies }
+		command = { type = clrflag which = ind_v3_joined_comintern }
+		command = { type = clrflag which = ind_v3_joined_japan }
+		command = { type = clrflag which = ind_v4_strategy_allied }
+		command = { type = clrflag which = ind_v4_strategy_soviet }
+		command = { type = clrflag which = ind_v4_strategy_japan }
+		command = { type = clrflag which = ind_v4_strategy_nam }
+		command = { type = clrflag which = ind_v4_strategy_independent_asia }
+		command = { type = alliance which = GER when = 1 }
+		command = { type = setflag which = ind_aubm_commitment_german }
+		command = { type = dissent value = 5 }
+		command = { type = setflag which = ind_v3_axis_orientation }
+		command = { type = setflag which = ind_v3_joined_axis }
+		command = { type = setflag which = ind_v4_strategy_axis }
+	}
+	action_c = {
+		trigger = {
+			exists = GER
+			NOT = { alliance = { country = IND country = GER } }
+			NOT = { war = { country = IND country = GER } }
+			NOT = { participant = { country = IND value = 4 } }
+			NOT = { flag = ind_aubm_commitment_allied }
+			NOT = { flag = ind_aubm_commitment_german }
+			NOT = { flag = ind_aubm_commitment_soviet }
+			NOT = { flag = ind_aubm_commitment_japan }
+			NOT = { flag = ind_v4a_treaty_commonwealth }
+			NOT = { flag = ind_v4a_treaty_naval_compact }
+			NOT = { flag = ind_v4a_treaty_cobelligerent }
+			NOT = { flag = ind_gc_cobelligerent }
+			NOT = { flag = ind_v4_sov_equal_compact }
+			NOT = { flag = ind_v4_sov_supervised_compact }
+			NOT = { flag = ind_aubm_jp_partnership }
+			NOT = { flag = ind_aubm_diplomatic_negotiation_pending }
+			NOT = { flag = ind_aubm_realignment_cooldown }
+		}
+		ai_chance = 25
+		name = "Fight Germany under independent command"
+		command = { type = clrflag which = ind_v3_allied_orientation }
+		command = { type = clrflag which = ind_v3_axis_orientation }
+		command = { type = clrflag which = ind_v3_soviet_orientation }
+		command = { type = clrflag which = ind_v3_japanese_orientation }
+		command = { type = clrflag which = ind_v3_joined_allies }
+		command = { type = clrflag which = ind_v3_joined_axis }
+		command = { type = clrflag which = ind_v3_joined_comintern }
+		command = { type = clrflag which = ind_v3_joined_japan }
+		command = { type = clrflag which = ind_v4_strategy_allied }
+		command = { type = clrflag which = ind_v4_strategy_axis }
+		command = { type = clrflag which = ind_v4_strategy_soviet }
+		command = { type = clrflag which = ind_v4_strategy_japan }
+		command = { type = war which = GER }
+		command = { type = dissent value = 2 }
+		command = { type = setflag which = ind_v3_non_aligned }
+		command = { type = setflag which = ind_v3_independent_asia }
+		command = { type = setflag which = ind_v41_independent_war_axis }
+		command = { type = setflag which = ind_v4_strategy_independent_asia }
+	}
+	action_d = { ai_chance = 20 name = "Close the superseded legacy cabinet" }
+}
+
+#########################################################################
+# The 1937 partnership choices receive uncertain foreign answers. India
+# chooses whom to approach; it does not choose how another capital replies.
+#########################################################################
+
+event = {
+	id = 9280950
+	random = no
+	country = ENG
+
+	name = "India Demands a Sovereign Defence Partnership"
+	desc = "Delhi offers Indian Ocean coordination, markets and staff talks, but rejects any restoration of imperial command. Britain can recognize India as a sovereign strategic partner or restrict the relationship to a liaison mission."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	action_a = {
+		ai_chance = 70
+		name = "Recognize reciprocal command"
+		command = { type = supplies value = -350 }
+		command = { type = relation which = IND value = 30 }
+		command = { type = access which = IND }
+		command = { type = guarantee which = ENG where = IND }
+		command = { type = non_aggression which = ENG where = IND when = 720 }
+		command = { type = event which = 9280951 where = IND when = 2 }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Offer liaison without guarantees"
+		command = { type = relation which = IND value = 5 }
+		command = { type = event which = 9280952 where = IND when = 2 }
+	}
+}
+
+event = {
+	id = 9280951
+	random = no
+	country = IND
+	name = "London Accepts Reciprocal Command"
+	desc = "Britain accepts that Indian forces will remain under Indian command, guarantees the Union and opens imperial bases to Indian liaison officers. Equipment and staff papers accompany the agreement."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+	action_a = {
+		name = "Establish the sovereign partnership"
+		command = { type = supplies value = 350 }
+		command = { type = steal_tech which = ENG }
+		command = { type = setflag which = ind_v42_london_sovereign_partnership }
+	}
+}
+
+event = {
+	id = 9280952
+	random = no
+	country = IND
+	name = "London Withholds a Guarantee"
+	desc = "Britain offers useful staff liaison but will not yet recognize reciprocal command or guarantee India. Delhi can keep the narrow channel open or abandon the orientation before obligations accumulate."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+	action_a = {
+		ai_chance = 65
+		name = "Keep the liaison; no British command rights"
+		command = { type = steal_tech which = ENG }
+		command = { type = setflag which = ind_v42_london_limited_liaison }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "End the talks and return to non-alignment"
+		command = { type = relation which = ENG value = -25 }
+		command = { type = dissent value = -1 }
+		command = { type = clrflag which = ind_v3_allied_orientation }
+		command = { type = setflag which = ind_v3_non_aligned }
+		command = { type = setflag which = ind_v4_strategy_nam }
+	}
+}
+
+event = {
+	id = 9280953
+	random = no
+	country = GER
+	name = "India Requests a German Industrial Mission"
+	desc = "Delhi requests machine tools, doctrine and advisers without accepting German direction. Berlin can treat India as an autonomous anti-imperial power or demand a public commitment against Britain as the price of assistance."
+	style = 2
+	picture = "india_v3_german_mission"
+	action_a = {
+		ai_chance = 65
+		name = "Send an autonomous technical mission"
+		command = { type = supplies value = -400 }
+		command = { type = relation which = IND value = 30 }
+		command = { type = non_aggression which = GER where = IND when = 720 }
+		command = { type = event which = 9280954 where = IND when = 2 }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Demand an anti-British declaration"
+		command = { type = relation which = IND value = 10 }
+		command = { type = event which = 9280955 where = IND when = 2 }
+	}
+}
+
+event = {
+	id = 9280954
+	random = no
+	country = IND
+	name = "The German Mission Arrives Without Conditions"
+	desc = "German engineers and instructors arrive under Indian contracts rather than alliance command. The mission improves immediate readiness while leaving Delhi free to oppose Berlin in a later crisis."
+	style = 2
+	picture = "india_v3_german_mission"
+	action_a = {
+		name = "Distribute the machinery and manuals"
+		command = { type = supplies value = 400 }
+		command = { type = steal_tech which = GER }
+		command = { type = setflag which = ind_v42_german_autonomous_mission }
+	}
+}
+
+event = {
+	id = 9280955
+	random = no
+	country = IND
+	name = "Berlin Sets a Political Price"
+	desc = "Germany will send the requested mission only if India publicly identifies Britain as its principal strategic opponent. Acceptance produces real cooperation and real diplomatic consequences; refusal ends the special channel."
+	style = 2
+	picture = "india_v3_german_mission"
+	action_a = {
+		ai_chance = 45
+		name = "Make the anti-imperial declaration"
+		command = { type = relation which = ENG value = -40 }
+		command = { type = relation which = GER value = 25 }
+		command = { type = dissent value = 4 }
+		command = { type = supplies value = 500 }
+		command = { type = steal_tech which = GER }
+		command = { type = non_aggression which = IND where = GER when = 720 }
+		command = { type = setflag which = ind_v42_anti_british_declaration }
+	}
+	action_b = {
+		ai_chance = 55
+		name = "Reject political conditions"
+		command = { type = relation which = GER value = -30 }
+		command = { type = dissent value = -1 }
+		command = { type = clrflag which = ind_v3_axis_orientation }
+		command = { type = setflag which = ind_v3_non_aligned }
+		command = { type = setflag which = ind_v4_strategy_nam }
+	}
+}
+
+event = {
+	id = 9280956
+	random = no
+	country = JAP
+	name = "Delhi Proposes an Equal Naval Compact"
+	desc = "India offers naval staff talks and commercial access outside German leadership. Tokyo can accept an equal bilateral channel or demand recognition of Japan's privileged position in China."
+	style = 2
+	picture = "aubm_v4_tokyo_proposition"
+	action_a = {
+		ai_chance = 55
+		name = "Accept a bilateral compact of equals"
+		command = { type = supplies value = -400 }
+		command = { type = relation which = IND value = 30 }
+		command = { type = access which = IND }
+		command = { type = non_aggression which = JAP where = IND when = 720 }
+		command = { type = event which = 9280957 where = IND when = 2 }
+	}
+	action_b = {
+		ai_chance = 45
+		name = "Demand recognition of Japan's China policy"
+		command = { type = relation which = IND value = 10 }
+		command = { type = event which = 9280958 where = IND when = 2 }
+	}
+}
+
+event = {
+	id = 9280957
+	random = no
+	country = IND
+	name = "Tokyo Accepts Equality in the Compact"
+	desc = "Japan grants Indian liaison officers access and accepts a bilateral agreement without Berlin. Naval stores and technical papers arrive, though the unresolved war in China still shadows the relationship."
+	style = 2
+	picture = "aubm_v4_tokyo_proposition"
+	action_a = {
+		name = "Test the compact without surrendering autonomy"
+		command = { type = supplies value = 400 }
+		command = { type = steal_tech which = JAP }
+		command = { type = setflag which = ind_v42_equal_tokyo_compact }
+	}
+}
+
+event = {
+	id = 9280958
+	random = no
+	country = IND
+	name = "Tokyo Demands a China Concession"
+	desc = "Japan makes naval cooperation conditional on Indian recognition of its political primacy in China. Delhi can accept the bargain or reject Japanese seniority and turn toward an independent Asian coalition."
+	style = 2
+	picture = "aubm_v4_tokyo_proposition"
+	action_a = {
+		ai_chance = 35
+		name = "Accept the China concession"
+		command = { type = relation which = CHI value = -55 }
+		command = { type = relation which = JAP value = 30 }
+		command = { type = dissent value = 4 }
+		command = { type = supplies value = 400 }
+		command = { type = steal_tech which = JAP }
+		command = { type = non_aggression which = IND where = JAP when = 720 }
+		command = { type = setflag which = ind_v42_recognized_japanese_china_policy }
+	}
+	action_b = {
+		ai_chance = 65
+		name = "Reject seniority and organize Asia independently"
+		command = { type = relation which = JAP value = -35 }
+		command = { type = relation which = CHI value = 25 }
+		command = { type = clrflag which = ind_v3_japanese_orientation }
+		command = { type = setflag which = ind_v3_independent_asia }
+		command = { type = setflag which = ind_v4_strategy_independent_asia }
+	}
+}
+
+event = {
+	id = 9280959
+	random = no
+	country = CHI
+	name = "India Invites China into the Delhi Pact"
+	desc = "India proposes a sovereign Asian security organization opposed to both European empire and Japanese domination. Membership offers access to Indian supply routes but may eventually bind China to Indian strategy."
+	style = 2
+	picture = "india_v3_world_china"
+	action_a = {
+		ai_chance = 70
+		name = "Enter the Delhi Pact negotiations"
+		command = { type = relation which = IND value = 35 }
+		command = { type = access which = IND }
+		command = { type = guarantee which = CHI where = IND }
+		command = { type = event which = 9280960 where = IND when = 2 }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "China cannot exchange one patron for another"
+		command = { type = relation which = IND value = -15 }
+		command = { type = event which = 9280961 where = IND when = 2 }
+	}
+}
+
+event = {
+	id = 9280960
+	random = no
+	country = IND
+	name = "China Accepts Delhi Pact Talks"
+	desc = "Nanjing accepts reciprocal guarantees and opens its territory to Indian liaison officers. Delhi may now decide whether consultation becomes a binding defence alliance."
+	style = 2
+	picture = "india_v3_world_china"
+	action_a = {
+		name = "Prepare the treaty text"
+		command = { type = setflag which = ind_v42_china_accepts_delhi_pact }
+	}
+}
+
+event = {
+	id = 9280961
+	random = no
+	country = IND
+	name = "China Declines the Delhi Pact"
+	desc = "Nanjing welcomes Indian aid but refuses a new institutional commitment. The decision narrows the proposed coalition without closing the Burma Road."
+	style = 2
+	picture = "india_v3_world_china"
+	action_a = {
+		name = "Keep the Chinese channel open"
+		command = { type = setflag which = ind_v42_china_declines_delhi_pact }
+	}
+}
+
+event = {
+	id = 9280962
+	random = no
+	country = SIA
+	name = "India Invites Siam into the Delhi Pact"
+	desc = "Delhi offers a reciprocal frontier and maritime security pact. Bangkok can join the negotiations or preserve freedom of action between India and Japan."
+	style = 2
+	picture = "aubm_v4_asian_strategy_menu"
+	action_a = {
+		ai_chance = 60
+		name = "Attend as an equal Asian state"
+		command = { type = relation which = IND value = 30 }
+		command = { type = access which = IND }
+		command = { type = non_aggression which = SIA where = IND when = 720 }
+		command = { type = event which = 9280963 where = IND when = 2 }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Remain outside the Delhi system"
+		command = { type = relation which = IND value = -10 }
+		command = { type = relation which = JAP value = 10 }
+		command = { type = event which = 9280964 where = IND when = 2 }
+	}
+}
+
+event = {
+	id = 9280963
+	random = no
+	country = IND
+	name = "Siam Accepts Delhi Pact Talks"
+	desc = "Bangkok accepts a reciprocal Asian forum and opens a liaison channel. India may now offer a binding treaty or preserve the looser consultation system."
+	style = 2
+	picture = "aubm_v4_asian_strategy_menu"
+	action_a = {
+		name = "Prepare the treaty text"
+		command = { type = setflag which = ind_v42_siam_accepts_delhi_pact }
+	}
+}
+
+event = {
+	id = 9280964
+	random = no
+	country = IND
+	name = "Siam Declines the Delhi Pact"
+	desc = "Bangkok refuses a binding institutional relationship and continues balancing between Delhi and Tokyo. The eastern frontier remains a diplomatic uncertainty."
+	style = 2
+	picture = "aubm_v4_asian_strategy_menu"
+	action_a = {
+		name = "Leave the invitation open"
+		command = { type = setflag which = ind_v42_siam_declines_delhi_pact }
+	}
+}
+
+event = {
+	id = 9280965
+	random = no
+	country = SOV
+	name = "India Requests a Sovereign Moscow Compact"
+	desc = "Delhi requests industrial and military cooperation without ideological supervision. Moscow can accept sovereign terms or make a public role for the Communist movement the price of assistance."
+	style = 2
+	picture = "Russian_Airborne"
+	action_a = {
+		ai_chance = 70
+		name = "Accept sovereign technical cooperation"
+		command = { type = supplies value = -500 }
+		command = { type = relation which = IND value = 35 }
+		command = { type = access which = IND }
+		command = { type = non_aggression which = SOV where = IND when = 720 }
+		command = { type = event which = 9280966 where = IND when = 2 }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Demand an ideological guarantee"
+		command = { type = relation which = IND value = 10 }
+		command = { type = event which = 9280967 where = IND when = 2 }
+	}
+}
+
+event = {
+	id = 9280966
+	random = no
+	country = IND
+	name = "Moscow Accepts Sovereign Cooperation"
+	desc = "Soviet machinery and advisers arrive under Indian authority. The compact advances military industry without giving Moscow a veto over Indian politics or foreign policy."
+	style = 2
+	picture = "Russian_Airborne"
+	action_a = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_soviet exists = SOV NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = SOV } } }
+		name = "Put the compact into operation"
+		command = { type = supplies value = 500 }
+		command = { type = steal_tech which = SOV }
+		command = { type = setflag which = ind_v42_sovereign_moscow_compact }
+		command = { type = setflag which = ind_v4_sov_equal_compact }
+		command = { type = setflag which = ind_aubm_commitment_soviet }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
+		command = { type = clrflag which = ind_v4_sov_supervised_compact }
+	}
+	action_b = {
+		trigger = { OR = { NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_negotiation_soviet } NOT = { exists = SOV } participant = { country = IND value = 4 } flag = ind_aubm_commitment_allied flag = ind_aubm_commitment_german flag = ind_aubm_commitment_japan war = { country = IND country = SOV } } }
+		name = "Let the obsolete Soviet reply lapse"
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
+	}
+}
+
+event = {
+	id = 9280967
+	random = no
+	country = IND
+	name = "Moscow Demands an Ideological Guarantee"
+	desc = "The Soviet government conditions the full mission on legal protection and public influence for its Indian political allies. Delhi can accept the domestic cost or return to non-alignment."
+	style = 2
+	picture = "Russian_Airborne"
+	action_a = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_soviet exists = SOV NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = SOV } } }
+		ai_chance = 45
+		name = "Accept the political guarantee"
+		command = { type = dissent value = 4 }
+		command = { type = domestic which = free_market value = -1 }
+		command = { type = relation which = ENG value = -25 }
+		command = { type = supplies value = 500 }
+		command = { type = steal_tech which = SOV }
+		command = { type = setflag which = ind_v42_soviet_ideological_guarantee }
+		command = { type = setflag which = ind_v4_sov_supervised_compact }
+		command = { type = setflag which = ind_aubm_commitment_soviet }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
+		command = { type = clrflag which = ind_v4_sov_equal_compact }
+	}
+	action_b = {
+		trigger = { flag = ind_aubm_diplomatic_negotiation_pending flag = ind_aubm_negotiation_soviet exists = SOV NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_japan } NOT = { war = { country = IND country = SOV } } }
+		ai_chance = 55
+		name = "Reject foreign supervision"
+		command = { type = relation which = SOV value = -30 }
+		command = { type = dissent value = -1 }
+		command = { type = clrflag which = ind_v3_soviet_orientation }
+		command = { type = clrflag which = ind_v4_strategy_soviet }
+		command = { type = clrflag which = ind_v4_sov_equal_compact }
+		command = { type = clrflag which = ind_v4_sov_supervised_compact }
+		command = { type = setflag which = ind_v3_non_aligned }
+		command = { type = setflag which = ind_v4_strategy_nam }
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
+	}
+	action_c = {
+		ai_chance = 0
+		trigger = { OR = { NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_negotiation_soviet } NOT = { exists = SOV } participant = { country = IND value = 4 } flag = ind_aubm_commitment_allied flag = ind_aubm_commitment_german flag = ind_aubm_commitment_japan war = { country = IND country = SOV } } }
+		name = "File the obsolete Soviet demand"
+		command = { type = clrflag which = ind_aubm_diplomatic_negotiation_pending }
+		command = { type = clrflag which = ind_aubm_negotiation_soviet }
+	}
+}
+
+event = {
+	id = 9280968
+	random = no
+	country = IND
+
+	decision = {
+		flag = ind_v3_independent_asia
+		atwar = no
+		NOT = { participant = { country = IND value = 4 } }
+		NOT = { flag = ind_aubm_commitment_allied }
+		NOT = { flag = ind_aubm_commitment_german }
+		NOT = { flag = ind_aubm_commitment_soviet }
+		NOT = { flag = ind_aubm_commitment_japan }
+		NOT = { flag = ind_v4a_treaty_commonwealth }
+		NOT = { flag = ind_v4a_treaty_naval_compact }
+		NOT = { flag = ind_v4a_treaty_cobelligerent }
+		NOT = { flag = ind_gc_cobelligerent }
+		NOT = { flag = ind_v4_sov_equal_compact }
+		NOT = { flag = ind_v4_sov_supervised_compact }
+		NOT = { flag = ind_aubm_jp_partnership }
+		NOT = { flag = ind_aubm_diplomatic_negotiation_pending }
+		NOT = { flag = ind_aubm_realignment_cooldown }
+		NOT = { flag = ind_v42_delhi_pact_settled }
+		OR = {
+			flag = ind_v42_china_accepts_delhi_pact
+			flag = ind_v42_siam_accepts_delhi_pact
+		}
+	}
+	decision_trigger = {
+# AUBM_FULL_OPTION_GATE_BEGIN
+# A programme without a resource threshold is available.
+# AUBM_FULL_OPTION_GATE_END
+atwar = no
+	}
+
+	name = "Ratify the Delhi Pact"
+	# AUBM_DECISION_DESC_MANUAL
+	decision_desc = "No new foreign roll: earlier Chinese and Siamese replies determine membership. Three-state alliance costs 600/800; China 400/650; Siam 300/450. The free consultative charter avoids automatic war entry."
+	desc = "Consultation can now become a military alliance. A binding pact will join India to the existing and future wars of its members; a consultative charter preserves guarantees and access without automatic entry."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	date = { day = 0 month = january year = 1937 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 600
+			supplies = 800
+			# AUBM_ACTION_RESERVE_END
+			NOT = { participant = { country = IND value = 4 } }
+			flag = ind_v42_china_accepts_delhi_pact
+			flag = ind_v42_siam_accepts_delhi_pact
+			money = 600
+			supplies = 800
+		}
+		ai_chance = 25
+		name = "Three-state alliance: -600/-800; automatic war entry"
+		command = { type = money value = -600 }
+		command = { type = supplies value = -800 }
+		command = { type = alliance which = CHI when = 1 }
+		command = { type = alliance which = SIA when = 1 }
+		command = { type = dissent value = 3 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = setflag which = ind_v42_delhi_pact_alliance }
+		command = { type = setflag which = ind_v42_delhi_pact_settled }
+	}
+	action_b = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 400
+			supplies = 650
+			# AUBM_ACTION_RESERVE_END
+			NOT = { participant = { country = IND value = 4 } }
+			flag = ind_v42_china_accepts_delhi_pact
+			money = 400
+			supplies = 650
+		}
+		ai_chance = 25
+		name = "China alliance: -400/-650; automatic war entry"
+		command = { type = money value = -400 }
+		command = { type = supplies value = -650 }
+		command = { type = alliance which = CHI when = 1 }
+		command = { type = dissent value = 2 }
+		command = { type = setflag which = ind_v42_delhi_china_alliance }
+		command = { type = setflag which = ind_v42_delhi_pact_settled }
+	}
+	action_c = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 300
+			supplies = 450
+			# AUBM_ACTION_RESERVE_END
+			NOT = { participant = { country = IND value = 4 } }
+			flag = ind_v42_siam_accepts_delhi_pact
+			money = 300
+			supplies = 450
+		}
+		ai_chance = 20
+		name = "Siam alliance: -300/-450; automatic war entry"
+		command = { type = money value = -300 }
+		command = { type = supplies value = -450 }
+		command = { type = alliance which = SIA when = 1 }
+		command = { type = dissent value = 1 }
+		command = { type = setflag which = ind_v42_delhi_siam_alliance }
+		command = { type = setflag which = ind_v42_delhi_pact_settled }
+	}
+	action_d = {
+		ai_chance = 30
+		name = "Adopt a consultative charter (no automatic war entry)"
+		command = { trigger = { flag = ind_v42_china_accepts_delhi_pact exists = CHI } type = guarantee which = IND where = CHI }
+		command = { trigger = { flag = ind_v42_siam_accepts_delhi_pact exists = SIA } type = guarantee which = IND where = SIA }
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_v42_delhi_pact_consultative }
+		command = { type = setflag which = ind_v42_delhi_pact_settled }
+	}
+}

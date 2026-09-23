@@ -1,7 +1,0 @@
-Sprite = {
-	Bitmap = "SE5-F-NE.bmp"
-	Origin = { x = 95 y = 80 }
-	Frames = 16
-	Speed = 5
-	Palette = "V3-IND-AIR-SE5.bmp"
-}

@@ -1,0 +1,297 @@
+#########################################################################
+# A Union Before Midnight V4.1 - National manpower and reserve system
+#########################################################################
+
+event = {
+	id = 9280840
+	random = no
+	persistent = yes
+	country = IND
+
+	trigger = {
+		OR = {
+			AND = { year = 1934 NOT = { year = 1935 } NOT = { flag = ind_v41_recruit_class_1934 } }
+			AND = { year = 1935 NOT = { year = 1936 } NOT = { flag = ind_v41_recruit_class_1935 } }
+			AND = { year = 1936 NOT = { year = 1937 } NOT = { flag = ind_v41_recruit_class_1936 } }
+			AND = { year = 1937 NOT = { year = 1938 } NOT = { flag = ind_v41_recruit_class_1937 } }
+			AND = { year = 1938 NOT = { year = 1939 } NOT = { flag = ind_v41_recruit_class_1938 } }
+			AND = { year = 1939 NOT = { year = 1940 } NOT = { flag = ind_v41_recruit_class_1939 } }
+			AND = { year = 1940 NOT = { year = 1941 } NOT = { flag = ind_v41_recruit_class_1940 } }
+			AND = { year = 1941 NOT = { year = 1942 } NOT = { flag = ind_v41_recruit_class_1941 } }
+			AND = { year = 1942 NOT = { year = 1943 } NOT = { flag = ind_v41_recruit_class_1942 } }
+			AND = { year = 1943 NOT = { year = 1944 } NOT = { flag = ind_v41_recruit_class_1943 } }
+			AND = { year = 1944 NOT = { year = 1945 } NOT = { flag = ind_v41_recruit_class_1944 } }
+			AND = { year = 1945 NOT = { year = 1946 } NOT = { flag = ind_v41_recruit_class_1945 } }
+			AND = { year = 1946 NOT = { year = 1947 } NOT = { flag = ind_v41_recruit_class_1946 } }
+			AND = { year = 1947 NOT = { year = 1948 } NOT = { flag = ind_v41_recruit_class_1947 } }
+			AND = { year = 1948 NOT = { year = 1949 } NOT = { flag = ind_v41_recruit_class_1948 } }
+			AND = { year = 1949 NOT = { year = 1950 } NOT = { flag = ind_v41_recruit_class_1949 } }
+			AND = { year = 1950 NOT = { year = 1951 } NOT = { flag = ind_v41_recruit_class_1950 } }
+			AND = { year = 1951 NOT = { year = 1952 } NOT = { flag = ind_v41_recruit_class_1951 } }
+			AND = { year = 1952 NOT = { year = 1953 } NOT = { flag = ind_v41_recruit_class_1952 } }
+			AND = { year = 1953 NOT = { year = 1954 } NOT = { flag = ind_v41_recruit_class_1953 } }
+			AND = { year = 1954 NOT = { year = 1955 } NOT = { flag = ind_v41_recruit_class_1954 } }
+			AND = { year = 1955 NOT = { year = 1956 } NOT = { flag = ind_v41_recruit_class_1955 } }
+			AND = { year = 1956 NOT = { year = 1957 } NOT = { flag = ind_v41_recruit_class_1956 } }
+			AND = { year = 1957 NOT = { year = 1958 } NOT = { flag = ind_v41_recruit_class_1957 } }
+			AND = { year = 1958 NOT = { year = 1959 } NOT = { flag = ind_v41_recruit_class_1958 } }
+			AND = { year = 1959 NOT = { year = 1960 } NOT = { flag = ind_v41_recruit_class_1959 } }
+			AND = { year = 1960 NOT = { year = 1961 } NOT = { flag = ind_v41_recruit_class_1960 } }
+			AND = { year = 1961 NOT = { year = 1962 } NOT = { flag = ind_v41_recruit_class_1961 } }
+			AND = { year = 1962 NOT = { year = 1963 } NOT = { flag = ind_v41_recruit_class_1962 } }
+			AND = { year = 1963 NOT = { year = 1964 } NOT = { flag = ind_v41_recruit_class_1963 } }
+			AND = { year = 1964 NOT = { flag = ind_v41_recruit_class_1964 } }
+		}
+	}
+
+	name = "The Annual Trained Reserve Class"
+	desc = "The national manpower register now reports trained people rather than India's raw population. Every year supplies a base class of 150 manpower. Provincial army policy adds 20 to 40; civic service adds 30 or 60; wartime service adds 35, 60 or 90; active war adds 50. India's constraint is equipping and leading formations, not finding citizens to serve."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = july year = 1934 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Enter the trained class in the national reserve"
+		command = { type = manpowerpool value = 150 }
+		command = { trigger = { flag = aubm_v4_single_army } type = manpowerpool value = 30 }
+		command = { trigger = { flag = aubm_v4_territorial_army } type = manpowerpool value = 40 }
+		command = { trigger = { flag = aubm_v4_cadre_army } type = manpowerpool value = 20 }
+		command = { trigger = { flag = ind_v3_universal_national_service } type = manpowerpool value = 60 }
+		command = { trigger = { flag = ind_v3_technical_reserve } type = manpowerpool value = 30 }
+		command = { trigger = { flag = ind_v3_universal_service } type = manpowerpool value = 90 }
+		command = { trigger = { flag = ind_v3_selective_service } type = manpowerpool value = 60 }
+		command = { trigger = { flag = ind_v3_volunteer_service } type = manpowerpool value = 35 }
+		command = { trigger = { atwar = yes } type = manpowerpool value = 50 }
+		command = { trigger = { year = 1934 NOT = { year = 1935 } } type = setflag which = ind_v41_recruit_class_1934 }
+		command = { trigger = { year = 1935 NOT = { year = 1936 } } type = setflag which = ind_v41_recruit_class_1935 }
+		command = { trigger = { year = 1936 NOT = { year = 1937 } } type = setflag which = ind_v41_recruit_class_1936 }
+		command = { trigger = { year = 1937 NOT = { year = 1938 } } type = setflag which = ind_v41_recruit_class_1937 }
+		command = { trigger = { year = 1938 NOT = { year = 1939 } } type = setflag which = ind_v41_recruit_class_1938 }
+		command = { trigger = { year = 1939 NOT = { year = 1940 } } type = setflag which = ind_v41_recruit_class_1939 }
+		command = { trigger = { year = 1940 NOT = { year = 1941 } } type = setflag which = ind_v41_recruit_class_1940 }
+		command = { trigger = { year = 1941 NOT = { year = 1942 } } type = setflag which = ind_v41_recruit_class_1941 }
+		command = { trigger = { year = 1942 NOT = { year = 1943 } } type = setflag which = ind_v41_recruit_class_1942 }
+		command = { trigger = { year = 1943 NOT = { year = 1944 } } type = setflag which = ind_v41_recruit_class_1943 }
+		command = { trigger = { year = 1944 NOT = { year = 1945 } } type = setflag which = ind_v41_recruit_class_1944 }
+		command = { trigger = { year = 1945 NOT = { year = 1946 } } type = setflag which = ind_v41_recruit_class_1945 }
+		command = { trigger = { year = 1946 NOT = { year = 1947 } } type = setflag which = ind_v41_recruit_class_1946 }
+		command = { trigger = { year = 1947 NOT = { year = 1948 } } type = setflag which = ind_v41_recruit_class_1947 }
+		command = { trigger = { year = 1948 NOT = { year = 1949 } } type = setflag which = ind_v41_recruit_class_1948 }
+		command = { trigger = { year = 1949 NOT = { year = 1950 } } type = setflag which = ind_v41_recruit_class_1949 }
+		command = { trigger = { year = 1950 NOT = { year = 1951 } } type = setflag which = ind_v41_recruit_class_1950 }
+		command = { trigger = { year = 1951 NOT = { year = 1952 } } type = setflag which = ind_v41_recruit_class_1951 }
+		command = { trigger = { year = 1952 NOT = { year = 1953 } } type = setflag which = ind_v41_recruit_class_1952 }
+		command = { trigger = { year = 1953 NOT = { year = 1954 } } type = setflag which = ind_v41_recruit_class_1953 }
+		command = { trigger = { year = 1954 NOT = { year = 1955 } } type = setflag which = ind_v41_recruit_class_1954 }
+		command = { trigger = { year = 1955 NOT = { year = 1956 } } type = setflag which = ind_v41_recruit_class_1955 }
+		command = { trigger = { year = 1956 NOT = { year = 1957 } } type = setflag which = ind_v41_recruit_class_1956 }
+		command = { trigger = { year = 1957 NOT = { year = 1958 } } type = setflag which = ind_v41_recruit_class_1957 }
+		command = { trigger = { year = 1958 NOT = { year = 1959 } } type = setflag which = ind_v41_recruit_class_1958 }
+		command = { trigger = { year = 1959 NOT = { year = 1960 } } type = setflag which = ind_v41_recruit_class_1959 }
+		command = { trigger = { year = 1960 NOT = { year = 1961 } } type = setflag which = ind_v41_recruit_class_1960 }
+		command = { trigger = { year = 1961 NOT = { year = 1962 } } type = setflag which = ind_v41_recruit_class_1961 }
+		command = { trigger = { year = 1962 NOT = { year = 1963 } } type = setflag which = ind_v41_recruit_class_1962 }
+		command = { trigger = { year = 1963 NOT = { year = 1964 } } type = setflag which = ind_v41_recruit_class_1963 }
+		command = { trigger = { year = 1964 } type = setflag which = ind_v41_recruit_class_1964 }
+	}
+}
+
+event = {
+	id = 9280841
+	random = no
+	persistent = yes
+	country = IND
+
+	decision = {
+		atwar = yes
+		NOT = { manpower = 100 }
+		OR = {
+			AND = { year = 1939 NOT = { year = 1940 } NOT = { flag = ind_v41_emergency_reserve_1939 } }
+			AND = { year = 1940 NOT = { year = 1941 } NOT = { flag = ind_v41_emergency_reserve_1940 } }
+			AND = { year = 1941 NOT = { year = 1942 } NOT = { flag = ind_v41_emergency_reserve_1941 } }
+			AND = { year = 1942 NOT = { year = 1943 } NOT = { flag = ind_v41_emergency_reserve_1942 } }
+			AND = { year = 1943 NOT = { year = 1944 } NOT = { flag = ind_v41_emergency_reserve_1943 } }
+			AND = { year = 1944 NOT = { year = 1945 } NOT = { flag = ind_v41_emergency_reserve_1944 } }
+			AND = { year = 1945 NOT = { year = 1946 } NOT = { flag = ind_v41_emergency_reserve_1945 } }
+			AND = { year = 1946 NOT = { year = 1947 } NOT = { flag = ind_v41_emergency_reserve_1946 } }
+			AND = { year = 1947 NOT = { year = 1948 } NOT = { flag = ind_v41_emergency_reserve_1947 } }
+			AND = { year = 1948 NOT = { year = 1949 } NOT = { flag = ind_v41_emergency_reserve_1948 } }
+			AND = { year = 1949 NOT = { year = 1950 } NOT = { flag = ind_v41_emergency_reserve_1949 } }
+			AND = { year = 1950 NOT = { year = 1951 } NOT = { flag = ind_v41_emergency_reserve_1950 } }
+			AND = { year = 1951 NOT = { year = 1952 } NOT = { flag = ind_v41_emergency_reserve_1951 } }
+			AND = { year = 1952 NOT = { year = 1953 } NOT = { flag = ind_v41_emergency_reserve_1952 } }
+			AND = { year = 1953 NOT = { year = 1954 } NOT = { flag = ind_v41_emergency_reserve_1953 } }
+			AND = { year = 1954 NOT = { year = 1955 } NOT = { flag = ind_v41_emergency_reserve_1954 } }
+			AND = { year = 1955 NOT = { year = 1956 } NOT = { flag = ind_v41_emergency_reserve_1955 } }
+			AND = { year = 1956 NOT = { year = 1957 } NOT = { flag = ind_v41_emergency_reserve_1956 } }
+			AND = { year = 1957 NOT = { year = 1958 } NOT = { flag = ind_v41_emergency_reserve_1957 } }
+			AND = { year = 1958 NOT = { year = 1959 } NOT = { flag = ind_v41_emergency_reserve_1958 } }
+			AND = { year = 1959 NOT = { year = 1960 } NOT = { flag = ind_v41_emergency_reserve_1959 } }
+			AND = { year = 1960 NOT = { year = 1961 } NOT = { flag = ind_v41_emergency_reserve_1960 } }
+			AND = { year = 1961 NOT = { year = 1962 } NOT = { flag = ind_v41_emergency_reserve_1961 } }
+			AND = { year = 1962 NOT = { year = 1963 } NOT = { flag = ind_v41_emergency_reserve_1962 } }
+			AND = { year = 1963 NOT = { year = 1964 } NOT = { flag = ind_v41_emergency_reserve_1963 } }
+			AND = { year = 1964 NOT = { flag = ind_v41_emergency_reserve_1964 } }
+		}
+	}
+	decision_trigger = {
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		OR = {
+			AND = { supplies = 1200 }
+			AND = { supplies = 750 }
+			AND = { supplies = 450 }
+		}
+		# AUBM_FULL_OPTION_GATE_END
+	}
+
+	name = "Emergency Reserve Call-Up"
+	desc = "India is at war with fewer than 100 manpower in reserve. The cabinet may invoke one emergency call-up this calendar year. A broad levy restores the largest pool but disrupts civilian life; a trained-reserve levy is smaller and steadier; a volunteer appeal protects social peace but yields the fewest replacements."
+	decision_desc = "Cabinet funding estimates: Broad levy: +250 MP, +4 dissent; -1,200 supplies [supplies 1,200]; Reserve levy: +180 MP, +2 dissent; -750 supplies [supplies 750]; Volunteer appeal: +120 MP, -1 dissent; -450 supplies [supplies 450]."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = january year = 1939 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		trigger = {
+ # AUBM_ACTION_RESERVE_BEGIN
+ supplies = 1200
+ # AUBM_ACTION_RESERVE_END
+ supplies = 1200 }
+		ai_chance = 35
+		name = "Broad levy: +250 MP, +4 dissent; -1,200 supplies"
+		command = { type = supplies value = -1200 }
+		command = { type = manpowerpool value = 250 }
+		command = { type = dissent value = 4 }
+		command = { trigger = { year = 1939 NOT = { year = 1940 } } type = setflag which = ind_v41_emergency_reserve_1939 }
+		command = { trigger = { year = 1940 NOT = { year = 1941 } } type = setflag which = ind_v41_emergency_reserve_1940 }
+		command = { trigger = { year = 1941 NOT = { year = 1942 } } type = setflag which = ind_v41_emergency_reserve_1941 }
+		command = { trigger = { year = 1942 NOT = { year = 1943 } } type = setflag which = ind_v41_emergency_reserve_1942 }
+		command = { trigger = { year = 1943 NOT = { year = 1944 } } type = setflag which = ind_v41_emergency_reserve_1943 }
+		command = { trigger = { year = 1944 NOT = { year = 1945 } } type = setflag which = ind_v41_emergency_reserve_1944 }
+		command = { trigger = { year = 1945 NOT = { year = 1946 } } type = setflag which = ind_v41_emergency_reserve_1945 }
+		command = { trigger = { year = 1946 NOT = { year = 1947 } } type = setflag which = ind_v41_emergency_reserve_1946 }
+		command = { trigger = { year = 1947 NOT = { year = 1948 } } type = setflag which = ind_v41_emergency_reserve_1947 }
+		command = { trigger = { year = 1948 NOT = { year = 1949 } } type = setflag which = ind_v41_emergency_reserve_1948 }
+		command = { trigger = { year = 1949 NOT = { year = 1950 } } type = setflag which = ind_v41_emergency_reserve_1949 }
+		command = { trigger = { year = 1950 NOT = { year = 1951 } } type = setflag which = ind_v41_emergency_reserve_1950 }
+		command = { trigger = { year = 1951 NOT = { year = 1952 } } type = setflag which = ind_v41_emergency_reserve_1951 }
+		command = { trigger = { year = 1952 NOT = { year = 1953 } } type = setflag which = ind_v41_emergency_reserve_1952 }
+		command = { trigger = { year = 1953 NOT = { year = 1954 } } type = setflag which = ind_v41_emergency_reserve_1953 }
+		command = { trigger = { year = 1954 NOT = { year = 1955 } } type = setflag which = ind_v41_emergency_reserve_1954 }
+		command = { trigger = { year = 1955 NOT = { year = 1956 } } type = setflag which = ind_v41_emergency_reserve_1955 }
+		command = { trigger = { year = 1956 NOT = { year = 1957 } } type = setflag which = ind_v41_emergency_reserve_1956 }
+		command = { trigger = { year = 1957 NOT = { year = 1958 } } type = setflag which = ind_v41_emergency_reserve_1957 }
+		command = { trigger = { year = 1958 NOT = { year = 1959 } } type = setflag which = ind_v41_emergency_reserve_1958 }
+		command = { trigger = { year = 1959 NOT = { year = 1960 } } type = setflag which = ind_v41_emergency_reserve_1959 }
+		command = { trigger = { year = 1960 NOT = { year = 1961 } } type = setflag which = ind_v41_emergency_reserve_1960 }
+		command = { trigger = { year = 1961 NOT = { year = 1962 } } type = setflag which = ind_v41_emergency_reserve_1961 }
+		command = { trigger = { year = 1962 NOT = { year = 1963 } } type = setflag which = ind_v41_emergency_reserve_1962 }
+		command = { trigger = { year = 1963 NOT = { year = 1964 } } type = setflag which = ind_v41_emergency_reserve_1963 }
+		command = { trigger = { year = 1964 } type = setflag which = ind_v41_emergency_reserve_1964 }
+	}
+	action_b = {
+		trigger = {
+ # AUBM_ACTION_RESERVE_BEGIN
+ supplies = 750
+ # AUBM_ACTION_RESERVE_END
+ supplies = 750 }
+		ai_chance = 45
+		name = "Reserve levy: +180 MP, +2 dissent; -750 supplies"
+		command = { type = supplies value = -750 }
+		command = { type = manpowerpool value = 180 }
+		command = { type = dissent value = 2 }
+		command = { type = trigger which = 9280842 }
+	}
+	action_c = {
+		trigger = {
+ # AUBM_ACTION_RESERVE_BEGIN
+ supplies = 450
+ # AUBM_ACTION_RESERVE_END
+ supplies = 450 }
+		ai_chance = 20
+		name = "Volunteer appeal: +120 MP, -1 dissent; -450 supplies"
+		command = { type = supplies value = -450 }
+		command = { type = manpowerpool value = 120 }
+		command = { type = dissent value = -1 }
+		command = { type = trigger which = 9280842 }
+	}
+}
+
+# Helper marks the current year's emergency call-up after the smaller options.
+event = {
+	id = 9280842
+	random = no
+	country = IND
+	name = "AI_EVENT"
+	style = 2
+	action_a = {
+		command = { trigger = { year = 1939 NOT = { year = 1940 } } type = setflag which = ind_v41_emergency_reserve_1939 }
+		command = { trigger = { year = 1940 NOT = { year = 1941 } } type = setflag which = ind_v41_emergency_reserve_1940 }
+		command = { trigger = { year = 1941 NOT = { year = 1942 } } type = setflag which = ind_v41_emergency_reserve_1941 }
+		command = { trigger = { year = 1942 NOT = { year = 1943 } } type = setflag which = ind_v41_emergency_reserve_1942 }
+		command = { trigger = { year = 1943 NOT = { year = 1944 } } type = setflag which = ind_v41_emergency_reserve_1943 }
+		command = { trigger = { year = 1944 NOT = { year = 1945 } } type = setflag which = ind_v41_emergency_reserve_1944 }
+		command = { trigger = { year = 1945 NOT = { year = 1946 } } type = setflag which = ind_v41_emergency_reserve_1945 }
+		command = { trigger = { year = 1946 NOT = { year = 1947 } } type = setflag which = ind_v41_emergency_reserve_1946 }
+		command = { trigger = { year = 1947 NOT = { year = 1948 } } type = setflag which = ind_v41_emergency_reserve_1947 }
+		command = { trigger = { year = 1948 NOT = { year = 1949 } } type = setflag which = ind_v41_emergency_reserve_1948 }
+		command = { trigger = { year = 1949 NOT = { year = 1950 } } type = setflag which = ind_v41_emergency_reserve_1949 }
+		command = { trigger = { year = 1950 NOT = { year = 1951 } } type = setflag which = ind_v41_emergency_reserve_1950 }
+		command = { trigger = { year = 1951 NOT = { year = 1952 } } type = setflag which = ind_v41_emergency_reserve_1951 }
+		command = { trigger = { year = 1952 NOT = { year = 1953 } } type = setflag which = ind_v41_emergency_reserve_1952 }
+		command = { trigger = { year = 1953 NOT = { year = 1954 } } type = setflag which = ind_v41_emergency_reserve_1953 }
+		command = { trigger = { year = 1954 NOT = { year = 1955 } } type = setflag which = ind_v41_emergency_reserve_1954 }
+		command = { trigger = { year = 1955 NOT = { year = 1956 } } type = setflag which = ind_v41_emergency_reserve_1955 }
+		command = { trigger = { year = 1956 NOT = { year = 1957 } } type = setflag which = ind_v41_emergency_reserve_1956 }
+		command = { trigger = { year = 1957 NOT = { year = 1958 } } type = setflag which = ind_v41_emergency_reserve_1957 }
+		command = { trigger = { year = 1958 NOT = { year = 1959 } } type = setflag which = ind_v41_emergency_reserve_1958 }
+		command = { trigger = { year = 1959 NOT = { year = 1960 } } type = setflag which = ind_v41_emergency_reserve_1959 }
+		command = { trigger = { year = 1960 NOT = { year = 1961 } } type = setflag which = ind_v41_emergency_reserve_1960 }
+		command = { trigger = { year = 1961 NOT = { year = 1962 } } type = setflag which = ind_v41_emergency_reserve_1961 }
+		command = { trigger = { year = 1962 NOT = { year = 1963 } } type = setflag which = ind_v41_emergency_reserve_1962 }
+		command = { trigger = { year = 1963 NOT = { year = 1964 } } type = setflag which = ind_v41_emergency_reserve_1963 }
+		command = { trigger = { year = 1964 } type = setflag which = ind_v41_emergency_reserve_1964 }
+	}
+}
+
+# One-time bridge for explicitly repaired Alpha 2 saves. The save repair tool
+# removes the obsolete full-manpower queue lines and arms this event.
+event = {
+	id = 9280843
+	random = no
+	country = IND
+
+	trigger = {
+		flag = aubm_v42_mobile_cadre_repair
+		flag = ind_v3_mobile_army
+		NOT = { flag = ind_v42_army_reward_contract }
+		manpower = 24
+	}
+
+	name = "The Mobile Force Cadres Assemble"
+	desc = "The 1934 rearmament appropriation is converted from unfunded production authorizations into four field-ready current-equipment cadres. The revised contract records their trained establishments directly instead of leaving an opaque reinforcement liability."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 0 month = january year = 1933 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Concentrate the cadres at Delhi"
+		command = { type = manpowerpool value = -24 }
+		command = { type = add_corps which = "Indian Mobile Force" value = land where = 1459 }
+		command = { type = add_division which = "1st Indian Mobile Cavalry Cadre" value = cavalry when = -1 where = armored_car }
+		command = { type = add_division which = "2nd Indian Mobile Cavalry Cadre" value = cavalry when = -1 where = armored_car }
+		command = { type = add_division which = "1st Indian Combined-Arms Cadre" value = infantry when = -1 where = tank_destroyer }
+		command = { type = add_division which = "2nd Indian Combined-Arms Cadre" value = infantry when = -1 where = tank_destroyer }
+		command = { type = clrflag which = aubm_v42_mobile_cadre_repair }
+		command = { type = setflag which = ind_v42_army_reward_contract }
+	}
+}

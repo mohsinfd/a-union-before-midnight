@@ -1,0 +1,55 @@
+# AUBM: Afghanistan-Central Asia theatre
+
+neutrality = 15
+war = 85
+max_front_ratio = 1.55
+
+combat = {
+	GER = 95
+	JAP = 35
+}
+
+befriend = {
+	SOV = 135
+	AFG = 150
+	PER = 80
+}
+
+protect = {
+	AFG = 140
+	PER = 70
+}
+
+target = {
+	2172 = 90  # Herat
+	2168 = 95  # Kondoz
+	2173 = 75  # Wakhan
+	1105 = 90  # Dushanbe
+	1099 = 95  # Samarkand
+	1103 = 100 # Tashkent
+	1097 = 80  # Ashkhabad
+	506 = 70   # Kazakhstan capital region
+}
+
+front = {
+	recklessness = 1
+	distrib_vs_ai = op_defensive
+	distrib_vs_human = reactive
+	enemy_reinf_days = 6
+	reserve_prop = 0.17
+	panic_ratio_vs_ai = 2.7
+	panic_ratio_vs_human = 2.7
+	base_attack_odds = 1.15
+	min_attack_odds = 1.03
+	max_attack_odds = 3.8
+	reinforce_odds = 1.25
+	withdraw_odds = 0.68
+	strength = 0.9
+	organisation = 0.9
+	soft_attack = 1.1
+	hard_attack = 1.15
+	ground_defense = 1.0
+	dig_in = 1.0
+	mountain_attack = 1.30
+}
+

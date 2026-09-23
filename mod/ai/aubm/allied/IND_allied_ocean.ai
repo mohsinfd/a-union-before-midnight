@@ -1,0 +1,91 @@
+# AUBM V4 Indian Ocean Command switch.
+# Partial AI profile: production and research remain defined by IND.ai.
+
+neutrality = 12
+war = 82
+max_front_ratio = 1.25
+
+combat = {
+	JAP = 100
+	ITA = 60
+	GER = 35
+}
+
+max_front_ratios = {
+	JAP = 2.2
+	ITA = 1.6
+	GER = 1.2
+}
+
+target = {
+	1421 = 140 # Port Blair
+	1511 = 120 # Colombo
+	1432 = 180 # Singapore
+	1053 = 100 # Aden
+	842  = 100 # Mombasa
+	836  = 85  # Mogadishu
+	1624 = 90  # Kuching
+	1632 = 100 # Balikpapan
+	1636 = 110 # Palembang
+	1642 = 90  # Medan
+	1647 = 125 # Batavia
+	1653 = 120 # Soerabaja
+	1657 = 80  # Makassar
+}
+
+front = {
+	recklessness = 1
+	distrib_vs_ai = reactive
+	distrib_vs_human = reactive
+	base_attack_odds = 1.15
+	min_attack_odds = 1.00
+	max_attack_odds = 2.80
+}
+
+invasion = {
+	invasion = yes
+	base = 0.25
+	random = 3.0
+	coastal = 0.25
+	beach = 0.25
+	distance = 7.0
+	max_distance = 180.0
+	max_staging_distance = 35
+	pocket = 15.0
+	island = 2.5
+	enemy = 2.0
+	adjacentenemy = 2.0
+	air_base = 1.5
+	naval_base = 0.2
+	air_support = 3.0
+	redirect = priority
+	ignore = no
+	help_allies = yes
+	staging_province = { 1421 1511 1533 1517 }
+	target = {
+		1432 = 3400
+		1053 = 2200
+		842 = 2100
+		836 = 1800
+		1624 = 2000
+		1632 = 2200
+		1636 = 2400
+		1647 = 2600
+		1653 = 2500
+		1657 = 1800
+	}
+}
+
+air_marshal = {
+	airsuperioritydesirability = 35.0
+	navalstrikedesirability = 45.0
+	portstrikedesirability = 30.0
+	convoyraiddesirability = 25.0
+	groundattackdesirability = 20.0
+}
+
+admiral = {
+	min_core_attack_fleets = 3
+	num_attack_fleets = 5
+	base = { 1421 1511 1533 1517 1493 1497 }
+}

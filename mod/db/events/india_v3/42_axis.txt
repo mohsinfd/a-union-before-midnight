@@ -20,11 +20,11 @@ event = {
 
 	date = { day = 0 month = september year = 1937 }
 	offset = 7
-	deathdate = { day = 29 month = december year = 1938 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 		ai_chance = 55
-		name = "Full mission: -650 supplies, three advances, Allied rupture"
+		name = "Full mission"
 		command = { type = supplies value = -650 }
 		command = { type = dissent value = 2 }
 		command = { type = relation which = GER value = 45 }
@@ -60,9 +60,9 @@ event = {
 		NOT = { flag = ind_v3_axis_mobile_army }
 	# V3_ACTION_REACHABILITY_BEGIN
 	OR = {
-		AND = { manpower = 55 }
-		AND = { manpower = 66 }
-		}
+		AND = { manpower = 28 }
+		AND = { manpower = 17 }
+	}
 	# V3_ACTION_REACHABILITY_END
 }
 
@@ -73,34 +73,33 @@ event = {
 
 	date = { day = 0 month = february year = 1938 }
 	offset = 7
-	deathdate = { day = 29 month = april year = 1938 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 	trigger = {
-			# V3_QUEUE_MANPOWER = 55
-			manpower = 55
+			# V3_QUEUE_MANPOWER = 28
+			manpower = 28
 	}
 		ai_chance = 50
-		name = "Armoured spearhead: -550 money, -1450 supplies, four units"
+		name = "Armoured spearhead: -550 money, -1450 supplies"
 		command = { type = money value = -550 }
 		command = { type = supplies value = -1450 }
 		command = { type = activate_unit_type which = light_armor }
-		command = { type = new_model which = light_armor value = 0 }
-		command = { type = build_division which = light_armor value = engineer when = 2 cost = -2.5 where = 75 }
-		command = { type = build_division which = motorized value = armored_car when = 2 cost = -1.8 where = 60 }
+		command = { type = build_division which = light_armor value = engineer when = 1 where = 135 }
+		command = { type = build_division which = motorized value = armored_car when = 1 where = 105 }
 		command = { type = dissent value = 2 }
 		command = { type = setflag which = ind_v3_axis_armoured_army }
 		command = { type = setflag which = ind_v3_axis_mobile_army }
 	}
 	action_b = {
 	trigger = {
-			# V3_QUEUE_MANPOWER = 66
-			manpower = 66
+			# V3_QUEUE_MANPOWER = 17
+			manpower = 17
 	}
 		ai_chance = 50
-		name = "Indian mobility: -1150 supplies, four motor units, logistics"
+		name = "Indian mobility"
 		command = { type = supplies value = -1150 }
-		command = { type = build_division which = motorized value = engineer when = 4 cost = -1.8 where = 60 }
+		command = { type = build_division which = motorized value = engineer when = 1 where = 105 }
 		command = { type = tc_mod value = 4 }
 		command = { type = research_mod value = 1 }
 		command = { type = setflag which = ind_v3_axis_adapted_mobility }
@@ -125,19 +124,19 @@ event = {
 
 	date = { day = 0 month = january year = 1940 }
 	offset = 10
-	deathdate = { day = 29 month = december year = 1942 }
+	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
 	trigger = {
-			# V3_QUEUE_MANPOWER = 81
-			manpower = 81
+			# V3_QUEUE_MANPOWER = 33
+			manpower = 33
 	}
 		ai_chance = 40
-		name = "Persia strategy: -500 money, -1550 supplies, five units"
+		name = "Persia strategy: -500 money, -1550 supplies, two contracts"
 		command = { type = money value = -500 }
 		command = { type = supplies value = -1550 }
-		command = { type = build_division which = motorized value = armored_car when = 3 cost = -1.8 where = 60 }
-		command = { type = build_division which = bergsjaeger value = engineer when = 2 cost = -1.8 where = 75 }
+		command = { type = build_division which = motorized value = armored_car when = 1 where = 105 }
+		command = { type = build_division which = bergsjaeger value = engineer when = 1 where = 105 }
 		command = { type = relation which = GER value = 30 }
 		command = { type = ai which = "v3/IND_axis.ai" }
 		command = { type = setflag which = ind_v3_axis_middle_east_strategy }
@@ -145,20 +144,18 @@ event = {
 	}
 	action_b = {
 	trigger = {
-			# V3_QUEUE_MANPOWER = 60
-			manpower = 60
+			# V3_QUEUE_MANPOWER = 20
+			manpower = 20
 	}
 		ai_chance = 35
 		name = "Indian Ocean strategy: -450 money, marines and naval air"
 		command = { type = money value = -450 }
 		command = { type = supplies value = -1450 }
 		command = { type = activate_unit_type which = naval_bomber }
-		command = { type = new_model which = naval_bomber value = 0 }
 		command = { type = activate_unit_type which = escort }
-		command = { type = new_model which = escort value = 0 }
-		command = { type = build_division which = marine value = artillery when = 3 cost = -1.8 where = 75 }
-		command = { type = build_division which = naval_bomber value = escort when = 2 cost = -2.5 where = 75 }
-		command = { type = construct which = naval_base where = 1497 value = 6 trigger = { NOT = { building = { province = 1497 type = naval_base value = 5 } } } }
+		command = { type = build_division which = marine value = artillery when = 1 where = 105 }
+		command = { type = build_division which = naval_bomber value = escort when = 1 where = 105 }
+		command = { type = construct which = naval_base where = 1497 value = 6 trigger = { owned = { province = 1497 data = IND } NOT = { building = { province = 1497 type = naval_base value = 5 } } } }
 		command = { type = ai which = "v3/IND_axis.ai" }
 		command = { type = setflag which = ind_v3_axis_ocean_strategy }
 		command = { type = setflag which = ind_v3_axis_war_aims }

@@ -1,0 +1,955 @@
+#########################################################################
+# A Union Before Midnight V4: Southeast Asian operational victories
+# Reserved event IDs: 9287640-9287699
+#########################################################################
+
+#########################################################################
+# Land operations: permanent achievement plus reversible live control
+#########################################################################
+
+event = {
+	id = 9287640
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_wartime_framework
+		NOT = { flag = ind_aubm_sea_land_indochina }
+		control = { province = 1395 data = IND }
+		control = { province = 1399 data = IND }
+		OR = {
+			AND = { exists = U03 war = { country = IND country = U03 } owned = { province = 1395 data = U03 } owned = { province = 1399 data = U03 } }
+			AND = { exists = FRA war = { country = IND country = FRA } owned = { province = 1395 data = FRA } owned = { province = 1399 data = FRA } }
+		}
+	}
+	name = "The Hanoi-Saigon Convention"
+	desc = "Indian command holds both Hanoi and Saigon against their legal owner. Delhi records a route-neutral land victory and decolonization leverage. Existing U03 or French country-campaign files remain the sole peace dockets; this achievement transfers no territory and cannot duplicate their armistices."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	date = { day = 0 month = january year = 1933 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Record the Indochina operation"
+		command = { type = setflag which = ind_aubm_sea_land_indochina }
+		command = { type = setflag which = ind_aubm_sea_land_indochina_current }
+		command = { type = clrflag which = ind_aubm_sea_land_indochina_suspended }
+		command = { type = supplies value = 300 }
+		command = { type = money value = 40 }
+		command = { type = dissent value = -1 }
+		command = { type = belligerence value = -1 }
+	}
+}
+
+event = {
+	id = 9287650
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_wartime_framework
+		NOT = { flag = ind_aubm_sea_land_philippines }
+		control = { province = 1565 data = IND }
+		control = { province = 1579 data = IND }
+		OR = {
+			AND = { exists = PHI war = { country = IND country = PHI } owned = { province = 1565 data = PHI } owned = { province = 1579 data = PHI } }
+			AND = { exists = USA war = { country = IND country = USA } owned = { province = 1565 data = USA } owned = { province = 1579 data = USA } }
+			AND = { exists = JAP war = { country = IND country = JAP } owned = { province = 1565 data = JAP } owned = { province = 1579 data = JAP } }
+		}
+	}
+	name = "The Manila-Davao Maritime Victory"
+	desc = "Indian command holds Manila and Davao against the same legal owner. Delhi records a route-neutral island victory and maritime leverage. Existing Philippine, American or Japanese country-campaign files remain the sole peace dockets; this event transfers no territory."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	date = { day = 0 month = january year = 1933 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Record the Philippine operation"
+		command = { type = setflag which = ind_aubm_sea_land_philippines }
+		command = { type = setflag which = ind_aubm_sea_land_philippines_current }
+		command = { type = clrflag which = ind_aubm_sea_land_philippines_suspended }
+		command = { type = supplies value = 350 }
+		command = { type = oilpool value = 100 }
+		command = { type = money value = 50 }
+		command = { type = dissent value = -1 }
+		command = { type = belligerence value = -1 }
+	}
+}
+
+event = {
+	id = 9287657
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	trigger = {
+		OR = {
+			AND = {
+				flag = ind_aubm_sea_land_indochina_current
+				NOT = {
+					AND = {
+						control = { province = 1395 data = IND }
+						control = { province = 1399 data = IND }
+						OR = {
+							AND = { exists = U03 war = { country = IND country = U03 } owned = { province = 1395 data = U03 } owned = { province = 1399 data = U03 } }
+							AND = { exists = FRA war = { country = IND country = FRA } owned = { province = 1395 data = FRA } owned = { province = 1399 data = FRA } }
+						}
+					}
+				}
+			}
+			AND = {
+				flag = ind_aubm_sea_land_philippines_current
+				NOT = {
+					AND = {
+						control = { province = 1565 data = IND }
+						control = { province = 1579 data = IND }
+						OR = {
+							AND = { exists = PHI war = { country = IND country = PHI } owned = { province = 1565 data = PHI } owned = { province = 1579 data = PHI } }
+							AND = { exists = USA war = { country = IND country = USA } owned = { province = 1565 data = USA } owned = { province = 1579 data = USA } }
+							AND = { exists = JAP war = { country = IND country = JAP } owned = { province = 1565 data = JAP } owned = { province = 1579 data = JAP } }
+						}
+					}
+				}
+			}
+		}
+	}
+	name = "A Southeast Asian Land Operation Is Suspended"
+	desc = "India no longer holds the complete published objective against its legal owner in a live war. Historical victory credit remains, but the affected operational claim is suspended until every condition is restored."
+	style = 2
+	picture = "aubm_v4_war_aims"
+	date = { day = 0 month = january year = 1933 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Suspend only the lost operation"
+		command = { trigger = { flag = ind_aubm_sea_land_indochina_current NOT = { AND = { control = { province = 1395 data = IND } control = { province = 1399 data = IND } OR = { AND = { exists = U03 war = { country = IND country = U03 } owned = { province = 1395 data = U03 } owned = { province = 1399 data = U03 } } AND = { exists = FRA war = { country = IND country = FRA } owned = { province = 1395 data = FRA } owned = { province = 1399 data = FRA } } } } } } type = setflag which = ind_aubm_sea_land_indochina_suspended }
+		command = { trigger = { flag = ind_aubm_sea_land_indochina_current NOT = { AND = { control = { province = 1395 data = IND } control = { province = 1399 data = IND } OR = { AND = { exists = U03 war = { country = IND country = U03 } owned = { province = 1395 data = U03 } owned = { province = 1399 data = U03 } } AND = { exists = FRA war = { country = IND country = FRA } owned = { province = 1395 data = FRA } owned = { province = 1399 data = FRA } } } } } } type = clrflag which = ind_aubm_sea_land_indochina_current }
+		command = { trigger = { flag = ind_aubm_sea_land_philippines_current NOT = { AND = { control = { province = 1565 data = IND } control = { province = 1579 data = IND } OR = { AND = { exists = PHI war = { country = IND country = PHI } owned = { province = 1565 data = PHI } owned = { province = 1579 data = PHI } } AND = { exists = USA war = { country = IND country = USA } owned = { province = 1565 data = USA } owned = { province = 1579 data = USA } } AND = { exists = JAP war = { country = IND country = JAP } owned = { province = 1565 data = JAP } owned = { province = 1579 data = JAP } } } } } } type = setflag which = ind_aubm_sea_land_philippines_suspended }
+		command = { trigger = { flag = ind_aubm_sea_land_philippines_current NOT = { AND = { control = { province = 1565 data = IND } control = { province = 1579 data = IND } OR = { AND = { exists = PHI war = { country = IND country = PHI } owned = { province = 1565 data = PHI } owned = { province = 1579 data = PHI } } AND = { exists = USA war = { country = IND country = USA } owned = { province = 1565 data = USA } owned = { province = 1579 data = USA } } AND = { exists = JAP war = { country = IND country = JAP } owned = { province = 1565 data = JAP } owned = { province = 1579 data = JAP } } } } } } type = clrflag which = ind_aubm_sea_land_philippines_current }
+	}
+}
+
+event = {
+	id = 9287658
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	trigger = {
+		OR = {
+			AND = { flag = ind_aubm_sea_land_indochina_suspended control = { province = 1395 data = IND } control = { province = 1399 data = IND } OR = { AND = { exists = U03 war = { country = IND country = U03 } owned = { province = 1395 data = U03 } owned = { province = 1399 data = U03 } } AND = { exists = FRA war = { country = IND country = FRA } owned = { province = 1395 data = FRA } owned = { province = 1399 data = FRA } } } }
+			AND = { flag = ind_aubm_sea_land_philippines_suspended control = { province = 1565 data = IND } control = { province = 1579 data = IND } OR = { AND = { exists = PHI war = { country = IND country = PHI } owned = { province = 1565 data = PHI } owned = { province = 1579 data = PHI } } AND = { exists = USA war = { country = IND country = USA } owned = { province = 1565 data = USA } owned = { province = 1579 data = USA } } AND = { exists = JAP war = { country = IND country = JAP } owned = { province = 1565 data = JAP } owned = { province = 1579 data = JAP } } } }
+		}
+	}
+	name = "A Southeast Asian Land Operation Is Restored"
+	desc = "India again holds the complete objective against its legal owner in a live war. The current operational claim returns without duplicating the one-time achievement reward or opening another peace docket."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	date = { day = 0 month = january year = 1933 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Restore only the recovered operation"
+		command = { trigger = { flag = ind_aubm_sea_land_indochina_suspended control = { province = 1395 data = IND } control = { province = 1399 data = IND } OR = { AND = { exists = U03 war = { country = IND country = U03 } owned = { province = 1395 data = U03 } owned = { province = 1399 data = U03 } } AND = { exists = FRA war = { country = IND country = FRA } owned = { province = 1395 data = FRA } owned = { province = 1399 data = FRA } } } } type = setflag which = ind_aubm_sea_land_indochina_current }
+		command = { trigger = { flag = ind_aubm_sea_land_indochina_suspended control = { province = 1395 data = IND } control = { province = 1399 data = IND } OR = { AND = { exists = U03 war = { country = IND country = U03 } owned = { province = 1395 data = U03 } owned = { province = 1399 data = U03 } } AND = { exists = FRA war = { country = IND country = FRA } owned = { province = 1395 data = FRA } owned = { province = 1399 data = FRA } } } } type = clrflag which = ind_aubm_sea_land_indochina_suspended }
+		command = { trigger = { flag = ind_aubm_sea_land_philippines_suspended control = { province = 1565 data = IND } control = { province = 1579 data = IND } OR = { AND = { exists = PHI war = { country = IND country = PHI } owned = { province = 1565 data = PHI } owned = { province = 1579 data = PHI } } AND = { exists = USA war = { country = IND country = USA } owned = { province = 1565 data = USA } owned = { province = 1579 data = USA } } AND = { exists = JAP war = { country = IND country = JAP } owned = { province = 1565 data = JAP } owned = { province = 1579 data = JAP } } } } type = setflag which = ind_aubm_sea_land_philippines_current }
+		command = { trigger = { flag = ind_aubm_sea_land_philippines_suspended control = { province = 1565 data = IND } control = { province = 1579 data = IND } OR = { AND = { exists = PHI war = { country = IND country = PHI } owned = { province = 1565 data = PHI } owned = { province = 1579 data = PHI } } AND = { exists = USA war = { country = IND country = USA } owned = { province = 1565 data = USA } owned = { province = 1579 data = USA } } AND = { exists = JAP war = { country = IND country = JAP } owned = { province = 1565 data = JAP } owned = { province = 1579 data = JAP } } } } type = clrflag which = ind_aubm_sea_land_philippines_suspended }
+	}
+}
+
+#########################################################################
+# Operational sea lanes: port chains plus absolute surface fleet strength
+#########################################################################
+
+event = {
+	id = 9287660
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_wartime_framework
+		atwar = yes
+		OR = {
+			war = { country = IND country = ENG }
+			war = { country = IND country = JAP }
+			war = { country = IND country = U05 }
+			war = { country = IND country = HOL }
+			war = { country = IND country = SIA }
+			war = { country = IND country = U03 }
+			war = { country = IND country = FRA }
+			war = { country = IND country = PHI }
+			war = { country = IND country = USA }
+			war = { country = IND country = MLY }
+			war = { country = IND country = BUR }
+			war = { country = IND country = VIE }
+			war = { country = IND country = LAO }
+			war = { country = IND country = CMB }
+			war = { country = IND country = IDC }
+			war = { country = IND country = INO }
+			war = { country = IND country = BRU }
+			war = { country = IND country = SAR }
+			war = { country = IND country = U75 }
+		}
+		NOT = { flag = ind_aubm_sea_lane_bay_achieved }
+		control = { province = 1415 data = IND }
+		control = { province = 1421 data = IND }
+		navy = { size = 8 type = 1 when = 0 where = 1 which = 1 country = IND }
+	}
+	name = "Bay of Bengal Command Established"
+	desc = "Indian control of Rangoon and Port Blair, backed by at least eight ready surface combatants, sustains the Bay of Bengal line. This is an operational achievement only: it grants no territory and does not claim a naval battle that the event engine cannot verify."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	date = { day = 0 month = january year = 1933 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Keep the Bay convoy lanes open"
+		command = { type = setflag which = ind_aubm_sea_lane_bay_achieved }
+		command = { type = setflag which = ind_aubm_sea_lane_bay_current }
+		command = { type = clrflag which = ind_aubm_sea_lane_bay_suspended }
+		command = { type = supplies value = 250 }
+		command = { type = money value = 25 }
+		command = { type = dissent value = -1 }
+		command = { type = belligerence value = -1 }
+	}
+}
+
+event = {
+	id = 9287661
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_wartime_framework
+		atwar = yes
+		OR = {
+			war = { country = IND country = ENG }
+			war = { country = IND country = JAP }
+			war = { country = IND country = U05 }
+			war = { country = IND country = HOL }
+			war = { country = IND country = SIA }
+			war = { country = IND country = U03 }
+			war = { country = IND country = FRA }
+			war = { country = IND country = PHI }
+			war = { country = IND country = USA }
+			war = { country = IND country = MLY }
+			war = { country = IND country = BUR }
+			war = { country = IND country = VIE }
+			war = { country = IND country = LAO }
+			war = { country = IND country = CMB }
+			war = { country = IND country = IDC }
+			war = { country = IND country = INO }
+			war = { country = IND country = BRU }
+			war = { country = IND country = SAR }
+			war = { country = IND country = U75 }
+		}
+		NOT = { flag = ind_aubm_sea_lane_malacca_achieved }
+		OR = {
+			AND = { control = { province = 1432 data = IND } control = { province = 1438 data = IND } }
+			flag = ind_aubm_sea_land_malaya_liberated_current
+		}
+		OR = {
+			control = { province = 1636 data = IND }
+			control = { province = 1647 data = IND }
+			flag = ind_aubm_sea_land_dei_liberated_current
+		}
+		navy = { size = 12 type = 1 when = 0 where = 1 which = 1 country = IND }
+	}
+	name = "The Malacca Sea Gate Is Secured"
+	desc = "Singapore and Kuala Lumpur, linked to either Palembang or Batavia and covered by twelve ready surface combatants, establish a credible Malacca command. Friendly ports liberated from Japan count while their Indian garrison proof remains current; the achievement transfers no province."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	date = { day = 0 month = january year = 1933 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Organize the Malacca escort command"
+		command = { type = setflag which = ind_aubm_sea_lane_malacca_achieved }
+		command = { type = setflag which = ind_aubm_sea_lane_malacca_current }
+		command = { type = clrflag which = ind_aubm_sea_lane_malacca_suspended }
+		command = { type = supplies value = 300 }
+		command = { type = oilpool value = 150 }
+		command = { type = money value = 35 }
+		command = { type = dissent value = -1 }
+		command = { type = belligerence value = -1 }
+	}
+}
+
+event = {
+	id = 9287662
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_wartime_framework
+		atwar = yes
+		OR = {
+			war = { country = IND country = ENG }
+			war = { country = IND country = JAP }
+			war = { country = IND country = U05 }
+			war = { country = IND country = HOL }
+			war = { country = IND country = SIA }
+			war = { country = IND country = U03 }
+			war = { country = IND country = FRA }
+			war = { country = IND country = PHI }
+			war = { country = IND country = USA }
+			war = { country = IND country = MLY }
+			war = { country = IND country = BUR }
+			war = { country = IND country = VIE }
+			war = { country = IND country = LAO }
+			war = { country = IND country = CMB }
+			war = { country = IND country = IDC }
+			war = { country = IND country = INO }
+			war = { country = IND country = BRU }
+			war = { country = IND country = SAR }
+			war = { country = IND country = U75 }
+		}
+		NOT = { flag = ind_aubm_sea_lane_java_achieved }
+		control = { province = 1647 data = IND }
+		control = { province = 1653 data = IND }
+		navy = { size = 16 type = 1 when = 0 where = 1 which = 1 country = IND }
+	}
+	name = "Java Sea Command Established"
+	desc = "Batavia and Soerabaja, backed by sixteen ready surface combatants, give India a sustainable Java Sea operating line. This milestone records maritime reach and replenishment; it neither annexes the East Indies nor cedes territory."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	date = { day = 0 month = january year = 1933 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Commission the Java Sea command"
+		command = { type = setflag which = ind_aubm_sea_lane_java_achieved }
+		command = { type = setflag which = ind_aubm_sea_lane_java_current }
+		command = { type = clrflag which = ind_aubm_sea_lane_java_suspended }
+		command = { type = supplies value = 350 }
+		command = { type = oilpool value = 200 }
+		command = { type = money value = 40 }
+		command = { type = dissent value = -1 }
+		command = { type = belligerence value = -1 }
+	}
+}
+
+event = {
+	id = 9287663
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_wartime_framework
+		atwar = yes
+		OR = {
+			war = { country = IND country = ENG }
+			war = { country = IND country = JAP }
+			war = { country = IND country = U05 }
+			war = { country = IND country = HOL }
+			war = { country = IND country = SIA }
+			war = { country = IND country = U03 }
+			war = { country = IND country = FRA }
+			war = { country = IND country = PHI }
+			war = { country = IND country = USA }
+			war = { country = IND country = MLY }
+			war = { country = IND country = BUR }
+			war = { country = IND country = VIE }
+			war = { country = IND country = LAO }
+			war = { country = IND country = CMB }
+			war = { country = IND country = IDC }
+			war = { country = IND country = INO }
+			war = { country = IND country = BRU }
+			war = { country = IND country = SAR }
+			war = { country = IND country = U75 }
+		}
+		NOT = { flag = ind_aubm_sea_lane_south_china_achieved }
+		OR = { control = { province = 1432 data = IND } flag = ind_aubm_sea_land_malaya_liberated_current }
+		OR = {
+			control = { province = 1399 data = IND }
+			control = { province = 1565 data = IND }
+			flag = ind_aubm_sea_land_indochina_liberated_current
+			flag = ind_aubm_sea_land_philippines_liberated_current
+		}
+		navy = { size = 18 type = 1 when = 0 where = 1 which = 1 country = IND }
+	}
+	name = "South China Sea Command Established"
+	desc = "Singapore linked to either Saigon or Manila, with eighteen ready surface combatants, establishes a sustained South China Sea command. Current friendly-owner liberation credit may supply either end of the chain; the award never transfers land from its legal owner."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	date = { day = 0 month = january year = 1933 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Sustain the eastern fleet train"
+		command = { type = setflag which = ind_aubm_sea_lane_south_china_achieved }
+		command = { type = setflag which = ind_aubm_sea_lane_south_china_current }
+		command = { type = clrflag which = ind_aubm_sea_lane_south_china_suspended }
+		command = { type = supplies value = 400 }
+		command = { type = oilpool value = 250 }
+		command = { type = money value = 50 }
+		command = { type = dissent value = -1 }
+		command = { type = belligerence value = -1 }
+	}
+}
+
+event = {
+	id = 9287664
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	trigger = {
+		OR = {
+			AND = { flag = ind_aubm_sea_lane_bay_current NOT = { AND = { control = { province = 1415 data = IND } control = { province = 1421 data = IND } navy = { size = 8 type = 1 when = 0 where = 1 which = 1 country = IND } } } }
+			AND = { flag = ind_aubm_sea_lane_malacca_current NOT = { AND = { OR = { AND = { control = { province = 1432 data = IND } control = { province = 1438 data = IND } } flag = ind_aubm_sea_land_malaya_liberated_current } OR = { control = { province = 1636 data = IND } control = { province = 1647 data = IND } flag = ind_aubm_sea_land_dei_liberated_current } navy = { size = 12 type = 1 when = 0 where = 1 which = 1 country = IND } } } }
+			AND = { flag = ind_aubm_sea_lane_java_current NOT = { AND = { control = { province = 1647 data = IND } control = { province = 1653 data = IND } navy = { size = 16 type = 1 when = 0 where = 1 which = 1 country = IND } } } }
+			AND = { flag = ind_aubm_sea_lane_south_china_current NOT = { AND = { OR = { control = { province = 1432 data = IND } flag = ind_aubm_sea_land_malaya_liberated_current } OR = { control = { province = 1399 data = IND } control = { province = 1565 data = IND } flag = ind_aubm_sea_land_indochina_liberated_current flag = ind_aubm_sea_land_philippines_liberated_current } navy = { size = 18 type = 1 when = 0 where = 1 which = 1 country = IND } } } }
+		}
+	}
+	name = "An Indian Sea Lane Is Suspended"
+	desc = "A required port chain or its ready surface fleet screen has been lost. Historical credit remains permanent, but the affected operational command is suspended until India restores every published condition."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	date = { day = 0 month = january year = 1933 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Preserve the record and suspend the live command"
+		command = { trigger = { flag = ind_aubm_sea_lane_bay_current NOT = { AND = { control = { province = 1415 data = IND } control = { province = 1421 data = IND } navy = { size = 8 type = 1 when = 0 where = 1 which = 1 country = IND } } } } type = setflag which = ind_aubm_sea_lane_bay_suspended }
+		command = { trigger = { flag = ind_aubm_sea_lane_bay_current NOT = { AND = { control = { province = 1415 data = IND } control = { province = 1421 data = IND } navy = { size = 8 type = 1 when = 0 where = 1 which = 1 country = IND } } } } type = clrflag which = ind_aubm_sea_lane_bay_current }
+		command = { trigger = { flag = ind_aubm_sea_lane_malacca_current NOT = { AND = { OR = { AND = { control = { province = 1432 data = IND } control = { province = 1438 data = IND } } flag = ind_aubm_sea_land_malaya_liberated_current } OR = { control = { province = 1636 data = IND } control = { province = 1647 data = IND } flag = ind_aubm_sea_land_dei_liberated_current } navy = { size = 12 type = 1 when = 0 where = 1 which = 1 country = IND } } } } type = setflag which = ind_aubm_sea_lane_malacca_suspended }
+		command = { trigger = { flag = ind_aubm_sea_lane_malacca_current NOT = { AND = { OR = { AND = { control = { province = 1432 data = IND } control = { province = 1438 data = IND } } flag = ind_aubm_sea_land_malaya_liberated_current } OR = { control = { province = 1636 data = IND } control = { province = 1647 data = IND } flag = ind_aubm_sea_land_dei_liberated_current } navy = { size = 12 type = 1 when = 0 where = 1 which = 1 country = IND } } } } type = clrflag which = ind_aubm_sea_lane_malacca_current }
+		command = { trigger = { flag = ind_aubm_sea_lane_java_current NOT = { AND = { control = { province = 1647 data = IND } control = { province = 1653 data = IND } navy = { size = 16 type = 1 when = 0 where = 1 which = 1 country = IND } } } } type = setflag which = ind_aubm_sea_lane_java_suspended }
+		command = { trigger = { flag = ind_aubm_sea_lane_java_current NOT = { AND = { control = { province = 1647 data = IND } control = { province = 1653 data = IND } navy = { size = 16 type = 1 when = 0 where = 1 which = 1 country = IND } } } } type = clrflag which = ind_aubm_sea_lane_java_current }
+		command = { trigger = { flag = ind_aubm_sea_lane_south_china_current NOT = { AND = { OR = { control = { province = 1432 data = IND } flag = ind_aubm_sea_land_malaya_liberated_current } OR = { control = { province = 1399 data = IND } control = { province = 1565 data = IND } flag = ind_aubm_sea_land_indochina_liberated_current flag = ind_aubm_sea_land_philippines_liberated_current } navy = { size = 18 type = 1 when = 0 where = 1 which = 1 country = IND } } } } type = setflag which = ind_aubm_sea_lane_south_china_suspended }
+		command = { trigger = { flag = ind_aubm_sea_lane_south_china_current NOT = { AND = { OR = { control = { province = 1432 data = IND } flag = ind_aubm_sea_land_malaya_liberated_current } OR = { control = { province = 1399 data = IND } control = { province = 1565 data = IND } flag = ind_aubm_sea_land_indochina_liberated_current flag = ind_aubm_sea_land_philippines_liberated_current } navy = { size = 18 type = 1 when = 0 where = 1 which = 1 country = IND } } } } type = clrflag which = ind_aubm_sea_lane_south_china_current }
+	}
+}
+
+event = {
+	id = 9287665
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	trigger = {
+		OR = {
+			AND = { flag = ind_aubm_sea_lane_bay_suspended control = { province = 1415 data = IND } control = { province = 1421 data = IND } navy = { size = 8 type = 1 when = 0 where = 1 which = 1 country = IND } }
+			AND = { flag = ind_aubm_sea_lane_malacca_suspended OR = { AND = { control = { province = 1432 data = IND } control = { province = 1438 data = IND } } flag = ind_aubm_sea_land_malaya_liberated_current } OR = { control = { province = 1636 data = IND } control = { province = 1647 data = IND } flag = ind_aubm_sea_land_dei_liberated_current } navy = { size = 12 type = 1 when = 0 where = 1 which = 1 country = IND } }
+			AND = { flag = ind_aubm_sea_lane_java_suspended control = { province = 1647 data = IND } control = { province = 1653 data = IND } navy = { size = 16 type = 1 when = 0 where = 1 which = 1 country = IND } }
+			AND = { flag = ind_aubm_sea_lane_south_china_suspended OR = { control = { province = 1432 data = IND } flag = ind_aubm_sea_land_malaya_liberated_current } OR = { control = { province = 1399 data = IND } control = { province = 1565 data = IND } flag = ind_aubm_sea_land_indochina_liberated_current flag = ind_aubm_sea_land_philippines_liberated_current } navy = { size = 18 type = 1 when = 0 where = 1 which = 1 country = IND } }
+		}
+	}
+	name = "An Indian Sea Lane Is Restored"
+	desc = "Indian command has recovered every required port and rebuilt the appropriate ready surface fleet screen. The affected live operational flag returns without paying the one-time achievement reward again."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	date = { day = 0 month = january year = 1933 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Restore the live sea-lane command"
+		command = { trigger = { flag = ind_aubm_sea_lane_bay_suspended control = { province = 1415 data = IND } control = { province = 1421 data = IND } navy = { size = 8 type = 1 when = 0 where = 1 which = 1 country = IND } } type = setflag which = ind_aubm_sea_lane_bay_current }
+		command = { trigger = { flag = ind_aubm_sea_lane_bay_suspended control = { province = 1415 data = IND } control = { province = 1421 data = IND } navy = { size = 8 type = 1 when = 0 where = 1 which = 1 country = IND } } type = clrflag which = ind_aubm_sea_lane_bay_suspended }
+		command = { trigger = { flag = ind_aubm_sea_lane_malacca_suspended OR = { AND = { control = { province = 1432 data = IND } control = { province = 1438 data = IND } } flag = ind_aubm_sea_land_malaya_liberated_current } OR = { control = { province = 1636 data = IND } control = { province = 1647 data = IND } flag = ind_aubm_sea_land_dei_liberated_current } navy = { size = 12 type = 1 when = 0 where = 1 which = 1 country = IND } } type = setflag which = ind_aubm_sea_lane_malacca_current }
+		command = { trigger = { flag = ind_aubm_sea_lane_malacca_suspended OR = { AND = { control = { province = 1432 data = IND } control = { province = 1438 data = IND } } flag = ind_aubm_sea_land_malaya_liberated_current } OR = { control = { province = 1636 data = IND } control = { province = 1647 data = IND } flag = ind_aubm_sea_land_dei_liberated_current } navy = { size = 12 type = 1 when = 0 where = 1 which = 1 country = IND } } type = clrflag which = ind_aubm_sea_lane_malacca_suspended }
+		command = { trigger = { flag = ind_aubm_sea_lane_java_suspended control = { province = 1647 data = IND } control = { province = 1653 data = IND } navy = { size = 16 type = 1 when = 0 where = 1 which = 1 country = IND } } type = setflag which = ind_aubm_sea_lane_java_current }
+		command = { trigger = { flag = ind_aubm_sea_lane_java_suspended control = { province = 1647 data = IND } control = { province = 1653 data = IND } navy = { size = 16 type = 1 when = 0 where = 1 which = 1 country = IND } } type = clrflag which = ind_aubm_sea_lane_java_suspended }
+		command = { trigger = { flag = ind_aubm_sea_lane_south_china_suspended OR = { control = { province = 1432 data = IND } flag = ind_aubm_sea_land_malaya_liberated_current } OR = { control = { province = 1399 data = IND } control = { province = 1565 data = IND } flag = ind_aubm_sea_land_indochina_liberated_current flag = ind_aubm_sea_land_philippines_liberated_current } navy = { size = 18 type = 1 when = 0 where = 1 which = 1 country = IND } } type = setflag which = ind_aubm_sea_lane_south_china_current }
+		command = { trigger = { flag = ind_aubm_sea_lane_south_china_suspended OR = { control = { province = 1432 data = IND } flag = ind_aubm_sea_land_malaya_liberated_current } OR = { control = { province = 1399 data = IND } control = { province = 1565 data = IND } flag = ind_aubm_sea_land_indochina_liberated_current flag = ind_aubm_sea_land_philippines_liberated_current } navy = { size = 18 type = 1 when = 0 where = 1 which = 1 country = IND } } type = clrflag which = ind_aubm_sea_lane_south_china_suspended }
+	}
+}
+
+#########################################################################
+# Flexible Southeast Asia theatre: three distinct results across both arms
+#########################################################################
+
+event = {
+	id = 9287670
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_wartime_framework
+		NOT = { flag = ind_aubm_sea_theatre_achieved }
+		OR = {
+			AND = {
+				OR = {
+					flag = ind_aubm_sea_land_indochina
+					flag = ind_aubm_sea_land_indochina_liberated
+					flag = ind_aubm_sea_land_philippines
+					flag = ind_aubm_sea_land_philippines_liberated
+					flag = ind_aubm_sea_land_malaya_liberated
+					flag = ind_aubm_global_rewarded_mly
+					flag = ind_aubm_global_rewarded_u75
+					flag = ind_aubm_regional_victory_eng_malaya
+					flag = ind_aubm_regional_settled_eng_malaya
+					flag = ind_aubm_sea_land_dei_liberated
+					flag = ind_aubm_regional_victory_u05
+					flag = ind_aubm_regional_settled_u05
+					flag = ind_aubm_regional_victory_hol_colonial
+					flag = ind_aubm_regional_settled_hol_colonial
+					flag = ind_aubm_global_rewarded_ino
+					flag = ind_aubm_regional_victory_sia
+					flag = ind_aubm_regional_settled_sia
+					flag = ind_aubm_global_rewarded_bur
+					flag = ind_aubm_global_rewarded_bru
+					flag = ind_aubm_global_rewarded_sar
+				}
+				OR = {
+					AND = { flag = ind_aubm_sea_lane_bay_achieved flag = ind_aubm_sea_lane_malacca_achieved }
+					AND = { flag = ind_aubm_sea_lane_bay_achieved flag = ind_aubm_sea_lane_java_achieved }
+					AND = { flag = ind_aubm_sea_lane_bay_achieved flag = ind_aubm_sea_lane_south_china_achieved }
+					AND = { flag = ind_aubm_sea_lane_malacca_achieved flag = ind_aubm_sea_lane_java_achieved }
+					AND = { flag = ind_aubm_sea_lane_malacca_achieved flag = ind_aubm_sea_lane_south_china_achieved }
+					AND = { flag = ind_aubm_sea_lane_java_achieved flag = ind_aubm_sea_lane_south_china_achieved }
+				}
+			}
+			AND = {
+				OR = {
+					flag = ind_aubm_sea_lane_bay_achieved
+					flag = ind_aubm_sea_lane_malacca_achieved
+					flag = ind_aubm_sea_lane_java_achieved
+					flag = ind_aubm_sea_lane_south_china_achieved
+				}
+				OR = {
+					AND = { OR = { flag = ind_aubm_sea_land_indochina flag = ind_aubm_sea_land_indochina_liberated } OR = { flag = ind_aubm_sea_land_philippines flag = ind_aubm_sea_land_philippines_liberated } }
+					AND = { OR = { flag = ind_aubm_sea_land_indochina flag = ind_aubm_sea_land_indochina_liberated } OR = { flag = ind_aubm_sea_land_malaya_liberated flag = ind_aubm_global_rewarded_mly flag = ind_aubm_global_rewarded_u75 flag = ind_aubm_regional_victory_eng_malaya flag = ind_aubm_regional_settled_eng_malaya } }
+					AND = { OR = { flag = ind_aubm_sea_land_indochina flag = ind_aubm_sea_land_indochina_liberated } OR = { flag = ind_aubm_sea_land_dei_liberated flag = ind_aubm_regional_victory_u05 flag = ind_aubm_regional_settled_u05 flag = ind_aubm_regional_victory_hol_colonial flag = ind_aubm_regional_settled_hol_colonial flag = ind_aubm_global_rewarded_ino } }
+					AND = { OR = { flag = ind_aubm_sea_land_indochina flag = ind_aubm_sea_land_indochina_liberated } OR = { flag = ind_aubm_regional_victory_sia flag = ind_aubm_regional_settled_sia } }
+					AND = { OR = { flag = ind_aubm_sea_land_indochina flag = ind_aubm_sea_land_indochina_liberated } flag = ind_aubm_global_rewarded_bur }
+					AND = { OR = { flag = ind_aubm_sea_land_indochina flag = ind_aubm_sea_land_indochina_liberated } OR = { flag = ind_aubm_global_rewarded_bru flag = ind_aubm_global_rewarded_sar } }
+					AND = { OR = { flag = ind_aubm_sea_land_philippines flag = ind_aubm_sea_land_philippines_liberated } OR = { flag = ind_aubm_sea_land_malaya_liberated flag = ind_aubm_global_rewarded_mly flag = ind_aubm_global_rewarded_u75 flag = ind_aubm_regional_victory_eng_malaya flag = ind_aubm_regional_settled_eng_malaya } }
+					AND = { OR = { flag = ind_aubm_sea_land_philippines flag = ind_aubm_sea_land_philippines_liberated } OR = { flag = ind_aubm_sea_land_dei_liberated flag = ind_aubm_regional_victory_u05 flag = ind_aubm_regional_settled_u05 flag = ind_aubm_regional_victory_hol_colonial flag = ind_aubm_regional_settled_hol_colonial flag = ind_aubm_global_rewarded_ino } }
+					AND = { OR = { flag = ind_aubm_sea_land_philippines flag = ind_aubm_sea_land_philippines_liberated } OR = { flag = ind_aubm_regional_victory_sia flag = ind_aubm_regional_settled_sia } }
+					AND = { OR = { flag = ind_aubm_sea_land_philippines flag = ind_aubm_sea_land_philippines_liberated } flag = ind_aubm_global_rewarded_bur }
+					AND = { OR = { flag = ind_aubm_sea_land_philippines flag = ind_aubm_sea_land_philippines_liberated } OR = { flag = ind_aubm_global_rewarded_bru flag = ind_aubm_global_rewarded_sar } }
+					AND = { OR = { flag = ind_aubm_sea_land_malaya_liberated flag = ind_aubm_global_rewarded_mly flag = ind_aubm_global_rewarded_u75 flag = ind_aubm_regional_victory_eng_malaya flag = ind_aubm_regional_settled_eng_malaya } OR = { flag = ind_aubm_sea_land_dei_liberated flag = ind_aubm_regional_victory_u05 flag = ind_aubm_regional_settled_u05 flag = ind_aubm_regional_victory_hol_colonial flag = ind_aubm_regional_settled_hol_colonial flag = ind_aubm_global_rewarded_ino } }
+					AND = { OR = { flag = ind_aubm_sea_land_malaya_liberated flag = ind_aubm_global_rewarded_mly flag = ind_aubm_global_rewarded_u75 flag = ind_aubm_regional_victory_eng_malaya flag = ind_aubm_regional_settled_eng_malaya } OR = { flag = ind_aubm_regional_victory_sia flag = ind_aubm_regional_settled_sia } }
+					AND = { OR = { flag = ind_aubm_sea_land_malaya_liberated flag = ind_aubm_global_rewarded_mly flag = ind_aubm_global_rewarded_u75 flag = ind_aubm_regional_victory_eng_malaya flag = ind_aubm_regional_settled_eng_malaya } flag = ind_aubm_global_rewarded_bur }
+					AND = { OR = { flag = ind_aubm_sea_land_malaya_liberated flag = ind_aubm_global_rewarded_mly flag = ind_aubm_global_rewarded_u75 flag = ind_aubm_regional_victory_eng_malaya flag = ind_aubm_regional_settled_eng_malaya } OR = { flag = ind_aubm_global_rewarded_bru flag = ind_aubm_global_rewarded_sar } }
+					AND = { OR = { flag = ind_aubm_sea_land_dei_liberated flag = ind_aubm_regional_victory_u05 flag = ind_aubm_regional_settled_u05 flag = ind_aubm_regional_victory_hol_colonial flag = ind_aubm_regional_settled_hol_colonial flag = ind_aubm_global_rewarded_ino } OR = { flag = ind_aubm_regional_victory_sia flag = ind_aubm_regional_settled_sia } }
+					AND = { OR = { flag = ind_aubm_sea_land_dei_liberated flag = ind_aubm_regional_victory_u05 flag = ind_aubm_regional_settled_u05 flag = ind_aubm_regional_victory_hol_colonial flag = ind_aubm_regional_settled_hol_colonial flag = ind_aubm_global_rewarded_ino } flag = ind_aubm_global_rewarded_bur }
+					AND = { OR = { flag = ind_aubm_sea_land_dei_liberated flag = ind_aubm_regional_victory_u05 flag = ind_aubm_regional_settled_u05 flag = ind_aubm_regional_victory_hol_colonial flag = ind_aubm_regional_settled_hol_colonial flag = ind_aubm_global_rewarded_ino } OR = { flag = ind_aubm_global_rewarded_bru flag = ind_aubm_global_rewarded_sar } }
+					AND = { OR = { flag = ind_aubm_regional_victory_sia flag = ind_aubm_regional_settled_sia } flag = ind_aubm_global_rewarded_bur }
+					AND = { OR = { flag = ind_aubm_regional_victory_sia flag = ind_aubm_regional_settled_sia } OR = { flag = ind_aubm_global_rewarded_bru flag = ind_aubm_global_rewarded_sar } }
+					AND = { flag = ind_aubm_global_rewarded_bur OR = { flag = ind_aubm_global_rewarded_bru flag = ind_aubm_global_rewarded_sar } }
+				}
+			}
+		}
+	}
+	name = "India Wins the Southeast Asian Operational Theatre"
+	desc = "Three distinct Southeast Asian results now span both land and sea: either two land campaigns and one sea lane, or one land campaign and two sea lanes. No rigid all-hub checklist is required, and friendly constitutional settlements do not erase historical credit."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+	date = { day = 0 month = january year = 1933 }
+	offset = 2
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Claim an Indian voice in the Asian settlement"
+		command = { type = setflag which = ind_aubm_sea_theatre_achieved }
+		command = { type = setflag which = ind_aubm_victory_sovereign_credit }
+		command = { type = setflag which = ind_aubm_global_campaign_victory }
+		command = { type = supplies value = 500 }
+		command = { type = oilpool value = 300 }
+		command = { type = money value = 100 }
+		command = { type = dissent value = -2 }
+		command = { type = belligerence value = -2 }
+	}
+}
+
+#########################################################################
+# Anti-Japanese liberation credit for friendly legal owners
+#########################################################################
+
+event = {
+	id = 9287680
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	trigger = {
+		war = { country = IND country = JAP }
+		OR = {
+			AND = {
+				NOT = { flag = ind_aubm_sea_land_malaya_japan_occupation_seen }
+				control = { province = 1432 data = JAP }
+				control = { province = 1438 data = JAP }
+				OR = {
+					AND = { exists = ENG war = { country = JAP country = ENG } NOT = { war = { country = IND country = ENG } } owned = { province = 1432 data = ENG } owned = { province = 1438 data = ENG } }
+					AND = { exists = MLY war = { country = JAP country = MLY } NOT = { war = { country = IND country = MLY } } owned = { province = 1432 data = MLY } owned = { province = 1438 data = MLY } }
+					AND = { exists = U75 war = { country = JAP country = U75 } NOT = { war = { country = IND country = U75 } } owned = { province = 1432 data = U75 } owned = { province = 1438 data = U75 } }
+				}
+			}
+			AND = {
+				NOT = { flag = ind_aubm_sea_land_dei_japan_occupation_seen }
+				control = { province = 1647 data = JAP }
+				OR = {
+					AND = { exists = U05 war = { country = JAP country = U05 } NOT = { war = { country = IND country = U05 } } owned = { province = 1647 data = U05 } }
+					AND = { exists = HOL war = { country = JAP country = HOL } NOT = { war = { country = IND country = HOL } } owned = { province = 1647 data = HOL } }
+					AND = { exists = INO war = { country = JAP country = INO } NOT = { war = { country = IND country = INO } } owned = { province = 1647 data = INO } }
+				}
+			}
+			AND = {
+				NOT = { flag = ind_aubm_sea_land_indochina_japan_occupation_seen }
+				control = { province = 1395 data = JAP }
+				control = { province = 1399 data = JAP }
+				OR = {
+					AND = { exists = U03 war = { country = JAP country = U03 } NOT = { war = { country = IND country = U03 } } owned = { province = 1395 data = U03 } }
+					AND = { exists = FRA war = { country = JAP country = FRA } NOT = { war = { country = IND country = FRA } } owned = { province = 1395 data = FRA } }
+					AND = { exists = IDC war = { country = JAP country = IDC } NOT = { war = { country = IND country = IDC } } owned = { province = 1395 data = IDC } }
+					AND = { exists = VIE war = { country = JAP country = VIE } NOT = { war = { country = IND country = VIE } } owned = { province = 1395 data = VIE } }
+				}
+				OR = {
+					AND = { exists = U03 war = { country = JAP country = U03 } NOT = { war = { country = IND country = U03 } } owned = { province = 1399 data = U03 } }
+					AND = { exists = FRA war = { country = JAP country = FRA } NOT = { war = { country = IND country = FRA } } owned = { province = 1399 data = FRA } }
+					AND = { exists = IDC war = { country = JAP country = IDC } NOT = { war = { country = IND country = IDC } } owned = { province = 1399 data = IDC } }
+					AND = { exists = VIE war = { country = JAP country = VIE } NOT = { war = { country = IND country = VIE } } owned = { province = 1399 data = VIE } }
+				}
+			}
+			AND = {
+				NOT = { flag = ind_aubm_sea_land_philippines_japan_occupation_seen }
+				control = { province = 1565 data = JAP }
+				control = { province = 1579 data = JAP }
+				OR = {
+					AND = { exists = PHI war = { country = JAP country = PHI } NOT = { war = { country = IND country = PHI } } owned = { province = 1565 data = PHI } owned = { province = 1579 data = PHI } }
+					AND = { exists = USA war = { country = JAP country = USA } NOT = { war = { country = IND country = USA } } owned = { province = 1565 data = USA } owned = { province = 1579 data = USA } }
+				}
+			}
+		}
+	}
+	name = "Japanese Occupation Reaches the Southern Hubs"
+	desc = "The War Office records which friendly Southeast Asian objectives have actually fallen under Japanese occupation. A later Indian liberation can therefore receive operational credit even when Darkest Hour immediately returns control to the legal owner."
+	style = 2
+	picture = "aubm_v4_japan_southern_choice"
+	date = { day = 0 month = january year = 1933 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Mark only the occupied theatres"
+		command = { trigger = { control = { province = 1432 data = JAP } control = { province = 1438 data = JAP } OR = { AND = { exists = ENG war = { country = JAP country = ENG } NOT = { war = { country = IND country = ENG } } owned = { province = 1432 data = ENG } owned = { province = 1438 data = ENG } } AND = { exists = MLY war = { country = JAP country = MLY } NOT = { war = { country = IND country = MLY } } owned = { province = 1432 data = MLY } owned = { province = 1438 data = MLY } } AND = { exists = U75 war = { country = JAP country = U75 } NOT = { war = { country = IND country = U75 } } owned = { province = 1432 data = U75 } owned = { province = 1438 data = U75 } } } } type = setflag which = ind_aubm_sea_land_malaya_japan_occupation_seen }
+		command = { trigger = { control = { province = 1647 data = JAP } OR = { AND = { exists = U05 war = { country = JAP country = U05 } NOT = { war = { country = IND country = U05 } } owned = { province = 1647 data = U05 } } AND = { exists = HOL war = { country = JAP country = HOL } NOT = { war = { country = IND country = HOL } } owned = { province = 1647 data = HOL } } AND = { exists = INO war = { country = JAP country = INO } NOT = { war = { country = IND country = INO } } owned = { province = 1647 data = INO } } } } type = setflag which = ind_aubm_sea_land_dei_japan_occupation_seen }
+		command = { trigger = { control = { province = 1395 data = JAP } control = { province = 1399 data = JAP } OR = { AND = { exists = U03 war = { country = JAP country = U03 } NOT = { war = { country = IND country = U03 } } owned = { province = 1395 data = U03 } } AND = { exists = FRA war = { country = JAP country = FRA } NOT = { war = { country = IND country = FRA } } owned = { province = 1395 data = FRA } } AND = { exists = IDC war = { country = JAP country = IDC } NOT = { war = { country = IND country = IDC } } owned = { province = 1395 data = IDC } } AND = { exists = VIE war = { country = JAP country = VIE } NOT = { war = { country = IND country = VIE } } owned = { province = 1395 data = VIE } } } OR = { AND = { exists = U03 war = { country = JAP country = U03 } NOT = { war = { country = IND country = U03 } } owned = { province = 1399 data = U03 } } AND = { exists = FRA war = { country = JAP country = FRA } NOT = { war = { country = IND country = FRA } } owned = { province = 1399 data = FRA } } AND = { exists = IDC war = { country = JAP country = IDC } NOT = { war = { country = IND country = IDC } } owned = { province = 1399 data = IDC } } AND = { exists = VIE war = { country = JAP country = VIE } NOT = { war = { country = IND country = VIE } } owned = { province = 1399 data = VIE } } } } type = setflag which = ind_aubm_sea_land_indochina_japan_occupation_seen }
+		command = { trigger = { control = { province = 1565 data = JAP } control = { province = 1579 data = JAP } OR = { AND = { exists = PHI war = { country = JAP country = PHI } NOT = { war = { country = IND country = PHI } } owned = { province = 1565 data = PHI } owned = { province = 1579 data = PHI } } AND = { exists = USA war = { country = JAP country = USA } NOT = { war = { country = IND country = USA } } owned = { province = 1565 data = USA } owned = { province = 1579 data = USA } } } } type = setflag which = ind_aubm_sea_land_philippines_japan_occupation_seen }
+	}
+}
+
+event = {
+	id = 9287681
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_sea_land_malaya_japan_occupation_seen
+		NOT = { flag = ind_aubm_sea_land_malaya_liberated }
+		war = { country = IND country = JAP }
+		OR = {
+			AND = { exists = ENG NOT = { war = { country = IND country = ENG } } owned = { province = 1432 data = ENG } owned = { province = 1438 data = ENG } OR = { control = { province = 1432 data = IND } control = { province = 1432 data = ENG } } OR = { control = { province = 1438 data = IND } control = { province = 1438 data = ENG } } }
+			AND = { exists = MLY NOT = { war = { country = IND country = MLY } } owned = { province = 1432 data = MLY } owned = { province = 1438 data = MLY } OR = { control = { province = 1432 data = IND } control = { province = 1432 data = MLY } } OR = { control = { province = 1438 data = IND } control = { province = 1438 data = MLY } } }
+			AND = { exists = U75 NOT = { war = { country = IND country = U75 } } owned = { province = 1432 data = U75 } owned = { province = 1438 data = U75 } OR = { control = { province = 1432 data = IND } control = { province = 1432 data = U75 } } OR = { control = { province = 1438 data = IND } control = { province = 1438 data = U75 } } }
+		}
+		OR = { control = { province = 1432 data = IND } control = { province = 1438 data = IND } garrison = { country = IND province = 1432 type = land size = 1 area = no } garrison = { country = IND province = 1438 type = land size = 1 area = no } }
+	}
+	name = "Indian Command Liberates Malaya"
+	desc = "Singapore and Kuala Lumpur were occupied by Japan and are now restored under friendly legal authority with Indian troops present. Delhi receives land-operation credit, but no claim against Britain, Malaysia or Singapore and no duplicate peace docket."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	date = { day = 0 month = january year = 1933 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Record the Malayan liberation"
+		command = { type = setflag which = ind_aubm_sea_land_malaya_liberated }
+		command = { type = setflag which = ind_aubm_sea_land_malaya_liberated_current }
+		command = { type = clrflag which = ind_aubm_sea_land_malaya_liberated_suspended }
+		command = { type = supplies value = 250 }
+		command = { type = money value = 25 }
+		command = { type = dissent value = -1 }
+	}
+}
+
+event = {
+	id = 9287682
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_sea_land_dei_japan_occupation_seen
+		NOT = { flag = ind_aubm_sea_land_dei_liberated }
+		war = { country = IND country = JAP }
+		OR = {
+			AND = { exists = U05 NOT = { war = { country = IND country = U05 } } owned = { province = 1647 data = U05 } OR = { control = { province = 1647 data = IND } control = { province = 1647 data = U05 } } }
+			AND = { exists = HOL NOT = { war = { country = IND country = HOL } } owned = { province = 1647 data = HOL } OR = { control = { province = 1647 data = IND } control = { province = 1647 data = HOL } } }
+			AND = { exists = INO NOT = { war = { country = IND country = INO } } owned = { province = 1647 data = INO } OR = { control = { province = 1647 data = IND } control = { province = 1647 data = INO } } }
+		}
+		OR = { control = { province = 1647 data = IND } garrison = { country = IND province = 1647 type = land size = 1 area = no } }
+	}
+	name = "Indian Command Liberates Batavia"
+	desc = "Batavia was occupied by Japan and is now restored under friendly legal authority with Indian troops present. The capital threshold earns an East Indies land result without inheriting the archipelago or opening terms against its friendly owner."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	date = { day = 0 month = january year = 1933 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Record the Batavia liberation"
+		command = { type = setflag which = ind_aubm_sea_land_dei_liberated }
+		command = { type = setflag which = ind_aubm_sea_land_dei_liberated_current }
+		command = { type = clrflag which = ind_aubm_sea_land_dei_liberated_suspended }
+		command = { type = supplies value = 250 }
+		command = { type = oilpool value = 100 }
+		command = { type = money value = 25 }
+		command = { type = dissent value = -1 }
+	}
+}
+
+event = {
+	id = 9287683
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_sea_land_indochina_japan_occupation_seen
+		NOT = { flag = ind_aubm_sea_land_indochina_liberated }
+		war = { country = IND country = JAP }
+		OR = {
+			AND = { exists = U03 NOT = { war = { country = IND country = U03 } } owned = { province = 1395 data = U03 } OR = { control = { province = 1395 data = IND } control = { province = 1395 data = U03 } } }
+			AND = { exists = FRA NOT = { war = { country = IND country = FRA } } owned = { province = 1395 data = FRA } OR = { control = { province = 1395 data = IND } control = { province = 1395 data = FRA } } }
+			AND = { exists = IDC NOT = { war = { country = IND country = IDC } } owned = { province = 1395 data = IDC } OR = { control = { province = 1395 data = IND } control = { province = 1395 data = IDC } } }
+			AND = { exists = VIE NOT = { war = { country = IND country = VIE } } owned = { province = 1395 data = VIE } OR = { control = { province = 1395 data = IND } control = { province = 1395 data = VIE } } }
+		}
+		OR = {
+			AND = { exists = U03 NOT = { war = { country = IND country = U03 } } owned = { province = 1399 data = U03 } OR = { control = { province = 1399 data = IND } control = { province = 1399 data = U03 } } }
+			AND = { exists = FRA NOT = { war = { country = IND country = FRA } } owned = { province = 1399 data = FRA } OR = { control = { province = 1399 data = IND } control = { province = 1399 data = FRA } } }
+			AND = { exists = IDC NOT = { war = { country = IND country = IDC } } owned = { province = 1399 data = IDC } OR = { control = { province = 1399 data = IND } control = { province = 1399 data = IDC } } }
+			AND = { exists = VIE NOT = { war = { country = IND country = VIE } } owned = { province = 1399 data = VIE } OR = { control = { province = 1399 data = IND } control = { province = 1399 data = VIE } } }
+		}
+		OR = { control = { province = 1395 data = IND } control = { province = 1399 data = IND } garrison = { country = IND province = 1395 type = land size = 1 area = no } garrison = { country = IND province = 1399 type = land size = 1 area = no } }
+	}
+	name = "Indian Command Liberates Indochina"
+	desc = "Hanoi and Saigon were occupied by Japan and are now restored under friendly legal authority with Indian troops present. India receives operational and decolonization credit without creating a second French or Indochinese armistice."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	date = { day = 0 month = january year = 1933 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Record the Indochina liberation"
+		command = { type = setflag which = ind_aubm_sea_land_indochina_liberated }
+		command = { type = setflag which = ind_aubm_sea_land_indochina_liberated_current }
+		command = { type = clrflag which = ind_aubm_sea_land_indochina_liberated_suspended }
+		command = { type = supplies value = 300 }
+		command = { type = money value = 40 }
+		command = { type = dissent value = -1 }
+	}
+}
+
+event = {
+	id = 9287684
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_sea_land_philippines_japan_occupation_seen
+		NOT = { flag = ind_aubm_sea_land_philippines_liberated }
+		war = { country = IND country = JAP }
+		OR = {
+			AND = { exists = PHI NOT = { war = { country = IND country = PHI } } owned = { province = 1565 data = PHI } owned = { province = 1579 data = PHI } OR = { control = { province = 1565 data = IND } control = { province = 1565 data = PHI } } OR = { control = { province = 1579 data = IND } control = { province = 1579 data = PHI } } }
+			AND = { exists = USA NOT = { war = { country = IND country = USA } } owned = { province = 1565 data = USA } owned = { province = 1579 data = USA } OR = { control = { province = 1565 data = IND } control = { province = 1565 data = USA } } OR = { control = { province = 1579 data = IND } control = { province = 1579 data = USA } } }
+		}
+		OR = { control = { province = 1565 data = IND } control = { province = 1579 data = IND } garrison = { country = IND province = 1565 type = land size = 1 area = no } garrison = { country = IND province = 1579 type = land size = 1 area = no } }
+	}
+	name = "Indian Command Liberates the Philippines"
+	desc = "Manila and Davao were occupied by Japan and are now restored under friendly Philippine or American authority with Indian troops present. The operation earns maritime credit without demanding territory or duplicating the Philippine peace file."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	date = { day = 0 month = january year = 1933 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Record the Philippine liberation"
+		command = { type = setflag which = ind_aubm_sea_land_philippines_liberated }
+		command = { type = setflag which = ind_aubm_sea_land_philippines_liberated_current }
+		command = { type = clrflag which = ind_aubm_sea_land_philippines_liberated_suspended }
+		command = { type = supplies value = 350 }
+		command = { type = oilpool value = 100 }
+		command = { type = money value = 50 }
+		command = { type = dissent value = -1 }
+	}
+}
+
+event = {
+	id = 9287685
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	trigger = {
+		OR = {
+			AND = { flag = ind_aubm_sea_land_malaya_liberated_current NOT = { AND = { OR = { control = { province = 1432 data = IND } AND = { exists = ENG NOT = { war = { country = IND country = ENG } } control = { province = 1432 data = ENG } } AND = { exists = MLY NOT = { war = { country = IND country = MLY } } control = { province = 1432 data = MLY } } AND = { exists = U75 NOT = { war = { country = IND country = U75 } } control = { province = 1432 data = U75 } } } OR = { control = { province = 1438 data = IND } AND = { exists = ENG NOT = { war = { country = IND country = ENG } } control = { province = 1438 data = ENG } } AND = { exists = MLY NOT = { war = { country = IND country = MLY } } control = { province = 1438 data = MLY } } AND = { exists = U75 NOT = { war = { country = IND country = U75 } } control = { province = 1438 data = U75 } } } } } }
+			AND = { flag = ind_aubm_sea_land_dei_liberated_current NOT = { OR = { control = { province = 1647 data = IND } AND = { exists = U05 NOT = { war = { country = IND country = U05 } } control = { province = 1647 data = U05 } } AND = { exists = HOL NOT = { war = { country = IND country = HOL } } control = { province = 1647 data = HOL } } AND = { exists = INO NOT = { war = { country = IND country = INO } } control = { province = 1647 data = INO } } } } }
+			AND = { flag = ind_aubm_sea_land_indochina_liberated_current NOT = { AND = { OR = { control = { province = 1395 data = IND } AND = { exists = U03 NOT = { war = { country = IND country = U03 } } control = { province = 1395 data = U03 } } AND = { exists = FRA NOT = { war = { country = IND country = FRA } } control = { province = 1395 data = FRA } } AND = { exists = IDC NOT = { war = { country = IND country = IDC } } control = { province = 1395 data = IDC } } AND = { exists = VIE NOT = { war = { country = IND country = VIE } } control = { province = 1395 data = VIE } } } OR = { control = { province = 1399 data = IND } AND = { exists = U03 NOT = { war = { country = IND country = U03 } } control = { province = 1399 data = U03 } } AND = { exists = FRA NOT = { war = { country = IND country = FRA } } control = { province = 1399 data = FRA } } AND = { exists = IDC NOT = { war = { country = IND country = IDC } } control = { province = 1399 data = IDC } } AND = { exists = VIE NOT = { war = { country = IND country = VIE } } control = { province = 1399 data = VIE } } } } } }
+			AND = { flag = ind_aubm_sea_land_philippines_liberated_current NOT = { AND = { OR = { control = { province = 1565 data = IND } AND = { exists = PHI NOT = { war = { country = IND country = PHI } } control = { province = 1565 data = PHI } } AND = { exists = USA NOT = { war = { country = IND country = USA } } control = { province = 1565 data = USA } } } OR = { control = { province = 1579 data = IND } AND = { exists = PHI NOT = { war = { country = IND country = PHI } } control = { province = 1579 data = PHI } } AND = { exists = USA NOT = { war = { country = IND country = USA } } control = { province = 1579 data = USA } } } } } }
+		}
+	}
+	name = "A Friendly Southeast Asian Liberation Is Suspended"
+	desc = "A hub credited to Indian liberation is no longer held by India or a friendly eligible authority. Permanent campaign credit remains, but the current operational flag and any sea lane that relies on it are suspended."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	date = { day = 0 month = january year = 1933 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Suspend only the lost liberation map"
+		command = { trigger = { flag = ind_aubm_sea_land_malaya_liberated_current NOT = { AND = { OR = { control = { province = 1432 data = IND } AND = { exists = ENG NOT = { war = { country = IND country = ENG } } control = { province = 1432 data = ENG } } AND = { exists = MLY NOT = { war = { country = IND country = MLY } } control = { province = 1432 data = MLY } } AND = { exists = U75 NOT = { war = { country = IND country = U75 } } control = { province = 1432 data = U75 } } } OR = { control = { province = 1438 data = IND } AND = { exists = ENG NOT = { war = { country = IND country = ENG } } control = { province = 1438 data = ENG } } AND = { exists = MLY NOT = { war = { country = IND country = MLY } } control = { province = 1438 data = MLY } } AND = { exists = U75 NOT = { war = { country = IND country = U75 } } control = { province = 1438 data = U75 } } } } } } type = setflag which = ind_aubm_sea_land_malaya_liberated_suspended }
+		command = { trigger = { flag = ind_aubm_sea_land_malaya_liberated_current NOT = { AND = { OR = { control = { province = 1432 data = IND } AND = { exists = ENG NOT = { war = { country = IND country = ENG } } control = { province = 1432 data = ENG } } AND = { exists = MLY NOT = { war = { country = IND country = MLY } } control = { province = 1432 data = MLY } } AND = { exists = U75 NOT = { war = { country = IND country = U75 } } control = { province = 1432 data = U75 } } } OR = { control = { province = 1438 data = IND } AND = { exists = ENG NOT = { war = { country = IND country = ENG } } control = { province = 1438 data = ENG } } AND = { exists = MLY NOT = { war = { country = IND country = MLY } } control = { province = 1438 data = MLY } } AND = { exists = U75 NOT = { war = { country = IND country = U75 } } control = { province = 1438 data = U75 } } } } } } type = clrflag which = ind_aubm_sea_land_malaya_liberated_current }
+		command = { trigger = { flag = ind_aubm_sea_land_dei_liberated_current NOT = { OR = { control = { province = 1647 data = IND } AND = { exists = U05 NOT = { war = { country = IND country = U05 } } control = { province = 1647 data = U05 } } AND = { exists = HOL NOT = { war = { country = IND country = HOL } } control = { province = 1647 data = HOL } } AND = { exists = INO NOT = { war = { country = IND country = INO } } control = { province = 1647 data = INO } } } } } type = setflag which = ind_aubm_sea_land_dei_liberated_suspended }
+		command = { trigger = { flag = ind_aubm_sea_land_dei_liberated_current NOT = { OR = { control = { province = 1647 data = IND } AND = { exists = U05 NOT = { war = { country = IND country = U05 } } control = { province = 1647 data = U05 } } AND = { exists = HOL NOT = { war = { country = IND country = HOL } } control = { province = 1647 data = HOL } } AND = { exists = INO NOT = { war = { country = IND country = INO } } control = { province = 1647 data = INO } } } } } type = clrflag which = ind_aubm_sea_land_dei_liberated_current }
+		command = { trigger = { flag = ind_aubm_sea_land_indochina_liberated_current NOT = { AND = { OR = { control = { province = 1395 data = IND } AND = { exists = U03 NOT = { war = { country = IND country = U03 } } control = { province = 1395 data = U03 } } AND = { exists = FRA NOT = { war = { country = IND country = FRA } } control = { province = 1395 data = FRA } } AND = { exists = IDC NOT = { war = { country = IND country = IDC } } control = { province = 1395 data = IDC } } AND = { exists = VIE NOT = { war = { country = IND country = VIE } } control = { province = 1395 data = VIE } } } OR = { control = { province = 1399 data = IND } AND = { exists = U03 NOT = { war = { country = IND country = U03 } } control = { province = 1399 data = U03 } } AND = { exists = FRA NOT = { war = { country = IND country = FRA } } control = { province = 1399 data = FRA } } AND = { exists = IDC NOT = { war = { country = IND country = IDC } } control = { province = 1399 data = IDC } } AND = { exists = VIE NOT = { war = { country = IND country = VIE } } control = { province = 1399 data = VIE } } } } } } type = setflag which = ind_aubm_sea_land_indochina_liberated_suspended }
+		command = { trigger = { flag = ind_aubm_sea_land_indochina_liberated_current NOT = { AND = { OR = { control = { province = 1395 data = IND } AND = { exists = U03 NOT = { war = { country = IND country = U03 } } control = { province = 1395 data = U03 } } AND = { exists = FRA NOT = { war = { country = IND country = FRA } } control = { province = 1395 data = FRA } } AND = { exists = IDC NOT = { war = { country = IND country = IDC } } control = { province = 1395 data = IDC } } AND = { exists = VIE NOT = { war = { country = IND country = VIE } } control = { province = 1395 data = VIE } } } OR = { control = { province = 1399 data = IND } AND = { exists = U03 NOT = { war = { country = IND country = U03 } } control = { province = 1399 data = U03 } } AND = { exists = FRA NOT = { war = { country = IND country = FRA } } control = { province = 1399 data = FRA } } AND = { exists = IDC NOT = { war = { country = IND country = IDC } } control = { province = 1399 data = IDC } } AND = { exists = VIE NOT = { war = { country = IND country = VIE } } control = { province = 1399 data = VIE } } } } } } type = clrflag which = ind_aubm_sea_land_indochina_liberated_current }
+		command = { trigger = { flag = ind_aubm_sea_land_philippines_liberated_current NOT = { AND = { OR = { control = { province = 1565 data = IND } AND = { exists = PHI NOT = { war = { country = IND country = PHI } } control = { province = 1565 data = PHI } } AND = { exists = USA NOT = { war = { country = IND country = USA } } control = { province = 1565 data = USA } } } OR = { control = { province = 1579 data = IND } AND = { exists = PHI NOT = { war = { country = IND country = PHI } } control = { province = 1579 data = PHI } } AND = { exists = USA NOT = { war = { country = IND country = USA } } control = { province = 1579 data = USA } } } } } } type = setflag which = ind_aubm_sea_land_philippines_liberated_suspended }
+		command = { trigger = { flag = ind_aubm_sea_land_philippines_liberated_current NOT = { AND = { OR = { control = { province = 1565 data = IND } AND = { exists = PHI NOT = { war = { country = IND country = PHI } } control = { province = 1565 data = PHI } } AND = { exists = USA NOT = { war = { country = IND country = USA } } control = { province = 1565 data = USA } } } OR = { control = { province = 1579 data = IND } AND = { exists = PHI NOT = { war = { country = IND country = PHI } } control = { province = 1579 data = PHI } } AND = { exists = USA NOT = { war = { country = IND country = USA } } control = { province = 1579 data = USA } } } } } } type = clrflag which = ind_aubm_sea_land_philippines_liberated_current }
+	}
+}
+
+event = {
+	id = 9287686
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_sea_land_malaya_japan_occupation_seen
+		flag = ind_aubm_sea_land_malaya_liberated
+		flag = ind_aubm_sea_land_malaya_liberated_suspended
+		war = { country = IND country = JAP }
+		OR = {
+			AND = { exists = ENG NOT = { war = { country = IND country = ENG } } owned = { province = 1432 data = ENG } owned = { province = 1438 data = ENG } OR = { control = { province = 1432 data = IND } control = { province = 1432 data = ENG } } OR = { control = { province = 1438 data = IND } control = { province = 1438 data = ENG } } }
+			AND = { exists = MLY NOT = { war = { country = IND country = MLY } } owned = { province = 1432 data = MLY } owned = { province = 1438 data = MLY } OR = { control = { province = 1432 data = IND } control = { province = 1432 data = MLY } } OR = { control = { province = 1438 data = IND } control = { province = 1438 data = MLY } } }
+			AND = { exists = U75 NOT = { war = { country = IND country = U75 } } owned = { province = 1432 data = U75 } owned = { province = 1438 data = U75 } OR = { control = { province = 1432 data = IND } control = { province = 1432 data = U75 } } OR = { control = { province = 1438 data = IND } control = { province = 1438 data = U75 } } }
+		}
+		OR = { control = { province = 1432 data = IND } control = { province = 1438 data = IND } garrison = { country = IND province = 1432 type = land size = 1 area = no } garrison = { country = IND province = 1438 type = land size = 1 area = no } }
+	}
+	name = "Indian Command Restores the Malayan Liberation Map"
+	desc = "Singapore and Kuala Lumpur are again under friendly legal authority, and fresh Indian land presence proves operational participation. Current credit returns without repeating the one-time reward."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	date = { day = 0 month = january year = 1933 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Restore current Malayan credit"
+		command = { type = setflag which = ind_aubm_sea_land_malaya_liberated_current }
+		command = { type = clrflag which = ind_aubm_sea_land_malaya_liberated_suspended }
+	}
+}
+
+event = {
+	id = 9287687
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_sea_land_dei_japan_occupation_seen
+		flag = ind_aubm_sea_land_dei_liberated
+		flag = ind_aubm_sea_land_dei_liberated_suspended
+		war = { country = IND country = JAP }
+		OR = {
+			AND = { exists = U05 NOT = { war = { country = IND country = U05 } } owned = { province = 1647 data = U05 } OR = { control = { province = 1647 data = IND } control = { province = 1647 data = U05 } } }
+			AND = { exists = HOL NOT = { war = { country = IND country = HOL } } owned = { province = 1647 data = HOL } OR = { control = { province = 1647 data = IND } control = { province = 1647 data = HOL } } }
+			AND = { exists = INO NOT = { war = { country = IND country = INO } } owned = { province = 1647 data = INO } OR = { control = { province = 1647 data = IND } control = { province = 1647 data = INO } } }
+		}
+		OR = { control = { province = 1647 data = IND } garrison = { country = IND province = 1647 type = land size = 1 area = no } }
+	}
+	name = "Indian Command Restores the Batavia Liberation Map"
+	desc = "Batavia is again under friendly legal authority, and fresh Indian land presence proves operational participation. Current credit returns without requiring the rest of Java or repeating the reward."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	date = { day = 0 month = january year = 1933 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Restore current Batavia credit"
+		command = { type = setflag which = ind_aubm_sea_land_dei_liberated_current }
+		command = { type = clrflag which = ind_aubm_sea_land_dei_liberated_suspended }
+	}
+}
+
+event = {
+	id = 9287688
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_sea_land_indochina_japan_occupation_seen
+		flag = ind_aubm_sea_land_indochina_liberated
+		flag = ind_aubm_sea_land_indochina_liberated_suspended
+		war = { country = IND country = JAP }
+		OR = {
+			AND = { exists = U03 NOT = { war = { country = IND country = U03 } } owned = { province = 1395 data = U03 } OR = { control = { province = 1395 data = IND } control = { province = 1395 data = U03 } } }
+			AND = { exists = FRA NOT = { war = { country = IND country = FRA } } owned = { province = 1395 data = FRA } OR = { control = { province = 1395 data = IND } control = { province = 1395 data = FRA } } }
+			AND = { exists = IDC NOT = { war = { country = IND country = IDC } } owned = { province = 1395 data = IDC } OR = { control = { province = 1395 data = IND } control = { province = 1395 data = IDC } } }
+			AND = { exists = VIE NOT = { war = { country = IND country = VIE } } owned = { province = 1395 data = VIE } OR = { control = { province = 1395 data = IND } control = { province = 1395 data = VIE } } }
+		}
+		OR = {
+			AND = { exists = U03 NOT = { war = { country = IND country = U03 } } owned = { province = 1399 data = U03 } OR = { control = { province = 1399 data = IND } control = { province = 1399 data = U03 } } }
+			AND = { exists = FRA NOT = { war = { country = IND country = FRA } } owned = { province = 1399 data = FRA } OR = { control = { province = 1399 data = IND } control = { province = 1399 data = FRA } } }
+			AND = { exists = IDC NOT = { war = { country = IND country = IDC } } owned = { province = 1399 data = IDC } OR = { control = { province = 1399 data = IND } control = { province = 1399 data = IDC } } }
+			AND = { exists = VIE NOT = { war = { country = IND country = VIE } } owned = { province = 1399 data = VIE } OR = { control = { province = 1399 data = IND } control = { province = 1399 data = VIE } } }
+		}
+		OR = { control = { province = 1395 data = IND } control = { province = 1399 data = IND } garrison = { country = IND province = 1395 type = land size = 1 area = no } garrison = { country = IND province = 1399 type = land size = 1 area = no } }
+	}
+	name = "Indian Command Restores the Indochinese Liberation Map"
+	desc = "Hanoi and Saigon are again under friendly legal authority, including a split successor-state map, and fresh Indian land presence proves operational participation."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	date = { day = 0 month = january year = 1933 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Restore current Indochinese credit"
+		command = { type = setflag which = ind_aubm_sea_land_indochina_liberated_current }
+		command = { type = clrflag which = ind_aubm_sea_land_indochina_liberated_suspended }
+	}
+}
+
+event = {
+	id = 9287689
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	trigger = {
+		flag = ind_aubm_sea_land_philippines_japan_occupation_seen
+		flag = ind_aubm_sea_land_philippines_liberated
+		flag = ind_aubm_sea_land_philippines_liberated_suspended
+		war = { country = IND country = JAP }
+		OR = {
+			AND = { exists = PHI NOT = { war = { country = IND country = PHI } } owned = { province = 1565 data = PHI } owned = { province = 1579 data = PHI } OR = { control = { province = 1565 data = IND } control = { province = 1565 data = PHI } } OR = { control = { province = 1579 data = IND } control = { province = 1579 data = PHI } } }
+			AND = { exists = USA NOT = { war = { country = IND country = USA } } owned = { province = 1565 data = USA } owned = { province = 1579 data = USA } OR = { control = { province = 1565 data = IND } control = { province = 1565 data = USA } } OR = { control = { province = 1579 data = IND } control = { province = 1579 data = USA } } }
+		}
+		OR = { control = { province = 1565 data = IND } control = { province = 1579 data = IND } garrison = { country = IND province = 1565 type = land size = 1 area = no } garrison = { country = IND province = 1579 type = land size = 1 area = no } }
+	}
+	name = "Indian Command Restores the Philippine Liberation Map"
+	desc = "Manila and Davao are again under friendly Philippine or American legal authority, and fresh Indian land presence proves operational participation."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	date = { day = 0 month = january year = 1933 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Restore current Philippine credit"
+		command = { type = setflag which = ind_aubm_sea_land_philippines_liberated_current }
+		command = { type = clrflag which = ind_aubm_sea_land_philippines_liberated_suspended }
+	}
+}

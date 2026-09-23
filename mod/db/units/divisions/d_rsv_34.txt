@@ -1,0 +1,138 @@
+# MODEL_34_
+# AUBM: Frontier Force Rifles for mobile patrol, intelligence, and security.
+
+allowed_brigades = artillery
+allowed_brigades = anti_air
+allowed_brigades = armored_car
+allowed_brigades = engineer
+allowed_brigades = police
+
+# 0 - Frontier Force Division
+model = {
+	cost                    = 7
+	buildtime               = 360
+	manpower                = 10
+	maxspeed                = 8
+	defaultorganisation     = 42
+	morale                  = 48
+	defensiveness           = 38
+	toughness               = 38
+	softness                = 100
+	suppression             = 8
+	airdefence              = 14
+	softattack              = 9
+	hardattack              = 1
+	airattack               = 2
+	transportweight         = 6
+	supplyconsumption       = 0.6
+	fuelconsumption         = 0.05
+	upgrade_time_factor     = 0.2
+	upgrade_cost_factor     = 0.75
+	reinforce_time          = 0.45
+	reinforce_cost          = 0.4
+	equipment = { manpower = 10000 trucks = 720 horses = 3900 artillery = 42 heavy_artillery = 8 anti_tank = 20 anti_air = 10 armored_car = 12 }
+}
+
+# 1 - 1942 Frontier Mobile Group
+model = {
+	cost                    = 7.5
+	buildtime               = 360
+	manpower                = 10
+	maxspeed                = 8
+	defaultorganisation     = 44
+	morale                  = 50
+	defensiveness           = 40
+	toughness               = 40
+	softness                = 100
+	suppression             = 8
+	airdefence              = 16
+	softattack              = 11
+	hardattack              = 2
+	airattack               = 3
+	transportweight         = 6
+	supplyconsumption       = 0.65
+	fuelconsumption         = 0.05
+	upgrade_time_factor     = 0.2
+	upgrade_cost_factor     = 0.75
+	reinforce_time          = 0.45
+	reinforce_cost          = 0.4
+	equipment = { manpower = 10000 trucks = 900 horses = 3900 artillery = 48 heavy_artillery = 8 anti_tank = 28 anti_air = 14 armored_car = 18 }
+}
+
+# 2 - 1945 Frontier Brigade Group
+model = {
+	cost                    = 8
+	buildtime               = 360
+	manpower                = 10
+	maxspeed                = 8
+	defaultorganisation     = 46
+	morale                  = 52
+	defensiveness           = 42
+	toughness               = 42
+	softness                = 95
+	suppression             = 9
+	airdefence              = 18
+	softattack              = 13
+	hardattack              = 3
+	airattack               = 3
+	transportweight         = 6
+	supplyconsumption       = 0.7
+	fuelconsumption         = 0.05
+	upgrade_time_factor     = 0.2
+	upgrade_cost_factor     = 0.75
+	reinforce_time          = 0.45
+	reinforce_cost          = 0.4
+	equipment = { manpower = 10000 trucks = 1100 horses = 3000 artillery = 56 heavy_artillery = 8 anti_tank = 36 anti_air = 18 armored_car = 24 }
+}
+
+# 3 - 1951 Frontier Surveillance Group
+model = {
+	cost                    = 8.5
+	buildtime               = 360
+	manpower                = 10
+	maxspeed                = 9
+	defaultorganisation     = 48
+	morale                  = 54
+	defensiveness           = 44
+	toughness               = 44
+	softness                = 92
+	suppression             = 10
+	airdefence              = 20
+	softattack              = 15
+	hardattack              = 5
+	airattack               = 4
+	transportweight         = 6
+	supplyconsumption       = 0.8
+	fuelconsumption         = 0.1
+	upgrade_time_factor     = 0.2
+	upgrade_cost_factor     = 0.75
+	reinforce_time          = 0.45
+	reinforce_cost          = 0.4
+	equipment = { manpower = 10000 trucks = 1400 horses = 2200 artillery = 64 heavy_artillery = 8 anti_tank = 44 anti_air = 22 armored_car = 36 }
+}
+
+# 4 - 1959 Modern Frontier Rifles
+model = {
+	cost                    = 9
+	buildtime               = 360
+	manpower                = 9
+	maxspeed                = 9
+	defaultorganisation     = 50
+	morale                  = 56
+	defensiveness           = 46
+	toughness               = 46
+	softness                = 88
+	suppression             = 12
+	airdefence              = 22
+	softattack              = 18
+	hardattack              = 7
+	airattack               = 5
+	transportweight         = 6
+	supplyconsumption       = 0.9
+	fuelconsumption         = 0.2
+	upgrade_time_factor     = 0.2
+	upgrade_cost_factor     = 0.75
+	reinforce_time          = 0.45
+	reinforce_cost          = 0.4
+	equipment = { manpower = 9000 trucks = 1800 horses = 1000 artillery = 72 heavy_artillery = 8 anti_tank = 56 anti_air = 28 armored_car = 48 }
+}

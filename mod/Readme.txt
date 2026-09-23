@@ -1,120 +1,544 @@
 =======================================================================
- A UNION BEFORE MIDNIGHT - V3.4.1 OPEN BETA
+ A UNION BEFORE MIDNIGHT - V4.2.0 ALPHA 27 - 31 AUG 2026
  For Darkest Hour 1.05.2
+ Source version 4.2.0-alpha.27
 =======================================================================
 
 Freedom came early. Unity came at a price.
 
-A Union Before Midnight is an alternate-history campaign built on Blood and
-Iron v1.1. India becomes sovereign on 1 January 1933 and inherits an undivided
-British India, including Burma, together with the armed forces and unresolved
-institutions of the Raj. Ceylon and Goa remain colonial possessions; Nepal and
-Bhutan begin independent.
+A Union Before Midnight is an independent-India alternate-history campaign
+beginning on 1 January 1933. India inherits a united but unsettled continental
+state from Ceylon to Burma and must build a working federation, modern economy
+and credible armed forces before the world crisis reaches Asia.
 
-India is intentionally stronger than it was historically. Political bargains,
-industrial investment, military commitments and diplomatic risk can make it
-the world's second- or third-ranked power, but no route receives an automatic
-victory.
+Alpha 27 corrects the failed Alpha 26 terrain-visibility pass. Alpha 26 was the
+right installed build and its four mod lightmaps loaded, but the first human
+test could not see useful terrain cues in political or terrain mode. Alpha 27
+applies the original eight terrain motifs to all ordinary land, retains their
+strength at all four zooms and validates them through Darkest Hour's real
+political, terrain, Snow and Mud colour scales. Run
+tools/Enable-Aubm-OriginalTerrainVisuals.ps1 after the public install; it
+generates the lightmaps locally from your own Darkest Hour Full map, validates
+them and backs up the prior state. It reads no Blood and Iron or DEC map pixels.
+The generated lightmaps do not ship in GitHub. Alpha 27 makes no gameplay or
+balance changes beyond Alpha 24/25, and human in-engine acceptance is still
+required before the visual correction is called successful.
+
+The exact full version is displayed in a small bottom-right badge on the AUBM
+main menu and loading screen, and in the 1933 scenario title. The main artwork
+itself intentionally remains familiar. Those labels are generated from one
+version file; the generic "V4.2" folder label shown by Darkest Hour is not the
+only cue.
+
+The exact personal 41-family India sprite profile has been restored in the
+developer's local installation after the previous public deployment. It remains
+local-only: donor-derived sprites, palettes and model panels are excluded from
+the current V4 Git tree and do not ship in the public installer.
+
+Alpha 24 turns the vague early-air promise into an actual decision. The
+Airfield Security Act remains ground protection; The First Operational Air
+Group is the separate July 1934 contract choice for fighter, army-cooperation,
+maritime-patrol or doctrine-first development. It also gives India a distinct
+indigo political-map colour. Alpha 23's 20 authored war arcs, partner crises,
+primary-objective ownership and optional four-theatre Delhi-Tokyo campaign
+remain in place. This is still an unproven alpha playtest build.
+
+-----------------------------------------------------------------------
+ PLAYER REQUIREMENTS
+-----------------------------------------------------------------------
+
+- Darkest Hour 1.05.2.
+- Darkest Hour Full, included with the game.
+- A fresh 1933 campaign for the complete authored gameplay test. An Alpha 26
+  save can be resumed for the Alpha 27 visual-only correction after a complete
+  game exit and cold restart.
+
+Blood and Iron is not a runtime foundation and is not required to play an
+already built local installation. The exact personal sprite profile uses a
+locally installed Blood and Iron v1.1 as a donor and records every source hash.
+Those donor graphics are local-only and are not cleared for redistribution.
 
 -----------------------------------------------------------------------
  INSTALLATION
 -----------------------------------------------------------------------
 
-1. Install Darkest Hour 1.05.2 and Blood and Iron v1.1.
-2. Run INSTALL.bat from the A Union Before Midnight release package.
-3. Select "A Union Before Midnight" in the Darkest Hour launcher.
-4. Start "A Union Before Midnight: India 1933" and select India.
+1. Install Darkest Hour 1.05.2.
+2. Run INSTALL.bat from the A Union Before Midnight source/release folder.
+3. Select "A Union Before Midnight V4.2" in the launcher.
+4. Start the "A Union Before Midnight: India 1933" entry ending in the same
+   full version shown on the main menu.
 
-The installer creates an isolated copy of Blood and Iron and applies only the
-verified A Union Before Midnight overlay. It does not modify the foundation.
+The installer creates or updates an isolated copy of Darkest Hour Full, checks
+every overlay hash before and after copying, removes stale managed files, and
+preserves existing save files. It does not modify Darkest Hour Full itself.
 
-V3.4.1 requires a new 1933 campaign for every corrected trigger, balance rule
-and opening event to take effect. Earlier V3 saves are not supported by the
-public beta.
-
------------------------------------------------------------------------
- CAMPAIGN FEATURES
------------------------------------------------------------------------
-
-- A narrative independence prologue and provisional cabinet on 1-2 January
-  1933.
-- Stable full-cabinet government packages, researched ministers, staged
-  military leadership and thirty-one Indian technology teams.
-- Industrial, transport and resource programmes tied to verified Blood and
-  Iron province IDs.
-- A 150-209 provincial-IC core range by 1940 before wartime expansion,
-  depending on player choices.
-- Army, air and naval programmes capable of producing a major power without
-  giving every service its maximum force for free.
-- Arabian Sea, Bay of Bengal and Indian Ocean commands, with distinct carrier,
-  light-carrier and submarine doctrines.
-- Indian formation and unit naming pools for every land, air and naval type.
-- Indian unit panels, production icons, map palettes and dedicated Gurkha
-  visual coverage.
-- Gurkha, frontier, airborne, long-range penetration and Andaman marine
-  traditions.
-- Allied, German, Japanese, Soviet and armed non-aligned strategic routes.
-- A Japan route independent from Germany, covering China, Bose, the INA,
-  Imphal, Burma and competing visions of Asian leadership.
-- Indian reactions to Abyssinia, Spain, China, Anschluss, Munich, Prague and
-  the war over Poland.
-- Wartime finance, national service, logistics, science, civil liberty,
-  veterans and industrial reconversion.
-- Postwar and Cold War content through 1964.
+For a non-standard Steam library, run the PowerShell installer with -GameRoot.
 
 -----------------------------------------------------------------------
- V3.4.1 OPEN BETA HARDENING
+ THE ALPHA 22 CLEAN OPENING
 -----------------------------------------------------------------------
 
-- Rebalanced the National System of Science so autonomous universities are no
-  longer a free dominant choice.
-- Capped the conservative permanent global-research upper bound at 22% in 1940
-  and 34% in 1945 while retaining strong teams and foreign advances.
-- Replaced the bankruptcy and manpower exploits with conditional emergency
-  measures carrying political and economic consequences.
-- Added a later settlement for the Fiscal Stabilization Act.
-- Added validated affordability gates to every mandatory event whose actions
-  require resources.
-- Removed the light carrier from the submarine doctrine.
-- Closed the Soviet route after an alliance refusal.
-- Made Imphal recognition require an actual Malayan objective, and stopped
-  Japanese and German postwar settlements from overlapping.
-- Required peace, a secure Delhi and the relevant surviving alignment before
-  strategic-route settlements can fire.
-- Reduced the Allied broad-basing windfall.
-- Replaced forum-prohibited imagery and removed unrelated inherited graphics
-  from the distributed overlay.
+A fresh campaign now has three player-facing pre-union windows instead of
+nine: one premise acknowledgment and two genuine political choices.
+
+1. At scenario opening: acknowledge the campaign premise and sovereign settlement.
+2. During the opening 72 hours: choose the Provisional Cabinet.
+3. 6 January: choose the union method.
+
+Only the first two windows appear within the first 72 hours. Core campaign,
+service, modernization and strategy state is initialized by the premise. The
+Union Register opens inside the union choice, so a one-button register notice
+no longer interrupts the player. The War Cabinet remains closed until that
+union choice is complete.
+
+Fresh 1933 starts pre-sleep 219 events total: 217 retired legacy wartime/route
+IDs plus the two generic V3 Gurkha and frontier decisions. Fresh games use the
+unique V4 specialist paths. Upgrade saves keep readable Compatibility Review
+events when they need repair, but those events do not replay fresh-start money
+or manpower.
+
+The six bookkeeping windows in the older August 1934 autosave were campaign
+state (9280000), old-war-ledger retirement (9281900), modernization (9281000),
+cabinet records (9270792), strategy records (9280800), and the Union Register
+(9280100). That was a different campaign. None fires in the current 1 February
+1933 autosave: the premise initializes a fresh start and the union choice opens
+the register directly.
+
+The audit of existing events also:
+
+- makes the 1934 and 1936 constitutional reviews mutually exclusive;
+- gives all 18 founding branch identities one modest remembered dividend in
+  the existing one-shot July 1934 Union report, with no extra popup;
+- implements the +1 and +2 research rewards promised by education choices;
+- prevents a first foreign-credit package from charging its own service fee;
+- redirects three unsafe old direct-war menus to the guarded War Cabinet;
+- cross-locks V3 and V4 Gurkha/frontier recruitment; and
+- shows opening money, supply, manpower and dissent costs in action text.
+
+This is the first implemented subset of the larger Gameplay Fun Rework. The
+permanent domestic ledger, national priorities, wider force rebalance, deeper
+settlement ambition and postwar memory remain future work. Alpha 23 implements
+the route-guidance and protected-primary portion described next.
 
 -----------------------------------------------------------------------
- TESTING STATUS
+ THE ALPHA 23 AUTHORED CAMPAIGNS
 -----------------------------------------------------------------------
 
-The production gate checks 210 India entries across 25 modules, event syntax,
-IDs, triggers, action reachability, province ownership, province roles,
-construction caps, force plans, team and leader records, graphics, AI profiles
-and five deterministic prewar route simulations through 1940.
+The permanent War Cabinet now opens its normal curated route board only from
+1937, during a real Indian war, or after an explicit zero-reward early-sandbox
+opt-in. A normal 1933 peacetime opening no longer presents an emergency-war
+decision. The unrestricted country catalogue remains available behind its own
+warning page for players who deliberately want sandbox declarations.
 
-Human campaign testing has reached early 1937. The 1940 simulations are static
-and deterministic; they are not a substitute for the closed-source game
-engine. The 1942-1964 campaign is beta content until full route and postwar
-playthroughs are completed.
+Allied, German, Soviet, Japanese and sovereign command each have four authored
+primary campaigns. Every campaign announces:
+
+1. the war that activates it;
+2. the intermediate land, sea or regional milestone;
+3. a three-way command or political dilemma; and
+4. the exact culmination that earns one route-specific peace Congress.
+
+Secondary victories remain in the historical ledger but cannot steal the
+primary, open the Congress or relabel the result after a route switch. Peaceful
+withdrawal abandons the live board, preserves already-paid and historical
+credit, and starts the existing 90-day realignment. A primary already earned
+blocks every later charter even before its Congress appears.
+
+Separate-command partners can enter a new war without silently dragging India
+along. The resulting route crisis lets Delhi formalize and inherit all wars,
+open a selected Indian campaign, send limited support or remain outside. The
+partner can recognize, counter or refuse India's doctrine. Loss of the route's
+principal partner produces a route-specific relief, independent-command or
+disengagement choice. Sovereign Delhi-system partners use independent-plan and
+armed-neutrality choices rather than a fictional coalition withdrawal.
+
+The optional Japanese grand-campaign ledger records four linked chapters:
+
+- Southeast Asia plus Australia;
+- formal China field-command boundaries, a real Chinese result and the
+  Philippines allocation;
+- Aden, then Suez, then East African/western-ocean success; and
+- Baku plus Tbilisi or Astrakhan during an Indian-Soviet war.
+
+If Germany still holds Berlin and fights the Soviet Union, India may spend
+1,200 supplies and 500 oil on one finite Caucasus convoy; Germany receives 900
+supplies and 350 oil. This is not a passive German bonus. Grand completion is
+secondary acknowledgement only and transfers no province or peace authority.
+
+Formalizing an earned senior/full-sphere Tokyo compact now preserves that rank.
+A fresh formal entrant begins at peer/core. Compact-only China policy cannot
+appear after formal entry. Ratifying the Indian Ocean separate peace leaves the
+engine alliance and continues the Delhi-Tokyo relationship under separate
+command, with the consequence disclosed before selection.
+
+Exact route milestones are in docs/ROUTE_CAMPAIGN_MATRIX.md. The intended
+high-difficulty Tokyo run is in docs/JAPAN_GRAND_CAMPAIGN_GUIDE.md.
+
+-----------------------------------------------------------------------
+ THE RETAINED ALPHA 21 GAMEPLAY PASS
+-----------------------------------------------------------------------
+
+Alpha 19 fixed the unsupported foreign-country event scopes that caused Alpha
+18 to abort while loading the 1933 scenario. Alpha 20 retained that validator,
+made binding commitments exclusive and added local Batavia, Dutch-colonial and
+Malaya dockets plus the first flexible Southeast Asian ledger. Alpha 21 keeps
+that history and extends the system rather than replacing it.
+
+Earlier builds could let India capture Persia, Suez, Singapore or the East
+Indies without meaningful feedback until the entire world war ended. Old route
+flags could also disagree with India's actual alliances and wars. Alpha 18
+replaced that overlap with one state-driven War Cabinet and one common campaign
+contract.
+
+The new rules are:
+
+1. Actual alliances, wars, control and ownership outrank old policy flags.
+2. Every supported war publishes an Indian-controlled objective.
+3. Capturing it produces immediate theatre feedback and a live settlement.
+4. Losing it suspends the claim; recovering it restores the same file.
+5. Each opponent accepts, counters or refuses separately.
+6. Delhi ratifies only that pairwise peace; India's other wars continue.
+7. Annexation opens a sovereign, protected or direct-rule settlement.
+8. A completed campaign earns route standing and a Delhi peace congress.
+
+One refusal cannot block another country. If a government vanishes while its
+answer is in transit, the dead reply lock is removed and the campaign can reopen
+if that country later returns.
+
+Alpha 21 applies the complete Southeast Asian theatre to relevant Allied,
+German, Soviet, Japanese and sovereign wartime focuses. Four anti-Japanese
+friendly-owner liberation chains cover Indochina, the Philippines, Malaya and
+Batavia. Each requires recorded Japanese occupation, friendly restoration and
+direct Indian control or an Indian land garrison at a published hub.
+
+Eligible liberation credit can satisfy Malacca and South China Sea lane hinges
+where the engine returns territory to a friendly legal owner. Java Sea remains
+stricter: Batavia and Soerabaja plus sixteen ready surface combatants are still
+required. The full theatre needs two different land categories plus one sea
+lane, or one land category plus two different lanes. It grants no province and
+executes no automatic peace.
+
+The full rules and examples are in docs/SOUTHEAST_ASIA_VICTORY_MATRIX.md.
+
+The 1934 integration review also recognizes the mixed legitimacy-and-capacity
+state when no provincial bargain was recorded. That state can no longer stall
+the whole constitutional chain.
+
+-----------------------------------------------------------------------
+ STRATEGIC COMMAND
+-----------------------------------------------------------------------
+
+The permanent War Cabinet supports five command universes:
+
+- Allied: join Britain or the United States, or retain separate command.
+- German: join Berlin or cooperate as an independent co-belligerent.
+- Soviet: join Moscow, negotiate a compact, or pursue autonomous socialism.
+- Japanese: form an engine alliance or a separate Delhi-Tokyo compact.
+- Sovereign: fight country-by-country without a permanent patron.
+
+A formal alliance merges every current war because that is Darkest Hour engine
+behavior. A compact preserves separate declarations and peace authority. India
+can hold only one binding coalition or compact. Rival alignment events remain
+closed until India withdraws while at peace and completes a 90-day sovereign
+reset. A compact may still be upgraded within its own family. Coalition
+partners cannot be selected as War Cabinet targets.
+
+Alpha 21 repeats this rule in every live-state synchronizer and every direct or
+retired legacy entry action. A Berlin-Tokyo faction merger cannot relabel a
+current Japanese commitment as German, and missing relationship markers cannot
+silently erase a commitment. This is not a lifetime lock: an explicit at-peace
+withdrawal still starts the 90-day realignment and then permits a new family.
+
+Each route has four wartime doctrines and its own postwar Delhi congress. The
+final settlement can establish a concert of sovereign partners, an Indian
+security sphere, or renewed strategic autonomy.
+
+-----------------------------------------------------------------------
+ CAMPAIGN COVERAGE AND PEACE
+-----------------------------------------------------------------------
+
+India has 236 practical country-specific campaigns:
+
+- 5 bespoke great powers: Britain, Germany, Soviet Union, Japan and USA.
+- 21 bespoke regional opponents across Asia, Europe, Africa and Oceania.
+- 210 generated campaigns for other loaded and later-created sovereign tags.
+
+The common generated terms are 60 percent acceptance, 25 percent counteroffer
+and 15 percent refusal. Earned coalition, sovereign or great-power standing can
+improve them to 75/20/5. Bespoke negotiations disclose their own actual odds.
+
+After annexation India must choose:
+
+- restore a sovereign government and seek access or partnership;
+- establish a protected government at a political cost;
+- retain direct rule with dissent, belligerence and annual upkeep; or
+- defer the constitutional decision for a limited period.
+
+-----------------------------------------------------------------------
+ SOUTHEAST ASIA OPERATIONS
+-----------------------------------------------------------------------
+
+- Batavia (1647) opens a local U05 settlement without the national Southern
+  route. If the Netherlands legally owns the colony, it uses a separate HOL
+  colonial response instead of requiring Amsterdam.
+- Singapore (1432) and Kuala Lumpur (1438) open a Malaya-only British
+  settlement without requiring Borneo or the whole British campaign.
+- East Indies cessions include western New Guinea provinces 1594-1601 only
+  when the defeated U05 or HOL government legally owns them. Third-party land
+  is never taken.
+- Hanoi (1395) plus Saigon (1399), and Manila (1565) plus Davao (1579), record
+  standalone Indian land victories without adding another peace docket.
+- Bay of Bengal, Malacca, Java Sea and South China Sea achievements require the
+  named ports plus 8, 12, 16 and 18 surface ships respectively. Transports and
+  submarines do not count.
+- Every local claim suspends when its ports, live war or legal-owner condition
+  is lost, recovers when the published conditions return and pays its material
+  reward only once. Naval milestones transfer no territory.
+- The flexible theatre result is accepted by Allied Eastern Ocean and
+  anti-colonial focuses; German anti-imperial and southern-resource focuses;
+  Soviet ocean-war and republican-Asia focuses; Japan's Indian Southern Sphere;
+  and the sovereign Indian Ocean League.
+- Friendly liberation of Indochina, the Philippines, Malaya or Batavia counts
+  only after Japan first occupied the complete hubs and an Indian land unit or
+  direct Indian control proves participation when the friendly owner returns.
+- Friendly Malaya, Batavia, Indochina and Philippine credit can operate the
+  appropriate Malacca or South China Sea hinges. Batavia liberation alone does
+  not satisfy Java Sea Command.
+- The flexible theatre requires either two different land categories and one
+  sea lane, or one land category and two different lanes. Three results from
+  only one arm do not qualify.
+- Liberation and lane awards make no peace and transfer no land. Every local
+  settlement remains pairwise and legal-owner-only.
+
+-----------------------------------------------------------------------
+ JAPANESE PARTNERSHIP
+-----------------------------------------------------------------------
+
+The Delhi-Tokyo route now distinguishes a formal alliance from a strategic
+compact. Under the compact India can lead the southern campaign while Japan
+handles China, the Philippines and the Pacific, and India can open an
+independent Soviet war without automatically involving Japan.
+
+The southern ledger tracks:
+
+- Rangoon, Imphal and Port Blair for the Burma-Andaman approach.
+- Singapore and Kuala Lumpur for Malaya.
+- Palembang, Batavia and Soerabaja for the East Indies.
+- Darwin, Canberra and Sydney for Australia.
+
+Japanese occupation inside India's agreed theatre can transfer to Indian
+control while legal ownership waits for peace. India can settle Malaya,
+Indonesia and Australia before the entire Pacific war ends.
+
+Tibet is not transferred automatically. A victorious partnership improves the
+terms only after India fights a real Tibetan campaign, controls the verified
+objective and completes the constitutional settlement.
+
+The earlier second-proposal deadlock is repaired, influence accounting is
+corrected, and a pro-Japanese India no longer receives anti-Japanese criticism
+unless it actually fights Japan.
+
+The optional weaker Southern Armistice has a live Japan-specific gate. India
+must still be at war with Japan and have either the current recoverable direct
+limited-victory claim, or the permanent flexible-theatre record backed by at
+least one currently active anti-Japanese friendly liberation. Old route-neutral
+theatre history alone cannot be carried through a route switch into free terms;
+loss of all current leverage suspends eligibility until recovery. Decisive
+victory uses the normal great-power armistice board instead of this weaker path.
+
+Japan answers at 45 percent acceptance, 35 percent counteroffer and 20 percent
+refusal. Southern in-flight state plus a shared great-power terms-dispatch lock
+prevents initial, retry and cross-opponent dockets racing into duplicate or
+disabled popups; a decisive victory reached during cooldown returns the retry
+to the normal board. Acceptance or counteroffer ends only the India-Japan war.
+After refusal, Japan's docket waits 90 days and reopens only if the live gate
+still holds; otherwise it waits for leverage to recover. Transfers require
+Japanese legal ownership and Indian control; friendly-owner British, Malaysian,
+Singaporean, U05, Dutch or Indonesian land is never taken.
+
+-----------------------------------------------------------------------
+ WAR FINANCE, MOBILISATION AND OCCUPATION
+-----------------------------------------------------------------------
+
+The peacetime Union Budget begins in 1934. Permanent revenue grows through the
+Revenue Service, the 1937 Federal Income Tax Settlement and, from 1940 during an
+Indian or global war, the National War Finance Board. Taxation, borrowing and
+foreign credit carry visible political or debt costs.
+
+Whenever India is at war without an active account, a War Finance Act opens
+with bonds, taxation, external credit or ordinary revenue. Borrowing advances a
+cumulative four-tier debt register. A negative treasury can use guarded
+emergency credit. At the next wartime-account review after peace, India must
+choose redemption, annual service or politically costly repudiation.
+
+India receives one annual trained reserve class from 1934 through 1964. War
+also opens limited service, national service or a technical reserve. Further
+low-manpower call-ups cost supplies and dissent, and peace opens a real choice
+between demobilisation and retained readiness.
+
+Every new direct mandate advances an occupation register. Annual costs scale
+with the number of retained administrations. Civilianisation can reduce a high
+tier, but direct rule keeps an irreducible tier-one burden until sovereignty
+actually changes.
+
+-----------------------------------------------------------------------
+ ARMED FORCES AND RESEARCH
+-----------------------------------------------------------------------
+
+- 31 additional real Indian and subcontinental officers.
+- At least 80 active land leaders in 1938 and 90 in 1940.
+- Restored commando leaders for Gurkha, INA, airborne and frontier forces.
+- Eight special-unit families with 42 research-linked equipment models.
+- Distinct Gurkha, Frontier, Chindit, Airborne, Marine, Pioneer and Guards roles.
+- Arabian Sea Fleet: 1 BB, 2 CL and 2 DD.
+- Bay of Bengal Fleet: 1 BB, 2 CL and 2 DD.
+- Every Indian Ocean programme has a CV, 2 CVL or BC capital core.
+- New hulls receive the mature 50-percent model-zero time standard at normal
+  daily IC cost; ships already queued keep their saved completion dates.
+- Illegal unit and brigade combinations have been removed.
+- 31 Indian technology teams and a complete Raj-level research inheritance.
+- Air and naval combat favors organization loss and withdrawal over routine
+  annihilation, although bad engagements can still destroy units.
+
+Public installations use Darkest Hour Full sprites and ordinary model panels.
+The developer's exact 41-family animated India profile is restored locally
+after the previous public deployment, including its distinct specialist-family
+keys. Its donor-derived descriptors, strips, palettes and panels remain outside
+the current V4 Git tree and public manifests and must not be redistributed.
+
+-----------------------------------------------------------------------
+ DECISION INFORMATION
+-----------------------------------------------------------------------
+
+Major choices disclose money, supplies, manpower, dissent and foreign response
+odds before commitment. A decision remains selectable when at least one full
+action is affordable; every action keeps its own complete resource gate, while
+the description discloses the costs of unavailable alternatives.
+
+Strategic orientation, treaty, formal alliance and declaration of war are
+separate steps. Choosing a domestic Gandhi-Nehru government does not by itself
+forbid a Japanese, Allied, German, Soviet or sovereign foreign-policy route.
+
+-----------------------------------------------------------------------
+ COMPATIBILITY AND TESTING STATUS
+-----------------------------------------------------------------------
+
+Alpha 27 is the current source and installed local build. It is a visual-only
+correction, so the Alpha 26 campaign just started can be resumed after a full
+game exit and cold restart. Start a new 1933 campaign when testing the complete
+Alpha 23 gameplay arcs: V3 saves are unsupported, and earlier V4 saves do not
+exercise the fresh-only opening retirement or contain the complete liberation,
+lane, armistice, economy and authored-route state. The expanded leader roster
+and scenario research are serialized at game start.
+
+The Alpha 27 source passed static validation with 0 errors and 0 warnings, the
+art and visible-version gates, all native political/terrain/Snow/Mud terrain
+gates, economy/resource/campaign/combat/construction checks and the Steam Deck
+test. Its public installer manifest contains 344 donor-safe files. The local
+terrain transaction decoded all 447,525 installed map blocks and verified all
+four live lightmap hashes. The 27 save/config files remain byte-identical at
+172,625,181 bytes, and the separate 41-family personal India sprite profile is
+also hash-exact. The game has not been launched since the Alpha 27 terrain
+installation, so a cold engine load and human map inspection remain pending.
+
+The newest 29 Aug autosave is a separate Alpha 22 campaign at 1 December 1934.
+India is peaceful, uncommitted and still on the sovereign prewar route. Its
+maritime production is substantial, but only one transport flotilla, no combat
+surface fleet and no dedicated mountain formation are currently deployed.
+The 23 Aug manual save is the older December 1941 Japan-compact reference.
+Neither save validates the new Alpha 23 authored wartime behavior.
+
+The final post-fix donor-safe Alpha 23 -ValidateOnly run passed:
+
+- Deterministic repeat-build stability across 4,435 overlay files.
+- A generated 343-entry donor-safe public installer manifest.
+- Complete static validation with 0 errors and 0 warnings.
+- Art, economy, resource, campaign, combat, construction-cap and Steam Deck
+  gates.
+
+That source-only run did not publish a package, install or deploy the mod,
+launch the executable or play a campaign. The current tree is a clean
+deterministic package candidate; runtime and human-campaign acceptance remain
+separate gates.
+
+The last completed Alpha 22 acceptance run on 29 Aug 2026 passed:
+
+- 40,357 every-country checks across 210 generated countries.
+- 1,860 canonical wartime checks.
+- 668 five-route consequence checks.
+- 2,957 special-unit checks and 431 diplomatic-disclosure checks.
+- 305 southern-settlement checks, 79 union/dividend checks, 36 cold-start
+  checks, 24 audited early-game checks and the 21-event
+  Southeast Asia operations contract with four liberation chains and four
+  fleet-backed lanes.
+- Japan partnership and unsupported launch-syntax regression gates passed.
+- Deterministic repeat-build, full static, art, economy, resource, campaign,
+  combat, construction-cap and Steam Deck gates passed.
+- Public installer manifest: 342 managed files; copied foundation, donor and
+  unresolved assets excluded.
+- Donor-safe public manifest: 342 managed files, validated without deployment.
+- Installed personal payload: 1,531/1,531 files verified.
+- Fresh fullscreen 1933 India campaign reached the playable map with 0 exact
+  `ERROR :` lines and no crash dump; province validation ended with "No errors
+  found." The 1 February autosave contains all three opening AUBM IDs, followed
+  only by Army Oath (9271200), and none of the nine Compatibility Review IDs.
+- Local-only personal visuals: 41 unique families, 591 descriptors, 553 bitmap
+  strips and 44 palettes verified after deployment.
+
+Those Alpha 22 checks verify its build, parser, installer and initial launch.
+They do not validate Alpha 23 or replace a complete human wartime and postwar
+playthrough.
+
+Alpha 22's build and fresh-opening smoke remain historical evidence. Alpha 23's
+authored gameplay source later passed its deterministic suite; Alpha 26 then
+failed its human terrain-visibility goal despite loading the correct files.
+Alpha 27 is installed and passes its offline/static release gates, but has not
+yet received the required post-install engine and human visual check. The
+maintained validate_v4.py pipeline is the
+authoritative production validator; the obsolete validate_v3_legacy.py harness
+is not a release gate because its tools/v3_config.json input no longer exists.
+
+Still required:
+
+- A cold Alpha 27 launch confirming the bottom-right build badge, successful
+  1933 map entry and recognizable terrain cues in political and terrain mode at
+  all four zooms. This visual check may use the current Alpha 26 campaign; it
+  does not require another new game.
+- Representative Snow and Mud inspection in the actual engine compositor.
+- A fresh Alpha 23 gameplay campaign for the opening and authored-route arcs.
+- A controlled copied-old-save run confirming Compatibility Reviews repair
+  only missing state and never replay fresh money or manpower.
+- A no-cheat 1940/1942 force and economy measurement.
+- Real commitment/faction-merger, at-peace withdrawal and 90-day reset testing.
+- Friendly-owner liberation with Indian garrison proof, lane interoperability,
+  mixed three-result theatre and 45/35/20 Japanese armistice testing.
+- At least one complete armistice, annexation, occupation and Delhi-congress run.
+
+The executable still allows only one leader per formation and cannot
+automatically find and rebase every threatened air wing. Players must order
+aircraft away from an endangered base. An event can also attach only one module
+directly to an ordered ship; other legal modules enter the deployment pool.
+
+For a bug report, include the exact campaign date and route, whether the fault
+repeats from the same save, the last 100 lines of savedebug.txt, the relevant
+save when practical, and any manual edits or other overlays.
 
 -----------------------------------------------------------------------
  CREDITS AND RIGHTS
 -----------------------------------------------------------------------
 
-A Union Before Midnight design, events, validation and India-specific content:
-Mohsin Dingankar with Codex collaboration.
+Design and India-specific content:
+Mohsin Dingankar, developed with Codex collaboration.
 
-Foundation:
-Blood and Iron v1.1 by thewanderingknight.
+Gameplay is rebased directly on Darkest Hour Full. Public manifests exclude
+copied foundation/donor map assets, donor-derived sprites and palettes,
+donor-derived model panels and unresolved art. Developer-only local
+reconstructions remain subject to their original rights and must not be
+redistributed.
 
-Blood and Iron incorporates work from World in Flames 2, Edge of Darkness,
-Total Realism Project, Francesco's Models Mod, Kazoo's SKIF Style Icons,
-Decriser's DEC Map, the Official Graphic Pack, Horton13's Graphic Improvement
-Project, tioperete's ProvincePics Project and contributors credited in the
-original Blood and Iron release.
+This is a non-commercial fan modification. Darkest Hour and Hearts of Iron are
+trademarks of their respective owners. See RIGHTS.md and the art/research
+credits in the source package before redistribution.
 
-This is a non-commercial fan modification. Third-party material remains subject
-to its original rights and permissions. See RIGHTS.md and
-docs/ART_AND_RESEARCH_CREDITS.md in the release package before redistribution.
+The complete source-side gameplay guide is GAMEPLAY_CHANGES.md. The canonical
+Alpha 21 operational specification is docs/SOUTHEAST_ASIA_VICTORY_MATRIX.md.

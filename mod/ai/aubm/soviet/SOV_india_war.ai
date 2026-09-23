@@ -1,0 +1,22 @@
+# AUBM: Soviet support for an independent Indian anti-German front
+# Partial switch: it does not replace the stock German-war front logic.
+
+exp_force_ratio = 0.12
+
+combat = {
+	GER = 100
+	ITA = 35
+}
+
+befriend = {
+	IND = 200
+	PER = 80
+	AFG = 70
+}
+
+protect = {
+	IND = 130
+	PER = 70
+	AFG = 60
+}
+

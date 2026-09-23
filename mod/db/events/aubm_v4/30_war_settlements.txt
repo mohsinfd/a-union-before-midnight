@@ -1,0 +1,333 @@
+#########################################################################
+# A Union Before Midnight V4: war aims, liberation and demobilization
+#########################################################################
+
+event = {
+	id = 9280400
+	random = no
+	country = IND
+
+	trigger = {
+		atwar = yes
+		flag = ind_v3_world_role
+		NOT = { flag = ind_v4_war_aims }
+	}
+
+	name = "India Defines Its War Aims"
+	desc = "Mobilization answers how India will fight, not what peace it seeks. Parliament demands a public doctrine before Indian armies cross continents: an anti-colonial charter, a strategic settlement securing the Indian Ocean, or a limited defence of the Union."
+	style = 2
+	picture = "aubm_v4_war_aims"
+
+	date = { day = 0 month = january year = 1937 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		ai_chance = 40
+		name = "An anti-colonial charter"
+		command = { type = dissent value = -3 }
+		command = { type = domestic which = interventionism value = 2 }
+		command = { type = relation which = ENG value = -20 }
+		command = { type = relation which = FRA value = -20 }
+		command = { type = relation which = HOL value = -20 }
+		command = { type = setflag which = ind_v4_anti_colonial_war_aims }
+		command = { type = setflag which = ind_v4_war_aims }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Secure the Indian Ocean"
+		command = { type = supplies value = -500 }
+		command = { type = max_organization which = naval value = 3 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = setflag which = ind_v4_maritime_war_aims }
+		command = { type = setflag which = ind_v4_war_aims }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "Defend the Union, seek no empire"
+		command = { type = dissent value = -4 }
+		command = { type = domestic which = interventionism value = -1 }
+		command = { type = belligerence value = -3 }
+		command = { type = setflag which = ind_v4_limited_war_aims }
+		command = { type = setflag which = ind_v4_war_aims }
+	}
+}
+
+event = {
+	id = 9280401
+	random = no
+	country = IND
+
+	trigger = {
+		atwar = yes
+		flag = ind_v4_war_aims
+		year = 1942
+		NOT = { flag = ind_v4_liberation_policy }
+	}
+
+	name = "The Administration of Liberated Territory"
+	desc = "Indian forces may soon govern territory far beyond the Union. Military government is efficient but politically corrosive; provisional national councils advance independence but complicate supply; allied restoration is simple and risks replacing one empire with another."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+
+	date = { day = 0 month = january year = 1942 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		ai_chance = 45
+		name = "Provisional national councils"
+		command = { type = money value = -350 }
+		command = { type = dissent value = -3 }
+		command = { type = tc_mod value = -3 }
+		command = { type = belligerence value = -3 }
+		command = { type = setflag which = ind_v4_provisional_councils }
+		command = { type = setflag which = ind_v4_liberation_policy }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Temporary military government"
+		command = { type = supplies value = -600 }
+		command = { type = dissent value = 4 }
+		command = { type = tc_mod value = 5 }
+		command = { type = belligerence value = 2 }
+		command = { type = setflag which = ind_v4_military_government }
+		command = { type = setflag which = ind_v4_liberation_policy }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "Restore recognized allies"
+		command = { type = dissent value = -1 }
+		command = { type = relation which = ENG value = 20 }
+		command = { type = relation which = FRA value = 20 }
+		command = { type = relation which = USA value = 20 }
+		command = { type = setflag which = ind_v4_allied_restoration }
+		command = { type = setflag which = ind_v4_liberation_policy }
+	}
+}
+
+event = {
+	id = 9280402
+	random = no
+	country = IND
+
+	trigger = {
+		atwar = no
+		flag = ind_v4_war_aims
+		flag = ind_v4_peace_position_settled
+		year = 1944
+		NOT = { flag = ind_v4_demobilization_settlement }
+	}
+
+	name = "The Soldiers Return"
+	desc = "Peace releases millions of expectations at once. Veterans want land, employment and education; industry wants military contracts converted rather than cancelled; the services warn that a dangerous world has not become safe merely because one war ended."
+	style = 2
+	picture = "aubm_v4_soldiers_return"
+
+	date = { day = 0 month = january year = 1944 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		ai_chance = 40
+		name = "Veterans' land and education"
+		command = { type = money value = -700 }
+		command = { type = dissent value = -5 }
+		command = { type = manpowerpool value = 50 }
+		command = { type = research_mod value = 1 }
+		command = { type = setflag which = ind_v4_veterans_settlement }
+		command = { type = setflag which = ind_v4_demobilization_settlement }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Convert arsenals to development"
+		command = { type = money value = -500 }
+		command = { type = supplies value = -800 }
+		command = { type = industrial_modifier which = total value = 4 }
+		command = { type = dissent value = -2 }
+		command = { type = setflag which = ind_v4_arsenal_conversion }
+		command = { type = setflag which = ind_v4_demobilization_settlement }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "Maintain a ready force"
+		command = { type = dissent value = 3 }
+		command = { type = morale which = land value = 4 }
+		command = { type = morale which = air value = 4 }
+		command = { type = morale which = naval value = 4 }
+		command = { type = domestic which = professional_army value = 1 }
+		command = { type = setflag which = ind_v4_ready_force }
+		command = { type = setflag which = ind_v4_demobilization_settlement }
+	}
+}
+
+event = {
+	id = 9280403
+	random = no
+	country = IND
+
+	trigger = {
+		atwar = yes
+		year = 1943
+		flag = ind_v4_strategic_weight_2
+		NOT = { flag = ind_v4_war_effort_review }
+	}
+
+	name = "The 1943 War Effort Review"
+	desc = "India has influence, but influence is not yet a decisive voice. The Cabinet must decide whether to pay for a maximum expeditionary effort, consolidate a regional command, or reduce distant obligations and accept a smaller place at the peace table."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+
+	date = { day = 0 month = january year = 1943 }
+	offset = 12
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		ai_chance = 35
+		name = "Maximum effort: -350 money, -1200 supplies, +2 dissent"
+		command = { type = money value = -350 }
+		command = { type = supplies value = -1200 }
+		command = { type = dissent value = 2 }
+		command = { type = max_organization which = land value = 1 }
+		command = { type = max_organization which = air value = 1 }
+		command = { type = max_organization which = naval value = 1 }
+		command = { type = setflag which = ind_v4_campaign_maximum_effort }
+		command = { type = setflag which = ind_v4_strategic_weight_3 }
+		command = { type = setflag which = ind_v4_war_effort_review }
+	}
+	action_b = {
+		ai_chance = 45
+		name = "Consolidate the regional command: -250/-800"
+		command = { type = money value = -250 }
+		command = { type = supplies value = -800 }
+		command = { type = tc_mod value = 2 }
+		command = { type = repair_mod value = 2 }
+		command = { type = setflag which = ind_v4_campaign_regional_effort }
+		command = { type = setflag which = ind_v4_war_effort_review }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Reduce distant obligations: -2 dissent, less leverage"
+		command = { type = dissent value = -2 }
+		command = { type = relation which = ENG value = -10 }
+		command = { type = relation which = GER value = -10 }
+		command = { type = relation which = SOV value = -10 }
+		command = { type = relation which = JAP value = -10 }
+		command = { type = clrflag which = ind_v4_strategic_weight_2 }
+		command = { type = clrflag which = ind_v4_strategic_weight_3 }
+		command = { type = setflag which = ind_v4_campaign_limited_effort }
+		command = { type = setflag which = ind_v4_war_effort_review }
+	}
+}
+
+event = {
+	id = 9280404
+	random = no
+	country = IND
+
+	trigger = {
+		atwar = no
+		year = 1944
+		flag = ind_v4_war_aims
+		flag = ind_v4_strategic_weight_3
+		NOT = { flag = ind_v4_peace_position_settled }
+	}
+
+	name = "India at the Peace Table"
+	desc = "India reaches the settlement with a great power's claim: sustained mobilization, operational commitments and bargaining weight. Delhi can spend that leverage on formal global status, an Asian decolonization charter, or an Indian Ocean security order. It cannot secure all three at full strength."
+	style = 2
+	picture = "aubm_v4_war_aims"
+
+	date = { day = 0 month = january year = 1944 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		ai_chance = 35
+		name = "Claim a permanent great-power seat"
+		command = { type = research_mod value = 2 }
+		command = { type = tc_mod value = 3 }
+		command = { type = dissent value = -2 }
+		command = { type = relation which = USA value = 25 }
+		command = { type = relation which = ENG value = 15 }
+		command = { trigger = { exists = USA } type = event which = 9280640 where = USA when = 2 }
+		command = { type = setflag which = ind_v4_peace_great_power_seat }
+		command = { type = setflag which = ind_v4_peace_position_settled }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Make Asian decolonization the settlement"
+		command = { type = dissent value = -4 }
+		command = { type = belligerence value = -3 }
+		command = { type = relation which = CHI value = 35 }
+		command = { type = relation which = ENG value = -20 }
+		command = { type = relation which = FRA value = -20 }
+		command = { type = relation which = HOL value = -20 }
+		command = { trigger = { exists = CHI } type = event which = 9280641 where = CHI when = 2 }
+		command = { type = setflag which = ind_v4_peace_decolonization_charter }
+		command = { type = setflag which = ind_v4_peace_position_settled }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "Write an Indian Ocean security charter"
+		command = { type = max_organization which = naval value = 2 }
+		command = { type = repair_mod value = 3 }
+		command = { type = relation which = USA value = 20 }
+		command = { type = relation which = ENG value = 20 }
+		command = { trigger = { exists = USA } type = event which = 9280642 where = USA when = 2 }
+		command = { type = setflag which = ind_v4_peace_ocean_charter }
+		command = { type = setflag which = ind_v4_peace_position_settled }
+	}
+}
+
+event = {
+	id = 9280405
+	random = no
+	country = IND
+
+	trigger = {
+		atwar = no
+		year = 1944
+		flag = ind_v4_war_aims
+		NOT = { flag = ind_v4_strategic_weight_3 }
+		NOT = { flag = ind_v4_peace_position_settled }
+	}
+
+	name = "A Limited Seat at the Settlement"
+	desc = "India fought or supported the war without acquiring decisive leverage. Delhi is consulted, but the major powers will concede only a narrower settlement: commercial access, regional guarantees, or a clean return to strategic independence."
+	style = 2
+	picture = "aubm_v4_war_aims"
+
+	date = { day = 0 month = january year = 1944 }
+	offset = 7
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		ai_chance = 35
+		name = "Take reconstruction trade: +700 money"
+		command = { type = money value = 700 }
+		command = { type = industrial_modifier which = money value = 2 }
+		command = { type = setflag which = ind_v4_peace_trade_settlement }
+		command = { type = setflag which = ind_v4_peace_position_settled }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Secure regional guarantees: +1 land/air/naval organization"
+		command = { type = max_organization which = land value = 1 }
+		command = { type = max_organization which = air value = 1 }
+		command = { type = max_organization which = naval value = 1 }
+		command = { type = relation which = ENG value = 10 }
+		command = { type = relation which = USA value = 10 }
+		command = { type = setflag which = ind_v4_peace_regional_guarantees }
+		command = { type = setflag which = ind_v4_peace_position_settled }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "Leave the conference unbound: -2 dissent"
+		command = { type = dissent value = -2 }
+		command = { type = domestic which = interventionism value = -1 }
+		command = { type = belligerence value = -2 }
+		command = { type = setflag which = ind_v4_peace_unbound }
+		command = { type = setflag which = ind_v4_peace_position_settled }
+	}
+}

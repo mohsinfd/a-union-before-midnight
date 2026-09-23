@@ -1,0 +1,740 @@
+#########################################################################
+# A Union Before Midnight V4: commitment, late entry and war plans
+#########################################################################
+
+event = {
+	id = 9280510
+	random = no
+	persistent = yes
+	country = IND
+
+	decision = {
+		flag = ind_v3_world_role
+		year = 1937
+		atwar = no
+		NOT = { flag = ind_v4_commitment_review_cooldown }
+	}
+	decision_trigger = {
+		money = 350
+		supplies = 800
+	}
+
+	name = "Review India's Level of Commitment"
+	# AUBM_DECISION_DESC_MANUAL
+	decision_desc = "No foreign roll: 350 money and 800 supplies open a player-chosen commitment review. The result changes leverage and readiness, but does not itself create an alliance or declaration of war."
+	desc = "Orientation describes the powers Delhi is prepared to approach. Commitment decides what India will risk. The Cabinet can remain an observer, bind trade and technical policy to its current strategy, authorize limited military cooperation, or prepare an autonomous armed posture without entering an alliance."
+	style = 2
+	picture = "aubm_v4_strategic_council"
+
+	date = { day = 0 month = january year = 1937 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Open the commitment review"
+		command = { type = setflag which = ind_v4_commitment_review_cooldown }
+		command = { type = trigger which = 9280511 }
+	}
+}
+
+event = {
+	id = 9280511
+	random = no
+	persistent = yes
+	country = IND
+
+	name = "The Measure of Commitment"
+	desc = "Every degree of engagement creates leverage and exposure. Economic commitment moves goods, credit and expertise. Limited military cooperation shares intelligence, bases and staff work. Armed autonomy prepares India to intervene on its own terms. Observation preserves freedom but leaves other powers to decide the balance."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	action_a = {
+		ai_chance = 20
+		name = "Return to observation: less leverage, -1 dissent"
+		command = { type = clrflag which = ind_v4_commitment_economic }
+		command = { type = clrflag which = ind_v4_commitment_limited }
+		command = { type = clrflag which = ind_v4_commitment_autonomous }
+		command = { type = setflag which = ind_v4_commitment_observing }
+		command = { type = dissent value = -1 }
+		command = { type = domestic which = interventionism value = -1 }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Economic commitment: -200 money, -350 supplies"
+		command = { type = money value = -200 }
+		command = { type = supplies value = -350 }
+		command = { type = clrflag which = ind_v4_commitment_observing }
+		command = { type = clrflag which = ind_v4_commitment_limited }
+		command = { type = clrflag which = ind_v4_commitment_autonomous }
+		command = { type = setflag which = ind_v4_commitment_economic }
+		command = { type = setflag which = ind_v4_strategic_weight_1 }
+		command = { trigger = { flag = ind_v3_allied_orientation } type = relation which = ENG value = 15 }
+		command = { trigger = { flag = ind_v3_axis_orientation } type = relation which = GER value = 15 }
+		command = { trigger = { flag = ind_v3_soviet_orientation } type = relation which = SOV value = 15 }
+		command = { trigger = { flag = ind_v3_japanese_orientation } type = relation which = JAP value = 15 }
+		command = { trigger = { flag = ind_v3_non_aligned } type = relation which = CHI value = 10 }
+	}
+	action_c = {
+		ai_chance = 30
+		name = "Limited military ties: -350 money, -800 supplies"
+		command = { type = money value = -350 }
+		command = { type = supplies value = -800 }
+		command = { type = clrflag which = ind_v4_commitment_observing }
+		command = { type = clrflag which = ind_v4_commitment_economic }
+		command = { type = clrflag which = ind_v4_commitment_autonomous }
+		command = { type = setflag which = ind_v4_commitment_limited }
+		command = { type = setflag which = ind_v4_strategic_weight_1 }
+		command = { type = setflag which = ind_v4_strategic_weight_2 }
+		command = { type = max_organization which = land value = 1 }
+		command = { type = max_organization which = air value = 1 }
+		command = { type = domestic which = interventionism value = 1 }
+	}
+	action_d = {
+		ai_chance = 15
+		name = "Armed autonomy: -250 money, -600 supplies"
+		command = { type = money value = -250 }
+		command = { type = supplies value = -600 }
+		command = { type = clrflag which = ind_v4_commitment_observing }
+		command = { type = clrflag which = ind_v4_commitment_economic }
+		command = { type = clrflag which = ind_v4_commitment_limited }
+		command = { type = setflag which = ind_v4_commitment_autonomous }
+		command = { type = setflag which = ind_v4_strategic_weight_1 }
+		command = { type = setflag which = ind_v4_strategic_weight_2 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = dissent value = 1 }
+	}
+}
+
+event = {
+	id = 9280512
+	random = no
+	persistent = yes
+	country = IND
+
+	trigger = { flag = ind_v4_commitment_review_cooldown }
+
+	name = "The Commitment Review Reopens"
+	desc = "Six months of diplomacy and rearmament have changed the balance. The Cabinet may again adjust India's level of engagement if the country remains at peace."
+	style = 2
+	picture = "aubm_v4_strategic_council_returns"
+
+	date = { day = 0 month = january year = 1937 }
+	offset = 180
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Return the question to Cabinet"
+		command = { type = clrflag which = ind_v4_commitment_review_cooldown }
+	}
+}
+
+event = {
+	id = 9280520
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_allied_orientation
+		year = 1939
+		NOT = { flag = ind_v3_allied_naval_mission }
+		NOT = { flag = ind_v4_dynamic_allied_mission }
+	}
+
+	name = "A Sovereign Mission to London"
+	desc = "Whatever was discussed before the war, London must now deal with an independent India commanding Burma, Ceylon and the ocean routes. Britain offers equipment and staff liaison. Delhi can insist on reciprocal sovereignty, concentrate on naval cooperation, or keep the relationship diplomatic."
+	style = 2
+	picture = "aubm_v4_london_settlement"
+
+	date = { day = 0 month = january year = 1939 }
+	offset = 12
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		ai_chance = 45
+		name = "Reciprocal mission: -250 money, -500 supplies"
+		command = { type = money value = -250 }
+		command = { type = supplies value = -500 }
+		command = { type = relation which = ENG value = 35 }
+		command = { type = research_mod value = 1 }
+		command = { type = setflag which = ind_v4_commitment_economic }
+		command = { type = setflag which = ind_v4_strategic_weight_1 }
+		command = { type = setflag which = ind_v3_allied_naval_mission }
+		command = { type = event which = 9280606 where = ENG when = 1 }
+		command = { type = setflag which = ind_v4_dynamic_allied_mission }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Maritime staff exchange: -300/-650"
+		command = { type = money value = -300 }
+		command = { type = supplies value = -650 }
+		command = { type = max_organization which = naval value = 1 }
+		command = { type = max_organization which = air value = 1 }
+		command = { type = relation which = ENG value = 25 }
+		command = { type = setflag which = ind_v3_allied_naval_mission }
+		command = { type = event which = 9280606 where = ENG when = 1 }
+		command = { type = setflag which = ind_v4_dynamic_allied_mission }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Keep relations cordial, make no commitment"
+		command = { type = relation which = ENG value = 10 }
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_v4_dynamic_allied_mission }
+	}
+}
+
+event = {
+	id = 9280521
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_axis_orientation
+		year = 1939
+		NOT = { flag = ind_v3_german_mission }
+		NOT = { flag = ind_v4_dynamic_axis_mission }
+	}
+
+	name = "The Continental Mission"
+	desc = "Berlin presents the European war as an opportunity to break British control of the seas and Middle East. India can purchase machine tools through neutral carriers, study German operational methods, or refuse a relationship that may exchange one imperial dependency for another."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	date = { day = 0 month = january year = 1939 }
+	offset = 12
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		ai_chance = 40
+		name = "Blockade-running contracts: -250 money, +500 supplies"
+		command = { type = money value = -250 }
+		command = { type = supplies value = 500 }
+		command = { type = relation which = GER value = 35 }
+		command = { type = dissent value = 1 }
+		command = { type = setflag which = ind_v4_commitment_economic }
+		command = { type = setflag which = ind_v4_strategic_weight_1 }
+		command = { type = setflag which = ind_v3_german_mission }
+		command = { type = event which = 9280607 where = GER when = 1 }
+		command = { type = setflag which = ind_v4_dynamic_axis_mission }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Operational mission: -300 money, -650 supplies"
+		command = { type = money value = -300 }
+		command = { type = supplies value = -650 }
+		command = { type = max_organization which = land value = 2 }
+		command = { type = relation which = GER value = 25 }
+		command = { type = setflag which = ind_v3_german_mission }
+		command = { type = event which = 9280607 where = GER when = 1 }
+		command = { type = setflag which = ind_v4_dynamic_axis_mission }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "No secret obligations"
+		command = { type = relation which = GER value = -10 }
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_v4_dynamic_axis_mission }
+	}
+}
+
+event = {
+	id = 9280522
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_soviet_orientation
+		year = 1939
+		NOT = { flag = ind_v3_soviet_planning_mission }
+		NOT = { flag = ind_v4_dynamic_soviet_mission }
+	}
+
+	name = "The Moscow Technical Compact"
+	desc = "Moscow offers heavy-industrial advisers, oil-field engineering and operational doctrine. The Soviet mission can remain a commercial exchange, become a military compact, or be restricted to civilian science so that cooperation does not become political supervision."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	date = { day = 0 month = january year = 1939 }
+	offset = 12
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		ai_chance = 45
+		name = "Industrial compact: -250 money, -500 supplies"
+		command = { type = money value = -250 }
+		command = { type = supplies value = -500 }
+		command = { type = industrial_modifier which = supplies value = 2 }
+		command = { type = relation which = SOV value = 35 }
+		command = { type = setflag which = ind_v4_commitment_economic }
+		command = { type = setflag which = ind_v4_strategic_weight_1 }
+		command = { type = setflag which = ind_v3_soviet_planning_mission }
+		command = { type = event which = 9280608 where = SOV when = 1 }
+		command = { type = setflag which = ind_v4_dynamic_soviet_mission }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Military compact: -300 money, -700 supplies"
+		command = { type = money value = -300 }
+		command = { type = supplies value = -700 }
+		command = { type = max_organization which = land value = 2 }
+		command = { type = relation which = SOV value = 30 }
+		command = { type = setflag which = ind_v3_soviet_planning_mission }
+		command = { type = event which = 9280608 where = SOV when = 1 }
+		command = { type = setflag which = ind_v4_dynamic_soviet_mission }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Civil science only: -150 money"
+		command = { type = money value = -150 }
+		command = { type = research_mod value = 1 }
+		command = { type = relation which = SOV value = 10 }
+		command = { type = setflag which = ind_v3_soviet_planning_mission }
+		command = { type = setflag which = ind_v4_dynamic_soviet_mission }
+	}
+}
+
+event = {
+	id = 9280523
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_japanese_orientation
+		year = 1939
+		NOT = { flag = ind_v3_japanese_naval_mission }
+		NOT = { flag = ind_v4_dynamic_japan_mission }
+	}
+
+	name = "Delhi and Tokyo, Without Berlin"
+	desc = "Tokyo proposes a bilateral Asian compact independent of Germany. Naval cooperation could challenge European power, but Japan's war in China makes equality difficult to believe. India can demand mutual command, limit the relationship to maritime technology, or condition every agreement on peace in China."
+	style = 2
+	picture = "aubm_v4_tokyo_proposition"
+
+	date = { day = 0 month = january year = 1939 }
+	offset = 12
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		ai_chance = 35
+		name = "Demand an equal Asian compact: -300/-650"
+		command = { type = money value = -300 }
+		command = { type = supplies value = -650 }
+		command = { type = relation which = JAP value = 35 }
+		command = { type = relation which = CHI value = -15 }
+		command = { type = setflag which = ind_v4_commitment_limited }
+		command = { type = setflag which = ind_v4_strategic_weight_1 }
+		command = { type = setflag which = ind_v3_japanese_naval_mission }
+		command = { type = event which = 9280609 where = JAP when = 1 }
+		command = { type = setflag which = ind_v4_dynamic_japan_mission }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Maritime technology only: -250/-500"
+		command = { type = money value = -250 }
+		command = { type = supplies value = -500 }
+		command = { type = max_organization which = naval value = 1 }
+		command = { type = relation which = JAP value = 20 }
+		command = { type = setflag which = ind_v3_japanese_naval_mission }
+		command = { type = event which = 9280609 where = JAP when = 1 }
+		command = { type = setflag which = ind_v4_dynamic_japan_mission }
+	}
+	action_c = {
+		ai_chance = 30
+		name = "China must have peace first"
+		command = { type = relation which = JAP value = -15 }
+		command = { type = relation which = CHI value = 25 }
+		command = { type = setflag which = ind_v4_dynamic_japan_mission }
+	}
+}
+
+event = {
+	id = 9280524
+	random = no
+	country = IND
+
+	trigger = {
+		OR = {
+			flag = ind_v3_non_aligned
+			flag = ind_v3_independent_asia
+		}
+		year = 1939
+		NOT = { flag = ind_v3_delhi_conference }
+		NOT = { flag = ind_v4_dynamic_nam_mission }
+	}
+
+	name = "The Delhi Conference of Asian States"
+	desc = "Non-alignment needs institutions if it is to survive a world war. Delhi can organize an Asian security conference with China and Siam, build a neutral trade and convoy system, or preserve complete freedom of action at the cost of regional influence."
+	style = 2
+	picture = "aubm_v4_asian_strategy_menu"
+
+	date = { day = 0 month = january year = 1939 }
+	offset = 12
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		ai_chance = 40
+		name = "Asian security conference: -300 money, -500 supplies"
+		command = { type = money value = -300 }
+		command = { type = supplies value = -500 }
+		command = { type = relation which = CHI value = 30 }
+		command = { type = relation which = SIA value = 25 }
+		command = { type = setflag which = ind_v3_independent_asia }
+		command = { type = setflag which = ind_v4_commitment_economic }
+		command = { type = setflag which = ind_v4_strategic_weight_1 }
+		command = { type = setflag which = ind_v3_delhi_conference }
+		command = { type = event which = 9280616 where = CHI when = 1 }
+		command = { type = event which = 9280618 where = SIA when = 1 }
+		command = { type = setflag which = ind_v4_dynamic_nam_mission }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Neutral convoy system: -200 money, -600 supplies"
+		command = { type = money value = -200 }
+		command = { type = supplies value = -600 }
+		command = { type = repair_mod value = 2 }
+		command = { type = industrial_modifier which = money value = 2 }
+		command = { type = setflag which = ind_v4_commitment_autonomous }
+		command = { type = setflag which = ind_v4_strategic_weight_1 }
+		command = { type = setflag which = ind_v3_delhi_conference }
+		command = { type = setflag which = ind_v4_dynamic_nam_mission }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "No permanent machinery"
+		command = { type = dissent value = -1 }
+		command = { type = domestic which = interventionism value = -1 }
+		command = { type = setflag which = ind_v4_dynamic_nam_mission }
+	}
+}
+
+event = {
+	id = 9280530
+	random = no
+	country = IND
+
+	trigger = {
+		atwar = yes
+		flag = ind_v3_allied_orientation
+		NOT = { flag = ind_v4_allied_war_plan }
+	}
+
+	name = "India's Allied War Plan"
+	desc = "Alliance does not answer where Indian power should fall. Delhi can sustain the Middle East and ocean routes, concentrate on Burma and Southeast Asia, or limit operations to defence of the Union."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+
+	date = { day = 0 month = january year = 1939 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		ai_chance = 35
+		name = "Middle East and ocean routes: -400/-1000"
+		command = { type = money value = -400 }
+		command = { type = supplies value = -1000 }
+		command = { type = max_organization which = naval value = 2 }
+		command = { type = relation which = ENG value = 25 }
+		command = { type = setflag which = ind_v4_strategic_weight_2 }
+		command = { type = setflag which = ind_v4_allied_war_plan }
+	}
+	action_b = {
+		ai_chance = 45
+		name = "Burma and Southeast Asia: -350/-1100"
+		command = { type = money value = -350 }
+		command = { type = supplies value = -1100 }
+		command = { type = max_organization which = land value = 2 }
+		command = { type = max_organization which = air value = 1 }
+		command = { type = setflag which = ind_v4_strategic_weight_2 }
+		command = { type = setflag which = ind_v4_allied_war_plan }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Defend the Union: -450 supplies, +2 dissent"
+		command = { type = supplies value = -450 }
+		command = { type = dissent value = 2 }
+		command = { type = relation which = ENG value = -10 }
+		command = { type = setflag which = ind_v4_allied_war_plan }
+	}
+}
+
+event = {
+	id = 9280531
+	random = no
+	country = IND
+
+	trigger = {
+		atwar = yes
+		flag = ind_v3_axis_orientation
+		NOT = { flag = ind_v4_axis_war_plan }
+	}
+
+	name = "India's Continental War Plan"
+	desc = "Berlin expects India to attack the British imperial system. Delhi can seek a decision in the Indian Ocean, drive toward the Gulf and Persia, or preserve its forces while Germany carries the European war."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+
+	date = { day = 0 month = january year = 1939 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		ai_chance = 40
+		name = "Indian Ocean offensive: -400/-1100"
+		command = { type = money value = -400 }
+		command = { type = supplies value = -1100 }
+		command = { type = max_organization which = naval value = 2 }
+		command = { type = max_organization which = air value = 1 }
+		command = { type = setflag which = ind_v4_strategic_weight_2 }
+		command = { type = setflag which = ind_v4_axis_war_plan }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Gulf and Persian campaign: -350/-1000"
+		command = { type = money value = -350 }
+		command = { type = supplies value = -1000 }
+		command = { type = max_organization which = land value = 2 }
+		command = { type = relation which = GER value = 20 }
+		command = { type = setflag which = ind_v4_strategic_weight_2 }
+		command = { type = setflag which = ind_v4_axis_war_plan }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "A limited anti-imperial war: +2 dissent"
+		command = { type = dissent value = 2 }
+		command = { type = relation which = GER value = -15 }
+		command = { type = setflag which = ind_v4_axis_war_plan }
+	}
+}
+
+event = {
+	id = 9280532
+	random = no
+	country = IND
+
+	trigger = {
+		atwar = yes
+		flag = ind_v3_soviet_orientation
+		NOT = { flag = ind_v4_soviet_war_plan }
+	}
+
+	name = "India's Socialist War Plan"
+	desc = "Moscow requests pressure across Persia and Central Asia while India must still protect Burma. Delhi can open a western logistics front, build an eastern anti-Japanese command, or retain national operational control without distant commitments."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+
+	date = { day = 0 month = january year = 1939 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		ai_chance = 35
+		name = "Persian logistics front: -350/-1000"
+		command = { type = money value = -350 }
+		command = { type = supplies value = -1000 }
+		command = { type = tc_mod value = 2 }
+		command = { type = relation which = SOV value = 25 }
+		command = { type = setflag which = ind_v4_strategic_weight_2 }
+		command = { type = setflag which = ind_v4_soviet_war_plan }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Eastern anti-Japanese command: -350/-1050"
+		command = { type = money value = -350 }
+		command = { type = supplies value = -1050 }
+		command = { type = max_organization which = land value = 2 }
+		command = { type = max_organization which = air value = 1 }
+		command = { type = setflag which = ind_v4_strategic_weight_2 }
+		command = { type = setflag which = ind_v4_soviet_war_plan }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "National command only: +1 dissent"
+		command = { type = dissent value = 1 }
+		command = { type = relation which = SOV value = -10 }
+		command = { type = setflag which = ind_v4_soviet_war_plan }
+	}
+}
+
+event = {
+	id = 9280533
+	random = no
+	country = IND
+
+	trigger = {
+		atwar = yes
+		flag = ind_v3_japanese_orientation
+		NOT = { flag = ind_v4_japan_war_plan }
+	}
+
+	name = "India's Independent Asian War Plan"
+	desc = "Tokyo expects access and subordination; Delhi insists that bilateral alliance means separate command. India can lead the Burma-Malaya theatre, attack colonial sea power, or refuse operations that support Japan's war in China."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+
+	date = { day = 0 month = january year = 1939 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		ai_chance = 40
+		name = "Indian Burma-Malaya command: -400/-1100"
+		command = { type = money value = -400 }
+		command = { type = supplies value = -1100 }
+		command = { type = max_organization which = land value = 2 }
+		command = { type = max_organization which = air value = 1 }
+		command = { type = setflag which = ind_v4_strategic_weight_2 }
+		command = { type = setflag which = ind_v4_japan_war_plan }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Indian Ocean offensive: -400/-1050"
+		command = { type = money value = -400 }
+		command = { type = supplies value = -1050 }
+		command = { type = max_organization which = naval value = 2 }
+		command = { type = relation which = JAP value = 20 }
+		command = { type = setflag which = ind_v4_strategic_weight_2 }
+		command = { type = setflag which = ind_v4_japan_war_plan }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "No war against China: +2 dissent"
+		command = { type = dissent value = 2 }
+		command = { type = relation which = JAP value = -25 }
+		command = { type = relation which = CHI value = 25 }
+		command = { type = setflag which = ind_v4_japan_war_plan }
+	}
+}
+
+event = {
+	id = 9280534
+	random = no
+	country = IND
+
+	trigger = {
+		atwar = yes
+		OR = {
+			flag = ind_v3_non_aligned
+			flag = ind_v3_independent_asia
+		}
+		NOT = { flag = ind_v4_nam_war_plan }
+	}
+
+	name = "War Without a Patron"
+	desc = "India has entered war without accepting a great-power command. Delhi can defend neutral commerce, organize an Asian coalition command, or concentrate every formation on the Union's frontiers. Independence now has a military price."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+
+	date = { day = 0 month = january year = 1939 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		ai_chance = 35
+		name = "Defend neutral commerce: -300/-900"
+		command = { type = money value = -300 }
+		command = { type = supplies value = -900 }
+		command = { type = repair_mod value = 2 }
+		command = { type = max_organization which = naval value = 1 }
+		command = { type = setflag which = ind_v4_strategic_weight_2 }
+		command = { type = setflag which = ind_v4_nam_war_plan }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Asian coalition command: -350/-1000"
+		command = { type = money value = -350 }
+		command = { type = supplies value = -1000 }
+		command = { type = relation which = CHI value = 25 }
+		command = { type = relation which = SIA value = 15 }
+		command = { type = max_organization which = land value = 2 }
+		command = { type = setflag which = ind_v4_strategic_weight_2 }
+		command = { type = setflag which = ind_v4_nam_war_plan }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "Fortress Union: -500 supplies, +1 dissent"
+		command = { type = supplies value = -500 }
+		command = { type = dissent value = 1 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = setflag which = ind_v4_nam_war_plan }
+	}
+}
+
+event = {
+	id = 9280540
+	random = no
+	country = IND
+
+	trigger = {
+		atwar = yes
+		year = 1944
+		flag = ind_v4_strategic_weight_2
+		NOT = { flag = ind_v4_strategic_weight_3 }
+	}
+
+	name = "India Becomes a Decisive Belligerent"
+	desc = "Five years of mobilization, supplies, bases and field operations have made it impossible for the great powers to treat India as an auxiliary. Delhi's sustained contribution will now shape negotiations over command and peace. A major battlefield success or maximum-effort decision can establish the same claim earlier."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+
+	date = { day = 0 month = january year = 1944 }
+	offset = 20
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "India will claim a great power's voice"
+		command = { type = setflag which = ind_v4_strategic_weight_3 }
+		command = { trigger = { flag = ind_v3_allied_orientation } type = relation which = ENG value = 10 }
+		command = { trigger = { flag = ind_v3_axis_orientation } type = relation which = GER value = 10 }
+		command = { trigger = { flag = ind_v3_soviet_orientation } type = relation which = SOV value = 10 }
+		command = { trigger = { flag = ind_v3_japanese_orientation } type = relation which = JAP value = 10 }
+	}
+}
+
+event = {
+	id = 9280541
+	random = no
+	country = IND
+
+	trigger = {
+		atwar = no
+		year = 1942
+		flag = ind_v4_strategic_weight_1
+		NOT = { flag = ind_v4_neutrality_price_paid }
+	}
+
+	name = "The Price of Staying Outside"
+	desc = "The widening war brings blockade lists, contraband inspections, refugee traffic and demands for bases. India may remain neutral, but only by paying for enforcement, accepting profitable political friction, or devoting diplomatic capital to mediation."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+
+	date = { day = 0 month = january year = 1942 }
+	offset = 20
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		ai_chance = 40
+		name = "Enforce armed neutrality: -300/-600"
+		command = { type = money value = -300 }
+		command = { type = supplies value = -600 }
+		command = { type = max_organization which = naval value = 1 }
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = ind_v4_neutrality_price_paid }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Exploit wartime trade: +550 money, +3 dissent"
+		command = { type = money value = 550 }
+		command = { type = dissent value = 3 }
+		command = { type = relation which = ENG value = -10 }
+		command = { type = relation which = USA value = -10 }
+		command = { type = setflag which = ind_v4_neutrality_price_paid }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "Fund permanent mediation: -175 money"
+		command = { type = money value = -175 }
+		command = { type = dissent value = -1 }
+		command = { type = relation which = CHI value = 10 }
+		command = { type = setflag which = ind_v4_neutrality_price_paid }
+	}
+}
