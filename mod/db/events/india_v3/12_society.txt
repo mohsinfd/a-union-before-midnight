@@ -306,7 +306,7 @@ event = {
 	}
 
 	name = "The National Education Act"
-	desc = "A great-power economy cannot be built by a tiny educated elite. Universal primary education is the broadest reform, while technical institutes and scholarships deliver engineers and officers sooner."
+	desc = "Choose a national school system or technical colleges. Schools cost 450 money and 12 manpower, reduce dissent by 3 and permanently add +3 research speed, with -2 money production to pay for them. Technical colleges cost 200 money and 8 manpower, add +4 research speed and two factories at Bangalore. Schools ease unrest; colleges bring a faster industrial return. Choose once."
 	style = 2
 	picture = "india_v3_industry"
 
@@ -328,7 +328,7 @@ event = {
 	action_b = {
 		ai_chance = 45
 		name = "Prioritize technical institutes and scholarships"
-
+		command = { type = money value = -200 }
 		command = { type = manpowerpool value = -8 }
 		command = { type = research_mod value = 4 }
 		command = { type = construct which = ic where = 1502 value = 2 trigger = { owned = { province = 1502 data = IND } } }

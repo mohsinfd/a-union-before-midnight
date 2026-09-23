@@ -1054,7 +1054,16 @@ def main() -> int:
             "date = { day = 0 month = january year = 1933 }" in events.get(event_id, ""),
             f"theatre monitor {event_id} sleeps through an early Indian war",
         )
-    require(errors, "atwar = no" not in strip_comments(MODULE_PATHS[2].read_text(encoding="cp1252")), "local settlements wait for global peace")
+    # LIBERATOR1 shares this save-loaded file but its final, optional two-front
+    # conference is explicitly postwar. Every actual local settlement retains
+    # the original independent-war contract; do not exempt the whole new pack.
+    local_blocks = parse_events((MODULE_PATHS[2],))
+    for event_id, block in local_blocks.items():
+        if event_id == 9289872:
+            require(errors, "atwar = no" in block and "ind_lib1_two_front_peace" in block,
+                    "LIBERATOR1 final conference lost its peace/one-time gate")
+        else:
+            require(errors, "atwar = no" not in block, f"local settlement {event_id} waits for global peace")
     require(errors, "atwar = no" not in strip_comments(MODULE_PATHS[4].read_text(encoding="cp1252")), "great-power settlements wait for global peace")
     require(errors, "atwar = no" not in strip_comments(MODULE_PATHS[5].read_text(encoding="cp1252")), "regional settlements wait for global peace")
 
@@ -1180,8 +1189,8 @@ def main() -> int:
             require(errors, "type = peace" not in block, f"foreign event {event_id} executes an unsafe peace command")
 
     callback_contracts = {
-        9282037: (9282040, 9282044, 9282045),
-        9282038: (9282043, 9282044, 9282045),
+        9282037: (9282040, 9282044, 9282045, 9282045),  # guarded stale-proposal fallback
+        9282038: (9282043, 9282044, 9282045, 9282045),
         9282039: (9282044, 9282044, 9282045),
         9282171: (9282143, 9282144, 9282145),
         9282172: (9282143, 9282144, 9282145),

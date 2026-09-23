@@ -661,7 +661,7 @@ event = {
 	}
 
 	name = "The Armoured Corps Is Gazetted"
-	desc = "Experimental light armour already delivered to the army is now recognized as a permanent service arm. The corrected establishment makes its formations visible to the deployment office and permits follow-on production."
+	desc = "The army now allows regular production of light armour and armoured-car brigades. This order unlocks those unit types. It does not deliver a division or finish units already under construction."
 	style = 2
 	picture = "india_v3_armed_forces"
 
@@ -693,7 +693,7 @@ event = {
 	}
 
 	name = "The Air Transport Command Is Gazetted"
-	desc = "Aircraft acquired under civil and airborne programmes are transferred from provisional registers to the Indian Air Force establishment. Existing lift wings become available to the deployment office and the type enters regular production."
+	desc = "The air force now allows regular production of transport aircraft and escort brigades. This order unlocks those unit types. It does not deliver aircraft or finish orders already under construction."
 	style = 2
 	picture = "india_v3_armed_forces"
 

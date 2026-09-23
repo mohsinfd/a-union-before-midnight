@@ -25,7 +25,7 @@ event = {
 
 	action_a = {
 		ai_chance = 50
-		name = "Three 35% field cadres and four 50% garrisons"
+		name = "Three infantry divisions and four garrison divisions"
 		command = { type = money value = -450 }
 		command = { type = supplies value = -3250 }
 		command = { type = manpowerpool value = 180 }

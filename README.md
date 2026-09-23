@@ -10,6 +10,38 @@ Indian state to choose its own place in the world?
 
 *Freedom came early. Unity came at a price.*
 
+Latest local roster delta: **27-ROSTER1**, built on **27-BALANCE1**, for a
+**new 1933 campaign**. See [the cabinet, commander and research-team guide](docs/ROSTER1_RELEASE.md).
+For a player-facing explanation of the opening, economy, military, diplomacy and
+long-war objectives, see [the new-game play guide](docs/NEW_GAME_PLAY_GUIDE.md).
+For a one-line audit of the specific issues raised during playtesting, see the
+[player-request fix ledger](docs/PLAYER_REQUEST_FIX_LEDGER.md).
+It consolidates duplicate ministers, adds distinct policy alternatives,
+specialises commanders without increasing their skill or ranks, and gives research
+teams meaningful jobs. Menu/scenario text and the local install receipt identify
+the installed patch; old saves are not migrated. Native playtesting remains open.
+
+The underlying gameplay delta is **27-BALANCE1**. See
+[the current changes, build/install procedure and honest testing limits](docs/BALANCE1_RELEASE.md).
+It preserves strong Indian naval catch-up, pairs industry with resource output,
+repairs recorded event choices and unit locks, and adds guarded world-AI responses.
+It is based on the actually installed Candidate5/Jade1 plus later campaign fixes,
+not the older authored overlay. The local install receipt, not an old save or
+background-art stamp, identifies the installed build. Native balance testing
+is not complete; old saves are not migrated to these new economic/naval rules.
+
+The earlier September 2026 event redesign is the inherited foundation, not the
+latest standalone install target. Its historical design records remain useful. See
+[the consolidated German, Moscow and Ocean endings](docs/EVENT_REDESIGN_CANDIDATE5.md),
+[the negotiated decolonisation outcomes](docs/EVENT_REDESIGN_CANDIDATE4.md),
+[the four non-Japanese campaigns](docs/EVENT_REDESIGN_CANDIDATE3.md),
+[the western-campaign and choice improvements](docs/EVENT_REDESIGN_CANDIDATE2.md),
+[the underlying redesign and release blockers](docs/EVENT_REDESIGN_CANDIDATE1.md)
+and [the navy, Nepal and economy changes](docs/EVENT_REDESIGN_STAGE4_REVIEW.md).
+The Himalayan integration revision now also covers Bhutan; see
+[both kingdoms' acceptance odds and integration rules](docs/HIMALAYAN_MERGERS.md).
+Do not install `build/redesign/staged-authored` as a playable replacement.
+
 India begins sovereign from Delhi to Rangoon. It has enormous potential, weak
 institutions, uneven infrastructure and an inherited military that is large on
 paper but not ready for modern war. Political bargains, industrial investment,
@@ -22,6 +54,12 @@ second- or third-ranked power, but no route grants an automatic victory.
 - Darkest Hour Full, included with the game
 - A new 1933 campaign
 - Python 3.10 or newer for the post-install original terrain compiler only
+
+The new-campaign requirement concerns a first gameplay installation. The local
+hybrid terrain update and the LIBERATOR campaign add-ons can use a compatible
+existing save. LIBERATOR3's expanded commander roster requires the separately
+repaired save for an existing campaign; installing a leader CSV alone does not
+add those officers to an already saved game.
 
 This repository contains only the **A Union Before Midnight overlay**. It does not
 redistribute Darkest Hour. Players do not need Blood and Iron to play AUBM or
@@ -71,6 +109,33 @@ change back. Generated Darkest Hour-derived lightmaps are deliberately not
 placed in GitHub or the public installer.
 
 ## V4 Direct-DH Alpha
+
+**Current local gameplay add-on: LIBERATOR3 / COMMAND-RESERVE1.** Adds a guarded
+Japan partnership-AI reset, optional response to newly witnessed Japanese
+aggression, a Japanese-client Indochina settlement, a read-only campaign progress
+board and explicit lesser-settlement warnings. The commander reserve adds 305
+officers by 1939 and 70 more in 1944, without changing any original leader.
+New campaigns receive the roster directly. The reviewed 1 August 1941 campaign
+has a separate lossless migration; its original autosave remains untouched.
+The active local target is **AUBM Terrain Prototype P1**, not the separate normal
+V4.2 installation. See [LIBERATOR3 changes and play guide](docs/LIBERATOR3_COMMAND_AND_CAMPAIGN.md).
+
+**Gameplay add-on, 7 September 2026: LIBERATOR2.** The opt-in independent campaign
+retains LIBERATOR1 and adds a sustained Chinese protectorate campaign, a deeper
+90-day Soviet defeat threshold, protected Central Asian republics with optional
+later independence, Japanese home-island development rewards, and independent
+Himalayan / Persian-Afghan investments. Reduced peace offers can be rejected.
+It is compatible with the reviewed 1 August 1940 save; no new campaign is required.
+See the [LIBERATOR2 guide](docs/LIBERATOR2_LONG_WAR_OUTCOMES.md) for exact gates,
+costs, installation scope and the remaining in-engine acceptance checks. The base
+Alpha 27 and local hybrid visual identity are unchanged; this is not Alpha 28.
+
+**Visual status, 6 September 2026:** Alpha 27 subsequently failed the player's
+terrain-readability review. Its numerical checks below are not evidence of
+human visual acceptance. A separate, local-only worldwide hybrid replacement
+is documented in [the world terrain test notes](docs/HYBRID_TERRAIN_WORLD.md).
+It is not a new public alpha and does not change gameplay. The normal Alpha 27
+installation is not silently replaced by that test profile.
 
 V4 rebases the campaign directly onto Darkest Hour Full and removes the
 Blood and Iron runtime dependency. It adds a grounded union-integration layer,

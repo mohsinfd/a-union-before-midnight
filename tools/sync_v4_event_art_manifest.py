@@ -26,7 +26,8 @@ CREDIT = (
 def event_catalog() -> list[tuple[int, str, str]]:
     catalog: list[tuple[int, str, str]] = []
     event_pattern = re.compile(r"(?m)^event\s*=\s*\{")
-    id_pattern = re.compile(r"(?m)^\s*id\s*=\s*(928\d+)\s*$")
+    # Includes the explicitly reserved LIBERATOR3 observer/UI range, 9294-9295.
+    id_pattern = re.compile(r"(?m)^\s*id\s*=\s*(\d+)\s*$")
     name_pattern = re.compile(r'(?m)^\s*name\s*=\s*"([^"]+)"\s*$')
     picture_pattern = re.compile(r'(?m)^\s*picture\s*=\s*"([^"]+)"\s*$')
     seen: set[int] = set()

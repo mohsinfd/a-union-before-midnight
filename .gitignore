@@ -9,6 +9,7 @@ config.eu
 
 # Archives and temporary packaging
 dist/
+/build/
 *.zip
 *.7z
 *.rar
@@ -19,6 +20,7 @@ v4_validation.txt
 # Local visual research and superseded generation drafts
 tools/data/*.png
 tools/art_sources/v4_events/*_draft.png
+/assets/roster-art2/
 
 # Personal donor-derived sprite payload (rebuilt locally from installed mods)
 mod/gfx/map/units/AUBM-IND-GENERATED-MANIFEST.json
@@ -71,3 +73,10 @@ desktop.ini
 # Python
 __pycache__/
 *.pyc
+
+# ART2 private-use historical photographs: rights not cleared for redistribution
+/build/art2/restricted-history/
+/build/art2/delta/gfx/interface/pics/AUBM_R2_H251025.bmp
+/build/art2/delta/gfx/interface/pics/AUBM_R2_H251108.bmp
+# These QA sheets can embed the two restricted historical photographs.
+/build/art2/contact-sheets/

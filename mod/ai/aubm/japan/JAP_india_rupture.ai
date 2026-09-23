@@ -1,17 +1,21 @@
 # AUBM: no partnership restraint. Restore Japan's independent southern plan.
 
-combat = { IND = 70 SOV = 35 CHI = 100 CHC = 70 PHI = 100 USA = 90 ENG = 90 HOL = 90 AST = 70 }
-befriend = { MAN = 120 SIA = 100 }
-protect = { MAN = 120 SIA = 80 }
+combat = { IND = 70 SOV = 35 CHI = 100 CHC = 70 PHI = 100 USA = 90 ENG = 90 HOL = 90 U05 = 90 INO = 90 AST = 70 }
+befriend = { IND = 0 MAN = 120 SIA = 100 }
+protect = { IND = 0 MAN = 120 SIA = 80 }
 
-max_front_ratios = { IND = 1.5 SOV = 0.5 CHI = 3.0 PHI = 4.0 USA = 2.0 ENG = 3.0 HOL = 3.0 AST = 2.0 }
+max_front_ratios = { IND = 1.5 SOV = 0.5 CHI = 3.0 PHI = 4.0 USA = 2.0 ENG = 3.0 HOL = 3.0 U05 = 3.0 INO = 3.0 AST = 2.0 }
 
 front = {
 	recklessness = 1
 	base_attack_odds = 1.20
 	min_attack_odds = 1.05
-	passivity = { IND = 20 SOV = 70 }
+	passivity = { IND = 20 SOV = 70 HOL = 0 U05 = 0 INO = 0 AST = 0 ENG = 0 }
 }
+
+# Explicitly clear the former partner's naval-area blacklist. A fragment which
+# omits admiral/ignore leaves the old Indian Ocean restrictions in the save.
+admiral = { ignore = { } }
 
 target = {
 	1371 = 180 # Hong Kong

@@ -93,6 +93,7 @@ KNOWN_COMMANDS = {
     "domestic",
     "embargo",
     "end_mastery",
+    "end_puppet",  # Documented DH command; used by the consenting Nanjing government.
     "end_trades",
     "event",
     "foreignminister",
@@ -274,6 +275,19 @@ def scalar(text: str, key: str) -> str | None:
     if not match:
         return None
     return match.group(1).strip('"')
+
+
+def event_action_blocks(text: str) -> list[Block]:
+    """Native DH grammar: legacy action_a-d and repeatable plain action."""
+    actions = [block for key in ('action', 'action_a', 'action_b', 'action_c', 'action_d')
+               for block in extract_blocks(text, key)]
+    return sorted(actions, key=lambda block: block.line)
+
+
+def invalid_event_action_keys(text: str) -> list[str]:
+    clean = re.sub(r'"[^"]*"', '""', strip_comments(text))
+    return [m[1] for m in re.finditer(r'\b(action_\w+)\s*=\s*\{', clean, re.I)
+            if m[1].lower() not in ('action_a', 'action_b', 'action_c', 'action_d')]
 
 
 def direct_scalar(text: str, key: str) -> str | None:
@@ -773,7 +787,13 @@ class Validator:
                 self.error(path, event.line, "Event has no numeric id.")
                 continue
             event_id = int(event_id_text)
-            if not self.event_min <= event_id <= self.event_max:
+            # LIBERATOR3 reserves 9294000-9295999 in module 43. Keep this
+            # exception scoped; the rest of the database retains its range.
+            lib3_reserved = (path.name == "43_wartime_settlements.txt"
+                             and 9294000 <= event_id <= 9295999)
+            cleanup_reserved = ((path.name == "43_wartime_settlements.txt" and (9297000 <= event_id <= 9297008 or 9297200 <= event_id <= 9297299))
+                                or (path.name == "32_national_consolidation.txt" and 9297100 <= event_id <= 9297190))
+            if not (self.event_min <= event_id <= self.event_max or lib3_reserved or cleanup_reserved):
                 self.error(path, event.line, f"Event id {event_id} is outside the reserved India range.")
             if event_id in self.india_events:
                 other = self.india_events[event_id][0]
@@ -803,12 +823,11 @@ class Validator:
                     event.line,
                     f"Event {event_id} description exceeds the {EVENT_DESC_LIMIT}-byte UI limit.",
                 )
-            if not extract_blocks(event.text, "action_a"):
-                self.error(path, event.line, f"Event {event_id} has no action_a.")
-
-            actions: list[Block] = []
-            for letter in "abcdefgh":
-                actions.extend(extract_blocks(event.text, f"action_{letter}"))
+            for key in invalid_event_action_keys(event.text):
+                self.error(path, event.line, f"Event {event_id} has unsupported {key}; use plain action after action_d.")
+            actions = event_action_blocks(event.text)
+            if not actions:
+                self.error(path, event.line, f"Event {event_id} has no supported action block.")
             chances = [scalar(action.text, "ai_chance") for action in actions]
             if len(actions) > 1 and any(chance is not None for chance in chances):
                 if any(chance is None for chance in chances):
@@ -820,6 +839,10 @@ class Validator:
                     trigger_groups: dict[str, list[int]] = defaultdict(list)
                     for action, chance in zip(actions, chances):
                         trigger = direct_nested_block(action.text, "trigger")
+                        # A human-only cancel has no AI probability mass and
+                        # must not create a spurious zero-total AI state group.
+                        if chance == "0" and trigger is not None and direct_scalar(trigger, "ai") == "no":
+                            continue
                         if trigger is None:
                             trigger_groups = {}
                             break
@@ -1491,16 +1514,15 @@ class Validator:
         for event_id, (path, event) in self.india_events.items():
             if scalar(event.text, "country") != "IND":
                 continue
-            for letter in "abcdef":
-                for action in extract_blocks(event.text, f"action_{letter}"):
-                    if re.search(r"\btype\s*=\s*add_division\b", action.text) and not re.search(
-                        r"\btype\s*=\s*add_corps\b", action.text
-                    ):
-                        self.error(
-                            path,
-                            event.line,
-                            f"Immediate formation action {event_id}{letter} lacks an explicit destination corps.",
-                        )
+            for action in event_action_blocks(event.text):
+                if re.search(r"\btype\s*=\s*add_division\b", action.text) and not re.search(
+                    r"\btype\s*=\s*add_corps\b", action.text
+                ):
+                    self.error(
+                        path,
+                        event.line,
+                        f"Immediate formation action in event {event_id} lacks an explicit destination corps.",
+                    )
 
         reserve_ledger = loaded(9280840)
         if reserve_ledger:
@@ -1732,9 +1754,7 @@ class Validator:
         for event_id, (path, event) in self.india_events.items():
             if scalar(event.text, "country") != "IND":
                 continue
-            actions: list[Block] = []
-            for letter in "abcdefgh":
-                actions.extend(extract_blocks(event.text, f"action_{letter}"))
+            actions = event_action_blocks(event.text)
             for action in actions:
                 if re.search(r"\btype\s*=\s*add_division\b", action.text) and not re.search(
                     r"\btype\s*=\s*manpowerpool\s+value\s*=\s*-[0-9]",

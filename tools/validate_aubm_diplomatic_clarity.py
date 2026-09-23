@@ -62,7 +62,7 @@ SOURCE_TARGETS: dict[int, tuple[int, ...]] = {
     9281496: (9281486,),
     9281500: (9281502, 9281506, 9281510, 9281514, 9281520, 9281524, 9281528, 9281532),
     9281544: (9281545, 9281548),
-    9282036: (9282037, 9282038, 9282039),
+    9282036: (9282037, 9282038, 9282039, 9289914),
     9282170: (9282171, 9282172, 9282173, 9282174, 9282175),
     9282181: (9282184,),
     9282182: (9282185,),
@@ -152,8 +152,16 @@ def visible_text(block: str) -> str:
 
 def response_odds(block: str) -> tuple[int, ...]:
     odds: list[int] = []
+    event_id = int(re.search(r'\bid\s*=\s*(\d+)',block).group(1))
     for start, _opening, closing in top_blocks(block, r"action(?:_[a-z]+)?"):
         action = block[start : closing + 1]
+        fallback={9282037:'d',9282038:'d',9289914:'c'}.get(event_id)
+        if fallback and re.match(rf'\s*action_{fallback}\s*=',action):
+            # LIBERATOR2's fourth action is the mutually exclusive stale-offer
+            # fallback. Its complement guard is checked by the state tests.
+            if 'trigger = { NOT = {' not in action or 'ai_chance = 100' not in action:
+                raise ValueError(f'Malformed stale-proposal fallback in {event_id}')
+            continue
         chance = re.search(r"\bai_chance\s*=\s*(\d+)", action)
         if chance:
             odds.append(int(chance.group(1)))

@@ -20,6 +20,11 @@ event = {
 	desc = "Burma line: Rangoon, Imphal and Port Blair. Malayan hinge: Singapore and Kuala Lumpur. East Indies: Palembang, Batavia and Soerabaja. Australia is optional: Darwin, Canberra and Sydney. An anti-Japanese campaign culminates at Tokyo and Osaka. Recognition is automatic and free; a provisional settlement requires Malaya plus the East Indies, Australia or Japan."
 	style = 2
 	picture = "aubm_v4_japan_southern_choice"
+	# AUBM_MENU_SAFE_EXIT: human-only; no effects or follow-up event.
+	action = {
+		trigger = { ai = no }
+		name = "Cancel - close without changes"
+	}
 	action_a = {
 		name = "Review war finance and mobilisation"
 		command = { type = event which = 9282089 where = IND when = 1 }
@@ -48,6 +53,11 @@ event = {
 	desc = "Persian gate: Zahedan and Teheran. Gulf hinge: Basrah, Baghdad and Kuwait. Red Sea hinge: Aden and Suez. Egyptian command: Cairo and Alexandria. East African coast: Mogadishu, Mombasa and Dar es Salaam. Durban or Cape Town extends the system to the Cape. Two connected arcs create a provisional western victory."
 	style = 2
 	picture = "aubm_v4_indian_ocean_war"
+	# AUBM_MENU_SAFE_EXIT: human-only; no effects or follow-up event.
+	action = {
+		trigger = { ai = no }
+		name = "Cancel - close without changes"
+	}
 	action_a = { name = "Keep these objectives on the operations map" }
 	action_b = {
 		trigger = { flag = ind_aubm_national_western_victory }
@@ -73,6 +83,11 @@ event = {
 	desc = "Mountain gates: Kabul and Herat; Lhasa; Urumqi. Central Asia: Samarkand and Tashkent. Caucasus: Baku and Astrakhan. Moscow is the culminating Soviet objective. Northern victory requires two connected strategic centres, not a diplomatic preparation flag. Tokyo remains outside an Indian-Soviet war unless alliance mechanics or a later Japanese decision bring it in."
 	style = 2
 	picture = "aubm_v4_barbarossa_reaction"
+	# AUBM_MENU_SAFE_EXIT: human-only; no effects or follow-up event.
+	action = {
+		trigger = { ai = no }
+		name = "Cancel - close without changes"
+	}
 	action_a = { name = "Keep these objectives on the operations map" }
 	action_b = {
 		trigger = { flag = ind_aubm_national_northern_victory }
@@ -98,6 +113,11 @@ event = {
 	desc = "European enemy capitals are Berlin, Rome, Paris and London. Pacific great-power objectives are Tokyo, Pearl Harbor and Washington. Occupying one enemy capital earns a continental or oceanic claim; holding two national theatre victories establishes India as a decisive great power. Capital occupation never grants territory automatically: the legal owner and the chosen peace doctrine still govern settlement."
 	style = 2
 	picture = "aubm_v4_india_world_war"
+	# AUBM_MENU_SAFE_EXIT: human-only; no effects or follow-up event.
+	action = {
+		trigger = { ai = no }
+		name = "Cancel - close without changes"
+	}
 	action_a = {
 		name = "Open the great-power armistice board"
 		command = { type = event which = 9282180 where = IND when = 1 }
@@ -519,6 +539,11 @@ event = {
 	desc = "The displayed route follows the alliance or bilateral compact that exists now. It does not erase independent enemies, completed campaigns or local settlement rights. The War Cabinet can change coalition or open a separate war at any time."
 	style = 2
 	picture = "aubm_v4_grand_strategy"
+	# AUBM_MENU_SAFE_EXIT: human-only; no effects or follow-up event.
+	action = {
+		trigger = { ai = no }
+		name = "Cancel - close without changes"
+	}
 	action_a = {
 		trigger = { flag = ind_aubm_route_allied }
 		name = "Allied coalition: shared wars, Indian campaign ledger"
@@ -546,6 +571,11 @@ event = {
 	desc = "A formal Japanese alliance merges every war. A Delhi-Tokyo strategic compact preserves separate declarations while recognizing the Indian southern sphere. Sovereign command has no automatic partner and can combine any campaigns chosen by the War Cabinet."
 	style = 2
 	picture = "aubm_v4_tokyo_proposition"
+	# AUBM_MENU_SAFE_EXIT: human-only; no effects or follow-up event.
+	action = {
+		trigger = { ai = no }
+		name = "Cancel - close without changes"
+	}
 	action_a = {
 		trigger = { flag = ind_aubm_route_japan alliance = { country = IND country = JAP } }
 		name = "Tokyo alliance: every war is shared"

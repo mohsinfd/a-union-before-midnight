@@ -25,7 +25,7 @@ event = {
 
 	name = "The Frontier Forces Charter"
 	decision_desc = "Cabinet funding estimates: Three field-ready frontier divisions [money 250, supplies 1,400, manpower 36]; One frontier school division [money 175, supplies 850, manpower 12]; Two field-ready frontier garrisons [supplies 650, manpower 20]."
-	desc = "The Khyber, Waziristan and Assam frontiers demand soldiers who can patrol mountains, work with local intelligence and fight without a heavy divisional tail. Delhi can unite the historic scouts and rifles in a field command, build a permanent frontier-warfare school, or preserve lightly equipped provincial battalions."
+	desc = "The frontier needs troops for mountain patrols and local defence. Choose three mountain divisions now, one school division, or two cheaper garrison divisions. The school permanently gives ALL Indian mountain units +1 organisation and +1 morale. Garrisons cost less but move poorly and shift the army one step towards drafted service. Choose once."
 	style = 2
 	picture = "india_v3_elite_frontier"
 
@@ -73,8 +73,8 @@ event = {
 		command = { type = money value = -175 }
 		command = { type = supplies value = -850 }
 		command = { type = manpowerpool value = -12 }
-		command = { type = max_organization which = bergsjaeger value = 3 }
-		command = { type = morale which = bergsjaeger value = 3 }
+		command = { type = max_organization which = bergsjaeger value = 1 }
+		command = { type = morale which = bergsjaeger value = 1 }
 		command = { type = add_corps which = "Frontier Warfare School" value = land where = 1537 }
 		command = { type = add_division which = "Frontier Training Division" value = bergsjaeger when = -1 where = engineer }
 		command = { type = setflag which = ind_v3_frontier_school }
@@ -123,7 +123,7 @@ event = {
 
 	name = "The Indian Airborne Experiment"
 	decision_desc = "Cabinet funding estimates: Field-ready airborne division and lift wing [money 350, supplies 1,500, manpower 18]; Airborne school formation [money 225, supplies 900, manpower 10]; Operational transport wing [supplies 750, manpower 3]."
-	desc = "India's distances make airborne troops more than a prestige project. A complete brigade with organic lift can reinforce Kashmir, Burma or an island in hours; a parachute school builds a lasting doctrine; a transport command sacrifices assault power for strategic mobility."
+	desc = "Choose a parachute division with a transport wing, one school division without aircraft, or a transport wing without troops. The school permanently gives ALL Indian paratroopers +2 organisation and +2 morale. Airborne missions still need the normal technology, range, organisation and transport capacity. Choose once."
 	style = 2
 	picture = "india_v3_elite_airborne"
 
@@ -173,8 +173,8 @@ event = {
 		command = { type = supplies value = -900 }
 		command = { type = manpowerpool value = -10 }
 		command = { type = activate_unit_type which = paratrooper }
-		command = { type = max_organization which = paratrooper value = 4 }
-		command = { type = morale which = paratrooper value = 4 }
+		command = { type = max_organization which = paratrooper value = 2 }
+		command = { type = morale which = paratrooper value = 2 }
 		command = { type = add_corps which = "Agra Airborne Warfare School" value = land where = 1460 }
 		command = { type = add_division which = "Airborne Training Brigade" value = paratrooper when = -1 where = glider_artillery }
 		command = { type = setflag which = ind_v3_airborne_school }
@@ -223,7 +223,7 @@ event = {
 
 	name = "Long-Range Penetration Groups"
 	decision_desc = "Cabinet funding estimates: Three field-ready penetration divisions [money 300, supplies 1,700, manpower 30]; Imphal school division [money 250, supplies 1,000, manpower 12]; Two field-ready reconnaissance columns [supplies 900, manpower 14]."
-	desc = "The hills beyond Imphal favour columns that can live from air supply, cut roads and disappear before a conventional counterattack. India can organize a full Eastern penetration group, make Imphal a jungle-warfare centre, or attach smaller reconnaissance columns to the field army."
+	desc = "Choose three mountain divisions for the eastern front, one school division, or two cavalry divisions for reconnaissance. The school permanently gives ALL Indian mountain units +1 organisation and +1 morale; it does not add a separate jungle bonus. Reconnaissance gives two cavalry divisions and +1 morale to ALL ordinary infantry. Choose once."
 	style = 2
 	picture = "india_v3_elite_penetration"
 
@@ -270,8 +270,8 @@ event = {
 		command = { type = money value = -250 }
 		command = { type = supplies value = -1000 }
 		command = { type = manpowerpool value = -12 }
-		command = { type = max_organization which = bergsjaeger value = 4 }
-		command = { type = morale which = bergsjaeger value = 3 }
+		command = { type = max_organization which = bergsjaeger value = 1 }
+		command = { type = morale which = bergsjaeger value = 1 }
 		command = { type = add_corps which = "Imphal Jungle Warfare Centre" value = land where = 1442 }
 		command = { type = add_division which = "Imphal Training Division" value = bergsjaeger when = -1 where = engineer }
 		command = { type = setflag which = ind_v3_imphal_jungle_school }
@@ -290,7 +290,7 @@ event = {
 		name = "Two field-ready reconnaissance columns"
 		command = { type = supplies value = -900 }
 		command = { type = manpowerpool value = -14 }
-		command = { type = morale which = infantry value = 3 }
+		command = { type = morale which = infantry value = 1 }
 		command = { type = add_corps which = "Indian Field Reconnaissance Group" value = land where = 1459 }
 		command = { type = add_division which = "1st Indian Reconnaissance Column" value = cavalry when = -1 where = armored_car }
 		command = { type = add_division which = "2nd Indian Reconnaissance Column" value = cavalry when = -1 where = armored_car }
@@ -321,7 +321,7 @@ event = {
 
 	name = "The Andaman Marine Force"
 	decision_desc = "Cabinet funding estimates: Two field-ready marine divisions [money 325, supplies 1,500, manpower 24]; Marine school division [money 225, supplies 950, manpower 12]; Two field-ready island garrisons [supplies 800, manpower 20]."
-	desc = "Port Blair needs troops able to move between islands, seize a jetty and hold until the fleet arrives. Delhi can create a two-division marine force, establish a permanent amphibious school, or organize cheaper coastwatchers and island garrisons."
+	desc = "Choose two marine divisions, one school division, or two cheaper island garrisons. The school permanently gives ALL Indian marines +2 organisation and +2 morale. Garrisons defend Port Blair and Kavaratti and add +1 intelligence. None of these choices supplies transport ships; plan the lift separately. Choose once."
 	style = 2
 	picture = "india_v3_elite_marines"
 
@@ -369,8 +369,8 @@ event = {
 		command = { type = supplies value = -950 }
 		command = { type = manpowerpool value = -12 }
 		command = { type = activate_unit_type which = marine }
-		command = { type = max_organization which = marine value = 4 }
-		command = { type = morale which = marine value = 4 }
+		command = { type = max_organization which = marine value = 2 }
+		command = { type = morale which = marine value = 2 }
 		command = { type = add_corps which = "Cochin Amphibious Warfare School" value = land where = 1497 }
 		command = { type = add_division which = "Indian Marine Training Division" value = marine when = -1 where = engineer }
 		command = { type = setflag which = ind_v3_amphibious_school }

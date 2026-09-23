@@ -296,7 +296,7 @@ event = {
 			manpower = 17
 	}
 		ai_chance = 30
-		name = "Train existing infantry for mountain warfare"
+		name = "Order one mountain division with engineers"
 
 		command = { type = supplies value = -500 }
 		command = { type = build_division which = bergsjaeger value = engineer when = 1 where = 105 }
@@ -323,7 +323,7 @@ event = {
 }
 
 	name = "The 1936 Grand Manoeuvres"
-	desc = "The first army-wide exercise exposes incompatible radios, weak logistics and a shortage of experienced divisional staffs. The cabinet can enlarge the army immediately or pause expansion to professionalize the force."
+	desc = "Army exercises show weak communications and a shortage of trained staff. Choose two new infantry divisions, a more expensive force of one tank, one motorised and one infantry division, or one infantry division with officer training and +1 research speed. All units enter production and still need funding. The training choice also improves two named commanders. Choose once."
 	style = 2
 	picture = "india_v3_armed_forces"
 
@@ -337,7 +337,7 @@ event = {
 			manpower = 34
 	}
 		ai_chance = 45
-		name = "Correct the weaknesses and fund two field divisions"
+		name = "Order two infantry divisions"
 		command = { type = money value = -450 }
 		command = { type = supplies value = -1100 }
 		command = { type = dissent value = 1 }
@@ -352,9 +352,9 @@ event = {
 			manpower = 45
 	}
 		ai_chance = 35
-		name = "Build a smaller combined-arms force"
-		command = { type = money value = -425 }
-		command = { type = supplies value = -1050 }
+		name = "Order tank, motorised and infantry divisions"
+		command = { type = money value = -600 }
+		command = { type = supplies value = -1500 }
 		command = { type = activate_unit_type which = light_armor }
 		command = { type = build_division which = motorized value = armored_car when = 1 where = 105 }
 		command = { type = build_division which = light_armor value = engineer when = 1 where = 135 }
@@ -368,7 +368,7 @@ event = {
 			manpower = 17
 	}
 		ai_chance = 20
-		name = "Pause expansion and professionalize the cadres"
+		name = "Order one infantry division and improve training"
 
 		command = { type = supplies value = -650 }
 		command = { type = research_mod value = 1 }

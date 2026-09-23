@@ -1,3 +1,4 @@
+# AUBM_CONTEXT_GUARDS_V1
 #########################################################################
 # A Union Before Midnight V4: foreign recipients and diplomatic replies
 #########################################################################
@@ -8,16 +9,24 @@ event = {
 	one_action = yes
 	country = CHI
 
-	name = "Indian Aid Reaches China"
-	desc = "Indian lorries, medical stores and machine tools move through Burma into China's interior. The aid cannot decide the war alone, but it keeps workshops operating and confirms that Delhi is prepared to bear material costs for Chinese survival."
+	name = "The Indian Shipment for China"
+	desc = "India has promised lorries, medical stores and machine tools for the Burma Road. China can receive the shipment while the two governments remain at peace and India has no Japanese commitment."
 	style = 2
 	picture = "aubm_v4_china_war_deepens"
 
 	action_a = {
+		ai_chance = 100
+		trigger = {  exists = CHI NOT = { war = { country = IND country = CHI } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } }
 		name = "Put the Indian aid into service"
 		command = { type = supplies value = 700 }
 		command = { type = manpowerpool value = 5 }
 		command = { type = relation which = IND value = 25 }
+	}
+
+	action = {
+		trigger = { NOT = { AND = { exists = CHI NOT = { war = { country = IND country = CHI } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } } } }
+		ai_chance = 100
+		name = "The offer has lapsed; close the file"
 	}
 }
 
@@ -27,16 +36,24 @@ event = {
 	one_action = yes
 	country = JAP
 
-	name = "India Expands the Burma Road"
-	desc = "Delhi is no longer merely tolerating the Burma Road. Indian state resources now sustain China's interior war. The Foreign Ministry demands a protest while the army asks whether economic pressure can force India to retreat."
+	name = "Japan Objects to Indian Aid"
+	desc = "Tokyo condemns India's support for China. Japan's warning does not decide Indian policy or change the wars already being fought. Delhi will consider its response."
 	style = 2
 	picture = "aubm_v4_tokyo_proposition"
 
 	action_a = {
+		ai_chance = 100
+		trigger = {  exists = IND exists = JAP exists = CHI }
 		name = "Deliver a formal warning to Delhi"
 		command = { type = relation which = IND value = -30 }
 		command = { type = supplies value = -100 }
 		command = { type = event which = 9280610 where = IND when = 4 }
+	}
+
+	action = {
+		trigger = { NOT = { AND = { exists = IND exists = JAP exists = CHI } } }
+		ai_chance = 100
+		name = "The offer has lapsed; close the file"
 	}
 }
 
@@ -46,16 +63,24 @@ event = {
 	one_action = yes
 	country = JAP
 
-	name = "Indian Strategic Goods Reach Japan"
-	desc = "Indian merchants and state purchasing boards have opened a useful source of food, fibres and industrial materials. Tokyo welcomes the commerce and expects political accommodation to follow."
+	name = "Japan's Indian Supply Contracts"
+	desc = "Japanese buyers are ready to receive Indian goods. The contracts can proceed only while India and Japan are at peace and India's commitments allow this trade."
 	style = 2
 	picture = "aubm_v4_tokyo_proposition"
 
 	action_a = {
+		ai_chance = 100
+		trigger = {  exists = JAP NOT = { war = { country = IND country = JAP } } NOT = { flag = ind_aubm_commitment_allied } NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_soviet } NOT = { alliance = { country = IND country = SOV } } }
 		name = "Expand purchases from India"
 		command = { type = supplies value = 500 }
 		command = { type = relation which = IND value = 25 }
 		command = { type = event which = 9280611 where = IND when = 5 }
+	}
+
+	action = {
+		trigger = { NOT = { AND = { exists = JAP NOT = { war = { country = IND country = JAP } } NOT = { flag = ind_aubm_commitment_allied } NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_soviet } NOT = { alliance = { country = IND country = SOV } } } } }
+		ai_chance = 100
+		name = "The offer has lapsed; close the file"
 	}
 }
 
@@ -65,16 +90,24 @@ event = {
 	one_action = yes
 	country = SOV
 
-	name = "Indian Machinery and Medicine"
-	desc = "A neutral Indian supply mission brings machine tools, pharmaceuticals and transport equipment. The shipment has military value and political meaning: Delhi has chosen to sustain the Soviet war without yet joining it."
+	name = "The Indian Shipment for Moscow"
+	desc = "India has promised machinery and medicine for the Soviet war. Moscow can receive them while it remains at peace with India and Delhi has no opposing German or Japanese commitment."
 	style = 2
 	picture = "aubm_v4_barbarossa_reaction"
 
 	action_a = {
+		ai_chance = 100
+		trigger = {  exists = SOV NOT = { war = { country = IND country = SOV } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } }
 		name = "Route the shipment to the war economy"
 		command = { type = supplies value = 750 }
 		command = { type = money value = 100 }
 		command = { type = relation which = IND value = 30 }
+	}
+
+	action = {
+		trigger = { NOT = { AND = { exists = SOV NOT = { war = { country = IND country = SOV } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } } } }
+		ai_chance = 100
+		name = "The offer has lapsed; close the file"
 	}
 }
 
@@ -84,15 +117,23 @@ event = {
 	one_action = yes
 	country = GER
 
-	name = "Indian Continental Trade"
-	desc = "Indian exporters are prepared to use neutral intermediaries despite the blockade. The volume is limited, but the trade demonstrates that Britain cannot fully isolate Germany from the wider world."
+	name = "Germany's Indian Trade Channel"
+	desc = "German buyers seek delivery through intermediaries. The trade can continue only while Germany and India are at peace and India's current commitments permit it."
 	style = 2
 	picture = "aubm_v4_grand_strategy"
 
 	action_a = {
+		ai_chance = 100
+		trigger = {  exists = GER NOT = { war = { country = IND country = GER } } NOT = { flag = ind_aubm_commitment_allied } NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_soviet } NOT = { alliance = { country = IND country = SOV } } }
 		name = "Accept the Indian trade channel"
 		command = { type = supplies value = 450 }
 		command = { type = relation which = IND value = 25 }
+	}
+
+	action = {
+		trigger = { NOT = { AND = { exists = GER NOT = { war = { country = IND country = GER } } NOT = { flag = ind_aubm_commitment_allied } NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_soviet } NOT = { alliance = { country = IND country = SOV } } } } }
+		ai_chance = 100
+		name = "The offer has lapsed; close the file"
 	}
 }
 
@@ -102,15 +143,23 @@ event = {
 	one_action = yes
 	country = ENG
 
-	name = "India Escorts Indian Ocean Commerce"
-	desc = "Indian patrols and convoy information reduce losses on routes Britain can no longer protect alone. The Admiralty recognizes the practical value while noting that Delhi insists on neutral markings and sovereign command."
+	name = "Indian Ocean Patrol Cooperation"
+	desc = "Britain has asked to use Indian patrol reports and convoy information. Cooperation requires peace with India and leaves Indian ships under Indian command."
 	style = 2
 	picture = "aubm_v4_indian_ocean_war"
 
 	action_a = {
+		ai_chance = 100
+		trigger = {  exists = ENG NOT = { war = { country = IND country = ENG } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } }
 		name = "Coordinate without challenging Indian command"
 		command = { type = supplies value = 300 }
 		command = { type = relation which = IND value = 20 }
+	}
+
+	action = {
+		trigger = { NOT = { AND = { exists = ENG NOT = { war = { country = IND country = ENG } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } } } }
+		ai_chance = 100
+		name = "The offer has lapsed; close the file"
 	}
 }
 
@@ -120,16 +169,24 @@ event = {
 	one_action = yes
 	country = ENG
 
-	name = "India Demands Reciprocal Command"
-	desc = "The Indian mission will cooperate only as the representative of a sovereign power. London can no longer treat bases, forces or procurement as an internal imperial arrangement. Accepting the formula gains a powerful partner but concedes the political point."
+	name = "London's Reply on Indian Command"
+	desc = "London offers equipment and liaison officers on terms that leave Indian forces under Delhi's command. The offer can proceed while Britain and India remain at peace and India's present commitments allow cooperation."
 	style = 2
 	picture = "aubm_v4_london_settlement"
 
 	action_a = {
+		ai_chance = 100
+		trigger = {  exists = ENG NOT = { war = { country = IND country = ENG } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } }
 		name = "Recognize India as a sovereign strategic partner"
 		command = { type = relation which = IND value = 30 }
 		command = { type = supplies value = -300 }
 		command = { type = event which = 9280612 where = IND when = 5 }
+	}
+
+	action = {
+		trigger = { NOT = { AND = { exists = ENG NOT = { war = { country = IND country = ENG } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } } } }
+		ai_chance = 100
+		name = "The offer has lapsed; close the file"
 	}
 }
 
@@ -139,16 +196,24 @@ event = {
 	one_action = yes
 	country = GER
 
-	name = "The Indian Continental Mission"
-	desc = "India requests equipment and doctrine without accepting German political direction. Berlin sees an opportunity against Britain, but Delhi's insistence on equality limits what can be demanded in return."
+	name = "Berlin's Technical Mission"
+	desc = "Berlin offers doctrine manuals, optical equipment and industrial samples. A mission can proceed while Germany and India remain at peace and India's present commitments allow it. No alliance is created."
 	style = 2
 	picture = "aubm_v4_grand_strategy"
 
 	action_a = {
+		ai_chance = 100
+		trigger = {  exists = GER NOT = { war = { country = IND country = GER } } NOT = { flag = ind_aubm_commitment_allied } NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_soviet } NOT = { alliance = { country = IND country = SOV } } }
 		name = "Offer technical cooperation against Britain"
 		command = { type = relation which = IND value = 30 }
 		command = { type = supplies value = -250 }
 		command = { type = event which = 9280613 where = IND when = 5 }
+	}
+
+	action = {
+		trigger = { NOT = { AND = { exists = GER NOT = { war = { country = IND country = GER } } NOT = { flag = ind_aubm_commitment_allied } NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_soviet } NOT = { alliance = { country = IND country = SOV } } } } }
+		ai_chance = 100
+		name = "The offer has lapsed; close the file"
 	}
 }
 
@@ -158,16 +223,24 @@ event = {
 	one_action = yes
 	country = SOV
 
-	name = "The Indian Technical Compact"
-	desc = "Delhi accepts Soviet expertise but insists that Indian ministries direct the programme. Moscow can gain a durable Asian partner by respecting the boundary between cooperation and supervision."
+	name = "Moscow's Technical Mission"
+	desc = "Moscow offers engineers and staff instructors under Indian authority. A mission can proceed while the Soviet Union and India remain at peace and India's present commitments allow it. No alliance is created."
 	style = 2
 	picture = "aubm_v4_grand_strategy"
 
 	action_a = {
+		ai_chance = 100
+		trigger = {  exists = SOV NOT = { war = { country = IND country = SOV } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } }
 		name = "Send advisers under Indian authority"
 		command = { type = relation which = IND value = 30 }
 		command = { type = supplies value = -250 }
 		command = { type = event which = 9280614 where = IND when = 5 }
+	}
+
+	action = {
+		trigger = { NOT = { AND = { exists = SOV NOT = { war = { country = IND country = SOV } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } } } }
+		ai_chance = 100
+		name = "The offer has lapsed; close the file"
 	}
 }
 
@@ -177,16 +250,24 @@ event = {
 	one_action = yes
 	country = JAP
 
-	name = "Delhi Proposes a Bilateral Asian Compact"
-	desc = "India offers maritime cooperation outside Germany's coalition and refuses any formula that places Indian forces under Japanese command. Tokyo must decide whether partnership with a continental Asian power is worth accepting genuine operational equality."
+	name = "Tokyo's Reply on Naval Cooperation"
+	desc = "Tokyo offers naval instructors under Indian command. Delivery requires peace between the two countries and compatible Indian commitments. The offer settles neither China nor India's future wars."
 	style = 2
 	picture = "aubm_v4_tokyo_proposition"
 
 	action_a = {
+		ai_chance = 100
+		trigger = {  exists = JAP NOT = { war = { country = IND country = JAP } } NOT = { flag = ind_aubm_commitment_allied } NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_soviet } NOT = { alliance = { country = IND country = SOV } } }
 		name = "Accept equality in form, test it in practice"
 		command = { type = relation which = IND value = 25 }
 		command = { type = supplies value = -250 }
 		command = { type = event which = 9280615 where = IND when = 5 }
+	}
+
+	action = {
+		trigger = { NOT = { AND = { exists = JAP NOT = { war = { country = IND country = JAP } } NOT = { flag = ind_aubm_commitment_allied } NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_soviet } NOT = { alliance = { country = IND country = SOV } } } } }
+		ai_chance = 100
+		name = "The offer has lapsed; close the file"
 	}
 }
 
@@ -201,14 +282,16 @@ event = {
 	picture = "aubm_v4_tokyo_proposition"
 
 	action_a = {
+		trigger = { exists = CHI NOT = { war = { country = IND country = CHI } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } }   }
 		ai_chance = 45
-		name = "The road remains open: +1 dissent"
+		name = "Continue Chinese aid: +1 dissent"
 		command = { type = dissent value = 1 }
 		command = { type = relation which = JAP value = -20 }
 		command = { type = relation which = CHI value = 15 }
 		command = { type = setflag which = ind_v4_japan_pressure_resisted }
 	}
 	action_b = {
+		trigger = { exists = JAP NOT = { war = { country = IND country = JAP } }   }
 		ai_chance = 35
 		name = "Restrict military cargo: +250 money, China -20"
 		command = { type = money value = 250 }
@@ -217,12 +300,18 @@ event = {
 		command = { type = setflag which = ind_v4_japan_pressure_compromise }
 	}
 	action_c = {
+		trigger = { exists = JAP NOT = { war = { country = IND country = JAP } }   }
 		ai_chance = 20
 		name = "Suspend aid: -2 dissent, lose Asian leverage"
 		command = { type = dissent value = -2 }
 		command = { type = relation which = JAP value = 25 }
 		command = { type = relation which = CHI value = -35 }
 		command = { type = setflag which = ind_v4_japan_pressure_conceded }
+	}
+
+	action = {
+		ai_chance = 0
+		name = "Keep current orders; no new spending"
 	}
 }
 
@@ -237,13 +326,15 @@ event = {
 	picture = "aubm_v4_china_war_deepens"
 
 	action_a = {
+		trigger = { exists = JAP NOT = { war = { country = IND country = JAP } } NOT = { flag = ind_aubm_commitment_allied } NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_soviet } NOT = { alliance = { country = IND country = SOV } }   }
 		ai_chance = 35
-		name = "Neutral trade is legal: +250 money, +2 dissent"
+		name = "Continue permitted trade: +250 money, +2 dissent"
 		command = { type = money value = 250 }
 		command = { type = dissent value = 2 }
 		command = { type = relation which = CHI value = -15 }
 	}
 	action_b = {
+		trigger = { exists = CHI NOT = { war = { country = IND country = CHI } }  money = 250 }
 		ai_chance = 40
 		name = "Fund Chinese relief: -250 money, China +25"
 		command = { type = money value = -250 }
@@ -257,6 +348,11 @@ event = {
 		command = { type = relation which = CHI value = 15 }
 		command = { type = relation which = JAP value = -20 }
 	}
+
+	action = {
+		ai_chance = 0
+		name = "Keep current orders; no new spending"
+	}
 }
 
 event = {
@@ -264,16 +360,24 @@ event = {
 	random = no
 	country = IND
 
-	name = "London Accepts Sovereign Cooperation"
-	desc = "Britain formally recognizes that Indian bases and forces remain under Indian authority. Equipment and liaison officers will follow, but every future request must be negotiated rather than ordered."
+	name = "London's Reply on Indian Command"
+	desc = "London offers equipment and liaison officers on terms that leave Indian forces under Delhi's command. The offer can proceed while Britain and India remain at peace and India's present commitments allow cooperation."
 	style = 2
 	picture = "aubm_v4_london_settlement"
 
 	action_a = {
+		ai_chance = 100
+		trigger = {  exists = ENG NOT = { war = { country = IND country = ENG } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } }
 		name = "Receive the first equipment mission: +450 supplies"
 		command = { type = supplies value = 450 }
 		command = { type = relation which = ENG value = 15 }
 		command = { type = setflag which = ind_v4_london_sovereign_terms }
+	}
+
+	action = {
+		trigger = { NOT = { AND = { exists = ENG NOT = { war = { country = IND country = ENG } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } } } }
+		ai_chance = 100
+		name = "The offer has lapsed; close the file"
 	}
 }
 
@@ -282,16 +386,24 @@ event = {
 	random = no
 	country = IND
 
-	name = "Berlin Offers a Restricted Mission"
-	desc = "German advisers arrive through neutral routes with doctrine manuals, optical equipment and industrial samples. The mission is useful but smaller than Berlin implied, a reminder that blockade and distance constrain every continental promise."
+	name = "Berlin's Technical Mission"
+	desc = "Berlin offers doctrine manuals, optical equipment and industrial samples. A mission can proceed while Germany and India remain at peace and India's present commitments allow it. No alliance is created."
 	style = 2
 	picture = "aubm_v4_grand_strategy"
 
 	action_a = {
+		ai_chance = 100
+		trigger = {  exists = GER NOT = { war = { country = IND country = GER } } NOT = { flag = ind_aubm_commitment_allied } NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_soviet } NOT = { alliance = { country = IND country = SOV } } }
 		name = "Use what reached India: +350 supplies"
 		command = { type = supplies value = 350 }
 		command = { type = relation which = GER value = 15 }
 		command = { type = setflag which = ind_v4_berlin_mission_received }
+	}
+
+	action = {
+		trigger = { NOT = { AND = { exists = GER NOT = { war = { country = IND country = GER } } NOT = { flag = ind_aubm_commitment_allied } NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_soviet } NOT = { alliance = { country = IND country = SOV } } } } }
+		ai_chance = 100
+		name = "The offer has lapsed; close the file"
 	}
 }
 
@@ -300,16 +412,24 @@ event = {
 	random = no
 	country = IND
 
-	name = "Soviet Advisers Reach India"
-	desc = "Engineers and staff instructors arrive under contracts that place them inside Indian institutions rather than above them. The arrangement provides genuine expertise while preserving political control in Delhi."
+	name = "Moscow's Technical Mission"
+	desc = "Moscow offers engineers and staff instructors under Indian authority. A mission can proceed while the Soviet Union and India remain at peace and India's present commitments allow it. No alliance is created."
 	style = 2
 	picture = "aubm_v4_grand_strategy"
 
 	action_a = {
+		ai_chance = 100
+		trigger = {  exists = SOV NOT = { war = { country = IND country = SOV } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } }
 		name = "Put the mission to work: +300 supplies"
 		command = { type = supplies value = 300 }
 		command = { type = relation which = SOV value = 15 }
 		command = { type = setflag which = ind_v4_moscow_mission_received }
+	}
+
+	action = {
+		trigger = { NOT = { AND = { exists = SOV NOT = { war = { country = IND country = SOV } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } } } }
+		ai_chance = 100
+		name = "The offer has lapsed; close the file"
 	}
 }
 
@@ -318,16 +438,24 @@ event = {
 	random = no
 	country = IND
 
-	name = "Tokyo Accepts the Language of Equality"
-	desc = "Japan accepts a bilateral commission and sends naval instructors, while avoiding firm commitments over China or operational command. Delhi has opened a channel, not resolved the conflict between Asian partnership and Japanese expansion."
+	name = "Tokyo's Reply on Naval Cooperation"
+	desc = "Tokyo offers naval instructors under Indian command. Delivery requires peace between the two countries and compatible Indian commitments. The offer settles neither China nor India's future wars."
 	style = 2
 	picture = "aubm_v4_tokyo_proposition"
 
 	action_a = {
+		ai_chance = 100
+		trigger = {  exists = JAP NOT = { war = { country = IND country = JAP } } NOT = { flag = ind_aubm_commitment_allied } NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_soviet } NOT = { alliance = { country = IND country = SOV } } }
 		name = "Test the compact carefully: +300 supplies"
 		command = { type = supplies value = 300 }
 		command = { type = relation which = JAP value = 15 }
 		command = { type = setflag which = ind_v4_tokyo_equal_terms }
+	}
+
+	action = {
+		trigger = { NOT = { AND = { exists = JAP NOT = { war = { country = IND country = JAP } } NOT = { flag = ind_aubm_commitment_allied } NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_soviet } NOT = { alliance = { country = IND country = SOV } } } } }
+		ai_chance = 100
+		name = "The offer has lapsed; close the file"
 	}
 }
 
@@ -337,15 +465,23 @@ event = {
 	one_action = yes
 	country = CHI
 
-	name = "India Calls an Asian Security Conference"
-	desc = "Delhi proposes consultation, supply planning and mutual respect for sovereignty without asking China to enter a great-power bloc. The framework is limited, but it offers China a major continental partner outside formal alliance politics."
+	name = "China and the Delhi Conference"
+	desc = "China is willing to discuss supply routes and Asian security with an uncommitted India. Talks require peace between the two governments and create no alliance."
 	style = 2
 	picture = "aubm_v4_asian_strategy_menu"
 
 	action_a = {
+		ai_chance = 100
+		trigger = {  exists = CHI NOT = { war = { country = IND country = CHI } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } } NOT = { flag = ind_aubm_commitment_soviet } NOT = { alliance = { country = IND country = SOV } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } }
 		name = "Send a Chinese delegation"
 		command = { type = relation which = IND value = 25 }
 		command = { type = event which = 9280617 where = IND when = 6 }
+	}
+
+	action = {
+		trigger = { NOT = { AND = { exists = CHI NOT = { war = { country = IND country = CHI } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } } NOT = { flag = ind_aubm_commitment_soviet } NOT = { alliance = { country = IND country = SOV } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } } } }
+		ai_chance = 100
+		name = "The offer has lapsed; close the file"
 	}
 }
 
@@ -354,16 +490,24 @@ event = {
 	random = no
 	country = IND
 
-	name = "China Answers the Delhi Conference"
-	desc = "China accepts regular consultation and asks that the Burma Road become the first practical test. The response gives India's independent Asian policy substance, but it will be noticed immediately in Tokyo."
+	name = "China and the Delhi Conference"
+	desc = "China is willing to discuss supply routes and Asian security with an uncommitted India. Talks require peace between the two governments and create no alliance."
 	style = 2
 	picture = "aubm_v4_asian_strategy_menu"
 
 	action_a = {
+		ai_chance = 100
+		trigger = {  exists = CHI NOT = { war = { country = IND country = CHI } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } } NOT = { flag = ind_aubm_commitment_soviet } NOT = { alliance = { country = IND country = SOV } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } }
 		name = "Build the consultation mechanism"
 		command = { type = relation which = CHI value = 20 }
 		command = { type = relation which = JAP value = -10 }
 		command = { type = setflag which = ind_v4_china_conference_partner }
+	}
+
+	action = {
+		trigger = { NOT = { AND = { exists = CHI NOT = { war = { country = IND country = CHI } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } } NOT = { flag = ind_aubm_commitment_soviet } NOT = { alliance = { country = IND country = SOV } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } } } }
+		ai_chance = 100
+		name = "The offer has lapsed; close the file"
 	}
 }
 
@@ -373,15 +517,23 @@ event = {
 	one_action = yes
 	country = SIA
 
-	name = "India Invites Siam to Delhi"
-	desc = "India offers consultation without demanding that Bangkok abandon every relationship with Japan or Britain. Siam can gain room to manoeuvre by attending, though every major power will study the delegation."
+	name = "Siam and the Delhi Conference"
+	desc = "Siam is willing to discuss frontier communication with an uncommitted India. Talks require peace between the two governments and do not change Siam's existing alliances."
 	style = 2
 	picture = "aubm_v4_asian_strategy_menu"
 
 	action_a = {
+		ai_chance = 100
+		trigger = {  exists = SIA NOT = { war = { country = IND country = SIA } } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } } NOT = { flag = ind_aubm_commitment_soviet } NOT = { alliance = { country = IND country = SOV } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } }
 		name = "Attend without accepting an alliance"
 		command = { type = relation which = IND value = 20 }
 		command = { type = event which = 9280619 where = IND when = 7 }
+	}
+
+	action = {
+		trigger = { NOT = { AND = { exists = SIA NOT = { war = { country = IND country = SIA } } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } } NOT = { flag = ind_aubm_commitment_soviet } NOT = { alliance = { country = IND country = SOV } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } } } }
+		ai_chance = 100
+		name = "The offer has lapsed; close the file"
 	}
 }
 
@@ -390,16 +542,24 @@ event = {
 	random = no
 	country = IND
 
-	name = "Siam Attends the Delhi Conference"
-	desc = "Bangkok sends a cautious delegation. It accepts consultation and frontier communication but no alliance. Even this limited success gives Delhi information and influence along the approaches to Burma."
+	name = "Siam and the Delhi Conference"
+	desc = "Siam is willing to discuss frontier communication with an uncommitted India. Talks require peace between the two governments and do not change Siam's existing alliances."
 	style = 2
 	picture = "aubm_v4_asian_strategy_menu"
 
 	action_a = {
+		ai_chance = 100
+		trigger = {  exists = SIA NOT = { war = { country = IND country = SIA } } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } } NOT = { flag = ind_aubm_commitment_soviet } NOT = { alliance = { country = IND country = SOV } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } }
 		name = "Establish the frontier liaison"
 		command = { type = relation which = SIA value = 15 }
 		command = { type = intelligence which = us value = 1 }
 		command = { type = setflag which = ind_v4_siam_conference_partner }
+	}
+
+	action = {
+		trigger = { NOT = { AND = { exists = SIA NOT = { war = { country = IND country = SIA } } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } } NOT = { flag = ind_aubm_commitment_soviet } NOT = { alliance = { country = IND country = SOV } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } } } }
+		ai_chance = 100
+		name = "The offer has lapsed; close the file"
 	}
 }
 
@@ -409,16 +569,24 @@ event = {
 	one_action = yes
 	country = ENG
 
-	name = "India Sends Emergency Aid"
-	desc = "Indian supplies arrive while Britain reorganizes after the collapse of France. Delhi has attached no automatic right of command to the shipment, making the aid both useful and unmistakably sovereign."
+	name = "Britain's Reply to Indian Aid"
+	desc = "Britain is ready to acknowledge the supplies India offered after France's defeat. The aid can proceed while Britain and India remain at peace and India's commitments allow cooperation."
 	style = 2
 	picture = "aubm_v4_india_world_war"
 
 	action_a = {
+		ai_chance = 100
+		trigger = {  exists = ENG NOT = { war = { country = IND country = ENG } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } }
 		name = "Acknowledge India as a sovereign partner"
 		command = { type = supplies value = 600 }
 		command = { type = relation which = IND value = 25 }
 		command = { type = event which = 9280624 where = IND when = 4 }
+	}
+
+	action = {
+		trigger = { NOT = { AND = { exists = ENG NOT = { war = { country = IND country = ENG } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } } } }
+		ai_chance = 100
+		name = "The offer has lapsed; close the file"
 	}
 }
 
@@ -428,16 +596,24 @@ event = {
 	one_action = yes
 	country = IRQ
 
-	name = "Delhi Offers Mediation"
-	desc = "India offers to recognize Iraqi sovereignty while keeping the Gulf transport network open under negotiated supervision. The proposal gives Baghdad diplomatic room without promising military rescue."
+	name = "Iraq's Reply to Indian Mediation"
+	desc = "Baghdad is willing to discuss sovereignty and transport with India. Mediation requires India to remain at peace with both Iraq and Britain. These talks do not themselves end the Iraqi war."
 	style = 2
 	picture = "aubm_v4_india_world_war"
 
 	action_a = {
+		ai_chance = 100
+		trigger = {  exists = IRQ NOT = { war = { country = IND country = IRQ } } exists = ENG NOT = { war = { country = IND country = ENG } } }
 		name = "Accept Indian mediation"
 		command = { type = relation which = IND value = 30 }
 		command = { type = dissent value = -1 }
 		command = { type = event which = 9280625 where = IND when = 5 }
+	}
+
+	action = {
+		trigger = { NOT = { AND = { exists = IRQ NOT = { war = { country = IND country = IRQ } } exists = ENG NOT = { war = { country = IND country = ENG } } } } }
+		ai_chance = 100
+		name = "The offer has lapsed; close the file"
 	}
 }
 
@@ -447,16 +623,24 @@ event = {
 	one_action = yes
 	country = PER
 
-	name = "India Funds a Sovereign Corridor"
-	desc = "Delhi offers rolling stock, fuel and engineers on the condition that Persian civil authority remains visible along the route. The bargain is imperfect, but it is better than an unconsulted occupation."
+	name = "Persia's Reply on the Supply Corridor"
+	desc = "Tehran offers to keep Persian officials in charge of a supply route toward the Soviet Union. India can proceed while at peace with Persia and Moscow and free of an opposing German or Japanese commitment."
 	style = 2
 	picture = "aubm_v4_barbarossa_reaction"
 
 	action_a = {
+		ai_chance = 100
+		trigger = {  exists = SOV NOT = { war = { country = IND country = SOV } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } exists = PER NOT = { war = { country = IND country = PER } } }
 		name = "Open the corridor under Persian authority"
 		command = { type = supplies value = 700 }
 		command = { type = relation which = IND value = 25 }
 		command = { type = event which = 9280626 where = IND when = 7 }
+	}
+
+	action = {
+		trigger = { NOT = { AND = { exists = SOV NOT = { war = { country = IND country = SOV } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } exists = PER NOT = { war = { country = IND country = PER } } } } }
+		ai_chance = 100
+		name = "The offer has lapsed; close the file"
 	}
 }
 
@@ -466,16 +650,24 @@ event = {
 	one_action = yes
 	country = USA
 
-	name = "India Proposes Pacific Coordination"
-	desc = "Delhi offers convoy schedules, repair access and intelligence while retaining command of Indian forces. Washington can turn the proposal into a practical partnership without requiring immediate Indian entry into an alliance."
+	name = "Washington's Reply on Pacific Cooperation"
+	desc = "Washington offers equipment and shared convoy information while leaving Indian forces under Delhi's command. The offer requires peace with both America and Britain and compatible Indian commitments."
 	style = 2
 	picture = "aubm_v4_japan_southern_choice"
 
 	action_a = {
+		ai_chance = 100
+		trigger = {  exists = ENG NOT = { war = { country = IND country = ENG } } exists = USA NOT = { war = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } } }
 		name = "Send equipment under sovereign terms"
 		command = { type = supplies value = 900 }
 		command = { type = relation which = IND value = 30 }
 		command = { type = event which = 9280627 where = IND when = 8 }
+	}
+
+	action = {
+		trigger = { NOT = { AND = { exists = ENG NOT = { war = { country = IND country = ENG } } exists = USA NOT = { war = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } } } } }
+		ai_chance = 100
+		name = "The offer has lapsed; close the file"
 	}
 }
 
@@ -484,16 +676,24 @@ event = {
 	random = no
 	country = IND
 
-	name = "London Acknowledges Indian Sovereignty"
-	desc = "Britain publicly thanks India for emergency aid and accepts that future military cooperation must be negotiated between governments. The statement costs London little, but gives Delhi a precedent it can cite in every later conference."
+	name = "Britain's Reply to Indian Aid"
+	desc = "Britain is ready to acknowledge the supplies India offered after France's defeat. The aid can proceed while Britain and India remain at peace and India's commitments allow cooperation."
 	style = 2
 	picture = "aubm_v4_london_settlement"
 
 	action_a = {
+		ai_chance = 100
+		trigger = {  exists = ENG NOT = { war = { country = IND country = ENG } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } }
 		name = "Record the precedent"
 		command = { type = relation which = ENG value = 10 }
 		command = { type = intelligence which = us value = 1 }
 		command = { type = setflag which = ind_v4_british_sovereignty_precedent }
+	}
+
+	action = {
+		trigger = { NOT = { AND = { exists = ENG NOT = { war = { country = IND country = ENG } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } } } }
+		ai_chance = 100
+		name = "The offer has lapsed; close the file"
 	}
 }
 
@@ -502,16 +702,24 @@ event = {
 	random = no
 	country = IND
 
-	name = "Baghdad Accepts Delhi's Mediation"
-	desc = "Iraqi representatives accept Indian mediation and agree to discuss transport access without surrendering the language of sovereignty. Britain remains wary, but Delhi has shown that regional diplomacy need not be dictated from Europe."
+	name = "Iraq's Reply to Indian Mediation"
+	desc = "Baghdad is willing to discuss sovereignty and transport with India. Mediation requires India to remain at peace with both Iraq and Britain. These talks do not themselves end the Iraqi war."
 	style = 2
 	picture = "aubm_v4_india_world_war"
 
 	action_a = {
+		ai_chance = 100
+		trigger = {  exists = IRQ NOT = { war = { country = IND country = IRQ } } exists = ENG NOT = { war = { country = IND country = ENG } } }
 		name = "Keep the channel open"
 		command = { type = dissent value = -1 }
 		command = { type = relation which = IRQ value = 15 }
 		command = { type = setflag which = ind_v4_iraq_mediation_accepted }
+	}
+
+	action = {
+		trigger = { NOT = { AND = { exists = IRQ NOT = { war = { country = IND country = IRQ } } exists = ENG NOT = { war = { country = IND country = ENG } } } } }
+		ai_chance = 100
+		name = "The offer has lapsed; close the file"
 	}
 }
 
@@ -520,16 +728,24 @@ event = {
 	random = no
 	country = IND
 
-	name = "Tehran Opens the Sovereign Corridor"
-	desc = "Persia accepts Indian engineers and material while keeping its own officials at the stations and depots. The route is slower than military seizure would have been, but it builds durable influence and improves Indian experience with continental logistics."
+	name = "Persia's Reply on the Supply Corridor"
+	desc = "Tehran offers to keep Persian officials in charge of a supply route toward the Soviet Union. India can proceed while at peace with Persia and Moscow and free of an opposing German or Japanese commitment."
 	style = 2
 	picture = "aubm_v4_barbarossa_reaction"
 
 	action_a = {
+		ai_chance = 100
+		trigger = {  exists = SOV NOT = { war = { country = IND country = SOV } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } exists = PER NOT = { war = { country = IND country = PER } } }
 		name = "Put the route into service: +1 transport capacity"
 		command = { type = tc_mod value = 1 }
 		command = { type = relation which = PER value = 15 }
 		command = { type = setflag which = ind_v4_sovereign_persian_corridor }
+	}
+
+	action = {
+		trigger = { NOT = { AND = { exists = SOV NOT = { war = { country = IND country = SOV } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } exists = PER NOT = { war = { country = IND country = PER } } } } }
+		ai_chance = 100
+		name = "The offer has lapsed; close the file"
 	}
 }
 
@@ -538,16 +754,24 @@ event = {
 	random = no
 	country = IND
 
-	name = "Washington Answers Delhi"
-	desc = "American equipment begins moving toward India under an agreement that leaves Indian forces under Delhi's command. The first shipment cannot transform the war, but it gives Pacific coordination a material foundation."
+	name = "Washington's Reply on Pacific Cooperation"
+	desc = "Washington offers equipment and shared convoy information while leaving Indian forces under Delhi's command. The offer requires peace with both America and Britain and compatible Indian commitments."
 	style = 2
 	picture = "aubm_v4_japan_southern_choice"
 
 	action_a = {
+		ai_chance = 100
+		trigger = {  exists = ENG NOT = { war = { country = IND country = ENG } } exists = USA NOT = { war = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } } }
 		name = "Receive the first shipment: +450 supplies"
 		command = { type = supplies value = 450 }
 		command = { type = relation which = USA value = 15 }
 		command = { type = setflag which = ind_v4_american_pacific_equipment }
+	}
+
+	action = {
+		trigger = { NOT = { AND = { exists = ENG NOT = { war = { country = IND country = ENG } } exists = USA NOT = { war = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } } } } }
+		ai_chance = 100
+		name = "The offer has lapsed; close the file"
 	}
 }
 
@@ -557,16 +781,24 @@ event = {
 	one_action = yes
 	country = ENG
 
-	name = "India Enters the Allied Coalition"
-	desc = "India has entered the war as a sovereign power rather than an imperial auxiliary. London accepts Indian command over Indian forces and releases equipment for the first joint plans."
+	name = "The British Alliance Shipment"
+	desc = "Britain has offered equipment for India's entry into the Allied coalition. The shipment is available only if India still shares Britain's alliance when the reply is received."
 	style = 2
 	picture = "aubm_v4_london_settlement"
 
 	action_a = {
+		ai_chance = 100
+		trigger = {  exists = ENG NOT = { war = { country = IND country = ENG } } alliance = { country = IND country = ENG } }
 		name = "Recognize India's independent command"
 		command = { type = supplies value = -600 }
 		command = { type = relation which = IND value = 30 }
 		command = { type = event which = 9280634 where = IND when = 5 }
+	}
+
+	action = {
+		trigger = { NOT = { AND = { exists = ENG NOT = { war = { country = IND country = ENG } } alliance = { country = IND country = ENG } } } }
+		ai_chance = 100
+		name = "The offer has lapsed; close the file"
 	}
 }
 
@@ -576,16 +808,24 @@ event = {
 	one_action = yes
 	country = GER
 
-	name = "India Enters the Continental Coalition"
-	desc = "India's entry opens a front against the British imperial system, but Delhi insists upon separate command and equal status. Berlin accepts the formula and dispatches what equipment can pass the blockade."
+	name = "The German Alliance Shipment"
+	desc = "Germany has offered equipment for joint war plans. The shipment is available only if India still shares Germany's alliance when the reply is received."
 	style = 2
 	picture = "aubm_v4_grand_strategy"
 
 	action_a = {
+		ai_chance = 100
+		trigger = {  exists = GER NOT = { war = { country = IND country = GER } } alliance = { country = IND country = GER } }
 		name = "Accept separate Indian command"
 		command = { type = supplies value = -450 }
 		command = { type = relation which = IND value = 30 }
 		command = { type = event which = 9280635 where = IND when = 7 }
+	}
+
+	action = {
+		trigger = { NOT = { AND = { exists = GER NOT = { war = { country = IND country = GER } } alliance = { country = IND country = GER } } } }
+		ai_chance = 100
+		name = "The offer has lapsed; close the file"
 	}
 }
 
@@ -595,16 +835,24 @@ event = {
 	one_action = yes
 	country = SOV
 
-	name = "India Enters the Socialist Coalition"
-	desc = "Delhi converts technical cooperation into a wartime alliance while retaining national control of its armies. Moscow agrees to coordinate through Tashkent and releases equipment for the new front."
+	name = "The Soviet Alliance Shipment"
+	desc = "Moscow has offered equipment and liaison officers for the coalition. The shipment is available only if India still shares the Soviet alliance when the reply is received."
 	style = 2
 	picture = "aubm_v4_grand_strategy"
 
 	action_a = {
+		ai_chance = 100
+		trigger = {  exists = SOV NOT = { war = { country = IND country = SOV } } alliance = { country = IND country = SOV } }
 		name = "Coordinate through Tashkent"
 		command = { type = supplies value = -500 }
 		command = { type = relation which = IND value = 30 }
 		command = { type = event which = 9280636 where = IND when = 6 }
+	}
+
+	action = {
+		trigger = { NOT = { AND = { exists = SOV NOT = { war = { country = IND country = SOV } } alliance = { country = IND country = SOV } } } }
+		ai_chance = 100
+		name = "The offer has lapsed; close the file"
 	}
 }
 
@@ -614,16 +862,24 @@ event = {
 	one_action = yes
 	country = JAP
 
-	name = "India Enters a Separate Asian Coalition"
-	desc = "India joins Japan through a bilateral agreement outside German leadership. Delhi's insistence on separate command remains contentious, but Tokyo accepts it in exchange for access to a continental partner."
+	name = "The Japanese Alliance Shipment"
+	desc = "Tokyo has offered equipment for the alliance with India. The shipment is available only if the two countries still share an alliance when the reply is received. Their alliance joins wars under the game's normal rules."
 	style = 2
 	picture = "aubm_v4_tokyo_proposition"
 
 	action_a = {
+		ai_chance = 100
+		trigger = {  exists = JAP NOT = { war = { country = IND country = JAP } } alliance = { country = IND country = JAP } }
 		name = "Accept the bilateral command formula"
 		command = { type = supplies value = -500 }
 		command = { type = relation which = IND value = 30 }
 		command = { type = event which = 9280637 where = IND when = 6 }
+	}
+
+	action = {
+		trigger = { NOT = { AND = { exists = JAP NOT = { war = { country = IND country = JAP } } alliance = { country = IND country = JAP } } } }
+		ai_chance = 100
+		name = "The offer has lapsed; close the file"
 	}
 }
 
@@ -632,17 +888,25 @@ event = {
 	random = no
 	country = IND
 
-	name = "British Equipment Reaches India"
-	desc = "The first Allied shipment arrives under papers naming the Government of India as consignee and commander. The language is as important as the matériel: cooperation has begun without restoring imperial authority."
+	name = "The British Alliance Shipment"
+	desc = "Britain has offered equipment for India's entry into the Allied coalition. The shipment is available only if India still shares Britain's alliance when the reply is received."
 	style = 2
 	picture = "aubm_v4_london_settlement"
 
 	action_a = {
+		ai_chance = 100
+		trigger = {  exists = ENG NOT = { war = { country = IND country = ENG } } alliance = { country = IND country = ENG } }
 		name = "Receive 600 supplies under sovereign terms"
 		command = { type = supplies value = 600 }
 		command = { type = intelligence which = us value = 1 }
 		command = { type = setflag which = ind_v4_allied_entry_recognized }
 		command = { type = setflag which = ind_v4_strategic_weight_1 }
+	}
+
+	action = {
+		trigger = { NOT = { AND = { exists = ENG NOT = { war = { country = IND country = ENG } } alliance = { country = IND country = ENG } } } }
+		ai_chance = 100
+		name = "The offer has lapsed; close the file"
 	}
 }
 
@@ -651,17 +915,25 @@ event = {
 	random = no
 	country = IND
 
-	name = "The Blockade Mission Arrives"
-	desc = "A limited German shipment reaches India through neutral carriers. It is smaller than promised, but confirms that Berlin has accepted an Indian theatre under Indian command."
+	name = "The German Alliance Shipment"
+	desc = "Germany has offered equipment for joint war plans. The shipment is available only if India still shares Germany's alliance when the reply is received."
 	style = 2
 	picture = "aubm_v4_grand_strategy"
 
 	action_a = {
+		ai_chance = 100
+		trigger = {  exists = GER NOT = { war = { country = IND country = GER } } alliance = { country = IND country = GER } }
 		name = "Receive 450 supplies and the mission"
 		command = { type = supplies value = 450 }
 		command = { type = intelligence which = us value = 1 }
 		command = { type = setflag which = ind_v4_axis_entry_recognized }
 		command = { type = setflag which = ind_v4_strategic_weight_1 }
+	}
+
+	action = {
+		trigger = { NOT = { AND = { exists = GER NOT = { war = { country = IND country = GER } } alliance = { country = IND country = GER } } } }
+		ai_chance = 100
+		name = "The offer has lapsed; close the file"
 	}
 }
 
@@ -670,17 +942,25 @@ event = {
 	random = no
 	country = IND
 
-	name = "The Tashkent Trains Arrive"
-	desc = "Soviet equipment and liaison officers reach the northwestern depots. Coordination remains difficult across Persia and Central Asia, but Moscow has accepted India's national command structure."
+	name = "The Soviet Alliance Shipment"
+	desc = "Moscow has offered equipment and liaison officers for the coalition. The shipment is available only if India still shares the Soviet alliance when the reply is received."
 	style = 2
 	picture = "aubm_v4_grand_strategy"
 
 	action_a = {
+		ai_chance = 100
+		trigger = {  exists = SOV NOT = { war = { country = IND country = SOV } } alliance = { country = IND country = SOV } }
 		name = "Receive 500 supplies and establish liaison"
 		command = { type = supplies value = 500 }
 		command = { type = intelligence which = us value = 1 }
 		command = { type = setflag which = ind_v4_soviet_entry_recognized }
 		command = { type = setflag which = ind_v4_strategic_weight_1 }
+	}
+
+	action = {
+		trigger = { NOT = { AND = { exists = SOV NOT = { war = { country = IND country = SOV } } alliance = { country = IND country = SOV } } } }
+		ai_chance = 100
+		name = "The offer has lapsed; close the file"
 	}
 }
 
@@ -689,17 +969,25 @@ event = {
 	random = no
 	country = IND
 
-	name = "Tokyo Accepts Separate Indian Command"
-	desc = "Japanese matériel reaches eastern India with a formal acknowledgement that Indian formations remain under Delhi's command. The agreement does not settle China or competing ambitions in Southeast Asia, but it prevents immediate subordination."
+	name = "The Japanese Alliance Shipment"
+	desc = "Tokyo has offered equipment for the alliance with India. The shipment is available only if the two countries still share an alliance when the reply is received. Their alliance joins wars under the game's normal rules."
 	style = 2
 	picture = "aubm_v4_tokyo_proposition"
 
 	action_a = {
+		ai_chance = 100
+		trigger = {  exists = JAP NOT = { war = { country = IND country = JAP } } alliance = { country = IND country = JAP } }
 		name = "Receive 500 supplies and test the agreement"
 		command = { type = supplies value = 500 }
 		command = { type = intelligence which = us value = 1 }
 		command = { type = setflag which = ind_v4_japan_entry_recognized }
 		command = { type = setflag which = ind_v4_strategic_weight_1 }
+	}
+
+	action = {
+		trigger = { NOT = { AND = { exists = JAP NOT = { war = { country = IND country = JAP } } alliance = { country = IND country = JAP } } } }
+		ai_chance = 100
+		name = "The offer has lapsed; close the file"
 	}
 }
 
@@ -709,15 +997,23 @@ event = {
 	one_action = yes
 	country = USA
 
-	name = "India Claims a Great-Power Seat"
-	desc = "Delhi argues that its continental resources, ocean bases and wartime contribution require permanent participation in the postwar security system. Washington accepts India as a principal Asian power, while leaving the exact institutions to negotiation."
+	name = "Washington and India's Place at the Peace"
+	desc = "Washington is willing to discuss India's claim to a leading place in the postwar settlement. Recognition requires peaceful relations between the two governments and creates no alliance."
 	style = 2
 	picture = "aubm_v4_war_aims"
 
 	action_a = {
+		ai_chance = 100
+		trigger = {  exists = USA NOT = { war = { country = IND country = USA } } }
 		name = "Recognize India as a principal power"
 		command = { type = relation which = IND value = 30 }
 		command = { type = event which = 9280643 where = IND when = 5 }
+	}
+
+	action = {
+		trigger = { NOT = { AND = { exists = USA NOT = { war = { country = IND country = USA } } } } }
+		ai_chance = 100
+		name = "The offer has lapsed; close the file"
 	}
 }
 
@@ -727,15 +1023,23 @@ event = {
 	one_action = yes
 	country = CHI
 
-	name = "India Proposes an Asian Decolonization Charter"
-	desc = "Delhi asks Asian governments to support fixed timetables for colonial self-government and independence. China endorses the principle while insisting that resistance to Japanese expansion remain part of the new order."
+	name = "China and the Independence Charter"
+	desc = "China is willing to support fixed timetables for Asian independence if the charter also opposes Japanese conquest. Endorsement requires peace with India and no Indian commitment to Japan."
 	style = 2
 	picture = "aubm_v4_asian_strategy_menu"
 
 	action_a = {
+		ai_chance = 100
+		trigger = {  exists = CHI NOT = { war = { country = IND country = CHI } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } }
 		name = "Endorse the charter with a China clause"
 		command = { type = relation which = IND value = 35 }
 		command = { type = event which = 9280644 where = IND when = 5 }
+	}
+
+	action = {
+		trigger = { NOT = { AND = { exists = CHI NOT = { war = { country = IND country = CHI } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } } } }
+		ai_chance = 100
+		name = "The offer has lapsed; close the file"
 	}
 }
 
@@ -745,15 +1049,23 @@ event = {
 	one_action = yes
 	country = USA
 
-	name = "India Proposes an Indian Ocean Charter"
-	desc = "Delhi proposes sovereign access agreements, shared rescue and convoy standards, and no automatic foreign command over Indian bases. Washington accepts the framework as the basis for postwar maritime talks."
+	name = "Washington and the Indian Ocean Conference"
+	desc = "Washington is willing to discuss rescue services, convoy standards and agreed access to Indian Ocean bases. Talks require peace with India and give no foreign power command over Indian forces."
 	style = 2
 	picture = "aubm_v4_indian_ocean_war"
 
 	action_a = {
+		ai_chance = 100
+		trigger = {  exists = USA NOT = { war = { country = IND country = USA } } }
 		name = "Open the maritime conference"
 		command = { type = relation which = IND value = 25 }
 		command = { type = event which = 9280645 where = IND when = 5 }
+	}
+
+	action = {
+		trigger = { NOT = { AND = { exists = USA NOT = { war = { country = IND country = USA } } } } }
+		ai_chance = 100
+		name = "The offer has lapsed; close the file"
 	}
 }
 
@@ -762,15 +1074,23 @@ event = {
 	random = no
 	country = IND
 
-	name = "Washington Recognizes India's Claim"
-	desc = "The United States accepts India as a principal Asian power and invites Delhi into the design of the postwar security system. The institutions remain unfinished, but the question of India's status is no longer deferred."
+	name = "Washington and India's Place at the Peace"
+	desc = "Washington is willing to discuss India's claim to a leading place in the postwar settlement. Recognition requires peaceful relations between the two governments and creates no alliance."
 	style = 2
 	picture = "aubm_v4_war_aims"
 
 	action_a = {
+		ai_chance = 100
+		trigger = {  exists = USA NOT = { war = { country = IND country = USA } } }
 		name = "Take the seat and shape the institution"
 		command = { type = relation which = USA value = 15 }
 		command = { type = setflag which = ind_v4_great_power_claim_recognized }
+	}
+
+	action = {
+		trigger = { NOT = { AND = { exists = USA NOT = { war = { country = IND country = USA } } } } }
+		ai_chance = 100
+		name = "The offer has lapsed; close the file"
 	}
 }
 
@@ -779,16 +1099,24 @@ event = {
 	random = no
 	country = IND
 
-	name = "China Endorses the Delhi Charter"
-	desc = "China supports fixed independence timetables and asks that the charter also reject conquest by Asian empires. Delhi gains a powerful partner, but the added clause makes any later accommodation with Japan more difficult."
+	name = "China and the Independence Charter"
+	desc = "China is willing to support fixed timetables for Asian independence if the charter also opposes Japanese conquest. Endorsement requires peace with India and no Indian commitment to Japan."
 	style = 2
 	picture = "aubm_v4_asian_strategy_menu"
 
 	action_a = {
+		ai_chance = 100
+		trigger = {  exists = CHI NOT = { war = { country = IND country = CHI } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } }
 		name = "Accept the reciprocal anti-imperial principle"
 		command = { type = relation which = CHI value = 20 }
 		command = { type = relation which = JAP value = -15 }
 		command = { type = setflag which = ind_v4_decolonization_charter_endorsed }
+	}
+
+	action = {
+		trigger = { NOT = { AND = { exists = CHI NOT = { war = { country = IND country = CHI } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } } } }
+		ai_chance = 100
+		name = "The offer has lapsed; close the file"
 	}
 }
 
@@ -797,15 +1125,23 @@ event = {
 	random = no
 	country = IND
 
-	name = "The Indian Ocean Conference Opens"
-	desc = "American delegates accept sovereign basing, common rescue standards and negotiated convoy planning as the conference agenda. India has converted wartime geography into an institution it can lead."
+	name = "Washington and the Indian Ocean Conference"
+	desc = "Washington is willing to discuss rescue services, convoy standards and agreed access to Indian Ocean bases. Talks require peace with India and give no foreign power command over Indian forces."
 	style = 2
 	picture = "aubm_v4_indian_ocean_war"
 
 	action_a = {
+		ai_chance = 100
+		trigger = {  exists = USA NOT = { war = { country = IND country = USA } } }
 		name = "Lead the maritime conference"
 		command = { type = relation which = USA value = 15 }
 		command = { type = intelligence which = us value = 1 }
 		command = { type = setflag which = ind_v4_ocean_charter_conference }
+	}
+
+	action = {
+		trigger = { NOT = { AND = { exists = USA NOT = { war = { country = IND country = USA } } } } }
+		ai_chance = 100
+		name = "The offer has lapsed; close the file"
 	}
 }

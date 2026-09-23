@@ -174,7 +174,8 @@ def v4_manifest_issues() -> list[str]:
 
     catalog: dict[int, tuple[str, str]] = {}
     event_pattern = re.compile(r"(?m)^event\s*=\s*\{")
-    id_pattern = re.compile(r"(?m)^\s*id\s*=\s*(928\d+)\s*$")
+    # Audit every event in aubm_v4, including the registered LIBERATOR3 range.
+    id_pattern = re.compile(r"(?m)^\s*id\s*=\s*(\d+)\s*$")
     name_pattern = re.compile(r'(?m)^\s*name\s*=\s*"([^"]+)"\s*$')
     picture_pattern = re.compile(r'(?m)^\s*picture\s*=\s*"([^"]+)"\s*$')
     for event_file in sorted((MOD / "db/events/aubm_v4").glob("*.txt")):

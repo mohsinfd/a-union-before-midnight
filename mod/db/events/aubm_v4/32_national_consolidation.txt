@@ -241,6 +241,11 @@ event = {
 	desc = "Review live Indian objectives, open authored great-power or regional dockets, or enter the unrestricted country index. The index is a sandbox catalogue for states not already handled by a bespoke docket. Formal alliances share declarations; sovereign and compact routes retain separate wars."
 	style = 2
 	picture = "aubm_v4_grand_strategy"
+	# AUBM_MENU_SAFE_EXIT: human-only; no effects or follow-up event.
+	action = {
+		trigger = { ai = no }
+		name = "Cancel - close without changes"
+	}
 	action_a = {
 		name = "Review live objectives and settlements"
 		command = { type = event which = 9281913 where = IND when = 1 }
@@ -268,6 +273,11 @@ event = {
 	desc = "The complete 210-country catalogue is optional sandbox material beneath the authored great-power, regional and route campaigns. Enabling it is permanent, grants no reward and never bypasses alliance, legal-owner or current-partner guards."
 	style = 2
 	picture = "aubm_v4_grand_strategy"
+	# AUBM_MENU_SAFE_EXIT: human-only; no effects or follow-up event.
+	action = {
+		trigger = { ai = no }
+		name = "Cancel - close without changes"
+	}
 	action_a = {
 		trigger = { NOT = { flag = ind_aubm_unrestricted_sandbox } }
 		name = "Enable unrestricted targets permanently (no reward)"

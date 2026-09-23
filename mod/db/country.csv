@@ -61,7 +61,7 @@ GRE;LightBlue;ENG;ENG;;;;X
 GUA;LightRed;SPA;USA;;;;X
 GUI;Green;FRA;FRA;;;;X
 GUY;UserColor3;ENG;MIN;;;;X
-HAI;UserColor2;ENG;USA;;;;X
+HAI;LightBlue;ENG;USA;;;;X
 HOL;LightYellow;HOL;MIN;;;;X
 HON;LightGreen;SPA;MIN;;;;X
 HUN;DarkYellow;HUN;HUN;;;;X
@@ -76,7 +76,7 @@ JAP;LightOrange;JAP;JAP;;;;X
 JOR;Yellow;ENG;ENG;;;;X
 KAZ;DarkBlue;SOV;SOV;;;;X
 KOR;LightGreen;ENG;JAP;;;;X
-KUR;UserColor2;TUR;SOV;;;;X
+KUR;LightBlue;TUR;SOV;;;;X
 KYG;DarkGreen;SOV;SOV;;;;X
 LAO;DarkBrown;ENG;JAP;;;;X
 LAT;DarkBrown;LAT;GER;;;;X
@@ -96,7 +96,7 @@ MON;DarkYellow;CHI;SOV;;;;X
 MOR;DarkOrange;ENG;FRA;;;;X
 MOZ;Red;POR;MIN;;;;X
 MTN;UserColor1;ENG;MIN;;;;X
-NAM;UserColor2;ENG;ENG;;;;X
+NAM;LightBlue;ENG;ENG;;;;X
 NEP;UserColor3;ENG;ENG;;;;X
 NIC;DarkBrown;SPA;USA;;;;X
 NIG;Red;ENG;ENG;;;;X
@@ -141,7 +141,7 @@ SPA;DarkGray;SPA;GER;;;;X
 SPR;DarkYellow;SPA;SOV;;;;X
 SUD;DarkYellow;ENG;MIN;;;;X
 SWE;LightBlue;SWE;MIN;;;;X
-SYR;UserColor2;ENG;MIN;;;;X
+SYR;LightBlue;ENG;MIN;;;;X
 TAJ;DarkOrange;SOV;SOV;;;;X
 TAN;LightRed;CHI;SOV;;;;X
 TEX;Yellow;USA;USA;;;;X
@@ -166,8 +166,8 @@ ALI;Black;ALI;ALI;;;;X
 U00;DarkGray;ENG;MIN;;;;X
 U01;LightBlue;ENG;MIN;;;;X
 U02;DarkYellow;ENG;MIN;;;;X
-U03;UserColor2;FRA;FRA;;;;X
-U04;UserColor2;FRA;FRA;;;;X
+U03;LightBlue;FRA;FRA;;;;X
+U04;LightBlue;FRA;FRA;;;;X
 U05;DarkOrange;ENG;MIN;;;;X
 U06;DarkOrange;ENG;MIN;;;;X
 U07;Black;ENG;MIN;;;;X
@@ -186,13 +186,13 @@ U19;LightGreen;NOR;SOV;;;;X
 U20;UserColor3;FIN;SOV;;;;X
 U21;DarkGray;SWE;SOV;;;;X
 U22;DarkYellow;DEN;SOV;;;;X
-U23;UserColor2;ENG;MIN;;;;X
+U23;LightBlue;ENG;MIN;;;;X
 U24;Brown;ENG;MIN;;;;X
 U25;LightGray;ENG;MIN;;;;X
 U26;Red;GER;SOV;;;;X
 U27;LightOrange;YUG;SOV;;;;X
 U28;UserColor1;ENG;SOV;;;;X
-U29;UserColor2;BUL;SOV;;;;X
+U29;LightBlue;BUL;SOV;;;;X
 U30;LightGreen;ROM;SOV;;;;X
 U31;UserColor4;ENG;SOV;;;;X
 U32;Blue;POL;SOV;;;;X
@@ -209,7 +209,7 @@ U42;DarkYellow;ENG;MIN;;;;X
 U43;LightRed;ENG;MIN;;;;X
 U44;Brown;ENG;MIN;;;;X
 U45;DarkBrown;ENG;MIN;;;;X
-U46;UserColor2;ENG;MIN;;;;X
+U46;LightBlue;ENG;MIN;;;;X
 U47;LightYellow;ENG;MIN;;;;X
 U48;UserColor3;ENG;MIN;;;;X
 U49;DarkGray;ENG;ITA;;;;X
@@ -341,5 +341,5 @@ UES;LightRed;ENG;ENG;;;;X
 URO;DarkGreen;ITA;ITA;;;;X
 UAP;LightYellow;ENG;ENG;;;;X
 UPE;LightYellow;ENG;ENG;;;;X
-IND;DarkBlue;ENG;IND;IND;IND;;X
+IND;UserColor2;ENG;IND;IND;IND;;X
 END;DarkGreen;ENG;ENG;;;;X

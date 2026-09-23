@@ -116,7 +116,7 @@ event = {
 
 	name = "The Oceanic Fleet Review"
 	decision_desc = "Cabinet funding estimates: Carrier readiness [money 700, supplies 1,600]; Fleet train [money 550, supplies 1,400]; Repair and reconnaissance [money 450, supplies 1,100]."
-	desc = "India already possesses an oceanic fleet. The 1941 review therefore asks how to make existing hulls effective: train a carrier air arm, create a permanent fleet train, or build a repair and reconnaissance system. The programme no longer duplicates ships the player may have constructed."
+	desc = "Choose one permanent improvement. Combat training gives ALL ships +3 organisation and +2 morale and opens a naval research team. Fleet supply gives ALL ships +2 organisation, +3 morale and +3 repair. Repair and scouting gives +5 repair, +2 intelligence and +1 organisation to ALL ships. These choices add no ships and are not limited to carriers."
 	style = 2
 	picture = "india_v3_armed_forces"
 
@@ -132,13 +132,12 @@ event = {
 			# AUBM_ACTION_RESERVE_END
 		}
 		ai_chance = 40
-		name = "Carrier readiness: -700 money, -1600 supplies"
+		name = "Fleet combat training: -700 money, -1600 supplies"
 		command = { type = money value = -700 }
 		command = { type = supplies value = -1600 }
 		command = { type = waketeam which = 250018 }
 		command = { type = max_organization which = naval value = 3 }
 		command = { type = morale which = naval value = 2 }
-		command = { type = max_organization which = naval value = 2 }
 		command = { type = setflag which = ind_v3_carrier_fleet }
 		command = { type = setflag which = ind_v3_oceanic_fleet }
 	}

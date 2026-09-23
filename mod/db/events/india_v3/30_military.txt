@@ -640,8 +640,9 @@ event = {
 	}
 
 	name = "The Gurkha Settlement"
-	decision_desc = "Cabinet funding estimates: Three field-ready Gurkha divisions [money 300, supplies 1,750, manpower 42]; Three field-ready Gurkha regimental groups [money 175, supplies 900, manpower 30]; One field-ready Gurkha training formation [money 225, supplies 650, manpower 10]."
-	desc = "Sovereignty has left the celebrated Gurkha regiments between three institutions: the Indian Army that employs them, Nepal whose citizens fill their ranks, and Britain which still claims old recruiting privileges. Delhi can fund a complete field corps immediately, preserve the regimental recruiting compact, or build a small permanent training cadre whose doctrine will make every future Gurkha formation more formidable."
+	# AUBM_DECISION_DESC_MANUAL
+	decision_desc = "Choose once: Three Gurkha divisions [money 300, supplies 1,750, manpower 42]; Two Gurkha divisions [money 175, supplies 900, manpower 30]; One division and a mountain school [money 225, supplies 650, manpower 10]."
+	desc = "Nepal supplies recruits for India's Gurkha regiments. Choose three mountain divisions now at a higher cost and +2 dissent, or two divisions through a cheaper recruiting agreement with -1 dissent. The school gives one division and permanently adds +2 organisation and +2 morale to ALL Indian mountain units, including ordinary mountain divisions. These are full divisions. This is a one-time choice."
 	style = 2
 	picture = "Gurkha"
 	decision_picture = "decision_wargames"
@@ -670,8 +671,6 @@ event = {
 		command = { type = relation which = NEP value = 20 }
 		# DH Full has no separate Gurkha unit family; use its supported mountain family.
 		command = { type = activate_unit_type which = bergsjaeger }
-		command = { type = max_organization which = bergsjaeger value = 2 }
-		command = { type = morale which = bergsjaeger value = 2 }
 		command = { type = add_corps which = "Indian Gurkha Division Group" value = land where = 1459 }
 		command = { type = add_division which = "1st King George V's Own Gurkha Rifles" value = bergsjaeger when = -1 where = engineer }
 		command = { type = add_division which = "5th Royal Gurkha Rifles (Frontier Force)" value = bergsjaeger when = -1 where = artillery }
@@ -691,7 +690,7 @@ event = {
 			manpower = 30
 		}
 		ai_chance = 35
-		name = "Three field-ready Gurkha regimental groups"
+		name = "Two Gurkha divisions - cheaper recruiting agreement"
 		command = { type = money value = -175 }
 		command = { type = supplies value = -900 }
 		command = { type = manpowerpool value = -30 }
@@ -701,7 +700,6 @@ event = {
 		command = { type = add_corps which = "Indian Gurkha Regimental Group" value = land where = 1459 }
 		command = { type = add_division which = "2nd King Edward VII's Own Gurkha Rifles" value = bergsjaeger when = -1 where = engineer }
 		command = { type = add_division which = "6th Gurkha Rifles" value = bergsjaeger when = -1 where = artillery }
-		command = { type = add_division which = "8th Gurkha Rifles" value = bergsjaeger when = -1 where = engineer }
 		command = { type = setflag which = ind_v3_gurkha_regimental_system }
 		command = { type = setflag which = ind_v3_gurkha_arm }
 	}
@@ -717,14 +715,14 @@ event = {
 			manpower = 10
 		}
 		ai_chance = 20
-		name = "One field-ready Gurkha training formation"
+		name = "One division; +2 organisation/morale for all mountains"
 		command = { type = money value = -225 }
 		command = { type = supplies value = -650 }
 		command = { type = manpowerpool value = -10 }
 		command = { type = relation which = NEP value = 10 }
 		command = { type = activate_unit_type which = bergsjaeger }
-		command = { type = max_organization which = bergsjaeger value = 5 }
-		command = { type = morale which = bergsjaeger value = 5 }
+		command = { type = max_organization which = bergsjaeger value = 2 }
+		command = { type = morale which = bergsjaeger value = 2 }
 		command = { type = add_corps which = "Gurkha Mountain Warfare School" value = land where = 1459 }
 		command = { type = add_division which = "Gurkha Mountain Warfare Cadre" value = bergsjaeger when = -1 where = engineer }
 		command = { type = setflag which = ind_v3_gurkha_training_cadre }

@@ -54,6 +54,18 @@ Invoke-Checked "Complete bespoke regional armistices" {
 Invoke-Checked "Complete bespoke strategic route arcs" {
     & $python.Source (Join-Path $PSScriptRoot "generate_aubm_bespoke_route_arcs.py") --check
 }
+Invoke-Checked "Save-compatible sovereign liberation campaign" {
+    & $python.Source (Join-Path $PSScriptRoot "generate_aubm_liberator.py") --check
+}
+Invoke-Checked "Sovereign liberation campaign regression tests" {
+    & $python.Source -m unittest discover -s $PSScriptRoot -p "test_aubm_liberator*.py"
+}
+Invoke-Checked "Future-force commander reserve" {
+    & $python.Source (Join-Path $PSScriptRoot "aubm_command_reserve.py") --check
+}
+Invoke-Checked "Commander and lossless save migration tests" {
+    & $python.Source -m unittest discover -s $PSScriptRoot -p "test_aubm_command_reserve.py"
+}
 
 Write-Host "Rebuilding the V4 overlay from Darkest Hour Full..."
 & (Join-Path $PSScriptRoot "Rebase-V4-DirectDH.ps1") @rebaseArguments
@@ -146,6 +158,9 @@ Write-Host "[Installer manifest]"
 Invoke-Checked "Static validation" {
     & $python.Source (Join-Path $PSScriptRoot "validate_v4.py") --root $repositoryRoot
 }
+Invoke-Checked "War Cabinet safe exits" {
+    & $python.Source (Join-Path $PSScriptRoot "aubm_menu_safety.py") --check
+}
 Invoke-Checked "Art release gate" {
     & $python.Source (Join-Path $PSScriptRoot "audit_v4_art.py") --strict
 }
@@ -199,6 +214,12 @@ if ($GameRoot) {
 Write-Host ""
 Write-Host "[Verified deployment]"
 & (Join-Path $repositoryRoot "installer\Install-A-Union-Before-Midnight.ps1") @installerArguments
+
+# The generated campaign matrices need the final safety/menu pass. Never let a
+# future normal rebuild silently deploy the pre-CLEANUP1 peace implementation.
+$cleanupGameRoot = if ($GameRoot) { $GameRoot } else { "C:\Program Files (x86)\Steam\steamapps\common\Darkest Hour A HOI Game" }
+& (Join-Path $PSScriptRoot "Build-Cleanup1.ps1") `
+    -Target (Join-Path $cleanupGameRoot "Mods\$TargetName") -WithoutSave
 
 Write-Host ""
 Write-Host "V4 rebuilt, validated and deployed. The game was not launched."

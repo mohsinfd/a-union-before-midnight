@@ -367,8 +367,8 @@ event = {
 	# V3_ACTION_REACHABILITY_END
 }
 
-	name = "The Fifteen-Wing Plan"
-	desc = "The general staff asks for an air force able to defend the industrial heartland, support two field armies and patrol both seas by 1940. Meeting the target requires subsidized mass production and will displace civilian aircraft orders."
+	name = "The 1938 Air Expansion Plan"
+	desc = "Choose the next aircraft orders. A balanced force adds one interceptor, one tactical bomber and one naval bomber to production. Continental defence orders an interceptor and a tactical bomber. Maritime operations orders a naval bomber and a transport wing. These are production orders, not aircraft delivered today; provide production funding until they finish."
 	style = 2
 	picture = "india_v3_armed_forces"
 
@@ -382,7 +382,7 @@ event = {
 			manpower = 3
 	}
 		ai_chance = 45
-		name = "Build a balanced three-mission force"
+		name = "Order interceptor, tactical bomber and naval bomber"
 		command = { type = money value = -550 }
 		command = { type = supplies value = -1300 }
 		command = { type = activate_unit_type which = naval_bomber }
@@ -399,7 +399,7 @@ event = {
 			manpower = 2
 	}
 		ai_chance = 35
-		name = "Concentrate on fighters and army cooperation"
+		name = "Order interceptor and tactical bomber"
 		command = { type = money value = -475 }
 		command = { type = supplies value = -1250 }
 		command = { type = activate_unit_type which = escort }
@@ -414,7 +414,7 @@ event = {
 			manpower = 2
 	}
 		ai_chance = 20
-		name = "Build long-range maritime and transport aviation"
+		name = "Order naval bomber and transport wing"
 		command = { type = money value = -500 }
 		command = { type = supplies value = -1200 }
 		command = { type = activate_unit_type which = naval_bomber }

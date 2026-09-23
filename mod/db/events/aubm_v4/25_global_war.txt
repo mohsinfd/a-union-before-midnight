@@ -1,3 +1,4 @@
+# AUBM_CONTEXT_GUARDS_V1
 #########################################################################
 # A Union Before Midnight V4: condition-driven global-war reactions
 #########################################################################
@@ -22,6 +23,7 @@ event = {
 	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
+		trigger = { exists = CHI NOT = { war = { country = IND country = CHI } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } }  supplies = 700 }
 		ai_chance = 45
 		name = "Expand Burma Road aid: -700 supplies"
 		command = { type = supplies value = -700 }
@@ -34,6 +36,7 @@ event = {
 		command = { type = setflag which = ind_v4_china_war_deepens }
 	}
 	action_b = {
+		trigger = { NOT = { atwar = IND } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } } NOT = { flag = ind_aubm_commitment_soviet } NOT = { alliance = { country = IND country = SOV } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } exists = JAP NOT = { war = { country = IND country = JAP } } exists = CHI NOT = { war = { country = IND country = CHI } }  money = 225 }
 		ai_chance = 35
 		name = "Renew Delhi mediation: -225 money"
 		command = { type = money value = -225 }
@@ -44,6 +47,7 @@ event = {
 		command = { type = setflag which = ind_v4_china_war_deepens }
 	}
 	action_c = {
+		trigger = { exists = JAP NOT = { war = { country = IND country = JAP } } NOT = { flag = ind_aubm_commitment_allied } NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_soviet } NOT = { alliance = { country = IND country = SOV } }   }
 		ai_chance = 20
 		name = "Sell strategic goods to Japan: +500 money, +3 dissent"
 		command = { type = money value = 500 }
@@ -52,6 +56,12 @@ event = {
 		command = { type = relation which = CHI value = -35 }
 		command = { type = event which = 9280602 where = JAP when = 1 }
 		command = { type = setflag which = ind_v4_japan_war_trade }
+		command = { type = setflag which = ind_v4_china_war_deepens }
+	}
+
+	action = {
+		ai_chance = 0
+		name = "Keep current orders; no new spending"
 		command = { type = setflag which = ind_v4_china_war_deepens }
 	}
 }
@@ -77,6 +87,7 @@ event = {
 	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
+		trigger = {   money = 250 supplies = 500 }
 		ai_chance = 45
 		name = "Open relief corridors: -250 money, -500 supplies"
 		command = { type = money value = -250 }
@@ -87,6 +98,7 @@ event = {
 		command = { type = setflag which = ind_v4_burma_refugees }
 	}
 	action_b = {
+		trigger = {   supplies = 300 }
 		ai_chance = 35
 		name = "Screen arrivals: -300 supplies, +2 intelligence"
 		command = { type = supplies value = -300 }
@@ -102,6 +114,12 @@ event = {
 		command = { type = dissent value = 3 }
 		command = { type = relation which = CHI value = -25 }
 		command = { type = domestic which = freedom value = -1 }
+		command = { type = setflag which = ind_v4_burma_refugees }
+	}
+
+	action = {
+		ai_chance = 0
+		name = "Keep current orders; no new spending"
 		command = { type = setflag which = ind_v4_burma_refugees }
 	}
 }
@@ -120,8 +138,8 @@ event = {
 		NOT = { flag = ind_v4_siamese_alignment_crisis }
 	}
 
-	name = "Bangkok Chooses Its War"
-	desc = "Siam's alignment with Japan shifts the Asian balance toward India's Malayan and Burmese approaches. Bangkok calls the partnership regional self-defence. Delhi sees Japanese access, airfields and intelligence moving closer to the Union."
+	name = "Japan and the Siamese Frontier"
+	desc = "Japan and Siam now shape the security of India's eastern frontier, whether through partnership or open war. Delhi can strengthen its defences or seek talks with governments it is not fighting."
 	style = 2
 	picture = "aubm_v4_bangkok_chooses_war"
 
@@ -130,6 +148,7 @@ event = {
 	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
+		trigger = { NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } }  money = 350 supplies = 700 }
 		ai_chance = 45
 		name = "Harden the eastern frontier: -350 money, -700 supplies"
 		command = { type = money value = -350 }
@@ -141,6 +160,7 @@ event = {
 		command = { type = setflag which = ind_v4_siamese_alignment_crisis }
 	}
 	action_b = {
+		trigger = { exists = SIA NOT = { war = { country = IND country = SIA } } exists = JAP NOT = { war = { country = IND country = JAP } }  money = 175 }
 		ai_chance = 35
 		name = "Demand an Asian security conference: -175 money"
 		command = { type = money value = -175 }
@@ -150,12 +170,19 @@ event = {
 		command = { type = setflag which = ind_v4_siamese_alignment_crisis }
 	}
 	action_c = {
+		trigger = { exists = SIA NOT = { war = { country = IND country = SIA } } exists = JAP NOT = { war = { country = IND country = JAP } } OR = { alliance = { country = JAP country = SIA } puppet = { country = SIA country = JAP } }   }
 		ai_chance = 20
 		name = "Accept Bangkok's assurances: +350 money, +2 dissent"
 		command = { type = money value = 350 }
 		command = { type = dissent value = 2 }
 		command = { type = relation which = SIA value = 30 }
 		command = { type = relation which = JAP value = 15 }
+		command = { type = setflag which = ind_v4_siamese_alignment_crisis }
+	}
+
+	action = {
+		ai_chance = 0
+		name = "Keep current orders; no new spending"
 		command = { type = setflag which = ind_v4_siamese_alignment_crisis }
 	}
 }
@@ -172,7 +199,7 @@ event = {
 	}
 
 	name = "China Fights from the Interior"
-	desc = "The Chinese state has yielded much of its coast without collapsing. Its survival now depends on inland industry, foreign supply and political endurance. India can become China's rear market, preserve strict neutrality, or recognize Japan's new position."
+	desc = "China has lost much of its territory but continues the war with Japan. Delhi can fund Chinese supply routes, trade with Japan, or stay out of their conflict if India remains at peace. Existing Indian wars and alliances continue."
 	style = 2
 	picture = "aubm_v4_china_interior"
 
@@ -181,6 +208,7 @@ event = {
 	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
+		trigger = { exists = CHI NOT = { war = { country = IND country = CHI } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } }  supplies = 900 }
 		ai_chance = 45
 		name = "Become China's rear market: -900 supplies, +250 money"
 		command = { type = supplies value = -900 }
@@ -190,6 +218,7 @@ event = {
 		command = { type = setflag which = ind_v4_chinese_interior_policy }
 	}
 	action_b = {
+		trigger = { NOT = { atwar = IND } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } } NOT = { flag = ind_aubm_commitment_soviet } NOT = { alliance = { country = IND country = SOV } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } exists = JAP NOT = { war = { country = IND country = JAP } } exists = CHI NOT = { war = { country = IND country = CHI } }   }
 		ai_chance = 35
 		name = "Preserve strict neutrality"
 		command = { type = dissent value = -1 }
@@ -199,12 +228,19 @@ event = {
 		command = { type = setflag which = ind_v4_chinese_interior_policy }
 	}
 	action_c = {
+		trigger = { exists = JAP NOT = { war = { country = IND country = JAP } } NOT = { flag = ind_aubm_commitment_allied } NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_soviet } NOT = { alliance = { country = IND country = SOV } }   }
 		ai_chance = 20
 		name = "Recognize Japan's position: +600 money, +4 dissent"
 		command = { type = money value = 600 }
 		command = { type = dissent value = 4 }
 		command = { type = relation which = JAP value = 45 }
 		command = { type = relation which = CHI value = -50 }
+		command = { type = setflag which = ind_v4_chinese_interior_policy }
+	}
+
+	action = {
+		ai_chance = 0
+		name = "Keep current orders; no new spending"
 		command = { type = setflag which = ind_v4_chinese_interior_policy }
 	}
 }
@@ -222,8 +258,8 @@ event = {
 		NOT = { flag = ind_v4_indian_ocean_shipping_crisis }
 	}
 
-	name = "War Closes the Indian Ocean"
-	desc = "European war reaches India first through shipping. Insurance rates rise, merchant crews demand protection and belligerents compete for fuel, food and port access. Neutrality no longer means economic distance."
+	name = "War Disrupts Indian Ocean Shipping"
+	desc = "The European war has raised shipping costs and stretched the patrols protecting Indian Ocean trade. Delhi can help a friendly Britain, trade across the divide while neutral, or reserve its shipping for Indian needs."
 	style = 2
 	picture = "aubm_v4_indian_ocean_war"
 
@@ -232,8 +268,9 @@ event = {
 	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
+		trigger = { exists = ENG NOT = { war = { country = IND country = ENG } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } }  supplies = 500 }
 		ai_chance = 40
-		name = "Escort neutral commerce: -500 supplies, +300 money"
+		name = "Escort friendly commerce: -500 supplies, +300 money"
 		command = { type = supplies value = -500 }
 		command = { type = money value = 300 }
 		command = { type = repair_mod value = 3 }
@@ -242,6 +279,7 @@ event = {
 		command = { type = setflag which = ind_v4_indian_ocean_shipping_crisis }
 	}
 	action_b = {
+		trigger = { NOT = { atwar = IND } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } } NOT = { flag = ind_aubm_commitment_soviet } NOT = { alliance = { country = IND country = SOV } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } exists = ENG NOT = { war = { country = IND country = ENG } } exists = GER NOT = { war = { country = IND country = GER } } exists = ITA NOT = { war = { country = IND country = ITA } }   }
 		ai_chance = 35
 		name = "Trade with every belligerent: +700 money, +2 dissent"
 		command = { type = money value = 700 }
@@ -251,11 +289,18 @@ event = {
 		command = { type = setflag which = ind_v4_indian_ocean_shipping_crisis }
 	}
 	action_c = {
+		trigger = {   supplies = 300 }
 		ai_chance = 25
 		name = "Reserve shipping for India: -2 dissent, -300 supplies"
 		command = { type = supplies value = -300 }
 		command = { type = dissent value = -2 }
 		command = { type = domestic which = interventionism value = -1 }
+		command = { type = setflag which = ind_v4_indian_ocean_shipping_crisis }
+	}
+
+	action = {
+		ai_chance = 0
+		name = "Keep current orders; no new spending"
 		command = { type = setflag which = ind_v4_indian_ocean_shipping_crisis }
 	}
 }
@@ -270,8 +315,8 @@ event = {
 		NOT = { flag = ind_v4_soviet_war_policy }
 	}
 
-	name = "Germany Invades the Soviet Union"
-	desc = "The continental war becomes a struggle for the Soviet state. Moscow requests Indian machinery and medical supplies; Berlin offers trade to any power that remains outside the conflict. The choice will be read as strategy even if India stays formally neutral."
+	name = "Germany and the Soviet Union Are at War"
+	desc = "The war between Germany and the Soviet Union changes India's trade and supply routes. Delhi can support a government it is not fighting, offer neutral mediation while at peace, or keep its present policy."
 	style = 2
 	picture = "aubm_v4_barbarossa_reaction"
 
@@ -280,6 +325,7 @@ event = {
 	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
+		trigger = { exists = SOV NOT = { war = { country = IND country = SOV } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } }  supplies = 750 }
 		ai_chance = 45
 		name = "Send machinery and medicine: -750 supplies"
 		command = { type = supplies value = -750 }
@@ -290,6 +336,7 @@ event = {
 		command = { type = setflag which = ind_v4_soviet_war_policy }
 	}
 	action_b = {
+		trigger = { NOT = { atwar = IND } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } } NOT = { flag = ind_aubm_commitment_soviet } NOT = { alliance = { country = IND country = SOV } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } exists = GER NOT = { war = { country = IND country = GER } } exists = SOV NOT = { war = { country = IND country = SOV } }  money = 200 }
 		ai_chance = 35
 		name = "Offer Delhi as a neutral channel: -200 money"
 		command = { type = money value = -200 }
@@ -299,6 +346,7 @@ event = {
 		command = { type = setflag which = ind_v4_soviet_war_policy }
 	}
 	action_c = {
+		trigger = { exists = GER NOT = { war = { country = IND country = GER } } NOT = { flag = ind_aubm_commitment_allied } NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_soviet } NOT = { alliance = { country = IND country = SOV } }   }
 		ai_chance = 20
 		name = "Expand continental trade: +550 money, +3 dissent"
 		command = { type = money value = 550 }
@@ -308,6 +356,12 @@ event = {
 		command = { type = event which = 9280604 where = GER when = 1 }
 		command = { type = setflag which = ind_v4_soviet_war_policy }
 	}
+
+	action = {
+		ai_chance = 0
+		name = "Keep current orders; no new spending"
+		command = { type = setflag which = ind_v4_soviet_war_policy }
+	}
 }
 
 event = {
@@ -315,7 +369,7 @@ event = {
 	random = no
 	country = IND
 
-	trigger = {
+	trigger = { NOT = { flag = ind_aubm_commitment_japan } 
 		OR = {
 			war = { country = JAP country = ENG }
 			war = { country = JAP country = USA }
@@ -326,13 +380,11 @@ event = {
 			}
 		}
 		NOT = { alliance = { country = IND country = JAP } }
-		NOT = { flag = ind_aubm_jp_partnership }
-		NOT = { flag = ind_aubm_route_japan }
 		NOT = { flag = ind_v4_japanese_southern_choice }
 	}
 
-	name = "Japan's Southern Choice"
-	desc = "Tokyo can continue the long war in China or turn toward the resources and bases of Southeast Asia. With Siam already committed and Japanese forces established on the mainland, India must prepare before a formal declaration decides the matter for Delhi."
+	name = "Japan and India's Eastern Defence"
+	desc = "Japan's wars and its ties with Siam put India's eastern ports and borders at risk. Delhi can strengthen the armed forces or pursue talks where relations allow. These choices do not declare war, end a war or change India's alliance."
 	style = 2
 	picture = "aubm_v4_japan_southern_choice"
 
@@ -341,6 +393,7 @@ event = {
 	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
+		trigger = {   money = 400 supplies = 900 }
 		ai_chance = 45
 		name = "Order eastern readiness: -400 money, -900 supplies"
 		command = { type = money value = -400 }
@@ -352,8 +405,9 @@ event = {
 		command = { type = setflag which = ind_v4_japanese_southern_choice }
 	}
 	action_b = {
+		trigger = { NOT = { atwar = IND } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } } NOT = { flag = ind_aubm_commitment_soviet } NOT = { alliance = { country = IND country = SOV } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } exists = JAP NOT = { war = { country = IND country = JAP } } exists = ENG NOT = { war = { country = IND country = ENG } }  money = 250 }
 		ai_chance = 30
-		name = "Negotiate armed neutrality: -250 money"
+		name = "Discuss neutrality: -250 money; no treaty or war change"
 		command = { type = money value = -250 }
 		command = { type = relation which = JAP value = 15 }
 		command = { type = relation which = ENG value = 10 }
@@ -361,13 +415,20 @@ event = {
 		command = { type = setflag which = ind_v4_japanese_southern_choice }
 	}
 	action_c = {
+		trigger = { NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } } NOT = { flag = ind_aubm_commitment_soviet } NOT = { alliance = { country = IND country = SOV } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } exists = CHI NOT = { war = { country = IND country = CHI } } exists = SIA NOT = { war = { country = IND country = SIA } }  money = 300 }
 		ai_chance = 25
-		name = "Call an independent Asian conference: -300 money"
+		name = "Invite Asian governments to talks: -300 money"
 		command = { type = money value = -300 }
 		command = { type = relation which = CHI value = 20 }
 		command = { type = relation which = SIA value = 10 }
 		command = { type = relation which = JAP value = -10 }
 		command = { type = setflag which = ind_v3_independent_asia }
+		command = { type = setflag which = ind_v4_japanese_southern_choice }
+	}
+
+	action = {
+		ai_chance = 0
+		name = "Keep current orders; no new spending"
 		command = { type = setflag which = ind_v4_japanese_southern_choice }
 	}
 }
@@ -377,7 +438,7 @@ event = {
 	random = no
 	country = IND
 
-	trigger = {
+	trigger = { NOT = { flag = ind_aubm_commitment_japan } 
 		owned = { province = 1415 data = IND }
 		OR = {
 			war = { country = JAP country = ENG }
@@ -386,13 +447,11 @@ event = {
 			puppet = { country = SIA country = JAP }
 		}
 		NOT = { alliance = { country = IND country = JAP } }
-		NOT = { flag = ind_aubm_jp_partnership }
-		NOT = { flag = ind_aubm_route_japan }
 		NOT = { flag = ind_v4_malaya_burma_defence }
 	}
 
-	name = "The Burma-Malaya Defence Talks"
-	desc = "British-held Malaya and Indian Burma cannot be defended as disconnected commands if Japan turns south. London requests access to Indian plans; Delhi demands that any warning network respect sovereign command. India can coordinate, prepare an independent reserve, or rely on political defence in depth."
+	name = "Defending Burma and Malaya"
+	desc = "The Japanese war puts Burma and Malaya under pressure. India can share warnings with a friendly Britain, keep its own mobile reserve, or support the people behind the frontier. Indian forces remain under Delhi's command."
 	style = 2
 	picture = "aubm_v4_malaya_burma_conference"
 
@@ -401,6 +460,7 @@ event = {
 	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
+		trigger = { exists = ENG NOT = { war = { country = IND country = ENG } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } }  money = 300 supplies = 650 }
 		ai_chance = 40
 		name = "Joint warning command: -300 money, -650 supplies"
 		command = { type = money value = -300 }
@@ -410,6 +470,7 @@ event = {
 		command = { type = setflag which = ind_v4_malaya_burma_defence }
 	}
 	action_b = {
+		trigger = {   supplies = 850 }
 		ai_chance = 35
 		name = "Mobile theatre reserve: -850 supplies"
 		command = { type = supplies value = -850 }
@@ -418,12 +479,19 @@ event = {
 		command = { type = setflag which = ind_v4_malaya_burma_defence }
 	}
 	action_c = {
+		trigger = {   money = 200 }
 		ai_chance = 25
 		name = "Political defence in depth: -200 money, -2 dissent"
 		command = { type = money value = -200 }
 		command = { type = dissent value = -2 }
 		command = { type = domestic which = freedom value = 1 }
 		command = { type = manpowerpool value = 6 }
+		command = { type = setflag which = ind_v4_malaya_burma_defence }
+	}
+
+	action = {
+		ai_chance = 0
+		name = "Keep current orders; no new spending"
 		command = { type = setflag which = ind_v4_malaya_burma_defence }
 	}
 }
@@ -433,7 +501,7 @@ event = {
 	random = no
 	country = IND
 
-	trigger = {
+	trigger = { NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } } NOT = { flag = ind_aubm_commitment_soviet } NOT = { alliance = { country = IND country = SOV } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } } 
 		year = 1942
 		atwar = no
 		OR = {
@@ -467,6 +535,7 @@ event = {
 		command = { type = setflag which = ind_v4_1942_war_debate }
 	}
 	action_b = {
+		trigger = {   money = 250 }
 		ai_chance = 30
 		name = "Gandhi: make Delhi the capital of mediation"
 		command = { type = money value = -250 }
@@ -477,6 +546,7 @@ event = {
 		command = { type = setflag which = ind_v4_1942_war_debate }
 	}
 	action_c = {
+		trigger = {   supplies = 500 }
 		ai_chance = 40
 		name = "Patel: build an armed and solvent Union"
 		command = { type = supplies value = -500 }
@@ -484,6 +554,12 @@ event = {
 		command = { type = max_organization which = land value = 1 }
 		command = { type = max_organization which = naval value = 1 }
 		command = { type = setflag which = ind_v4_patel_war_policy }
+		command = { type = setflag which = ind_v4_1942_war_debate }
+	}
+
+	action = {
+		ai_chance = 0
+		name = "Keep current orders; no new spending"
 		command = { type = setflag which = ind_v4_1942_war_debate }
 	}
 }
@@ -509,6 +585,7 @@ event = {
 	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
+		trigger = {   money = 400 }
 		ai_chance = 40
 		name = "Food before exports: -400 money, -3 dissent"
 		command = { type = money value = -400 }
@@ -517,6 +594,7 @@ event = {
 		command = { type = setflag which = ind_v4_wartime_social_contract }
 	}
 	action_b = {
+		trigger = {   supplies = 700 }
 		ai_chance = 35
 		name = "Disciplined armament production: -700 supplies"
 		command = { type = supplies value = -700 }
@@ -527,11 +605,18 @@ event = {
 		command = { type = setflag which = ind_v4_wartime_social_contract }
 	}
 	action_c = {
+		trigger = {   supplies = 350 }
 		ai_chance = 25
 		name = "Export drive: +900 money, +3 dissent"
 		command = { type = money value = 900 }
 		command = { type = supplies value = -350 }
 		command = { type = dissent value = 3 }
+		command = { type = setflag which = ind_v4_wartime_social_contract }
+	}
+
+	action = {
+		ai_chance = 0
+		name = "Keep current orders; no new spending"
 		command = { type = setflag which = ind_v4_wartime_social_contract }
 	}
 }

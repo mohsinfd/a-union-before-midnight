@@ -1,3 +1,4 @@
+# AUBM_CONTEXT_GUARDS_V1
 #########################################################################
 # A Union Before Midnight V4.1: campaign continuity and state-driven play
 #########################################################################
@@ -52,7 +53,7 @@ event = {
 	random = no
 	country = IND
 
-	trigger = {
+	trigger = { NOT = { flag = ind_aubm_wartime_framework } 
 		atwar = no
 		NOT = { flag = ind_aubm_realignment_cooldown }
 		NOT = { participant = { country = IND value = 4 } }
@@ -77,7 +78,7 @@ event = {
 	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
-		trigger = { NOT = { flag = ind_aubm_realignment_cooldown } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } }
+		trigger = { exists = ENG NOT = { war = { country = IND country = ENG } } NOT = { flag = ind_aubm_commitment_german } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = ITA } } NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } }    NOT = { flag = ind_aubm_realignment_cooldown } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } }
 		ai_chance = 45
 		name = "Enter the Allies as a sovereign great power"
 		command = { type = clrflag which = ind_v3_axis_orientation }
@@ -119,7 +120,7 @@ event = {
 		command = { type = setflag which = ind_v41_pacific_entry_debate }
 	}
 	action_c = {
-		trigger = { NOT = { flag = ind_aubm_realignment_cooldown } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } }
+		trigger = { exists = JAP NOT = { war = { country = IND country = JAP } } NOT = { flag = ind_aubm_commitment_allied } NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_soviet } NOT = { alliance = { country = IND country = SOV } }    NOT = { flag = ind_aubm_realignment_cooldown } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } }
 		ai_chance = 10
 		name = "Open a sovereign Delhi-Tokyo compact"
 		command = { type = clrflag which = ind_v3_allied_orientation }
@@ -140,7 +141,7 @@ event = {
 		command = { type = setflag which = ind_v41_pacific_entry_debate }
 	}
 	action_d = {
-		trigger = { NOT = { flag = ind_aubm_realignment_cooldown } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } }
+		trigger = {   supplies = 500  NOT = { flag = ind_aubm_realignment_cooldown } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } }
 		ai_chance = 20
 		name = "Remain armed and uncommitted"
 		command = { type = clrflag which = ind_v3_allied_orientation }
@@ -158,6 +159,12 @@ event = {
 		command = { type = domestic which = defense_lobby value = 1 }
 		command = { type = setflag which = ind_v41_pacific_entry_debate }
 	}
+
+	action = {
+		ai_chance = 0
+		name = "Keep current orders; no new spending"
+		command = { type = setflag which = ind_v41_pacific_entry_debate }
+	}
 }
 
 event = {
@@ -165,7 +172,7 @@ event = {
 	random = no
 	country = IND
 
-	trigger = {
+	trigger = { NOT = { flag = ind_aubm_wartime_framework } 
 		OR = {
 			alliance = { country = JAP country = SIA }
 			puppet = { country = SIA country = JAP }
@@ -183,6 +190,7 @@ event = {
 	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
+		trigger = { NOT = { flag = ind_aubm_commitment_japan } NOT = { alliance = { country = IND country = JAP } }  supplies = 700 }
 		ai_chance = 50
 		name = "Fortify the Burma approaches: -700 supplies"
 		command = { type = supplies value = -700 }
@@ -193,6 +201,7 @@ event = {
 		command = { type = setflag which = ind_v41_siam_state_reaction }
 	}
 	action_b = {
+		trigger = { exists = SIA NOT = { war = { country = IND country = SIA } } exists = JAP NOT = { war = { country = IND country = JAP } }  money = 150 }
 		ai_chance = 30
 		name = "Demand a Delhi-Bangkok security conference"
 		command = { type = money value = -150 }
@@ -202,6 +211,7 @@ event = {
 		command = { type = setflag which = ind_v41_siam_state_reaction }
 	}
 	action_c = {
+		trigger = { exists = SIA NOT = { war = { country = IND country = SIA } } exists = JAP NOT = { war = { country = IND country = JAP } }   }
 		ai_chance = 20
 		name = "Accept the assurances: +300 money, +3 dissent"
 		command = { type = money value = 300 }
@@ -209,6 +219,13 @@ event = {
 		command = { type = relation which = JAP value = 15 }
 		command = { type = setflag which = ind_v4_siamese_alignment_crisis }
 		command = { type = setflag which = ind_v41_siam_state_reaction }
+	}
+
+	action = {
+		ai_chance = 0
+		name = "Keep current orders; no new spending"
+		command = { type = setflag which = ind_v41_siam_state_reaction }
+		command = { type = setflag which = ind_v4_siamese_alignment_crisis }
 	}
 }
 

@@ -884,6 +884,11 @@ event = {
 	desc = "A formal alliance merges all current wars. India may enter a coalition only while uncommitted, or upgrade a compact with that same bloc. A rival coalition remains unavailable until an at-peace withdrawal and ninety-day realignment have been completed."
 	style = 2
 	picture = "aubm_v4_grand_strategy"
+	# AUBM_MENU_SAFE_EXIT: human-only; no effects or follow-up event.
+	action = {
+		trigger = { ai = no }
+		name = "Cancel - close without changes"
+	}
 	action_a = {
 		trigger = { year = 1937 OR = { exists = ENG exists = USA } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } NOT = { flag = ind_gc_formal_axis } NOT = { flag = ind_gc_cobelligerent } NOT = { flag = ind_v4_sov_equal_compact } NOT = { flag = ind_v4_sov_supervised_compact } NOT = { flag = ind_aubm_jp_partnership } NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_realignment_cooldown } }
 		name = "Choose London or Washington"
@@ -999,6 +1004,11 @@ event = {
 	desc = "Formal membership is not the only way to cooperate. These conferences open the existing Allied, German and Soviet treaty systems, including co-belligerency and autonomous arrangements with disclosed foreign response odds. The Tokyo page also offers Japan, autonomous socialism and fully sovereign command."
 	style = 2
 	picture = "aubm_v4_grand_strategy"
+	# AUBM_MENU_SAFE_EXIT: human-only; no effects or follow-up event.
+	action = {
+		trigger = { ai = no }
+		name = "Cancel - close without changes"
+	}
 	action_a = {
 		trigger = { year = 1938 exists = ENG NOT = { war = { country = IND country = ENG } } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } NOT = { flag = ind_gc_formal_axis } NOT = { flag = ind_gc_cobelligerent } NOT = { flag = ind_v4_sov_equal_compact } NOT = { flag = ind_v4_sov_supervised_compact } NOT = { flag = ind_aubm_jp_partnership } NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_realignment_cooldown } }
 		name = "Open the Allied treaty conference"
@@ -1029,6 +1039,11 @@ event = {
 	desc = "Joining Japan creates one shared war system and is available only from sovereign command or an existing Tokyo compact. Formalizing an existing senior/full-sphere compact preserves that earned rank; fresh formal entry begins at peer/core. Autonomous socialism is available only while uncommitted. A voluntary withdrawal requires peace and starts a ninety-day realignment period before another alliance or compact can be negotiated."
 	style = 2
 	picture = "aubm_v4_tokyo_proposition"
+	# AUBM_MENU_SAFE_EXIT: human-only; no effects or follow-up event.
+	action = {
+		trigger = { ai = no }
+		name = "Cancel - close without changes"
+	}
 	action_a = {
 		trigger = { year = 1937 exists = JAP NOT = { war = { country = IND country = JAP } } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_allied } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_v4a_treaty_commonwealth } NOT = { flag = ind_v4a_treaty_naval_compact } NOT = { flag = ind_v4a_treaty_formal_alliance } NOT = { flag = ind_v4a_treaty_cobelligerent } NOT = { flag = ind_gc_formal_axis } NOT = { flag = ind_gc_cobelligerent } NOT = { flag = ind_v4_sov_equal_compact } NOT = { flag = ind_v4_sov_supervised_compact } NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_realignment_cooldown } OR = { NOT = { flag = ind_v4_japan_commercial_channel } money = 300 } OR = { flag = ind_v4_japan_bilateral_channel NOT = { flag = ind_v4_early_japan_policy } flag = ind_v4_japan_commercial_channel AND = { flag = ind_v4_japan_conditional_engagement NOT = { war = { country = JAP country = CHI } } NOT = { war = { country = JAP country = CHC } } } } }
 		name = "Join Japan: +4 dissent; trade reversal +3, costs 300"
@@ -1263,6 +1278,11 @@ event = {
 	desc = "London and Washington are separate diplomatic choices within the same Allied route. India may join only from sovereign command or upgrade an existing Allied compact; a rival commitment must first be withdrawn at peace."
 	style = 2
 	picture = "aubm_v4_london_settlement"
+	# AUBM_MENU_SAFE_EXIT: human-only; no effects or follow-up event.
+	action = {
+		trigger = { ai = no }
+		name = "Cancel - close without changes"
+	}
 	action_a = {
 		trigger = { exists = ENG NOT = { war = { country = IND country = ENG } } NOT = { war = { country = IND country = USA } } NOT = { participant = { country = IND value = 4 } } NOT = { flag = ind_aubm_commitment_german } NOT = { flag = ind_aubm_commitment_soviet } NOT = { flag = ind_aubm_commitment_japan } NOT = { flag = ind_gc_formal_axis } NOT = { flag = ind_gc_cobelligerent } NOT = { flag = ind_v4_sov_equal_compact } NOT = { flag = ind_v4_sov_supervised_compact } NOT = { flag = ind_aubm_jp_partnership } NOT = { flag = ind_aubm_diplomatic_negotiation_pending } NOT = { flag = ind_aubm_realignment_cooldown } }
 		name = "Join Britain's coalition: +3 dissent"
@@ -1567,6 +1587,11 @@ event = {
 	desc = "These declarations remain available outside the target's own alliance or binding compact. A commitment cannot be dissolved by declaring war on its partner: India must withdraw peacefully through the strategic-alignment cabinet before the war begins."
 	style = 2
 	picture = "aubm_v4_india_world_war"
+	# AUBM_MENU_SAFE_EXIT: human-only; no effects or follow-up event.
+	action = {
+		trigger = { ai = no }
+		name = "Cancel - close without changes"
+	}
 	action_a = {
 		trigger = { exists = ENG NOT = { war = { country = IND country = ENG } } NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { flag = ind_aubm_commitment_allied } }
 		name = "Prepare war against the British-led coalition"
@@ -1597,6 +1622,11 @@ event = {
 	desc = "A binding commitment cannot be broken by a declaration of war. India must leave a formal alliance or compact peacefully, observe the cooling-off period, and only then open war against that former partner."
 	style = 2
 	picture = "aubm_v4_indian_ocean_war"
+	# AUBM_MENU_SAFE_EXIT: human-only; no effects or follow-up event.
+	action = {
+		trigger = { ai = no }
+		name = "Cancel - close without changes"
+	}
 	action_a = {
 		trigger = { exists = JAP NOT = { war = { country = IND country = JAP } } NOT = { alliance = { country = IND country = JAP } } NOT = { flag = ind_aubm_commitment_japan } }
 		name = "Prepare war against Japan"
@@ -1623,6 +1653,11 @@ event = {
 	desc = "Regional wars remain separate questions. Open a geographic docket to declare war on a state that exists and is not already at war with India. Campaign objectives and provisional settlements then derive from live control rather than from the declaration event."
 	style = 2
 	picture = "aubm_v4_grand_strategy"
+	# AUBM_MENU_SAFE_EXIT: human-only; no effects or follow-up event.
+	action = {
+		trigger = { ai = no }
+		name = "Cancel - close without changes"
+	}
 	action_a = {
 		name = "Persia, Iraq and Arabia"
 		command = { type = event which = 9281916 where = IND when = 1 }
@@ -1650,6 +1685,11 @@ event = {
 	desc = "Each action is a confirmed declaration. Published objectives are Tehran, Baghdad and Riyadh. A Delhi Pact partner cannot be attacked from this board. Taking the named capital opens that country's armistice or, after annexation, its constitutional settlement."
 	style = 2
 	picture = "aubm_v4_indian_ocean_war"
+	# AUBM_MENU_SAFE_EXIT: human-only; no effects or follow-up event.
+	action = {
+		trigger = { ai = no }
+		name = "Cancel - close without changes"
+	}
 	action_a = {
 		trigger = { exists = PER NOT = { war = { country = IND country = PER } } NOT = { alliance = { country = IND country = PER } } NOT = { flag = ind_v3_delhi_pact } }
 		name = "Declare war on Persia: +2 dissent"
@@ -1686,6 +1726,11 @@ event = {
 	desc = "Each action is a confirmed declaration. Published objectives are Kabul, Lhasa and Urumqi. A Delhi Pact partner cannot be attacked from this board. Choosing war here replaces negotiation; taking the named capital opens an immediate settlement."
 	style = 2
 	picture = "aubm_v4_barbarossa_reaction"
+	# AUBM_MENU_SAFE_EXIT: human-only; no effects or follow-up event.
+	action = {
+		trigger = { ai = no }
+		name = "Cancel - close without changes"
+	}
 	action_a = {
 		trigger = { exists = AFG NOT = { war = { country = IND country = AFG } } NOT = { alliance = { country = IND country = AFG } } NOT = { flag = ind_v3_delhi_pact } }
 		name = "Declare war on Afghanistan: +3 dissent"
@@ -1722,6 +1767,11 @@ event = {
 	desc = "Published objectives are Nanjing, Yan'an and Bangkok. A formal Japanese alliance inherits these wars; a Delhi-Tokyo compact does not. China or Siam cannot be attacked while protected by India's Delhi Pact."
 	style = 2
 	picture = "aubm_v4_china_interior"
+	# AUBM_MENU_SAFE_EXIT: human-only; no effects or follow-up event.
+	action = {
+		trigger = { ai = no }
+		name = "Cancel - close without changes"
+	}
 	action_a = {
 		trigger = {
 			exists = CHI
@@ -1774,6 +1824,11 @@ event = {
 	desc = "The ledger is geographic rather than ideological. Southern Command covers Burma, Malaya, Indonesia, Australia and Japan. Western Command covers Persia, the Gulf, Suez and East Africa. Northern Command covers Afghanistan, Tibet, Xinjiang, Central Asia and the Caucasus. Global Command covers Europe, Britain and the Pacific approaches."
 	style = 2
 	picture = "aubm_v4_war_aims"
+	# AUBM_MENU_SAFE_EXIT: human-only; no effects or follow-up event.
+	action = {
+		trigger = { ai = no }
+		name = "Cancel - close without changes"
+	}
 	action_a = {
 		name = "Inspect Southern Command"
 		command = { type = event which = 9281930 where = IND when = 1 }
@@ -2114,6 +2169,11 @@ event = {
 	desc = "Published objectives are Rome, Paris and Ankara. India keeps its current coalition; a country sharing India's formal alliance cannot be targeted from this docket. Capturing the named capital opens that country's response and settlement without ending another Indian campaign."
 	style = 2
 	picture = "aubm_v4_india_world_war"
+	# AUBM_MENU_SAFE_EXIT: human-only; no effects or follow-up event.
+	action = {
+		trigger = { ai = no }
+		name = "Cancel - close without changes"
+	}
 	action_a = {
 		trigger = { exists = ITA NOT = { war = { country = IND country = ITA } } NOT = { alliance = { country = IND country = ITA } } }
 		name = "Declare war on Italy: +3 dissent"
@@ -2150,6 +2210,11 @@ event = {
 	desc = "Published objectives are Batavia for the East Indies, Amsterdam for the Netherlands and Canberra for Australia. The East Indies authority is this scenario's legal owner. Each country is an independent war and settlement, never an automatic shared annexation claim."
 	style = 2
 	picture = "aubm_v4_indian_ocean_war"
+	# AUBM_MENU_SAFE_EXIT: human-only; no effects or follow-up event.
+	action = {
+		trigger = { ai = no }
+		name = "Cancel - close without changes"
+	}
 	action_a = {
 		trigger = { exists = U05 NOT = { war = { country = IND country = U05 } } NOT = { alliance = { country = IND country = U05 } } }
 		name = "Declare war on the East Indies: +3 dissent"
@@ -2186,6 +2251,11 @@ event = {
 	desc = "Published objectives are Lisbon for Portugal and Wellington for New Zealand. Portugal remains available after an unresolved Goa confrontation; New Zealand is a separate Pacific campaign. The next page maps Muscat, Sana'a, Addis Ababa and Pretoria."
 	style = 2
 	picture = "aubm_v4_liberated_territory"
+	# AUBM_MENU_SAFE_EXIT: human-only; no effects or follow-up event.
+	action = {
+		trigger = { ai = no }
+		name = "Cancel - close without changes"
+	}
 	action_a = {
 		trigger = { exists = POR NOT = { war = { country = IND country = POR } } NOT = { alliance = { country = IND country = POR } } }
 		name = "Declare war on Portugal: +2 dissent"
@@ -2219,6 +2289,11 @@ event = {
 	desc = "Published objectives are Muscat for Oman and Sana'a for Yemen; the next file covers Addis Ababa and Pretoria. Each campaign is scored from live capital control and receives its own response roll, regardless of which alliance or sovereign route opened the war."
 	style = 2
 	picture = "aubm_v4_indian_ocean_war"
+	# AUBM_MENU_SAFE_EXIT: human-only; no effects or follow-up event.
+	action = {
+		trigger = { ai = no }
+		name = "Cancel - close without changes"
+	}
 	action_a = {
 		trigger = { exists = OMN NOT = { war = { country = IND country = OMN } } NOT = { alliance = { country = IND country = OMN } } }
 		name = "Declare war on Oman: +2 dissent"
@@ -2252,6 +2327,11 @@ event = {
 	desc = "Published objectives are Addis Ababa for Ethiopia and Pretoria for South Africa. A declaration is separate from occupation policy: capturing the named capital first earns leverage, then opens a foreign armistice or post-annexation constitutional choice."
 	style = 2
 	picture = "aubm_v4_indian_ocean_war"
+	# AUBM_MENU_SAFE_EXIT: human-only; no effects or follow-up event.
+	action = {
+		trigger = { ai = no }
+		name = "Cancel - close without changes"
+	}
 	action_a = {
 		trigger = { exists = ETH NOT = { war = { country = IND country = ETH } } NOT = { alliance = { country = IND country = ETH } } }
 		name = "Declare war on Ethiopia: +3 dissent"

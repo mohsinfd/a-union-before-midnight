@@ -12,6 +12,11 @@ event = {
 	desc = "Open the current route-specific operations board, answer an available compact-partner war crisis, inspect the shared national campaign ledger, or return to the War Cabinet. This doorway is available only through the current War Cabinet gate and never declares war by itself."
 	style = 2
 	picture = "aubm_v4_grand_strategy"
+	# AUBM_MENU_SAFE_EXIT: human-only; no effects or follow-up event.
+	action = {
+		trigger = { ai = no }
+		name = "Cancel - close without changes"
+	}
 	action_a = {
 		trigger = { OR = { flag = ind_aubm_route_allied flag = ind_aubm_route_german OR = { flag = ind_aubm_route_soviet AND = { flag = ind_aubm_route_sovereign flag = ind_aubm_socialist_autonomous } } flag = ind_aubm_route_japan AND = { flag = ind_aubm_route_sovereign NOT = { flag = ind_aubm_socialist_autonomous } } } }
 		name = "Open the current authored route plan"
@@ -49,6 +54,11 @@ event = {
 	desc = "Delhi's Allied route is not one generic expedition. Eastern Ocean Command wins an Indian-led Asian theatre; Continental Command earns a European settlement voice; the Anti-Colonial Mandate ties liberation to sovereignty; Free Command proves that cooperation does not transfer Indian command."
 	style = 2
 	picture = "aubm_v4_london_settlement"
+	# AUBM_MENU_SAFE_EXIT: human-only; no effects or follow-up event.
+	action = {
+		trigger = { ai = no }
+		name = "Cancel - close without changes"
+	}
 	action_a = {
 		name = "Keep the selected focus on the operations map"
 	}
@@ -1086,6 +1096,11 @@ event = {
 	desc = "The partner crisis names only Germany or Japan. Each available action requires that enemy to remain at war with the route partner and sends India to the existing confirmation and Foreign Ministry executor. This docket neither declares war nor changes a settlement."
 	style = 2
 	picture = "aubm_v4_london_settlement"
+	# AUBM_MENU_SAFE_EXIT: human-only; no effects or follow-up event.
+	action = {
+		trigger = { ai = no }
+		name = "Cancel - close without changes"
+	}
 	action_a = {
 		trigger = {
 			year = 1937 flag = ind_aubm_bespoke_route_contract_alpha23
@@ -1129,6 +1144,11 @@ event = {
 	desc = "The German relationship can support four different Indian wars. Eurasian Link drives through Persia and the Caucasus; Imperial Dismantlement attacks Britain's western system; Southern Resource Race contests Malaya and the East Indies; Parallel War uses Berlin without accepting German peace authority."
 	style = 2
 	picture = "aubm_v4_barbarossa_reaction"
+	# AUBM_MENU_SAFE_EXIT: human-only; no effects or follow-up event.
+	action = {
+		trigger = { ai = no }
+		name = "Cancel - close without changes"
+	}
 	action_a = {
 		name = "Keep the selected focus on the operations map"
 	}
@@ -2138,6 +2158,11 @@ event = {
 	desc = "The partner crisis names only Britain, the Soviet Union or the United States. Each available action requires that enemy to remain at war with the route partner and sends India to the existing confirmation and Foreign Ministry executor. This docket neither declares war nor changes a settlement."
 	style = 2
 	picture = "aubm_v4_barbarossa_reaction"
+	# AUBM_MENU_SAFE_EXIT: human-only; no effects or follow-up event.
+	action = {
+		trigger = { ai = no }
+		name = "Cancel - close without changes"
+	}
 	action_a = {
 		trigger = {
 			year = 1937 flag = ind_aubm_bespoke_route_contract_alpha23
@@ -2195,6 +2220,11 @@ event = {
 	desc = "India's socialist route can be anti-fascist, anti-imperial, republican-Asian or autonomous. Each doctrine uses a different battlefield sequence and forces a different argument with Moscow over command, sovereignty and the political character of victory."
 	style = 2
 	picture = "Stalin_5YPlan"
+	# AUBM_MENU_SAFE_EXIT: human-only; no effects or follow-up event.
+	action = {
+		trigger = { ai = no }
+		name = "Cancel - close without changes"
+	}
 	action_a = {
 		name = "Keep the selected focus on the operations map"
 	}
@@ -3194,6 +3224,11 @@ event = {
 	desc = "The partner crisis names only Germany, Japan or Britain. Each available action requires that enemy to remain at war with the route partner and sends India to the existing confirmation and Foreign Ministry executor. This docket neither declares war nor changes a settlement."
 	style = 2
 	picture = "Stalin_5YPlan"
+	# AUBM_MENU_SAFE_EXIT: human-only; no effects or follow-up event.
+	action = {
+		trigger = { ai = no }
+		name = "Cancel - close without changes"
+	}
 	action_a = {
 		trigger = {
 			year = 1937 flag = ind_aubm_bespoke_route_contract_alpha23
@@ -3248,9 +3283,14 @@ event = {
 	persistent = yes
 	country = IND
 	name = "Delhi-Tokyo Route Operations Board"
-	desc = "The existing southern and northern partnership systems remain authoritative. This overlay completes the other strategic identities: a Philippines and China division for Equal Asian Command, a staged Suez and Africa campaign for Indian Ocean First, and a Tripartite crisis when Germany can no longer carry the continental war."
+	desc = "Cancel closes this board without changing your compact. The multi-theatre ledger opens after India enters war and chooses the Delhi-Tokyo Wartime Charter, from 1937 onward; waiting at peace will not unlock it. Equal Asian Command covers the Philippines and China; Indian Ocean First covers Suez and Africa; Tripartite coordination responds to German setbacks. Existing southern and northern partnership campaigns remain in force."
 	style = 2
 	picture = "aubm_v4_tokyo_proposition"
+	# AUBM_MENU_SAFE_EXIT: human-only; no effects or follow-up event.
+	action = {
+		trigger = { ai = no }
+		name = "Cancel - close without changes"
+	}
 	action_a = {
 		trigger = { year = 1937 flag = ind_aubm_bespoke_route_contract_alpha23 OR = { AND = { flag = ind_aubm_commitment_japan flag = ind_aubm_jp_partnership NOT = { alliance = { country = IND country = JAP } } } alliance = { country = IND country = JAP } } }
 		name = "Open the multi-theatre Delhi-Tokyo grand-campaign ledger"
@@ -4278,6 +4318,11 @@ event = {
 	desc = "The partner crisis names only Britain, the United States or the Soviet Union. Each available action requires that enemy to remain at war with the route partner and sends India to the existing confirmation and Foreign Ministry executor. This docket neither declares war nor changes a settlement."
 	style = 2
 	picture = "aubm_v4_tokyo_proposition"
+	# AUBM_MENU_SAFE_EXIT: human-only; no effects or follow-up event.
+	action = {
+		trigger = { ai = no }
+		name = "Cancel - close without changes"
+	}
 	action_a = {
 		trigger = {
 			year = 1937 flag = ind_aubm_bespoke_route_contract_alpha23
@@ -4336,6 +4381,11 @@ event = {
 	desc = "The selected charter focus remains India's only automatic primary arc. This optional ledger records a human-led grand campaign across Southeast Asia and Australia, China and the Philippines, Aden-Suez-East Africa, and the Caucasus without stealing settlement authority from the country boards."
 	style = 2
 	picture = "aubm_v4_tokyo_proposition"
+	# AUBM_MENU_SAFE_EXIT: human-only; no effects or follow-up event.
+	action = {
+		trigger = { ai = no }
+		name = "Cancel - close without changes"
+	}
 	action_a = {
 		name = "Review Asian and Australian operations"
 		command = { type = event which = 9289646 where = IND when = 1 }
@@ -4363,6 +4413,11 @@ event = {
 	desc = "Formal alliance makes China an inherited coalition war, but it does not decide who commands Indian formations. Philippine allocation and the Southeast Asia-Australia chapter are separately acknowledged battlefield milestones; their legal settlements remain in the shared country systems."
 	style = 2
 	picture = "aubm_v4_tokyo_proposition"
+	# AUBM_MENU_SAFE_EXIT: human-only; no effects or follow-up event.
+	action = {
+		trigger = { ai = no }
+		name = "Cancel - close without changes"
+	}
 	action_a = {
 		trigger = { alliance = { country = IND country = JAP } OR = { AND = { war = { country = IND country = CHI } war = { country = JAP country = CHI } } AND = { war = { country = IND country = CHC } war = { country = JAP country = CHC } } } NOT = { flag = ind_aubm_japan_grand_china_posture } }
 		name = "Publish formal-alliance China field-command boundaries"
@@ -4394,6 +4449,11 @@ event = {
 	desc = "The route is deliberately staged. Aden opens the Red Sea hinge; Suez connects it to the Mediterranean; an East African campaign result turns ports into a durable ocean system. Each stage records command only and never transfers territory or signs peace."
 	style = 2
 	picture = "aubm_v4_indian_ocean_war"
+	# AUBM_MENU_SAFE_EXIT: human-only; no effects or follow-up event.
+	action = {
+		trigger = { ai = no }
+		name = "Cancel - close without changes"
+	}
 	action_a = {
 		trigger = { control = { province = 1053 data = IND } NOT = { flag = ind_aubm_japan_grand_ocean_aden } }
 		name = "Stage I: record Indian control of Aden"
@@ -4424,6 +4484,11 @@ event = {
 	desc = "Both formal Delhi-Tokyo alliance and separate compact service can support an Indian Soviet front. Once India holds Baku and either Tbilisi or Astrakhan while Germany still holds Berlin and fights Moscow, Delhi may fund one modest, explicitly German-scoped relief convoy."
 	style = 2
 	picture = "aubm_v4_barbarossa_reaction"
+	# AUBM_MENU_SAFE_EXIT: human-only; no effects or follow-up event.
+	action = {
+		trigger = { ai = no }
+		name = "Cancel - close without changes"
+	}
 	action_a = {
 		trigger = { OR = { AND = { flag = ind_aubm_commitment_japan flag = ind_aubm_jp_partnership NOT = { alliance = { country = IND country = JAP } } } alliance = { country = IND country = JAP } } war = { country = IND country = SOV } NOT = { flag = ind_aubm_japan_grand_northern_posture } }
 		name = "Record the formal-or-compact northern operational posture"
@@ -4558,6 +4623,11 @@ event = {
 	desc = "Sovereign command is not an empty sandbox. Ocean League combines regional pacts with maritime success; Continental Arc joins frontier diplomacy to northern operations; World Balancer intervenes at a great-power hinge; Republican Federation measures victory through multiple sovereign regional settlements."
 	style = 2
 	picture = "aubm_v4_asian_strategy_menu"
+	# AUBM_MENU_SAFE_EXIT: human-only; no effects or follow-up event.
+	action = {
+		trigger = { ai = no }
+		name = "Cancel - close without changes"
+	}
 	action_a = {
 		name = "Keep the selected focus on the operations map"
 	}
@@ -4821,7 +4891,7 @@ event = {
 		flag = ind_aubm_bespoke_route_contract_alpha23
 		AND = { flag = ind_aubm_route_sovereign NOT = { flag = ind_aubm_socialist_autonomous } }
 		flag = ind_aubm_route_focus_sovereign_balancer
-		OR = { AND = { atwar = yes OR = { war = { country = IND country = ENG } war = { country = IND country = GER } war = { country = IND country = SOV } war = { country = IND country = JAP } war = { country = IND country = USA } } } OR = { flag = ind_aubm_decisive_great_power flag = ind_aubm_britain_major_victory flag = ind_aubm_germany_major_victory flag = ind_aubm_soviet_major_victory flag = ind_aubm_japan_major_victory flag = ind_aubm_america_major_victory } }
+		OR = { AND = { atwar = yes OR = { war = { country = IND country = ENG } war = { country = IND country = GER } war = { country = IND country = SOV } war = { country = IND country = JAP } war = { country = IND country = USA } } } OR = { flag = ind_aubm_decisive_great_power flag = ind_aubm_britain_major_victory flag = ind_aubm_germany_major_victory flag = ind_aubm_soviet_major_victory flag = ind_aubm_japan_major_victory flag = ind_aubm_america_major_victory flag = ind_lib1_southern_peace } }
 		NOT = { flag = ind_aubm_route_war_achievement }
 		NOT = { flag = ind_aubm_bespoke_focus_active_sovereign_balancer }
 		NOT = { flag = ind_aubm_bespoke_focus_culminated_sovereign_balancer }
@@ -4946,7 +5016,7 @@ event = {
 		AND = { flag = ind_aubm_route_sovereign NOT = { flag = ind_aubm_socialist_autonomous } }
 		flag = ind_aubm_route_focus_sovereign_balancer
 		flag = ind_aubm_bespoke_focus_active_sovereign_balancer
-		OR = { AND = { atwar = yes OR = { flag = ind_aubm_britain_limited_victory flag = ind_aubm_germany_limited_victory flag = ind_aubm_soviet_limited_victory flag = ind_aubm_japan_limited_victory flag = ind_aubm_america_limited_victory flag = ind_aubm_national_southern_current flag = ind_aubm_national_western_current flag = ind_aubm_national_northern_current } } OR = { flag = ind_aubm_decisive_great_power flag = ind_aubm_britain_major_victory flag = ind_aubm_germany_major_victory flag = ind_aubm_soviet_major_victory flag = ind_aubm_japan_major_victory flag = ind_aubm_america_major_victory } }
+		OR = { AND = { atwar = yes OR = { flag = ind_aubm_britain_limited_victory flag = ind_aubm_germany_limited_victory flag = ind_aubm_soviet_limited_victory flag = ind_aubm_japan_limited_victory flag = ind_aubm_america_limited_victory flag = ind_aubm_national_southern_current flag = ind_aubm_national_western_current flag = ind_aubm_national_northern_current AND = { flag = ind_lib1_enabled flag = ind_aubm_sea_theatre_achieved } } } OR = { flag = ind_aubm_decisive_great_power flag = ind_aubm_britain_major_victory flag = ind_aubm_germany_major_victory flag = ind_aubm_soviet_major_victory flag = ind_aubm_japan_major_victory flag = ind_aubm_america_major_victory flag = ind_lib1_southern_peace } }
 		NOT = { flag = ind_aubm_bespoke_focus_intermediate_sovereign_balancer }
 		NOT = { flag = ind_aubm_bespoke_focus_culminated_sovereign_balancer }
 	}
@@ -5181,7 +5251,7 @@ event = {
 		flag = ind_aubm_bespoke_focus_intermediate_sovereign_balancer
 		NOT = { flag = ind_aubm_bespoke_focus_dilemma_sovereign_balancer }
 		NOT = { flag = ind_aubm_bespoke_focus_culminated_sovereign_balancer }
-		OR = { atwar = yes OR = { flag = ind_aubm_decisive_great_power flag = ind_aubm_britain_major_victory flag = ind_aubm_germany_major_victory flag = ind_aubm_soviet_major_victory flag = ind_aubm_japan_major_victory flag = ind_aubm_america_major_victory } }
+		OR = { atwar = yes OR = { flag = ind_aubm_decisive_great_power flag = ind_aubm_britain_major_victory flag = ind_aubm_germany_major_victory flag = ind_aubm_soviet_major_victory flag = ind_aubm_japan_major_victory flag = ind_aubm_america_major_victory flag = ind_lib1_southern_peace } }
 	}
 	name = "How Should India Balance the War?"
 	desc = "The Cabinet now has leverage but must define the principle governing its use."
@@ -5423,13 +5493,13 @@ event = {
 		flag = ind_aubm_bespoke_focus_active_sovereign_balancer
 		flag = ind_aubm_bespoke_focus_intermediate_sovereign_balancer
 		flag = ind_aubm_bespoke_focus_dilemma_sovereign_balancer
-		OR = { flag = ind_aubm_decisive_great_power flag = ind_aubm_britain_major_victory flag = ind_aubm_germany_major_victory flag = ind_aubm_soviet_major_victory flag = ind_aubm_japan_major_victory flag = ind_aubm_america_major_victory }
+		OR = { flag = ind_aubm_decisive_great_power flag = ind_aubm_britain_major_victory flag = ind_aubm_germany_major_victory flag = ind_aubm_soviet_major_victory flag = ind_aubm_japan_major_victory flag = ind_aubm_america_major_victory flag = ind_lib1_southern_peace }
 		NOT = { flag = ind_aubm_route_war_achievement }
 		NOT = { flag = ind_aubm_bespoke_focus_culminated_sovereign_balancer }
 		NOT = { flag = ind_aubm_postwar_congress_completed }
 	}
 	name = "A Great Power Negotiates Directly with Delhi"
-	desc = "A decisive great-power result or two Indian national theatres make India a balancer in fact rather than in diplomatic language."
+	desc = "A decisive great-power result or two Indian national theatres make India a balancer in fact. With LIBERATOR1 enabled, ending the Japanese war after the Southeast Asian operational victory and two actual sovereign partnerships is an alternative, liberation-based completion. No second primary charter is awarded."
 	style = 2
 	picture = "aubm_v4_asian_strategy_menu"
 	date = { day = 0 month = january year = 1937 }
@@ -5594,6 +5664,11 @@ event = {
 	desc = "The partner crisis names only Japan or the Soviet Union. Each available action requires that enemy to remain at war with the route partner and sends India to the existing confirmation and Foreign Ministry executor. This docket neither declares war nor changes a settlement."
 	style = 2
 	picture = "aubm_v4_asian_strategy_menu"
+	# AUBM_MENU_SAFE_EXIT: human-only; no effects or follow-up event.
+	action = {
+		trigger = { ai = no }
+		name = "Cancel - close without changes"
+	}
 	action_a = {
 		trigger = {
 			year = 1937 flag = ind_aubm_bespoke_route_contract_alpha23
