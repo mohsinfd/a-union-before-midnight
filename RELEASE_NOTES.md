@@ -2,8 +2,10 @@
 
 ## 4.2.0-alpha.30 / Alpha 30 - Country Decisions Restored
 
-- Fixed a missing polling window on all 29 minor-country settlements and five
+- Fixed a missing polling window on all 28 minor-country settlements and five
   major-power peace decisions. Eligible decisions now appear within one game day.
+- Folded the Dutch East Indies and independent Indonesia into one settlement,
+  preventing two decisions from appearing for the same conquered territory.
 - Restored the Frontier Science Programme, Oceanic Fleet Review, Third National
   Plan and Peace Dividend, which Alpha 29 removed with an over-broad cleanup.
 - Kept the Great-Power Charter and the retired route, theatre, report, ledger,

@@ -55,8 +55,7 @@ COUNTRIES = (
     Country("BUR", "Burma", 1415, "Rangoon"),
     Country("MLY", "Malaysia", 1438, "Kuala Lumpur"),
     Country("PHI", "Philippines", 1565, "Manila"),
-    Country("U05", "Dutch East Indies", 1647, "Batavia", "aubm_v4_indian_ocean_war", "INO"),
-    Country("INO", "Indonesia", 1654, "Jogjakarta", "aubm_v4_indian_ocean_war"),
+    Country("U05", "East Indies / Indonesia", 1647, "Batavia or Jogjakarta", "aubm_v4_indian_ocean_war", "INO"),
     Country("BRU", "Brunei", 1625, "Bandar Seri Begawan"),
     Country("SAR", "Sarawak", 1624, "Kuching"),
     Country("AST", "Australia", 1707, "Canberra"),
@@ -70,12 +69,27 @@ COUNTRIES = (
 )
 
 
+def country_callback_id(tag: str) -> int:
+    index = next(index for index, country in enumerate(COUNTRIES) if country.tag == tag)
+    return BASE_ID + index * 2 + 1
+
+
 def cmd(body: str, trigger: str | None = None) -> str:
     prefix = f"trigger = {{ {trigger} }} " if trigger else ""
     return f"\t\tcommand = {{ {prefix}type = {body} }}"
 
 
 def live(country: Country) -> str:
+    if country.tag == "U05":
+        return (
+            "OR = { "
+            "AND = { exists = U05 war = { country = IND country = U05 } "
+            "control = { province = 1647 data = IND } "
+            "lost_national = { country = U05 value = 50 } NOT = { exists = INO } } "
+            "AND = { exists = INO war = { country = IND country = INO } "
+            "control = { province = 1654 data = IND } "
+            "lost_national = { country = INO value = 50 } } }"
+        )
     extra = f" NOT = {{ exists = {country.released} }}" if country.release_tag else ""
     return (
         f"exists = {country.tag} war = {{ country = IND country = {country.tag} }} "
@@ -116,6 +130,15 @@ def common_finish(country: Country, outcome: str) -> list[str]:
     ]
 
 
+def defeat_commands(country: Country) -> list[str]:
+    commands = [
+        cmd(f"inherit which = {country.tag}", f"exists = {country.tag} war = {{ country = IND country = {country.tag} }}")
+    ]
+    if country.tag == "U05":
+        commands.append(cmd("inherit which = INO", "exists = INO war = { country = IND country = INO }"))
+    return commands
+
+
 def resolution(index: int, country: Country) -> str:
     event_id = BASE_ID + index * 2
     callback_id = event_id + 1
@@ -150,24 +173,28 @@ def resolution(index: int, country: Country) -> str:
         "\taction_a = {",
         f"\t\ttrigger = {{ NOT = {{ puppet = {{ country = {country.released} country = IND }} }} }}",
         '\t\tname = "Protectorate: -250 supplies, no dissent; joins wars"',
-        cmd(f"inherit which = {country.tag}", f"exists = {country.tag} war = {{ country = IND country = {country.tag} }}"),
+    ]
+    lines.extend(defeat_commands(country))
+    lines.extend([
         cmd(f"independence which = {country.released} value = 1 when = 0"),
         cmd(f"make_puppet which = {country.released}", f"exists = {country.released}"),
         cmd("supplies value = -250"),
-    ]
+    ])
     lines.extend(common_finish(country, "protected"))
     lines.extend(
         [
             "\t}",
             "\taction_b = {",
             '\t\tname = "Protected neutrality: no dissent; Indian access"',
-            cmd(f"inherit which = {country.tag}", f"exists = {country.tag} war = {{ country = IND country = {country.tag} }}"),
-            cmd(f"independence which = {country.released} value = 1 when = 0"),
-            cmd(f"end_mastery which = {country.released}", f"puppet = {{ country = {country.released} country = IND }}"),
-            cmd(f"guarantee which = IND where = {country.released}", f"exists = {country.released}"),
-            cmd(f"event which = {callback_id} where = {country.released} when = 1", f"exists = {country.released}"),
         ]
     )
+    lines.extend(defeat_commands(country))
+    lines.extend([
+        cmd(f"independence which = {country.released} value = 1 when = 0"),
+        cmd(f"end_mastery which = {country.released}", f"puppet = {{ country = {country.released} country = IND }}"),
+        cmd(f"guarantee which = IND where = {country.released}", f"exists = {country.released}"),
+        cmd(f"event which = {callback_id} where = {country.released} when = 1", f"exists = {country.released}"),
+    ])
     lines.extend(common_finish(country, "neutral"))
     lines.extend(
         [
@@ -223,7 +250,11 @@ FRAGMENT_PLANS = (
     (
         9288093,
         next(country for country in COUNTRIES if country.tag == "U05"),
-        (("BRU", "Brunei", 9288039), ("SAR", "Sarawak", 9288041), ("INO", "Indonesia", 9288037)),
+        (
+            ("BRU", "Brunei", country_callback_id("BRU")),
+            ("SAR", "Sarawak", country_callback_id("SAR")),
+            ("INO", "Indonesia", country_callback_id("U05")),
+        ),
     ),
     (
         9288094,
