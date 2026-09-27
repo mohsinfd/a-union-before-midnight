@@ -46,10 +46,10 @@ event = {
 		command = { type = setflag which = ind_aubm_debt_foreign }
 		command = { type = setflag which = ind_aubm_war_finance_active }
 		command = { type = setflag which = ind_aubm_budget_review_pending }
-		command = { trigger = { flag = ind_aubm_route_allied exists = ENG } type = relation which = ENG value = 10 }
-		command = { trigger = { flag = ind_aubm_route_german exists = GER } type = relation which = GER value = 10 }
-		command = { trigger = { flag = ind_aubm_route_soviet exists = SOV } type = relation which = SOV value = 10 }
-		command = { trigger = { flag = ind_aubm_route_japan exists = JAP } type = relation which = JAP value = 10 }
+		command = { trigger = { exists = ENG OR = { flag = ind_rel_compact_eng flag = ind_rel_formal_eng } } type = relation which = ENG value = 10 }
+		command = { trigger = { exists = GER OR = { flag = ind_rel_compact_ger flag = ind_rel_formal_ger } } type = relation which = GER value = 10 }
+		command = { trigger = { exists = SOV OR = { flag = ind_rel_compact_sov flag = ind_rel_formal_sov } } type = relation which = SOV value = 10 }
+		command = { trigger = { exists = JAP OR = { flag = ind_rel_compact_jap flag = ind_rel_formal_jap } } type = relation which = JAP value = 10 }
 		command = { type = event which = 9282090 where = IND when = 1 }
 		command = { type = event which = 9282081 where = IND when = 360 }
 	}

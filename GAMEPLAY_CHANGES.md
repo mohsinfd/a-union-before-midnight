@@ -1,9 +1,19 @@
-# A Union Before Midnight: Gameplay Changes and Alpha 28 Status
+# A Union Before Midnight: Gameplay Changes and Alpha 29 Status
 
-This is the player-facing guide to the current **4.2.0-alpha.28** source of
+This is the player-facing guide to the current **4.2.0-alpha.29** source of
 *A Union Before Midnight*. It explains what changed, how the new systems are
 supposed to play, what has been verified, and what still needs a real campaign
 test.
+
+## Alpha 29: Country Relations Rebuilt
+
+India no longer selects a permanent route that controls unrelated future events.
+Open the War Cabinet, choose a country and select the exact relationship wanted.
+Trade missions change relations only. Defence compacts provide cooperation while
+keeping wars separate. Formal alliances explicitly inherit the partner's current
+wars. Country peace decisions offer either an active Indian protectorate, protected
+neutrality, continued war or military occupation. The East Indies and Indochina
+also offer clearly named breakup outcomes.
 
 Updated: 30 Aug 2026.
 

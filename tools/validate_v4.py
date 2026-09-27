@@ -35,26 +35,12 @@ REQUIRED_V4_MODULES = {
     "15_operational_command.txt",
     "18_manpower_reserves.txt",
     "20_procurement.txt",
-    "22_crisis_interventions.txt",
-    "25_global_war.txt",
-    "26_grand_strategy.txt",
-    "27_dynamic_strategy.txt",
-    "28_foreign_responses.txt",
-    "29_world_pressure.txt",
-    "30_war_settlements.txt",
-    "31_campaign_continuity.txt",
     "32_national_consolidation.txt",
-    "35_japan_partnership.txt",
-    "36_allied_campaigns.txt",
-    "37_german_campaigns.txt",
-    "38_soviet_campaigns.txt",
-    "39_non_aligned_campaigns.txt",
     "40_special_units_and_capital_ships.txt",
-    "41_wartime_state.txt",
     "44_wartime_economy.txt",
-	"52_delhi_berlin_compact.txt",
 	"53_country_resolutions.txt",
 	"53_world_ai_balance1.txt",
+	"54_country_relations.txt",
 }
 KNOWN_COMMANDS = {
     "access",
@@ -793,7 +779,11 @@ class Validator:
                 path.name == "53_world_ai_balance1.txt"
                 and 9318000 <= event_id <= 9318024
             )
-            if not (self.event_min <= event_id <= self.event_max or lib3_reserved or cleanup_reserved or balance1_ai_reserved):
+            queued_himalayan_compat = (
+                path.name == "54_country_relations.txt"
+                and event_id in {9398204, 9398214}
+            )
+            if not (self.event_min <= event_id <= self.event_max or lib3_reserved or cleanup_reserved or balance1_ai_reserved or queued_himalayan_compat):
                 self.error(path, event.line, f"Event id {event_id} is outside the reserved India range.")
             if event_id in self.india_events:
                 other = self.india_events[event_id][0]
@@ -1272,6 +1262,17 @@ class Validator:
     def validate_cross_event(self) -> None:
         all_ids = set(self.india_events)
         set_flags: set[str] = set()
+        # These flags may exist only inside an upgraded save.  Their original
+        # diplomacy module is retired, but the delayed core callbacks remain
+        # loaded so an already-scheduled Nepal/Bhutan integration still ends.
+        set_flags.update({
+            "ind_stage_nepal_core_pending",
+            "ind_v3_nepal_integrated",
+            "ind_stage_nepal_cored",
+            "ind_stage_bhutan_core_pending",
+            "ind_v3_bhutan_integrated",
+            "ind_stage_bhutan_cored",
+        })
         scenario_path = self.mod / "scenarios/1933.eug"
         if scenario_path.exists():
             scenario_text = load_text(scenario_path)
@@ -1362,6 +1363,21 @@ class Validator:
                     event.line,
                     f"Event {event_id} sleeps a shared generic-election event instead of excluding India from its TAG list.",
                 )
+
+        # Alpha 28 deliberately replaced the route/commitment/campaign matrix
+        # with one country-relations desk and one country-resolution file.
+        # The checks below this branch describe the retired architecture.
+        if 9289000 in self.india_events:
+            required_new = {
+                9289000, 9289002, 9289003, 9289004, 9289006,
+                9289010, 9289011, 9289012, 9289013, 9289014,
+                9289015, 9289016, 9289017,
+                9289020, 9289021, 9289022, 9289023,
+                9288000, 9288002, 9288004, 9288006,
+            }
+            for event_id in sorted(required_new):
+                loaded(event_id)
+            return
 
         strategy_review = loaded(9280500)
         if strategy_review:

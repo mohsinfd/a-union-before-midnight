@@ -7,7 +7,15 @@ import re
 import sys
 from pathlib import Path
 
-from generate_aubm_country_resolutions import BASE_ID, COUNTRIES, MAJOR_EVENTS, OUTPUT, render
+from generate_aubm_country_resolutions import (
+    BASE_ID,
+    COUNTRIES,
+    FRAGMENT_CALLBACKS,
+    FRAGMENT_PLANS,
+    MAJOR_EVENTS,
+    OUTPUT,
+    render,
+)
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -60,7 +68,7 @@ def main() -> int:
             errors.append(f"retired module remains packaged: {name}")
 
     ids = [int(value) for value in re.findall(r"(?m)^\s*id\s*=\s*(\d+)", actual)]
-    expected_count = len(COUNTRIES) * 2 + len(MAJOR_EVENTS)
+    expected_count = len(COUNTRIES) * 2 + len(MAJOR_EVENTS) + len(FRAGMENT_CALLBACKS) + len(FRAGMENT_PLANS)
     if len(ids) != expected_count or len(ids) != len(set(ids)):
         errors.append(f"expected {expected_count} unique events, found {len(ids)}")
     if actual.count("\tdecision = {") != len(COUNTRIES) + len(MAJOR_EVENTS):
@@ -94,6 +102,22 @@ def main() -> int:
             errors.append(f"{country.tag} protectorate still adds dissent")
         if "supplies value = -250" not in protectorate:
             errors.append(f"{country.tag} protectorate lacks its disclosed supply cost")
+        neutral = block.split("action_b = {", 1)[-1].split("action_c = {", 1)[0]
+        if "make_puppet" in neutral or "alliance" in neutral:
+            errors.append(f"{country.tag} protected neutrality can still create a puppet or alliance")
+        if "guarantee which = IND" not in neutral:
+            errors.append(f"{country.tag} protected neutrality lacks an Indian guarantee")
+
+    if "Breakup options: Indonesia, Brunei, Sarawak" not in actual:
+        errors.append("East Indies fragmentation choice is missing or unnamed")
+    if "Breakup options: Vietnam, Cambodia, Laos" not in actual:
+        errors.append("Indochina fragmentation choice is missing or unnamed")
+    for phrase in (
+        "Active protectorates: -500 supplies; share wars",
+        "Protected neutrals: -250 supplies; separate wars",
+    ):
+        if actual.count(phrase) != len(FRAGMENT_PLANS):
+            errors.append(f"fragmentation menus do not disclose both outcomes: {phrase}")
 
     if errors:
         for error in errors:

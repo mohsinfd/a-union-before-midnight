@@ -3,7 +3,8 @@
 
 This replaces the former global, regional and theatre matrices.  Every visible
 decision names one country, changes only that country and states its cost in
-the button text.
+the button text.  A protected neutral is deliberately not a puppet and does
+not inherit India's wars.
 """
 
 from __future__ import annotations
@@ -97,6 +98,13 @@ def annexed(country: Country) -> str:
     )
 
 
+def indian_puppet(country: Country) -> str:
+    return (
+        f"exists = {country.released} "
+        f"puppet = {{ country = {country.released} country = IND }}"
+    )
+
+
 def common_finish(country: Country, outcome: str) -> list[str]:
     return [
         cmd(f"setflag which = ind_country_resolution_{country.key}_{outcome}"),
@@ -111,7 +119,10 @@ def common_finish(country: Country, outcome: str) -> list[str]:
 def resolution(index: int, country: Country) -> str:
     event_id = BASE_ID + index * 2
     callback_id = event_id + 1
-    conditions = f"OR = {{ AND = {{ {live(country)} }} AND = {{ {annexed(country)} }} }}"
+    conditions = (
+        f"OR = {{ AND = {{ {live(country)} }} AND = {{ {annexed(country)} }} "
+        f"AND = {{ {indian_puppet(country)} }} }}"
+    )
     lines = [
         "event = {",
         f"\tid = {event_id}",
@@ -134,6 +145,7 @@ def resolution(index: int, country: Country) -> str:
             f"{conditions} }}"
         ),
         "\taction_a = {",
+        f"\t\ttrigger = {{ NOT = {{ puppet = {{ country = {country.released} country = IND }} }} }}",
         '\t\tname = "Protectorate: -250 supplies, no dissent; joins wars"',
         cmd(f"inherit which = {country.tag}", f"exists = {country.tag} war = {{ country = IND country = {country.tag} }}"),
         cmd(f"independence which = {country.released} value = 1 when = 0"),
@@ -145,16 +157,15 @@ def resolution(index: int, country: Country) -> str:
         [
             "\t}",
             "\taction_b = {",
-            '\t\tname = "Independent partner: -1 dissent; Indian access"',
+            '\t\tname = "Protected neutrality: no dissent; Indian access"',
             cmd(f"inherit which = {country.tag}", f"exists = {country.tag} war = {{ country = IND country = {country.tag} }}"),
             cmd(f"independence which = {country.released} value = 1 when = 0"),
-            cmd(f"make_puppet which = {country.released}", f"exists = {country.released}"),
-            cmd(f"end_mastery which = {country.released}", f"exists = {country.released}"),
-            cmd("dissent value = -1"),
+            cmd(f"end_mastery which = {country.released}", f"puppet = {{ country = {country.released} country = IND }}"),
+            cmd(f"guarantee which = IND where = {country.released}", f"exists = {country.released}"),
             cmd(f"event which = {callback_id} where = {country.released} when = 1", f"exists = {country.released}"),
         ]
     )
-    lines.extend(common_finish(country, "independent"))
+    lines.extend(common_finish(country, "neutral"))
     lines.extend(
         [
             "\t}",
@@ -162,16 +173,122 @@ def resolution(index: int, country: Country) -> str:
             f"\t\ttrigger = {{ {live(country)} }}",
             '\t\tname = "Continue the war; make no settlement"',
             "\t}",
-            "\taction_d = {",
-            f"\t\ttrigger = {{ {annexed(country)} }}",
-            '\t\tname = "Military rule: +2 dissent; local resistance"',
-            cmd("dissent value = 2"),
-            cmd("belligerence value = 1"),
-            cmd(f"province_revoltrisk which = {country.capital} value = 2"),
         ]
     )
-    lines.extend(common_finish(country, "occupied"))
-    lines.extend(["\t}", "}", "", "event = {", f"\tid = {callback_id}", "\trandom = no", "\tone_action = yes", f"\tcountry = {country.released}", f'\tname = "{country.name} Grants India Military Access"', f'\tdesc = "The new government of {country.name} remains independent and grants Indian forces military access."', "\tstyle = 2", f'\tpicture = "{country.picture}"', "\taction_a = {", '\t\tname = "Confirm the agreement"', cmd("access which = IND"), cmd("relation which = IND value = 30"), "\t}", "}"])
+    if country.tag == "U05":
+        lines.extend(
+            [
+                "\taction_d = {",
+                f"\t\ttrigger = {{ {annexed(country)} }}",
+                '\t\tname = "Breakup options: Indonesia, Brunei, Sarawak"',
+                cmd("event which = 9288093 where = IND when = 1"),
+            ]
+        )
+    elif country.tag == "U03":
+        lines.extend(
+            [
+                "\taction_d = {",
+                f"\t\ttrigger = {{ {annexed(country)} }}",
+                '\t\tname = "Breakup options: Vietnam, Cambodia, Laos"',
+                cmd("event which = 9288094 where = IND when = 1"),
+            ]
+        )
+    else:
+        lines.extend(
+            [
+                "\taction_d = {",
+                f"\t\ttrigger = {{ {annexed(country)} }}",
+                '\t\tname = "Military rule: +2 dissent; local resistance"',
+                cmd("dissent value = 2"),
+                cmd("belligerence value = 1"),
+                cmd(f"province_revoltrisk which = {country.capital} value = 2"),
+                cmd("setflag which = ind_aubm_occupation_upkeep"),
+            ]
+        )
+        lines.extend(common_finish(country, "occupied"))
+    lines.extend(["\t}", "}", "", "event = {", f"\tid = {callback_id}", "\trandom = no", "\tone_action = yes", f"\tcountry = {country.released}", f'\tname = "{country.name}: Protected Neutrality"', f'\tdesc = "{country.name} leaves India\'s alliance, ends inherited major-power wars and grants Indian forces access. India\'s own wars do not change."', "\tstyle = 2", f'\tpicture = "{country.picture}"', "\taction_a = {", '\t\tname = "Confirm protected neutrality"', cmd("leave_alliance when = 1", f"participant = {{ country = {country.released} value = 4 }}"), cmd("peace which = ENG value = 1", f"war = {{ country = {country.released} country = ENG }}"), cmd("peace which = GER value = 1", f"war = {{ country = {country.released} country = GER }}"), cmd("peace which = SOV value = 1", f"war = {{ country = {country.released} country = SOV }}"), cmd("peace which = JAP value = 1", f"war = {{ country = {country.released} country = JAP }}"), cmd("peace which = USA value = 1", f"war = {{ country = {country.released} country = USA }}"), cmd("peace which = ITA value = 1", f"war = {{ country = {country.released} country = ITA }}"), cmd("peace which = HOL value = 1", f"war = {{ country = {country.released} country = HOL }}"), cmd("peace which = AST value = 1", f"war = {{ country = {country.released} country = AST }}"), cmd("access which = IND"), cmd("relation which = IND value = 50"), cmd(f"non_aggression which = {country.released} where = IND when = 1080"), "\t}", "}"])
+    return "\n".join(lines)
+
+
+FRAGMENT_CALLBACKS = (
+    (9288090, "CMB", "Cambodia"),
+    (9288091, "LAO", "Laos"),
+    (9288092, "VIE", "Vietnam"),
+)
+
+FRAGMENT_PLANS = (
+    (
+        9288093,
+        next(country for country in COUNTRIES if country.tag == "U05"),
+        (("BRU", "Brunei", 9288039), ("SAR", "Sarawak", 9288041), ("INO", "Indonesia", 9288037)),
+    ),
+    (
+        9288094,
+        next(country for country in COUNTRIES if country.tag == "U03"),
+        (("CMB", "Cambodia", 9288090), ("LAO", "Laos", 9288091), ("VIE", "Vietnam", 9288092)),
+    ),
+)
+
+
+def fragment_callback(event_id: int, tag: str, name: str) -> str:
+    return f'''event = {{
+\tid = {event_id}
+\trandom = no
+\tone_action = yes
+\tcountry = {tag}
+\tname = "{name}: Protected Neutrality"
+\tdesc = "{name} is independent, remains outside India's wars and grants Indian forces military access."
+\tstyle = 2
+\tpicture = "aubm_v4_liberated_territory"
+\taction_a = {{
+\t\tname = "Confirm protected neutrality"
+\t\tcommand = {{ type = access which = IND }}
+\t\tcommand = {{ type = relation which = IND value = 50 }}
+\t\tcommand = {{ type = non_aggression which = {tag} where = IND when = 1080 }}
+\t}}
+}}'''
+
+
+def fragment_menu(event_id: int, country: Country, fragments: tuple[tuple[str, str, int], ...]) -> str:
+    names = ", ".join(name for _, name, _ in fragments)
+    lines = [
+        "event = {",
+        f"\tid = {event_id}",
+        "\trandom = no",
+        "\tpersistent = yes",
+        "\tcountry = IND",
+        f'\tname = "{country.name}: Choose the Breakup"',
+        f'\tdesc = "The named states are {names}. Active protectorates become Indian puppets and share India\'s wars. Protected neutrals remain independent, stay outside India\'s wars, grant access and receive Indian guarantees."',
+        "\tstyle = 2",
+        f'\tpicture = "{country.picture}"',
+        "\taction_a = {",
+        '\t\tname = "Active protectorates: -500 supplies; share wars"',
+    ]
+    for tag, _, _ in fragments:
+        lines.append(cmd(f"independence which = {tag} value = 1 when = 0"))
+    for tag, _, _ in fragments:
+        lines.append(cmd(f"make_puppet which = {tag}", f"exists = {tag}"))
+    lines.append(cmd("supplies value = -500"))
+    lines.extend(common_finish(country, "fragmented_protected"))
+    lines.extend([
+        "\t}",
+        "\taction_b = {",
+        '\t\tname = "Protected neutrals: -250 supplies; separate wars"',
+    ])
+    for tag, _, _ in fragments:
+        lines.append(cmd(f"independence which = {tag} value = 1 when = 0"))
+    for tag, _, callback_id in fragments:
+        lines.append(cmd(f"guarantee which = IND where = {tag}", f"exists = {tag}"))
+        lines.append(cmd(f"event which = {callback_id} where = {tag} when = 1", f"exists = {tag}"))
+    lines.append(cmd("supplies value = -250"))
+    lines.extend(common_finish(country, "fragmented_neutral"))
+    lines.extend([
+        "\t}",
+        "\taction_c = {",
+        '\t\tname = "Cancel - keep the country decision open"',
+        "\t}",
+        "}",
+    ])
     return "\n".join(lines)
 
 
@@ -245,6 +362,8 @@ def render() -> str:
     ]
     sections.extend(resolution(index, country) for index, country in enumerate(COUNTRIES))
     sections.extend(major_resolution(*row) for row in MAJOR_EVENTS)
+    sections.extend(fragment_callback(*row) for row in FRAGMENT_CALLBACKS)
+    sections.extend(fragment_menu(*row) for row in FRAGMENT_PLANS)
     return "\n\n".join(sections) + "\n"
 
 

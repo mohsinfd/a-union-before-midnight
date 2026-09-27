@@ -10,7 +10,7 @@ event = {
 
 	trigger = {
 		atwar = yes
-		flag = ind_v3_war_finance
+		flag = ind_aubm_war_finance_active
 		NOT = { flag = ind_v3_war_finance_settled }
 	}
 

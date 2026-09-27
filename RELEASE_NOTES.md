@@ -1,5 +1,22 @@
 # Release Notes
 
+## 4.2.0-alpha.29 / Alpha 29 - Country Relations Rebuilt
+
+- Removed the original V3 diplomacy paths and the overlapping V4 strategic,
+  alliance-campaign, wartime-state and theatre-matrix layers.
+- Added one plain country-relations desk. Trade and defence compacts keep wars
+  separate; only an explicitly labelled formal alliance merges current wars.
+- Added a peace-time alliance withdrawal choice with no route-switching chain.
+- Added protected neutrality to every minor-country peace: the country remains
+  independent, stays outside India's wars, grants access and receives an Indian
+  guarantee.
+- Active protectorates remain available when the player deliberately wants the
+  smaller country to become an Indian puppet and share India's wars.
+- Added named breakup outcomes for the two valid composite colonial states:
+  Dutch East Indies into Indonesia, Brunei and Sarawak; Indochinese Union into
+  Vietnam, Cambodia and Laos.
+- Preserved queued Nepal and Bhutan core-completion events for upgraded saves.
+
 ## 4.2.0-alpha.28 / Alpha 28 - Country Peace Rewrite
 
 Alpha 28 removes the global campaign matrix, regional and theatre boards,

@@ -12,9 +12,10 @@ event = {
 	desc = "India controls Kathmandu and Nepal has lost at least half of its national territory. This decision changes Nepal only. It cannot end, suspend or alter any other war."
 	style = 2
 	picture = "aubm_v4_grand_strategy"
-	decision = { ai = no NOT = { flag = ind_country_resolution_nep_complete } OR = { AND = { exists = NEP war = { country = IND country = NEP } control = { province = 1457 data = IND } lost_national = { country = NEP value = 50 } } AND = { NOT = { exists = NEP } owned = { province = 1457 data = IND } control = { province = 1457 data = IND } } } }
-	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_nep_complete } OR = { AND = { exists = NEP war = { country = IND country = NEP } control = { province = 1457 data = IND } lost_national = { country = NEP value = 50 } } AND = { NOT = { exists = NEP } owned = { province = 1457 data = IND } control = { province = 1457 data = IND } } } }
+	decision = { ai = no NOT = { flag = ind_country_resolution_nep_complete } OR = { AND = { exists = NEP war = { country = IND country = NEP } control = { province = 1457 data = IND } lost_national = { country = NEP value = 50 } } AND = { NOT = { exists = NEP } owned = { province = 1457 data = IND } control = { province = 1457 data = IND } } AND = { exists = NEP puppet = { country = NEP country = IND } } } }
+	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_nep_complete } OR = { AND = { exists = NEP war = { country = IND country = NEP } control = { province = 1457 data = IND } lost_national = { country = NEP value = 50 } } AND = { NOT = { exists = NEP } owned = { province = 1457 data = IND } control = { province = 1457 data = IND } } AND = { exists = NEP puppet = { country = NEP country = IND } } } }
 	action_a = {
+		trigger = { NOT = { puppet = { country = NEP country = IND } } }
 		name = "Protectorate: -250 supplies, no dissent; joins wars"
 		command = { trigger = { exists = NEP war = { country = IND country = NEP } } type = inherit which = NEP }
 		command = { type = independence which = NEP value = 1 when = 0 }
@@ -28,14 +29,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_nep }
 	}
 	action_b = {
-		name = "Independent partner: -1 dissent; Indian access"
+		name = "Protected neutrality: no dissent; Indian access"
 		command = { trigger = { exists = NEP war = { country = IND country = NEP } } type = inherit which = NEP }
 		command = { type = independence which = NEP value = 1 when = 0 }
-		command = { trigger = { exists = NEP } type = make_puppet which = NEP }
-		command = { trigger = { exists = NEP } type = end_mastery which = NEP }
-		command = { type = dissent value = -1 }
+		command = { trigger = { puppet = { country = NEP country = IND } } type = end_mastery which = NEP }
+		command = { trigger = { exists = NEP } type = guarantee which = IND where = NEP }
 		command = { trigger = { exists = NEP } type = event which = 9288001 where = NEP when = 1 }
-		command = { type = setflag which = ind_country_resolution_nep_independent }
+		command = { type = setflag which = ind_country_resolution_nep_neutral }
 		command = { type = setflag which = ind_country_resolution_nep_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_nep }
 		command = { type = clrflag which = ind_aubm_regional_current_nep }
@@ -52,6 +52,7 @@ event = {
 		command = { type = dissent value = 2 }
 		command = { type = belligerence value = 1 }
 		command = { type = province_revoltrisk which = 1457 value = 2 }
+		command = { type = setflag which = ind_aubm_occupation_upkeep }
 		command = { type = setflag which = ind_country_resolution_nep_occupied }
 		command = { type = setflag which = ind_country_resolution_nep_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_nep }
@@ -66,14 +67,24 @@ event = {
 	random = no
 	one_action = yes
 	country = NEP
-	name = "Nepal Grants India Military Access"
-	desc = "The new government of Nepal remains independent and grants Indian forces military access."
+	name = "Nepal: Protected Neutrality"
+	desc = "Nepal leaves India's alliance, ends inherited major-power wars and grants Indian forces access. India's own wars do not change."
 	style = 2
 	picture = "aubm_v4_grand_strategy"
 	action_a = {
-		name = "Confirm the agreement"
+		name = "Confirm protected neutrality"
+		command = { trigger = { participant = { country = NEP value = 4 } } type = leave_alliance when = 1 }
+		command = { trigger = { war = { country = NEP country = ENG } } type = peace which = ENG value = 1 }
+		command = { trigger = { war = { country = NEP country = GER } } type = peace which = GER value = 1 }
+		command = { trigger = { war = { country = NEP country = SOV } } type = peace which = SOV value = 1 }
+		command = { trigger = { war = { country = NEP country = JAP } } type = peace which = JAP value = 1 }
+		command = { trigger = { war = { country = NEP country = USA } } type = peace which = USA value = 1 }
+		command = { trigger = { war = { country = NEP country = ITA } } type = peace which = ITA value = 1 }
+		command = { trigger = { war = { country = NEP country = HOL } } type = peace which = HOL value = 1 }
+		command = { trigger = { war = { country = NEP country = AST } } type = peace which = AST value = 1 }
 		command = { type = access which = IND }
-		command = { type = relation which = IND value = 30 }
+		command = { type = relation which = IND value = 50 }
+		command = { type = non_aggression which = NEP where = IND when = 1080 }
 	}
 }
 
@@ -86,9 +97,10 @@ event = {
 	desc = "India controls Thimphu and Bhutan has lost at least half of its national territory. This decision changes Bhutan only. It cannot end, suspend or alter any other war."
 	style = 2
 	picture = "aubm_v4_grand_strategy"
-	decision = { ai = no NOT = { flag = ind_country_resolution_bhu_complete } OR = { AND = { exists = BHU war = { country = IND country = BHU } control = { province = 1456 data = IND } lost_national = { country = BHU value = 50 } } AND = { NOT = { exists = BHU } owned = { province = 1456 data = IND } control = { province = 1456 data = IND } } } }
-	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_bhu_complete } OR = { AND = { exists = BHU war = { country = IND country = BHU } control = { province = 1456 data = IND } lost_national = { country = BHU value = 50 } } AND = { NOT = { exists = BHU } owned = { province = 1456 data = IND } control = { province = 1456 data = IND } } } }
+	decision = { ai = no NOT = { flag = ind_country_resolution_bhu_complete } OR = { AND = { exists = BHU war = { country = IND country = BHU } control = { province = 1456 data = IND } lost_national = { country = BHU value = 50 } } AND = { NOT = { exists = BHU } owned = { province = 1456 data = IND } control = { province = 1456 data = IND } } AND = { exists = BHU puppet = { country = BHU country = IND } } } }
+	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_bhu_complete } OR = { AND = { exists = BHU war = { country = IND country = BHU } control = { province = 1456 data = IND } lost_national = { country = BHU value = 50 } } AND = { NOT = { exists = BHU } owned = { province = 1456 data = IND } control = { province = 1456 data = IND } } AND = { exists = BHU puppet = { country = BHU country = IND } } } }
 	action_a = {
+		trigger = { NOT = { puppet = { country = BHU country = IND } } }
 		name = "Protectorate: -250 supplies, no dissent; joins wars"
 		command = { trigger = { exists = BHU war = { country = IND country = BHU } } type = inherit which = BHU }
 		command = { type = independence which = BHU value = 1 when = 0 }
@@ -102,14 +114,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_bhu }
 	}
 	action_b = {
-		name = "Independent partner: -1 dissent; Indian access"
+		name = "Protected neutrality: no dissent; Indian access"
 		command = { trigger = { exists = BHU war = { country = IND country = BHU } } type = inherit which = BHU }
 		command = { type = independence which = BHU value = 1 when = 0 }
-		command = { trigger = { exists = BHU } type = make_puppet which = BHU }
-		command = { trigger = { exists = BHU } type = end_mastery which = BHU }
-		command = { type = dissent value = -1 }
+		command = { trigger = { puppet = { country = BHU country = IND } } type = end_mastery which = BHU }
+		command = { trigger = { exists = BHU } type = guarantee which = IND where = BHU }
 		command = { trigger = { exists = BHU } type = event which = 9288003 where = BHU when = 1 }
-		command = { type = setflag which = ind_country_resolution_bhu_independent }
+		command = { type = setflag which = ind_country_resolution_bhu_neutral }
 		command = { type = setflag which = ind_country_resolution_bhu_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_bhu }
 		command = { type = clrflag which = ind_aubm_regional_current_bhu }
@@ -126,6 +137,7 @@ event = {
 		command = { type = dissent value = 2 }
 		command = { type = belligerence value = 1 }
 		command = { type = province_revoltrisk which = 1456 value = 2 }
+		command = { type = setflag which = ind_aubm_occupation_upkeep }
 		command = { type = setflag which = ind_country_resolution_bhu_occupied }
 		command = { type = setflag which = ind_country_resolution_bhu_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_bhu }
@@ -140,14 +152,24 @@ event = {
 	random = no
 	one_action = yes
 	country = BHU
-	name = "Bhutan Grants India Military Access"
-	desc = "The new government of Bhutan remains independent and grants Indian forces military access."
+	name = "Bhutan: Protected Neutrality"
+	desc = "Bhutan leaves India's alliance, ends inherited major-power wars and grants Indian forces access. India's own wars do not change."
 	style = 2
 	picture = "aubm_v4_grand_strategy"
 	action_a = {
-		name = "Confirm the agreement"
+		name = "Confirm protected neutrality"
+		command = { trigger = { participant = { country = BHU value = 4 } } type = leave_alliance when = 1 }
+		command = { trigger = { war = { country = BHU country = ENG } } type = peace which = ENG value = 1 }
+		command = { trigger = { war = { country = BHU country = GER } } type = peace which = GER value = 1 }
+		command = { trigger = { war = { country = BHU country = SOV } } type = peace which = SOV value = 1 }
+		command = { trigger = { war = { country = BHU country = JAP } } type = peace which = JAP value = 1 }
+		command = { trigger = { war = { country = BHU country = USA } } type = peace which = USA value = 1 }
+		command = { trigger = { war = { country = BHU country = ITA } } type = peace which = ITA value = 1 }
+		command = { trigger = { war = { country = BHU country = HOL } } type = peace which = HOL value = 1 }
+		command = { trigger = { war = { country = BHU country = AST } } type = peace which = AST value = 1 }
 		command = { type = access which = IND }
-		command = { type = relation which = IND value = 30 }
+		command = { type = relation which = IND value = 50 }
+		command = { type = non_aggression which = BHU where = IND when = 1080 }
 	}
 }
 
@@ -160,9 +182,10 @@ event = {
 	desc = "India controls Tehran and Persia has lost at least half of its national territory. This decision changes Persia only. It cannot end, suspend or alter any other war."
 	style = 2
 	picture = "aubm_v4_indian_ocean_war"
-	decision = { ai = no NOT = { flag = ind_country_resolution_per_complete } OR = { AND = { exists = PER war = { country = IND country = PER } control = { province = 1085 data = IND } lost_national = { country = PER value = 50 } } AND = { NOT = { exists = PER } owned = { province = 1085 data = IND } control = { province = 1085 data = IND } } } }
-	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_per_complete } OR = { AND = { exists = PER war = { country = IND country = PER } control = { province = 1085 data = IND } lost_national = { country = PER value = 50 } } AND = { NOT = { exists = PER } owned = { province = 1085 data = IND } control = { province = 1085 data = IND } } } }
+	decision = { ai = no NOT = { flag = ind_country_resolution_per_complete } OR = { AND = { exists = PER war = { country = IND country = PER } control = { province = 1085 data = IND } lost_national = { country = PER value = 50 } } AND = { NOT = { exists = PER } owned = { province = 1085 data = IND } control = { province = 1085 data = IND } } AND = { exists = PER puppet = { country = PER country = IND } } } }
+	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_per_complete } OR = { AND = { exists = PER war = { country = IND country = PER } control = { province = 1085 data = IND } lost_national = { country = PER value = 50 } } AND = { NOT = { exists = PER } owned = { province = 1085 data = IND } control = { province = 1085 data = IND } } AND = { exists = PER puppet = { country = PER country = IND } } } }
 	action_a = {
+		trigger = { NOT = { puppet = { country = PER country = IND } } }
 		name = "Protectorate: -250 supplies, no dissent; joins wars"
 		command = { trigger = { exists = PER war = { country = IND country = PER } } type = inherit which = PER }
 		command = { type = independence which = PER value = 1 when = 0 }
@@ -176,14 +199,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_per }
 	}
 	action_b = {
-		name = "Independent partner: -1 dissent; Indian access"
+		name = "Protected neutrality: no dissent; Indian access"
 		command = { trigger = { exists = PER war = { country = IND country = PER } } type = inherit which = PER }
 		command = { type = independence which = PER value = 1 when = 0 }
-		command = { trigger = { exists = PER } type = make_puppet which = PER }
-		command = { trigger = { exists = PER } type = end_mastery which = PER }
-		command = { type = dissent value = -1 }
+		command = { trigger = { puppet = { country = PER country = IND } } type = end_mastery which = PER }
+		command = { trigger = { exists = PER } type = guarantee which = IND where = PER }
 		command = { trigger = { exists = PER } type = event which = 9288005 where = PER when = 1 }
-		command = { type = setflag which = ind_country_resolution_per_independent }
+		command = { type = setflag which = ind_country_resolution_per_neutral }
 		command = { type = setflag which = ind_country_resolution_per_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_per }
 		command = { type = clrflag which = ind_aubm_regional_current_per }
@@ -200,6 +222,7 @@ event = {
 		command = { type = dissent value = 2 }
 		command = { type = belligerence value = 1 }
 		command = { type = province_revoltrisk which = 1085 value = 2 }
+		command = { type = setflag which = ind_aubm_occupation_upkeep }
 		command = { type = setflag which = ind_country_resolution_per_occupied }
 		command = { type = setflag which = ind_country_resolution_per_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_per }
@@ -214,14 +237,24 @@ event = {
 	random = no
 	one_action = yes
 	country = PER
-	name = "Persia Grants India Military Access"
-	desc = "The new government of Persia remains independent and grants Indian forces military access."
+	name = "Persia: Protected Neutrality"
+	desc = "Persia leaves India's alliance, ends inherited major-power wars and grants Indian forces access. India's own wars do not change."
 	style = 2
 	picture = "aubm_v4_indian_ocean_war"
 	action_a = {
-		name = "Confirm the agreement"
+		name = "Confirm protected neutrality"
+		command = { trigger = { participant = { country = PER value = 4 } } type = leave_alliance when = 1 }
+		command = { trigger = { war = { country = PER country = ENG } } type = peace which = ENG value = 1 }
+		command = { trigger = { war = { country = PER country = GER } } type = peace which = GER value = 1 }
+		command = { trigger = { war = { country = PER country = SOV } } type = peace which = SOV value = 1 }
+		command = { trigger = { war = { country = PER country = JAP } } type = peace which = JAP value = 1 }
+		command = { trigger = { war = { country = PER country = USA } } type = peace which = USA value = 1 }
+		command = { trigger = { war = { country = PER country = ITA } } type = peace which = ITA value = 1 }
+		command = { trigger = { war = { country = PER country = HOL } } type = peace which = HOL value = 1 }
+		command = { trigger = { war = { country = PER country = AST } } type = peace which = AST value = 1 }
 		command = { type = access which = IND }
-		command = { type = relation which = IND value = 30 }
+		command = { type = relation which = IND value = 50 }
+		command = { type = non_aggression which = PER where = IND when = 1080 }
 	}
 }
 
@@ -234,9 +267,10 @@ event = {
 	desc = "India controls Baghdad and Iraq has lost at least half of its national territory. This decision changes Iraq only. It cannot end, suspend or alter any other war."
 	style = 2
 	picture = "aubm_v4_indian_ocean_war"
-	decision = { ai = no NOT = { flag = ind_country_resolution_irq_complete } OR = { AND = { exists = IRQ war = { country = IND country = IRQ } control = { province = 1034 data = IND } lost_national = { country = IRQ value = 50 } } AND = { NOT = { exists = IRQ } owned = { province = 1034 data = IND } control = { province = 1034 data = IND } } } }
-	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_irq_complete } OR = { AND = { exists = IRQ war = { country = IND country = IRQ } control = { province = 1034 data = IND } lost_national = { country = IRQ value = 50 } } AND = { NOT = { exists = IRQ } owned = { province = 1034 data = IND } control = { province = 1034 data = IND } } } }
+	decision = { ai = no NOT = { flag = ind_country_resolution_irq_complete } OR = { AND = { exists = IRQ war = { country = IND country = IRQ } control = { province = 1034 data = IND } lost_national = { country = IRQ value = 50 } } AND = { NOT = { exists = IRQ } owned = { province = 1034 data = IND } control = { province = 1034 data = IND } } AND = { exists = IRQ puppet = { country = IRQ country = IND } } } }
+	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_irq_complete } OR = { AND = { exists = IRQ war = { country = IND country = IRQ } control = { province = 1034 data = IND } lost_national = { country = IRQ value = 50 } } AND = { NOT = { exists = IRQ } owned = { province = 1034 data = IND } control = { province = 1034 data = IND } } AND = { exists = IRQ puppet = { country = IRQ country = IND } } } }
 	action_a = {
+		trigger = { NOT = { puppet = { country = IRQ country = IND } } }
 		name = "Protectorate: -250 supplies, no dissent; joins wars"
 		command = { trigger = { exists = IRQ war = { country = IND country = IRQ } } type = inherit which = IRQ }
 		command = { type = independence which = IRQ value = 1 when = 0 }
@@ -250,14 +284,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_irq }
 	}
 	action_b = {
-		name = "Independent partner: -1 dissent; Indian access"
+		name = "Protected neutrality: no dissent; Indian access"
 		command = { trigger = { exists = IRQ war = { country = IND country = IRQ } } type = inherit which = IRQ }
 		command = { type = independence which = IRQ value = 1 when = 0 }
-		command = { trigger = { exists = IRQ } type = make_puppet which = IRQ }
-		command = { trigger = { exists = IRQ } type = end_mastery which = IRQ }
-		command = { type = dissent value = -1 }
+		command = { trigger = { puppet = { country = IRQ country = IND } } type = end_mastery which = IRQ }
+		command = { trigger = { exists = IRQ } type = guarantee which = IND where = IRQ }
 		command = { trigger = { exists = IRQ } type = event which = 9288007 where = IRQ when = 1 }
-		command = { type = setflag which = ind_country_resolution_irq_independent }
+		command = { type = setflag which = ind_country_resolution_irq_neutral }
 		command = { type = setflag which = ind_country_resolution_irq_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_irq }
 		command = { type = clrflag which = ind_aubm_regional_current_irq }
@@ -274,6 +307,7 @@ event = {
 		command = { type = dissent value = 2 }
 		command = { type = belligerence value = 1 }
 		command = { type = province_revoltrisk which = 1034 value = 2 }
+		command = { type = setflag which = ind_aubm_occupation_upkeep }
 		command = { type = setflag which = ind_country_resolution_irq_occupied }
 		command = { type = setflag which = ind_country_resolution_irq_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_irq }
@@ -288,14 +322,24 @@ event = {
 	random = no
 	one_action = yes
 	country = IRQ
-	name = "Iraq Grants India Military Access"
-	desc = "The new government of Iraq remains independent and grants Indian forces military access."
+	name = "Iraq: Protected Neutrality"
+	desc = "Iraq leaves India's alliance, ends inherited major-power wars and grants Indian forces access. India's own wars do not change."
 	style = 2
 	picture = "aubm_v4_indian_ocean_war"
 	action_a = {
-		name = "Confirm the agreement"
+		name = "Confirm protected neutrality"
+		command = { trigger = { participant = { country = IRQ value = 4 } } type = leave_alliance when = 1 }
+		command = { trigger = { war = { country = IRQ country = ENG } } type = peace which = ENG value = 1 }
+		command = { trigger = { war = { country = IRQ country = GER } } type = peace which = GER value = 1 }
+		command = { trigger = { war = { country = IRQ country = SOV } } type = peace which = SOV value = 1 }
+		command = { trigger = { war = { country = IRQ country = JAP } } type = peace which = JAP value = 1 }
+		command = { trigger = { war = { country = IRQ country = USA } } type = peace which = USA value = 1 }
+		command = { trigger = { war = { country = IRQ country = ITA } } type = peace which = ITA value = 1 }
+		command = { trigger = { war = { country = IRQ country = HOL } } type = peace which = HOL value = 1 }
+		command = { trigger = { war = { country = IRQ country = AST } } type = peace which = AST value = 1 }
 		command = { type = access which = IND }
-		command = { type = relation which = IND value = 30 }
+		command = { type = relation which = IND value = 50 }
+		command = { type = non_aggression which = IRQ where = IND when = 1080 }
 	}
 }
 
@@ -308,9 +352,10 @@ event = {
 	desc = "India controls Riyadh and Saudi Arabia has lost at least half of its national territory. This decision changes Saudi Arabia only. It cannot end, suspend or alter any other war."
 	style = 2
 	picture = "aubm_v4_indian_ocean_war"
-	decision = { ai = no NOT = { flag = ind_country_resolution_sau_complete } OR = { AND = { exists = SAU war = { country = IND country = SAU } control = { province = 1045 data = IND } lost_national = { country = SAU value = 50 } } AND = { NOT = { exists = SAU } owned = { province = 1045 data = IND } control = { province = 1045 data = IND } } } }
-	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_sau_complete } OR = { AND = { exists = SAU war = { country = IND country = SAU } control = { province = 1045 data = IND } lost_national = { country = SAU value = 50 } } AND = { NOT = { exists = SAU } owned = { province = 1045 data = IND } control = { province = 1045 data = IND } } } }
+	decision = { ai = no NOT = { flag = ind_country_resolution_sau_complete } OR = { AND = { exists = SAU war = { country = IND country = SAU } control = { province = 1045 data = IND } lost_national = { country = SAU value = 50 } } AND = { NOT = { exists = SAU } owned = { province = 1045 data = IND } control = { province = 1045 data = IND } } AND = { exists = SAU puppet = { country = SAU country = IND } } } }
+	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_sau_complete } OR = { AND = { exists = SAU war = { country = IND country = SAU } control = { province = 1045 data = IND } lost_national = { country = SAU value = 50 } } AND = { NOT = { exists = SAU } owned = { province = 1045 data = IND } control = { province = 1045 data = IND } } AND = { exists = SAU puppet = { country = SAU country = IND } } } }
 	action_a = {
+		trigger = { NOT = { puppet = { country = SAU country = IND } } }
 		name = "Protectorate: -250 supplies, no dissent; joins wars"
 		command = { trigger = { exists = SAU war = { country = IND country = SAU } } type = inherit which = SAU }
 		command = { type = independence which = SAU value = 1 when = 0 }
@@ -324,14 +369,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_sau }
 	}
 	action_b = {
-		name = "Independent partner: -1 dissent; Indian access"
+		name = "Protected neutrality: no dissent; Indian access"
 		command = { trigger = { exists = SAU war = { country = IND country = SAU } } type = inherit which = SAU }
 		command = { type = independence which = SAU value = 1 when = 0 }
-		command = { trigger = { exists = SAU } type = make_puppet which = SAU }
-		command = { trigger = { exists = SAU } type = end_mastery which = SAU }
-		command = { type = dissent value = -1 }
+		command = { trigger = { puppet = { country = SAU country = IND } } type = end_mastery which = SAU }
+		command = { trigger = { exists = SAU } type = guarantee which = IND where = SAU }
 		command = { trigger = { exists = SAU } type = event which = 9288009 where = SAU when = 1 }
-		command = { type = setflag which = ind_country_resolution_sau_independent }
+		command = { type = setflag which = ind_country_resolution_sau_neutral }
 		command = { type = setflag which = ind_country_resolution_sau_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_sau }
 		command = { type = clrflag which = ind_aubm_regional_current_sau }
@@ -348,6 +392,7 @@ event = {
 		command = { type = dissent value = 2 }
 		command = { type = belligerence value = 1 }
 		command = { type = province_revoltrisk which = 1045 value = 2 }
+		command = { type = setflag which = ind_aubm_occupation_upkeep }
 		command = { type = setflag which = ind_country_resolution_sau_occupied }
 		command = { type = setflag which = ind_country_resolution_sau_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_sau }
@@ -362,14 +407,24 @@ event = {
 	random = no
 	one_action = yes
 	country = SAU
-	name = "Saudi Arabia Grants India Military Access"
-	desc = "The new government of Saudi Arabia remains independent and grants Indian forces military access."
+	name = "Saudi Arabia: Protected Neutrality"
+	desc = "Saudi Arabia leaves India's alliance, ends inherited major-power wars and grants Indian forces access. India's own wars do not change."
 	style = 2
 	picture = "aubm_v4_indian_ocean_war"
 	action_a = {
-		name = "Confirm the agreement"
+		name = "Confirm protected neutrality"
+		command = { trigger = { participant = { country = SAU value = 4 } } type = leave_alliance when = 1 }
+		command = { trigger = { war = { country = SAU country = ENG } } type = peace which = ENG value = 1 }
+		command = { trigger = { war = { country = SAU country = GER } } type = peace which = GER value = 1 }
+		command = { trigger = { war = { country = SAU country = SOV } } type = peace which = SOV value = 1 }
+		command = { trigger = { war = { country = SAU country = JAP } } type = peace which = JAP value = 1 }
+		command = { trigger = { war = { country = SAU country = USA } } type = peace which = USA value = 1 }
+		command = { trigger = { war = { country = SAU country = ITA } } type = peace which = ITA value = 1 }
+		command = { trigger = { war = { country = SAU country = HOL } } type = peace which = HOL value = 1 }
+		command = { trigger = { war = { country = SAU country = AST } } type = peace which = AST value = 1 }
 		command = { type = access which = IND }
-		command = { type = relation which = IND value = 30 }
+		command = { type = relation which = IND value = 50 }
+		command = { type = non_aggression which = SAU where = IND when = 1080 }
 	}
 }
 
@@ -382,9 +437,10 @@ event = {
 	desc = "India controls Sana'a and Yemen has lost at least half of its national territory. This decision changes Yemen only. It cannot end, suspend or alter any other war."
 	style = 2
 	picture = "aubm_v4_indian_ocean_war"
-	decision = { ai = no NOT = { flag = ind_country_resolution_yem_complete } OR = { AND = { exists = YEM war = { country = IND country = YEM } control = { province = 1050 data = IND } lost_national = { country = YEM value = 50 } } AND = { NOT = { exists = YEM } owned = { province = 1050 data = IND } control = { province = 1050 data = IND } } } }
-	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_yem_complete } OR = { AND = { exists = YEM war = { country = IND country = YEM } control = { province = 1050 data = IND } lost_national = { country = YEM value = 50 } } AND = { NOT = { exists = YEM } owned = { province = 1050 data = IND } control = { province = 1050 data = IND } } } }
+	decision = { ai = no NOT = { flag = ind_country_resolution_yem_complete } OR = { AND = { exists = YEM war = { country = IND country = YEM } control = { province = 1050 data = IND } lost_national = { country = YEM value = 50 } } AND = { NOT = { exists = YEM } owned = { province = 1050 data = IND } control = { province = 1050 data = IND } } AND = { exists = YEM puppet = { country = YEM country = IND } } } }
+	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_yem_complete } OR = { AND = { exists = YEM war = { country = IND country = YEM } control = { province = 1050 data = IND } lost_national = { country = YEM value = 50 } } AND = { NOT = { exists = YEM } owned = { province = 1050 data = IND } control = { province = 1050 data = IND } } AND = { exists = YEM puppet = { country = YEM country = IND } } } }
 	action_a = {
+		trigger = { NOT = { puppet = { country = YEM country = IND } } }
 		name = "Protectorate: -250 supplies, no dissent; joins wars"
 		command = { trigger = { exists = YEM war = { country = IND country = YEM } } type = inherit which = YEM }
 		command = { type = independence which = YEM value = 1 when = 0 }
@@ -398,14 +454,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_yem }
 	}
 	action_b = {
-		name = "Independent partner: -1 dissent; Indian access"
+		name = "Protected neutrality: no dissent; Indian access"
 		command = { trigger = { exists = YEM war = { country = IND country = YEM } } type = inherit which = YEM }
 		command = { type = independence which = YEM value = 1 when = 0 }
-		command = { trigger = { exists = YEM } type = make_puppet which = YEM }
-		command = { trigger = { exists = YEM } type = end_mastery which = YEM }
-		command = { type = dissent value = -1 }
+		command = { trigger = { puppet = { country = YEM country = IND } } type = end_mastery which = YEM }
+		command = { trigger = { exists = YEM } type = guarantee which = IND where = YEM }
 		command = { trigger = { exists = YEM } type = event which = 9288011 where = YEM when = 1 }
-		command = { type = setflag which = ind_country_resolution_yem_independent }
+		command = { type = setflag which = ind_country_resolution_yem_neutral }
 		command = { type = setflag which = ind_country_resolution_yem_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_yem }
 		command = { type = clrflag which = ind_aubm_regional_current_yem }
@@ -422,6 +477,7 @@ event = {
 		command = { type = dissent value = 2 }
 		command = { type = belligerence value = 1 }
 		command = { type = province_revoltrisk which = 1050 value = 2 }
+		command = { type = setflag which = ind_aubm_occupation_upkeep }
 		command = { type = setflag which = ind_country_resolution_yem_occupied }
 		command = { type = setflag which = ind_country_resolution_yem_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_yem }
@@ -436,14 +492,24 @@ event = {
 	random = no
 	one_action = yes
 	country = YEM
-	name = "Yemen Grants India Military Access"
-	desc = "The new government of Yemen remains independent and grants Indian forces military access."
+	name = "Yemen: Protected Neutrality"
+	desc = "Yemen leaves India's alliance, ends inherited major-power wars and grants Indian forces access. India's own wars do not change."
 	style = 2
 	picture = "aubm_v4_indian_ocean_war"
 	action_a = {
-		name = "Confirm the agreement"
+		name = "Confirm protected neutrality"
+		command = { trigger = { participant = { country = YEM value = 4 } } type = leave_alliance when = 1 }
+		command = { trigger = { war = { country = YEM country = ENG } } type = peace which = ENG value = 1 }
+		command = { trigger = { war = { country = YEM country = GER } } type = peace which = GER value = 1 }
+		command = { trigger = { war = { country = YEM country = SOV } } type = peace which = SOV value = 1 }
+		command = { trigger = { war = { country = YEM country = JAP } } type = peace which = JAP value = 1 }
+		command = { trigger = { war = { country = YEM country = USA } } type = peace which = USA value = 1 }
+		command = { trigger = { war = { country = YEM country = ITA } } type = peace which = ITA value = 1 }
+		command = { trigger = { war = { country = YEM country = HOL } } type = peace which = HOL value = 1 }
+		command = { trigger = { war = { country = YEM country = AST } } type = peace which = AST value = 1 }
 		command = { type = access which = IND }
-		command = { type = relation which = IND value = 30 }
+		command = { type = relation which = IND value = 50 }
+		command = { type = non_aggression which = YEM where = IND when = 1080 }
 	}
 }
 
@@ -456,9 +522,10 @@ event = {
 	desc = "India controls Muscat and Oman has lost at least half of its national territory. This decision changes Oman only. It cannot end, suspend or alter any other war."
 	style = 2
 	picture = "aubm_v4_indian_ocean_war"
-	decision = { ai = no NOT = { flag = ind_country_resolution_omn_complete } OR = { AND = { exists = OMN war = { country = IND country = OMN } control = { province = 1052 data = IND } lost_national = { country = OMN value = 50 } } AND = { NOT = { exists = OMN } owned = { province = 1052 data = IND } control = { province = 1052 data = IND } } } }
-	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_omn_complete } OR = { AND = { exists = OMN war = { country = IND country = OMN } control = { province = 1052 data = IND } lost_national = { country = OMN value = 50 } } AND = { NOT = { exists = OMN } owned = { province = 1052 data = IND } control = { province = 1052 data = IND } } } }
+	decision = { ai = no NOT = { flag = ind_country_resolution_omn_complete } OR = { AND = { exists = OMN war = { country = IND country = OMN } control = { province = 1052 data = IND } lost_national = { country = OMN value = 50 } } AND = { NOT = { exists = OMN } owned = { province = 1052 data = IND } control = { province = 1052 data = IND } } AND = { exists = OMN puppet = { country = OMN country = IND } } } }
+	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_omn_complete } OR = { AND = { exists = OMN war = { country = IND country = OMN } control = { province = 1052 data = IND } lost_national = { country = OMN value = 50 } } AND = { NOT = { exists = OMN } owned = { province = 1052 data = IND } control = { province = 1052 data = IND } } AND = { exists = OMN puppet = { country = OMN country = IND } } } }
 	action_a = {
+		trigger = { NOT = { puppet = { country = OMN country = IND } } }
 		name = "Protectorate: -250 supplies, no dissent; joins wars"
 		command = { trigger = { exists = OMN war = { country = IND country = OMN } } type = inherit which = OMN }
 		command = { type = independence which = OMN value = 1 when = 0 }
@@ -472,14 +539,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_omn }
 	}
 	action_b = {
-		name = "Independent partner: -1 dissent; Indian access"
+		name = "Protected neutrality: no dissent; Indian access"
 		command = { trigger = { exists = OMN war = { country = IND country = OMN } } type = inherit which = OMN }
 		command = { type = independence which = OMN value = 1 when = 0 }
-		command = { trigger = { exists = OMN } type = make_puppet which = OMN }
-		command = { trigger = { exists = OMN } type = end_mastery which = OMN }
-		command = { type = dissent value = -1 }
+		command = { trigger = { puppet = { country = OMN country = IND } } type = end_mastery which = OMN }
+		command = { trigger = { exists = OMN } type = guarantee which = IND where = OMN }
 		command = { trigger = { exists = OMN } type = event which = 9288013 where = OMN when = 1 }
-		command = { type = setflag which = ind_country_resolution_omn_independent }
+		command = { type = setflag which = ind_country_resolution_omn_neutral }
 		command = { type = setflag which = ind_country_resolution_omn_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_omn }
 		command = { type = clrflag which = ind_aubm_regional_current_omn }
@@ -496,6 +562,7 @@ event = {
 		command = { type = dissent value = 2 }
 		command = { type = belligerence value = 1 }
 		command = { type = province_revoltrisk which = 1052 value = 2 }
+		command = { type = setflag which = ind_aubm_occupation_upkeep }
 		command = { type = setflag which = ind_country_resolution_omn_occupied }
 		command = { type = setflag which = ind_country_resolution_omn_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_omn }
@@ -510,14 +577,24 @@ event = {
 	random = no
 	one_action = yes
 	country = OMN
-	name = "Oman Grants India Military Access"
-	desc = "The new government of Oman remains independent and grants Indian forces military access."
+	name = "Oman: Protected Neutrality"
+	desc = "Oman leaves India's alliance, ends inherited major-power wars and grants Indian forces access. India's own wars do not change."
 	style = 2
 	picture = "aubm_v4_indian_ocean_war"
 	action_a = {
-		name = "Confirm the agreement"
+		name = "Confirm protected neutrality"
+		command = { trigger = { participant = { country = OMN value = 4 } } type = leave_alliance when = 1 }
+		command = { trigger = { war = { country = OMN country = ENG } } type = peace which = ENG value = 1 }
+		command = { trigger = { war = { country = OMN country = GER } } type = peace which = GER value = 1 }
+		command = { trigger = { war = { country = OMN country = SOV } } type = peace which = SOV value = 1 }
+		command = { trigger = { war = { country = OMN country = JAP } } type = peace which = JAP value = 1 }
+		command = { trigger = { war = { country = OMN country = USA } } type = peace which = USA value = 1 }
+		command = { trigger = { war = { country = OMN country = ITA } } type = peace which = ITA value = 1 }
+		command = { trigger = { war = { country = OMN country = HOL } } type = peace which = HOL value = 1 }
+		command = { trigger = { war = { country = OMN country = AST } } type = peace which = AST value = 1 }
 		command = { type = access which = IND }
-		command = { type = relation which = IND value = 30 }
+		command = { type = relation which = IND value = 50 }
+		command = { type = non_aggression which = OMN where = IND when = 1080 }
 	}
 }
 
@@ -530,9 +607,10 @@ event = {
 	desc = "India controls Kabul and Afghanistan has lost at least half of its national territory. This decision changes Afghanistan only. It cannot end, suspend or alter any other war."
 	style = 2
 	picture = "aubm_v4_barbarossa_reaction"
-	decision = { ai = no NOT = { flag = ind_country_resolution_afg_complete } OR = { AND = { exists = AFG war = { country = IND country = AFG } control = { province = 2171 data = IND } lost_national = { country = AFG value = 50 } } AND = { NOT = { exists = AFG } owned = { province = 2171 data = IND } control = { province = 2171 data = IND } } } }
-	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_afg_complete } OR = { AND = { exists = AFG war = { country = IND country = AFG } control = { province = 2171 data = IND } lost_national = { country = AFG value = 50 } } AND = { NOT = { exists = AFG } owned = { province = 2171 data = IND } control = { province = 2171 data = IND } } } }
+	decision = { ai = no NOT = { flag = ind_country_resolution_afg_complete } OR = { AND = { exists = AFG war = { country = IND country = AFG } control = { province = 2171 data = IND } lost_national = { country = AFG value = 50 } } AND = { NOT = { exists = AFG } owned = { province = 2171 data = IND } control = { province = 2171 data = IND } } AND = { exists = AFG puppet = { country = AFG country = IND } } } }
+	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_afg_complete } OR = { AND = { exists = AFG war = { country = IND country = AFG } control = { province = 2171 data = IND } lost_national = { country = AFG value = 50 } } AND = { NOT = { exists = AFG } owned = { province = 2171 data = IND } control = { province = 2171 data = IND } } AND = { exists = AFG puppet = { country = AFG country = IND } } } }
 	action_a = {
+		trigger = { NOT = { puppet = { country = AFG country = IND } } }
 		name = "Protectorate: -250 supplies, no dissent; joins wars"
 		command = { trigger = { exists = AFG war = { country = IND country = AFG } } type = inherit which = AFG }
 		command = { type = independence which = AFG value = 1 when = 0 }
@@ -546,14 +624,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_afg }
 	}
 	action_b = {
-		name = "Independent partner: -1 dissent; Indian access"
+		name = "Protected neutrality: no dissent; Indian access"
 		command = { trigger = { exists = AFG war = { country = IND country = AFG } } type = inherit which = AFG }
 		command = { type = independence which = AFG value = 1 when = 0 }
-		command = { trigger = { exists = AFG } type = make_puppet which = AFG }
-		command = { trigger = { exists = AFG } type = end_mastery which = AFG }
-		command = { type = dissent value = -1 }
+		command = { trigger = { puppet = { country = AFG country = IND } } type = end_mastery which = AFG }
+		command = { trigger = { exists = AFG } type = guarantee which = IND where = AFG }
 		command = { trigger = { exists = AFG } type = event which = 9288015 where = AFG when = 1 }
-		command = { type = setflag which = ind_country_resolution_afg_independent }
+		command = { type = setflag which = ind_country_resolution_afg_neutral }
 		command = { type = setflag which = ind_country_resolution_afg_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_afg }
 		command = { type = clrflag which = ind_aubm_regional_current_afg }
@@ -570,6 +647,7 @@ event = {
 		command = { type = dissent value = 2 }
 		command = { type = belligerence value = 1 }
 		command = { type = province_revoltrisk which = 2171 value = 2 }
+		command = { type = setflag which = ind_aubm_occupation_upkeep }
 		command = { type = setflag which = ind_country_resolution_afg_occupied }
 		command = { type = setflag which = ind_country_resolution_afg_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_afg }
@@ -584,14 +662,24 @@ event = {
 	random = no
 	one_action = yes
 	country = AFG
-	name = "Afghanistan Grants India Military Access"
-	desc = "The new government of Afghanistan remains independent and grants Indian forces military access."
+	name = "Afghanistan: Protected Neutrality"
+	desc = "Afghanistan leaves India's alliance, ends inherited major-power wars and grants Indian forces access. India's own wars do not change."
 	style = 2
 	picture = "aubm_v4_barbarossa_reaction"
 	action_a = {
-		name = "Confirm the agreement"
+		name = "Confirm protected neutrality"
+		command = { trigger = { participant = { country = AFG value = 4 } } type = leave_alliance when = 1 }
+		command = { trigger = { war = { country = AFG country = ENG } } type = peace which = ENG value = 1 }
+		command = { trigger = { war = { country = AFG country = GER } } type = peace which = GER value = 1 }
+		command = { trigger = { war = { country = AFG country = SOV } } type = peace which = SOV value = 1 }
+		command = { trigger = { war = { country = AFG country = JAP } } type = peace which = JAP value = 1 }
+		command = { trigger = { war = { country = AFG country = USA } } type = peace which = USA value = 1 }
+		command = { trigger = { war = { country = AFG country = ITA } } type = peace which = ITA value = 1 }
+		command = { trigger = { war = { country = AFG country = HOL } } type = peace which = HOL value = 1 }
+		command = { trigger = { war = { country = AFG country = AST } } type = peace which = AST value = 1 }
 		command = { type = access which = IND }
-		command = { type = relation which = IND value = 30 }
+		command = { type = relation which = IND value = 50 }
+		command = { type = non_aggression which = AFG where = IND when = 1080 }
 	}
 }
 
@@ -604,9 +692,10 @@ event = {
 	desc = "India controls Lhasa and Tibet has lost at least half of its national territory. This decision changes Tibet only. It cannot end, suspend or alter any other war."
 	style = 2
 	picture = "aubm_v4_grand_strategy"
-	decision = { ai = no NOT = { flag = ind_country_resolution_tib_complete } OR = { AND = { exists = TIB war = { country = IND country = TIB } control = { province = 1289 data = IND } lost_national = { country = TIB value = 50 } } AND = { NOT = { exists = TIB } owned = { province = 1289 data = IND } control = { province = 1289 data = IND } } } }
-	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_tib_complete } OR = { AND = { exists = TIB war = { country = IND country = TIB } control = { province = 1289 data = IND } lost_national = { country = TIB value = 50 } } AND = { NOT = { exists = TIB } owned = { province = 1289 data = IND } control = { province = 1289 data = IND } } } }
+	decision = { ai = no NOT = { flag = ind_country_resolution_tib_complete } OR = { AND = { exists = TIB war = { country = IND country = TIB } control = { province = 1289 data = IND } lost_national = { country = TIB value = 50 } } AND = { NOT = { exists = TIB } owned = { province = 1289 data = IND } control = { province = 1289 data = IND } } AND = { exists = TIB puppet = { country = TIB country = IND } } } }
+	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_tib_complete } OR = { AND = { exists = TIB war = { country = IND country = TIB } control = { province = 1289 data = IND } lost_national = { country = TIB value = 50 } } AND = { NOT = { exists = TIB } owned = { province = 1289 data = IND } control = { province = 1289 data = IND } } AND = { exists = TIB puppet = { country = TIB country = IND } } } }
 	action_a = {
+		trigger = { NOT = { puppet = { country = TIB country = IND } } }
 		name = "Protectorate: -250 supplies, no dissent; joins wars"
 		command = { trigger = { exists = TIB war = { country = IND country = TIB } } type = inherit which = TIB }
 		command = { type = independence which = TIB value = 1 when = 0 }
@@ -620,14 +709,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_tib }
 	}
 	action_b = {
-		name = "Independent partner: -1 dissent; Indian access"
+		name = "Protected neutrality: no dissent; Indian access"
 		command = { trigger = { exists = TIB war = { country = IND country = TIB } } type = inherit which = TIB }
 		command = { type = independence which = TIB value = 1 when = 0 }
-		command = { trigger = { exists = TIB } type = make_puppet which = TIB }
-		command = { trigger = { exists = TIB } type = end_mastery which = TIB }
-		command = { type = dissent value = -1 }
+		command = { trigger = { puppet = { country = TIB country = IND } } type = end_mastery which = TIB }
+		command = { trigger = { exists = TIB } type = guarantee which = IND where = TIB }
 		command = { trigger = { exists = TIB } type = event which = 9288017 where = TIB when = 1 }
-		command = { type = setflag which = ind_country_resolution_tib_independent }
+		command = { type = setflag which = ind_country_resolution_tib_neutral }
 		command = { type = setflag which = ind_country_resolution_tib_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_tib }
 		command = { type = clrflag which = ind_aubm_regional_current_tib }
@@ -644,6 +732,7 @@ event = {
 		command = { type = dissent value = 2 }
 		command = { type = belligerence value = 1 }
 		command = { type = province_revoltrisk which = 1289 value = 2 }
+		command = { type = setflag which = ind_aubm_occupation_upkeep }
 		command = { type = setflag which = ind_country_resolution_tib_occupied }
 		command = { type = setflag which = ind_country_resolution_tib_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_tib }
@@ -658,14 +747,24 @@ event = {
 	random = no
 	one_action = yes
 	country = TIB
-	name = "Tibet Grants India Military Access"
-	desc = "The new government of Tibet remains independent and grants Indian forces military access."
+	name = "Tibet: Protected Neutrality"
+	desc = "Tibet leaves India's alliance, ends inherited major-power wars and grants Indian forces access. India's own wars do not change."
 	style = 2
 	picture = "aubm_v4_grand_strategy"
 	action_a = {
-		name = "Confirm the agreement"
+		name = "Confirm protected neutrality"
+		command = { trigger = { participant = { country = TIB value = 4 } } type = leave_alliance when = 1 }
+		command = { trigger = { war = { country = TIB country = ENG } } type = peace which = ENG value = 1 }
+		command = { trigger = { war = { country = TIB country = GER } } type = peace which = GER value = 1 }
+		command = { trigger = { war = { country = TIB country = SOV } } type = peace which = SOV value = 1 }
+		command = { trigger = { war = { country = TIB country = JAP } } type = peace which = JAP value = 1 }
+		command = { trigger = { war = { country = TIB country = USA } } type = peace which = USA value = 1 }
+		command = { trigger = { war = { country = TIB country = ITA } } type = peace which = ITA value = 1 }
+		command = { trigger = { war = { country = TIB country = HOL } } type = peace which = HOL value = 1 }
+		command = { trigger = { war = { country = TIB country = AST } } type = peace which = AST value = 1 }
 		command = { type = access which = IND }
-		command = { type = relation which = IND value = 30 }
+		command = { type = relation which = IND value = 50 }
+		command = { type = non_aggression which = TIB where = IND when = 1080 }
 	}
 }
 
@@ -678,9 +777,10 @@ event = {
 	desc = "India controls Urumqi and Xinjiang has lost at least half of its national territory. This decision changes Xinjiang only. It cannot end, suspend or alter any other war."
 	style = 2
 	picture = "aubm_v4_grand_strategy"
-	decision = { ai = no NOT = { flag = ind_country_resolution_sik_complete } OR = { AND = { exists = SIK war = { country = IND country = SIK } control = { province = 1281 data = IND } lost_national = { country = SIK value = 50 } } AND = { NOT = { exists = SIK } owned = { province = 1281 data = IND } control = { province = 1281 data = IND } } } }
-	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_sik_complete } OR = { AND = { exists = SIK war = { country = IND country = SIK } control = { province = 1281 data = IND } lost_national = { country = SIK value = 50 } } AND = { NOT = { exists = SIK } owned = { province = 1281 data = IND } control = { province = 1281 data = IND } } } }
+	decision = { ai = no NOT = { flag = ind_country_resolution_sik_complete } OR = { AND = { exists = SIK war = { country = IND country = SIK } control = { province = 1281 data = IND } lost_national = { country = SIK value = 50 } } AND = { NOT = { exists = SIK } owned = { province = 1281 data = IND } control = { province = 1281 data = IND } } AND = { exists = SIK puppet = { country = SIK country = IND } } } }
+	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_sik_complete } OR = { AND = { exists = SIK war = { country = IND country = SIK } control = { province = 1281 data = IND } lost_national = { country = SIK value = 50 } } AND = { NOT = { exists = SIK } owned = { province = 1281 data = IND } control = { province = 1281 data = IND } } AND = { exists = SIK puppet = { country = SIK country = IND } } } }
 	action_a = {
+		trigger = { NOT = { puppet = { country = SIK country = IND } } }
 		name = "Protectorate: -250 supplies, no dissent; joins wars"
 		command = { trigger = { exists = SIK war = { country = IND country = SIK } } type = inherit which = SIK }
 		command = { type = independence which = SIK value = 1 when = 0 }
@@ -694,14 +794,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_sik }
 	}
 	action_b = {
-		name = "Independent partner: -1 dissent; Indian access"
+		name = "Protected neutrality: no dissent; Indian access"
 		command = { trigger = { exists = SIK war = { country = IND country = SIK } } type = inherit which = SIK }
 		command = { type = independence which = SIK value = 1 when = 0 }
-		command = { trigger = { exists = SIK } type = make_puppet which = SIK }
-		command = { trigger = { exists = SIK } type = end_mastery which = SIK }
-		command = { type = dissent value = -1 }
+		command = { trigger = { puppet = { country = SIK country = IND } } type = end_mastery which = SIK }
+		command = { trigger = { exists = SIK } type = guarantee which = IND where = SIK }
 		command = { trigger = { exists = SIK } type = event which = 9288019 where = SIK when = 1 }
-		command = { type = setflag which = ind_country_resolution_sik_independent }
+		command = { type = setflag which = ind_country_resolution_sik_neutral }
 		command = { type = setflag which = ind_country_resolution_sik_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_sik }
 		command = { type = clrflag which = ind_aubm_regional_current_sik }
@@ -718,6 +817,7 @@ event = {
 		command = { type = dissent value = 2 }
 		command = { type = belligerence value = 1 }
 		command = { type = province_revoltrisk which = 1281 value = 2 }
+		command = { type = setflag which = ind_aubm_occupation_upkeep }
 		command = { type = setflag which = ind_country_resolution_sik_occupied }
 		command = { type = setflag which = ind_country_resolution_sik_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_sik }
@@ -732,14 +832,24 @@ event = {
 	random = no
 	one_action = yes
 	country = SIK
-	name = "Xinjiang Grants India Military Access"
-	desc = "The new government of Xinjiang remains independent and grants Indian forces military access."
+	name = "Xinjiang: Protected Neutrality"
+	desc = "Xinjiang leaves India's alliance, ends inherited major-power wars and grants Indian forces access. India's own wars do not change."
 	style = 2
 	picture = "aubm_v4_grand_strategy"
 	action_a = {
-		name = "Confirm the agreement"
+		name = "Confirm protected neutrality"
+		command = { trigger = { participant = { country = SIK value = 4 } } type = leave_alliance when = 1 }
+		command = { trigger = { war = { country = SIK country = ENG } } type = peace which = ENG value = 1 }
+		command = { trigger = { war = { country = SIK country = GER } } type = peace which = GER value = 1 }
+		command = { trigger = { war = { country = SIK country = SOV } } type = peace which = SOV value = 1 }
+		command = { trigger = { war = { country = SIK country = JAP } } type = peace which = JAP value = 1 }
+		command = { trigger = { war = { country = SIK country = USA } } type = peace which = USA value = 1 }
+		command = { trigger = { war = { country = SIK country = ITA } } type = peace which = ITA value = 1 }
+		command = { trigger = { war = { country = SIK country = HOL } } type = peace which = HOL value = 1 }
+		command = { trigger = { war = { country = SIK country = AST } } type = peace which = AST value = 1 }
 		command = { type = access which = IND }
-		command = { type = relation which = IND value = 30 }
+		command = { type = relation which = IND value = 50 }
+		command = { type = non_aggression which = SIK where = IND when = 1080 }
 	}
 }
 
@@ -752,9 +862,10 @@ event = {
 	desc = "India controls Nanjing and China has lost at least half of its national territory. This decision changes China only. It cannot end, suspend or alter any other war."
 	style = 2
 	picture = "aubm_v4_liberated_territory"
-	decision = { ai = no NOT = { flag = ind_country_resolution_chi_complete } OR = { AND = { exists = CHI war = { country = IND country = CHI } control = { province = 1337 data = IND } lost_national = { country = CHI value = 50 } } AND = { NOT = { exists = CHI } owned = { province = 1337 data = IND } control = { province = 1337 data = IND } } } }
-	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_chi_complete } OR = { AND = { exists = CHI war = { country = IND country = CHI } control = { province = 1337 data = IND } lost_national = { country = CHI value = 50 } } AND = { NOT = { exists = CHI } owned = { province = 1337 data = IND } control = { province = 1337 data = IND } } } }
+	decision = { ai = no NOT = { flag = ind_country_resolution_chi_complete } OR = { AND = { exists = CHI war = { country = IND country = CHI } control = { province = 1337 data = IND } lost_national = { country = CHI value = 50 } } AND = { NOT = { exists = CHI } owned = { province = 1337 data = IND } control = { province = 1337 data = IND } } AND = { exists = CHI puppet = { country = CHI country = IND } } } }
+	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_chi_complete } OR = { AND = { exists = CHI war = { country = IND country = CHI } control = { province = 1337 data = IND } lost_national = { country = CHI value = 50 } } AND = { NOT = { exists = CHI } owned = { province = 1337 data = IND } control = { province = 1337 data = IND } } AND = { exists = CHI puppet = { country = CHI country = IND } } } }
 	action_a = {
+		trigger = { NOT = { puppet = { country = CHI country = IND } } }
 		name = "Protectorate: -250 supplies, no dissent; joins wars"
 		command = { trigger = { exists = CHI war = { country = IND country = CHI } } type = inherit which = CHI }
 		command = { type = independence which = CHI value = 1 when = 0 }
@@ -768,14 +879,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_chi }
 	}
 	action_b = {
-		name = "Independent partner: -1 dissent; Indian access"
+		name = "Protected neutrality: no dissent; Indian access"
 		command = { trigger = { exists = CHI war = { country = IND country = CHI } } type = inherit which = CHI }
 		command = { type = independence which = CHI value = 1 when = 0 }
-		command = { trigger = { exists = CHI } type = make_puppet which = CHI }
-		command = { trigger = { exists = CHI } type = end_mastery which = CHI }
-		command = { type = dissent value = -1 }
+		command = { trigger = { puppet = { country = CHI country = IND } } type = end_mastery which = CHI }
+		command = { trigger = { exists = CHI } type = guarantee which = IND where = CHI }
 		command = { trigger = { exists = CHI } type = event which = 9288021 where = CHI when = 1 }
-		command = { type = setflag which = ind_country_resolution_chi_independent }
+		command = { type = setflag which = ind_country_resolution_chi_neutral }
 		command = { type = setflag which = ind_country_resolution_chi_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_chi }
 		command = { type = clrflag which = ind_aubm_regional_current_chi }
@@ -792,6 +902,7 @@ event = {
 		command = { type = dissent value = 2 }
 		command = { type = belligerence value = 1 }
 		command = { type = province_revoltrisk which = 1337 value = 2 }
+		command = { type = setflag which = ind_aubm_occupation_upkeep }
 		command = { type = setflag which = ind_country_resolution_chi_occupied }
 		command = { type = setflag which = ind_country_resolution_chi_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_chi }
@@ -806,14 +917,24 @@ event = {
 	random = no
 	one_action = yes
 	country = CHI
-	name = "China Grants India Military Access"
-	desc = "The new government of China remains independent and grants Indian forces military access."
+	name = "China: Protected Neutrality"
+	desc = "China leaves India's alliance, ends inherited major-power wars and grants Indian forces access. India's own wars do not change."
 	style = 2
 	picture = "aubm_v4_liberated_territory"
 	action_a = {
-		name = "Confirm the agreement"
+		name = "Confirm protected neutrality"
+		command = { trigger = { participant = { country = CHI value = 4 } } type = leave_alliance when = 1 }
+		command = { trigger = { war = { country = CHI country = ENG } } type = peace which = ENG value = 1 }
+		command = { trigger = { war = { country = CHI country = GER } } type = peace which = GER value = 1 }
+		command = { trigger = { war = { country = CHI country = SOV } } type = peace which = SOV value = 1 }
+		command = { trigger = { war = { country = CHI country = JAP } } type = peace which = JAP value = 1 }
+		command = { trigger = { war = { country = CHI country = USA } } type = peace which = USA value = 1 }
+		command = { trigger = { war = { country = CHI country = ITA } } type = peace which = ITA value = 1 }
+		command = { trigger = { war = { country = CHI country = HOL } } type = peace which = HOL value = 1 }
+		command = { trigger = { war = { country = CHI country = AST } } type = peace which = AST value = 1 }
 		command = { type = access which = IND }
-		command = { type = relation which = IND value = 30 }
+		command = { type = relation which = IND value = 50 }
+		command = { type = non_aggression which = CHI where = IND when = 1080 }
 	}
 }
 
@@ -826,9 +947,10 @@ event = {
 	desc = "India controls Yan'an and Communist China has lost at least half of its national territory. This decision changes Communist China only. It cannot end, suspend or alter any other war."
 	style = 2
 	picture = "aubm_v4_liberated_territory"
-	decision = { ai = no NOT = { flag = ind_country_resolution_chc_complete } OR = { AND = { exists = CHC war = { country = IND country = CHC } control = { province = 1354 data = IND } lost_national = { country = CHC value = 50 } } AND = { NOT = { exists = CHC } owned = { province = 1354 data = IND } control = { province = 1354 data = IND } } } }
-	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_chc_complete } OR = { AND = { exists = CHC war = { country = IND country = CHC } control = { province = 1354 data = IND } lost_national = { country = CHC value = 50 } } AND = { NOT = { exists = CHC } owned = { province = 1354 data = IND } control = { province = 1354 data = IND } } } }
+	decision = { ai = no NOT = { flag = ind_country_resolution_chc_complete } OR = { AND = { exists = CHC war = { country = IND country = CHC } control = { province = 1354 data = IND } lost_national = { country = CHC value = 50 } } AND = { NOT = { exists = CHC } owned = { province = 1354 data = IND } control = { province = 1354 data = IND } } AND = { exists = CHC puppet = { country = CHC country = IND } } } }
+	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_chc_complete } OR = { AND = { exists = CHC war = { country = IND country = CHC } control = { province = 1354 data = IND } lost_national = { country = CHC value = 50 } } AND = { NOT = { exists = CHC } owned = { province = 1354 data = IND } control = { province = 1354 data = IND } } AND = { exists = CHC puppet = { country = CHC country = IND } } } }
 	action_a = {
+		trigger = { NOT = { puppet = { country = CHC country = IND } } }
 		name = "Protectorate: -250 supplies, no dissent; joins wars"
 		command = { trigger = { exists = CHC war = { country = IND country = CHC } } type = inherit which = CHC }
 		command = { type = independence which = CHC value = 1 when = 0 }
@@ -842,14 +964,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_chc }
 	}
 	action_b = {
-		name = "Independent partner: -1 dissent; Indian access"
+		name = "Protected neutrality: no dissent; Indian access"
 		command = { trigger = { exists = CHC war = { country = IND country = CHC } } type = inherit which = CHC }
 		command = { type = independence which = CHC value = 1 when = 0 }
-		command = { trigger = { exists = CHC } type = make_puppet which = CHC }
-		command = { trigger = { exists = CHC } type = end_mastery which = CHC }
-		command = { type = dissent value = -1 }
+		command = { trigger = { puppet = { country = CHC country = IND } } type = end_mastery which = CHC }
+		command = { trigger = { exists = CHC } type = guarantee which = IND where = CHC }
 		command = { trigger = { exists = CHC } type = event which = 9288023 where = CHC when = 1 }
-		command = { type = setflag which = ind_country_resolution_chc_independent }
+		command = { type = setflag which = ind_country_resolution_chc_neutral }
 		command = { type = setflag which = ind_country_resolution_chc_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_chc }
 		command = { type = clrflag which = ind_aubm_regional_current_chc }
@@ -866,6 +987,7 @@ event = {
 		command = { type = dissent value = 2 }
 		command = { type = belligerence value = 1 }
 		command = { type = province_revoltrisk which = 1354 value = 2 }
+		command = { type = setflag which = ind_aubm_occupation_upkeep }
 		command = { type = setflag which = ind_country_resolution_chc_occupied }
 		command = { type = setflag which = ind_country_resolution_chc_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_chc }
@@ -880,14 +1002,24 @@ event = {
 	random = no
 	one_action = yes
 	country = CHC
-	name = "Communist China Grants India Military Access"
-	desc = "The new government of Communist China remains independent and grants Indian forces military access."
+	name = "Communist China: Protected Neutrality"
+	desc = "Communist China leaves India's alliance, ends inherited major-power wars and grants Indian forces access. India's own wars do not change."
 	style = 2
 	picture = "aubm_v4_liberated_territory"
 	action_a = {
-		name = "Confirm the agreement"
+		name = "Confirm protected neutrality"
+		command = { trigger = { participant = { country = CHC value = 4 } } type = leave_alliance when = 1 }
+		command = { trigger = { war = { country = CHC country = ENG } } type = peace which = ENG value = 1 }
+		command = { trigger = { war = { country = CHC country = GER } } type = peace which = GER value = 1 }
+		command = { trigger = { war = { country = CHC country = SOV } } type = peace which = SOV value = 1 }
+		command = { trigger = { war = { country = CHC country = JAP } } type = peace which = JAP value = 1 }
+		command = { trigger = { war = { country = CHC country = USA } } type = peace which = USA value = 1 }
+		command = { trigger = { war = { country = CHC country = ITA } } type = peace which = ITA value = 1 }
+		command = { trigger = { war = { country = CHC country = HOL } } type = peace which = HOL value = 1 }
+		command = { trigger = { war = { country = CHC country = AST } } type = peace which = AST value = 1 }
 		command = { type = access which = IND }
-		command = { type = relation which = IND value = 30 }
+		command = { type = relation which = IND value = 50 }
+		command = { type = non_aggression which = CHC where = IND when = 1080 }
 	}
 }
 
@@ -900,9 +1032,10 @@ event = {
 	desc = "India controls Bangkok and Siam has lost at least half of its national territory. This decision changes Siam only. It cannot end, suspend or alter any other war."
 	style = 2
 	picture = "aubm_v4_indian_ocean_war"
-	decision = { ai = no NOT = { flag = ind_country_resolution_sia_complete } OR = { AND = { exists = SIA war = { country = IND country = SIA } control = { province = 1423 data = IND } lost_national = { country = SIA value = 50 } } AND = { NOT = { exists = SIA } owned = { province = 1423 data = IND } control = { province = 1423 data = IND } } } }
-	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_sia_complete } OR = { AND = { exists = SIA war = { country = IND country = SIA } control = { province = 1423 data = IND } lost_national = { country = SIA value = 50 } } AND = { NOT = { exists = SIA } owned = { province = 1423 data = IND } control = { province = 1423 data = IND } } } }
+	decision = { ai = no NOT = { flag = ind_country_resolution_sia_complete } OR = { AND = { exists = SIA war = { country = IND country = SIA } control = { province = 1423 data = IND } lost_national = { country = SIA value = 50 } } AND = { NOT = { exists = SIA } owned = { province = 1423 data = IND } control = { province = 1423 data = IND } } AND = { exists = SIA puppet = { country = SIA country = IND } } } }
+	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_sia_complete } OR = { AND = { exists = SIA war = { country = IND country = SIA } control = { province = 1423 data = IND } lost_national = { country = SIA value = 50 } } AND = { NOT = { exists = SIA } owned = { province = 1423 data = IND } control = { province = 1423 data = IND } } AND = { exists = SIA puppet = { country = SIA country = IND } } } }
 	action_a = {
+		trigger = { NOT = { puppet = { country = SIA country = IND } } }
 		name = "Protectorate: -250 supplies, no dissent; joins wars"
 		command = { trigger = { exists = SIA war = { country = IND country = SIA } } type = inherit which = SIA }
 		command = { type = independence which = SIA value = 1 when = 0 }
@@ -916,14 +1049,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_sia }
 	}
 	action_b = {
-		name = "Independent partner: -1 dissent; Indian access"
+		name = "Protected neutrality: no dissent; Indian access"
 		command = { trigger = { exists = SIA war = { country = IND country = SIA } } type = inherit which = SIA }
 		command = { type = independence which = SIA value = 1 when = 0 }
-		command = { trigger = { exists = SIA } type = make_puppet which = SIA }
-		command = { trigger = { exists = SIA } type = end_mastery which = SIA }
-		command = { type = dissent value = -1 }
+		command = { trigger = { puppet = { country = SIA country = IND } } type = end_mastery which = SIA }
+		command = { trigger = { exists = SIA } type = guarantee which = IND where = SIA }
 		command = { trigger = { exists = SIA } type = event which = 9288025 where = SIA when = 1 }
-		command = { type = setflag which = ind_country_resolution_sia_independent }
+		command = { type = setflag which = ind_country_resolution_sia_neutral }
 		command = { type = setflag which = ind_country_resolution_sia_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_sia }
 		command = { type = clrflag which = ind_aubm_regional_current_sia }
@@ -940,6 +1072,7 @@ event = {
 		command = { type = dissent value = 2 }
 		command = { type = belligerence value = 1 }
 		command = { type = province_revoltrisk which = 1423 value = 2 }
+		command = { type = setflag which = ind_aubm_occupation_upkeep }
 		command = { type = setflag which = ind_country_resolution_sia_occupied }
 		command = { type = setflag which = ind_country_resolution_sia_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_sia }
@@ -954,14 +1087,24 @@ event = {
 	random = no
 	one_action = yes
 	country = SIA
-	name = "Siam Grants India Military Access"
-	desc = "The new government of Siam remains independent and grants Indian forces military access."
+	name = "Siam: Protected Neutrality"
+	desc = "Siam leaves India's alliance, ends inherited major-power wars and grants Indian forces access. India's own wars do not change."
 	style = 2
 	picture = "aubm_v4_indian_ocean_war"
 	action_a = {
-		name = "Confirm the agreement"
+		name = "Confirm protected neutrality"
+		command = { trigger = { participant = { country = SIA value = 4 } } type = leave_alliance when = 1 }
+		command = { trigger = { war = { country = SIA country = ENG } } type = peace which = ENG value = 1 }
+		command = { trigger = { war = { country = SIA country = GER } } type = peace which = GER value = 1 }
+		command = { trigger = { war = { country = SIA country = SOV } } type = peace which = SOV value = 1 }
+		command = { trigger = { war = { country = SIA country = JAP } } type = peace which = JAP value = 1 }
+		command = { trigger = { war = { country = SIA country = USA } } type = peace which = USA value = 1 }
+		command = { trigger = { war = { country = SIA country = ITA } } type = peace which = ITA value = 1 }
+		command = { trigger = { war = { country = SIA country = HOL } } type = peace which = HOL value = 1 }
+		command = { trigger = { war = { country = SIA country = AST } } type = peace which = AST value = 1 }
 		command = { type = access which = IND }
-		command = { type = relation which = IND value = 30 }
+		command = { type = relation which = IND value = 50 }
+		command = { type = non_aggression which = SIA where = IND when = 1080 }
 	}
 }
 
@@ -974,9 +1117,10 @@ event = {
 	desc = "India controls Hanoi and Indochinese Union has lost at least half of its national territory. This decision changes Indochinese Union only. It cannot end, suspend or alter any other war."
 	style = 2
 	picture = "aubm_v4_liberated_territory"
-	decision = { ai = no NOT = { flag = ind_country_resolution_u03_complete } OR = { AND = { exists = U03 war = { country = IND country = U03 } control = { province = 1395 data = IND } lost_national = { country = U03 value = 50 } } AND = { NOT = { exists = U03 } owned = { province = 1395 data = IND } control = { province = 1395 data = IND } } } }
-	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_u03_complete } OR = { AND = { exists = U03 war = { country = IND country = U03 } control = { province = 1395 data = IND } lost_national = { country = U03 value = 50 } } AND = { NOT = { exists = U03 } owned = { province = 1395 data = IND } control = { province = 1395 data = IND } } } }
+	decision = { ai = no NOT = { flag = ind_country_resolution_u03_complete } OR = { AND = { exists = U03 war = { country = IND country = U03 } control = { province = 1395 data = IND } lost_national = { country = U03 value = 50 } } AND = { NOT = { exists = U03 } owned = { province = 1395 data = IND } control = { province = 1395 data = IND } } AND = { exists = U03 puppet = { country = U03 country = IND } } } }
+	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_u03_complete } OR = { AND = { exists = U03 war = { country = IND country = U03 } control = { province = 1395 data = IND } lost_national = { country = U03 value = 50 } } AND = { NOT = { exists = U03 } owned = { province = 1395 data = IND } control = { province = 1395 data = IND } } AND = { exists = U03 puppet = { country = U03 country = IND } } } }
 	action_a = {
+		trigger = { NOT = { puppet = { country = U03 country = IND } } }
 		name = "Protectorate: -250 supplies, no dissent; joins wars"
 		command = { trigger = { exists = U03 war = { country = IND country = U03 } } type = inherit which = U03 }
 		command = { type = independence which = U03 value = 1 when = 0 }
@@ -990,14 +1134,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_u03 }
 	}
 	action_b = {
-		name = "Independent partner: -1 dissent; Indian access"
+		name = "Protected neutrality: no dissent; Indian access"
 		command = { trigger = { exists = U03 war = { country = IND country = U03 } } type = inherit which = U03 }
 		command = { type = independence which = U03 value = 1 when = 0 }
-		command = { trigger = { exists = U03 } type = make_puppet which = U03 }
-		command = { trigger = { exists = U03 } type = end_mastery which = U03 }
-		command = { type = dissent value = -1 }
+		command = { trigger = { puppet = { country = U03 country = IND } } type = end_mastery which = U03 }
+		command = { trigger = { exists = U03 } type = guarantee which = IND where = U03 }
 		command = { trigger = { exists = U03 } type = event which = 9288027 where = U03 when = 1 }
-		command = { type = setflag which = ind_country_resolution_u03_independent }
+		command = { type = setflag which = ind_country_resolution_u03_neutral }
 		command = { type = setflag which = ind_country_resolution_u03_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_u03 }
 		command = { type = clrflag which = ind_aubm_regional_current_u03 }
@@ -1010,16 +1153,8 @@ event = {
 	}
 	action_d = {
 		trigger = { NOT = { exists = U03 } owned = { province = 1395 data = IND } control = { province = 1395 data = IND } }
-		name = "Military rule: +2 dissent; local resistance"
-		command = { type = dissent value = 2 }
-		command = { type = belligerence value = 1 }
-		command = { type = province_revoltrisk which = 1395 value = 2 }
-		command = { type = setflag which = ind_country_resolution_u03_occupied }
-		command = { type = setflag which = ind_country_resolution_u03_complete }
-		command = { type = clrflag which = ind_aubm_regional_pending_u03 }
-		command = { type = clrflag which = ind_aubm_regional_current_u03 }
-		command = { type = clrflag which = ind_aubm_regional_victory_u03 }
-		command = { type = clrflag which = ind_aubm_regional_suspended_u03 }
+		name = "Breakup options: Vietnam, Cambodia, Laos"
+		command = { type = event which = 9288094 where = IND when = 1 }
 	}
 }
 
@@ -1028,14 +1163,24 @@ event = {
 	random = no
 	one_action = yes
 	country = U03
-	name = "Indochinese Union Grants India Military Access"
-	desc = "The new government of Indochinese Union remains independent and grants Indian forces military access."
+	name = "Indochinese Union: Protected Neutrality"
+	desc = "Indochinese Union leaves India's alliance, ends inherited major-power wars and grants Indian forces access. India's own wars do not change."
 	style = 2
 	picture = "aubm_v4_liberated_territory"
 	action_a = {
-		name = "Confirm the agreement"
+		name = "Confirm protected neutrality"
+		command = { trigger = { participant = { country = U03 value = 4 } } type = leave_alliance when = 1 }
+		command = { trigger = { war = { country = U03 country = ENG } } type = peace which = ENG value = 1 }
+		command = { trigger = { war = { country = U03 country = GER } } type = peace which = GER value = 1 }
+		command = { trigger = { war = { country = U03 country = SOV } } type = peace which = SOV value = 1 }
+		command = { trigger = { war = { country = U03 country = JAP } } type = peace which = JAP value = 1 }
+		command = { trigger = { war = { country = U03 country = USA } } type = peace which = USA value = 1 }
+		command = { trigger = { war = { country = U03 country = ITA } } type = peace which = ITA value = 1 }
+		command = { trigger = { war = { country = U03 country = HOL } } type = peace which = HOL value = 1 }
+		command = { trigger = { war = { country = U03 country = AST } } type = peace which = AST value = 1 }
 		command = { type = access which = IND }
-		command = { type = relation which = IND value = 30 }
+		command = { type = relation which = IND value = 50 }
+		command = { type = non_aggression which = U03 where = IND when = 1080 }
 	}
 }
 
@@ -1048,9 +1193,10 @@ event = {
 	desc = "India controls Rangoon and Burma has lost at least half of its national territory. This decision changes Burma only. It cannot end, suspend or alter any other war."
 	style = 2
 	picture = "aubm_v4_liberated_territory"
-	decision = { ai = no NOT = { flag = ind_country_resolution_bur_complete } OR = { AND = { exists = BUR war = { country = IND country = BUR } control = { province = 1415 data = IND } lost_national = { country = BUR value = 50 } } AND = { NOT = { exists = BUR } owned = { province = 1415 data = IND } control = { province = 1415 data = IND } } } }
-	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_bur_complete } OR = { AND = { exists = BUR war = { country = IND country = BUR } control = { province = 1415 data = IND } lost_national = { country = BUR value = 50 } } AND = { NOT = { exists = BUR } owned = { province = 1415 data = IND } control = { province = 1415 data = IND } } } }
+	decision = { ai = no NOT = { flag = ind_country_resolution_bur_complete } OR = { AND = { exists = BUR war = { country = IND country = BUR } control = { province = 1415 data = IND } lost_national = { country = BUR value = 50 } } AND = { NOT = { exists = BUR } owned = { province = 1415 data = IND } control = { province = 1415 data = IND } } AND = { exists = BUR puppet = { country = BUR country = IND } } } }
+	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_bur_complete } OR = { AND = { exists = BUR war = { country = IND country = BUR } control = { province = 1415 data = IND } lost_national = { country = BUR value = 50 } } AND = { NOT = { exists = BUR } owned = { province = 1415 data = IND } control = { province = 1415 data = IND } } AND = { exists = BUR puppet = { country = BUR country = IND } } } }
 	action_a = {
+		trigger = { NOT = { puppet = { country = BUR country = IND } } }
 		name = "Protectorate: -250 supplies, no dissent; joins wars"
 		command = { trigger = { exists = BUR war = { country = IND country = BUR } } type = inherit which = BUR }
 		command = { type = independence which = BUR value = 1 when = 0 }
@@ -1064,14 +1210,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_bur }
 	}
 	action_b = {
-		name = "Independent partner: -1 dissent; Indian access"
+		name = "Protected neutrality: no dissent; Indian access"
 		command = { trigger = { exists = BUR war = { country = IND country = BUR } } type = inherit which = BUR }
 		command = { type = independence which = BUR value = 1 when = 0 }
-		command = { trigger = { exists = BUR } type = make_puppet which = BUR }
-		command = { trigger = { exists = BUR } type = end_mastery which = BUR }
-		command = { type = dissent value = -1 }
+		command = { trigger = { puppet = { country = BUR country = IND } } type = end_mastery which = BUR }
+		command = { trigger = { exists = BUR } type = guarantee which = IND where = BUR }
 		command = { trigger = { exists = BUR } type = event which = 9288029 where = BUR when = 1 }
-		command = { type = setflag which = ind_country_resolution_bur_independent }
+		command = { type = setflag which = ind_country_resolution_bur_neutral }
 		command = { type = setflag which = ind_country_resolution_bur_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_bur }
 		command = { type = clrflag which = ind_aubm_regional_current_bur }
@@ -1088,6 +1233,7 @@ event = {
 		command = { type = dissent value = 2 }
 		command = { type = belligerence value = 1 }
 		command = { type = province_revoltrisk which = 1415 value = 2 }
+		command = { type = setflag which = ind_aubm_occupation_upkeep }
 		command = { type = setflag which = ind_country_resolution_bur_occupied }
 		command = { type = setflag which = ind_country_resolution_bur_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_bur }
@@ -1102,14 +1248,24 @@ event = {
 	random = no
 	one_action = yes
 	country = BUR
-	name = "Burma Grants India Military Access"
-	desc = "The new government of Burma remains independent and grants Indian forces military access."
+	name = "Burma: Protected Neutrality"
+	desc = "Burma leaves India's alliance, ends inherited major-power wars and grants Indian forces access. India's own wars do not change."
 	style = 2
 	picture = "aubm_v4_liberated_territory"
 	action_a = {
-		name = "Confirm the agreement"
+		name = "Confirm protected neutrality"
+		command = { trigger = { participant = { country = BUR value = 4 } } type = leave_alliance when = 1 }
+		command = { trigger = { war = { country = BUR country = ENG } } type = peace which = ENG value = 1 }
+		command = { trigger = { war = { country = BUR country = GER } } type = peace which = GER value = 1 }
+		command = { trigger = { war = { country = BUR country = SOV } } type = peace which = SOV value = 1 }
+		command = { trigger = { war = { country = BUR country = JAP } } type = peace which = JAP value = 1 }
+		command = { trigger = { war = { country = BUR country = USA } } type = peace which = USA value = 1 }
+		command = { trigger = { war = { country = BUR country = ITA } } type = peace which = ITA value = 1 }
+		command = { trigger = { war = { country = BUR country = HOL } } type = peace which = HOL value = 1 }
+		command = { trigger = { war = { country = BUR country = AST } } type = peace which = AST value = 1 }
 		command = { type = access which = IND }
-		command = { type = relation which = IND value = 30 }
+		command = { type = relation which = IND value = 50 }
+		command = { type = non_aggression which = BUR where = IND when = 1080 }
 	}
 }
 
@@ -1122,9 +1278,10 @@ event = {
 	desc = "India controls Kuala Lumpur and Malaysia has lost at least half of its national territory. This decision changes Malaysia only. It cannot end, suspend or alter any other war."
 	style = 2
 	picture = "aubm_v4_liberated_territory"
-	decision = { ai = no NOT = { flag = ind_country_resolution_mly_complete } OR = { AND = { exists = MLY war = { country = IND country = MLY } control = { province = 1438 data = IND } lost_national = { country = MLY value = 50 } } AND = { NOT = { exists = MLY } owned = { province = 1438 data = IND } control = { province = 1438 data = IND } } } }
-	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_mly_complete } OR = { AND = { exists = MLY war = { country = IND country = MLY } control = { province = 1438 data = IND } lost_national = { country = MLY value = 50 } } AND = { NOT = { exists = MLY } owned = { province = 1438 data = IND } control = { province = 1438 data = IND } } } }
+	decision = { ai = no NOT = { flag = ind_country_resolution_mly_complete } OR = { AND = { exists = MLY war = { country = IND country = MLY } control = { province = 1438 data = IND } lost_national = { country = MLY value = 50 } } AND = { NOT = { exists = MLY } owned = { province = 1438 data = IND } control = { province = 1438 data = IND } } AND = { exists = MLY puppet = { country = MLY country = IND } } } }
+	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_mly_complete } OR = { AND = { exists = MLY war = { country = IND country = MLY } control = { province = 1438 data = IND } lost_national = { country = MLY value = 50 } } AND = { NOT = { exists = MLY } owned = { province = 1438 data = IND } control = { province = 1438 data = IND } } AND = { exists = MLY puppet = { country = MLY country = IND } } } }
 	action_a = {
+		trigger = { NOT = { puppet = { country = MLY country = IND } } }
 		name = "Protectorate: -250 supplies, no dissent; joins wars"
 		command = { trigger = { exists = MLY war = { country = IND country = MLY } } type = inherit which = MLY }
 		command = { type = independence which = MLY value = 1 when = 0 }
@@ -1138,14 +1295,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_mly }
 	}
 	action_b = {
-		name = "Independent partner: -1 dissent; Indian access"
+		name = "Protected neutrality: no dissent; Indian access"
 		command = { trigger = { exists = MLY war = { country = IND country = MLY } } type = inherit which = MLY }
 		command = { type = independence which = MLY value = 1 when = 0 }
-		command = { trigger = { exists = MLY } type = make_puppet which = MLY }
-		command = { trigger = { exists = MLY } type = end_mastery which = MLY }
-		command = { type = dissent value = -1 }
+		command = { trigger = { puppet = { country = MLY country = IND } } type = end_mastery which = MLY }
+		command = { trigger = { exists = MLY } type = guarantee which = IND where = MLY }
 		command = { trigger = { exists = MLY } type = event which = 9288031 where = MLY when = 1 }
-		command = { type = setflag which = ind_country_resolution_mly_independent }
+		command = { type = setflag which = ind_country_resolution_mly_neutral }
 		command = { type = setflag which = ind_country_resolution_mly_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_mly }
 		command = { type = clrflag which = ind_aubm_regional_current_mly }
@@ -1162,6 +1318,7 @@ event = {
 		command = { type = dissent value = 2 }
 		command = { type = belligerence value = 1 }
 		command = { type = province_revoltrisk which = 1438 value = 2 }
+		command = { type = setflag which = ind_aubm_occupation_upkeep }
 		command = { type = setflag which = ind_country_resolution_mly_occupied }
 		command = { type = setflag which = ind_country_resolution_mly_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_mly }
@@ -1176,14 +1333,24 @@ event = {
 	random = no
 	one_action = yes
 	country = MLY
-	name = "Malaysia Grants India Military Access"
-	desc = "The new government of Malaysia remains independent and grants Indian forces military access."
+	name = "Malaysia: Protected Neutrality"
+	desc = "Malaysia leaves India's alliance, ends inherited major-power wars and grants Indian forces access. India's own wars do not change."
 	style = 2
 	picture = "aubm_v4_liberated_territory"
 	action_a = {
-		name = "Confirm the agreement"
+		name = "Confirm protected neutrality"
+		command = { trigger = { participant = { country = MLY value = 4 } } type = leave_alliance when = 1 }
+		command = { trigger = { war = { country = MLY country = ENG } } type = peace which = ENG value = 1 }
+		command = { trigger = { war = { country = MLY country = GER } } type = peace which = GER value = 1 }
+		command = { trigger = { war = { country = MLY country = SOV } } type = peace which = SOV value = 1 }
+		command = { trigger = { war = { country = MLY country = JAP } } type = peace which = JAP value = 1 }
+		command = { trigger = { war = { country = MLY country = USA } } type = peace which = USA value = 1 }
+		command = { trigger = { war = { country = MLY country = ITA } } type = peace which = ITA value = 1 }
+		command = { trigger = { war = { country = MLY country = HOL } } type = peace which = HOL value = 1 }
+		command = { trigger = { war = { country = MLY country = AST } } type = peace which = AST value = 1 }
 		command = { type = access which = IND }
-		command = { type = relation which = IND value = 30 }
+		command = { type = relation which = IND value = 50 }
+		command = { type = non_aggression which = MLY where = IND when = 1080 }
 	}
 }
 
@@ -1196,9 +1363,10 @@ event = {
 	desc = "India controls Manila and Philippines has lost at least half of its national territory. This decision changes Philippines only. It cannot end, suspend or alter any other war."
 	style = 2
 	picture = "aubm_v4_liberated_territory"
-	decision = { ai = no NOT = { flag = ind_country_resolution_phi_complete } OR = { AND = { exists = PHI war = { country = IND country = PHI } control = { province = 1565 data = IND } lost_national = { country = PHI value = 50 } } AND = { NOT = { exists = PHI } owned = { province = 1565 data = IND } control = { province = 1565 data = IND } } } }
-	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_phi_complete } OR = { AND = { exists = PHI war = { country = IND country = PHI } control = { province = 1565 data = IND } lost_national = { country = PHI value = 50 } } AND = { NOT = { exists = PHI } owned = { province = 1565 data = IND } control = { province = 1565 data = IND } } } }
+	decision = { ai = no NOT = { flag = ind_country_resolution_phi_complete } OR = { AND = { exists = PHI war = { country = IND country = PHI } control = { province = 1565 data = IND } lost_national = { country = PHI value = 50 } } AND = { NOT = { exists = PHI } owned = { province = 1565 data = IND } control = { province = 1565 data = IND } } AND = { exists = PHI puppet = { country = PHI country = IND } } } }
+	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_phi_complete } OR = { AND = { exists = PHI war = { country = IND country = PHI } control = { province = 1565 data = IND } lost_national = { country = PHI value = 50 } } AND = { NOT = { exists = PHI } owned = { province = 1565 data = IND } control = { province = 1565 data = IND } } AND = { exists = PHI puppet = { country = PHI country = IND } } } }
 	action_a = {
+		trigger = { NOT = { puppet = { country = PHI country = IND } } }
 		name = "Protectorate: -250 supplies, no dissent; joins wars"
 		command = { trigger = { exists = PHI war = { country = IND country = PHI } } type = inherit which = PHI }
 		command = { type = independence which = PHI value = 1 when = 0 }
@@ -1212,14 +1380,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_phi }
 	}
 	action_b = {
-		name = "Independent partner: -1 dissent; Indian access"
+		name = "Protected neutrality: no dissent; Indian access"
 		command = { trigger = { exists = PHI war = { country = IND country = PHI } } type = inherit which = PHI }
 		command = { type = independence which = PHI value = 1 when = 0 }
-		command = { trigger = { exists = PHI } type = make_puppet which = PHI }
-		command = { trigger = { exists = PHI } type = end_mastery which = PHI }
-		command = { type = dissent value = -1 }
+		command = { trigger = { puppet = { country = PHI country = IND } } type = end_mastery which = PHI }
+		command = { trigger = { exists = PHI } type = guarantee which = IND where = PHI }
 		command = { trigger = { exists = PHI } type = event which = 9288033 where = PHI when = 1 }
-		command = { type = setflag which = ind_country_resolution_phi_independent }
+		command = { type = setflag which = ind_country_resolution_phi_neutral }
 		command = { type = setflag which = ind_country_resolution_phi_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_phi }
 		command = { type = clrflag which = ind_aubm_regional_current_phi }
@@ -1236,6 +1403,7 @@ event = {
 		command = { type = dissent value = 2 }
 		command = { type = belligerence value = 1 }
 		command = { type = province_revoltrisk which = 1565 value = 2 }
+		command = { type = setflag which = ind_aubm_occupation_upkeep }
 		command = { type = setflag which = ind_country_resolution_phi_occupied }
 		command = { type = setflag which = ind_country_resolution_phi_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_phi }
@@ -1250,14 +1418,24 @@ event = {
 	random = no
 	one_action = yes
 	country = PHI
-	name = "Philippines Grants India Military Access"
-	desc = "The new government of Philippines remains independent and grants Indian forces military access."
+	name = "Philippines: Protected Neutrality"
+	desc = "Philippines leaves India's alliance, ends inherited major-power wars and grants Indian forces access. India's own wars do not change."
 	style = 2
 	picture = "aubm_v4_liberated_territory"
 	action_a = {
-		name = "Confirm the agreement"
+		name = "Confirm protected neutrality"
+		command = { trigger = { participant = { country = PHI value = 4 } } type = leave_alliance when = 1 }
+		command = { trigger = { war = { country = PHI country = ENG } } type = peace which = ENG value = 1 }
+		command = { trigger = { war = { country = PHI country = GER } } type = peace which = GER value = 1 }
+		command = { trigger = { war = { country = PHI country = SOV } } type = peace which = SOV value = 1 }
+		command = { trigger = { war = { country = PHI country = JAP } } type = peace which = JAP value = 1 }
+		command = { trigger = { war = { country = PHI country = USA } } type = peace which = USA value = 1 }
+		command = { trigger = { war = { country = PHI country = ITA } } type = peace which = ITA value = 1 }
+		command = { trigger = { war = { country = PHI country = HOL } } type = peace which = HOL value = 1 }
+		command = { trigger = { war = { country = PHI country = AST } } type = peace which = AST value = 1 }
 		command = { type = access which = IND }
-		command = { type = relation which = IND value = 30 }
+		command = { type = relation which = IND value = 50 }
+		command = { type = non_aggression which = PHI where = IND when = 1080 }
 	}
 }
 
@@ -1270,9 +1448,10 @@ event = {
 	desc = "India controls Batavia and Dutch East Indies has lost at least half of its national territory. This decision changes Dutch East Indies only. It cannot end, suspend or alter any other war."
 	style = 2
 	picture = "aubm_v4_indian_ocean_war"
-	decision = { ai = no NOT = { flag = ind_country_resolution_u05_complete } OR = { AND = { exists = U05 war = { country = IND country = U05 } control = { province = 1647 data = IND } lost_national = { country = U05 value = 50 } NOT = { exists = INO } } AND = { owned = { province = 1647 data = IND } control = { province = 1647 data = IND } NOT = { exists = INO } } } }
-	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_u05_complete } OR = { AND = { exists = U05 war = { country = IND country = U05 } control = { province = 1647 data = IND } lost_national = { country = U05 value = 50 } NOT = { exists = INO } } AND = { owned = { province = 1647 data = IND } control = { province = 1647 data = IND } NOT = { exists = INO } } } }
+	decision = { ai = no NOT = { flag = ind_country_resolution_u05_complete } OR = { AND = { exists = U05 war = { country = IND country = U05 } control = { province = 1647 data = IND } lost_national = { country = U05 value = 50 } NOT = { exists = INO } } AND = { owned = { province = 1647 data = IND } control = { province = 1647 data = IND } NOT = { exists = INO } } AND = { exists = INO puppet = { country = INO country = IND } } } }
+	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_u05_complete } OR = { AND = { exists = U05 war = { country = IND country = U05 } control = { province = 1647 data = IND } lost_national = { country = U05 value = 50 } NOT = { exists = INO } } AND = { owned = { province = 1647 data = IND } control = { province = 1647 data = IND } NOT = { exists = INO } } AND = { exists = INO puppet = { country = INO country = IND } } } }
 	action_a = {
+		trigger = { NOT = { puppet = { country = INO country = IND } } }
 		name = "Protectorate: -250 supplies, no dissent; joins wars"
 		command = { trigger = { exists = U05 war = { country = IND country = U05 } } type = inherit which = U05 }
 		command = { type = independence which = INO value = 1 when = 0 }
@@ -1286,14 +1465,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_u05 }
 	}
 	action_b = {
-		name = "Independent partner: -1 dissent; Indian access"
+		name = "Protected neutrality: no dissent; Indian access"
 		command = { trigger = { exists = U05 war = { country = IND country = U05 } } type = inherit which = U05 }
 		command = { type = independence which = INO value = 1 when = 0 }
-		command = { trigger = { exists = INO } type = make_puppet which = INO }
-		command = { trigger = { exists = INO } type = end_mastery which = INO }
-		command = { type = dissent value = -1 }
+		command = { trigger = { puppet = { country = INO country = IND } } type = end_mastery which = INO }
+		command = { trigger = { exists = INO } type = guarantee which = IND where = INO }
 		command = { trigger = { exists = INO } type = event which = 9288035 where = INO when = 1 }
-		command = { type = setflag which = ind_country_resolution_u05_independent }
+		command = { type = setflag which = ind_country_resolution_u05_neutral }
 		command = { type = setflag which = ind_country_resolution_u05_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_u05 }
 		command = { type = clrflag which = ind_aubm_regional_current_u05 }
@@ -1306,16 +1484,8 @@ event = {
 	}
 	action_d = {
 		trigger = { owned = { province = 1647 data = IND } control = { province = 1647 data = IND } NOT = { exists = INO } }
-		name = "Military rule: +2 dissent; local resistance"
-		command = { type = dissent value = 2 }
-		command = { type = belligerence value = 1 }
-		command = { type = province_revoltrisk which = 1647 value = 2 }
-		command = { type = setflag which = ind_country_resolution_u05_occupied }
-		command = { type = setflag which = ind_country_resolution_u05_complete }
-		command = { type = clrflag which = ind_aubm_regional_pending_u05 }
-		command = { type = clrflag which = ind_aubm_regional_current_u05 }
-		command = { type = clrflag which = ind_aubm_regional_victory_u05 }
-		command = { type = clrflag which = ind_aubm_regional_suspended_u05 }
+		name = "Breakup options: Indonesia, Brunei, Sarawak"
+		command = { type = event which = 9288093 where = IND when = 1 }
 	}
 }
 
@@ -1324,14 +1494,24 @@ event = {
 	random = no
 	one_action = yes
 	country = INO
-	name = "Dutch East Indies Grants India Military Access"
-	desc = "The new government of Dutch East Indies remains independent and grants Indian forces military access."
+	name = "Dutch East Indies: Protected Neutrality"
+	desc = "Dutch East Indies leaves India's alliance, ends inherited major-power wars and grants Indian forces access. India's own wars do not change."
 	style = 2
 	picture = "aubm_v4_indian_ocean_war"
 	action_a = {
-		name = "Confirm the agreement"
+		name = "Confirm protected neutrality"
+		command = { trigger = { participant = { country = INO value = 4 } } type = leave_alliance when = 1 }
+		command = { trigger = { war = { country = INO country = ENG } } type = peace which = ENG value = 1 }
+		command = { trigger = { war = { country = INO country = GER } } type = peace which = GER value = 1 }
+		command = { trigger = { war = { country = INO country = SOV } } type = peace which = SOV value = 1 }
+		command = { trigger = { war = { country = INO country = JAP } } type = peace which = JAP value = 1 }
+		command = { trigger = { war = { country = INO country = USA } } type = peace which = USA value = 1 }
+		command = { trigger = { war = { country = INO country = ITA } } type = peace which = ITA value = 1 }
+		command = { trigger = { war = { country = INO country = HOL } } type = peace which = HOL value = 1 }
+		command = { trigger = { war = { country = INO country = AST } } type = peace which = AST value = 1 }
 		command = { type = access which = IND }
-		command = { type = relation which = IND value = 30 }
+		command = { type = relation which = IND value = 50 }
+		command = { type = non_aggression which = INO where = IND when = 1080 }
 	}
 }
 
@@ -1344,9 +1524,10 @@ event = {
 	desc = "India controls Jogjakarta and Indonesia has lost at least half of its national territory. This decision changes Indonesia only. It cannot end, suspend or alter any other war."
 	style = 2
 	picture = "aubm_v4_indian_ocean_war"
-	decision = { ai = no NOT = { flag = ind_country_resolution_ino_complete } OR = { AND = { exists = INO war = { country = IND country = INO } control = { province = 1654 data = IND } lost_national = { country = INO value = 50 } } AND = { NOT = { exists = INO } owned = { province = 1654 data = IND } control = { province = 1654 data = IND } } } }
-	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_ino_complete } OR = { AND = { exists = INO war = { country = IND country = INO } control = { province = 1654 data = IND } lost_national = { country = INO value = 50 } } AND = { NOT = { exists = INO } owned = { province = 1654 data = IND } control = { province = 1654 data = IND } } } }
+	decision = { ai = no NOT = { flag = ind_country_resolution_ino_complete } OR = { AND = { exists = INO war = { country = IND country = INO } control = { province = 1654 data = IND } lost_national = { country = INO value = 50 } } AND = { NOT = { exists = INO } owned = { province = 1654 data = IND } control = { province = 1654 data = IND } } AND = { exists = INO puppet = { country = INO country = IND } } } }
+	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_ino_complete } OR = { AND = { exists = INO war = { country = IND country = INO } control = { province = 1654 data = IND } lost_national = { country = INO value = 50 } } AND = { NOT = { exists = INO } owned = { province = 1654 data = IND } control = { province = 1654 data = IND } } AND = { exists = INO puppet = { country = INO country = IND } } } }
 	action_a = {
+		trigger = { NOT = { puppet = { country = INO country = IND } } }
 		name = "Protectorate: -250 supplies, no dissent; joins wars"
 		command = { trigger = { exists = INO war = { country = IND country = INO } } type = inherit which = INO }
 		command = { type = independence which = INO value = 1 when = 0 }
@@ -1360,14 +1541,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_ino }
 	}
 	action_b = {
-		name = "Independent partner: -1 dissent; Indian access"
+		name = "Protected neutrality: no dissent; Indian access"
 		command = { trigger = { exists = INO war = { country = IND country = INO } } type = inherit which = INO }
 		command = { type = independence which = INO value = 1 when = 0 }
-		command = { trigger = { exists = INO } type = make_puppet which = INO }
-		command = { trigger = { exists = INO } type = end_mastery which = INO }
-		command = { type = dissent value = -1 }
+		command = { trigger = { puppet = { country = INO country = IND } } type = end_mastery which = INO }
+		command = { trigger = { exists = INO } type = guarantee which = IND where = INO }
 		command = { trigger = { exists = INO } type = event which = 9288037 where = INO when = 1 }
-		command = { type = setflag which = ind_country_resolution_ino_independent }
+		command = { type = setflag which = ind_country_resolution_ino_neutral }
 		command = { type = setflag which = ind_country_resolution_ino_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_ino }
 		command = { type = clrflag which = ind_aubm_regional_current_ino }
@@ -1384,6 +1564,7 @@ event = {
 		command = { type = dissent value = 2 }
 		command = { type = belligerence value = 1 }
 		command = { type = province_revoltrisk which = 1654 value = 2 }
+		command = { type = setflag which = ind_aubm_occupation_upkeep }
 		command = { type = setflag which = ind_country_resolution_ino_occupied }
 		command = { type = setflag which = ind_country_resolution_ino_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_ino }
@@ -1398,14 +1579,24 @@ event = {
 	random = no
 	one_action = yes
 	country = INO
-	name = "Indonesia Grants India Military Access"
-	desc = "The new government of Indonesia remains independent and grants Indian forces military access."
+	name = "Indonesia: Protected Neutrality"
+	desc = "Indonesia leaves India's alliance, ends inherited major-power wars and grants Indian forces access. India's own wars do not change."
 	style = 2
 	picture = "aubm_v4_indian_ocean_war"
 	action_a = {
-		name = "Confirm the agreement"
+		name = "Confirm protected neutrality"
+		command = { trigger = { participant = { country = INO value = 4 } } type = leave_alliance when = 1 }
+		command = { trigger = { war = { country = INO country = ENG } } type = peace which = ENG value = 1 }
+		command = { trigger = { war = { country = INO country = GER } } type = peace which = GER value = 1 }
+		command = { trigger = { war = { country = INO country = SOV } } type = peace which = SOV value = 1 }
+		command = { trigger = { war = { country = INO country = JAP } } type = peace which = JAP value = 1 }
+		command = { trigger = { war = { country = INO country = USA } } type = peace which = USA value = 1 }
+		command = { trigger = { war = { country = INO country = ITA } } type = peace which = ITA value = 1 }
+		command = { trigger = { war = { country = INO country = HOL } } type = peace which = HOL value = 1 }
+		command = { trigger = { war = { country = INO country = AST } } type = peace which = AST value = 1 }
 		command = { type = access which = IND }
-		command = { type = relation which = IND value = 30 }
+		command = { type = relation which = IND value = 50 }
+		command = { type = non_aggression which = INO where = IND when = 1080 }
 	}
 }
 
@@ -1418,9 +1609,10 @@ event = {
 	desc = "India controls Bandar Seri Begawan and Brunei has lost at least half of its national territory. This decision changes Brunei only. It cannot end, suspend or alter any other war."
 	style = 2
 	picture = "aubm_v4_liberated_territory"
-	decision = { ai = no NOT = { flag = ind_country_resolution_bru_complete } OR = { AND = { exists = BRU war = { country = IND country = BRU } control = { province = 1625 data = IND } lost_national = { country = BRU value = 50 } } AND = { NOT = { exists = BRU } owned = { province = 1625 data = IND } control = { province = 1625 data = IND } } } }
-	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_bru_complete } OR = { AND = { exists = BRU war = { country = IND country = BRU } control = { province = 1625 data = IND } lost_national = { country = BRU value = 50 } } AND = { NOT = { exists = BRU } owned = { province = 1625 data = IND } control = { province = 1625 data = IND } } } }
+	decision = { ai = no NOT = { flag = ind_country_resolution_bru_complete } OR = { AND = { exists = BRU war = { country = IND country = BRU } control = { province = 1625 data = IND } lost_national = { country = BRU value = 50 } } AND = { NOT = { exists = BRU } owned = { province = 1625 data = IND } control = { province = 1625 data = IND } } AND = { exists = BRU puppet = { country = BRU country = IND } } } }
+	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_bru_complete } OR = { AND = { exists = BRU war = { country = IND country = BRU } control = { province = 1625 data = IND } lost_national = { country = BRU value = 50 } } AND = { NOT = { exists = BRU } owned = { province = 1625 data = IND } control = { province = 1625 data = IND } } AND = { exists = BRU puppet = { country = BRU country = IND } } } }
 	action_a = {
+		trigger = { NOT = { puppet = { country = BRU country = IND } } }
 		name = "Protectorate: -250 supplies, no dissent; joins wars"
 		command = { trigger = { exists = BRU war = { country = IND country = BRU } } type = inherit which = BRU }
 		command = { type = independence which = BRU value = 1 when = 0 }
@@ -1434,14 +1626,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_bru }
 	}
 	action_b = {
-		name = "Independent partner: -1 dissent; Indian access"
+		name = "Protected neutrality: no dissent; Indian access"
 		command = { trigger = { exists = BRU war = { country = IND country = BRU } } type = inherit which = BRU }
 		command = { type = independence which = BRU value = 1 when = 0 }
-		command = { trigger = { exists = BRU } type = make_puppet which = BRU }
-		command = { trigger = { exists = BRU } type = end_mastery which = BRU }
-		command = { type = dissent value = -1 }
+		command = { trigger = { puppet = { country = BRU country = IND } } type = end_mastery which = BRU }
+		command = { trigger = { exists = BRU } type = guarantee which = IND where = BRU }
 		command = { trigger = { exists = BRU } type = event which = 9288039 where = BRU when = 1 }
-		command = { type = setflag which = ind_country_resolution_bru_independent }
+		command = { type = setflag which = ind_country_resolution_bru_neutral }
 		command = { type = setflag which = ind_country_resolution_bru_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_bru }
 		command = { type = clrflag which = ind_aubm_regional_current_bru }
@@ -1458,6 +1649,7 @@ event = {
 		command = { type = dissent value = 2 }
 		command = { type = belligerence value = 1 }
 		command = { type = province_revoltrisk which = 1625 value = 2 }
+		command = { type = setflag which = ind_aubm_occupation_upkeep }
 		command = { type = setflag which = ind_country_resolution_bru_occupied }
 		command = { type = setflag which = ind_country_resolution_bru_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_bru }
@@ -1472,14 +1664,24 @@ event = {
 	random = no
 	one_action = yes
 	country = BRU
-	name = "Brunei Grants India Military Access"
-	desc = "The new government of Brunei remains independent and grants Indian forces military access."
+	name = "Brunei: Protected Neutrality"
+	desc = "Brunei leaves India's alliance, ends inherited major-power wars and grants Indian forces access. India's own wars do not change."
 	style = 2
 	picture = "aubm_v4_liberated_territory"
 	action_a = {
-		name = "Confirm the agreement"
+		name = "Confirm protected neutrality"
+		command = { trigger = { participant = { country = BRU value = 4 } } type = leave_alliance when = 1 }
+		command = { trigger = { war = { country = BRU country = ENG } } type = peace which = ENG value = 1 }
+		command = { trigger = { war = { country = BRU country = GER } } type = peace which = GER value = 1 }
+		command = { trigger = { war = { country = BRU country = SOV } } type = peace which = SOV value = 1 }
+		command = { trigger = { war = { country = BRU country = JAP } } type = peace which = JAP value = 1 }
+		command = { trigger = { war = { country = BRU country = USA } } type = peace which = USA value = 1 }
+		command = { trigger = { war = { country = BRU country = ITA } } type = peace which = ITA value = 1 }
+		command = { trigger = { war = { country = BRU country = HOL } } type = peace which = HOL value = 1 }
+		command = { trigger = { war = { country = BRU country = AST } } type = peace which = AST value = 1 }
 		command = { type = access which = IND }
-		command = { type = relation which = IND value = 30 }
+		command = { type = relation which = IND value = 50 }
+		command = { type = non_aggression which = BRU where = IND when = 1080 }
 	}
 }
 
@@ -1492,9 +1694,10 @@ event = {
 	desc = "India controls Kuching and Sarawak has lost at least half of its national territory. This decision changes Sarawak only. It cannot end, suspend or alter any other war."
 	style = 2
 	picture = "aubm_v4_liberated_territory"
-	decision = { ai = no NOT = { flag = ind_country_resolution_sar_complete } OR = { AND = { exists = SAR war = { country = IND country = SAR } control = { province = 1624 data = IND } lost_national = { country = SAR value = 50 } } AND = { NOT = { exists = SAR } owned = { province = 1624 data = IND } control = { province = 1624 data = IND } } } }
-	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_sar_complete } OR = { AND = { exists = SAR war = { country = IND country = SAR } control = { province = 1624 data = IND } lost_national = { country = SAR value = 50 } } AND = { NOT = { exists = SAR } owned = { province = 1624 data = IND } control = { province = 1624 data = IND } } } }
+	decision = { ai = no NOT = { flag = ind_country_resolution_sar_complete } OR = { AND = { exists = SAR war = { country = IND country = SAR } control = { province = 1624 data = IND } lost_national = { country = SAR value = 50 } } AND = { NOT = { exists = SAR } owned = { province = 1624 data = IND } control = { province = 1624 data = IND } } AND = { exists = SAR puppet = { country = SAR country = IND } } } }
+	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_sar_complete } OR = { AND = { exists = SAR war = { country = IND country = SAR } control = { province = 1624 data = IND } lost_national = { country = SAR value = 50 } } AND = { NOT = { exists = SAR } owned = { province = 1624 data = IND } control = { province = 1624 data = IND } } AND = { exists = SAR puppet = { country = SAR country = IND } } } }
 	action_a = {
+		trigger = { NOT = { puppet = { country = SAR country = IND } } }
 		name = "Protectorate: -250 supplies, no dissent; joins wars"
 		command = { trigger = { exists = SAR war = { country = IND country = SAR } } type = inherit which = SAR }
 		command = { type = independence which = SAR value = 1 when = 0 }
@@ -1508,14 +1711,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_sar }
 	}
 	action_b = {
-		name = "Independent partner: -1 dissent; Indian access"
+		name = "Protected neutrality: no dissent; Indian access"
 		command = { trigger = { exists = SAR war = { country = IND country = SAR } } type = inherit which = SAR }
 		command = { type = independence which = SAR value = 1 when = 0 }
-		command = { trigger = { exists = SAR } type = make_puppet which = SAR }
-		command = { trigger = { exists = SAR } type = end_mastery which = SAR }
-		command = { type = dissent value = -1 }
+		command = { trigger = { puppet = { country = SAR country = IND } } type = end_mastery which = SAR }
+		command = { trigger = { exists = SAR } type = guarantee which = IND where = SAR }
 		command = { trigger = { exists = SAR } type = event which = 9288041 where = SAR when = 1 }
-		command = { type = setflag which = ind_country_resolution_sar_independent }
+		command = { type = setflag which = ind_country_resolution_sar_neutral }
 		command = { type = setflag which = ind_country_resolution_sar_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_sar }
 		command = { type = clrflag which = ind_aubm_regional_current_sar }
@@ -1532,6 +1734,7 @@ event = {
 		command = { type = dissent value = 2 }
 		command = { type = belligerence value = 1 }
 		command = { type = province_revoltrisk which = 1624 value = 2 }
+		command = { type = setflag which = ind_aubm_occupation_upkeep }
 		command = { type = setflag which = ind_country_resolution_sar_occupied }
 		command = { type = setflag which = ind_country_resolution_sar_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_sar }
@@ -1546,14 +1749,24 @@ event = {
 	random = no
 	one_action = yes
 	country = SAR
-	name = "Sarawak Grants India Military Access"
-	desc = "The new government of Sarawak remains independent and grants Indian forces military access."
+	name = "Sarawak: Protected Neutrality"
+	desc = "Sarawak leaves India's alliance, ends inherited major-power wars and grants Indian forces access. India's own wars do not change."
 	style = 2
 	picture = "aubm_v4_liberated_territory"
 	action_a = {
-		name = "Confirm the agreement"
+		name = "Confirm protected neutrality"
+		command = { trigger = { participant = { country = SAR value = 4 } } type = leave_alliance when = 1 }
+		command = { trigger = { war = { country = SAR country = ENG } } type = peace which = ENG value = 1 }
+		command = { trigger = { war = { country = SAR country = GER } } type = peace which = GER value = 1 }
+		command = { trigger = { war = { country = SAR country = SOV } } type = peace which = SOV value = 1 }
+		command = { trigger = { war = { country = SAR country = JAP } } type = peace which = JAP value = 1 }
+		command = { trigger = { war = { country = SAR country = USA } } type = peace which = USA value = 1 }
+		command = { trigger = { war = { country = SAR country = ITA } } type = peace which = ITA value = 1 }
+		command = { trigger = { war = { country = SAR country = HOL } } type = peace which = HOL value = 1 }
+		command = { trigger = { war = { country = SAR country = AST } } type = peace which = AST value = 1 }
 		command = { type = access which = IND }
-		command = { type = relation which = IND value = 30 }
+		command = { type = relation which = IND value = 50 }
+		command = { type = non_aggression which = SAR where = IND when = 1080 }
 	}
 }
 
@@ -1566,9 +1779,10 @@ event = {
 	desc = "India controls Canberra and Australia has lost at least half of its national territory. This decision changes Australia only. It cannot end, suspend or alter any other war."
 	style = 2
 	picture = "aubm_v4_liberated_territory"
-	decision = { ai = no NOT = { flag = ind_country_resolution_ast_complete } OR = { AND = { exists = AST war = { country = IND country = AST } control = { province = 1707 data = IND } lost_national = { country = AST value = 50 } } AND = { NOT = { exists = AST } owned = { province = 1707 data = IND } control = { province = 1707 data = IND } } } }
-	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_ast_complete } OR = { AND = { exists = AST war = { country = IND country = AST } control = { province = 1707 data = IND } lost_national = { country = AST value = 50 } } AND = { NOT = { exists = AST } owned = { province = 1707 data = IND } control = { province = 1707 data = IND } } } }
+	decision = { ai = no NOT = { flag = ind_country_resolution_ast_complete } OR = { AND = { exists = AST war = { country = IND country = AST } control = { province = 1707 data = IND } lost_national = { country = AST value = 50 } } AND = { NOT = { exists = AST } owned = { province = 1707 data = IND } control = { province = 1707 data = IND } } AND = { exists = AST puppet = { country = AST country = IND } } } }
+	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_ast_complete } OR = { AND = { exists = AST war = { country = IND country = AST } control = { province = 1707 data = IND } lost_national = { country = AST value = 50 } } AND = { NOT = { exists = AST } owned = { province = 1707 data = IND } control = { province = 1707 data = IND } } AND = { exists = AST puppet = { country = AST country = IND } } } }
 	action_a = {
+		trigger = { NOT = { puppet = { country = AST country = IND } } }
 		name = "Protectorate: -250 supplies, no dissent; joins wars"
 		command = { trigger = { exists = AST war = { country = IND country = AST } } type = inherit which = AST }
 		command = { type = independence which = AST value = 1 when = 0 }
@@ -1582,14 +1796,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_ast }
 	}
 	action_b = {
-		name = "Independent partner: -1 dissent; Indian access"
+		name = "Protected neutrality: no dissent; Indian access"
 		command = { trigger = { exists = AST war = { country = IND country = AST } } type = inherit which = AST }
 		command = { type = independence which = AST value = 1 when = 0 }
-		command = { trigger = { exists = AST } type = make_puppet which = AST }
-		command = { trigger = { exists = AST } type = end_mastery which = AST }
-		command = { type = dissent value = -1 }
+		command = { trigger = { puppet = { country = AST country = IND } } type = end_mastery which = AST }
+		command = { trigger = { exists = AST } type = guarantee which = IND where = AST }
 		command = { trigger = { exists = AST } type = event which = 9288043 where = AST when = 1 }
-		command = { type = setflag which = ind_country_resolution_ast_independent }
+		command = { type = setflag which = ind_country_resolution_ast_neutral }
 		command = { type = setflag which = ind_country_resolution_ast_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_ast }
 		command = { type = clrflag which = ind_aubm_regional_current_ast }
@@ -1606,6 +1819,7 @@ event = {
 		command = { type = dissent value = 2 }
 		command = { type = belligerence value = 1 }
 		command = { type = province_revoltrisk which = 1707 value = 2 }
+		command = { type = setflag which = ind_aubm_occupation_upkeep }
 		command = { type = setflag which = ind_country_resolution_ast_occupied }
 		command = { type = setflag which = ind_country_resolution_ast_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_ast }
@@ -1620,14 +1834,24 @@ event = {
 	random = no
 	one_action = yes
 	country = AST
-	name = "Australia Grants India Military Access"
-	desc = "The new government of Australia remains independent and grants Indian forces military access."
+	name = "Australia: Protected Neutrality"
+	desc = "Australia leaves India's alliance, ends inherited major-power wars and grants Indian forces access. India's own wars do not change."
 	style = 2
 	picture = "aubm_v4_liberated_territory"
 	action_a = {
-		name = "Confirm the agreement"
+		name = "Confirm protected neutrality"
+		command = { trigger = { participant = { country = AST value = 4 } } type = leave_alliance when = 1 }
+		command = { trigger = { war = { country = AST country = ENG } } type = peace which = ENG value = 1 }
+		command = { trigger = { war = { country = AST country = GER } } type = peace which = GER value = 1 }
+		command = { trigger = { war = { country = AST country = SOV } } type = peace which = SOV value = 1 }
+		command = { trigger = { war = { country = AST country = JAP } } type = peace which = JAP value = 1 }
+		command = { trigger = { war = { country = AST country = USA } } type = peace which = USA value = 1 }
+		command = { trigger = { war = { country = AST country = ITA } } type = peace which = ITA value = 1 }
+		command = { trigger = { war = { country = AST country = HOL } } type = peace which = HOL value = 1 }
+		command = { trigger = { war = { country = AST country = AST } } type = peace which = AST value = 1 }
 		command = { type = access which = IND }
-		command = { type = relation which = IND value = 30 }
+		command = { type = relation which = IND value = 50 }
+		command = { type = non_aggression which = AST where = IND when = 1080 }
 	}
 }
 
@@ -1640,9 +1864,10 @@ event = {
 	desc = "India controls Wellington and New Zealand has lost at least half of its national territory. This decision changes New Zealand only. It cannot end, suspend or alter any other war."
 	style = 2
 	picture = "aubm_v4_liberated_territory"
-	decision = { ai = no NOT = { flag = ind_country_resolution_nzl_complete } OR = { AND = { exists = NZL war = { country = IND country = NZL } control = { province = 1721 data = IND } lost_national = { country = NZL value = 50 } } AND = { NOT = { exists = NZL } owned = { province = 1721 data = IND } control = { province = 1721 data = IND } } } }
-	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_nzl_complete } OR = { AND = { exists = NZL war = { country = IND country = NZL } control = { province = 1721 data = IND } lost_national = { country = NZL value = 50 } } AND = { NOT = { exists = NZL } owned = { province = 1721 data = IND } control = { province = 1721 data = IND } } } }
+	decision = { ai = no NOT = { flag = ind_country_resolution_nzl_complete } OR = { AND = { exists = NZL war = { country = IND country = NZL } control = { province = 1721 data = IND } lost_national = { country = NZL value = 50 } } AND = { NOT = { exists = NZL } owned = { province = 1721 data = IND } control = { province = 1721 data = IND } } AND = { exists = NZL puppet = { country = NZL country = IND } } } }
+	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_nzl_complete } OR = { AND = { exists = NZL war = { country = IND country = NZL } control = { province = 1721 data = IND } lost_national = { country = NZL value = 50 } } AND = { NOT = { exists = NZL } owned = { province = 1721 data = IND } control = { province = 1721 data = IND } } AND = { exists = NZL puppet = { country = NZL country = IND } } } }
 	action_a = {
+		trigger = { NOT = { puppet = { country = NZL country = IND } } }
 		name = "Protectorate: -250 supplies, no dissent; joins wars"
 		command = { trigger = { exists = NZL war = { country = IND country = NZL } } type = inherit which = NZL }
 		command = { type = independence which = NZL value = 1 when = 0 }
@@ -1656,14 +1881,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_nzl }
 	}
 	action_b = {
-		name = "Independent partner: -1 dissent; Indian access"
+		name = "Protected neutrality: no dissent; Indian access"
 		command = { trigger = { exists = NZL war = { country = IND country = NZL } } type = inherit which = NZL }
 		command = { type = independence which = NZL value = 1 when = 0 }
-		command = { trigger = { exists = NZL } type = make_puppet which = NZL }
-		command = { trigger = { exists = NZL } type = end_mastery which = NZL }
-		command = { type = dissent value = -1 }
+		command = { trigger = { puppet = { country = NZL country = IND } } type = end_mastery which = NZL }
+		command = { trigger = { exists = NZL } type = guarantee which = IND where = NZL }
 		command = { trigger = { exists = NZL } type = event which = 9288045 where = NZL when = 1 }
-		command = { type = setflag which = ind_country_resolution_nzl_independent }
+		command = { type = setflag which = ind_country_resolution_nzl_neutral }
 		command = { type = setflag which = ind_country_resolution_nzl_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_nzl }
 		command = { type = clrflag which = ind_aubm_regional_current_nzl }
@@ -1680,6 +1904,7 @@ event = {
 		command = { type = dissent value = 2 }
 		command = { type = belligerence value = 1 }
 		command = { type = province_revoltrisk which = 1721 value = 2 }
+		command = { type = setflag which = ind_aubm_occupation_upkeep }
 		command = { type = setflag which = ind_country_resolution_nzl_occupied }
 		command = { type = setflag which = ind_country_resolution_nzl_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_nzl }
@@ -1694,14 +1919,24 @@ event = {
 	random = no
 	one_action = yes
 	country = NZL
-	name = "New Zealand Grants India Military Access"
-	desc = "The new government of New Zealand remains independent and grants Indian forces military access."
+	name = "New Zealand: Protected Neutrality"
+	desc = "New Zealand leaves India's alliance, ends inherited major-power wars and grants Indian forces access. India's own wars do not change."
 	style = 2
 	picture = "aubm_v4_liberated_territory"
 	action_a = {
-		name = "Confirm the agreement"
+		name = "Confirm protected neutrality"
+		command = { trigger = { participant = { country = NZL value = 4 } } type = leave_alliance when = 1 }
+		command = { trigger = { war = { country = NZL country = ENG } } type = peace which = ENG value = 1 }
+		command = { trigger = { war = { country = NZL country = GER } } type = peace which = GER value = 1 }
+		command = { trigger = { war = { country = NZL country = SOV } } type = peace which = SOV value = 1 }
+		command = { trigger = { war = { country = NZL country = JAP } } type = peace which = JAP value = 1 }
+		command = { trigger = { war = { country = NZL country = USA } } type = peace which = USA value = 1 }
+		command = { trigger = { war = { country = NZL country = ITA } } type = peace which = ITA value = 1 }
+		command = { trigger = { war = { country = NZL country = HOL } } type = peace which = HOL value = 1 }
+		command = { trigger = { war = { country = NZL country = AST } } type = peace which = AST value = 1 }
 		command = { type = access which = IND }
-		command = { type = relation which = IND value = 30 }
+		command = { type = relation which = IND value = 50 }
+		command = { type = non_aggression which = NZL where = IND when = 1080 }
 	}
 }
 
@@ -1714,9 +1949,10 @@ event = {
 	desc = "India controls Ankara and Turkey has lost at least half of its national territory. This decision changes Turkey only. It cannot end, suspend or alter any other war."
 	style = 2
 	picture = "aubm_v4_liberated_territory"
-	decision = { ai = no NOT = { flag = ind_country_resolution_tur_complete } OR = { AND = { exists = TUR war = { country = IND country = TUR } control = { province = 1075 data = IND } lost_national = { country = TUR value = 50 } } AND = { NOT = { exists = TUR } owned = { province = 1075 data = IND } control = { province = 1075 data = IND } } } }
-	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_tur_complete } OR = { AND = { exists = TUR war = { country = IND country = TUR } control = { province = 1075 data = IND } lost_national = { country = TUR value = 50 } } AND = { NOT = { exists = TUR } owned = { province = 1075 data = IND } control = { province = 1075 data = IND } } } }
+	decision = { ai = no NOT = { flag = ind_country_resolution_tur_complete } OR = { AND = { exists = TUR war = { country = IND country = TUR } control = { province = 1075 data = IND } lost_national = { country = TUR value = 50 } } AND = { NOT = { exists = TUR } owned = { province = 1075 data = IND } control = { province = 1075 data = IND } } AND = { exists = TUR puppet = { country = TUR country = IND } } } }
+	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_tur_complete } OR = { AND = { exists = TUR war = { country = IND country = TUR } control = { province = 1075 data = IND } lost_national = { country = TUR value = 50 } } AND = { NOT = { exists = TUR } owned = { province = 1075 data = IND } control = { province = 1075 data = IND } } AND = { exists = TUR puppet = { country = TUR country = IND } } } }
 	action_a = {
+		trigger = { NOT = { puppet = { country = TUR country = IND } } }
 		name = "Protectorate: -250 supplies, no dissent; joins wars"
 		command = { trigger = { exists = TUR war = { country = IND country = TUR } } type = inherit which = TUR }
 		command = { type = independence which = TUR value = 1 when = 0 }
@@ -1730,14 +1966,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_tur }
 	}
 	action_b = {
-		name = "Independent partner: -1 dissent; Indian access"
+		name = "Protected neutrality: no dissent; Indian access"
 		command = { trigger = { exists = TUR war = { country = IND country = TUR } } type = inherit which = TUR }
 		command = { type = independence which = TUR value = 1 when = 0 }
-		command = { trigger = { exists = TUR } type = make_puppet which = TUR }
-		command = { trigger = { exists = TUR } type = end_mastery which = TUR }
-		command = { type = dissent value = -1 }
+		command = { trigger = { puppet = { country = TUR country = IND } } type = end_mastery which = TUR }
+		command = { trigger = { exists = TUR } type = guarantee which = IND where = TUR }
 		command = { trigger = { exists = TUR } type = event which = 9288047 where = TUR when = 1 }
-		command = { type = setflag which = ind_country_resolution_tur_independent }
+		command = { type = setflag which = ind_country_resolution_tur_neutral }
 		command = { type = setflag which = ind_country_resolution_tur_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_tur }
 		command = { type = clrflag which = ind_aubm_regional_current_tur }
@@ -1754,6 +1989,7 @@ event = {
 		command = { type = dissent value = 2 }
 		command = { type = belligerence value = 1 }
 		command = { type = province_revoltrisk which = 1075 value = 2 }
+		command = { type = setflag which = ind_aubm_occupation_upkeep }
 		command = { type = setflag which = ind_country_resolution_tur_occupied }
 		command = { type = setflag which = ind_country_resolution_tur_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_tur }
@@ -1768,14 +2004,24 @@ event = {
 	random = no
 	one_action = yes
 	country = TUR
-	name = "Turkey Grants India Military Access"
-	desc = "The new government of Turkey remains independent and grants Indian forces military access."
+	name = "Turkey: Protected Neutrality"
+	desc = "Turkey leaves India's alliance, ends inherited major-power wars and grants Indian forces access. India's own wars do not change."
 	style = 2
 	picture = "aubm_v4_liberated_territory"
 	action_a = {
-		name = "Confirm the agreement"
+		name = "Confirm protected neutrality"
+		command = { trigger = { participant = { country = TUR value = 4 } } type = leave_alliance when = 1 }
+		command = { trigger = { war = { country = TUR country = ENG } } type = peace which = ENG value = 1 }
+		command = { trigger = { war = { country = TUR country = GER } } type = peace which = GER value = 1 }
+		command = { trigger = { war = { country = TUR country = SOV } } type = peace which = SOV value = 1 }
+		command = { trigger = { war = { country = TUR country = JAP } } type = peace which = JAP value = 1 }
+		command = { trigger = { war = { country = TUR country = USA } } type = peace which = USA value = 1 }
+		command = { trigger = { war = { country = TUR country = ITA } } type = peace which = ITA value = 1 }
+		command = { trigger = { war = { country = TUR country = HOL } } type = peace which = HOL value = 1 }
+		command = { trigger = { war = { country = TUR country = AST } } type = peace which = AST value = 1 }
 		command = { type = access which = IND }
-		command = { type = relation which = IND value = 30 }
+		command = { type = relation which = IND value = 50 }
+		command = { type = non_aggression which = TUR where = IND when = 1080 }
 	}
 }
 
@@ -1788,9 +2034,10 @@ event = {
 	desc = "India controls Rome and Italy has lost at least half of its national territory. This decision changes Italy only. It cannot end, suspend or alter any other war."
 	style = 2
 	picture = "aubm_v4_liberated_territory"
-	decision = { ai = no NOT = { flag = ind_country_resolution_ita_complete } OR = { AND = { exists = ITA war = { country = IND country = ITA } control = { province = 419 data = IND } lost_national = { country = ITA value = 50 } } AND = { NOT = { exists = ITA } owned = { province = 419 data = IND } control = { province = 419 data = IND } } } }
-	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_ita_complete } OR = { AND = { exists = ITA war = { country = IND country = ITA } control = { province = 419 data = IND } lost_national = { country = ITA value = 50 } } AND = { NOT = { exists = ITA } owned = { province = 419 data = IND } control = { province = 419 data = IND } } } }
+	decision = { ai = no NOT = { flag = ind_country_resolution_ita_complete } OR = { AND = { exists = ITA war = { country = IND country = ITA } control = { province = 419 data = IND } lost_national = { country = ITA value = 50 } } AND = { NOT = { exists = ITA } owned = { province = 419 data = IND } control = { province = 419 data = IND } } AND = { exists = ITA puppet = { country = ITA country = IND } } } }
+	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_ita_complete } OR = { AND = { exists = ITA war = { country = IND country = ITA } control = { province = 419 data = IND } lost_national = { country = ITA value = 50 } } AND = { NOT = { exists = ITA } owned = { province = 419 data = IND } control = { province = 419 data = IND } } AND = { exists = ITA puppet = { country = ITA country = IND } } } }
 	action_a = {
+		trigger = { NOT = { puppet = { country = ITA country = IND } } }
 		name = "Protectorate: -250 supplies, no dissent; joins wars"
 		command = { trigger = { exists = ITA war = { country = IND country = ITA } } type = inherit which = ITA }
 		command = { type = independence which = ITA value = 1 when = 0 }
@@ -1804,14 +2051,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_ita }
 	}
 	action_b = {
-		name = "Independent partner: -1 dissent; Indian access"
+		name = "Protected neutrality: no dissent; Indian access"
 		command = { trigger = { exists = ITA war = { country = IND country = ITA } } type = inherit which = ITA }
 		command = { type = independence which = ITA value = 1 when = 0 }
-		command = { trigger = { exists = ITA } type = make_puppet which = ITA }
-		command = { trigger = { exists = ITA } type = end_mastery which = ITA }
-		command = { type = dissent value = -1 }
+		command = { trigger = { puppet = { country = ITA country = IND } } type = end_mastery which = ITA }
+		command = { trigger = { exists = ITA } type = guarantee which = IND where = ITA }
 		command = { trigger = { exists = ITA } type = event which = 9288049 where = ITA when = 1 }
-		command = { type = setflag which = ind_country_resolution_ita_independent }
+		command = { type = setflag which = ind_country_resolution_ita_neutral }
 		command = { type = setflag which = ind_country_resolution_ita_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_ita }
 		command = { type = clrflag which = ind_aubm_regional_current_ita }
@@ -1828,6 +2074,7 @@ event = {
 		command = { type = dissent value = 2 }
 		command = { type = belligerence value = 1 }
 		command = { type = province_revoltrisk which = 419 value = 2 }
+		command = { type = setflag which = ind_aubm_occupation_upkeep }
 		command = { type = setflag which = ind_country_resolution_ita_occupied }
 		command = { type = setflag which = ind_country_resolution_ita_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_ita }
@@ -1842,14 +2089,24 @@ event = {
 	random = no
 	one_action = yes
 	country = ITA
-	name = "Italy Grants India Military Access"
-	desc = "The new government of Italy remains independent and grants Indian forces military access."
+	name = "Italy: Protected Neutrality"
+	desc = "Italy leaves India's alliance, ends inherited major-power wars and grants Indian forces access. India's own wars do not change."
 	style = 2
 	picture = "aubm_v4_liberated_territory"
 	action_a = {
-		name = "Confirm the agreement"
+		name = "Confirm protected neutrality"
+		command = { trigger = { participant = { country = ITA value = 4 } } type = leave_alliance when = 1 }
+		command = { trigger = { war = { country = ITA country = ENG } } type = peace which = ENG value = 1 }
+		command = { trigger = { war = { country = ITA country = GER } } type = peace which = GER value = 1 }
+		command = { trigger = { war = { country = ITA country = SOV } } type = peace which = SOV value = 1 }
+		command = { trigger = { war = { country = ITA country = JAP } } type = peace which = JAP value = 1 }
+		command = { trigger = { war = { country = ITA country = USA } } type = peace which = USA value = 1 }
+		command = { trigger = { war = { country = ITA country = ITA } } type = peace which = ITA value = 1 }
+		command = { trigger = { war = { country = ITA country = HOL } } type = peace which = HOL value = 1 }
+		command = { trigger = { war = { country = ITA country = AST } } type = peace which = AST value = 1 }
 		command = { type = access which = IND }
-		command = { type = relation which = IND value = 30 }
+		command = { type = relation which = IND value = 50 }
+		command = { type = non_aggression which = ITA where = IND when = 1080 }
 	}
 }
 
@@ -1862,9 +2119,10 @@ event = {
 	desc = "India controls Paris and France has lost at least half of its national territory. This decision changes France only. It cannot end, suspend or alter any other war."
 	style = 2
 	picture = "aubm_v4_liberated_territory"
-	decision = { ai = no NOT = { flag = ind_country_resolution_fra_complete } OR = { AND = { exists = FRA war = { country = IND country = FRA } control = { province = 55 data = IND } lost_national = { country = FRA value = 50 } } AND = { NOT = { exists = FRA } owned = { province = 55 data = IND } control = { province = 55 data = IND } } } }
-	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_fra_complete } OR = { AND = { exists = FRA war = { country = IND country = FRA } control = { province = 55 data = IND } lost_national = { country = FRA value = 50 } } AND = { NOT = { exists = FRA } owned = { province = 55 data = IND } control = { province = 55 data = IND } } } }
+	decision = { ai = no NOT = { flag = ind_country_resolution_fra_complete } OR = { AND = { exists = FRA war = { country = IND country = FRA } control = { province = 55 data = IND } lost_national = { country = FRA value = 50 } } AND = { NOT = { exists = FRA } owned = { province = 55 data = IND } control = { province = 55 data = IND } } AND = { exists = FRA puppet = { country = FRA country = IND } } } }
+	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_fra_complete } OR = { AND = { exists = FRA war = { country = IND country = FRA } control = { province = 55 data = IND } lost_national = { country = FRA value = 50 } } AND = { NOT = { exists = FRA } owned = { province = 55 data = IND } control = { province = 55 data = IND } } AND = { exists = FRA puppet = { country = FRA country = IND } } } }
 	action_a = {
+		trigger = { NOT = { puppet = { country = FRA country = IND } } }
 		name = "Protectorate: -250 supplies, no dissent; joins wars"
 		command = { trigger = { exists = FRA war = { country = IND country = FRA } } type = inherit which = FRA }
 		command = { type = independence which = FRA value = 1 when = 0 }
@@ -1878,14 +2136,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_fra }
 	}
 	action_b = {
-		name = "Independent partner: -1 dissent; Indian access"
+		name = "Protected neutrality: no dissent; Indian access"
 		command = { trigger = { exists = FRA war = { country = IND country = FRA } } type = inherit which = FRA }
 		command = { type = independence which = FRA value = 1 when = 0 }
-		command = { trigger = { exists = FRA } type = make_puppet which = FRA }
-		command = { trigger = { exists = FRA } type = end_mastery which = FRA }
-		command = { type = dissent value = -1 }
+		command = { trigger = { puppet = { country = FRA country = IND } } type = end_mastery which = FRA }
+		command = { trigger = { exists = FRA } type = guarantee which = IND where = FRA }
 		command = { trigger = { exists = FRA } type = event which = 9288051 where = FRA when = 1 }
-		command = { type = setflag which = ind_country_resolution_fra_independent }
+		command = { type = setflag which = ind_country_resolution_fra_neutral }
 		command = { type = setflag which = ind_country_resolution_fra_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_fra }
 		command = { type = clrflag which = ind_aubm_regional_current_fra }
@@ -1902,6 +2159,7 @@ event = {
 		command = { type = dissent value = 2 }
 		command = { type = belligerence value = 1 }
 		command = { type = province_revoltrisk which = 55 value = 2 }
+		command = { type = setflag which = ind_aubm_occupation_upkeep }
 		command = { type = setflag which = ind_country_resolution_fra_occupied }
 		command = { type = setflag which = ind_country_resolution_fra_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_fra }
@@ -1916,14 +2174,24 @@ event = {
 	random = no
 	one_action = yes
 	country = FRA
-	name = "France Grants India Military Access"
-	desc = "The new government of France remains independent and grants Indian forces military access."
+	name = "France: Protected Neutrality"
+	desc = "France leaves India's alliance, ends inherited major-power wars and grants Indian forces access. India's own wars do not change."
 	style = 2
 	picture = "aubm_v4_liberated_territory"
 	action_a = {
-		name = "Confirm the agreement"
+		name = "Confirm protected neutrality"
+		command = { trigger = { participant = { country = FRA value = 4 } } type = leave_alliance when = 1 }
+		command = { trigger = { war = { country = FRA country = ENG } } type = peace which = ENG value = 1 }
+		command = { trigger = { war = { country = FRA country = GER } } type = peace which = GER value = 1 }
+		command = { trigger = { war = { country = FRA country = SOV } } type = peace which = SOV value = 1 }
+		command = { trigger = { war = { country = FRA country = JAP } } type = peace which = JAP value = 1 }
+		command = { trigger = { war = { country = FRA country = USA } } type = peace which = USA value = 1 }
+		command = { trigger = { war = { country = FRA country = ITA } } type = peace which = ITA value = 1 }
+		command = { trigger = { war = { country = FRA country = HOL } } type = peace which = HOL value = 1 }
+		command = { trigger = { war = { country = FRA country = AST } } type = peace which = AST value = 1 }
 		command = { type = access which = IND }
-		command = { type = relation which = IND value = 30 }
+		command = { type = relation which = IND value = 50 }
+		command = { type = non_aggression which = FRA where = IND when = 1080 }
 	}
 }
 
@@ -1936,9 +2204,10 @@ event = {
 	desc = "India controls Lisbon and Portugal has lost at least half of its national territory. This decision changes Portugal only. It cannot end, suspend or alter any other war."
 	style = 2
 	picture = "aubm_v4_liberated_territory"
-	decision = { ai = no NOT = { flag = ind_country_resolution_por_complete } OR = { AND = { exists = POR war = { country = IND country = POR } control = { province = 476 data = IND } lost_national = { country = POR value = 50 } } AND = { NOT = { exists = POR } owned = { province = 476 data = IND } control = { province = 476 data = IND } } } }
-	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_por_complete } OR = { AND = { exists = POR war = { country = IND country = POR } control = { province = 476 data = IND } lost_national = { country = POR value = 50 } } AND = { NOT = { exists = POR } owned = { province = 476 data = IND } control = { province = 476 data = IND } } } }
+	decision = { ai = no NOT = { flag = ind_country_resolution_por_complete } OR = { AND = { exists = POR war = { country = IND country = POR } control = { province = 476 data = IND } lost_national = { country = POR value = 50 } } AND = { NOT = { exists = POR } owned = { province = 476 data = IND } control = { province = 476 data = IND } } AND = { exists = POR puppet = { country = POR country = IND } } } }
+	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_por_complete } OR = { AND = { exists = POR war = { country = IND country = POR } control = { province = 476 data = IND } lost_national = { country = POR value = 50 } } AND = { NOT = { exists = POR } owned = { province = 476 data = IND } control = { province = 476 data = IND } } AND = { exists = POR puppet = { country = POR country = IND } } } }
 	action_a = {
+		trigger = { NOT = { puppet = { country = POR country = IND } } }
 		name = "Protectorate: -250 supplies, no dissent; joins wars"
 		command = { trigger = { exists = POR war = { country = IND country = POR } } type = inherit which = POR }
 		command = { type = independence which = POR value = 1 when = 0 }
@@ -1952,14 +2221,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_por }
 	}
 	action_b = {
-		name = "Independent partner: -1 dissent; Indian access"
+		name = "Protected neutrality: no dissent; Indian access"
 		command = { trigger = { exists = POR war = { country = IND country = POR } } type = inherit which = POR }
 		command = { type = independence which = POR value = 1 when = 0 }
-		command = { trigger = { exists = POR } type = make_puppet which = POR }
-		command = { trigger = { exists = POR } type = end_mastery which = POR }
-		command = { type = dissent value = -1 }
+		command = { trigger = { puppet = { country = POR country = IND } } type = end_mastery which = POR }
+		command = { trigger = { exists = POR } type = guarantee which = IND where = POR }
 		command = { trigger = { exists = POR } type = event which = 9288053 where = POR when = 1 }
-		command = { type = setflag which = ind_country_resolution_por_independent }
+		command = { type = setflag which = ind_country_resolution_por_neutral }
 		command = { type = setflag which = ind_country_resolution_por_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_por }
 		command = { type = clrflag which = ind_aubm_regional_current_por }
@@ -1976,6 +2244,7 @@ event = {
 		command = { type = dissent value = 2 }
 		command = { type = belligerence value = 1 }
 		command = { type = province_revoltrisk which = 476 value = 2 }
+		command = { type = setflag which = ind_aubm_occupation_upkeep }
 		command = { type = setflag which = ind_country_resolution_por_occupied }
 		command = { type = setflag which = ind_country_resolution_por_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_por }
@@ -1990,14 +2259,24 @@ event = {
 	random = no
 	one_action = yes
 	country = POR
-	name = "Portugal Grants India Military Access"
-	desc = "The new government of Portugal remains independent and grants Indian forces military access."
+	name = "Portugal: Protected Neutrality"
+	desc = "Portugal leaves India's alliance, ends inherited major-power wars and grants Indian forces access. India's own wars do not change."
 	style = 2
 	picture = "aubm_v4_liberated_territory"
 	action_a = {
-		name = "Confirm the agreement"
+		name = "Confirm protected neutrality"
+		command = { trigger = { participant = { country = POR value = 4 } } type = leave_alliance when = 1 }
+		command = { trigger = { war = { country = POR country = ENG } } type = peace which = ENG value = 1 }
+		command = { trigger = { war = { country = POR country = GER } } type = peace which = GER value = 1 }
+		command = { trigger = { war = { country = POR country = SOV } } type = peace which = SOV value = 1 }
+		command = { trigger = { war = { country = POR country = JAP } } type = peace which = JAP value = 1 }
+		command = { trigger = { war = { country = POR country = USA } } type = peace which = USA value = 1 }
+		command = { trigger = { war = { country = POR country = ITA } } type = peace which = ITA value = 1 }
+		command = { trigger = { war = { country = POR country = HOL } } type = peace which = HOL value = 1 }
+		command = { trigger = { war = { country = POR country = AST } } type = peace which = AST value = 1 }
 		command = { type = access which = IND }
-		command = { type = relation which = IND value = 30 }
+		command = { type = relation which = IND value = 50 }
+		command = { type = non_aggression which = POR where = IND when = 1080 }
 	}
 }
 
@@ -2010,9 +2289,10 @@ event = {
 	desc = "India controls Addis Ababa and Ethiopia has lost at least half of its national territory. This decision changes Ethiopia only. It cannot end, suspend or alter any other war."
 	style = 2
 	picture = "aubm_v4_liberated_territory"
-	decision = { ai = no NOT = { flag = ind_country_resolution_eth_complete } OR = { AND = { exists = ETH war = { country = IND country = ETH } control = { province = 825 data = IND } lost_national = { country = ETH value = 50 } } AND = { NOT = { exists = ETH } owned = { province = 825 data = IND } control = { province = 825 data = IND } } } }
-	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_eth_complete } OR = { AND = { exists = ETH war = { country = IND country = ETH } control = { province = 825 data = IND } lost_national = { country = ETH value = 50 } } AND = { NOT = { exists = ETH } owned = { province = 825 data = IND } control = { province = 825 data = IND } } } }
+	decision = { ai = no NOT = { flag = ind_country_resolution_eth_complete } OR = { AND = { exists = ETH war = { country = IND country = ETH } control = { province = 825 data = IND } lost_national = { country = ETH value = 50 } } AND = { NOT = { exists = ETH } owned = { province = 825 data = IND } control = { province = 825 data = IND } } AND = { exists = ETH puppet = { country = ETH country = IND } } } }
+	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_eth_complete } OR = { AND = { exists = ETH war = { country = IND country = ETH } control = { province = 825 data = IND } lost_national = { country = ETH value = 50 } } AND = { NOT = { exists = ETH } owned = { province = 825 data = IND } control = { province = 825 data = IND } } AND = { exists = ETH puppet = { country = ETH country = IND } } } }
 	action_a = {
+		trigger = { NOT = { puppet = { country = ETH country = IND } } }
 		name = "Protectorate: -250 supplies, no dissent; joins wars"
 		command = { trigger = { exists = ETH war = { country = IND country = ETH } } type = inherit which = ETH }
 		command = { type = independence which = ETH value = 1 when = 0 }
@@ -2026,14 +2306,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_eth }
 	}
 	action_b = {
-		name = "Independent partner: -1 dissent; Indian access"
+		name = "Protected neutrality: no dissent; Indian access"
 		command = { trigger = { exists = ETH war = { country = IND country = ETH } } type = inherit which = ETH }
 		command = { type = independence which = ETH value = 1 when = 0 }
-		command = { trigger = { exists = ETH } type = make_puppet which = ETH }
-		command = { trigger = { exists = ETH } type = end_mastery which = ETH }
-		command = { type = dissent value = -1 }
+		command = { trigger = { puppet = { country = ETH country = IND } } type = end_mastery which = ETH }
+		command = { trigger = { exists = ETH } type = guarantee which = IND where = ETH }
 		command = { trigger = { exists = ETH } type = event which = 9288055 where = ETH when = 1 }
-		command = { type = setflag which = ind_country_resolution_eth_independent }
+		command = { type = setflag which = ind_country_resolution_eth_neutral }
 		command = { type = setflag which = ind_country_resolution_eth_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_eth }
 		command = { type = clrflag which = ind_aubm_regional_current_eth }
@@ -2050,6 +2329,7 @@ event = {
 		command = { type = dissent value = 2 }
 		command = { type = belligerence value = 1 }
 		command = { type = province_revoltrisk which = 825 value = 2 }
+		command = { type = setflag which = ind_aubm_occupation_upkeep }
 		command = { type = setflag which = ind_country_resolution_eth_occupied }
 		command = { type = setflag which = ind_country_resolution_eth_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_eth }
@@ -2064,14 +2344,24 @@ event = {
 	random = no
 	one_action = yes
 	country = ETH
-	name = "Ethiopia Grants India Military Access"
-	desc = "The new government of Ethiopia remains independent and grants Indian forces military access."
+	name = "Ethiopia: Protected Neutrality"
+	desc = "Ethiopia leaves India's alliance, ends inherited major-power wars and grants Indian forces access. India's own wars do not change."
 	style = 2
 	picture = "aubm_v4_liberated_territory"
 	action_a = {
-		name = "Confirm the agreement"
+		name = "Confirm protected neutrality"
+		command = { trigger = { participant = { country = ETH value = 4 } } type = leave_alliance when = 1 }
+		command = { trigger = { war = { country = ETH country = ENG } } type = peace which = ENG value = 1 }
+		command = { trigger = { war = { country = ETH country = GER } } type = peace which = GER value = 1 }
+		command = { trigger = { war = { country = ETH country = SOV } } type = peace which = SOV value = 1 }
+		command = { trigger = { war = { country = ETH country = JAP } } type = peace which = JAP value = 1 }
+		command = { trigger = { war = { country = ETH country = USA } } type = peace which = USA value = 1 }
+		command = { trigger = { war = { country = ETH country = ITA } } type = peace which = ITA value = 1 }
+		command = { trigger = { war = { country = ETH country = HOL } } type = peace which = HOL value = 1 }
+		command = { trigger = { war = { country = ETH country = AST } } type = peace which = AST value = 1 }
 		command = { type = access which = IND }
-		command = { type = relation which = IND value = 30 }
+		command = { type = relation which = IND value = 50 }
+		command = { type = non_aggression which = ETH where = IND when = 1080 }
 	}
 }
 
@@ -2084,9 +2374,10 @@ event = {
 	desc = "India controls Pretoria and South Africa has lost at least half of its national territory. This decision changes South Africa only. It cannot end, suspend or alter any other war."
 	style = 2
 	picture = "aubm_v4_liberated_territory"
-	decision = { ai = no NOT = { flag = ind_country_resolution_saf_complete } OR = { AND = { exists = SAF war = { country = IND country = SAF } control = { province = 876 data = IND } lost_national = { country = SAF value = 50 } } AND = { NOT = { exists = SAF } owned = { province = 876 data = IND } control = { province = 876 data = IND } } } }
-	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_saf_complete } OR = { AND = { exists = SAF war = { country = IND country = SAF } control = { province = 876 data = IND } lost_national = { country = SAF value = 50 } } AND = { NOT = { exists = SAF } owned = { province = 876 data = IND } control = { province = 876 data = IND } } } }
+	decision = { ai = no NOT = { flag = ind_country_resolution_saf_complete } OR = { AND = { exists = SAF war = { country = IND country = SAF } control = { province = 876 data = IND } lost_national = { country = SAF value = 50 } } AND = { NOT = { exists = SAF } owned = { province = 876 data = IND } control = { province = 876 data = IND } } AND = { exists = SAF puppet = { country = SAF country = IND } } } }
+	decision_trigger = { ai = no NOT = { flag = ind_country_resolution_saf_complete } OR = { AND = { exists = SAF war = { country = IND country = SAF } control = { province = 876 data = IND } lost_national = { country = SAF value = 50 } } AND = { NOT = { exists = SAF } owned = { province = 876 data = IND } control = { province = 876 data = IND } } AND = { exists = SAF puppet = { country = SAF country = IND } } } }
 	action_a = {
+		trigger = { NOT = { puppet = { country = SAF country = IND } } }
 		name = "Protectorate: -250 supplies, no dissent; joins wars"
 		command = { trigger = { exists = SAF war = { country = IND country = SAF } } type = inherit which = SAF }
 		command = { type = independence which = SAF value = 1 when = 0 }
@@ -2100,14 +2391,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_saf }
 	}
 	action_b = {
-		name = "Independent partner: -1 dissent; Indian access"
+		name = "Protected neutrality: no dissent; Indian access"
 		command = { trigger = { exists = SAF war = { country = IND country = SAF } } type = inherit which = SAF }
 		command = { type = independence which = SAF value = 1 when = 0 }
-		command = { trigger = { exists = SAF } type = make_puppet which = SAF }
-		command = { trigger = { exists = SAF } type = end_mastery which = SAF }
-		command = { type = dissent value = -1 }
+		command = { trigger = { puppet = { country = SAF country = IND } } type = end_mastery which = SAF }
+		command = { trigger = { exists = SAF } type = guarantee which = IND where = SAF }
 		command = { trigger = { exists = SAF } type = event which = 9288057 where = SAF when = 1 }
-		command = { type = setflag which = ind_country_resolution_saf_independent }
+		command = { type = setflag which = ind_country_resolution_saf_neutral }
 		command = { type = setflag which = ind_country_resolution_saf_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_saf }
 		command = { type = clrflag which = ind_aubm_regional_current_saf }
@@ -2124,6 +2414,7 @@ event = {
 		command = { type = dissent value = 2 }
 		command = { type = belligerence value = 1 }
 		command = { type = province_revoltrisk which = 876 value = 2 }
+		command = { type = setflag which = ind_aubm_occupation_upkeep }
 		command = { type = setflag which = ind_country_resolution_saf_occupied }
 		command = { type = setflag which = ind_country_resolution_saf_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_saf }
@@ -2138,14 +2429,24 @@ event = {
 	random = no
 	one_action = yes
 	country = SAF
-	name = "South Africa Grants India Military Access"
-	desc = "The new government of South Africa remains independent and grants Indian forces military access."
+	name = "South Africa: Protected Neutrality"
+	desc = "South Africa leaves India's alliance, ends inherited major-power wars and grants Indian forces access. India's own wars do not change."
 	style = 2
 	picture = "aubm_v4_liberated_territory"
 	action_a = {
-		name = "Confirm the agreement"
+		name = "Confirm protected neutrality"
+		command = { trigger = { participant = { country = SAF value = 4 } } type = leave_alliance when = 1 }
+		command = { trigger = { war = { country = SAF country = ENG } } type = peace which = ENG value = 1 }
+		command = { trigger = { war = { country = SAF country = GER } } type = peace which = GER value = 1 }
+		command = { trigger = { war = { country = SAF country = SOV } } type = peace which = SOV value = 1 }
+		command = { trigger = { war = { country = SAF country = JAP } } type = peace which = JAP value = 1 }
+		command = { trigger = { war = { country = SAF country = USA } } type = peace which = USA value = 1 }
+		command = { trigger = { war = { country = SAF country = ITA } } type = peace which = ITA value = 1 }
+		command = { trigger = { war = { country = SAF country = HOL } } type = peace which = HOL value = 1 }
+		command = { trigger = { war = { country = SAF country = AST } } type = peace which = AST value = 1 }
 		command = { type = access which = IND }
-		command = { type = relation which = IND value = 30 }
+		command = { type = relation which = IND value = 50 }
+		command = { type = non_aggression which = SAF where = IND when = 1080 }
 	}
 }
 
@@ -2267,5 +2568,154 @@ event = {
 	}
 	action_b = {
 		name = "Continue the war with United States"
+	}
+}
+
+event = {
+	id = 9288090
+	random = no
+	one_action = yes
+	country = CMB
+	name = "Cambodia: Protected Neutrality"
+	desc = "Cambodia is independent, remains outside India's wars and grants Indian forces military access."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Confirm protected neutrality"
+		command = { type = access which = IND }
+		command = { type = relation which = IND value = 50 }
+		command = { type = non_aggression which = CMB where = IND when = 1080 }
+	}
+}
+
+event = {
+	id = 9288091
+	random = no
+	one_action = yes
+	country = LAO
+	name = "Laos: Protected Neutrality"
+	desc = "Laos is independent, remains outside India's wars and grants Indian forces military access."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Confirm protected neutrality"
+		command = { type = access which = IND }
+		command = { type = relation which = IND value = 50 }
+		command = { type = non_aggression which = LAO where = IND when = 1080 }
+	}
+}
+
+event = {
+	id = 9288092
+	random = no
+	one_action = yes
+	country = VIE
+	name = "Vietnam: Protected Neutrality"
+	desc = "Vietnam is independent, remains outside India's wars and grants Indian forces military access."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Confirm protected neutrality"
+		command = { type = access which = IND }
+		command = { type = relation which = IND value = 50 }
+		command = { type = non_aggression which = VIE where = IND when = 1080 }
+	}
+}
+
+event = {
+	id = 9288093
+	random = no
+	persistent = yes
+	country = IND
+	name = "Dutch East Indies: Choose the Breakup"
+	desc = "The named states are Brunei, Sarawak, Indonesia. Active protectorates become Indian puppets and share India's wars. Protected neutrals remain independent, stay outside India's wars, grant access and receive Indian guarantees."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	action_a = {
+		name = "Active protectorates: -500 supplies; share wars"
+		command = { type = independence which = BRU value = 1 when = 0 }
+		command = { type = independence which = SAR value = 1 when = 0 }
+		command = { type = independence which = INO value = 1 when = 0 }
+		command = { trigger = { exists = BRU } type = make_puppet which = BRU }
+		command = { trigger = { exists = SAR } type = make_puppet which = SAR }
+		command = { trigger = { exists = INO } type = make_puppet which = INO }
+		command = { type = supplies value = -500 }
+		command = { type = setflag which = ind_country_resolution_u05_fragmented_protected }
+		command = { type = setflag which = ind_country_resolution_u05_complete }
+		command = { type = clrflag which = ind_aubm_regional_pending_u05 }
+		command = { type = clrflag which = ind_aubm_regional_current_u05 }
+		command = { type = clrflag which = ind_aubm_regional_victory_u05 }
+		command = { type = clrflag which = ind_aubm_regional_suspended_u05 }
+	}
+	action_b = {
+		name = "Protected neutrals: -250 supplies; separate wars"
+		command = { type = independence which = BRU value = 1 when = 0 }
+		command = { type = independence which = SAR value = 1 when = 0 }
+		command = { type = independence which = INO value = 1 when = 0 }
+		command = { trigger = { exists = BRU } type = guarantee which = IND where = BRU }
+		command = { trigger = { exists = BRU } type = event which = 9288039 where = BRU when = 1 }
+		command = { trigger = { exists = SAR } type = guarantee which = IND where = SAR }
+		command = { trigger = { exists = SAR } type = event which = 9288041 where = SAR when = 1 }
+		command = { trigger = { exists = INO } type = guarantee which = IND where = INO }
+		command = { trigger = { exists = INO } type = event which = 9288037 where = INO when = 1 }
+		command = { type = supplies value = -250 }
+		command = { type = setflag which = ind_country_resolution_u05_fragmented_neutral }
+		command = { type = setflag which = ind_country_resolution_u05_complete }
+		command = { type = clrflag which = ind_aubm_regional_pending_u05 }
+		command = { type = clrflag which = ind_aubm_regional_current_u05 }
+		command = { type = clrflag which = ind_aubm_regional_victory_u05 }
+		command = { type = clrflag which = ind_aubm_regional_suspended_u05 }
+	}
+	action_c = {
+		name = "Cancel - keep the country decision open"
+	}
+}
+
+event = {
+	id = 9288094
+	random = no
+	persistent = yes
+	country = IND
+	name = "Indochinese Union: Choose the Breakup"
+	desc = "The named states are Cambodia, Laos, Vietnam. Active protectorates become Indian puppets and share India's wars. Protected neutrals remain independent, stay outside India's wars, grant access and receive Indian guarantees."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Active protectorates: -500 supplies; share wars"
+		command = { type = independence which = CMB value = 1 when = 0 }
+		command = { type = independence which = LAO value = 1 when = 0 }
+		command = { type = independence which = VIE value = 1 when = 0 }
+		command = { trigger = { exists = CMB } type = make_puppet which = CMB }
+		command = { trigger = { exists = LAO } type = make_puppet which = LAO }
+		command = { trigger = { exists = VIE } type = make_puppet which = VIE }
+		command = { type = supplies value = -500 }
+		command = { type = setflag which = ind_country_resolution_u03_fragmented_protected }
+		command = { type = setflag which = ind_country_resolution_u03_complete }
+		command = { type = clrflag which = ind_aubm_regional_pending_u03 }
+		command = { type = clrflag which = ind_aubm_regional_current_u03 }
+		command = { type = clrflag which = ind_aubm_regional_victory_u03 }
+		command = { type = clrflag which = ind_aubm_regional_suspended_u03 }
+	}
+	action_b = {
+		name = "Protected neutrals: -250 supplies; separate wars"
+		command = { type = independence which = CMB value = 1 when = 0 }
+		command = { type = independence which = LAO value = 1 when = 0 }
+		command = { type = independence which = VIE value = 1 when = 0 }
+		command = { trigger = { exists = CMB } type = guarantee which = IND where = CMB }
+		command = { trigger = { exists = CMB } type = event which = 9288090 where = CMB when = 1 }
+		command = { trigger = { exists = LAO } type = guarantee which = IND where = LAO }
+		command = { trigger = { exists = LAO } type = event which = 9288091 where = LAO when = 1 }
+		command = { trigger = { exists = VIE } type = guarantee which = IND where = VIE }
+		command = { trigger = { exists = VIE } type = event which = 9288092 where = VIE when = 1 }
+		command = { type = supplies value = -250 }
+		command = { type = setflag which = ind_country_resolution_u03_fragmented_neutral }
+		command = { type = setflag which = ind_country_resolution_u03_complete }
+		command = { type = clrflag which = ind_aubm_regional_pending_u03 }
+		command = { type = clrflag which = ind_aubm_regional_current_u03 }
+		command = { type = clrflag which = ind_aubm_regional_victory_u03 }
+		command = { type = clrflag which = ind_aubm_regional_suspended_u03 }
+	}
+	action_c = {
+		name = "Cancel - keep the country decision open"
 	}
 }

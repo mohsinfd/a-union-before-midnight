@@ -10,11 +10,11 @@ Indian state to choose its own place in the world?
 
 *Freedom came early. Unity came at a price.*
 
-The current playable build is **4.2.0-alpha.28**. Its war-resolution layer uses
+The current playable build is **4.2.0-alpha.29**. Its diplomacy and war-resolution layers use
 plain, country-specific decisions: each decision names the defeated country,
 states the exact outcome, and cannot silently settle another war. The overlapping
-theatre, regional-matrix, operations-board and generic armistice layers have been
-removed. See [the release notes](RELEASE_NOTES.md) and
+V3 routes, V4 strategy menus, theatre matrices, campaign ledgers, operations boards
+and generic armistice layers have been removed. See [the release notes](RELEASE_NOTES.md) and
 [gameplay changes](GAMEPLAY_CHANGES.md).
 
 The inherited roster delta is **27-ROSTER1**, built on **27-BALANCE1**. See

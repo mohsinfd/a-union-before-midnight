@@ -206,8 +206,8 @@ event = {
 	}
 
 	name = "Convene the National War Cabinet"
-	decision_desc = "Available from 1937, during a real Indian war, or after the explicit early-sandbox opt-in. Inspection is free. Binding alignments are exclusive; peaceful withdrawal begins a ninety-day realignment period."
-	desc = "Use the War Cabinet to review India's coalition or begin a named war. Peace decisions appear separately under the defeated country's name. A binding partner cannot be attacked or exchanged for another side during war."
+	decision_desc = "Available from 1937, during a real Indian war, or after the explicit early-sandbox opt-in. Inspection is free. Every agreement and declaration is filed under one named country."
+	desc = "Use the Cabinet to open the country-relations desk or declare a named war. Trade and defence agreements keep separate wars. Only a button explicitly labelled formal alliance merges wars. Peace decisions appear under the defeated country's name."
 	style = 2
 	picture = "aubm_v4_india_world_war"
 
@@ -216,18 +216,19 @@ event = {
 	deathdate = { day = 29 month = december year = 1964 }
 
 	action_a = {
-		name = "Coalition membership and peaceful withdrawal"
-		command = { type = event which = 9281910 where = IND when = 1 }
+		name = "Choose a country relationship"
+		command = { type = event which = 9289000 where = IND when = 1 }
 	}
 	action_b = {
 		name = "Country peace decisions appear separately when earned"
 	}
 	action_c = {
 		name = "Choose a country for a separate Indian war"
-		command = { type = event which = 9281012 where = IND when = 1 }
+		command = { type = event which = 9289003 where = IND when = 1 }
 	}
 	action_d = {
-		name = "Close the Cabinet"
+		name = "Leave the current alliance while at peace"
+		command = { type = event which = 9289004 where = IND when = 1 }
 	}
 }
 
@@ -237,7 +238,7 @@ event = {
 	persistent = yes
 	country = IND
 	name = "War Cabinet: Choose a Country"
-	desc = "Choose the country India may fight. This screen starts no war by itself. Every declaration receives a separate confirmation, and later peace decisions are named after the defeated country."
+	desc = "This old save-compatible menu now opens the replacement country list. Every declaration is named and later peace decisions appear under the defeated country's name."
 	style = 2
 	picture = "aubm_v4_grand_strategy"
 	# AUBM_MENU_SAFE_EXIT: human-only; no effects or follow-up event.
@@ -245,21 +246,8 @@ event = {
 		trigger = { ai = no }
 		name = "Cancel - close without changes"
 	}
-	action_a = {
-		name = "Great powers"
-		command = { type = event which = 9281911 where = IND when = 1 }
-	}
-	action_b = {
-		name = "Asian and Middle Eastern countries"
-		command = { type = event which = 9281912 where = IND when = 1 }
-	}
-	action_c = {
-		name = "Close; country peace decisions appear automatically"
-	}
-	action_d = {
-		name = "Return to the National War Cabinet"
-		command = { type = event which = 9281001 where = IND when = 1 }
-	}
+	action_a = { name = "Open the named-country war list" command = { type = event which = 9289003 where = IND when = 1 } }
+	action_b = { name = "Close; country peace decisions appear automatically" }
 }
 
 event = {
@@ -325,70 +313,6 @@ event = {
 	action_a = {
 		name = "Close retired menu; War Cabinet opens only after Union"
 		command = { trigger = { flag = ind_v3_integrated flag = aubm_v4_union_register_opened OR = { year = 1937 atwar = yes flag = ind_aubm_unrestricted_sandbox } } type = event which = 9281001 where = IND when = 1 }
-	}
-}
-
-# State-based conclusions ensure an early choice still matters even if a
-# foreign event chain takes an unexpected path.
-event = {
-	id = 9281010
-	random = no
-	country = IND
-
-	trigger = {
-		flag = ind_v3_reacted_abyssinia
-		NOT = { war = { country = ITA country = ETH } }
-		NOT = { flag = ind_v43_abyssinia_concluded }
-		year = 1936
-	}
-
-	name = "The Reckoning from Abyssinia"
-	desc = "The East African campaign has ended or hardened into a settlement. Parliament now judges India's sanctions, mediation or observer mission by the result on the ground, and the Indian Ocean staff incorporates the diplomatic and operational lessons."
-	style = 2
-	picture = "india_v3_world_abyssinia"
-	date = { day = 0 month = january year = 1936 }
-	offset = 15
-	deathdate = { day = 29 month = december year = 1964 }
-	action_a = {
-		name = "Enter the African lessons in national policy"
-		command = { trigger = { exists = ETH } type = dissent value = -2 }
-		command = { trigger = { exists = ETH } type = relation which = ETH value = 25 }
-		command = { trigger = { NOT = { exists = ETH } } type = domestic which = defense_lobby value = 1 }
-		command = { trigger = { flag = ind_v3_abyssinia_sanctions } type = relation which = ENG value = 10 }
-		command = { trigger = { flag = ind_v3_abyssinia_mediation } type = belligerence value = -1 }
-		command = { trigger = { flag = ind_v3_abyssinia_observers } type = steal_tech which = ITA }
-		command = { type = setflag which = ind_v43_abyssinia_concluded }
-	}
-}
-
-event = {
-	id = 9281011
-	random = no
-	country = IND
-
-	trigger = {
-		flag = ind_v3_reacted_spain
-		NOT = { war = { country = SPR country = SPA } }
-		NOT = { flag = ind_v43_spanish_mission_returned }
-		year = 1937
-	}
-
-	name = "The Spanish Mission Returns"
-	desc = "Officers, doctors, volunteers and refugees return from Spain with practical knowledge no staff exercise could provide. Their reception depends on whom India supported and who survived, but every mission now leaves a visible institutional legacy."
-	style = 2
-	picture = "india_v3_world_spain"
-	date = { day = 0 month = january year = 1937 }
-	offset = 15
-	deathdate = { day = 29 month = december year = 1964 }
-	action_a = {
-		name = "Absorb the veterans, doctors and field reports"
-		command = { trigger = { flag = ind_v3_spain_republic exists = SPR } type = dissent value = -2 }
-		command = { trigger = { flag = ind_v3_spain_republic NOT = { exists = SPR } } type = manpowerpool value = 8 }
-		command = { trigger = { flag = ind_v3_spain_medical } type = manpowerpool value = 6 }
-		command = { trigger = { flag = ind_v3_spain_medical } type = dissent value = -1 }
-		command = { trigger = { flag = ind_v3_spain_nationalist_observers } type = steal_tech which = GER }
-		command = { type = research_mod value = 1 }
-		command = { type = setflag which = ind_v43_spanish_mission_returned }
 	}
 }
 
