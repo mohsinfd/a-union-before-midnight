@@ -47,6 +47,7 @@ event = "db\events\india_v3\32_navy.txt"
 event = "db\events\india_v3\33_command_research.txt"
 event = "db\events\india_v3\34_elite_forces.txt"
 event = "db\events\india_v3\52_home_front.txt"
+event = "db\events\india_v3\60_postwar.txt"
 
 # A Union Before Midnight V4: direct-DH systems
 # The former V3 diplomacy routes and V4 strategy/campaign matrices are

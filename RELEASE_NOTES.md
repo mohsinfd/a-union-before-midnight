@@ -1,5 +1,15 @@
 # Release Notes
 
+## 4.2.0-alpha.30 / Alpha 30 - Country Decisions Restored
+
+- Fixed a missing polling window on all 29 minor-country settlements and five
+  major-power peace decisions. Eligible decisions now appear within one game day.
+- Restored the Frontier Science Programme, Oceanic Fleet Review, Third National
+  Plan and Peace Dividend, which Alpha 29 removed with an over-broad cleanup.
+- Kept the Great-Power Charter and the retired route, theatre, report, ledger,
+  board and generic-settlement layers removed.
+- Existing saves are supported. No save conversion or new campaign is required.
+
 ## 4.2.0-alpha.29 / Alpha 29 - Country Relations Rebuilt
 
 - Removed the original V3 diplomacy paths and the overlapping V4 strategic,

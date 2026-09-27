@@ -27,6 +27,7 @@ New-Item -ItemType Directory -Path $backupRoot -Force | Out-Null
 $changed = @(
     "db\events.txt",
 	"db\events\india_v3\52_home_front.txt",
+	"db\events\india_v3\60_postwar.txt",
     "db\events\aubm_v4\32_national_consolidation.txt",
     "db\events\aubm_v4\44_wartime_economy.txt",
     "db\events\aubm_v4\53_country_resolutions.txt",
@@ -49,7 +50,6 @@ $retired = @(
 	"db\events\india_v3\47_revisionist_aftermath.txt",
 	"db\events\india_v3\50_wartime.txt",
 	"db\events\india_v3\51_theatres.txt",
-	"db\events\india_v3\60_postwar.txt",
 	"db\events\india_v3\61_cold_war.txt",
 	"db\events\india_v3\62_victory.txt",
 	"db\events\india_v3\india_v3\40_diplomacy.txt",

@@ -1,10 +1,15 @@
 =======================================================================
- A UNION BEFORE MIDNIGHT - V4.2.0 ALPHA 29 - 27 SEP 2026
+ A UNION BEFORE MIDNIGHT - V4.2.0 ALPHA 30 - 28 SEP 2026
  For Darkest Hour 1.05.2
- Source version 4.2.0-alpha.29
+ Source version 4.2.0-alpha.30
 =======================================================================
 
 Freedom came early. Unity came at a price.
+
+Alpha 30 fixes the Alpha 29 country-decision polling regression and restores
+the Frontier Science Programme, Oceanic Fleet Review, Third National Plan and
+Peace Dividend. The removed strategic matrices and clutter remain retired.
+Existing saves are supported; eligible decisions appear after one game day.
 
 A Union Before Midnight is an independent-India alternate-history campaign
 beginning on 1 January 1933. India inherits a united but unsettled continental

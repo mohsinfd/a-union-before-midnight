@@ -73,6 +73,13 @@ def main() -> int:
         errors.append(f"expected {expected_count} unique events, found {len(ids)}")
     if actual.count("\tdecision = {") != len(COUNTRIES) + len(MAJOR_EVENTS):
         errors.append("one or more countries lacks exactly one visible peace decision")
+    visible_decisions = len(COUNTRIES) + len(MAJOR_EVENTS)
+    if actual.count("\tdate = { day = 0 month = january year = 1933 }") != visible_decisions:
+        errors.append("one or more visible peace decisions lacks its polling start date")
+    if actual.count("\toffset = 1") != visible_decisions:
+        errors.append("one or more visible peace decisions is not polled daily")
+    if actual.count("\tdeathdate = { day = 29 month = december year = 1964 }") != visible_decisions:
+        errors.append("one or more visible peace decisions lacks its scenario-long deathdate")
 
     visible = "\n".join(
         line for line in actual.splitlines()

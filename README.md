@@ -10,12 +10,17 @@ Indian state to choose its own place in the world?
 
 *Freedom came early. Unity came at a price.*
 
-The current playable build is **4.2.0-alpha.29**. Its diplomacy and war-resolution layers use
+The current playable build is **4.2.0-alpha.30**. Its diplomacy and war-resolution layers use
 plain, country-specific decisions: each decision names the defeated country,
 states the exact outcome, and cannot silently settle another war. The overlapping
 V3 routes, V4 strategy menus, theatre matrices, campaign ledgers, operations boards
 and generic armistice layers have been removed. See [the release notes](RELEASE_NOTES.md) and
 [gameplay changes](GAMEPLAY_CHANGES.md).
+
+Alpha 30 repairs the Alpha 29 decision-polling regression: eligible named country
+settlements now appear in the decision pane. It also restores the Frontier Science
+Programme, Oceanic Fleet Review, Third National Plan and Peace Dividend without
+restoring the removed strategic-matrix clutter.
 
 The inherited roster delta is **27-ROSTER1**, built on **27-BALANCE1**. See
 [the cabinet, commander and research-team guide](docs/ROSTER1_RELEASE.md).

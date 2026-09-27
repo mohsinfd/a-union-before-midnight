@@ -136,6 +136,9 @@ def resolution(index: int, country: Country) -> str:
         ),
         "\tstyle = 2",
         f'\tpicture = "{country.picture}"',
+        "\tdate = { day = 0 month = january year = 1933 }",
+        "\toffset = 1",
+        "\tdeathdate = { day = 29 month = december year = 1964 }",
         (
             f"\tdecision = {{ ai = no NOT = {{ flag = ind_country_resolution_{country.key}_complete }} "
             f"{conditions} }}"
@@ -337,6 +340,9 @@ def major_resolution(tag: str, name: str, seat: str, event_id: int, requirements
 \tdesc = "{explanation} India may now make a separate peace with {name}. This ends only India's war with {name}; India's other wars continue."
 \tstyle = 2
 \tpicture = "aubm_v4_liberated_territory"
+\tdate = {{ day = 0 month = january year = 1933 }}
+\toffset = 1
+\tdeathdate = {{ day = 29 month = december year = 1964 }}
 \tdecision = {{ ai = no {condition} }}
 \tdecision_trigger = {{ ai = no {condition} }}
 \taction_a = {{

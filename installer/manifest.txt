@@ -88,6 +88,7 @@ db/events/india_v3/32_navy.txt
 db/events/india_v3/33_command_research.txt
 db/events/india_v3/34_elite_forces.txt
 db/events/india_v3/52_home_front.txt
+db/events/india_v3/60_postwar.txt
 db/events/Mobilization.txt
 db/leaders/india.csv
 db/ministers/ministers_ind.csv
