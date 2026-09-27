@@ -45,20 +45,11 @@ if ($IncludePersonalSprites) {
     $rebaseArguments.IncludePersonalSprites = $true
 }
 
-Invoke-Checked "Complete global campaign matrix" {
-    & $python.Source (Join-Path $PSScriptRoot "generate_aubm_global_campaigns.py") --check
-}
-Invoke-Checked "Complete bespoke regional armistices" {
-    & $python.Source (Join-Path $PSScriptRoot "generate_aubm_bespoke_armistices.py") --check
-}
-Invoke-Checked "Complete bespoke strategic route arcs" {
-    & $python.Source (Join-Path $PSScriptRoot "generate_aubm_bespoke_route_arcs.py") --check
-}
-Invoke-Checked "Save-compatible sovereign liberation campaign" {
-    & $python.Source (Join-Path $PSScriptRoot "generate_aubm_liberator.py") --check
-}
-Invoke-Checked "Sovereign liberation campaign regression tests" {
-    & $python.Source -m unittest discover -s $PSScriptRoot -p "test_aubm_liberator*.py"
+Invoke-Checked "Country-specific peace system" {
+    & $python.Source (Join-Path $PSScriptRoot "generate_aubm_country_resolutions.py") --check
+    if ($LASTEXITCODE -eq 0) {
+        & $python.Source (Join-Path $PSScriptRoot "validate_aubm_country_resolutions.py")
+    }
 }
 Invoke-Checked "Future-force commander reserve" {
     & $python.Source (Join-Path $PSScriptRoot "aubm_command_reserve.py") --check
@@ -112,38 +103,8 @@ Invoke-Checked "Guided War Cabinet and unrestricted sandbox" {
 Invoke-Checked "Audited opening and early-game contracts" {
     & $python.Source (Join-Path $PSScriptRoot "validate_aubm_early_game.py")
 }
-Invoke-Checked "Coalition-independent wartime campaigns" {
-    & $python.Source (Join-Path $PSScriptRoot "validate_aubm_wartime.py")
-}
-Invoke-Checked "Southern regional settlements" {
-    & $python.Source (Join-Path $PSScriptRoot "validate_aubm_southern_settlements.py")
-}
-Invoke-Checked "Southeast Asia operations" {
-    & $python.Source (Join-Path $PSScriptRoot "validate_aubm_southeast_asia.py")
-}
-Invoke-Checked "Wartime persistence contract" {
-    & $python.Source (Join-Path $PSScriptRoot "normalize_aubm_wartime_persistence.py") --check
-}
-Invoke-Checked "Current every-country campaign source" {
-    & $python.Source (Join-Path $PSScriptRoot "generate_aubm_global_campaigns.py") --check
-}
-Invoke-Checked "Every-country campaign lifecycle" {
-    & $python.Source (Join-Path $PSScriptRoot "validate_aubm_global_campaigns.py")
-}
-Invoke-Checked "Current route-specific wartime source" {
-    & $python.Source (Join-Path $PSScriptRoot "generate_aubm_route_consequences.py") --check
-}
-Invoke-Checked "Route-specific wartime consequences" {
-    & $python.Source (Join-Path $PSScriptRoot "validate_aubm_route_consequences.py")
-}
-Invoke-Checked "Current bespoke strategic-route source" {
-    & $python.Source (Join-Path $PSScriptRoot "generate_aubm_bespoke_route_arcs.py") --check
-}
-Invoke-Checked "Bespoke strategic-route campaign arcs" {
-    & $python.Source (Join-Path $PSScriptRoot "validate_aubm_bespoke_routes.py")
-}
-Invoke-Checked "Bespoke regional armistice lifecycle" {
-    & $python.Source (Join-Path $PSScriptRoot "generate_aubm_bespoke_armistices.py") --check
+Invoke-Checked "Country-specific wartime resolutions" {
+    & $python.Source (Join-Path $PSScriptRoot "validate_aubm_country_resolutions.py")
 }
 Invoke-Checked "Original all-terrain source pipeline" {
     & $python.Source (Join-Path $PSScriptRoot "validate_aubm_terrain.py")
@@ -214,12 +175,6 @@ if ($GameRoot) {
 Write-Host ""
 Write-Host "[Verified deployment]"
 & (Join-Path $repositoryRoot "installer\Install-A-Union-Before-Midnight.ps1") @installerArguments
-
-# The generated campaign matrices need the final safety/menu pass. Never let a
-# future normal rebuild silently deploy the pre-CLEANUP1 peace implementation.
-$cleanupGameRoot = if ($GameRoot) { $GameRoot } else { "C:\Program Files (x86)\Steam\steamapps\common\Darkest Hour A HOI Game" }
-& (Join-Path $PSScriptRoot "Build-Cleanup1.ps1") `
-    -Target (Join-Path $cleanupGameRoot "Mods\$TargetName") -WithoutSave
 
 Write-Host ""
 Write-Host "V4 rebuilt, validated and deployed. The game was not launched."

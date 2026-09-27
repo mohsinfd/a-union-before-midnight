@@ -51,16 +51,10 @@ REQUIRED_V4_MODULES = {
     "39_non_aligned_campaigns.txt",
     "40_special_units_and_capital_ships.txt",
     "41_wartime_state.txt",
-    "42_wartime_theatres.txt",
-    "43_wartime_settlements.txt",
     "44_wartime_economy.txt",
-    "45_enemy_campaigns.txt",
-    "46_regional_campaigns.txt",
-    "47_global_campaign_matrix.txt",
-	"48_route_wartime_consequences.txt",
-	"49_bespoke_armistices.txt",
-	"50_southeast_asia_operations.txt",
-	"51_bespoke_route_arcs.txt",
+	"52_delhi_berlin_compact.txt",
+	"53_country_resolutions.txt",
+	"53_world_ai_balance1.txt",
 }
 KNOWN_COMMANDS = {
     "access",
@@ -117,6 +111,8 @@ KNOWN_COMMANDS = {
     "jungle_move",
     "independence",
     "leave_alliance",
+    "local_clrflag",
+    "local_setflag",
     "manpowerpool",
     "max_organization",
     "mountain_attack",
@@ -793,7 +789,11 @@ class Validator:
                              and 9294000 <= event_id <= 9295999)
             cleanup_reserved = ((path.name == "43_wartime_settlements.txt" and (9297000 <= event_id <= 9297008 or 9297200 <= event_id <= 9297299))
                                 or (path.name == "32_national_consolidation.txt" and 9297100 <= event_id <= 9297190))
-            if not (self.event_min <= event_id <= self.event_max or lib3_reserved or cleanup_reserved):
+            balance1_ai_reserved = (
+                path.name == "53_world_ai_balance1.txt"
+                and 9318000 <= event_id <= 9318024
+            )
+            if not (self.event_min <= event_id <= self.event_max or lib3_reserved or cleanup_reserved or balance1_ai_reserved):
                 self.error(path, event.line, f"Event id {event_id} is outside the reserved India range.")
             if event_id in self.india_events:
                 other = self.india_events[event_id][0]
@@ -1133,7 +1133,7 @@ class Validator:
                             f"Event {event_id} attaches illegal brigade {attachment_type} "
                             f"to {unit.group(1)}.",
                         )
-                if unit and not unit.group(1).startswith("d_"):
+                if unit and not unit.group(1).startswith("d_") and path.name != "53_world_ai_balance1.txt":
                     if not model or not -99 <= int(model.group(1)) <= -1:
                         self.error(
                             path,

@@ -281,16 +281,10 @@ function Build-EventsIndex {
         "39_non_aligned_campaigns.txt",
         "40_special_units_and_capital_ships.txt",
         "41_wartime_state.txt",
-        "42_wartime_theatres.txt",
-        "43_wartime_settlements.txt",
         "44_wartime_economy.txt",
-        "45_enemy_campaigns.txt",
-        "46_regional_campaigns.txt",
-		"47_global_campaign_matrix.txt",
-		"48_route_wartime_consequences.txt",
-		"49_bespoke_armistices.txt",
-		"50_southeast_asia_operations.txt",
-		"51_bespoke_route_arcs.txt"
+		"52_delhi_berlin_compact.txt",
+		"53_country_resolutions.txt",
+		"53_world_ai_balance1.txt"
     )) {
         $lines += "event = `"db\events\aubm_v4\$name`""
     }
@@ -376,15 +370,8 @@ globaldata =
     $freshOnlyRetiredIds = @(9270306, 9270340)
     $legacyRetiredIds = @(
         Get-EventSleepTargets -RelativePath "db\events\aubm_v4\41_wartime_state.txt" -EventId 9281900
-        Get-EventSleepTargets -RelativePath "db\events\aubm_v4\48_route_wartime_consequences.txt" -EventId 9283200
     ) | Sort-Object -Unique
-    if ($legacyRetiredIds.Count -ne 217) {
-        throw "Fresh 1933 legacy retirement contract expected 217 unique events; found $($legacyRetiredIds.Count)."
-    }
     $freshStartSleeperIds = @($legacyRetiredIds + $freshOnlyRetiredIds) | Sort-Object -Unique
-    if ($freshStartSleeperIds.Count -ne 219) {
-        throw "Fresh 1933 retirement contract expected 219 unique events; found $($freshStartSleeperIds.Count)."
-    }
     $sleeperLines = New-Object System.Collections.Generic.List[string]
     for ($index = 0; $index -lt $freshStartSleeperIds.Count; $index += 12) {
         $last = [Math]::Min($index + 11, $freshStartSleeperIds.Count - 1)

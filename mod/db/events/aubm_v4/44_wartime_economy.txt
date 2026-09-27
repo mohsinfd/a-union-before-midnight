@@ -420,7 +420,7 @@ event = {
 	random = no
 	persistent = yes
 	country = IND
-	name = "War Economy Ledger"
+	name = "War Economy"
 	desc = "The annual budget arrives automatically every 360 days while the war account remains active. A negative treasury balance unlocks 750 emergency credit once per 180 days. Mobilisation is one initial service decision, followed by one escalation only if the pool falls below 150. The ordinary annual trained reserve class remains active. Direct occupations create separate annual upkeep."
 	style = 2
 	picture = "aubm_v4_india_world_war"
@@ -436,8 +436,7 @@ event = {
 		command = { type = event which = 9282086 where = IND when = 1 }
 	}
 	action_d = {
-		name = "Return to Global Command"
-		command = { type = event which = 9281933 where = IND when = 1 }
+		name = "Close"
 	}
 }
 

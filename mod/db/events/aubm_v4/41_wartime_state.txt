@@ -1252,8 +1252,7 @@ event = {
 		command = { type = clrflag which = ind_v4_strategy_japan }
 		command = { type = setflag which = ind_v3_non_aligned }
 		command = { type = setflag which = ind_v4_strategy_nam }
-		# Alpha 23 keeps historical victories but abandons the live route board.
-		command = { type = event which = 9289699 where = IND when = 1 }
+		# Historical route flags remain recorded; the retired route screen is not reopened.
 		command = { type = dissent value = 2 }
 		command = { type = setflag which = ind_aubm_realignment_cooldown }
 		command = { type = event which = 9281938 where = IND when = 90 }
@@ -1820,8 +1819,8 @@ event = {
 	random = no
 	persistent = yes
 	country = IND
-	name = "India's Live Campaign Ledger"
-	desc = "The ledger is geographic rather than ideological. Southern Command covers Burma, Malaya, Indonesia, Australia and Japan. Western Command covers Persia, the Gulf, Suez and East Africa. Northern Command covers Afghanistan, Tibet, Xinjiang, Central Asia and the Caucasus. Global Command covers Europe, Britain and the Pacific approaches."
+	name = "Country Peace Decisions"
+	desc = "The old regional command screens are retired. When India defeats a country, a decision appears under that country's name and changes that country only."
 	style = 2
 	picture = "aubm_v4_war_aims"
 	# AUBM_MENU_SAFE_EXIT: human-only; no effects or follow-up event.
@@ -1829,22 +1828,7 @@ event = {
 		trigger = { ai = no }
 		name = "Cancel - close without changes"
 	}
-	action_a = {
-		name = "Inspect Southern Command"
-		command = { type = event which = 9281930 where = IND when = 1 }
-	}
-	action_b = {
-		name = "Inspect Western Command"
-		command = { type = event which = 9281931 where = IND when = 1 }
-	}
-	action_c = {
-		name = "Inspect Northern Command"
-		command = { type = event which = 9281932 where = IND when = 1 }
-	}
-	action_d = {
-		name = "Inspect Global Command"
-		command = { type = event which = 9281933 where = IND when = 1 }
-	}
+	action_a = { name = "Close" }
 }
 
 #########################################################################
@@ -2373,10 +2357,6 @@ event = {
 			war = { country = IND country = SOV }
 			flag = ind_aubm_route_german
 			flag = ind_gc_campaign_active
-			flag = ind_aubm_soviet_current
-			flag = ind_aubm_soviet_limited_victory
-			flag = ind_aubm_soviet_major_victory
-			flag = ind_aubm_national_northern_victory
 		}
 		NOT = { flag = ind_aubm_bitter_peace_answered }
 	}
@@ -2394,7 +2374,6 @@ event = {
 		command = { type = dissent value = -2 }
 		command = { type = relation which = GER value = 15 }
 		command = { type = setflag which = ind_aubm_bitter_peace_answered }
-		command = { trigger = { flag = ind_aubm_soviet_current } type = event which = 9282003 where = IND when = 1 }
 	}
 	action_b = {
 		trigger = { war = { country = IND country = SOV } }
@@ -2407,9 +2386,8 @@ event = {
 	}
 	action_c = {
 		trigger = { NOT = { war = { country = IND country = SOV } } }
-		name = "Record the inherited peace and India's ledger"
+		name = "Accept the inherited peace"
 		command = { type = setflag which = ind_aubm_bitter_peace_answered }
-		command = { trigger = { flag = ind_aubm_soviet_current } type = event which = 9282003 where = IND when = 1 }
 	}
 }
 

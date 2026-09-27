@@ -1,0 +1,367 @@
+# AUBM_BALANCE1_WORLD_AI_V1
+# Hidden AI-only state transitions; no player decisions.
+event = {
+    id = 9318000
+    country = SOV
+    random = no
+    persistent = yes
+    trigger = { ai = yes exists = SOV exists = IND NOT = { ai = IND } war = { country = SOV country = IND } NOT = { alliance = { country = SOV country = IND } } NOT = { local_flag = aubm_b1_india_front_sov } }
+    name = "AI_EVENT"
+    style = 0
+    date = { day = 1 month = january year = 1933 }
+    offset = 3
+    deathdate = { day = 29 month = december year = 1963 }
+    action_a = {
+        command = { type = local_setflag which = aubm_b1_india_front_sov }
+        command = { type = ai which = "aubm/balance1/SOV_india_front.ai" }
+    }
+}
+event = {
+    id = 9318001
+    country = SOV
+    random = no
+    persistent = yes
+    trigger = { ai = yes local_flag = aubm_b1_india_front_sov NOT = { AND = { ai = yes exists = SOV exists = IND NOT = { ai = IND } war = { country = SOV country = IND } NOT = { alliance = { country = SOV country = IND } } } } }
+    name = "AI_EVENT"
+    style = 0
+    date = { day = 1 month = january year = 1933 }
+    offset = 3
+    deathdate = { day = 29 month = december year = 1963 }
+    action_a = {
+        command = { type = local_clrflag which = aubm_b1_india_front_sov }
+        command = { type = ai which = "aubm/balance1/india_front_standdown.ai" }
+    }
+}
+event = {
+    id = 9318002
+    country = JAP
+    random = no
+    persistent = yes
+    trigger = { ai = yes exists = JAP exists = IND NOT = { ai = IND } war = { country = JAP country = IND } NOT = { alliance = { country = JAP country = IND } } NOT = { local_flag = aubm_b1_india_front_jap } }
+    name = "AI_EVENT"
+    style = 0
+    date = { day = 1 month = january year = 1933 }
+    offset = 3
+    deathdate = { day = 29 month = december year = 1963 }
+    action_a = {
+        command = { type = local_setflag which = aubm_b1_india_front_jap }
+        command = { type = ai which = "aubm/balance1/JAP_india_front.ai" }
+    }
+}
+event = {
+    id = 9318003
+    country = JAP
+    random = no
+    persistent = yes
+    trigger = { ai = yes local_flag = aubm_b1_india_front_jap NOT = { AND = { ai = yes exists = JAP exists = IND NOT = { ai = IND } war = { country = JAP country = IND } NOT = { alliance = { country = JAP country = IND } } } } }
+    name = "AI_EVENT"
+    style = 0
+    date = { day = 1 month = january year = 1933 }
+    offset = 3
+    deathdate = { day = 29 month = december year = 1963 }
+    action_a = {
+        command = { type = local_clrflag which = aubm_b1_india_front_jap }
+        command = { type = ai which = "aubm/balance1/india_front_standdown.ai" }
+    }
+}
+event = {
+    id = 9318004
+    country = ENG
+    random = no
+    persistent = yes
+    trigger = { ai = yes exists = ENG exists = IND NOT = { ai = IND } war = { country = ENG country = IND } NOT = { alliance = { country = ENG country = IND } } NOT = { local_flag = aubm_b1_india_front_eng } }
+    name = "AI_EVENT"
+    style = 0
+    date = { day = 1 month = january year = 1933 }
+    offset = 3
+    deathdate = { day = 29 month = december year = 1963 }
+    action_a = {
+        command = { type = local_setflag which = aubm_b1_india_front_eng }
+        command = { type = ai which = "aubm/balance1/ENG_india_front.ai" }
+    }
+}
+event = {
+    id = 9318005
+    country = ENG
+    random = no
+    persistent = yes
+    trigger = { ai = yes local_flag = aubm_b1_india_front_eng NOT = { AND = { ai = yes exists = ENG exists = IND NOT = { ai = IND } war = { country = ENG country = IND } NOT = { alliance = { country = ENG country = IND } } } } }
+    name = "AI_EVENT"
+    style = 0
+    date = { day = 1 month = january year = 1933 }
+    offset = 3
+    deathdate = { day = 29 month = december year = 1963 }
+    action_a = {
+        command = { type = local_clrflag which = aubm_b1_india_front_eng }
+        command = { type = ai which = "aubm/balance1/india_front_standdown.ai" }
+    }
+}
+event = {
+    id = 9318006
+    country = USA
+    random = no
+    persistent = yes
+    trigger = { ai = yes exists = USA exists = IND NOT = { ai = IND } war = { country = USA country = IND } NOT = { alliance = { country = USA country = IND } } NOT = { local_flag = aubm_b1_india_front_usa } }
+    name = "AI_EVENT"
+    style = 0
+    date = { day = 1 month = january year = 1933 }
+    offset = 3
+    deathdate = { day = 29 month = december year = 1963 }
+    action_a = {
+        command = { type = local_setflag which = aubm_b1_india_front_usa }
+        command = { type = ai which = "aubm/balance1/USA_india_front.ai" }
+    }
+}
+event = {
+    id = 9318007
+    country = USA
+    random = no
+    persistent = yes
+    trigger = { ai = yes local_flag = aubm_b1_india_front_usa NOT = { AND = { ai = yes exists = USA exists = IND NOT = { ai = IND } war = { country = USA country = IND } NOT = { alliance = { country = USA country = IND } } } } }
+    name = "AI_EVENT"
+    style = 0
+    date = { day = 1 month = january year = 1933 }
+    offset = 3
+    deathdate = { day = 29 month = december year = 1963 }
+    action_a = {
+        command = { type = local_clrflag which = aubm_b1_india_front_usa }
+        command = { type = ai which = "aubm/balance1/india_front_standdown.ai" }
+    }
+}
+event = {
+    id = 9318008
+    country = GER
+    random = no
+    persistent = yes
+    trigger = { ai = yes exists = GER exists = IND NOT = { ai = IND } war = { country = GER country = IND } NOT = { alliance = { country = GER country = IND } } NOT = { local_flag = aubm_b1_india_front_ger } }
+    name = "AI_EVENT"
+    style = 0
+    date = { day = 1 month = january year = 1933 }
+    offset = 3
+    deathdate = { day = 29 month = december year = 1963 }
+    action_a = {
+        command = { type = local_setflag which = aubm_b1_india_front_ger }
+        command = { type = ai which = "aubm/balance1/GER_india_front.ai" }
+    }
+}
+event = {
+    id = 9318009
+    country = GER
+    random = no
+    persistent = yes
+    trigger = { ai = yes local_flag = aubm_b1_india_front_ger NOT = { AND = { ai = yes exists = GER exists = IND NOT = { ai = IND } war = { country = GER country = IND } NOT = { alliance = { country = GER country = IND } } } } }
+    name = "AI_EVENT"
+    style = 0
+    date = { day = 1 month = january year = 1933 }
+    offset = 3
+    deathdate = { day = 29 month = december year = 1963 }
+    action_a = {
+        command = { type = local_clrflag which = aubm_b1_india_front_ger }
+        command = { type = ai which = "aubm/balance1/india_front_standdown.ai" }
+    }
+}
+event = {
+    id = 9318010
+    country = ITA
+    random = no
+    persistent = yes
+    trigger = { ai = yes exists = ITA exists = IND NOT = { ai = IND } war = { country = ITA country = IND } NOT = { alliance = { country = ITA country = IND } } NOT = { local_flag = aubm_b1_india_front_ita } }
+    name = "AI_EVENT"
+    style = 0
+    date = { day = 1 month = january year = 1933 }
+    offset = 3
+    deathdate = { day = 29 month = december year = 1963 }
+    action_a = {
+        command = { type = local_setflag which = aubm_b1_india_front_ita }
+        command = { type = ai which = "aubm/balance1/ITA_india_front.ai" }
+    }
+}
+event = {
+    id = 9318011
+    country = ITA
+    random = no
+    persistent = yes
+    trigger = { ai = yes local_flag = aubm_b1_india_front_ita NOT = { AND = { ai = yes exists = ITA exists = IND NOT = { ai = IND } war = { country = ITA country = IND } NOT = { alliance = { country = ITA country = IND } } } } }
+    name = "AI_EVENT"
+    style = 0
+    date = { day = 1 month = january year = 1933 }
+    offset = 3
+    deathdate = { day = 29 month = december year = 1963 }
+    action_a = {
+        command = { type = local_clrflag which = aubm_b1_india_front_ita }
+        command = { type = ai which = "aubm/balance1/india_front_standdown.ai" }
+    }
+}
+event = {
+    id = 9318012
+    country = AST
+    random = no
+    persistent = yes
+    trigger = { ai = yes exists = AST exists = IND NOT = { ai = IND } war = { country = AST country = IND } NOT = { alliance = { country = AST country = IND } } NOT = { local_flag = aubm_b1_india_front_ast } }
+    name = "AI_EVENT"
+    style = 0
+    date = { day = 1 month = january year = 1933 }
+    offset = 3
+    deathdate = { day = 29 month = december year = 1963 }
+    action_a = {
+        command = { type = local_setflag which = aubm_b1_india_front_ast }
+        command = { type = ai which = "aubm/balance1/AST_india_front.ai" }
+    }
+}
+event = {
+    id = 9318013
+    country = AST
+    random = no
+    persistent = yes
+    trigger = { ai = yes local_flag = aubm_b1_india_front_ast NOT = { AND = { ai = yes exists = AST exists = IND NOT = { ai = IND } war = { country = AST country = IND } NOT = { alliance = { country = AST country = IND } } } } }
+    name = "AI_EVENT"
+    style = 0
+    date = { day = 1 month = january year = 1933 }
+    offset = 3
+    deathdate = { day = 29 month = december year = 1963 }
+    action_a = {
+        command = { type = local_clrflag which = aubm_b1_india_front_ast }
+        command = { type = ai which = "aubm/balance1/india_front_standdown.ai" }
+    }
+}
+event = {
+    id = 9318020
+    country = GER
+    random = no
+    persistent = no
+    trigger = { ai = yes exists = GER exists = ITA ai = ITA exists = ENG
+        alliance = { country = GER country = ITA }
+        war = { country = GER country = ENG } war = { country = ITA country = ENG }
+        NOT = { war = { country = GER country = ITA } }
+        NOT = { local_flag = aubm_b1_afrika_deployed }
+        control = { province = 55 data = GER }
+        control = { province = 750 data = ITA } 
+        manpower = 30 supplies = 6000 oil = 1500 money = 300 }
+    name = "AI_EVENT"
+    style = 0
+    date = { day = 1 month = july year = 1940 }
+    offset = 3
+    deathdate = { day = 29 month = december year = 1963 }
+    action_a = {
+        command = { type = local_setflag which = aubm_b1_afrika_deployed }
+        command = { type = manpowerpool value = -30 }
+        command = { type = supplies value = -6000 }
+        command = { type = oilpool value = -1500 }
+        command = { type = money value = -300 }
+        command = { type = add_corps which = "Afrika Reserve Corps" value = land where = 750 }
+        command = { type = add_division which = "Afrika Panzer Reserve" value = light_armor when = 1 }
+        command = { type = add_division which = "Afrika Motorised Reserve" value = motorized when = 1 }
+    }
+}
+event = {
+    id = 9318021
+    country = GER
+    random = no
+    persistent = no
+    trigger = { ai = yes exists = GER exists = ITA ai = ITA exists = ENG
+        alliance = { country = GER country = ITA }
+        war = { country = GER country = ENG } war = { country = ITA country = ENG }
+        NOT = { war = { country = GER country = ITA } }
+        NOT = { local_flag = aubm_b1_afrika_deployed }
+        control = { province = 55 data = GER }
+        control = { province = 761 data = ITA } NOT = { control = { province = 750 data = ITA } }
+        manpower = 30 supplies = 6000 oil = 1500 money = 300 }
+    name = "AI_EVENT"
+    style = 0
+    date = { day = 1 month = july year = 1940 }
+    offset = 3
+    deathdate = { day = 29 month = december year = 1963 }
+    action_a = {
+        command = { type = local_setflag which = aubm_b1_afrika_deployed }
+        command = { type = manpowerpool value = -30 }
+        command = { type = supplies value = -6000 }
+        command = { type = oilpool value = -1500 }
+        command = { type = money value = -300 }
+        command = { type = add_corps which = "Afrika Reserve Corps" value = land where = 761 }
+        command = { type = add_division which = "Afrika Panzer Reserve" value = light_armor when = 1 }
+        command = { type = add_division which = "Afrika Motorised Reserve" value = motorized when = 1 }
+    }
+}
+event = {
+    id = 9318022
+    country = GER
+    random = no
+    persistent = no
+    trigger = { ai = yes exists = GER exists = ITA ai = ITA exists = ENG
+        alliance = { country = GER country = ITA }
+        war = { country = GER country = ENG } war = { country = ITA country = ENG }
+        NOT = { war = { country = GER country = ITA } }
+        NOT = { local_flag = aubm_b1_afrika_deployed }
+        control = { province = 55 data = GER }
+        control = { province = 765 data = ITA } NOT = { control = { province = 750 data = ITA } } NOT = { control = { province = 761 data = ITA } }
+        manpower = 30 supplies = 6000 oil = 1500 money = 300 }
+    name = "AI_EVENT"
+    style = 0
+    date = { day = 1 month = july year = 1940 }
+    offset = 3
+    deathdate = { day = 29 month = december year = 1963 }
+    action_a = {
+        command = { type = local_setflag which = aubm_b1_afrika_deployed }
+        command = { type = manpowerpool value = -30 }
+        command = { type = supplies value = -6000 }
+        command = { type = oilpool value = -1500 }
+        command = { type = money value = -300 }
+        command = { type = add_corps which = "Afrika Reserve Corps" value = land where = 765 }
+        command = { type = add_division which = "Afrika Panzer Reserve" value = light_armor when = 1 }
+        command = { type = add_division which = "Afrika Motorised Reserve" value = motorized when = 1 }
+    }
+}
+event = {
+    id = 9318023
+    country = GER
+    random = no
+    persistent = no
+    trigger = { ai = yes exists = GER exists = FIN ai = FIN exists = SOV
+        alliance = { country = GER country = FIN }
+        war = { country = GER country = SOV } war = { country = FIN country = SOV }
+        NOT = { war = { country = GER country = FIN } }
+        NOT = { local_flag = aubm_b1_nordland_deployed }
+        control = { province = 517 data = FIN } 
+        manpower = 30 supplies = 5000 money = 250 }
+    name = "AI_EVENT"
+    style = 0
+    date = { day = 1 month = june year = 1941 }
+    offset = 3
+    deathdate = { day = 29 month = december year = 1963 }
+    action_a = {
+        command = { type = local_setflag which = aubm_b1_nordland_deployed }
+        command = { type = manpowerpool value = -30 }
+        command = { type = supplies value = -5000 }
+        command = { type = money value = -250 }
+        command = { type = add_corps which = "Nordland Reserve Corps" value = land where = 517 }
+        command = { type = add_division which = "Nordland Mountain Reserve 1" value = bergsjaeger when = 10 }
+        command = { type = add_division which = "Nordland Mountain Reserve 2" value = bergsjaeger when = 10 }
+    }
+}
+event = {
+    id = 9318024
+    country = GER
+    random = no
+    persistent = no
+    trigger = { ai = yes exists = GER exists = FIN ai = FIN exists = SOV
+        alliance = { country = GER country = FIN }
+        war = { country = GER country = SOV } war = { country = FIN country = SOV }
+        NOT = { war = { country = GER country = FIN } }
+        NOT = { local_flag = aubm_b1_nordland_deployed }
+        control = { province = 525 data = FIN } NOT = { control = { province = 517 data = FIN } }
+        manpower = 30 supplies = 5000 money = 250 }
+    name = "AI_EVENT"
+    style = 0
+    date = { day = 1 month = june year = 1941 }
+    offset = 3
+    deathdate = { day = 29 month = december year = 1963 }
+    action_a = {
+        command = { type = local_setflag which = aubm_b1_nordland_deployed }
+        command = { type = manpowerpool value = -30 }
+        command = { type = supplies value = -5000 }
+        command = { type = money value = -250 }
+        command = { type = add_corps which = "Nordland Reserve Corps" value = land where = 525 }
+        command = { type = add_division which = "Nordland Mountain Reserve 1" value = bergsjaeger when = 10 }
+        command = { type = add_division which = "Nordland Mountain Reserve 2" value = bergsjaeger when = 10 }
+    }
+}

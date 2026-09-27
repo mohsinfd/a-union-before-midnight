@@ -10,8 +10,15 @@ Indian state to choose its own place in the world?
 
 *Freedom came early. Unity came at a price.*
 
-Latest local roster delta: **27-ROSTER1**, built on **27-BALANCE1**, for a
-**new 1933 campaign**. See [the cabinet, commander and research-team guide](docs/ROSTER1_RELEASE.md).
+The current playable build is **4.2.0-alpha.28**. Its war-resolution layer uses
+plain, country-specific decisions: each decision names the defeated country,
+states the exact outcome, and cannot silently settle another war. The overlapping
+theatre, regional-matrix, operations-board and generic armistice layers have been
+removed. See [the release notes](RELEASE_NOTES.md) and
+[gameplay changes](GAMEPLAY_CHANGES.md).
+
+The inherited roster delta is **27-ROSTER1**, built on **27-BALANCE1**. See
+[the cabinet, commander and research-team guide](docs/ROSTER1_RELEASE.md).
 For a player-facing explanation of the opening, economy, military, diplomacy and
 long-war objectives, see [the new-game play guide](docs/NEW_GAME_PLAY_GUIDE.md).
 For a one-line audit of the specific issues raised during playtesting, see the

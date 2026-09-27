@@ -1,5 +1,19 @@
 # Release Notes
 
+## 4.2.0-alpha.28 / Alpha 28 - Country Peace Rewrite
+
+Alpha 28 removes the global campaign matrix, regional and theatre boards,
+generic armistice chains, and their overlapping settlement logic. India now
+receives one plainly named decision for each defeated country. A protectorate
+costs 250 supplies and no dissent; an independent partner reduces dissent and
+grants access; only direct military occupation adds dissent.
+
+Iraq can now resolve only Iraq. Releasing it cannot close a Western front or
+suspend Persian, Arabian, Egyptian, or Soviet choices. The same rule applies
+to every country in the new system. Britain, Germany, the Soviet Union, Japan,
+and the United States have separate, deeper peace requirements; the Soviet
+decision requires Moscow and Stalingrad plus two southern objectives.
+
 ## 4.2.0-alpha.27 / Alpha 27 - Native-Contrast Terrain Correction
 
 *30 Aug 2026*

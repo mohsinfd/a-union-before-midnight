@@ -831,9 +831,9 @@ event = {
 	persistent = yes
 	one_action = yes
 	country = IND
-	trigger = { flag = ind_db_compact_active OR = { war = { country = IND country = JAP } war = { country = IND country = ENG } war = { country = IND country = USA } } flag = ind_aubm_sea_lane_malacca_achieved NOT = { flag = ind_db_malacca_gate } }
+	trigger = { flag = ind_db_compact_active OR = { war = { country = IND country = JAP } war = { country = IND country = ENG } war = { country = IND country = USA } } control = { province = 1432 data = IND } control = { province = 1438 data = IND } NOT = { flag = ind_db_malacca_gate } }
 	name = "Delhi Wins the Straits Race"
-	desc = "The Malacca sea gate is secure under Indian command. Berlin and Tokyo cannot convert the achievement into their own territorial claim. Existing Southeast Asian settlement events remain authoritative."
+	desc = "India controls Singapore and Kuala Lumpur. Berlin and Tokyo gain no claim from India's victory. Malaysia, Indonesia and other countries are resolved separately by name."
 	style = 2
 	picture = "aubm_ger_independent_command"
 	action_a = { name = "Record India's southern command: +300 supplies, -1 dissent" command = { type = supplies value = 300 } command = { type = dissent value = -1 } command = { type = setflag which = ind_db_malacca_gate } command = { type = setflag which = ind_aubm_victory_sovereign_credit } }
@@ -846,11 +846,11 @@ event = {
 	one_action = yes
 	country = IND
 	trigger = { flag = ind_db_compact_active flag = ind_db_caucasus_gate flag = ind_db_red_sea_gate flag = ind_db_malacca_gate NOT = { flag = ind_db_three_theatre_command } }
-	name = "Three Theatres Answer to Delhi"
-	desc = "India has linked the Caucasus, Red Sea and Malacca commands in one war. This is compact prestige and secondary campaign credit, not another settlement reward."
+	name = "Delhi Links Three Fronts"
+	desc = "India has linked the Caucasus, Red Sea and Malacca fronts in one war. The achievement brings prestige and logistical experience, but changes no country's political status."
 	style = 2
 	picture = "aubm_ger_three_capitals"
-	action_a = { name = "Record the three-theatre command: -3 dissent, +2% TC" command = { type = dissent value = -3 } command = { type = tc_mod value = 2 } command = { type = setflag which = ind_db_three_theatre_command } command = { type = setflag which = ind_aubm_secondary_campaign_credit } }
+	action_a = { name = "Recognize the three-front command: -3 dissent, +2% TC" command = { type = dissent value = -3 } command = { type = tc_mod value = 2 } command = { type = setflag which = ind_db_three_theatre_command } command = { type = setflag which = ind_aubm_secondary_campaign_credit } }
 }
 
 #########################################################################
@@ -911,7 +911,7 @@ event = {
 	random = no
 	persistent = yes
 	country = IND
-	trigger = { year = 1943 flag = ind_db_compact_active NOT = { alliance = { country = IND country = GER } } NOT = { flag = ind_db_berlin_price_handled } exists = GER OR = { flag = ind_db_three_theatre_command flag = ind_aubm_route_war_achievement control = { province = 900 data = IND } control = { province = 713 data = IND } } }
+	trigger = { year = 1943 flag = ind_db_compact_active NOT = { alliance = { country = IND country = GER } } NOT = { flag = ind_db_berlin_price_handled } exists = GER OR = { flag = ind_db_three_theatre_command flag = ind_country_resolution_major_eng flag = ind_country_resolution_major_sov control = { province = 900 data = IND } control = { province = 713 data = IND } } }
 	name = "Berlin Claims the Price of Victory"
 	desc = "Germany wants India to accept limits east of Suez in return for postwar recognition. Delhi can accept a narrow map, end the compact peacefully, or prepare to fight a former partner."
 	style = 2
@@ -995,8 +995,8 @@ event = {
 	one_action = yes
 	country = IND
 	trigger = { flag = ind_db_compact_active NOT = { flag = ind_aubm_commitment_german } }
-	name = "The German Compact Ledger Closes"
-	desc = "A shared withdrawal or route change has ended India's German commitment. The compact's active files close automatically; completed projects and campaign history remain recorded."
+	name = "The German Compact Ends"
+	desc = "A withdrawal or route change has ended India's German commitment. Future compact decisions close automatically; completed projects remain."
 	style = 2
 	picture = "aubm_ger_independent_command"
 	date = { day = 0 month = january year = 1937 }

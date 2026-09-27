@@ -207,7 +207,7 @@ event = {
 
 	name = "Convene the National War Cabinet"
 	decision_desc = "Available from 1937, during a real Indian war, or after the explicit early-sandbox opt-in. Inspection is free. Binding alignments are exclusive; peaceful withdrawal begins a ninety-day realignment period."
-	desc = "The War Cabinet separates authored route plans, alliances, enemies and active theatres. India may negotiate with London, Berlin, Moscow or Tokyo only while uncommitted, or upgrade a compact within the same route. A binding partner cannot be attacked or exchanged for another side during war."
+	desc = "Use the War Cabinet to review India's coalition or begin a named war. Peace decisions appear separately under the defeated country's name. A binding partner cannot be attacked or exchanged for another side during war."
 	style = 2
 	picture = "aubm_v4_india_world_war"
 
@@ -220,11 +220,10 @@ event = {
 		command = { type = event which = 9281910 where = IND when = 1 }
 	}
 	action_b = {
-		name = "Authored route campaigns and partner crises"
-		command = { type = event which = 9289499 where = IND when = 1 }
+		name = "Country peace decisions appear separately when earned"
 	}
 	action_c = {
-		name = "Great-power, regional and active campaign dockets"
+		name = "Choose a country for a separate Indian war"
 		command = { type = event which = 9281012 where = IND when = 1 }
 	}
 	action_d = {
@@ -237,8 +236,8 @@ event = {
 	random = no
 	persistent = yes
 	country = IND
-	name = "War Cabinet: Campaign Dockets and Unrestricted Targets"
-	desc = "Review live Indian objectives, open authored great-power or regional dockets, or enter the unrestricted country index. The index is a sandbox catalogue for states not already handled by a bespoke docket. Formal alliances share declarations; sovereign and compact routes retain separate wars."
+	name = "War Cabinet: Choose a Country"
+	desc = "Choose the country India may fight. This screen starts no war by itself. Every declaration receives a separate confirmation, and later peace decisions are named after the defeated country."
 	style = 2
 	picture = "aubm_v4_grand_strategy"
 	# AUBM_MENU_SAFE_EXIT: human-only; no effects or follow-up event.
@@ -247,20 +246,19 @@ event = {
 		name = "Cancel - close without changes"
 	}
 	action_a = {
-		name = "Review live objectives and settlements"
-		command = { type = event which = 9281913 where = IND when = 1 }
-	}
-	action_b = {
-		name = "Open great-power or regional campaign dockets"
+		name = "Great powers"
 		command = { type = event which = 9281911 where = IND when = 1 }
 	}
-	action_c = {
-		name = "Open regional campaign dockets"
+	action_b = {
+		name = "Asian and Middle Eastern countries"
 		command = { type = event which = 9281912 where = IND when = 1 }
 	}
+	action_c = {
+		name = "Close; country peace decisions appear automatically"
+	}
 	action_d = {
-		name = "Unrestricted targets or return"
-		command = { type = event which = 9281013 where = IND when = 1 }
+		name = "Return to the National War Cabinet"
+		command = { type = event which = 9281001 where = IND when = 1 }
 	}
 }
 
@@ -269,8 +267,8 @@ event = {
 	random = no
 	persistent = yes
 	country = IND
-	name = "War Cabinet: Unrestricted Target Catalogue"
-	desc = "The complete 210-country catalogue is optional sandbox material beneath the authored great-power, regional and route campaigns. Enabling it is permanent, grants no reward and never bypasses alliance, legal-owner or current-partner guards."
+	name = "The Unrestricted Campaign Catalogue Is Retired"
+	desc = "The former all-country catalogue created thousands of repeated checks and unclear peace chains. It is no longer used. Named country decisions now handle Indian wars and peace."
 	style = 2
 	picture = "aubm_v4_grand_strategy"
 	# AUBM_MENU_SAFE_EXIT: human-only; no effects or follow-up event.
@@ -279,21 +277,10 @@ event = {
 		name = "Cancel - close without changes"
 	}
 	action_a = {
-		trigger = { NOT = { flag = ind_aubm_unrestricted_sandbox } }
-		name = "Enable unrestricted targets permanently (no reward)"
-		command = { type = setflag which = ind_aubm_unrestricted_sandbox }
-		command = { type = event which = 9281013 where = IND when = 1 }
-	}
-	action_b = {
-		trigger = { flag = ind_aubm_unrestricted_sandbox }
-		name = "Open the complete country campaign index"
-		command = { type = event which = 9282300 where = IND when = 1 }
-	}
-	action_c = {
 		name = "Return to the National War Cabinet"
 		command = { type = event which = 9281001 where = IND when = 1 }
 	}
-	action_d = { name = "Close the Cabinet" }
+	action_b = { name = "Close" }
 }
 
 event = {

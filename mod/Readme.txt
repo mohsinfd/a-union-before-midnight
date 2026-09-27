@@ -1,7 +1,7 @@
 =======================================================================
- A UNION BEFORE MIDNIGHT - V4.2.0 ALPHA 27 - 31 AUG 2026
+ A UNION BEFORE MIDNIGHT - V4.2.0 ALPHA 28 - 27 SEP 2026
  For Darkest Hour 1.05.2
- Source version 4.2.0-alpha.27
+ Source version 4.2.0-alpha.28
 =======================================================================
 
 Freedom came early. Unity came at a price.
