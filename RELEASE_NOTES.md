@@ -1,5 +1,21 @@
 # Release Notes
 
+## 4.2.0-alpha.32 / Alpha 32 - Malaya and Arab Settlements
+
+- Added a Malaysia decision for the common colonial case where Britain still
+  owns Malaya but India controls the peninsula. An Indian protectorate keeps
+  Singapore as a base; a protected neutral Malaysia keeps its full territory.
+- Added an Arab Federation decision after India secures Egypt, Suez, Syria and
+  Jordan and resolves Iraq, Arabia, Yemen and Oman. The Indian protectorate
+  retains Suez, Aden and Basrah; protected neutrality retains no territory.
+- Added limited base treaties for aligned Iraq, Yemen, Malaysia, the
+  Philippines, Indonesia and Australia: Basrah, Aden, Singapore, Davao,
+  Soerabaja and Darwin respectively.
+- Added a permanent-dismiss choice to minor settlements, breakup menus and
+  major-power peace offers. Ignoring a visible decision still leaves it open.
+- The Soviet peace remains deliberately deep: Moscow and Stalingrad plus two
+  of Baku, Tashkent and Astrakhan.
+
 ## 4.2.0-alpha.31 / Alpha 31 - Country Decision Visibility
 
 - Moved the human-player guard from inside `decision` and `decision_trigger` to

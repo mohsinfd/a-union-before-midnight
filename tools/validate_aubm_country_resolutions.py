@@ -68,12 +68,17 @@ def main() -> int:
             errors.append(f"retired module remains packaged: {name}")
 
     ids = [int(value) for value in re.findall(r"(?m)^\s*id\s*=\s*(\d+)", actual)]
-    expected_count = len(COUNTRIES) * 2 + len(MAJOR_EVENTS) + len(FRAGMENT_CALLBACKS) + len(FRAGMENT_PLANS)
+    base_callbacks = sum(bool(country.retained_bases) for country in COUNTRIES)
+    bespoke_events = 16  # Malaya chain plus Arab creation, owner transfers and finalizer.
+    expected_count = (
+        len(COUNTRIES) * 2 + len(MAJOR_EVENTS) + len(FRAGMENT_CALLBACKS)
+        + len(FRAGMENT_PLANS) + base_callbacks + bespoke_events
+    )
     if len(ids) != expected_count or len(ids) != len(set(ids)):
         errors.append(f"expected {expected_count} unique events, found {len(ids)}")
-    if actual.count("\tdecision = {") != len(COUNTRIES) + len(MAJOR_EVENTS):
+    visible_decisions = len(COUNTRIES) + len(MAJOR_EVENTS) + 2
+    if actual.count("\tdecision = {") != visible_decisions:
         errors.append("one or more countries lacks exactly one visible peace decision")
-    visible_decisions = len(COUNTRIES) + len(MAJOR_EVENTS)
     if actual.count("\ttrigger = { ai = no }") != visible_decisions:
         errors.append("one or more visible peace decisions lacks its event-level human-player guard")
     if re.search(r"(?m)^\s*decision(?:_trigger)?\s*=\s*\{\s*ai\s*=", actual):
@@ -118,6 +123,25 @@ def main() -> int:
             errors.append(f"{country.tag} protected neutrality can still create a puppet or alliance")
         if "guarantee which = IND" not in neutral:
             errors.append(f"{country.tag} protected neutrality lacks an Indian guarantee")
+        if "ind_country_resolution_" + country.key + "_dismissed" not in block:
+            errors.append(f"{country.tag} lacks a permanent-dismiss outcome")
+
+    for country in (item for item in COUNTRIES if item.retained_bases):
+        if f'{country.name}: Indian Base Treaty' not in actual:
+            errors.append(f"{country.tag} lacks its protectorate base treaty")
+        for province, name in country.retained_bases:
+            if f"secedeprovince which = IND value = {province}" not in actual:
+                errors.append(f"{country.tag} does not transfer {name} to India")
+
+    for phrase in (
+        "Malaysia: Settle the British Colony",
+        "Protectorate; India keeps Singapore",
+        "Arab Federation: Unite the Defeated States",
+        "Transfer Suez, Aden and Basrah",
+        "Dismiss this peace; continue the war",
+    ):
+        if phrase not in actual:
+            errors.append(f"required country-resolution text is missing: {phrase}")
 
     if "Breakup options: Indonesia, Brunei, Sarawak" not in actual:
         errors.append("East Indies fragmentation choice is missing or unnamed")

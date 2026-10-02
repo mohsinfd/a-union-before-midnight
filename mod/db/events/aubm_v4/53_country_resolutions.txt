@@ -47,8 +47,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_nep }
 	}
 	action_c = {
-		trigger = { exists = NEP war = { country = IND country = NEP } control = { province = 1457 data = IND } lost_national = { country = NEP value = 50 } }
-		name = "Continue the war; make no settlement"
+		name = "Dismiss permanently; make no settlement"
+		command = { type = setflag which = ind_country_resolution_nep_dismissed }
+		command = { type = setflag which = ind_country_resolution_nep_complete }
+		command = { type = clrflag which = ind_aubm_regional_pending_nep }
+		command = { type = clrflag which = ind_aubm_regional_current_nep }
+		command = { type = clrflag which = ind_aubm_regional_victory_nep }
+		command = { type = clrflag which = ind_aubm_regional_suspended_nep }
 	}
 	action_d = {
 		trigger = { NOT = { exists = NEP } owned = { province = 1457 data = IND } control = { province = 1457 data = IND } }
@@ -136,8 +141,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_bhu }
 	}
 	action_c = {
-		trigger = { exists = BHU war = { country = IND country = BHU } control = { province = 1456 data = IND } lost_national = { country = BHU value = 50 } }
-		name = "Continue the war; make no settlement"
+		name = "Dismiss permanently; make no settlement"
+		command = { type = setflag which = ind_country_resolution_bhu_dismissed }
+		command = { type = setflag which = ind_country_resolution_bhu_complete }
+		command = { type = clrflag which = ind_aubm_regional_pending_bhu }
+		command = { type = clrflag which = ind_aubm_regional_current_bhu }
+		command = { type = clrflag which = ind_aubm_regional_victory_bhu }
+		command = { type = clrflag which = ind_aubm_regional_suspended_bhu }
 	}
 	action_d = {
 		trigger = { NOT = { exists = BHU } owned = { province = 1456 data = IND } control = { province = 1456 data = IND } }
@@ -225,8 +235,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_per }
 	}
 	action_c = {
-		trigger = { exists = PER war = { country = IND country = PER } control = { province = 1085 data = IND } lost_national = { country = PER value = 50 } }
-		name = "Continue the war; make no settlement"
+		name = "Dismiss permanently; make no settlement"
+		command = { type = setflag which = ind_country_resolution_per_dismissed }
+		command = { type = setflag which = ind_country_resolution_per_complete }
+		command = { type = clrflag which = ind_aubm_regional_pending_per }
+		command = { type = clrflag which = ind_aubm_regional_current_per }
+		command = { type = clrflag which = ind_aubm_regional_victory_per }
+		command = { type = clrflag which = ind_aubm_regional_suspended_per }
 	}
 	action_d = {
 		trigger = { NOT = { exists = PER } owned = { province = 1085 data = IND } control = { province = 1085 data = IND } }
@@ -291,6 +306,7 @@ event = {
 		command = { trigger = { exists = IRQ war = { country = IND country = IRQ } } type = inherit which = IRQ }
 		command = { type = independence which = IRQ value = 1 when = 0 }
 		command = { trigger = { exists = IRQ } type = make_puppet which = IRQ }
+		command = { trigger = { exists = IRQ } type = event which = 9288203 where = IRQ when = 1 }
 		command = { type = supplies value = -250 }
 		command = { type = setflag which = ind_country_resolution_irq_protected }
 		command = { type = setflag which = ind_country_resolution_irq_complete }
@@ -314,8 +330,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_irq }
 	}
 	action_c = {
-		trigger = { exists = IRQ war = { country = IND country = IRQ } control = { province = 1034 data = IND } lost_national = { country = IRQ value = 50 } }
-		name = "Continue the war; make no settlement"
+		name = "Dismiss permanently; make no settlement"
+		command = { type = setflag which = ind_country_resolution_irq_dismissed }
+		command = { type = setflag which = ind_country_resolution_irq_complete }
+		command = { type = clrflag which = ind_aubm_regional_pending_irq }
+		command = { type = clrflag which = ind_aubm_regional_current_irq }
+		command = { type = clrflag which = ind_aubm_regional_victory_irq }
+		command = { type = clrflag which = ind_aubm_regional_suspended_irq }
 	}
 	action_d = {
 		trigger = { NOT = { exists = IRQ } owned = { province = 1034 data = IND } control = { province = 1034 data = IND } }
@@ -403,8 +424,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_sau }
 	}
 	action_c = {
-		trigger = { exists = SAU war = { country = IND country = SAU } control = { province = 1045 data = IND } lost_national = { country = SAU value = 50 } }
-		name = "Continue the war; make no settlement"
+		name = "Dismiss permanently; make no settlement"
+		command = { type = setflag which = ind_country_resolution_sau_dismissed }
+		command = { type = setflag which = ind_country_resolution_sau_complete }
+		command = { type = clrflag which = ind_aubm_regional_pending_sau }
+		command = { type = clrflag which = ind_aubm_regional_current_sau }
+		command = { type = clrflag which = ind_aubm_regional_victory_sau }
+		command = { type = clrflag which = ind_aubm_regional_suspended_sau }
 	}
 	action_d = {
 		trigger = { NOT = { exists = SAU } owned = { province = 1045 data = IND } control = { province = 1045 data = IND } }
@@ -469,6 +495,7 @@ event = {
 		command = { trigger = { exists = YEM war = { country = IND country = YEM } } type = inherit which = YEM }
 		command = { type = independence which = YEM value = 1 when = 0 }
 		command = { trigger = { exists = YEM } type = make_puppet which = YEM }
+		command = { trigger = { exists = YEM } type = event which = 9288205 where = YEM when = 1 }
 		command = { type = supplies value = -250 }
 		command = { type = setflag which = ind_country_resolution_yem_protected }
 		command = { type = setflag which = ind_country_resolution_yem_complete }
@@ -492,8 +519,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_yem }
 	}
 	action_c = {
-		trigger = { exists = YEM war = { country = IND country = YEM } control = { province = 1050 data = IND } lost_national = { country = YEM value = 50 } }
-		name = "Continue the war; make no settlement"
+		name = "Dismiss permanently; make no settlement"
+		command = { type = setflag which = ind_country_resolution_yem_dismissed }
+		command = { type = setflag which = ind_country_resolution_yem_complete }
+		command = { type = clrflag which = ind_aubm_regional_pending_yem }
+		command = { type = clrflag which = ind_aubm_regional_current_yem }
+		command = { type = clrflag which = ind_aubm_regional_victory_yem }
+		command = { type = clrflag which = ind_aubm_regional_suspended_yem }
 	}
 	action_d = {
 		trigger = { NOT = { exists = YEM } owned = { province = 1050 data = IND } control = { province = 1050 data = IND } }
@@ -581,8 +613,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_omn }
 	}
 	action_c = {
-		trigger = { exists = OMN war = { country = IND country = OMN } control = { province = 1052 data = IND } lost_national = { country = OMN value = 50 } }
-		name = "Continue the war; make no settlement"
+		name = "Dismiss permanently; make no settlement"
+		command = { type = setflag which = ind_country_resolution_omn_dismissed }
+		command = { type = setflag which = ind_country_resolution_omn_complete }
+		command = { type = clrflag which = ind_aubm_regional_pending_omn }
+		command = { type = clrflag which = ind_aubm_regional_current_omn }
+		command = { type = clrflag which = ind_aubm_regional_victory_omn }
+		command = { type = clrflag which = ind_aubm_regional_suspended_omn }
 	}
 	action_d = {
 		trigger = { NOT = { exists = OMN } owned = { province = 1052 data = IND } control = { province = 1052 data = IND } }
@@ -670,8 +707,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_afg }
 	}
 	action_c = {
-		trigger = { exists = AFG war = { country = IND country = AFG } control = { province = 2171 data = IND } lost_national = { country = AFG value = 50 } }
-		name = "Continue the war; make no settlement"
+		name = "Dismiss permanently; make no settlement"
+		command = { type = setflag which = ind_country_resolution_afg_dismissed }
+		command = { type = setflag which = ind_country_resolution_afg_complete }
+		command = { type = clrflag which = ind_aubm_regional_pending_afg }
+		command = { type = clrflag which = ind_aubm_regional_current_afg }
+		command = { type = clrflag which = ind_aubm_regional_victory_afg }
+		command = { type = clrflag which = ind_aubm_regional_suspended_afg }
 	}
 	action_d = {
 		trigger = { NOT = { exists = AFG } owned = { province = 2171 data = IND } control = { province = 2171 data = IND } }
@@ -759,8 +801,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_tib }
 	}
 	action_c = {
-		trigger = { exists = TIB war = { country = IND country = TIB } control = { province = 1289 data = IND } lost_national = { country = TIB value = 50 } }
-		name = "Continue the war; make no settlement"
+		name = "Dismiss permanently; make no settlement"
+		command = { type = setflag which = ind_country_resolution_tib_dismissed }
+		command = { type = setflag which = ind_country_resolution_tib_complete }
+		command = { type = clrflag which = ind_aubm_regional_pending_tib }
+		command = { type = clrflag which = ind_aubm_regional_current_tib }
+		command = { type = clrflag which = ind_aubm_regional_victory_tib }
+		command = { type = clrflag which = ind_aubm_regional_suspended_tib }
 	}
 	action_d = {
 		trigger = { NOT = { exists = TIB } owned = { province = 1289 data = IND } control = { province = 1289 data = IND } }
@@ -848,8 +895,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_sik }
 	}
 	action_c = {
-		trigger = { exists = SIK war = { country = IND country = SIK } control = { province = 1281 data = IND } lost_national = { country = SIK value = 50 } }
-		name = "Continue the war; make no settlement"
+		name = "Dismiss permanently; make no settlement"
+		command = { type = setflag which = ind_country_resolution_sik_dismissed }
+		command = { type = setflag which = ind_country_resolution_sik_complete }
+		command = { type = clrflag which = ind_aubm_regional_pending_sik }
+		command = { type = clrflag which = ind_aubm_regional_current_sik }
+		command = { type = clrflag which = ind_aubm_regional_victory_sik }
+		command = { type = clrflag which = ind_aubm_regional_suspended_sik }
 	}
 	action_d = {
 		trigger = { NOT = { exists = SIK } owned = { province = 1281 data = IND } control = { province = 1281 data = IND } }
@@ -937,8 +989,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_chi }
 	}
 	action_c = {
-		trigger = { exists = CHI war = { country = IND country = CHI } control = { province = 1337 data = IND } lost_national = { country = CHI value = 50 } }
-		name = "Continue the war; make no settlement"
+		name = "Dismiss permanently; make no settlement"
+		command = { type = setflag which = ind_country_resolution_chi_dismissed }
+		command = { type = setflag which = ind_country_resolution_chi_complete }
+		command = { type = clrflag which = ind_aubm_regional_pending_chi }
+		command = { type = clrflag which = ind_aubm_regional_current_chi }
+		command = { type = clrflag which = ind_aubm_regional_victory_chi }
+		command = { type = clrflag which = ind_aubm_regional_suspended_chi }
 	}
 	action_d = {
 		trigger = { NOT = { exists = CHI } owned = { province = 1337 data = IND } control = { province = 1337 data = IND } }
@@ -1026,8 +1083,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_chc }
 	}
 	action_c = {
-		trigger = { exists = CHC war = { country = IND country = CHC } control = { province = 1354 data = IND } lost_national = { country = CHC value = 50 } }
-		name = "Continue the war; make no settlement"
+		name = "Dismiss permanently; make no settlement"
+		command = { type = setflag which = ind_country_resolution_chc_dismissed }
+		command = { type = setflag which = ind_country_resolution_chc_complete }
+		command = { type = clrflag which = ind_aubm_regional_pending_chc }
+		command = { type = clrflag which = ind_aubm_regional_current_chc }
+		command = { type = clrflag which = ind_aubm_regional_victory_chc }
+		command = { type = clrflag which = ind_aubm_regional_suspended_chc }
 	}
 	action_d = {
 		trigger = { NOT = { exists = CHC } owned = { province = 1354 data = IND } control = { province = 1354 data = IND } }
@@ -1115,8 +1177,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_sia }
 	}
 	action_c = {
-		trigger = { exists = SIA war = { country = IND country = SIA } control = { province = 1423 data = IND } lost_national = { country = SIA value = 50 } }
-		name = "Continue the war; make no settlement"
+		name = "Dismiss permanently; make no settlement"
+		command = { type = setflag which = ind_country_resolution_sia_dismissed }
+		command = { type = setflag which = ind_country_resolution_sia_complete }
+		command = { type = clrflag which = ind_aubm_regional_pending_sia }
+		command = { type = clrflag which = ind_aubm_regional_current_sia }
+		command = { type = clrflag which = ind_aubm_regional_victory_sia }
+		command = { type = clrflag which = ind_aubm_regional_suspended_sia }
 	}
 	action_d = {
 		trigger = { NOT = { exists = SIA } owned = { province = 1423 data = IND } control = { province = 1423 data = IND } }
@@ -1204,8 +1271,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_u03 }
 	}
 	action_c = {
-		trigger = { exists = U03 war = { country = IND country = U03 } control = { province = 1395 data = IND } lost_national = { country = U03 value = 50 } }
-		name = "Continue the war; make no settlement"
+		name = "Dismiss permanently; make no settlement"
+		command = { type = setflag which = ind_country_resolution_u03_dismissed }
+		command = { type = setflag which = ind_country_resolution_u03_complete }
+		command = { type = clrflag which = ind_aubm_regional_pending_u03 }
+		command = { type = clrflag which = ind_aubm_regional_current_u03 }
+		command = { type = clrflag which = ind_aubm_regional_victory_u03 }
+		command = { type = clrflag which = ind_aubm_regional_suspended_u03 }
 	}
 	action_d = {
 		trigger = { NOT = { exists = U03 } owned = { province = 1395 data = IND } control = { province = 1395 data = IND } }
@@ -1284,8 +1356,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_bur }
 	}
 	action_c = {
-		trigger = { exists = BUR war = { country = IND country = BUR } control = { province = 1415 data = IND } lost_national = { country = BUR value = 50 } }
-		name = "Continue the war; make no settlement"
+		name = "Dismiss permanently; make no settlement"
+		command = { type = setflag which = ind_country_resolution_bur_dismissed }
+		command = { type = setflag which = ind_country_resolution_bur_complete }
+		command = { type = clrflag which = ind_aubm_regional_pending_bur }
+		command = { type = clrflag which = ind_aubm_regional_current_bur }
+		command = { type = clrflag which = ind_aubm_regional_victory_bur }
+		command = { type = clrflag which = ind_aubm_regional_suspended_bur }
 	}
 	action_d = {
 		trigger = { NOT = { exists = BUR } owned = { province = 1415 data = IND } control = { province = 1415 data = IND } }
@@ -1350,6 +1427,7 @@ event = {
 		command = { trigger = { exists = MLY war = { country = IND country = MLY } } type = inherit which = MLY }
 		command = { type = independence which = MLY value = 1 when = 0 }
 		command = { trigger = { exists = MLY } type = make_puppet which = MLY }
+		command = { trigger = { exists = MLY } type = event which = 9288215 where = MLY when = 1 }
 		command = { type = supplies value = -250 }
 		command = { type = setflag which = ind_country_resolution_mly_protected }
 		command = { type = setflag which = ind_country_resolution_mly_complete }
@@ -1373,8 +1451,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_mly }
 	}
 	action_c = {
-		trigger = { exists = MLY war = { country = IND country = MLY } control = { province = 1438 data = IND } lost_national = { country = MLY value = 50 } }
-		name = "Continue the war; make no settlement"
+		name = "Dismiss permanently; make no settlement"
+		command = { type = setflag which = ind_country_resolution_mly_dismissed }
+		command = { type = setflag which = ind_country_resolution_mly_complete }
+		command = { type = clrflag which = ind_aubm_regional_pending_mly }
+		command = { type = clrflag which = ind_aubm_regional_current_mly }
+		command = { type = clrflag which = ind_aubm_regional_victory_mly }
+		command = { type = clrflag which = ind_aubm_regional_suspended_mly }
 	}
 	action_d = {
 		trigger = { NOT = { exists = MLY } owned = { province = 1438 data = IND } control = { province = 1438 data = IND } }
@@ -1439,6 +1522,7 @@ event = {
 		command = { trigger = { exists = PHI war = { country = IND country = PHI } } type = inherit which = PHI }
 		command = { type = independence which = PHI value = 1 when = 0 }
 		command = { trigger = { exists = PHI } type = make_puppet which = PHI }
+		command = { trigger = { exists = PHI } type = event which = 9288216 where = PHI when = 1 }
 		command = { type = supplies value = -250 }
 		command = { type = setflag which = ind_country_resolution_phi_protected }
 		command = { type = setflag which = ind_country_resolution_phi_complete }
@@ -1462,8 +1546,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_phi }
 	}
 	action_c = {
-		trigger = { exists = PHI war = { country = IND country = PHI } control = { province = 1565 data = IND } lost_national = { country = PHI value = 50 } }
-		name = "Continue the war; make no settlement"
+		name = "Dismiss permanently; make no settlement"
+		command = { type = setflag which = ind_country_resolution_phi_dismissed }
+		command = { type = setflag which = ind_country_resolution_phi_complete }
+		command = { type = clrflag which = ind_aubm_regional_pending_phi }
+		command = { type = clrflag which = ind_aubm_regional_current_phi }
+		command = { type = clrflag which = ind_aubm_regional_victory_phi }
+		command = { type = clrflag which = ind_aubm_regional_suspended_phi }
 	}
 	action_d = {
 		trigger = { NOT = { exists = PHI } owned = { province = 1565 data = IND } control = { province = 1565 data = IND } }
@@ -1529,6 +1618,7 @@ event = {
 		command = { trigger = { exists = INO war = { country = IND country = INO } } type = inherit which = INO }
 		command = { type = independence which = INO value = 1 when = 0 }
 		command = { trigger = { exists = INO } type = make_puppet which = INO }
+		command = { trigger = { exists = INO } type = event which = 9288217 where = INO when = 1 }
 		command = { type = supplies value = -250 }
 		command = { type = setflag which = ind_country_resolution_u05_protected }
 		command = { type = setflag which = ind_country_resolution_u05_complete }
@@ -1553,8 +1643,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_u05 }
 	}
 	action_c = {
-		trigger = { OR = { AND = { exists = U05 war = { country = IND country = U05 } control = { province = 1647 data = IND } lost_national = { country = U05 value = 50 } NOT = { exists = INO } } AND = { exists = INO war = { country = IND country = INO } control = { province = 1654 data = IND } lost_national = { country = INO value = 50 } } } }
-		name = "Continue the war; make no settlement"
+		name = "Dismiss permanently; make no settlement"
+		command = { type = setflag which = ind_country_resolution_u05_dismissed }
+		command = { type = setflag which = ind_country_resolution_u05_complete }
+		command = { type = clrflag which = ind_aubm_regional_pending_u05 }
+		command = { type = clrflag which = ind_aubm_regional_current_u05 }
+		command = { type = clrflag which = ind_aubm_regional_victory_u05 }
+		command = { type = clrflag which = ind_aubm_regional_suspended_u05 }
 	}
 	action_d = {
 		trigger = { owned = { province = 1647 data = IND } control = { province = 1647 data = IND } NOT = { exists = INO } }
@@ -1633,8 +1728,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_bru }
 	}
 	action_c = {
-		trigger = { exists = BRU war = { country = IND country = BRU } control = { province = 1625 data = IND } lost_national = { country = BRU value = 50 } }
-		name = "Continue the war; make no settlement"
+		name = "Dismiss permanently; make no settlement"
+		command = { type = setflag which = ind_country_resolution_bru_dismissed }
+		command = { type = setflag which = ind_country_resolution_bru_complete }
+		command = { type = clrflag which = ind_aubm_regional_pending_bru }
+		command = { type = clrflag which = ind_aubm_regional_current_bru }
+		command = { type = clrflag which = ind_aubm_regional_victory_bru }
+		command = { type = clrflag which = ind_aubm_regional_suspended_bru }
 	}
 	action_d = {
 		trigger = { NOT = { exists = BRU } owned = { province = 1625 data = IND } control = { province = 1625 data = IND } }
@@ -1722,8 +1822,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_sar }
 	}
 	action_c = {
-		trigger = { exists = SAR war = { country = IND country = SAR } control = { province = 1624 data = IND } lost_national = { country = SAR value = 50 } }
-		name = "Continue the war; make no settlement"
+		name = "Dismiss permanently; make no settlement"
+		command = { type = setflag which = ind_country_resolution_sar_dismissed }
+		command = { type = setflag which = ind_country_resolution_sar_complete }
+		command = { type = clrflag which = ind_aubm_regional_pending_sar }
+		command = { type = clrflag which = ind_aubm_regional_current_sar }
+		command = { type = clrflag which = ind_aubm_regional_victory_sar }
+		command = { type = clrflag which = ind_aubm_regional_suspended_sar }
 	}
 	action_d = {
 		trigger = { NOT = { exists = SAR } owned = { province = 1624 data = IND } control = { province = 1624 data = IND } }
@@ -1788,6 +1893,7 @@ event = {
 		command = { trigger = { exists = AST war = { country = IND country = AST } } type = inherit which = AST }
 		command = { type = independence which = AST value = 1 when = 0 }
 		command = { trigger = { exists = AST } type = make_puppet which = AST }
+		command = { trigger = { exists = AST } type = event which = 9288220 where = AST when = 1 }
 		command = { type = supplies value = -250 }
 		command = { type = setflag which = ind_country_resolution_ast_protected }
 		command = { type = setflag which = ind_country_resolution_ast_complete }
@@ -1811,8 +1917,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_ast }
 	}
 	action_c = {
-		trigger = { exists = AST war = { country = IND country = AST } control = { province = 1707 data = IND } lost_national = { country = AST value = 50 } }
-		name = "Continue the war; make no settlement"
+		name = "Dismiss permanently; make no settlement"
+		command = { type = setflag which = ind_country_resolution_ast_dismissed }
+		command = { type = setflag which = ind_country_resolution_ast_complete }
+		command = { type = clrflag which = ind_aubm_regional_pending_ast }
+		command = { type = clrflag which = ind_aubm_regional_current_ast }
+		command = { type = clrflag which = ind_aubm_regional_victory_ast }
+		command = { type = clrflag which = ind_aubm_regional_suspended_ast }
 	}
 	action_d = {
 		trigger = { NOT = { exists = AST } owned = { province = 1707 data = IND } control = { province = 1707 data = IND } }
@@ -1900,8 +2011,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_nzl }
 	}
 	action_c = {
-		trigger = { exists = NZL war = { country = IND country = NZL } control = { province = 1721 data = IND } lost_national = { country = NZL value = 50 } }
-		name = "Continue the war; make no settlement"
+		name = "Dismiss permanently; make no settlement"
+		command = { type = setflag which = ind_country_resolution_nzl_dismissed }
+		command = { type = setflag which = ind_country_resolution_nzl_complete }
+		command = { type = clrflag which = ind_aubm_regional_pending_nzl }
+		command = { type = clrflag which = ind_aubm_regional_current_nzl }
+		command = { type = clrflag which = ind_aubm_regional_victory_nzl }
+		command = { type = clrflag which = ind_aubm_regional_suspended_nzl }
 	}
 	action_d = {
 		trigger = { NOT = { exists = NZL } owned = { province = 1721 data = IND } control = { province = 1721 data = IND } }
@@ -1989,8 +2105,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_tur }
 	}
 	action_c = {
-		trigger = { exists = TUR war = { country = IND country = TUR } control = { province = 1075 data = IND } lost_national = { country = TUR value = 50 } }
-		name = "Continue the war; make no settlement"
+		name = "Dismiss permanently; make no settlement"
+		command = { type = setflag which = ind_country_resolution_tur_dismissed }
+		command = { type = setflag which = ind_country_resolution_tur_complete }
+		command = { type = clrflag which = ind_aubm_regional_pending_tur }
+		command = { type = clrflag which = ind_aubm_regional_current_tur }
+		command = { type = clrflag which = ind_aubm_regional_victory_tur }
+		command = { type = clrflag which = ind_aubm_regional_suspended_tur }
 	}
 	action_d = {
 		trigger = { NOT = { exists = TUR } owned = { province = 1075 data = IND } control = { province = 1075 data = IND } }
@@ -2078,8 +2199,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_ita }
 	}
 	action_c = {
-		trigger = { exists = ITA war = { country = IND country = ITA } control = { province = 419 data = IND } lost_national = { country = ITA value = 50 } }
-		name = "Continue the war; make no settlement"
+		name = "Dismiss permanently; make no settlement"
+		command = { type = setflag which = ind_country_resolution_ita_dismissed }
+		command = { type = setflag which = ind_country_resolution_ita_complete }
+		command = { type = clrflag which = ind_aubm_regional_pending_ita }
+		command = { type = clrflag which = ind_aubm_regional_current_ita }
+		command = { type = clrflag which = ind_aubm_regional_victory_ita }
+		command = { type = clrflag which = ind_aubm_regional_suspended_ita }
 	}
 	action_d = {
 		trigger = { NOT = { exists = ITA } owned = { province = 419 data = IND } control = { province = 419 data = IND } }
@@ -2167,8 +2293,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_fra }
 	}
 	action_c = {
-		trigger = { exists = FRA war = { country = IND country = FRA } control = { province = 55 data = IND } lost_national = { country = FRA value = 50 } }
-		name = "Continue the war; make no settlement"
+		name = "Dismiss permanently; make no settlement"
+		command = { type = setflag which = ind_country_resolution_fra_dismissed }
+		command = { type = setflag which = ind_country_resolution_fra_complete }
+		command = { type = clrflag which = ind_aubm_regional_pending_fra }
+		command = { type = clrflag which = ind_aubm_regional_current_fra }
+		command = { type = clrflag which = ind_aubm_regional_victory_fra }
+		command = { type = clrflag which = ind_aubm_regional_suspended_fra }
 	}
 	action_d = {
 		trigger = { NOT = { exists = FRA } owned = { province = 55 data = IND } control = { province = 55 data = IND } }
@@ -2256,8 +2387,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_por }
 	}
 	action_c = {
-		trigger = { exists = POR war = { country = IND country = POR } control = { province = 476 data = IND } lost_national = { country = POR value = 50 } }
-		name = "Continue the war; make no settlement"
+		name = "Dismiss permanently; make no settlement"
+		command = { type = setflag which = ind_country_resolution_por_dismissed }
+		command = { type = setflag which = ind_country_resolution_por_complete }
+		command = { type = clrflag which = ind_aubm_regional_pending_por }
+		command = { type = clrflag which = ind_aubm_regional_current_por }
+		command = { type = clrflag which = ind_aubm_regional_victory_por }
+		command = { type = clrflag which = ind_aubm_regional_suspended_por }
 	}
 	action_d = {
 		trigger = { NOT = { exists = POR } owned = { province = 476 data = IND } control = { province = 476 data = IND } }
@@ -2345,8 +2481,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_eth }
 	}
 	action_c = {
-		trigger = { exists = ETH war = { country = IND country = ETH } control = { province = 825 data = IND } lost_national = { country = ETH value = 50 } }
-		name = "Continue the war; make no settlement"
+		name = "Dismiss permanently; make no settlement"
+		command = { type = setflag which = ind_country_resolution_eth_dismissed }
+		command = { type = setflag which = ind_country_resolution_eth_complete }
+		command = { type = clrflag which = ind_aubm_regional_pending_eth }
+		command = { type = clrflag which = ind_aubm_regional_current_eth }
+		command = { type = clrflag which = ind_aubm_regional_victory_eth }
+		command = { type = clrflag which = ind_aubm_regional_suspended_eth }
 	}
 	action_d = {
 		trigger = { NOT = { exists = ETH } owned = { province = 825 data = IND } control = { province = 825 data = IND } }
@@ -2434,8 +2575,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_saf }
 	}
 	action_c = {
-		trigger = { exists = SAF war = { country = IND country = SAF } control = { province = 876 data = IND } lost_national = { country = SAF value = 50 } }
-		name = "Continue the war; make no settlement"
+		name = "Dismiss permanently; make no settlement"
+		command = { type = setflag which = ind_country_resolution_saf_dismissed }
+		command = { type = setflag which = ind_country_resolution_saf_complete }
+		command = { type = clrflag which = ind_aubm_regional_pending_saf }
+		command = { type = clrflag which = ind_aubm_regional_current_saf }
+		command = { type = clrflag which = ind_aubm_regional_victory_saf }
+		command = { type = clrflag which = ind_aubm_regional_suspended_saf }
 	}
 	action_d = {
 		trigger = { NOT = { exists = SAF } owned = { province = 876 data = IND } control = { province = 876 data = IND } }
@@ -2480,6 +2626,108 @@ event = {
 }
 
 event = {
+	id = 9288203
+	random = no
+	one_action = yes
+	country = IRQ
+	name = "Iraq: Indian Base Treaty"
+	desc = "The protectorate grants India sovereign base territory at Basrah. The remaining country stays under its own government and shares India's wars."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	action_a = {
+		name = "Transfer Basrah to India"
+		command = { type = secedeprovince which = IND value = 1032 }
+		command = { type = access which = IND }
+		command = { type = relation which = IND value = 40 }
+	}
+}
+
+event = {
+	id = 9288205
+	random = no
+	one_action = yes
+	country = YEM
+	name = "Yemen: Indian Base Treaty"
+	desc = "The protectorate grants India sovereign base territory at Aden. The remaining country stays under its own government and shares India's wars."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	action_a = {
+		name = "Transfer Aden to India"
+		command = { type = secedeprovince which = IND value = 1053 }
+		command = { type = access which = IND }
+		command = { type = relation which = IND value = 40 }
+	}
+}
+
+event = {
+	id = 9288215
+	random = no
+	one_action = yes
+	country = MLY
+	name = "Malaysia: Indian Base Treaty"
+	desc = "The protectorate grants India sovereign base territory at Singapore. The remaining country stays under its own government and shares India's wars."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Transfer Singapore to India"
+		command = { type = secedeprovince which = IND value = 1432 }
+		command = { type = access which = IND }
+		command = { type = relation which = IND value = 40 }
+	}
+}
+
+event = {
+	id = 9288216
+	random = no
+	one_action = yes
+	country = PHI
+	name = "Philippines: Indian Base Treaty"
+	desc = "The protectorate grants India sovereign base territory at Davao. The remaining country stays under its own government and shares India's wars."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Transfer Davao to India"
+		command = { type = secedeprovince which = IND value = 1579 }
+		command = { type = access which = IND }
+		command = { type = relation which = IND value = 40 }
+	}
+}
+
+event = {
+	id = 9288217
+	random = no
+	one_action = yes
+	country = INO
+	name = "East Indies / Indonesia: Indian Base Treaty"
+	desc = "The protectorate grants India sovereign base territory at Soerabaja. The remaining country stays under its own government and shares India's wars."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	action_a = {
+		name = "Transfer Soerabaja to India"
+		command = { type = secedeprovince which = IND value = 1653 }
+		command = { type = access which = IND }
+		command = { type = relation which = IND value = 40 }
+	}
+}
+
+event = {
+	id = 9288220
+	random = no
+	one_action = yes
+	country = AST
+	name = "Australia: Indian Base Treaty"
+	desc = "The protectorate grants India sovereign base territory at Darwin. The remaining country stays under its own government and shares India's wars."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Transfer Darwin to India"
+		command = { type = secedeprovince which = IND value = 1697 }
+		command = { type = access which = IND }
+		command = { type = relation which = IND value = 40 }
+	}
+}
+
+event = {
 	id = 9288080
 	random = no
 	persistent = yes
@@ -2503,7 +2751,8 @@ event = {
 		command = { trigger = { atwar = no } type = setflag which = ind_aubm_postwar_congress_completed }
 	}
 	action_b = {
-		name = "Continue the war with Britain"
+		name = "Dismiss this peace; continue the war"
+		command = { type = setflag which = ind_country_resolution_major_eng }
 	}
 }
 
@@ -2531,7 +2780,8 @@ event = {
 		command = { trigger = { atwar = no } type = setflag which = ind_aubm_postwar_congress_completed }
 	}
 	action_b = {
-		name = "Continue the war with Germany"
+		name = "Dismiss this peace; continue the war"
+		command = { type = setflag which = ind_country_resolution_major_ger }
 	}
 }
 
@@ -2559,7 +2809,8 @@ event = {
 		command = { trigger = { atwar = no } type = setflag which = ind_aubm_postwar_congress_completed }
 	}
 	action_b = {
-		name = "Continue the war with Soviet Union"
+		name = "Dismiss this peace; continue the war"
+		command = { type = setflag which = ind_country_resolution_major_sov }
 	}
 }
 
@@ -2588,7 +2839,8 @@ event = {
 		command = { type = setflag which = ind_v3_japan_settlement_1945 }
 	}
 	action_b = {
-		name = "Continue the war with Japan"
+		name = "Dismiss this peace; continue the war"
+		command = { type = setflag which = ind_country_resolution_major_jap }
 	}
 }
 
@@ -2616,7 +2868,8 @@ event = {
 		command = { trigger = { atwar = no } type = setflag which = ind_aubm_postwar_congress_completed }
 	}
 	action_b = {
-		name = "Continue the war with United States"
+		name = "Dismiss this peace; continue the war"
+		command = { type = setflag which = ind_country_resolution_major_usa }
 	}
 }
 
@@ -2716,7 +2969,13 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_u05 }
 	}
 	action_c = {
-		name = "Cancel - keep the country decision open"
+		name = "Dismiss this breakup permanently"
+		command = { type = setflag which = ind_country_resolution_u05_dismissed }
+		command = { type = setflag which = ind_country_resolution_u05_complete }
+		command = { type = clrflag which = ind_aubm_regional_pending_u05 }
+		command = { type = clrflag which = ind_aubm_regional_current_u05 }
+		command = { type = clrflag which = ind_aubm_regional_victory_u05 }
+		command = { type = clrflag which = ind_aubm_regional_suspended_u05 }
 	}
 }
 
@@ -2765,6 +3024,657 @@ event = {
 		command = { type = clrflag which = ind_aubm_regional_suspended_u03 }
 	}
 	action_c = {
-		name = "Cancel - keep the country decision open"
+		name = "Dismiss this breakup permanently"
+		command = { type = setflag which = ind_country_resolution_u03_dismissed }
+		command = { type = setflag which = ind_country_resolution_u03_complete }
+		command = { type = clrflag which = ind_aubm_regional_pending_u03 }
+		command = { type = clrflag which = ind_aubm_regional_current_u03 }
+		command = { type = clrflag which = ind_aubm_regional_victory_u03 }
+		command = { type = clrflag which = ind_aubm_regional_suspended_u03 }
+	}
+}
+
+event = {
+	id = 9288300
+	random = no
+	persistent = yes
+	country = IND
+	trigger = { ai = no }
+	name = "Malaysia: Settle the British Colony"
+	desc = "India occupies Singapore and the Malayan peninsula, but Britain still owns them. This decision transfers Malaya from Britain and settles Malaysia only."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	date = { day = 0 month = january year = 1933 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1964 }
+	decision = { NOT = { exists = MLY } exists = ENG war = { country = IND country = ENG } owned = { province = 1438 data = ENG } control = { province = 1432 data = IND } control = { province = 1433 data = IND } control = { province = 1434 data = IND } control = { province = 1435 data = IND } control = { province = 1436 data = IND } control = { province = 1437 data = IND } control = { province = 1438 data = IND } NOT = { flag = ind_country_resolution_malaya_colonial_complete } }
+	decision_trigger = { NOT = { exists = MLY } exists = ENG war = { country = IND country = ENG } owned = { province = 1438 data = ENG } control = { province = 1432 data = IND } control = { province = 1433 data = IND } control = { province = 1434 data = IND } control = { province = 1435 data = IND } control = { province = 1436 data = IND } control = { province = 1437 data = IND } control = { province = 1438 data = IND } NOT = { flag = ind_country_resolution_malaya_colonial_complete } }
+	action_a = {
+		name = "Protectorate; India keeps Singapore"
+		command = { type = setflag which = ind_malaya_colonial_protected }
+		command = { type = event which = 9288301 where = ENG when = 1 }
+	}
+	action_b = {
+		name = "Protected neutral; Malaysia keeps Singapore"
+		command = { type = setflag which = ind_malaya_colonial_neutral }
+		command = { type = event which = 9288301 where = ENG when = 1 }
+	}
+	action_c = {
+		name = "Dismiss Malaysia permanently"
+		command = { type = setflag which = ind_country_resolution_malaya_colonial_complete }
+	}
+}
+
+event = {
+	id = 9288301
+	random = no
+	one_action = yes
+	country = ENG
+	name = "Britain Transfers Malaya"
+	desc = "Indian forces hold the Malayan peninsula. Britain transfers the occupied territory so its future can be settled."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	action_a = {
+		name = "Transfer the occupied territory"
+		command = { type = secedeprovince which = IND value = 1432 }
+		command = { type = secedeprovince which = IND value = 1433 }
+		command = { type = secedeprovince which = IND value = 1434 }
+		command = { type = secedeprovince which = IND value = 1435 }
+		command = { type = secedeprovince which = IND value = 1436 }
+		command = { type = secedeprovince which = IND value = 1437 }
+		command = { type = secedeprovince which = IND value = 1438 }
+		command = { type = event which = 9288302 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9288302
+	random = no
+	one_action = yes
+	country = IND
+	name = "Malaysia: Independence"
+	desc = "British ownership has ended. Malaysia can now receive the settlement India chose."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Establish Malaysia"
+		command = { type = independence which = MLY value = 1 when = 0 }
+		command = { trigger = { flag = ind_malaya_colonial_protected exists = MLY } type = make_puppet which = MLY }
+		command = { trigger = { flag = ind_malaya_colonial_protected exists = MLY } type = event which = 9288215 where = MLY when = 1 }
+		command = { trigger = { flag = ind_malaya_colonial_neutral exists = MLY } type = guarantee which = IND where = MLY }
+		command = { trigger = { flag = ind_malaya_colonial_neutral exists = MLY } type = event which = 9288031 where = MLY when = 1 }
+		command = { type = setflag which = ind_country_resolution_malaya_colonial_complete }
+		command = { type = setflag which = ind_country_resolution_mly_complete }
+		command = { type = clrflag which = ind_malaya_colonial_protected }
+		command = { type = clrflag which = ind_malaya_colonial_neutral }
+	}
+}
+
+event = {
+	id = 9288310
+	random = no
+	persistent = yes
+	country = IND
+	trigger = { ai = no }
+	name = "Arab Federation: Unite the Defeated States"
+	desc = "India must control Egypt, Suez, Syria and Jordan. Iraq, Saudi Arabia, Yemen and Oman must be gone, Indian-held or Indian protectorates. Colonial owners transfer the occupied land before federation."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	date = { day = 0 month = january year = 1933 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1964 }
+	decision = { NOT = { exists = ARA }
+		control = { province = 778 data = IND }
+		control = { province = 779 data = IND }
+		control = { province = 780 data = IND }
+		control = { province = 781 data = IND }
+		control = { province = 782 data = IND }
+		control = { province = 783 data = IND }
+		control = { province = 784 data = IND }
+		control = { province = 785 data = IND }
+		control = { province = 786 data = IND }
+		control = { province = 787 data = IND }
+		control = { province = 788 data = IND }
+		control = { province = 790 data = IND }
+		control = { province = 791 data = IND }
+		control = { province = 792 data = IND }
+		control = { province = 793 data = IND }
+		control = { province = 794 data = IND }
+		control = { province = 795 data = IND }
+		control = { province = 796 data = IND }
+		control = { province = 798 data = IND }
+		control = { province = 799 data = IND }
+		control = { province = 900 data = IND }
+		control = { province = 1016 data = IND }
+		control = { province = 1017 data = IND }
+		control = { province = 1021 data = IND }
+		control = { province = 1022 data = IND }
+		control = { province = 1023 data = IND }
+		control = { province = 1024 data = IND }
+		control = { province = 1025 data = IND }
+		control = { province = 1026 data = IND }
+		OR = { NOT = { exists = IRQ } puppet = { country = IRQ country = IND } AND = { owned = { province = 1034 data = IND } control = { province = 1034 data = IND } } }
+		OR = { NOT = { exists = SAU } puppet = { country = SAU country = IND } AND = { owned = { province = 1045 data = IND } control = { province = 1045 data = IND } } }
+		OR = { NOT = { exists = YEM } puppet = { country = YEM country = IND } AND = { owned = { province = 1050 data = IND } control = { province = 1050 data = IND } } }
+		OR = { NOT = { exists = OMN } puppet = { country = OMN country = IND } AND = { owned = { province = 1052 data = IND } control = { province = 1052 data = IND } } }
+		NOT = { flag = ind_country_resolution_ara_complete } }
+	decision_trigger = { NOT = { exists = ARA }
+		control = { province = 778 data = IND }
+		control = { province = 779 data = IND }
+		control = { province = 780 data = IND }
+		control = { province = 781 data = IND }
+		control = { province = 782 data = IND }
+		control = { province = 783 data = IND }
+		control = { province = 784 data = IND }
+		control = { province = 785 data = IND }
+		control = { province = 786 data = IND }
+		control = { province = 787 data = IND }
+		control = { province = 788 data = IND }
+		control = { province = 790 data = IND }
+		control = { province = 791 data = IND }
+		control = { province = 792 data = IND }
+		control = { province = 793 data = IND }
+		control = { province = 794 data = IND }
+		control = { province = 795 data = IND }
+		control = { province = 796 data = IND }
+		control = { province = 798 data = IND }
+		control = { province = 799 data = IND }
+		control = { province = 900 data = IND }
+		control = { province = 1016 data = IND }
+		control = { province = 1017 data = IND }
+		control = { province = 1021 data = IND }
+		control = { province = 1022 data = IND }
+		control = { province = 1023 data = IND }
+		control = { province = 1024 data = IND }
+		control = { province = 1025 data = IND }
+		control = { province = 1026 data = IND }
+		OR = { NOT = { exists = IRQ } puppet = { country = IRQ country = IND } AND = { owned = { province = 1034 data = IND } control = { province = 1034 data = IND } } }
+		OR = { NOT = { exists = SAU } puppet = { country = SAU country = IND } AND = { owned = { province = 1045 data = IND } control = { province = 1045 data = IND } } }
+		OR = { NOT = { exists = YEM } puppet = { country = YEM country = IND } AND = { owned = { province = 1050 data = IND } control = { province = 1050 data = IND } } }
+		OR = { NOT = { exists = OMN } puppet = { country = OMN country = IND } AND = { owned = { province = 1052 data = IND } control = { province = 1052 data = IND } } }
+		NOT = { flag = ind_country_resolution_ara_complete } }
+	action_a = {
+		name = "Indian protectorate; keep three bases"
+		command = { type = setflag which = ind_ara_choice_protected }
+		command = { trigger = { exists = ENG } type = event which = 9288320 where = ENG when = 1 }
+		command = { trigger = { exists = EGY } type = event which = 9288321 where = EGY when = 1 }
+		command = { trigger = { exists = FRA } type = event which = 9288322 where = FRA when = 1 }
+		command = { trigger = { exists = U01 } type = event which = 9288323 where = U01 when = 1 }
+		command = { trigger = { exists = SYR } type = event which = 9288324 where = SYR when = 1 }
+		command = { trigger = { exists = JOR } type = event which = 9288325 where = JOR when = 1 }
+		command = { trigger = { exists = ITA } type = event which = 9288326 where = ITA when = 1 }
+		command = { trigger = { exists = GER } type = event which = 9288327 where = GER when = 1 }
+		command = { trigger = { exists = TUR } type = event which = 9288328 where = TUR when = 1 }
+		command = { type = event which = 9288330 where = IND when = 2 }
+		command = { type = supplies value = -750 }
+	}
+	action_b = {
+		name = "Protected neutral; keep no territory"
+		command = { type = setflag which = ind_ara_choice_neutral }
+		command = { trigger = { exists = ENG } type = event which = 9288320 where = ENG when = 1 }
+		command = { trigger = { exists = EGY } type = event which = 9288321 where = EGY when = 1 }
+		command = { trigger = { exists = FRA } type = event which = 9288322 where = FRA when = 1 }
+		command = { trigger = { exists = U01 } type = event which = 9288323 where = U01 when = 1 }
+		command = { trigger = { exists = SYR } type = event which = 9288324 where = SYR when = 1 }
+		command = { trigger = { exists = JOR } type = event which = 9288325 where = JOR when = 1 }
+		command = { trigger = { exists = ITA } type = event which = 9288326 where = ITA when = 1 }
+		command = { trigger = { exists = GER } type = event which = 9288327 where = GER when = 1 }
+		command = { trigger = { exists = TUR } type = event which = 9288328 where = TUR when = 1 }
+		command = { type = event which = 9288330 where = IND when = 2 }
+		command = { type = supplies value = -500 }
+	}
+	action_c = {
+		name = "Dismiss Arab unification permanently"
+		command = { type = setflag which = ind_country_resolution_ara_complete }
+	}
+}
+
+event = {
+	id = 9288311
+	random = no
+	one_action = yes
+	country = ARA
+	name = "Arab Federation: Indian Base Treaty"
+	desc = "The new federation transfers Suez, Aden and Basrah to India as permanent naval and air bases."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	action_a = {
+		name = "Transfer Suez, Aden and Basrah"
+		command = { type = secedeprovince which = IND value = 900 }
+		command = { type = secedeprovince which = IND value = 1053 }
+		command = { type = secedeprovince which = IND value = 1032 }
+		command = { type = access which = IND }
+		command = { type = relation which = IND value = 50 }
+	}
+}
+
+event = {
+	id = 9288312
+	random = no
+	one_action = yes
+	country = ARA
+	name = "Arab Federation: Protected Neutrality"
+	desc = "The federation remains outside India's wars, grants Indian access and receives an Indian guarantee."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Confirm protected neutrality"
+		command = { type = leave_alliance when = 1 }
+		command = { type = access which = IND }
+		command = { type = relation which = IND value = 50 }
+		command = { type = non_aggression which = ARA where = IND when = 1080 }
+	}
+}
+
+event = {
+	id = 9288320
+	random = no
+	one_action = yes
+	country = ENG
+	name = "Transfer Indian-Occupied Arab Territory"
+	desc = "India controls the listed Arab territory. Its former owner transfers legal title before the Arab Federation is established."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	action_a = {
+		name = "Transfer the occupied territory"
+		command = { type = secedeprovince which = IND value = 778 }
+		command = { type = secedeprovince which = IND value = 779 }
+		command = { type = secedeprovince which = IND value = 780 }
+		command = { type = secedeprovince which = IND value = 781 }
+		command = { type = secedeprovince which = IND value = 782 }
+		command = { type = secedeprovince which = IND value = 783 }
+		command = { type = secedeprovince which = IND value = 784 }
+		command = { type = secedeprovince which = IND value = 785 }
+		command = { type = secedeprovince which = IND value = 786 }
+		command = { type = secedeprovince which = IND value = 787 }
+		command = { type = secedeprovince which = IND value = 788 }
+		command = { type = secedeprovince which = IND value = 790 }
+		command = { type = secedeprovince which = IND value = 791 }
+		command = { type = secedeprovince which = IND value = 792 }
+		command = { type = secedeprovince which = IND value = 793 }
+		command = { type = secedeprovince which = IND value = 794 }
+		command = { type = secedeprovince which = IND value = 795 }
+		command = { type = secedeprovince which = IND value = 796 }
+		command = { type = secedeprovince which = IND value = 798 }
+		command = { type = secedeprovince which = IND value = 799 }
+		command = { type = secedeprovince which = IND value = 900 }
+		command = { type = secedeprovince which = IND value = 1016 }
+		command = { type = secedeprovince which = IND value = 1017 }
+		command = { type = secedeprovince which = IND value = 1021 }
+		command = { type = secedeprovince which = IND value = 1022 }
+		command = { type = secedeprovince which = IND value = 1023 }
+		command = { type = secedeprovince which = IND value = 1024 }
+		command = { type = secedeprovince which = IND value = 1025 }
+		command = { type = secedeprovince which = IND value = 1026 }
+	}
+}
+
+event = {
+	id = 9288321
+	random = no
+	one_action = yes
+	country = EGY
+	name = "Transfer Indian-Occupied Arab Territory"
+	desc = "India controls the listed Arab territory. Its former owner transfers legal title before the Arab Federation is established."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	action_a = {
+		name = "Transfer the occupied territory"
+		command = { type = secedeprovince which = IND value = 778 }
+		command = { type = secedeprovince which = IND value = 779 }
+		command = { type = secedeprovince which = IND value = 780 }
+		command = { type = secedeprovince which = IND value = 781 }
+		command = { type = secedeprovince which = IND value = 782 }
+		command = { type = secedeprovince which = IND value = 783 }
+		command = { type = secedeprovince which = IND value = 784 }
+		command = { type = secedeprovince which = IND value = 785 }
+		command = { type = secedeprovince which = IND value = 786 }
+		command = { type = secedeprovince which = IND value = 787 }
+		command = { type = secedeprovince which = IND value = 788 }
+		command = { type = secedeprovince which = IND value = 790 }
+		command = { type = secedeprovince which = IND value = 791 }
+		command = { type = secedeprovince which = IND value = 792 }
+		command = { type = secedeprovince which = IND value = 793 }
+		command = { type = secedeprovince which = IND value = 794 }
+		command = { type = secedeprovince which = IND value = 795 }
+		command = { type = secedeprovince which = IND value = 796 }
+		command = { type = secedeprovince which = IND value = 798 }
+		command = { type = secedeprovince which = IND value = 799 }
+		command = { type = secedeprovince which = IND value = 900 }
+		command = { type = secedeprovince which = IND value = 1016 }
+		command = { type = secedeprovince which = IND value = 1017 }
+		command = { type = secedeprovince which = IND value = 1021 }
+		command = { type = secedeprovince which = IND value = 1022 }
+		command = { type = secedeprovince which = IND value = 1023 }
+		command = { type = secedeprovince which = IND value = 1024 }
+		command = { type = secedeprovince which = IND value = 1025 }
+		command = { type = secedeprovince which = IND value = 1026 }
+	}
+}
+
+event = {
+	id = 9288322
+	random = no
+	one_action = yes
+	country = FRA
+	name = "Transfer Indian-Occupied Arab Territory"
+	desc = "India controls the listed Arab territory. Its former owner transfers legal title before the Arab Federation is established."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	action_a = {
+		name = "Transfer the occupied territory"
+		command = { type = secedeprovince which = IND value = 778 }
+		command = { type = secedeprovince which = IND value = 779 }
+		command = { type = secedeprovince which = IND value = 780 }
+		command = { type = secedeprovince which = IND value = 781 }
+		command = { type = secedeprovince which = IND value = 782 }
+		command = { type = secedeprovince which = IND value = 783 }
+		command = { type = secedeprovince which = IND value = 784 }
+		command = { type = secedeprovince which = IND value = 785 }
+		command = { type = secedeprovince which = IND value = 786 }
+		command = { type = secedeprovince which = IND value = 787 }
+		command = { type = secedeprovince which = IND value = 788 }
+		command = { type = secedeprovince which = IND value = 790 }
+		command = { type = secedeprovince which = IND value = 791 }
+		command = { type = secedeprovince which = IND value = 792 }
+		command = { type = secedeprovince which = IND value = 793 }
+		command = { type = secedeprovince which = IND value = 794 }
+		command = { type = secedeprovince which = IND value = 795 }
+		command = { type = secedeprovince which = IND value = 796 }
+		command = { type = secedeprovince which = IND value = 798 }
+		command = { type = secedeprovince which = IND value = 799 }
+		command = { type = secedeprovince which = IND value = 900 }
+		command = { type = secedeprovince which = IND value = 1016 }
+		command = { type = secedeprovince which = IND value = 1017 }
+		command = { type = secedeprovince which = IND value = 1021 }
+		command = { type = secedeprovince which = IND value = 1022 }
+		command = { type = secedeprovince which = IND value = 1023 }
+		command = { type = secedeprovince which = IND value = 1024 }
+		command = { type = secedeprovince which = IND value = 1025 }
+		command = { type = secedeprovince which = IND value = 1026 }
+	}
+}
+
+event = {
+	id = 9288323
+	random = no
+	one_action = yes
+	country = U01
+	name = "Transfer Indian-Occupied Arab Territory"
+	desc = "India controls the listed Arab territory. Its former owner transfers legal title before the Arab Federation is established."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	action_a = {
+		name = "Transfer the occupied territory"
+		command = { type = secedeprovince which = IND value = 778 }
+		command = { type = secedeprovince which = IND value = 779 }
+		command = { type = secedeprovince which = IND value = 780 }
+		command = { type = secedeprovince which = IND value = 781 }
+		command = { type = secedeprovince which = IND value = 782 }
+		command = { type = secedeprovince which = IND value = 783 }
+		command = { type = secedeprovince which = IND value = 784 }
+		command = { type = secedeprovince which = IND value = 785 }
+		command = { type = secedeprovince which = IND value = 786 }
+		command = { type = secedeprovince which = IND value = 787 }
+		command = { type = secedeprovince which = IND value = 788 }
+		command = { type = secedeprovince which = IND value = 790 }
+		command = { type = secedeprovince which = IND value = 791 }
+		command = { type = secedeprovince which = IND value = 792 }
+		command = { type = secedeprovince which = IND value = 793 }
+		command = { type = secedeprovince which = IND value = 794 }
+		command = { type = secedeprovince which = IND value = 795 }
+		command = { type = secedeprovince which = IND value = 796 }
+		command = { type = secedeprovince which = IND value = 798 }
+		command = { type = secedeprovince which = IND value = 799 }
+		command = { type = secedeprovince which = IND value = 900 }
+		command = { type = secedeprovince which = IND value = 1016 }
+		command = { type = secedeprovince which = IND value = 1017 }
+		command = { type = secedeprovince which = IND value = 1021 }
+		command = { type = secedeprovince which = IND value = 1022 }
+		command = { type = secedeprovince which = IND value = 1023 }
+		command = { type = secedeprovince which = IND value = 1024 }
+		command = { type = secedeprovince which = IND value = 1025 }
+		command = { type = secedeprovince which = IND value = 1026 }
+	}
+}
+
+event = {
+	id = 9288324
+	random = no
+	one_action = yes
+	country = SYR
+	name = "Transfer Indian-Occupied Arab Territory"
+	desc = "India controls the listed Arab territory. Its former owner transfers legal title before the Arab Federation is established."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	action_a = {
+		name = "Transfer the occupied territory"
+		command = { type = secedeprovince which = IND value = 778 }
+		command = { type = secedeprovince which = IND value = 779 }
+		command = { type = secedeprovince which = IND value = 780 }
+		command = { type = secedeprovince which = IND value = 781 }
+		command = { type = secedeprovince which = IND value = 782 }
+		command = { type = secedeprovince which = IND value = 783 }
+		command = { type = secedeprovince which = IND value = 784 }
+		command = { type = secedeprovince which = IND value = 785 }
+		command = { type = secedeprovince which = IND value = 786 }
+		command = { type = secedeprovince which = IND value = 787 }
+		command = { type = secedeprovince which = IND value = 788 }
+		command = { type = secedeprovince which = IND value = 790 }
+		command = { type = secedeprovince which = IND value = 791 }
+		command = { type = secedeprovince which = IND value = 792 }
+		command = { type = secedeprovince which = IND value = 793 }
+		command = { type = secedeprovince which = IND value = 794 }
+		command = { type = secedeprovince which = IND value = 795 }
+		command = { type = secedeprovince which = IND value = 796 }
+		command = { type = secedeprovince which = IND value = 798 }
+		command = { type = secedeprovince which = IND value = 799 }
+		command = { type = secedeprovince which = IND value = 900 }
+		command = { type = secedeprovince which = IND value = 1016 }
+		command = { type = secedeprovince which = IND value = 1017 }
+		command = { type = secedeprovince which = IND value = 1021 }
+		command = { type = secedeprovince which = IND value = 1022 }
+		command = { type = secedeprovince which = IND value = 1023 }
+		command = { type = secedeprovince which = IND value = 1024 }
+		command = { type = secedeprovince which = IND value = 1025 }
+		command = { type = secedeprovince which = IND value = 1026 }
+	}
+}
+
+event = {
+	id = 9288325
+	random = no
+	one_action = yes
+	country = JOR
+	name = "Transfer Indian-Occupied Arab Territory"
+	desc = "India controls the listed Arab territory. Its former owner transfers legal title before the Arab Federation is established."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	action_a = {
+		name = "Transfer the occupied territory"
+		command = { type = secedeprovince which = IND value = 778 }
+		command = { type = secedeprovince which = IND value = 779 }
+		command = { type = secedeprovince which = IND value = 780 }
+		command = { type = secedeprovince which = IND value = 781 }
+		command = { type = secedeprovince which = IND value = 782 }
+		command = { type = secedeprovince which = IND value = 783 }
+		command = { type = secedeprovince which = IND value = 784 }
+		command = { type = secedeprovince which = IND value = 785 }
+		command = { type = secedeprovince which = IND value = 786 }
+		command = { type = secedeprovince which = IND value = 787 }
+		command = { type = secedeprovince which = IND value = 788 }
+		command = { type = secedeprovince which = IND value = 790 }
+		command = { type = secedeprovince which = IND value = 791 }
+		command = { type = secedeprovince which = IND value = 792 }
+		command = { type = secedeprovince which = IND value = 793 }
+		command = { type = secedeprovince which = IND value = 794 }
+		command = { type = secedeprovince which = IND value = 795 }
+		command = { type = secedeprovince which = IND value = 796 }
+		command = { type = secedeprovince which = IND value = 798 }
+		command = { type = secedeprovince which = IND value = 799 }
+		command = { type = secedeprovince which = IND value = 900 }
+		command = { type = secedeprovince which = IND value = 1016 }
+		command = { type = secedeprovince which = IND value = 1017 }
+		command = { type = secedeprovince which = IND value = 1021 }
+		command = { type = secedeprovince which = IND value = 1022 }
+		command = { type = secedeprovince which = IND value = 1023 }
+		command = { type = secedeprovince which = IND value = 1024 }
+		command = { type = secedeprovince which = IND value = 1025 }
+		command = { type = secedeprovince which = IND value = 1026 }
+	}
+}
+
+event = {
+	id = 9288326
+	random = no
+	one_action = yes
+	country = ITA
+	name = "Transfer Indian-Occupied Arab Territory"
+	desc = "India controls the listed Arab territory. Its former owner transfers legal title before the Arab Federation is established."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	action_a = {
+		name = "Transfer the occupied territory"
+		command = { type = secedeprovince which = IND value = 778 }
+		command = { type = secedeprovince which = IND value = 779 }
+		command = { type = secedeprovince which = IND value = 780 }
+		command = { type = secedeprovince which = IND value = 781 }
+		command = { type = secedeprovince which = IND value = 782 }
+		command = { type = secedeprovince which = IND value = 783 }
+		command = { type = secedeprovince which = IND value = 784 }
+		command = { type = secedeprovince which = IND value = 785 }
+		command = { type = secedeprovince which = IND value = 786 }
+		command = { type = secedeprovince which = IND value = 787 }
+		command = { type = secedeprovince which = IND value = 788 }
+		command = { type = secedeprovince which = IND value = 790 }
+		command = { type = secedeprovince which = IND value = 791 }
+		command = { type = secedeprovince which = IND value = 792 }
+		command = { type = secedeprovince which = IND value = 793 }
+		command = { type = secedeprovince which = IND value = 794 }
+		command = { type = secedeprovince which = IND value = 795 }
+		command = { type = secedeprovince which = IND value = 796 }
+		command = { type = secedeprovince which = IND value = 798 }
+		command = { type = secedeprovince which = IND value = 799 }
+		command = { type = secedeprovince which = IND value = 900 }
+		command = { type = secedeprovince which = IND value = 1016 }
+		command = { type = secedeprovince which = IND value = 1017 }
+		command = { type = secedeprovince which = IND value = 1021 }
+		command = { type = secedeprovince which = IND value = 1022 }
+		command = { type = secedeprovince which = IND value = 1023 }
+		command = { type = secedeprovince which = IND value = 1024 }
+		command = { type = secedeprovince which = IND value = 1025 }
+		command = { type = secedeprovince which = IND value = 1026 }
+	}
+}
+
+event = {
+	id = 9288327
+	random = no
+	one_action = yes
+	country = GER
+	name = "Transfer Indian-Occupied Arab Territory"
+	desc = "India controls the listed Arab territory. Its former owner transfers legal title before the Arab Federation is established."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	action_a = {
+		name = "Transfer the occupied territory"
+		command = { type = secedeprovince which = IND value = 778 }
+		command = { type = secedeprovince which = IND value = 779 }
+		command = { type = secedeprovince which = IND value = 780 }
+		command = { type = secedeprovince which = IND value = 781 }
+		command = { type = secedeprovince which = IND value = 782 }
+		command = { type = secedeprovince which = IND value = 783 }
+		command = { type = secedeprovince which = IND value = 784 }
+		command = { type = secedeprovince which = IND value = 785 }
+		command = { type = secedeprovince which = IND value = 786 }
+		command = { type = secedeprovince which = IND value = 787 }
+		command = { type = secedeprovince which = IND value = 788 }
+		command = { type = secedeprovince which = IND value = 790 }
+		command = { type = secedeprovince which = IND value = 791 }
+		command = { type = secedeprovince which = IND value = 792 }
+		command = { type = secedeprovince which = IND value = 793 }
+		command = { type = secedeprovince which = IND value = 794 }
+		command = { type = secedeprovince which = IND value = 795 }
+		command = { type = secedeprovince which = IND value = 796 }
+		command = { type = secedeprovince which = IND value = 798 }
+		command = { type = secedeprovince which = IND value = 799 }
+		command = { type = secedeprovince which = IND value = 900 }
+		command = { type = secedeprovince which = IND value = 1016 }
+		command = { type = secedeprovince which = IND value = 1017 }
+		command = { type = secedeprovince which = IND value = 1021 }
+		command = { type = secedeprovince which = IND value = 1022 }
+		command = { type = secedeprovince which = IND value = 1023 }
+		command = { type = secedeprovince which = IND value = 1024 }
+		command = { type = secedeprovince which = IND value = 1025 }
+		command = { type = secedeprovince which = IND value = 1026 }
+	}
+}
+
+event = {
+	id = 9288328
+	random = no
+	one_action = yes
+	country = TUR
+	name = "Transfer Indian-Occupied Arab Territory"
+	desc = "India controls the listed Arab territory. Its former owner transfers legal title before the Arab Federation is established."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	action_a = {
+		name = "Transfer the occupied territory"
+		command = { type = secedeprovince which = IND value = 778 }
+		command = { type = secedeprovince which = IND value = 779 }
+		command = { type = secedeprovince which = IND value = 780 }
+		command = { type = secedeprovince which = IND value = 781 }
+		command = { type = secedeprovince which = IND value = 782 }
+		command = { type = secedeprovince which = IND value = 783 }
+		command = { type = secedeprovince which = IND value = 784 }
+		command = { type = secedeprovince which = IND value = 785 }
+		command = { type = secedeprovince which = IND value = 786 }
+		command = { type = secedeprovince which = IND value = 787 }
+		command = { type = secedeprovince which = IND value = 788 }
+		command = { type = secedeprovince which = IND value = 790 }
+		command = { type = secedeprovince which = IND value = 791 }
+		command = { type = secedeprovince which = IND value = 792 }
+		command = { type = secedeprovince which = IND value = 793 }
+		command = { type = secedeprovince which = IND value = 794 }
+		command = { type = secedeprovince which = IND value = 795 }
+		command = { type = secedeprovince which = IND value = 796 }
+		command = { type = secedeprovince which = IND value = 798 }
+		command = { type = secedeprovince which = IND value = 799 }
+		command = { type = secedeprovince which = IND value = 900 }
+		command = { type = secedeprovince which = IND value = 1016 }
+		command = { type = secedeprovince which = IND value = 1017 }
+		command = { type = secedeprovince which = IND value = 1021 }
+		command = { type = secedeprovince which = IND value = 1022 }
+		command = { type = secedeprovince which = IND value = 1023 }
+		command = { type = secedeprovince which = IND value = 1024 }
+		command = { type = secedeprovince which = IND value = 1025 }
+		command = { type = secedeprovince which = IND value = 1026 }
+	}
+}
+
+event = {
+	id = 9288330
+	random = no
+	one_action = yes
+	country = IND
+	name = "Arab Federation: Independence"
+	desc = "The occupied Arab lands have been transferred. India can now establish the federation selected two days ago."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Establish the Arab Federation"
+		command = { trigger = { puppet = { country = IRQ country = IND } } type = inherit which = IRQ }
+		command = { trigger = { puppet = { country = SAU country = IND } } type = inherit which = SAU }
+		command = { trigger = { puppet = { country = YEM country = IND } } type = inherit which = YEM }
+		command = { trigger = { puppet = { country = OMN country = IND } } type = inherit which = OMN }
+		command = { type = independence which = ARA value = 1 when = 0 }
+		command = { trigger = { flag = ind_ara_choice_protected exists = ARA } type = make_puppet which = ARA }
+		command = { trigger = { flag = ind_ara_choice_protected exists = ARA } type = event which = 9288311 where = ARA when = 1 }
+		command = { trigger = { flag = ind_ara_choice_neutral exists = ARA } type = guarantee which = IND where = ARA }
+		command = { trigger = { flag = ind_ara_choice_neutral exists = ARA } type = event which = 9288312 where = ARA when = 1 }
+		command = { type = setflag which = ind_country_resolution_ara_complete }
+		command = { type = clrflag which = ind_ara_choice_protected }
+		command = { type = clrflag which = ind_ara_choice_neutral }
 	}
 }
