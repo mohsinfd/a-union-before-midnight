@@ -10,17 +10,17 @@ Indian state to choose its own place in the world?
 
 *Freedom came early. Unity came at a price.*
 
-The current playable build is **4.2.0-alpha.32**. Its diplomacy and war-resolution layers use
+The current playable build is **4.2.0-alpha.33**. Its diplomacy and war-resolution layers use
 plain, country-specific decisions: each decision names the defeated country,
 states the exact outcome, and cannot silently settle another war. The overlapping
 V3 routes, V4 strategy menus, theatre matrices, campaign ledgers, operations boards
 and generic armistice layers have been removed. See [the release notes](RELEASE_NOTES.md) and
 [gameplay changes](GAMEPLAY_CHANGES.md).
 
-Alpha 32 adds the missing Malaya colonial settlement, a late Arab Federation,
-limited Indian base treaties and permanent dismissal of unwanted settlements.
-It retains Alpha 31's country-decision visibility repair and restored national
-programmes without restoring the removed strategic-matrix clutter.
+Alpha 33 repairs the Indonesia breakup, establishes viable island defence
+forces and adds a Soviet victory route for an Indian advance through Central
+Asia and the Urals. It retains Alpha 32's Malaya, Arab Federation, base-treaty
+and permanent-dismiss systems without restoring strategic-matrix clutter.
 
 Darkest Hour serializes its event-file registry into every save. Campaigns created
 before Alpha 31 must be cloned with `tools/refresh_aubm_save_event_registry.py` so

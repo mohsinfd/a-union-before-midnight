@@ -1427,7 +1427,8 @@ event = {
 		command = { trigger = { exists = MLY war = { country = IND country = MLY } } type = inherit which = MLY }
 		command = { type = independence which = MLY value = 1 when = 0 }
 		command = { trigger = { exists = MLY } type = make_puppet which = MLY }
-		command = { trigger = { exists = MLY } type = event which = 9288215 where = MLY when = 1 }
+		command = { type = setflag which = ind_island_setup_mly_protected }
+		command = { type = event which = 9288381 where = IND when = 1 }
 		command = { type = supplies value = -250 }
 		command = { type = setflag which = ind_country_resolution_mly_protected }
 		command = { type = setflag which = ind_country_resolution_mly_complete }
@@ -1442,7 +1443,8 @@ event = {
 		command = { type = independence which = MLY value = 1 when = 0 }
 		command = { trigger = { puppet = { country = MLY country = IND } } type = end_mastery which = MLY }
 		command = { trigger = { exists = MLY } type = guarantee which = IND where = MLY }
-		command = { trigger = { exists = MLY } type = event which = 9288031 where = MLY when = 1 }
+		command = { type = setflag which = ind_island_setup_mly_neutral }
+		command = { type = event which = 9288381 where = IND when = 1 }
 		command = { type = setflag which = ind_country_resolution_mly_neutral }
 		command = { type = setflag which = ind_country_resolution_mly_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_mly }
@@ -1522,7 +1524,8 @@ event = {
 		command = { trigger = { exists = PHI war = { country = IND country = PHI } } type = inherit which = PHI }
 		command = { type = independence which = PHI value = 1 when = 0 }
 		command = { trigger = { exists = PHI } type = make_puppet which = PHI }
-		command = { trigger = { exists = PHI } type = event which = 9288216 where = PHI when = 1 }
+		command = { type = setflag which = ind_island_setup_phi_protected }
+		command = { type = event which = 9288382 where = IND when = 1 }
 		command = { type = supplies value = -250 }
 		command = { type = setflag which = ind_country_resolution_phi_protected }
 		command = { type = setflag which = ind_country_resolution_phi_complete }
@@ -1537,7 +1540,8 @@ event = {
 		command = { type = independence which = PHI value = 1 when = 0 }
 		command = { trigger = { puppet = { country = PHI country = IND } } type = end_mastery which = PHI }
 		command = { trigger = { exists = PHI } type = guarantee which = IND where = PHI }
-		command = { trigger = { exists = PHI } type = event which = 9288033 where = PHI when = 1 }
+		command = { type = setflag which = ind_island_setup_phi_neutral }
+		command = { type = event which = 9288382 where = IND when = 1 }
 		command = { type = setflag which = ind_country_resolution_phi_neutral }
 		command = { type = setflag which = ind_country_resolution_phi_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_phi }
@@ -1618,7 +1622,8 @@ event = {
 		command = { trigger = { exists = INO war = { country = IND country = INO } } type = inherit which = INO }
 		command = { type = independence which = INO value = 1 when = 0 }
 		command = { trigger = { exists = INO } type = make_puppet which = INO }
-		command = { trigger = { exists = INO } type = event which = 9288217 where = INO when = 1 }
+		command = { type = setflag which = ind_island_setup_ino_protected }
+		command = { type = event which = 9288380 where = IND when = 1 }
 		command = { type = supplies value = -250 }
 		command = { type = setflag which = ind_country_resolution_u05_protected }
 		command = { type = setflag which = ind_country_resolution_u05_complete }
@@ -1634,7 +1639,8 @@ event = {
 		command = { type = independence which = INO value = 1 when = 0 }
 		command = { trigger = { puppet = { country = INO country = IND } } type = end_mastery which = INO }
 		command = { trigger = { exists = INO } type = guarantee which = IND where = INO }
-		command = { trigger = { exists = INO } type = event which = 9288035 where = INO when = 1 }
+		command = { type = setflag which = ind_island_setup_ino_neutral }
+		command = { type = event which = 9288380 where = IND when = 1 }
 		command = { type = setflag which = ind_country_resolution_u05_neutral }
 		command = { type = setflag which = ind_country_resolution_u05_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_u05 }
@@ -1705,6 +1711,8 @@ event = {
 		command = { trigger = { exists = BRU war = { country = IND country = BRU } } type = inherit which = BRU }
 		command = { type = independence which = BRU value = 1 when = 0 }
 		command = { trigger = { exists = BRU } type = make_puppet which = BRU }
+		command = { type = setflag which = ind_island_setup_bru_protected }
+		command = { type = event which = 9288383 where = IND when = 1 }
 		command = { type = supplies value = -250 }
 		command = { type = setflag which = ind_country_resolution_bru_protected }
 		command = { type = setflag which = ind_country_resolution_bru_complete }
@@ -1719,7 +1727,8 @@ event = {
 		command = { type = independence which = BRU value = 1 when = 0 }
 		command = { trigger = { puppet = { country = BRU country = IND } } type = end_mastery which = BRU }
 		command = { trigger = { exists = BRU } type = guarantee which = IND where = BRU }
-		command = { trigger = { exists = BRU } type = event which = 9288037 where = BRU when = 1 }
+		command = { type = setflag which = ind_island_setup_bru_neutral }
+		command = { type = event which = 9288383 where = IND when = 1 }
 		command = { type = setflag which = ind_country_resolution_bru_neutral }
 		command = { type = setflag which = ind_country_resolution_bru_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_bru }
@@ -1799,6 +1808,8 @@ event = {
 		command = { trigger = { exists = SAR war = { country = IND country = SAR } } type = inherit which = SAR }
 		command = { type = independence which = SAR value = 1 when = 0 }
 		command = { trigger = { exists = SAR } type = make_puppet which = SAR }
+		command = { type = setflag which = ind_island_setup_sar_protected }
+		command = { type = event which = 9288384 where = IND when = 1 }
 		command = { type = supplies value = -250 }
 		command = { type = setflag which = ind_country_resolution_sar_protected }
 		command = { type = setflag which = ind_country_resolution_sar_complete }
@@ -1813,7 +1824,8 @@ event = {
 		command = { type = independence which = SAR value = 1 when = 0 }
 		command = { trigger = { puppet = { country = SAR country = IND } } type = end_mastery which = SAR }
 		command = { trigger = { exists = SAR } type = guarantee which = IND where = SAR }
-		command = { trigger = { exists = SAR } type = event which = 9288039 where = SAR when = 1 }
+		command = { type = setflag which = ind_island_setup_sar_neutral }
+		command = { type = event which = 9288384 where = IND when = 1 }
 		command = { type = setflag which = ind_country_resolution_sar_neutral }
 		command = { type = setflag which = ind_country_resolution_sar_complete }
 		command = { type = clrflag which = ind_aubm_regional_pending_sar }
@@ -2786,35 +2798,6 @@ event = {
 }
 
 event = {
-	id = 9288082
-	random = no
-	persistent = yes
-	country = IND
-	trigger = { ai = no }
-	name = "Soviet Union: India Can End Its War"
-	desc = "India controls Moscow and Stalingrad, plus two of Baku, Tashkent and Astrakhan. India may now make a separate peace with Soviet Union. This ends only India's war with Soviet Union; India's other wars continue."
-	style = 2
-	picture = "aubm_v4_liberated_territory"
-	date = { day = 0 month = january year = 1933 }
-	offset = 1
-	deathdate = { day = 29 month = december year = 1964 }
-	decision = { exists = SOV war = { country = IND country = SOV } control = { province = 572 data = IND } control = { province = 663 data = IND } OR = { AND = { control = { province = 713 data = IND } control = { province = 1103 data = IND } } AND = { control = { province = 713 data = IND } control = { province = 706 data = IND } } AND = { control = { province = 1103 data = IND } control = { province = 706 data = IND } } } NOT = { flag = ind_country_resolution_major_sov } }
-	decision_trigger = { exists = SOV war = { country = IND country = SOV } control = { province = 572 data = IND } control = { province = 663 data = IND } OR = { AND = { control = { province = 713 data = IND } control = { province = 1103 data = IND } } AND = { control = { province = 713 data = IND } control = { province = 706 data = IND } } AND = { control = { province = 1103 data = IND } control = { province = 706 data = IND } } } NOT = { flag = ind_country_resolution_major_sov } }
-	action_a = {
-		name = "Separate peace: -3 dissent; +300 money"
-		command = { type = peace which = SOV value = 1 }
-		command = { type = dissent value = -3 }
-		command = { type = money value = 300 }
-		command = { type = setflag which = ind_country_resolution_major_sov }
-		command = { trigger = { atwar = no } type = setflag which = ind_aubm_postwar_congress_completed }
-	}
-	action_b = {
-		name = "Dismiss this peace; continue the war"
-		command = { type = setflag which = ind_country_resolution_major_sov }
-	}
-}
-
-event = {
 	id = 9288083
 	random = no
 	persistent = yes
@@ -2870,6 +2853,143 @@ event = {
 	action_b = {
 		name = "Dismiss this peace; continue the war"
 		command = { type = setflag which = ind_country_resolution_major_usa }
+	}
+}
+
+event = {
+	id = 9288082
+	random = no
+	persistent = yes
+	country = IND
+	trigger = { ai = no }
+	name = "Soviet Union: India Can Dictate a Settlement"
+	desc = "India may qualify by taking Moscow and Stalingrad, or by breaking the southern and Ural belt through Baku, Tashkent, Astrakhan, Ufa, Chelyabinsk, Omsk and Sverdlovsk while the USSR has lost 40 percent. Fully occupied Caucasian and Central Asian republics can become Indian protectorates. Incomplete republics remain Soviet."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	date = { day = 0 month = january year = 1933 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1964 }
+	decision = { exists = SOV war = { country = IND country = SOV } OR = { AND = { control = { province = 572 data = IND } control = { province = 663 data = IND } OR = { AND = { control = { province = 713 data = IND } control = { province = 1103 data = IND } } AND = { control = { province = 713 data = IND } control = { province = 706 data = IND } } AND = { control = { province = 1103 data = IND } control = { province = 706 data = IND } } } } AND = { control = { province = 713 data = IND } control = { province = 1103 data = IND } control = { province = 706 data = IND } control = { province = 1131 data = IND } control = { province = 1132 data = IND } control = { province = 1138 data = IND } control = { province = 1151 data = IND } lost_national = { country = SOV value = 40 } } } NOT = { flag = ind_country_resolution_major_sov } }
+	decision_trigger = { exists = SOV war = { country = IND country = SOV } OR = { AND = { control = { province = 572 data = IND } control = { province = 663 data = IND } OR = { AND = { control = { province = 713 data = IND } control = { province = 1103 data = IND } } AND = { control = { province = 713 data = IND } control = { province = 706 data = IND } } AND = { control = { province = 1103 data = IND } control = { province = 706 data = IND } } } } AND = { control = { province = 713 data = IND } control = { province = 1103 data = IND } control = { province = 706 data = IND } control = { province = 1131 data = IND } control = { province = 1132 data = IND } control = { province = 1138 data = IND } control = { province = 1151 data = IND } lost_national = { country = SOV value = 40 } } } NOT = { flag = ind_country_resolution_major_sov } }
+	action_a = {
+		name = "Liberation peace: aligned republics; -4 dissent"
+		command = { type = setflag which = ind_soviet_liberation_pending }
+		command = { type = event which = 9288360 where = SOV when = 1 }
+	}
+	action_b = {
+		name = "Continue the war; keep this decision open"
+	}
+	action_c = {
+		name = "Dismiss this settlement permanently"
+		command = { type = setflag which = ind_country_resolution_major_sov }
+	}
+}
+
+event = {
+	id = 9288360
+	random = no
+	one_action = yes
+	country = SOV
+	name = "Soviet Union Transfers the Occupied Republics"
+	desc = "The Soviet government transfers legal title only to republics whose entire required territory is under Indian occupation."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Transfer the fully occupied republics"
+		command = { trigger = { control = { province = 506 data = IND } control = { province = 507 data = IND } control = { province = 505 data = IND } control = { province = 500 data = IND } control = { province = 498 data = IND } control = { province = 504 data = IND } control = { province = 506 data = IND } } type = secedeprovince which = IND value = 506 }
+		command = { trigger = { control = { province = 506 data = IND } control = { province = 507 data = IND } control = { province = 505 data = IND } control = { province = 500 data = IND } control = { province = 498 data = IND } control = { province = 504 data = IND } control = { province = 507 data = IND } } type = secedeprovince which = IND value = 507 }
+		command = { trigger = { control = { province = 506 data = IND } control = { province = 507 data = IND } control = { province = 505 data = IND } control = { province = 500 data = IND } control = { province = 498 data = IND } control = { province = 504 data = IND } control = { province = 505 data = IND } } type = secedeprovince which = IND value = 505 }
+		command = { trigger = { control = { province = 506 data = IND } control = { province = 507 data = IND } control = { province = 505 data = IND } control = { province = 500 data = IND } control = { province = 498 data = IND } control = { province = 504 data = IND } control = { province = 500 data = IND } } type = secedeprovince which = IND value = 500 }
+		command = { trigger = { control = { province = 506 data = IND } control = { province = 507 data = IND } control = { province = 505 data = IND } control = { province = 500 data = IND } control = { province = 498 data = IND } control = { province = 504 data = IND } control = { province = 498 data = IND } } type = secedeprovince which = IND value = 498 }
+		command = { trigger = { control = { province = 506 data = IND } control = { province = 507 data = IND } control = { province = 505 data = IND } control = { province = 500 data = IND } control = { province = 498 data = IND } control = { province = 504 data = IND } control = { province = 504 data = IND } } type = secedeprovince which = IND value = 504 }
+		command = { trigger = { control = { province = 506 data = IND } control = { province = 507 data = IND } control = { province = 505 data = IND } control = { province = 500 data = IND } control = { province = 498 data = IND } control = { province = 504 data = IND } control = { province = 1114 data = IND } } type = secedeprovince which = IND value = 1114 }
+		command = { trigger = { control = { province = 506 data = IND } control = { province = 507 data = IND } control = { province = 505 data = IND } control = { province = 500 data = IND } control = { province = 498 data = IND } control = { province = 504 data = IND } control = { province = 1117 data = IND } } type = secedeprovince which = IND value = 1117 }
+		command = { trigger = { control = { province = 506 data = IND } control = { province = 507 data = IND } control = { province = 505 data = IND } control = { province = 500 data = IND } control = { province = 498 data = IND } control = { province = 504 data = IND } control = { province = 1118 data = IND } } type = secedeprovince which = IND value = 1118 }
+		command = { trigger = { control = { province = 506 data = IND } control = { province = 507 data = IND } control = { province = 505 data = IND } control = { province = 500 data = IND } control = { province = 498 data = IND } control = { province = 504 data = IND } control = { province = 1116 data = IND } } type = secedeprovince which = IND value = 1116 }
+		command = { trigger = { control = { province = 506 data = IND } control = { province = 507 data = IND } control = { province = 505 data = IND } control = { province = 500 data = IND } control = { province = 498 data = IND } control = { province = 504 data = IND } control = { province = 503 data = IND } } type = secedeprovince which = IND value = 503 }
+		command = { trigger = { control = { province = 506 data = IND } control = { province = 507 data = IND } control = { province = 505 data = IND } control = { province = 500 data = IND } control = { province = 498 data = IND } control = { province = 504 data = IND } control = { province = 1110 data = IND } } type = secedeprovince which = IND value = 1110 }
+		command = { trigger = { control = { province = 506 data = IND } control = { province = 507 data = IND } control = { province = 505 data = IND } control = { province = 500 data = IND } control = { province = 498 data = IND } control = { province = 504 data = IND } control = { province = 1108 data = IND } } type = secedeprovince which = IND value = 1108 }
+		command = { trigger = { control = { province = 506 data = IND } control = { province = 507 data = IND } control = { province = 505 data = IND } control = { province = 500 data = IND } control = { province = 498 data = IND } control = { province = 504 data = IND } control = { province = 1113 data = IND } } type = secedeprovince which = IND value = 1113 }
+		command = { trigger = { control = { province = 506 data = IND } control = { province = 507 data = IND } control = { province = 505 data = IND } control = { province = 500 data = IND } control = { province = 498 data = IND } control = { province = 504 data = IND } control = { province = 1115 data = IND } } type = secedeprovince which = IND value = 1115 }
+		command = { trigger = { control = { province = 506 data = IND } control = { province = 507 data = IND } control = { province = 505 data = IND } control = { province = 500 data = IND } control = { province = 498 data = IND } control = { province = 504 data = IND } control = { province = 1111 data = IND } } type = secedeprovince which = IND value = 1111 }
+		command = { trigger = { control = { province = 506 data = IND } control = { province = 507 data = IND } control = { province = 505 data = IND } control = { province = 500 data = IND } control = { province = 498 data = IND } control = { province = 504 data = IND } control = { province = 502 data = IND } } type = secedeprovince which = IND value = 502 }
+		command = { trigger = { control = { province = 506 data = IND } control = { province = 507 data = IND } control = { province = 505 data = IND } control = { province = 500 data = IND } control = { province = 498 data = IND } control = { province = 504 data = IND } control = { province = 499 data = IND } } type = secedeprovince which = IND value = 499 }
+		command = { trigger = { control = { province = 506 data = IND } control = { province = 507 data = IND } control = { province = 505 data = IND } control = { province = 500 data = IND } control = { province = 498 data = IND } control = { province = 504 data = IND } control = { province = 1109 data = IND } } type = secedeprovince which = IND value = 1109 }
+		command = { trigger = { control = { province = 506 data = IND } control = { province = 507 data = IND } control = { province = 505 data = IND } control = { province = 500 data = IND } control = { province = 498 data = IND } control = { province = 504 data = IND } control = { province = 1112 data = IND } } type = secedeprovince which = IND value = 1112 }
+		command = { trigger = { control = { province = 506 data = IND } control = { province = 507 data = IND } control = { province = 505 data = IND } control = { province = 500 data = IND } control = { province = 498 data = IND } control = { province = 504 data = IND } control = { province = 501 data = IND } } type = secedeprovince which = IND value = 501 }
+		command = { trigger = { control = { province = 1107 data = IND } control = { province = 1106 data = IND } control = { province = 1107 data = IND } } type = secedeprovince which = IND value = 1107 }
+		command = { trigger = { control = { province = 1107 data = IND } control = { province = 1106 data = IND } control = { province = 1106 data = IND } } type = secedeprovince which = IND value = 1106 }
+		command = { trigger = { control = { province = 1105 data = IND } control = { province = 1104 data = IND } control = { province = 1105 data = IND } } type = secedeprovince which = IND value = 1105 }
+		command = { trigger = { control = { province = 1105 data = IND } control = { province = 1104 data = IND } control = { province = 1104 data = IND } } type = secedeprovince which = IND value = 1104 }
+		command = { trigger = { control = { province = 1097 data = IND } control = { province = 1098 data = IND } control = { province = 1097 data = IND } } type = secedeprovince which = IND value = 1097 }
+		command = { trigger = { control = { province = 1097 data = IND } control = { province = 1098 data = IND } control = { province = 1098 data = IND } } type = secedeprovince which = IND value = 1098 }
+		command = { trigger = { control = { province = 1101 data = IND } control = { province = 1102 data = IND } control = { province = 1100 data = IND } control = { province = 1103 data = IND } control = { province = 1099 data = IND } control = { province = 1101 data = IND } } type = secedeprovince which = IND value = 1101 }
+		command = { trigger = { control = { province = 1101 data = IND } control = { province = 1102 data = IND } control = { province = 1100 data = IND } control = { province = 1103 data = IND } control = { province = 1099 data = IND } control = { province = 1102 data = IND } } type = secedeprovince which = IND value = 1102 }
+		command = { trigger = { control = { province = 1101 data = IND } control = { province = 1102 data = IND } control = { province = 1100 data = IND } control = { province = 1103 data = IND } control = { province = 1099 data = IND } control = { province = 1100 data = IND } } type = secedeprovince which = IND value = 1100 }
+		command = { trigger = { control = { province = 1101 data = IND } control = { province = 1102 data = IND } control = { province = 1100 data = IND } control = { province = 1103 data = IND } control = { province = 1099 data = IND } control = { province = 1103 data = IND } } type = secedeprovince which = IND value = 1103 }
+		command = { trigger = { control = { province = 1101 data = IND } control = { province = 1102 data = IND } control = { province = 1100 data = IND } control = { province = 1103 data = IND } control = { province = 1099 data = IND } control = { province = 1099 data = IND } } type = secedeprovince which = IND value = 1099 }
+		command = { trigger = { control = { province = 711 data = IND } control = { province = 711 data = IND } } type = secedeprovince which = IND value = 711 }
+		command = { trigger = { control = { province = 711 data = IND } control = { province = 712 data = IND } } type = secedeprovince which = IND value = 712 }
+		command = { trigger = { control = { province = 711 data = IND } control = { province = 714 data = IND } } type = secedeprovince which = IND value = 714 }
+		command = { trigger = { control = { province = 713 data = IND } control = { province = 713 data = IND } } type = secedeprovince which = IND value = 713 }
+		command = { trigger = { control = { province = 713 data = IND } control = { province = 712 data = IND } } type = secedeprovince which = IND value = 712 }
+		command = { trigger = { control = { province = 713 data = IND } control = { province = 714 data = IND } } type = secedeprovince which = IND value = 714 }
+		command = { trigger = { control = { province = 708 data = IND } control = { province = 709 data = IND } control = { province = 708 data = IND } } type = secedeprovince which = IND value = 708 }
+		command = { trigger = { control = { province = 708 data = IND } control = { province = 709 data = IND } control = { province = 709 data = IND } } type = secedeprovince which = IND value = 709 }
+		command = { trigger = { control = { province = 708 data = IND } control = { province = 709 data = IND } control = { province = 710 data = IND } } type = secedeprovince which = IND value = 710 }
+		command = { trigger = { control = { province = 708 data = IND } control = { province = 709 data = IND } control = { province = 707 data = IND } } type = secedeprovince which = IND value = 707 }
+		command = { type = event which = 9288361 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9288361
+	random = no
+	one_action = yes
+	country = IND
+	name = "Caucasian and Central Asian Independence"
+	desc = "India establishes every republic for which all required provinces were transferred. A final agreement will align the new governments and end India's Soviet war."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Establish the eligible republics"
+		command = { trigger = { owned = { province = 506 data = IND } owned = { province = 507 data = IND } owned = { province = 505 data = IND } owned = { province = 500 data = IND } owned = { province = 498 data = IND } owned = { province = 504 data = IND } } type = independence which = KAZ value = 1 when = 0 }
+		command = { trigger = { owned = { province = 1107 data = IND } owned = { province = 1106 data = IND } } type = independence which = KYG value = 1 when = 0 }
+		command = { trigger = { owned = { province = 1105 data = IND } owned = { province = 1104 data = IND } } type = independence which = TAJ value = 1 when = 0 }
+		command = { trigger = { owned = { province = 1097 data = IND } owned = { province = 1098 data = IND } } type = independence which = TRK value = 1 when = 0 }
+		command = { trigger = { owned = { province = 1101 data = IND } owned = { province = 1102 data = IND } owned = { province = 1100 data = IND } owned = { province = 1103 data = IND } owned = { province = 1099 data = IND } } type = independence which = UZB value = 1 when = 0 }
+		command = { trigger = { owned = { province = 711 data = IND } } type = independence which = ARM value = 1 when = 0 }
+		command = { trigger = { owned = { province = 713 data = IND } } type = independence which = AZB value = 1 when = 0 }
+		command = { trigger = { owned = { province = 708 data = IND } owned = { province = 709 data = IND } } type = independence which = GEO value = 1 when = 0 }
+		command = { type = event which = 9288362 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9288362
+	random = no
+	one_action = yes
+	country = IND
+	name = "The Delhi-Moscow Liberation Peace"
+	desc = "The new republics become Indian protectorates. India and the Soviet Union end their war; India's other wars continue."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		name = "Sign the liberation peace"
+		command = { trigger = { exists = KAZ } type = make_puppet which = KAZ }
+		command = { trigger = { exists = KYG } type = make_puppet which = KYG }
+		command = { trigger = { exists = TAJ } type = make_puppet which = TAJ }
+		command = { trigger = { exists = TRK } type = make_puppet which = TRK }
+		command = { trigger = { exists = UZB } type = make_puppet which = UZB }
+		command = { trigger = { exists = ARM } type = make_puppet which = ARM }
+		command = { trigger = { exists = AZB } type = make_puppet which = AZB }
+		command = { trigger = { exists = GEO } type = make_puppet which = GEO }
+		command = { type = peace which = SOV value = 1 }
+		command = { type = dissent value = -4 }
+		command = { type = money value = 500 }
+		command = { type = supplies value = 1000 }
+		command = { type = setflag which = ind_country_resolution_major_sov }
+		command = { type = clrflag which = ind_soviet_liberation_pending }
 	}
 }
 
@@ -2939,8 +3059,14 @@ event = {
 		command = { type = independence which = SAR value = 1 when = 0 }
 		command = { type = independence which = INO value = 1 when = 0 }
 		command = { trigger = { exists = BRU } type = make_puppet which = BRU }
+		command = { type = setflag which = ind_island_setup_bru_protected }
+		command = { type = event which = 9288383 where = IND when = 1 }
 		command = { trigger = { exists = SAR } type = make_puppet which = SAR }
+		command = { type = setflag which = ind_island_setup_sar_protected }
+		command = { type = event which = 9288384 where = IND when = 1 }
 		command = { trigger = { exists = INO } type = make_puppet which = INO }
+		command = { type = setflag which = ind_island_setup_ino_protected }
+		command = { type = event which = 9288380 where = IND when = 1 }
 		command = { type = supplies value = -500 }
 		command = { type = setflag which = ind_country_resolution_u05_fragmented_protected }
 		command = { type = setflag which = ind_country_resolution_u05_complete }
@@ -2955,11 +3081,14 @@ event = {
 		command = { type = independence which = SAR value = 1 when = 0 }
 		command = { type = independence which = INO value = 1 when = 0 }
 		command = { trigger = { exists = BRU } type = guarantee which = IND where = BRU }
-		command = { trigger = { exists = BRU } type = event which = 9288037 where = BRU when = 1 }
+		command = { type = setflag which = ind_island_setup_bru_neutral }
+		command = { type = event which = 9288383 where = IND when = 1 }
 		command = { trigger = { exists = SAR } type = guarantee which = IND where = SAR }
-		command = { trigger = { exists = SAR } type = event which = 9288039 where = SAR when = 1 }
+		command = { type = setflag which = ind_island_setup_sar_neutral }
+		command = { type = event which = 9288384 where = IND when = 1 }
 		command = { trigger = { exists = INO } type = guarantee which = IND where = INO }
-		command = { trigger = { exists = INO } type = event which = 9288035 where = INO when = 1 }
+		command = { type = setflag which = ind_island_setup_ino_neutral }
+		command = { type = event which = 9288380 where = IND when = 1 }
 		command = { type = supplies value = -250 }
 		command = { type = setflag which = ind_country_resolution_u05_fragmented_neutral }
 		command = { type = setflag which = ind_country_resolution_u05_complete }
@@ -3035,6 +3164,467 @@ event = {
 }
 
 event = {
+	id = 9288380
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	name = "Indonesia: Complete the Settlement"
+	desc = "The Indonesia government now exists. India can apply the chosen relationship and establish its initial defence forces without relying on same-day release commands."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		trigger = { flag = ind_island_setup_ino_protected exists = INO }
+		name = "Complete the protectorate agreement"
+		command = { type = make_puppet which = INO }
+		command = { type = event which = 9288217 where = INO when = 1 }
+		command = { type = event which = 9288400 where = INO when = 1 }
+		command = { type = event which = 9288410 where = INO when = 1 }
+		command = { type = clrflag which = ind_island_setup_ino_protected }
+		command = { type = clrflag which = ind_island_setup_ino_neutral }
+	}
+	action_b = {
+		trigger = { flag = ind_island_setup_ino_neutral exists = INO }
+		name = "Complete protected neutrality"
+		command = { trigger = { puppet = { country = INO country = IND } } type = end_mastery which = INO }
+		command = { type = guarantee which = IND where = INO }
+		command = { type = event which = 9288035 where = INO when = 1 }
+		command = { type = event which = 9288400 where = INO when = 1 }
+		command = { type = clrflag which = ind_island_setup_ino_protected }
+		command = { type = clrflag which = ind_island_setup_ino_neutral }
+	}
+	action_c = {
+		trigger = { NOT = { exists = INO } }
+		name = "The state was not created"
+		command = { type = clrflag which = ind_island_setup_ino_protected }
+		command = { type = clrflag which = ind_island_setup_ino_neutral }
+	}
+}
+
+event = {
+	id = 9288381
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	name = "Malaysia: Complete the Settlement"
+	desc = "The Malaysia government now exists. India can apply the chosen relationship and establish its initial defence forces without relying on same-day release commands."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		trigger = { flag = ind_island_setup_mly_protected exists = MLY }
+		name = "Complete the protectorate agreement"
+		command = { type = make_puppet which = MLY }
+		command = { type = event which = 9288215 where = MLY when = 1 }
+		command = { type = event which = 9288401 where = MLY when = 1 }
+		command = { type = event which = 9288411 where = MLY when = 1 }
+		command = { type = clrflag which = ind_island_setup_mly_protected }
+		command = { type = clrflag which = ind_island_setup_mly_neutral }
+	}
+	action_b = {
+		trigger = { flag = ind_island_setup_mly_neutral exists = MLY }
+		name = "Complete protected neutrality"
+		command = { trigger = { puppet = { country = MLY country = IND } } type = end_mastery which = MLY }
+		command = { type = guarantee which = IND where = MLY }
+		command = { type = event which = 9288031 where = MLY when = 1 }
+		command = { type = event which = 9288401 where = MLY when = 1 }
+		command = { type = clrflag which = ind_island_setup_mly_protected }
+		command = { type = clrflag which = ind_island_setup_mly_neutral }
+	}
+	action_c = {
+		trigger = { NOT = { exists = MLY } }
+		name = "The state was not created"
+		command = { type = clrflag which = ind_island_setup_mly_protected }
+		command = { type = clrflag which = ind_island_setup_mly_neutral }
+	}
+}
+
+event = {
+	id = 9288382
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	name = "Philippines: Complete the Settlement"
+	desc = "The Philippines government now exists. India can apply the chosen relationship and establish its initial defence forces without relying on same-day release commands."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		trigger = { flag = ind_island_setup_phi_protected exists = PHI }
+		name = "Complete the protectorate agreement"
+		command = { type = make_puppet which = PHI }
+		command = { type = event which = 9288216 where = PHI when = 1 }
+		command = { type = event which = 9288402 where = PHI when = 1 }
+		command = { type = event which = 9288412 where = PHI when = 1 }
+		command = { type = clrflag which = ind_island_setup_phi_protected }
+		command = { type = clrflag which = ind_island_setup_phi_neutral }
+	}
+	action_b = {
+		trigger = { flag = ind_island_setup_phi_neutral exists = PHI }
+		name = "Complete protected neutrality"
+		command = { trigger = { puppet = { country = PHI country = IND } } type = end_mastery which = PHI }
+		command = { type = guarantee which = IND where = PHI }
+		command = { type = event which = 9288033 where = PHI when = 1 }
+		command = { type = event which = 9288402 where = PHI when = 1 }
+		command = { type = clrflag which = ind_island_setup_phi_protected }
+		command = { type = clrflag which = ind_island_setup_phi_neutral }
+	}
+	action_c = {
+		trigger = { NOT = { exists = PHI } }
+		name = "The state was not created"
+		command = { type = clrflag which = ind_island_setup_phi_protected }
+		command = { type = clrflag which = ind_island_setup_phi_neutral }
+	}
+}
+
+event = {
+	id = 9288383
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	name = "Brunei: Complete the Settlement"
+	desc = "The Brunei government now exists. India can apply the chosen relationship and establish its initial defence forces without relying on same-day release commands."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		trigger = { flag = ind_island_setup_bru_protected exists = BRU }
+		name = "Complete the protectorate agreement"
+		command = { type = make_puppet which = BRU }
+		command = { type = event which = 9288403 where = BRU when = 1 }
+		command = { type = event which = 9288413 where = BRU when = 1 }
+		command = { type = clrflag which = ind_island_setup_bru_protected }
+		command = { type = clrflag which = ind_island_setup_bru_neutral }
+	}
+	action_b = {
+		trigger = { flag = ind_island_setup_bru_neutral exists = BRU }
+		name = "Complete protected neutrality"
+		command = { trigger = { puppet = { country = BRU country = IND } } type = end_mastery which = BRU }
+		command = { type = guarantee which = IND where = BRU }
+		command = { type = event which = 9288037 where = BRU when = 1 }
+		command = { type = event which = 9288403 where = BRU when = 1 }
+		command = { type = clrflag which = ind_island_setup_bru_protected }
+		command = { type = clrflag which = ind_island_setup_bru_neutral }
+	}
+	action_c = {
+		trigger = { NOT = { exists = BRU } }
+		name = "The state was not created"
+		command = { type = clrflag which = ind_island_setup_bru_protected }
+		command = { type = clrflag which = ind_island_setup_bru_neutral }
+	}
+}
+
+event = {
+	id = 9288384
+	random = no
+	persistent = yes
+	one_action = yes
+	country = IND
+	name = "Sarawak: Complete the Settlement"
+	desc = "The Sarawak government now exists. India can apply the chosen relationship and establish its initial defence forces without relying on same-day release commands."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	action_a = {
+		trigger = { flag = ind_island_setup_sar_protected exists = SAR }
+		name = "Complete the protectorate agreement"
+		command = { type = make_puppet which = SAR }
+		command = { type = event which = 9288404 where = SAR when = 1 }
+		command = { type = event which = 9288414 where = SAR when = 1 }
+		command = { type = clrflag which = ind_island_setup_sar_protected }
+		command = { type = clrflag which = ind_island_setup_sar_neutral }
+	}
+	action_b = {
+		trigger = { flag = ind_island_setup_sar_neutral exists = SAR }
+		name = "Complete protected neutrality"
+		command = { trigger = { puppet = { country = SAR country = IND } } type = end_mastery which = SAR }
+		command = { type = guarantee which = IND where = SAR }
+		command = { type = event which = 9288039 where = SAR when = 1 }
+		command = { type = event which = 9288404 where = SAR when = 1 }
+		command = { type = clrflag which = ind_island_setup_sar_protected }
+		command = { type = clrflag which = ind_island_setup_sar_neutral }
+	}
+	action_c = {
+		trigger = { NOT = { exists = SAR } }
+		name = "The state was not created"
+		command = { type = clrflag which = ind_island_setup_sar_protected }
+		command = { type = clrflag which = ind_island_setup_sar_neutral }
+	}
+}
+
+event = {
+	id = 9288400
+	random = no
+	one_action = yes
+	country = INO
+	trigger = { year = 1940 }
+	name = "Indonesia: Founding Defence Force"
+	desc = "The new state forms a territorial army, coastal fleet and supply reserve so independence does not leave it defenceless."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	date = { day = 0 month = january year = 1933 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Muster the founding forces"
+		command = { type = add_corps which = "Indonesia Defence Command" value = land where = 1654 }
+		command = { type = add_division which = "1. National Infantry Division" value = infantry when = -1 }
+		command = { type = add_division which = "2. National Infantry Division" value = infantry when = -1 }
+		command = { type = add_division which = "1. Island Garrison Division" value = garrison when = -1 }
+		command = { type = add_division which = "2. Island Garrison Division" value = garrison when = -1 }
+		command = { type = add_corps which = "Indonesia Coastal Fleet" value = naval where = 1647 }
+		command = { type = add_division which = "1. Coastal Defence Flotilla" value = destroyer when = -1 }
+		command = { type = add_division which = "1. National Transport Flotilla" value = transport when = -1 }
+		command = { type = manpowerpool value = 30 }
+		command = { type = supplies value = 1200 }
+		command = { type = oilpool value = 500 }
+	}
+}
+
+event = {
+	id = 9288401
+	random = no
+	one_action = yes
+	country = MLY
+	trigger = { year = 1940 }
+	name = "Malaysia: Founding Defence Force"
+	desc = "The new state forms a territorial army, coastal fleet and supply reserve so independence does not leave it defenceless."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	date = { day = 0 month = january year = 1933 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Muster the founding forces"
+		command = { type = add_corps which = "Malaysia Defence Command" value = land where = 1438 }
+		command = { type = add_division which = "1. National Infantry Division" value = infantry when = -1 }
+		command = { type = add_division which = "2. National Infantry Division" value = infantry when = -1 }
+		command = { type = add_division which = "1. Island Garrison Division" value = garrison when = -1 }
+		command = { type = add_corps which = "Malaysia Coastal Fleet" value = naval where = 1438 }
+		command = { type = add_division which = "1. Coastal Defence Flotilla" value = destroyer when = -1 }
+		command = { type = add_division which = "1. National Transport Flotilla" value = transport when = -1 }
+		command = { type = manpowerpool value = 30 }
+		command = { type = supplies value = 1200 }
+		command = { type = oilpool value = 500 }
+	}
+}
+
+event = {
+	id = 9288402
+	random = no
+	one_action = yes
+	country = PHI
+	trigger = { year = 1940 }
+	name = "Philippines: Founding Defence Force"
+	desc = "The new state forms a territorial army, coastal fleet and supply reserve so independence does not leave it defenceless."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	date = { day = 0 month = january year = 1933 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Muster the founding forces"
+		command = { type = add_corps which = "Philippines Defence Command" value = land where = 1565 }
+		command = { type = add_division which = "1. National Infantry Division" value = infantry when = -1 }
+		command = { type = add_division which = "2. National Infantry Division" value = infantry when = -1 }
+		command = { type = add_division which = "3. National Infantry Division" value = infantry when = -1 }
+		command = { type = add_division which = "1. Island Garrison Division" value = garrison when = -1 }
+		command = { type = add_corps which = "Philippines Coastal Fleet" value = naval where = 1565 }
+		command = { type = add_division which = "1. Coastal Defence Flotilla" value = destroyer when = -1 }
+		command = { type = add_division which = "1. National Transport Flotilla" value = transport when = -1 }
+		command = { type = manpowerpool value = 30 }
+		command = { type = supplies value = 1200 }
+		command = { type = oilpool value = 500 }
+	}
+}
+
+event = {
+	id = 9288403
+	random = no
+	one_action = yes
+	country = BRU
+	trigger = { year = 1940 }
+	name = "Brunei: Founding Defence Force"
+	desc = "The new state forms a territorial army, coastal fleet and supply reserve so independence does not leave it defenceless."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	date = { day = 0 month = january year = 1933 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Muster the founding forces"
+		command = { type = add_corps which = "Brunei Defence Command" value = land where = 1625 }
+		command = { type = add_division which = "1. Island Garrison Division" value = garrison when = -1 }
+		command = { type = add_corps which = "Brunei Coastal Fleet" value = naval where = 1625 }
+		command = { type = add_division which = "1. Coastal Defence Flotilla" value = destroyer when = -1 }
+		command = { type = manpowerpool value = 30 }
+		command = { type = supplies value = 1200 }
+		command = { type = oilpool value = 500 }
+	}
+}
+
+event = {
+	id = 9288404
+	random = no
+	one_action = yes
+	country = SAR
+	trigger = { year = 1940 }
+	name = "Sarawak: Founding Defence Force"
+	desc = "The new state forms a territorial army, coastal fleet and supply reserve so independence does not leave it defenceless."
+	style = 2
+	picture = "aubm_v4_liberated_territory"
+	date = { day = 0 month = january year = 1933 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Muster the founding forces"
+		command = { type = add_corps which = "Sarawak Defence Command" value = land where = 1624 }
+		command = { type = add_division which = "1. Island Garrison Division" value = garrison when = -1 }
+		command = { type = add_corps which = "Sarawak Coastal Fleet" value = naval where = 1624 }
+		command = { type = add_division which = "1. Coastal Defence Flotilla" value = destroyer when = -1 }
+		command = { type = manpowerpool value = 30 }
+		command = { type = supplies value = 1200 }
+		command = { type = oilpool value = 500 }
+	}
+}
+
+event = {
+	id = 9288410
+	random = no
+	one_action = yes
+	country = INO
+	name = "Indonesia: Indian Defence Mission"
+	desc = "India supplies instructors, mobile troops and escorts to an aligned protectorate. These forces supplement the local founding defence force."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	action_a = {
+		name = "Receive the Indian defence mission"
+		command = { type = add_corps which = "Indian Ocean Defence Mission" value = land where = 1654 }
+		command = { type = add_division which = "1. Protectorate Infantry Division" value = infantry when = -1 }
+		command = { type = add_division which = "1. Protectorate Marine Division" value = marine when = -1 }
+		command = { type = add_corps which = "Indian Ocean Escort Group" value = naval where = 1647 }
+		command = { type = add_division which = "1. Protectorate Escort Flotilla" value = destroyer when = -1 }
+		command = { type = supplies value = 800 }
+		command = { type = oilpool value = 300 }
+		command = { type = relation which = IND value = 30 }
+	}
+}
+
+event = {
+	id = 9288411
+	random = no
+	one_action = yes
+	country = MLY
+	name = "Malaysia: Indian Defence Mission"
+	desc = "India supplies instructors, mobile troops and escorts to an aligned protectorate. These forces supplement the local founding defence force."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	action_a = {
+		name = "Receive the Indian defence mission"
+		command = { type = add_corps which = "Indian Ocean Defence Mission" value = land where = 1438 }
+		command = { type = add_division which = "1. Protectorate Infantry Division" value = infantry when = -1 }
+		command = { type = add_corps which = "Indian Ocean Escort Group" value = naval where = 1438 }
+		command = { type = add_division which = "1. Protectorate Escort Flotilla" value = destroyer when = -1 }
+		command = { type = supplies value = 800 }
+		command = { type = oilpool value = 300 }
+		command = { type = relation which = IND value = 30 }
+	}
+}
+
+event = {
+	id = 9288412
+	random = no
+	one_action = yes
+	country = PHI
+	name = "Philippines: Indian Defence Mission"
+	desc = "India supplies instructors, mobile troops and escorts to an aligned protectorate. These forces supplement the local founding defence force."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	action_a = {
+		name = "Receive the Indian defence mission"
+		command = { type = add_corps which = "Indian Ocean Defence Mission" value = land where = 1565 }
+		command = { type = add_division which = "1. Protectorate Infantry Division" value = infantry when = -1 }
+		command = { type = add_corps which = "Indian Ocean Escort Group" value = naval where = 1565 }
+		command = { type = add_division which = "1. Protectorate Escort Flotilla" value = destroyer when = -1 }
+		command = { type = supplies value = 800 }
+		command = { type = oilpool value = 300 }
+		command = { type = relation which = IND value = 30 }
+	}
+}
+
+event = {
+	id = 9288413
+	random = no
+	one_action = yes
+	country = BRU
+	name = "Brunei: Indian Defence Mission"
+	desc = "India supplies instructors, mobile troops and escorts to an aligned protectorate. These forces supplement the local founding defence force."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	action_a = {
+		name = "Receive the Indian defence mission"
+		command = { type = add_corps which = "Indian Ocean Defence Mission" value = land where = 1625 }
+		command = { type = add_division which = "1. Protectorate Infantry Division" value = infantry when = -1 }
+		command = { type = supplies value = 800 }
+		command = { type = oilpool value = 300 }
+		command = { type = relation which = IND value = 30 }
+	}
+}
+
+event = {
+	id = 9288414
+	random = no
+	one_action = yes
+	country = SAR
+	name = "Sarawak: Indian Defence Mission"
+	desc = "India supplies instructors, mobile troops and escorts to an aligned protectorate. These forces supplement the local founding defence force."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	action_a = {
+		name = "Receive the Indian defence mission"
+		command = { type = add_corps which = "Indian Ocean Defence Mission" value = land where = 1624 }
+		command = { type = add_division which = "1. Protectorate Infantry Division" value = infantry when = -1 }
+		command = { type = supplies value = 800 }
+		command = { type = oilpool value = 300 }
+		command = { type = relation which = IND value = 30 }
+	}
+}
+
+event = {
+	id = 9288389
+	random = no
+	persistent = yes
+	country = IND
+	trigger = {
+		ai = no
+		flag = ind_country_resolution_u05_fragmented_protected
+		NOT = { flag = ind_island_defence_alpha33_recovered }
+		exists = INO
+		exists = BRU
+		exists = SAR
+	}
+	name = "Island Agreements Corrected"
+	desc = "The earlier breakup created weak governments and omitted Indonesia's Soerabaja base clause. The recorded choices will be preserved while the missing defence and base arrangements are applied."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	date = { day = 0 month = january year = 1933 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Apply the recorded agreements"
+		command = { type = setflag which = ind_island_setup_ino_protected }
+		command = { type = event which = 9288380 where = IND when = 1 }
+		command = { type = setflag which = ind_island_setup_bru_protected }
+		command = { type = event which = 9288383 where = IND when = 1 }
+		command = { trigger = { flag = ind_country_resolution_sar_neutral } type = setflag which = ind_island_setup_sar_neutral }
+		command = { trigger = { NOT = { flag = ind_country_resolution_sar_neutral } } type = setflag which = ind_island_setup_sar_protected }
+		command = { type = event which = 9288384 where = IND when = 1 }
+		command = { trigger = { puppet = { country = MLY country = IND } } type = setflag which = ind_island_setup_mly_protected }
+		command = { trigger = { puppet = { country = MLY country = IND } } type = event which = 9288381 where = IND when = 1 }
+		command = { type = setflag which = ind_island_defence_alpha33_recovered }
+	}
+}
+
+event = {
 	id = 9288300
 	random = no
 	persistent = yes
@@ -3099,10 +3689,9 @@ event = {
 	action_a = {
 		name = "Establish Malaysia"
 		command = { type = independence which = MLY value = 1 when = 0 }
-		command = { trigger = { flag = ind_malaya_colonial_protected exists = MLY } type = make_puppet which = MLY }
-		command = { trigger = { flag = ind_malaya_colonial_protected exists = MLY } type = event which = 9288215 where = MLY when = 1 }
-		command = { trigger = { flag = ind_malaya_colonial_neutral exists = MLY } type = guarantee which = IND where = MLY }
-		command = { trigger = { flag = ind_malaya_colonial_neutral exists = MLY } type = event which = 9288031 where = MLY when = 1 }
+		command = { trigger = { flag = ind_malaya_colonial_protected } type = setflag which = ind_island_setup_mly_protected }
+		command = { trigger = { flag = ind_malaya_colonial_neutral } type = setflag which = ind_island_setup_mly_neutral }
+		command = { type = event which = 9288381 where = IND when = 1 }
 		command = { type = setflag which = ind_country_resolution_malaya_colonial_complete }
 		command = { type = setflag which = ind_country_resolution_mly_complete }
 		command = { type = clrflag which = ind_malaya_colonial_protected }

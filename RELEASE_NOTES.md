@@ -1,5 +1,26 @@
 # Release Notes
 
+## 4.2.0-alpha.33 / Alpha 33 - Island Defence and Eastern Soviet Peace
+
+- Fixed the Indonesia breakup path so an aligned Indonesia grants Soerabaja
+  under the same base treaty as the single-country settlement.
+- Added a delayed relationship finalizer for Indonesia, Malaysia, the
+  Philippines, Brunei and Sarawak, avoiding unreliable same-day release and
+  puppeting commands.
+- Added one-time founding defence packages after 1940 for those five island
+  states regardless of who released them. Packages use current-model,
+  understrength land formations, coastal escorts and limited transports.
+- Added a second Indian mission for Indian protectorates, with extra troops,
+  escorts, supplies and oil. Protected neutrals receive only their own
+  founding package and retain their chosen status.
+- Added an eastern Soviet victory route through Baku, Tashkent, Astrakhan,
+  Ufa, Chelyabinsk, Omsk and Sverdlovsk after 40 percent Soviet national loss.
+  A liberation peace transfers and releases only fully occupied Caucasian and
+  Central Asian republics; incomplete republics remain Soviet.
+- Added a one-time recovery for the 17 May 1942 campaign which preserves the
+  later neutral Sarawak choice while repairing Soerabaja and missing island
+  defence forces.
+
 ## 4.2.0-alpha.32 / Alpha 32 - Malaya and Arab Settlements
 
 - Added a Malaysia decision for the common colonial case where Britain still

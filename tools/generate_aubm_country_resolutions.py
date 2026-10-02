@@ -70,6 +70,33 @@ COUNTRIES = (
 )
 
 
+@dataclass(frozen=True)
+class IslandDefense:
+    tag: str
+    name: str
+    land_base: int
+    naval_base: int
+    baseline_infantry: int
+    baseline_garrison: int
+    baseline_destroyers: int
+    baseline_transports: int
+    aid_infantry: int
+    aid_marines: int
+    aid_destroyers: int
+
+
+ISLAND_DEFENSES = (
+    IslandDefense("INO", "Indonesia", 1654, 1647, 2, 2, 1, 1, 1, 1, 1),
+    IslandDefense("MLY", "Malaysia", 1438, 1438, 2, 1, 1, 1, 1, 0, 1),
+    IslandDefense("PHI", "Philippines", 1565, 1565, 3, 1, 1, 1, 1, 0, 1),
+    IslandDefense("BRU", "Brunei", 1625, 1625, 0, 1, 1, 0, 1, 0, 0),
+    IslandDefense("SAR", "Sarawak", 1624, 1624, 0, 1, 1, 0, 1, 0, 0),
+)
+
+ISLAND_BY_TAG = {island.tag: island for island in ISLAND_DEFENSES}
+COUNTRY_BY_RELEASE = {country.released: country for country in COUNTRIES}
+
+
 def country_callback_id(tag: str) -> int:
     index = next(index for index, country in enumerate(COUNTRIES) if country.tag == tag)
     return BASE_ID + index * 2 + 1
@@ -78,6 +105,22 @@ def country_callback_id(tag: str) -> int:
 def base_callback_id(tag: str) -> int:
     index = next(index for index, country in enumerate(COUNTRIES) if country.tag == tag)
     return 9288200 + index
+
+
+def island_index(tag: str) -> int:
+    return next(index for index, island in enumerate(ISLAND_DEFENSES) if island.tag == tag)
+
+
+def island_setup_id(tag: str) -> int:
+    return 9288380 + island_index(tag)
+
+
+def island_baseline_id(tag: str) -> int:
+    return 9288400 + island_index(tag)
+
+
+def island_aid_id(tag: str) -> int:
+    return 9288410 + island_index(tag)
 
 
 def cmd(body: str, trigger: str | None = None) -> str:
@@ -187,7 +230,14 @@ def resolution(index: int, country: Country) -> str:
         cmd(f"make_puppet which = {country.released}", f"exists = {country.released}"),
         *(
             [cmd(f"event which = {base_callback_id(country.tag)} where = {country.released} when = 1", f"exists = {country.released}")]
-            if country.retained_bases else []
+            if country.retained_bases and country.released not in ISLAND_BY_TAG else []
+        ),
+        *(
+            [
+                cmd(f"setflag which = ind_island_setup_{country.released.lower()}_protected"),
+                cmd(f"event which = {island_setup_id(country.released)} where = IND when = 1"),
+            ]
+            if country.released in ISLAND_BY_TAG else []
         ),
         cmd("supplies value = -250"),
     ])
@@ -204,7 +254,17 @@ def resolution(index: int, country: Country) -> str:
         cmd(f"independence which = {country.released} value = 1 when = 0"),
         cmd(f"end_mastery which = {country.released}", f"puppet = {{ country = {country.released} country = IND }}"),
         cmd(f"guarantee which = IND where = {country.released}", f"exists = {country.released}"),
-        cmd(f"event which = {callback_id} where = {country.released} when = 1", f"exists = {country.released}"),
+        *(
+            [cmd(f"event which = {callback_id} where = {country.released} when = 1", f"exists = {country.released}")]
+            if country.released not in ISLAND_BY_TAG else []
+        ),
+        *(
+            [
+                cmd(f"setflag which = ind_island_setup_{country.released.lower()}_neutral"),
+                cmd(f"event which = {island_setup_id(country.released)} where = IND when = 1"),
+            ]
+            if country.released in ISLAND_BY_TAG else []
+        ),
     ])
     lines.extend(common_finish(country, "neutral"))
     lines.extend(
@@ -339,6 +399,9 @@ def fragment_menu(event_id: int, country: Country, fragments: tuple[tuple[str, s
         lines.append(cmd(f"independence which = {tag} value = 1 when = 0"))
     for tag, _, _ in fragments:
         lines.append(cmd(f"make_puppet which = {tag}", f"exists = {tag}"))
+        if tag in ISLAND_BY_TAG:
+            lines.append(cmd(f"setflag which = ind_island_setup_{tag.lower()}_protected"))
+            lines.append(cmd(f"event which = {island_setup_id(tag)} where = IND when = 1"))
     lines.append(cmd("supplies value = -500"))
     lines.extend(common_finish(country, "fragmented_protected"))
     lines.extend([
@@ -350,7 +413,11 @@ def fragment_menu(event_id: int, country: Country, fragments: tuple[tuple[str, s
         lines.append(cmd(f"independence which = {tag} value = 1 when = 0"))
     for tag, _, callback_id in fragments:
         lines.append(cmd(f"guarantee which = IND where = {tag}", f"exists = {tag}"))
-        lines.append(cmd(f"event which = {callback_id} where = {tag} when = 1", f"exists = {tag}"))
+        if tag in ISLAND_BY_TAG:
+            lines.append(cmd(f"setflag which = ind_island_setup_{tag.lower()}_neutral"))
+            lines.append(cmd(f"event which = {island_setup_id(tag)} where = IND when = 1"))
+        else:
+            lines.append(cmd(f"event which = {callback_id} where = {tag} when = 1", f"exists = {tag}"))
     lines.append(cmd("supplies value = -250"))
     lines.extend(common_finish(country, "fragmented_neutral"))
     lines.extend([
@@ -361,6 +428,164 @@ def fragment_menu(event_id: int, country: Country, fragments: tuple[tuple[str, s
     lines.extend(common_finish(country, "dismissed"))
     lines.extend(["\t}", "}"])
     return "\n".join(lines)
+
+
+def island_baseline_event(island: IslandDefense) -> str:
+    lines = [
+        "event = {",
+        f"\tid = {island_baseline_id(island.tag)}",
+        "\trandom = no",
+        "\tone_action = yes",
+        f"\tcountry = {island.tag}",
+        "\ttrigger = { year = 1940 }",
+        f'\tname = "{island.name}: Founding Defence Force"',
+        '\tdesc = "The new state forms a territorial army, coastal fleet and supply reserve so independence does not leave it defenceless."',
+        "\tstyle = 2",
+        '\tpicture = "aubm_v4_liberated_territory"',
+        "\tdate = { day = 0 month = january year = 1933 }",
+        "\toffset = 5",
+        "\tdeathdate = { day = 29 month = december year = 1964 }",
+        "\taction_a = {",
+        '\t\tname = "Muster the founding forces"',
+        cmd(f'add_corps which = "{island.name} Defence Command" value = land where = {island.land_base}'),
+    ]
+    for number in range(1, island.baseline_infantry + 1):
+        lines.append(cmd(f'add_division which = "{number}. National Infantry Division" value = infantry when = -1'))
+    for number in range(1, island.baseline_garrison + 1):
+        lines.append(cmd(f'add_division which = "{number}. Island Garrison Division" value = garrison when = -1'))
+    if island.baseline_destroyers or island.baseline_transports:
+        lines.append(cmd(f'add_corps which = "{island.name} Coastal Fleet" value = naval where = {island.naval_base}'))
+    for number in range(1, island.baseline_destroyers + 1):
+        lines.append(cmd(f'add_division which = "{number}. Coastal Defence Flotilla" value = destroyer when = -1'))
+    for number in range(1, island.baseline_transports + 1):
+        lines.append(cmd(f'add_division which = "{number}. National Transport Flotilla" value = transport when = -1'))
+    lines.extend([
+        cmd("manpowerpool value = 30"),
+        cmd("supplies value = 1200"),
+        cmd("oilpool value = 500"),
+        "\t}",
+        "}",
+    ])
+    return "\n".join(lines)
+
+
+def island_aid_event(island: IslandDefense) -> str:
+    lines = [
+        "event = {",
+        f"\tid = {island_aid_id(island.tag)}",
+        "\trandom = no",
+        "\tone_action = yes",
+        f"\tcountry = {island.tag}",
+        f'\tname = "{island.name}: Indian Defence Mission"',
+        '\tdesc = "India supplies instructors, mobile troops and escorts to an aligned protectorate. These forces supplement the local founding defence force."',
+        "\tstyle = 2",
+        '\tpicture = "aubm_v4_indian_ocean_war"',
+        "\taction_a = {",
+        '\t\tname = "Receive the Indian defence mission"',
+        cmd(f'add_corps which = "Indian Ocean Defence Mission" value = land where = {island.land_base}'),
+    ]
+    for number in range(1, island.aid_infantry + 1):
+        lines.append(cmd(f'add_division which = "{number}. Protectorate Infantry Division" value = infantry when = -1'))
+    for number in range(1, island.aid_marines + 1):
+        lines.append(cmd(f'add_division which = "{number}. Protectorate Marine Division" value = marine when = -1'))
+    if island.aid_destroyers:
+        lines.append(cmd(f'add_corps which = "Indian Ocean Escort Group" value = naval where = {island.naval_base}'))
+    for number in range(1, island.aid_destroyers + 1):
+        lines.append(cmd(f'add_division which = "{number}. Protectorate Escort Flotilla" value = destroyer when = -1'))
+    lines.extend([
+        cmd("supplies value = 800"),
+        cmd("oilpool value = 300"),
+        cmd("relation which = IND value = 30"),
+        "\t}",
+        "}",
+    ])
+    return "\n".join(lines)
+
+
+def island_setup_event(island: IslandDefense) -> str:
+    country = COUNTRY_BY_RELEASE[island.tag]
+    protected = f"ind_island_setup_{island.tag.lower()}_protected"
+    neutral = f"ind_island_setup_{island.tag.lower()}_neutral"
+    lines = [
+        "event = {",
+        f"\tid = {island_setup_id(island.tag)}",
+        "\trandom = no",
+        "\tpersistent = yes",
+        "\tone_action = yes",
+        "\tcountry = IND",
+        f'\tname = "{island.name}: Complete the Settlement"',
+        f'\tdesc = "The {island.name} government now exists. India can apply the chosen relationship and establish its initial defence forces without relying on same-day release commands."',
+        "\tstyle = 2",
+        '\tpicture = "aubm_v4_liberated_territory"',
+        "\taction_a = {",
+        f"\t\ttrigger = {{ flag = {protected} exists = {island.tag} }}",
+        '\t\tname = "Complete the protectorate agreement"',
+        cmd(f"make_puppet which = {island.tag}"),
+    ]
+    if country.retained_bases:
+        lines.append(cmd(f"event which = {base_callback_id(country.tag)} where = {island.tag} when = 1"))
+    lines.extend([
+        cmd(f"event which = {island_baseline_id(island.tag)} where = {island.tag} when = 1"),
+        cmd(f"event which = {island_aid_id(island.tag)} where = {island.tag} when = 1"),
+        cmd(f"clrflag which = {protected}"),
+        cmd(f"clrflag which = {neutral}"),
+        "\t}",
+        "\taction_b = {",
+        f"\t\ttrigger = {{ flag = {neutral} exists = {island.tag} }}",
+        '\t\tname = "Complete protected neutrality"',
+        cmd(f"end_mastery which = {island.tag}", f"puppet = {{ country = {island.tag} country = IND }}"),
+        cmd(f"guarantee which = IND where = {island.tag}"),
+        cmd(f"event which = {country_callback_id(country.tag)} where = {island.tag} when = 1"),
+        cmd(f"event which = {island_baseline_id(island.tag)} where = {island.tag} when = 1"),
+        cmd(f"clrflag which = {protected}"),
+        cmd(f"clrflag which = {neutral}"),
+        "\t}",
+        "\taction_c = {",
+        f"\t\ttrigger = {{ NOT = {{ exists = {island.tag} }} }}",
+        '\t\tname = "The state was not created"',
+        cmd(f"clrflag which = {protected}"),
+        cmd(f"clrflag which = {neutral}"),
+        "\t}",
+        "}",
+    ])
+    return "\n".join(lines)
+
+
+def legacy_island_recovery() -> str:
+    return f'''event = {{
+\tid = 9288389
+\trandom = no
+\tpersistent = yes
+\tcountry = IND
+\ttrigger = {{
+\t\tai = no
+\t\tflag = ind_country_resolution_u05_fragmented_protected
+\t\tNOT = {{ flag = ind_island_defence_alpha33_recovered }}
+\t\texists = INO
+\t\texists = BRU
+\t\texists = SAR
+\t}}
+\tname = "Island Agreements Corrected"
+\tdesc = "The earlier breakup created weak governments and omitted Indonesia's Soerabaja base clause. The recorded choices will be preserved while the missing defence and base arrangements are applied."
+\tstyle = 2
+\tpicture = "aubm_v4_indian_ocean_war"
+\tdate = {{ day = 0 month = january year = 1933 }}
+\toffset = 1
+\tdeathdate = {{ day = 29 month = december year = 1964 }}
+\taction_a = {{
+\t\tname = "Apply the recorded agreements"
+\t\tcommand = {{ type = setflag which = ind_island_setup_ino_protected }}
+\t\tcommand = {{ type = event which = {island_setup_id("INO")} where = IND when = 1 }}
+\t\tcommand = {{ type = setflag which = ind_island_setup_bru_protected }}
+\t\tcommand = {{ type = event which = {island_setup_id("BRU")} where = IND when = 1 }}
+\t\tcommand = {{ trigger = {{ flag = ind_country_resolution_sar_neutral }} type = setflag which = ind_island_setup_sar_neutral }}
+\t\tcommand = {{ trigger = {{ NOT = {{ flag = ind_country_resolution_sar_neutral }} }} type = setflag which = ind_island_setup_sar_protected }}
+\t\tcommand = {{ type = event which = {island_setup_id("SAR")} where = IND when = 1 }}
+\t\tcommand = {{ trigger = {{ puppet = {{ country = MLY country = IND }} }} type = setflag which = ind_island_setup_mly_protected }}
+\t\tcommand = {{ trigger = {{ puppet = {{ country = MLY country = IND }} }} type = event which = {island_setup_id("MLY")} where = IND when = 1 }}
+\t\tcommand = {{ type = setflag which = ind_island_defence_alpha33_recovered }}
+\t}}
+}}'''
 
 
 MAJOR_EVENTS = (
@@ -425,6 +650,139 @@ def major_resolution(tag: str, name: str, seat: str, event_id: int, requirements
 \taction_b = {{
 \t\tname = "Dismiss this peace; continue the war"
 \t\tcommand = {{ type = setflag which = ind_country_resolution_major_{key} }}
+\t}}
+}}'''
+
+
+def soviet_resolution() -> str:
+    groups = (
+        ("KAZ", "Kazakhstan", (506, 507, 505, 500, 498, 504), (1114, 1117, 1118, 1116, 503, 1110, 1108, 1113, 1115, 1111, 502, 499, 1109, 1112, 501)),
+        ("KYG", "Kyrgyzstan", (1107, 1106), ()),
+        ("TAJ", "Tajikistan", (1105, 1104), ()),
+        ("TRK", "Turkmenistan", (1097, 1098), ()),
+        ("UZB", "Uzbekistan", (1101, 1102, 1100, 1103, 1099), ()),
+        ("ARM", "Armenia", (711,), (712, 714)),
+        ("AZB", "Azerbaijan", (713,), (712, 714)),
+        ("GEO", "Georgia", (708, 709), (710, 707)),
+    )
+    western = (
+        "AND = { control = { province = 572 data = IND } "
+        "control = { province = 663 data = IND } "
+        "OR = { AND = { control = { province = 713 data = IND } control = { province = 1103 data = IND } } "
+        "AND = { control = { province = 713 data = IND } control = { province = 706 data = IND } } "
+        "AND = { control = { province = 1103 data = IND } control = { province = 706 data = IND } } } }"
+    )
+    eastern = (
+        "AND = { control = { province = 713 data = IND } control = { province = 1103 data = IND } "
+        "control = { province = 706 data = IND } control = { province = 1131 data = IND } "
+        "control = { province = 1132 data = IND } control = { province = 1138 data = IND } "
+        "control = { province = 1151 data = IND } lost_national = { country = SOV value = 40 } }"
+    )
+    condition = (
+        f"exists = SOV war = {{ country = IND country = SOV }} OR = {{ {western} {eastern} }} "
+        "NOT = { flag = ind_country_resolution_major_sov }"
+    )
+    transfer_lines: list[str] = []
+    release_lines: list[str] = []
+    puppet_lines: list[str] = []
+    for tag, _, minimum, extra in groups:
+        full_control = " ".join(
+            f"control = {{ province = {province} data = IND }}" for province in minimum
+        )
+        for province in minimum + extra:
+            transfer_lines.append(
+                cmd(
+                    f"secedeprovince which = IND value = {province}",
+                    f"{full_control} control = {{ province = {province} data = IND }}",
+                )
+            )
+        full_owned = " ".join(
+            f"owned = {{ province = {province} data = IND }}" for province in minimum
+        )
+        release_lines.append(cmd(f"independence which = {tag} value = 1 when = 0", full_owned))
+        puppet_lines.append(cmd(f"make_puppet which = {tag}", f"exists = {tag}"))
+    transfers = "\n".join(transfer_lines)
+    releases = "\n".join(release_lines)
+    puppets = "\n".join(puppet_lines)
+    return f'''event = {{
+\tid = 9288082
+\trandom = no
+\tpersistent = yes
+\tcountry = IND
+\ttrigger = {{ ai = no }}
+\tname = "Soviet Union: India Can Dictate a Settlement"
+\tdesc = "India may qualify by taking Moscow and Stalingrad, or by breaking the southern and Ural belt through Baku, Tashkent, Astrakhan, Ufa, Chelyabinsk, Omsk and Sverdlovsk while the USSR has lost 40 percent. Fully occupied Caucasian and Central Asian republics can become Indian protectorates. Incomplete republics remain Soviet."
+\tstyle = 2
+\tpicture = "aubm_v4_liberated_territory"
+\tdate = {{ day = 0 month = january year = 1933 }}
+\toffset = 1
+\tdeathdate = {{ day = 29 month = december year = 1964 }}
+\tdecision = {{ {condition} }}
+\tdecision_trigger = {{ {condition} }}
+\taction_a = {{
+\t\tname = "Liberation peace: aligned republics; -4 dissent"
+\t\tcommand = {{ type = setflag which = ind_soviet_liberation_pending }}
+\t\tcommand = {{ type = event which = 9288360 where = SOV when = 1 }}
+\t}}
+\taction_b = {{
+\t\tname = "Continue the war; keep this decision open"
+\t}}
+\taction_c = {{
+\t\tname = "Dismiss this settlement permanently"
+\t\tcommand = {{ type = setflag which = ind_country_resolution_major_sov }}
+\t}}
+}}
+
+event = {{
+\tid = 9288360
+\trandom = no
+\tone_action = yes
+\tcountry = SOV
+\tname = "Soviet Union Transfers the Occupied Republics"
+\tdesc = "The Soviet government transfers legal title only to republics whose entire required territory is under Indian occupation."
+\tstyle = 2
+\tpicture = "aubm_v4_liberated_territory"
+\taction_a = {{
+\t\tname = "Transfer the fully occupied republics"
+{transfers}
+\t\tcommand = {{ type = event which = 9288361 where = IND when = 1 }}
+\t}}
+}}
+
+event = {{
+\tid = 9288361
+\trandom = no
+\tone_action = yes
+\tcountry = IND
+\tname = "Caucasian and Central Asian Independence"
+\tdesc = "India establishes every republic for which all required provinces were transferred. A final agreement will align the new governments and end India's Soviet war."
+\tstyle = 2
+\tpicture = "aubm_v4_liberated_territory"
+\taction_a = {{
+\t\tname = "Establish the eligible republics"
+{releases}
+\t\tcommand = {{ type = event which = 9288362 where = IND when = 1 }}
+\t}}
+}}
+
+event = {{
+\tid = 9288362
+\trandom = no
+\tone_action = yes
+\tcountry = IND
+\tname = "The Delhi-Moscow Liberation Peace"
+\tdesc = "The new republics become Indian protectorates. India and the Soviet Union end their war; India's other wars continue."
+\tstyle = 2
+\tpicture = "aubm_v4_liberated_territory"
+\taction_a = {{
+\t\tname = "Sign the liberation peace"
+{puppets}
+\t\tcommand = {{ type = peace which = SOV value = 1 }}
+\t\tcommand = {{ type = dissent value = -4 }}
+\t\tcommand = {{ type = money value = 500 }}
+\t\tcommand = {{ type = supplies value = 1000 }}
+\t\tcommand = {{ type = setflag which = ind_country_resolution_major_sov }}
+\t\tcommand = {{ type = clrflag which = ind_soviet_liberation_pending }}
 \t}}
 }}'''
 
@@ -502,10 +860,9 @@ event = {{
 \taction_a = {{
 \t\tname = "Establish Malaysia"
 \t\tcommand = {{ type = independence which = MLY value = 1 when = 0 }}
-\t\tcommand = {{ trigger = {{ flag = ind_malaya_colonial_protected exists = MLY }} type = make_puppet which = MLY }}
-\t\tcommand = {{ trigger = {{ flag = ind_malaya_colonial_protected exists = MLY }} type = event which = {base_callback_id("MLY")} where = MLY when = 1 }}
-\t\tcommand = {{ trigger = {{ flag = ind_malaya_colonial_neutral exists = MLY }} type = guarantee which = IND where = MLY }}
-\t\tcommand = {{ trigger = {{ flag = ind_malaya_colonial_neutral exists = MLY }} type = event which = {country_callback_id("MLY")} where = MLY when = 1 }}
+\t\tcommand = {{ trigger = {{ flag = ind_malaya_colonial_protected }} type = setflag which = ind_island_setup_mly_protected }}
+\t\tcommand = {{ trigger = {{ flag = ind_malaya_colonial_neutral }} type = setflag which = ind_island_setup_mly_neutral }}
+\t\tcommand = {{ type = event which = {island_setup_id("MLY")} where = IND when = 1 }}
 \t\tcommand = {{ type = setflag which = ind_country_resolution_malaya_colonial_complete }}
 \t\tcommand = {{ type = setflag which = ind_country_resolution_mly_complete }}
 \t\tcommand = {{ type = clrflag which = ind_malaya_colonial_protected }}
@@ -667,9 +1024,14 @@ def render() -> str:
     ]
     sections.extend(resolution(index, country) for index, country in enumerate(COUNTRIES))
     sections.extend(base_callback(country) for country in COUNTRIES if country.retained_bases)
-    sections.extend(major_resolution(*row) for row in MAJOR_EVENTS)
+    sections.extend(major_resolution(*row) for row in MAJOR_EVENTS if row[0] != "SOV")
+    sections.append(soviet_resolution())
     sections.extend(fragment_callback(*row) for row in FRAGMENT_CALLBACKS)
     sections.extend(fragment_menu(*row) for row in FRAGMENT_PLANS)
+    sections.extend(island_setup_event(island) for island in ISLAND_DEFENSES)
+    sections.extend(island_baseline_event(island) for island in ISLAND_DEFENSES)
+    sections.extend(island_aid_event(island) for island in ISLAND_DEFENSES)
+    sections.append(legacy_island_recovery())
     sections.append(malaya_colonial_resolution())
     sections.append(arab_federation_resolution())
     return "\n\n".join(sections) + "\n"

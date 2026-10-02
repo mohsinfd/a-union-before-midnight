@@ -1,16 +1,16 @@
 =======================================================================
- A UNION BEFORE MIDNIGHT - V4.2.0 ALPHA 32 - 02 OCT 2026
+ A UNION BEFORE MIDNIGHT - V4.2.0 ALPHA 33 - 03 OCT 2026
  For Darkest Hour 1.05.2
- Source version 4.2.0-alpha.32
+ Source version 4.2.0-alpha.33
 =======================================================================
 
 Freedom came early. Unity came at a price.
 
-Alpha 32 adds Malaysia for British-owned territory under Indian occupation, a
-late Arab Federation, limited Indian base treaties and permanent dismissal of
-unwanted country settlements. Alpha 31's visibility fix and restored national
-programmes remain. The removed strategic matrices and clutter stay retired.
-Registry-refreshed Alpha 31 saves already load the changed country file.
+Alpha 33 repairs the Indonesia breakup, creates founding defence forces for
+released island states and adds an eastern Soviet victory route through
+Central Asia and the Urals. Indian protectorates receive an extra defence
+mission. Alpha 32's Malaya, Arab Federation, base treaties and dismissals
+remain. Registry-refreshed saves already load the changed country file.
 
 A Union Before Midnight is an independent-India alternate-history campaign
 beginning on 1 January 1933. India inherits a united but unsettled continental

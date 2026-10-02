@@ -1,9 +1,19 @@
-# A Union Before Midnight: Gameplay Changes and Alpha 32 Status
+# A Union Before Midnight: Gameplay Changes and Alpha 33 Status
 
-This is the player-facing guide to the current **4.2.0-alpha.32** source of
+This is the player-facing guide to the current **4.2.0-alpha.33** source of
 *A Union Before Midnight*. It explains what changed, how the new systems are
 supposed to play, what has been verified, and what still needs a real campaign
 test.
+
+## Alpha 33: Island Defence and the Eastern Soviet Route
+
+Indonesia, Malaysia, the Philippines, Brunei and Sarawak now receive a modest
+one-time founding defence force after 1940. Indian protectorates receive an
+additional Indian mission. The Indonesia breakup now applies the Soerabaja
+base treaty. The Soviet peace can be earned through either Moscow and
+Stalingrad or a deep southern-Ural advance; the latter can create Indian-
+aligned Caucasian and Central Asian republics where their full required
+territory has been occupied.
 
 ## Alpha 32: Malaya, Arab Federation and Base Treaties
 
@@ -31,7 +41,8 @@ Updated: 30 Aug 2026.
 
 | Area | Status |
 | --- | --- |
-| Current source version | `4.2.0-alpha.32` |
+| Current source version | `4.2.0-alpha.33` |
+| Alpha 33 gameplay delta | Island release defence forces, corrected Soerabaja treaty and an eastern Soviet liberation settlement |
 | Alpha 32 gameplay delta | British-owned Malaya can now be settled; an Arab Federation can be formed; selected aligned releases grant strategic bases; every unwanted settlement can be dismissed permanently |
 | Alpha 28 gameplay delta | Country-specific peace decisions replace all global, regional and theatre settlement layers; puppet settlements no longer add dissent |
 | Alpha 27 implementation | Corrected original eight-terrain layer: every ordinary mechanical-land pixel is eligible, full contrast is retained at all four zooms, and political/terrain/Snow/Mud modes use exact native-colour gates |

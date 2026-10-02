@@ -12,6 +12,7 @@ from generate_aubm_country_resolutions import (
     COUNTRIES,
     FRAGMENT_CALLBACKS,
     FRAGMENT_PLANS,
+    ISLAND_DEFENSES,
     MAJOR_EVENTS,
     OUTPUT,
     render,
@@ -69,7 +70,7 @@ def main() -> int:
 
     ids = [int(value) for value in re.findall(r"(?m)^\s*id\s*=\s*(\d+)", actual)]
     base_callbacks = sum(bool(country.retained_bases) for country in COUNTRIES)
-    bespoke_events = 16  # Malaya chain plus Arab creation, owner transfers and finalizer.
+    bespoke_events = 35  # Malaya, Arab, Soviet and island-defence chains.
     expected_count = (
         len(COUNTRIES) * 2 + len(MAJOR_EVENTS) + len(FRAGMENT_CALLBACKS)
         + len(FRAGMENT_PLANS) + base_callbacks + bespoke_events
@@ -83,12 +84,16 @@ def main() -> int:
         errors.append("one or more visible peace decisions lacks its event-level human-player guard")
     if re.search(r"(?m)^\s*decision(?:_trigger)?\s*=\s*\{\s*ai\s*=", actual):
         errors.append("ai guard is incorrectly nested inside decision or decision_trigger")
-    if actual.count("\tdate = { day = 0 month = january year = 1933 }") != visible_decisions:
+    dated_events = visible_decisions + 1 + len(ISLAND_DEFENSES)
+    daily_events = visible_decisions + 1  # Decisions plus Alpha 33 legacy recovery.
+    if actual.count("\tdate = { day = 0 month = january year = 1933 }") != dated_events:
         errors.append("one or more visible peace decisions lacks its polling start date")
-    if actual.count("\toffset = 1") != visible_decisions:
+    if actual.count("\toffset = 1") != daily_events:
         errors.append("one or more visible peace decisions is not polled daily")
-    if actual.count("\tdeathdate = { day = 29 month = december year = 1964 }") != visible_decisions:
+    if actual.count("\tdeathdate = { day = 29 month = december year = 1964 }") != dated_events:
         errors.append("one or more visible peace decisions lacks its scenario-long deathdate")
+    if actual.count("\toffset = 5") != len(ISLAND_DEFENSES):
+        errors.append("one or more global island-defence events lacks its five-day polling interval")
 
     visible = "\n".join(
         line for line in actual.splitlines()
@@ -139,9 +144,21 @@ def main() -> int:
         "Arab Federation: Unite the Defeated States",
         "Transfer Suez, Aden and Basrah",
         "Dismiss this peace; continue the war",
+        "Soviet Union: India Can Dictate a Settlement",
+        "Liberation peace: aligned republics; -4 dissent",
+        "Island Agreements Corrected",
     ):
         if phrase not in actual:
             errors.append(f"required country-resolution text is missing: {phrase}")
+
+    for island in ISLAND_DEFENSES:
+        for phrase in (
+            f"{island.name}: Complete the Settlement",
+            f"{island.name}: Founding Defence Force",
+            f"{island.name}: Indian Defence Mission",
+        ):
+            if phrase not in actual:
+                errors.append(f"island-defence event is missing: {phrase}")
 
     if "Breakup options: Indonesia, Brunei, Sarawak" not in actual:
         errors.append("East Indies fragmentation choice is missing or unnamed")
