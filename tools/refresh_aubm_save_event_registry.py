@@ -23,6 +23,7 @@ from dh_save_spans import parse, replace
 
 ROOT = Path(__file__).resolve().parents[1]
 EVENT_INDEX = ROOT / "mod/db/events.txt"
+VERSION_FILE = ROOT / "VERSION"
 MOD_PREFIXES = ('event = "db\\events\\india_v3\\', 'event = "db\\events\\aubm_v4\\')
 REGISTRY_PATTERN = re.compile(
     rb'^event = "db\\events\\(?:india_v3|aubm_v4)\\[^"\r\n]+"[ \t]*\r?\n(?:\r?\n)?',
@@ -46,7 +47,7 @@ def active_registry() -> list[str]:
     }
     missing = sorted(required - set(active))
     if missing:
-        raise ValueError(f"Active registry lacks required Alpha 31 modules: {missing}")
+        raise ValueError(f"Active registry lacks required country modules: {missing}")
     return active
 
 
@@ -66,7 +67,15 @@ def refresh(raw: bytes, output_name: str) -> tuple[bytes, dict[str, object]]:
     if display is None or optionfile is None:
         raise ValueError("Save header lacks name or optionfile")
 
-    label = f"ALPHA 31 COUNTRY FIX - India 1 May 1942"
+    version = VERSION_FILE.read_text(encoding="ascii").strip()
+    match = re.search(r"alpha\.(\d+)$", version, re.I)
+    if not match:
+        raise ValueError(f"Cannot derive alpha number from VERSION: {version}")
+    prior_label = header.get("name")
+    if re.search(r"(?i)\bALPHA\s+\d+\b", prior_label):
+        label = re.sub(r"(?i)\bALPHA\s+\d+\b", f"ALPHA {match.group(1)}", prior_label, count=1)
+    else:
+        label = f"ALPHA {match.group(1)} COUNTRY FIX - {prior_label}"
     option = f'"scenarios\\save games\\{output_name}.cfg"'
     edits = [
         (matches[0].start(), matches[-1].end(), registry),
