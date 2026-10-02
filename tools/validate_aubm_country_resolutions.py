@@ -74,6 +74,10 @@ def main() -> int:
     if actual.count("\tdecision = {") != len(COUNTRIES) + len(MAJOR_EVENTS):
         errors.append("one or more countries lacks exactly one visible peace decision")
     visible_decisions = len(COUNTRIES) + len(MAJOR_EVENTS)
+    if actual.count("\ttrigger = { ai = no }") != visible_decisions:
+        errors.append("one or more visible peace decisions lacks its event-level human-player guard")
+    if re.search(r"(?m)^\s*decision(?:_trigger)?\s*=\s*\{\s*ai\s*=", actual):
+        errors.append("ai guard is incorrectly nested inside decision or decision_trigger")
     if actual.count("\tdate = { day = 0 month = january year = 1933 }") != visible_decisions:
         errors.append("one or more visible peace decisions lacks its polling start date")
     if actual.count("\toffset = 1") != visible_decisions:

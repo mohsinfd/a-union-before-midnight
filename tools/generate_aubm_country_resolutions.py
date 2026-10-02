@@ -152,6 +152,7 @@ def resolution(index: int, country: Country) -> str:
         "\trandom = no",
         "\tpersistent = yes",
         "\tcountry = IND",
+        "\ttrigger = { ai = no }",
         f'\tname = "{country.name}: Decide the Peace"',
         (
             f'\tdesc = "India controls {country.seat} and {country.name} has lost at least half of its national territory. '
@@ -163,11 +164,11 @@ def resolution(index: int, country: Country) -> str:
         "\toffset = 1",
         "\tdeathdate = { day = 29 month = december year = 1964 }",
         (
-            f"\tdecision = {{ ai = no NOT = {{ flag = ind_country_resolution_{country.key}_complete }} "
+            f"\tdecision = {{ NOT = {{ flag = ind_country_resolution_{country.key}_complete }} "
             f"{conditions} }}"
         ),
         (
-            f"\tdecision_trigger = {{ ai = no NOT = {{ flag = ind_country_resolution_{country.key}_complete }} "
+            f"\tdecision_trigger = {{ NOT = {{ flag = ind_country_resolution_{country.key}_complete }} "
             f"{conditions} }}"
         ),
         "\taction_a = {",
@@ -367,6 +368,7 @@ def major_resolution(tag: str, name: str, seat: str, event_id: int, requirements
 \trandom = no
 \tpersistent = yes
 \tcountry = IND
+\ttrigger = {{ ai = no }}
 \tname = "{name}: India Can End Its War"
 \tdesc = "{explanation} India may now make a separate peace with {name}. This ends only India's war with {name}; India's other wars continue."
 \tstyle = 2
@@ -374,8 +376,8 @@ def major_resolution(tag: str, name: str, seat: str, event_id: int, requirements
 \tdate = {{ day = 0 month = january year = 1933 }}
 \toffset = 1
 \tdeathdate = {{ day = 29 month = december year = 1964 }}
-\tdecision = {{ ai = no {condition} }}
-\tdecision_trigger = {{ ai = no {condition} }}
+\tdecision = {{ {condition} }}
+\tdecision_trigger = {{ {condition} }}
 \taction_a = {{
 \t\tname = "Separate peace: -3 dissent; +300 money"
 \t\tcommand = {{ type = peace which = {tag} value = 1 }}

@@ -1,13 +1,13 @@
 =======================================================================
- A UNION BEFORE MIDNIGHT - V4.2.0 ALPHA 30 - 28 SEP 2026
+ A UNION BEFORE MIDNIGHT - V4.2.0 ALPHA 31 - 02 OCT 2026
  For Darkest Hour 1.05.2
- Source version 4.2.0-alpha.30
+ Source version 4.2.0-alpha.31
 =======================================================================
 
 Freedom came early. Unity came at a price.
 
-Alpha 30 fixes the Alpha 29 country-decision polling regression and restores
-the Frontier Science Programme, Oceanic Fleet Review, Third National Plan and
+Alpha 31 fixes the country-decision visibility regression and retains the
+Frontier Science Programme, Oceanic Fleet Review, Third National Plan and
 Peace Dividend. The removed strategic matrices and clutter remain retired.
 Existing saves are supported; eligible decisions appear after one game day.
 
