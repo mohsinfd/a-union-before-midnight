@@ -5,7 +5,8 @@
 - Moved the human-player guard from inside `decision` and `decision_trigger` to
   the event-level trigger, matching Darkest Hour's working decision schema.
 - Added a release check that rejects this invalid nesting in future builds.
-- Existing saves remain supported and are not edited.
+- Darkest Hour stores its event-file registry inside each save. Older campaigns
+  therefore require a cloned registry-refreshed save; the original is not edited.
 
 ## 4.2.0-alpha.30 / Alpha 30 - Country Decisions Restored
 

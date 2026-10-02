@@ -9,7 +9,8 @@ Freedom came early. Unity came at a price.
 Alpha 31 fixes the country-decision visibility regression and retains the
 Frontier Science Programme, Oceanic Fleet Review, Third National Plan and
 Peace Dividend. The removed strategic matrices and clutter remain retired.
-Existing saves are supported; eligible decisions appear after one game day.
+Old saves embed their original event-file list and require a registry-refreshed
+clone before the new country decisions can load. New games need no migration.
 
 A Union Before Midnight is an independent-India alternate-history campaign
 beginning on 1 January 1933. India inherits a united but unsettled continental

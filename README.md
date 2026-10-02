@@ -22,6 +22,10 @@ settlements now appear in the decision pane. It also restores the Frontier Scien
 Programme, Oceanic Fleet Review, Third National Plan and Peace Dividend without
 restoring the removed strategic-matrix clutter.
 
+Darkest Hour serializes its event-file registry into every save. Campaigns created
+before Alpha 31 must be cloned with `tools/refresh_aubm_save_event_registry.py` so
+they load the new country modules; the source save and campaign state are preserved.
+
 The inherited roster delta is **27-ROSTER1**, built on **27-BALANCE1**. See
 [the cabinet, commander and research-team guide](docs/ROSTER1_RELEASE.md).
 For a player-facing explanation of the opening, economy, military, diplomacy and
