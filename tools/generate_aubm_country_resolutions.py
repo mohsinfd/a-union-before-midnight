@@ -327,7 +327,11 @@ def base_callback(country: Country) -> str:
         f'\t\tname = "Transfer {bases} to India"',
     ]
     for province, _ in country.retained_bases:
-        lines.append(cmd(f"secedeprovince which = IND value = {province}"))
+        # Darkest Hour documents the default secede mode as flawed.  Mode 2
+        # deterministically assigns both ownership and control to India, which
+        # is what a sovereign-base treaty promises even when the grantor keeps
+        # the province as a national claim.
+        lines.append(cmd(f"secedeprovince which = IND value = {province} when = 2"))
     lines.extend([
         cmd("access which = IND"),
         cmd("relation which = IND value = 40"),
@@ -586,6 +590,54 @@ def legacy_island_recovery() -> str:
 \t\tcommand = {{ type = setflag which = ind_island_defence_alpha33_recovered }}
 \t}}
 }}'''
+
+
+def soerabaja_handover_recovery() -> str:
+    """Repair saves where the visible treaty used legacy secession mode."""
+    return '''event = {
+\tid = 9288390
+\trandom = no
+\tpersistent = yes
+\tcountry = IND
+\ttrigger = {
+\t\tai = no
+\t\texists = INO
+\t\tpuppet = { country = INO country = IND }
+\t\towned = { province = 1653 data = INO }
+\t\tOR = {
+\t\t\tflag = ind_country_resolution_u05_protected
+\t\t\tflag = ind_country_resolution_u05_fragmented_protected
+\t\t}
+\t\tNOT = { flag = ind_soerabaja_base_handover_complete }
+\t}
+\tname = "Soerabaja Base Handover Completed"
+\tdesc = "Indonesia has signed the base treaty. India now receives both legal ownership and control of Soerabaja; Indonesia keeps its national claim and the rest of the country."
+\tstyle = 2
+\tpicture = "aubm_v4_indian_ocean_war"
+\tdate = { day = 0 month = january year = 1933 }
+\toffset = 1
+\tdeathdate = { day = 29 month = december year = 1964 }
+\taction_a = {
+\t\tname = "Complete the Soerabaja transfer"
+\t\tcommand = { type = setflag which = ind_soerabaja_base_handover_complete }
+\t\tcommand = { type = event which = 9288391 where = INO when = 0 }
+\t}
+}
+
+event = {
+\tid = 9288391
+\trandom = no
+\tone_action = yes
+\tcountry = INO
+\tname = "Soerabaja Base Handover"
+\tdesc = "Indonesia transfers legal ownership and control of Soerabaja to India under the signed base treaty. Indonesia keeps its national claim."
+\tstyle = 2
+\tpicture = "aubm_v4_indian_ocean_war"
+\taction_a = {
+\t\tname = "Transfer Soerabaja to India"
+\t\tcommand = { type = secedeprovince which = IND value = 1653 when = 2 }
+\t}
+}'''
 
 
 MAJOR_EVENTS = (
@@ -1032,6 +1084,7 @@ def render() -> str:
     sections.extend(island_baseline_event(island) for island in ISLAND_DEFENSES)
     sections.extend(island_aid_event(island) for island in ISLAND_DEFENSES)
     sections.append(legacy_island_recovery())
+    sections.append(soerabaja_handover_recovery())
     sections.append(malaya_colonial_resolution())
     sections.append(arab_federation_resolution())
     return "\n\n".join(sections) + "\n"

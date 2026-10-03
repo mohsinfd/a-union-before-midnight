@@ -2648,7 +2648,7 @@ event = {
 	picture = "aubm_v4_indian_ocean_war"
 	action_a = {
 		name = "Transfer Basrah to India"
-		command = { type = secedeprovince which = IND value = 1032 }
+		command = { type = secedeprovince which = IND value = 1032 when = 2 }
 		command = { type = access which = IND }
 		command = { type = relation which = IND value = 40 }
 	}
@@ -2665,7 +2665,7 @@ event = {
 	picture = "aubm_v4_indian_ocean_war"
 	action_a = {
 		name = "Transfer Aden to India"
-		command = { type = secedeprovince which = IND value = 1053 }
+		command = { type = secedeprovince which = IND value = 1053 when = 2 }
 		command = { type = access which = IND }
 		command = { type = relation which = IND value = 40 }
 	}
@@ -2682,7 +2682,7 @@ event = {
 	picture = "aubm_v4_liberated_territory"
 	action_a = {
 		name = "Transfer Singapore to India"
-		command = { type = secedeprovince which = IND value = 1432 }
+		command = { type = secedeprovince which = IND value = 1432 when = 2 }
 		command = { type = access which = IND }
 		command = { type = relation which = IND value = 40 }
 	}
@@ -2699,7 +2699,7 @@ event = {
 	picture = "aubm_v4_liberated_territory"
 	action_a = {
 		name = "Transfer Davao to India"
-		command = { type = secedeprovince which = IND value = 1579 }
+		command = { type = secedeprovince which = IND value = 1579 when = 2 }
 		command = { type = access which = IND }
 		command = { type = relation which = IND value = 40 }
 	}
@@ -2716,7 +2716,7 @@ event = {
 	picture = "aubm_v4_indian_ocean_war"
 	action_a = {
 		name = "Transfer Soerabaja to India"
-		command = { type = secedeprovince which = IND value = 1653 }
+		command = { type = secedeprovince which = IND value = 1653 when = 2 }
 		command = { type = access which = IND }
 		command = { type = relation which = IND value = 40 }
 	}
@@ -2733,7 +2733,7 @@ event = {
 	picture = "aubm_v4_liberated_territory"
 	action_a = {
 		name = "Transfer Darwin to India"
-		command = { type = secedeprovince which = IND value = 1697 }
+		command = { type = secedeprovince which = IND value = 1697 when = 2 }
 		command = { type = access which = IND }
 		command = { type = relation which = IND value = 40 }
 	}
@@ -3621,6 +3621,51 @@ event = {
 		command = { trigger = { puppet = { country = MLY country = IND } } type = setflag which = ind_island_setup_mly_protected }
 		command = { trigger = { puppet = { country = MLY country = IND } } type = event which = 9288381 where = IND when = 1 }
 		command = { type = setflag which = ind_island_defence_alpha33_recovered }
+	}
+}
+
+event = {
+	id = 9288390
+	random = no
+	persistent = yes
+	country = IND
+	trigger = {
+		ai = no
+		exists = INO
+		puppet = { country = INO country = IND }
+		owned = { province = 1653 data = INO }
+		OR = {
+			flag = ind_country_resolution_u05_protected
+			flag = ind_country_resolution_u05_fragmented_protected
+		}
+		NOT = { flag = ind_soerabaja_base_handover_complete }
+	}
+	name = "Soerabaja Base Handover Completed"
+	desc = "Indonesia has signed the base treaty. India now receives both legal ownership and control of Soerabaja; Indonesia keeps its national claim and the rest of the country."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	date = { day = 0 month = january year = 1933 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Complete the Soerabaja transfer"
+		command = { type = setflag which = ind_soerabaja_base_handover_complete }
+		command = { type = event which = 9288391 where = INO when = 0 }
+	}
+}
+
+event = {
+	id = 9288391
+	random = no
+	one_action = yes
+	country = INO
+	name = "Soerabaja Base Handover"
+	desc = "Indonesia transfers legal ownership and control of Soerabaja to India under the signed base treaty. Indonesia keeps its national claim."
+	style = 2
+	picture = "aubm_v4_indian_ocean_war"
+	action_a = {
+		name = "Transfer Soerabaja to India"
+		command = { type = secedeprovince which = IND value = 1653 when = 2 }
 	}
 }
 

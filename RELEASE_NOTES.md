@@ -2,6 +2,10 @@
 
 ## 4.2.0-alpha.33 / Alpha 33 - Island Defence and Eastern Soviet Peace
 
+Hotfix: protectorate base treaties now use Darkest Hour's deterministic
+ownership-and-control transfer mode. A one-time Soerabaja recovery also repairs
+campaigns where the treaty window appeared but legacy secession did nothing.
+
 - Fixed the Indonesia breakup path so an aligned Indonesia grants Soerabaja
   under the same base treaty as the single-country settlement.
 - Added a delayed relationship finalizer for Indonesia, Malaysia, the

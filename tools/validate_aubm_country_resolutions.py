@@ -70,7 +70,7 @@ def main() -> int:
 
     ids = [int(value) for value in re.findall(r"(?m)^\s*id\s*=\s*(\d+)", actual)]
     base_callbacks = sum(bool(country.retained_bases) for country in COUNTRIES)
-    bespoke_events = 35  # Malaya, Arab, Soviet and island-defence chains.
+    bespoke_events = 37  # Malaya, Arab, Soviet and island-defence chains.
     expected_count = (
         len(COUNTRIES) * 2 + len(MAJOR_EVENTS) + len(FRAGMENT_CALLBACKS)
         + len(FRAGMENT_PLANS) + base_callbacks + bespoke_events
@@ -84,8 +84,8 @@ def main() -> int:
         errors.append("one or more visible peace decisions lacks its event-level human-player guard")
     if re.search(r"(?m)^\s*decision(?:_trigger)?\s*=\s*\{\s*ai\s*=", actual):
         errors.append("ai guard is incorrectly nested inside decision or decision_trigger")
-    dated_events = visible_decisions + 1 + len(ISLAND_DEFENSES)
-    daily_events = visible_decisions + 1  # Decisions plus Alpha 33 legacy recovery.
+    dated_events = visible_decisions + 2 + len(ISLAND_DEFENSES)
+    daily_events = visible_decisions + 2  # Decisions plus both Alpha 33 recovery events.
     if actual.count("\tdate = { day = 0 month = january year = 1933 }") != dated_events:
         errors.append("one or more visible peace decisions lacks its polling start date")
     if actual.count("\toffset = 1") != daily_events:
@@ -135,8 +135,8 @@ def main() -> int:
         if f'{country.name}: Indian Base Treaty' not in actual:
             errors.append(f"{country.tag} lacks its protectorate base treaty")
         for province, name in country.retained_bases:
-            if f"secedeprovince which = IND value = {province}" not in actual:
-                errors.append(f"{country.tag} does not transfer {name} to India")
+            if f"secedeprovince which = IND value = {province} when = 2" not in actual:
+                errors.append(f"{country.tag} does not deterministically transfer {name} to India")
 
     for phrase in (
         "Malaysia: Settle the British Colony",
@@ -147,6 +147,7 @@ def main() -> int:
         "Soviet Union: India Can Dictate a Settlement",
         "Liberation peace: aligned republics; -4 dissent",
         "Island Agreements Corrected",
+        "Soerabaja Base Handover Completed",
     ):
         if phrase not in actual:
             errors.append(f"required country-resolution text is missing: {phrase}")
