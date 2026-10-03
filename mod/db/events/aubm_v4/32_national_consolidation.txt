@@ -1,0 +1,377 @@
+#########################################################################
+# A Union Before Midnight V4.3 - National consolidation guarantees
+#########################################################################
+
+# Applies to new games and existing V4 saves. Upgrade cost and time are
+# controlled only by misc.txt; unit build modifiers also affect new production.
+event = {
+	id = 9281000
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v4_initialized
+		NOT = { flag = ind_aubm_fresh_1933_bootstrap }
+		NOT = { flag = ind_v43_modernization_contract }
+	}
+
+	name = "Compatibility Review: Modernization State"
+	desc = "This save predates the current modernization record. The review enables the normal upgrade schedule and War Cabinet without changing manpower, units, production, resources or completed research."
+	style = 2
+	picture = "india_v3_armed_forces"
+
+	date = { day = 1 month = january year = 1933 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Record the current modernization state (no cost)"
+		command = { type = setflag which = ind_v43_war_cabinet }
+		command = { type = setflag which = ind_v43_upgrade_contract_final }
+		command = { type = setflag which = ind_v43_upgrade_contract_low_ic }
+		command = { type = setflag which = ind_v43_modernization_contract }
+		command = { type = setflag which = ind_v43_unit_build_restore }
+	}
+}
+
+# Repairs unit definitions in saves that fired an Alpha 7/8 modernization
+# contract. The old commands changed all future construction, not upgrades
+# alone. Flag combinations identify the exact cumulative values to reverse.
+event = {
+	id = 9281007
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v43_modernization_contract
+		NOT = { flag = ind_v43_unit_build_restore }
+	}
+
+	name = "The Arsenal Accounting Correction"
+	desc = "A review finds that conversion allowances were entered against complete unit contracts, sharply shortening every new ship, aircraft and formation ordered by India. The erroneous allowances are removed from future construction. Existing modernization continues under the dedicated national upgrade schedule."
+	style = 2
+	picture = "india_v3_armed_forces"
+	date = { day = 1 month = january year = 1933 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Restore honest arsenal accounting"
+		command = { trigger = { flag = ind_v43_upgrade_contract_final } type = build_time which = land when = on_upgrade where = relative value = 90 }
+		command = { trigger = { flag = ind_v43_upgrade_contract_final } type = build_time which = air when = on_upgrade where = relative value = 90 }
+		command = { trigger = { flag = ind_v43_upgrade_contract_final } type = build_time which = naval when = on_upgrade where = relative value = 90 }
+		command = { trigger = { NOT = { flag = ind_v43_upgrade_contract_final } } type = build_time which = land when = on_upgrade where = relative value = 65 }
+		command = { trigger = { NOT = { flag = ind_v43_upgrade_contract_final } } type = build_time which = air when = on_upgrade where = relative value = 40 }
+		command = { trigger = { NOT = { flag = ind_v43_upgrade_contract_final } } type = build_time which = naval when = on_upgrade where = relative value = 25 }
+		command = { trigger = { flag = ind_v43_upgrade_contract_final flag = ind_v43_upgrade_contract_low_ic } type = build_cost which = land when = on_upgrade where = relative value = 75 }
+		command = { trigger = { flag = ind_v43_upgrade_contract_final flag = ind_v43_upgrade_contract_low_ic } type = build_cost which = air when = on_upgrade where = relative value = 75 }
+		command = { trigger = { flag = ind_v43_upgrade_contract_final flag = ind_v43_upgrade_contract_low_ic } type = build_cost which = naval when = on_upgrade where = relative value = 75 }
+		command = { trigger = { flag = ind_v43_upgrade_contract_final NOT = { flag = ind_v43_upgrade_contract_low_ic } } type = build_cost which = land when = on_upgrade where = relative value = 50 }
+		command = { trigger = { flag = ind_v43_upgrade_contract_final NOT = { flag = ind_v43_upgrade_contract_low_ic } } type = build_cost which = air when = on_upgrade where = relative value = 50 }
+		command = { trigger = { flag = ind_v43_upgrade_contract_final NOT = { flag = ind_v43_upgrade_contract_low_ic } } type = build_cost which = naval when = on_upgrade where = relative value = 50 }
+		command = { trigger = { NOT = { flag = ind_v43_upgrade_contract_final } flag = ind_v43_upgrade_contract_low_ic } type = build_cost which = land when = on_upgrade where = relative value = 75 }
+		command = { trigger = { NOT = { flag = ind_v43_upgrade_contract_final } flag = ind_v43_upgrade_contract_low_ic } type = build_cost which = air when = on_upgrade where = relative value = 60 }
+		command = { trigger = { NOT = { flag = ind_v43_upgrade_contract_final } flag = ind_v43_upgrade_contract_low_ic } type = build_cost which = naval when = on_upgrade where = relative value = 45 }
+		command = { trigger = { NOT = { flag = ind_v43_upgrade_contract_final } NOT = { flag = ind_v43_upgrade_contract_low_ic } } type = build_cost which = land when = on_upgrade where = relative value = 50 }
+		command = { trigger = { NOT = { flag = ind_v43_upgrade_contract_final } NOT = { flag = ind_v43_upgrade_contract_low_ic } } type = build_cost which = air when = on_upgrade where = relative value = 35 }
+		command = { trigger = { NOT = { flag = ind_v43_upgrade_contract_final } NOT = { flag = ind_v43_upgrade_contract_low_ic } } type = build_cost which = naval when = on_upgrade where = relative value = 20 }
+		command = { type = setflag which = ind_v43_unit_build_restore }
+	}
+}
+
+# Normalize compatibility flags only after the construction correction. These
+# events intentionally contain no unit build modifiers.
+event = {
+	id = 9281005
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v43_modernization_contract
+		flag = ind_v43_unit_build_restore
+		NOT = { flag = ind_v43_upgrade_contract_final }
+	}
+
+	name = "The Modernization Contract Ledger"
+	desc = "The corrected modernization ledger records the common national upgrade schedule without altering the construction terms of new formations, aircraft or ships."
+	style = 2
+	picture = "india_v3_armed_forces"
+	date = { day = 1 month = january year = 1933 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Record the corrected national schedule"
+		command = { type = setflag which = ind_v43_upgrade_contract_final }
+	}
+}
+
+event = {
+	id = 9281006
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v43_modernization_contract
+		flag = ind_v43_unit_build_restore
+		NOT = { flag = ind_v43_upgrade_contract_low_ic }
+	}
+
+	name = "The Conversion Budget Ledger"
+	desc = "The corrected ledger confirms that modernization draws only from funded upgrade appropriations and grants no hidden progress or discount to newly ordered units."
+	style = 2
+	picture = "india_v3_armed_forces"
+	date = { day = 1 month = january year = 1933 }
+	offset = 1
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Close the superseded account"
+		command = { type = setflag which = ind_v43_upgrade_contract_low_ic }
+	}
+}
+
+# The unrestricted country catalogue remains available for players who want a
+# sandbox campaign before the 1937 strategic phase, but it must be enabled
+# deliberately.  The opt-in carries no reward and cannot bypass legal-target
+# or commitment guards.
+event = {
+	id = 9281008
+	random = no
+	persistent = yes
+	country = IND
+
+	decision = {
+		flag = ind_v43_war_cabinet
+		flag = ind_v3_integrated
+		flag = aubm_v4_union_register_opened
+		atwar = no
+		NOT = { year = 1937 }
+		NOT = { flag = ind_aubm_unrestricted_sandbox }
+	}
+	decision_trigger = {
+		flag = ind_v43_war_cabinet
+		flag = ind_v3_integrated
+		flag = aubm_v4_union_register_opened
+		atwar = no
+		NOT = { year = 1937 }
+		NOT = { flag = ind_aubm_unrestricted_sandbox }
+	}
+
+	name = "Enable Unrestricted Early Campaigns"
+	decision_desc = "Optional permanent sandbox opt-in. This exposes the War Cabinet and arbitrary declarations before 1937. It grants no reward, does not waive alliance or legal-target guards, and can close peacetime development chains by starting an early war."
+	desc = "India's constitutional programme is designed to run at peace through 1936. Enabling the unrestricted catalogue early is for alternate starts and deliberate sandbox wars; it is not required for the normal campaign."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+
+	date = { day = 0 month = january year = 1933 }
+	offset = 5
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Enable the early sandbox permanently (no reward)"
+		command = { type = setflag which = ind_aubm_unrestricted_sandbox }
+	}
+}
+
+# One permanent strategic doorway replaces six easy-to-miss decisions. The
+# curated doorway opens in 1937, during a real Indian war, or after the explicit
+# unrestricted-sandbox opt-in. The underlying coalition events remain
+# authoritative and retain their effects.
+event = {
+	id = 9281001
+	random = no
+	persistent = yes
+	country = IND
+
+	decision = {
+		flag = ind_v43_war_cabinet
+		flag = ind_v3_integrated
+		flag = aubm_v4_union_register_opened
+		OR = {
+			year = 1937
+			atwar = yes
+			flag = ind_aubm_unrestricted_sandbox
+		}
+	}
+	decision_trigger = {
+		flag = ind_v43_war_cabinet
+		flag = ind_v3_integrated
+		flag = aubm_v4_union_register_opened
+		OR = {
+			year = 1937
+			atwar = yes
+			flag = ind_aubm_unrestricted_sandbox
+		}
+	}
+
+	name = "Convene the National War Cabinet"
+	decision_desc = "Available from 1937, during a real Indian war, or after the explicit early-sandbox opt-in. Inspection is free. Every agreement and declaration is filed under one named country."
+	desc = "Use the Cabinet to open the country-relations desk or declare a named war. Trade and defence agreements keep separate wars. Only a button explicitly labelled formal alliance merges wars. Peace decisions appear under the defeated country's name."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+
+	date = { day = 0 month = january year = 1933 }
+	offset = 3
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		name = "Choose a country relationship"
+		command = { type = event which = 9289000 where = IND when = 1 }
+	}
+	action_b = {
+		name = "Country peace decisions appear separately when earned"
+	}
+	action_c = {
+		name = "Choose a country for a separate Indian war"
+		command = { type = event which = 9289003 where = IND when = 1 }
+	}
+	action_d = {
+		name = "Leave the current alliance while at peace"
+		command = { type = event which = 9289004 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9281012
+	random = no
+	persistent = yes
+	country = IND
+	name = "War Cabinet: Choose a Country"
+	desc = "This old save-compatible menu now opens the replacement country list. Every declaration is named and later peace decisions appear under the defeated country's name."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+	# AUBM_MENU_SAFE_EXIT: human-only; no effects or follow-up event.
+	action = {
+		trigger = { ai = no }
+		name = "Cancel - close without changes"
+	}
+	action_a = { name = "Open the named-country war list" command = { type = event which = 9289003 where = IND when = 1 } }
+	action_b = { name = "Close; country peace decisions appear automatically" }
+}
+
+event = {
+	id = 9281013
+	random = no
+	persistent = yes
+	country = IND
+	name = "The Unrestricted Campaign Catalogue Is Retired"
+	desc = "The former all-country catalogue created thousands of repeated checks and unclear peace chains. It is no longer used. Named country decisions now handle Indian wars and peace."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+	# AUBM_MENU_SAFE_EXIT: human-only; no effects or follow-up event.
+	action = {
+		trigger = { ai = no }
+		name = "Cancel - close without changes"
+	}
+	action_a = {
+		name = "Return to the National War Cabinet"
+		command = { type = event which = 9281001 where = IND when = 1 }
+	}
+	action_b = { name = "Close" }
+}
+
+event = {
+	id = 9281002
+	random = no
+	one_action = yes
+	country = IND
+	name = "The War Cabinet: Other Strategic Courses"
+	desc = "This retired menu may remain queued in an upgraded save. Its direct-war choices predate the current alliance and commitment safeguards, so the file now returns to the authoritative War Cabinet."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+	action_a = {
+		name = "Close retired menu; War Cabinet opens only after Union"
+		command = { trigger = { flag = ind_v3_integrated flag = aubm_v4_union_register_opened OR = { year = 1937 atwar = yes flag = ind_aubm_unrestricted_sandbox } } type = event which = 9281001 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9281003
+	random = no
+	one_action = yes
+	country = IND
+	name = "The War Cabinet: Final Docket"
+	desc = "This retired docket may remain queued in an upgraded save. It now returns to the authoritative War Cabinet so current alliances and binding commitments cannot be bypassed."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+	action_a = {
+		name = "Close retired menu; War Cabinet opens only after Union"
+		command = { trigger = { flag = ind_v3_integrated flag = aubm_v4_union_register_opened OR = { year = 1937 atwar = yes flag = ind_aubm_unrestricted_sandbox } } type = event which = 9281001 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9281004
+	random = no
+	one_action = yes
+	country = IND
+	name = "War Against the Soviet Union?"
+	desc = "This retired declaration may remain queued in an upgraded save. The current War Cabinet provides the supported Soviet-war path and enforces India's live alliance and exclusive commitment."
+	style = 2
+	picture = "aubm_v4_india_world_war"
+	action_a = {
+		name = "Close retired menu; War Cabinet opens only after Union"
+		command = { trigger = { flag = ind_v3_integrated flag = aubm_v4_union_register_opened OR = { year = 1937 atwar = yes flag = ind_aubm_unrestricted_sandbox } } type = event which = 9281001 where = IND when = 1 }
+	}
+}
+
+event = {
+	id = 9281020
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v4_initialized
+		year = 1937
+		NOT = { flag = ind_v43_federal_income_tax }
+	}
+
+	name = "The Federal Income Tax Settlement"
+	desc = "Industrial growth has outrun the patchwork revenue system inherited in 1933. A permanent federal income-tax settlement and audited provincial transfers give Delhi dependable cash for research, diplomacy and procurement rather than another one-time windfall."
+	style = 2
+	picture = "aubm_v4_budget_conference"
+	date = { day = 0 month = january year = 1937 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Establish the federal tax settlement"
+		command = { type = money value = 500 }
+		command = { type = free_money value = 2 }
+		command = { type = dissent value = 1 }
+		command = { type = setflag which = ind_v43_federal_income_tax }
+	}
+}
+
+event = {
+	id = 9281021
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v43_federal_income_tax
+		year = 1940
+		NOT = { flag = ind_v43_war_finance_board }
+		OR = {
+			atwar = yes
+			war = { country = ENG country = GER }
+			war = { country = SOV country = GER }
+			war = { country = JAP country = CHI }
+		}
+	}
+
+	name = "The National War Finance Board"
+	desc = "Even outside a formal alliance, global war has expanded customs receipts, defence bonds and industrial profits. The Reserve Bank coordinates these flows into a standing war-finance system capable of supporting a great power's research and diplomatic commitments."
+	style = 2
+	picture = "aubm_v4_budget_conference"
+	date = { day = 0 month = january year = 1940 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1964 }
+	action_a = {
+		name = "Put war finance on a permanent footing"
+		command = { type = money value = 750 }
+		command = { type = free_money value = 2 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = setflag which = ind_v43_war_finance_board }
+	}
+}

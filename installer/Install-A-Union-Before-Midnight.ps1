@@ -1,6 +1,6 @@
 ﻿param(
     [string]$GameRoot,
-    [string]$TargetName = "A Union Before Midnight",
+    [string]$TargetName = "A Union Before Midnight V4.2",
     [switch]$Force
 )
 
@@ -73,14 +73,14 @@ if (-not (Test-Path -LiteralPath $launcher -PathType Leaf)) {
 }
 
 $modsRoot = Join-Path $GameRoot "Mods"
-$baseMod = Join-Path $modsRoot "Blood and Iron v1.1"
+$baseMod = Join-Path $modsRoot "Darkest Hour Full"
 $targetRoot = [System.IO.Path]::GetFullPath((Join-Path $modsRoot $TargetName))
 $expectedParent = [System.IO.Path]::GetFullPath($modsRoot)
 if ([System.IO.Path]::GetDirectoryName($targetRoot) -ne $expectedParent) {
     throw "TargetName must be a single safe folder name."
 }
 if (-not (Test-Path -LiteralPath $baseMod -PathType Container)) {
-    throw "Blood and Iron v1.1 is required at: $baseMod"
+    throw "Darkest Hour Full is required at: $baseMod"
 }
 
 $managed = @(
@@ -113,11 +113,11 @@ if (Test-Path -LiteralPath $targetRoot -PathType Container) {
     }
     Write-Host "Updating existing A Union Before Midnight installation..."
 } else {
-    Write-Host "Creating an isolated Blood and Iron foundation..."
+    Write-Host "Creating an isolated Darkest Hour Full foundation..."
     New-Item -ItemType Directory -Path $targetRoot -Force | Out-Null
     & robocopy $baseMod $targetRoot /E /COPY:DAT /DCOPY:DAT /R:1 /W:1 /NP /NFL /NDL
     if ($LASTEXITCODE -ge 8) {
-        throw "Blood and Iron foundation copy failed with robocopy code $LASTEXITCODE."
+        throw "Darkest Hour Full foundation copy failed with robocopy code $LASTEXITCODE."
     }
 }
 
@@ -166,7 +166,7 @@ $managed | Set-Content -LiteralPath $oldManagedPath -Encoding ASCII
     name = "A Union Before Midnight"
     version = $version
     installed_at = (Get-Date).ToString("o")
-    foundation = "Blood and Iron v1.1"
+    foundation = "Darkest Hour Full"
 } | ConvertTo-Json | Set-Content -LiteralPath $markerPath -Encoding UTF8
 
 Write-Host ""

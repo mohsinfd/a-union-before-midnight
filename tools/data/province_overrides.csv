@@ -1,0 +1,53 @@
+province_id,old_name,new_name,old_terrain,new_terrain,old_infrastructure,new_infrastructure,old_oil,new_oil,old_metal,new_metal,old_energy,new_energy,old_rares,new_rares,reason
+1409,,,,,,,,,,,,,14,13,Lashio rare output rebalanced toward the Indian mineral belt
+1410,,,Jungle,Plains,, ,3,1,,,,,,,Mandalay sits on the dry Irrawaddy plain and retains a share of Burma oil
+1411,Pakokdu,Pakokku,,,,,,,,,,,,,Correct spelling
+1412,,,,,,,,,,,,,29,24,Reduce overconcentrated Shan rare output
+1415,,,,,30,50,,,,,,,,,Rangoon was the principal Burmese port and rail hub
+1420,,,,,,,1,0,,,,,,,Akyab was not a producing oil centre
+1421,,,Plains,Jungle,,,,,,,,,,,Andaman interior is tropical forest
+1439,,,Mountain,Hills,,,,,,,,,,,Gauhati is in the Brahmaputra valley beside hill country
+1440,Aijal,Aizawl,,,,,,,,,,,,,Correct spelling
+1441,,,,,,,0,4,,,10,12,,,Represent the Digboi oil field and Assam coal
+1442,,,,,,,1,0,,,,,,,Imphal was not an oil-producing province
+1445,,,,,10,30,,,,,,,,,Dhaka was a major regional city and river transport hub
+1450,Cattagram,Chittagong,,,30,40,,,,,,,,,Correct name and improve the major eastern port
+1460,Merath,Meerut,,,,,,,,,,,,,Correct spelling
+1464,Bareli,Bareilly,,,,,,,,,,,,,Correct spelling
+1468,Cawnpore,Kanpur,,,,,,,,,,,,,Independent India restores the local form
+1469,,,,,,,,,,,8,12,,,Raigarh coal and mineral district
+1471,Bhubanesbar,Bhubaneswar,,,,,,,,,,,,,Correct spelling
+1472,,,Plains,Hills,,,,,10,12,2,6,1,2,Jamshedpur steel industry belongs in the Chota Nagpur uplands
+1473,Kataka,Cuttack,,,,,,,,,,,0,2,Correct name and represent Orissa chromite
+1475,,,,,,,,,9,11,,,,,Bastar iron and manganese deposits
+1476,,,,,,,,,,,32,38,2,4,Ranchi coal mica and mineral belt
+1477,,,,,,,,,9,11,,,,,Raipur central iron belt
+1479,Jubbulpore,Jabalpur,,,,,,,,,,,,,Modern local spelling
+1481,Indhur,Indore,,,,,,,,,,,,,Correct spelling
+1485,,,,,,,,,,,2,4,1,2,Nagpur coal and manganese district
+1487,,,,,30,40,,,,,,,,,Hyderabad was a major Deccan administrative and industrial centre
+1488,,,,,,,,,,,6,8,,,Warangal coalfield allocation
+1493,Vizagapatam,Visakhapatnam,Mountain,Hills,40,50,,,,,,,,,Correct name terrain and naval-industrial connectivity
+1494,,,Forest,Plains,,,,,,,,,,,Nellore lies on the coastal plain
+1495,,,Mountain,Hills,,,,,,,,,,,Trivandrum is hilly rather than mountainous
+1496,Gunturu,Guntur,Forest,Plains,,,,,,,,,,,Correct name and Krishna delta terrain
+1497,,,Mountain,Plains,,,,,,,,,,,Cochin lies on the Malabar coastal plain
+1498,Bezawada,Vijayawada,,,,,,,,,,,,,Independent India restores the local form
+1499,Trichinopoly,Tiruchirappalli,Forest,Plains,,,,,,,,,,,Independent name and Cauvery plain terrain
+1500,,,Forest,Plains,40,50,,,,,,,,,Madras is a major city on the Coromandel plain
+1502,,,,,40,50,,,,,,,,,Bangalore was an aviation and industrial centre
+1503,,,Mountain,Hills,,,,,,,,,,,Western Ghats foothills around Mangalore
+1504,,,Jungle,Plains,,,,,,,,,,,Madurai lies on an inland plain
+1505,,,Mountain,Hills,,,,,,,,,,,Coimbatore lies below the Ghats
+1508,,,Mountain,Plains,,,,,,,,,,,Solapur is on the Deccan plateau rather than a mountain province
+1512,,,Mountain,Hills,,,,,,,,,,,Kolhapur is upland hill country
+1514,,,Mountain,Hills,,,,,,,,,,,Nasik is plateau and hill country
+1515,,,Mountain,Hills,,,,,,,,,,,Hubli is Deccan upland terrain
+1516,,,Mountain,Hills,,,,,,,,,,,Poona is on the Deccan plateau beside the Ghats
+1524,Jaypur,Jaipur,,,,,,,,,,,,,Correct spelling
+1526,Udaypur,Udaipur,,,,,,,,,,,,,Correct spelling
+1528,Kotah,Kota,,,,,,,,,,,,,Correct spelling
+1529,,,,,,,,,,,20,8,,,Quetta should not hold a major coal concentration
+1533,,,Hills,Plains,,,,,,,,,,,Karachi lies on the lower Indus coastal plain
+1534,,,,,,,,,9,3,14,6,,,Shift implausible Rawalpindi mineral concentration to production belts
+1612,Karavatti,Kavaratti,,,,,,,,,,,,,Correct spelling

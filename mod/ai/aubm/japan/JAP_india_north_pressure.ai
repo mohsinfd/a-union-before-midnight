@@ -1,0 +1,36 @@
+# AUBM: Japan pressures the Soviet Far East but remains formally neutral.
+
+combat = { IND = -1 SOV = 10 CHI = 100 CHC = 70 PHI = 100 USA = 80 }
+befriend = { IND = 190 MAN = 100 SIA = 80 }
+protect = { IND = 130 MAN = 100 SIA = 60 }
+
+max_front_ratios = { IND = 0.05 SOV = 0.5 CHI = 3.0 PHI = 4.0 USA = 2.0 }
+
+front = {
+	recklessness = 0
+	base_attack_odds = 1.35
+	min_attack_odds = 1.25
+	passivity = { IND = 100 SOV = 75 MON = 85 }
+}
+
+target = {
+	1176 = 40 # Blagoveshchensk
+	1189 = 40 # Nikolayevsk-on-Amur
+	1190 = 50 # Khabarovsk
+	1191 = 60 # Vladivostok
+	1541 = 40 # Okha
+}
+
+garrison = {
+	defend_overseas_beaches = yes
+	home_multiplier = 4.0
+	overseas_multiplier = 1.0
+	home_peace_cap = 12
+	war_zone_odds = 1.5
+	key_point_prio_mult = 0.5
+	revolt_risk_mult = 0.5
+	beach = 100 capital = 75 human_border = 0 war_target = 30
+	opposing_alliance = 50 claim_threat = 0 unstable_border = 20
+	country_priorities = { IND = -1 MAN = -1 SIA = -1 SOV = 80 MON = 60 }
+	province_priorities = { 1541 = 80 1542 = 80 }
+}

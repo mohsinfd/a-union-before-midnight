@@ -1,7 +1,0 @@
-Sprite = {
-	Bitmap = "T-TRANSPORT A-WALK C-MIN L-1 D-W.bmp"
-	Origin = { x = 60 y = 60 }
-	Frames = 18
-	Speed = 5
-	Palette = "V3-IND-NAVY-T-TRANSPORT_C-MIN.bmp"
-}

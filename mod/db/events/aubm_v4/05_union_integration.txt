@@ -1,0 +1,978 @@
+#########################################################################
+# A Union Before Midnight V4: governing the continental Union
+#########################################################################
+
+event = {
+	id = 9280100
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v3_integrated
+		NOT = { flag = aubm_v4_union_register_opened }
+	}
+
+	name = "The Union Register"
+	desc = "The Lahore Accord transferred sovereignty over an immense and uneven inheritance. British Indian provinces, hundreds of princely jurisdictions, Burma and Ceylon now answer to Delhi, but they do not yet share one treasury, one civil service or even one definition of citizenship. Malaya and Singapore remain British beyond the eastern frontier. The Cabinet orders a Union Register before promises become policy."
+	style = 2
+	picture = "aubm_v4_union_register"
+
+	date = { day = 12 month = january year = 1933 }
+	offset = 2
+	deathdate = { day = 29 month = january year = 1964 }
+
+	action_a = {
+		name = "Open the register across the Union"
+		command = { type = setflag which = aubm_v4_union_register_opened }
+		command = { type = setflag which = aubm_v4_integration_active }
+	}
+}
+
+event = {
+	id = 9280101
+	random = no
+	country = IND
+
+	trigger = {
+		flag = aubm_v4_union_register_opened
+		NOT = { flag = aubm_v4_ceylon_settled }
+		owned = { province = 1511 data = IND }
+	}
+
+	name = "The Ceylon Council"
+	desc = "Colombo accepted entry into the Union because London could no longer finance a separate imperial defence system. Sinhalese, Tamil and plantation representatives now demand to know whether that emergency signature created a partner or a dependency. The island can receive entrenched autonomy, direct representation in Delhi, or a strategic administration centred on Trincomalee and the sea lanes."
+	style = 2
+	picture = "aubm_v4_ceylon_council"
+
+	date = { day = 12 month = february year = 1933 }
+	offset = 5
+	deathdate = { day = 29 month = march year = 1964 }
+
+	action_a = {
+		ai_chance = 45
+		name = "Constituent autonomy"
+		command = { type = money value = -60 }
+		command = { type = dissent value = -2 }
+		command = { type = manpowerpool value = 10 }
+		command = { type = domestic which = democratic value = 1 }
+		command = { type = setflag which = aubm_v4_ceylon_autonomy }
+		command = { type = setflag which = aubm_v4_union_legitimacy_gain }
+		command = { type = setflag which = aubm_v4_ceylon_settled }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Union representation: +2 TC, -1 dissent; costs 100/100"
+		command = { type = money value = -100 }
+		command = { type = supplies value = -100 }
+		command = { type = dissent value = -1 }
+		command = { type = tc_mod value = 2 }
+		command = { type = setflag which = aubm_v4_ceylon_represented }
+		command = { type = setflag which = aubm_v4_state_capacity_gain }
+		command = { type = setflag which = aubm_v4_ceylon_settled }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Strategic administration"
+		command = { type = supplies value = 250 }
+		command = { type = dissent value = 3 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = construct which = naval_base where = 1511 value = 2 trigger = { owned = { province = 1511 data = IND } NOT = { building = { province = 1511 type = naval_base value = 9 } } } }
+		command = { type = setflag which = aubm_v4_ceylon_strategic }
+		command = { type = setflag which = aubm_v4_union_coercion }
+		command = { type = setflag which = aubm_v4_ceylon_settled }
+	}
+}
+
+event = {
+	id = 9280102
+	random = no
+	country = IND
+
+	trigger = {
+		flag = aubm_v4_union_register_opened
+		flag = ind_v3_currency_settlement
+		NOT = { flag = aubm_v4_customs_settled }
+	}
+
+	name = "The Customs Line Disappears"
+	desc = "A train from Lahore to Rangoon can cross a maze of provincial excise rules, while ships entering Bombay, Colombo and Rangoon pay different schedules. Abolishing internal customs would create a continental market but leave provincial budgets exposed. Delhi can compensate the provinces, impose a uniform tariff immediately, or preserve regional collection under a shared clearing house."
+	style = 2
+	picture = "aubm_v4_customs_union"
+
+	date = { day = 15 month = march year = 1933 }
+	offset = 7
+	deathdate = { day = 29 month = may year = 1964 }
+
+	action_a = {
+		ai_chance = 45
+		name = "Compensated customs union"
+		command = { type = money value = -100 }
+		command = { type = dissent value = -1 }
+		command = { type = industrial_modifier which = total value = 3 }
+		command = { type = relation which = ENG value = -5 }
+		command = { type = setflag which = aubm_v4_compensated_customs }
+		command = { type = setflag which = aubm_v4_union_legitimacy_gain }
+		command = { type = setflag which = aubm_v4_customs_settled }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Uniform tariff now"
+		command = { type = money value = 200 }
+		command = { type = dissent value = 3 }
+		command = { type = industrial_modifier which = total value = 2 }
+		command = { type = domestic which = free_market value = -1 }
+		command = { type = setflag which = aubm_v4_uniform_tariff }
+		command = { type = setflag which = aubm_v4_state_capacity_gain }
+		command = { type = setflag which = aubm_v4_customs_settled }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "Regional clearing house"
+		command = { type = money value = 100 }
+		command = { type = dissent value = -2 }
+		command = { type = domestic which = free_market value = 1 }
+		command = { type = setflag which = aubm_v4_regional_customs }
+		command = { type = setflag which = aubm_v4_provincial_bargain }
+		command = { type = setflag which = aubm_v4_customs_settled }
+	}
+}
+
+event = {
+	id = 9280103
+	random = no
+	country = IND
+
+	trigger = {
+		flag = aubm_v4_customs_settled
+		NOT = { flag = aubm_v4_transport_board }
+	}
+
+	name = "One Railway Board, Four Gauges"
+	desc = "The Union Register exposes a transport system built for separate presidencies and imperial ports. Broad, metre and narrow gauge networks meet at costly transhipment yards; Burma's lines still face outward to the sea. A permanent board begins with signalling standards, common freight accounts and military timetables rather than the fantasy of relaying a continent overnight."
+	style = 2
+	picture = "aubm_v4_railway_board"
+
+	date = { day = 10 month = april year = 1933 }
+	offset = 8
+	deathdate = { day = 29 month = june year = 1964 }
+
+	action_a = {
+		name = "Standardize operations before rebuilding track: +2 TC"
+		command = { type = tc_mod value = 2 }
+		command = { type = setflag which = aubm_v4_transport_board }
+	}
+}
+
+event = {
+	id = 9280104
+	random = no
+	country = IND
+
+	trigger = {
+		flag = aubm_v4_transport_board
+		NOT = { flag = aubm_v4_malaya_policy }
+		owned = { province = 1415 data = IND }
+	}
+
+	name = "The Malayan Question"
+	desc = "Malaya and Singapore remain under British rule beyond Burma's frontier. Their rubber, tin and ports are essential to Indian trade, while their airfields could become either a shield or a highway for a hostile fleet. Delhi must decide whether to pursue a formal commercial understanding, rely on private trade, or prepare Burma without accepting British strategic control."
+	style = 2
+	picture = "aubm_v4_malayan_bargain"
+
+	date = { day = 12 month = june year = 1933 }
+	offset = 7
+	deathdate = { day = 29 month = august year = 1964 }
+
+	action_a = {
+		ai_chance = 45
+		name = "Negotiate rubber transit: -100 money"
+		command = { type = money value = -100 }
+		command = { type = rarematerialspool value = 150 }
+		command = { type = relation which = ENG value = 20 }
+		command = { type = relation which = SIA value = 10 }
+		command = { type = setflag which = aubm_v4_malaya_treaty }
+		command = { type = setflag which = aubm_v4_malaya_policy }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Merchant trade: +300 money, +1 dissent"
+		command = { type = money value = 300 }
+		command = { type = rarematerialspool value = 75 }
+		command = { type = dissent value = 1 }
+		command = { type = domestic which = free_market value = 1 }
+		command = { type = setflag which = aubm_v4_malaya_commercial }
+		command = { type = setflag which = aubm_v4_malaya_policy }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Fortify Burma independently: -150/-300"
+		command = { type = money value = -150 }
+		command = { type = supplies value = -300 }
+		command = { type = dissent value = 1 }
+		command = { type = domestic which = defense_lobby value = 1 }
+		command = { type = max_organization which = land value = 1 }
+		command = { type = setflag which = aubm_v4_malaya_security }
+		command = { type = setflag which = aubm_v4_malaya_policy }
+	}
+}
+
+event = {
+	id = 9280105
+	random = no
+	country = IND
+
+	trigger = {
+		flag = aubm_v4_malaya_policy
+		NOT = { flag = aubm_v4_bengal_revenue_settled }
+	}
+
+	name = "Bengal, Jute and the Union Revenue"
+	desc = "Bengal produces the fibre that earns much of India's foreign exchange, yet growers, Calcutta mills and provincial politicians accuse one another of taking the margin. Delhi can guarantee farm prices, back the mills and export houses, or create a joint jute board whose slower bargains protect both sides."
+	style = 2
+	picture = "aubm_v4_bengal_jute"
+
+	date = { day = 12 month = august year = 1933 }
+	offset = 8
+	deathdate = { day = 29 month = october year = 1964 }
+
+	action_a = {
+		ai_chance = 35
+		name = "Guarantee growers: +20 manpower, -2 dissent; costs 80/150"
+		command = { type = money value = -80 }
+		command = { type = supplies value = -150 }
+		command = { type = dissent value = -2 }
+		command = { type = manpowerpool value = 20 }
+		command = { type = setflag which = aubm_v4_bengal_growers }
+		command = { type = setflag which = aubm_v4_union_legitimacy_gain }
+		command = { type = setflag which = aubm_v4_bengal_revenue_settled }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Back mills and exporters"
+		command = { type = money value = 400 }
+		command = { type = dissent value = 3 }
+		command = { type = industrial_modifier which = total value = 2 }
+		command = { type = setflag which = aubm_v4_bengal_exporters }
+		command = { type = setflag which = aubm_v4_state_capacity_gain }
+		command = { type = setflag which = aubm_v4_bengal_revenue_settled }
+	}
+	action_c = {
+		ai_chance = 35
+		name = "Joint jute board"
+		command = { type = money value = 100 }
+		command = { type = supplies value = -100 }
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = aubm_v4_bengal_board }
+		command = { type = setflag which = aubm_v4_provincial_bargain }
+		command = { type = setflag which = aubm_v4_bengal_revenue_settled }
+	}
+}
+
+event = {
+	id = 9280106
+	random = no
+	country = IND
+
+	trigger = {
+		flag = aubm_v4_bengal_revenue_settled
+		NOT = { flag = aubm_v4_frontier_compact }
+	}
+
+	name = "The Indus and Frontier Council"
+	desc = "Punjab's canal colonies, Sindh's lower river and the North-West Frontier share water, railways and regiments but little trust. A permanent council can divide revenue and water by formula, a strong frontier commissioner can enforce strategic priorities, or Delhi can leave the bargain to provincial premiers and tribal intermediaries."
+	style = 2
+	picture = "aubm_v4_indus_frontier_council"
+
+	date = { day = 10 month = october year = 1933 }
+	offset = 8
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		ai_chance = 45
+		name = "Constitutional water council"
+		command = { type = money value = -100 }
+		command = { type = dissent value = -3 }
+		command = { type = construct which = infrastructure where = 1533 value = 5 trigger = { owned = { province = 1533 data = IND } NOT = { building = { province = 1533 type = infrastructure value = 0.96 } } } }
+		command = { type = construct which = infrastructure where = 1530 value = 5 trigger = { owned = { province = 1530 data = IND } NOT = { building = { province = 1530 type = infrastructure value = 0.96 } } } }
+		command = { type = setflag which = aubm_v4_frontier_council }
+		command = { type = setflag which = aubm_v4_union_legitimacy_gain }
+		command = { type = setflag which = aubm_v4_frontier_compact }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Strategic commissioner: +3 TC, +1 professional; +3 dissent"
+		command = { type = dissent value = 3 }
+		command = { type = tc_mod value = 3 }
+		command = { type = domestic which = professional_army value = 1 }
+		command = { type = setflag which = aubm_v4_frontier_commissioner }
+		command = { type = setflag which = aubm_v4_state_capacity_gain }
+		command = { type = setflag which = aubm_v4_frontier_compact }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "Provincial bargain"
+		command = { type = money value = 150 }
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = aubm_v4_frontier_provincial }
+		command = { type = setflag which = aubm_v4_provincial_bargain }
+		command = { type = setflag which = aubm_v4_frontier_compact }
+	}
+}
+
+event = {
+	id = 9280107
+	random = no
+	country = IND
+
+	trigger = {
+		flag = aubm_v4_frontier_compact
+		NOT = { flag = aubm_v4_first_union_budget }
+	}
+
+	name = "The First Union Budget"
+	desc = "The first year ends with every promise on one ledger: provincial compensation, military Indianization, railway coordination and the cost of independence itself. The Cabinet can protect political credit, protect cash reserves, or issue a development loan that brings money now and obligations later."
+	style = 2
+	picture = "aubm_v4_first_union_budget"
+
+	date = { day = 5 month = december year = 1933 }
+	offset = 5
+	deathdate = { day = 29 month = january year = 1964 }
+
+	action_a = {
+		ai_chance = 40
+		name = "Honour every compact"
+		command = { type = money value = -150 }
+		command = { type = supplies value = -300 }
+		command = { type = dissent value = -4 }
+		command = { type = setflag which = aubm_v4_budget_compacts }
+		command = { type = setflag which = aubm_v4_union_legitimacy_gain }
+		command = { type = setflag which = aubm_v4_first_union_budget }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Balance the treasury"
+		command = { type = money value = 350 }
+		command = { type = dissent value = 3 }
+		command = { type = industrial_modifier which = supplies value = -5 }
+		command = { type = setflag which = aubm_v4_budget_austerity }
+		command = { type = setflag which = aubm_v4_state_capacity_gain }
+		command = { type = setflag which = aubm_v4_first_union_budget }
+	}
+	action_c = {
+		ai_chance = 30
+		name = "Issue a development loan"
+		command = { type = money value = 750 }
+		command = { type = dissent value = 2 }
+		command = { type = industrial_modifier which = total value = 2 }
+		command = { type = relation which = ENG value = 10 }
+		command = { type = setflag which = aubm_v4_budget_loan }
+		command = { type = setflag which = aubm_v4_union_debt }
+		command = { type = setflag which = aubm_v4_first_union_budget }
+	}
+}
+
+event = {
+	id = 9280108
+	random = no
+	country = IND
+
+	trigger = {
+		flag = aubm_v4_first_union_budget
+		flag = aubm_v4_union_legitimacy_gain
+		flag = aubm_v4_provincial_bargain
+		NOT = { flag = aubm_v4_union_coercion }
+		NOT = { flag = aubm_v4_review_1934 }
+	}
+
+	name = "1934 Integration Review: A Union by Consent"
+	desc = "The Union is still improvised, but provincial leaders now believe that bargaining with Delhi changes policy. That confidence is slower than command and more valuable than a proclamation: taxes arrive with fewer protests, recruitment broadens and local administrations share information voluntarily."
+	style = 2
+	picture = "aubm_v4_union_by_consent"
+
+	date = { day = 10 month = january year = 1934 }
+	offset = 5
+	deathdate = { day = 29 month = february year = 1964 }
+
+	action_a = {
+		name = "Consent has become a source of power"
+		command = { type = dissent value = -3 }
+		command = { type = manpowerpool value = 20 }
+		command = { type = tc_mod value = 2 }
+		command = { type = setflag which = aubm_v4_legitimacy_established }
+		command = { type = setflag which = aubm_v4_review_1934 }
+	}
+}
+
+event = {
+	id = 9280109
+	random = no
+	country = IND
+
+	trigger = {
+		flag = aubm_v4_first_union_budget
+		flag = aubm_v4_state_capacity_gain
+		flag = aubm_v4_union_coercion
+		NOT = { flag = aubm_v4_review_1934 }
+	}
+
+	name = "1934 Integration Review: The Administrative State"
+	desc = "Delhi can now move revenue, orders and forces across the Union with impressive speed. The same reports warn that provincial cooperation depends increasingly on commissioners, security ordinances and access to central funds. The machine works; whether it commands loyalty is another question."
+	style = 2
+	picture = "aubm_v4_administrative_state"
+
+	date = { day = 10 month = january year = 1934 }
+	offset = 5
+	deathdate = { day = 29 month = february year = 1964 }
+
+	action_a = {
+		name = "Capacity first, legitimacy must follow"
+		command = { type = tc_mod value = 5 }
+		command = { type = dissent value = 2 }
+		command = { type = domestic which = democratic value = -1 }
+		command = { type = setflag which = aubm_v4_capacity_established }
+		command = { type = setflag which = aubm_v4_review_1934 }
+	}
+}
+
+event = {
+	id = 9280110
+	random = no
+	country = IND
+
+	trigger = {
+		flag = aubm_v4_first_union_budget
+		NOT = { flag = aubm_v4_review_1934 }
+		# Exact complement of the consent and administrative-state reviews.
+		# This makes the three outcomes mutually exclusive on the first poll.
+		NOT = {
+			OR = {
+				AND = {
+					flag = aubm_v4_union_legitimacy_gain
+					flag = aubm_v4_provincial_bargain
+					NOT = { flag = aubm_v4_union_coercion }
+				}
+				AND = {
+					flag = aubm_v4_state_capacity_gain
+					flag = aubm_v4_union_coercion
+				}
+			}
+		}
+	}
+
+	name = "1934 Integration Review: The Unfinished Bargain"
+	desc = "The Union has survived its first year, which is not the same as being integrated. Revenue agreements contradict constitutional promises, transport coordination remains patchy and several provinces wait to see whether Delhi rewards cooperation. The Cabinet must spend political capital simply to keep the settlement moving."
+	style = 2
+	picture = "aubm_v4_unfinished_bargain"
+
+	date = { day = 10 month = january year = 1934 }
+	offset = 5
+	deathdate = { day = 29 month = february year = 1964 }
+
+	action_a = {
+		name = "The work of union has only begun"
+		command = { type = dissent value = 2 }
+		command = { type = setflag which = aubm_v4_integration_fragile }
+		command = { type = setflag which = aubm_v4_review_1934 }
+	}
+}
+
+event = {
+	id = 9280111
+	random = no
+	country = IND
+
+	trigger = {
+		flag = aubm_v4_review_1934
+		flag = ind_v3_princely_settlement
+		NOT = { flag = aubm_v4_provincial_forces_settled }
+	}
+
+	name = "Provincial Forces and the Indian Oath"
+	desc = "Princely contingents, frontier scouts, presidency forces and the former imperial army still use different commissions and obligations. Absorbing them into one army improves control but destroys local institutions; a territorial system preserves regional identity; a smaller professional force can release men and money for industry."
+	style = 2
+	picture = "aubm_v4_provincial_oath"
+
+	date = { day = 12 month = april year = 1934 }
+	offset = 8
+	deathdate = { day = 29 month = june year = 1964 }
+
+	action_a = {
+		ai_chance = 40
+		name = "One army: +10 MP/year, +4 org; -100/-500/-12 MP"
+		command = { type = money value = -100 }
+		command = { type = supplies value = -500 }
+		command = { type = manpowerpool value = -12 }
+		command = { type = domestic which = professional_army value = 1 }
+		command = { type = max_organization which = land value = 4 }
+		command = { type = dissent value = 2 }
+		command = { type = setflag which = aubm_v4_single_army }
+		command = { type = setflag which = aubm_v4_state_capacity_gain }
+		command = { type = setflag which = aubm_v4_provincial_forces_settled }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Territorial: +25 now, +15/year, +3 morale; -150/-350"
+		command = { type = money value = -150 }
+		command = { type = supplies value = -350 }
+		command = { type = manpowerpool value = 25 }
+		command = { type = morale which = land value = 3 }
+		command = { type = dissent value = -1 }
+		command = { type = setflag which = aubm_v4_territorial_army }
+		command = { type = setflag which = aubm_v4_provincial_bargain }
+		command = { type = setflag which = aubm_v4_provincial_forces_settled }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Cadre: +5 MP/year, +250 money, +5 org; -20 MP"
+		command = { type = money value = 250 }
+		command = { type = manpowerpool value = -20 }
+		command = { type = max_organization which = land value = 5 }
+		command = { type = domestic which = professional_army value = 1 }
+		command = { type = setflag which = aubm_v4_cadre_army }
+		command = { type = setflag which = aubm_v4_provincial_forces_settled }
+	}
+}
+
+event = {
+	id = 9280112
+	random = no
+	country = IND
+
+	trigger = {
+		flag = aubm_v4_provincial_forces_settled
+		NOT = { flag = aubm_v4_statistics_service }
+	}
+
+	name = "Telegraphs, Statistics and a Common Time"
+	desc = "Government cannot plan with reports that arrive in incompatible formats and months late. The new Central Statistical and Telegraph Service adopts common codes, a single fiscal calendar and Union-wide industrial returns. Its first report also reveals the practical dividend from each settlement made during the Union's first year."
+	style = 2
+	picture = "aubm_v4_telegraph_statistics"
+
+	date = { day = 15 month = july year = 1934 }
+	offset = 10
+	deathdate = { day = 29 month = september year = 1964 }
+
+	action_a = {
+		name = "Publish the first Union report: +3 TC and 1933 dividends"
+		command = { type = tc_mod value = 3 }
+		command = { type = intelligence which = us value = 1 }
+		command = { trigger = { flag = aubm_v4_ceylon_autonomy } type = manpowerpool value = 8 }
+		command = { trigger = { flag = aubm_v4_ceylon_represented } type = tc_mod value = 1 }
+		command = { trigger = { flag = aubm_v4_ceylon_strategic } type = supplies value = 200 }
+		command = { trigger = { flag = aubm_v4_compensated_customs } type = money value = 100 }
+		command = { trigger = { flag = aubm_v4_uniform_tariff } type = money value = 150 }
+		command = { trigger = { flag = aubm_v4_regional_customs } type = dissent value = -1 }
+		command = { trigger = { flag = aubm_v4_malaya_treaty } type = rarematerialspool value = 100 }
+		command = { trigger = { flag = aubm_v4_malaya_commercial } type = money value = 150 }
+		command = { trigger = { flag = aubm_v4_malaya_security } type = supplies value = 200 }
+		command = { trigger = { flag = aubm_v4_bengal_growers } type = manpowerpool value = 8 }
+		command = { trigger = { flag = aubm_v4_bengal_exporters } type = money value = 150 }
+		command = { trigger = { flag = aubm_v4_bengal_board } type = dissent value = -1 }
+		command = { trigger = { flag = aubm_v4_frontier_council } type = dissent value = -1 }
+		command = { trigger = { flag = aubm_v4_frontier_commissioner } type = supplies value = 200 }
+		command = { trigger = { flag = aubm_v4_frontier_provincial } type = manpowerpool value = 8 }
+		command = { trigger = { flag = aubm_v4_budget_compacts } type = dissent value = -1 }
+		command = { trigger = { flag = aubm_v4_budget_austerity } type = money value = 150 }
+		command = { trigger = { flag = aubm_v4_budget_loan } type = supplies value = 250 }
+		command = { type = setflag which = aubm_v4_statistics_service }
+	}
+}
+
+event = {
+	id = 9280113
+	random = no
+	country = IND
+
+	trigger = {
+		flag = aubm_v4_statistics_service
+		NOT = { flag = aubm_v4_food_board }
+	}
+
+	name = "Rice, Wheat and the Provincial Granaries"
+	desc = "Crop reports reveal the danger of governing a continental food market as separate provinces. Burma exports rice while drought districts ration grain; Punjab has wheat but wagon shortages; Ceylon's cities depend on shipping. Delhi can build a costly reserve, guarantee private inter-provincial trade, or give the army priority over civilian distribution."
+	style = 2
+	picture = "aubm_v4_provincial_granaries"
+
+	date = { day = 5 month = october year = 1934 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		ai_chance = 45
+		name = "Union grain reserve"
+		command = { type = money value = -100 }
+		command = { type = supplies value = 1000 }
+		command = { type = dissent value = -2 }
+		command = { type = setflag which = aubm_v4_public_granaries }
+		command = { type = setflag which = aubm_v4_food_board }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Guarantee the grain trade"
+		command = { type = money value = 150 }
+		command = { type = dissent value = 1 }
+		command = { type = industrial_modifier which = supplies value = 3 }
+		command = { type = domestic which = free_market value = 1 }
+		command = { type = setflag which = aubm_v4_grain_market }
+		command = { type = setflag which = aubm_v4_food_board }
+	}
+	action_c = {
+		ai_chance = 20
+		name = "Military priority"
+		command = { type = supplies value = 1400 }
+		command = { type = dissent value = 4 }
+		command = { type = manpowerpool value = -10 }
+		command = { type = setflag which = aubm_v4_military_grain }
+		command = { type = setflag which = aubm_v4_union_coercion }
+		command = { type = setflag which = aubm_v4_food_board }
+	}
+}
+
+event = {
+	id = 9280114
+	random = no
+	country = IND
+
+	trigger = {
+		flag = aubm_v4_food_board
+		flag = ind_v3_burma_compact
+		NOT = { flag = aubm_v4_burma_implemented }
+	}
+
+	name = "The Rangoon Implementation Conference"
+	desc = "Burma's constitutional settlement now has to work in practice. Rangoon needs revenue authority, a Burmese civil service and guarantees that its rice surplus will not simply be requisitioned by Delhi. In return the Union needs the Irrawaddy transport network, eastern defence coordination and a government that can survive local politics."
+	style = 2
+	picture = "aubm_v4_rangoon_conference"
+
+	date = { day = 10 month = april year = 1935 }
+	offset = 10
+	deathdate = { day = 29 month = june year = 1964 }
+
+	action_a = {
+		trigger = { flag = ind_v3_burmese_autonomy }
+		name = "Fund constituent autonomy"
+		command = { type = money value = -220 }
+		command = { type = dissent value = -3 }
+		command = { type = manpowerpool value = 15 }
+		command = { type = construct which = infrastructure where = 1445 value = 5 trigger = { owned = { province = 1445 data = IND } NOT = { building = { province = 1445 type = infrastructure value = 0.96 } } } }
+		command = { type = setflag which = aubm_v4_burma_autonomy_working }
+		command = { type = setflag which = aubm_v4_union_legitimacy_gain }
+		command = { type = setflag which = aubm_v4_burma_implemented }
+	}
+	action_b = {
+		trigger = { flag = ind_v3_eastern_administration }
+		name = "Build the eastern secretariat"
+		command = { type = money value = -180 }
+		command = { type = supplies value = -250 }
+		command = { type = dissent value = 2 }
+		command = { type = tc_mod value = 4 }
+		command = { type = construct which = infrastructure where = 1445 value = 5 trigger = { owned = { province = 1445 data = IND } NOT = { building = { province = 1445 type = infrastructure value = 0.96 } } } }
+		command = { type = setflag which = aubm_v4_burma_secretariat }
+		command = { type = setflag which = aubm_v4_state_capacity_gain }
+		command = { type = setflag which = aubm_v4_burma_implemented }
+	}
+}
+
+event = {
+	id = 9280115
+	random = no
+	country = IND
+
+	trigger = {
+		flag = aubm_v4_burma_implemented
+		NOT = { flag = aubm_v4_fiscal_federalism }
+	}
+
+	name = "The Fiscal Federalism Act"
+	desc = "Two years of improvised grants have made every provincial budget a negotiation with Delhi. Finance officials propose a durable division of income tax, customs, defence and development spending. A generous formula secures cooperation, a central formula funds great-power projects, and an equalization pool favours poorer regions at the expense of Bombay, Bengal and Ceylon."
+	style = 2
+	picture = "aubm_v4_fiscal_federalism"
+
+	date = { day = 12 month = july year = 1935 }
+	offset = 10
+	deathdate = { day = 29 month = september year = 1964 }
+
+	action_a = {
+		ai_chance = 40
+		name = "Revenue-sharing compact: -3 dissent; costs 300 money"
+		command = { type = money value = -300 }
+		command = { type = dissent value = -3 }
+		command = { type = setflag which = aubm_v4_revenue_sharing }
+		command = { type = setflag which = aubm_v4_union_legitimacy_gain }
+		command = { type = setflag which = aubm_v4_fiscal_federalism }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Central development levy"
+		command = { type = money value = 500 }
+		command = { type = dissent value = 4 }
+		command = { type = industrial_modifier which = total value = 3 }
+		command = { type = setflag which = aubm_v4_development_levy }
+		command = { type = setflag which = aubm_v4_state_capacity_gain }
+		command = { type = setflag which = aubm_v4_fiscal_federalism }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "Equalization pool: +25 manpower, -2 dissent; costs 250/300"
+		command = { type = money value = -250 }
+		command = { type = supplies value = -300 }
+		command = { type = manpowerpool value = 25 }
+		command = { type = dissent value = -2 }
+		command = { type = setflag which = aubm_v4_equalization_pool }
+		command = { type = setflag which = aubm_v4_provincial_bargain }
+		command = { type = setflag which = aubm_v4_fiscal_federalism }
+	}
+}
+
+event = {
+	id = 9280116
+	random = no
+	country = IND
+
+	trigger = {
+		flag = aubm_v4_fiscal_federalism
+		NOT = { flag = aubm_v4_review_1936 }
+		OR = {
+			flag = aubm_v4_legitimacy_established
+			AND = {
+				flag = aubm_v4_union_legitimacy_gain
+				flag = aubm_v4_provincial_bargain
+			}
+		}
+	}
+
+	name = "1936 State Review: The Union Takes Root"
+	desc = "The Union now survives more than goodwill at the top. Provincial budgets follow known rules, civil servants can transfer between administrations, and citizens increasingly appeal to federal institutions rather than foreign patrons. Delhi has not erased regional politics; it has made those politics part of one state."
+	style = 2
+	picture = "aubm_v4_union_takes_root"
+
+	date = { day = 10 month = january year = 1936 }
+	offset = 10
+	deathdate = { day = 29 month = february year = 1964 }
+
+	action_a = {
+		name = "A continental federation is becoming ordinary"
+		command = { type = dissent value = -4 }
+		command = { type = manpowerpool value = 25 }
+		command = { type = tc_mod value = 3 }
+		command = { type = setflag which = aubm_v4_union_rooted }
+		command = { type = setflag which = aubm_v4_review_1936 }
+	}
+}
+
+event = {
+	id = 9280117
+	random = no
+	country = IND
+
+	trigger = {
+		flag = aubm_v4_fiscal_federalism
+		NOT = { flag = aubm_v4_review_1936 }
+		# Exact complement of 9280116's rooted-state predicate. Testing the
+		# result flag was too late because both reviews could qualify together.
+		NOT = {
+			OR = {
+				flag = aubm_v4_legitimacy_established
+				AND = {
+					flag = aubm_v4_union_legitimacy_gain
+					flag = aubm_v4_provincial_bargain
+				}
+			}
+		}
+	}
+
+	name = "1936 State Review: Capacity Without Settlement"
+	desc = "Delhi's reach has grown faster than agreement about its limits. The Union can mobilize resources and move forces, but provincial resistance turns every new programme into a political negotiation. The state is viable and powerful; it is not yet secure enough to take cohesion for granted."
+	style = 2
+	picture = "aubm_v4_capacity_without_settlement"
+
+	date = { day = 10 month = january year = 1936 }
+	offset = 10
+	deathdate = { day = 29 month = february year = 1964 }
+
+	action_a = {
+		name = "Use capacity carefully while the bargain matures"
+		command = { type = tc_mod value = 3 }
+		command = { type = dissent value = 2 }
+		command = { type = setflag which = aubm_v4_union_contested }
+		command = { type = setflag which = aubm_v4_review_1936 }
+	}
+}
+
+event = {
+	id = 9280118
+	random = no
+	country = IND
+
+	decision = {
+		flag = aubm_v4_review_1936
+		NOT = { flag = aubm_v4_federal_works_authorized }
+		atwar = no
+	}
+	decision_trigger = {
+		# AUBM_FULL_OPTION_GATE_BEGIN
+		# A programme without a resource threshold is available.
+		# AUBM_FULL_OPTION_GATE_END
+	}
+	trigger = {
+		flag = aubm_v4_review_1936
+		NOT = { flag = aubm_v4_federal_works_authorized }
+		atwar = no
+	}
+
+	name = "Authorize the Federal Works Compact"
+	decision_desc = "Cabinet funding estimates: Shared works: eight regions gain +5 infra; costs 350/600 [money 350, supplies 600, manpower 8]; Strategic trunk routes [money 280, supplies 500, manpower 6]; Leave works to provinces: keep the treasury, -2 dissent [no minimum reserve]."
+	desc = "The railway board proposes a five-year programme of modest improvements across every major region rather than another showcase corridor. Provincial matching funds will spread the benefit and the political credit, but the Union must supply engineering cadres, steel and a guaranteed budget."
+	style = 2
+	picture = "aubm_v4_federal_works_compact"
+	decision_picture = "decision_invest_infrastructures"
+
+	date = { day = 0 month = april year = 1936 }
+	offset = 30
+	deathdate = { day = 29 month = december year = 1964 }
+
+	action_a = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 350
+			supplies = 600
+			manpower = 8
+			# AUBM_ACTION_RESERVE_END
+		}
+		ai_chance = 55
+		name = "Shared works: eight regions gain +5 infra; costs 350/600"
+		command = { type = money value = -350 }
+		command = { type = supplies value = -600 }
+		command = { type = manpowerpool value = -8 }
+		command = { type = construct which = infrastructure where = 1415 value = 5 trigger = { owned = { province = 1415 data = IND } NOT = { building = { province = 1415 type = infrastructure value = 0.96 } } } }
+		command = { type = construct which = infrastructure where = 1445 value = 5 trigger = { owned = { province = 1445 data = IND } NOT = { building = { province = 1445 type = infrastructure value = 0.96 } } } }
+		command = { type = construct which = infrastructure where = 1447 value = 5 trigger = { owned = { province = 1447 data = IND } NOT = { building = { province = 1447 type = infrastructure value = 0.96 } } } }
+		command = { type = construct which = infrastructure where = 1461 value = 5 trigger = { owned = { province = 1461 data = IND } NOT = { building = { province = 1461 type = infrastructure value = 0.96 } } } }
+		command = { type = construct which = infrastructure where = 1485 value = 5 trigger = { owned = { province = 1485 data = IND } NOT = { building = { province = 1485 type = infrastructure value = 0.96 } } } }
+		command = { type = construct which = infrastructure where = 1500 value = 5 trigger = { owned = { province = 1500 data = IND } NOT = { building = { province = 1500 type = infrastructure value = 0.96 } } } }
+		command = { type = construct which = infrastructure where = 1511 value = 5 trigger = { owned = { province = 1511 data = IND } NOT = { building = { province = 1511 type = infrastructure value = 0.96 } } } }
+		command = { type = construct which = infrastructure where = 1530 value = 5 trigger = { owned = { province = 1530 data = IND } NOT = { building = { province = 1530 type = infrastructure value = 0.96 } } } }
+		command = { type = dissent value = -2 }
+		command = { type = setflag which = aubm_v4_shared_works }
+		command = { type = setflag which = aubm_v4_federal_works_authorized }
+	}
+	action_b = {
+		trigger = {
+			# AUBM_ACTION_RESERVE_BEGIN
+			money = 280
+			supplies = 500
+			manpower = 6
+			# AUBM_ACTION_RESERVE_END
+		}
+		ai_chance = 30
+		name = "Strategic trunk routes"
+		command = { type = money value = -280 }
+		command = { type = supplies value = -500 }
+		command = { type = manpowerpool value = -6 }
+		command = { type = construct which = infrastructure where = 1459 value = 10 trigger = { owned = { province = 1459 data = IND } NOT = { building = { province = 1459 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1447 value = 10 trigger = { owned = { province = 1447 data = IND } NOT = { building = { province = 1447 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1517 value = 10 trigger = { owned = { province = 1517 data = IND } NOT = { building = { province = 1517 type = infrastructure value = 0.91 } } } }
+		command = { type = construct which = infrastructure where = 1533 value = 10 trigger = { owned = { province = 1533 data = IND } NOT = { building = { province = 1533 type = infrastructure value = 0.91 } } } }
+		command = { type = tc_mod value = 2 }
+		command = { type = setflag which = aubm_v4_trunk_works }
+		command = { type = setflag which = aubm_v4_federal_works_authorized }
+	}
+	action_c = {
+		ai_chance = 15
+		name = "Leave works to provinces: keep the treasury, -2 dissent"
+		command = { type = dissent value = -2 }
+		command = { type = domestic which = free_market value = 1 }
+		command = { type = setflag which = aubm_v4_local_works }
+		command = { type = setflag which = aubm_v4_federal_works_authorized }
+	}
+}
+
+event = {
+	id = 9280119
+	random = no
+	country = IND
+
+	trigger = {
+		flag = aubm_v4_review_1936
+		NOT = { flag = aubm_v4_union_debt_reckoned }
+		flag = aubm_v4_union_debt
+	}
+
+	name = "The Development Loan Comes Due"
+	desc = "The first Union development loan bought time when the state was fragile. Its first major repayment now competes with rearmament and public works. Delhi can redeem the obligation, refinance through London and Bombay, or convert part of it into compulsory domestic bonds."
+	style = 2
+	picture = "aubm_v4_development_loan_due"
+
+	date = { day = 10 month = september year = 1936 }
+	offset = 15
+	deathdate = { day = 29 month = november year = 1964 }
+
+	action_a = {
+		ai_chance = 35
+		name = "Redeem the loan: costs 700 money, -2 dissent"
+		command = { type = money value = -700 }
+		command = { type = dissent value = -2 }
+		command = { type = relation which = ENG value = 10 }
+		command = { type = setflag which = aubm_v4_union_debt_reckoned }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Refinance: costs 250 money, +15 UK relations; +1 dissent"
+		command = { type = money value = -250 }
+		command = { type = dissent value = 1 }
+		command = { type = relation which = ENG value = 15 }
+		command = { type = setflag which = aubm_v4_debt_refinanced }
+		command = { type = setflag which = aubm_v4_union_debt_reckoned }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "Compulsory bonds: +400 money; +4 dissent, -1 free market"
+		command = { type = money value = 400 }
+		command = { type = dissent value = 4 }
+		command = { type = domestic which = free_market value = -1 }
+		command = { type = setflag which = aubm_v4_domestic_bonds }
+		command = { type = setflag which = aubm_v4_union_debt_reckoned }
+	}
+}
+
+event = {
+	id = 9280120
+	random = no
+	country = IND
+
+	trigger = {
+		flag = aubm_v4_review_1936
+		NOT = { flag = aubm_v4_union_mature }
+		year = 1938
+	}
+
+	name = "The Union Before the Storm"
+	desc = "Five years after the Lahore Accord, foreign observers no longer ask whether India will disintegrate next month. They ask what Delhi will do in the crisis approaching Europe and Asia. The answer depends on the institutions built since independence: a consensual federation can mobilize legitimacy, an administrative state can mobilize resources, and an unfinished bargain must still reserve strength for itself."
+	style = 2
+	picture = "aubm_v4_union_before_storm"
+
+	date = { day = 5 month = january year = 1938 }
+	offset = 10
+	deathdate = { day = 29 month = february year = 1964 }
+
+	action_a = {
+		trigger = { flag = aubm_v4_union_rooted }
+		name = "A federation ready to choose its own war"
+		command = { type = dissent value = -4 }
+		command = { type = manpowerpool value = 30 }
+		command = { type = setflag which = aubm_v4_union_mature }
+	}
+	action_b = {
+		trigger = { flag = aubm_v4_capacity_established }
+		name = "A state ready to mobilize: +5 TC, +1000 supplies"
+		command = { type = tc_mod value = 5 }
+		command = { type = supplies value = 1000 }
+		command = { type = setflag which = aubm_v4_union_mature }
+	}
+	action_c = {
+		name = "A powerful but unfinished Union: +15 manpower, +2 dissent"
+		command = { type = manpowerpool value = 15 }
+		command = { type = dissent value = 2 }
+		command = { type = setflag which = aubm_v4_union_mature }
+	}
+}

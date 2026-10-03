@@ -1,5 +1,12 @@
 # Forum Release Audit
 
+> Historical audit: this document applies only to the V3.4.1 candidate and does
+> not grant clearance for V4.2 Alpha 19. The Alpha 19 public-source snapshot
+> excludes copied foundation/donor map files, donor-derived sprites and palettes,
+> donor-derived model panels and unresolved visual overrides. A downloadable or
+> forum-posted V4 package still requires a current rights/provenance review and
+> any applicable moderator approval.
+
 ## Candidate
 
 This audit covers the V3.4.1 Open Beta release candidate for A Union Before

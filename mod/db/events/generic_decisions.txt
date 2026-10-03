@@ -49,7 +49,7 @@ event = {
 	picture = "Wehrmacht"
 	decision_picture = "decision_grand_offensive"
 
-	date = { day = 0 month = january year = 1933 }
+	date = { day = 0 month = january year = 1914 }
 	offset = 10
 	deathdate = { day = 29 month = december year = 1999 }
 
@@ -139,7 +139,7 @@ event = {
 	picture = "Wehrmacht"
 	decision_picture = "decision_grand_offensive3"
 
-	date = { day = 0 month = january year = 1933 }
+	date = { day = 0 month = january year = 1914 }
 	offset = 10
 	deathdate = { day = 29 month = december year = 1999 }
 
@@ -230,7 +230,7 @@ event = {
 	picture = "Wehrmacht"
 	decision_picture = "decision_grand_offensive4"
 
-	date = { day = 0 month = january year = 1933 }
+	date = { day = 0 month = january year = 1914 }
 	offset = 10
 	deathdate = { day = 29 month = december year = 1999 }
 
@@ -315,7 +315,7 @@ event = {
 	picture = "Wehrmacht"
 	decision_picture = "decision_grand_offensive5"
 
-	date = { day = 0 month = january year = 1933 }
+	date = { day = 0 month = january year = 1914 }
 	offset = 10
 	deathdate = { day = 29 month = december year = 1999 }
 
@@ -402,7 +402,7 @@ event = {
 	picture = "Wehrmacht"
 	decision_picture = "decision_grand_offensive2"
 
-	date = { day = 0 month = january year = 1933 }
+	date = { day = 0 month = january year = 1914 }
 	offset = 10
 	deathdate = { day = 29 month = december year = 1999 }
 
@@ -455,6 +455,338 @@ event = {
 		command = { type = trickleback_mod value = -5 }
 	}
 }
+################################
+# Grand Offensive - U08
+################################
+event = {
+	id = 13000012
+	random = no
+	country = U08
+
+	decision = { atwar = yes }
+
+	decision_trigger = { supplies = 2000 }
+
+	trigger = {
+		atwar = yes
+		OR = {
+			ai = yes
+			supplies = 2000
+		}
+	}
+   
+	name = "GrandOffensiveName"
+	desc = "GrandOffensiveDesc" 
+	style = 2
+	picture = "WW1_Offensive"
+	decision_picture = "decision_german_mobilization"
+
+	date = { day = 0 month = january year = 1914 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1999 }
+
+	action = {
+		name = "GrandOffensiveText"
+		command = { type = max_organization which = land value = 10 }
+		command = { type = morale which = land value = 10 }
+		command = { trigger = { ai = yes } type = morale which = land value = 30 }
+		command = { type = speed which = land value = 2 }
+		command = { trigger = { ai = yes } type = speed which = land value = 10 }
+		command = { type = morale which = naval value = 10 }
+		command = { type = morale which = air value = 10 }
+		command = { type = counterattack value = 2 }
+		command = { type = assault value = 2 }
+		command = { type = ambush value = 2 }
+		command = { type = breakthrough value = 2 }
+		command = { type = encirclement value = 2 }
+		command = { type = hq_supply_eff value = 2 }
+		command = { type = sce_frequency value = 0.3 }
+		command = { type = attrition_mod value = 2 }
+		command = { type = trickleback_mod value = 5 }
+		command = { trigger = { ai = no } type = supplies value = -2000 }
+		command = { trigger = { ai = no } type = event which = 1300013 where = -1 when = 30 }
+		command = { trigger = { ai = yes } type = event which = 1300013 where = -1 when = 120 }
+	}
+}
+
+event = {
+	id = 1300013
+	random = no
+	country = U08
+
+	name = "GrandOffensiveOverName"
+	desc = "GrandOffensiveDesc" 
+	style = 2
+	picture = "WW1_Offensive"
+
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = max_organization which = land value = -10 }
+		command = { type = morale which = land value = -10 }
+		command = { trigger = { ai = yes } type = morale which = land value = -30 }
+		command = { type = speed which = land value = -2 }
+		command = { trigger = { ai = yes } type = speed which = land value = -10 }
+		command = { type = morale which = naval value = -10 }
+		command = { type = morale which = air value = -10 }
+		command = { type = counterattack value = -2 }
+		command = { type = assault value = -2 }
+		command = { type = ambush value = -2 }
+		command = { type = breakthrough value = -2 }
+		command = { type = encirclement value = -2 }
+		command = { type = hq_supply_eff value = -2 }
+		command = { type = sce_frequency value = -0.3 }
+		command = { type = attrition_mod value = -2 }
+		command = { type = trickleback_mod value = -5 }
+	}
+}
+################################
+# Grand Offensive - FRA
+################################
+event = {
+	id = 13000014
+	random = no
+	country = FRA
+
+	decision = { atwar = yes }
+
+	decision_trigger = { supplies = 2000 }
+
+	trigger = {
+		lost_national = { country = FRA value = 10 } 
+		atwar = yes
+		OR = {
+			ai = yes
+			supplies = 2000
+		}
+	}
+   
+	name = "GrandOffensiveName"
+	desc = "GrandOffensiveDesc" 
+	style = 2
+	picture = "WW1_Offensive"
+	decision_picture = "decision_german_mobilization"
+
+	date = { day = 0 month = january year = 1914 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1925 }
+
+	action = {
+		name = "GrandOffensiveText"
+		command = { type = max_organization which = land value = 10 }
+		command = { type = morale which = land value = 10 }
+		command = { trigger = { ai = yes } type = morale which = land value = 20 }
+		command = { type = speed which = land value = 2 }
+		command = { type = morale which = naval value = 10 }
+		command = { type = morale which = air value = 10 }
+		command = { type = counterattack value = 2 }
+		command = { type = assault value = 2 }
+		command = { type = ambush value = 2 }
+		command = { type = breakthrough value = 2 }
+		command = { type = encirclement value = 2 }
+		command = { type = hq_supply_eff value = 2 }
+		command = { type = sce_frequency value = 0.3 }
+		command = { type = attrition_mod value = 2 }
+		command = { type = trickleback_mod value = 5 }
+		command = { trigger = { ai = no } type = supplies value = -2000 }
+		command = { trigger = { ai = no } type = event which = 1300015 where = -1 when = 30 }
+		command = { trigger = { ai = yes } type = event which = 1300015 where = -1 when = 120 }
+	}
+}
+
+event = {
+	id = 1300015
+	random = no
+	country = FRA
+
+	name = "GrandOffensiveOverName"
+	desc = "GrandOffensiveDesc" 
+	style = 2
+	picture = "WW1_Offensive"
+
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = max_organization which = land value = -10 }
+		command = { type = morale which = land value = -10 }
+		command = { trigger = { ai = yes } type = morale which = land value = -20 }
+		command = { type = speed which = land value = -2 }
+		command = { type = morale which = naval value = -10 }
+		command = { type = morale which = air value = -10 }
+		command = { type = counterattack value = -2 }
+		command = { type = assault value = -2 }
+		command = { type = ambush value = -2 }
+		command = { type = breakthrough value = -2 }
+		command = { type = encirclement value = -2 }
+		command = { type = hq_supply_eff value = -2 }
+		command = { type = sce_frequency value = -0.3 }
+		command = { type = attrition_mod value = -2 }
+		command = { type = trickleback_mod value = -5 }
+	}
+}
+################################
+# Grand Offensive - RUS
+################################
+event = {
+	id = 13000016
+	random = no
+	country = RUS
+
+	decision = { atwar = yes }
+
+	decision_trigger = { supplies = 2000 }
+
+	trigger = {
+		lost_national = { country = RUS value = 10 } 
+		atwar = yes
+		OR = {
+			ai = yes
+			supplies = 2000
+		}
+	}
+   
+	name = "GrandOffensiveName"
+	desc = "GrandOffensiveDesc" 
+	style = 2
+	picture = "WW1_Offensive"
+	decision_picture = "decision_german_mobilization"
+
+	date = { day = 0 month = january year = 1914 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1925 }
+
+	action = {
+		name = "GrandOffensiveText"
+		command = { type = max_organization which = land value = 10 }
+		command = { type = morale which = land value = 10 }
+		command = { type = morale which = naval value = 10 }
+		command = { type = morale which = air value = 10 }
+		command = { type = speed which = land value = 2 }
+		command = { type = counterattack value = 2 }
+		command = { type = assault value = 2 }
+		command = { type = ambush value = 2 }
+		command = { type = breakthrough value = 2 }
+		command = { type = encirclement value = 2 }
+		command = { type = hq_supply_eff value = 2 }
+		command = { type = sce_frequency value = 0.3 }
+		command = { type = attrition_mod value = 2 }
+		command = { type = trickleback_mod value = 5 }
+		command = { trigger = { ai = no } type = supplies value = -2000 }
+		command = { trigger = { ai = no } type = event which = 1300017 where = -1 when = 30 }
+		command = { trigger = { ai = yes } type = event which = 1300017 where = -1 when = 120 }
+	}
+}
+
+event = {
+	id = 1300017
+	random = no
+	country = RUS
+
+	name = "GrandOffensiveOverName"
+	desc = "GrandOffensiveDesc" 
+	style = 2
+	picture = "WW1_Offensive"
+
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = max_organization which = land value = -10 }
+		command = { type = morale which = land value = -10 }
+		command = { type = morale which = naval value = -10 }
+		command = { type = morale which = air value = -10 }
+		command = { type = speed which = land value = -2 }
+		command = { type = counterattack value = -2 }
+		command = { type = assault value = -2 }
+		command = { type = ambush value = -2 }
+		command = { type = breakthrough value = -2 }
+		command = { type = encirclement value = -2 }
+		command = { type = hq_supply_eff value = -2 }
+		command = { type = sce_frequency value = -0.3 }
+		command = { type = attrition_mod value = -2 }
+		command = { type = trickleback_mod value = -5 }
+	}
+}
+
+################################
+# Grand Offensive - U09
+################################
+event = {
+	id = 13000018
+	random = no
+	country = U09
+
+	decision = { atwar = yes }
+
+	decision_trigger = { supplies = 2000 }
+
+	trigger = {
+		atwar = yes
+		OR = {
+			ai = yes
+			supplies = 2000
+		}
+	}
+   
+	name = "GrandOffensiveName"
+	desc = "GrandOffensiveDesc" 
+	style = 2
+	picture = "WW1_Offensive"
+	decision_picture = "decision_german_mobilization"
+
+	date = { day = 0 month = january year = 1914 }
+	offset = 10
+	deathdate = { day = 29 month = december year = 1999 }
+
+	action = {
+		name = "GrandOffensiveText"
+		command = { type = max_organization which = land value = 10 }
+		command = { type = morale which = land value = 10 }
+		command = { trigger = { ai = yes } type = morale which = land value = 30 }
+		command = { type = morale which = naval value = 10 }
+		command = { type = morale which = air value = 10 }
+		command = { type = speed which = land value = 2 }
+		command = { type = counterattack value = 2 }
+		command = { type = assault value = 2 }
+		command = { type = ambush value = 2 }
+		command = { type = breakthrough value = 2 }
+		command = { type = encirclement value = 2 }
+		command = { type = hq_supply_eff value = 2 }
+		command = { type = sce_frequency value = 0.3 }
+		command = { type = attrition_mod value = 2 }
+		command = { type = trickleback_mod value = 5 }
+		command = { trigger = { ai = no } type = supplies value = -2000 }
+		command = { trigger = { ai = no } type = event which = 1300019 where = -1 when = 30 }
+		command = { trigger = { ai = yes } type = event which = 1300019 where = -1 when = 120 }
+	}
+}
+
+event = {
+	id = 1300019
+	random = no
+	country = U09
+   
+	name = "GrandOffensiveOverName"
+	desc = "GrandOffensiveDesc" 
+	style = 2
+	picture = "WW1_Offensive"
+
+	action = {
+		name = ACTION_NAME_OK
+		command = { type = max_organization which = land value = -10 }
+		command = { type = morale which = land value = -10 }
+		command = { trigger = { ai = yes } type = morale which = land value = -30 }
+		command = { type = morale which = naval value = -10 }
+		command = { type = morale which = air value = -10 }
+		command = { type = speed which = land value = -2 }
+		command = { type = counterattack value = -2 }
+		command = { type = assault value = -2 }
+		command = { type = ambush value = -2 }
+		command = { type = breakthrough value = -2 }
+		command = { type = encirclement value = -2 }
+		command = { type = hq_supply_eff value = -2 }
+		command = { type = sce_frequency value = -0.3 }
+		command = { type = attrition_mod value = -2 }
+		command = { type = trickleback_mod value = -5 }
+	}
+}
+
 ################################
 # Equipment decisions
 ################################
@@ -1766,7 +2098,7 @@ event = {
 	picture = "war_propaganda"
 	decision_picture = "decision_war_propaganda"
 
-	date = { day = 0 month = january year = 1933 }
+	date = { day = 0 month = january year = 1914 }
 	offset = 60
 	deathdate = { day = 29 month = december year = 1999 }
 
@@ -2170,6 +2502,7 @@ event = {
 	}
 
 	decision_trigger = { 
+		NOT = { country = IND }
 		NOT = { government = democratic }
 		policy = { type = defense_lobby value = 3 }
 	}
@@ -2213,8 +2546,10 @@ event = {
 	picture = "purge_army"
 
 	action = {
-		ai_chance = 50
+		ai_chance = 25
 		name = "9000032text"
+		command = { type = sleepleader which = -1 }
+		command = { type = sleepleader which = -1 }
 		command = { type = sleepleader which = -1 }
 		command = { }
 	}
@@ -2224,10 +2559,12 @@ event = {
 		command = { type = sleepleader which = -1 }
 		command = { type = sleepleader which = -1 }
 		command = { type = sleepleader which = -1 }
+		command = { type = sleepleader which = -1 }
+		command = { type = sleepleader which = -1 }
 		command = { }
 	}
 	action = {
-		ai_chance = 15
+		ai_chance = 25
 		name = "9000032text"
 		command = { type = sleepleader which = -1 }
 		command = { type = sleepleader which = -1 }
@@ -2235,11 +2572,17 @@ event = {
 		command = { type = sleepleader which = -1 }
 		command = { type = sleepleader which = -1 }
 		command = { type = sleepleader which = -1 }
+		command = { type = sleepleader which = -1 }
+		command = { type = sleepleader which = -1 }
 		command = { }
 	}
 	action = {
-		ai_chance = 10
+		ai_chance = 25
 		name = "9000032text"
+		command = { type = sleepleader which = -1 }
+		command = { type = sleepleader which = -1 }
+		command = { type = sleepleader which = -1 }
+		command = { type = sleepleader which = -1 }
 		command = { type = sleepleader which = -1 }
 		command = { type = sleepleader which = -1 }
 		command = { type = sleepleader which = -1 }

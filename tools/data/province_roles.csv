@@ -1,0 +1,44 @@
+province_id,canonical_name,macro_region,strategic_role,allowed_at_start,notes
+1415,Rangoon,Burma,major_port,yes,Burma administration and eastern maritime hub
+1421,Port Blair,Andaman Islands,forward_base,yes,Only land province for Andaman event construction
+1439,Gauhati,Assam,regional_hub,yes,Assam administration and Brahmaputra corridor
+1441,Dibrugarh,Assam,oil_field,yes,Digboi oil events use this province
+1442,Imphal,Northeast,frontier_defence,yes,Burma frontier and Imphal operations
+1445,Dhaka,East Bengal,regional_hub,yes,East Bengal population and industry
+1447,Calcutta,Bengal,major_industry,yes,Primary eastern port and industrial centre
+1459,Delhi,Delhi,capital,yes,Union capital and central administration
+1460,Meerut,United Provinces,military_training,yes,Historic cantonment and Gurkha corps assembly area
+1461,Lucknow,Gangetic Plain,regional_hub,yes,United Provinces administration
+1465,Patna,Gangetic Plain,regional_hub,yes,Bihar agriculture and transport
+1471,Bhubaneswar,Orissa,east_coast,yes,Orissa coast
+1472,Jamshedpur,Steel Belt,steel_industry,yes,Tata steel and machine tools
+1476,Ranchi,Steel Belt,mining_industry,yes,Coal and mineral belt
+1477,Raipur,Central Provinces,steel_industry,yes,Bhilai steel events use this province
+1480,Bhopal,Central India,regional_hub,yes,Central Indian administration
+1485,Nagpur,Central Provinces,rail_hub,yes,National rail and logistics hub
+1487,Hyderabad,Deccan,major_industry,yes,Hyderabad state and Deccan industry
+1493,Visakhapatnam,East Coast,naval_industry,yes,Visakhapatnam naval events use this province
+1495,Trivandrum,South India,southern_base,yes,Travancore and southern naval command
+1497,Cochin,Malabar Coast,naval_base,yes,Cochin port events use this province
+1500,Madras,South India,major_industry,yes,Madras industrial and naval centre
+1502,Bangalore,South India,aerospace_industry,yes,HAL and aerospace events
+1503,Mangalore,Malabar Coast,west_coast,yes,Western coastal corridor
+1507,Mysore,South India,regional_hub,yes,Mysore development
+1509,Jaffna,Ceylon,foreign_objective,no,British Ceylon at start
+1510,Kandy,Ceylon,foreign_objective,no,British Ceylon at start
+1511,Colombo,Ceylon,foreign_objective,no,British Ceylon at start
+1513,Panjim,Goa,foreign_objective,no,Portuguese Goa at start
+1516,Poona,Western India,military_industry,yes,Army schools and ordnance
+1517,Bombay,Western India,major_industry,yes,Primary western port and finance centre
+1525,Jodhpur,Rajasthan,desert_logistics,yes,Western desert corridor
+1529,Quetta,Balochistan,frontier_defence,yes,Kalat and Quetta events use this province
+1530,Lahore,Punjab,major_industry,yes,Punjab administration and industry
+1533,Karachi,Sindh,major_port,yes,Primary Arabian Sea naval base
+1534,Rawalpindi,Punjab,military_hub,yes,Army headquarters and Punjab frontier
+1537,Peshawar,NWFP,frontier_defence,yes,Khyber and frontier events
+1538,Gwadar,Balochistan,coastal_objective,yes,Baloch coast
+1539,Muzaffarabad,Kashmir,frontier_defence,yes,Western Kashmir
+1540,Srinagar,Kashmir,regional_hub,yes,Kashmir political events
+1456,Punakha,Bhutan,foreign_objective,no,Bhutan remains independent at start
+1457,Kathmandu,Nepal,foreign_objective,no,Nepal remains independent at start
+1612,Kavaratti,Lakshadweep,island_base,yes,Lakshadweep events use this province

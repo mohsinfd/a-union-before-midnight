@@ -1,0 +1,174 @@
+# MODEL_38_
+# AUBM: Guards Armoured Division, a selective Indian heavy field formation.
+
+allowed_brigades = medium_armor
+allowed_brigades = anti_air
+allowed_brigades = sp_artillery
+allowed_brigades = sp_anti_air
+allowed_brigades = tank_destroyer
+allowed_brigades = heavy_armor
+allowed_brigades = light_armor_brigade
+allowed_brigades = armored_car
+allowed_brigades = engineer
+
+# 0 - Guards Armoured Division
+model = {
+	cost                    = 23
+	buildtime               = 390
+	manpower                = 8
+	maxspeed                = 18
+	defaultorganisation     = 35
+	morale                  = 35
+	defensiveness           = 19
+	toughness               = 23
+	softness                = 30
+	suppression             = 1
+	airdefence              = 8
+	softattack              = 16
+	hardattack              = 8
+	airattack               = 4
+	transportweight         = 32
+	supplyconsumption       = 2.4
+	fuelconsumption         = 13
+	upgrade_time_factor     = 0.6
+	upgrade_cost_factor     = 0.75
+	reinforce_time          = 0.65
+	reinforce_cost          = 0.75
+	no_fuel_combat_mod      = -0.3
+	equipment = { manpower = 8000 trucks = 800 artillery = 60 heavy_artillery = 10 anti_tank = 20 anti_air = 18 armored_car = 52 medium_armor = 320 }
+}
+
+# 1 - 1941 Guards Armoured Division
+model = {
+	cost                    = 24
+	buildtime               = 390
+	manpower                = 8
+	maxspeed                = 18
+	defaultorganisation     = 37
+	morale                  = 37
+	defensiveness           = 20
+	toughness               = 24
+	softness                = 28
+	suppression             = 1
+	airdefence              = 10
+	softattack              = 17
+	hardattack              = 9
+	airattack               = 5
+	transportweight         = 32
+	supplyconsumption       = 2.6
+	fuelconsumption         = 13
+	upgrade_time_factor     = 0.6
+	upgrade_cost_factor     = 0.75
+	reinforce_time          = 0.65
+	reinforce_cost          = 0.75
+	no_fuel_combat_mod      = -0.3
+	equipment = { manpower = 8000 trucks = 900 artillery = 68 heavy_artillery = 10 anti_tank = 28 anti_air = 22 armored_car = 60 medium_armor = 340 }
+}
+
+# 2 - 1943 Guards Armoured Division
+model = {
+	cost                    = 25
+	buildtime               = 390
+	manpower                = 8
+	maxspeed                = 20
+	defaultorganisation     = 39
+	morale                  = 39
+	defensiveness           = 21
+	toughness               = 25
+	softness                = 26
+	suppression             = 1
+	airdefence              = 12
+	softattack              = 18
+	hardattack              = 10
+	airattack               = 5
+	transportweight         = 32
+	supplyconsumption       = 2.8
+	fuelconsumption         = 13.5
+	upgrade_time_factor     = 0.6
+	upgrade_cost_factor     = 0.75
+	reinforce_time          = 0.65
+	reinforce_cost          = 0.75
+	no_fuel_combat_mod      = -0.3
+	equipment = { manpower = 8000 trucks = 1000 artillery = 76 heavy_artillery = 10 anti_tank = 36 anti_air = 26 armored_car = 64 medium_armor = 350 }
+}
+
+# 3 - 1945 Guards Armoured Division
+model = {
+	cost                    = 26
+	buildtime               = 390
+	manpower                = 8
+	maxspeed                = 20
+	defaultorganisation     = 41
+	morale                  = 41
+	defensiveness           = 22
+	toughness               = 26
+	softness                = 25
+	suppression             = 1
+	airdefence              = 14
+	softattack              = 19
+	hardattack              = 11
+	airattack               = 6
+	transportweight         = 32
+	supplyconsumption       = 3
+	fuelconsumption         = 13.5
+	upgrade_time_factor     = 0.6
+	upgrade_cost_factor     = 0.75
+	reinforce_time          = 0.65
+	reinforce_cost          = 0.75
+	no_fuel_combat_mod      = -0.3
+	equipment = { manpower = 8000 trucks = 1100 artillery = 84 heavy_artillery = 14 anti_tank = 44 anti_air = 30 armored_car = 68 medium_armor = 360 }
+}
+
+# 4 - 1952 Guards Main Battle Group
+model = {
+	cost                    = 28
+	buildtime               = 390
+	manpower                = 8
+	maxspeed                = 20
+	defaultorganisation     = 43
+	morale                  = 43
+	defensiveness           = 24
+	toughness               = 28
+	softness                = 22
+	suppression             = 1
+	airdefence              = 16
+	softattack              = 21
+	hardattack              = 13
+	airattack               = 7
+	transportweight         = 32
+	supplyconsumption       = 3.1
+	fuelconsumption         = 13.5
+	upgrade_time_factor     = 0.6
+	upgrade_cost_factor     = 0.75
+	reinforce_time          = 0.65
+	reinforce_cost          = 0.75
+	no_fuel_combat_mod      = -0.3
+	equipment = { manpower = 8000 trucks = 1250 artillery = 96 heavy_artillery = 18 anti_tank = 56 anti_air = 36 armored_car = 72 medium_armor = 380 }
+}
+
+# 5 - 1962 Modern Guards Armoured Division
+model = {
+	cost                    = 30
+	buildtime               = 390
+	manpower                = 8
+	maxspeed                = 22
+	defaultorganisation     = 45
+	morale                  = 45
+	defensiveness           = 26
+	toughness               = 30
+	softness                = 18
+	suppression             = 1
+	airdefence              = 18
+	softattack              = 23
+	hardattack              = 15
+	airattack               = 8
+	transportweight         = 32
+	supplyconsumption       = 3.3
+	fuelconsumption         = 14
+	upgrade_time_factor     = 0.6
+	upgrade_cost_factor     = 0.75
+	reinforce_time          = 0.65
+	reinforce_cost          = 0.75
+	no_fuel_combat_mod      = -0.3
+	equipment = { manpower = 8000 trucks = 1500 artillery = 110 heavy_artillery = 22 anti_tank = 70 anti_air = 44 armored_car = 80 medium_armor = 400 }
+}

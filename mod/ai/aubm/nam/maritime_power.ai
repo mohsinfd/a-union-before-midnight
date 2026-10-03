@@ -1,0 +1,108 @@
+# AUBM V4: neutral maritime-power doctrine.
+
+neutrality = 70
+war = 30
+max_front_ratio = 1.20
+exp_force_ratio = 0.02
+
+combat = {
+	JAP = 30
+	ITA = 15
+}
+
+befriend = {
+	USA = 80
+	ENG = 55
+	CHI = 55
+	SIA = 65
+	PER = 65
+}
+
+protect = {
+	SIA = 70
+	PER = 75
+	NEP = 120
+	BHU = 120
+	BUR = 100
+}
+
+military = {
+	relative_build_scheme = no
+	infantry = 18
+	cavalry = 1
+	motorized = 5
+	mechanized = 3
+	light_armor = 1
+	armor = 3
+	paratrooper = 1
+	marine = 4
+	bergsjaeger = 2
+	garrison = 0
+	hq = 2
+	militia = 0
+	interceptor = 7
+	multi_role = 5
+	cas = 2
+	strategic_bomber = 1
+	tactical_bomber = 4
+	naval_bomber = 6
+	transport_plane = 2
+	flying_bomb = 0
+	flying_rocket = 0
+	battleship = 2
+	carrier = 5
+	light_carrier = 2
+	escort_carrier = 1
+	destroyer = 8
+	light_cruiser = 5
+	heavy_cruiser = 2
+	battlecruiser = 1
+	submarine = 3
+	nuclear_submarine = 0
+	transports = 4
+}
+
+front = {
+	recklessness = 0
+	distrib_vs_ai = reactive
+	distrib_vs_human = reactive
+	base_attack_odds = 1.35
+	min_attack_odds = 1.15
+	reserve_prop = 0.22
+}
+
+invasion = {
+	invasion = yes
+	base = 0.20
+	random = 3.0
+	coastal = 0.25
+	beach = 0.25
+	distance = 8.0
+	max_distance = 160.0
+	max_staging_distance = 35
+	pocket = 15.0
+	island = 2.0
+	enemy = 2.0
+	adjacentenemy = 2.0
+	air_base = 1.5
+	naval_base = 0.25
+	air_support = 3.0
+	redirect = priority
+	ignore = no
+	help_allies = no
+	staging_province = { 1421 1511 1533 1517 }
+}
+
+air_marshal = {
+	airsuperioritydesirability = 45.0
+	groundattackdesirability = 20.0
+	inderdictiondesirability = 25.0
+	navalstrikedesirability = 60.0
+	portstrikedesirability = 35.0
+}
+
+admiral = {
+	min_core_attack_fleets = 3
+	num_attack_fleets = 6
+	base = { 1421 1447 1493 1497 1500 1511 1517 1533 1612 }
+}

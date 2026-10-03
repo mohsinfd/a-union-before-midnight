@@ -1,0 +1,88 @@
+# AUBM V4: Delhi Pact collective-defence doctrine.
+
+neutrality = 55
+war = 40
+max_front_ratio = 1.25
+exp_force_ratio = 0.05
+
+combat = {
+	JAP = 35
+	ITA = 20
+	SOV = 10
+}
+
+befriend = {
+	CHI = 90
+	SIA = 90
+	PER = 100
+	AFG = 100
+	USA = 55
+}
+
+protect = {
+	CHI = 80
+	SIA = 90
+	PER = 100
+	AFG = 100
+	NEP = 120
+	BHU = 120
+	BUR = 100
+}
+
+military = {
+	relative_build_scheme = no
+	infantry = 24
+	cavalry = 1
+	motorized = 7
+	mechanized = 4
+	light_armor = 1
+	armor = 5
+	paratrooper = 1
+	marine = 4
+	bergsjaeger = 4
+	garrison = 1
+	hq = 3
+	militia = 0
+	interceptor = 7
+	multi_role = 4
+	cas = 3
+	strategic_bomber = 1
+	tactical_bomber = 5
+	naval_bomber = 3
+	transport_plane = 1
+	flying_bomb = 0
+	flying_rocket = 0
+	battleship = 1
+	carrier = 3
+	light_carrier = 1
+	escort_carrier = 1
+	destroyer = 5
+	light_cruiser = 3
+	heavy_cruiser = 1
+	battlecruiser = 0
+	submarine = 3
+	nuclear_submarine = 0
+	transports = 3
+}
+
+front = {
+	recklessness = 1
+	distrib_vs_ai = reactive
+	distrib_vs_human = reactive
+	base_attack_odds = 1.25
+	min_attack_odds = 1.08
+	reserve_prop = 0.18
+}
+
+air_marshal = {
+	airsuperioritydesirability = 45.0
+	groundattackdesirability = 30.0
+	inderdictiondesirability = 35.0
+	navalstrikedesirability = 30.0
+}
+
+admiral = {
+	min_core_attack_fleets = 2
+	num_attack_fleets = 4
+	base = { 1421 1447 1493 1497 1500 1517 1533 1612 }
+}

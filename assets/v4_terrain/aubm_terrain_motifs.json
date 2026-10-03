@@ -1,0 +1,87 @@
+{
+  "schema_version": 3,
+  "description": "Original AUBM procedural terrain motifs applied to every ordinary mechanical-land pixel. These recipes contain no donor-mod pixels.",
+  "cell_pixels": 2,
+  "world_coordinate_reference": {
+    "description": "A level-N pixel spans 2^(N-1) level-1 world pixels; motif cells remain two screen pixels wide and are phase-locked to world origin zero at every zoom.",
+    "level_1_pixels_per_level_pixel": {"1": 1, "2": 2, "3": 4, "4": 8}
+  },
+  "native_terrain_colour_by_terrain": {
+    "Plains": "Orange",
+    "Forest": "Green",
+    "Mountain": "Gray",
+    "Desert": "Yellow",
+    "Marsh": "LightGreen",
+    "Hills": "DarkOrange",
+    "Jungle": "DarkGreen",
+    "Urban": "DarkGray"
+  },
+  "native_weather_colour_by_state": {"Snow": "White", "Mud": "Brown"},
+  "zoom_strength": {"1": 1.0, "2": 1.0, "3": 1.0, "4": 1.0},
+  "gates": {
+    "maximum_absolute_mean": 0.5,
+    "maximum_block_grid_ratio": 2.0,
+    "minimum_modified_coverage_percent_all_land": 10.0,
+    "maximum_absolute_pair_correlation": 0.94,
+    "maximum_hills_to_mountain_rms_ratio": 0.7,
+    "native_country_colour": "DarkBlue",
+    "minimum_native_marked_median_delta_e00": 2.5,
+    "minimum_native_delta_e00_ge_2_percent_all_land": 18.0,
+    "minimum_per_terrain_marked_median_delta_e00": 3.0,
+    "minimum_per_terrain_delta_e00_ge_2_fraction_of_modified": 0.8,
+    "minimum_terrain_mode_per_terrain_marked_median_delta_e00": 2.25,
+    "minimum_terrain_mode_per_terrain_delta_e00_ge_2_fraction_of_modified": 0.8,
+    "minimum_weather_mode_per_terrain_marked_median_delta_e00": 1.5,
+    "minimum_weather_mode_per_terrain_delta_e00_ge_1_fraction_of_modified": 0.75
+  },
+  "motifs": {
+    "Plains": {
+      "kind": "hash_marks", "amplitude": 10.0, "seed": 11,
+      "coverage_percent_by_zoom": {"1": [25, 35], "2": [25, 35], "3": [25, 35], "4": [25, 35]},
+      "maximum_straight_run": 10,
+      "description": "Sparse balanced soil and field marks without continuous furrows."
+    },
+    "Forest": {
+      "kind": "forest_clumps", "amplitude": 10.0, "seed": 23,
+      "coverage_percent_by_zoom": {"1": [40, 55], "2": [40, 55], "3": [40, 55], "4": [40, 55]},
+      "maximum_straight_run": 13,
+      "description": "Broken paired canopy clumps with alternating light and shade."
+    },
+    "Mountain": {
+      "kind": "segmented_ridges", "amplitude": 10.0, "seed": 37,
+      "coverage_percent_by_zoom": {"1": [20, 40], "2": [20, 40], "3": [20, 40], "4": [20, 40]},
+      "maximum_straight_run": 6,
+      "description": "Short paired diagonal ridge and shadow segments, never continuous bands."
+    },
+    "Desert": {
+      "kind": "segmented_arcs", "amplitude": 10.0, "seed": 41,
+      "coverage_percent_by_zoom": {"1": [12, 24], "2": [12, 24], "3": [12, 24], "4": [12, 24]},
+      "maximum_straight_run": 6,
+      "description": "Sparse broken arc fragments suggesting wind-shaped dunes."
+    },
+    "Marsh": {
+      "kind": "dash_reeds", "amplitude": 9.0, "seed": 53,
+      "coverage_percent_by_zoom": {"1": [15, 30], "2": [15, 30], "3": [15, 30], "4": [15, 30]},
+      "maximum_straight_run": 5,
+      "description": "Short three-cell water dashes mixed with two-cell reed marks."
+    },
+    "Hills": {
+      "kind": "broken_contours", "amplitude": 8.0, "seed": 67, "retention_percent": 60,
+      "coverage_percent_by_zoom": {"1": [18, 35], "2": [18, 35], "3": [18, 35], "4": [18, 35]},
+      "maximum_straight_run": 8,
+      "description": "Low-contrast broken contour fragments, deliberately gentler than mountains."
+    },
+    "Jungle": {
+      "kind": "jungle_clumps", "amplitude": 9.0, "seed": 79,
+      "coverage_percent_by_zoom": {"1": [60, 75], "2": [60, 75], "3": [60, 75], "4": [60, 75]},
+      "maximum_straight_run": 24,
+      "description": "Dense but irregular multi-cell canopy masses with small breathing gaps."
+    },
+    "Urban": {
+      "kind": "urban_fragments", "amplitude": 8.0, "seed": 97,
+      "coverage_percent_by_zoom": {"1": [45, 65], "2": [45, 65], "3": [45, 65], "4": [45, 65]},
+      "maximum_straight_run": 10,
+      "description": "Broken 2x2 blocks and short road fragments without an uninterrupted grid."
+    }
+  }
+}

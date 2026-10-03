@@ -5,8 +5,9 @@ content.
 
 ## Original Project Material
 
-Original event design, India-specific writing, validation logic, installer
-logic and project documentation are copyright Mohsin Dingankar.
+Original event design, India-specific writing, terrain motif recipes,
+clean-room compiler and validation logic, installer logic and project
+documentation are copyright Mohsin Dingankar.
 
 No general open-source or content licence is granted by this repository at
 this time. Permission is required before redistributing those materials outside
@@ -14,24 +15,25 @@ an unmodified A Union Before Midnight release.
 
 ## Foundation And Third-Party Material
 
-The project depends on Blood and Iron v1.1 and Darkest Hour. Some overlay
-graphics and data are adaptations or compatibility derivatives of material
-from Blood and Iron and the projects credited by Blood and Iron.
+V4 depends on the user's installed Darkest Hour Full data. Its installer clones
+that local foundation and applies the files listed in the release manifest.
+The repository does not redistribute the complete game or complete foundation.
 
-Those materials remain subject to the rights and permissions of their original
-authors. Publication in this repository does not relicense them.
+The V3 history of this project depended on Blood and Iron. Donor-derived V3 map
+sprites, lightmaps, palettes and model panels are deliberately excluded from public V4
+manifests and the current V4 Git tree. Any remaining archival or third-party material
+remains subject to the rights and permissions of its original author;
+publication here does not relicense it.
 
-The repository deliberately excludes the complete Blood and Iron foundation.
-Users must obtain and install that dependency separately.
+Alpha 26's locally generated terrain lightmaps use the player's own Darkest
+Hour Full lightmaps as their encoded geometry and brightness foundation. Those
+generated binaries are not distributed by this repository or its public
+installer. The repository ships only AUBM's original motif recipes and tooling.
+No Blood and Iron or DEC Map lightmap, palette or pixel is an input to that
+compiler.
 
-Written permission covering redistribution of the remaining Blood and Iron
-derivatives is not currently recorded in this project. Until that permission
-is obtained, or the package is redesigned and approved to generate every
-remaining derivative from the user's installed foundation, V3.4.1 must not be
-presented as cleared for official-forum publication.
-
-External GitHub or ModDB links should also be privately approved by a Darkest
-Hour forum moderator before posting. See `docs/FORUM_RELEASE_AUDIT.md`.
+External GitHub or ModDB publication should still follow Darkest Hour community
+rules and the audit in `docs/FORUM_RELEASE_AUDIT.md`.
 
 ## Generated And Archival Images
 
@@ -41,8 +43,15 @@ Image provenance, archival sources and reconstruction labels are recorded in:
 - `docs/art_manifest.csv`
 - `docs/personnel_art_manifest.csv`
 - `docs/india_historical_traits.csv`
+- `docs/v4_sprite_manifest.csv`
 
-The repository banner is original AI-assisted artwork created for this project.
+The repository banner and generated event reconstructions are original
+AI-assisted artwork created for this project. Sprite source sheets and manifests
+document experimental or reconstructed material; their presence is not
+redistribution clearance. Public manifests exclude donor-derived map files,
+sprite descriptors, animation strips, palettes and model panels. Any
+developer-only local reconstruction remains subject to the original author's
+rights.
 
 ## Trademarks
 

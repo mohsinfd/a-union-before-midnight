@@ -1,0 +1,135 @@
+# MODEL_36_
+# AUBM: Indian airborne formations based on the 50th Parachute Brigade.
+
+allowed_brigades = glider_armor
+allowed_brigades = glider_artillery
+
+# 0 - Indian Airborne Division
+model = {
+	cost                    = 11
+	buildtime               = 450
+	manpower                = 9
+	maxspeed                = 6
+	defaultorganisation     = 40
+	morale                  = 45
+	defensiveness           = 35
+	toughness               = 40
+	softness                = 100
+	suppression             = 3
+	airdefence              = 14
+	softattack              = 11
+	hardattack              = 1
+	airattack               = 1
+	transportweight         = 7
+	supplyconsumption       = 1
+	fuelconsumption         = 0
+	upgrade_time_factor     = 0.15
+	upgrade_cost_factor     = 0.75
+	reinforce_time          = 0.6
+	reinforce_cost          = 0.4
+	equipment = { manpower = 9000 artillery = 8 anti_tank = 4 anti_air = 16 }
+}
+
+# 1 - 1941 Airborne Brigade Group
+model = {
+	cost                    = 11.5
+	buildtime               = 450
+	manpower                = 9
+	maxspeed                = 6
+	defaultorganisation     = 42
+	morale                  = 47
+	defensiveness           = 37
+	toughness               = 42
+	softness                = 100
+	suppression             = 3
+	airdefence              = 16
+	softattack              = 13
+	hardattack              = 2
+	airattack               = 2
+	transportweight         = 7
+	supplyconsumption       = 1
+	fuelconsumption         = 0
+	upgrade_time_factor     = 0.15
+	upgrade_cost_factor     = 0.75
+	reinforce_time          = 0.6
+	reinforce_cost          = 0.4
+	equipment = { manpower = 9000 artillery = 12 anti_tank = 8 anti_air = 20 }
+}
+
+# 2 - 1944 Integrated Airborne Division
+model = {
+	cost                    = 12
+	buildtime               = 450
+	manpower                = 9
+	maxspeed                = 6
+	defaultorganisation     = 44
+	morale                  = 49
+	defensiveness           = 39
+	toughness               = 44
+	softness                = 95
+	suppression             = 3
+	airdefence              = 18
+	softattack              = 15
+	hardattack              = 5
+	airattack               = 3
+	transportweight         = 7
+	supplyconsumption       = 1.05
+	fuelconsumption         = 0
+	upgrade_time_factor     = 0.15
+	upgrade_cost_factor     = 0.75
+	reinforce_time          = 0.6
+	reinforce_cost          = 0.4
+	equipment = { manpower = 9000 artillery = 18 anti_tank = 16 anti_air = 24 }
+}
+
+# 3 - 1950 Air-Mobile Division
+model = {
+	cost                    = 12.5
+	buildtime               = 450
+	manpower                = 9
+	maxspeed                = 6
+	defaultorganisation     = 46
+	morale                  = 52
+	defensiveness           = 42
+	toughness               = 46
+	softness                = 90
+	suppression             = 3
+	airdefence              = 20
+	softattack              = 18
+	hardattack              = 7
+	airattack               = 4
+	transportweight         = 7
+	supplyconsumption       = 1.1
+	fuelconsumption         = 0
+	upgrade_time_factor     = 0.15
+	upgrade_cost_factor     = 0.75
+	reinforce_time          = 0.6
+	reinforce_cost          = 0.4
+	equipment = { manpower = 9000 artillery = 24 anti_tank = 24 anti_air = 30 trucks = 300 }
+}
+
+# 4 - 1957 Modern Airborne Division
+model = {
+	cost                    = 13
+	buildtime               = 450
+	manpower                = 8
+	maxspeed                = 7
+	defaultorganisation     = 48
+	morale                  = 55
+	defensiveness           = 45
+	toughness               = 48
+	softness                = 85
+	suppression             = 3
+	airdefence              = 22
+	softattack              = 21
+	hardattack              = 9
+	airattack               = 5
+	transportweight         = 7
+	supplyconsumption       = 1.2
+	fuelconsumption         = 0.1
+	upgrade_time_factor     = 0.15
+	upgrade_cost_factor     = 0.75
+	reinforce_time          = 0.6
+	reinforce_cost          = 0.4
+	equipment = { manpower = 8000 artillery = 30 anti_tank = 32 anti_air = 36 trucks = 600 }
+}

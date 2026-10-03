@@ -1,0 +1,136 @@
+# MODEL_37_
+# AUBM: Coromandel Marines for Indian Ocean and littoral operations.
+
+allowed_brigades = artillery
+allowed_brigades = anti_air
+allowed_brigades = engineer
+
+# 0 - Coromandel Marine Division
+model = {
+	cost                    = 9
+	buildtime               = 450
+	manpower                = 13
+	maxspeed                = 6
+	defaultorganisation     = 40
+	morale                  = 45
+	defensiveness           = 35
+	toughness               = 40
+	softness                = 100
+	suppression             = 3
+	airdefence              = 14
+	softattack              = 10
+	hardattack              = 1
+	airattack               = 2
+	transportweight         = 9
+	supplyconsumption       = 1
+	fuelconsumption         = 0.1
+	upgrade_time_factor     = 0.25
+	upgrade_cost_factor     = 0.75
+	reinforce_time          = 0.6
+	reinforce_cost          = 0.4
+	equipment = { manpower = 13000 trucks = 120 artillery = 48 heavy_artillery = 8 anti_tank = 36 anti_air = 18 }
+}
+
+# 1 - 1940 Coromandel Landing Group
+model = {
+	cost                    = 9.5
+	buildtime               = 450
+	manpower                = 13
+	maxspeed                = 6
+	defaultorganisation     = 42
+	morale                  = 47
+	defensiveness           = 37
+	toughness               = 42
+	softness                = 95
+	suppression             = 3
+	airdefence              = 16
+	softattack              = 12
+	hardattack              = 2
+	airattack               = 3
+	transportweight         = 9
+	supplyconsumption       = 1.05
+	fuelconsumption         = 0.1
+	upgrade_time_factor     = 0.25
+	upgrade_cost_factor     = 0.75
+	reinforce_time          = 0.6
+	reinforce_cost          = 0.4
+	equipment = { manpower = 13000 trucks = 200 artillery = 56 heavy_artillery = 8 anti_tank = 42 anti_air = 22 }
+}
+
+# 2 - 1943 Fleet Marine Division
+model = {
+	cost                    = 10
+	buildtime               = 450
+	manpower                = 13
+	maxspeed                = 6
+	defaultorganisation     = 44
+	morale                  = 49
+	defensiveness           = 39
+	toughness               = 44
+	softness                = 95
+	suppression             = 3
+	airdefence              = 18
+	softattack              = 14
+	hardattack              = 4
+	airattack               = 3
+	transportweight         = 9
+	supplyconsumption       = 1.1
+	fuelconsumption         = 0.2
+	upgrade_time_factor     = 0.25
+	upgrade_cost_factor     = 0.75
+	reinforce_time          = 0.6
+	reinforce_cost          = 0.4
+	equipment = { manpower = 13000 trucks = 320 artillery = 64 heavy_artillery = 8 anti_tank = 50 anti_air = 26 }
+}
+
+# 3 - 1949 Amphibious Brigade Group
+model = {
+	cost                    = 10.5
+	buildtime               = 450
+	manpower                = 12
+	maxspeed                = 7
+	defaultorganisation     = 46
+	morale                  = 52
+	defensiveness           = 42
+	toughness               = 46
+	softness                = 90
+	suppression             = 3
+	airdefence              = 20
+	softattack              = 17
+	hardattack              = 6
+	airattack               = 4
+	transportweight         = 9
+	supplyconsumption       = 1.2
+	fuelconsumption         = 0.3
+	upgrade_time_factor     = 0.25
+	upgrade_cost_factor     = 0.75
+	reinforce_time          = 0.6
+	reinforce_cost          = 0.4
+	equipment = { manpower = 12000 trucks = 500 artillery = 74 heavy_artillery = 12 anti_tank = 60 anti_air = 32 }
+}
+
+# 4 - 1957 Modern Coromandel Marines
+model = {
+	cost                    = 11
+	buildtime               = 450
+	manpower                = 12
+	maxspeed                = 7
+	defaultorganisation     = 48
+	morale                  = 55
+	defensiveness           = 45
+	toughness               = 48
+	softness                = 85
+	suppression             = 3
+	airdefence              = 22
+	softattack              = 20
+	hardattack              = 8
+	airattack               = 5
+	transportweight         = 9
+	supplyconsumption       = 1.3
+	fuelconsumption         = 0.5
+	upgrade_time_factor     = 0.25
+	upgrade_cost_factor     = 0.75
+	reinforce_time          = 0.6
+	reinforce_cost          = 0.4
+	equipment = { manpower = 12000 trucks = 800 artillery = 84 heavy_artillery = 16 anti_tank = 72 anti_air = 40 }
+}

@@ -1,0 +1,136 @@
+# MODEL_35_
+# AUBM: Long-range penetration columns inspired by the historic Chindits.
+
+allowed_brigades = artillery
+allowed_brigades = armored_car
+allowed_brigades = engineer
+
+# 0 - Chindit Penetration Group
+model = {
+	cost                    = 8
+	buildtime               = 450
+	manpower                = 9
+	maxspeed                = 8
+	defaultorganisation     = 50
+	morale                  = 58
+	defensiveness           = 29
+	toughness               = 44
+	softness                = 100
+	suppression             = 2
+	airdefence              = 14
+	softattack              = 10
+	hardattack              = 1
+	airattack               = 2
+	transportweight         = 4
+	supplyconsumption       = 0.55
+	fuelconsumption         = 0.05
+	upgrade_time_factor     = 0.2
+	upgrade_cost_factor     = 0.75
+	reinforce_time          = 0.55
+	reinforce_cost          = 0.45
+	equipment = { manpower = 9000 trucks = 850 horses = 1200 artillery = 36 heavy_artillery = 8 anti_tank = 18 anti_air = 12 armored_car = 8 }
+}
+
+# 1 - 1942 Air-Supplied Penetration Group
+model = {
+	cost                    = 8.5
+	buildtime               = 450
+	manpower                = 9
+	maxspeed                = 8
+	defaultorganisation     = 52
+	morale                  = 60
+	defensiveness           = 31
+	toughness               = 46
+	softness                = 100
+	suppression             = 2
+	airdefence              = 16
+	softattack              = 12
+	hardattack              = 2
+	airattack               = 3
+	transportweight         = 4
+	supplyconsumption       = 0.55
+	fuelconsumption         = 0.05
+	upgrade_time_factor     = 0.2
+	upgrade_cost_factor     = 0.75
+	reinforce_time          = 0.55
+	reinforce_cost          = 0.45
+	equipment = { manpower = 9000 trucks = 1000 horses = 1200 artillery = 42 heavy_artillery = 8 anti_tank = 24 anti_air = 16 armored_car = 12 }
+}
+
+# 2 - 1945 Integrated Long-Range Group
+model = {
+	cost                    = 9
+	buildtime               = 450
+	manpower                = 9
+	maxspeed                = 8
+	defaultorganisation     = 54
+	morale                  = 62
+	defensiveness           = 33
+	toughness               = 48
+	softness                = 95
+	suppression             = 2
+	airdefence              = 18
+	softattack              = 14
+	hardattack              = 3
+	airattack               = 3
+	transportweight         = 4
+	supplyconsumption       = 0.6
+	fuelconsumption         = 0.05
+	upgrade_time_factor     = 0.2
+	upgrade_cost_factor     = 0.75
+	reinforce_time          = 0.55
+	reinforce_cost          = 0.45
+	equipment = { manpower = 9000 trucks = 1200 horses = 1200 artillery = 48 heavy_artillery = 8 anti_tank = 30 anti_air = 20 armored_car = 18 }
+}
+
+# 3 - 1951 Air-Mobile Penetration Group
+model = {
+	cost                    = 9.5
+	buildtime               = 450
+	manpower                = 9
+	maxspeed                = 9
+	defaultorganisation     = 56
+	morale                  = 64
+	defensiveness           = 35
+	toughness               = 50
+	softness                = 90
+	suppression             = 2
+	airdefence              = 20
+	softattack              = 16
+	hardattack              = 5
+	airattack               = 4
+	transportweight         = 4
+	supplyconsumption       = 0.7
+	fuelconsumption         = 0.1
+	upgrade_time_factor     = 0.2
+	upgrade_cost_factor     = 0.75
+	reinforce_time          = 0.55
+	reinforce_cost          = 0.45
+	equipment = { manpower = 9000 trucks = 1500 horses = 600 artillery = 56 heavy_artillery = 8 anti_tank = 40 anti_air = 24 armored_car = 24 }
+}
+
+# 4 - 1959 Modern Penetration Division
+model = {
+	cost                    = 10
+	buildtime               = 450
+	manpower                = 8
+	maxspeed                = 9
+	defaultorganisation     = 58
+	morale                  = 66
+	defensiveness           = 37
+	toughness               = 52
+	softness                = 86
+	suppression             = 2
+	airdefence              = 22
+	softattack              = 19
+	hardattack              = 7
+	airattack               = 5
+	transportweight         = 4
+	supplyconsumption       = 0.8
+	fuelconsumption         = 0.2
+	upgrade_time_factor     = 0.2
+	upgrade_cost_factor     = 0.75
+	reinforce_time          = 0.55
+	reinforce_cost          = 0.45
+	equipment = { manpower = 8000 trucks = 1900 horses = 200 artillery = 64 heavy_artillery = 8 anti_tank = 52 anti_air = 30 armored_car = 36 }
+}

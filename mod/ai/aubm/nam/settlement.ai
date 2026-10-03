@@ -1,0 +1,46 @@
+# AUBM V4: post-settlement partial switch.
+
+neutrality = 90
+war = 12
+max_front_ratio = 1.15
+exp_force_ratio = 0.02
+
+combat = { }
+
+befriend = {
+	CHI = 70
+	SIA = 80
+	PER = 90
+	AFG = 90
+	MLY = 110
+	INO = 110
+	SOM = 90
+	U90 = 90
+	U97 = 90
+	OMN = 90
+	SAF = 65
+}
+
+protect = {
+	CHI = 70
+	SIA = 80
+	PER = 100
+	AFG = 100
+	MLY = 120
+	INO = 120
+	SOM = 100
+	U90 = 100
+	U97 = 100
+	OMN = 100
+}
+
+target = { }
+
+front = {
+	recklessness = 0
+	distrib_vs_ai = defensive
+	distrib_vs_human = reactive
+	base_attack_odds = 1.40
+	min_attack_odds = 1.20
+	reserve_prop = 0.25
+}

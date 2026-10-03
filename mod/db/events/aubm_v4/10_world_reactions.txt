@@ -1,0 +1,214 @@
+#########################################################################
+# A Union Before Midnight V4: recognition and the first foreign reactions
+#########################################################################
+
+event = {
+	id = 9280300
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v4_initialized
+		NOT = { flag = ind_v4_league_policy }
+	}
+
+	name = "India at the League of Nations"
+	desc = "Recognition is not the same thing as influence. Geneva offers India a platform, but every posture carries a price: defending the Covenant ties Delhi to collective security, championing colonial peoples alarms the European empires, while a narrow sovereignty doctrine preserves freedom at the cost of diplomatic reach."
+	style = 2
+	picture = "aubm_v4_league_of_nations"
+
+	date = { day = 20 month = february year = 1933 }
+	offset = 7
+	deathdate = { day = 29 month = april year = 1964 }
+
+	action_a = {
+		ai_chance = 40
+		name = "Defend collective security"
+		command = { type = money value = -60 }
+		command = { type = dissent value = -1 }
+		command = { type = relation which = ENG value = 20 }
+		command = { type = relation which = FRA value = 20 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = setflag which = ind_v4_league_collective_security }
+		command = { type = setflag which = ind_v4_league_policy }
+	}
+	action_b = {
+		ai_chance = 35
+		name = "Speak for colonized peoples"
+		command = { type = money value = -50 }
+		command = { type = dissent value = 2 }
+		command = { type = relation which = CHI value = 15 }
+		command = { type = relation which = ENG value = -15 }
+		command = { type = relation which = FRA value = -10 }
+		command = { type = setflag which = ind_v4_league_decolonization }
+		command = { type = setflag which = ind_v4_league_policy }
+	}
+	action_c = {
+		ai_chance = 25
+		name = "Guard sovereign freedom"
+		command = { type = money value = 150 }
+		command = { type = domestic which = interventionism value = -1 }
+		command = { type = relation which = ENG value = -10 }
+		command = { type = relation which = FRA value = -10 }
+		command = { type = setflag which = ind_v4_league_sovereignty }
+		command = { type = setflag which = ind_v4_league_policy }
+	}
+}
+
+event = {
+	id = 9280301
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v4_league_policy
+		NOT = { flag = ind_v4_london_settlement }
+	}
+
+	name = "The London Settlement"
+	desc = "Britain recognizes that the Lahore Accord cannot be reversed, but asks for protection of commercial contracts, continued naval access and pensions for officers who transfer to Indian service. Patel calls the terms expensive but useful. Bose argues that independence bought on instalments is not independence."
+	style = 2
+	picture = "aubm_v4_london_settlement"
+
+	date = { day = 15 month = may year = 1933 }
+	offset = 7
+	deathdate = { day = 29 month = july year = 1964 }
+
+	action_a = {
+		ai_chance = 55
+		name = "A commercial settlement"
+		command = { type = money value = -120 }
+		command = { type = dissent value = -2 }
+		command = { type = relation which = ENG value = 35 }
+		command = { type = relation which = AST value = 15 }
+		command = { type = relation which = CAN value = 15 }
+		command = { type = setflag which = ind_v4_london_commercial_compact }
+		command = { type = setflag which = ind_v4_london_settlement }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "A defence transition"
+		command = { type = money value = -100 }
+		command = { type = supplies value = -400 }
+		command = { type = domestic which = interventionism value = 2 }
+		command = { type = relation which = ENG value = 20 }
+		command = { type = hq_supply_eff value = 1 }
+		command = { type = setflag which = ind_v4_london_defence_transition }
+		command = { type = setflag which = ind_v4_london_settlement }
+	}
+	action_c = {
+		ai_chance = 15
+		name = "A clean break"
+		command = { type = dissent value = 3 }
+		command = { type = domestic which = freedom value = 1 }
+		command = { type = relation which = ENG value = -45 }
+		command = { type = relation which = AST value = -15 }
+		command = { type = setflag which = ind_v4_london_clean_break }
+		command = { type = setflag which = ind_v4_london_settlement }
+	}
+}
+
+event = {
+	id = 9280302
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v4_london_settlement
+		NOT = { flag = ind_v4_1934_foreign_offers }
+	}
+
+	name = "Washington, Moscow and the Price of Expertise"
+	desc = "India's scale attracts competing offers. American firms propose power, aviation and mass-production contracts. Moscow offers engineers and planning institutes on concessional terms. A mixed tender preserves freedom but delivers fewer concentrated gains."
+	style = 2
+	picture = "aubm_v4_foreign_expertise"
+
+	date = { day = 0 month = september year = 1934 }
+	offset = 7
+	deathdate = { day = 29 month = november year = 1964 }
+
+	action_a = {
+		ai_chance = 40
+		name = "American industrial contracts"
+		command = { type = money value = -150 }
+		command = { type = supplies value = -250 }
+		command = { type = industrial_modifier which = total value = 2 }
+		command = { type = relation which = USA value = 30 }
+		command = { type = relation which = SOV value = -10 }
+		command = { type = setflag which = ind_v4_american_contracts }
+		command = { type = setflag which = ind_v4_1934_foreign_offers }
+	}
+	action_b = {
+		ai_chance = 30
+		name = "Soviet planning mission"
+		command = { type = money value = -140 }
+		command = { type = supplies value = -350 }
+		command = { type = research_mod value = 2 }
+		command = { type = relation which = SOV value = 30 }
+		command = { type = relation which = USA value = -10 }
+		command = { type = setflag which = ind_v4_soviet_planning_mission }
+		command = { type = setflag which = ind_v4_1934_foreign_offers }
+	}
+	action_c = {
+		ai_chance = 30
+		name = "Open competitive tenders"
+		command = { type = money value = -160 }
+		command = { type = supplies value = -300 }
+		command = { type = research_mod value = 1 }
+		command = { type = industrial_modifier which = total value = 1 }
+		command = { type = relation which = USA value = 10 }
+		command = { type = relation which = SOV value = 10 }
+		command = { type = setflag which = ind_v4_open_tenders }
+		command = { type = setflag which = ind_v4_1934_foreign_offers }
+	}
+}
+
+event = {
+	id = 9280303
+	random = no
+	country = IND
+
+	trigger = {
+		flag = ind_v4_1934_foreign_offers
+		NOT = { flag = ind_v4_early_japan_policy }
+	}
+
+	name = "Tokyo's Asian Proposition"
+	desc = "Japanese diplomats praise India's early freedom and propose an Asian understanding independent of Europe. The language is anti-imperial; the reality in Manchuria is imperial. Delhi can explore a bilateral channel without joining Germany's orbit, confront Tokyo over China, or keep the relationship strictly commercial."
+	style = 2
+	picture = "aubm_v4_tokyo_proposition"
+
+	date = { day = 0 month = june year = 1935 }
+	offset = 7
+	deathdate = { day = 29 month = august year = 1964 }
+
+	action_a = {
+		ai_chance = 30
+		name = "Open the Delhi-Tokyo channel (unlocks a future compact)"
+		command = { type = dissent value = 2 }
+		command = { type = relation which = JAP value = 35 }
+		command = { type = relation which = CHI value = -10 }
+		command = { type = setflag which = ind_v4_japan_bilateral_channel }
+		command = { type = setflag which = ind_v4_early_japan_policy }
+	}
+	action_b = {
+		ai_chance = 40
+		name = "Condition any future compact on peace in China"
+		command = { type = money value = -80 }
+		command = { type = relation which = CHI value = 25 }
+		command = { type = relation which = JAP value = -25 }
+		command = { type = domestic which = interventionism value = 1 }
+		command = { type = setflag which = ind_v4_japan_conditional_engagement }
+		command = { type = setflag which = ind_v4_early_japan_policy }
+	}
+	action_c = {
+		ai_chance = 30
+		name = "Limit ties to trade (no strategic compact)"
+		command = { type = money value = 200 }
+		command = { type = supplies value = -250 }
+		command = { type = relation which = JAP value = 10 }
+		command = { type = relation which = CHI value = 10 }
+		command = { type = setflag which = ind_v4_japan_commercial_channel }
+		command = { type = setflag which = ind_v4_early_japan_policy }
+	}
+}

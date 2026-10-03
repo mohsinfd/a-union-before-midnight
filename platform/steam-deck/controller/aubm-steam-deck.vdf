@@ -1,0 +1,151 @@
+"controller_mappings"
+{
+	"version" "3"
+	"game" "A Union Before Midnight"
+	"title" "#Title"
+	"description" "#Description"
+	"controller_type" "controller_neptune"
+	"major_revision" "0"
+	"minor_revision" "3"
+	"localization"
+	{
+		"english"
+		{
+			"Title" "AUBM Strategy Controls"
+			"Description" "Precision cursor, dedicated action navigation, map control, and Darkest Hour shortcuts for Steam Deck."
+		}
+	}
+	"group"
+	{
+		"id" "0"
+		"mode" "four_buttons"
+		"inputs"
+		{
+			"button_a" { "activators" { "Full_Press" { "bindings" { "binding" "key_press SPACE, Pause / Resume" } } } }
+			"button_b" { "activators" { "Full_Press" { "bindings" { "binding" "key_press ESCAPE, Back" } } } }
+			"button_x" { "activators" { "Full_Press" { "bindings" { "binding" "key_press ENTER, Confirm" } } } }
+			"button_y" { "activators" { "Full_Press" { "bindings" { "binding" "key_press F10, Game Menu" } } } }
+		}
+	}
+	"group"
+	{
+		"id" "1"
+		"mode" "touch_menu"
+		"inputs"
+		{
+			"touch_menu_button_0" { "activators" { "Full_Press" { "bindings" { "binding" "key_press 1, Group 1" } } } }
+			"touch_menu_button_1" { "activators" { "Full_Press" { "bindings" { "binding" "key_press 2, Group 2" } } } }
+			"touch_menu_button_2" { "activators" { "Full_Press" { "bindings" { "binding" "key_press 3, Group 3" } } } }
+			"touch_menu_button_3" { "activators" { "Full_Press" { "bindings" { "binding" "key_press 4, Group 4" } } } }
+			"touch_menu_button_4" { "activators" { "Full_Press" { "bindings" { "binding" "key_press 5, Group 5" } } } }
+			"touch_menu_button_5" { "activators" { "Full_Press" { "bindings" { "binding" "key_press 6, Group 6" } } } }
+			"touch_menu_button_6" { "activators" { "Full_Press" { "bindings" { "binding" "key_press 7, Group 7" } } } }
+			"touch_menu_button_7" { "activators" { "Full_Press" { "bindings" { "binding" "key_press 8, Group 8" } } } }
+			"touch_menu_button_8" { "activators" { "Full_Press" { "bindings" { "binding" "key_press 9, Group 9" } } } }
+			"touch_menu_button_9" { "activators" { "Full_Press" { "bindings" { "binding" "key_press 0, Group 10" } } } }
+		}
+		"settings" { "touch_menu_button_count" "10" "requires_click" "1" "haptic_intensity" "1" }
+	}
+	"group"
+	{
+		"id" "2"
+		"mode" "absolute_mouse"
+		"inputs"
+		{
+			"click" { "activators" { "Soft_Press" { "bindings" { "binding" "mouse_button LEFT, Select" } "settings" { "haptic_intensity" "1" } } } }
+		}
+		"settings" { "sensitivity" "140" "doubetap_max_duration" "320" }
+	}
+	"group"
+	{
+		"id" "3"
+		"mode" "dpad"
+		"inputs"
+		{
+			"dpad_north" { "activators" { "Full_Press" { "bindings" { "binding" "key_press UP_ARROW, Pan North" } } } }
+			"dpad_south" { "activators" { "Full_Press" { "bindings" { "binding" "key_press DOWN_ARROW, Pan South" } } } }
+			"dpad_east" { "activators" { "Full_Press" { "bindings" { "binding" "key_press RIGHT_ARROW, Pan East" } } } }
+			"dpad_west" { "activators" { "Full_Press" { "bindings" { "binding" "key_press LEFT_ARROW, Pan West" } } } }
+			"click" { "activators" { "Full_Press" { "bindings" { "binding" "key_press HOME, Center Selection" } } } }
+		}
+		"settings" { "requires_click" "0" "edge_binding_radius" "24995" }
+	}
+	"group"
+	{
+		"id" "4"
+		"mode" "trigger"
+		"inputs" { "edge" { "activators" { "Full_Press" { "bindings" { "binding" "mouse_button RIGHT, Orders / Context" } "settings" { "haptic_intensity" "2" } } } } }
+	}
+	"group"
+	{
+		"id" "5"
+		"mode" "trigger"
+		"inputs" { "edge" { "activators" { "Full_Press" { "bindings" { "binding" "mouse_button LEFT, Select" } "settings" { "haptic_intensity" "2" } } } } }
+	}
+	"group"
+	{
+		"id" "6"
+		"mode" "switches"
+		"inputs"
+		{
+			"button_escape" { "activators" { "Full_Press" { "bindings" { "binding" "key_press ESCAPE, Back" } } } }
+			"button_menu" { "activators" { "Full_Press" { "bindings" { "binding" "key_press F10, Game Menu" } } } }
+			"left_bumper" { "activators" { "Full_Press" { "bindings" { "binding" "key_press LEFT_CONTROL" "binding" "key_press KEYPAD_DASH, Slower" } } } }
+			"right_bumper" { "activators" { "Full_Press" { "bindings" { "binding" "key_press LEFT_CONTROL" "binding" "key_press KEYPAD_PLUS, Faster" } } } }
+			"button_back_left" { "activators" { "Full_Press" { "bindings" { "binding" "key_press F3, Quick Save" } } } }
+			"button_back_right" { "activators" { "Full_Press" { "bindings" { "binding" "controller_action SHOW_KEYBOARD, Keyboard" } } } }
+			"button_back_left_upper" { "activators" { "Full_Press" { "bindings" { "binding" "key_press LEFT_SHIFT, Multi-select / Queue Orders" } } } }
+			"button_back_right_upper" { "activators" { "Full_Press" { "bindings" { "binding" "key_press LEFT_CONTROL, Assign Group" } } } }
+		}
+	}
+	"group"
+	{
+		"id" "7"
+		"mode" "dpad"
+		"inputs"
+		{
+			"dpad_north" { "activators" { "Full_Press" { "bindings" { "binding" "mouse_wheel SCROLL_UP, Zoom In" } } } }
+			"dpad_south" { "activators" { "Full_Press" { "bindings" { "binding" "mouse_wheel SCROLL_DOWN, Zoom Out" } } } }
+			"dpad_east" { "activators" { "Full_Press" { "bindings" { "binding" "key_press F2, Map Mode" } } } }
+			"dpad_west" { "activators" { "Full_Press" { "bindings" { "binding" "key_press F6, Statistics" } } } }
+		}
+		"settings" { "requires_click" "0" }
+	}
+	"group"
+	{
+		"id" "9"
+		"mode" "mouse_region"
+		"inputs"
+		{
+			"click" { "activators" { "Full_Press" { "bindings" { "binding" "mouse_button LEFT, Select Action" } "settings" { "haptic_intensity" "2" } } } }
+		}
+		"settings"
+		{
+			"output_joystick" "2"
+			"scale" "18"
+			"position_x" "58"
+			"position_y" "72"
+			"sensitivity_horiz_scale" "0"
+			"sensitivity_vert_scale" "99"
+			"haptic_intensity" "1"
+		}
+	}
+	"preset"
+	{
+		"id" "0"
+		"name" "Default"
+		"group_source_bindings"
+		{
+			"6" "switch active"
+			"0" "button_diamond active"
+			"1" "left_trackpad active"
+			"2" "right_trackpad active"
+			"3" "joystick active"
+			"4" "left_trigger active"
+			"5" "right_trigger active"
+			"9" "right_joystick active"
+			"7" "dpad active"
+		}
+	}
+	"settings" { "left_trackpad_mode" "0" "right_trackpad_mode" "0" }
+}

@@ -1,0 +1,249 @@
+#########################################################################
+# A Union Before Midnight: clean country-relations desk
+# Bilateral agreements are independent. Only the explicitly labelled
+# formal-alliance choice merges wars. No route, score or theatre matrix.
+#########################################################################
+
+event = {
+	id = 9289000
+	random = no
+	persistent = yes
+	country = IND
+	name = "Foreign Relations: Choose a Country"
+	desc = "Every agreement is filed under one named country. Trade and defence agreements do not join wars. A formal alliance joins that country's current wars. India may hold several bilateral agreements, but only one formal great-power alliance."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+	action = { trigger = { ai = no } name = "Close without changes" }
+	action_a = { name = "Britain and the United States" command = { type = event which = 9289006 where = IND when = 1 } }
+	action_b = { name = "Germany" command = { type = event which = 9289012 where = IND when = 1 } }
+	action_c = { name = "Soviet Union" command = { type = event which = 9289013 where = IND when = 1 } }
+	action_d = { name = "Japan and Asian countries" command = { type = event which = 9289002 where = IND when = 1 } }
+}
+
+event = {
+	id = 9289006
+	random = no
+	persistent = yes
+	country = IND
+	name = "Foreign Relations: Atlantic Powers"
+	desc = "Choose one country to discuss. Opening a file changes nothing by itself."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+	action = { trigger = { ai = no } name = "Close without changes" }
+	action_a = { trigger = { exists = ENG NOT = { war = { country = IND country = ENG } } } name = "Britain" command = { type = event which = 9289010 where = IND when = 1 } }
+	action_b = { trigger = { exists = USA NOT = { war = { country = IND country = USA } } } name = "United States" command = { type = event which = 9289011 where = IND when = 1 } }
+	action_c = { name = "Return to the country list" command = { type = event which = 9289000 where = IND when = 1 } }
+	action_d = { name = "Close" }
+}
+
+event = {
+	id = 9289002
+	random = no
+	persistent = yes
+	country = IND
+	name = "Foreign Relations: Asia"
+	desc = "Choose one country. These files do not decide India's other relationships."
+	style = 2
+	picture = "aubm_v4_grand_strategy"
+	action = { trigger = { ai = no } name = "Close without changes" }
+	action_a = { trigger = { exists = JAP NOT = { war = { country = IND country = JAP } } } name = "Japan" command = { type = event which = 9289014 where = IND when = 1 } }
+	action_b = { trigger = { exists = CHI NOT = { war = { country = IND country = CHI } } } name = "China" command = { type = event which = 9289015 where = IND when = 1 } }
+	action_c = { trigger = { exists = SIA NOT = { war = { country = IND country = SIA } } } name = "Siam" command = { type = event which = 9289016 where = IND when = 1 } }
+	action_d = { trigger = { exists = PER NOT = { war = { country = IND country = PER } } } name = "Persia" command = { type = event which = 9289017 where = IND when = 1 } }
+}
+
+#########################################################################
+# Named bilateral choices
+#########################################################################
+
+event = {
+	id = 9289010 random = no persistent = yes country = IND
+	name = "Britain: Choose the Relationship"
+	desc = "A trade mission improves relations only. A defence compact guarantees Britain but does not join its wars. Formal alliance joins Britain's alliance and every war it is fighting."
+	style = 2 picture = "aubm_v4_grand_strategy"
+	action = { trigger = { ai = no } name = "Close without changes" }
+	action_a = { name = "Trade mission: -150 money; no war obligation" command = { type = money value = -150 } command = { type = relation which = ENG value = 30 } command = { type = setflag which = ind_rel_trade_eng } }
+	action_b = { name = "Defence compact: -300 money/-500 supplies; separate wars" command = { type = money value = -300 } command = { type = supplies value = -500 } command = { type = relation which = ENG value = 60 } command = { type = non_aggression which = IND where = ENG when = 1080 } command = { type = guarantee which = IND where = ENG } command = { type = setflag which = ind_rel_compact_eng } }
+	action_c = { trigger = { NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = SOV } } NOT = { alliance = { country = IND country = JAP } } NOT = { alliance = { country = IND country = USA } } } name = "Formal alliance: join all British wars" command = { type = alliance which = ENG when = 1 } command = { type = setflag which = ind_rel_formal_eng } }
+	action_d = { name = "Return to Atlantic powers" command = { type = event which = 9289006 where = IND when = 1 } }
+}
+
+event = {
+	id = 9289011 random = no persistent = yes country = IND
+	name = "United States: Choose the Relationship"
+	desc = "A trade mission improves relations only. A naval compact keeps separate wars. Formal alliance joins the American alliance and every war it is fighting."
+	style = 2 picture = "aubm_v4_grand_strategy"
+	action = { trigger = { ai = no } name = "Close without changes" }
+	action_a = { name = "Trade mission: -150 money; no war obligation" command = { type = money value = -150 } command = { type = relation which = USA value = 30 } command = { type = setflag which = ind_rel_trade_usa } }
+	action_b = { name = "Naval compact: -300 money/-500 supplies; separate wars" command = { type = money value = -300 } command = { type = supplies value = -500 } command = { type = relation which = USA value = 60 } command = { type = non_aggression which = IND where = USA when = 1080 } command = { type = guarantee which = IND where = USA } command = { type = setflag which = ind_rel_compact_usa } }
+	action_c = { trigger = { NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = SOV } } NOT = { alliance = { country = IND country = JAP } } } name = "Formal alliance: join all American wars" command = { type = alliance which = USA when = 1 } command = { type = setflag which = ind_rel_formal_usa } }
+	action_d = { name = "Return to Atlantic powers" command = { type = event which = 9289006 where = IND when = 1 } }
+}
+
+event = {
+	id = 9289012 random = no persistent = yes country = IND
+	name = "Germany: Choose the Relationship"
+	desc = "Industrial cooperation has no war obligation. A continental compact guarantees Germany but keeps separate wars. Formal alliance joins Germany's alliance and every war it is fighting."
+	style = 2 picture = "aubm_v4_grand_strategy"
+	action = { trigger = { ai = no } name = "Close without changes" }
+	action_a = { name = "Industrial mission: -150 money; no war obligation" command = { type = money value = -150 } command = { type = relation which = GER value = 30 } command = { type = setflag which = ind_rel_trade_ger } }
+	action_b = { name = "Continental compact: -300/-500; separate wars" command = { type = money value = -300 } command = { type = supplies value = -500 } command = { type = relation which = GER value = 60 } command = { type = non_aggression which = IND where = GER when = 1080 } command = { type = guarantee which = IND where = GER } command = { type = setflag which = ind_rel_compact_ger } }
+	action_c = { trigger = { NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { alliance = { country = IND country = SOV } } NOT = { alliance = { country = IND country = JAP } } } name = "Formal alliance: join all German wars" command = { type = alliance which = GER when = 1 } command = { type = setflag which = ind_rel_formal_ger } }
+	action_d = { name = "Return to the country list" command = { type = event which = 9289000 where = IND when = 1 } }
+}
+
+event = {
+	id = 9289013 random = no persistent = yes country = IND
+	name = "Soviet Union: Choose the Relationship"
+	desc = "Technical cooperation has no war obligation. An equal compact guarantees the Soviet Union but keeps separate wars. Formal alliance joins its alliance and every war it is fighting."
+	style = 2 picture = "aubm_v4_grand_strategy"
+	action = { trigger = { ai = no } name = "Close without changes" }
+	action_a = { name = "Technical mission: -150 money; no war obligation" command = { type = money value = -150 } command = { type = relation which = SOV value = 30 } command = { type = setflag which = ind_rel_trade_sov } }
+	action_b = { name = "Equal compact: -300 money/-500 supplies; separate wars" command = { type = money value = -300 } command = { type = supplies value = -500 } command = { type = relation which = SOV value = 60 } command = { type = non_aggression which = IND where = SOV when = 1080 } command = { type = guarantee which = IND where = SOV } command = { type = setflag which = ind_rel_compact_sov } }
+	action_c = { trigger = { NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = JAP } } } name = "Formal alliance: join all Soviet wars" command = { type = alliance which = SOV when = 1 } command = { type = setflag which = ind_rel_formal_sov } }
+	action_d = { name = "Return to the country list" command = { type = event which = 9289000 where = IND when = 1 } }
+}
+
+event = {
+	id = 9289014 random = no persistent = yes country = IND
+	name = "Japan: Choose the Relationship"
+	desc = "Trade cooperation has no war obligation. The Delhi-Tokyo compact keeps Indian and Japanese wars separate. Formal alliance joins Japan's alliance and every war it is fighting."
+	style = 2 picture = "aubm_v4_grand_strategy"
+	action = { trigger = { ai = no } name = "Close without changes" }
+	action_a = { name = "Trade mission: -150 money; no war obligation" command = { type = money value = -150 } command = { type = relation which = JAP value = 30 } command = { type = setflag which = ind_rel_trade_jap } }
+	action_b = { name = "Delhi-Tokyo compact: -300/-500; separate wars" command = { type = money value = -300 } command = { type = supplies value = -500 } command = { type = relation which = JAP value = 60 } command = { type = non_aggression which = IND where = JAP when = 1080 } command = { type = guarantee which = IND where = JAP } command = { type = setflag which = ind_rel_compact_jap } }
+	action_c = { trigger = { NOT = { alliance = { country = IND country = ENG } } NOT = { alliance = { country = IND country = USA } } NOT = { alliance = { country = IND country = GER } } NOT = { alliance = { country = IND country = SOV } } } name = "Formal alliance: join all Japanese wars" command = { type = alliance which = JAP when = 1 } command = { type = setflag which = ind_rel_formal_jap } }
+	action_d = { name = "Return to Asian countries" command = { type = event which = 9289002 where = IND when = 1 } }
+}
+
+event = {
+	id = 9289015 random = no persistent = yes country = IND
+	name = "China: Choose the Relationship"
+	desc = "India may improve trade, guarantee China while keeping separate wars, or enter China's alliance and inherit its wars."
+	style = 2 picture = "aubm_v4_grand_strategy"
+	action = { trigger = { ai = no } name = "Close without changes" }
+	action_a = { name = "Trade mission: -100 money; no war obligation" command = { type = money value = -100 } command = { type = relation which = CHI value = 30 } }
+	action_b = { name = "Security guarantee: -300 supplies; separate wars" command = { type = supplies value = -300 } command = { type = guarantee which = IND where = CHI } command = { type = relation which = CHI value = 50 } command = { type = setflag which = ind_rel_compact_chi } }
+	action_c = { name = "Formal alliance: join all Chinese wars" command = { type = alliance which = CHI when = 1 } command = { type = setflag which = ind_rel_formal_chi } }
+	action_d = { name = "Return to Asian countries" command = { type = event which = 9289002 where = IND when = 1 } }
+}
+
+event = {
+	id = 9289016 random = no persistent = yes country = IND
+	name = "Siam: Choose the Relationship"
+	desc = "India may improve trade, guarantee Siam while keeping separate wars, or enter Siam's alliance and inherit its wars."
+	style = 2 picture = "aubm_v4_grand_strategy"
+	action = { trigger = { ai = no } name = "Close without changes" }
+	action_a = { name = "Trade mission: -100 money; no war obligation" command = { type = money value = -100 } command = { type = relation which = SIA value = 30 } }
+	action_b = { name = "Security guarantee: -300 supplies; separate wars" command = { type = supplies value = -300 } command = { type = guarantee which = IND where = SIA } command = { type = relation which = SIA value = 50 } command = { type = setflag which = ind_rel_compact_sia } }
+	action_c = { name = "Formal alliance: join all Siamese wars" command = { type = alliance which = SIA when = 1 } command = { type = setflag which = ind_rel_formal_sia } }
+	action_d = { name = "Return to Asian countries" command = { type = event which = 9289002 where = IND when = 1 } }
+}
+
+event = {
+	id = 9289017 random = no persistent = yes country = IND
+	name = "Persia: Choose the Relationship"
+	desc = "India may improve trade, guarantee Persia while keeping separate wars, or enter Persia's alliance and inherit its wars."
+	style = 2 picture = "aubm_v4_grand_strategy"
+	action = { trigger = { ai = no } name = "Close without changes" }
+	action_a = { name = "Trade mission: -100 money; no war obligation" command = { type = money value = -100 } command = { type = relation which = PER value = 30 } }
+	action_b = { name = "Security guarantee: -300 supplies; separate wars" command = { type = supplies value = -300 } command = { type = guarantee which = IND where = PER } command = { type = relation which = PER value = 50 } command = { type = setflag which = ind_rel_compact_per } }
+	action_c = { name = "Formal alliance: join all Persian wars" command = { type = alliance which = PER when = 1 } command = { type = setflag which = ind_rel_formal_per } }
+	action_d = { name = "Return to Asian countries" command = { type = event which = 9289002 where = IND when = 1 } }
+}
+
+event = {
+	id = 9289004
+	random = no persistent = yes country = IND
+	name = "Leave India's Current Alliance"
+	desc = "This choice is available only while India is at peace. India leaves its current alliance. Bilateral trade and defence agreements remain."
+	style = 2 picture = "aubm_v4_grand_strategy"
+	action_a = { trigger = { atwar = no participant = { country = IND value = 4 } } name = "Leave the current alliance; no dissent" command = { type = leave_alliance when = 1 } command = { type = clrflag which = ind_rel_formal_eng } command = { type = clrflag which = ind_rel_formal_usa } command = { type = clrflag which = ind_rel_formal_ger } command = { type = clrflag which = ind_rel_formal_sov } command = { type = clrflag which = ind_rel_formal_jap } command = { type = clrflag which = ind_rel_formal_chi } command = { type = clrflag which = ind_rel_formal_sia } command = { type = clrflag which = ind_rel_formal_per } }
+	action_b = { name = "Cancel - remain in the alliance" }
+}
+
+#########################################################################
+# Direct, named war choices. Selecting a country declares immediately.
+#########################################################################
+
+event = {
+	id = 9289003 random = no persistent = yes country = IND
+	name = "War Cabinet: Choose a Region"
+	desc = "Each next screen names the country and dissent cost. There are no campaign scores or automatic peace chains."
+	style = 2 picture = "aubm_v4_india_world_war"
+	action = { trigger = { ai = no } name = "Close without changes" }
+	action_a = { name = "Great powers" command = { type = event which = 9289020 where = IND when = 1 } }
+	action_b = { name = "Asia" command = { type = event which = 9289021 where = IND when = 1 } }
+	action_c = { name = "Middle East" command = { type = event which = 9289022 where = IND when = 1 } }
+	action_d = { name = "Oceans and colonies" command = { type = event which = 9289023 where = IND when = 1 } }
+}
+
+event = {
+	id = 9289020 random = no persistent = yes country = IND
+	name = "War Cabinet: Great Powers"
+	desc = "Selecting a country declares war immediately. The listed dissent is the complete event cost."
+	style = 2 picture = "aubm_v4_india_world_war"
+	action = { trigger = { ai = no } name = "Cancel - no declaration" }
+	action_a = { trigger = { exists = ENG NOT = { war = { country = IND country = ENG } } NOT = { alliance = { country = IND country = ENG } } } name = "Declare war on Britain: +4 dissent" command = { type = dissent value = 4 } command = { type = war which = ENG } }
+	action_b = { trigger = { exists = GER NOT = { war = { country = IND country = GER } } NOT = { alliance = { country = IND country = GER } } } name = "Declare war on Germany: +4 dissent" command = { type = dissent value = 4 } command = { type = war which = GER } }
+	action_c = { trigger = { exists = SOV NOT = { war = { country = IND country = SOV } } NOT = { alliance = { country = IND country = SOV } } } name = "Declare war on Soviet Union: +5 dissent" command = { type = dissent value = 5 } command = { type = war which = SOV } }
+	action_d = { trigger = { exists = JAP NOT = { war = { country = IND country = JAP } } NOT = { alliance = { country = IND country = JAP } } } name = "Declare war on Japan: +5 dissent" command = { type = dissent value = 5 } command = { type = war which = JAP } }
+}
+
+event = {
+	id = 9289021 random = no persistent = yes country = IND
+	name = "War Cabinet: Asia"
+	desc = "Selecting a country declares war immediately. The listed dissent is the complete event cost."
+	style = 2 picture = "aubm_v4_india_world_war"
+	action = { trigger = { ai = no } name = "Cancel - no declaration" }
+	action_a = { trigger = { exists = CHI NOT = { war = { country = IND country = CHI } } NOT = { alliance = { country = IND country = CHI } } } name = "Declare war on China: +3 dissent" command = { type = dissent value = 3 } command = { type = war which = CHI } }
+	action_b = { trigger = { exists = SIA NOT = { war = { country = IND country = SIA } } NOT = { alliance = { country = IND country = SIA } } } name = "Declare war on Siam: +3 dissent" command = { type = dissent value = 3 } command = { type = war which = SIA } }
+	action_c = { trigger = { exists = SIK NOT = { war = { country = IND country = SIK } } NOT = { alliance = { country = IND country = SIK } } } name = "Declare war on Xinjiang: +3 dissent" command = { type = dissent value = 3 } command = { type = war which = SIK } }
+	action_d = { trigger = { exists = TIB NOT = { war = { country = IND country = TIB } } NOT = { alliance = { country = IND country = TIB } } } name = "Declare war on Tibet: +3 dissent" command = { type = dissent value = 3 } command = { type = war which = TIB } }
+}
+
+event = {
+	id = 9289022 random = no persistent = yes country = IND
+	name = "War Cabinet: Middle East"
+	desc = "Selecting a country declares war immediately. The listed dissent is the complete event cost."
+	style = 2 picture = "aubm_v4_india_world_war"
+	action = { trigger = { ai = no } name = "Cancel - no declaration" }
+	action_a = { trigger = { exists = PER NOT = { war = { country = IND country = PER } } NOT = { alliance = { country = IND country = PER } } } name = "Declare war on Persia: +2 dissent" command = { type = dissent value = 2 } command = { type = war which = PER } }
+	action_b = { trigger = { exists = IRQ NOT = { war = { country = IND country = IRQ } } NOT = { alliance = { country = IND country = IRQ } } } name = "Declare war on Iraq: +2 dissent" command = { type = dissent value = 2 } command = { type = war which = IRQ } }
+	action_c = { trigger = { exists = AFG NOT = { war = { country = IND country = AFG } } NOT = { alliance = { country = IND country = AFG } } } name = "Declare war on Afghanistan: +3 dissent" command = { type = dissent value = 3 } command = { type = war which = AFG } }
+	action_d = { trigger = { exists = TUR NOT = { war = { country = IND country = TUR } } NOT = { alliance = { country = IND country = TUR } } } name = "Declare war on Turkey: +4 dissent" command = { type = dissent value = 4 } command = { type = war which = TUR } }
+}
+
+event = {
+	id = 9289023 random = no persistent = yes country = IND
+	name = "War Cabinet: Oceans and Colonies"
+	desc = "Selecting a country declares war immediately. The listed dissent is the complete event cost."
+	style = 2 picture = "aubm_v4_india_world_war"
+	action = { trigger = { ai = no } name = "Cancel - no declaration" }
+	action_a = { trigger = { exists = U05 NOT = { war = { country = IND country = U05 } } NOT = { alliance = { country = IND country = U05 } } } name = "Declare war on Dutch East Indies: +3 dissent" command = { type = dissent value = 3 } command = { type = war which = U05 } }
+	action_b = { trigger = { exists = AST NOT = { war = { country = IND country = AST } } NOT = { alliance = { country = IND country = AST } } } name = "Declare war on Australia: +4 dissent" command = { type = dissent value = 4 } command = { type = war which = AST } }
+	action_c = { trigger = { exists = PHI NOT = { war = { country = IND country = PHI } } NOT = { alliance = { country = IND country = PHI } } } name = "Declare war on Philippines: +3 dissent" command = { type = dissent value = 3 } command = { type = war which = PHI } }
+	action_d = { trigger = { exists = POR NOT = { war = { country = IND country = POR } } NOT = { alliance = { country = IND country = POR } } } name = "Declare war on Portugal: +2 dissent" command = { type = dissent value = 2 } command = { type = war which = POR } }
+}
+
+#########################################################################
+# Save compatibility: delayed Himalayan core events can remain queued.
+#########################################################################
+
+event = {
+	id = 9398204 random = no persistent = yes country = IND
+	name = "Kathmandu and Delhi"
+	desc = "The integration waiting period has ended. Kathmandu becomes a national province only if Nepal remains integrated and India owns and controls the province."
+	style = 2 picture = "aubm_v4_liberated_territory"
+	action_a = { trigger = { flag = ind_stage_nepal_core_pending flag = ind_v3_nepal_integrated NOT = { exists = NEP } owned = { province = 1457 data = IND } control = { province = 1457 data = IND } NOT = { flag = ind_stage_nepal_cored } } name = "Grant national status to Kathmandu" command = { type = addcore which = 1457 } command = { type = setflag which = ind_stage_nepal_cored } command = { type = clrflag which = ind_stage_nepal_core_pending } }
+	action_b = { name = "Conditions are not met; close without changes" }
+}
+
+event = {
+	id = 9398214 random = no persistent = yes country = IND
+	name = "Thimphu and Delhi"
+	desc = "The integration waiting period has ended. Thimphu becomes a national province only if Bhutan remains integrated and India owns and controls the province."
+	style = 2 picture = "aubm_v4_liberated_territory"
+	action_a = { trigger = { flag = ind_stage_bhutan_core_pending flag = ind_v3_bhutan_integrated NOT = { exists = BHU } owned = { province = 1456 data = IND } control = { province = 1456 data = IND } NOT = { flag = ind_stage_bhutan_cored } } name = "Grant national status to Thimphu" command = { type = addcore which = 1456 } command = { type = setflag which = ind_stage_bhutan_cored } command = { type = clrflag which = ind_stage_bhutan_core_pending } }
+	action_b = { name = "Conditions are not met; close without changes" }
+}

@@ -1,0 +1,31 @@
+{
+  "mode": "built-in image_gen",
+  "provenance": "Original generated fictional institutional illustrations, not archival photographs",
+  "shared_prompt": "One square monochrome archival-style scene, circa 1934-1938 India; strong readable shapes and tonal contrast at 96x96. No collage, text, flags, watermark, or modern equipment.",
+  "assets": [
+    {
+      "id": 250032,
+      "source": "cochin.png",
+      "generated_path": "C:\\Users\\Mohsin Dingankar\\.codex\\generated_images\\01a034b2-18f0-76c1-a773-55bf0cb682f4\\exec-e6fe4caf-3de6-4d4c-9b64-3001d5f6cd86.png",
+      "prompt": "Cochin Landing Warfare School: landing craft, Indian naval instructor, tropical harbour."
+    },
+    {
+      "id": 250033,
+      "source": "armament.png",
+      "generated_path": "C:\\Users\\Mohsin Dingankar\\.codex\\generated_images\\01a034b2-18f0-76c1-a773-55bf0cb682f4\\exec-f5ef9f87-91af-4f34-9834-a0d048a7aceb.png",
+      "prompt": "Aircraft Armament Trials Unit: wing-mounted machine gun on test cradle, propeller aircraft behind."
+    },
+    {
+      "id": 250034,
+      "source": "cooperation.png",
+      "generated_path": "C:\\Users\\Mohsin Dingankar\\.codex\\generated_images\\01a034b2-18f0-76c1-a773-55bf0cb682f4\\exec-b0cbb684-f2bd-4931-8f46-d451b8afce49.png",
+      "prompt": "Army-Air Cooperation School: Indian army and air officers, field map, radio, biplane."
+    },
+    {
+      "id": 250035,
+      "source": "navigation.png",
+      "generated_path": "C:\\Users\\Mohsin Dingankar\\.codex\\generated_images\\01a034b2-18f0-76c1-a773-55bf0cb682f4\\exec-68fa2444-4a39-4518-97c8-ecd2d92c25fc.png",
+      "prompt": "Long-Range Air Navigation School: sextant, globe and navigation table, twin-engine propeller aircraft."
+    }
+  ]
+}
