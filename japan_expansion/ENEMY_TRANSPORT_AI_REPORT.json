@@ -1,0 +1,433 @@
+{
+  "scenarios": [
+    {
+      "file": "scenarios\\1933\\australia.inc",
+      "country": "AST",
+      "moves": [],
+      "unescorted_groups": 0
+    },
+    {
+      "file": "scenarios\\1933\\canada.inc",
+      "country": "CAN",
+      "moves": [],
+      "unescorted_groups": 0
+    },
+    {
+      "file": "scenarios\\1933\\france.inc",
+      "country": "FRA",
+      "moves": [],
+      "unescorted_groups": 0
+    },
+    {
+      "file": "scenarios\\1933\\holland.inc",
+      "country": "HOL",
+      "moves": [],
+      "unescorted_groups": 0
+    },
+    {
+      "file": "scenarios\\1933\\netherlands east indies.inc",
+      "country": "U05",
+      "moves": [],
+      "unescorted_groups": 0
+    },
+    {
+      "file": "scenarios\\1933\\newzealand.inc",
+      "country": "NZL",
+      "moves": [],
+      "unescorted_groups": 0
+    },
+    {
+      "file": "scenarios\\1933\\united kingdom.inc",
+      "country": "ENG",
+      "moves": [
+        {
+          "ship": "Destroyer Division 35",
+          "id": [
+            [
+              "type",
+              "12700"
+            ],
+            [
+              "id",
+              "135"
+            ]
+          ],
+          "from": "Portsmouth Command",
+          "to": "Royal Fleet Auxiliary",
+          "port": "27"
+        },
+        {
+          "ship": "Destroyer Division 36",
+          "id": [
+            [
+              "type",
+              "12700"
+            ],
+            [
+              "id",
+              "136"
+            ]
+          ],
+          "from": "Portsmouth Command",
+          "to": "Royal Fleet Auxiliary",
+          "port": "27"
+        },
+        {
+          "ship": "HMS Ceres",
+          "id": [
+            [
+              "type",
+              "12700"
+            ],
+            [
+              "id",
+              "219"
+            ]
+          ],
+          "from": "Reserve Fleet",
+          "to": "Royal Fleet Auxiliary",
+          "port": "27"
+        }
+      ],
+      "unescorted_groups": 0
+    },
+    {
+      "file": "scenarios\\1933\\usa.inc",
+      "country": "USA",
+      "moves": [
+        {
+          "ship": "USS Richmond",
+          "id": [
+            [
+              "type",
+              "14800"
+            ],
+            [
+              "id",
+              "41"
+            ]
+          ],
+          "from": "Scouting Force",
+          "to": "Fleet Train, Atlantic",
+          "port": "1812"
+        },
+        {
+          "ship": "USS Trenton",
+          "id": [
+            [
+              "type",
+              "14800"
+            ],
+            [
+              "id",
+              "42"
+            ]
+          ],
+          "from": "Scouting Force",
+          "to": "Fleet Train, Atlantic",
+          "port": "1812"
+        },
+        {
+          "ship": "USS Concord",
+          "id": [
+            [
+              "type",
+              "14800"
+            ],
+            [
+              "id",
+              "43"
+            ]
+          ],
+          "from": "Battle Force",
+          "to": "Fleet Train, Pacific",
+          "port": "1886"
+        },
+        {
+          "ship": "USS Marblehead",
+          "id": [
+            [
+              "type",
+              "14800"
+            ],
+            [
+              "id",
+              "90"
+            ]
+          ],
+          "from": "Scouting Force",
+          "to": "5th Naval District",
+          "port": "1812"
+        },
+        {
+          "ship": "Destroyer Division 27",
+          "id": [
+            [
+              "type",
+              "14800"
+            ],
+            [
+              "id",
+              "2308"
+            ]
+          ],
+          "from": "Asiatic Squadron",
+          "to": "16th Naval District",
+          "port": "1565"
+        }
+      ],
+      "unescorted_groups": 7
+    },
+    {
+      "file": "scenarios\\1933\\WIF2.inc",
+      "country": "ENG",
+      "moves": [],
+      "unescorted_groups": 0
+    }
+  ],
+  "profiles": [
+    {
+      "file": "ai\\AST_1914.ai",
+      "before": {
+        "destroyer": 5.0,
+        "transports": 5.0
+      },
+      "transferred_to_destroyers": 1
+    },
+    {
+      "file": "ai\\ast_1933.ai",
+      "before": {
+        "destroyer": 10.0,
+        "transports": 7.0
+      },
+      "transferred_to_destroyers": 1
+    },
+    {
+      "file": "ai\\ast_1936.ai",
+      "before": {
+        "destroyer": 10.0,
+        "transports": 7.0
+      },
+      "transferred_to_destroyers": 1
+    },
+    {
+      "file": "ai\\ast_1939.ai",
+      "before": {
+        "destroyer": 10.0,
+        "transports": 7.0
+      },
+      "transferred_to_destroyers": 1
+    },
+    {
+      "file": "ai\\ast_1940.ai",
+      "before": {
+        "destroyer": 10.0,
+        "transports": 7.0
+      },
+      "transferred_to_destroyers": 1
+    },
+    {
+      "file": "ai\\CAN_1914.ai",
+      "before": {
+        "destroyer": 10.0,
+        "transports": 5.0
+      },
+      "transferred_to_destroyers": 1
+    },
+    {
+      "file": "ai\\can_1936.ai",
+      "before": {
+        "destroyer": 10.0,
+        "transports": 5.0
+      },
+      "transferred_to_destroyers": 1
+    },
+    {
+      "file": "ai\\can_1939.ai",
+      "before": {
+        "destroyer": 10.0,
+        "transports": 5.0
+      },
+      "transferred_to_destroyers": 1
+    },
+    {
+      "file": "ai\\can_1940.ai",
+      "before": {
+        "destroyer": 10.0,
+        "transports": 5.0
+      },
+      "transferred_to_destroyers": 1
+    },
+    {
+      "file": "ai\\ENG_1914.ai",
+      "before": {
+        "destroyer": 9.0,
+        "transports": 5.0
+      },
+      "transferred_to_destroyers": 1
+    },
+    {
+      "file": "ai\\eng_1936.ai",
+      "before": {
+        "destroyer": 9.0,
+        "transports": 5.0
+      },
+      "transferred_to_destroyers": 1
+    },
+    {
+      "file": "ai\\eng_1939.ai",
+      "before": {
+        "destroyer": 9.0,
+        "transports": 5.0
+      },
+      "transferred_to_destroyers": 1
+    },
+    {
+      "file": "ai\\eng_1940.ai",
+      "before": {
+        "destroyer": 9.0,
+        "transports": 5.0
+      },
+      "transferred_to_destroyers": 1
+    },
+    {
+      "file": "ai\\eng_1941.ai",
+      "before": {
+        "destroyer": 9.0,
+        "transports": 5.0
+      },
+      "transferred_to_destroyers": 1
+    },
+    {
+      "file": "ai\\NZL_1914.ai",
+      "before": {
+        "destroyer": 27.0,
+        "transports": 7.0
+      },
+      "transferred_to_destroyers": 1
+    },
+    {
+      "file": "ai\\nzl_1933.ai",
+      "before": {
+        "destroyer": 27.0,
+        "transports": 7.0
+      },
+      "transferred_to_destroyers": 1
+    },
+    {
+      "file": "ai\\nzl_1936.ai",
+      "before": {
+        "destroyer": 27.0,
+        "transports": 7.0
+      },
+      "transferred_to_destroyers": 1
+    },
+    {
+      "file": "ai\\nzl_1939.ai",
+      "before": {
+        "destroyer": 27.0,
+        "transports": 7.0
+      },
+      "transferred_to_destroyers": 1
+    },
+    {
+      "file": "ai\\nzl_1940.ai",
+      "before": {
+        "destroyer": 27.0,
+        "transports": 7.0
+      },
+      "transferred_to_destroyers": 1
+    },
+    {
+      "file": "ai\\NZL_1941.ai",
+      "before": {
+        "destroyer": 3.0,
+        "transports": 5.0
+      },
+      "transferred_to_destroyers": 1
+    },
+    {
+      "file": "ai\\switch\\CAN_atwar.ai",
+      "before": {
+        "destroyer": 5.0,
+        "transports": 10.0
+      },
+      "transferred_to_destroyers": 2
+    },
+    {
+      "file": "ai\\switch\\eng_build_land.ai",
+      "before": {
+        "destroyer": 3.0,
+        "transports": 6.0
+      },
+      "transferred_to_destroyers": 1
+    },
+    {
+      "file": "ai\\switch\\eng_build_standard.ai",
+      "before": {
+        "destroyer": 7.0,
+        "transports": 7.0
+      },
+      "transferred_to_destroyers": 1
+    },
+    {
+      "file": "ai\\switch\\FRA_Free.ai",
+      "before": {
+        "destroyer": 10.0,
+        "transports": 9.0
+      },
+      "transferred_to_destroyers": 2
+    },
+    {
+      "file": "ai\\switch\\usa_build_land.ai",
+      "before": {
+        "destroyer": 2.0,
+        "transports": 10.0
+      },
+      "transferred_to_destroyers": 2
+    },
+    {
+      "file": "ai\\switch\\USA_Build_Standard.ai",
+      "before": {
+        "destroyer": 6.0,
+        "transports": 4.0
+      },
+      "transferred_to_destroyers": 1
+    },
+    {
+      "file": "ai\\switch\\USA_Homeland.ai",
+      "before": {
+        "destroyer": 5.0,
+        "transports": 5.0
+      },
+      "transferred_to_destroyers": 1
+    },
+    {
+      "file": "ai\\USA_1914.ai",
+      "before": {
+        "destroyer": 9.0,
+        "transports": 5.0
+      },
+      "transferred_to_destroyers": 1
+    },
+    {
+      "file": "ai\\usa_1936.ai",
+      "before": {
+        "destroyer": 8.0,
+        "transports": 13.0
+      },
+      "transferred_to_destroyers": 3
+    },
+    {
+      "file": "ai\\usa_1942.ai",
+      "before": {
+        "destroyer": 8.0,
+        "transports": 13.0
+      },
+      "transferred_to_destroyers": 3
+    }
+  ],
+  "moved_screens": 8,
+  "engine_limit": "Initial groups may be reorganised by the hardcoded naval AI; no minimum-screen scripting switch is claimed.",
+  "game_launched": false
+}

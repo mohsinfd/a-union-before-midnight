@@ -1,0 +1,384 @@
+id,name,office,trait,personality_id,start,retirement,end
+50001,Hirohito,Head of State,Puppet emperor,86,1901,1990,1990
+50002,Okada Keisuke,Head of Government,happy amateur,72,1912,1953,1953
+50003,Hirota Koki,Foreign Minister,great compromiser,5,1913,1949,1949
+50004,Machida Chuji,Minister of Armament,laissez-faire capitalist,10,1898,1947,1947
+50005,Goto Fumio,Minister of Security,silent lawyer,20,1919,1981,1981
+50006,Okamura Yasuji,Head of Military Intelligence,political specialist,29,1919,1967,1967
+50007,Kanin Kotohito,Chief of Staff,school of defence,37,1931,1946,1946
+50008,Kanin Kotohito,Chief of Army,static defence doctrine,39,1931,1946,1946
+50009,Osumi Mineo,Chief of Navy,power projection doctrine,45,1911,1942,1942
+50010,Yamamoto Isoroku,Chief of Air Force,naval aviation doctrine,49,1919,1951,1951
+50011,Yasuhito,Head of State,ruthless powermonger,60,1902,1954,1954
+50012,Nosaka Sanzo,Head of State,barking buffoon,58,1892,1994,1994
+50013,Hayashi Senjuro,Head of Government,smiling oilman,74,1920,1944,1944
+50014,Konoe Fumimaro,Head of Government,flamboyant tough guy,71,1935,1946,1946
+50015,Abe Nobuyuki,Head of Government,political protege,78,1919,1954,1954
+50016,Yonai Mitsumasa,Head of Government,ambitious union boss,79,1924,1949,1949
+50017,Suzuki Kantaro,Head of Government,corporate suit,80,1912,1949,1949
+50018,Higashikuni Naruhiko,Head of Government,silent workhorse,69,1931,1991,1991
+50019,Terauchi Hisaichi,Head of Government,naive optimist,70,1923,1947,1947
+50020,Hirota Koki,Head of Government,happy amateur,72,1922,1949,1949
+50021,Hiranuma Kiichiro,Head of Government,old admiral,76,1911,1953,1953
+50022,Tojo Hideki,Head of Government,Razor,168,1928,1949,1949
+50023,Koiso Kuniaki,Head of Government,corporate suit,80,1924,1951,1951
+50024,Goto Fumio,Head of Government,naive optimist,70,1928,1981,1981
+50025,Katayama Tetsu,Head of Government,political protege,78,1931,1979,1979
+50026,Ugaki Kazushige,Head of Government,silent workhorse,69,1940,1957,1957
+50027,Suzuki Kisaburo,Head of Government,happy amateur,72,1911,1941,1941
+50028,Shidehara Kijuro,Head of Government,naive optimist,70,1916,1952,1952
+50029,Yoshida Shigeru,Head of Government,backroom backstabber,73,1922,1968,1968
+50030,Hatoyama Ichiro,Head of Government,political protege,78,1927,1960,1960
+50031,Miyamoto Kenji,Head of Government,smiling oilman,74,1952,1999,1999
+50032,Nosaka Sanzo,Foreign Minister,the cloak n dagger schemer,7,1927,1994,1994
+50033,Ashida Hitoshi,Foreign Minister,apologetic clerk,3,1922,1960,1960
+50034,Yoshizawa Kenkichi,Foreign Minister,ideological crusader,2,1909,1966,1966
+50035,Okada Keisuke,Foreign Minister,iron fisted brute,4,1903,1953,1953
+50036,Suzuki Kisaburo,Foreign Minister,the cloak n dagger schemer,7,1902,1941,1941
+50037,Shigemitsu Mamoru,Foreign Minister,great compromiser,5,1922,1958,1958
+50038,Yoshida Shigeru,Foreign Minister,apologetic clerk,3,1913,1968,1968
+50039,Sato Naotake,Foreign Minister,the cloak n dagger schemer,7,1917,1972,1972
+50040,Ugaki Kazushige,Foreign Minister,biased intellectual,1,1931,1957,1957
+50041,Konoe Fumimaro,Foreign Minister,apologetic clerk,3,1926,1946,1946
+50042,Arita Hachiro,Foreign Minister,ideological crusader,2,1919,1966,1966
+50043,Abe Nobuyuki,Foreign Minister,iron fisted brute,4,1910,1954,1954
+50044,Nomura Kichisaburo,Foreign Minister,general staffer,6,1912,1965,1965
+50045,Matsuoka Yosuke,Foreign Minister,ideological crusader,2,1915,1947,1947
+50046,Toyoda Teijiro,Foreign Minister,iron fisted brute,4,1920,1962,1962
+50047,Hayashi Senjuro,Foreign Minister,general staffer,6,1911,1944,1944
+50048,Togo Shigenori,Foreign Minister,biased intellectual,1,1917,1951,1951
+50049,Tani Masayuki,Foreign Minister,apologetic clerk,3,1924,1963,1963
+50050,Shigemitsu Mamoru,Foreign Minister,great compromiser,5,1922,1958,1958
+50051,Shiga Yoshio,Foreign Minister,biased intellectual,1,1936,1990,1990
+50052,Yoshino Shinji,Minister of Armament,laissez-faire capitalist,10,1923,1972,1972
+50053,Mizutani Chosaburo,Minister of Armament,resource industrialist,9,1932,1961,1961
+50054,Hoshijima Niro,Minister of Armament,administrative genius,8,1922,1981,1981
+50055,Ogawa Gotaro,Minister of Armament,resource industrialist,9,1911,1946,1946
+50056,Godo Takuo,Minister of Armament,battle fleet proponent,13,1912,1957,1957
+50057,Yoshida Shigeru,Minister of Armament,Balanced budget economy,110,1913,1968,1968
+50058,Shidehara Kijuro,Minister of Armament,tank proponent,15,1907,1952,1952
+50059,Hatoyama Ichiro,Minister of Armament,administrative genius,8,1918,1960,1960
+50060,Hoshijima Niro,Minister of Armament,military entrepreneur,12,1922,1981,1981
+50061,Ogasawara Sankuro,Minister of Armament,laissez-faire capitalist,10,1920,1968,1968
+50062,Kawasaki Takukichi,Minister of Armament,air superiority proponent,54,1906,1937,1937
+50063,Ikeda Shigeaki,Minister of Armament,resource industrialist,9,1902,1951,1951
+50064,Hatta Yoshiaki,Minister of Armament,military entrepreneur,12,1914,1965,1965
+50065,Kobayashi Seiichi,Minister of Armament,laissez-faire capitalist,10,1999,1999,1999
+50066,Fujiwara Ginjiro,Minister of Armament,administrative genius,8,1904,1961,1961
+50067,Kishi Nobusuke,Minister of Armament,theoretical scientist,11,1931,1988,1988
+50068,Toyoda Teijiro,Minister of Armament,air to ground proponent,17,1920,1962,1962
+50069,Sakonji Seizo,Minister of Armament,submarine proponent,14,1914,1970,1970
+50070,Terauchi Hisaichi,Minister of Armament,tank proponent,15,1914,1947,1947
+50071,Yonai Mitsumasa,Minister of Armament,battle fleet proponent,13,1915,1949,1949
+50072,Shoda Kazue,Minister of Armament,military entrepreneur,12,1931,1949,1949
+50073,Kobayashi Ichizo,Minister of Armament,resource industrialist,9,1908,1958,1958
+50074,Tojo Hideki,Minister of Armament,infantry proponent,16,1919,1949,1949
+50075,Nakajima Chikuhei,Minister of Armament,air to sea proponent,18,1919,1950,1950
+50076,Kato Sotomatsu,Minister of Armament,tank proponent,15,1999,1999,1999
+50077,Tokuda Kyuichi,Minister of Armament,resource industrialist,9,1929,1954,1954
+50078,Yamamoto Tatsuo,Minister of Security,compassionate gentleman,21,1891,1948,1948
+50079,Goto Fumio,Minister of Security,silent lawyer,20,1919,1981,1981
+50080,Kimura Kozaemon,Minister of Security,man of the people,25,1923,1953,1953
+50081,Kawarada Kakichi,Minister of Security,man of the people,25,1921,1956,1956
+50082,Ohara Naoshi,Minister of Security,back stabber,24,1912,1968,1968
+50083,Omura Seiichi,Minister of Security,silent lawyer,20,1927,1969,1969
+50084,Horikiri Zenjiro,Minister of Security,crime fighter,22,1919,1980,1980
+50085,Yamazaki Iwao,Minister of Security,man of the people,25,1929,1969,1969
+50086,Ushio Shigenosuke,Minister of Security,crime fighter,22,1916,1956,1956
+50087,Suetsugu Nobumasa,Minister of Security,silent lawyer,20,1915,1945,1945
+50088,Baba Eiichi,Minister of Security,prince of terror,23,1914,1938,1938
+50089,Kido Koichi,Minister of Security,crime fighter,22,1924,1978,1978
+50090,Yasui Eiji,Minister of Security,crooked kleptocrat,56,1925,1983,1983
+50091,Kobayashi Seizo,Minister of Security,man of the people,25,1912,1963,1963
+50092,Tanabe Harumichi,Minister of Security,man of the people,25,1913,1951,1951
+50093,Yuzawa Michio,Minister of Security,silent lawyer,20,1923,1964,1964
+50094,Abe Genki,Minister of Security,silent lawyer,20,1929,1990,1990
+50095,Fujie Keisuke,Minister of Security,prince of terror,23,1920,1970,1970
+50096,Nakajima Kesago,Minister of Security,man of the people,25,1916,1946,1946
+50097,Tanaka Shizuichi,Minister of Security,back stabber,24,1922,1946,1946
+50098,Hirabayashi Morito,Minister of Security,silent lawyer,20,1922,1969,1969
+50099,Hiranuma Kiichiro,Minister of Security,prince of terror,23,1902,1953,1953
+50100,Teshima Fusataro,Minister of Security,crime fighter,22,1924,1980,1980
+50101,Kodama Hideo,Minister of Security,silent lawyer,20,1911,1948,1948
+50102,Nakamura Aketo,Minister of Security,crime fighter,22,1924,1967,1967
+50103,Tojo Hideki,Minister of Security,Secret police chief,113,1919,1949,1949
+50104,Kato Hakujiro,Minister of Security,man of the people,25,1922,1952,1952
+50105,Odachi Shigeo,Minister of Security,man of the people,25,1927,1956,1956
+50106,Iimura Jo,Minister of Security,crime fighter,22,1923,1977,1977
+50107,Nosaka Sanzo,Minister of Security,man of the people,25,1927,1994,1994
+50108,Nosaka Sanzo,Head of Military Intelligence,industrial specialist,31,1927,1994,1994
+50109,Katayama Tetsu,Head of Military Intelligence,naval intelligence specialist,32,1922,1979,1979
+50110,Ugaki Kazushige,Head of Military Intelligence,political specialist,29,1931,1957,1957
+50111,Machida Chuji,Head of Military Intelligence,technical specialist,27,1898,1947,1947
+50112,Ogawa Gotaro,Head of Military Intelligence,dismal enigma,30,1911,1946,1946
+50113,Horikiri Zenjiro,Head of Military Intelligence,logistics specialist,28,1919,1980,1980
+50114,Takasu Shiro,Head of Military Intelligence,industrial specialist,31,1919,1945,1945
+50115,Nomura Naokuni,Head of Military Intelligence,naval intelligence specialist,32,1920,1974,1974
+50116,Kano Jigoro,Head of Military Intelligence,dismal enigma,30,1895,1939,1939
+50117,Oka Takazumi,Head of Military Intelligence,logistics specialist,28,1925,1974,1974
+50118,Maeda Minoru,Head of Military Intelligence,technical specialist,27,1928,1991,1991
+50119,Suzuki Kantaro,Head of Military Intelligence,political specialist,29,1903,1949,1949
+50120,Honma Masaharu,Head of Military Intelligence,dismal enigma,30,1922,1947,1947
+50121,Higuchi Kiichiro,Head of Military Intelligence,logistics specialist,28,1923,1971,1971
+50122,Araki Sadao,Head of Military Intelligence,naval intelligence specialist,32,1912,1967,1967
+50123,Tsuchihashi Yuitsu,Head of Military Intelligence,technical specialist,27,1916,1973,1973
+50124,Koiso Kuniaki,Head of Military Intelligence,industrial specialist,31,1915,1951,1951
+50125,Miyamoto Kenji,Head of Military Intelligence,industrial specialist,31,1943,1999,1999
+50126,Nakazawa Tasuku,Chief of Staff,school of psychology,36,1929,1978,1978
+50127,Osamura Kajika,Chief of Staff,school of fire support,34,1999,1999,1999
+50128,Hayashida Hirotsugu,Chief of Staff,school of fire support,34,1999,1999,1999
+50129,Tashiro Kanichiro,Chief of Staff,commando doctrine staff,114,1916,1938,1938
+50130,Tanigawa Kazuo,Chief of Staff,school of mass combat,35,1934,1955,1955
+50131,Abe Nobuyuki,Chief of Staff,jx joint logistics,1203,1910,1954,1954
+50132,Mikawa Gunichi,Chief of Staff,school of psychology,36,1923,1982,1982
+50133,Sugiyama Hajime,Chief of Staff,school of defence,37,1915,1946,1946
+50134,Tojo Hideki,Chief of Staff,school of psychology,36,1919,1949,1949
+50135,Umezu Yoshijiro,Chief of Staff,school of fire support,34,1917,1950,1950
+50136,Kusaka Ryunosuke,Chief of Staff,school of defence,37,1927,1972,1972
+50137,Imai Takeo,Chief of Army,elastic defence doctrine,38,1933,1983,1983
+50138,Inanba Satoru,Chief of Army,guns and butter doctrine,42,1999,1999,1999
+50139,Tsuchihashi Yuitsu,Chief of Army,decisive battle doctrine,40,1916,1973,1973
+50140,Fujioka Takeo,Chief of Army,elastic defence doctrine,38,1926,1946,1946
+50141,Aotsu Kikutaro,Chief of Army,Doctrine of autonomy,116,1932,1948,1948
+50142,Sugiyama Hajime,Chief of Army,decisive battle doctrine,40,1915,1946,1946
+50143,Tojo Hideki,Chief of Army,elastic defence doctrine,38,1919,1949,1949
+50144,Umezu Yoshijiro,Chief of Army,guns and butter doctrine,42,1917,1950,1950
+50145,Kawai Akira,Chief of Navy,open seas doctrine,43,1999,1999,1999
+50146,Shimada Shigetaro,Chief of Navy,open seas doctrine,43,1918,1977,1977
+50147,Toyoda Soemu,Chief of Navy,decisive naval battle doctrine,44,1920,1958,1958
+50148,Fujita Hisanori,Chief of Navy,decisive naval battle doctrine,44,1915,1971,1971
+50149,Nagano Osami,Chief of Navy,power projection doctrine,45,1915,1948,1948
+50150,Oikawa Koshiro,Chief of Navy,base control doctrine,47,1918,1959,1959
+50151,Fukui Yoshio,Chief of Air Force,air superiority doctrine,48,1999,1999,1999
+50152,Inoue Shigeyoshi,Chief of Air Force,naval aviation doctrine,49,1924,1976,1976
+50153,Tsukahara Nishizo,Chief of Air Force,air superiority doctrine,48,1922,1967,1967
+50154,Oikawa Koshiro,Chief of Air Force,naval aviation doctrine,49,1918,1959,1959
+50155,Higashikuni Naruhiko,Chief of Air Force,carpet bombing doctrine,51,1922,1991,1991
+50156,Toyoda Teijiro,Chief of Air Force,vertical envelopment doctrine,52,1920,1962,1962
+50157,Wada Misao,Chief of Air Force,vertical envelopment doctrine,52,1924,1982,1982
+50158,Hata Shunroku,Chief of Air Force,army aviation doctrine,50,1914,1963,1963
+50159,Tojo Hideki,Chief of Air Force,army aviation doctrine,50,1919,1949,1949
+50160,Yamashita Tomoyuki,Chief of Air Force,carpet bombing doctrine,51,1920,1947,1947
+50161,Doihara Kenji,Chief of Air Force,naval aviation doctrine,49,1918,1949,1949
+50162,Anami Korechika,Chief of Air Force,vertical envelopment doctrine,52,1922,1946,1946
+50163,Ushiroku Jun,Chief of Air Force,army aviation doctrine,50,1919,1974,1974
+50164,Sugawara Michio,Chief of Air Force,jx pilot continuity,1202,1923,1984,1984
+50165,Kawabe Masakazu,Chief of Air Force,army aviation doctrine,50,1921,1966,1966
+50166,Tojo Hideki,Foreign Minister,general staffer,6,1919,1949,1949
+50167,Yamamoto Isoroku,Chief of Navy,power projection doctrine,45,1919,1951,1951
+50168,Koga Mineichi,Chief of Navy,decisive naval battle doctrine,44,1920,1945,1945
+50169,Ozawa Jisaburo,Chief of Navy,open seas doctrine,43,1921,1967,1967
+50170,Konoe Fumimaro,Head of Government,flamboyant tough guy,71,1999,1999,1999
+50171,Suzuki Kantaro,Foreign Minister,biased intellectual,1,1903,1949,1949
+50172,Hirohito,Head of State,benevolent gentleman,63,1901,1990,1990
+50173,Hirohito,Head of State,benevolent gentleman,63,1901,1990,1990
+50174,Ashida Hitoshi,Head of Government,smiling oilman,74,1931,1960,1960
+50175,Ishibashi Tanzan,Minister of Security,silent lawyer,20,1919,1974,1974
+50176,Ishibashi Tanzan,Head of Government,silent workhorse,69,1928,1974,1974
+50177,Kishi Nobusuke,Head of Government,backroom backstabber,73,1940,1988,1988
+50178,Ikeda Hayato,Head of Government,corporate suit,80,1943,1957,1957
+50179,Nishio Suehiro,Head of Government,flamboyant tough guy,71,1935,1982,1982
+50180,Kubota Kanichiro,Foreign Minister,iron fisted brute,4,1937,1978,1978
+50181,Kishi Nobusuke,Foreign Minister,ideological crusader,2,1931,1988,1988
+50182,Fujiyama Aiichiro,Foreign Minister,apologetic clerk,3,1932,1986,1986
+50183,Kosaka Zentaro,Foreign Minister,biased intellectual,1,1947,1999,1999
+50184,Ohira Masayoshi,Foreign Minister,the cloak n dagger schemer,7,1945,1981,1981
+50185,Ikeda Hayato,Minister of Armament,infantry proponent,16,1934,1966,1966
+50186,Mukai Tadaharu,Minister of Armament,strategic air proponent,19,1920,1983,1983
+50187,Ichimada Hisato,Minister of Armament,submarine proponent,14,1928,1985,1985
+50188,Sato Eisaku,Minister of Armament,administrative genius,8,1936,1976,1976
+50189,Mizuta Mikio,Minister of Armament,resource industrialist,9,1940,1977,1977
+50190,Tanaka Kakuei,Minister of Armament,corrupt kleptocrat,55,1953,1994,1994
+50191,Nishio Suehiro,Minister of Armament,military entrepreneur,12,1926,1982,1982
+50192,Usami Makoto,Minister of Armament,theoretical scientist,11,1936,1984,1984
+50193,Ohashi Takeo,Minister of Security,crooked kleptocrat,56,1939,1982,1982
+50194,Kimura Tokutaro,Minister of Security,efficient sociopath,26,1921,1983,1983
+50195,Inukai Takeru,Minister of Security,back stabber,24,1931,1961,1961
+50196,Nakamura Umekichi,Minister of Security,compassionate gentleman,21,1936,1985,1985
+50197,Ueki Koshiro,Minister of Security,silent lawyer,20,1935,1981,1981
+50198,Hanamura Shiro,Minister of Security,prince of terror,23,1926,1964,1964
+50199,Morinaga Teiichiro,Minister of Security,crime fighter,22,1945,1987,1987
+50200,Kato Ryogoro,Head of Military Intelligence,political specialist,29,1918,1971,1971
+50201,Ohara Naoshi,Head of Military Intelligence,technical specialist,27,1912,1968,1968
+50202,Hanamura Shiro,Head of Military Intelligence,dismal enigma,30,1926,1964,1964
+50203,Hino Kumazo,Chief of Air Force,army aviation doctrine,50,1913,1947,1947
+50204,Inoue Ikutaro,Chief of Air Force,air superiority doctrine,48,1907,1966,1966
+50205,Shirakawa Yoshinori,Chief of Air Force,vertical envelopment doctrine,52,1904,1933,1933
+50206,Tokugawa Yoshitoshi,Chief of Air Force,army aviation doctrine,50,1919,1964,1964
+50207,Inoue Niro,Chief of Air Force,air superiority doctrine,48,1899,1920,1920
+50208,Yamamoto Eisuke,Chief of Air Force,naval aviation doctrine,49,1911,1963,1963
+50209,Hasegawa Yoshimichi,Chief of Army,decisive battle doctrine,40,1885,1925,1925
+50210,Kawai Misao,Chief of Army,guns and butter doctrine,42,1899,1942,1942
+50211,Kigoshi Yasutsuna,Chief of Army,elastic defence doctrine,38,1889,1933,1933
+50212,Kusunose Yukihiko,Chief of Army,elastic defence doctrine,38,1893,1928,1928
+50213,Oka Ichinosuke,Chief of Army,static defence doctrine,39,1895,1917,1917
+50214,Oku Yasukata,Chief of Army,static defence doctrine,39,1882,1931,1931
+50215,Oshima Kenichi,Chief of Army,decisive battle doctrine,40,1893,1948,1948
+50216,Kanin Kotohito,Chief of Army,decisive battle doctrine,40,1900,1931,1931
+50217,Shirakawa Yoshinori,Chief of Army,static defence doctrine,39,1904,1933,1933
+50218,Takashima Tomonosuke,Chief of Army,decisive battle doctrine,40,1879,1917,1917
+50219,Tanaka Giichi,Chief of Army,guns and butter doctrine,42,1899,1930,1930
+50220,Terauchi Masatake,Chief of Army,static defence doctrine,39,1887,1920,1920
+50221,Uehara Yusaku,Chief of Army,guns and butter doctrine,42,1891,1934,1934
+50222,Ugaki Kazushige,Chief of Army,armoured spearhead doctrine,41,1903,1931,1931
+50223,Ijuin Goro,Chief of Navy,base control doctrine,47,1887,1922,1922
+50224,Kato Hiroharu,Chief of Navy,decisive naval battle doctrine,44,1905,1940,1940
+50225,Kato Tomosaburo,Chief of Navy,decisive naval battle doctrine,44,1896,1924,1924
+50226,Murakami Kakuichi,Chief of Navy,base control doctrine,47,1897,1928,1928
+50227,Okada Keisuke,Chief of Navy,indirect approach doctrine,46,1903,1953,1953
+50228,Fushimi Hiroyasu,Chief of Navy,base control doctrine,47,1910,1947,1947
+50229,Saito Makoto,Chief of Navy,decisive naval battle doctrine,44,1893,1937,1937
+50230,Takarabe Takeshi,Chief of Navy,indirect approach doctrine,46,1902,1950,1950
+50231,Togo Heihachiro,Chief of Navy,decisive naval battle doctrine,44,1883,1935,1935
+50232,Yamamoto Gonnohyoe,Chief of Navy,power projection doctrine,45,1887,1934,1934
+50233,Yashiro Rokuro,Chief of Navy,open seas doctrine,43,1895,1931,1931
+50234,Hasegawa Yoshimichi,Chief of Staff,school of fire support,34,1885,1925,1925
+50235,Kawai Misao,Chief of Staff,school of fire support,34,1899,1942,1942
+50236,Kigoshi Yasutsuna,Chief of Staff,school of defence,37,1889,1933,1933
+50237,Kusunose Yukihiko,Chief of Staff,school of psychology,36,1893,1928,1928
+50238,Oka Ichinosuke,Chief of Staff,school of fire support,34,1895,1917,1917
+50239,Oku Yasukata,Chief of Staff,school of defence,37,1882,1931,1931
+50240,Oshima Kenichi,Chief of Staff,school of mass combat,35,1893,1948,1948
+50241,Kanin Kotohito,Chief of Staff,school of mass combat,35,1900,1931,1931
+50242,Shirakawa Yoshinori,Chief of Staff,school of defence,37,1904,1933,1933
+50243,Takashima Tomonosuke,Chief of Staff,school of fire support,34,1879,1917,1917
+50244,Tanaka Giichi,Chief of Staff,school of psychology,36,1899,1930,1930
+50245,Terauchi Masatake,Chief of Staff,school of fire support,34,1887,1920,1920
+50246,Uehara Yusaku,Chief of Staff,school of fire support,34,1891,1934,1934
+50247,Ugaki Kazushige,Chief of Staff,school of fire support,34,1903,1931,1931
+50248,Arahata Kanson,Foreign Minister,general staffer,6,1922,1982,1982
+50249,Inukai Tsuyoshi,Foreign Minister,general staffer,6,1890,1933,1933
+50250,Ishii Kikujiro,Foreign Minister,great compromiser,5,1901,1946,1946
+50251,Kato Takaaki,Foreign Minister,apologetic clerk,3,1895,1927,1927
+50252,Kiyoura Keigo,Foreign Minister,biased intellectual,1,1885,1943,1943
+50253,Makino Nobuaki,Foreign Minister,biased intellectual,1,1896,1950,1950
+50254,Motono Ichiro,Foreign Minister,the cloak n dagger schemer,7,1897,1919,1919
+50255,Okuma Shigenobu,Foreign Minister,general staffer,6,1873,1923,1923
+50256,Saionji Kinmochi,Foreign Minister,great compromiser,5,1884,1941,1941
+50257,Shidehara Kijuro,Foreign Minister,great compromiser,5,1907,1952,1952
+50258,Terauchi Masatake,Foreign Minister,general staffer,6,1887,1920,1920
+50259,Uchida Kosai,Foreign Minister,general staffer,6,1900,1937,1937
+50260,Hamaguchi Osachi,Head of Government,flamboyant tough guy,71,1914,1932,1932
+50261,Hara Takashi,Head of Government,flamboyant tough guy,71,1900,1922,1922
+50262,Inukai Tsuyoshi,Head of Government,ambitious union boss,79,1899,1933,1933
+50263,Kato Takaaki,Head of Government,flamboyant tough guy,71,1904,1927,1927
+50264,Kato Tomosaburo,Head of Government,silent workhorse,69,1905,1924,1924
+50265,Kiyoura Keigo,Head of Government,ambitious union boss,79,1894,1943,1943
+50266,Okuma Shigenobu,Head of Government,flamboyant tough guy,71,1882,1923,1923
+50267,Saionji Kinmochi,Head of Government,happy amateur,72,1893,1941,1941
+50268,Sakai Toshihiko,Head of Government,ambitious union boss,79,1915,1934,1934
+50269,Takahashi Korekiyo,Head of Government,smiling oilman,74,1898,1937,1937
+50270,Terauchi Masatake,Head of Government,naive optimist,70,1896,1920,1920
+50271,Ugaki Kazushige,Head of Government,old general,75,1912,1931,1931
+50272,Yamagata Aritomo,Head of Government,old general,75,1882,1923,1923
+50273,Yamakawa Hitoshi,Head of Government,silent workhorse,69,1924,1959,1959
+50274,Yamamoto Gonnohyoe,Head of Government,old admiral,76,1896,1934,1934
+50275,Akashi Motojiro,Head of Military Intelligence,dismal enigma,30,1899,1920,1920
+50276,Akiyama Saneyuki,Head of Military Intelligence,naval intelligence specialist,32,1903,1919,1919
+50277,Fukushima Yasumasa,Head of Military Intelligence,logistics specialist,28,1887,1920,1920
+50278,Goto Shinpei,Head of Military Intelligence,industrial specialist,31,1892,1930,1930
+50279,Tanaka Giichi,Head of Military Intelligence,logistics specialist,28,1899,1930,1930
+50280,Ugaki Kazushige,Head of Military Intelligence,dismal enigma,30,1903,1931,1931
+50281,Yamagata Aritomo,Head of Military Intelligence,political specialist,29,1873,1923,1923
+50282,Yamamoto Gonnohyoe,Head of Military Intelligence,naval intelligence specialist,32,1887,1934,1934
+50283,Hirohito,Head of State,autocratic charmer,61,1901,1990,1990
+50284,Hirohito,Head of State,autocratic charmer,61,1901,1990,1990
+50285,Hirohito,Head of State,autocratic charmer,61,1901,1990,1990
+50286,Yoshihito,Head of State,insignificant layman,65,1879,1927,1927
+50287,Yoshihito,Head of State,insignificant layman,65,1879,1927,1927
+50288,Yoshihito,Head of State,insignificant layman,65,1879,1927,1927
+50289,Goto Shinpei,Minister of Armament,resource industrialist,9,1892,1930,1930
+50290,Hamaguchi Osachi,Minister of Armament,administrative genius,8,1905,1932,1932
+50291,Ichiki Otohiko,Minister of Armament,military entrepreneur,12,1907,1955,1955
+50292,Inoue Junnosuke,Minister of Armament,resource industrialist,9,1904,1933,1933
+50293,Kawakami Hajime,Minister of Armament,resource industrialist,9,1914,1947,1947
+50294,Ozaki Yukio,Minister of Armament,laissez-faire capitalist,10,1893,1955,1955
+50295,Saionji Kinmochi,Minister of Armament,laissez-faire capitalist,10,1884,1941,1941
+50296,Sakai Toshihiko,Minister of Armament,military entrepreneur,12,1906,1934,1934
+50297,Sakatani Yoshiro,Minister of Armament,infantry proponent,16,1898,1942,1942
+50298,Shoda Kazue,Minister of Armament,resource industrialist,9,1904,1931,1931
+50299,Shibusawa Eiichi,Minister of Armament,administrative genius,8,1875,1932,1932
+50300,Takahashi Korekiyo,Minister of Armament,administrative genius,8,1889,1937,1937
+50301,Taketomi Tokitoshi,Minister of Armament,laissez-faire capitalist,10,1891,1939,1939
+50302,Wakatsuki Reijiro,Minister of Armament,corrupt kleptocrat,55,1901,1950,1950
+50303,Yamakawa Hitoshi,Minister of Armament,infantry proponent,16,1915,1959,1959
+50304,Yamamoto Tatsuo,Minister of Armament,laissez-faire capitalist,10,1891,1948,1948
+50305,Goto Shinpei,Minister of Security,prince of terror,23,1892,1930,1930
+50306,Hara Takashi,Minister of Security,compassionate gentleman,21,1891,1922,1922
+50307,Hirata Tosuke,Minister of Security,crime fighter,22,1884,1926,1926
+50308,Ichiki Kitokuro,Minister of Security,silent lawyer,20,1902,1945,1945
+50309,Kiyoura Keigo,Minister of Security,compassionate gentleman,21,1885,1943,1943
+50310,Mizuno Rentaro,Minister of Security,crooked kleptocrat,56,1903,1950,1950
+50311,Osugi Sakae,Minister of Security,crime fighter,22,1920,1924,1924
+50312,Oura Kanetake,Minister of Security,silent lawyer,20,1885,1919,1919
+50313,Ozaki Yukio,Minister of Security,man of the people,25,1893,1955,1955
+50314,Tokonami Takejiro,Minister of Security,efficient sociopath,26,1902,1936,1936
+50315,Yamakawa Hitoshi,Minister of Security,compassionate gentleman,21,1915,1959,1959
+50316,Genda Minoru,Minister of Armament,military entrepreneur,12,1939,1990,1990
+50317,Genda Minoru,Chief of Navy,open seas doctrine,43,1939,1990,1990
+50318,Genda Minoru,Chief of Navy,open seas doctrine,43,1939,1990,1990
+50319,Okuma Shigenobu,Minister of Security,crime fighter,22,1873,1923,1923
+50320,Yamagata Aritomo,Chief of Staff,school of fire support,34,1873,1923,1923
+50321,Yamagata Aritomo,Chief of Navy,open seas doctrine,43,1873,1923,1923
+50322,Yamagata Aritomo,Chief of Air Force,army aviation doctrine,50,1873,1923,1923
+50323,Saito Makoto,Head of Government,old admiral,76,1902,1937,1937
+50324,Mutsuhito,Head of State,die-hard reformer,66,1852,1913,1913
+50325,Katsura Taro,Head of Government,silent workhorse,69,1892,1914,1914
+50326,Ohara Naoshi,Minister of Security,crime fighter,22,1912,1968,1968
+50327,Aoki Kazuo,Minister of Armament,resource industrialist,9,1924,1983,1983
+50328,Sakurauchi Yukio,Minister of Armament,laissez-faire capitalist,10,1923,1948,1948
+50329,Kawada Isao,Minister of Armament,administrative genius,8,1918,1964,1964
+50330,Ando Kisaburo,Minister of Security,crime fighter,22,1914,1955,1955
+50331,Ogura Masatsune,Minister of Armament,laissez-faire capitalist,10,1910,1962,1962
+50332,Baba Eiichi,Minister of Armament,resource industrialist,9,1914,1938,1938
+50333,Yuki Toyotaro,Minister of Armament,laissez-faire capitalist,10,1912,1952,1952
+50334,Ishiwata Sotaro,Minister of Armament,administrative genius,8,1926,1951,1951
+50335,Kaya Okinori,Minister of Armament,administrative genius,8,1924,1978,1978
+50336,Ikeda Shigeaki,Minister of Armament,laissez-faire capitalist,10,1902,1951,1951
+50337,Matsui Iwane,Head of Military Intelligence,industrial specialist,31,1925,1928,1954
+50338,Ninomiya Harushige,Head of Military Intelligence,logistics specialist,28,1928,1930,1935
+50339,Tatekawa Yoshitsugu,Head of Military Intelligence,industrial specialist,31,1929,1931,1937
+50340,Hashimoto Toranosuke,Head of Military Intelligence,technical specialist,27,1931,1932,1937
+50341,Isogai Rensuke,Head of Military Intelligence,logistics specialist,28,1933,1935,1940
+50342,Watari Hisao,Head of Military Intelligence,industrial specialist,31,1936,1937,1939
+50343,Wakamatsu Tadakazu,Head of Military Intelligence,logistics specialist,28,1940,1941,1946
+50344,Arisue Seizo,Head of Military Intelligence,technical specialist,27,1942,1945,1946
+50345,Kawabe Torashiro,Head of Military Intelligence,logistics specialist,28,1935,1936,1961
+50346,Muto Akira,Head of Military Intelligence,dismal enigma,30,1936,1937,1968
+50347,Shimada Shigetaro,Head of Military Intelligence,naval intelligence specialist,32,1932,1933,1933
+50348,Koga Mineichi,Head of Military Intelligence,naval intelligence specialist,32,1932,1933,1934
+50349,Tsuda Shizue,Head of Military Intelligence,naval intelligence specialist,32,1933,1934,1935
+50350,Abe Katsuo,Head of Military Intelligence,naval intelligence specialist,32,1938,1940,1947
+50351,Ogawa Kanji,Head of Military Intelligence,naval intelligence specialist,32,1942,1943,1943
+50352,Yano Hideo,Head of Military Intelligence,naval intelligence specialist,32,1942,1944,1945
+50353,Ono Takeji,Head of Military Intelligence,naval intelligence specialist,32,1944,1945,1946
+50354,Nakase Noboru,Head of Military Intelligence,naval intelligence specialist,32,1945,1946,1947
+50355,Suzuki Soroku,Chief of Staff,school of fire support,34,1926,1930,1941
+50356,Suzuki Soroku,Chief of Army,decisive battle doctrine,40,1926,1930,1941
+50357,Kanaya Hanzo,Chief of Staff,school of defence,37,1930,1931,1934
+50358,Kanaya Hanzo,Chief of Army,decisive battle doctrine,40,1930,1931,1934
+50359,Yamanashi Hanzo,Chief of Army,decisive battle doctrine,40,1921,1923,1935
+50360,Minami Jiro,Chief of Army,static defence doctrine,39,1931,1932,1932
+50361,Araki Sadao,Chief of Army,decisive battle doctrine,40,1931,1934,1937
+50362,Hayashi Senjuro,Chief of Army,static defence doctrine,39,1934,1935,1937
+50363,Kawashima Yoshiyuki,Chief of Army,decisive battle doctrine,40,1935,1937,1937
+50364,Terauchi Hisaichi,Chief of Army,armoured spearhead doctrine,41,1936,1937,1938
+50365,Nakamura Kotaro,Chief of Army,static defence doctrine,39,1937,1938,1944
+50366,Itagaki Seishiro,Chief of Army,decisive battle doctrine,40,1938,1940,1949
+50367,Hata Shunroku,Chief of Army,guns and butter doctrine,42,1939,1941,1946
+50368,Anami Korechika,Chief of Army,guns and butter doctrine,42,1945,1946,1946
+50369,Higashikuni Naruhiko,Chief of Army,armoured spearhead doctrine,41,1945,1951,1963
+50370,Shimomura Sadamu,Chief of Army,decisive battle doctrine,40,1945,1951,1963
+50371,Yasuda Takeo,Chief of Air Force,army aviation doctrine,50,1943,1944,1946
+50372,Yamagata Aritomo,Chief of Army,static defence doctrine,39,1873,1923,1923
+286120,Nomura Naokuni,Chief of Navy,jx escort priorities,1201,1944,1951,1974
+286121,Ikeda Shigeaki,Minister of Armament,jx materials first,1210,1937,1951,1951
+286122,Fujiwara Ginjiro (Civil Works),Minister of Armament,jx civil construction,1211,1937,1951,1961
+286123,Kishi Nobusuke,Minister of Armament,jx army workshops,1212,1937,1951,1988
+286124,Shigemitsu Mamoru,Foreign Minister,jx commercial diplomacy,1213,1937,1951,1958
+286125,Kobayashi Seizo,Minister of Security,jx civilian bargain,1214,1937,1951,1963
+286126,Maeda Minoru,Head of Military Intelligence,jx technical intelligence,1215,1937,1951,1991
+286127,Nagano Osami,Chief of Navy,jx heavy fleet,1216,1937,1948,1948
+286128,Ozawa Jisaburo,Chief of Navy,jx carrier concentration,1217,1937,1951,1967
+286129,Tsukahara Nishizo,Chief of Air Force,jx fighter priority,1218,1937,1951,1967
+286130,Umezu Yoshijiro,Chief of Army,jx army cohesion,1219,1937,1950,1950

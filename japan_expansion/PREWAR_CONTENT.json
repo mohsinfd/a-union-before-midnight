@@ -1,0 +1,294 @@
+{
+  "programmes": 6,
+  "decisions": 6,
+  "receivers": 12,
+  "rows": [
+    {
+      "programme": "prewar_rural_works",
+      "choice": 0,
+      "source_id": 28601739,
+      "finish_id": 28601740,
+      "year": 1933,
+      "month": "april",
+      "days": 270,
+      "costs": {
+        "money": 45,
+        "supplies": 400,
+        "metal": 300,
+        "manpower": 25
+      },
+      "buildings": [
+        [
+          1557,
+          "ic",
+          3
+        ]
+      ],
+      "eligibility": "ai = no NOT = { ispuppet = JAP }  owned = { province = 1557 data = JAP } control = { province = 1557 data = JAP } technology = 5800 NOT = { building = { province = 1557 type = ic value = 198 } } OR = { AND = { NOT = { building = { province = 1557 type = infrastructure value = 2 } } building = { province = 1557 type = infrastructure value = 0.31 } } AND = { building = { province = 1557 type = infrastructure value = 2 } building = { province = 1557 type = infrastructure value = 31 } } }",
+      "rewards": [
+        "type = construct which = ic where = 1557 value = 3"
+      ]
+    },
+    {
+      "programme": "prewar_rural_works",
+      "choice": 1,
+      "source_id": 28601739,
+      "finish_id": 28601741,
+      "year": 1933,
+      "month": "april",
+      "days": 270,
+      "costs": {
+        "money": 45,
+        "supplies": 400,
+        "metal": 300
+      },
+      "buildings": [],
+      "eligibility": "ai = no NOT = { ispuppet = JAP } ",
+      "rewards": [
+        "type = manpowerpool value = 40",
+        "type = dissent value = 1"
+      ]
+    },
+    {
+      "programme": "prewar_deck_commission",
+      "choice": 0,
+      "source_id": 28601742,
+      "finish_id": 28601743,
+      "year": 1934,
+      "month": "june",
+      "days": 240,
+      "costs": {
+        "money": 60,
+        "supplies": 450,
+        "oil": 250
+      },
+      "buildings": [],
+      "eligibility": "ai = no NOT = { ispuppet = JAP } owned = { province = 1554 data = JAP } control = { province = 1554 data = JAP }",
+      "rewards": [
+        "type = morale which = cag value = 8",
+        "type = max_organization which = cag value = 5",
+        "type = morale which = light_cag value = 8",
+        "type = max_organization which = light_cag value = 5"
+      ]
+    },
+    {
+      "programme": "prewar_deck_commission",
+      "choice": 1,
+      "source_id": 28601742,
+      "finish_id": 28601744,
+      "year": 1934,
+      "month": "june",
+      "days": 240,
+      "costs": {
+        "money": 60,
+        "supplies": 450,
+        "oil": 250
+      },
+      "buildings": [],
+      "eligibility": "ai = no NOT = { ispuppet = JAP } owned = { province = 1554 data = JAP } control = { province = 1554 data = JAP }",
+      "rewards": [
+        "type = naval_defense which = carrier value = -4",
+        "type = speed which = carrier value = -1",
+        "type = naval_defense which = light_carrier value = -4",
+        "type = speed which = light_carrier value = -1"
+      ]
+    },
+    {
+      "programme": "prewar_navigation_trials",
+      "choice": 0,
+      "source_id": 28601745,
+      "finish_id": 28601746,
+      "year": 1935,
+      "month": "february",
+      "days": 180,
+      "costs": {
+        "money": 75,
+        "supplies": 600,
+        "metal": 500,
+        "energy": 1000
+      },
+      "buildings": [],
+      "eligibility": "ai = no NOT = { ispuppet = JAP } owned = { province = 1552 data = JAP } control = { province = 1552 data = JAP }",
+      "rewards": [
+        "type = range which = naval_bomber value = 300",
+        "type = surface_detection which = naval_bomber value = 2"
+      ]
+    },
+    {
+      "programme": "prewar_navigation_trials",
+      "choice": 1,
+      "source_id": 28601745,
+      "finish_id": 28601747,
+      "year": 1935,
+      "month": "february",
+      "days": 180,
+      "costs": {
+        "money": 75,
+        "supplies": 600,
+        "metal": 500,
+        "energy": 1000
+      },
+      "buildings": [
+        [
+          1552,
+          "flak",
+          2
+        ],
+        [
+          1554,
+          "flak",
+          2
+        ]
+      ],
+      "eligibility": "ai = no NOT = { ispuppet = JAP }  owned = { province = 1552 data = JAP } control = { province = 1552 data = JAP } technology = 2800 NOT = { building = { province = 1552 type = flak value = 9 } } owned = { province = 1554 data = JAP } control = { province = 1554 data = JAP } NOT = { building = { province = 1554 type = flak value = 9 } }",
+      "rewards": [
+        "type = construct which = flak where = 1552 value = 2",
+        "type = construct which = flak where = 1554 value = 2"
+      ]
+    },
+    {
+      "programme": "prewar_landing_trials",
+      "choice": 0,
+      "source_id": 28601748,
+      "finish_id": 28601749,
+      "year": 1936,
+      "month": "may",
+      "days": 180,
+      "costs": {
+        "money": 80,
+        "supplies": 800,
+        "oil": 300
+      },
+      "buildings": [],
+      "eligibility": "ai = no NOT = { ispuppet = JAP } owned = { province = 1554 data = JAP } control = { province = 1554 data = JAP }",
+      "rewards": [
+        "type = max_amphib_mod value = 1 when = 1",
+        "type = max_organization which = marine value = 5"
+      ]
+    },
+    {
+      "programme": "prewar_landing_trials",
+      "choice": 1,
+      "source_id": 28601748,
+      "finish_id": 28601750,
+      "year": 1936,
+      "month": "may",
+      "days": 180,
+      "costs": {
+        "money": 80,
+        "supplies": 800,
+        "oil": 300
+      },
+      "buildings": [],
+      "eligibility": "ai = no NOT = { ispuppet = JAP } owned = { province = 1554 data = JAP } control = { province = 1554 data = JAP }",
+      "rewards": [
+        "type = shore_attack which = marine value = 12",
+        "type = river_attack which = marine value = 8"
+      ]
+    },
+    {
+      "programme": "prewar_medical_service",
+      "choice": 0,
+      "source_id": 28601751,
+      "finish_id": 28601752,
+      "year": 1938,
+      "month": "march",
+      "days": 180,
+      "costs": {
+        "money": 60,
+        "supplies": 700
+      },
+      "buildings": [],
+      "eligibility": "ai = no NOT = { ispuppet = JAP } owned = { province = 1552 data = JAP } control = { province = 1552 data = JAP }",
+      "rewards": [
+        "type = trickleback_mod value = 25"
+      ]
+    },
+    {
+      "programme": "prewar_medical_service",
+      "choice": 1,
+      "source_id": 28601751,
+      "finish_id": 28601753,
+      "year": 1938,
+      "month": "march",
+      "days": 180,
+      "costs": {
+        "money": 60,
+        "supplies": 700
+      },
+      "buildings": [],
+      "eligibility": "ai = no NOT = { ispuppet = JAP } owned = { province = 1552 data = JAP } control = { province = 1552 data = JAP }",
+      "rewards": [
+        "type = manpowerpool value = 50",
+        "type = dissent value = 1"
+      ]
+    },
+    {
+      "programme": "prewar_factory_dispersion",
+      "choice": 0,
+      "source_id": 28601754,
+      "finish_id": 28601755,
+      "year": 1940,
+      "month": "january",
+      "days": 270,
+      "costs": {
+        "money": 90,
+        "supplies": 900,
+        "metal": 1000
+      },
+      "buildings": [
+        [
+          1549,
+          "ic",
+          2
+        ],
+        [
+          1549,
+          "flak",
+          4
+        ]
+      ],
+      "eligibility": "ai = no NOT = { ispuppet = JAP }  owned = { province = 1549 data = JAP } control = { province = 1549 data = JAP } technology = 5800 NOT = { building = { province = 1549 type = ic value = 199 } } OR = { AND = { NOT = { building = { province = 1549 type = infrastructure value = 2 } } building = { province = 1549 type = infrastructure value = 0.31 } } AND = { building = { province = 1549 type = infrastructure value = 2 } building = { province = 1549 type = infrastructure value = 31 } } } technology = 2800 NOT = { building = { province = 1549 type = flak value = 7 } }",
+      "rewards": [
+        "type = construct which = ic where = 1549 value = 2",
+        "type = construct which = flak where = 1549 value = 4"
+      ]
+    },
+    {
+      "programme": "prewar_factory_dispersion",
+      "choice": 1,
+      "source_id": 28601754,
+      "finish_id": 28601756,
+      "year": 1940,
+      "month": "january",
+      "days": 270,
+      "costs": {
+        "money": 90,
+        "supplies": 900,
+        "metal": 1000
+      },
+      "buildings": [
+        [
+          1552,
+          "ic",
+          4
+        ]
+      ],
+      "eligibility": "ai = no NOT = { ispuppet = JAP }  owned = { province = 1552 data = JAP } control = { province = 1552 data = JAP } technology = 5800 NOT = { building = { province = 1552 type = ic value = 197 } } OR = { AND = { NOT = { building = { province = 1552 type = infrastructure value = 2 } } building = { province = 1552 type = infrastructure value = 0.31 } } AND = { building = { province = 1552 type = infrastructure value = 2 } building = { province = 1552 type = infrastructure value = 31 } } }",
+      "rewards": [
+        "type = construct which = ic where = 1552 value = 4"
+      ]
+    }
+  ],
+  "documented_command_types": [
+    "max_amphib_mod",
+    "max_organization",
+    "morale",
+    "naval_defense",
+    "shore_attack",
+    "speed",
+    "surface_detection",
+    "trickleback_mod"
+  ],
+  "preserved_ids": 1738
+}

@@ -1,0 +1,1451 @@
+{
+  "checks": [
+    "Catalogue parity pass is idempotent and allocates no event IDs.",
+    "All 29 models retain full native manpower/equipment; the four new classes provide reach, economical ASW or expeditionary terrain/endurance with explicit tradeoffs and IC-day checks.",
+    "Fixture installer appends d_13 through d_19, preserves retired d_10 through d_12, copies native attachment/conversion choices and adds full-factor normal conversion routes.",
+    "All terrain/weather columns match their native parent except the six intended expeditionary bonuses. Model names precede EOF; the 60-cell counter atlas preserves old pixels and adds distinct AA/P/AB/LR/NA/AS/EX markers.",
+    "Research-before/after activation gives identical modifiers exactly once; year-bound catch-up, reverse resolver order, sparse research, foreign countries and implicit model zero all behave correctly without reviving old models.",
+    "Every Japanese concrete-class programme award and penalty is mirrored; programme-before-unlock versus after-unlock gives identical cost/time/range/organisation without guessing old-save choices or replaying payments.",
+    "All applicable Japanese concrete minister effects, including penalties, are mirrored (45 entries); shared air/navy/land modifiers are not copied and the personnel pass is idempotent."
+  ],
+  "models": [
+    {
+      "unit": "d_13",
+      "year": 1942,
+      "model": 0,
+      "tech": 12000,
+      "base_model": 7,
+      "stats": {
+        "cost": "1.495",
+        "buildtime": "598",
+        "manpower": "1.5",
+        "softattack": null,
+        "hardattack": null,
+        "airattack": "9.0",
+        "seaattack": "5.6",
+        "navalattack": null,
+        "range": "8000",
+        "surfacedetectioncapability": "3",
+        "defaultorganisation": "20",
+        "morale": "30",
+        "supplyconsumption": "0.3"
+      },
+      "native": {
+        "cost": "1.3",
+        "buildtime": "570",
+        "manpower": "1.5",
+        "softattack": null,
+        "hardattack": null,
+        "airattack": "6",
+        "seaattack": "7",
+        "navalattack": null,
+        "range": "8000",
+        "surfacedetectioncapability": "3",
+        "defaultorganisation": "20",
+        "morale": "30",
+        "supplyconsumption": "0.3"
+      }
+    },
+    {
+      "unit": "d_13",
+      "year": 1945,
+      "model": 1,
+      "tech": 3080,
+      "base_model": 8,
+      "stats": {
+        "cost": "1.61",
+        "buildtime": "598",
+        "manpower": "1.6",
+        "softattack": null,
+        "hardattack": null,
+        "airattack": "10.5",
+        "seaattack": "6.4",
+        "navalattack": null,
+        "range": "9000",
+        "surfacedetectioncapability": "4",
+        "defaultorganisation": "20",
+        "morale": "30",
+        "supplyconsumption": "0.3"
+      },
+      "native": {
+        "cost": "1.4",
+        "buildtime": "570",
+        "manpower": "1.6",
+        "softattack": null,
+        "hardattack": null,
+        "airattack": "7",
+        "seaattack": "8",
+        "navalattack": null,
+        "range": "9000",
+        "surfacedetectioncapability": "4",
+        "defaultorganisation": "20",
+        "morale": "30",
+        "supplyconsumption": "0.3"
+      }
+    },
+    {
+      "unit": "d_13",
+      "year": 1955,
+      "model": 2,
+      "tech": 3090,
+      "base_model": 9,
+      "stats": {
+        "cost": "1.84",
+        "buildtime": "598",
+        "manpower": "1.65",
+        "softattack": null,
+        "hardattack": null,
+        "airattack": "13.5",
+        "seaattack": "6.4",
+        "navalattack": null,
+        "range": "10000",
+        "surfacedetectioncapability": "4",
+        "defaultorganisation": "20",
+        "morale": "30",
+        "supplyconsumption": "0.3"
+      },
+      "native": {
+        "cost": "1.6",
+        "buildtime": "570",
+        "manpower": "1.65",
+        "softattack": null,
+        "hardattack": null,
+        "airattack": "9",
+        "seaattack": "8",
+        "navalattack": null,
+        "range": "10000",
+        "surfacedetectioncapability": "4",
+        "defaultorganisation": "20",
+        "morale": "30",
+        "supplyconsumption": "0.3"
+      }
+    },
+    {
+      "unit": "d_14",
+      "year": 1938,
+      "model": 0,
+      "tech": 4190,
+      "base_model": 2,
+      "stats": {
+        "cost": "17.25",
+        "buildtime": "264",
+        "manpower": "2.2",
+        "softattack": "0.75",
+        "hardattack": "0.75",
+        "airattack": "2",
+        "seaattack": null,
+        "navalattack": "3.0",
+        "range": "2125",
+        "surfacedetectioncapability": "3.0",
+        "defaultorganisation": "30",
+        "morale": "25",
+        "supplyconsumption": "1.0"
+      },
+      "native": {
+        "cost": "15",
+        "buildtime": "240",
+        "manpower": "2.2",
+        "softattack": "1",
+        "hardattack": "1",
+        "airattack": "2",
+        "seaattack": null,
+        "navalattack": "4",
+        "range": "1250",
+        "surfacedetectioncapability": "1",
+        "defaultorganisation": "30",
+        "morale": "25",
+        "supplyconsumption": "1.0"
+      }
+    },
+    {
+      "unit": "d_14",
+      "year": 1942,
+      "model": 1,
+      "tech": 4200,
+      "base_model": 3,
+      "stats": {
+        "cost": "18.4",
+        "buildtime": "264",
+        "manpower": "2.2",
+        "softattack": "0.75",
+        "hardattack": "1.5",
+        "airattack": "3",
+        "seaattack": null,
+        "navalattack": "4.5",
+        "range": "2550",
+        "surfacedetectioncapability": "4.0",
+        "defaultorganisation": "30",
+        "morale": "25",
+        "supplyconsumption": "1.2"
+      },
+      "native": {
+        "cost": "16",
+        "buildtime": "240",
+        "manpower": "2.2",
+        "softattack": "1",
+        "hardattack": "2",
+        "airattack": "3",
+        "seaattack": null,
+        "navalattack": "6",
+        "range": "1500",
+        "surfacedetectioncapability": "2",
+        "defaultorganisation": "30",
+        "morale": "25",
+        "supplyconsumption": "1.2"
+      }
+    },
+    {
+      "unit": "d_14",
+      "year": 1943,
+      "model": 2,
+      "tech": 4210,
+      "base_model": 4,
+      "stats": {
+        "cost": "20.7",
+        "buildtime": "264",
+        "manpower": "2.2",
+        "softattack": "1.5",
+        "hardattack": "2.25",
+        "airattack": "3",
+        "seaattack": null,
+        "navalattack": "5.25",
+        "range": "3400",
+        "surfacedetectioncapability": "4.0",
+        "defaultorganisation": "30",
+        "morale": "25",
+        "supplyconsumption": "1.4"
+      },
+      "native": {
+        "cost": "18",
+        "buildtime": "240",
+        "manpower": "2.2",
+        "softattack": "2",
+        "hardattack": "3",
+        "airattack": "3",
+        "seaattack": null,
+        "navalattack": "7",
+        "range": "2000",
+        "surfacedetectioncapability": "2",
+        "defaultorganisation": "30",
+        "morale": "25",
+        "supplyconsumption": "1.4"
+      }
+    },
+    {
+      "unit": "d_14",
+      "year": 1945,
+      "model": 3,
+      "tech": 15140,
+      "base_model": 5,
+      "stats": {
+        "cost": "24.15",
+        "buildtime": "264",
+        "manpower": "2.2",
+        "softattack": "2.25",
+        "hardattack": "2.25",
+        "airattack": "3",
+        "seaattack": null,
+        "navalattack": "4.5",
+        "range": "3400",
+        "surfacedetectioncapability": "4.0",
+        "defaultorganisation": "30",
+        "morale": "25",
+        "supplyconsumption": "2.0"
+      },
+      "native": {
+        "cost": "21",
+        "buildtime": "240",
+        "manpower": "2.2",
+        "softattack": "3",
+        "hardattack": "3",
+        "airattack": "3",
+        "seaattack": null,
+        "navalattack": "6",
+        "range": "1500",
+        "surfacedetectioncapability": "2",
+        "defaultorganisation": "30",
+        "morale": "25",
+        "supplyconsumption": "2.0"
+      }
+    },
+    {
+      "unit": "d_14",
+      "year": 1949,
+      "model": 4,
+      "tech": 15150,
+      "base_model": 6,
+      "stats": {
+        "cost": "25.3",
+        "buildtime": "264",
+        "manpower": "2.2",
+        "softattack": "3.0",
+        "hardattack": "3.0",
+        "airattack": "3",
+        "seaattack": null,
+        "navalattack": "6.0",
+        "range": "3400",
+        "surfacedetectioncapability": "4.0",
+        "defaultorganisation": "30",
+        "morale": "25",
+        "supplyconsumption": "2.0"
+      },
+      "native": {
+        "cost": "22",
+        "buildtime": "240",
+        "manpower": "2.2",
+        "softattack": "4",
+        "hardattack": "4",
+        "airattack": "3",
+        "seaattack": null,
+        "navalattack": "8",
+        "range": "2000",
+        "surfacedetectioncapability": "2",
+        "defaultorganisation": "30",
+        "morale": "25",
+        "supplyconsumption": "2.0"
+      }
+    },
+    {
+      "unit": "d_15",
+      "year": 1942,
+      "model": 0,
+      "tech": 1680,
+      "base_model": 1,
+      "stats": {
+        "cost": "11.5",
+        "buildtime": "451",
+        "manpower": "9",
+        "softattack": "12",
+        "hardattack": "1",
+        "airattack": "1",
+        "seaattack": null,
+        "navalattack": null,
+        "range": null,
+        "surfacedetectioncapability": null,
+        "defaultorganisation": "43.0",
+        "morale": "48.0",
+        "supplyconsumption": "0.81"
+      },
+      "native": {
+        "cost": "10",
+        "buildtime": "410",
+        "manpower": "9",
+        "softattack": "12",
+        "hardattack": "1",
+        "airattack": "1",
+        "seaattack": null,
+        "navalattack": null,
+        "range": null,
+        "surfacedetectioncapability": null,
+        "defaultorganisation": "35",
+        "morale": "40",
+        "supplyconsumption": "0.9"
+      }
+    },
+    {
+      "unit": "d_15",
+      "year": 1944,
+      "model": 1,
+      "tech": 1690,
+      "base_model": 2,
+      "stats": {
+        "cost": "11.5",
+        "buildtime": "451",
+        "manpower": "9",
+        "softattack": "13",
+        "hardattack": "4",
+        "airattack": "2",
+        "seaattack": null,
+        "navalattack": null,
+        "range": null,
+        "surfacedetectioncapability": null,
+        "defaultorganisation": "43.0",
+        "morale": "48.0",
+        "supplyconsumption": "0.81"
+      },
+      "native": {
+        "cost": "10",
+        "buildtime": "410",
+        "manpower": "9",
+        "softattack": "13",
+        "hardattack": "4",
+        "airattack": "2",
+        "seaattack": null,
+        "navalattack": null,
+        "range": null,
+        "surfacedetectioncapability": null,
+        "defaultorganisation": "35",
+        "morale": "40",
+        "supplyconsumption": "0.9"
+      }
+    },
+    {
+      "unit": "d_15",
+      "year": 1947,
+      "model": 2,
+      "tech": 1700,
+      "base_model": 3,
+      "stats": {
+        "cost": "11.5",
+        "buildtime": "451",
+        "manpower": "9",
+        "softattack": "14",
+        "hardattack": "4",
+        "airattack": "2",
+        "seaattack": null,
+        "navalattack": null,
+        "range": null,
+        "surfacedetectioncapability": null,
+        "defaultorganisation": "43.0",
+        "morale": "48.0",
+        "supplyconsumption": "0.9"
+      },
+      "native": {
+        "cost": "10",
+        "buildtime": "410",
+        "manpower": "9",
+        "softattack": "14",
+        "hardattack": "4",
+        "airattack": "2",
+        "seaattack": null,
+        "navalattack": null,
+        "range": null,
+        "surfacedetectioncapability": null,
+        "defaultorganisation": "35",
+        "morale": "40",
+        "supplyconsumption": "1"
+      }
+    },
+    {
+      "unit": "d_15",
+      "year": 1950,
+      "model": 3,
+      "tech": 1710,
+      "base_model": 4,
+      "stats": {
+        "cost": "11.5",
+        "buildtime": "451",
+        "manpower": "9",
+        "softattack": "14",
+        "hardattack": "5",
+        "airattack": "3",
+        "seaattack": null,
+        "navalattack": null,
+        "range": null,
+        "surfacedetectioncapability": null,
+        "defaultorganisation": "43.0",
+        "morale": "48.0",
+        "supplyconsumption": "0.9"
+      },
+      "native": {
+        "cost": "10",
+        "buildtime": "410",
+        "manpower": "9",
+        "softattack": "14",
+        "hardattack": "5",
+        "airattack": "3",
+        "seaattack": null,
+        "navalattack": null,
+        "range": null,
+        "surfacedetectioncapability": null,
+        "defaultorganisation": "35",
+        "morale": "40",
+        "supplyconsumption": "1"
+      }
+    },
+    {
+      "unit": "d_16",
+      "year": 1940,
+      "model": 0,
+      "tech": 4070,
+      "base_model": 6,
+      "stats": {
+        "cost": "21.0",
+        "buildtime": "200",
+        "manpower": "1",
+        "softattack": "4",
+        "hardattack": "1",
+        "airattack": "6",
+        "seaattack": null,
+        "navalattack": "1",
+        "range": "1100",
+        "surfacedetectioncapability": "6",
+        "defaultorganisation": "30",
+        "morale": "30",
+        "supplyconsumption": "1.2"
+      },
+      "native": {
+        "cost": "20",
+        "buildtime": "210",
+        "manpower": "1",
+        "softattack": "4",
+        "hardattack": "1",
+        "airattack": "6",
+        "seaattack": null,
+        "navalattack": "1",
+        "range": "550",
+        "surfacedetectioncapability": "6",
+        "defaultorganisation": "30",
+        "morale": "30",
+        "supplyconsumption": "1.2"
+      }
+    },
+    {
+      "unit": "d_16",
+      "year": 1943,
+      "model": 1,
+      "tech": 4100,
+      "base_model": 7,
+      "stats": {
+        "cost": "22.05",
+        "buildtime": "200",
+        "manpower": "1",
+        "softattack": "5",
+        "hardattack": "3",
+        "airattack": "7",
+        "seaattack": null,
+        "navalattack": "2",
+        "range": "1500",
+        "surfacedetectioncapability": "7",
+        "defaultorganisation": "30",
+        "morale": "30",
+        "supplyconsumption": "1.3"
+      },
+      "native": {
+        "cost": "21",
+        "buildtime": "210",
+        "manpower": "1",
+        "softattack": "5",
+        "hardattack": "3",
+        "airattack": "7",
+        "seaattack": null,
+        "navalattack": "2",
+        "range": "750",
+        "surfacedetectioncapability": "7",
+        "defaultorganisation": "30",
+        "morale": "30",
+        "supplyconsumption": "1.3"
+      }
+    },
+    {
+      "unit": "d_16",
+      "year": 1945,
+      "model": 2,
+      "tech": 4350,
+      "base_model": 8,
+      "stats": {
+        "cost": "23.1",
+        "buildtime": "200",
+        "manpower": "1",
+        "softattack": "5",
+        "hardattack": "3",
+        "airattack": "8",
+        "seaattack": null,
+        "navalattack": "2",
+        "range": "1500",
+        "surfacedetectioncapability": "8",
+        "defaultorganisation": "30",
+        "morale": "30",
+        "supplyconsumption": "1.3"
+      },
+      "native": {
+        "cost": "22",
+        "buildtime": "210",
+        "manpower": "1",
+        "softattack": "5",
+        "hardattack": "3",
+        "airattack": "8",
+        "seaattack": null,
+        "navalattack": "2",
+        "range": "650",
+        "surfacedetectioncapability": "8",
+        "defaultorganisation": "30",
+        "morale": "30",
+        "supplyconsumption": "1.3"
+      }
+    },
+    {
+      "unit": "d_16",
+      "year": 1948,
+      "model": 3,
+      "tech": 15030,
+      "base_model": 9,
+      "stats": {
+        "cost": "25.2",
+        "buildtime": "200",
+        "manpower": "1",
+        "softattack": "5",
+        "hardattack": "2",
+        "airattack": "8",
+        "seaattack": null,
+        "navalattack": "2",
+        "range": "1500",
+        "surfacedetectioncapability": "7",
+        "defaultorganisation": "30",
+        "morale": "30",
+        "supplyconsumption": "1.6"
+      },
+      "native": {
+        "cost": "24",
+        "buildtime": "210",
+        "manpower": "1",
+        "softattack": "5",
+        "hardattack": "2",
+        "airattack": "8",
+        "seaattack": null,
+        "navalattack": "2",
+        "range": "700",
+        "surfacedetectioncapability": "7",
+        "defaultorganisation": "30",
+        "morale": "30",
+        "supplyconsumption": "1.6"
+      }
+    },
+    {
+      "unit": "d_17",
+      "year": 1938,
+      "model": 0,
+      "tech": 4190,
+      "base_model": 2,
+      "stats": {
+        "cost": "14.25",
+        "buildtime": "228",
+        "manpower": "2.2",
+        "softattack": "0.5",
+        "hardattack": "0.5",
+        "airattack": "2",
+        "seaattack": null,
+        "navalattack": "4",
+        "range": "1875",
+        "surfacedetectioncapability": "1",
+        "defaultorganisation": "30",
+        "morale": "25",
+        "supplyconsumption": "1.0"
+      },
+      "native": {
+        "cost": "15",
+        "buildtime": "240",
+        "manpower": "2.2",
+        "softattack": "1",
+        "hardattack": "1",
+        "airattack": "2",
+        "seaattack": null,
+        "navalattack": "4",
+        "range": "1250",
+        "surfacedetectioncapability": "1",
+        "defaultorganisation": "30",
+        "morale": "25",
+        "supplyconsumption": "1.0"
+      }
+    },
+    {
+      "unit": "d_17",
+      "year": 1941,
+      "model": 1,
+      "tech": 4200,
+      "base_model": 3,
+      "stats": {
+        "cost": "15.2",
+        "buildtime": "228",
+        "manpower": "2.2",
+        "softattack": "0.5",
+        "hardattack": "1.0",
+        "airattack": "3",
+        "seaattack": null,
+        "navalattack": "6",
+        "range": "2250",
+        "surfacedetectioncapability": "2",
+        "defaultorganisation": "30",
+        "morale": "25",
+        "supplyconsumption": "1.2"
+      },
+      "native": {
+        "cost": "16",
+        "buildtime": "240",
+        "manpower": "2.2",
+        "softattack": "1",
+        "hardattack": "2",
+        "airattack": "3",
+        "seaattack": null,
+        "navalattack": "6",
+        "range": "1500",
+        "surfacedetectioncapability": "2",
+        "defaultorganisation": "30",
+        "morale": "25",
+        "supplyconsumption": "1.2"
+      }
+    },
+    {
+      "unit": "d_17",
+      "year": 1943,
+      "model": 2,
+      "tech": 4210,
+      "base_model": 4,
+      "stats": {
+        "cost": "17.1",
+        "buildtime": "228",
+        "manpower": "2.2",
+        "softattack": "1.0",
+        "hardattack": "1.5",
+        "airattack": "3",
+        "seaattack": null,
+        "navalattack": "7",
+        "range": "3000",
+        "surfacedetectioncapability": "2",
+        "defaultorganisation": "30",
+        "morale": "25",
+        "supplyconsumption": "1.4"
+      },
+      "native": {
+        "cost": "18",
+        "buildtime": "240",
+        "manpower": "2.2",
+        "softattack": "2",
+        "hardattack": "3",
+        "airattack": "3",
+        "seaattack": null,
+        "navalattack": "7",
+        "range": "2000",
+        "surfacedetectioncapability": "2",
+        "defaultorganisation": "30",
+        "morale": "25",
+        "supplyconsumption": "1.4"
+      }
+    },
+    {
+      "unit": "d_17",
+      "year": 1945,
+      "model": 3,
+      "tech": 15140,
+      "base_model": 5,
+      "stats": {
+        "cost": "19.95",
+        "buildtime": "228",
+        "manpower": "2.2",
+        "softattack": "1.5",
+        "hardattack": "1.5",
+        "airattack": "3",
+        "seaattack": null,
+        "navalattack": "6",
+        "range": "3000",
+        "surfacedetectioncapability": "2",
+        "defaultorganisation": "30",
+        "morale": "25",
+        "supplyconsumption": "2.0"
+      },
+      "native": {
+        "cost": "21",
+        "buildtime": "240",
+        "manpower": "2.2",
+        "softattack": "3",
+        "hardattack": "3",
+        "airattack": "3",
+        "seaattack": null,
+        "navalattack": "6",
+        "range": "1500",
+        "surfacedetectioncapability": "2",
+        "defaultorganisation": "30",
+        "morale": "25",
+        "supplyconsumption": "2.0"
+      }
+    },
+    {
+      "unit": "d_17",
+      "year": 1949,
+      "model": 4,
+      "tech": 15150,
+      "base_model": 6,
+      "stats": {
+        "cost": "20.9",
+        "buildtime": "228",
+        "manpower": "2.2",
+        "softattack": "2.0",
+        "hardattack": "2.0",
+        "airattack": "3",
+        "seaattack": null,
+        "navalattack": "8",
+        "range": "3000",
+        "surfacedetectioncapability": "2",
+        "defaultorganisation": "30",
+        "morale": "25",
+        "supplyconsumption": "2.0"
+      },
+      "native": {
+        "cost": "22",
+        "buildtime": "240",
+        "manpower": "2.2",
+        "softattack": "4",
+        "hardattack": "4",
+        "airattack": "3",
+        "seaattack": null,
+        "navalattack": "8",
+        "range": "2000",
+        "surfacedetectioncapability": "2",
+        "defaultorganisation": "30",
+        "morale": "25",
+        "supplyconsumption": "2.0"
+      }
+    },
+    {
+      "unit": "d_18",
+      "year": 1944,
+      "model": 0,
+      "tech": 12000,
+      "base_model": 7,
+      "stats": {
+        "cost": "0.975",
+        "buildtime": "370",
+        "manpower": "1.5",
+        "softattack": null,
+        "hardattack": null,
+        "airattack": "4.8",
+        "seaattack": "3.85",
+        "navalattack": null,
+        "range": "5200",
+        "surfacedetectioncapability": "3",
+        "defaultorganisation": "20",
+        "morale": "30",
+        "supplyconsumption": "0.3"
+      },
+      "native": {
+        "cost": "1.3",
+        "buildtime": "570",
+        "manpower": "1.5",
+        "softattack": null,
+        "hardattack": null,
+        "airattack": "6",
+        "seaattack": "7",
+        "navalattack": null,
+        "range": "8000",
+        "surfacedetectioncapability": "3",
+        "defaultorganisation": "20",
+        "morale": "30",
+        "supplyconsumption": "0.3"
+      }
+    },
+    {
+      "unit": "d_18",
+      "year": 1945,
+      "model": 1,
+      "tech": 3080,
+      "base_model": 8,
+      "stats": {
+        "cost": "1.05",
+        "buildtime": "370",
+        "manpower": "1.6",
+        "softattack": null,
+        "hardattack": null,
+        "airattack": "5.6",
+        "seaattack": "4.4",
+        "navalattack": null,
+        "range": "5850",
+        "surfacedetectioncapability": "4",
+        "defaultorganisation": "20",
+        "morale": "30",
+        "supplyconsumption": "0.3"
+      },
+      "native": {
+        "cost": "1.4",
+        "buildtime": "570",
+        "manpower": "1.6",
+        "softattack": null,
+        "hardattack": null,
+        "airattack": "7",
+        "seaattack": "8",
+        "navalattack": null,
+        "range": "9000",
+        "surfacedetectioncapability": "4",
+        "defaultorganisation": "20",
+        "morale": "30",
+        "supplyconsumption": "0.3"
+      }
+    },
+    {
+      "unit": "d_18",
+      "year": 1955,
+      "model": 2,
+      "tech": 3090,
+      "base_model": 9,
+      "stats": {
+        "cost": "1.2",
+        "buildtime": "370",
+        "manpower": "1.65",
+        "softattack": null,
+        "hardattack": null,
+        "airattack": "7.2",
+        "seaattack": "4.4",
+        "navalattack": null,
+        "range": "6500",
+        "surfacedetectioncapability": "4",
+        "defaultorganisation": "20",
+        "morale": "30",
+        "supplyconsumption": "0.3"
+      },
+      "native": {
+        "cost": "1.6",
+        "buildtime": "570",
+        "manpower": "1.65",
+        "softattack": null,
+        "hardattack": null,
+        "airattack": "9",
+        "seaattack": "8",
+        "navalattack": null,
+        "range": "10000",
+        "surfacedetectioncapability": "4",
+        "defaultorganisation": "20",
+        "morale": "30",
+        "supplyconsumption": "0.3"
+      }
+    },
+    {
+      "unit": "d_19",
+      "year": 1937,
+      "model": 0,
+      "tech": 1100,
+      "base_model": 9,
+      "stats": {
+        "cost": "5.25",
+        "buildtime": "276",
+        "manpower": "13",
+        "softattack": "10",
+        "hardattack": "1.0",
+        "airattack": "1",
+        "seaattack": null,
+        "navalattack": null,
+        "range": null,
+        "surfacedetectioncapability": null,
+        "defaultorganisation": "30",
+        "morale": "30",
+        "supplyconsumption": "0.8"
+      },
+      "native": {
+        "cost": "5",
+        "buildtime": "290",
+        "manpower": "13",
+        "softattack": "10",
+        "hardattack": "2",
+        "airattack": "1",
+        "seaattack": null,
+        "navalattack": null,
+        "range": null,
+        "surfacedetectioncapability": null,
+        "defaultorganisation": "30",
+        "morale": "30",
+        "supplyconsumption": "1"
+      }
+    },
+    {
+      "unit": "d_19",
+      "year": 1939,
+      "model": 1,
+      "tech": 1110,
+      "base_model": 10,
+      "stats": {
+        "cost": "5.25",
+        "buildtime": "276",
+        "manpower": "13",
+        "softattack": "11",
+        "hardattack": "1.0",
+        "airattack": "1",
+        "seaattack": null,
+        "navalattack": null,
+        "range": null,
+        "surfacedetectioncapability": null,
+        "defaultorganisation": "30",
+        "morale": "30",
+        "supplyconsumption": "0.88"
+      },
+      "native": {
+        "cost": "5",
+        "buildtime": "290",
+        "manpower": "13",
+        "softattack": "11",
+        "hardattack": "2",
+        "airattack": "1",
+        "seaattack": null,
+        "navalattack": null,
+        "range": null,
+        "surfacedetectioncapability": null,
+        "defaultorganisation": "30",
+        "morale": "30",
+        "supplyconsumption": "1.1"
+      }
+    },
+    {
+      "unit": "d_19",
+      "year": 1942,
+      "model": 2,
+      "tech": 1120,
+      "base_model": 11,
+      "stats": {
+        "cost": "5.25",
+        "buildtime": "276",
+        "manpower": "13",
+        "softattack": "13",
+        "hardattack": "3.0",
+        "airattack": "2",
+        "seaattack": null,
+        "navalattack": null,
+        "range": null,
+        "surfacedetectioncapability": null,
+        "defaultorganisation": "30",
+        "morale": "30",
+        "supplyconsumption": "0.88"
+      },
+      "native": {
+        "cost": "5",
+        "buildtime": "290",
+        "manpower": "13",
+        "softattack": "13",
+        "hardattack": "4",
+        "airattack": "2",
+        "seaattack": null,
+        "navalattack": null,
+        "range": null,
+        "surfacedetectioncapability": null,
+        "defaultorganisation": "30",
+        "morale": "30",
+        "supplyconsumption": "1.1"
+      }
+    },
+    {
+      "unit": "d_19",
+      "year": 1945,
+      "model": 3,
+      "tech": 1130,
+      "base_model": 12,
+      "stats": {
+        "cost": "5.25",
+        "buildtime": "276",
+        "manpower": "13",
+        "softattack": "13",
+        "hardattack": "4.0",
+        "airattack": "3",
+        "seaattack": null,
+        "navalattack": null,
+        "range": null,
+        "surfacedetectioncapability": null,
+        "defaultorganisation": "30",
+        "morale": "30",
+        "supplyconsumption": "0.88"
+      },
+      "native": {
+        "cost": "5",
+        "buildtime": "290",
+        "manpower": "13",
+        "softattack": "13",
+        "hardattack": "5",
+        "airattack": "3",
+        "seaattack": null,
+        "navalattack": null,
+        "range": null,
+        "surfacedetectioncapability": null,
+        "defaultorganisation": "30",
+        "morale": "30",
+        "supplyconsumption": "1.1"
+      }
+    },
+    {
+      "unit": "d_19",
+      "year": 1948,
+      "model": 4,
+      "tech": 1140,
+      "base_model": 13,
+      "stats": {
+        "cost": "5.25",
+        "buildtime": "276",
+        "manpower": "13",
+        "softattack": "14",
+        "hardattack": "4.0",
+        "airattack": "3",
+        "seaattack": null,
+        "navalattack": null,
+        "range": null,
+        "surfacedetectioncapability": null,
+        "defaultorganisation": "30",
+        "morale": "30",
+        "supplyconsumption": "0.88"
+      },
+      "native": {
+        "cost": "5",
+        "buildtime": "290",
+        "manpower": "13",
+        "softattack": "14",
+        "hardattack": "5",
+        "airattack": "3",
+        "seaattack": null,
+        "navalattack": null,
+        "range": null,
+        "surfacedetectioncapability": null,
+        "defaultorganisation": "30",
+        "morale": "30",
+        "supplyconsumption": "1.1"
+      }
+    }
+  ],
+  "classes": {
+    "d_13": {
+      "index": 53,
+      "base": "destroyer",
+      "name": "Akizuki Anti-Air Escort Flotilla",
+      "short": "Akizuki AA",
+      "art": "unique_akizuki",
+      "artkey": "unique_akizuki",
+      "year": 1942,
+      "tech": 12000,
+      "years": [
+        1942,
+        1945,
+        1955
+      ],
+      "techpairs": [
+        [
+          12000,
+          0
+        ],
+        [
+          3080,
+          1
+        ],
+        [
+          3090,
+          2
+        ]
+      ],
+      "base_models": [
+        7,
+        8,
+        9
+      ],
+      "model_names": [
+        "Akizuki AA Escort 1942",
+        "Improved AA Escort 1945",
+        "Postwar AA Escort 1955"
+      ]
+    },
+    "d_14": {
+      "index": 54,
+      "base": "naval_bomber",
+      "name": "Maritime Flying Boat Wing",
+      "short": "Flying Boat",
+      "art": "unique_patrol",
+      "artkey": "unique_patrol",
+      "year": 1938,
+      "tech": 4190,
+      "years": [
+        1938,
+        1942,
+        1943,
+        1945,
+        1949
+      ],
+      "techpairs": [
+        [
+          4190,
+          0
+        ],
+        [
+          4200,
+          1
+        ],
+        [
+          4210,
+          2
+        ],
+        [
+          15140,
+          3
+        ],
+        [
+          15150,
+          4
+        ]
+      ],
+      "base_models": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "model_names": [
+        "H6K Maritime Patrol 1938",
+        "H8K Maritime Patrol 1942",
+        "H8K Search Patrol 1943",
+        "Long-Range Flying Boat 1945",
+        "Ocean Patrol Flying Boat 1949"
+      ]
+    },
+    "d_15": {
+      "index": 55,
+      "base": "paratrooper",
+      "name": "Teishin Airborne Division",
+      "short": "Teishin",
+      "art": "unique_teishin",
+      "artkey": "unique_teishin",
+      "year": 1942,
+      "tech": 1680,
+      "years": [
+        1942,
+        1944,
+        1947,
+        1950
+      ],
+      "techpairs": [
+        [
+          1680,
+          0
+        ],
+        [
+          1690,
+          1
+        ],
+        [
+          1700,
+          2
+        ],
+        [
+          1710,
+          3
+        ]
+      ],
+      "base_models": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "model_names": [
+        "Teishin Airborne 1942",
+        "Teishin Airborne 1944",
+        "Teishin Airborne 1947",
+        "Teishin Airborne 1950"
+      ]
+    },
+    "d_16": {
+      "index": 56,
+      "base": "multi_role",
+      "name": "Naval Long-Range Fighter Wing",
+      "short": "Naval Fighter",
+      "art": "unique_longfighter",
+      "artkey": "unique_longfighter",
+      "art_models": {
+        "2": "unique_longfighter_late",
+        "3": "unique_longfighter_late"
+      },
+      "year": 1940,
+      "tech": 4070,
+      "years": [
+        1940,
+        1943,
+        1945,
+        1948
+      ],
+      "techpairs": [
+        [
+          4070,
+          0
+        ],
+        [
+          4100,
+          1
+        ],
+        [
+          4350,
+          2
+        ],
+        [
+          15030,
+          3
+        ]
+      ],
+      "base_models": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "model_names": [
+        "A6M Long-Range Fighter 1940",
+        "A6M Long-Range Fighter 1943",
+        "A7M Long-Range Fighter 1945",
+        "Long-Range Naval Fighter 1948"
+      ]
+    },
+    "d_17": {
+      "index": 57,
+      "base": "naval_bomber",
+      "name": "Long-Range Naval Attack Wing",
+      "short": "Naval Attack",
+      "art": "unique_landattack",
+      "artkey": "unique_landattack",
+      "art_models": {
+        "1": "unique_landattack_late",
+        "2": "unique_landattack_late",
+        "3": "unique_landattack_late",
+        "4": "unique_landattack_late"
+      },
+      "year": 1938,
+      "tech": 4190,
+      "years": [
+        1938,
+        1941,
+        1943,
+        1945,
+        1949
+      ],
+      "techpairs": [
+        [
+          4190,
+          0
+        ],
+        [
+          4200,
+          1
+        ],
+        [
+          4210,
+          2
+        ],
+        [
+          15140,
+          3
+        ],
+        [
+          15150,
+          4
+        ]
+      ],
+      "base_models": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "model_names": [
+        "G3M Naval Attack 1938",
+        "G4M Naval Attack 1941",
+        "G4M Naval Attack 1943",
+        "Improved Naval Attack 1945",
+        "Ocean Strike Wing 1949"
+      ]
+    },
+    "d_18": {
+      "index": 58,
+      "base": "destroyer",
+      "name": "Economical Escort Flotilla",
+      "short": "Matsu Escort",
+      "art": "unique_matsu",
+      "artkey": "unique_matsu",
+      "year": 1944,
+      "tech": 12000,
+      "years": [
+        1944,
+        1945,
+        1955
+      ],
+      "techpairs": [
+        [
+          12000,
+          0
+        ],
+        [
+          3080,
+          1
+        ],
+        [
+          3090,
+          2
+        ]
+      ],
+      "base_models": [
+        7,
+        8,
+        9
+      ],
+      "model_names": [
+        "Matsu Escort 1944",
+        "Tachibana Escort 1945",
+        "Postwar Escort 1955"
+      ]
+    },
+    "d_19": {
+      "index": 59,
+      "base": "infantry",
+      "name": "Expeditionary Assault Division",
+      "short": "Expeditionary",
+      "art": "unique_expedition",
+      "artkey": "unique_expedition",
+      "year": 1937,
+      "tech": 1100,
+      "years": [
+        1937,
+        1939,
+        1942,
+        1945,
+        1948
+      ],
+      "techpairs": [
+        [
+          1100,
+          0
+        ],
+        [
+          1110,
+          1
+        ],
+        [
+          1120,
+          2
+        ],
+        [
+          1130,
+          3
+        ],
+        [
+          1140,
+          4
+        ]
+      ],
+      "base_models": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "model_names": [
+        "Expeditionary Assault 1937",
+        "Expeditionary Assault 1939",
+        "Expeditionary Assault 1942",
+        "Expeditionary Assault 1945",
+        "Expeditionary Assault 1948"
+      ]
+    }
+  },
+  "report": {
+    "catalogue_applied": true,
+    "programme_mirrors": 83,
+    "native_event_mirrors": 10,
+    "installed_models": {
+      "d_13": 3,
+      "d_14": 5,
+      "d_15": 4,
+      "d_16": 4,
+      "d_17": 5,
+      "d_18": 3,
+      "d_19": 5
+    },
+    "art_owner": "Parent installs event art and large/small unit cards from unique_* PNGs; this module owns only the division counter atlas.",
+    "minister_mirrors": 0
+  },
+  "scope": "Disposable source fixture and documented-command contracts only; no game/mod installation or save edits.",
+  "limits": [
+    "No engine launch: subtype airborne missions, naval conversion queues, animation families and modifier caches still need runtime testing.",
+    "Model dates are hard-gated by year+research; resolvers through 1950 must be appended by unique_unit_events. The 1955 AA data model is retained beyond campaign end.",
+    "Flying boats use native surface detection and naval strike, with no invented independent submarine-attack statistic.",
+    "Full historical programme parity requires a new R12 campaign; old R11 completion flags do not prove which alternative was selected.",
+    "Only the division counter atlas is authored here; parent supplies original model cards and event illustrations."
+  ]
+}

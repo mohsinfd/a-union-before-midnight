@@ -1,0 +1,9 @@
+{
+  "version": "JX 1.1 ALPHA 2 R12.1",
+  "passed": true,
+  "tests": 7,
+  "failures": 0,
+  "errors": 0,
+  "game_launched": false,
+  "scope": "Actual installed events and retained garrisons; deferred human acknowledgements, cached action replay and finite shipping; no engine playtest."
+}

@@ -1,0 +1,629 @@
+{
+  "compatible_divisions": [
+    "d_13",
+    "d_18",
+    "d_19",
+    "destroyer",
+    "garrison",
+    "heavy_cruiser",
+    "infantry",
+    "light_cruiser",
+    "marine",
+    "militia"
+  ],
+  "tech": {
+    "files": [
+      "armor_tech.txt",
+      "industry_tech.txt",
+      "infantry_tech.txt",
+      "naval_tech.txt",
+      "secret_weapons_tech.txt"
+    ],
+    "conditional_commands": 65,
+    "initialisation_tech": 1010
+  },
+  "initially_locked_countries": [
+    "ETH",
+    "AFG",
+    "ALB",
+    "ARG",
+    "AST",
+    "AUS",
+    "BEL",
+    "BHU",
+    "BOL",
+    "BRA",
+    "U02",
+    "BUL",
+    "CAN",
+    "CHL",
+    "CHC",
+    "UPE",
+    "CGX",
+    "CHI",
+    "CSX",
+    "SIK",
+    "CXB",
+    "CYN",
+    "COL",
+    "COS",
+    "CUB",
+    "CZE",
+    "U06",
+    "DEN",
+    "DOM",
+    "ECU",
+    "EGY",
+    "EST",
+    "FIN",
+    "FRA",
+    "GER",
+    "GRE",
+    "GUA",
+    "HAI",
+    "HOL",
+    "HON",
+    "HUN",
+    "U03",
+    "IRQ",
+    "IRE",
+    "ITA",
+    "JAP",
+    "LAT",
+    "LIB",
+    "LIT",
+    "LUX",
+    "MAN",
+    "U04",
+    "MEX",
+    "MON",
+    "NEP",
+    "U05",
+    "U60",
+    "NZL",
+    "NIC",
+    "NOR",
+    "OMN",
+    "PAN",
+    "PAR",
+    "PER",
+    "PRU",
+    "POL",
+    "POR",
+    "REB",
+    "ROM",
+    "SAL",
+    "SAU",
+    "SIA",
+    "SAF",
+    "SOV",
+    "SPR",
+    "SWE",
+    "SCH",
+    "TAN",
+    "TIB",
+    "TUR",
+    "ENG",
+    "URU",
+    "USA",
+    "VEN",
+    "ENG",
+    "SOV",
+    "YEM",
+    "YUG"
+  ],
+  "minister_mirrors": [
+    [
+      "school of fire support",
+      "b_03",
+      "all",
+      "-0.0600"
+    ],
+    [
+      "armoured spearhead doctrine",
+      "b_03",
+      "all",
+      "-0.0500"
+    ],
+    [
+      "armoured spearhead doctrine",
+      "b_03",
+      "attack",
+      "0.0500"
+    ],
+    [
+      "base control doctrine",
+      "b_03",
+      "all",
+      "-0.1000"
+    ],
+    [
+      "Secret police chief",
+      "b_02",
+      "all",
+      "-0.0500"
+    ]
+  ],
+  "assets": [
+    "gfx\\interface\\models\\ill_bri_JAP_41_0.bmp",
+    "gfx\\interface\\models\\ill_bri_41_0.bmp",
+    "gfx\\interface\\models\\ill_bri_JAP_41_1.bmp",
+    "gfx\\interface\\models\\ill_bri_41_1.bmp",
+    "gfx\\interface\\models\\ill_bri_JAP_41_2.bmp",
+    "gfx\\interface\\models\\ill_bri_41_2.bmp",
+    "gfx\\interface\\models\\ill_bri_JAP_41_3.bmp",
+    "gfx\\interface\\models\\ill_bri_41_3.bmp",
+    "gfx\\events_pics\\jx_unique_torpedo.bmp",
+    "gfx\\interface\\models\\ill_bri_JAP_42_0.bmp",
+    "gfx\\interface\\models\\ill_bri_42_0.bmp",
+    "gfx\\interface\\models\\ill_bri_JAP_42_1.bmp",
+    "gfx\\interface\\models\\ill_bri_42_1.bmp",
+    "gfx\\interface\\models\\ill_bri_JAP_42_2.bmp",
+    "gfx\\interface\\models\\ill_bri_42_2.bmp",
+    "gfx\\interface\\models\\ill_bri_JAP_42_3.bmp",
+    "gfx\\interface\\models\\ill_bri_42_3.bmp",
+    "gfx\\interface\\models\\ill_bri_JAP_42_4.bmp",
+    "gfx\\interface\\models\\ill_bri_42_4.bmp",
+    "gfx\\events_pics\\jx_unique_mixed.bmp",
+    "gfx\\interface\\models\\ill_bri_JAP_43_0.bmp",
+    "gfx\\interface\\models\\ill_bri_43_0.bmp",
+    "gfx\\interface\\models\\ill_bri_JAP_43_1.bmp",
+    "gfx\\interface\\models\\ill_bri_43_1.bmp",
+    "gfx\\interface\\models\\ill_bri_JAP_43_2.bmp",
+    "gfx\\interface\\models\\ill_bri_43_2.bmp",
+    "gfx\\events_pics\\jx_unique_kami.bmp"
+  ],
+  "models": {
+    "b_01": [
+      {
+        "surfacedetectioncapability": "0",
+        "airdetectioncapability": "0",
+        "subdetectioncapability": "0",
+        "airdefence": "0",
+        "airattack": "0",
+        "shorebombardment": "0",
+        "cost": "0.65",
+        "buildtime": "100",
+        "manpower": "0",
+        "seaattack": "3",
+        "convoyattack": "2",
+        "subattack": "0",
+        "supplyconsumption": "0.55",
+        "fuelconsumption": "0",
+        "distance": "0",
+        "upgrade_time_factor": "0.5",
+        "upgrade_cost_factor": "0.6"
+      },
+      {
+        "surfacedetectioncapability": "0",
+        "airdetectioncapability": "0",
+        "subdetectioncapability": "0",
+        "airdefence": "0",
+        "airattack": "0",
+        "shorebombardment": "0",
+        "cost": "0.8",
+        "buildtime": "100",
+        "manpower": "0",
+        "seaattack": "4",
+        "convoyattack": "3",
+        "subattack": "0",
+        "supplyconsumption": "0.65",
+        "fuelconsumption": "0",
+        "distance": "0",
+        "upgrade_time_factor": "0.5",
+        "upgrade_cost_factor": "0.6"
+      },
+      {
+        "surfacedetectioncapability": "0",
+        "airdetectioncapability": "0",
+        "subdetectioncapability": "0",
+        "airdefence": "0",
+        "airattack": "0",
+        "shorebombardment": "0",
+        "cost": "0.95",
+        "buildtime": "100",
+        "manpower": "0",
+        "seaattack": "5",
+        "convoyattack": "4",
+        "subattack": "0",
+        "supplyconsumption": "0.75",
+        "fuelconsumption": "0",
+        "distance": "0",
+        "upgrade_time_factor": "0.5",
+        "upgrade_cost_factor": "0.6"
+      },
+      {
+        "surfacedetectioncapability": "0",
+        "airdetectioncapability": "0",
+        "subdetectioncapability": "0",
+        "airdefence": "0",
+        "airattack": "0",
+        "shorebombardment": "0",
+        "cost": "1.1",
+        "buildtime": "100",
+        "manpower": "0",
+        "seaattack": "5",
+        "convoyattack": "5",
+        "subattack": "0",
+        "supplyconsumption": "0.85",
+        "fuelconsumption": "0",
+        "distance": "0",
+        "upgrade_time_factor": "0.5",
+        "upgrade_cost_factor": "0.6"
+      }
+    ],
+    "b_02": [
+      {
+        "equipment": [
+          [
+            "manpower",
+            "4000"
+          ],
+          [
+            "horses",
+            "100"
+          ],
+          [
+            "trucks",
+            "40"
+          ]
+        ],
+        "cost": "3.0",
+        "buildtime": "120",
+        "manpower": "4",
+        "maxspeed": "0",
+        "speed_cap": "4",
+        "defaultorganisation": "2",
+        "suppression": "8",
+        "defensiveness": "8",
+        "toughness": "2",
+        "softattack": "3",
+        "hardattack": "0",
+        "supplyconsumption": "0.45",
+        "fuelconsumption": "0",
+        "upgrade_time_factor": "0.45",
+        "upgrade_cost_factor": "0.6"
+      },
+      {
+        "equipment": [
+          [
+            "manpower",
+            "4000"
+          ],
+          [
+            "horses",
+            "100"
+          ],
+          [
+            "trucks",
+            "40"
+          ]
+        ],
+        "cost": "3.25",
+        "buildtime": "125",
+        "manpower": "4",
+        "maxspeed": "0",
+        "speed_cap": "4",
+        "defaultorganisation": "2",
+        "suppression": "9",
+        "defensiveness": "9",
+        "toughness": "3",
+        "softattack": "4",
+        "hardattack": "0",
+        "supplyconsumption": "0.5",
+        "fuelconsumption": "0",
+        "upgrade_time_factor": "0.45",
+        "upgrade_cost_factor": "0.6"
+      },
+      {
+        "equipment": [
+          [
+            "manpower",
+            "4000"
+          ],
+          [
+            "horses",
+            "100"
+          ],
+          [
+            "trucks",
+            "40"
+          ]
+        ],
+        "cost": "3.5",
+        "buildtime": "130",
+        "manpower": "4",
+        "maxspeed": "0",
+        "speed_cap": "4",
+        "defaultorganisation": "2",
+        "suppression": "10",
+        "defensiveness": "10",
+        "toughness": "4",
+        "softattack": "4",
+        "hardattack": "1",
+        "supplyconsumption": "0.55",
+        "fuelconsumption": "0",
+        "upgrade_time_factor": "0.45",
+        "upgrade_cost_factor": "0.6"
+      },
+      {
+        "equipment": [
+          [
+            "manpower",
+            "4000"
+          ],
+          [
+            "horses",
+            "100"
+          ],
+          [
+            "trucks",
+            "40"
+          ]
+        ],
+        "cost": "3.75",
+        "buildtime": "135",
+        "manpower": "4",
+        "maxspeed": "0",
+        "speed_cap": "4",
+        "defaultorganisation": "2",
+        "suppression": "11",
+        "defensiveness": "11",
+        "toughness": "5",
+        "softattack": "5",
+        "hardattack": "1",
+        "supplyconsumption": "0.6",
+        "fuelconsumption": "0",
+        "upgrade_time_factor": "0.45",
+        "upgrade_cost_factor": "0.6"
+      },
+      {
+        "equipment": [
+          [
+            "manpower",
+            "4000"
+          ],
+          [
+            "horses",
+            "100"
+          ],
+          [
+            "trucks",
+            "40"
+          ]
+        ],
+        "cost": "4.0",
+        "buildtime": "140",
+        "manpower": "4",
+        "maxspeed": "0",
+        "speed_cap": "4",
+        "defaultorganisation": "2",
+        "suppression": "12",
+        "defensiveness": "12",
+        "toughness": "6",
+        "softattack": "5",
+        "hardattack": "1",
+        "supplyconsumption": "0.65",
+        "fuelconsumption": "0",
+        "upgrade_time_factor": "0.45",
+        "upgrade_cost_factor": "0.6"
+      }
+    ],
+    "b_03": [
+      {
+        "equipment": [
+          [
+            "manpower",
+            "2000"
+          ],
+          [
+            "medium_armor",
+            "40"
+          ]
+        ],
+        "cost": "4.5",
+        "buildtime": "140",
+        "manpower": "2",
+        "maxspeed": "0",
+        "speed_cap": "10",
+        "defaultorganisation": "3",
+        "softness": "-2",
+        "defensiveness": "2",
+        "toughness": "2",
+        "softattack": "4",
+        "hardattack": "0",
+        "supplyconsumption": "0.6",
+        "fuelconsumption": "1",
+        "upgrade_time_factor": "0.5",
+        "upgrade_cost_factor": "0.65"
+      },
+      {
+        "equipment": [
+          [
+            "manpower",
+            "2000"
+          ],
+          [
+            "medium_armor",
+            "48"
+          ]
+        ],
+        "cost": "5",
+        "buildtime": "140",
+        "manpower": "2",
+        "maxspeed": "0",
+        "speed_cap": "10",
+        "defaultorganisation": "3",
+        "softness": "-2",
+        "defensiveness": "3",
+        "toughness": "3",
+        "softattack": "5",
+        "hardattack": "1",
+        "supplyconsumption": "0.65",
+        "fuelconsumption": "0.95",
+        "upgrade_time_factor": "0.5",
+        "upgrade_cost_factor": "0.65"
+      },
+      {
+        "equipment": [
+          [
+            "manpower",
+            "2000"
+          ],
+          [
+            "medium_armor",
+            "56"
+          ]
+        ],
+        "cost": "5.5",
+        "buildtime": "140",
+        "manpower": "2",
+        "maxspeed": "0",
+        "speed_cap": "10",
+        "defaultorganisation": "3",
+        "softness": "-2",
+        "defensiveness": "4",
+        "toughness": "4",
+        "softattack": "6",
+        "hardattack": "2",
+        "supplyconsumption": "0.7",
+        "fuelconsumption": "0.9",
+        "upgrade_time_factor": "0.5",
+        "upgrade_cost_factor": "0.65"
+      }
+    ]
+  },
+  "tests": 10,
+  "failures": 0,
+  "errors": 0,
+  "engine_launched": false,
+  "active_mod_or_save_edited": false,
+  "attachments": {
+    "b_01": {
+      "index": 41,
+      "name": "Type 93 Oxygen Torpedoes",
+      "short": "Type 93",
+      "base": "naval_torpedoes_s",
+      "artkey": "unique_torpedo",
+      "flag": "UNIQUE_B01_ACTIVE",
+      "year": 1935,
+      "tech": 3060,
+      "years": [
+        1935,
+        1942,
+        1945,
+        1948
+      ],
+      "techpairs": [
+        [
+          3060,
+          0
+        ],
+        [
+          12000,
+          1
+        ],
+        [
+          3080,
+          2
+        ],
+        [
+          3780,
+          3
+        ]
+      ],
+      "branch": "naval",
+      "compatible": [
+        "destroyer",
+        "light_cruiser",
+        "heavy_cruiser",
+        "d_13",
+        "d_18"
+      ],
+      "desc": "Long-range oxygen torpedoes for Japanese destroyers and cruisers. Strong surface and convoy attack, with higher ammunition and supply demand. Uses a naval attachment slot that could carry radar, AA or ASW equipment."
+    },
+    "b_02": {
+      "index": 42,
+      "name": "Dokuritsu Konsei Mixed Brigade",
+      "short": "Mixed Bde",
+      "base": "police",
+      "artkey": "unique_mixed",
+      "flag": "UNIQUE_B02_ACTIVE",
+      "year": 1937,
+      "tech": 1100,
+      "years": [
+        1937,
+        1939,
+        1942,
+        1945,
+        1948
+      ],
+      "techpairs": [
+        [
+          1100,
+          0
+        ],
+        [
+          1110,
+          1
+        ],
+        [
+          1120,
+          2
+        ],
+        [
+          1130,
+          3
+        ],
+        [
+          1140,
+          4
+        ]
+      ],
+      "branch": "land",
+      "compatible": [
+        "infantry",
+        "garrison",
+        "militia",
+        "d_19"
+      ],
+      "desc": "An independent mixed brigade for occupation and local defence. More suppression, defensive strength and infantry firepower than Military Police, at a higher manpower and supply cost. Its marching speed is capped at four."
+    },
+    "b_03": {
+      "index": 43,
+      "name": "Ka-Mi Naval Tank Detachment",
+      "short": "Naval Tanks",
+      "base": "amph_armor",
+      "artkey": "unique_kami",
+      "flag": "UNIQUE_B03_ACTIVE",
+      "year": 1942,
+      "tech": 2050,
+      "years": [
+        1942,
+        1944,
+        1949
+      ],
+      "techpairs": [
+        [
+          2050,
+          0
+        ],
+        [
+          2060,
+          1
+        ],
+        [
+          1630,
+          2
+        ]
+      ],
+      "branch": "land",
+      "compatible": [
+        "marine",
+        "infantry",
+        "d_19"
+      ],
+      "desc": "A compact naval tank detachment for infantry and Marine landings. Adds soft attack, defence and improved shore and river attack, with less fuel demand than a full amphibious armour brigade. Its smaller tank complement gives less anti-armour firepower and armour coverage."
+    }
+  }
+}

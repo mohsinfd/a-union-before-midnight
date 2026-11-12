@@ -1,0 +1,55 @@
+{
+  "version": "JX 1.1 ALPHA 2 R13.1",
+  "target": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2",
+  "state": "installed-offline-validated",
+  "events": 1822,
+  "modules": 37,
+  "loaded_english_matches": 4982,
+  "game_launched": false,
+  "save_edits": false,
+  "source_path": "C:\\Users\\Mohsin Dingankar\\Downloads\\Blood and Iron v1.1",
+  "installed_model_hashes": {
+    "db\\units\\divisions\\d_13.txt": "6c69c7b308012eac17913ff063ef8a4a382d558b3c5c379b58bc2f048c436e98",
+    "db\\units\\divisions\\d_14.txt": "5edff3bd09ab04996ab4dd73bfbfbcd8c10b39a115ef219fcf97b92a03669004",
+    "db\\units\\divisions\\d_15.txt": "9c40464c93a5b7ad62007c5afbde25333db14b37deb773864065662bd939f152",
+    "db\\units\\divisions\\d_16.txt": "1281664529e5eb4ab97bf0587f5656a870522bc214fcb6ef35aa4c924ef03aab",
+    "db\\units\\divisions\\d_17.txt": "acdfd0ff1e9bcbee23fdc7cad318f3a71b60f0def3e5e88d5bb36091faf9c07f",
+    "db\\units\\divisions\\d_18.txt": "930f8bad5a46ef53e6511e852029a07bed09eaa4277acbdc014566982ef71699",
+    "db\\units\\divisions\\d_19.txt": "ed0f0c952a4132c9cf3aa3b770a15a1517486561705cb81223b5e1eb441fff39",
+    "db\\units\\brigades\\b_01.txt": "dfc4b97184601bdc5466764cfa46001eba5002d85ad3646dee626998a2f52345",
+    "db\\units\\brigades\\b_02.txt": "798b0d47f3620762c2091e457d19e3601f60bb8df88bc84cc6c0ed53d1a62a37",
+    "db\\units\\brigades\\b_03.txt": "51a0fa62cd55c8fa2b909f11ac6b34997b7d19ab10970d898d89523bd1a9da0c"
+  },
+  "fresh_offline_checks": {
+    "UNIQUE_UNIT_COLD_AUDIT.json": {
+      "passed": true,
+      "tests": 13,
+      "failures": 0,
+      "errors": 0,
+      "introductions": [
+        "unique_intro_b_01",
+        "unique_intro_b_02",
+        "unique_intro_d_14",
+        "unique_intro_b_03",
+        "unique_intro_d_13",
+        "unique_intro_d_15",
+        "unique_intro_d_19",
+        "unique_intro_d_17",
+        "unique_intro_d_16",
+        "unique_intro_d_18"
+      ],
+      "resolvers": 29,
+      "first_issue_manpower": 42.4,
+      "game_launched": false
+    },
+    "ENEMY_TRANSPORT_AI_AUDIT.json": {
+      "version": "JX 1.1 ALPHA 2 R13.1",
+      "passed": true,
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "game_launched": false
+    }
+  },
+  "qualification": "Source/event/model/localisation/art parity and fresh documented-command tests; no running-engine or long-campaign guarantee."
+}

@@ -1,0 +1,65 @@
+# R11.1 integrated event accessibility and delivery audit
+
+11 November 2026. Audited the prepared, compiled human-Japan catalogue after R9 flow/economy/recruitment changes, R10 specialist retirement, R11 prewar/regional/American content, and the R11.1 native-contract corrections. This agent performed no game launch, installation or save modification; the final matrix was rerun after the parent installed R11.1.
+
+The final native-contract audit found that an empty `decision_trigger` falls back to the automatic event trigger. The earlier availability helper incorrectly assumed an empty section was true. R11.1 corrects 89 affected human readiness sections, adds selected/elapsed callback guards, uses current infrastructure for factory prerequisites and fixes additive amphibious semantics. The helper now implements the documented fallback. All counts and delivery results below were refreshed against that corrected installed-version catalogue. See `FINAL_EVENT_INTEGRITY_AUDIT.md` for the independent native proof and 12 passing tests.
+
+## What was actually broken
+
+**The Los Angeles example was valid.** `american_base` was unavailable before 1943, required Los Angeles specifically, and its useful first alternative required legal Japanese ownership plus room for two port and two airfield levels. Ordinary occupation preserves American ownership, so controlling Los Angeles in a 1942 save could not use it. The remaining alternative bought only a 30-day motorised construction discount.
+
+The corrected existing decision opens from **1941** during war with America when Japan holds **San Diego, Los Angeles, San Francisco or Seattle**. It costs **180 money and 1,000 supplies**, takes **90 days**, and provides either **120 convoy transports, 40 escorts and 2,000 supplies**, or **4,000 supplies and +5% transport capacity**. Both work during occupation and at level-ten facilities. Supplies enter Japan's national reserve and still require ordinary convoy delivery to the front. No ownership, cores, port levels or completed units are fabricated. Losing all four listed ports before delivery returns the payment exactly.
+
+Other concrete defects corrected in `event_accessibility.py`:
+
+- The German supply-only mission inherited a global 3,000-oil eligibility threshold and even required 1,000 oil at completion. It now works with zero Japanese oil. Its separately selected fuel alternative reserves 1,000 oil upfront, keeps 2,000 unspent, and returns paid inputs if Germany disappears or becomes an enemy. The supply mission delivers 1,500 German supplies; fuel delivers 800 German oil. No alliance or ongoing trade is created.
+- Siberian railway text was concatenated with an obsolete production summary, promising provincial infrastructure and four mountain divisions that its commands did not create. The existing alternatives now clearly provide +5% transport capacity and 1,500 supplies, or a 4,500-supply reserve. The three required Soviet centres may remain Soviet-owned.
+- The 1947 naval treaty described a **40-day naval construction penalty** as a negative reduction. The civilian conversion's 1,080-day penalty is now explicit. Its marginal carrier-discount alternative instead reconstructs 200 convoy transports, 60 escorts and 2,000 supplies, without the naval penalty.
+- Occupied Colombo's construction choice requires ownership; its previous fallback was only 50 km naval-bomber range. Its alternative now supplies 60 convoy transports, 20 escorts and 1,500 supplies, while the legal radar/AA option remains conditional. Its capped port/airfield are not expanded.
+- Nine useful remaining optional activities were automatic-only. Their existing IDs now provide manual decision access when the map requirements hold, without recurring reminders: island depth, Manchurian contract, merchant reserve, Berlin barter, Thai connection, Rabaul, Colombo, Attu and homefront relief. No new project IDs or route trees were added.
+
+## Complete catalogue coverage
+
+The integrated source contains **110 active non-triggered human-Japan entries: 95 manual decisions and 15 automatic events**, plus **three AI-American continental responses**, excluding deliberately retired offers and technical triggered receivers. These counts include country alternatives, callbacks such as the American negotiation watcher, and conditional opportunities; they are not 113 events promised in every campaign.
+
+`EVENT_ACCESSIBILITY_matrix.py` evaluates the **actual compiled decision/decision-trigger or automatic trigger**, its year/lifetime, and its option gates against **32 explicit scenario witnesses**. They cover 1933 opening and peace, the six new prewar programmes at their advertised years/months, China victories and an early 1938/39 Chinese puppet, prewar captured sites, Pacific occupation with and without fuel for paid aircraft/ships, legally owned conquests, Chinese/Indian puppets, regional autonomy, Philippine/Indonesian/Malayan puppets and neutral treaties, friendly Thailand, American coastal/interior campaign positions, the national call-up stages, a qualifying American armistice position, a broken hold, a Soviet-war opportunity and postwar peace through 1950. The matrix preserves foreign ownership in occupation cases; ownership is changed only in separately labelled owned-territory fixtures.
+
+Every one of the 113 entries has a valid compiled-trigger witness. Every active paid project has a fundable meaningful choice. No available offer has an empty eligible action set. The machine-readable file records **every event ID, country, year, mode, witness, fundable action and effect graph**, rather than listing nominal names only:
+
+- `EVENT_ACCESSIBILITY_MATRIX.json`
+
+The delivery sweep additionally selects a compiled-eligible funded option for **all 62 active paid projects**, advances its actual scheduled callbacks and checks the once-only completion receipt and a substantive award in the executed command trace. These include all six new prewar programmes, eight regional programmes and both paid American campaign reserves. The focused tests check numeric resource, shipping, transport-capacity, refund, ownership, cap and American formation effects. This separates “an offer exists” from “its paid receiver actually runs.”
+
+The R11 expansion is documented in `PREWAR_CONTENT.md`, `COUNTRY_CAMPAIGNS.md` and `US_CAMPAIGN_CONTENT.md`. It adds substantial preparation tradeoffs, actual funded regional formations/ships/aircraft and a bounded campaign on both sides of an American invasion. The old retired small-stat and custom-class offers remain closed.
+
+## Chronological availability
+
+| Period | Actual opportunities and their necessary context |
+| --- | --- |
+| 1933 | Welcome enables the expansion; home industry, army supply, merchant shipping, army production and strategic storage are manual. American fuel contracts also require peace with America and no embargo. Ignoring a card spends nothing. |
+| 1934–1936 | Air production, Manchurian commerce, naval production, home fuel/minerals and merchant reserves become available by their dates. Tomozuru and the typhoon remain historical event stories. Contracts have expiry, embargo and cancellation conditions; they are not automatic recurring free resources. |
+| 1937 | Limited China peace requires Nanjing/Shanghai/Wuhan and substantial losses. Decisive China requires deeper territory/VP defeat and the western objective. The two settlements cannot be pending together. Captured-railway work is pre-Pacific and needs the specified cities; occupation-safe supply support remains an alternative to legal construction. Regional governments require a Chinese puppet owning/controlling their capitals. |
+| 1938–1940 | Second industry and home dock expansion are available. Dock work uses Kobe/Yokohama and checks room; it does not add levels to capped Tokyo/Hiroshima. German barter requires the European war and peace with Germany. Repair service needs war. The second fuel/minerals stage requires the first completed stage and war. Garrison packages require their registered templates, budget and every listed deployment site; they do not spawn on hostile ground. |
+| 1941 | Pearl/native Pacific events or a Japanese-American war from 1941 enable the Pacific state. Country settlements become manual under their individual military conditions; none creates a puppet automatically. Hawaii, Singapore, Hong Kong and Suez have occupation-safe support alternatives. American bridgehead support now works immediately at any listed major port. Army reserves require a Pacific or Soviet war; subsequent waves have 300-day spacing. |
+| 1942 | Tankers, forward-air shipping support, German exchange/aid, partner reconstruction/cooperation, Siberian railway support, Rabaul, Colombo and Attu require their actual fronts, partners or centres. The Siberian settlement requires deep objectives and excludes formal Axis membership; it is not granted merely by choosing a northern policy. |
+| 1943–1944 | Wartime industry, Indian reconstruction/cooperation and Ahvaz support open by date. American national surrender requires the specified defeat percentage plus a major port; a bridgehead alone is insufficient. The limited armistice needs two years of Pacific war, Hawaii/Singapore/Philippines, carrier strength and a monitored six-month hold. Homefront relief follows two years of war. |
+| 1945–1946 | Civil recovery requires peace; renewed war before completion refunds it. A continuing global war therefore intentionally hides this civilian option. No automatic peace is created to force its availability. |
+| 1947–1950 | Chinese/Indian autonomy needs the actual puppet relationship. The naval treaty/reconstruction choice requires peace. Already released, dismissed, pending or completed projects remain closed as intended. Ordinary research, production and diplomacy continue; retired small-stat and specialist-recruitment offers are not represented as active content. |
+
+## Remaining conditional behavior and limits
+
+No active offer was found permanently unreachable or devoid of an eligible action in this compiled-state audit. The only effect-graph entries consisting solely of state markers are intentional: **Pacific opening**, which unlocks later content, and **the American hold watcher**, which invalidates broken negotiations. They are not advertised as material conquest rewards.
+
+Building alternatives still require **legal ownership, control, research and enough room for the complete award**. Occupying an enemy port does not satisfy ownership. A project may legitimately offer only its shipping/supply alternative in occupation, or only close/dismiss when its building sites are already full. The original colonial country-release and recipient-side peace machinery remains separately guarded and retains its checked base transfers.
+
+These witnesses demonstrate satisfiable declared conditions and scheduled state transitions. They are **not an engine playthrough** and do not establish delivery efficiency, AI acceptance outside modelled replies, visual silence, or that an old save already has every newly required flag. Technical callbacks may still display. Research/AI commands are traced as issued commands where the offline model does not implement the engine's internal effect. The new numeric bridgehead/shipping/reserve tests directly verify their modelled changes.
+
+## Validation and integration
+
+- `python japan_expansion/EVENT_ACCESSIBILITY_review.py`: **8 focused tests passed**, including both American support choices at each of the four American-owned, capped ports in 1942; date/war/control failures; refund/idempotency; oil-free German aid; Colombo/Rabaul occupation; Siberian stocks and postwar shipping.
+- `python japan_expansion/EVENT_ACCESSIBILITY_matrix.py`: all 113 active compiled entries covered; no unfundable paid projects or empty action sets; actual funded-delivery sweep and award trace for all 62 paid projects.
+- `python japan_expansion/US_CAMPAIGN_review.py`: 11 tests passed under the integrated catalogue, including actual US reinforcement costs, correct researched models, safe rear hubs, finite alternatives, first/coastal/interior time gates and preservation of old peace choices.
+- `python japan_expansion/FINAL_EVENT_INTEGRITY_review.py`: 12 native-contract tests passed after installation, including both branches of all 16 new programmes, actual installed registration/key resolution and native readiness fallback.
+- `event_accessibility.apply()` follows `campaign_flow.apply()`. The specialist-retirement module runs afterwards. Existing event IDs are preserved. Old construction helper IDs stay registered; the superseded American construction report is explicitly labelled stock/shipping support.
+
+The older static regression asserting that all 18 registered activity entries are automatic must now assert the split between retired compatibility registrations and the nine active manual entries. Keeping that old assertion would contradict the approved accessibility change.

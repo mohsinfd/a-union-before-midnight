@@ -1,0 +1,1269 @@
+{
+  "checks": [
+    "Native engine docs establish named negative-damage strength gain, clamp-to-cap semantics, damaged-unit where values and current-size building predicates.",
+    "Both actual 1933 loaded-event sets scanned for strength caps and 33/66% changes; no Japanese new-award class strength cap exists.",
+    "All 14 Japanese and 42 potential American names are distinct, absent from clean scenario/unit lists/events, and occur only in their own final award/model alternatives; no event-ID names.",
+    "Every Japanese birth has a valid researched native model, complete model manpower, explicit controlled site, unmodified brigade field and one matching post-creation heal; no extra recruitment charge or organisation boost.",
+    "All seven USA staging options preserve exact technology conditions on both birth and heal, 78 manpower/2400-supply cost and American-owned/controlled hubs; only six researched divisions can form per wave.",
+    "Eight Japanese state fixtures prove named 33%-strength births restore to 100, exact manpower is spent once, placement is correct and replay is inert; all four air/naval facility failures block funding or refund completely.",
+    "Fourteen USA hub/model fixtures create six full-strength researched divisions each; both Kansas City waves coexist with distinct names, and the second wave leaves wounded first-wave units unchanged.",
+    "All R11 regional, prewar and American event blocks exactly match the installed final compiler output."
+  ],
+  "installed_matches_final_source": true,
+  "mismatched_events": [],
+  "all_r11_command_counts": {
+    "add_corps": 15,
+    "add_division": 98,
+    "damage_division": 98,
+    "clrflag": 135,
+    "setflag": 163,
+    "money": 68,
+    "supplies": 89,
+    "manpowerpool": 33,
+    "event": 51,
+    "metalpool": 28,
+    "oilpool": 24,
+    "transport_pool": 3,
+    "escort_pool": 2,
+    "energypool": 9,
+    "rarematerialspool": 4,
+    "repair_mod": 2,
+    "construct": 6,
+    "dissent": 2,
+    "morale": 2,
+    "max_organization": 3,
+    "naval_defense": 2,
+    "speed": 2,
+    "range": 3,
+    "surface_detection": 3,
+    "max_amphib_mod": 1,
+    "shore_attack": 1,
+    "river_attack": 1,
+    "trickleback_mod": 1
+  },
+  "source_registry_event_files": 104,
+  "installed_registry_event_files": 141,
+  "japanese_branches": [
+    {
+      "offer": "cn_shanghai_holding",
+      "finish": "cn_shanghai_holding_finish_0",
+      "id": 28601713,
+      "choice": 0,
+      "branch": "land",
+      "site": 1338,
+      "facility_gate": "",
+      "unit_names": [
+        "Shanghai Port Defence Division",
+        "Wusong Defence Division"
+      ],
+      "manpower_reserved": 20.0,
+      "count": 2
+    },
+    {
+      "offer": "cn_shanghai_holding",
+      "finish": "cn_shanghai_holding_finish_1",
+      "id": 28601714,
+      "choice": 1,
+      "branch": "land",
+      "site": 1338,
+      "facility_gate": "",
+      "unit_names": [
+        "Shanghai Expeditionary Infantry"
+      ],
+      "manpower_reserved": 13.0,
+      "count": 1
+    },
+    {
+      "offer": "cn_wuhan_choice",
+      "finish": "cn_wuhan_choice_finish_0",
+      "id": 28601716,
+      "choice": 0,
+      "branch": "land",
+      "site": 1317,
+      "facility_gate": "",
+      "unit_names": [
+        "Wuhan Mountain Division",
+        "Yangtze Mountain Division"
+      ],
+      "manpower_reserved": 26.0,
+      "count": 2
+    },
+    {
+      "offer": "ph_manila_air",
+      "finish": "ph_manila_air_finish_0",
+      "id": 28601719,
+      "choice": 0,
+      "branch": "air",
+      "site": 1565,
+      "facility_gate": "building = { province = 1565 type = air_base value = 1 when = now }",
+      "unit_names": [
+        "Manila Fighter Wing",
+        "Luzon Fighter Wing"
+      ],
+      "manpower_reserved": 1.5,
+      "count": 2
+    },
+    {
+      "offer": "ph_manila_air",
+      "finish": "ph_manila_air_finish_1",
+      "id": 28601720,
+      "choice": 1,
+      "branch": "air",
+      "site": 1565,
+      "facility_gate": "building = { province = 1565 type = air_base value = 1 when = now }",
+      "unit_names": [
+        "Manila Naval Air Wing",
+        "Luzon Naval Air Wing"
+      ],
+      "manpower_reserved": 4.4,
+      "count": 2
+    },
+    {
+      "offer": "ph_island_agreement",
+      "finish": "ph_island_agreement_finish_0",
+      "id": 28601722,
+      "choice": 0,
+      "branch": "land",
+      "site": 1552,
+      "facility_gate": "",
+      "unit_names": [
+        "Philippine Expeditionary Division",
+        "Luzon Expeditionary Division"
+      ],
+      "manpower_reserved": 26.0,
+      "count": 2
+    },
+    {
+      "offer": "in_java_shipyards",
+      "finish": "in_java_shipyards_finish_0",
+      "id": 28601725,
+      "choice": 0,
+      "branch": "naval",
+      "site": 1653,
+      "facility_gate": "building = { province = 1653 type = naval_base value = 1 when = now }",
+      "unit_names": [
+        "Soerabaja Escort Flotilla",
+        "Java Escort Flotilla"
+      ],
+      "manpower_reserved": 2.5,
+      "count": 2
+    },
+    {
+      "offer": "in_java_shipyards",
+      "finish": "in_java_shipyards_finish_1",
+      "id": 28601726,
+      "choice": 1,
+      "branch": "naval",
+      "site": 1653,
+      "facility_gate": "building = { province = 1653 type = naval_base value = 1 when = now }",
+      "unit_names": [
+        "Soerabaja Patrol Cruiser"
+      ],
+      "manpower_reserved": 0.75,
+      "count": 1
+    }
+  ],
+  "american_branches": [
+    {
+      "event": "usc_coast_response",
+      "action": 0,
+      "site": 1908,
+      "names": [
+        "Western Reserve Division 1 - Denver",
+        "Western Reserve Division 2 - Denver",
+        "Western Reserve Division 3 - Denver",
+        "Western Reserve Division 4 - Denver",
+        "Western Reserve Division 5 - Denver",
+        "Western Reserve Division 6 - Denver"
+      ],
+      "conditional_additions": 12,
+      "conditional_heals": 12,
+      "manpower": 78
+    },
+    {
+      "event": "usc_coast_response",
+      "action": 1,
+      "site": 1896,
+      "names": [
+        "Western Reserve Division 1 - Salt Lake City",
+        "Western Reserve Division 2 - Salt Lake City",
+        "Western Reserve Division 3 - Salt Lake City",
+        "Western Reserve Division 4 - Salt Lake City",
+        "Western Reserve Division 5 - Salt Lake City",
+        "Western Reserve Division 6 - Salt Lake City"
+      ],
+      "conditional_additions": 12,
+      "conditional_heals": 12,
+      "manpower": 78
+    },
+    {
+      "event": "usc_coast_response",
+      "action": 2,
+      "site": 1900,
+      "names": [
+        "Western Reserve Division 1 - Phoenix",
+        "Western Reserve Division 2 - Phoenix",
+        "Western Reserve Division 3 - Phoenix",
+        "Western Reserve Division 4 - Phoenix",
+        "Western Reserve Division 5 - Phoenix",
+        "Western Reserve Division 6 - Phoenix"
+      ],
+      "conditional_additions": 12,
+      "conditional_heals": 12,
+      "manpower": 78
+    },
+    {
+      "event": "usc_coast_response",
+      "action": 3,
+      "site": 1914,
+      "names": [
+        "Western Reserve Division 1 - Kansas City",
+        "Western Reserve Division 2 - Kansas City",
+        "Western Reserve Division 3 - Kansas City",
+        "Western Reserve Division 4 - Kansas City",
+        "Western Reserve Division 5 - Kansas City",
+        "Western Reserve Division 6 - Kansas City"
+      ],
+      "conditional_additions": 12,
+      "conditional_heals": 12,
+      "manpower": 78
+    },
+    {
+      "event": "usc_inland_response",
+      "action": 0,
+      "site": 1914,
+      "names": [
+        "Central Reserve Division 1 - Kansas City",
+        "Central Reserve Division 2 - Kansas City",
+        "Central Reserve Division 3 - Kansas City",
+        "Central Reserve Division 4 - Kansas City",
+        "Central Reserve Division 5 - Kansas City",
+        "Central Reserve Division 6 - Kansas City"
+      ],
+      "conditional_additions": 12,
+      "conditional_heals": 12,
+      "manpower": 78
+    },
+    {
+      "event": "usc_inland_response",
+      "action": 1,
+      "site": 1832,
+      "names": [
+        "Central Reserve Division 1 - Chicago",
+        "Central Reserve Division 2 - Chicago",
+        "Central Reserve Division 3 - Chicago",
+        "Central Reserve Division 4 - Chicago",
+        "Central Reserve Division 5 - Chicago",
+        "Central Reserve Division 6 - Chicago"
+      ],
+      "conditional_additions": 12,
+      "conditional_heals": 12,
+      "manpower": 78
+    },
+    {
+      "event": "usc_inland_response",
+      "action": 2,
+      "site": 1809,
+      "names": [
+        "Central Reserve Division 1 - Washington",
+        "Central Reserve Division 2 - Washington",
+        "Central Reserve Division 3 - Washington",
+        "Central Reserve Division 4 - Washington",
+        "Central Reserve Division 5 - Washington",
+        "Central Reserve Division 6 - Washington"
+      ],
+      "conditional_additions": 12,
+      "conditional_heals": 12,
+      "manpower": 78
+    }
+  ],
+  "japanese_model_rows": [
+    {
+      "event": "cn_shanghai_holding_finish_0",
+      "name": "Shanghai Port Defence Division",
+      "unit": "garrison",
+      "model": 4,
+      "tech": 1090,
+      "mp": 10.0,
+      "organisation": 30.0,
+      "morale": 30.0,
+      "site": 1338
+    },
+    {
+      "event": "cn_shanghai_holding_finish_0",
+      "name": "Wusong Defence Division",
+      "unit": "garrison",
+      "model": 4,
+      "tech": 1090,
+      "mp": 10.0,
+      "organisation": 30.0,
+      "morale": 30.0,
+      "site": 1338
+    },
+    {
+      "event": "cn_shanghai_holding_finish_1",
+      "name": "Shanghai Expeditionary Infantry",
+      "unit": "infantry",
+      "model": 9,
+      "tech": 1100,
+      "mp": 13.0,
+      "organisation": 30.0,
+      "morale": 30.0,
+      "site": 1338
+    },
+    {
+      "event": "cn_wuhan_choice_finish_0",
+      "name": "Wuhan Mountain Division",
+      "unit": "bergsjaeger",
+      "model": 9,
+      "tech": 1250,
+      "mp": 13.0,
+      "organisation": 35.0,
+      "morale": 40.0,
+      "site": 1317
+    },
+    {
+      "event": "cn_wuhan_choice_finish_0",
+      "name": "Yangtze Mountain Division",
+      "unit": "bergsjaeger",
+      "model": 9,
+      "tech": 1250,
+      "mp": 13.0,
+      "organisation": 35.0,
+      "morale": 40.0,
+      "site": 1317
+    },
+    {
+      "event": "ph_manila_air_finish_0",
+      "name": "Manila Fighter Wing",
+      "unit": "interceptor",
+      "model": 8,
+      "tech": 4030,
+      "mp": 0.75,
+      "organisation": 30.0,
+      "morale": 35.0,
+      "site": 1565
+    },
+    {
+      "event": "ph_manila_air_finish_0",
+      "name": "Luzon Fighter Wing",
+      "unit": "interceptor",
+      "model": 8,
+      "tech": 4030,
+      "mp": 0.75,
+      "organisation": 30.0,
+      "morale": 35.0,
+      "site": 1565
+    },
+    {
+      "event": "ph_manila_air_finish_1",
+      "name": "Manila Naval Air Wing",
+      "unit": "naval_bomber",
+      "model": 2,
+      "tech": 4190,
+      "mp": 2.2,
+      "organisation": 30.0,
+      "morale": 25.0,
+      "site": 1565
+    },
+    {
+      "event": "ph_manila_air_finish_1",
+      "name": "Luzon Naval Air Wing",
+      "unit": "naval_bomber",
+      "model": 2,
+      "tech": 4190,
+      "mp": 2.2,
+      "organisation": 30.0,
+      "morale": 25.0,
+      "site": 1565
+    },
+    {
+      "event": "ph_island_agreement_finish_0",
+      "name": "Philippine Expeditionary Division",
+      "unit": "infantry",
+      "model": 9,
+      "tech": 1100,
+      "mp": 13.0,
+      "organisation": 30.0,
+      "morale": 30.0,
+      "site": 1552
+    },
+    {
+      "event": "ph_island_agreement_finish_0",
+      "name": "Luzon Expeditionary Division",
+      "unit": "infantry",
+      "model": 9,
+      "tech": 1100,
+      "mp": 13.0,
+      "organisation": 30.0,
+      "morale": 30.0,
+      "site": 1552
+    },
+    {
+      "event": "in_java_shipyards_finish_0",
+      "name": "Soerabaja Escort Flotilla",
+      "unit": "destroyer",
+      "model": 6,
+      "tech": 3070,
+      "mp": 1.25,
+      "organisation": 20.0,
+      "morale": 30.0,
+      "site": 1653
+    },
+    {
+      "event": "in_java_shipyards_finish_0",
+      "name": "Java Escort Flotilla",
+      "unit": "destroyer",
+      "model": 6,
+      "tech": 3070,
+      "mp": 1.25,
+      "organisation": 20.0,
+      "morale": 30.0,
+      "site": 1653
+    },
+    {
+      "event": "in_java_shipyards_finish_1",
+      "name": "Soerabaja Patrol Cruiser",
+      "unit": "light_cruiser",
+      "model": 5,
+      "tech": 3160,
+      "mp": 0.75,
+      "organisation": 20.0,
+      "morale": 30.0,
+      "site": 1653
+    }
+  ],
+  "strength_caps": [
+    {
+      "folder": "C:\\Users\\Mohsin Dingankar\\Downloads\\Blood and Iron v1.1",
+      "file": "db\\events\\italy.txt",
+      "event": "2006030",
+      "country": "ITA",
+      "which": "infantry",
+      "value": "70"
+    },
+    {
+      "folder": "C:\\Users\\Mohsin Dingankar\\Downloads\\Blood and Iron v1.1",
+      "file": "db\\events\\Mods.txt",
+      "event": "9300246",
+      "country": "ENG",
+      "which": "d_05",
+      "value": "40"
+    },
+    {
+      "folder": "C:\\Users\\Mohsin Dingankar\\Downloads\\Blood and Iron v1.1",
+      "file": "db\\events\\Mods.txt",
+      "event": "9300248",
+      "country": "USA",
+      "which": "d_06",
+      "value": "40"
+    },
+    {
+      "folder": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2",
+      "file": "db\\events\\italy.txt",
+      "event": "2006030",
+      "country": "ITA",
+      "which": "infantry",
+      "value": "70"
+    },
+    {
+      "folder": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2",
+      "file": "db\\events\\Mods.txt",
+      "event": "9300246",
+      "country": "ENG",
+      "which": "d_05",
+      "value": "40"
+    },
+    {
+      "folder": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2",
+      "file": "db\\events\\Mods.txt",
+      "event": "9300248",
+      "country": "USA",
+      "which": "d_06",
+      "value": "40"
+    }
+  ],
+  "native_strength_reductions": [
+    {
+      "folder": "C:\\Users\\Mohsin Dingankar\\Downloads\\Blood and Iron v1.1",
+      "event": "1350000",
+      "file": "db\\events\\Mobilization_events.txt",
+      "command": [
+        [
+          "type",
+          "strength"
+        ],
+        [
+          "which",
+          "land"
+        ],
+        [
+          "when",
+          "0"
+        ],
+        [
+          "where",
+          "0"
+        ],
+        [
+          "value",
+          "0.66"
+        ]
+      ]
+    },
+    {
+      "folder": "C:\\Users\\Mohsin Dingankar\\Downloads\\Blood and Iron v1.1",
+      "event": "1350000",
+      "file": "db\\events\\Mobilization_events.txt",
+      "command": [
+        [
+          "type",
+          "strength"
+        ],
+        [
+          "which",
+          "land"
+        ],
+        [
+          "when",
+          "0"
+        ],
+        [
+          "where",
+          "0"
+        ],
+        [
+          "value",
+          "0.33"
+        ]
+      ]
+    },
+    {
+      "folder": "C:\\Users\\Mohsin Dingankar\\Downloads\\Blood and Iron v1.1",
+      "event": "1350001",
+      "file": "db\\events\\Mobilization_events.txt",
+      "command": [
+        [
+          "type",
+          "strength"
+        ],
+        [
+          "which",
+          "land"
+        ],
+        [
+          "when",
+          "0"
+        ],
+        [
+          "where",
+          "0"
+        ],
+        [
+          "value",
+          "0.66"
+        ]
+      ]
+    },
+    {
+      "folder": "C:\\Users\\Mohsin Dingankar\\Downloads\\Blood and Iron v1.1",
+      "event": "1350001",
+      "file": "db\\events\\Mobilization_events.txt",
+      "command": [
+        [
+          "type",
+          "strength"
+        ],
+        [
+          "which",
+          "land"
+        ],
+        [
+          "when",
+          "0"
+        ],
+        [
+          "where",
+          "0"
+        ],
+        [
+          "value",
+          "0.66"
+        ]
+      ]
+    },
+    {
+      "folder": "C:\\Users\\Mohsin Dingankar\\Downloads\\Blood and Iron v1.1",
+      "event": "1350001",
+      "file": "db\\events\\Mobilization_events.txt",
+      "command": [
+        [
+          "type",
+          "strength"
+        ],
+        [
+          "which",
+          "land"
+        ],
+        [
+          "when",
+          "0"
+        ],
+        [
+          "where",
+          "0"
+        ],
+        [
+          "value",
+          "0.66"
+        ]
+      ]
+    },
+    {
+      "folder": "C:\\Users\\Mohsin Dingankar\\Downloads\\Blood and Iron v1.1",
+      "event": "8300111",
+      "file": "db\\events\\Mobilization_events.txt",
+      "command": [
+        [
+          "type",
+          "strength"
+        ],
+        [
+          "which",
+          "land"
+        ],
+        [
+          "when",
+          "0"
+        ],
+        [
+          "where",
+          "0"
+        ],
+        [
+          "value",
+          "0.33"
+        ]
+      ]
+    },
+    {
+      "folder": "C:\\Users\\Mohsin Dingankar\\Downloads\\Blood and Iron v1.1",
+      "event": "8300112",
+      "file": "db\\events\\Mobilization_events.txt",
+      "command": [
+        [
+          "type",
+          "strength"
+        ],
+        [
+          "which",
+          "land"
+        ],
+        [
+          "when",
+          "0"
+        ],
+        [
+          "where",
+          "0"
+        ],
+        [
+          "value",
+          "0.66"
+        ]
+      ]
+    },
+    {
+      "folder": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2",
+      "event": "1350000",
+      "file": "db\\events\\Mobilization_events.txt",
+      "command": [
+        [
+          "type",
+          "strength"
+        ],
+        [
+          "which",
+          "land"
+        ],
+        [
+          "when",
+          "0"
+        ],
+        [
+          "where",
+          "0"
+        ],
+        [
+          "value",
+          "0.66"
+        ]
+      ]
+    },
+    {
+      "folder": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2",
+      "event": "1350000",
+      "file": "db\\events\\Mobilization_events.txt",
+      "command": [
+        [
+          "type",
+          "strength"
+        ],
+        [
+          "which",
+          "land"
+        ],
+        [
+          "when",
+          "0"
+        ],
+        [
+          "where",
+          "0"
+        ],
+        [
+          "value",
+          "0.33"
+        ]
+      ]
+    },
+    {
+      "folder": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2",
+      "event": "1350001",
+      "file": "db\\events\\Mobilization_events.txt",
+      "command": [
+        [
+          "type",
+          "strength"
+        ],
+        [
+          "which",
+          "land"
+        ],
+        [
+          "when",
+          "0"
+        ],
+        [
+          "where",
+          "0"
+        ],
+        [
+          "value",
+          "0.66"
+        ]
+      ]
+    },
+    {
+      "folder": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2",
+      "event": "1350001",
+      "file": "db\\events\\Mobilization_events.txt",
+      "command": [
+        [
+          "type",
+          "strength"
+        ],
+        [
+          "which",
+          "land"
+        ],
+        [
+          "when",
+          "0"
+        ],
+        [
+          "where",
+          "0"
+        ],
+        [
+          "value",
+          "0.66"
+        ]
+      ]
+    },
+    {
+      "folder": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2",
+      "event": "1350001",
+      "file": "db\\events\\Mobilization_events.txt",
+      "command": [
+        [
+          "type",
+          "strength"
+        ],
+        [
+          "which",
+          "land"
+        ],
+        [
+          "when",
+          "0"
+        ],
+        [
+          "where",
+          "0"
+        ],
+        [
+          "value",
+          "0.66"
+        ]
+      ]
+    },
+    {
+      "folder": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2",
+      "event": "8300111",
+      "file": "db\\events\\Mobilization_events.txt",
+      "command": [
+        [
+          "type",
+          "strength"
+        ],
+        [
+          "which",
+          "land"
+        ],
+        [
+          "when",
+          "0"
+        ],
+        [
+          "where",
+          "0"
+        ],
+        [
+          "value",
+          "0.33"
+        ]
+      ]
+    },
+    {
+      "folder": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2",
+      "event": "8300112",
+      "file": "db\\events\\Mobilization_events.txt",
+      "command": [
+        [
+          "type",
+          "strength"
+        ],
+        [
+          "which",
+          "land"
+        ],
+        [
+          "when",
+          "0"
+        ],
+        [
+          "where",
+          "0"
+        ],
+        [
+          "value",
+          "0.66"
+        ]
+      ]
+    }
+  ],
+  "native_air_naval_examples": [
+    {
+      "file": "db\\events\\Add_on.txt",
+      "event": "1000249",
+      "commands": [
+        [
+          [
+            "type",
+            "add_corps"
+          ],
+          [
+            "which",
+            "Canal Reaction Force 1"
+          ],
+          [
+            "value",
+            "land"
+          ],
+          [
+            "when",
+            "-1"
+          ],
+          [
+            "where",
+            "781"
+          ]
+        ],
+        [
+          [
+            "type",
+            "add_division"
+          ],
+          [
+            "value",
+            "infantry"
+          ],
+          [
+            "when",
+            "7"
+          ],
+          [
+            "where",
+            "medium_armor"
+          ]
+        ],
+        [
+          [
+            "type",
+            "add_division"
+          ],
+          [
+            "value",
+            "infantry"
+          ],
+          [
+            "when",
+            "7"
+          ],
+          [
+            "where",
+            "artillery"
+          ]
+        ],
+        [
+          [
+            "trigger",
+            [
+              [
+                "NOT",
+                [
+                  [
+                    "ai",
+                    "ITA"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          [
+            "type",
+            "add_division"
+          ],
+          [
+            "value",
+            "infantry"
+          ],
+          [
+            "when",
+            "7"
+          ]
+        ],
+        [
+          [
+            "trigger",
+            [
+              [
+                "NOT",
+                [
+                  [
+                    "ai",
+                    "ITA"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          [
+            "type",
+            "add_division"
+          ],
+          [
+            "value",
+            "infantry"
+          ],
+          [
+            "when",
+            "7"
+          ]
+        ]
+      ]
+    },
+    {
+      "file": "db\\events\\Add_on.txt",
+      "event": "1000253",
+      "commands": [
+        [
+          [
+            "trigger",
+            [
+              [
+                "control",
+                [
+                  [
+                    "province",
+                    "1360"
+                  ],
+                  [
+                    "data",
+                    "CHI"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          [
+            "type",
+            "add_corps"
+          ],
+          [
+            "which",
+            "Op Zet Exp. Force 1"
+          ],
+          [
+            "value",
+            "air"
+          ],
+          [
+            "where",
+            "1360"
+          ]
+        ],
+        [
+          [
+            "type",
+            "add_division"
+          ],
+          [
+            "which",
+            "Interceptor Force"
+          ],
+          [
+            "value",
+            "interceptor"
+          ],
+          [
+            "when",
+            "7"
+          ]
+        ],
+        [
+          [
+            "trigger",
+            [
+              [
+                "control",
+                [
+                  [
+                    "province",
+                    "1360"
+                  ],
+                  [
+                    "data",
+                    "CHI"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          [
+            "type",
+            "add_corps"
+          ],
+          [
+            "which",
+            "Op Zet Exp. Force 2"
+          ],
+          [
+            "value",
+            "air"
+          ],
+          [
+            "where",
+            "1360"
+          ]
+        ],
+        [
+          [
+            "type",
+            "add_division"
+          ],
+          [
+            "which",
+            "Bomber Force"
+          ],
+          [
+            "value",
+            "tactical_bomber"
+          ],
+          [
+            "when",
+            "4"
+          ]
+        ]
+      ]
+    },
+    {
+      "file": "db\\events\\Add_on.txt",
+      "event": "1000524",
+      "commands": [
+        [
+          [
+            "type",
+            "add_corps"
+          ],
+          [
+            "which",
+            "30. Unterseebootsflotilla"
+          ],
+          [
+            "value",
+            "naval"
+          ],
+          [
+            "when",
+            "998"
+          ],
+          [
+            "where",
+            "310"
+          ]
+        ],
+        [
+          [
+            "type",
+            "add_division"
+          ],
+          [
+            "value",
+            "submarine"
+          ],
+          [
+            "when",
+            "6"
+          ],
+          [
+            "where",
+            "naval_improved_hull_s"
+          ]
+        ],
+        [
+          [
+            "type",
+            "add_division"
+          ],
+          [
+            "value",
+            "submarine"
+          ],
+          [
+            "when",
+            "6"
+          ],
+          [
+            "where",
+            "naval_improved_hull_s"
+          ]
+        ],
+        [
+          [
+            "type",
+            "add_division"
+          ],
+          [
+            "value",
+            "submarine"
+          ],
+          [
+            "when",
+            "6"
+          ],
+          [
+            "where",
+            "naval_improved_hull_s"
+          ]
+        ]
+      ]
+    },
+    {
+      "file": "db\\events\\china.txt",
+      "event": "2012013",
+      "commands": [
+        [
+          [
+            "type",
+            "add_corps"
+          ],
+          [
+            "which",
+            "Op Zet Exp. Force 1"
+          ],
+          [
+            "value",
+            "air"
+          ],
+          [
+            "where",
+            "1297"
+          ]
+        ],
+        [
+          [
+            "type",
+            "add_division"
+          ],
+          [
+            "which",
+            "Interceptor Force"
+          ],
+          [
+            "value",
+            "interceptor"
+          ],
+          [
+            "when",
+            "7"
+          ]
+        ],
+        [
+          [
+            "type",
+            "add_corps"
+          ],
+          [
+            "which",
+            "Op Zet Exp. Force 2"
+          ],
+          [
+            "value",
+            "air"
+          ],
+          [
+            "where",
+            "1297"
+          ]
+        ],
+        [
+          [
+            "type",
+            "add_division"
+          ],
+          [
+            "which",
+            "Bomber Force"
+          ],
+          [
+            "value",
+            "tactical_bomber"
+          ],
+          [
+            "when",
+            "6"
+          ]
+        ]
+      ]
+    }
+  ],
+  "limits": [
+    "Documented-command arithmetic and state fixtures do not execute the game engine.",
+    "Named restoration clamps to an existing cap; it never changes that cap or organisation.",
+    "Later native demobilisation, combat, attrition or unsupplied operation can reduce the newly delivered forces.",
+    "The 31 intentionally quarter-strength legacy island garrisons remain unchanged.",
+    "Final deployment UI, engine rounding, organisation defaults and mobilisation timing still require a game playtest."
+  ]
+}

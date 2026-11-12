@@ -1,0 +1,10 @@
+{
+  "result": "PASS",
+  "event_files": 141,
+  "all_event_blocks": 6084,
+  "new_event_blocks": 1822,
+  "new_decisions": 121,
+  "errors": [],
+  "warnings": [],
+  "scope": "Static script, asset and dependency validation. Not engine playtesting."
+}

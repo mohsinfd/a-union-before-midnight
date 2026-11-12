@@ -1,0 +1,58 @@
+{
+  "tests": 12,
+  "failures": 0,
+  "errors": 0,
+  "programmes": 8,
+  "choices": 16,
+  "models": {
+    "garrison": {
+      "year": 1931,
+      "model": 4,
+      "tech": 1090,
+      "mp": 10.0
+    },
+    "infantry": {
+      "year": 1936,
+      "model": 9,
+      "tech": 1100,
+      "mp": 13.0
+    },
+    "bergsjaeger": {
+      "year": 1935,
+      "model": 9,
+      "tech": 1250,
+      "mp": 13.0
+    },
+    "interceptor": {
+      "year": 1937,
+      "model": 8,
+      "tech": 4030,
+      "mp": 0.75
+    },
+    "naval_bomber": {
+      "year": 1938,
+      "model": 2,
+      "tech": 4190,
+      "mp": 2.2
+    },
+    "destroyer": {
+      "year": 1937,
+      "model": 6,
+      "tech": 3070,
+      "mp": 1.25
+    },
+    "light_cruiser": {
+      "year": 1935,
+      "model": 5,
+      "tech": 3160,
+      "mp": 0.75
+    },
+    "transport": {
+      "year": 1936,
+      "model": 2,
+      "tech": 3830,
+      "mp": 0.5
+    }
+  },
+  "game_launched": false
+}

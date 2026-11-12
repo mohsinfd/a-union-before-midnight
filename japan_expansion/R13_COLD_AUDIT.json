@@ -1,0 +1,9 @@
+{
+  "version": "JX 1.1 ALPHA 2 R13",
+  "passed": true,
+  "tests": 15,
+  "failures": 0,
+  "errors": 0,
+  "game_launched": false,
+  "scope": "Installed event commands, deferred delivery, shipping, existing heavy submarines, native stats, full equipment, IC-days, terrain, conversions, attachment compatibility and artwork."
+}

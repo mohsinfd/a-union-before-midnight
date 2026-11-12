@@ -1,0 +1,582 @@
+[
+  {
+    "unit": "d_13",
+    "model": 0,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\ill_div_JAP_53_0.bmp",
+    "size": [
+      192,
+      104
+    ],
+    "sha256": "173473bc5191a067eb6a4c263cea50ee26a6d5e6e9c28bf7b8ec9651d5b17f9e"
+  },
+  {
+    "unit": "d_13",
+    "model": 0,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\JAP_model_53_0.bmp",
+    "size": [
+      67,
+      44
+    ],
+    "sha256": "37ad9a3a36f0335b9136de8a150b073a040efc8c168b8f24ac73fd1e8fb1b250"
+  },
+  {
+    "unit": "d_13",
+    "model": 1,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\ill_div_JAP_53_1.bmp",
+    "size": [
+      192,
+      104
+    ],
+    "sha256": "173473bc5191a067eb6a4c263cea50ee26a6d5e6e9c28bf7b8ec9651d5b17f9e"
+  },
+  {
+    "unit": "d_13",
+    "model": 1,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\JAP_model_53_1.bmp",
+    "size": [
+      67,
+      44
+    ],
+    "sha256": "37ad9a3a36f0335b9136de8a150b073a040efc8c168b8f24ac73fd1e8fb1b250"
+  },
+  {
+    "unit": "d_13",
+    "model": 2,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\ill_div_JAP_53_2.bmp",
+    "size": [
+      192,
+      104
+    ],
+    "sha256": "173473bc5191a067eb6a4c263cea50ee26a6d5e6e9c28bf7b8ec9651d5b17f9e"
+  },
+  {
+    "unit": "d_13",
+    "model": 2,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\JAP_model_53_2.bmp",
+    "size": [
+      67,
+      44
+    ],
+    "sha256": "37ad9a3a36f0335b9136de8a150b073a040efc8c168b8f24ac73fd1e8fb1b250"
+  },
+  {
+    "unit": "d_14",
+    "model": 0,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\ill_div_JAP_54_0.bmp",
+    "size": [
+      192,
+      104
+    ],
+    "sha256": "2ee607c95917c8fb3d0c5502a2b3dc84c41e9afb0007524225316197fa2764ee"
+  },
+  {
+    "unit": "d_14",
+    "model": 0,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\JAP_model_54_0.bmp",
+    "size": [
+      67,
+      44
+    ],
+    "sha256": "464ffd3c23b01452d6a9f2696075c2c8f559a69e1fbf5feabd661bc73da3a966"
+  },
+  {
+    "unit": "d_14",
+    "model": 1,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\ill_div_JAP_54_1.bmp",
+    "size": [
+      192,
+      104
+    ],
+    "sha256": "660c378ed3008fa870313ed0792f64561f34fd456d00389a301ed0e00b9204cf"
+  },
+  {
+    "unit": "d_14",
+    "model": 1,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\JAP_model_54_1.bmp",
+    "size": [
+      67,
+      44
+    ],
+    "sha256": "bac6f8bd21d2ad25f5ecb8b881e6d36b715060ddc37a1c52ce8db75acb96b1fa"
+  },
+  {
+    "unit": "d_14",
+    "model": 2,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\ill_div_JAP_54_2.bmp",
+    "size": [
+      192,
+      104
+    ],
+    "sha256": "660c378ed3008fa870313ed0792f64561f34fd456d00389a301ed0e00b9204cf"
+  },
+  {
+    "unit": "d_14",
+    "model": 2,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\JAP_model_54_2.bmp",
+    "size": [
+      67,
+      44
+    ],
+    "sha256": "bac6f8bd21d2ad25f5ecb8b881e6d36b715060ddc37a1c52ce8db75acb96b1fa"
+  },
+  {
+    "unit": "d_14",
+    "model": 3,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\ill_div_JAP_54_3.bmp",
+    "size": [
+      192,
+      104
+    ],
+    "sha256": "660c378ed3008fa870313ed0792f64561f34fd456d00389a301ed0e00b9204cf"
+  },
+  {
+    "unit": "d_14",
+    "model": 3,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\JAP_model_54_3.bmp",
+    "size": [
+      67,
+      44
+    ],
+    "sha256": "bac6f8bd21d2ad25f5ecb8b881e6d36b715060ddc37a1c52ce8db75acb96b1fa"
+  },
+  {
+    "unit": "d_14",
+    "model": 4,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\ill_div_JAP_54_4.bmp",
+    "size": [
+      192,
+      104
+    ],
+    "sha256": "660c378ed3008fa870313ed0792f64561f34fd456d00389a301ed0e00b9204cf"
+  },
+  {
+    "unit": "d_14",
+    "model": 4,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\JAP_model_54_4.bmp",
+    "size": [
+      67,
+      44
+    ],
+    "sha256": "bac6f8bd21d2ad25f5ecb8b881e6d36b715060ddc37a1c52ce8db75acb96b1fa"
+  },
+  {
+    "unit": "d_15",
+    "model": 0,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\ill_div_JAP_55_0.bmp",
+    "size": [
+      192,
+      104
+    ],
+    "sha256": "ec4be1f5caef0886d9126b31c73e5ee243566a77883e63901f6401439a76c7f0"
+  },
+  {
+    "unit": "d_15",
+    "model": 0,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\JAP_model_55_0.bmp",
+    "size": [
+      67,
+      44
+    ],
+    "sha256": "dbd5f2e49cdee606b8ba7c7ce6f2fa49e1f95c4fce110d2f7d3b5705e0ffc3b8"
+  },
+  {
+    "unit": "d_15",
+    "model": 1,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\ill_div_JAP_55_1.bmp",
+    "size": [
+      192,
+      104
+    ],
+    "sha256": "ec4be1f5caef0886d9126b31c73e5ee243566a77883e63901f6401439a76c7f0"
+  },
+  {
+    "unit": "d_15",
+    "model": 1,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\JAP_model_55_1.bmp",
+    "size": [
+      67,
+      44
+    ],
+    "sha256": "dbd5f2e49cdee606b8ba7c7ce6f2fa49e1f95c4fce110d2f7d3b5705e0ffc3b8"
+  },
+  {
+    "unit": "d_15",
+    "model": 2,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\ill_div_JAP_55_2.bmp",
+    "size": [
+      192,
+      104
+    ],
+    "sha256": "ec4be1f5caef0886d9126b31c73e5ee243566a77883e63901f6401439a76c7f0"
+  },
+  {
+    "unit": "d_15",
+    "model": 2,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\JAP_model_55_2.bmp",
+    "size": [
+      67,
+      44
+    ],
+    "sha256": "dbd5f2e49cdee606b8ba7c7ce6f2fa49e1f95c4fce110d2f7d3b5705e0ffc3b8"
+  },
+  {
+    "unit": "d_15",
+    "model": 3,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\ill_div_JAP_55_3.bmp",
+    "size": [
+      192,
+      104
+    ],
+    "sha256": "ec4be1f5caef0886d9126b31c73e5ee243566a77883e63901f6401439a76c7f0"
+  },
+  {
+    "unit": "d_15",
+    "model": 3,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\JAP_model_55_3.bmp",
+    "size": [
+      67,
+      44
+    ],
+    "sha256": "dbd5f2e49cdee606b8ba7c7ce6f2fa49e1f95c4fce110d2f7d3b5705e0ffc3b8"
+  },
+  {
+    "unit": "d_16",
+    "model": 0,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\ill_div_JAP_56_0.bmp",
+    "size": [
+      192,
+      104
+    ],
+    "sha256": "deb060080a651eeb34c53c1a01a7750e17cb2984d54adfa7c68acd9170ba1b1d"
+  },
+  {
+    "unit": "d_16",
+    "model": 0,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\JAP_model_56_0.bmp",
+    "size": [
+      67,
+      44
+    ],
+    "sha256": "109a24a8d175bbf9f83d553a1bd0d2bd1180704eb8da4be6e506f2fd708d13b1"
+  },
+  {
+    "unit": "d_16",
+    "model": 1,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\ill_div_JAP_56_1.bmp",
+    "size": [
+      192,
+      104
+    ],
+    "sha256": "deb060080a651eeb34c53c1a01a7750e17cb2984d54adfa7c68acd9170ba1b1d"
+  },
+  {
+    "unit": "d_16",
+    "model": 1,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\JAP_model_56_1.bmp",
+    "size": [
+      67,
+      44
+    ],
+    "sha256": "109a24a8d175bbf9f83d553a1bd0d2bd1180704eb8da4be6e506f2fd708d13b1"
+  },
+  {
+    "unit": "d_16",
+    "model": 2,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\ill_div_JAP_56_2.bmp",
+    "size": [
+      192,
+      104
+    ],
+    "sha256": "ee38e8a713514512a104255e9a30b3d0f193a85eb36b59d597289db680ee794e"
+  },
+  {
+    "unit": "d_16",
+    "model": 2,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\JAP_model_56_2.bmp",
+    "size": [
+      67,
+      44
+    ],
+    "sha256": "3945295e41c5bee40aa1feef1752be539c65aceb0bcd9d442f5c88c58f3c5311"
+  },
+  {
+    "unit": "d_16",
+    "model": 3,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\ill_div_JAP_56_3.bmp",
+    "size": [
+      192,
+      104
+    ],
+    "sha256": "ee38e8a713514512a104255e9a30b3d0f193a85eb36b59d597289db680ee794e"
+  },
+  {
+    "unit": "d_16",
+    "model": 3,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\JAP_model_56_3.bmp",
+    "size": [
+      67,
+      44
+    ],
+    "sha256": "3945295e41c5bee40aa1feef1752be539c65aceb0bcd9d442f5c88c58f3c5311"
+  },
+  {
+    "unit": "d_17",
+    "model": 0,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\ill_div_JAP_57_0.bmp",
+    "size": [
+      192,
+      104
+    ],
+    "sha256": "5ea597ecefdbd8e838270055dadbb59c594b73451260109ebb60d4b6b710df1d"
+  },
+  {
+    "unit": "d_17",
+    "model": 0,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\JAP_model_57_0.bmp",
+    "size": [
+      67,
+      44
+    ],
+    "sha256": "43b84749823697efcdeec1ab42e75f702130d8b515061d58ac27159c2d1ac6b6"
+  },
+  {
+    "unit": "d_17",
+    "model": 1,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\ill_div_JAP_57_1.bmp",
+    "size": [
+      192,
+      104
+    ],
+    "sha256": "c6a21d50f70d13cb9082a397ebf0cfa2a2adb39f874bb0b20e91ff446c7a8858"
+  },
+  {
+    "unit": "d_17",
+    "model": 1,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\JAP_model_57_1.bmp",
+    "size": [
+      67,
+      44
+    ],
+    "sha256": "dfdabd3bc4fba3beb09a5f2e9f7cf1a53a844a4f1c0fc3b78b6e27cdce2e333c"
+  },
+  {
+    "unit": "d_17",
+    "model": 2,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\ill_div_JAP_57_2.bmp",
+    "size": [
+      192,
+      104
+    ],
+    "sha256": "c6a21d50f70d13cb9082a397ebf0cfa2a2adb39f874bb0b20e91ff446c7a8858"
+  },
+  {
+    "unit": "d_17",
+    "model": 2,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\JAP_model_57_2.bmp",
+    "size": [
+      67,
+      44
+    ],
+    "sha256": "dfdabd3bc4fba3beb09a5f2e9f7cf1a53a844a4f1c0fc3b78b6e27cdce2e333c"
+  },
+  {
+    "unit": "d_17",
+    "model": 3,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\ill_div_JAP_57_3.bmp",
+    "size": [
+      192,
+      104
+    ],
+    "sha256": "c6a21d50f70d13cb9082a397ebf0cfa2a2adb39f874bb0b20e91ff446c7a8858"
+  },
+  {
+    "unit": "d_17",
+    "model": 3,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\JAP_model_57_3.bmp",
+    "size": [
+      67,
+      44
+    ],
+    "sha256": "dfdabd3bc4fba3beb09a5f2e9f7cf1a53a844a4f1c0fc3b78b6e27cdce2e333c"
+  },
+  {
+    "unit": "d_17",
+    "model": 4,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\ill_div_JAP_57_4.bmp",
+    "size": [
+      192,
+      104
+    ],
+    "sha256": "c6a21d50f70d13cb9082a397ebf0cfa2a2adb39f874bb0b20e91ff446c7a8858"
+  },
+  {
+    "unit": "d_17",
+    "model": 4,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\JAP_model_57_4.bmp",
+    "size": [
+      67,
+      44
+    ],
+    "sha256": "dfdabd3bc4fba3beb09a5f2e9f7cf1a53a844a4f1c0fc3b78b6e27cdce2e333c"
+  },
+  {
+    "unit": "d_18",
+    "model": 0,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\ill_div_JAP_58_0.bmp",
+    "size": [
+      192,
+      104
+    ],
+    "sha256": "83c8cdac45f80a96606900dc935388d6138d4b21794ecf6ee4fb72d72c60606e"
+  },
+  {
+    "unit": "d_18",
+    "model": 0,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\JAP_model_58_0.bmp",
+    "size": [
+      67,
+      44
+    ],
+    "sha256": "1696dd9ef3d6dfbe30c31c361a5ea40377b2beea065c71acb220a9247d5bb6ad"
+  },
+  {
+    "unit": "d_18",
+    "model": 1,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\ill_div_JAP_58_1.bmp",
+    "size": [
+      192,
+      104
+    ],
+    "sha256": "83c8cdac45f80a96606900dc935388d6138d4b21794ecf6ee4fb72d72c60606e"
+  },
+  {
+    "unit": "d_18",
+    "model": 1,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\JAP_model_58_1.bmp",
+    "size": [
+      67,
+      44
+    ],
+    "sha256": "1696dd9ef3d6dfbe30c31c361a5ea40377b2beea065c71acb220a9247d5bb6ad"
+  },
+  {
+    "unit": "d_18",
+    "model": 2,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\ill_div_JAP_58_2.bmp",
+    "size": [
+      192,
+      104
+    ],
+    "sha256": "83c8cdac45f80a96606900dc935388d6138d4b21794ecf6ee4fb72d72c60606e"
+  },
+  {
+    "unit": "d_18",
+    "model": 2,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\JAP_model_58_2.bmp",
+    "size": [
+      67,
+      44
+    ],
+    "sha256": "1696dd9ef3d6dfbe30c31c361a5ea40377b2beea065c71acb220a9247d5bb6ad"
+  },
+  {
+    "unit": "d_19",
+    "model": 0,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\ill_div_JAP_59_0.bmp",
+    "size": [
+      192,
+      104
+    ],
+    "sha256": "25dc26ab4eaaa0841cebffc815c821356636739dcd9a3655c88fdb7c3884a7d7"
+  },
+  {
+    "unit": "d_19",
+    "model": 0,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\JAP_model_59_0.bmp",
+    "size": [
+      67,
+      44
+    ],
+    "sha256": "4e7ce2f73553f3486285c8c91f3c496c3328095b210050ac9444eabbd3f8065c"
+  },
+  {
+    "unit": "d_19",
+    "model": 1,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\ill_div_JAP_59_1.bmp",
+    "size": [
+      192,
+      104
+    ],
+    "sha256": "25dc26ab4eaaa0841cebffc815c821356636739dcd9a3655c88fdb7c3884a7d7"
+  },
+  {
+    "unit": "d_19",
+    "model": 1,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\JAP_model_59_1.bmp",
+    "size": [
+      67,
+      44
+    ],
+    "sha256": "4e7ce2f73553f3486285c8c91f3c496c3328095b210050ac9444eabbd3f8065c"
+  },
+  {
+    "unit": "d_19",
+    "model": 2,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\ill_div_JAP_59_2.bmp",
+    "size": [
+      192,
+      104
+    ],
+    "sha256": "25dc26ab4eaaa0841cebffc815c821356636739dcd9a3655c88fdb7c3884a7d7"
+  },
+  {
+    "unit": "d_19",
+    "model": 2,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\JAP_model_59_2.bmp",
+    "size": [
+      67,
+      44
+    ],
+    "sha256": "4e7ce2f73553f3486285c8c91f3c496c3328095b210050ac9444eabbd3f8065c"
+  },
+  {
+    "unit": "d_19",
+    "model": 3,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\ill_div_JAP_59_3.bmp",
+    "size": [
+      192,
+      104
+    ],
+    "sha256": "25dc26ab4eaaa0841cebffc815c821356636739dcd9a3655c88fdb7c3884a7d7"
+  },
+  {
+    "unit": "d_19",
+    "model": 3,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\JAP_model_59_3.bmp",
+    "size": [
+      67,
+      44
+    ],
+    "sha256": "4e7ce2f73553f3486285c8c91f3c496c3328095b210050ac9444eabbd3f8065c"
+  },
+  {
+    "unit": "d_19",
+    "model": 4,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\ill_div_JAP_59_4.bmp",
+    "size": [
+      192,
+      104
+    ],
+    "sha256": "25dc26ab4eaaa0841cebffc815c821356636739dcd9a3655c88fdb7c3884a7d7"
+  },
+  {
+    "unit": "d_19",
+    "model": 4,
+    "path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\gfx\\interface\\models\\JAP_model_59_4.bmp",
+    "size": [
+      67,
+      44
+    ],
+    "sha256": "4e7ce2f73553f3486285c8c91f3c496c3328095b210050ac9444eabbd3f8065c"
+  }
+]

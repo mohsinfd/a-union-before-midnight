@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "tests": 13,
+  "failures": 0,
+  "errors": 0,
+  "introductions": [
+    "unique_intro_b_01",
+    "unique_intro_b_02",
+    "unique_intro_d_14",
+    "unique_intro_b_03",
+    "unique_intro_d_13",
+    "unique_intro_d_15",
+    "unique_intro_d_19",
+    "unique_intro_d_17",
+    "unique_intro_d_16",
+    "unique_intro_d_18"
+  ],
+  "resolvers": 29,
+  "first_issue_manpower": 42.4,
+  "game_launched": false
+}

@@ -1,0 +1,290 @@
+{
+  "version": "JX 1.1 ALPHA 2 R9",
+  "game_launched": false,
+  "retired_offers": 42,
+  "retired_decision_cards": 26,
+  "active_decisions": 70,
+  "manual_settlements": [
+    "china",
+    "india",
+    "philippines",
+    "malaya",
+    "brunei",
+    "sarawak",
+    "thailand",
+    "burma",
+    "australia",
+    "newzealand",
+    "persia",
+    "iraq",
+    "egypt",
+    "indonesia",
+    "vietnam",
+    "laos",
+    "cambodia"
+  ],
+  "endurance": {
+    "stages": [
+      [
+        "home_fuel",
+        1935,
+        350,
+        2400,
+        1000,
+        240,
+        1544,
+        [
+          [
+            160,
+            40,
+            10,
+            20
+          ],
+          [
+            200,
+            20,
+            0,
+            35
+          ]
+        ]
+      ],
+      [
+        "war_fuel",
+        1940,
+        500,
+        3600,
+        2000,
+        270,
+        1545,
+        [
+          [
+            320,
+            90,
+            30,
+            25
+          ],
+          [
+            400,
+            40,
+            10,
+            50
+          ]
+        ]
+      ]
+    ],
+    "batches": [
+      [
+        12000,
+        800,
+        100,
+        6000
+      ],
+      [
+        24000,
+        1600,
+        200,
+        12000
+      ]
+    ],
+    "small_batch": [
+      3000,
+      200,
+      25,
+      1500
+    ],
+    "energy_reserve": 9000,
+    "stable_old_ids": 1709
+  },
+  "forces": {
+    "catalogue_applied": true,
+    "air": {
+      "0": {
+        "interceptor": [
+          3.5,
+          42
+        ],
+        "multi_role": [
+          4,
+          42
+        ],
+        "cas": [
+          4,
+          46
+        ],
+        "tactical_bomber": [
+          1.5,
+          18
+        ],
+        "naval_bomber": [
+          1.5,
+          18
+        ],
+        "transport_plane": [
+          1.5,
+          18
+        ]
+      },
+      "1": {
+        "interceptor": [
+          1.5,
+          18
+        ],
+        "multi_role": [
+          1.5,
+          18
+        ],
+        "cas": [
+          1.5,
+          18
+        ],
+        "tactical_bomber": [
+          5,
+          46
+        ],
+        "naval_bomber": [
+          4,
+          48
+        ],
+        "transport_plane": [
+          5,
+          48
+        ]
+      }
+    },
+    "specialist_models": "Retained R8 prices, stats and research progression"
+  },
+  "flow": {
+    "manual_settlements": [
+      "china",
+      "india",
+      "philippines",
+      "malaya",
+      "brunei",
+      "sarawak",
+      "thailand",
+      "burma",
+      "australia",
+      "newzealand",
+      "persia",
+      "iraq",
+      "egypt",
+      "indonesia",
+      "vietnam",
+      "laos",
+      "cambodia"
+    ],
+    "manual_early": [
+      "fx1933",
+      "fx1936",
+      "neutral1939",
+      "oil1934",
+      "procurement1937"
+    ],
+    "retired_early": [
+      "allocations1933",
+      "colleges1936",
+      "deck1935",
+      "instructors1940",
+      "materials1938",
+      "nomonhan1939",
+      "rail1937"
+    ],
+    "guarded_paid_projects": [
+      "first_industry",
+      "army_supply",
+      "merchant_prewar",
+      "naval_school",
+      "pilot_school",
+      "army_school",
+      "second_industry",
+      "war_standard",
+      "fleet_order",
+      "escort_order",
+      "home_docks",
+      "emergency_rebuild",
+      "naval_air_rebuild",
+      "snlf",
+      "guards",
+      "mobile_army",
+      "base_guard",
+      "sumatra_oil",
+      "borneo_oil",
+      "java_oil",
+      "tankers",
+      "maritime_patrol",
+      "fuel_discipline",
+      "synthetic",
+      "shipping_emergency",
+      "china_mission",
+      "india_mission",
+      "hawaii",
+      "singapore",
+      "hongkong",
+      "suez",
+      "australian_prep",
+      "forward_air",
+      "german_exchange",
+      "siberian_rail",
+      "med_expedition",
+      "wartime_industry",
+      "late_fleet",
+      "late_air",
+      "civil_recovery",
+      "naval_treaty",
+      "axis_fuel",
+      "ocean_patrol",
+      "china_expedition",
+      "india_expedition",
+      "island_defence",
+      "long_range",
+      "cold_training",
+      "fleet_1944",
+      "china_rebuild",
+      "india_rebuild",
+      "reserve_1948",
+      "science_1949",
+      "american_base",
+      "outer_oil",
+      "procurement1937",
+      "materials1938",
+      "winter_school",
+      "landing_rehearsal",
+      "airborne_study",
+      "field_medicine",
+      "airborne_force",
+      "mobile_columns",
+      "island_depth",
+      "home_air_defence",
+      "base_force_orders",
+      "jungle_force_orders",
+      "manchurian_contract",
+      "merchant_reserve",
+      "berlin_barter",
+      "thai_connection",
+      "rabaul_workshops",
+      "colombo_station",
+      "northern_station",
+      "homefront_breathing_space",
+      "army_production",
+      "air_production",
+      "naval_production",
+      "home_fuel",
+      "war_fuel",
+      "repair_service",
+      "strategic_storage"
+    ],
+    "regional_grant_receipts": [
+      "guangxi",
+      "yunnan"
+    ]
+  },
+  "recruitment": {
+    "reserve_waves": [
+      160,
+      140,
+      120
+    ],
+    "daily_supplement": 0.65,
+    "duration_days": 1825
+  }
+}

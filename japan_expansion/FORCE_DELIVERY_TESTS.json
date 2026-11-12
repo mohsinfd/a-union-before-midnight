@@ -1,0 +1,696 @@
+{
+  "checks": [
+    "Final pass preserves every event ID and is idempotent.",
+    "All six recruitment offers are unreachable; all direct and indirect custom activation paths are closed.",
+    "Opening disables only the three custom classes; ordinary garrison production and island defenders remain intact.",
+    "Army infantry priority now supports exactly Infantry, Mountain Infantry and full Marines, with each correctly priced from its own model-zero baseline.",
+    "Fujiwara final roster/personality output round-trips and is idempotent; original 50066 unchanged, alternate 286122 identifiable and available 1937\u20131951.",
+    "Exact building cost/time, navy group and custom-unit/deactivation syntax confirmed by local engine metadata and actual installed German definitions."
+  ],
+  "retired": [
+    {
+      "key": "introduce_d_10",
+      "id": 28600651
+    },
+    {
+      "key": "introduce_d_11",
+      "id": 28600653
+    },
+    {
+      "key": "snlf_open_recruitment",
+      "id": 28601706
+    },
+    {
+      "key": "base_force_orders",
+      "id": 28600657
+    },
+    {
+      "key": "jungle_force_orders",
+      "id": 28600661
+    },
+    {
+      "key": "snlf",
+      "id": 28600057
+    }
+  ],
+  "civil_commands": [
+    [
+      "province",
+      "infra",
+      "time",
+      -0.12
+    ],
+    [
+      "province",
+      "infra",
+      "cost",
+      -0.12
+    ],
+    [
+      "province",
+      "ic",
+      "time",
+      -0.05
+    ],
+    [
+      "province",
+      "ic",
+      "cost",
+      -0.05
+    ],
+    [
+      "unit",
+      "navy",
+      "time",
+      0.04
+    ]
+  ],
+  "specialists": [
+    {
+      "unit": "d_10",
+      "year": 1937,
+      "model": 0,
+      "base": "garrison",
+      "base_model": 4,
+      "stats": {
+        "softattack": 6.0,
+        "hardattack": 1.0,
+        "defensiveness": 38.0,
+        "toughness": 20.0,
+        "defaultorganisation": 30.0,
+        "morale": 30.0,
+        "maxspeed": 0.0,
+        "transportweight": 5.0,
+        "supplyconsumption": 0.22
+      },
+      "native": {
+        "softattack": 8.0,
+        "hardattack": 2.0,
+        "defensiveness": 35.0,
+        "toughness": 40.0,
+        "defaultorganisation": 30.0,
+        "morale": 30.0,
+        "maxspeed": 0.0,
+        "transportweight": 5.0,
+        "supplyconsumption": 0.4
+      },
+      "installed": {
+        "softattack": 6.0,
+        "hardattack": 1.0,
+        "defensiveness": 38.0,
+        "toughness": 20.0,
+        "defaultorganisation": 30.0,
+        "morale": 30.0,
+        "maxspeed": 0.0,
+        "transportweight": 5.0,
+        "supplyconsumption": 0.22
+      }
+    },
+    {
+      "unit": "d_10",
+      "year": 1939,
+      "model": 1,
+      "base": "garrison",
+      "base_model": 5,
+      "stats": {
+        "softattack": 6.0,
+        "hardattack": 2.0,
+        "defensiveness": 38.0,
+        "toughness": 20.0,
+        "defaultorganisation": 30.0,
+        "morale": 30.0,
+        "maxspeed": 0.0,
+        "transportweight": 5.0,
+        "supplyconsumption": 0.28
+      },
+      "native": {
+        "softattack": 9.0,
+        "hardattack": 3.0,
+        "defensiveness": 35.0,
+        "toughness": 40.0,
+        "defaultorganisation": 30.0,
+        "morale": 30.0,
+        "maxspeed": 0.0,
+        "transportweight": 5.0,
+        "supplyconsumption": 0.5
+      },
+      "installed": {
+        "softattack": 6.0,
+        "hardattack": 2.0,
+        "defensiveness": 38.0,
+        "toughness": 20.0,
+        "defaultorganisation": 30.0,
+        "morale": 30.0,
+        "maxspeed": 0.0,
+        "transportweight": 5.0,
+        "supplyconsumption": 0.28
+      }
+    },
+    {
+      "unit": "d_10",
+      "year": 1942,
+      "model": 2,
+      "base": "garrison",
+      "base_model": 5,
+      "stats": {
+        "softattack": 6.0,
+        "hardattack": 2.0,
+        "defensiveness": 38.0,
+        "toughness": 20.0,
+        "defaultorganisation": 30.0,
+        "morale": 30.0,
+        "maxspeed": 0.0,
+        "transportweight": 5.0,
+        "supplyconsumption": 0.28
+      },
+      "native": {
+        "softattack": 9.0,
+        "hardattack": 3.0,
+        "defensiveness": 35.0,
+        "toughness": 40.0,
+        "defaultorganisation": 30.0,
+        "morale": 30.0,
+        "maxspeed": 0.0,
+        "transportweight": 5.0,
+        "supplyconsumption": 0.5
+      },
+      "installed": {
+        "softattack": 6.0,
+        "hardattack": 2.0,
+        "defensiveness": 38.0,
+        "toughness": 20.0,
+        "defaultorganisation": 30.0,
+        "morale": 30.0,
+        "maxspeed": 0.0,
+        "transportweight": 5.0,
+        "supplyconsumption": 0.28
+      }
+    },
+    {
+      "unit": "d_10",
+      "year": 1945,
+      "model": 3,
+      "base": "garrison",
+      "base_model": 6,
+      "stats": {
+        "softattack": 8.0,
+        "hardattack": 3.0,
+        "defensiveness": 38.0,
+        "toughness": 20.0,
+        "defaultorganisation": 30.0,
+        "morale": 30.0,
+        "maxspeed": 0.0,
+        "transportweight": 5.0,
+        "supplyconsumption": 0.33
+      },
+      "native": {
+        "softattack": 11.0,
+        "hardattack": 4.0,
+        "defensiveness": 35.0,
+        "toughness": 40.0,
+        "defaultorganisation": 30.0,
+        "morale": 30.0,
+        "maxspeed": 0.0,
+        "transportweight": 5.0,
+        "supplyconsumption": 0.6
+      },
+      "installed": {
+        "softattack": 8.0,
+        "hardattack": 3.0,
+        "defensiveness": 38.0,
+        "toughness": 20.0,
+        "defaultorganisation": 30.0,
+        "morale": 30.0,
+        "maxspeed": 0.0,
+        "transportweight": 5.0,
+        "supplyconsumption": 0.33
+      }
+    },
+    {
+      "unit": "d_10",
+      "year": 1948,
+      "model": 4,
+      "base": "garrison",
+      "base_model": 6,
+      "stats": {
+        "softattack": 8.0,
+        "hardattack": 3.0,
+        "defensiveness": 38.0,
+        "toughness": 20.0,
+        "defaultorganisation": 30.0,
+        "morale": 30.0,
+        "maxspeed": 0.0,
+        "transportweight": 5.0,
+        "supplyconsumption": 0.33
+      },
+      "native": {
+        "softattack": 11.0,
+        "hardattack": 4.0,
+        "defensiveness": 35.0,
+        "toughness": 40.0,
+        "defaultorganisation": 30.0,
+        "morale": 30.0,
+        "maxspeed": 0.0,
+        "transportweight": 5.0,
+        "supplyconsumption": 0.6
+      },
+      "installed": {
+        "softattack": 8.0,
+        "hardattack": 3.0,
+        "defensiveness": 38.0,
+        "toughness": 20.0,
+        "defaultorganisation": 30.0,
+        "morale": 30.0,
+        "maxspeed": 0.0,
+        "transportweight": 5.0,
+        "supplyconsumption": 0.33
+      }
+    },
+    {
+      "unit": "d_11",
+      "year": 1937,
+      "model": 0,
+      "base": "infantry",
+      "base_model": 9,
+      "stats": {
+        "softattack": 8.0,
+        "hardattack": 2.0,
+        "defensiveness": 30.0,
+        "toughness": 35.0,
+        "defaultorganisation": 30.0,
+        "morale": 30.0,
+        "maxspeed": 6.0,
+        "transportweight": 7.0,
+        "supplyconsumption": 0.85
+      },
+      "native": {
+        "softattack": 10.0,
+        "hardattack": 2.0,
+        "defensiveness": 35.0,
+        "toughness": 40.0,
+        "defaultorganisation": 30.0,
+        "morale": 30.0,
+        "maxspeed": 6.0,
+        "transportweight": 10.0,
+        "supplyconsumption": 1.0
+      },
+      "installed": {
+        "softattack": 8.0,
+        "hardattack": 2.0,
+        "defensiveness": 30.0,
+        "toughness": 35.0,
+        "defaultorganisation": 30.0,
+        "morale": 30.0,
+        "maxspeed": 6.0,
+        "transportweight": 7.0,
+        "supplyconsumption": 0.85
+      }
+    },
+    {
+      "unit": "d_11",
+      "year": 1939,
+      "model": 1,
+      "base": "infantry",
+      "base_model": 10,
+      "stats": {
+        "softattack": 9.0,
+        "hardattack": 2.0,
+        "defensiveness": 30.0,
+        "toughness": 35.0,
+        "defaultorganisation": 30.0,
+        "morale": 30.0,
+        "maxspeed": 6.0,
+        "transportweight": 7.0,
+        "supplyconsumption": 0.94
+      },
+      "native": {
+        "softattack": 11.0,
+        "hardattack": 2.0,
+        "defensiveness": 35.0,
+        "toughness": 40.0,
+        "defaultorganisation": 30.0,
+        "morale": 30.0,
+        "maxspeed": 6.0,
+        "transportweight": 10.0,
+        "supplyconsumption": 1.1
+      },
+      "installed": {
+        "softattack": 9.0,
+        "hardattack": 2.0,
+        "defensiveness": 30.0,
+        "toughness": 35.0,
+        "defaultorganisation": 30.0,
+        "morale": 30.0,
+        "maxspeed": 6.0,
+        "transportweight": 7.0,
+        "supplyconsumption": 0.94
+      }
+    },
+    {
+      "unit": "d_11",
+      "year": 1942,
+      "model": 2,
+      "base": "infantry",
+      "base_model": 11,
+      "stats": {
+        "softattack": 10.0,
+        "hardattack": 3.0,
+        "defensiveness": 30.0,
+        "toughness": 35.0,
+        "defaultorganisation": 30.0,
+        "morale": 30.0,
+        "maxspeed": 6.0,
+        "transportweight": 7.0,
+        "supplyconsumption": 0.94
+      },
+      "native": {
+        "softattack": 13.0,
+        "hardattack": 4.0,
+        "defensiveness": 35.0,
+        "toughness": 40.0,
+        "defaultorganisation": 30.0,
+        "morale": 30.0,
+        "maxspeed": 6.0,
+        "transportweight": 10.0,
+        "supplyconsumption": 1.1
+      },
+      "installed": {
+        "softattack": 10.0,
+        "hardattack": 3.0,
+        "defensiveness": 30.0,
+        "toughness": 35.0,
+        "defaultorganisation": 30.0,
+        "morale": 30.0,
+        "maxspeed": 6.0,
+        "transportweight": 7.0,
+        "supplyconsumption": 0.94
+      }
+    },
+    {
+      "unit": "d_11",
+      "year": 1945,
+      "model": 3,
+      "base": "infantry",
+      "base_model": 12,
+      "stats": {
+        "softattack": 10.0,
+        "hardattack": 4.0,
+        "defensiveness": 30.0,
+        "toughness": 35.0,
+        "defaultorganisation": 30.0,
+        "morale": 30.0,
+        "maxspeed": 6.0,
+        "transportweight": 7.0,
+        "supplyconsumption": 0.94
+      },
+      "native": {
+        "softattack": 13.0,
+        "hardattack": 5.0,
+        "defensiveness": 35.0,
+        "toughness": 40.0,
+        "defaultorganisation": 30.0,
+        "morale": 30.0,
+        "maxspeed": 6.0,
+        "transportweight": 10.0,
+        "supplyconsumption": 1.1
+      },
+      "installed": {
+        "softattack": 10.0,
+        "hardattack": 4.0,
+        "defensiveness": 30.0,
+        "toughness": 35.0,
+        "defaultorganisation": 30.0,
+        "morale": 30.0,
+        "maxspeed": 6.0,
+        "transportweight": 7.0,
+        "supplyconsumption": 0.94
+      }
+    },
+    {
+      "unit": "d_11",
+      "year": 1948,
+      "model": 4,
+      "base": "infantry",
+      "base_model": 13,
+      "stats": {
+        "softattack": 11.0,
+        "hardattack": 4.0,
+        "defensiveness": 30.0,
+        "toughness": 35.0,
+        "defaultorganisation": 30.0,
+        "morale": 30.0,
+        "maxspeed": 6.0,
+        "transportweight": 7.0,
+        "supplyconsumption": 0.94
+      },
+      "native": {
+        "softattack": 14.0,
+        "hardattack": 5.0,
+        "defensiveness": 35.0,
+        "toughness": 40.0,
+        "defaultorganisation": 30.0,
+        "morale": 30.0,
+        "maxspeed": 6.0,
+        "transportweight": 10.0,
+        "supplyconsumption": 1.1
+      },
+      "installed": {
+        "softattack": 11.0,
+        "hardattack": 4.0,
+        "defensiveness": 30.0,
+        "toughness": 35.0,
+        "defaultorganisation": 30.0,
+        "morale": 30.0,
+        "maxspeed": 6.0,
+        "transportweight": 7.0,
+        "supplyconsumption": 0.94
+      }
+    },
+    {
+      "unit": "d_12",
+      "year": 1937,
+      "model": 0,
+      "base": "marine",
+      "base_model": 3,
+      "stats": {
+        "softattack": 9.0,
+        "hardattack": 1.0,
+        "defensiveness": 30.0,
+        "toughness": 36.0,
+        "defaultorganisation": 35.0,
+        "morale": 40.0,
+        "maxspeed": 6.0,
+        "transportweight": 8.0,
+        "supplyconsumption": 0.81
+      },
+      "native": {
+        "softattack": 10.0,
+        "hardattack": 1.0,
+        "defensiveness": 35.0,
+        "toughness": 40.0,
+        "defaultorganisation": 35.0,
+        "morale": 40.0,
+        "maxspeed": 6.0,
+        "transportweight": 10.0,
+        "supplyconsumption": 0.9
+      },
+      "installed": {
+        "softattack": 9.0,
+        "hardattack": 1.0,
+        "defensiveness": 30.0,
+        "toughness": 36.0,
+        "defaultorganisation": 35.0,
+        "morale": 40.0,
+        "maxspeed": 6.0,
+        "transportweight": 8.0,
+        "supplyconsumption": 0.81
+      }
+    },
+    {
+      "unit": "d_12",
+      "year": 1940,
+      "model": 1,
+      "base": "marine",
+      "base_model": 4,
+      "stats": {
+        "softattack": 10.0,
+        "hardattack": 2.0,
+        "defensiveness": 30.0,
+        "toughness": 36.0,
+        "defaultorganisation": 35.0,
+        "morale": 40.0,
+        "maxspeed": 6.0,
+        "transportweight": 8.0,
+        "supplyconsumption": 0.81
+      },
+      "native": {
+        "softattack": 11.0,
+        "hardattack": 2.0,
+        "defensiveness": 35.0,
+        "toughness": 40.0,
+        "defaultorganisation": 35.0,
+        "morale": 40.0,
+        "maxspeed": 6.0,
+        "transportweight": 10.0,
+        "supplyconsumption": 0.9
+      },
+      "installed": {
+        "softattack": 10.0,
+        "hardattack": 2.0,
+        "defensiveness": 30.0,
+        "toughness": 36.0,
+        "defaultorganisation": 35.0,
+        "morale": 40.0,
+        "maxspeed": 6.0,
+        "transportweight": 8.0,
+        "supplyconsumption": 0.81
+      }
+    },
+    {
+      "unit": "d_12",
+      "year": 1943,
+      "model": 2,
+      "base": "marine",
+      "base_model": 5,
+      "stats": {
+        "softattack": 12.0,
+        "hardattack": 3.0,
+        "defensiveness": 30.0,
+        "toughness": 36.0,
+        "defaultorganisation": 35.0,
+        "morale": 40.0,
+        "maxspeed": 6.0,
+        "transportweight": 8.0,
+        "supplyconsumption": 0.81
+      },
+      "native": {
+        "softattack": 13.0,
+        "hardattack": 3.0,
+        "defensiveness": 35.0,
+        "toughness": 40.0,
+        "defaultorganisation": 35.0,
+        "morale": 40.0,
+        "maxspeed": 6.0,
+        "transportweight": 10.0,
+        "supplyconsumption": 0.9
+      },
+      "installed": {
+        "softattack": 12.0,
+        "hardattack": 3.0,
+        "defensiveness": 30.0,
+        "toughness": 36.0,
+        "defaultorganisation": 35.0,
+        "morale": 40.0,
+        "maxspeed": 6.0,
+        "transportweight": 8.0,
+        "supplyconsumption": 0.81
+      }
+    },
+    {
+      "unit": "d_12",
+      "year": 1946,
+      "model": 3,
+      "base": "marine",
+      "base_model": 6,
+      "stats": {
+        "softattack": 12.0,
+        "hardattack": 3.0,
+        "defensiveness": 30.0,
+        "toughness": 36.0,
+        "defaultorganisation": 35.0,
+        "morale": 40.0,
+        "maxspeed": 6.0,
+        "transportweight": 8.0,
+        "supplyconsumption": 0.99
+      },
+      "native": {
+        "softattack": 13.0,
+        "hardattack": 3.0,
+        "defensiveness": 35.0,
+        "toughness": 40.0,
+        "defaultorganisation": 35.0,
+        "morale": 40.0,
+        "maxspeed": 6.0,
+        "transportweight": 10.0,
+        "supplyconsumption": 1.1
+      },
+      "installed": {
+        "softattack": 12.0,
+        "hardattack": 3.0,
+        "defensiveness": 30.0,
+        "toughness": 36.0,
+        "defaultorganisation": 35.0,
+        "morale": 40.0,
+        "maxspeed": 6.0,
+        "transportweight": 8.0,
+        "supplyconsumption": 0.99
+      }
+    },
+    {
+      "unit": "d_12",
+      "year": 1949,
+      "model": 4,
+      "base": "marine",
+      "base_model": 7,
+      "stats": {
+        "softattack": 13.0,
+        "hardattack": 3.0,
+        "defensiveness": 30.0,
+        "toughness": 36.0,
+        "defaultorganisation": 35.0,
+        "morale": 40.0,
+        "maxspeed": 6.0,
+        "transportweight": 8.0,
+        "supplyconsumption": 0.99
+      },
+      "native": {
+        "softattack": 14.0,
+        "hardattack": 4.0,
+        "defensiveness": 35.0,
+        "toughness": 40.0,
+        "defaultorganisation": 35.0,
+        "morale": 40.0,
+        "maxspeed": 6.0,
+        "transportweight": 10.0,
+        "supplyconsumption": 1.1
+      },
+      "installed": {
+        "softattack": 13.0,
+        "hardattack": 3.0,
+        "defensiveness": 30.0,
+        "toughness": 36.0,
+        "defaultorganisation": 35.0,
+        "morale": 40.0,
+        "maxspeed": 6.0,
+        "transportweight": 8.0,
+        "supplyconsumption": 0.99
+      }
+    }
+  ],
+  "original_fujiwara": [
+    "50066",
+    "Minister of Armament",
+    "Fujiwara Ginjiro",
+    "1904",
+    "1961",
+    "1961",
+    "PA",
+    "Administrative Genius",
+    "Medium",
+    "M5084",
+    "X"
+  ],
+  "alternate_fujiwara": [
+    "286122",
+    "Minister of Armament",
+    "Fujiwara Ginjiro (Civil Works)",
+    "1937",
+    "1951",
+    "1961",
+    "PA",
+    "jx civil construction",
+    "Medium",
+    "M5084",
+    "X"
+  ]
+}

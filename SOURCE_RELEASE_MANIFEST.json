@@ -1,0 +1,1051 @@
+{
+  "version": "JX 1.1 ALPHA 2 R13.1",
+  "note": "Hashes describe canonical Git blob bytes. Windows checkout can convert script line endings.",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "sha256_git_blob_bytes": "c6b0bafa14d5920382c82a85668e9a187c01d2d39c397db05a92a08c7f1c77fd",
+      "bytes": 194
+    },
+    {
+      "path": ".github/workflows/source-check.yml",
+      "sha256_git_blob_bytes": "12c3b165bc2d0117a49b9de5a235b4e1e88d1421ceed2dbbc59a0a740cdb89da",
+      "bytes": 426
+    },
+    {
+      "path": ".gitignore",
+      "sha256_git_blob_bytes": "40e1fb7e30975625eb1e92331ebccb275e0f6a5bec054739227daf89cb41ba2f",
+      "bytes": 183
+    },
+    {
+      "path": "INSTALL.bat",
+      "sha256_git_blob_bytes": "1924fa7edc46e8e0a3be606404505b2057058a369407c043c1e6d427b9d484e7",
+      "bytes": 94
+    },
+    {
+      "path": "Install.ps1",
+      "sha256_git_blob_bytes": "98b6cd9651cd08d8c6f70ed036f853c648cf33d5ad2dfdce14bcd984d1f8de23",
+      "bytes": 1072
+    },
+    {
+      "path": "JAPAN_EXPANSION_SPEC.md",
+      "sha256_git_blob_bytes": "f60af647cfc258e368529bdc15009936dc3fac55567dac8f616e06fab7d494ab",
+      "bytes": 62104
+    },
+    {
+      "path": "README.md",
+      "sha256_git_blob_bytes": "ba3886bd10133c1a5bd01754d59eb078724f554d508e5de820f24245ddcccb4a",
+      "bytes": 3896
+    },
+    {
+      "path": "RELEASE_NOTES.md",
+      "sha256_git_blob_bytes": "330118f4304ab5cd3f4ace4557b99ec092b35d4d827dcc73ac25174ce5f695ca",
+      "bytes": 983
+    },
+    {
+      "path": "RIGHTS.md",
+      "sha256_git_blob_bytes": "6621221b3e6a5bf0408a64648f11081857a1a7fb34553b3cae04f81e03d96a9b",
+      "bytes": 1230
+    },
+    {
+      "path": "VERSION",
+      "sha256_git_blob_bytes": "4afe5172c07c5184ca0d7d3e48e439f48d2ef93f2928d3daa6c5d5b9923be56e",
+      "bytes": 21
+    },
+    {
+      "path": "japan_expansion/CONSTRUCTION_BALANCE.md",
+      "sha256_git_blob_bytes": "d3fa4c23615768b4908e843c0e6fb0d93e6da4a675c6187eb544191d8ebcb9b9",
+      "bytes": 7754
+    },
+    {
+      "path": "japan_expansion/COUNTRY_CAMPAIGNS.md",
+      "sha256_git_blob_bytes": "1f64e6356330fea7722242f8cee121661a484cbd5695eb634f246e150f8d6232",
+      "bytes": 8285
+    },
+    {
+      "path": "japan_expansion/EARLY_ART_REQUESTS.json",
+      "sha256_git_blob_bytes": "b277ade0148d80b12219965609d6eab89d330959c2ee866327bdf1b3890f138e",
+      "bytes": 2420
+    },
+    {
+      "path": "japan_expansion/ENDURANCE_AUDIT.json",
+      "sha256_git_blob_bytes": "055d9af96c5ba6eeda591e8ce884c7cde9cf824d293ec856e12677a082947fc5",
+      "bytes": 4294
+    },
+    {
+      "path": "japan_expansion/ENDURANCE_AUDIT.md",
+      "sha256_git_blob_bytes": "765153a1cbb7296cc9028ef53b183fbaab424bdbc5697bcf813b2cf7fe9921af",
+      "bytes": 10807
+    },
+    {
+      "path": "japan_expansion/ENDURANCE_audit.py",
+      "sha256_git_blob_bytes": "6f2b4d0758453fe0d221929024c991651a31e49d5979c8522d735f5263ae78e9",
+      "bytes": 4234
+    },
+    {
+      "path": "japan_expansion/ENDURANCE_review.py",
+      "sha256_git_blob_bytes": "7930a8881736989fd1a0c4a063016c7936f23964f6f82cc44930adbefcd26aad",
+      "bytes": 5709
+    },
+    {
+      "path": "japan_expansion/ENEMY_TRANSPORT_AI_AUDIT.json",
+      "sha256_git_blob_bytes": "141fc8f1e9efccbf99abaa08cfa5d95a3012506b6e22a8104af6387c6c87bfd7",
+      "bytes": 130
+    },
+    {
+      "path": "japan_expansion/ENEMY_TRANSPORT_AI_REPORT.json",
+      "sha256_git_blob_bytes": "6ba5548791f46cbf9f07996403ba4952e7887120a4529cd89c1a2a06fbca47cd",
+      "bytes": 9050
+    },
+    {
+      "path": "japan_expansion/ENEMY_TRANSPORT_AI_review.py",
+      "sha256_git_blob_bytes": "e61d3c849e4ac6d5a1e7c7389611d19b362d21dfa2bb00287d618a542bdee6d8",
+      "bytes": 5100
+    },
+    {
+      "path": "japan_expansion/EQUIPMENT_DELIVERY_AUDIT.md",
+      "sha256_git_blob_bytes": "8e28171dc4936c9b30e5923a2e01716398ae0a54a7f63980a528891b6b1dd899",
+      "bytes": 6384
+    },
+    {
+      "path": "japan_expansion/EQUIPMENT_DELIVERY_REVIEW.json",
+      "sha256_git_blob_bytes": "0e38f01e1c25b478870f8802fbadfd8bcfedce1029566b84e9f9265a89dd7a25",
+      "bytes": 28383
+    },
+    {
+      "path": "japan_expansion/EVENT_ACCESSIBILITY_AUDIT.md",
+      "sha256_git_blob_bytes": "d15d9e54c7f08f864147298e8c97ca8712548b6fd85a44499c3095271e5bf562",
+      "bytes": 13032
+    },
+    {
+      "path": "japan_expansion/EVENT_ACCESSIBILITY_MATRIX.json",
+      "sha256_git_blob_bytes": "1858f952eaca5ac75d64ed2082628f510f8bdd3f7dd7f6c4727b633fed0562d5",
+      "bytes": 228513
+    },
+    {
+      "path": "japan_expansion/EVENT_ACCESSIBILITY_matrix.py",
+      "sha256_git_blob_bytes": "5ac69d3fccbccf5f33a7b6433a78718db66853040e97cabae32c2c1cba7e66d0",
+      "bytes": 11937
+    },
+    {
+      "path": "japan_expansion/EVENT_ACCESSIBILITY_review.py",
+      "sha256_git_blob_bytes": "10bd397eba3b03f043e0a7b2958f4b1a824d593056a459adadba8a6e383c137f",
+      "bytes": 7762
+    },
+    {
+      "path": "japan_expansion/EVENT_SPEC.md",
+      "sha256_git_blob_bytes": "89fcd67227aaa2737a7ba3f5089befb436ca211b0172ce8e4ccc4155e4ff6338",
+      "bytes": 24036532
+    },
+    {
+      "path": "japan_expansion/FINAL_EVENT_INTEGRITY_review.py",
+      "sha256_git_blob_bytes": "4d6a28ba93b99acfd4bc654cf4365bc1e9974181827bdff7647d59eb4058baba",
+      "bytes": 12288
+    },
+    {
+      "path": "japan_expansion/FINAL_INSTALL_REVIEW.json",
+      "sha256_git_blob_bytes": "ccc9b2f00caf39bd5bf3d8efb4edb97e019292ebe57257837d4e063d7a1cd152",
+      "bytes": 5329
+    },
+    {
+      "path": "japan_expansion/FINAL_INSTALL_review.py",
+      "sha256_git_blob_bytes": "ad58521ffd1e59874a0d8d5fdce5cd9c7afe7027a4cecac171553669611d503f",
+      "bytes": 4563
+    },
+    {
+      "path": "japan_expansion/FLOW_AUDIT.md",
+      "sha256_git_blob_bytes": "a0bf61da580c561b0d1bc5aa9eb4be87039b72f3cbf3a8653e03e6da23f66ae1",
+      "bytes": 7436
+    },
+    {
+      "path": "japan_expansion/FLOW_LEGACY_RECONCILIATION.md",
+      "sha256_git_blob_bytes": "ce0db088617cfdb34be3e09a62bf2bbdee48fce60255ca7544e03919138e14d7",
+      "bytes": 4953
+    },
+    {
+      "path": "japan_expansion/FLOW_review.py",
+      "sha256_git_blob_bytes": "0d61db8dd2fabb8c9e20308e239579b8ca4f14f2cb22d58eee83d1ef083f4298",
+      "bytes": 10054
+    },
+    {
+      "path": "japan_expansion/FORCE_AUDIT.md",
+      "sha256_git_blob_bytes": "76091e731accaedd6c52dfd2864f709167f7328f80ca6172d19da103b413af23",
+      "bytes": 6183
+    },
+    {
+      "path": "japan_expansion/FORCE_DELIVERY_AUDIT.md",
+      "sha256_git_blob_bytes": "ecdb4f0cec1b25c7200265894a313d33830980a5c782fff3704602e3ce470d21",
+      "bytes": 9291
+    },
+    {
+      "path": "japan_expansion/FORCE_DELIVERY_TESTS.json",
+      "sha256_git_blob_bytes": "295edb145c0af93e81f1574e60fbd493c92e9424284c514d276542f44f31c4b8",
+      "bytes": 16985
+    },
+    {
+      "path": "japan_expansion/FORCE_DELIVERY_review.py",
+      "sha256_git_blob_bytes": "69c406f85487359a9d98641cfbaac767884f5333ee74b4f286779dc76428f608",
+      "bytes": 15475
+    },
+    {
+      "path": "japan_expansion/FORCE_TESTS.json",
+      "sha256_git_blob_bytes": "83d42d7b9eb782a3f4ab8dce84eb7299f117d6c5592208f368b663efa4def009",
+      "bytes": 16609
+    },
+    {
+      "path": "japan_expansion/FORCE_review.py",
+      "sha256_git_blob_bytes": "684efba54207597d2fe542bb64d5d7056cd1d34e6d3e81fee2fa5bd7ad1da051",
+      "bytes": 13304
+    },
+    {
+      "path": "japan_expansion/FURTHER_JAPANESE_SPECIALISTS.md",
+      "sha256_git_blob_bytes": "2d1d0ad4757d0ce84c09255de586024262766e39d8c72ccb38d9555fb33a8163",
+      "bytes": 3735
+    },
+    {
+      "path": "japan_expansion/Launch Japan Rising Alpha2.ps1",
+      "sha256_git_blob_bytes": "f3e2decb5700c450d3e42c9e7559328043b917359cfc7449dbc8a04f7b07c8ce",
+      "bytes": 2761
+    },
+    {
+      "path": "japan_expansion/MINISTER_INTEGRITY_AUDIT.md",
+      "sha256_git_blob_bytes": "38137503c8cb0c4fa68fbba7ebf4f8451636c8dda5e2176242296b8b0dd45df0",
+      "bytes": 9706
+    },
+    {
+      "path": "japan_expansion/MINISTER_INTEGRITY_REVIEW.json",
+      "sha256_git_blob_bytes": "b22d2c76f93ae8f70245e1bd977e5d5fec42df88a5d7e340e94633d9d086aa53",
+      "bytes": 264750
+    },
+    {
+      "path": "japan_expansion/MINISTER_INTEGRITY_ROSTER.csv",
+      "sha256_git_blob_bytes": "d4d0b30b225a50d88f61d5bb22281520a3f82e9dafa92e04149f375da782cf4a",
+      "bytes": 30488
+    },
+    {
+      "path": "japan_expansion/MINISTER_INTEGRITY_review.py",
+      "sha256_git_blob_bytes": "869d768cd0406b099eec4f095393ede4ef50e6ba72e4517f4da8bc995c46771c",
+      "bytes": 17682
+    },
+    {
+      "path": "japan_expansion/PERSONNEL_ART_REQUESTS.json",
+      "sha256_git_blob_bytes": "15c91716971d1224fb965f4310fd2a72a9c3db45c4e6a7573c0287852bb03dea",
+      "bytes": 1797
+    },
+    {
+      "path": "japan_expansion/PLAYER_COPY_REVIEW.json",
+      "sha256_git_blob_bytes": "3923d0a8ab47efd8a520596e7dcb5de6df8e097e3c7e45bfc1eda63d14e98f6d",
+      "bytes": 8816
+    },
+    {
+      "path": "japan_expansion/PLAYER_COPY_REVIEW.md",
+      "sha256_git_blob_bytes": "428c238a9c01870cd0e06215ba1d2b1633eee97c6515a8ec214884f490d87aad",
+      "bytes": 4098
+    },
+    {
+      "path": "japan_expansion/PLAYER_COPY_review.py",
+      "sha256_git_blob_bytes": "d20205d1d460ba129d3eae2f63415e22af00256de08bb05fece24bb28f02fd6d",
+      "bytes": 5037
+    },
+    {
+      "path": "japan_expansion/PREWAR_CONTENT.json",
+      "sha256_git_blob_bytes": "463c452e785d113886d27f3fca082205a5461ef1dd07786e069d417d81019397",
+      "bytes": 9206
+    },
+    {
+      "path": "japan_expansion/PREWAR_CONTENT.md",
+      "sha256_git_blob_bytes": "df8ebe09a1a0edfe7e6e6fcbe2e3dda0c5825be55f8761949fe9a91c4d30768e",
+      "bytes": 11291
+    },
+    {
+      "path": "japan_expansion/PREWAR_review.py",
+      "sha256_git_blob_bytes": "94763de67554c875b4badb7941c25ea6c78cc22ee87332c4f8c31fe5c1462f16",
+      "bytes": 9895
+    },
+    {
+      "path": "japan_expansion/PROGRESS.md",
+      "sha256_git_blob_bytes": "a66790e7d03cd44477c9609b62b25f315bc175521de77eaef4efd5fae7f0f76e",
+      "bytes": 2624
+    },
+    {
+      "path": "japan_expansion/R10_CHANGES.md",
+      "sha256_git_blob_bytes": "395145d042f2b3a8b49857141086aa9cb809955bd592fcef084340bc0588c3b3",
+      "bytes": 2840
+    },
+    {
+      "path": "japan_expansion/R11_1_FINAL_AUDIT.md",
+      "sha256_git_blob_bytes": "7fa82ea557c3e4291195e137b4f400fc8ac6a8ecf359264cad9998c1a8690304",
+      "bytes": 5561
+    },
+    {
+      "path": "japan_expansion/R11_CHANGES.md",
+      "sha256_git_blob_bytes": "509b18eb13213319884ddb0a33eb2e4ef0659fea4d2ea1a0c64466f547bf4870",
+      "bytes": 4569
+    },
+    {
+      "path": "japan_expansion/R12_1_CHANGES.md",
+      "sha256_git_blob_bytes": "6bb03ddd4ffae84fc5d2080c9c69a91cc8d332dabecaaaaa7797506e347641f5",
+      "bytes": 3051
+    },
+    {
+      "path": "japan_expansion/R12_1_COLD_AUDIT.json",
+      "sha256_git_blob_bytes": "ab400f74d32c354707706f3f2762e1146facf21d5a60f7124c7416ae1b9f24e1",
+      "bytes": 287
+    },
+    {
+      "path": "japan_expansion/R12_1_COLD_review.py",
+      "sha256_git_blob_bytes": "9a46eb2bdfbe478b77dc06a6d68808c91c858fd838e76a925f9f2f8b3cb67826",
+      "bytes": 5949
+    },
+    {
+      "path": "japan_expansion/R12_UNIQUE_UNITS.md",
+      "sha256_git_blob_bytes": "1e4b647671d63872f781fe2a913b45ce9b6c8bc94654b2c8e16091e148d4f2bf",
+      "bytes": 6474
+    },
+    {
+      "path": "japan_expansion/R12_install_finalize.py",
+      "sha256_git_blob_bytes": "ab8600e66a599365dac4db164b5e7c4df0f1b9696089144a4c7eeb7ba283d7e5",
+      "bytes": 6568
+    },
+    {
+      "path": "japan_expansion/R13_1_CHANGES.md",
+      "sha256_git_blob_bytes": "a38b91c33e47cfd8905887a2c0bcb51a7b274954683642ce3b481b1a64dcd8ef",
+      "bytes": 2110
+    },
+    {
+      "path": "japan_expansion/R13_1_INSTALL_RECEIPT.json",
+      "sha256_git_blob_bytes": "ce106d4be922f4e574321de787822f038acc62bcf133ede75a584ad5dab6534c",
+      "bytes": 2403
+    },
+    {
+      "path": "japan_expansion/R13_ART_PREVIEW.png",
+      "sha256_git_blob_bytes": "e64ad3687d98fd4b2461a64dd391c0d764144036c1d276a6d0ef8f1daa1867ee",
+      "bytes": 2553772
+    },
+    {
+      "path": "japan_expansion/R13_ART_SOURCES.json",
+      "sha256_git_blob_bytes": "b9029daff463949d38f73abfd843ff5d2f7cae7b8921b2547f0e988e92232158",
+      "bytes": 6186
+    },
+    {
+      "path": "japan_expansion/R13_COLD_AUDIT.json",
+      "sha256_git_blob_bytes": "56ca733f97eaf9d2c1ab74e3df2b3eb481a4a4c75115e0aae27e4efb789f1890",
+      "bytes": 324
+    },
+    {
+      "path": "japan_expansion/R13_COLD_review.py",
+      "sha256_git_blob_bytes": "6b1f0396280282160ca50fe62d890d45829d1c5b153b548ebdac2383a0aff9fb",
+      "bytes": 8365
+    },
+    {
+      "path": "japan_expansion/R13_INSTALL_RECEIPT.json",
+      "sha256_git_blob_bytes": "397b5d0de9ec2ba47b4fbc32dc442e51286add24cd2b61138a14123d7933bf0b",
+      "bytes": 15524
+    },
+    {
+      "path": "japan_expansion/R13_UNITS.md",
+      "sha256_git_blob_bytes": "4617918e40fa897abc8912bf0f63b51fdf8de25f089baa887d9a11110dd5be00",
+      "bytes": 6865
+    },
+    {
+      "path": "japan_expansion/R13_UNIT_CARDS.png",
+      "sha256_git_blob_bytes": "6354553a652c5a7abff8eeb5521451b7284661dab05edb25513114bf55c4e045",
+      "bytes": 201337
+    },
+    {
+      "path": "japan_expansion/R13_install_finalize.py",
+      "sha256_git_blob_bytes": "6950cb989930fcd9d0bf48ad38573112ffdb232bf7e3f699e89b263ffa136e66",
+      "bytes": 6639
+    },
+    {
+      "path": "japan_expansion/R9_CHANGE_REGISTER.json",
+      "sha256_git_blob_bytes": "f7f465da37b7093346f56368700864c3543c378a7d50d28707f2c7939f43f442",
+      "bytes": 5105
+    },
+    {
+      "path": "japan_expansion/READINESS_ASSESSMENT.md",
+      "sha256_git_blob_bytes": "e685919b9c250519919576575b4192a60f2d77f7c349d1585727023764c59c68",
+      "bytes": 3380
+    },
+    {
+      "path": "japan_expansion/README.md",
+      "sha256_git_blob_bytes": "c1a274d40404ff299ae96d89cd6fd81096fd53fef54c419e8d1d1b70ca3718ee",
+      "bytes": 16534
+    },
+    {
+      "path": "japan_expansion/RECRUITMENT_review.py",
+      "sha256_git_blob_bytes": "827144f0aa7f569e9edc6fbf77d7fc721cbc62c319ac3a266534ad869a0a0d73",
+      "bytes": 2167
+    },
+    {
+      "path": "japan_expansion/REGIONAL_CONTENT_TESTS.json",
+      "sha256_git_blob_bytes": "e4f7c627f9c43c3a761617911f27d5a0d68ce2022485fce40d0d29e09fc86c2c",
+      "bytes": 945
+    },
+    {
+      "path": "japan_expansion/REGIONAL_CONTENT_review.py",
+      "sha256_git_blob_bytes": "611ccd01415c878e0b680d45bda0bba38e789053d3bbba24cca3346b88bb609a",
+      "bytes": 10097
+    },
+    {
+      "path": "japan_expansion/RESEARCH_NAMES.md",
+      "sha256_git_blob_bytes": "e8229ac57b9e2d3b5c7ce853bd04bbb8e87bf850dc63f352c6f6bc80f4959a36",
+      "bytes": 3060
+    },
+    {
+      "path": "japan_expansion/SNLF_ART_REQUEST.json",
+      "sha256_git_blob_bytes": "0fee301c0f2502ea930fee96a2e5a3017cb22ee050a1bf44f1071359720b591b",
+      "bytes": 1162
+    },
+    {
+      "path": "japan_expansion/SPECIALIST_ART_REQUESTS.json",
+      "sha256_git_blob_bytes": "c81b8620c06aae86f0aa4738ebbaa8e32f0837f3285eeae4ddf759f007d36778",
+      "bytes": 1656
+    },
+    {
+      "path": "japan_expansion/SPECIALIST_REVIEW.md",
+      "sha256_git_blob_bytes": "c90c10ba0aaf6af278a6c7ef6e6813d4db5baf5ddc3dc1a0d7ccc731b73799a2",
+      "bytes": 1498
+    },
+    {
+      "path": "japan_expansion/SPEC_SHA256.txt",
+      "sha256_git_blob_bytes": "4ee9a2d2c0a8466fc9a7ac9d9cccdda28417a0e40a06b3b47a66408857fd3e4d",
+      "bytes": 65
+    },
+    {
+      "path": "japan_expansion/STATIC_VALIDATION.json",
+      "sha256_git_blob_bytes": "b894650d1681e261a205cd168ef64e58ee0d95d0b89ac4e7757ed33cea454870",
+      "bytes": 244
+    },
+    {
+      "path": "japan_expansion/UNIQUE_ART_INSTALL.json",
+      "sha256_git_blob_bytes": "95f9d3335b42b177802dd38d351e26c199856606d928a17cd44db2a079ce31f0",
+      "bytes": 19317
+    },
+    {
+      "path": "japan_expansion/UNIQUE_ART_MANIFEST.json",
+      "sha256_git_blob_bytes": "4d8f741b9189de29422f7ac6d2dc9da0b87417af8438258403f63c605435cab9",
+      "bytes": 16915
+    },
+    {
+      "path": "japan_expansion/UNIQUE_ATTACHMENTS.md",
+      "sha256_git_blob_bytes": "8707dd955fc6e1ff4ae7aacb76352c53247f1760beb7437552c5b78426c0c882",
+      "bytes": 8675
+    },
+    {
+      "path": "japan_expansion/UNIQUE_ATTACHMENTS_REVIEW.json",
+      "sha256_git_blob_bytes": "52f527ba38800e78c669f57c711fea2912a32dfd8f6749dde95ec7c9b1dd1def",
+      "bytes": 13870
+    },
+    {
+      "path": "japan_expansion/UNIQUE_DIVISIONS_AUDIT.md",
+      "sha256_git_blob_bytes": "5c9a88a5b92ecdd5ebf20656fd6f7036a425d92044084d157f44086ae6d17642",
+      "bytes": 6310
+    },
+    {
+      "path": "japan_expansion/UNIQUE_DIVISIONS_REVIEW.json",
+      "sha256_git_blob_bytes": "5bbd6ef60a5a99687c3ad2850fbc5a99676976de7e32df08015a9c36144f4dd9",
+      "bytes": 35568
+    },
+    {
+      "path": "japan_expansion/UNIQUE_DIVISIONS_review.py",
+      "sha256_git_blob_bytes": "3a78fec2f6ad925bd044f585a28bb7ac42f0d4979d23853402af22c915ea4afe",
+      "bytes": 25220
+    },
+    {
+      "path": "japan_expansion/UNIQUE_UNIT_COLD_AUDIT.json",
+      "sha256_git_blob_bytes": "031d37f9f719d32eb390baba55ef225b01d200a4b39c3128a16cb420932dd78e",
+      "bytes": 420
+    },
+    {
+      "path": "japan_expansion/UNIQUE_UNIT_EVENTS.md",
+      "sha256_git_blob_bytes": "4714ab9986fc742e667dc7b836f24024d7f4f4632fce50165c6e73fa9aa4e81a",
+      "bytes": 8067
+    },
+    {
+      "path": "japan_expansion/UNIQUE_UNIT_EVENTS_review.py",
+      "sha256_git_blob_bytes": "01ca938793f7b2742b7c103fd337b97b33d7094ee192837679c127551e563296",
+      "bytes": 19472
+    },
+    {
+      "path": "japan_expansion/US_CAMPAIGN_CONTENT.md",
+      "sha256_git_blob_bytes": "5c504585adaacc68685350cbb0709c7bec82626c7bef464b75f50e088ad1bb40",
+      "bytes": 8242
+    },
+    {
+      "path": "japan_expansion/US_CAMPAIGN_review.py",
+      "sha256_git_blob_bytes": "5133e30349db4900b9e3b48c84fc2570f6257f46c6c275b12467955e37168f84",
+      "bytes": 11346
+    },
+    {
+      "path": "japan_expansion/activities.py",
+      "sha256_git_blob_bytes": "9022f3568e3685f9d6668292742b33e6ad2ed6a2e4f2e2a055bee91faa8ec244",
+      "bytes": 8580
+    },
+    {
+      "path": "japan_expansion/apply_balance_b1.py",
+      "sha256_git_blob_bytes": "9ec1b0a953eb9893ad9e2d262bb8a3f958e71b765c8d90a850619356ab6d01c1",
+      "bytes": 15114
+    },
+    {
+      "path": "japan_expansion/apply_base_defence_b2.py",
+      "sha256_git_blob_bytes": "3bb87738b4e831f82602f92423c4472d59da00d3899d084bf71188ccc4db6294",
+      "bytes": 7590
+    },
+    {
+      "path": "japan_expansion/art/air.png",
+      "sha256_git_blob_bytes": "0f3beabdc9e9eb47bfc4434c22f8a237e8c8e0dec323e7551db76ae2c6779934",
+      "bytes": 2743225
+    },
+    {
+      "path": "japan_expansion/art/aircraft_works.png",
+      "sha256_git_blob_bytes": "e7e932ee3d31154885089e041e00582392057e8fa62124f46e86ea635094685b",
+      "bytes": 2840629
+    },
+    {
+      "path": "japan_expansion/art/army.png",
+      "sha256_git_blob_bytes": "b26643d317fc7f299d691efcd97805f33b069022a5fe2620dce7f4784e1df227",
+      "bytes": 3231351
+    },
+    {
+      "path": "japan_expansion/art/asia.png",
+      "sha256_git_blob_bytes": "167dd9eafe36290249ce48a12dc6844f5534dbe2a08a1317362cfee3be418665",
+      "bytes": 2897709
+    },
+    {
+      "path": "japan_expansion/art/baseforce.png",
+      "sha256_git_blob_bytes": "13781af83a5316595ae6027587441b21cfb17cd7d6da97b9d29b366528906bec",
+      "bytes": 2468408
+    },
+    {
+      "path": "japan_expansion/art/college.png",
+      "sha256_git_blob_bytes": "676a2af1d386638156c4dab9f26227ba3d5fed80ffabb685b937fff9f07947fa",
+      "bytes": 2387616
+    },
+    {
+      "path": "japan_expansion/art/diplomacy.png",
+      "sha256_git_blob_bytes": "9d047f09d1079a6b5b08dd11032cee3c7306636f9a5da931ee34b5ea7a82fb25",
+      "bytes": 2238725
+    },
+    {
+      "path": "japan_expansion/art/economy.png",
+      "sha256_git_blob_bytes": "be16189a434ed1eb14c243f820d438f4176d5eb2542bc2c45197f551d7bbb730",
+      "bytes": 3209171
+    },
+    {
+      "path": "japan_expansion/art/field_trials.png",
+      "sha256_git_blob_bytes": "87eafea431c1b1a4da80e2642e62fa548c372d5921fa1053117d41473f4fcecb",
+      "bytes": 2687594
+    },
+    {
+      "path": "japan_expansion/art/industry.png",
+      "sha256_git_blob_bytes": "0e2f7b4cd586faecade7df071169f8246423b525389af3a1d0f66aee979f3521",
+      "bytes": 3418528
+    },
+    {
+      "path": "japan_expansion/art/jungleforce.png",
+      "sha256_git_blob_bytes": "1b7dc367d47b70154341963013ab785971c7720f864849420ac66ad0e2046294",
+      "bytes": 3205947
+    },
+    {
+      "path": "japan_expansion/art/mountain_school.png",
+      "sha256_git_blob_bytes": "56b272eb9f6535e91837c6da57178e316fd3b10ab206a65e0f07f22a3b63a21e",
+      "bytes": 2945731
+    },
+    {
+      "path": "japan_expansion/art/naval.png",
+      "sha256_git_blob_bytes": "d23a3348d51336d474d44969385c86c1da4a75cf98a87ea802c6628e8f6abd01",
+      "bytes": 2471897
+    },
+    {
+      "path": "japan_expansion/art/pacific.png",
+      "sha256_git_blob_bytes": "0edeb868df3a5ebd79473fcf1a798d2a9899186e5771efb190db0f94b71e099a",
+      "bytes": 2734293
+    },
+    {
+      "path": "japan_expansion/art/railway.png",
+      "sha256_git_blob_bytes": "954aa9e3b7ed39d8dc46f91ee136b2da5902b440ce0dc95121554e06e0805f67",
+      "bytes": 3229447
+    },
+    {
+      "path": "japan_expansion/art/siberia.png",
+      "sha256_git_blob_bytes": "9d00896e580825f086c5d29639cbbab6a1135d75ae56c0abe8a5d1f9cc8be37c",
+      "bytes": 3369372
+    },
+    {
+      "path": "japan_expansion/art/snlf.png",
+      "sha256_git_blob_bytes": "3aa6ae05c1587f218a4134f367732e1f695e4bbd290889aaf5e687563454bac7",
+      "bytes": 3077514
+    },
+    {
+      "path": "japan_expansion/art/storm.png",
+      "sha256_git_blob_bytes": "72cb730ec803c9337620b779b587d00e3d25cbcfa00c60c485467aeb2d8b7692",
+      "bytes": 3001561
+    },
+    {
+      "path": "japan_expansion/art/unique_akizuki.png",
+      "sha256_git_blob_bytes": "23d931f889d05ba6e797abad9805d33ceca16a8919e8303f15d1ad4825f38272",
+      "bytes": 2817456
+    },
+    {
+      "path": "japan_expansion/art/unique_expedition.png",
+      "sha256_git_blob_bytes": "fae4d91db283d8c70fbbc902084288b353e4bccaab3ec5e78ce05984746a4928",
+      "bytes": 3524398
+    },
+    {
+      "path": "japan_expansion/art/unique_kami.png",
+      "sha256_git_blob_bytes": "64a71b60fb08a69733b7605afcc84ddf7a19c5d4856d347b74c876bb28bb1e59",
+      "bytes": 2841378
+    },
+    {
+      "path": "japan_expansion/art/unique_landattack.png",
+      "sha256_git_blob_bytes": "97042cf79f204058c0ecce0826681a8e1f0ce1f6475c4fa9be20f8eb3bc3ce85",
+      "bytes": 3020717
+    },
+    {
+      "path": "japan_expansion/art/unique_landattack_late.png",
+      "sha256_git_blob_bytes": "7aa2252ffcaaba66de55b965fedf5a5248d8dbff6cbbdc9faa75f95a7b6871c7",
+      "bytes": 2718197
+    },
+    {
+      "path": "japan_expansion/art/unique_longfighter.png",
+      "sha256_git_blob_bytes": "1cdafa9e60f477ccbaf52957499c7b3385b8a1dd03536f452e409cb7829baa19",
+      "bytes": 2507969
+    },
+    {
+      "path": "japan_expansion/art/unique_longfighter_late.png",
+      "sha256_git_blob_bytes": "5ba1dd6d2d0526d1c58c55fb1173c423182f3369d3b23abb7c065f02338c5057",
+      "bytes": 2609804
+    },
+    {
+      "path": "japan_expansion/art/unique_matsu.png",
+      "sha256_git_blob_bytes": "f6e7e791ba4f7755553e29ed6fcdbc237508c99f316c28c97761ec1076d053fe",
+      "bytes": 2872550
+    },
+    {
+      "path": "japan_expansion/art/unique_mixed.png",
+      "sha256_git_blob_bytes": "e500a65e2449e0fffda6242a0eef55214450329c1b1eb463b28ed7906afcac23",
+      "bytes": 3492267
+    },
+    {
+      "path": "japan_expansion/art/unique_patrol.png",
+      "sha256_git_blob_bytes": "3631b267c78047f3c0693dab255603fcae8b06050425b7cda34bddd0167e2a53",
+      "bytes": 2693400
+    },
+    {
+      "path": "japan_expansion/art/unique_patrol_early.png",
+      "sha256_git_blob_bytes": "7730bd570686b2ec77709e46787a1459cdaa9268850c0f5e5b9a6f9714f2751f",
+      "bytes": 2971085
+    },
+    {
+      "path": "japan_expansion/art/unique_teishin.png",
+      "sha256_git_blob_bytes": "5db36804a5eeb4dae779ba391edb19ce2770855756003d2dcfd42b66688f61a1",
+      "bytes": 2859371
+    },
+    {
+      "path": "japan_expansion/art/unique_torpedo.png",
+      "sha256_git_blob_bytes": "67ee301608cccd36ea3113940cbd3b18f7a8f425673ec8ba2153bc821e38fb85",
+      "bytes": 2519605
+    },
+    {
+      "path": "japan_expansion/art_inputs.json",
+      "sha256_git_blob_bytes": "30388b3d1140fd83b7081e3868a4f0617adc07a0fa67fb34a736f05e12d81c57",
+      "bytes": 889
+    },
+    {
+      "path": "japan_expansion/assess_dec1941.py",
+      "sha256_git_blob_bytes": "583c4abef7f2bfa8a4cc25adec5c76863c0e8c817d8cd66e68181293a1b41647",
+      "bytes": 9876
+    },
+    {
+      "path": "japan_expansion/audit_1937_playtest.py",
+      "sha256_git_blob_bytes": "3a71c0cdb3105f14876b7ff9706854b51f877e2d1676f124bd368c854fd65f0f",
+      "bytes": 13016
+    },
+    {
+      "path": "japan_expansion/audit_latest_playtest.py",
+      "sha256_git_blob_bytes": "8a3f1f524a14b379bf6892efae62dcbd1c1431675bd5d23b8607a4deea878cc9",
+      "bytes": 9989
+    },
+    {
+      "path": "japan_expansion/balance_b1_review.py",
+      "sha256_git_blob_bytes": "16a1a560ab825965b15d1174641c1286f7e7a17c42299263618aae2a1425e56a",
+      "bytes": 9078
+    },
+    {
+      "path": "japan_expansion/base_defence_b2_review.py",
+      "sha256_git_blob_bytes": "9c112ca18fc746b43e90202d419971f6d1c1e796b1a7bf45fc58c3956d77819a",
+      "bytes": 8389
+    },
+    {
+      "path": "japan_expansion/build.py",
+      "sha256_git_blob_bytes": "7d44e81edb498271aeb6e027751802c33b58cb6ae24b9dc457317bfa8bc260a8",
+      "bytes": 45752
+    },
+    {
+      "path": "japan_expansion/cabinet_expansion.py",
+      "sha256_git_blob_bytes": "3aa3aec705184064dc5f1231d34b3789f067529d1aaa7a9a64b4c47f7e8af530",
+      "bytes": 4175
+    },
+    {
+      "path": "japan_expansion/campaign_balance.py",
+      "sha256_git_blob_bytes": "06871fbc87a0ebc850ab742522d8272cbbd810ea4b2beaeccc02ace4301ef8f0",
+      "bytes": 15466
+    },
+    {
+      "path": "japan_expansion/campaign_flow.py",
+      "sha256_git_blob_bytes": "8bf04f385591628ca41379b07af6ba36242d4f8ed107cd332a5c2c6e6c8e191c",
+      "bytes": 7499
+    },
+    {
+      "path": "japan_expansion/catalog.py",
+      "sha256_git_blob_bytes": "5f75b1386118591fb6c04feffba8d377118a1284b542f44b320e0b18f6c4d1f3",
+      "bytes": 46273
+    },
+    {
+      "path": "japan_expansion/china_legacy_b1.json",
+      "sha256_git_blob_bytes": "2e12d917924d41c777dd6319bce0172b428fb1671758a21dcf832c90a2316a3c",
+      "bytes": 2956
+    },
+    {
+      "path": "japan_expansion/construction_review.py",
+      "sha256_git_blob_bytes": "183859af813235695808a4f3c35842b01951a9e68a050a5f40443658c9c80236",
+      "bytes": 8522
+    },
+    {
+      "path": "japan_expansion/construction_safety.py",
+      "sha256_git_blob_bytes": "d8b57497f3183f790e515c8c4ba0b78d506492eb0fad1838eafdf3dca5f803ab",
+      "bytes": 21966
+    },
+    {
+      "path": "japan_expansion/construction_safety_review.py",
+      "sha256_git_blob_bytes": "5a34038ee91d4d1fcb09698cea46b1d7cb18e5241e8fc7f428853f7f540dd3f7",
+      "bytes": 11136
+    },
+    {
+      "path": "japan_expansion/decision_banners.py",
+      "sha256_git_blob_bytes": "d72d3cf8bc8303aa66dcabdf435514dc5f91da011792c3081826e33fa2cc699a",
+      "bytes": 572
+    },
+    {
+      "path": "japan_expansion/early.py",
+      "sha256_git_blob_bytes": "71c64b985543a56038711d027a12ca15b70088f0e3f93abce47aee0c7b209f42",
+      "bytes": 15680
+    },
+    {
+      "path": "japan_expansion/endings.py",
+      "sha256_git_blob_bytes": "a6e9fb16de6399c7f8c1d6e00f8fb75866766a76ebd4644335146de0d7ceb3cd",
+      "bytes": 25485
+    },
+    {
+      "path": "japan_expansion/endurance_economy.py",
+      "sha256_git_blob_bytes": "d680a9a6e3e3f2c98ad551ba26c28781d376a9e947de43932108362e5babee74",
+      "bytes": 9185
+    },
+    {
+      "path": "japan_expansion/enemy_transport_ai.py",
+      "sha256_git_blob_bytes": "d513f4f4d7c0c941b0ef2f633ff4908e5f2a1e9e20d9bd7254212185ccfec5b1",
+      "bytes": 5079
+    },
+    {
+      "path": "japan_expansion/equipment_delivery.py",
+      "sha256_git_blob_bytes": "a79435cc87ec9fa9811c0c500fbe5908fff6af4e67c8cbb87a9059dd3afeaf2d",
+      "bytes": 9080
+    },
+    {
+      "path": "japan_expansion/equipment_delivery_review.py",
+      "sha256_git_blob_bytes": "9628aebd7c480b0cddbe9f9ab2ae70869a8f0d3738762d506b3e3fd57de3f054",
+      "bytes": 21933
+    },
+    {
+      "path": "japan_expansion/event_accessibility.py",
+      "sha256_git_blob_bytes": "15b6780a826ea06237fd2f79aa88075c8c0017c06ca9d0b8a25a0a032de9a665",
+      "bytes": 9804
+    },
+    {
+      "path": "japan_expansion/events.json",
+      "sha256_git_blob_bytes": "b8e46501e4845fc0dce88a1205b4fa8c277a4569cd2924c93a1a23e5ee1242b0",
+      "bytes": 25296495
+    },
+    {
+      "path": "japan_expansion/final_event_integrity.py",
+      "sha256_git_blob_bytes": "1d9b914923ed1a1597ca70479f30bc0f140ec6dae201feaf920c461cfd14391c",
+      "bytes": 4672
+    },
+    {
+      "path": "japan_expansion/finalize.py",
+      "sha256_git_blob_bytes": "5b7e6642b3cb0b081cce57f89b628c3ed36e4b03c09e2c6ff99570b6874bd90b",
+      "bytes": 8112
+    },
+    {
+      "path": "japan_expansion/force_delivery_audit.py",
+      "sha256_git_blob_bytes": "017b62fcc51157df5297b3c6b1148d0cd0e19613651264e74140256ca23de204",
+      "bytes": 8990
+    },
+    {
+      "path": "japan_expansion/force_value.py",
+      "sha256_git_blob_bytes": "c446e5a56a1fe0b0ad73a9b72a2a4ab48aad4d548aa06bd509991e8b35d3dccd",
+      "bytes": 7237
+    },
+    {
+      "path": "japan_expansion/garrison_profiles.py",
+      "sha256_git_blob_bytes": "ba08db488687fbd6f30efebbd553827c582d3317623556f9024fe20c81f7dec6",
+      "bytes": 4938
+    },
+    {
+      "path": "japan_expansion/garrison_supply.py",
+      "sha256_git_blob_bytes": "fb1f6757c47035f672336d96d7d2f32838c6e4be2fa36e28d29ee73610380d6a",
+      "bytes": 7059
+    },
+    {
+      "path": "japan_expansion/human_campaign.py",
+      "sha256_git_blob_bytes": "a8348fa1d526d18446ba9a0a810836343d7aab541b3a2e52882282790d54c1a9",
+      "bytes": 17786
+    },
+    {
+      "path": "japan_expansion/human_campaign_review.py",
+      "sha256_git_blob_bytes": "bf1bc7d436e13e77f6b6cef8d742d3d2fd281e50d601c57477ef7509388a4bd2",
+      "bytes": 5144
+    },
+    {
+      "path": "japan_expansion/install_portable.py",
+      "sha256_git_blob_bytes": "b182a8c71370307b9ea1fb170bab13aea396f678a57f14df4e1ab78f98ecc5d4",
+      "bytes": 3232
+    },
+    {
+      "path": "japan_expansion/island_shipping.py",
+      "sha256_git_blob_bytes": "9bcb9a7e16a83d63eb582f955f4851b8c5973664b6e5c924385fd4f072f2aeaa",
+      "bytes": 1865
+    },
+    {
+      "path": "japan_expansion/japan_personnel.py",
+      "sha256_git_blob_bytes": "991677245bb951f46cf8d1ec1e739e941300944eee6120a63cf2c2d544d37cc2",
+      "bytes": 9153
+    },
+    {
+      "path": "japan_expansion/japan_wartime.py",
+      "sha256_git_blob_bytes": "bccc85fa115331340db2b3e6ed6eea8f0c4aab3e30005c607c7ed0e519fb5edb",
+      "bytes": 6330
+    },
+    {
+      "path": "japan_expansion/japanese_research_names.py",
+      "sha256_git_blob_bytes": "c224640515bd686a48a1999a8daa48bc0d45890a3e3e634b178e1ecbef0b769a",
+      "bytes": 1331
+    },
+    {
+      "path": "japan_expansion/localisation_support.py",
+      "sha256_git_blob_bytes": "530d90070d41e616dab58a8ab66ea4228bbd026e90bb6c4c8fafd9e6351cb061",
+      "bytes": 2947
+    },
+    {
+      "path": "japan_expansion/migrate_snlf_june.py",
+      "sha256_git_blob_bytes": "42638355a34bd22cccb15a5845b8d705f07a4cd53fca650b495bd4fe189052d1",
+      "bytes": 6802
+    },
+    {
+      "path": "japan_expansion/minister_integrity.py",
+      "sha256_git_blob_bytes": "77a6f870d2fa69c86315c9e6e5e125eae951ba11043ed973875f0a8b8241345a",
+      "bytes": 11189
+    },
+    {
+      "path": "japan_expansion/model_names_and_ai.py",
+      "sha256_git_blob_bytes": "0e6094ec06dde8ce511e15364339ba357fffcbd2a49ca72e5e4ad93f65ceb028",
+      "bytes": 3088
+    },
+    {
+      "path": "japan_expansion/more_activities.py",
+      "sha256_git_blob_bytes": "d9a54f038ba4d54bbb62543d19c0f232988b0fc7e2ec299d5bb7895aef6b0c3a",
+      "bytes": 7243
+    },
+    {
+      "path": "japan_expansion/offline_review.py",
+      "sha256_git_blob_bytes": "1447e29514da66bfc1a777b191e57974d461c36df1ccbb0986f5e8b5f51b05a1",
+      "bytes": 7909
+    },
+    {
+      "path": "japan_expansion/partners.py",
+      "sha256_git_blob_bytes": "2a1dc64fc149849070d775221dfd6444097186359e0928f59f34cdf950e3b0ce",
+      "bytes": 10261
+    },
+    {
+      "path": "japan_expansion/personnel_review.py",
+      "sha256_git_blob_bytes": "e823f444d73d379cbc782941e4563dc2f9d5cf522a1b8425affbca2832a1ae82",
+      "bytes": 12285
+    },
+    {
+      "path": "japan_expansion/player_copy.py",
+      "sha256_git_blob_bytes": "eb3b5ca7a9c6008c5a7ce9a230cfc9aa1a1f87ab7c85d96afd3e71b21347eb4a",
+      "bytes": 28398
+    },
+    {
+      "path": "japan_expansion/portable_verify.py",
+      "sha256_git_blob_bytes": "75e0c859b84d82e2d9f69bec903679c6f4ddfbddc52e4a084a404d7ab5f3cbe0",
+      "bytes": 3927
+    },
+    {
+      "path": "japan_expansion/prewar_content.py",
+      "sha256_git_blob_bytes": "d36704832c5df5cbaf2807f7056be562e615515ba5c3ca2b55d64450ec4b586e",
+      "bytes": 15422
+    },
+    {
+      "path": "japan_expansion/production_programmes.py",
+      "sha256_git_blob_bytes": "232d1f9d4dc5d87ec761eb394513af4d83e4adc7be94ecb04498710b3c3632a0",
+      "bytes": 6314
+    },
+    {
+      "path": "japan_expansion/programme_review.py",
+      "sha256_git_blob_bytes": "19ce938e37d1197fd111ed7e2d7e2e75c74b0e331dae016594f3f2e935d2ce76",
+      "bytes": 2095
+    },
+    {
+      "path": "japan_expansion/readiness_review.py",
+      "sha256_git_blob_bytes": "5912b62ee48f1f155a8c8d491386b31e6674fc2510ca5e249a27f925d702bda4",
+      "bytes": 2925
+    },
+    {
+      "path": "japan_expansion/recruitment_endurance.py",
+      "sha256_git_blob_bytes": "68fa609861dc480321aeb465fe98504524bda16f8ccf9c4ae0cddb9057418234",
+      "bytes": 2166
+    },
+    {
+      "path": "japan_expansion/regional_content.py",
+      "sha256_git_blob_bytes": "86f4b9a7cc73fcabc872a68cbae0dbdd8cdc4bc509999fc2dd79020f6ccb1825",
+      "bytes": 21233
+    },
+    {
+      "path": "japan_expansion/release_support.py",
+      "sha256_git_blob_bytes": "a626d792bbac0e4d27825c9a121406ca4e0f194cd96bbfd1cffb305b21d93f67",
+      "bytes": 14707
+    },
+    {
+      "path": "japan_expansion/repair_b2_registry.py",
+      "sha256_git_blob_bytes": "aafa38104ea7b873183eed3beb2e839d2ef7008712d70feb669a313a595a4550",
+      "bytes": 3369
+    },
+    {
+      "path": "japan_expansion/repair_completion_save.py",
+      "sha256_git_blob_bytes": "18d252d7ef61208216d4465bf13ae57b916e0b4ddd86ca6fb948dba1d63edea0",
+      "bytes": 8889
+    },
+    {
+      "path": "japan_expansion/repair_garrisons_b3.py",
+      "sha256_git_blob_bytes": "6cc2c53615adcbc6b6c4860171652ec4b440e944659528a8a3c72d3d9bd1d1d8",
+      "bytes": 5863
+    },
+    {
+      "path": "japan_expansion/repair_peark_march.py",
+      "sha256_git_blob_bytes": "72ee6aba2daf17f122d98d2a78c18e9ea8724c03a5b1a6191ff6224681a08c74",
+      "bytes": 9833
+    },
+    {
+      "path": "japan_expansion/repair_programme_save.py",
+      "sha256_git_blob_bytes": "2c234a86aa6d334a39f55a7e7e6b0f9e82a16f0fc38792c251d204cf264d6d34",
+      "bytes": 3889
+    },
+    {
+      "path": "japan_expansion/resource_review.py",
+      "sha256_git_blob_bytes": "da502294fbe7e87461e540c15a02a90fe77d29113f8a651f739f2f7a4ffbb3b8",
+      "bytes": 14025
+    },
+    {
+      "path": "japan_expansion/runtime.py",
+      "sha256_git_blob_bytes": "62bacf59e0790be79680cb961a4072b6ccd939c004241f94f440c6c56a123b35",
+      "bytes": 1863
+    },
+    {
+      "path": "japan_expansion/runtime_paths.py",
+      "sha256_git_blob_bytes": "048022143368f32b1943b987adf53b8598b9f034ac166f2f9e4e0626ba1a23f4",
+      "bytes": 1166
+    },
+    {
+      "path": "japan_expansion/save_event_registry.py",
+      "sha256_git_blob_bytes": "840ca70bf625eecff68a23169637b7d7c2a932f9484bce897789b20329f0909f",
+      "bytes": 1207
+    },
+    {
+      "path": "japan_expansion/simulate.py",
+      "sha256_git_blob_bytes": "dc549c0ace1ec0c9277f2635c3f95980c5c210545295331750ffc0a7fdc5c76b",
+      "bytes": 59799
+    },
+    {
+      "path": "japan_expansion/snlf_cabinet.py",
+      "sha256_git_blob_bytes": "f37e5d18c13f86ef2f7a01fcdb765528eb0dcda50683573938a2f2708f22b18e",
+      "bytes": 1638
+    },
+    {
+      "path": "japan_expansion/specialist_review.py",
+      "sha256_git_blob_bytes": "57e4309f37270abb00e47f5001e02e4161ce86fecbd7ddb9ddd4d6fe9579cc85",
+      "bytes": 7171
+    },
+    {
+      "path": "japan_expansion/specialist_units.py",
+      "sha256_git_blob_bytes": "154c349f1ca8ad7f4af3ad0ce6b2d56591c77244dcd2c51f615902b9637a14af",
+      "bytes": 12930
+    },
+    {
+      "path": "japan_expansion/stage_names_ai_fix.py",
+      "sha256_git_blob_bytes": "68e84d415a9e7774212954763734bd60d433b063ce76da0ba31a84fd3a01044d",
+      "bytes": 6038
+    },
+    {
+      "path": "japan_expansion/unique_art.py",
+      "sha256_git_blob_bytes": "840dfc7dbf52f992bbb71cc1d911547197184da51c9771950c602af9cc47197b",
+      "bytes": 9981
+    },
+    {
+      "path": "japan_expansion/unique_attachments.py",
+      "sha256_git_blob_bytes": "49fa9f113da902a604f36b637faedd70740b45f54adef2c7922a58512615de83",
+      "bytes": 20155
+    },
+    {
+      "path": "japan_expansion/unique_attachments_review.py",
+      "sha256_git_blob_bytes": "670fdfb5cf07e7e820f6b78e4d51388815063985b587ee4a3f786b7abb215ee6",
+      "bytes": 14529
+    },
+    {
+      "path": "japan_expansion/unique_divisions.py",
+      "sha256_git_blob_bytes": "5ba9fd7e51ebf9a808f378237e8c702d7de34cf369eb611db7ad010414f45bd6",
+      "bytes": 26355
+    },
+    {
+      "path": "japan_expansion/unique_unit_events.py",
+      "sha256_git_blob_bytes": "d6fc32ce74d0c47a43eea91b1dc9148c6040a92115251c6fa9fe652c0f43bba1",
+      "bytes": 10804
+    },
+    {
+      "path": "japan_expansion/us_campaign_content.py",
+      "sha256_git_blob_bytes": "658fb9131694899b95b240ba55497c76e8172f0953de6aa7546b9a0d37e74411",
+      "bytes": 16383
+    },
+    {
+      "path": "japan_expansion/us_invasion.py",
+      "sha256_git_blob_bytes": "2f2959378098ab4ae9692d89871b3c7abab3d716807021e79d6cc82022a8976e",
+      "bytes": 12170
+    },
+    {
+      "path": "japan_expansion/us_invasion_review.py",
+      "sha256_git_blob_bytes": "955e882f48aec5794ebb2a7c83565288db662a3b86bb7f21adca2f90b69ae686",
+      "bytes": 11076
+    },
+    {
+      "path": "japan_expansion/validate.py",
+      "sha256_git_blob_bytes": "eafec603474af26311f68646127560185341f64b59e16e7a6b5f672f6a82d802",
+      "bytes": 11139
+    },
+    {
+      "path": "requirements.txt",
+      "sha256_git_blob_bytes": "41b54a6fb2918667ca47a61d73b522629d84490f3d78f0f20b21135faba10d35",
+      "bytes": 15
+    },
+    {
+      "path": "tools/audit_japan_baseline.py",
+      "sha256_git_blob_bytes": "2382d3b488643a3f093f077d6e7f9c4109b65f08888964b6f27884244601d840",
+      "bytes": 10788
+    },
+    {
+      "path": "tools/check_source_release.py",
+      "sha256_git_blob_bytes": "be34ebfc84c449aa382550d977ba6cc438d9633d1f30c53d06acc53f2a0c1a39",
+      "bytes": 1434
+    }
+  ]
+}

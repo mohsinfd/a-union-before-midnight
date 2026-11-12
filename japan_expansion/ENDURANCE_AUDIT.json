@@ -1,0 +1,147 @@
+{
+  "baseline_source": "C:\\Users\\Mohsin Dingankar\\Downloads\\Blood and Iron v1.1",
+  "baseline_territorial_raw": {
+    "Energy": 283.6,
+    "Metal": 37.6,
+    "Rare Materials": 49.6,
+    "Oil": 2.0
+  },
+  "baseline_effective_at_0_9": {
+    "Energy": 255.24,
+    "Metal": 33.84,
+    "Rare Materials": 44.64,
+    "Oil": 1.8
+  },
+  "plans": [
+    {
+      "choice": "balanced",
+      "completed_stage": "home_fuel",
+      "illustrative_effective_IC": 100,
+      "daily_resources": {
+        "Energy": 381.24,
+        "Metal": 69.84,
+        "Rare Materials": 53.64,
+        "Oil": 19.8
+      },
+      "after_industry": {
+        "Energy": 181.24,
+        "Metal": -30.16,
+        "Rare Materials": 3.64,
+        "Oil": 19.8
+      },
+      "energy_after_industry_and_standard_batch": 47.907,
+      "energy_after_industry_and_large_batch": -85.427,
+      "note": "Native conversion, other JX programmes, imports and conquest excluded."
+    },
+    {
+      "choice": "balanced",
+      "completed_stage": "war_fuel",
+      "illustrative_effective_IC": 150,
+      "daily_resources": {
+        "Energy": 651.24,
+        "Metal": 150.84,
+        "Rare Materials": 80.64,
+        "Oil": 42.3
+      },
+      "after_industry": {
+        "Energy": 351.24,
+        "Metal": 0.84,
+        "Rare Materials": 5.64,
+        "Oil": 42.3
+      },
+      "energy_after_industry_and_standard_batch": 217.907,
+      "energy_after_industry_and_large_batch": 84.573,
+      "note": "Native conversion, other JX programmes, imports and conquest excluded."
+    },
+    {
+      "choice": "fuel priority",
+      "completed_stage": "home_fuel",
+      "illustrative_effective_IC": 100,
+      "daily_resources": {
+        "Energy": 417.24,
+        "Metal": 51.84,
+        "Rare Materials": 44.64,
+        "Oil": 33.3
+      },
+      "after_industry": {
+        "Energy": 217.24,
+        "Metal": -48.16,
+        "Rare Materials": -5.36,
+        "Oil": 33.3
+      },
+      "energy_after_industry_and_standard_batch": 83.907,
+      "energy_after_industry_and_large_batch": -49.427,
+      "note": "Native conversion, other JX programmes, imports and conquest excluded."
+    },
+    {
+      "choice": "fuel priority",
+      "completed_stage": "war_fuel",
+      "illustrative_effective_IC": 150,
+      "daily_resources": {
+        "Energy": 759.24,
+        "Metal": 87.84,
+        "Rare Materials": 53.64,
+        "Oil": 78.3
+      },
+      "after_industry": {
+        "Energy": 459.24,
+        "Metal": -62.16,
+        "Rare Materials": -21.36,
+        "Oil": 78.3
+      },
+      "energy_after_industry_and_standard_batch": 325.907,
+      "energy_after_industry_and_large_batch": 192.573,
+      "note": "Native conversion, other JX programmes, imports and conquest excluded."
+    }
+  ],
+  "save": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\scenarios\\save games\\autosave.eug",
+  "save_sha256": "dfd86cd5388f209bf342032f931b7cb32738f7ae8ff3ddd0e068da49472b664b",
+  "save_date": {
+    "year": "1942",
+    "month": "november",
+    "day": "0",
+    "hour": "0"
+  },
+  "save_resources": {
+    "manpower": 0.0019,
+    "oil": 3107.3157,
+    "energy": 53114.6328,
+    "metal": 21020.0176,
+    "rare_materials": 17395.0117,
+    "supplies": 9336.3613,
+    "money": 127.8406
+  },
+  "force_consumption_templates": [
+    {
+      "kind": "landunit",
+      "formations": 121,
+      "full_strength_saved_template_oil": 219.89,
+      "saved_template_supply": 137.46
+    },
+    {
+      "kind": "navalunit",
+      "formations": 186,
+      "full_strength_saved_template_oil": 156.87,
+      "saved_template_supply": 136.24
+    },
+    {
+      "kind": "airunit",
+      "formations": 25,
+      "full_strength_saved_template_oil": 65.2,
+      "saved_template_supply": 29.0
+    }
+  ],
+  "captured_sites_base_oil": {
+    "1636": 6.0,
+    "1632": 3.0,
+    "1653": 2.0,
+    "1642": 5.0
+  },
+  "occupied_three_project_output_at_0_9": 41.535,
+  "limitations": [
+    "Planning arithmetic is not an observed engine daily ledger.",
+    "Province.csv and 1933 owned/core membership are the baseline; other JX rewards are intentionally excluded.",
+    "Template consumption excludes duty, strength, combat multipliers and transport timing.",
+    "No game launch, installation, or save modification."
+  ]
+}
