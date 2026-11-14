@@ -55,9 +55,9 @@ class FinalIntegrityReview(unittest.TestCase):
         self.fail('No compiled-eligible funded witness: '+key+' choice '+str(index))
 
     def test_ids_preserved_and_hook_is_idempotent(self):
-        legacy=[e for e in build.EVENTS if not e.module.startswith('unique_unit_')]
+        legacy=[e for e in build.EVENTS if e.id<=28601822 and not e.module.startswith('unique_unit_')]
         self.assertEqual(len(legacy),1773)
-        self.assertEqual(len(build.EVENTS),1822)
+        self.assertGreaterEqual(len(build.EVENTS),1822)
         self.assertEqual(BASE_IDS,{e.key:e.id for e in build.EVENTS})
         before=copy.deepcopy(build.EVENTS);integrity.apply();self.assertEqual(build.EVENTS,before)
 

@@ -79,7 +79,10 @@ def append_events():
             commands += [cond(f'NOT = {{ convoypool = {transports} }}',cmd('transport_pool',which=-1,value=transports)),
                          cond(f'NOT = {{ escortpool = {escorts} }}',cmd('escort_pool',which=-1,value=escorts))]
         profile='partner_islands.ai' if tier=='archipelago' else ('partner_small.ai' if small else 'partner_land.ai')
-        commands += [cond('NOT = { ic = 20 }',cmd('ai',which='"jx/'+profile+'"')),
+        # India needs the released-country defence priorities even at its normal
+        # industrial size. The threshold controls other partners, not India.
+        commands += ([cmd('ai',which='"jx/'+profile+'"')] if tag=='IND' else
+                     [cond('NOT = { ic = 20 }',cmd('ai',which='"jx/'+profile+'"'))]) + [
                      fire(key+'_army')]
         if maritime:commands.append(fire(key+'_navy'))
         commands.append(flag('AID_'+tag+'_MAIN_DONE'))

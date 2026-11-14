@@ -167,13 +167,13 @@ def _fuel(by):
     for key,amount in [('fuel_batch_delivery_0',6000),('fuel_batch_delivery_1',12000),('endurance_small_fuel_delivery',1500)]:
         _set(by,key,f'The conversion works have prepared {amount:,} oil. Accept it only if there is enough room in the oil reserve. '
              f'Delivery is available while current oil is below {amount:,}; otherwise cancel and recover the energy, supplies and money. '
-             'The next conversion order can be placed in 45 days.')
+             f'The next conversion order can be placed in {90 if amount>=12000 else 45} days.')
         if key in by:by[key].actions[1].name='Cancel delivery and return the investment'
     _set(by,'wartime_fuel_batch',
          'Order a wartime coal-to-oil conversion.\n\nSmall: 3,000 energy, 200 supplies and 25 money for 1,500 oil.\n'
          'Standard: 12,000 energy, 800 supplies and 100 money for 6,000 oil.\n'
          'Large: 24,000 energy, 1,600 supplies and 200 money for 12,000 oil.\n\n'
-         'Delivery takes 45 days, followed by 45 days before another order. One order may be under way at a time. '
+         'Delivery takes 45 days. Small and standard orders then need 45 days of recovery; large orders need 90 days. One order may be under way at a time. '
          'Keep at least 9,000 energy after payment. Standard orders require strategic storage and the home fuel works; '
          'large orders require strategic storage and the wartime expansion. Current oil must be below the chosen delivery size. '
          'Check room in the oil reserve before accepting delivery; cancellation returns the investment. Industry and fuel conversion continue to use energy during the wait.')

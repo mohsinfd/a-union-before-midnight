@@ -69,7 +69,9 @@ def run():
     from specialist_units import MIRRORS
     allowed_commands.update(get(c,'type') for _,_,_,c in MIRRORS)
     allowed_commands.update({'scrap_model','free_manpower','wartime_ic_mod','repair_mod','stockpile'})
-    allowed_commands.update({'energypool','metalpool','rarematerialspool','free_ic','sleepevent','set_relation','set_domestic','domestic'})
+    # Engine manual: relation is an additive diplomatic change; set_relation is
+    # the absolute form. R14's Hawaiian bargains intentionally use the former.
+    allowed_commands.update({'energypool','metalpool','rarematerialspool','free_ic','sleepevent','relation','set_relation','set_domestic','domestic'})
     # Verified against shipped event commands and native technology/events.
     from prewar_content import DOCUMENTED_NEW_COMMANDS
     allowed_commands.update(DOCUMENTED_NEW_COMMANDS)

@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "tests": 5,
+  "game_executed": false,
+  "large_batch_oil_per_day": 88.88888888888889,
+  "balanced_works_raw_oil_per_day": 45,
+  "fuel_priority_works_raw_oil_per_day": 85,
+  "note": "Provincial works outputs are raw, before actual research/territorial/resource modifiers. Batch output is paid, repeatable only at low stocks, and consumes industrial coal. At the review benchmark of 165 oil/day, balanced domestic works plus the large emergency batch supply about134 raw/day, or about131 at 94% works efficiency. Fuel priority sacrifices minerals. Southern fields, imports, native conversion and captured stock remain material; these are illustrative flows, not a forecast of a particular fleet."
+}

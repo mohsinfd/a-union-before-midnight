@@ -147,8 +147,9 @@ def apply():
                 names.add(name)
             insert = additions[-1][0] + 1
             action.commands[insert:insert] = heals
-            if len(names) != 6 or len(additions) != 12:
-                raise ValueError('American wave must retain six mutually exclusive model pairs')
+            from us_campaign_content import RESERVE_MODELS
+            if len(names) != 6 or len(additions) != 6*len(RESERVE_MODELS):
+                raise ValueError('American wave must retain six mutually exclusive researched model selections')
             american.append({'event': key, 'action': action_index, 'site': site,
                              'names': sorted(names), 'conditional_additions': len(additions),
                              'conditional_heals': len(heals), 'manpower': 78})

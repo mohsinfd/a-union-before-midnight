@@ -1,0 +1,4437 @@
+{
+  "passed": true,
+  "game_executed": false,
+  "unit_families": 10,
+  "rows": [
+    {
+      "year": 1939,
+      "unit": "d_14",
+      "parent": "naval_bomber",
+      "models": [
+        {
+          "unit": "naval_bomber",
+          "model": 2,
+          "template_ic": 15.0,
+          "template_days": 240.0,
+          "technology_effects": [],
+          "programme_choices": [
+            [
+              "first_industry",
+              1,
+              0.0,
+              -12.0
+            ],
+            [
+              "air_production",
+              1,
+              -4.0,
+              -48.0
+            ]
+          ],
+          "ic": 11.0,
+          "days": 180.0,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50075",
+              "Nakajima Chikuhei",
+              "Air to Sea Proponent"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50010",
+              "Yamamoto Isoroku",
+              "Naval Aviation Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.1,
+          "cabinet_time_modifier": -0.1,
+          "stressed_ic_days_additive": 301.158,
+          "stressed_ic_days_multiplicative": 357.5672
+        },
+        {
+          "unit": "d_14",
+          "model": 0,
+          "template_ic": 17.25,
+          "template_days": 264.0,
+          "technology_effects": [],
+          "programme_choices": [
+            [
+              "first_industry",
+              1,
+              0.0,
+              -12.0
+            ],
+            [
+              "air_production",
+              1,
+              -4.0,
+              -48.0
+            ]
+          ],
+          "ic": 13.25,
+          "days": 204.0,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50075",
+              "Nakajima Chikuhei",
+              "Air to Sea Proponent"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50010",
+              "Yamamoto Isoroku",
+              "Naval Aviation Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.1,
+          "cabinet_time_modifier": -0.1,
+          "stressed_ic_days_additive": 411.1263,
+          "stressed_ic_days_multiplicative": 488.1334
+        }
+      ],
+      "ratio": 1.3652,
+      "stress_ratio": 1.3652
+    },
+    {
+      "year": 1939,
+      "unit": "d_17",
+      "parent": "naval_bomber",
+      "models": [
+        {
+          "unit": "naval_bomber",
+          "model": 2,
+          "template_ic": 15.0,
+          "template_days": 240.0,
+          "technology_effects": [],
+          "programme_choices": [
+            [
+              "first_industry",
+              1,
+              0.0,
+              -12.0
+            ],
+            [
+              "air_production",
+              1,
+              -4.0,
+              -48.0
+            ]
+          ],
+          "ic": 11.0,
+          "days": 180.0,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50075",
+              "Nakajima Chikuhei",
+              "Air to Sea Proponent"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50010",
+              "Yamamoto Isoroku",
+              "Naval Aviation Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.1,
+          "cabinet_time_modifier": -0.1,
+          "stressed_ic_days_additive": 301.158,
+          "stressed_ic_days_multiplicative": 357.5672
+        },
+        {
+          "unit": "d_17",
+          "model": 0,
+          "template_ic": 14.25,
+          "template_days": 228.0,
+          "technology_effects": [],
+          "programme_choices": [
+            [
+              "first_industry",
+              1,
+              0.0,
+              -12.0
+            ],
+            [
+              "air_production",
+              1,
+              -4.0,
+              -48.0
+            ]
+          ],
+          "ic": 10.25,
+          "days": 168.0,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50075",
+              "Nakajima Chikuhei",
+              "Air to Sea Proponent"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50010",
+              "Yamamoto Isoroku",
+              "Naval Aviation Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.1,
+          "cabinet_time_modifier": -0.1,
+          "stressed_ic_days_additive": 261.9162,
+          "stressed_ic_days_multiplicative": 310.9751
+        }
+      ],
+      "ratio": 0.8697,
+      "stress_ratio": 0.8697
+    },
+    {
+      "year": 1939,
+      "unit": "d_19",
+      "parent": "infantry",
+      "models": [
+        {
+          "unit": "infantry",
+          "model": 10,
+          "template_ic": 5.0,
+          "template_days": 290.0,
+          "technology_effects": [
+            [
+              "1920",
+              0.0,
+              -29.0
+            ]
+          ],
+          "programme_choices": [
+            [
+              "army_production",
+              0,
+              -1.0,
+              -43.5
+            ]
+          ],
+          "ic": 4.0,
+          "days": 217.5,
+          "cabinet": [
+            [
+              -0.25,
+              -0.25,
+              "50011",
+              "Yasuhito",
+              "Ruthless Powermonger"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50022",
+              "Tojo Hideki",
+              "Razor"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50008",
+              "Kanin Kotohito",
+              "Static Defence Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.35,
+          "cabinet_time_modifier": -0.35,
+          "stressed_ic_days_additive": 27.7095,
+          "stressed_ic_days_multiplicative": 81.9508
+        },
+        {
+          "unit": "d_19",
+          "model": 1,
+          "template_ic": 5.25,
+          "template_days": 276.0,
+          "technology_effects": [
+            [
+              "1920",
+              0.0,
+              -29.0
+            ]
+          ],
+          "programme_choices": [
+            [
+              "army_production",
+              0,
+              -1.0,
+              -43.5
+            ]
+          ],
+          "ic": 4.25,
+          "days": 203.5,
+          "cabinet": [
+            [
+              -0.25,
+              -0.25,
+              "50011",
+              "Yasuhito",
+              "Ruthless Powermonger"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50022",
+              "Tojo Hideki",
+              "Razor"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50008",
+              "Kanin Kotohito",
+              "Static Defence Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.35,
+          "cabinet_time_modifier": -0.35,
+          "stressed_ic_days_additive": 27.5463,
+          "stressed_ic_days_multiplicative": 81.4681
+        }
+      ],
+      "ratio": 0.9941,
+      "stress_ratio": 0.9941
+    },
+    {
+      "year": 1939,
+      "unit": "b_01",
+      "parent": "naval_torpedoes_s",
+      "models": [
+        {
+          "unit": "naval_torpedoes_s",
+          "model": 0,
+          "template_ic": 0.3,
+          "template_days": 140.0,
+          "technology_effects": [],
+          "programme_choices": [],
+          "ic": 0.3,
+          "days": 140.0,
+          "cabinet": [],
+          "cabinet_cost_modifier": 0,
+          "cabinet_time_modifier": 0,
+          "stressed_ic_days_additive": 9.3639,
+          "stressed_ic_days_multiplicative": 9.3639
+        },
+        {
+          "unit": "b_01",
+          "model": 0,
+          "template_ic": 0.65,
+          "template_days": 100.0,
+          "technology_effects": [],
+          "programme_choices": [],
+          "ic": 0.65,
+          "days": 100.0,
+          "cabinet": [],
+          "cabinet_cost_modifier": 0,
+          "cabinet_time_modifier": 0,
+          "stressed_ic_days_additive": 14.4917,
+          "stressed_ic_days_multiplicative": 14.4917
+        }
+      ],
+      "ratio": 1.5476,
+      "stress_ratio": 1.5476
+    },
+    {
+      "year": 1939,
+      "unit": "b_02",
+      "parent": "police",
+      "models": [
+        {
+          "unit": "police",
+          "model": 1,
+          "template_ic": 1.5,
+          "template_days": 90.0,
+          "technology_effects": [],
+          "programme_choices": [],
+          "ic": 1.5,
+          "days": 90.0,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50103",
+              "Tojo Hideki",
+              "Secret Police Chief"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.05,
+          "cabinet_time_modifier": -0.05,
+          "stressed_ic_days_additive": 25.0965,
+          "stressed_ic_days_multiplicative": 27.1637
+        },
+        {
+          "unit": "b_02",
+          "model": 1,
+          "template_ic": 3.25,
+          "template_days": 125.0,
+          "technology_effects": [],
+          "programme_choices": [],
+          "ic": 3.25,
+          "days": 125.0,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50103",
+              "Tojo Hideki",
+              "Secret Police Chief"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.05,
+          "cabinet_time_modifier": -0.05,
+          "stressed_ic_days_additive": 75.5219,
+          "stressed_ic_days_multiplicative": 81.7425
+        }
+      ],
+      "ratio": 3.0093,
+      "stress_ratio": 3.0093
+    },
+    {
+      "year": 1941,
+      "unit": "d_14",
+      "parent": "naval_bomber",
+      "models": [
+        {
+          "unit": "naval_bomber",
+          "model": 2,
+          "template_ic": 15.0,
+          "template_days": 240.0,
+          "technology_effects": [
+            [
+              "5140",
+              0.0,
+              -47.519999999999996
+            ]
+          ],
+          "programme_choices": [
+            [
+              "first_industry",
+              1,
+              0.0,
+              -12.0
+            ],
+            [
+              "air_production",
+              1,
+              -4.0,
+              -48.0
+            ]
+          ],
+          "ic": 11.0,
+          "days": 132.48,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50075",
+              "Nakajima Chikuhei",
+              "Air to Sea Proponent"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50010",
+              "Yamamoto Isoroku",
+              "Naval Aviation Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.1,
+          "cabinet_time_modifier": -0.1,
+          "stressed_ic_days_additive": 221.6523,
+          "stressed_ic_days_multiplicative": 263.1695
+        },
+        {
+          "unit": "d_14",
+          "model": 0,
+          "template_ic": 17.25,
+          "template_days": 264.0,
+          "technology_effects": [
+            [
+              "5140",
+              0.0,
+              -47.52
+            ]
+          ],
+          "programme_choices": [
+            [
+              "first_industry",
+              1,
+              0.0,
+              -12.0
+            ],
+            [
+              "air_production",
+              1,
+              -4.0,
+              -48.0
+            ]
+          ],
+          "ic": 13.25,
+          "days": 156.48,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50075",
+              "Nakajima Chikuhei",
+              "Air to Sea Proponent"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50010",
+              "Yamamoto Isoroku",
+              "Naval Aviation Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.1,
+          "cabinet_time_modifier": -0.1,
+          "stressed_ic_days_additive": 315.3581,
+          "stressed_ic_days_multiplicative": 374.427
+        }
+      ],
+      "ratio": 1.4228,
+      "stress_ratio": 1.4228
+    },
+    {
+      "year": 1941,
+      "unit": "d_16",
+      "parent": "multi_role",
+      "models": [
+        {
+          "unit": "multi_role",
+          "model": 6,
+          "template_ic": 20.0,
+          "template_days": 210.0,
+          "technology_effects": [
+            [
+              "5140",
+              0.0,
+              -41.76
+            ]
+          ],
+          "programme_choices": [
+            [
+              "first_industry",
+              1,
+              0.0,
+              -12.0
+            ],
+            [
+              "air_production",
+              0,
+              -4.0,
+              -42.0
+            ]
+          ],
+          "ic": 16.0,
+          "days": 114.24,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50153",
+              "Tsukahara Nishizo",
+              "Air Superiority Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.05,
+          "cabinet_time_modifier": -0.05,
+          "stressed_ic_days_additive": 339.7955,
+          "stressed_ic_days_multiplicative": 367.784
+        },
+        {
+          "unit": "d_16",
+          "model": 0,
+          "template_ic": 21.0,
+          "template_days": 200.0,
+          "technology_effects": [
+            [
+              "5140",
+              0.0,
+              -41.76
+            ]
+          ],
+          "programme_choices": [
+            [
+              "first_industry",
+              1,
+              0.0,
+              -12.0
+            ],
+            [
+              "air_production",
+              0,
+              -4.0,
+              -42.0
+            ]
+          ],
+          "ic": 17.0,
+          "days": 104.24,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50153",
+              "Tsukahara Nishizo",
+              "Air Superiority Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.05,
+          "cabinet_time_modifier": -0.05,
+          "stressed_ic_days_additive": 329.4297,
+          "stressed_ic_days_multiplicative": 356.5644
+        }
+      ],
+      "ratio": 0.9695,
+      "stress_ratio": 0.9695
+    },
+    {
+      "year": 1941,
+      "unit": "d_17",
+      "parent": "naval_bomber",
+      "models": [
+        {
+          "unit": "naval_bomber",
+          "model": 3,
+          "template_ic": 16.0,
+          "template_days": 240.0,
+          "technology_effects": [
+            [
+              "5140",
+              0.0,
+              -47.519999999999996
+            ]
+          ],
+          "programme_choices": [
+            [
+              "first_industry",
+              1,
+              0.0,
+              -12.0
+            ],
+            [
+              "air_production",
+              1,
+              -4.0,
+              -48.0
+            ]
+          ],
+          "ic": 12.0,
+          "days": 132.48,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50075",
+              "Nakajima Chikuhei",
+              "Air to Sea Proponent"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50010",
+              "Yamamoto Isoroku",
+              "Naval Aviation Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.1,
+          "cabinet_time_modifier": -0.1,
+          "stressed_ic_days_additive": 241.8025,
+          "stressed_ic_days_multiplicative": 287.094
+        },
+        {
+          "unit": "d_17",
+          "model": 1,
+          "template_ic": 15.2,
+          "template_days": 228.0,
+          "technology_effects": [
+            [
+              "5140",
+              0.0,
+              -47.52
+            ]
+          ],
+          "programme_choices": [
+            [
+              "first_industry",
+              1,
+              0.0,
+              -12.0
+            ],
+            [
+              "air_production",
+              1,
+              -4.0,
+              -48.0
+            ]
+          ],
+          "ic": 11.2,
+          "days": 120.48,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50075",
+              "Nakajima Chikuhei",
+              "Air to Sea Proponent"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50010",
+              "Yamamoto Isoroku",
+              "Naval Aviation Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.1,
+          "cabinet_time_modifier": -0.1,
+          "stressed_ic_days_additive": 205.2401,
+          "stressed_ic_days_multiplicative": 243.6831
+        }
+      ],
+      "ratio": 0.8488,
+      "stress_ratio": 0.8488
+    },
+    {
+      "year": 1941,
+      "unit": "d_19",
+      "parent": "infantry",
+      "models": [
+        {
+          "unit": "infantry",
+          "model": 10,
+          "template_ic": 5.0,
+          "template_days": 290.0,
+          "technology_effects": [
+            [
+              "1920",
+              0.0,
+              -29.0
+            ],
+            [
+              "5180",
+              0.0,
+              -58.0
+            ]
+          ],
+          "programme_choices": [
+            [
+              "army_production",
+              0,
+              -1.0,
+              -43.5
+            ]
+          ],
+          "ic": 4.0,
+          "days": 159.5,
+          "cabinet": [
+            [
+              -0.25,
+              -0.25,
+              "50011",
+              "Yasuhito",
+              "Ruthless Powermonger"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50022",
+              "Tojo Hideki",
+              "Razor"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50008",
+              "Kanin Kotohito",
+              "Static Defence Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.35,
+          "cabinet_time_modifier": -0.35,
+          "stressed_ic_days_additive": 20.3203,
+          "stressed_ic_days_multiplicative": 60.0973
+        },
+        {
+          "unit": "d_19",
+          "model": 1,
+          "template_ic": 5.25,
+          "template_days": 276.0,
+          "technology_effects": [
+            [
+              "1920",
+              0.0,
+              -29.0
+            ],
+            [
+              "5180",
+              0.0,
+              -58.0
+            ]
+          ],
+          "programme_choices": [
+            [
+              "army_production",
+              0,
+              -1.0,
+              -43.5
+            ]
+          ],
+          "ic": 4.25,
+          "days": 145.5,
+          "cabinet": [
+            [
+              -0.25,
+              -0.25,
+              "50011",
+              "Yasuhito",
+              "Ruthless Powermonger"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50022",
+              "Tojo Hideki",
+              "Razor"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50008",
+              "Kanin Kotohito",
+              "Static Defence Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.35,
+          "cabinet_time_modifier": -0.35,
+          "stressed_ic_days_additive": 19.6952,
+          "stressed_ic_days_multiplicative": 58.2487
+        }
+      ],
+      "ratio": 0.9692,
+      "stress_ratio": 0.9692
+    },
+    {
+      "year": 1941,
+      "unit": "b_01",
+      "parent": "naval_torpedoes_s",
+      "models": [
+        {
+          "unit": "naval_torpedoes_s",
+          "model": 0,
+          "template_ic": 0.3,
+          "template_days": 140.0,
+          "technology_effects": [
+            [
+              "5150",
+              0.0,
+              -28.0
+            ]
+          ],
+          "programme_choices": [],
+          "ic": 0.3,
+          "days": 112.0,
+          "cabinet": [],
+          "cabinet_cost_modifier": 0,
+          "cabinet_time_modifier": 0,
+          "stressed_ic_days_additive": 7.4911,
+          "stressed_ic_days_multiplicative": 7.4911
+        },
+        {
+          "unit": "b_01",
+          "model": 0,
+          "template_ic": 0.65,
+          "template_days": 100.0,
+          "technology_effects": [
+            [
+              "5150",
+              0.0,
+              -28.0
+            ]
+          ],
+          "programme_choices": [],
+          "ic": 0.65,
+          "days": 72.0,
+          "cabinet": [],
+          "cabinet_cost_modifier": 0,
+          "cabinet_time_modifier": 0,
+          "stressed_ic_days_additive": 10.4341,
+          "stressed_ic_days_multiplicative": 10.4341
+        }
+      ],
+      "ratio": 1.3929,
+      "stress_ratio": 1.3929
+    },
+    {
+      "year": 1941,
+      "unit": "b_02",
+      "parent": "police",
+      "models": [
+        {
+          "unit": "police",
+          "model": 1,
+          "template_ic": 1.5,
+          "template_days": 90.0,
+          "technology_effects": [
+            [
+              "5180",
+              0.0,
+              -14.0
+            ]
+          ],
+          "programme_choices": [],
+          "ic": 1.5,
+          "days": 76.0,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50103",
+              "Tojo Hideki",
+              "Secret Police Chief"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.05,
+          "cabinet_time_modifier": -0.05,
+          "stressed_ic_days_additive": 21.1926,
+          "stressed_ic_days_multiplicative": 22.9382
+        },
+        {
+          "unit": "b_02",
+          "model": 1,
+          "template_ic": 3.25,
+          "template_days": 125.0,
+          "technology_effects": [
+            [
+              "5180",
+              0.0,
+              -14.0
+            ]
+          ],
+          "programme_choices": [],
+          "ic": 3.25,
+          "days": 111.0,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50103",
+              "Tojo Hideki",
+              "Secret Police Chief"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.05,
+          "cabinet_time_modifier": -0.05,
+          "stressed_ic_days_additive": 67.0634,
+          "stressed_ic_days_multiplicative": 72.5874
+        }
+      ],
+      "ratio": 3.1645,
+      "stress_ratio": 3.1645
+    },
+    {
+      "year": 1942,
+      "unit": "d_13",
+      "parent": "destroyer",
+      "models": [
+        {
+          "unit": "destroyer",
+          "model": 7,
+          "template_ic": 1.3,
+          "template_days": 570.0,
+          "technology_effects": [
+            [
+              "5150",
+              0.0,
+              -113.4
+            ]
+          ],
+          "programme_choices": [
+            [
+              "naval_production",
+              1,
+              -0.08,
+              -54.0
+            ]
+          ],
+          "ic": 1.22,
+          "days": 402.6,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50021",
+              "Hiranuma Kiichiro",
+              "Old Admiral"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50150",
+              "Oikawa Koshiro",
+              "Base Control Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.1,
+          "cabinet_time_modifier": -0.1,
+          "stressed_ic_days_additive": 74.7073,
+          "stressed_ic_days_multiplicative": 88.7005
+        },
+        {
+          "unit": "d_13",
+          "model": 0,
+          "template_ic": 1.495,
+          "template_days": 598.0,
+          "technology_effects": [
+            [
+              "5150",
+              0.0,
+              -113.4
+            ]
+          ],
+          "programme_choices": [
+            [
+              "naval_production",
+              1,
+              -0.08,
+              -54.0
+            ]
+          ],
+          "ic": 1.415,
+          "days": 430.6,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50021",
+              "Hiranuma Kiichiro",
+              "Old Admiral"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50150",
+              "Oikawa Koshiro",
+              "Base Control Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.1,
+          "cabinet_time_modifier": -0.1,
+          "stressed_ic_days_additive": 92.6744,
+          "stressed_ic_days_multiplicative": 110.033
+        }
+      ],
+      "ratio": 1.2405,
+      "stress_ratio": 1.2405
+    },
+    {
+      "year": 1942,
+      "unit": "d_14",
+      "parent": "naval_bomber",
+      "models": [
+        {
+          "unit": "naval_bomber",
+          "model": 3,
+          "template_ic": 16.0,
+          "template_days": 240.0,
+          "technology_effects": [
+            [
+              "5140",
+              0.0,
+              -47.519999999999996
+            ]
+          ],
+          "programme_choices": [
+            [
+              "first_industry",
+              1,
+              0.0,
+              -12.0
+            ],
+            [
+              "air_production",
+              1,
+              -4.0,
+              -48.0
+            ]
+          ],
+          "ic": 12.0,
+          "days": 132.48,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50075",
+              "Nakajima Chikuhei",
+              "Air to Sea Proponent"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50010",
+              "Yamamoto Isoroku",
+              "Naval Aviation Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.1,
+          "cabinet_time_modifier": -0.1,
+          "stressed_ic_days_additive": 241.8025,
+          "stressed_ic_days_multiplicative": 287.094
+        },
+        {
+          "unit": "d_14",
+          "model": 1,
+          "template_ic": 18.4,
+          "template_days": 264.0,
+          "technology_effects": [
+            [
+              "5140",
+              0.0,
+              -47.52
+            ]
+          ],
+          "programme_choices": [
+            [
+              "first_industry",
+              1,
+              0.0,
+              -12.0
+            ],
+            [
+              "air_production",
+              1,
+              -4.0,
+              -48.0
+            ]
+          ],
+          "ic": 14.4,
+          "days": 156.48,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50075",
+              "Nakajima Chikuhei",
+              "Air to Sea Proponent"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50010",
+              "Yamamoto Isoroku",
+              "Naval Aviation Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.1,
+          "cabinet_time_modifier": -0.1,
+          "stressed_ic_days_additive": 342.7288,
+          "stressed_ic_days_multiplicative": 406.9245
+        }
+      ],
+      "ratio": 1.4174,
+      "stress_ratio": 1.4174
+    },
+    {
+      "year": 1942,
+      "unit": "d_15",
+      "parent": "paratrooper",
+      "models": [
+        {
+          "unit": "paratrooper",
+          "model": 1,
+          "template_ic": 10.0,
+          "template_days": 410.0,
+          "technology_effects": [
+            [
+              "5180",
+              0.0,
+              -41.0
+            ]
+          ],
+          "programme_choices": [],
+          "ic": 10.0,
+          "days": 369.0,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50156",
+              "Toyoda Teijiro",
+              "Vertical Envelopment Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.05,
+          "cabinet_time_modifier": -0.05,
+          "stressed_ic_days_additive": 685.971,
+          "stressed_ic_days_multiplicative": 742.4737
+        },
+        {
+          "unit": "d_15",
+          "model": 0,
+          "template_ic": 11.5,
+          "template_days": 451.0,
+          "technology_effects": [
+            [
+              "5180",
+              0.0,
+              -41.0
+            ]
+          ],
+          "programme_choices": [],
+          "ic": 11.5,
+          "days": 410.0,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50156",
+              "Toyoda Teijiro",
+              "Vertical Envelopment Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.05,
+          "cabinet_time_modifier": -0.05,
+          "stressed_ic_days_additive": 876.5185,
+          "stressed_ic_days_multiplicative": 948.7163
+        }
+      ],
+      "ratio": 1.2778,
+      "stress_ratio": 1.2778
+    },
+    {
+      "year": 1942,
+      "unit": "d_16",
+      "parent": "multi_role",
+      "models": [
+        {
+          "unit": "multi_role",
+          "model": 6,
+          "template_ic": 20.0,
+          "template_days": 210.0,
+          "technology_effects": [
+            [
+              "5140",
+              0.0,
+              -41.76
+            ]
+          ],
+          "programme_choices": [
+            [
+              "first_industry",
+              1,
+              0.0,
+              -12.0
+            ],
+            [
+              "air_production",
+              0,
+              -4.0,
+              -42.0
+            ]
+          ],
+          "ic": 16.0,
+          "days": 114.24,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50153",
+              "Tsukahara Nishizo",
+              "Air Superiority Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.05,
+          "cabinet_time_modifier": -0.05,
+          "stressed_ic_days_additive": 339.7955,
+          "stressed_ic_days_multiplicative": 367.784
+        },
+        {
+          "unit": "d_16",
+          "model": 0,
+          "template_ic": 21.0,
+          "template_days": 200.0,
+          "technology_effects": [
+            [
+              "5140",
+              0.0,
+              -41.76
+            ]
+          ],
+          "programme_choices": [
+            [
+              "first_industry",
+              1,
+              0.0,
+              -12.0
+            ],
+            [
+              "air_production",
+              0,
+              -4.0,
+              -42.0
+            ]
+          ],
+          "ic": 17.0,
+          "days": 104.24,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50153",
+              "Tsukahara Nishizo",
+              "Air Superiority Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.05,
+          "cabinet_time_modifier": -0.05,
+          "stressed_ic_days_additive": 329.4297,
+          "stressed_ic_days_multiplicative": 356.5644
+        }
+      ],
+      "ratio": 0.9695,
+      "stress_ratio": 0.9695
+    },
+    {
+      "year": 1942,
+      "unit": "d_17",
+      "parent": "naval_bomber",
+      "models": [
+        {
+          "unit": "naval_bomber",
+          "model": 3,
+          "template_ic": 16.0,
+          "template_days": 240.0,
+          "technology_effects": [
+            [
+              "5140",
+              0.0,
+              -47.519999999999996
+            ]
+          ],
+          "programme_choices": [
+            [
+              "first_industry",
+              1,
+              0.0,
+              -12.0
+            ],
+            [
+              "air_production",
+              1,
+              -4.0,
+              -48.0
+            ]
+          ],
+          "ic": 12.0,
+          "days": 132.48,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50075",
+              "Nakajima Chikuhei",
+              "Air to Sea Proponent"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50010",
+              "Yamamoto Isoroku",
+              "Naval Aviation Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.1,
+          "cabinet_time_modifier": -0.1,
+          "stressed_ic_days_additive": 241.8025,
+          "stressed_ic_days_multiplicative": 287.094
+        },
+        {
+          "unit": "d_17",
+          "model": 1,
+          "template_ic": 15.2,
+          "template_days": 228.0,
+          "technology_effects": [
+            [
+              "5140",
+              0.0,
+              -47.52
+            ]
+          ],
+          "programme_choices": [
+            [
+              "first_industry",
+              1,
+              0.0,
+              -12.0
+            ],
+            [
+              "air_production",
+              1,
+              -4.0,
+              -48.0
+            ]
+          ],
+          "ic": 11.2,
+          "days": 120.48,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50075",
+              "Nakajima Chikuhei",
+              "Air to Sea Proponent"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50010",
+              "Yamamoto Isoroku",
+              "Naval Aviation Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.1,
+          "cabinet_time_modifier": -0.1,
+          "stressed_ic_days_additive": 205.2401,
+          "stressed_ic_days_multiplicative": 243.6831
+        }
+      ],
+      "ratio": 0.8488,
+      "stress_ratio": 0.8488
+    },
+    {
+      "year": 1942,
+      "unit": "d_19",
+      "parent": "infantry",
+      "models": [
+        {
+          "unit": "infantry",
+          "model": 11,
+          "template_ic": 5.0,
+          "template_days": 290.0,
+          "technology_effects": [
+            [
+              "1920",
+              0.0,
+              -29.0
+            ],
+            [
+              "5180",
+              0.0,
+              -58.0
+            ]
+          ],
+          "programme_choices": [
+            [
+              "army_production",
+              0,
+              -1.0,
+              -43.5
+            ]
+          ],
+          "ic": 4.0,
+          "days": 159.5,
+          "cabinet": [
+            [
+              -0.25,
+              -0.25,
+              "50011",
+              "Yasuhito",
+              "Ruthless Powermonger"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50022",
+              "Tojo Hideki",
+              "Razor"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50008",
+              "Kanin Kotohito",
+              "Static Defence Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.35,
+          "cabinet_time_modifier": -0.35,
+          "stressed_ic_days_additive": 20.3203,
+          "stressed_ic_days_multiplicative": 60.0973
+        },
+        {
+          "unit": "d_19",
+          "model": 2,
+          "template_ic": 5.25,
+          "template_days": 276.0,
+          "technology_effects": [
+            [
+              "1920",
+              0.0,
+              -29.0
+            ],
+            [
+              "5180",
+              0.0,
+              -58.0
+            ]
+          ],
+          "programme_choices": [
+            [
+              "army_production",
+              0,
+              -1.0,
+              -43.5
+            ]
+          ],
+          "ic": 4.25,
+          "days": 145.5,
+          "cabinet": [
+            [
+              -0.25,
+              -0.25,
+              "50011",
+              "Yasuhito",
+              "Ruthless Powermonger"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50022",
+              "Tojo Hideki",
+              "Razor"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50008",
+              "Kanin Kotohito",
+              "Static Defence Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.35,
+          "cabinet_time_modifier": -0.35,
+          "stressed_ic_days_additive": 19.6952,
+          "stressed_ic_days_multiplicative": 58.2487
+        }
+      ],
+      "ratio": 0.9692,
+      "stress_ratio": 0.9692
+    },
+    {
+      "year": 1942,
+      "unit": "b_01",
+      "parent": "naval_torpedoes_s",
+      "models": [
+        {
+          "unit": "naval_torpedoes_s",
+          "model": 1,
+          "template_ic": 1.2,
+          "template_days": 140.0,
+          "technology_effects": [
+            [
+              "5150",
+              0.0,
+              -28.0
+            ]
+          ],
+          "programme_choices": [],
+          "ic": 1.2,
+          "days": 112.0,
+          "cabinet": [],
+          "cabinet_cost_modifier": 0,
+          "cabinet_time_modifier": 0,
+          "stressed_ic_days_additive": 29.9645,
+          "stressed_ic_days_multiplicative": 29.9645
+        },
+        {
+          "unit": "b_01",
+          "model": 1,
+          "template_ic": 0.8,
+          "template_days": 100.0,
+          "technology_effects": [
+            [
+              "5150",
+              0.0,
+              -28.0
+            ]
+          ],
+          "programme_choices": [],
+          "ic": 0.8,
+          "days": 72.0,
+          "cabinet": [],
+          "cabinet_cost_modifier": 0,
+          "cabinet_time_modifier": 0,
+          "stressed_ic_days_additive": 12.8419,
+          "stressed_ic_days_multiplicative": 12.8419
+        }
+      ],
+      "ratio": 0.4286,
+      "stress_ratio": 0.4286
+    },
+    {
+      "year": 1942,
+      "unit": "b_02",
+      "parent": "police",
+      "models": [
+        {
+          "unit": "police",
+          "model": 1,
+          "template_ic": 1.5,
+          "template_days": 90.0,
+          "technology_effects": [
+            [
+              "5180",
+              0.0,
+              -14.0
+            ]
+          ],
+          "programme_choices": [],
+          "ic": 1.5,
+          "days": 76.0,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50103",
+              "Tojo Hideki",
+              "Secret Police Chief"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.05,
+          "cabinet_time_modifier": -0.05,
+          "stressed_ic_days_additive": 21.1926,
+          "stressed_ic_days_multiplicative": 22.9382
+        },
+        {
+          "unit": "b_02",
+          "model": 2,
+          "template_ic": 3.5,
+          "template_days": 130.0,
+          "technology_effects": [
+            [
+              "5180",
+              0.0,
+              -14.0
+            ]
+          ],
+          "programme_choices": [],
+          "ic": 3.5,
+          "days": 116.0,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50103",
+              "Tojo Hideki",
+              "Secret Police Chief"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.05,
+          "cabinet_time_modifier": -0.05,
+          "stressed_ic_days_additive": 75.4754,
+          "stressed_ic_days_multiplicative": 81.6922
+        }
+      ],
+      "ratio": 3.5614,
+      "stress_ratio": 3.5614
+    },
+    {
+      "year": 1942,
+      "unit": "b_03",
+      "parent": "amph_armor",
+      "models": [
+        {
+          "unit": "amph_armor",
+          "model": 0,
+          "template_ic": 7.0,
+          "template_days": 170.0,
+          "technology_effects": [
+            [
+              "5160",
+              0.0,
+              -34.0
+            ],
+            [
+              "7630",
+              1.0,
+              0.0
+            ]
+          ],
+          "programme_choices": [],
+          "ic": 8.0,
+          "days": 136.0,
+          "cabinet": [
+            [
+              -0.06,
+              -0.06,
+              "50135",
+              "Umezu Yoshijiro",
+              "School of Fire Support"
+            ],
+            [
+              -0.1,
+              -0.1,
+              "50150",
+              "Oikawa Koshiro",
+              "Base Control Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.16,
+          "cabinet_time_modifier": -0.16,
+          "stressed_ic_days_additive": 126.023,
+          "stressed_ic_days_multiplicative": 171.1571
+        },
+        {
+          "unit": "b_03",
+          "model": 0,
+          "template_ic": 4.5,
+          "template_days": 140.0,
+          "technology_effects": [
+            [
+              "5160",
+              0.0,
+              -34.0
+            ],
+            [
+              "7630",
+              1.0,
+              0.0
+            ]
+          ],
+          "programme_choices": [],
+          "ic": 5.5,
+          "days": 106.0,
+          "cabinet": [
+            [
+              -0.06,
+              -0.06,
+              "50135",
+              "Umezu Yoshijiro",
+              "School of Fire Support"
+            ],
+            [
+              -0.1,
+              -0.1,
+              "50150",
+              "Oikawa Koshiro",
+              "Base Control Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.16,
+          "cabinet_time_modifier": -0.16,
+          "stressed_ic_days_additive": 67.5289,
+          "stressed_ic_days_multiplicative": 91.7138
+        }
+      ],
+      "ratio": 0.5358,
+      "stress_ratio": 0.5358
+    },
+    {
+      "year": 1944,
+      "unit": "d_13",
+      "parent": "destroyer",
+      "models": [
+        {
+          "unit": "destroyer",
+          "model": 7,
+          "template_ic": 1.3,
+          "template_days": 570.0,
+          "technology_effects": [
+            [
+              "5150",
+              0.0,
+              -113.4
+            ]
+          ],
+          "programme_choices": [
+            [
+              "naval_production",
+              1,
+              -0.08,
+              -54.0
+            ]
+          ],
+          "ic": 1.22,
+          "days": 402.6,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50021",
+              "Hiranuma Kiichiro",
+              "Old Admiral"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50150",
+              "Oikawa Koshiro",
+              "Base Control Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.1,
+          "cabinet_time_modifier": -0.1,
+          "stressed_ic_days_additive": 74.7073,
+          "stressed_ic_days_multiplicative": 88.7005
+        },
+        {
+          "unit": "d_13",
+          "model": 0,
+          "template_ic": 1.495,
+          "template_days": 598.0,
+          "technology_effects": [
+            [
+              "5150",
+              0.0,
+              -113.4
+            ]
+          ],
+          "programme_choices": [
+            [
+              "naval_production",
+              1,
+              -0.08,
+              -54.0
+            ]
+          ],
+          "ic": 1.415,
+          "days": 430.6,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50021",
+              "Hiranuma Kiichiro",
+              "Old Admiral"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50150",
+              "Oikawa Koshiro",
+              "Base Control Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.1,
+          "cabinet_time_modifier": -0.1,
+          "stressed_ic_days_additive": 92.6744,
+          "stressed_ic_days_multiplicative": 110.033
+        }
+      ],
+      "ratio": 1.2405,
+      "stress_ratio": 1.2405
+    },
+    {
+      "year": 1944,
+      "unit": "d_14",
+      "parent": "naval_bomber",
+      "models": [
+        {
+          "unit": "naval_bomber",
+          "model": 4,
+          "template_ic": 18.0,
+          "template_days": 240.0,
+          "technology_effects": [
+            [
+              "5140",
+              0.0,
+              -47.519999999999996
+            ]
+          ],
+          "programme_choices": [
+            [
+              "first_industry",
+              1,
+              0.0,
+              -12.0
+            ],
+            [
+              "air_production",
+              1,
+              -4.0,
+              -48.0
+            ]
+          ],
+          "ic": 14.0,
+          "days": 132.48,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50075",
+              "Nakajima Chikuhei",
+              "Air to Sea Proponent"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50010",
+              "Yamamoto Isoroku",
+              "Naval Aviation Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.1,
+          "cabinet_time_modifier": -0.1,
+          "stressed_ic_days_additive": 282.1029,
+          "stressed_ic_days_multiplicative": 334.943
+        },
+        {
+          "unit": "d_14",
+          "model": 2,
+          "template_ic": 20.7,
+          "template_days": 264.0,
+          "technology_effects": [
+            [
+              "5140",
+              0.0,
+              -47.52
+            ]
+          ],
+          "programme_choices": [
+            [
+              "first_industry",
+              1,
+              0.0,
+              -12.0
+            ],
+            [
+              "air_production",
+              1,
+              -4.0,
+              -48.0
+            ]
+          ],
+          "ic": 16.7,
+          "days": 156.48,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50075",
+              "Nakajima Chikuhei",
+              "Air to Sea Proponent"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50010",
+              "Yamamoto Isoroku",
+              "Naval Aviation Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.1,
+          "cabinet_time_modifier": -0.1,
+          "stressed_ic_days_additive": 397.4702,
+          "stressed_ic_days_multiplicative": 471.9194
+        }
+      ],
+      "ratio": 1.409,
+      "stress_ratio": 1.409
+    },
+    {
+      "year": 1944,
+      "unit": "d_15",
+      "parent": "paratrooper",
+      "models": [
+        {
+          "unit": "paratrooper",
+          "model": 2,
+          "template_ic": 10.0,
+          "template_days": 410.0,
+          "technology_effects": [
+            [
+              "5180",
+              0.0,
+              -41.0
+            ]
+          ],
+          "programme_choices": [],
+          "ic": 10.0,
+          "days": 369.0,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50156",
+              "Toyoda Teijiro",
+              "Vertical Envelopment Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.05,
+          "cabinet_time_modifier": -0.05,
+          "stressed_ic_days_additive": 685.971,
+          "stressed_ic_days_multiplicative": 742.4737
+        },
+        {
+          "unit": "d_15",
+          "model": 1,
+          "template_ic": 11.5,
+          "template_days": 451.0,
+          "technology_effects": [
+            [
+              "5180",
+              0.0,
+              -41.0
+            ]
+          ],
+          "programme_choices": [],
+          "ic": 11.5,
+          "days": 410.0,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50156",
+              "Toyoda Teijiro",
+              "Vertical Envelopment Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.05,
+          "cabinet_time_modifier": -0.05,
+          "stressed_ic_days_additive": 876.5185,
+          "stressed_ic_days_multiplicative": 948.7163
+        }
+      ],
+      "ratio": 1.2778,
+      "stress_ratio": 1.2778
+    },
+    {
+      "year": 1944,
+      "unit": "d_16",
+      "parent": "multi_role",
+      "models": [
+        {
+          "unit": "multi_role",
+          "model": 7,
+          "template_ic": 21.0,
+          "template_days": 210.0,
+          "technology_effects": [
+            [
+              "5140",
+              0.0,
+              -41.76
+            ]
+          ],
+          "programme_choices": [
+            [
+              "first_industry",
+              1,
+              0.0,
+              -12.0
+            ],
+            [
+              "air_production",
+              0,
+              -4.0,
+              -42.0
+            ]
+          ],
+          "ic": 17.0,
+          "days": 114.24,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50153",
+              "Tsukahara Nishizo",
+              "Air Superiority Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.05,
+          "cabinet_time_modifier": -0.05,
+          "stressed_ic_days_additive": 361.0327,
+          "stressed_ic_days_multiplicative": 390.7705
+        },
+        {
+          "unit": "d_16",
+          "model": 1,
+          "template_ic": 22.05,
+          "template_days": 200.0,
+          "technology_effects": [
+            [
+              "5140",
+              0.0,
+              -41.76
+            ]
+          ],
+          "programme_choices": [
+            [
+              "first_industry",
+              1,
+              0.0,
+              -12.0
+            ],
+            [
+              "air_production",
+              0,
+              -4.0,
+              -42.0
+            ]
+          ],
+          "ic": 18.05,
+          "days": 104.24,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50153",
+              "Tsukahara Nishizo",
+              "Air Superiority Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.05,
+          "cabinet_time_modifier": -0.05,
+          "stressed_ic_days_additive": 349.7768,
+          "stressed_ic_days_multiplicative": 378.5875
+        }
+      ],
+      "ratio": 0.9688,
+      "stress_ratio": 0.9688
+    },
+    {
+      "year": 1944,
+      "unit": "d_17",
+      "parent": "naval_bomber",
+      "models": [
+        {
+          "unit": "naval_bomber",
+          "model": 4,
+          "template_ic": 18.0,
+          "template_days": 240.0,
+          "technology_effects": [
+            [
+              "5140",
+              0.0,
+              -47.519999999999996
+            ]
+          ],
+          "programme_choices": [
+            [
+              "first_industry",
+              1,
+              0.0,
+              -12.0
+            ],
+            [
+              "air_production",
+              1,
+              -4.0,
+              -48.0
+            ]
+          ],
+          "ic": 14.0,
+          "days": 132.48,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50075",
+              "Nakajima Chikuhei",
+              "Air to Sea Proponent"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50010",
+              "Yamamoto Isoroku",
+              "Naval Aviation Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.1,
+          "cabinet_time_modifier": -0.1,
+          "stressed_ic_days_additive": 282.1029,
+          "stressed_ic_days_multiplicative": 334.943
+        },
+        {
+          "unit": "d_17",
+          "model": 2,
+          "template_ic": 17.1,
+          "template_days": 228.0,
+          "technology_effects": [
+            [
+              "5140",
+              0.0,
+              -47.52
+            ]
+          ],
+          "programme_choices": [
+            [
+              "first_industry",
+              1,
+              0.0,
+              -12.0
+            ],
+            [
+              "air_production",
+              1,
+              -4.0,
+              -48.0
+            ]
+          ],
+          "ic": 13.1,
+          "days": 120.48,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50075",
+              "Nakajima Chikuhei",
+              "Air to Sea Proponent"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50010",
+              "Yamamoto Isoroku",
+              "Naval Aviation Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.1,
+          "cabinet_time_modifier": -0.1,
+          "stressed_ic_days_additive": 240.0576,
+          "stressed_ic_days_multiplicative": 285.0222
+        }
+      ],
+      "ratio": 0.851,
+      "stress_ratio": 0.851
+    },
+    {
+      "year": 1944,
+      "unit": "d_18",
+      "parent": "destroyer",
+      "models": [
+        {
+          "unit": "destroyer",
+          "model": 7,
+          "template_ic": 1.3,
+          "template_days": 570.0,
+          "technology_effects": [
+            [
+              "5150",
+              0.0,
+              -113.4
+            ]
+          ],
+          "programme_choices": [
+            [
+              "naval_production",
+              1,
+              -0.08,
+              -54.0
+            ]
+          ],
+          "ic": 1.22,
+          "days": 402.6,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50021",
+              "Hiranuma Kiichiro",
+              "Old Admiral"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50150",
+              "Oikawa Koshiro",
+              "Base Control Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.1,
+          "cabinet_time_modifier": -0.1,
+          "stressed_ic_days_additive": 74.7073,
+          "stressed_ic_days_multiplicative": 88.7005
+        },
+        {
+          "unit": "d_18",
+          "model": 0,
+          "template_ic": 1.04,
+          "template_days": 456.0,
+          "technology_effects": [
+            [
+              "5150",
+              0.0,
+              -113.4
+            ]
+          ],
+          "programme_choices": [
+            [
+              "naval_production",
+              1,
+              -0.08,
+              -54.0
+            ]
+          ],
+          "ic": 0.96,
+          "days": 288.6,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50021",
+              "Hiranuma Kiichiro",
+              "Old Admiral"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50150",
+              "Oikawa Koshiro",
+              "Base Control Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.1,
+          "cabinet_time_modifier": -0.1,
+          "stressed_ic_days_additive": 42.1402,
+          "stressed_ic_days_multiplicative": 50.0334
+        }
+      ],
+      "ratio": 0.5641,
+      "stress_ratio": 0.5641
+    },
+    {
+      "year": 1944,
+      "unit": "d_19",
+      "parent": "infantry",
+      "models": [
+        {
+          "unit": "infantry",
+          "model": 11,
+          "template_ic": 5.0,
+          "template_days": 290.0,
+          "technology_effects": [
+            [
+              "1920",
+              0.0,
+              -29.0
+            ],
+            [
+              "5180",
+              0.0,
+              -58.0
+            ]
+          ],
+          "programme_choices": [
+            [
+              "army_production",
+              0,
+              -1.0,
+              -43.5
+            ]
+          ],
+          "ic": 4.0,
+          "days": 159.5,
+          "cabinet": [
+            [
+              -0.25,
+              -0.25,
+              "50011",
+              "Yasuhito",
+              "Ruthless Powermonger"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50022",
+              "Tojo Hideki",
+              "Razor"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50008",
+              "Kanin Kotohito",
+              "Static Defence Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.35,
+          "cabinet_time_modifier": -0.35,
+          "stressed_ic_days_additive": 20.3203,
+          "stressed_ic_days_multiplicative": 60.0973
+        },
+        {
+          "unit": "d_19",
+          "model": 2,
+          "template_ic": 5.25,
+          "template_days": 276.0,
+          "technology_effects": [
+            [
+              "1920",
+              0.0,
+              -29.0
+            ],
+            [
+              "5180",
+              0.0,
+              -58.0
+            ]
+          ],
+          "programme_choices": [
+            [
+              "army_production",
+              0,
+              -1.0,
+              -43.5
+            ]
+          ],
+          "ic": 4.25,
+          "days": 145.5,
+          "cabinet": [
+            [
+              -0.25,
+              -0.25,
+              "50011",
+              "Yasuhito",
+              "Ruthless Powermonger"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50022",
+              "Tojo Hideki",
+              "Razor"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50008",
+              "Kanin Kotohito",
+              "Static Defence Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.35,
+          "cabinet_time_modifier": -0.35,
+          "stressed_ic_days_additive": 19.6952,
+          "stressed_ic_days_multiplicative": 58.2487
+        }
+      ],
+      "ratio": 0.9692,
+      "stress_ratio": 0.9692
+    },
+    {
+      "year": 1944,
+      "unit": "b_01",
+      "parent": "naval_torpedoes_s",
+      "models": [
+        {
+          "unit": "naval_torpedoes_s",
+          "model": 1,
+          "template_ic": 1.2,
+          "template_days": 140.0,
+          "technology_effects": [
+            [
+              "5150",
+              0.0,
+              -28.0
+            ]
+          ],
+          "programme_choices": [],
+          "ic": 1.2,
+          "days": 112.0,
+          "cabinet": [],
+          "cabinet_cost_modifier": 0,
+          "cabinet_time_modifier": 0,
+          "stressed_ic_days_additive": 29.9645,
+          "stressed_ic_days_multiplicative": 29.9645
+        },
+        {
+          "unit": "b_01",
+          "model": 1,
+          "template_ic": 0.8,
+          "template_days": 100.0,
+          "technology_effects": [
+            [
+              "5150",
+              0.0,
+              -28.0
+            ]
+          ],
+          "programme_choices": [],
+          "ic": 0.8,
+          "days": 72.0,
+          "cabinet": [],
+          "cabinet_cost_modifier": 0,
+          "cabinet_time_modifier": 0,
+          "stressed_ic_days_additive": 12.8419,
+          "stressed_ic_days_multiplicative": 12.8419
+        }
+      ],
+      "ratio": 0.4286,
+      "stress_ratio": 0.4286
+    },
+    {
+      "year": 1944,
+      "unit": "b_02",
+      "parent": "police",
+      "models": [
+        {
+          "unit": "police",
+          "model": 1,
+          "template_ic": 1.5,
+          "template_days": 90.0,
+          "technology_effects": [
+            [
+              "5180",
+              0.0,
+              -14.0
+            ]
+          ],
+          "programme_choices": [],
+          "ic": 1.5,
+          "days": 76.0,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50103",
+              "Tojo Hideki",
+              "Secret Police Chief"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.05,
+          "cabinet_time_modifier": -0.05,
+          "stressed_ic_days_additive": 21.1926,
+          "stressed_ic_days_multiplicative": 22.9382
+        },
+        {
+          "unit": "b_02",
+          "model": 2,
+          "template_ic": 3.5,
+          "template_days": 130.0,
+          "technology_effects": [
+            [
+              "5180",
+              0.0,
+              -14.0
+            ]
+          ],
+          "programme_choices": [],
+          "ic": 3.5,
+          "days": 116.0,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50103",
+              "Tojo Hideki",
+              "Secret Police Chief"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.05,
+          "cabinet_time_modifier": -0.05,
+          "stressed_ic_days_additive": 75.4754,
+          "stressed_ic_days_multiplicative": 81.6922
+        }
+      ],
+      "ratio": 3.5614,
+      "stress_ratio": 3.5614
+    },
+    {
+      "year": 1944,
+      "unit": "b_03",
+      "parent": "amph_armor",
+      "models": [
+        {
+          "unit": "amph_armor",
+          "model": 1,
+          "template_ic": 8.0,
+          "template_days": 170.0,
+          "technology_effects": [
+            [
+              "5160",
+              0.0,
+              -34.0
+            ],
+            [
+              "7630",
+              1.0,
+              0.0
+            ]
+          ],
+          "programme_choices": [],
+          "ic": 9.0,
+          "days": 136.0,
+          "cabinet": [
+            [
+              -0.06,
+              -0.06,
+              "50135",
+              "Umezu Yoshijiro",
+              "School of Fire Support"
+            ],
+            [
+              -0.1,
+              -0.1,
+              "50150",
+              "Oikawa Koshiro",
+              "Base Control Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.16,
+          "cabinet_time_modifier": -0.16,
+          "stressed_ic_days_additive": 141.7759,
+          "stressed_ic_days_multiplicative": 192.5517
+        },
+        {
+          "unit": "b_03",
+          "model": 1,
+          "template_ic": 5.0,
+          "template_days": 140.0,
+          "technology_effects": [
+            [
+              "5160",
+              0.0,
+              -34.0
+            ],
+            [
+              "7630",
+              1.0,
+              0.0
+            ]
+          ],
+          "programme_choices": [],
+          "ic": 6.0,
+          "days": 106.0,
+          "cabinet": [
+            [
+              -0.06,
+              -0.06,
+              "50135",
+              "Umezu Yoshijiro",
+              "School of Fire Support"
+            ],
+            [
+              -0.1,
+              -0.1,
+              "50150",
+              "Oikawa Koshiro",
+              "Base Control Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.16,
+          "cabinet_time_modifier": -0.16,
+          "stressed_ic_days_additive": 73.6679,
+          "stressed_ic_days_multiplicative": 100.0514
+        }
+      ],
+      "ratio": 0.5196,
+      "stress_ratio": 0.5196
+    },
+    {
+      "year": 1945,
+      "unit": "d_13",
+      "parent": "destroyer",
+      "models": [
+        {
+          "unit": "destroyer",
+          "model": 8,
+          "template_ic": 1.4,
+          "template_days": 570.0,
+          "technology_effects": [
+            [
+              "5150",
+              0.0,
+              -113.4
+            ]
+          ],
+          "programme_choices": [
+            [
+              "naval_production",
+              1,
+              -0.08,
+              -54.0
+            ]
+          ],
+          "ic": 1.32,
+          "days": 402.6,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50021",
+              "Hiranuma Kiichiro",
+              "Old Admiral"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50150",
+              "Oikawa Koshiro",
+              "Base Control Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.1,
+          "cabinet_time_modifier": -0.1,
+          "stressed_ic_days_additive": 80.8308,
+          "stressed_ic_days_multiplicative": 95.971
+        },
+        {
+          "unit": "d_13",
+          "model": 1,
+          "template_ic": 1.61,
+          "template_days": 598.0,
+          "technology_effects": [
+            [
+              "5150",
+              0.0,
+              -113.4
+            ]
+          ],
+          "programme_choices": [
+            [
+              "naval_production",
+              1,
+              -0.08,
+              -54.0
+            ]
+          ],
+          "ic": 1.53,
+          "days": 430.6,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50021",
+              "Hiranuma Kiichiro",
+              "Old Admiral"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50150",
+              "Oikawa Koshiro",
+              "Base Control Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.1,
+          "cabinet_time_modifier": -0.1,
+          "stressed_ic_days_additive": 100.2062,
+          "stressed_ic_days_multiplicative": 118.9756
+        }
+      ],
+      "ratio": 1.2397,
+      "stress_ratio": 1.2397
+    },
+    {
+      "year": 1945,
+      "unit": "d_14",
+      "parent": "naval_bomber",
+      "models": [
+        {
+          "unit": "naval_bomber",
+          "model": 5,
+          "template_ic": 21.0,
+          "template_days": 240.0,
+          "technology_effects": [
+            [
+              "5140",
+              0.0,
+              -47.519999999999996
+            ]
+          ],
+          "programme_choices": [
+            [
+              "first_industry",
+              1,
+              0.0,
+              -12.0
+            ],
+            [
+              "air_production",
+              1,
+              -4.0,
+              -48.0
+            ]
+          ],
+          "ic": 17.0,
+          "days": 132.48,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50075",
+              "Nakajima Chikuhei",
+              "Air to Sea Proponent"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50010",
+              "Yamamoto Isoroku",
+              "Naval Aviation Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.1,
+          "cabinet_time_modifier": -0.1,
+          "stressed_ic_days_additive": 342.5535,
+          "stressed_ic_days_multiplicative": 406.7164
+        },
+        {
+          "unit": "d_14",
+          "model": 3,
+          "template_ic": 24.15,
+          "template_days": 264.0,
+          "technology_effects": [
+            [
+              "5140",
+              0.0,
+              -47.52
+            ]
+          ],
+          "programme_choices": [
+            [
+              "first_industry",
+              1,
+              0.0,
+              -12.0
+            ],
+            [
+              "air_production",
+              1,
+              -4.0,
+              -48.0
+            ]
+          ],
+          "ic": 20.15,
+          "days": 156.48,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50075",
+              "Nakajima Chikuhei",
+              "Air to Sea Proponent"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50010",
+              "Yamamoto Isoroku",
+              "Naval Aviation Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.1,
+          "cabinet_time_modifier": -0.1,
+          "stressed_ic_days_additive": 479.5823,
+          "stressed_ic_days_multiplicative": 569.4117
+        }
+      ],
+      "ratio": 1.4,
+      "stress_ratio": 1.4
+    },
+    {
+      "year": 1945,
+      "unit": "d_15",
+      "parent": "paratrooper",
+      "models": [
+        {
+          "unit": "paratrooper",
+          "model": 2,
+          "template_ic": 10.0,
+          "template_days": 410.0,
+          "technology_effects": [
+            [
+              "5180",
+              0.0,
+              -41.0
+            ]
+          ],
+          "programme_choices": [],
+          "ic": 10.0,
+          "days": 369.0,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50156",
+              "Toyoda Teijiro",
+              "Vertical Envelopment Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.05,
+          "cabinet_time_modifier": -0.05,
+          "stressed_ic_days_additive": 685.971,
+          "stressed_ic_days_multiplicative": 742.4737
+        },
+        {
+          "unit": "d_15",
+          "model": 1,
+          "template_ic": 11.5,
+          "template_days": 451.0,
+          "technology_effects": [
+            [
+              "5180",
+              0.0,
+              -41.0
+            ]
+          ],
+          "programme_choices": [],
+          "ic": 11.5,
+          "days": 410.0,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50156",
+              "Toyoda Teijiro",
+              "Vertical Envelopment Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.05,
+          "cabinet_time_modifier": -0.05,
+          "stressed_ic_days_additive": 876.5185,
+          "stressed_ic_days_multiplicative": 948.7163
+        }
+      ],
+      "ratio": 1.2778,
+      "stress_ratio": 1.2778
+    },
+    {
+      "year": 1945,
+      "unit": "d_16",
+      "parent": "multi_role",
+      "models": [
+        {
+          "unit": "multi_role",
+          "model": 8,
+          "template_ic": 22.0,
+          "template_days": 210.0,
+          "technology_effects": [
+            [
+              "5140",
+              0.0,
+              -41.76
+            ]
+          ],
+          "programme_choices": [
+            [
+              "first_industry",
+              1,
+              0.0,
+              -12.0
+            ],
+            [
+              "air_production",
+              0,
+              -4.0,
+              -42.0
+            ]
+          ],
+          "ic": 18.0,
+          "days": 114.24,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50153",
+              "Tsukahara Nishizo",
+              "Air Superiority Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.05,
+          "cabinet_time_modifier": -0.05,
+          "stressed_ic_days_additive": 382.2699,
+          "stressed_ic_days_multiplicative": 413.757
+        },
+        {
+          "unit": "d_16",
+          "model": 2,
+          "template_ic": 23.1,
+          "template_days": 200.0,
+          "technology_effects": [
+            [
+              "5140",
+              0.0,
+              -41.76
+            ]
+          ],
+          "programme_choices": [
+            [
+              "first_industry",
+              1,
+              0.0,
+              -12.0
+            ],
+            [
+              "air_production",
+              0,
+              -4.0,
+              -42.0
+            ]
+          ],
+          "ic": 19.1,
+          "days": 104.24,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50153",
+              "Tsukahara Nishizo",
+              "Air Superiority Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.05,
+          "cabinet_time_modifier": -0.05,
+          "stressed_ic_days_additive": 370.1239,
+          "stressed_ic_days_multiplicative": 400.6106
+        }
+      ],
+      "ratio": 0.9682,
+      "stress_ratio": 0.9682
+    },
+    {
+      "year": 1945,
+      "unit": "d_17",
+      "parent": "naval_bomber",
+      "models": [
+        {
+          "unit": "naval_bomber",
+          "model": 5,
+          "template_ic": 21.0,
+          "template_days": 240.0,
+          "technology_effects": [
+            [
+              "5140",
+              0.0,
+              -47.519999999999996
+            ]
+          ],
+          "programme_choices": [
+            [
+              "first_industry",
+              1,
+              0.0,
+              -12.0
+            ],
+            [
+              "air_production",
+              1,
+              -4.0,
+              -48.0
+            ]
+          ],
+          "ic": 17.0,
+          "days": 132.48,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50075",
+              "Nakajima Chikuhei",
+              "Air to Sea Proponent"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50010",
+              "Yamamoto Isoroku",
+              "Naval Aviation Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.1,
+          "cabinet_time_modifier": -0.1,
+          "stressed_ic_days_additive": 342.5535,
+          "stressed_ic_days_multiplicative": 406.7164
+        },
+        {
+          "unit": "d_17",
+          "model": 3,
+          "template_ic": 19.95,
+          "template_days": 228.0,
+          "technology_effects": [
+            [
+              "5140",
+              0.0,
+              -47.52
+            ]
+          ],
+          "programme_choices": [
+            [
+              "first_industry",
+              1,
+              0.0,
+              -12.0
+            ],
+            [
+              "air_production",
+              1,
+              -4.0,
+              -48.0
+            ]
+          ],
+          "ic": 15.95,
+          "days": 120.48,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50075",
+              "Nakajima Chikuhei",
+              "Air to Sea Proponent"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50010",
+              "Yamamoto Isoroku",
+              "Naval Aviation Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.1,
+          "cabinet_time_modifier": -0.1,
+          "stressed_ic_days_additive": 292.2839,
+          "stressed_ic_days_multiplicative": 347.0309
+        }
+      ],
+      "ratio": 0.8533,
+      "stress_ratio": 0.8533
+    },
+    {
+      "year": 1945,
+      "unit": "d_18",
+      "parent": "destroyer",
+      "models": [
+        {
+          "unit": "destroyer",
+          "model": 8,
+          "template_ic": 1.4,
+          "template_days": 570.0,
+          "technology_effects": [
+            [
+              "5150",
+              0.0,
+              -113.4
+            ]
+          ],
+          "programme_choices": [
+            [
+              "naval_production",
+              1,
+              -0.08,
+              -54.0
+            ]
+          ],
+          "ic": 1.32,
+          "days": 402.6,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50021",
+              "Hiranuma Kiichiro",
+              "Old Admiral"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50150",
+              "Oikawa Koshiro",
+              "Base Control Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.1,
+          "cabinet_time_modifier": -0.1,
+          "stressed_ic_days_additive": 80.8308,
+          "stressed_ic_days_multiplicative": 95.971
+        },
+        {
+          "unit": "d_18",
+          "model": 1,
+          "template_ic": 1.12,
+          "template_days": 456.0,
+          "technology_effects": [
+            [
+              "5150",
+              0.0,
+              -113.4
+            ]
+          ],
+          "programme_choices": [
+            [
+              "naval_production",
+              1,
+              -0.08,
+              -54.0
+            ]
+          ],
+          "ic": 1.04,
+          "days": 288.6,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50021",
+              "Hiranuma Kiichiro",
+              "Old Admiral"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50150",
+              "Oikawa Koshiro",
+              "Base Control Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.1,
+          "cabinet_time_modifier": -0.1,
+          "stressed_ic_days_additive": 45.6519,
+          "stressed_ic_days_multiplicative": 54.2029
+        }
+      ],
+      "ratio": 0.5648,
+      "stress_ratio": 0.5648
+    },
+    {
+      "year": 1945,
+      "unit": "d_19",
+      "parent": "infantry",
+      "models": [
+        {
+          "unit": "infantry",
+          "model": 12,
+          "template_ic": 5.0,
+          "template_days": 290.0,
+          "technology_effects": [
+            [
+              "1920",
+              0.0,
+              -29.0
+            ],
+            [
+              "5180",
+              0.0,
+              -58.0
+            ]
+          ],
+          "programme_choices": [
+            [
+              "army_production",
+              0,
+              -1.0,
+              -43.5
+            ]
+          ],
+          "ic": 4.0,
+          "days": 159.5,
+          "cabinet": [
+            [
+              -0.25,
+              -0.25,
+              "50011",
+              "Yasuhito",
+              "Ruthless Powermonger"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50022",
+              "Tojo Hideki",
+              "Razor"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50008",
+              "Kanin Kotohito",
+              "Static Defence Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.35,
+          "cabinet_time_modifier": -0.35,
+          "stressed_ic_days_additive": 20.3203,
+          "stressed_ic_days_multiplicative": 60.0973
+        },
+        {
+          "unit": "d_19",
+          "model": 3,
+          "template_ic": 5.25,
+          "template_days": 276.0,
+          "technology_effects": [
+            [
+              "1920",
+              0.0,
+              -29.0
+            ],
+            [
+              "5180",
+              0.0,
+              -58.0
+            ]
+          ],
+          "programme_choices": [
+            [
+              "army_production",
+              0,
+              -1.0,
+              -43.5
+            ]
+          ],
+          "ic": 4.25,
+          "days": 145.5,
+          "cabinet": [
+            [
+              -0.25,
+              -0.25,
+              "50011",
+              "Yasuhito",
+              "Ruthless Powermonger"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50022",
+              "Tojo Hideki",
+              "Razor"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50008",
+              "Kanin Kotohito",
+              "Static Defence Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.35,
+          "cabinet_time_modifier": -0.35,
+          "stressed_ic_days_additive": 19.6952,
+          "stressed_ic_days_multiplicative": 58.2487
+        }
+      ],
+      "ratio": 0.9692,
+      "stress_ratio": 0.9692
+    },
+    {
+      "year": 1945,
+      "unit": "b_01",
+      "parent": "naval_torpedoes_s",
+      "models": [
+        {
+          "unit": "naval_torpedoes_s",
+          "model": 1,
+          "template_ic": 1.2,
+          "template_days": 140.0,
+          "technology_effects": [
+            [
+              "5150",
+              0.0,
+              -28.0
+            ]
+          ],
+          "programme_choices": [],
+          "ic": 1.2,
+          "days": 112.0,
+          "cabinet": [],
+          "cabinet_cost_modifier": 0,
+          "cabinet_time_modifier": 0,
+          "stressed_ic_days_additive": 29.9645,
+          "stressed_ic_days_multiplicative": 29.9645
+        },
+        {
+          "unit": "b_01",
+          "model": 2,
+          "template_ic": 0.95,
+          "template_days": 100.0,
+          "technology_effects": [
+            [
+              "5150",
+              0.0,
+              -28.0
+            ]
+          ],
+          "programme_choices": [],
+          "ic": 0.95,
+          "days": 72.0,
+          "cabinet": [],
+          "cabinet_cost_modifier": 0,
+          "cabinet_time_modifier": 0,
+          "stressed_ic_days_additive": 15.2498,
+          "stressed_ic_days_multiplicative": 15.2498
+        }
+      ],
+      "ratio": 0.5089,
+      "stress_ratio": 0.5089
+    },
+    {
+      "year": 1945,
+      "unit": "b_02",
+      "parent": "police",
+      "models": [
+        {
+          "unit": "police",
+          "model": 2,
+          "template_ic": 1.5,
+          "template_days": 110.0,
+          "technology_effects": [
+            [
+              "5180",
+              0.0,
+              -14.0
+            ]
+          ],
+          "programme_choices": [],
+          "ic": 1.5,
+          "days": 96.0,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50103",
+              "Tojo Hideki",
+              "Secret Police Chief"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.05,
+          "cabinet_time_modifier": -0.05,
+          "stressed_ic_days_additive": 26.7696,
+          "stressed_ic_days_multiplicative": 28.9746
+        },
+        {
+          "unit": "b_02",
+          "model": 3,
+          "template_ic": 3.75,
+          "template_days": 135.0,
+          "technology_effects": [
+            [
+              "5180",
+              0.0,
+              -14.0
+            ]
+          ],
+          "programme_choices": [],
+          "ic": 3.75,
+          "days": 121.0,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50103",
+              "Tojo Hideki",
+              "Secret Police Chief"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.05,
+          "cabinet_time_modifier": -0.05,
+          "stressed_ic_days_additive": 84.3521,
+          "stressed_ic_days_multiplicative": 91.3001
+        }
+      ],
+      "ratio": 3.151,
+      "stress_ratio": 3.151
+    },
+    {
+      "year": 1945,
+      "unit": "b_03",
+      "parent": "amph_armor",
+      "models": [
+        {
+          "unit": "amph_armor",
+          "model": 1,
+          "template_ic": 8.0,
+          "template_days": 170.0,
+          "technology_effects": [
+            [
+              "5160",
+              0.0,
+              -34.0
+            ],
+            [
+              "7630",
+              1.0,
+              0.0
+            ]
+          ],
+          "programme_choices": [],
+          "ic": 9.0,
+          "days": 136.0,
+          "cabinet": [
+            [
+              -0.06,
+              -0.06,
+              "50135",
+              "Umezu Yoshijiro",
+              "School of Fire Support"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50369",
+              "Higashikuni Naruhiko",
+              "armoured spearhead doctrine"
+            ],
+            [
+              -0.1,
+              -0.1,
+              "50150",
+              "Oikawa Koshiro",
+              "Base Control Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.21000000000000002,
+          "cabinet_time_modifier": -0.21000000000000002,
+          "stressed_ic_days_additive": 109.1563,
+          "stressed_ic_days_multiplicative": 170.3111
+        },
+        {
+          "unit": "b_03",
+          "model": 1,
+          "template_ic": 5.0,
+          "template_days": 140.0,
+          "technology_effects": [
+            [
+              "5160",
+              0.0,
+              -34.0
+            ],
+            [
+              "7630",
+              1.0,
+              0.0
+            ]
+          ],
+          "programme_choices": [],
+          "ic": 6.0,
+          "days": 106.0,
+          "cabinet": [
+            [
+              -0.06,
+              -0.06,
+              "50135",
+              "Umezu Yoshijiro",
+              "School of Fire Support"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50369",
+              "Higashikuni Naruhiko",
+              "armoured spearhead doctrine"
+            ],
+            [
+              -0.1,
+              -0.1,
+              "50150",
+              "Oikawa Koshiro",
+              "Base Control Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.21000000000000002,
+          "cabinet_time_modifier": -0.21000000000000002,
+          "stressed_ic_days_additive": 56.7185,
+          "stressed_ic_days_multiplicative": 88.495
+        }
+      ],
+      "ratio": 0.5196,
+      "stress_ratio": 0.5196
+    },
+    {
+      "year": 1950,
+      "unit": "d_13",
+      "parent": "destroyer",
+      "models": [
+        {
+          "unit": "destroyer",
+          "model": 8,
+          "template_ic": 1.4,
+          "template_days": 570.0,
+          "technology_effects": [
+            [
+              "5150",
+              0.0,
+              -113.4
+            ]
+          ],
+          "programme_choices": [
+            [
+              "naval_production",
+              1,
+              -0.08,
+              -54.0
+            ]
+          ],
+          "ic": 1.32,
+          "days": 402.6,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50021",
+              "Hiranuma Kiichiro",
+              "Old Admiral"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50150",
+              "Oikawa Koshiro",
+              "Base Control Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.1,
+          "cabinet_time_modifier": -0.1,
+          "stressed_ic_days_additive": 80.8308,
+          "stressed_ic_days_multiplicative": 95.971
+        },
+        {
+          "unit": "d_13",
+          "model": 1,
+          "template_ic": 1.61,
+          "template_days": 598.0,
+          "technology_effects": [
+            [
+              "5150",
+              0.0,
+              -113.4
+            ]
+          ],
+          "programme_choices": [
+            [
+              "naval_production",
+              1,
+              -0.08,
+              -54.0
+            ]
+          ],
+          "ic": 1.53,
+          "days": 430.6,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50021",
+              "Hiranuma Kiichiro",
+              "Old Admiral"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50150",
+              "Oikawa Koshiro",
+              "Base Control Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.1,
+          "cabinet_time_modifier": -0.1,
+          "stressed_ic_days_additive": 100.2062,
+          "stressed_ic_days_multiplicative": 118.9756
+        }
+      ],
+      "ratio": 1.2397,
+      "stress_ratio": 1.2397
+    },
+    {
+      "year": 1950,
+      "unit": "d_14",
+      "parent": "naval_bomber",
+      "models": [
+        {
+          "unit": "naval_bomber",
+          "model": 6,
+          "template_ic": 22.0,
+          "template_days": 240.0,
+          "technology_effects": [
+            [
+              "5140",
+              0.0,
+              -47.519999999999996
+            ]
+          ],
+          "programme_choices": [
+            [
+              "first_industry",
+              1,
+              0.0,
+              -12.0
+            ],
+            [
+              "air_production",
+              1,
+              -4.0,
+              -48.0
+            ]
+          ],
+          "ic": 18.0,
+          "days": 132.48,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50010",
+              "Yamamoto Isoroku",
+              "Naval Aviation Doctrine"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50075",
+              "Nakajima Chikuhei",
+              "Air to Sea Proponent"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.1,
+          "cabinet_time_modifier": -0.1,
+          "stressed_ic_days_additive": 362.7037,
+          "stressed_ic_days_multiplicative": 430.6409
+        },
+        {
+          "unit": "d_14",
+          "model": 4,
+          "template_ic": 25.3,
+          "template_days": 264.0,
+          "technology_effects": [
+            [
+              "5140",
+              0.0,
+              -47.52
+            ]
+          ],
+          "programme_choices": [
+            [
+              "first_industry",
+              1,
+              0.0,
+              -12.0
+            ],
+            [
+              "air_production",
+              1,
+              -4.0,
+              -48.0
+            ]
+          ],
+          "ic": 21.3,
+          "days": 156.48,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50010",
+              "Yamamoto Isoroku",
+              "Naval Aviation Doctrine"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50075",
+              "Nakajima Chikuhei",
+              "Air to Sea Proponent"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.1,
+          "cabinet_time_modifier": -0.1,
+          "stressed_ic_days_additive": 506.953,
+          "stressed_ic_days_multiplicative": 601.9091
+        }
+      ],
+      "ratio": 1.3977,
+      "stress_ratio": 1.3977
+    },
+    {
+      "year": 1950,
+      "unit": "d_15",
+      "parent": "paratrooper",
+      "models": [
+        {
+          "unit": "paratrooper",
+          "model": 4,
+          "template_ic": 10.0,
+          "template_days": 410.0,
+          "technology_effects": [
+            [
+              "5180",
+              0.0,
+              -41.0
+            ]
+          ],
+          "programme_choices": [],
+          "ic": 10.0,
+          "days": 369.0,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50156",
+              "Toyoda Teijiro",
+              "Vertical Envelopment Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.05,
+          "cabinet_time_modifier": -0.05,
+          "stressed_ic_days_additive": 685.971,
+          "stressed_ic_days_multiplicative": 742.4737
+        },
+        {
+          "unit": "d_15",
+          "model": 3,
+          "template_ic": 11.5,
+          "template_days": 451.0,
+          "technology_effects": [
+            [
+              "5180",
+              0.0,
+              -41.0
+            ]
+          ],
+          "programme_choices": [],
+          "ic": 11.5,
+          "days": 410.0,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50156",
+              "Toyoda Teijiro",
+              "Vertical Envelopment Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.05,
+          "cabinet_time_modifier": -0.05,
+          "stressed_ic_days_additive": 876.5185,
+          "stressed_ic_days_multiplicative": 948.7163
+        }
+      ],
+      "ratio": 1.2778,
+      "stress_ratio": 1.2778
+    },
+    {
+      "year": 1950,
+      "unit": "d_16",
+      "parent": "multi_role",
+      "models": [
+        {
+          "unit": "multi_role",
+          "model": 9,
+          "template_ic": 24.0,
+          "template_days": 210.0,
+          "technology_effects": [
+            [
+              "5140",
+              0.0,
+              -41.76
+            ],
+            [
+              "14050",
+              0.375,
+              0.0
+            ]
+          ],
+          "programme_choices": [
+            [
+              "first_industry",
+              1,
+              0.0,
+              -12.0
+            ],
+            [
+              "air_production",
+              0,
+              -4.0,
+              -42.0
+            ]
+          ],
+          "ic": 20.375,
+          "days": 114.24,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50153",
+              "Tsukahara Nishizo",
+              "Air Superiority Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.05,
+          "cabinet_time_modifier": -0.05,
+          "stressed_ic_days_additive": 432.7083,
+          "stressed_ic_days_multiplicative": 468.35
+        },
+        {
+          "unit": "d_16",
+          "model": 3,
+          "template_ic": 25.2,
+          "template_days": 200.0,
+          "technology_effects": [
+            [
+              "5140",
+              0.0,
+              -41.76
+            ],
+            [
+              "14050",
+              0.375,
+              0.0
+            ]
+          ],
+          "programme_choices": [
+            [
+              "first_industry",
+              1,
+              0.0,
+              -12.0
+            ],
+            [
+              "air_production",
+              0,
+              -4.0,
+              -42.0
+            ]
+          ],
+          "ic": 21.575,
+          "days": 104.24,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50153",
+              "Tsukahara Nishizo",
+              "Air Superiority Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.05,
+          "cabinet_time_modifier": -0.05,
+          "stressed_ic_days_additive": 418.085,
+          "stressed_ic_days_multiplicative": 452.5222
+        }
+      ],
+      "ratio": 0.9662,
+      "stress_ratio": 0.9662
+    },
+    {
+      "year": 1950,
+      "unit": "d_17",
+      "parent": "naval_bomber",
+      "models": [
+        {
+          "unit": "naval_bomber",
+          "model": 6,
+          "template_ic": 22.0,
+          "template_days": 240.0,
+          "technology_effects": [
+            [
+              "5140",
+              0.0,
+              -47.519999999999996
+            ]
+          ],
+          "programme_choices": [
+            [
+              "first_industry",
+              1,
+              0.0,
+              -12.0
+            ],
+            [
+              "air_production",
+              1,
+              -4.0,
+              -48.0
+            ]
+          ],
+          "ic": 18.0,
+          "days": 132.48,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50010",
+              "Yamamoto Isoroku",
+              "Naval Aviation Doctrine"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50075",
+              "Nakajima Chikuhei",
+              "Air to Sea Proponent"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.1,
+          "cabinet_time_modifier": -0.1,
+          "stressed_ic_days_additive": 362.7037,
+          "stressed_ic_days_multiplicative": 430.6409
+        },
+        {
+          "unit": "d_17",
+          "model": 4,
+          "template_ic": 20.9,
+          "template_days": 228.0,
+          "technology_effects": [
+            [
+              "5140",
+              0.0,
+              -47.52
+            ]
+          ],
+          "programme_choices": [
+            [
+              "first_industry",
+              1,
+              0.0,
+              -12.0
+            ],
+            [
+              "air_production",
+              1,
+              -4.0,
+              -48.0
+            ]
+          ],
+          "ic": 16.9,
+          "days": 120.48,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50010",
+              "Yamamoto Isoroku",
+              "Naval Aviation Doctrine"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50075",
+              "Nakajima Chikuhei",
+              "Air to Sea Proponent"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.1,
+          "cabinet_time_modifier": -0.1,
+          "stressed_ic_days_additive": 309.6926,
+          "stressed_ic_days_multiplicative": 367.7004
+        }
+      ],
+      "ratio": 0.8538,
+      "stress_ratio": 0.8538
+    },
+    {
+      "year": 1950,
+      "unit": "d_18",
+      "parent": "destroyer",
+      "models": [
+        {
+          "unit": "destroyer",
+          "model": 8,
+          "template_ic": 1.4,
+          "template_days": 570.0,
+          "technology_effects": [
+            [
+              "5150",
+              0.0,
+              -113.4
+            ]
+          ],
+          "programme_choices": [
+            [
+              "naval_production",
+              1,
+              -0.08,
+              -54.0
+            ]
+          ],
+          "ic": 1.32,
+          "days": 402.6,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50021",
+              "Hiranuma Kiichiro",
+              "Old Admiral"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50150",
+              "Oikawa Koshiro",
+              "Base Control Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.1,
+          "cabinet_time_modifier": -0.1,
+          "stressed_ic_days_additive": 80.8308,
+          "stressed_ic_days_multiplicative": 95.971
+        },
+        {
+          "unit": "d_18",
+          "model": 1,
+          "template_ic": 1.12,
+          "template_days": 456.0,
+          "technology_effects": [
+            [
+              "5150",
+              0.0,
+              -113.4
+            ]
+          ],
+          "programme_choices": [
+            [
+              "naval_production",
+              1,
+              -0.08,
+              -54.0
+            ]
+          ],
+          "ic": 1.04,
+          "days": 288.6,
+          "cabinet": [
+            [
+              -0.05,
+              -0.05,
+              "50021",
+              "Hiranuma Kiichiro",
+              "Old Admiral"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50150",
+              "Oikawa Koshiro",
+              "Base Control Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.1,
+          "cabinet_time_modifier": -0.1,
+          "stressed_ic_days_additive": 45.6519,
+          "stressed_ic_days_multiplicative": 54.2029
+        }
+      ],
+      "ratio": 0.5648,
+      "stress_ratio": 0.5648
+    },
+    {
+      "year": 1950,
+      "unit": "d_19",
+      "parent": "infantry",
+      "models": [
+        {
+          "unit": "infantry",
+          "model": 13,
+          "template_ic": 5.0,
+          "template_days": 290.0,
+          "technology_effects": [
+            [
+              "1920",
+              0.0,
+              -29.0
+            ],
+            [
+              "5180",
+              0.0,
+              -58.0
+            ]
+          ],
+          "programme_choices": [
+            [
+              "army_production",
+              0,
+              -1.0,
+              -43.5
+            ]
+          ],
+          "ic": 4.0,
+          "days": 159.5,
+          "cabinet": [
+            [
+              -0.25,
+              -0.25,
+              "50011",
+              "Yasuhito",
+              "Ruthless Powermonger"
+            ],
+            [
+              -0.03,
+              -0.03,
+              "50139",
+              "Tsuchihashi Yuitsu",
+              "Decisive Battle Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.28,
+          "cabinet_time_modifier": -0.28,
+          "stressed_ic_days_additive": 36.5765,
+          "stressed_ic_days_multiplicative": 73.7383
+        },
+        {
+          "unit": "d_19",
+          "model": 4,
+          "template_ic": 5.25,
+          "template_days": 276.0,
+          "technology_effects": [
+            [
+              "1920",
+              0.0,
+              -29.0
+            ],
+            [
+              "5180",
+              0.0,
+              -58.0
+            ]
+          ],
+          "programme_choices": [
+            [
+              "army_production",
+              0,
+              -1.0,
+              -43.5
+            ]
+          ],
+          "ic": 4.25,
+          "days": 145.5,
+          "cabinet": [
+            [
+              -0.25,
+              -0.25,
+              "50011",
+              "Yasuhito",
+              "Ruthless Powermonger"
+            ],
+            [
+              -0.03,
+              -0.03,
+              "50139",
+              "Tsuchihashi Yuitsu",
+              "Decisive Battle Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.28,
+          "cabinet_time_modifier": -0.28,
+          "stressed_ic_days_additive": 35.4514,
+          "stressed_ic_days_multiplicative": 71.4701
+        }
+      ],
+      "ratio": 0.9692,
+      "stress_ratio": 0.9692
+    },
+    {
+      "year": 1950,
+      "unit": "b_01",
+      "parent": "naval_torpedoes_s",
+      "models": [
+        {
+          "unit": "naval_torpedoes_s",
+          "model": 1,
+          "template_ic": 1.2,
+          "template_days": 140.0,
+          "technology_effects": [
+            [
+              "5150",
+              0.0,
+              -28.0
+            ]
+          ],
+          "programme_choices": [],
+          "ic": 1.2,
+          "days": 112.0,
+          "cabinet": [],
+          "cabinet_cost_modifier": 0,
+          "cabinet_time_modifier": 0,
+          "stressed_ic_days_additive": 29.9645,
+          "stressed_ic_days_multiplicative": 29.9645
+        },
+        {
+          "unit": "b_01",
+          "model": 3,
+          "template_ic": 1.1,
+          "template_days": 100.0,
+          "technology_effects": [
+            [
+              "5150",
+              0.0,
+              -28.0
+            ]
+          ],
+          "programme_choices": [],
+          "ic": 1.1,
+          "days": 72.0,
+          "cabinet": [],
+          "cabinet_cost_modifier": 0,
+          "cabinet_time_modifier": 0,
+          "stressed_ic_days_additive": 17.6576,
+          "stressed_ic_days_multiplicative": 17.6576
+        }
+      ],
+      "ratio": 0.5893,
+      "stress_ratio": 0.5893
+    },
+    {
+      "year": 1950,
+      "unit": "b_02",
+      "parent": "police",
+      "models": [
+        {
+          "unit": "police",
+          "model": 2,
+          "template_ic": 1.5,
+          "template_days": 110.0,
+          "technology_effects": [
+            [
+              "5180",
+              0.0,
+              -14.0
+            ]
+          ],
+          "programme_choices": [],
+          "ic": 1.5,
+          "days": 96.0,
+          "cabinet": [],
+          "cabinet_cost_modifier": 0,
+          "cabinet_time_modifier": 0,
+          "stressed_ic_days_additive": 32.1048,
+          "stressed_ic_days_multiplicative": 32.1048
+        },
+        {
+          "unit": "b_02",
+          "model": 4,
+          "template_ic": 4.0,
+          "template_days": 140.0,
+          "technology_effects": [
+            [
+              "5180",
+              0.0,
+              -14.0
+            ]
+          ],
+          "programme_choices": [],
+          "ic": 4.0,
+          "days": 126.0,
+          "cabinet": [],
+          "cabinet_cost_modifier": 0,
+          "cabinet_time_modifier": 0,
+          "stressed_ic_days_additive": 112.3668,
+          "stressed_ic_days_multiplicative": 112.3668
+        }
+      ],
+      "ratio": 3.5,
+      "stress_ratio": 3.5
+    },
+    {
+      "year": 1950,
+      "unit": "b_03",
+      "parent": "amph_armor",
+      "models": [
+        {
+          "unit": "amph_armor",
+          "model": 1,
+          "template_ic": 8.0,
+          "template_days": 170.0,
+          "technology_effects": [
+            [
+              "5160",
+              0.0,
+              -34.0
+            ],
+            [
+              "7630",
+              1.0,
+              0.0
+            ]
+          ],
+          "programme_choices": [],
+          "ic": 9.0,
+          "days": 136.0,
+          "cabinet": [
+            [
+              -0.06,
+              -0.06,
+              "50135",
+              "Umezu Yoshijiro",
+              "School of Fire Support"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50369",
+              "Higashikuni Naruhiko",
+              "armoured spearhead doctrine"
+            ],
+            [
+              -0.1,
+              -0.1,
+              "50150",
+              "Oikawa Koshiro",
+              "Base Control Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.21000000000000002,
+          "cabinet_time_modifier": -0.21000000000000002,
+          "stressed_ic_days_additive": 109.1563,
+          "stressed_ic_days_multiplicative": 170.3111
+        },
+        {
+          "unit": "b_03",
+          "model": 2,
+          "template_ic": 5.5,
+          "template_days": 140.0,
+          "technology_effects": [
+            [
+              "5160",
+              0.0,
+              -34.0
+            ],
+            [
+              "7630",
+              1.0,
+              0.0
+            ]
+          ],
+          "programme_choices": [],
+          "ic": 6.5,
+          "days": 106.0,
+          "cabinet": [
+            [
+              -0.06,
+              -0.06,
+              "50135",
+              "Umezu Yoshijiro",
+              "School of Fire Support"
+            ],
+            [
+              -0.05,
+              -0.05,
+              "50369",
+              "Higashikuni Naruhiko",
+              "armoured spearhead doctrine"
+            ],
+            [
+              -0.1,
+              -0.1,
+              "50150",
+              "Oikawa Koshiro",
+              "Base Control Doctrine"
+            ]
+          ],
+          "cabinet_cost_modifier": -0.21000000000000002,
+          "cabinet_time_modifier": -0.21000000000000002,
+          "stressed_ic_days_additive": 61.445,
+          "stressed_ic_days_multiplicative": 95.8696
+        }
+      ],
+      "ratio": 0.5629,
+      "stress_ratio": 0.5629
+    }
+  ],
+  "slider_positions": {
+    "#_POLICY_FREE_MARKET_": 10,
+    "#_POLICY_PROFESSIONAL_ARMY_": 6,
+    "#_POLICY_DEFENSE_LOBBY_": 10
+  },
+  "slider_cost": -0.51,
+  "slider_time": -0.30000000000000004,
+  "gearing_time_floor": 0.65,
+  "human_hard_industry_modifier": 0,
+  "ai_hard_industry_bonus": 0.1,
+  "ai_hard_manpower_bonus": 0.2,
+  "limits": "Researched dated prerequisites and mutually exclusive technology branches respected. Programme map/peace gates relaxed per unit. One actual option per programme and one date-eligible Japanese appointment per office; ideology and government restrictions relaxed as a generous bound. Different rows are different choices. Additive and multiplicative cross-system orders reported, no engine rounding asserted. Difficulty changes output, not these templates. Research time, actual IC allocation and engine floor remain playtest checks. Generated model parity is separately verified against the installed files."
+}

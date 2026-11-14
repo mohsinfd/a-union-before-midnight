@@ -1,9 +1,11 @@
-# R13.1
+Japan Rising R14 repairs the complete R13.1 cold review. Start a new 1933 campaign as Japan and confirm R14. No game was run during this work.
 
-- Preserves R13's ten specialist families, free introductions, researched upgrades and artwork, including the full-strength Expeditionary Assault Division. The existing heavy-submarine class remains unchanged.
-- Assigns five US and three British existing screens to transport groups at their original ports; no extra ships, resources or teleports.
-- Shifts thirty applicable Allied AI production profiles from some transport construction towards Destroyers while preserving allocation totals. The engine may still reorganise fleets and detach escorts.
-- Retains all 1,822 event IDs, 121 decision cards, island garrisons and national convoy support.
-- Adds portable foundation/game path configuration, a source-only installer, fresh installed-file verification and a matching launcher receipt.
+- Chinese decisive surrender now requires 60 or fewer surviving own deployed formations, plus the territorial and city objectives. Surviving postwar troops are preserved; no delayed army wipe/replacement.
+- Coalition victories, consented enemy occupations and interrupted US/Soviet peace are guarded and recoverable. Hawaii terms precede American acceptance; a rebuilt US fleet affects negotiations.
+- Meaningful postwar recovery, China/India agreements and distinct US aftermath, with dated costs, refunds and annexed-partner recovery.
+- Full specialist construction-stack comparisons, bounded Matsu discount, slower large emergency fuel recovery, useful Indian partner AI and current-equipment American reserves.
+- Compact visible conditions; shared fresh authority checks protect every handover. All 1,822 original event IDs retained. Added internal verifiers/refunds are not advertised as new gameplay choices.
 
-Offline checks passed. No running-engine or days-long campaign test was performed, and no saved campaign was edited. Use a new 1933 game and confirm R13.1 in the scenario/welcome.
+Seven R14 audit suites and eleven final regression/check tools pass. Installed source/model/art/localisation parity and the actual Steam destination/shortcut were verified. Engine startup, actual AI fleet operations, Hard combat balance and long-campaign stability remain player tests.
+
+Use the built-in Source code ZIP below. The repository includes source, original generated artwork and the portable Windows installer; bring your own Darkest Hour 1.05.2 and Blood and Iron v1.1 folders. Read README.md, japan_expansion/R14_CHANGES.md and the three R14 country/peace/aftermath specifications. Install.ps1 never launches the game.

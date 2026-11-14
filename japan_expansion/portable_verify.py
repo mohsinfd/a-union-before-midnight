@@ -37,22 +37,24 @@ def verify():
                 with Image.open(path) as picture:assert picture.size==(192,104)
     with Image.open(target/'gfx/map/hoi_counter_strip.bmp') as image:assert image.size==((53+len(d.CLASSES))*32,34)
     reports={}
-    for filename in ('UNIQUE_UNIT_COLD_AUDIT.json','ENEMY_TRANSPORT_AI_AUDIT.json'):
+    for filename in ('UNIQUE_UNIT_COLD_AUDIT.json','ENEMY_TRANSPORT_AI_AUDIT.json','R14_COLD_AUDIT.json'):
         report=json.loads((b.HERE/filename).read_text());assert report['passed'],filename
         reports[filename]=report
     docs=target/'Japan Rising Documentation';docs.mkdir(exist_ok=True)
     for filename in ('README.md','R13_UNITS.md','R13_1_CHANGES.md','ENEMY_TRANSPORT_AI_REPORT.json',
                      'ENEMY_TRANSPORT_AI_AUDIT.json','UNIQUE_UNIT_COLD_AUDIT.json','PLAYER_COPY_REVIEW.json',
-                     'PROGRESS.md'):
+                     'PROGRESS.md','R14_CHANGES.md','R14_CHINA.md','R14_PEACE.md','R14_AFTERWAR.md',
+                     'R14_CONSTRUCTION_AUDIT.md','R14_CONSTRUCTION_AUDIT.json','R14_BALANCE_AUDIT.json',
+                     'R14_COLD_AUDIT.json','R14_REGRESSION_RESULTS.json'):
         shutil.copy2(b.HERE/filename,docs/filename)
     receipt=dict(version=b.VERSION,target=str(target),state='installed-offline-validated',
                  events=len(b.EVENTS),modules=len(groups),loaded_english_matches=len(expected),
                  game_launched=False,save_edits=False,source_path=str(b.SOURCE),
                  installed_model_hashes=hashes,fresh_offline_checks=reports,
                  qualification='Source/event/model/localisation/art parity and fresh documented-command tests; no running-engine or long-campaign guarantee.')
-    (b.HERE/'R13_1_INSTALL_RECEIPT.json').write_text(json.dumps(receipt,indent=2)+'\n')
-    shutil.copy2(b.HERE/'R13_1_INSTALL_RECEIPT.json',docs/'R13_1_INSTALL_RECEIPT.json')
-    manifest.update(state=receipt['state'],validation_receipt='Japan Rising Documentation/R13_1_INSTALL_RECEIPT.json')
+    (b.HERE/'R14_INSTALL_RECEIPT.json').write_text(json.dumps(receipt,indent=2)+'\n')
+    shutil.copy2(b.HERE/'R14_INSTALL_RECEIPT.json',docs/'R14_INSTALL_RECEIPT.json')
+    manifest.update(state=receipt['state'],validation_receipt='Japan Rising Documentation/R14_INSTALL_RECEIPT.json')
     manifest_path.write_text(json.dumps(manifest,indent=2)+'\n')
     print(json.dumps({k:receipt[k] for k in ('version','target','state','events','modules','loaded_english_matches')},indent=2))
 

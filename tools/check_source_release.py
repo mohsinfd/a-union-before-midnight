@@ -18,8 +18,23 @@ for key in expected:
     path=project/'art'/(key+'.png');assert path.is_file(),path
     with Image.open(path) as image:image.verify()
 events=json.loads((project/'events.json').read_text())
-assert len(events)==1822 and len({e['id'] for e in events})==1822
-assert sum(e['decision'] for e in events)==121
+audit=json.loads((project/'R14_COLD_AUDIT.json').read_text(encoding='utf-8'))
+assert audit['passed'] and audit['version']=='JX 1.1 ALPHA 2 R14'
+assert len(events)==audit['events'] and len({e['id'] for e in events})==len(events)
+assert sum(e['decision'] for e in events)==audit['registered_decisions']
+baseline=json.loads((project/'R14_BASELINE_IDS.json').read_text(encoding='utf-8'))
+current={e['key']:e['id'] for e in events}
+assert all(current.get(k)==v for k,v in baseline.items())
 assert not list(ROOT.rglob('*.eug')) and not list(ROOT.rglob('*.dmp'))
 assert not (project/'local_paths.json').exists()
+manifest=json.loads((ROOT/'SOURCE_RELEASE_MANIFEST.json').read_text(encoding='utf-8'))
+assert manifest['version']==audit['version']
+for record in manifest['files']:
+    path=ROOT/record['path'];raw=path.read_bytes()
+    if path.suffix.lower() not in ('.png','.bmp','.jpg','.jpeg'):
+        raw=raw.replace(b'\r\r\n',b'\n').replace(b'\r\n',b'\n')
+    assert len(raw)==record['bytes'],record['path']
+    assert hashlib.sha256(raw).hexdigest()==record['sha256_git_blob_bytes'],record['path']
+    assert len(raw)<100*1024*1024,record['path']
+
 print(json.dumps({'python_syntax':'PASS','retained_original_art':len(expected),'events':len(events),'game_run':False}))

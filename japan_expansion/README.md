@@ -1,6 +1,8 @@
-# Japan Rising - JX 1.1 ALPHA 2 R13.1
+# Japan Rising - JX 1.1 ALPHA 2 R14
 
-Use the existing **Japan Rising JX1 Alpha2** shortcut/folder and start a **new 1933 campaign as Japan**. Confirm **R13.1** in the scenario name and welcome event. This is a human-Japan expansion on Blood and Iron. The historical diplomatic opening through Pearl Harbor remains, followed by independent campaign choices through 1950. Existing saves are not migration targets for this revision.
+Current release: **R14**. See [R14_CHANGES.md](R14_CHANGES.md) for the complete cold-review repairs, tougher Chinese surrender, coalition-safe peace and postwar continuation. Start a new 1933 campaign. No game was run; source and installed checks do not certify long-campaign stability.
+
+Use the existing **Japan Rising JX1 Alpha2** shortcut/folder and start a **new 1933 campaign as Japan**. Confirm **R14** in the scenario name and welcome event. This is a human-Japan expansion on Blood and Iron. The historical diplomatic opening through Pearl Harbor remains, followed by independent campaign choices through 1950. Existing saves are not migration targets for this revision.
 
 R13.1 improves initial enemy transport protection and future escort construction; see [R13_1_CHANGES.md](R13_1_CHANGES.md). A portable installer supports another Windows PC using your own game and Blood and Iron folders.
 

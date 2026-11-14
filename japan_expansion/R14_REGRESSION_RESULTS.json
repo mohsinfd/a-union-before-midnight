@@ -1,0 +1,57 @@
+[
+  {
+    "script": "UNIQUE_UNIT_EVENTS_review.py",
+    "passed": true,
+    "tail": "e_are_real_gates) ... ok\ntest_sparse_cross_tree_research_and_later_lower_tech_do_not_downgrade (__main__.UniqueUnitReview.test_sparse_cross_tree_research_and_later_lower_tech_do_not_downgrade) ... ok\n\n----------------------------------------------------------------------\nRan 13 tests in 40.716s\n\nOK\n"
+  },
+  {
+    "script": "ENEMY_TRANSPORT_AI_review.py",
+    "passed": true,
+    "tail": "_are_preserved) ... ok\ntest_transform_is_repeatable_from_clean_input_and_never_touches_Japan (__main__.EnemyTransportReview.test_transform_is_repeatable_from_clean_input_and_never_touches_Japan) ... ok\n\n----------------------------------------------------------------------\nRan 4 tests in 0.421s\n\nOK\n"
+  },
+  {
+    "script": "PLAYER_COPY_review.py",
+    "passed": true,
+    "tail": "ies_do_not_request_payment_again) ... ok\ntest_selected_regional_delivery_and_plain_equipment_conditions (__main__.PlayerCopyReview.test_selected_regional_delivery_and_plain_equipment_conditions) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 0.113s\n\nOK\n"
+  },
+  {
+    "script": "validate.py",
+    "passed": true,
+    "tail": "{\n  \"result\": \"PASS\",\n  \"event_files\": 142,\n  \"all_event_blocks\": 7202,\n  \"new_event_blocks\": 2940,\n  \"new_decisions\": 123,\n  \"errors\": [],\n  \"warnings\": [],\n  \"scope\": \"Static script, asset and dependency validation. Not engine playtesting.\"\n}\n"
+  },
+  {
+    "script": "R13_COLD_review.py",
+    "passed": true,
+    "tail": "pgrades_use_new_cards) ... ok\ntest_new_attachment_compatibility_does_not_insert_extra_equipment (__main__.NewSpecialistReview.test_new_attachment_compatibility_does_not_insert_extra_equipment) ... ok\n\n----------------------------------------------------------------------\nRan 15 tests in 19.810s\n\nOK\n"
+  },
+  {
+    "script": "UNIQUE_DIVISIONS_review.py",
+    "passed": true,
+    "tail": "{\"checks\": 7, \"models\": 29, \"programme_mirrors\": 83, \"minister_mirrors\": 45, \"native_event_mirrors\": 10}\n"
+  },
+  {
+    "script": "unique_attachments_review.py",
+    "passed": true,
+    "tail": "tive_schema) ... ok\ntest_relative_effects_use_native_model_zero_and_tech_receipts_apply_once (__main__.AttachmentReview.test_relative_effects_use_native_model_zero_and_tech_receipts_apply_once) ... ok\n\n----------------------------------------------------------------------\nRan 10 tests in 6.776s\n\nOK\n"
+  },
+  {
+    "script": "equipment_delivery_review.py",
+    "passed": true,
+    "tail": "{\"checks\": 8, \"japanese_births\": 14, \"american_conditional_births\": 210, \"american_max_actual_births\": 12, \"installed_matches\": true, \"mismatch_count\": 0}\n"
+  },
+  {
+    "script": "MINISTER_INTEGRITY_review.py",
+    "passed": true,
+    "tail": "pointments\": 372, \"unchanged_original_rows\": 366, \"modified_original_rows\": 6, \"added_appointments\": 11, \"used_personalities\": 90, \"custom_personalities\": 13, \"used_trait_commands\": 482, \"generic_fallbacks\": 0, \"localisation_keys\": 180, \"negative_fixtures_rejected\": 6, \"future_placeholder_rows\": 8}\n"
+  },
+  {
+    "script": "personnel_review.py",
+    "passed": true,
+    "tail": "\": 13, \"late_army_personalities\": [\"Guns and Butter Doctrine\", \"armoured spearhead doctrine\", \"decisive battle doctrine\", \"jx army cohesion\"], \"new_1937_appointments\": 10, \"new_1937_distinct_historical_portraits\": 10, \"yamamoto_ambush_leader_id\": 50292, \"no_base_skill_or_experience_increase\": true}\n"
+  },
+  {
+    "script": "simulate.py",
+    "passed": true,
+    "tail": "cannot_take_money_after_pacific_opening) ... ok\ntest_puppeted_player_and_lost_partner_cannot_pay (construction_safety_review.ConstructionTests.test_puppeted_player_and_lost_partner_cannot_pay) ... ok\n\n----------------------------------------------------------------------\nRan 99 tests in 16.422s\n\nOK\n"
+  }
+]

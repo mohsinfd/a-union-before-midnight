@@ -14,7 +14,7 @@ The final source explicitly restores each freshly issued formation to its existi
 - Four Japanese aircraft/ship alternatives now require a current level-one airfield/naval base both at payment and receipt, with the same predicate included in the exact-refund complement.
 - All 14 potential Japanese awards use realistic distinct formation names and one scoped restoration per created unit. Each of seven American staging alternatives retains its two exclusive researched model paths, with an identically conditioned scoped restoration.
 - Western Reserve and Central Reserve names distinguish the two American waves. Kansas City can host both without a second-wave restoration healing wounded first-wave formations.
-- Manpower bills, model choices, supply/money/resource bills, elapsed times, branch markers, receipts, ownership/control predicates and maximum actual American reserve count (12) remain unchanged. Existing intentionally quarter-strength island detachments remain unchanged.
+- American reserves now choose among five researched and dated models. Manpower bills, supply/money/resource bills, elapsed times, branch markers, receipts, ownership/control predicates and maximum actual American reserve count (12) remain unchanged. Existing intentionally quarter-strength island detachments remain unchanged.
 
 ## Japanese model / crew / deployment verification
 
@@ -43,7 +43,7 @@ The final source explicitly restores each freshly issued formation to its existi
 - Every Japanese birth has a valid researched native model, complete model manpower, explicit controlled site, unmodified brigade field and one matching post-creation heal; no extra recruitment charge or organisation boost.
 - All seven USA staging options preserve exact technology conditions on both birth and heal, 78 manpower/2400-supply cost and American-owned/controlled hubs; only six researched divisions can form per wave.
 - Eight Japanese state fixtures prove named 33%-strength births restore to 100, exact manpower is spent once, placement is correct and replay is inert; all four air/naval facility failures block funding or refund completely.
-- Fourteen USA hub/model fixtures create six full-strength researched divisions each; both Kansas City waves coexist with distinct names, and the second wave leaves wounded first-wave units unchanged.
+- Thirty-five USA hub/model fixtures create six full-strength researched divisions each; both Kansas City waves coexist with distinct names, and the second wave leaves wounded first-wave units unchanged.
 - All R11 regional, prewar and American event blocks exactly match the installed final compiler output.
 
 **Installed matches final source: True.**

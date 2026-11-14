@@ -10,7 +10,7 @@ The installed engine manual states that build_time without `where = relative` is
 
 - Select the latest dated unconditional unit-model unlock at each snapshot. This does not prove the player researched it by that year.
 - From 1940, include applicable assembly technology 5140/5150/5160/5180, assuming its prerequisites were researched. The year is a comparison snapshot, not a promised research schedule.
-- For each eligible-year programme, choose whichever funded alternative gives the largest time reduction to the row's unit. Each programme is counted once. Map, victory, peace and other availability gates are deliberately relaxed for this upper bound.
+- For each eligible-year programme, select one real alternative by its joint IC-days effect; cost and time never come from incompatible choices. Map, victory, peace and other availability gates are relaxed for this stress scenario. R14_CONSTRUCTION_AUDIT.md adds every new specialist and attachment, researched doctrines, ministers, sliders and gearing.
 - The rows do not form one joint set of choices. Land-doctrine modifiers, ministers, sliders, difficulty, gearing, attachments, upgrade/conversion rules and engine rounding are excluded. CAG inclusion in the air category is a conservative bound that still requires engine confirmation.
 - Template IC-days illustrate only these inputs. They are not actual campaign IC-days. Research, doctrine and industrial throughput still constrain production.
 

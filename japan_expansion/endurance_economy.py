@@ -20,11 +20,16 @@ ENERGY_RESERVE = 9000
 METAL_RESERVE = 500
 
 
+def batch_cooldown(oil):
+    # Large emergency output cannot sustain the whole Pacific fleet indefinitely.
+    return 90 if oil >= 12000 else 45
+
+
 def _terminal_commands(energy, stock, cash, oil, refund=False):
     payment = ([cmd('energypool', value=energy), supplies(stock), money(cash)]
                if refund else [cmd('oilpool', value=oil)])
     return payment + [clear('FUEL_BATCH_PENDING'), flag('FUEL_BATCH_WAIT'),
-                      later('fuel_batch_reset', 45)]
+                      later('fuel_batch_reset', batch_cooldown(oil))]
 
 
 def _delivery(e, amounts):
@@ -34,7 +39,7 @@ def _delivery(e, amounts):
               'limit before accepting; this event cannot measure that dynamic limit. '
               'If there is too little room, cancel for an exact return of the energy, '
               'supplies and money. Above the stated oil threshold only cancellation '
-              'is available. Either choice starts the 45-day cooldown.')
+              f'is available. Either choice starts the {batch_cooldown(oil)}-day recovery period.')
     e.actions = [
         Action(f'Receive {oil:,} oil', _terminal_commands(*amounts),
                gate=human()+' '+pending+f' NOT = {{ oil = {oil} }}', chance=100),
@@ -124,7 +129,7 @@ def apply():
     offer.desc = ('Convert paid coal stocks into oil while at war. Small: 3,000 energy, 200 supplies and '
                   '25 money for 1,500 oil. Standard: 12,000 energy, 800 supplies and 100 money for 6,000 oil. '
                   'Large: double the standard costs for 12,000 oil. Delivery takes 45 days, followed by '
-                  '45 days before another order. One batch at a time. Every option leaves at least '
+                  '45 days before another small or standard order; the large batch needs 90 days of recovery. One batch at a time. Every option leaves at least '
                   '9,000 energy unspent when ordered; daily industry and native conversion still consume it. '
                   'Standard and large orders require the completed strategic-storage programme; standard '
                   'also needs the home works and large needs the wartime expansion. Orders '

@@ -51,7 +51,10 @@ class USCampaignReview(unittest.TestCase):
             e=BY_KEY[key];self.assertEqual((e.id,e.gate,e.desc,e.actions),old,key)
         ids=[BY_KEY[k].id for k in usc.REPORT['added']]
         self.assertEqual(len(ids),len(set(ids)))
-        earlier_ids=[v[0] for key,v in OLD.items() if not BY_KEY[key].module.startswith('unique_unit_')]
+        earlier_ids=[v[0] for key,v in OLD.items() if not BY_KEY[key].module.startswith('unique_unit_') and v[0]<min(ids)]
+        import json
+        baseline=json.loads((build.HERE/'R14_BASELINE_IDS.json').read_text(encoding='utf-8'))
+        self.assertTrue(all(BY_KEY[k].id==v for k,v in baseline.items()))
         later_ids=[e.id for e in build.EVENTS if e.module.startswith('unique_unit_')]
         self.assertGreater(min(ids),max(earlier_ids))
         self.assertLess(max(ids),min(later_ids))
@@ -101,6 +104,14 @@ class USCampaignReview(unittest.TestCase):
             self.assertEqual(v.resources['USA']['manpower'],before['manpower']+40)
             self.assertEqual(v.resources['USA']['supplies'],before['supplies']+2000)
             v.advance(1);self.assertTrue(v.flags['JX_USC_COAST_RESPONSE_TOLD'])
+
+    def test_late_reserves_use_newest_researched_and_dated_equipment(self):
+        for year,tech,model in usc.RESERVE_MODELS:
+            if year<1941:year=1941
+            w=self.landed();w.year=year;w.country_tech['USA']={str(t) for y,t,m in usc.RESERVE_MODELS if m<=model}
+            w.dispatch('usc_coast_response');self.assertEqual(w.spawned,[('USA','infantry',model)]*6)
+        w=self.landed();w.year=1942;w.country_tech['USA']={'1110','1140'}
+        w.dispatch('usc_coast_response');self.assertEqual(w.spawned,[('USA','infantry',10)]*6)
 
     def test_no_response_can_spawn_on_enemy_controlled_or_foreign_owned_city(self):
         w=self.landed();w.controlled[1908]='JAP';w.owned[1896]='ENG'

@@ -235,11 +235,13 @@ class World:
         elif typ=="secedeprovince":
             p=int(value)
             if p in self.blocked_transfers:return
-            if self.owned.get(p)==actor:self.owned[p]=which
-            if self.controlled.get(p)==actor:self.controlled[p]=which
+            if get(n,'when')=='2':self.owned[p]=self.controlled[p]=which
+            else:
+                if self.owned.get(p)==actor:self.owned[p]=which
+                if self.controlled.get(p)==actor:self.controlled[p]=which
         elif typ=="access":self.access.add((actor,which))
         elif typ=='end_access':self.access.discard((actor,which))
-        elif typ in {'dissent','set_relation','set_domestic','domestic'}:
+        elif typ in {'dissent','relation','set_relation','set_domestic','domestic'}:
             key=(actor,typ,which,None)
             if typ.startswith('set_'):self.properties[key]=float(value)
             else:self.properties[key]+=float(value)
@@ -782,23 +784,23 @@ class EventTests(unittest.TestCase):
         self.assertEqual(w.owned[1517],'IND');self.assertTrue(w.flags['JX_india_SETTLED'])
 
     def test_chinese_tag_change_preserves_army(self):
-        w=World();w.armies['CHI']=68;w.addwar('JAP','CHI')
+        w=World();w.armies['CHI']=58;w.addwar('JAP','CHI')
         w.national_losses['CHI']=80;w.vp_losses['CHI']=80
         for p,t in list(w.owned.items()):
             if t=='CHI':w.controlled[p]='JAP'
         self.assertTrue(w.action('china'));w.advance(40)
-        self.assertEqual(w.armies['U87'],68);self.assertEqual(w.masters['U87'],'JAP');self.assertTrue(w.atwar('JAP','USA'))
+        self.assertEqual(w.armies['U87'],58);self.assertEqual(w.masters['U87'],'JAP');self.assertTrue(w.atwar('JAP','USA'))
 
     def test_existing_nanjing_state_does_not_leave_nationalist_rump(self):
         w=World();w.countries.add('U87');w.masters['U87']='JAP';w.groups['U87']='Japan'
-        w.armies['CHI']=68;w.armies['U87']=5;w.owned[1337]='U87'
+        w.armies['CHI']=58;w.armies['U87']=5;w.owned[1337]='U87'
         w.national_losses['CHI']=80;w.vp_losses['CHI']=80
         w.addwar('JAP','CHI')
         for p,t in list(w.owned.items()):
             if t in {'CHI','U87'}:w.controlled[p]='JAP'
         self.assertTrue(w.action('china'));w.advance(40)
         self.assertNotIn('CHI',w.countries);self.assertNotIn('CHI',w.owned.values())
-        self.assertEqual(w.armies['U87'],73);self.assertEqual(w.owned[1338],'JAP')
+        self.assertEqual(w.armies['U87'],63);self.assertEqual(w.owned[1338],'JAP')
         self.assertTrue(w.flags['JX_china_SETTLED']);self.assertTrue(w.atwar('JAP','USA'))
         self.assertIn(('JAP','U87'),w.access);self.assertIn(('U87','JAP'),w.access)
 
@@ -897,7 +899,8 @@ class EventTests(unittest.TestCase):
         self.assertEqual(w.armies['INO'],before)
 
     def test_allied_pacific_peace_preserves_europe_and_soviets(self):
-        w=World();w.flags['JX_US_PENDING']=1;w.dispatch('us_finish');w.advance(2)
+        w=World();w.flags.update(JX_US_PENDING=1,JX_R14_US_ACCEPTED=1,JX_R14_US_STARTED=1,JX_US_RETURN_HAWAII=1)
+        w.dispatch('us_finish');w.advance(2)
         self.assertFalse(w.atwar('JAP','USA'));self.assertFalse(w.atwar('JAP','ENG'));self.assertTrue(w.atwar('GER','SOV'));self.assertTrue(w.atwar('JAP','SOV'));self.assertTrue(w.flags['JX_US_PEACE'])
 
     def test_pacific_peace_blocked_in_axis(self):
@@ -914,7 +917,10 @@ class EventTests(unittest.TestCase):
         self.assertTrue(w.test(parse(resolve(BY_KEY['china'].gate)),'JAP'))
 
     def test_limited_china_peace_preserves_other_japanese_wars(self):
-        w=World();w.addwar('JAP','CHI');w.action('china_limited_accept');w.advance(3)
+        w=World();w.addwar('JAP','CHI');w.flags.update(JX_CHINA_LIMITED_PENDING=1,JX_CHINA_LIMITED_ACCEPTED_R14=1)
+        w.national_losses['CHI']=35
+        for p in (1337,1338,1317):w.controlled[p]='JAP'
+        w.action('china_limited_accept');w.advance(3)
         self.assertFalse(w.atwar('JAP','CHI'));self.assertTrue(w.atwar('JAP','SOV'));self.assertTrue(w.atwar('JAP','USA'))
         self.assertNotIn('CHI',w.masters);self.assertIn(('CHI','JAP'),w.access);self.assertTrue(w.flags['JX_CHINA_LIMITED_DONE'])
 

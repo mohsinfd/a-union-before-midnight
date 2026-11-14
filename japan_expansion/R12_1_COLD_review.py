@@ -15,7 +15,7 @@ class RevisionReview(unittest.TestCase):
             p=build.TARGET/'db/events/japan_rising'/(module+'.txt')
             for e in build.getall(build.parse(build.read(p)),'event'):
                 key=build.get(e,'id');self.assertNotIn(key,installed);installed[key]=e
-        self.assertEqual(len(installed),1822)
+        self.assertEqual(len(installed),len(build.EVENTS))
         for e in build.EVENTS:
             self.assertEqual(installed[str(e.id)],build.get(build.parse(build.compiled_event(e)),'event'),e.key)
 

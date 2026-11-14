@@ -6,15 +6,15 @@
     "Every Japanese birth has a valid researched native model, complete model manpower, explicit controlled site, unmodified brigade field and one matching post-creation heal; no extra recruitment charge or organisation boost.",
     "All seven USA staging options preserve exact technology conditions on both birth and heal, 78 manpower/2400-supply cost and American-owned/controlled hubs; only six researched divisions can form per wave.",
     "Eight Japanese state fixtures prove named 33%-strength births restore to 100, exact manpower is spent once, placement is correct and replay is inert; all four air/naval facility failures block funding or refund completely.",
-    "Fourteen USA hub/model fixtures create six full-strength researched divisions each; both Kansas City waves coexist with distinct names, and the second wave leaves wounded first-wave units unchanged.",
+    "Thirty-five USA hub/model fixtures create six full-strength researched divisions each; both Kansas City waves coexist with distinct names, and the second wave leaves wounded first-wave units unchanged.",
     "All R11 regional, prewar and American event blocks exactly match the installed final compiler output."
   ],
   "installed_matches_final_source": true,
   "mismatched_events": [],
   "all_r11_command_counts": {
     "add_corps": 15,
-    "add_division": 98,
-    "damage_division": 98,
+    "add_division": 224,
+    "damage_division": 224,
     "clrflag": 135,
     "setflag": 163,
     "money": 68,
@@ -42,7 +42,7 @@
     "trickleback_mod": 1
   },
   "source_registry_event_files": 104,
-  "installed_registry_event_files": 141,
+  "installed_registry_event_files": 142,
   "japanese_branches": [
     {
       "offer": "cn_shanghai_holding",
@@ -176,8 +176,8 @@
         "Western Reserve Division 5 - Denver",
         "Western Reserve Division 6 - Denver"
       ],
-      "conditional_additions": 12,
-      "conditional_heals": 12,
+      "conditional_additions": 30,
+      "conditional_heals": 30,
       "manpower": 78
     },
     {
@@ -192,8 +192,8 @@
         "Western Reserve Division 5 - Salt Lake City",
         "Western Reserve Division 6 - Salt Lake City"
       ],
-      "conditional_additions": 12,
-      "conditional_heals": 12,
+      "conditional_additions": 30,
+      "conditional_heals": 30,
       "manpower": 78
     },
     {
@@ -208,8 +208,8 @@
         "Western Reserve Division 5 - Phoenix",
         "Western Reserve Division 6 - Phoenix"
       ],
-      "conditional_additions": 12,
-      "conditional_heals": 12,
+      "conditional_additions": 30,
+      "conditional_heals": 30,
       "manpower": 78
     },
     {
@@ -224,8 +224,8 @@
         "Western Reserve Division 5 - Kansas City",
         "Western Reserve Division 6 - Kansas City"
       ],
-      "conditional_additions": 12,
-      "conditional_heals": 12,
+      "conditional_additions": 30,
+      "conditional_heals": 30,
       "manpower": 78
     },
     {
@@ -240,8 +240,8 @@
         "Central Reserve Division 5 - Kansas City",
         "Central Reserve Division 6 - Kansas City"
       ],
-      "conditional_additions": 12,
-      "conditional_heals": 12,
+      "conditional_additions": 30,
+      "conditional_heals": 30,
       "manpower": 78
     },
     {
@@ -256,8 +256,8 @@
         "Central Reserve Division 5 - Chicago",
         "Central Reserve Division 6 - Chicago"
       ],
-      "conditional_additions": 12,
-      "conditional_heals": 12,
+      "conditional_additions": 30,
+      "conditional_heals": 30,
       "manpower": 78
     },
     {
@@ -272,8 +272,8 @@
         "Central Reserve Division 5 - Washington",
         "Central Reserve Division 6 - Washington"
       ],
-      "conditional_additions": 12,
-      "conditional_heals": 12,
+      "conditional_additions": 30,
+      "conditional_heals": 30,
       "manpower": 78
     }
   ],

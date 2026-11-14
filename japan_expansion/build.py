@@ -57,6 +57,9 @@ import unique_attachments
 import unique_unit_events
 import unique_art
 import island_shipping
+import r14_china
+import r14_peace
+import r14_afterwar
 import enemy_transport_ai
 
 from runtime_paths import GAME
@@ -327,6 +330,9 @@ def prepare_catalog():
     unique_unit_events.append_events()
     unique_divisions.apply()
     island_shipping.apply()
+    r14_china.apply()
+    r14_peace.apply()
+    r14_afterwar.apply()
     final_event_integrity.apply()
     equipment_delivery.apply()
     player_copy.apply()
@@ -406,7 +412,7 @@ def localisation():
 def documentation():
     HERE.mkdir(exist_ok=True)
     records=[]
-    lines=[f"# Japan Rising: executable event specification — {VERSION}","", "This catalogue is compiled into the installed event files. It lists every event, including technical receivers, cooldowns and verification. IDs and conditions below are generated from the same objects used by the build.","",f"Total: {len(EVENTS)} events; {sum(e.decision for e in EVENTS)} actionable decision entries. Counts include alternative paths and technical follow-ups; a campaign does not display them all.","", "## Cascade rules", "", "- Investment: available decision -> paid pending project -> delayed completion -> exact reward, or refund if completion conditions fail. Delay reopens after 90 days; permanent dismissal never reopens.","- Country: defeat gate -> selected terms -> defeated country's withdrawal -> release/tag change -> puppet or neutral treaty -> owned-port transfer -> final-state check -> local defence. Japan does not issue a minor-country alliance-wide peace.","- Pacific armistice: two years at war -> qualifying position -> 180-day monitored hold -> American reply -> Japanese terms -> checked land transfers -> Allied-Pacific peace -> verification -> five-year treaty expiry.","- Soviet terms: deep Siberian objectives -> Soviet reply -> occupied-border transfer -> separate-bloc eastern peace -> optional Far Eastern client. Formal Axis membership blocks this limited peace.","", "## Event index", "", "| ID | Key | Country | Module | Kind | Follow-up IDs |", "| --- | --- | --- | --- | --- | --- |"]
+    lines=[f"# Japan Rising: executable event specification — {VERSION}","", "This catalogue is compiled into the installed event files. It lists every event, including technical receivers, cooldowns and verification. IDs and conditions below are generated from the same objects used by the build.","",f"Total: {len(EVENTS)} events; {sum(e.decision for e in EVENTS)} actionable decision entries. Counts include alternative paths and technical follow-ups; a campaign does not display them all.","", "## Cascade rules", "", "- Investment: available decision -> paid pending project -> delayed completion -> exact reward, or refund if completion conditions fail. Delay reopens after 90 days; permanent dismissal never reopens.","- Country: defeat gate -> selected terms -> defeated country's withdrawal -> release/tag change -> puppet or neutral treaty -> owned-port transfer -> final-state check -> local defence. Japan does not issue a minor-country alliance-wide peace.","- Pacific armistice: two years at war -> qualifying position -> 180-day monitored hold -> Japanese terms -> American reply -> checked land transfers -> Allied-Pacific peace -> verification -> five-year treaty expiry.","- Soviet terms: deep Siberian objectives -> Soviet reply -> occupied-border transfer -> separate-bloc eastern peace -> optional Far Eastern client. Formal Axis membership blocks this limited peace.","", "## Event index", "", "| ID | Key | Country | Module | Kind | Follow-up IDs |", "| --- | --- | --- | --- | --- | --- |"]
     for e in EVENTS:
         text=" ".join(a.commands.__str__() for a in e.actions)
         refs=sorted(set(re.findall(r"@([A-Za-z0-9_]+)",text)))
@@ -421,7 +427,7 @@ def documentation():
     lines += ["", "## Exact events, gates and actions", ""]
     for e in EVENTS:
         lines += [f"### {e.id}: {e.title or e.key}","",f"Country: {e.country}. Module: {e.module}. Earliest year: {e.year}. Triggered receiver: {e.triggered}. Persistent: {e.persistent or e.triggered}.","",e.desc or "Technical follow-up; it can appear in a human campaign and has localised text.","", "```text",compiled_event(e),"```",""]
-    spec="\n".join(lines)
+    spec="\n".join(line.rstrip() for line in "\n".join(lines).splitlines()).rstrip()+"\n"
     (HERE/"EVENT_SPEC.md").write_text(spec,encoding="utf-8")
     payload=json.dumps(records,indent=2,ensure_ascii=True)
     (HERE/"events.json").write_text(payload,encoding="utf-8")
@@ -728,6 +734,7 @@ def compile_mod(digest,china_cores):
     localisation_support.install(SOURCE,TARGET,localisation(),read,write)
     ai_files()
     campaign_balance.install_assets(SOURCE,TARGET,read,write,parse,get,serialise)
+    r14_china.install(SOURCE,TARGET,read,write,parse,serialise)
     enemy_transport_ai.install(SOURCE,TARGET,read,write,parse,serialise)
     teams=teams_and_units()
     graphics(teams)
@@ -757,7 +764,8 @@ def compile_mod(digest,china_cores):
                  "UNIQUE_UNIT_EVENTS.md","UNIQUE_UNIT_COLD_AUDIT.json",
                  "R12_1_CHANGES.md","R12_1_COLD_AUDIT.json","FURTHER_JAPANESE_SPECIALISTS.md","PROGRESS.md",
                  "R13_UNITS.md","R13_ART_SOURCES.json","R13_1_CHANGES.md",
-                 "ENEMY_TRANSPORT_AI_REPORT.json","ENEMY_TRANSPORT_AI_AUDIT.json"):
+                 "ENEMY_TRANSPORT_AI_REPORT.json","ENEMY_TRANSPORT_AI_AUDIT.json",
+                 "R14_CHANGES.md","R14_CHINA.md","R14_PEACE.md","R14_AFTERWAR.md"):
         shutil.copy2(HERE/name,docs/name)
     shutil.copy2(WORKSPACE/"JAPAN_EXPANSION_SPEC.md",docs/"DESIGN_AND_AUDIT.md")
     manifest={"version":VERSION,"mod_name":MOD_NAME,"source":str(SOURCE),"target":str(TARGET),"state":"built-awaiting-validation","spec_sha256":digest,"events":len(EVENTS),"decisions":sum(e.decision for e in EVENTS),"patches":PATCHES,"art":list(ART_INPUTS),"excluded":"All Indian overhaul/terrain/compact code and installed Indian team overrides"}

@@ -24,7 +24,7 @@ def main():
     # Build refuses to replace files while the game process is running.
     for script,tail in (('build.py',['spec']),('build.py',['install']),
                         ('UNIQUE_UNIT_EVENTS_review.py',[]),('ENEMY_TRANSPORT_AI_review.py',[]),
-                        ('PLAYER_COPY_review.py',[]),('validate.py',[]),('portable_verify.py',[])):
+                        ('PLAYER_COPY_review.py',[]),('validate.py',[]),('R14_COLD_review.py',[]),('portable_verify.py',[])):
         print('Running '+script+' '+' '.join(tail),flush=True)
         subprocess.run([sys.executable,str(HERE/script),*tail],cwd=HERE,check=True)
     # Only the player-operated launcher can start the engine. Set its local

@@ -12,6 +12,17 @@ INLAND_HUBS = ((1914, 'Kansas City'), (1832, 'Chicago'), (1809, 'Washington'))
 INFANTRY_MP = 13
 WAVE_SIZE = 6
 WAVE_SUPPLIES = 2400
+# Model and research must both be current; late-war reserves never revert to 1936.
+RESERVE_MODELS = ((1948,1140,13),(1945,1130,12),(1942,1120,11),(1939,1110,10),(1936,1100,9))
+
+
+def reserve_model_gates():
+    earlier=[]
+    for year, tech, model in RESERVE_MODELS:
+        ready=f'year = {year} technology = {tech}'
+        gate=ready+' '+('NOT = { OR = { '+' '.join('AND = { '+p+' }' for p in earlier)+' } }' if earlier else '')
+        yield model,gate.strip()
+        earlier.append(ready)
 
 
 def no(gate): return 'NOT = { AND = { ' + gate + ' } }'
@@ -85,7 +96,7 @@ def project(key, title, text, context, days, cash, stock, choices):
 
 def american_wave(key, title, description, context, hubs):
     live = us_front() + ' ' + context + ' NOT = { ' + f(key.upper() + '_DONE') + ' }'
-    usable = 'OR = { technology = 1110 technology = 1100 }'
+    usable = 'OR = { '+' '.join('AND = { '+g+' }' for _,g in reserve_model_gates())+' }'
     funded = f'manpower = {INFANTRY_MP * WAVE_SIZE} supplies = {WAVE_SUPPLIES} ' + usable
     previous = []
     actions = []
@@ -97,8 +108,8 @@ def american_wave(key, title, description, context, hubs):
                     cmd('add_corps', which='"Continental Reserve - ' + city + '"', value='land', where=p)]
         for i in range(1, WAVE_SIZE + 1):
             name = '"Continental Reserve Division ' + str(i) + ' - ' + city + '"'
-            commands += [cond('technology = 1110', cmd('add_division', which=name, value='infantry', when=10)),
-                         cond('NOT = { technology = 1110 } technology = 1100', cmd('add_division', which=name, value='infantry', when=9))]
+            commands += [cond(g,cmd('add_division',which=name,value='infantry',when=model))
+                         for model,g in reserve_model_gates()]
         commands += [mark(key.upper() + '_FORMED'), mark(key.upper() + '_DONE'), later(key + '_notice', 1)]
         actions.append(Action('Form six reserve divisions at ' + city, commands, gate=gate, chance=100))
         previous.append(site)
@@ -111,7 +122,7 @@ def american_wave(key, title, description, context, hubs):
     # Explicit Japanese notice describes which concrete response actually ran.
     notice_live = human_front() + ' ' + f(key.upper() + '_DONE') + ' NOT = { ' + f(key.upper() + '_TOLD') + ' }'
     event(key + '_notice', title,
-          'American recruitment is responding to the invasion. If its budget and a safe staging city were available, six infantry divisions formed there, costing America 78 manpower and 2,400 supplies. Otherwise America authorized a finite 40-manpower and 2,000-supply budget instead; no formations were created. The divisions use the 1939 model only with American technology 1110, otherwise researched 1936 equipment. This response can occur once. Existing American forces remain in service.',
+          'American recruitment is responding to the invasion. With sufficient stocks and a safe staging city, six infantry divisions enter service, costing America 78 manpower and 2,400 supplies. They use the newest researched infantry equipment whose service year has arrived, from 1936 through 1948. Otherwise America receives 40 manpower and 2,000 supplies for recruitment; no divisions form. This response occurs once. Existing American forces remain in service.',
           triggered=True, module='us_campaign_content', art='army', actions=[
               Action('Six American reserve divisions have entered service', [mark(key.upper() + '_TOLD')],
                      gate=notice_live + ' ' + f(key.upper() + '_FORMED'), chance=100),

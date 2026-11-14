@@ -43,7 +43,9 @@ class EnduranceReview(unittest.TestCase):
                 receiver = ('endurance_small_fuel_delivery' if index == 0 else f'fuel_batch_delivery_{index-1}')
                 self.assertFalse(w.action(receiver))
                 self.assertFalse(select(w,'wartime_fuel_batch',index))
-                w.advance(45); w.resources['JAP'].update(oil=0,energy=50000)
+                w.advance(economy.batch_cooldown(oil)-1)
+                self.assertFalse(select(w,'wartime_fuel_batch',index))
+                w.advance(1); w.resources['JAP'].update(oil=0,energy=50000)
                 self.assertTrue(select(w,'wartime_fuel_batch',index))
 
     def test_reserve_storage_and_stock_thresholds_charge_nothing(self):

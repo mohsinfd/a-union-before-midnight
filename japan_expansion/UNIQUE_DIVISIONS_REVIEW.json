@@ -793,8 +793,8 @@
       "tech": 12000,
       "base_model": 7,
       "stats": {
-        "cost": "0.975",
-        "buildtime": "370",
+        "cost": "1.04",
+        "buildtime": "456",
         "manpower": "1.5",
         "softattack": null,
         "hardattack": null,
@@ -830,8 +830,8 @@
       "tech": 3080,
       "base_model": 8,
       "stats": {
-        "cost": "1.05",
-        "buildtime": "370",
+        "cost": "1.12",
+        "buildtime": "456",
         "manpower": "1.6",
         "softattack": null,
         "hardattack": null,
@@ -867,8 +867,8 @@
       "tech": 3090,
       "base_model": 9,
       "stats": {
-        "cost": "1.2",
-        "buildtime": "370",
+        "cost": "1.28",
+        "buildtime": "456",
         "manpower": "1.65",
         "softattack": null,
         "hardattack": null,

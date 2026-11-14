@@ -72,12 +72,13 @@ def run():
                             delta+=num(c,'value')*(base/100 if get(c,'where')=='relative' else 1)
                         if get(c,'type')=='build_cost' and get(c,'which') in {unit,group}:
                             cost_delta+=num(c,'value')*(num(models[0],'cost')/100 if get(c,'where')=='relative' else 1)
-                    alternatives.append((delta,i))
+                    alternatives.append(((raw+assembly_delta+programme+delta)*(cost+programme_cost+cost_delta),delta,cost_delta,i))
                     cost_alternatives.append(cost_delta)
                 if alternatives:
-                    delta,choice=min(alternatives)
-                    if delta<0:programme+=delta;selected.append((parent.key,choice,delta))
-                    programme_cost+=min(cost_alternatives)
+                    product,delta,cost_delta,choice=min(alternatives,key=lambda option:option[0])
+                    if product<(raw+assembly_delta+programme)*(cost+programme_cost):
+                        programme+=delta;programme_cost+=cost_delta
+                        selected.append((parent.key,choice,delta))
             subtotal=raw+assembly_delta
             total=subtotal+programme
             records.append({'year':year,'unit':unit,'model':index,'model_tech':tech,'model_zero_days':base,'template_days':raw,'template_ic':cost,'assembly_techs':assembly_ids,'assembly_days_delta':round(assembly_delta,2),'new_programme_days_delta':programme,'subtotal_days':round(subtotal,2),'bounded_days':round(total,2),'bounded_ic':round(cost+programme_cost,2),'bounded_ic_days':round(total*(cost+programme_cost),2),'programmes':selected})
@@ -89,7 +90,7 @@ def run():
         '## Method and limits','',
         '- Select the latest dated unconditional unit-model unlock at each snapshot. This does not prove the player researched it by that year.',
         '- From 1940, include applicable assembly technology 5140/5150/5160/5180, assuming its prerequisites were researched. The year is a comparison snapshot, not a promised research schedule.',
-        '- For each eligible-year programme, choose whichever funded alternative gives the largest time reduction to the row\'s unit. Each programme is counted once. Map, victory, peace and other availability gates are deliberately relaxed for this upper bound.',
+        '- For each eligible-year programme, select one real alternative by its joint IC-days effect; cost and time never come from incompatible choices. Map, victory, peace and other availability gates are relaxed for this stress scenario. R14_CONSTRUCTION_AUDIT.md adds every new specialist and attachment, researched doctrines, ministers, sliders and gearing.',
         '- The rows do not form one joint set of choices. Land-doctrine modifiers, ministers, sliders, difficulty, gearing, attachments, upgrade/conversion rules and engine rounding are excluded. CAG inclusion in the air category is a conservative bound that still requires engine confirmation.',
         '- Template IC-days illustrate only these inputs. They are not actual campaign IC-days. Research, doctrine and industrial throughput still constrain production.','',
         '| Year | Unit | Model | Raw days | Assembly reduction | Maximum new reduction | Subtotal days | Illustrative IC-days |',

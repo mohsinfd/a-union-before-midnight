@@ -66,7 +66,7 @@ def run():
             base=original[info['base_models'][i]]
             assert b.num(m,'manpower')==b.num(base,'manpower')
             assert b.get(m,'equipment')==b.get(base,'equipment')
-            expected_cost_factor={'d_13':1.15,'d_14':1.15,'d_15':1.15,'d_16':1.05,'d_17':.95,'d_18':.75,'d_19':1.05}[unit]
+            expected_cost_factor={'d_13':1.15,'d_14':1.15,'d_15':1.15,'d_16':1.05,'d_17':.95,'d_18':.8,'d_19':1.05}[unit]
             assert abs(b.num(m,'cost')/b.num(base,'cost')-expected_cost_factor)<.001
             if unit=='d_13':
                 assert b.num(m,'airattack')==b.num(base,'airattack')*1.5
@@ -91,7 +91,8 @@ def run():
                 assert b.get(m,'navalattack')==b.get(base,'navalattack')
                 assert b.num(m,'airdefence')>b.num(base,'airdefence')
             elif unit=='d_18':
-                assert b.num(m,'cost')*b.num(m,'buildtime')<b.num(base,'cost')*b.num(base,'buildtime')*.5
+                ratio=b.num(m,'cost')*b.num(m,'buildtime')/(b.num(base,'cost')*b.num(base,'buildtime'))
+                assert .63<=ratio<=.65, ('R14 Matsu should retain about36% base IC-days saving',ratio)
                 assert b.num(m,'subattack')>=b.num(base,'subattack')*1.2
                 assert b.num(m,'maxspeed')<b.num(base,'maxspeed')
             elif unit=='d_19':

@@ -116,7 +116,7 @@ def models(unit):
                      'fuelconsumption':round(native.num(m,'fuelconsumption')*1.15,3),
                      'softattack':round(native.num(m,'softattack')*.5,2),'hardattack':round(native.num(m,'hardattack')*.5,2)}
         elif unit=='d_18':
-            changes={'cost':round(native.num(m,'cost')*.75,3),'buildtime':round(native.num(m,'buildtime')*.65),
+            changes={'cost':round(native.num(m,'cost')*.8,3),'buildtime':round(native.num(m,'buildtime')*.8),
                      'range':round(native.num(m,'range')*.65),'maxspeed':round(native.num(m,'maxspeed')*.8,2),
                      'seaattack':round(native.num(m,'seaattack')*.55,2),'convoyattack':round(native.num(m,'convoyattack')*.55,2),
                      'airattack':round(native.num(m,'airattack')*.8,2),'subattack':round(native.num(m,'subattack')*1.2,2),
@@ -248,7 +248,7 @@ def localisation_rows():
         'd_15':'Full Airborne division with ordinary Paratrooper firepower, manpower and transport weight. Organisation and morale +8, supply use -10%, base IC cost +15%, construction time +10%. Normal transports and airborne doctrine are still required.',
         'd_16':'Full land-based naval fighter wing. Base range doubled, IC cost +5%, time -5%, speed -5%, fuel use +10%. Air-defence vulnerability +15%: higher is worse. Ordinary fighter firepower and crews; cannot operate as a carrier air group.',
         'd_17':'Full land-based naval attack wing. Base range +50%, IC cost and time -5%, ordinary naval strike and crews. Fuel use +15%, air-defence vulnerability +25% (higher is worse), ground attack halved. Less search capability than flying boats.',
-        'd_18':'Affordable Matsu/Tachibana escort flotilla. Base IC cost -25%, time -35%, ASW attack +20%, fuel -25%. Surface and convoy attack -45%, AA attack -20%, speed -20%, range -35%. A map destroyer flotilla, not convoy escort points.',
+        'd_18':'Affordable Matsu/Tachibana escort flotilla. Base IC cost and time -20%, ASW attack +20%, fuel -25%. Surface and convoy attack -45%, AA attack -20%, speed -20%, range -35%. A map destroyer flotilla, not convoy escort points.',
         'd_19':'Full-size expeditionary infantry with assault engineers: ordinary manpower, soft attack, speed and attachments. Supplies -20%, fuel -25%; jungle attack/movement +15, forest attack/movement +10, river attack +15, urban attack +10 percentage points. Defence -10%, hard attack -1; IC +5%, time -5%. Normal Infantry amphibious limits apply.',
     }
     return [(key,value) for unit,info in CLASSES.items()

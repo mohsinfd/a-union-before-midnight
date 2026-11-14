@@ -1,0 +1,112 @@
+{
+  "version": "JX 1.1 ALPHA 2 R14",
+  "target": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2",
+  "state": "installed-offline-validated",
+  "events": 2940,
+  "modules": 38,
+  "loaded_english_matches": 7411,
+  "game_launched": false,
+  "save_edits": false,
+  "source_path": "C:\\Users\\Mohsin Dingankar\\Downloads\\Blood and Iron v1.1",
+  "installed_model_hashes": {
+    "db\\units\\divisions\\d_13.txt": "6c69c7b308012eac17913ff063ef8a4a382d558b3c5c379b58bc2f048c436e98",
+    "db\\units\\divisions\\d_14.txt": "5edff3bd09ab04996ab4dd73bfbfbcd8c10b39a115ef219fcf97b92a03669004",
+    "db\\units\\divisions\\d_15.txt": "9c40464c93a5b7ad62007c5afbde25333db14b37deb773864065662bd939f152",
+    "db\\units\\divisions\\d_16.txt": "1281664529e5eb4ab97bf0587f5656a870522bc214fcb6ef35aa4c924ef03aab",
+    "db\\units\\divisions\\d_17.txt": "acdfd0ff1e9bcbee23fdc7cad318f3a71b60f0def3e5e88d5bb36091faf9c07f",
+    "db\\units\\divisions\\d_18.txt": "4b75c83df1bfbe4537b8dab45e3ab27a2685ccce6b4bd188fe42226571e91921",
+    "db\\units\\divisions\\d_19.txt": "ed0f0c952a4132c9cf3aa3b770a15a1517486561705cb81223b5e1eb441fff39",
+    "db\\units\\brigades\\b_01.txt": "dfc4b97184601bdc5466764cfa46001eba5002d85ad3646dee626998a2f52345",
+    "db\\units\\brigades\\b_02.txt": "798b0d47f3620762c2091e457d19e3601f60bb8df88bc84cc6c0ed53d1a62a37",
+    "db\\units\\brigades\\b_03.txt": "51a0fa62cd55c8fa2b909f11ac6b34997b7d19ab10970d898d89523bd1a9da0c"
+  },
+  "fresh_offline_checks": {
+    "UNIQUE_UNIT_COLD_AUDIT.json": {
+      "passed": true,
+      "tests": 13,
+      "failures": 0,
+      "errors": 0,
+      "introductions": [
+        "unique_intro_b_01",
+        "unique_intro_b_02",
+        "unique_intro_d_14",
+        "unique_intro_b_03",
+        "unique_intro_d_13",
+        "unique_intro_d_15",
+        "unique_intro_d_19",
+        "unique_intro_d_17",
+        "unique_intro_d_16",
+        "unique_intro_d_18"
+      ],
+      "resolvers": 29,
+      "first_issue_manpower": 42.4,
+      "game_launched": false
+    },
+    "ENEMY_TRANSPORT_AI_AUDIT.json": {
+      "version": "JX 1.1 ALPHA 2 R14",
+      "passed": true,
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "game_launched": false
+    },
+    "R14_COLD_AUDIT.json": {
+      "version": "JX 1.1 ALPHA 2 R14",
+      "passed": true,
+      "game_executed": false,
+      "save_edits": false,
+      "events": 2940,
+      "registered_decisions": 123,
+      "active_decisions": 97,
+      "original_ids_preserved": true,
+      "original_id_count": 1822,
+      "installed_mismatches": [],
+      "catalogue_bytes": 50560835,
+      "largest_named_action_gate": {
+        "characters": 2749,
+        "event": "us_peace"
+      },
+      "source_spec_sha256": "4b283be92a80a44b6cb729f0699c079e087698496b0b0d8b5979f3141d3b5910",
+      "suites": [
+        {
+          "script": "r14_china_review.py",
+          "passed": true,
+          "output": ".............\n----------------------------------------------------------------------\nRan 13 tests in 6.007s\n\nOK\n"
+        },
+        {
+          "script": "r14_peace_review.py",
+          "passed": true,
+          "output": "test_annexed_usa_clears_unanswered_national_talks (__main__.PeaceReview.test_annexed_usa_clears_unanswered_national_talks) ... ok\ntest_cached_national_snapshot_preserves_existing_claims (__main__.PeaceReview.test_cached_national_snapshot_preserves_existing_claims) ... ok\ntest_cached_soviet_root_cannot_reset_accepted_talks (__main__.PeaceReview.test_cached_soviet_root_cannot_reset_accepted_talks) ... ok\ntest_cambodia_colonial_creation_needs_phnom_penh (__main__.PeaceReview.test_cambodia_colonial_creation_needs_phnom_penh) ... ok\ntest_consent_refusal_and_stale_consent_response (__main__.PeaceReview.test_consent_refusal_and_stale_consent_response) ... ok\ntest_duplicate_success_receiver_cannot_repeat_dissent_or_relations (__main__.PeaceReview.test_duplicate_success_receiver_cannot_repeat_dissent_or_relations) ... ok\ntest_every_colonial_create_requires_its_declared_capital (__main__.PeaceReview.test_every_colonial_create_requires_its_declared_capital) ... ok\ntest_every_created_partner_is_supported_in_coalition_settlements (__main__.PeaceReview.test_every_created_partner_is_supported_in_coalition_settlements) ... ok\ntest_external_peace_does_not_grant_retroactive_gifts (__main__.PeaceReview.test_external_peace_does_not_grant_retroactive_gifts) ... ok\ntest_final_script_has_single_command_triggers_and_stable_ids (__main__.PeaceReview.test_final_script_has_single_command_triggers_and_stable_ids) ... ok\ntest_formal_axis_cached_action_blocked_while_pending (__main__.PeaceReview.test_formal_axis_cached_action_blocked_while_pending) ... ok\ntest_friendly_nonallied_neutral_does_not_count (__main__.PeaceReview.test_friendly_nonallied_neutral_does_not_count) ... ok\ntest_independent_ally_cannot_lose_its_own_territory (__main__.PeaceReview.test_independent_ally_cannot_lose_its_own_territory) ... ok\ntest_indian_settlement_accepts_actual_partner_objectives (__main__.PeaceReview.test_indian_settlement_accepts_actual_partner_objectives) ... ok\ntest_indonesia_colonial_creation_needs_batavia_not_jogjakarta (__main__.PeaceReview.test_indonesia_colonial_creation_needs_batavia_not_jogjakarta) ... ok\ntest_keep_hawaii_is_a_distinct_hostile_bargain (__main__.PeaceReview.test_keep_hawaii_is_a_distinct_hostile_bargain) ... ok\ntest_late_axis_entry_cancels_without_cross_war_peace (__main__.PeaceReview.test_late_axis_entry_cancels_without_cross_war_peace) ... ok\ntest_partner_held_colonial_land_requires_consent (__main__.PeaceReview.test_partner_held_colonial_land_requires_consent) ... ok\ntest_peace_renewal_never_appears_during_renewed_war (__main__.PeaceReview.test_peace_renewal_never_appears_during_renewed_war) ... ok\ntest_rebuilt_us_carriers_invalidate_old_loss_counter (__main__.PeaceReview.test_rebuilt_us_carriers_invalidate_old_loss_counter) ... ok\ntest_return_hawaii_full_chain_and_independent_wars (__main__.PeaceReview.test_return_hawaii_full_chain_and_independent_wars) ... ok\ntest_soviet_full_chain_and_cached_axis_interruption (__main__.PeaceReview.test_soviet_full_chain_and_cached_axis_interruption) ... ok\ntest_stale_coalition_flag_cannot_commit_any_treaty (__main__.PeaceReview.test_stale_coalition_flag_cannot_commit_any_treaty) ... ok\ntest_stale_country_resolution_cannot_puppet_neutral_state (__main__.PeaceReview.test_stale_country_resolution_cannot_puppet_neutral_state) ... ok\ntest_stale_transfer_authority_is_refreshed_before_cached_secession (__main__.PeaceReview.test_stale_transfer_authority_is_refreshed_before_cached_secession) ... ok\ntest_transfer_failure_never_signs_and_partial_delivery_survives (__main__.PeaceReview.test_transfer_failure_never_signs_and_partial_delivery_survives) ... ok\ntest_visible_actions_remain_compact (__main__.PeaceReview.test_visible_actions_remain_compact) ... ok\n\n----------------------------------------------------------------------\nRan 27 tests in 34.729s\n\nOK\n"
+        },
+        {
+          "script": "r14_afterwar_review.py",
+          "passed": true,
+          "output": "test_annexed_partner_after_acceptance_refunds_once_and_closes_recreated_receiver (__main__.Afterwar.test_annexed_partner_after_acceptance_refunds_once_and_closes_recreated_receiver) ... ok\ntest_both_partners_all_three_policies (__main__.Afterwar.test_both_partners_all_three_policies) ... ok\ntest_brief_renewed_wars_cannot_be_erased_before_completion (__main__.Afterwar.test_brief_renewed_wars_cannot_be_erased_before_completion) ... ok\ntest_civilian_war_refund_and_no_negative_manpower (__main__.Afterwar.test_civilian_war_refund_and_no_negative_manpower) ... ok\ntest_civilian_work_and_replays (__main__.Afterwar.test_civilian_work_and_replays) ... ok\ntest_declines_do_not_reward_or_repeat (__main__.Afterwar.test_declines_do_not_reward_or_repeat) ... ok\ntest_native_infrastructure_scales_and_factory_cap (__main__.Afterwar.test_native_infrastructure_scales_and_factory_cap) ... ok\ntest_partner_civilian_aid_rejects_known_war_and_bad_factory_site (__main__.Afterwar.test_partner_civilian_aid_rejects_known_war_and_bad_factory_site) ... ok\ntest_partner_disappears_or_loses_capital_refunds_once (__main__.Afterwar.test_partner_disappears_or_loses_capital_refunds_once) ... ok\ntest_readiness_has_finite_concrete_cost (__main__.Afterwar.test_readiness_has_finite_concrete_cost) ... ok\ntest_replaced_awards_have_no_stale_construction_metadata (__main__.Afterwar.test_replaced_awards_have_no_stale_construction_metadata) ... ok\ntest_retained_hawaii_and_american_budget (__main__.Afterwar.test_retained_hawaii_and_american_budget) ... ok\ntest_us_commerce_and_refund (__main__.Afterwar.test_us_commerce_and_refund) ... ok\ntest_us_waits_for_verified_peace_and_treaty_choice (__main__.Afterwar.test_us_waits_for_verified_peace_and_treaty_choice) ... ok\n\n----------------------------------------------------------------------\nRan 14 tests in 6.372s\n\nOK\n"
+        },
+        {
+          "script": "r14_balance_review.py",
+          "passed": true,
+          "output": "test_existing_ids_and_unique_definitions (__main__.BalanceReview.test_existing_ids_and_unique_definitions) ... ok\ntest_india_receives_the_land_ai_at_any_industrial_size (__main__.BalanceReview.test_india_receives_the_land_ai_at_any_industrial_size) ... ok\ntest_large_fuel_order_has_real_recovery_and_exact_cancel_terms (__main__.BalanceReview.test_large_fuel_order_has_real_recovery_and_exact_cancel_terms) ... ok\ntest_matsu_retains_a_useful_bounded_discount_and_full_manpower (__main__.BalanceReview.test_matsu_retains_a_useful_bounded_discount_and_full_manpower) ... ok\ntest_us_equipment_and_healing_are_exclusive_even_with_future_tech (__main__.BalanceReview.test_us_equipment_and_healing_are_exclusive_even_with_future_tech) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.937s\n\nOK\n"
+        },
+        {
+          "script": "US_CAMPAIGN_review.py",
+          "passed": true,
+          "output": "test_180_day_commitment_and_endurance_keep_all_existing_peace_choices (__main__.USCampaignReview.test_180_day_commitment_and_endurance_keep_all_existing_peace_choices) ... ok\ntest_1936_fallback_and_low_research_or_stock_budget_are_real (__main__.USCampaignReview.test_1936_fallback_and_low_research_or_stock_budget_are_real) ... ok\ntest_all_major_ports_allow_once_only_landing_reward_without_ownership_change (__main__.USCampaignReview.test_all_major_ports_allow_once_only_landing_reward_without_ownership_change) ... ok\ntest_append_only_and_eight_substantive_entries (__main__.USCampaignReview.test_append_only_and_eight_substantive_entries) ... ok\ntest_california_and_plains_milestones_require_named_cities_and_time (__main__.USCampaignReview.test_california_and_plains_milestones_require_named_cities_and_time) ... ok\ntest_coastal_response_spends_actual_budget_and_spawns_six_researched_infantry (__main__.USCampaignReview.test_coastal_response_spends_actual_budget_and_spawns_six_researched_infantry) ... ok\ntest_late_reserves_use_newest_researched_and_dated_equipment (__main__.USCampaignReview.test_late_reserves_use_newest_researched_and_dated_equipment) ... ok\ntest_no_response_can_spawn_on_enemy_controlled_or_foreign_owned_city (__main__.USCampaignReview.test_no_response_can_spawn_on_enemy_controlled_or_foreign_owned_city) ... ok\ntest_prewar_and_wrong_controllers_cannot_start_new_content (__main__.USCampaignReview.test_prewar_and_wrong_controllers_cannot_start_new_content) ... ok\ntest_replacement_choices_charge_deliver_once_and_refund_if_foothold_lost (__main__.USCampaignReview.test_replacement_choices_charge_deliver_once_and_refund_if_foothold_lost) ... ok\ntest_second_wave_needs_time_and_interior_and_total_is_bounded_at_twelve (__main__.USCampaignReview.test_second_wave_needs_time_and_interior_and_total_is_bounded_at_twelve) ... ok\ntest_source_templates_tech_mapping_province_names_and_copy_are_verified (__main__.USCampaignReview.test_source_templates_tech_mapping_province_names_and_copy_are_verified) ... ok\n\n----------------------------------------------------------------------\nRan 12 tests in 5.311s\n\nOK\n"
+        },
+        {
+          "script": "ENDURANCE_review.py",
+          "passed": true,
+          "output": "test_all_four_work_choices_are_exclusive_and_require_metal (__main__.EnduranceReview.test_all_four_work_choices_are_exclusive_and_require_metal) ... ok\ntest_changed_stock_cancels_and_refunds_exactly_once (__main__.EnduranceReview.test_changed_stock_cancels_and_refunds_exactly_once) ... ok\ntest_each_packet_charges_once_delivers_once_and_waits (__main__.EnduranceReview.test_each_packet_charges_once_delivers_once_and_waits) ... ok\ntest_loss_of_mine_returns_complete_investment_without_output (__main__.EnduranceReview.test_loss_of_mine_returns_complete_investment_without_output) ... ok\ntest_no_worldwide_or_free_daily_outputs_and_idempotence (__main__.EnduranceReview.test_no_worldwide_or_free_daily_outputs_and_idempotence) ... ok\ntest_reserve_storage_and_stock_thresholds_charge_nothing (__main__.EnduranceReview.test_reserve_storage_and_stock_thresholds_charge_nothing) ... ok\ntest_stage_two_requires_first_stage_and_war (__main__.EnduranceReview.test_stage_two_requires_first_stage_and_war) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 3.158s\n\nOK\n"
+        },
+        {
+          "script": "r14_construction_review.py",
+          "passed": true,
+          "output": "{\"passed\": true, \"rows\": 50, \"families\": 10, \"matsu\": [[1944, 0.5641], [1945, 0.5648], [1950, 0.5648]]}\n"
+        }
+      ],
+      "cross_review": "China, peace and aftermath authors reviewed each other. Found and repaired cached selections bypassing gates, renewed-war treaty renewal, invalid construction sites and missing partner-war guards. Root checked installed parity, production math and text. Economic reviewer found and corrected stale Matsu copy. Expanded coalition conditions were replaced after root measured unsafe tooltip lengths.",
+      "limits": "Offline evidence only. Startup, actual UI rendering, engine AI regrouping, Hard combat balance, convoy assignment and long-campaign stability require player testing. No game or launcher was run."
+    }
+  },
+  "qualification": "Source/event/model/localisation/art parity and fresh documented-command tests; no running-engine or long-campaign guarantee."
+}

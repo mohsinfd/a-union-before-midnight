@@ -91,12 +91,12 @@ def run(require_installed=False):
     assert first == [(e.key, e.gate, e.desc, e.actions) for e in b.EVENTS]
     by = {e.key: e for e in b.EVENTS}
     assert fix.REPORT['divisions'] == 14
-    assert fix.REPORT['american_conditional_division_commands'] == 84
+    assert fix.REPORT['american_conditional_division_commands'] == 210
     r11_commands = [sp.parse(c) for e in b.EVENTS
                     if e.module in {'country_campaigns', 'prewar_content', 'us_campaign_content'}
                     for a in e.actions for c in a.commands]
     command_counts = Counter(sp.get(c, 'type') for c in r11_commands)
-    assert command_counts['add_division'] == command_counts['damage_division'] == 98
+    assert command_counts['add_division'] == command_counts['damage_division'] == 224
     assert command_counts['add_corps'] == 15
     assert not any(command_counts[k] for k in ('build_division', 'build_brigade', 'add_brigade', 'strength', 'strength_cap', 'disorg_division'))
     names = {n for row in fix.REPORT['deliveries'] for n in row['unit_names']}
@@ -111,7 +111,7 @@ def run(require_installed=False):
                   if sp.get(sp.parse(c), 'type') == 'add_division']
     occurrences = Counter(all_awards)
     assert all(occurrences['JAP', n] == 1 for n in names)
-    assert all(occurrences['USA', n] == 2 for n in us_names)  # mutually exclusive model variants
+    assert all(occurrences['USA', n] == 5 for n in us_names)  # mutually exclusive researched/dates
     checks.append('All 14 Japanese and 42 potential American names are distinct, absent from clean scenario/unit lists/events, and occur only in their own final award/model alternatives; no event-ID names.')
     model_rows = []
     for row in fix.REPORT['deliveries']:
@@ -151,7 +151,7 @@ def run(require_installed=False):
         cs = [sp.parse(c) for c in action.commands]
         additions = [c for c in cs if sp.get(c, 'type') == 'add_division']
         heals = [c for c in cs if sp.get(c, 'type') == 'damage_division']
-        assert len(additions) == len(heals) == 12
+        assert len(additions) == len(heals) == 30
         for add, heal in zip(additions, heals):
             assert sp.get(add, 'trigger') == sp.get(heal, 'trigger')
             assert sp.get(add, 'which') == sp.get(heal, 'which')
@@ -212,8 +212,10 @@ def run(require_installed=False):
             if runs and sp.get(node, 'type') == 'add_division':
                 self.deployed_units[-1]['strength'] = 33
     for row in fix.REPORT['american']:
-        for technology, expected_model in (({'1100'}, 9), ({'1110'}, 10)):
+        for service_year,technology_id,expected_model in b.us_campaign_content.RESERVE_MODELS:
+            technology={str(technology_id)}
             w = USUnderstrength(); w.country_tech['USA'] = technology
+            w.year=max(1941,service_year)
             w.flags['JX_USC_LANDING_DONE'] = 1
             w.history[str(by['usc_landing'].id)] = 0; w.day = 60
             for earlier in fix.REPORT['american']:
@@ -235,7 +237,7 @@ def run(require_installed=False):
     assert w.action('usc_inland_response', 0)
     assert w.deployed_units[:6] == old
     assert all(u['strength'] == 100 for u in w.deployed_units[6:])
-    checks.append('Fourteen USA hub/model fixtures create six full-strength researched divisions each; both Kansas City waves coexist with distinct names, and the second wave leaves wounded first-wave units unchanged.')
+    checks.append('Thirty-five USA hub/model fixtures create six full-strength researched divisions each; both Kansas City waves coexist with distinct names, and the second wave leaves wounded first-wave units unchanged.')
 
     # Exact final compile parity; pending installation is reported explicitly.
     installed_by_id = {sp.get(e, 'id'): e for _, e in target_events}
@@ -269,7 +271,7 @@ def run(require_installed=False):
              '- Four Japanese aircraft/ship alternatives now require a current level-one airfield/naval base both at payment and receipt, with the same predicate included in the exact-refund complement.',
              '- All 14 potential Japanese awards use realistic distinct formation names and one scoped restoration per created unit. Each of seven American staging alternatives retains its two exclusive researched model paths, with an identically conditioned scoped restoration.',
              '- Western Reserve and Central Reserve names distinguish the two American waves. Kansas City can host both without a second-wave restoration healing wounded first-wave formations.',
-             '- Manpower bills, model choices, supply/money/resource bills, elapsed times, branch markers, receipts, ownership/control predicates and maximum actual American reserve count (12) remain unchanged. Existing intentionally quarter-strength island detachments remain unchanged.', '',
+             '- American reserves now choose among five researched and dated models. Manpower bills, supply/money/resource bills, elapsed times, branch markers, receipts, ownership/control predicates and maximum actual American reserve count (12) remain unchanged. Existing intentionally quarter-strength island detachments remain unchanged.', '',
              '## Japanese model / crew / deployment verification', '',
              '| Formation | Type / model | Research | Manpower | Deployment |', '| --- | --- | --- | --- | --- |']
     lines += [f"| {r['name']} | {r['unit']} / {r['model']} | {r['tech']} | {r['mp']:g} | {r['site']} |" for r in model_rows]
@@ -280,7 +282,7 @@ def run(require_installed=False):
               '## Limits', '', *('- ' + x for x in report['limits']), '',
               'This audit did not launch the game, change saves, edit German files or install a mod. Full command records, cap findings and parity exceptions are in EQUIPMENT_DELIVERY_REVIEW.json.']
     (HERE / 'EQUIPMENT_DELIVERY_AUDIT.md').write_text('\n'.join(lines) + '\n', encoding='utf-8')
-    print(json.dumps({'checks': len(checks), 'japanese_births': 14, 'american_conditional_births': 84,
+    print(json.dumps({'checks': len(checks), 'japanese_births': 14, 'american_conditional_births': 210,
                       'american_max_actual_births': 12, 'installed_matches': parity, 'mismatch_count': len(mismatches)}))
     if require_installed and not parity:
         raise SystemExit('Installed events differ from final source: ' + ', '.join(mismatches))
