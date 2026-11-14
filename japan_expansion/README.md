@@ -1,8 +1,8 @@
-# Japan Rising - JX 1.1 ALPHA 2 R14
+# Japan Rising - JX 1.1 ALPHA 2 R14.1
 
-Current release: **R14**. See [R14_CHANGES.md](R14_CHANGES.md) for the complete cold-review repairs, tougher Chinese surrender, coalition-safe peace and postwar continuation. Start a new 1933 campaign. No game was run; source and installed checks do not certify long-campaign stability.
+Current release: **R14.1**. See [R14_CHANGES.md](R14_CHANGES.md) for the complete cold-review repairs, tougher Chinese surrender, coalition-safe peace and postwar continuation. Start a new 1933 campaign. No game was run; source and installed checks do not certify long-campaign stability.
 
-Use the existing **Japan Rising JX1 Alpha2** shortcut/folder and start a **new 1933 campaign as Japan**. Confirm **R14** in the scenario name and welcome event. This is a human-Japan expansion on Blood and Iron. The historical diplomatic opening through Pearl Harbor remains, followed by independent campaign choices through 1950. Existing saves are not migration targets for this revision.
+Use the existing **Japan Rising JX1 Alpha2** shortcut/folder and start a **new 1933 campaign as Japan**. Confirm **R14.1** in the scenario name and welcome event. This is a human-Japan expansion on Blood and Iron. The historical diplomatic opening through Pearl Harbor remains, followed by independent campaign choices through 1950. Existing saves are not migration targets for this revision.
 
 R13.1 improves initial enemy transport protection and future escort construction; see [R13_1_CHANGES.md](R13_1_CHANGES.md). A portable installer supports another Windows PC using your own game and Blood and Iron folders.
 
@@ -93,11 +93,11 @@ The inherited rule destroys **50% of oil ABOVE its stockpile limit each day**. T
 | 6,000 oil | 12,000 energy, 800 supplies, 100 money | Storage and first works completed; oil below 6,000 |
 | 12,000 oil | 24,000 energy, 1,600 supplies, 200 money | Storage and wartime works completed; oil below 12,000 |
 
-Each order must leave at least 9,000 energy unspent. Delivery takes 45 days, then another 45 days before a new order. Only one packet can be pending. The delivery offers the oil or an exact refund of the paid inputs, with the same cooldown. Above its low-stock threshold only cancellation remains available. The actual dynamic storage cap cannot be measured by these events, so inspect it before accepting. A small packet is available for a low-capacity economy.
+Each order must leave at least 9,000 energy unspent. Delivery takes 45 days. Small and standard packets then need 45 days of recovery; the large packet needs 90 days. Only one packet can be pending. The delivery offers the oil or an exact refund of the paid inputs, with the same recovery period for either choice. Above its low-stock threshold only cancellation remains available. The actual dynamic storage cap cannot be measured by these events, so inspect it before accepting. A small packet is available for a low-capacity economy.
 
-The large packet averages 133 oil/day and consumes about 267 energy/day, plus 17.8 supplies and 2.2 money daily over its 90-day cycle. This is a funded emergency conversion, not free oil. Native conversion uses the same coal and is excluded from the assured planning budget. The three developed occupied southern fields add roughly 42 effective oil/day under the audit assumptions, and still require shipping.
+In R14 the large packet averages about 88.9 oil/day over its 135-day delivery-and-recovery cycle. Its recurring inputs average 177.8 energy, 11.85 supplies and 1.48 money daily. This is a funded emergency conversion, not free oil. Native conversion uses the same coal and is excluded from this planning budget. The three developed occupied southern fields add roughly 42 effective oil/day under the audit assumptions, and still require shipping.
 
-The latest old save's force templates total about 442 oil/day if everything operates at its saved template rate. That is not an observed daily ledger. A worked rotation of 30% land movement, 40% naval operation and 30% air activity is about 165/day before combat and other effects. Both balanced works plus sustained large packets supply about 176/day before conquest/imports, or about 217/day with those three developed occupied fields. Operating the entire expanded force continuously remains expensive.
+The latest old save's force templates total about 442 oil/day if everything operates at its saved template rate. That is not an observed daily ledger. A worked rotation of 30% land movement, 40% naval operation and 30% air activity is about 165/day before combat and other effects. Under the same works-efficiency assumptions, both balanced works plus sustained R14 large packets supply about 131/day before conquest/imports, or about 173/day with those three developed occupied fields. Operating the entire expanded force continuously remains expensive.
 
 ## Recruiting and replacing a larger army
 

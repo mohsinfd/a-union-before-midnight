@@ -19,12 +19,16 @@ for key in expected:
     with Image.open(path) as image:image.verify()
 events=json.loads((project/'events.json').read_text())
 audit=json.loads((project/'R14_COLD_AUDIT.json').read_text(encoding='utf-8'))
-assert audit['passed'] and audit['version']=='JX 1.1 ALPHA 2 R14'
+catalogue=ast.parse((project/'catalog.py').read_text(encoding='utf-8'))
+version=next(ast.literal_eval(n.value) for n in catalogue.body if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='VERSION' for t in n.targets))
+assert audit['passed'] and audit['version']==version
 assert len(events)==audit['events'] and len({e['id'] for e in events})==len(events)
 assert sum(e['decision'] for e in events)==audit['registered_decisions']
 baseline=json.loads((project/'R14_BASELINE_IDS.json').read_text(encoding='utf-8'))
 current={e['key']:e['id'] for e in events}
 assert all(current.get(k)==v for k,v in baseline.items())
+r14_baseline=json.loads((project/'R14_PRESTART_BASELINE_IDS.json').read_text(encoding='utf-8'))
+assert all(current.get(k)==v for k,v in r14_baseline.items())
 assert not list(ROOT.rglob('*.eug')) and not list(ROOT.rglob('*.dmp'))
 assert not (project/'local_paths.json').exists()
 manifest=json.loads((ROOT/'SOURCE_RELEASE_MANIFEST.json').read_text(encoding='utf-8'))

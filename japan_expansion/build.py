@@ -333,6 +333,7 @@ def prepare_catalog():
     r14_china.apply()
     r14_peace.apply()
     r14_afterwar.apply()
+    r14_china.append_interruption()
     final_event_integrity.apply()
     equipment_delivery.apply()
     player_copy.apply()

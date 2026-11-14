@@ -23,7 +23,7 @@ The decisive CHI/U87 receivers recheck the army, territorial, victory-point and 
 
 The material actions also recheck their conditions when executing commands, using a private receipt for each action. This covers a player leaving an event open while conditions change. The receipt allows a valid action to finish after its own peace or flag commands change the original conditions.
 
-Limited peace now requires a live offer and recorded Chinese acceptance. Lost objectives cancel negotiations with a 90-day delay; stale acceptance or confirmation cannot impose a peace. Unrelated Japanese wars continue.
+Limited peace now requires a live offer and recorded Chinese acceptance. Lost objectives cancel negotiations with a 90-day delay; stale acceptance or confirmation cannot impose a peace. Unrelated Japanese wars continue. R14.1 also closes the pending negotiation if China is annexed while its reply is queued. The Japanese-side check clears the pending and acceptance flags, applies a 90-day waiting period, and grants no peace or territorial reward.
 
 The installer guards both B&I offer roots and their directly triggered receivers/callbacks: **2011012, 2012017, 2011013, 2011014, 2011015, 2012018, 2011016 and 2011017**. Active Japan Rising uses its own settlement chain. A stale stock callback has only an inert acknowledgement. Non-Japan-Rising campaigns retain the original actions.
 
@@ -33,7 +33,7 @@ A wider source scan also identified Japan's defeat/surrender events (2011018, 20
 
 - Call `r14_china.apply()` after the R13 appenders and before final integrity/equipment/player-copy passes.
 - Call `r14_china.install(source, target, read, write, parse, serialise)` **after** `patch_baseline()`; it preserves the builder's other native-file fixes and is idempotent.
-- No event IDs are allocated or renumbered. All 1,822 baseline IDs remain intact. Unit upgrade/model IDs are untouched.
-- Run `python r14_china_review.py`. All 13 offline tests pass. The suite reproduces the old delayed-wipe eligibility, checks final compiled decisions at 60/61 survivors, dormant/expeditionary cases, successor China, delayed wartime assessment, independence, stale receivers and cached selections, limited peace and repeated native-file patching.
+- R14.1 adds one Japanese-side interruption watcher after all 2,940 R14 events. Every existing event ID is preserved. Unit upgrade/model IDs are untouched. Call `append_interruption()` after the other R14 modules.
+- Run `python r14_china_review.py`. All 15 offline tests pass. The suite reproduces the old delayed-wipe eligibility, checks final compiled decisions at 60/61 survivors, dormant/expeditionary cases, successor China, delayed wartime assessment, independence, stale receivers and cached selections, limited peace and repeated native-file patching.
 
 This is a source and scripted-state audit. The game is not launched, so actual engine delivery and the difficulty of reaching the new surrender threshold remain playtest observations.

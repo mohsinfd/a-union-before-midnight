@@ -2,7 +2,7 @@
 
 No IDs are allocated, files installed or game processes started on import.
 """
-from catalog import EVENTS, Action, cmd, cond, flag, clear, later, puppet, control
+from catalog import EVENTS, Action, event, cmd, cond, flag, clear, later, puppet, control
 from copy import deepcopy
 
 MAX_SURVIVORS = 60
@@ -10,6 +10,27 @@ NATIVE_CHAIN = (2011012, 2012017, 2011013, 2011014,
                 2011015, 2012018, 2011016, 2011017)
 REPORT = {}
 ORIGINAL_REORGANISE = None
+INTERRUPTION_REPORT = {}
+
+
+def append_interruption():
+    """Append AFTER all R14 events: retain every already-released R14 ID.
+
+    A receiver belonging to annexed China never executes. Japan must close its
+    own pending negotiation rather than wait forever for the missing country.
+    """
+    if INTERRUPTION_REPORT:return INTERRUPTION_REPORT
+    from r14_peace import guarded_action
+    live=('flag = JX_ACTIVE flag = JX_CHINA_LIMITED_PENDING '
+          'NOT = { flag = JX_CHINA_LIMITED_DONE exists = CHI }')
+    e=event('r14_china_limited_interrupted','Chinese peace talks end','',
+            gate=live,persistent=True,offset=1,year=1937,module='diplomacy',
+            actions=[guarded_action('',[
+                clear('CHINA_LIMITED_ACCEPTED_R14'),clear('CHINA_LIMITED_PENDING'),
+                flag('CHINA_LIMITED_WAIT'),later('china_limited_return',90),
+            ],live)])
+    INTERRUPTION_REPORT.update(applied=True,event=e.key,id=e.id)
+    return INTERRUPTION_REPORT
 
 
 def army_limit(tag):

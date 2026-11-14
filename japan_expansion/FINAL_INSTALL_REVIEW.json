@@ -1,5 +1,5 @@
 {
-  "version": "JX 1.1 ALPHA 2 R14",
+  "version": "JX 1.1 ALPHA 2 R14.1",
   "target": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2",
   "selected_mod": "Japan Rising JX1 Alpha2",
   "shortcut": {
@@ -10,10 +10,10 @@
   },
   "powershell_syntax": "PASS",
   "registered_modules": 38,
-  "loaded_english_matches": 7411,
+  "loaded_english_matches": 7413,
   "hashes": {
-    "JAPAN_RISING_BUILD.json": "a67dbeaa57a0e714abad6e8aa29f484662c50863246e216c73906b6b1bd26a21",
-    "config/mods.csv": "ee8bfd274b551f7d12041dab869e46ac9b8be82fbdb58303a8571aa8eed90e6c",
+    "JAPAN_RISING_BUILD.json": "136404e5b923f81b38e838c176d6d500d6d6afe17381c96e72492561d07c1ae3",
+    "config/mods.csv": "c576260d977a6bfe9dfac35e4792d5f6627ec1e7a30c81fc9095cdfde4d3babd",
     "db/events.txt": "96276f45b627ac9f18d0c96e787a05252d6d7e85f6727ffdb95d2ad0acd40670",
     "db/events/japan_rising/activities.txt": "3219b627f0ce430204abfa307dfdc58738a648220f5bd8df53dbf4268d73e01c",
     "db/events/japan_rising/air.txt": "97533476b7d4e84122b034e8f410e12e4e2bc9018a58c891bf81df1790e639dd",
@@ -25,7 +25,7 @@
     "db/events/japan_rising/china.txt": "d4a4711f5958c85186d803344a30b162d82845b6d97b33d7f05563fdb61bdd51",
     "db/events/japan_rising/construction_safety.txt": "b0eac5f0aa33e531fa898a94e275920ec5509645db3eae7362321b7cdc48c0f8",
     "db/events/japan_rising/country_campaigns.txt": "9368d899fb7df1e6701abd78090015e8db6a62d660a6cd95eb2b0c2baa5cb697",
-    "db/events/japan_rising/diplomacy.txt": "7af7f086b3a0f98a99a5b6a2aec29f68077008d5c7c4003ddbba79ec177ea7f0",
+    "db/events/japan_rising/diplomacy.txt": "a3c58470c567e93ecae88a13eaa69b851484057c9f0a1c2db2f48eaf7f24c3fe",
     "db/events/japan_rising/early.txt": "c01486bdb254308239d7f4105d5b4926afd2484da522fed0bcb3e6f7ce6ded91",
     "db/events/japan_rising/endurance_economy.txt": "544dd03f56264a2c0d3ac70bd95e1f6459c9794e8305fe825b391f25a6d70fc9",
     "db/events/japan_rising/germany.txt": "c057c23e57694e8164b7b777d8d24d78374eddd6338a1b4ac27eacf00df4e084",

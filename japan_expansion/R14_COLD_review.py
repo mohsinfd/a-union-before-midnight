@@ -20,13 +20,16 @@ def run():
     baseline=json.loads((b.HERE/'R14_BASELINE_IDS.json').read_text(encoding='utf-8'))
     now={e.key:e.id for e in b.EVENTS}
     retained=all(now.get(k)==v for k,v in baseline.items())
+    prestart=json.loads((b.HERE/'R14_PRESTART_BASELINE_IDS.json').read_text(encoding='utf-8'))
+    retained_r14=all(now.get(k)==v for k,v in prestart.items())
     gate_sizes=[(len(a.gate),e.key) for e in b.EVENTS for a in e.actions if a.name]
     maximum=max(gate_sizes)
     catalogue_bytes=(b.HERE/'events.json').stat().st_size
-    report=dict(version=b.VERSION,passed=all(r['passed'] for r in results) and not mismatches and retained and maximum[0]<3000 and catalogue_bytes<50*1024*1024,
+    report=dict(version=b.VERSION,passed=all(r['passed'] for r in results) and not mismatches and retained and retained_r14 and maximum[0]<3000 and catalogue_bytes<50*1024*1024,
         game_executed=False,save_edits=False,events=len(b.EVENTS),registered_decisions=sum(e.decision for e in b.EVENTS),
         active_decisions=sum(e.decision and e.gate!='ai = yes ai = no' for e in b.EVENTS),
         original_ids_preserved=retained,original_id_count=len(baseline),installed_mismatches=mismatches,
+        r14_ids_preserved=retained_r14,r14_id_count=len(prestart),
         catalogue_bytes=catalogue_bytes,
         largest_named_action_gate={'characters':maximum[0],'event':maximum[1]},
         source_spec_sha256=(b.HERE/'SPEC_SHA256.txt').read_text().strip(),suites=results,

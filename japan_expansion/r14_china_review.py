@@ -143,6 +143,37 @@ class ChinaReview(unittest.TestCase):
         w.action('china_limited_offer',0);w.controlled[1338]='CHI';w.advance(1)
         self.assertTrue(w.atwar('JAP','CHI'));self.assertFalse(w.flags.get('JX_CHINA_LIMITED_PENDING'))
         self.assertTrue(w.flags['JX_CHINA_LIMITED_WAIT'])
+
+    def test_annexed_china_closes_early_and_accepted_negotiations(self):
+        for accepted in (False,True):
+            w=self.battle(140);w.national_losses['CHI']=35
+            self.assertTrue(w.action('china_limited',0))
+            if accepted:
+                self.assertTrue(w.action('china_limited_offer',0))
+            w.countries.discard('CHI');w.wars={p for p in w.wars if 'CHI' not in p}
+            before=copy.deepcopy((w.owned,w.wars,w.masters))
+            w.dispatch('r14_china_limited_interrupted')
+            self.assertFalse(w.flags.get('JX_CHINA_LIMITED_PENDING'))
+            self.assertFalse(w.flags.get('JX_CHINA_LIMITED_ACCEPTED_R14'))
+            self.assertFalse(w.flags.get('JX_CHINA_LIMITED_DONE'))
+            self.assertTrue(w.flags['JX_CHINA_LIMITED_WAIT'])
+            self.assertEqual((w.owned,w.wars,w.masters),before)
+            snapshot=copy.deepcopy(w.flags)
+            self.cached(w,'r14_china_limited_interrupted')
+            self.assertEqual(w.flags,snapshot)
+            # Recreating China cannot give its stale callback authority to end
+            # a new war or award the old settlement.
+            w.countries.add('CHI');w.addwar('JAP','CHI')
+            self.cached(w,'china_limited_accept')
+            self.assertTrue(w.atwar('JAP','CHI'))
+            self.assertFalse(w.flags.get('JX_CHINA_LIMITED_DONE'))
+            w.advance(90)
+            self.assertFalse(w.flags.get('JX_CHINA_LIMITED_WAIT'))
+
+    def test_china_interruption_does_not_cancel_live_talks(self):
+        w=self.battle(140);w.flags['JX_CHINA_LIMITED_PENDING']=1
+        before=copy.deepcopy(w.flags);self.cached(w,'r14_china_limited_interrupted')
+        self.assertEqual(w.flags,before)
     def test_native_stock_receivers_and_roots_cannot_bypass_jx(self):
         with tempfile.TemporaryDirectory() as tmp:
             target=Path(tmp);p=target/'db/events/japan.txt';p.parent.mkdir(parents=True)
@@ -168,6 +199,9 @@ class ChinaReview(unittest.TestCase):
         expected=baseline.get('ids',baseline) if isinstance(baseline,dict) else baseline
         if isinstance(expected,dict):
             for key,eid in expected.items():self.assertEqual(BY_KEY[key].id,eid)
+        released=__import__('json').loads((build.HERE/'R14_PRESTART_BASELINE_IDS.json').read_text(encoding='utf-8'))
+        for key,eid in released.items():self.assertEqual(BY_KEY[key].id,eid)
+        self.assertEqual(BY_KEY['r14_china_limited_interrupted'].id,max(released.values())+1)
         for e in build.EVENTS:
             if e.module=='campaign_balance' and e.key.startswith('cn_'):
                 for a in e.actions:

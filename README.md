@@ -1,4 +1,4 @@
-# Japan Rising - R14
+# Japan Rising - R14.1
 
 A human-Japan campaign for **Darkest Hour 1.05.2 + Blood and Iron v1.1**, beginning in 1933. Historical diplomacy through Pearl Harbor leads into alternative Pacific, Indian Ocean, Chinese, Soviet and American campaigns through 1950.
 
@@ -6,7 +6,7 @@ This is the **japan-rising** branch of `mohsinfd/a-union-before-midnight`. The I
 
 ## Download and install
 
-Download the source ZIP from [Releases](https://github.com/mohsinfd/a-union-before-midnight/releases/tag/japan-rising-r14), or clone this branch:
+Download the source ZIP from [Releases](https://github.com/mohsinfd/a-union-before-midnight/releases/tag/japan-rising-r14.1), or clone this branch:
 
 ```powershell
 git clone --branch japan-rising --single-branch https://github.com/mohsinfd/a-union-before-midnight.git
@@ -22,7 +22,9 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\Install.ps1 -GameRoot "C:\
 
 Alternatively, double-click **INSTALL.bat** and enter the two folder paths when prompted. The installer checks your local folders, clones the foundation into **Mods\Japan Rising JX1 Alpha2**, applies the mod, runs offline verification and creates a desktop shortcut. It **does not launch the game**. Close the game before installing; the builder refuses to overwrite a running session. The destination must be writable.
 
-Start a **new 1933 campaign as Japan** through **Japan Rising JX1 Alpha2**. Confirm **R14** in the scenario and welcome event. Existing saves are not migrated by this installer. Keep the extracted source folder because the shortcut uses its launcher.
+Start a **new 1933 campaign as Japan** through **Japan Rising JX1 Alpha2**. Confirm **R14.1** in the scenario and welcome event. Existing saves are not migrated by this installer. Keep the extracted source folder because the shortcut uses its launcher.
+
+R14.1 adds a focused final pre-start repair for abandoned Chinese peace talks and corrects the fuel/Pearl Harbor guidance. The 60-formation Chinese surrender threshold and R14 balance remain unchanged. See [the final review](japan_expansion/R14_1_PRESTART_REVIEW.md).
 
 ## R14 cold-review repairs
 

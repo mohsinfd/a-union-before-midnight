@@ -1,8 +1,8 @@
-# Japan Rising: executable event specification — JX 1.1 ALPHA 2 R14
+# Japan Rising: executable event specification — JX 1.1 ALPHA 2 R14.1
 
 This catalogue is compiled into the installed event files. It lists every event, including technical receivers, cooldowns and verification. IDs and conditions below are generated from the same objects used by the build.
 
-Total: 2940 events; 123 actionable decision entries. Counts include alternative paths and technical follow-ups; a campaign does not display them all.
+Total: 2941 events; 123 actionable decision entries. Counts include alternative paths and technical follow-ups; a campaign does not display them all.
 
 ## Cascade rules
 
@@ -2955,10 +2955,11 @@ Total: 2940 events; 123 actionable decision entries. Counts include alternative 
 | 28602938 | r14_armistice_broken | JAP | postwar | automatic |  |
 | 28602939 | r14_us_export_receipt | USA | postwar | receiver |  |
 | 28602940 | r14_us_pacific_rebuild | USA | postwar | receiver |  |
+| 28602941 | r14_china_limited_interrupted | JAP | diplomacy | automatic | china_limited_return (28600565) |
 
 ## Exact events, gates and actions
 
-### 28600001: Japan Rising - JX 1.1 ALPHA 2 R14
+### 28600001: Japan Rising - JX 1.1 ALPHA 2 R14.1
 
 Country: JAP. Module: opening. Earliest year: 1933. Triggered receiver: False. Persistent: False.
 
@@ -597884,6 +597885,42 @@ which = JX_R14_R14_US_PACIFIC_REBUILD_DONE_PENDING_EXECUTING }
   ai_chance = 100
   trigger = { NOT = { AND = { flag = JX_R14_R14_AMERICAN_FUTURE_HAWAII_CLOSED flag = JX_US_KEEP_HAWAII money = 400 supplies = 5000 NOT = { war = { country = JAP country = USA } flag = JX_R14_R14_US_PACIFIC_REBUILD_DONE } } } }
   command = { }
+ }
+}
+```
+
+### 28602941: Chinese peace talks end
+
+Country: JAP. Module: diplomacy. Earliest year: 1937. Triggered receiver: False. Persistent: True.
+
+Technical follow-up; it can appear in a human campaign and has localised text.
+
+```text
+# r14_china_limited_interrupted:
+event = {
+ id = 28602941
+ random = no
+ country = JAP
+ save_date = yes
+ name = JX_r14_china_limited_interrupted_NAME
+ desc = JX_r14_china_limited_interrupted_DESC
+ style = 2
+ picture = "jx_naval"
+ persistent = yes
+ trigger = { flag = JX_ACTIVE flag = JX_CHINA_LIMITED_PENDING NOT = { flag = JX_CHINA_LIMITED_DONE exists = CHI } }
+ date = { day = 0 month = january year = 1937 }
+ offset = 1
+ deathdate = { day = 29 month = december year = 1950 }
+ action = {
+  name = ACTION_NAME_OK
+  ai_chance = 100
+  trigger = { flag = JX_ACTIVE flag = JX_CHINA_LIMITED_PENDING NOT = { flag = JX_CHINA_LIMITED_DONE exists = CHI } }
+  command = { trigger = { flag = JX_ACTIVE flag = JX_CHINA_LIMITED_PENDING NOT = { flag = JX_CHINA_LIMITED_DONE exists = CHI } } type = setflag which = JX_R14_EXEC_693 }
+  command = { trigger = { flag = JX_R14_EXEC_693 } type = clrflag which = JX_CHINA_LIMITED_ACCEPTED_R14 }
+  command = { trigger = { flag = JX_R14_EXEC_693 } type = clrflag which = JX_CHINA_LIMITED_PENDING }
+  command = { trigger = { flag = JX_R14_EXEC_693 } type = setflag which = JX_CHINA_LIMITED_WAIT }
+  command = { trigger = { flag = JX_R14_EXEC_693 } type = event which = 28600565 where = JAP when = 90 }
+  command = { type = clrflag which = JX_R14_EXEC_693 }
  }
 }
 ```

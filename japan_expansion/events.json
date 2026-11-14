@@ -1,7 +1,7 @@
 [
   {
     "key": "welcome",
-    "title": "Japan Rising - JX 1.1 ALPHA 2 R14",
+    "title": "Japan Rising - JX 1.1 ALPHA 2 R14.1",
     "desc": "Japan enters 1933 with a powerful fleet, limited industrial resources and competing demands from the Army and Navy. Invest in factories, shipping, training and reserves to prepare for conflict in China and across the Pacific. Choose Japan's future alliances and peace terms from the position we build.\n\nGarrisons defend local bases, Mountain Infantry handle difficult terrain and Marines lead opposed landings. Production priorities and regional agreements can support the forces you build.",
     "country": "JAP",
     "gate": "ai = no NOT = { ispuppet = JAP } NOT = { flag = JX_ACTIVE }",
@@ -227751,6 +227751,44 @@
     "start_month": "january",
     "start_day": 0,
     "follows": [],
+    "manual_only": false
+  },
+  {
+    "key": "r14_china_limited_interrupted",
+    "title": "Chinese peace talks end",
+    "desc": "",
+    "country": "JAP",
+    "gate": "flag = JX_ACTIVE flag = JX_CHINA_LIMITED_PENDING NOT = { flag = JX_CHINA_LIMITED_DONE exists = CHI }",
+    "actions": [
+      {
+        "name": "",
+        "commands": [
+          "trigger = { flag = JX_ACTIVE flag = JX_CHINA_LIMITED_PENDING NOT = { flag = JX_CHINA_LIMITED_DONE exists = CHI } } type = setflag which = JX_R14_EXEC_693",
+          "trigger = { flag = JX_R14_EXEC_693 } type = clrflag which = JX_CHINA_LIMITED_ACCEPTED_R14",
+          "trigger = { flag = JX_R14_EXEC_693 } type = clrflag which = JX_CHINA_LIMITED_PENDING",
+          "trigger = { flag = JX_R14_EXEC_693 } type = setflag which = JX_CHINA_LIMITED_WAIT",
+          "trigger = { flag = JX_R14_EXEC_693 } type = event which = 28600565 where = JAP when = 90",
+          "type = clrflag which = JX_R14_EXEC_693"
+        ],
+        "gate": "flag = JX_ACTIVE flag = JX_CHINA_LIMITED_PENDING NOT = { flag = JX_CHINA_LIMITED_DONE exists = CHI }",
+        "chance": 100
+      }
+    ],
+    "decision": false,
+    "ready": "",
+    "year": 1937,
+    "offset": 1,
+    "persistent": true,
+    "triggered": false,
+    "art": "naval",
+    "module": "diplomacy",
+    "purpose": "",
+    "id": 28602941,
+    "start_month": "january",
+    "start_day": 0,
+    "follows": [
+      "china_limited_return"
+    ],
     "manual_only": false
   }
 ]

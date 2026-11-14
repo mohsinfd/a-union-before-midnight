@@ -45,7 +45,7 @@ def verify():
                      'ENEMY_TRANSPORT_AI_AUDIT.json','UNIQUE_UNIT_COLD_AUDIT.json','PLAYER_COPY_REVIEW.json',
                      'PROGRESS.md','R14_CHANGES.md','R14_CHINA.md','R14_PEACE.md','R14_AFTERWAR.md',
                      'R14_CONSTRUCTION_AUDIT.md','R14_CONSTRUCTION_AUDIT.json','R14_BALANCE_AUDIT.json',
-                     'R14_COLD_AUDIT.json','R14_REGRESSION_RESULTS.json'):
+                     'R14_COLD_AUDIT.json','R14_REGRESSION_RESULTS.json','R14_1_PRESTART_REVIEW.md'):
         shutil.copy2(b.HERE/filename,docs/filename)
     receipt=dict(version=b.VERSION,target=str(target),state='installed-offline-validated',
                  events=len(b.EVENTS),modules=len(groups),loaded_english_matches=len(expected),

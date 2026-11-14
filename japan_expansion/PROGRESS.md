@@ -1,4 +1,4 @@
-# Japan Rising R14 — ready for player testing
+# Japan Rising R14.1 — ready for player testing
 
 | Work | State |
 |---|---|
@@ -9,7 +9,7 @@
 | Production stacks, Matsu and fuel | Implemented; all ten specialist families compared |
 | Indian partner AI and American reserves | Implemented; funded current-equipment waves |
 | Installation | Verified Steam Alpha2 target and desktop shortcut; R14 receipt |
-| GitHub source | Branch `japan-rising`; release `japan-rising-r14` |
+| GitHub source | Branch `japan-rising`; release `japan-rising-r14.1` |
 | Actual engine and Hard campaign playtest | Player; game has not been run |
 
-All seven R14 audit suites and all eleven final regression/check tools pass. Installed event commands match source. See R14_COLD_AUDIT.json, R14_REGRESSION_RESULTS.json and R14_INSTALL_RECEIPT.json for evidence. No saves are modified; start a new 1933 campaign.
+The R14 baseline passed all eleven regression/check tools. The R14.1 supported installer reruns the specialist, enemy transport, copy, static and seven campaign audit suites; see the current receipt for their result. Installed event commands are compared with the current source. See R14_COLD_AUDIT.json, R14_REGRESSION_RESULTS.json and R14_INSTALL_RECEIPT.json for evidence. No saves are modified; start a new 1933 campaign.

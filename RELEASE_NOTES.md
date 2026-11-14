@@ -1,11 +1,10 @@
-Japan Rising R14 repairs the complete R13.1 cold review. Start a new 1933 campaign as Japan and confirm R14. No game was run during this work.
+Final pre-start correction for Japan Rising R14. Game version: **JX 1.1 ALPHA 2 R14.1**; use the existing Japan Rising JX1 Alpha2 shortcut and start a new 1933 campaign.
 
-- Chinese decisive surrender now requires 60 or fewer surviving own deployed formations, plus the territorial and city objectives. Surviving postwar troops are preserved; no delayed army wipe/replacement.
-- Coalition victories, consented enemy occupations and interrupted US/Soviet peace are guarded and recoverable. Hawaii terms precede American acceptance; a rebuilt US fleet affects negotiations.
-- Meaningful postwar recovery, China/India agreements and distinct US aftermath, with dated costs, refunds and annexed-partner recovery.
-- Full specialist construction-stack comparisons, bounded Matsu discount, slower large emergency fuel recovery, useful Indian partner AI and current-equipment American reserves.
-- Compact visible conditions; shared fresh authority checks protect every handover. All 1,822 original event IDs retained. Added internal verifiers/refunds are not advertised as new gameplay choices.
+- Fixed a stuck Chinese limited-peace negotiation if China was annexed while its reply was queued. One silent Japanese check closes the abandoned transaction, with no peace, land or reward granted.
+- Preserved all 2,940 R14 event IDs; one check is appended. The 60-formation decisive Chinese surrender threshold and all R14 balance remain unchanged.
+- Corrected the guide's fuel arithmetic and current specialist version label.
+- Documented manual Pearl Harbor readiness: at least six Japanese naval units in Pearl Harbor Bay. Its manual conditions differ from the automatic branch.
 
-Seven R14 audit suites and eleven final regression/check tools pass. Installed source/model/art/localisation parity and the actual Steam destination/shortcut were verified. Engine startup, actual AI fleet operations, Hard combat balance and long-campaign stability remain player tests.
+The supported installer was run without starting the game. Fresh specialist, enemy transport, copy, static and seven campaign audit suites passed; actual installed events/models/localisation and Steam destination/shortcut were verified. China has 15 passing focused tests. Source checks cover all 31 original artwork assets.
 
-Use the built-in Source code ZIP below. The repository includes source, original generated artwork and the portable Windows installer; bring your own Darkest Hour 1.05.2 and Blood and Iron v1.1 folders. Read README.md, japan_expansion/R14_CHANGES.md and the three R14 country/peace/aftermath specifications. Install.ps1 never launches the game.
+Download the built-in Source code ZIP below and follow README.md / Install.ps1 using your own Darkest Hour and Blood and Iron folders. No game assets or saves are bundled. Actual startup, UI, automatic convoy/oil assignment and long-campaign Hard balance remain player tests. See japan_expansion/R14_1_PRESTART_REVIEW.md for the final findings and the short first-session checks.

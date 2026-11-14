@@ -1,4 +1,6 @@
-# Japan Rising R14
+# Japan Rising R14 / R14.1
+
+R14.1 adds one final interruption repair if China is annexed during limited-peace talks. All 2,940 R14 IDs remain unchanged; one silent check is appended. Fuel arithmetic and manual Pearl Harbor guidance are corrected in R14_1_PRESTART_REVIEW.md. No further balance changes.
 
 R14 repairs the complete source/design review of R13.1, rather than only its first two findings. Start a new 1933 campaign. Old IDs are retained, but this revision does not migrate saved event histories or already granted modifiers.
 
