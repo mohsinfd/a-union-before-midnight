@@ -60,6 +60,9 @@ import island_shipping
 import r14_china
 import r14_peace
 import r14_afterwar
+import r15_enemy
+import r15_recovery
+import r15_strategy
 import enemy_transport_ai
 
 from runtime_paths import GAME
@@ -334,6 +337,9 @@ def prepare_catalog():
     r14_peace.apply()
     r14_afterwar.apply()
     r14_china.append_interruption()
+    r15_enemy.apply()
+    r15_recovery.apply()
+    r15_strategy.apply()
     final_event_integrity.apply()
     equipment_delivery.apply()
     player_copy.apply()
@@ -737,6 +743,7 @@ def compile_mod(digest,china_cores):
     campaign_balance.install_assets(SOURCE,TARGET,read,write,parse,get,serialise)
     r14_china.install(SOURCE,TARGET,read,write,parse,serialise)
     enemy_transport_ai.install(SOURCE,TARGET,read,write,parse,serialise)
+    r15_enemy.install(SOURCE,TARGET,read,write,parse,serialise)
     teams=teams_and_units()
     graphics(teams)
     specialist_units.install(SOURCE,TARGET,write,serialise)
@@ -766,7 +773,8 @@ def compile_mod(digest,china_cores):
                  "R12_1_CHANGES.md","R12_1_COLD_AUDIT.json","FURTHER_JAPANESE_SPECIALISTS.md","PROGRESS.md",
                  "R13_UNITS.md","R13_ART_SOURCES.json","R13_1_CHANGES.md",
                  "ENEMY_TRANSPORT_AI_REPORT.json","ENEMY_TRANSPORT_AI_AUDIT.json",
-                 "R14_CHANGES.md","R14_CHINA.md","R14_PEACE.md","R14_AFTERWAR.md"):
+                 "R14_CHANGES.md","R14_CHINA.md","R14_PEACE.md","R14_AFTERWAR.md",
+                 "R15_README.md","R15_ENEMY.md","R15_RECOVERY.md","R15_STRATEGY.md"):
         shutil.copy2(HERE/name,docs/name)
     shutil.copy2(WORKSPACE/"JAPAN_EXPANSION_SPEC.md",docs/"DESIGN_AND_AUDIT.md")
     manifest={"version":VERSION,"mod_name":MOD_NAME,"source":str(SOURCE),"target":str(TARGET),"state":"built-awaiting-validation","spec_sha256":digest,"events":len(EVENTS),"decisions":sum(e.decision for e in EVENTS),"patches":PATCHES,"art":list(ART_INPUTS),"excluded":"All Indian overhaul/terrain/compact code and installed Indian team overrides"}

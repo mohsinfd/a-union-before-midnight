@@ -1,5 +1,5 @@
 {
-  "version": "JX 1.1 ALPHA 2 R14.1",
+  "version": "JX 1.1 ALPHA 2 R15",
   "target": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2",
   "selected_mod": "Japan Rising JX1 Alpha2",
   "shortcut": {
@@ -9,12 +9,12 @@
     "working_directory": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game"
   },
   "powershell_syntax": "PASS",
-  "registered_modules": 38,
-  "loaded_english_matches": 7413,
+  "registered_modules": 41,
+  "loaded_english_matches": 7609,
   "hashes": {
-    "JAPAN_RISING_BUILD.json": "136404e5b923f81b38e838c176d6d500d6d6afe17381c96e72492561d07c1ae3",
-    "config/mods.csv": "c576260d977a6bfe9dfac35e4792d5f6627ec1e7a30c81fc9095cdfde4d3babd",
-    "db/events.txt": "96276f45b627ac9f18d0c96e787a05252d6d7e85f6727ffdb95d2ad0acd40670",
+    "JAPAN_RISING_BUILD.json": "b23a3330d3e5427b4804aba7dc93f314dd56f77c0bfb55d14386f14be3d9fabf",
+    "config/mods.csv": "be82c94d276c56d13a13e40a31fc9539e333913b59f404abf7d5b87d5731cac2",
+    "db/events.txt": "121174b26d5036d589d9b5ddd1bf5019bd009f2537d8578db6d8d390524a0916",
     "db/events/japan_rising/activities.txt": "3219b627f0ce430204abfa307dfdc58738a648220f5bd8df53dbf4268d73e01c",
     "db/events/japan_rising/air.txt": "97533476b7d4e84122b034e8f410e12e4e2bc9018a58c891bf81df1790e639dd",
     "db/events/japan_rising/army.txt": "f5fb69b00c7c46e47a7a7660581bc79f13b336f69b90396c9009ffb9a278b735",
@@ -38,6 +38,9 @@
     "db/events/japan_rising/partners.txt": "74b54daab5be48b6077f3ddc4d3cc6e2330aead636130fe576e6a08a9d865ad2",
     "db/events/japan_rising/postwar.txt": "9e466114e5647b61d7a3f1f7252e499155894e099de0a8392688b72b084e4398",
     "db/events/japan_rising/prewar_content.txt": "7a41919cdfd0299465ff8bdcf852a34e5737fb89e18a694df02f9bcb104e54f4",
+    "db/events/japan_rising/r15_enemy.txt": "921e135f646d3f711b287337702a559e1bc826ad01b2a30564100d51de81f52b",
+    "db/events/japan_rising/r15_recovery.txt": "51e7a546b8bf46508f74ad9b2a20288c5491b15473d8eeea763d33a3a6f76a22",
+    "db/events/japan_rising/r15_strategy.txt": "5d649a1bc2d48cdbbd09ad53ccc16db90ad8d38d6acfc4feeed6959414219b99",
     "db/events/japan_rising/release_support.txt": "320ca180e9c5e742d1c591889d33fa9fb9795eeaa87a0d3e1fbe78313794ee2b",
     "db/events/japan_rising/research.txt": "1247f3dfaf157f76a80ee21b18515dbc7e606ec5e1a39a2b9314ba73ef65f6db",
     "db/events/japan_rising/settlements.txt": "ddd713b785fffa3fdab8866df2c777a98d54b48bcd7faaff8d417e0a493b997a",

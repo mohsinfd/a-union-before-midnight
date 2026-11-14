@@ -1,15 +1,16 @@
-# Japan Rising R14.1 — ready for player testing
+# Japan Rising R15 — ready for player testing
 
 | Work | State |
 |---|---|
-| Full ChatGPT cold-review inventory | Addressed in R14_CHANGES.md |
-| China surrender and army preservation | Implemented; independent transaction tests |
-| Coalition settlements and major-power peace | Implemented; adversarial and legacy regressions |
-| Postwar reconstruction and relations | Implemented; refunds, interruptions and lost partners |
-| Production stacks, Matsu and fuel | Implemented; all ten specialist families compared |
-| Indian partner AI and American reserves | Implemented; funded current-equipment waves |
-| Installation | Verified Steam Alpha2 target and desktop shortcut; R14 receipt |
-| GitHub source | Branch `japan-rising`; release `japan-rising-r14.1` |
-| Actual engine and Hard campaign playtest | Player; game has not been run |
+| Three geography-based enemy reactions | Implemented; own budgets, safe hubs and targeted AI orders |
+| Recovery after carrier or anchorage losses | Implemented; fleet/shore aviation and convoy/counterattack alternatives |
+| Three competing strategic preparations | Implemented; China/fleet, Pacific/Indian Ocean, American army/home defence |
+| Shared staff commitment and cancellation | Implemented; owner guards, private funding dates, costly voluntary stop |
+| R14.1 preservation | All 2,941 prior event IDs and installed script signatures retained for verification |
+| Independent cold review | Found and fixed mutable funding clock, client-control bypass and omitted pool recipients |
+| Packet balance | Coherent researched/programme/minister stress comparisons; carrier package retuned |
+| Install | Fresh audits pass; Steam target and shortcut verification |
+| GitHub | Branch `japan-rising`; release `japan-rising-r15` |
+| Game and long-campaign playtest | Not run; player test |
 
-The R14 baseline passed all eleven regression/check tools. The R14.1 supported installer reruns the specialist, enemy transport, copy, static and seven campaign audit suites; see the current receipt for their result. Installed event commands are compared with the current source. See R14_COLD_AUDIT.json, R14_REGRESSION_RESULTS.json and R14_INSTALL_RECEIPT.json for evidence. No saves are modified; start a new 1933 campaign.
+See R15_README.md and the three feature specifications for costs, gates and cascades. No saves are modified.

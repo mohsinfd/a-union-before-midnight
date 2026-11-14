@@ -1,0 +1,1538 @@
+{
+  "passed": true,
+  "game_run": false,
+  "rows": [
+    {
+      "year": 1942,
+      "proposal": "r15_carrier_recovery",
+      "choice": 0,
+      "units": [
+        {
+          "unit": "light_cag",
+          "model": 4,
+          "count": 2,
+          "group": "air",
+          "cost": 1.83,
+          "days": 98.5
+        },
+        {
+          "unit": "light_carrier",
+          "model": 1,
+          "count": 2,
+          "group": "naval",
+          "cost": 2.02,
+          "days": 817.8
+        },
+        {
+          "unit": "destroyer",
+          "model": 7,
+          "count": 4,
+          "group": "naval",
+          "cost": 1.3,
+          "days": 456.6
+        }
+      ],
+      "raw_ic_days": 9044.0,
+      "research_programme_ic_days": 6038.74,
+      "stressed_ic_days": 1152.57,
+      "programme_choices": [
+        [
+          "first_industry",
+          1
+        ],
+        [
+          "naval_production",
+          0
+        ]
+      ],
+      "cabinet": [
+        [
+          "head of government",
+          "50021",
+          "Hiranuma Kiichiro"
+        ],
+        [
+          "minister of armament",
+          "50075",
+          "Nakajima Chikuhei"
+        ],
+        [
+          "chief of navy",
+          "50150",
+          "Oikawa Koshiro"
+        ],
+        [
+          "chief of air force",
+          "50010",
+          "Yamamoto Isoroku"
+        ]
+      ],
+      "paid_resources": {
+        "money": 500,
+        "supplies": 14000,
+        "oil": 4000,
+        "metal": 3500,
+        "manpower": 10.14
+      },
+      "days": 330,
+      "gross_stock_ic_days": 6000.0
+    },
+    {
+      "year": 1942,
+      "proposal": "r15_carrier_recovery",
+      "choice": 1,
+      "units": [
+        {
+          "unit": "naval_bomber",
+          "model": 3,
+          "count": 2,
+          "group": "air",
+          "cost": 12.0,
+          "days": 132.48000000000002
+        },
+        {
+          "unit": "multi_role",
+          "model": 6,
+          "count": 1,
+          "group": "air",
+          "cost": 18.5,
+          "days": 138.24
+        }
+      ],
+      "raw_ic_days": 11880.0,
+      "research_programme_ic_days": 5736.96,
+      "stressed_ic_days": 1053.79,
+      "programme_choices": [
+        [
+          "first_industry",
+          1
+        ],
+        [
+          "air_production",
+          1
+        ]
+      ],
+      "cabinet": [
+        [
+          "minister of armament",
+          "50075",
+          "Nakajima Chikuhei"
+        ],
+        [
+          "chief of air force",
+          "50010",
+          "Yamamoto Isoroku"
+        ]
+      ],
+      "paid_resources": {
+        "money": 250,
+        "supplies": 6500,
+        "oil": 1500,
+        "metal": 1500,
+        "manpower": 5.4
+      },
+      "days": 180,
+      "gross_stock_ic_days": 2875.0
+    },
+    {
+      "year": 1942,
+      "proposal": "r15_anchorage_recovery",
+      "choice": 0,
+      "units": [],
+      "raw_ic_days": 0,
+      "research_programme_ic_days": 0,
+      "stressed_ic_days": 0,
+      "programme_choices": [],
+      "cabinet": [],
+      "paid_resources": {
+        "money": 150,
+        "supplies": 3500,
+        "oil": 1000
+      },
+      "days": 90,
+      "gross_stock_ic_days": 1625.0
+    },
+    {
+      "year": 1942,
+      "proposal": "r15_anchorage_recovery",
+      "choice": 1,
+      "units": [
+        {
+          "unit": "marine",
+          "model": 4,
+          "count": 1,
+          "group": "land",
+          "cost": 6.4,
+          "days": 315.0
+        },
+        {
+          "unit": "transport",
+          "model": 3,
+          "count": 1,
+          "group": "naval",
+          "cost": 3.0,
+          "days": 120.0
+        }
+      ],
+      "raw_ic_days": 3810.0,
+      "research_programme_ic_days": 2376.0,
+      "stressed_ic_days": 361.39,
+      "programme_choices": [
+        [
+          "army_production",
+          0
+        ]
+      ],
+      "cabinet": [
+        [
+          "chief of navy",
+          "50150",
+          "Oikawa Koshiro"
+        ]
+      ],
+      "paid_resources": {
+        "money": 300,
+        "supplies": 6000,
+        "oil": 2000,
+        "metal": 1000,
+        "manpower": 15.5
+      },
+      "days": 180,
+      "gross_stock_ic_days": 3000.0
+    },
+    {
+      "year": 1942,
+      "proposal": "r15_china_or_fleet",
+      "choice": 0,
+      "units": [
+        {
+          "unit": "infantry",
+          "model": 11,
+          "count": 2,
+          "group": "land",
+          "cost": 4.0,
+          "days": 159.5
+        },
+        {
+          "unit": "bergsjaeger",
+          "model": 11,
+          "count": 1,
+          "group": "land",
+          "cost": 4.8,
+          "days": 334.45
+        }
+      ],
+      "raw_ic_days": 5420.0,
+      "research_programme_ic_days": 2881.36,
+      "stressed_ic_days": 339.08,
+      "programme_choices": [
+        [
+          "army_production",
+          0
+        ]
+      ],
+      "cabinet": [
+        [
+          "head of state",
+          "50011",
+          "Yasuhito"
+        ],
+        [
+          "head of government",
+          "50022",
+          "Tojo Hideki"
+        ],
+        [
+          "chief of army",
+          "50008",
+          "Kanin Kotohito"
+        ]
+      ],
+      "paid_resources": {
+        "money": 300,
+        "supplies": 7000,
+        "oil": 500,
+        "manpower": 39.0
+      },
+      "days": 180,
+      "gross_stock_ic_days": 3250.0
+    },
+    {
+      "year": 1942,
+      "proposal": "r15_china_or_fleet",
+      "choice": 1,
+      "units": [
+        {
+          "unit": "destroyer",
+          "model": 7,
+          "count": 2,
+          "group": "naval",
+          "cost": 1.3,
+          "days": 456.6
+        },
+        {
+          "unit": "cag",
+          "model": 4,
+          "count": 2,
+          "group": "air",
+          "cost": 3.7,
+          "days": 98.5
+        }
+      ],
+      "raw_ic_days": 2842.0,
+      "research_programme_ic_days": 1916.06,
+      "stressed_ic_days": 291.43,
+      "programme_choices": [
+        [
+          "first_industry",
+          1
+        ],
+        [
+          "naval_production",
+          0
+        ]
+      ],
+      "cabinet": [
+        [
+          "head of government",
+          "50021",
+          "Hiranuma Kiichiro"
+        ],
+        [
+          "minister of armament",
+          "50075",
+          "Nakajima Chikuhei"
+        ],
+        [
+          "chief of navy",
+          "50150",
+          "Oikawa Koshiro"
+        ],
+        [
+          "chief of air force",
+          "50010",
+          "Yamamoto Isoroku"
+        ]
+      ],
+      "paid_resources": {
+        "money": 350,
+        "supplies": 7000,
+        "oil": 1800,
+        "manpower": 15.5
+      },
+      "days": 240,
+      "gross_stock_ic_days": 3500.0
+    },
+    {
+      "year": 1942,
+      "proposal": "r15_pacific_or_ocean",
+      "choice": 0,
+      "units": [
+        {
+          "unit": "garrison",
+          "model": 5,
+          "count": 3,
+          "group": "land",
+          "cost": 4.0,
+          "days": 128.0
+        },
+        {
+          "unit": "anti_air",
+          "model": 4,
+          "count": 3,
+          "group": "land",
+          "cost": 5.0,
+          "days": 56.0
+        }
+      ],
+      "raw_ic_days": 2970.0,
+      "research_programme_ic_days": 2376.0,
+      "stressed_ic_days": 441.7,
+      "programme_choices": [],
+      "cabinet": [
+        [
+          "minister of security",
+          "50103",
+          "Tojo Hideki"
+        ],
+        [
+          "chief of air force",
+          "50153",
+          "Tsukahara Nishizo"
+        ]
+      ],
+      "paid_resources": {
+        "money": 350,
+        "supplies": 7500,
+        "oil": 1000,
+        "manpower": 39.0
+      },
+      "days": 210,
+      "gross_stock_ic_days": 3625.0
+    },
+    {
+      "year": 1942,
+      "proposal": "r15_pacific_or_ocean",
+      "choice": 1,
+      "units": [
+        {
+          "unit": "marine",
+          "model": 4,
+          "count": 1,
+          "group": "land",
+          "cost": 6.4,
+          "days": 315.0
+        },
+        {
+          "unit": "bergsjaeger",
+          "model": 11,
+          "count": 1,
+          "group": "land",
+          "cost": 4.8,
+          "days": 334.45
+        },
+        {
+          "unit": "transport",
+          "model": 3,
+          "count": 2,
+          "group": "naval",
+          "cost": 3.0,
+          "days": 120.0
+        }
+      ],
+      "raw_ic_days": 6780.0,
+      "research_programme_ic_days": 4341.36,
+      "stressed_ic_days": 714.58,
+      "programme_choices": [
+        [
+          "army_production",
+          0
+        ]
+      ],
+      "cabinet": [
+        [
+          "head of government",
+          "50022",
+          "Tojo Hideki"
+        ],
+        [
+          "chief of navy",
+          "50150",
+          "Oikawa Koshiro"
+        ]
+      ],
+      "paid_resources": {
+        "money": 450,
+        "supplies": 9000,
+        "oil": 5000,
+        "manpower": 29.0
+      },
+      "days": 240,
+      "gross_stock_ic_days": 4500.0
+    },
+    {
+      "year": 1942,
+      "proposal": "r15_american_army",
+      "choice": 0,
+      "units": [
+        {
+          "unit": "infantry",
+          "model": 11,
+          "count": 6,
+          "group": "land",
+          "cost": 4.0,
+          "days": 159.5
+        },
+        {
+          "unit": "bergsjaeger",
+          "model": 11,
+          "count": 2,
+          "group": "land",
+          "cost": 4.8,
+          "days": 334.45
+        }
+      ],
+      "raw_ic_days": 13740.0,
+      "research_programme_ic_days": 7038.72,
+      "stressed_ic_days": 718.79,
+      "programme_choices": [
+        [
+          "army_production",
+          0
+        ]
+      ],
+      "cabinet": [
+        [
+          "head of state",
+          "50011",
+          "Yasuhito"
+        ],
+        [
+          "head of government",
+          "50022",
+          "Tojo Hideki"
+        ],
+        [
+          "chief of army",
+          "50008",
+          "Kanin Kotohito"
+        ]
+      ],
+      "paid_resources": {
+        "money": 800,
+        "supplies": 22000,
+        "oil": 6000,
+        "manpower": 104.0
+      },
+      "days": 270,
+      "gross_stock_ic_days": 9500.0
+    },
+    {
+      "year": 1942,
+      "proposal": "r15_american_army",
+      "choice": 1,
+      "units": [
+        {
+          "unit": "garrison",
+          "model": 5,
+          "count": 4,
+          "group": "land",
+          "cost": 4.0,
+          "days": 128.0
+        }
+      ],
+      "raw_ic_days": 2560.0,
+      "research_programme_ic_days": 2048.0,
+      "stressed_ic_days": 380.72,
+      "programme_choices": [],
+      "cabinet": [
+        [
+          "minister of security",
+          "50103",
+          "Tojo Hideki"
+        ]
+      ],
+      "paid_resources": {
+        "money": 450,
+        "supplies": 11000,
+        "oil": 2500,
+        "manpower": 40.0
+      },
+      "days": 150,
+      "gross_stock_ic_days": 5000.0
+    },
+    {
+      "year": 1945,
+      "proposal": "r15_carrier_recovery",
+      "choice": 0,
+      "units": [
+        {
+          "unit": "light_cag",
+          "model": 5,
+          "count": 2,
+          "group": "air",
+          "cost": 2.08,
+          "days": 98.5
+        },
+        {
+          "unit": "light_carrier",
+          "model": 2,
+          "count": 2,
+          "group": "naval",
+          "cost": 3.02,
+          "days": 857.8
+        },
+        {
+          "unit": "destroyer",
+          "model": 8,
+          "count": 4,
+          "group": "naval",
+          "cost": 1.4,
+          "days": 456.6
+        }
+      ],
+      "raw_ic_days": 12017.0,
+      "research_programme_ic_days": 8147.83,
+      "stressed_ic_days": 1606.37,
+      "programme_choices": [
+        [
+          "first_industry",
+          1
+        ],
+        [
+          "naval_production",
+          0
+        ]
+      ],
+      "cabinet": [
+        [
+          "head of government",
+          "50021",
+          "Hiranuma Kiichiro"
+        ],
+        [
+          "minister of armament",
+          "50075",
+          "Nakajima Chikuhei"
+        ],
+        [
+          "chief of air force",
+          "50010",
+          "Yamamoto Isoroku"
+        ],
+        [
+          "chief of navy",
+          "50150",
+          "Oikawa Koshiro"
+        ]
+      ],
+      "paid_resources": {
+        "money": 500,
+        "supplies": 14000,
+        "oil": 4000,
+        "metal": 3500,
+        "manpower": 10.14
+      },
+      "days": 330,
+      "gross_stock_ic_days": 6000.0
+    },
+    {
+      "year": 1945,
+      "proposal": "r15_carrier_recovery",
+      "choice": 1,
+      "units": [
+        {
+          "unit": "naval_bomber",
+          "model": 5,
+          "count": 2,
+          "group": "air",
+          "cost": 17.0,
+          "days": 132.48000000000002
+        },
+        {
+          "unit": "multi_role",
+          "model": 8,
+          "count": 1,
+          "group": "air",
+          "cost": 20.5,
+          "days": 138.24
+        }
+      ],
+      "raw_ic_days": 14700.0,
+      "research_programme_ic_days": 7338.24,
+      "stressed_ic_days": 1316.93,
+      "programme_choices": [
+        [
+          "first_industry",
+          1
+        ],
+        [
+          "air_production",
+          1
+        ]
+      ],
+      "cabinet": [
+        [
+          "minister of armament",
+          "50075",
+          "Nakajima Chikuhei"
+        ],
+        [
+          "chief of air force",
+          "50010",
+          "Yamamoto Isoroku"
+        ]
+      ],
+      "paid_resources": {
+        "money": 250,
+        "supplies": 6500,
+        "oil": 1500,
+        "metal": 1500,
+        "manpower": 5.4
+      },
+      "days": 180,
+      "gross_stock_ic_days": 2875.0
+    },
+    {
+      "year": 1945,
+      "proposal": "r15_anchorage_recovery",
+      "choice": 0,
+      "units": [],
+      "raw_ic_days": 0,
+      "research_programme_ic_days": 0,
+      "stressed_ic_days": 0,
+      "programme_choices": [],
+      "cabinet": [],
+      "paid_resources": {
+        "money": 150,
+        "supplies": 3500,
+        "oil": 1000
+      },
+      "days": 90,
+      "gross_stock_ic_days": 1625.0
+    },
+    {
+      "year": 1945,
+      "proposal": "r15_anchorage_recovery",
+      "choice": 1,
+      "units": [
+        {
+          "unit": "marine",
+          "model": 5,
+          "count": 1,
+          "group": "land",
+          "cost": 6.4,
+          "days": 315.0
+        },
+        {
+          "unit": "transport",
+          "model": 3,
+          "count": 1,
+          "group": "naval",
+          "cost": 3.0,
+          "days": 120.0
+        }
+      ],
+      "raw_ic_days": 3810.0,
+      "research_programme_ic_days": 2376.0,
+      "stressed_ic_days": 361.39,
+      "programme_choices": [
+        [
+          "army_production",
+          0
+        ]
+      ],
+      "cabinet": [
+        [
+          "chief of navy",
+          "50150",
+          "Oikawa Koshiro"
+        ]
+      ],
+      "paid_resources": {
+        "money": 300,
+        "supplies": 6000,
+        "oil": 2000,
+        "metal": 1000,
+        "manpower": 15.5
+      },
+      "days": 180,
+      "gross_stock_ic_days": 3000.0
+    },
+    {
+      "year": 1945,
+      "proposal": "r15_china_or_fleet",
+      "choice": 0,
+      "units": [
+        {
+          "unit": "infantry",
+          "model": 12,
+          "count": 2,
+          "group": "land",
+          "cost": 4.0,
+          "days": 159.5
+        },
+        {
+          "unit": "bergsjaeger",
+          "model": 12,
+          "count": 1,
+          "group": "land",
+          "cost": 4.8,
+          "days": 334.45
+        }
+      ],
+      "raw_ic_days": 5420.0,
+      "research_programme_ic_days": 2881.36,
+      "stressed_ic_days": 339.08,
+      "programme_choices": [
+        [
+          "army_production",
+          0
+        ]
+      ],
+      "cabinet": [
+        [
+          "head of state",
+          "50011",
+          "Yasuhito"
+        ],
+        [
+          "head of government",
+          "50022",
+          "Tojo Hideki"
+        ],
+        [
+          "chief of army",
+          "50008",
+          "Kanin Kotohito"
+        ]
+      ],
+      "paid_resources": {
+        "money": 300,
+        "supplies": 7000,
+        "oil": 500,
+        "manpower": 39.0
+      },
+      "days": 180,
+      "gross_stock_ic_days": 3250.0
+    },
+    {
+      "year": 1945,
+      "proposal": "r15_china_or_fleet",
+      "choice": 1,
+      "units": [
+        {
+          "unit": "destroyer",
+          "model": 8,
+          "count": 2,
+          "group": "naval",
+          "cost": 1.4,
+          "days": 456.6
+        },
+        {
+          "unit": "cag",
+          "model": 5,
+          "count": 2,
+          "group": "air",
+          "cost": 4.2,
+          "days": 98.5
+        }
+      ],
+      "raw_ic_days": 3126.0,
+      "research_programme_ic_days": 2105.88,
+      "stressed_ic_days": 320.3,
+      "programme_choices": [
+        [
+          "first_industry",
+          1
+        ],
+        [
+          "naval_production",
+          0
+        ]
+      ],
+      "cabinet": [
+        [
+          "head of government",
+          "50021",
+          "Hiranuma Kiichiro"
+        ],
+        [
+          "minister of armament",
+          "50075",
+          "Nakajima Chikuhei"
+        ],
+        [
+          "chief of air force",
+          "50010",
+          "Yamamoto Isoroku"
+        ],
+        [
+          "chief of navy",
+          "50150",
+          "Oikawa Koshiro"
+        ]
+      ],
+      "paid_resources": {
+        "money": 350,
+        "supplies": 7000,
+        "oil": 1800,
+        "manpower": 15.5
+      },
+      "days": 240,
+      "gross_stock_ic_days": 3500.0
+    },
+    {
+      "year": 1945,
+      "proposal": "r15_pacific_or_ocean",
+      "choice": 0,
+      "units": [
+        {
+          "unit": "garrison",
+          "model": 6,
+          "count": 3,
+          "group": "land",
+          "cost": 4.0,
+          "days": 128.0
+        },
+        {
+          "unit": "anti_air",
+          "model": 4,
+          "count": 3,
+          "group": "land",
+          "cost": 5.0,
+          "days": 56.0
+        }
+      ],
+      "raw_ic_days": 2970.0,
+      "research_programme_ic_days": 2376.0,
+      "stressed_ic_days": 441.7,
+      "programme_choices": [],
+      "cabinet": [
+        [
+          "minister of security",
+          "50103",
+          "Tojo Hideki"
+        ],
+        [
+          "chief of air force",
+          "50153",
+          "Tsukahara Nishizo"
+        ]
+      ],
+      "paid_resources": {
+        "money": 350,
+        "supplies": 7500,
+        "oil": 1000,
+        "manpower": 39.0
+      },
+      "days": 210,
+      "gross_stock_ic_days": 3625.0
+    },
+    {
+      "year": 1945,
+      "proposal": "r15_pacific_or_ocean",
+      "choice": 1,
+      "units": [
+        {
+          "unit": "marine",
+          "model": 5,
+          "count": 1,
+          "group": "land",
+          "cost": 6.4,
+          "days": 315.0
+        },
+        {
+          "unit": "bergsjaeger",
+          "model": 12,
+          "count": 1,
+          "group": "land",
+          "cost": 4.8,
+          "days": 334.45
+        },
+        {
+          "unit": "transport",
+          "model": 3,
+          "count": 2,
+          "group": "naval",
+          "cost": 3.0,
+          "days": 120.0
+        }
+      ],
+      "raw_ic_days": 6780.0,
+      "research_programme_ic_days": 4341.36,
+      "stressed_ic_days": 714.58,
+      "programme_choices": [
+        [
+          "army_production",
+          0
+        ]
+      ],
+      "cabinet": [
+        [
+          "head of government",
+          "50022",
+          "Tojo Hideki"
+        ],
+        [
+          "chief of navy",
+          "50150",
+          "Oikawa Koshiro"
+        ]
+      ],
+      "paid_resources": {
+        "money": 450,
+        "supplies": 9000,
+        "oil": 5000,
+        "manpower": 29.0
+      },
+      "days": 240,
+      "gross_stock_ic_days": 4500.0
+    },
+    {
+      "year": 1945,
+      "proposal": "r15_american_army",
+      "choice": 0,
+      "units": [
+        {
+          "unit": "infantry",
+          "model": 12,
+          "count": 6,
+          "group": "land",
+          "cost": 4.0,
+          "days": 159.5
+        },
+        {
+          "unit": "bergsjaeger",
+          "model": 12,
+          "count": 2,
+          "group": "land",
+          "cost": 4.8,
+          "days": 334.45
+        }
+      ],
+      "raw_ic_days": 13740.0,
+      "research_programme_ic_days": 7038.72,
+      "stressed_ic_days": 718.79,
+      "programme_choices": [
+        [
+          "army_production",
+          0
+        ]
+      ],
+      "cabinet": [
+        [
+          "head of state",
+          "50011",
+          "Yasuhito"
+        ],
+        [
+          "head of government",
+          "50022",
+          "Tojo Hideki"
+        ],
+        [
+          "chief of army",
+          "50008",
+          "Kanin Kotohito"
+        ]
+      ],
+      "paid_resources": {
+        "money": 800,
+        "supplies": 22000,
+        "oil": 6000,
+        "manpower": 104.0
+      },
+      "days": 270,
+      "gross_stock_ic_days": 9500.0
+    },
+    {
+      "year": 1945,
+      "proposal": "r15_american_army",
+      "choice": 1,
+      "units": [
+        {
+          "unit": "garrison",
+          "model": 6,
+          "count": 4,
+          "group": "land",
+          "cost": 4.0,
+          "days": 128.0
+        }
+      ],
+      "raw_ic_days": 2560.0,
+      "research_programme_ic_days": 2048.0,
+      "stressed_ic_days": 380.72,
+      "programme_choices": [],
+      "cabinet": [
+        [
+          "minister of security",
+          "50103",
+          "Tojo Hideki"
+        ]
+      ],
+      "paid_resources": {
+        "money": 450,
+        "supplies": 11000,
+        "oil": 2500,
+        "manpower": 40.0
+      },
+      "days": 150,
+      "gross_stock_ic_days": 5000.0
+    },
+    {
+      "year": 1950,
+      "proposal": "r15_carrier_recovery",
+      "choice": 0,
+      "units": [
+        {
+          "unit": "light_cag",
+          "model": 6,
+          "count": 2,
+          "group": "air",
+          "cost": 2.58,
+          "days": 98.5
+        },
+        {
+          "unit": "light_carrier",
+          "model": 3,
+          "count": 2,
+          "group": "naval",
+          "cost": 3.52,
+          "days": 917.8
+        },
+        {
+          "unit": "destroyer",
+          "model": 8,
+          "count": 4,
+          "group": "naval",
+          "cost": 1.4,
+          "days": 456.6
+        }
+      ],
+      "raw_ic_days": 13877.0,
+      "research_programme_ic_days": 9526.53,
+      "stressed_ic_days": 1906.77,
+      "programme_choices": [
+        [
+          "first_industry",
+          1
+        ],
+        [
+          "naval_production",
+          0
+        ]
+      ],
+      "cabinet": [
+        [
+          "head of government",
+          "50021",
+          "Hiranuma Kiichiro"
+        ],
+        [
+          "chief of air force",
+          "50010",
+          "Yamamoto Isoroku"
+        ],
+        [
+          "minister of armament",
+          "50075",
+          "Nakajima Chikuhei"
+        ],
+        [
+          "chief of navy",
+          "50150",
+          "Oikawa Koshiro"
+        ]
+      ],
+      "paid_resources": {
+        "money": 500,
+        "supplies": 14000,
+        "oil": 4000,
+        "metal": 3500,
+        "manpower": 10.14
+      },
+      "days": 330,
+      "gross_stock_ic_days": 6000.0
+    },
+    {
+      "year": 1950,
+      "proposal": "r15_carrier_recovery",
+      "choice": 1,
+      "units": [
+        {
+          "unit": "naval_bomber",
+          "model": 6,
+          "count": 2,
+          "group": "air",
+          "cost": 18.0,
+          "days": 132.48000000000002
+        },
+        {
+          "unit": "multi_role",
+          "model": 10,
+          "count": 1,
+          "group": "air",
+          "cost": 23.875,
+          "days": 138.24
+        }
+      ],
+      "raw_ic_days": 15810.0,
+      "research_programme_ic_days": 8069.76,
+      "stressed_ic_days": 1461.25,
+      "programme_choices": [
+        [
+          "first_industry",
+          1
+        ],
+        [
+          "air_production",
+          1
+        ]
+      ],
+      "cabinet": [
+        [
+          "chief of air force",
+          "50010",
+          "Yamamoto Isoroku"
+        ],
+        [
+          "minister of armament",
+          "50075",
+          "Nakajima Chikuhei"
+        ]
+      ],
+      "paid_resources": {
+        "money": 250,
+        "supplies": 6500,
+        "oil": 1500,
+        "metal": 1500,
+        "manpower": 5.4
+      },
+      "days": 180,
+      "gross_stock_ic_days": 2875.0
+    },
+    {
+      "year": 1950,
+      "proposal": "r15_anchorage_recovery",
+      "choice": 0,
+      "units": [],
+      "raw_ic_days": 0,
+      "research_programme_ic_days": 0,
+      "stressed_ic_days": 0,
+      "programme_choices": [],
+      "cabinet": [],
+      "paid_resources": {
+        "money": 150,
+        "supplies": 3500,
+        "oil": 1000
+      },
+      "days": 90,
+      "gross_stock_ic_days": 1625.0
+    },
+    {
+      "year": 1950,
+      "proposal": "r15_anchorage_recovery",
+      "choice": 1,
+      "units": [
+        {
+          "unit": "marine",
+          "model": 7,
+          "count": 1,
+          "group": "land",
+          "cost": 6.4,
+          "days": 315.0
+        },
+        {
+          "unit": "transport",
+          "model": 4,
+          "count": 1,
+          "group": "naval",
+          "cost": 3.0,
+          "days": 120.0
+        }
+      ],
+      "raw_ic_days": 3810.0,
+      "research_programme_ic_days": 2376.0,
+      "stressed_ic_days": 361.39,
+      "programme_choices": [
+        [
+          "army_production",
+          0
+        ]
+      ],
+      "cabinet": [
+        [
+          "chief of navy",
+          "50150",
+          "Oikawa Koshiro"
+        ]
+      ],
+      "paid_resources": {
+        "money": 300,
+        "supplies": 6000,
+        "oil": 2000,
+        "metal": 1000,
+        "manpower": 15.5
+      },
+      "days": 180,
+      "gross_stock_ic_days": 3000.0
+    },
+    {
+      "year": 1950,
+      "proposal": "r15_china_or_fleet",
+      "choice": 0,
+      "units": [
+        {
+          "unit": "infantry",
+          "model": 13,
+          "count": 2,
+          "group": "land",
+          "cost": 4.0,
+          "days": 159.5
+        },
+        {
+          "unit": "bergsjaeger",
+          "model": 13,
+          "count": 1,
+          "group": "land",
+          "cost": 4.8,
+          "days": 334.45
+        }
+      ],
+      "raw_ic_days": 5420.0,
+      "research_programme_ic_days": 2881.36,
+      "stressed_ic_days": 431.07,
+      "programme_choices": [
+        [
+          "army_production",
+          0
+        ]
+      ],
+      "cabinet": [
+        [
+          "head of state",
+          "50011",
+          "Yasuhito"
+        ],
+        [
+          "chief of army",
+          "50139",
+          "Tsuchihashi Yuitsu"
+        ]
+      ],
+      "paid_resources": {
+        "money": 300,
+        "supplies": 7000,
+        "oil": 500,
+        "manpower": 39.0
+      },
+      "days": 180,
+      "gross_stock_ic_days": 3250.0
+    },
+    {
+      "year": 1950,
+      "proposal": "r15_china_or_fleet",
+      "choice": 1,
+      "units": [
+        {
+          "unit": "destroyer",
+          "model": 8,
+          "count": 2,
+          "group": "naval",
+          "cost": 1.4,
+          "days": 456.6
+        },
+        {
+          "unit": "cag",
+          "model": 6,
+          "count": 2,
+          "group": "air",
+          "cost": 5.2,
+          "days": 98.5
+        }
+      ],
+      "raw_ic_days": 3466.0,
+      "research_programme_ic_days": 2302.88,
+      "stressed_ic_days": 350.27,
+      "programme_choices": [
+        [
+          "first_industry",
+          1
+        ],
+        [
+          "naval_production",
+          0
+        ]
+      ],
+      "cabinet": [
+        [
+          "head of government",
+          "50021",
+          "Hiranuma Kiichiro"
+        ],
+        [
+          "chief of air force",
+          "50010",
+          "Yamamoto Isoroku"
+        ],
+        [
+          "minister of armament",
+          "50075",
+          "Nakajima Chikuhei"
+        ],
+        [
+          "chief of navy",
+          "50150",
+          "Oikawa Koshiro"
+        ]
+      ],
+      "paid_resources": {
+        "money": 350,
+        "supplies": 7000,
+        "oil": 1800,
+        "manpower": 15.5
+      },
+      "days": 240,
+      "gross_stock_ic_days": 3500.0
+    },
+    {
+      "year": 1950,
+      "proposal": "r15_pacific_or_ocean",
+      "choice": 0,
+      "units": [
+        {
+          "unit": "garrison",
+          "model": 6,
+          "count": 3,
+          "group": "land",
+          "cost": 4.0,
+          "days": 128.0
+        },
+        {
+          "unit": "anti_air",
+          "model": 5,
+          "count": 3,
+          "group": "land",
+          "cost": 5.0,
+          "days": 56.0
+        }
+      ],
+      "raw_ic_days": 2970.0,
+      "research_programme_ic_days": 2376.0,
+      "stressed_ic_days": 498.61,
+      "programme_choices": [],
+      "cabinet": [
+        [
+          "chief of air force",
+          "50153",
+          "Tsukahara Nishizo"
+        ]
+      ],
+      "paid_resources": {
+        "money": 350,
+        "supplies": 7500,
+        "oil": 1000,
+        "manpower": 39.0
+      },
+      "days": 210,
+      "gross_stock_ic_days": 3625.0
+    },
+    {
+      "year": 1950,
+      "proposal": "r15_pacific_or_ocean",
+      "choice": 1,
+      "units": [
+        {
+          "unit": "marine",
+          "model": 7,
+          "count": 1,
+          "group": "land",
+          "cost": 6.4,
+          "days": 315.0
+        },
+        {
+          "unit": "bergsjaeger",
+          "model": 13,
+          "count": 1,
+          "group": "land",
+          "cost": 4.8,
+          "days": 334.45
+        },
+        {
+          "unit": "transport",
+          "model": 4,
+          "count": 2,
+          "group": "naval",
+          "cost": 3.0,
+          "days": 120.0
+        }
+      ],
+      "raw_ic_days": 6780.0,
+      "research_programme_ic_days": 4341.36,
+      "stressed_ic_days": 774.06,
+      "programme_choices": [
+        [
+          "army_production",
+          0
+        ]
+      ],
+      "cabinet": [
+        [
+          "chief of navy",
+          "50150",
+          "Oikawa Koshiro"
+        ]
+      ],
+      "paid_resources": {
+        "money": 450,
+        "supplies": 9000,
+        "oil": 5000,
+        "manpower": 29.0
+      },
+      "days": 240,
+      "gross_stock_ic_days": 4500.0
+    },
+    {
+      "year": 1950,
+      "proposal": "r15_american_army",
+      "choice": 0,
+      "units": [
+        {
+          "unit": "infantry",
+          "model": 13,
+          "count": 6,
+          "group": "land",
+          "cost": 4.0,
+          "days": 159.5
+        },
+        {
+          "unit": "bergsjaeger",
+          "model": 13,
+          "count": 2,
+          "group": "land",
+          "cost": 4.8,
+          "days": 334.45
+        }
+      ],
+      "raw_ic_days": 13740.0,
+      "research_programme_ic_days": 7038.72,
+      "stressed_ic_days": 935.29,
+      "programme_choices": [
+        [
+          "army_production",
+          0
+        ]
+      ],
+      "cabinet": [
+        [
+          "head of state",
+          "50011",
+          "Yasuhito"
+        ],
+        [
+          "chief of army",
+          "50139",
+          "Tsuchihashi Yuitsu"
+        ]
+      ],
+      "paid_resources": {
+        "money": 800,
+        "supplies": 22000,
+        "oil": 6000,
+        "manpower": 104.0
+      },
+      "days": 270,
+      "gross_stock_ic_days": 9500.0
+    },
+    {
+      "year": 1950,
+      "proposal": "r15_american_army",
+      "choice": 1,
+      "units": [
+        {
+          "unit": "garrison",
+          "model": 6,
+          "count": 4,
+          "group": "land",
+          "cost": 4.0,
+          "days": 128.0
+        }
+      ],
+      "raw_ic_days": 2560.0,
+      "research_programme_ic_days": 2048.0,
+      "stressed_ic_days": 456.6,
+      "programme_choices": [],
+      "cabinet": [],
+      "paid_resources": {
+        "money": 450,
+        "supplies": 11000,
+        "oil": 2500,
+        "manpower": 40.0
+      },
+      "days": 150,
+      "gross_stock_ic_days": 5000.0
+    }
+  ],
+  "scope": "One actual choice per programme and one date-eligible minister per office for the entire packet. Research follows compatible Japanese prerequisites; map and political appointment constraints relaxed as a generous stress bound. Includes fixed native-model-zero research changes, explicit programme reductions, named slider positions and65% serial-gearing floor. CAG in air group is conservative. Gross stock conversion uses unmodified4supplies/IC and0.2money/IC, excludes oil/material value and payments returned at delivery. No engine timing, rounding or exact campaign exchange rate asserted."
+}

@@ -1,8 +1,8 @@
-# Japan Rising R14.1 — specialist units introduced in R13
+# Japan Rising R15 — specialist units introduced in R13
 
-R14 updates the Matsu figures below. See R14_CONSTRUCTION_AUDIT.md for research, programmes, ministers, sliders and gearing.
+R14 updated the Matsu figures below; R15 preserves that balance. See R14_CONSTRUCTION_AUDIT.md for research, programmes, ministers, sliders and gearing.
 
-Start a new 1933 campaign through **Japan Rising JX1 Alpha2**. Confirm **R14.1** in the scenario and welcome. No game was launched during this work. All six R12 first issues and the R12.1 activation/shipping repairs remain. Historical R13 audit counts below describe that earlier revision; current R14 counts and checks are recorded in R14_COLD_AUDIT.json.
+Start a new 1933 campaign through **Japan Rising JX1 Alpha2**. Confirm **R15** in the scenario and welcome. No game was launched during this work. All six R12 first issues and the R12.1 activation/shipping repairs remain. Historical R13 audit counts below describe that earlier revision; current R14 counts and checks are recorded in R14_COLD_AUDIT.json.
 
 Blood and Iron already has Japan's heavy-submarine family, registered internally as nuclear_submarine even for its prewar models. Its models, registry and Japanese starting boats are preserved. The proposed additional ocean submarine is replaced by a full-size land formation: **Expeditionary Assault Division**. This is a counterfactual organisation combining Japanese infantry, assault engineers and a lighter support train; it is not a claim that Japan historically fielded a separate division class with these exact statistics.
 
