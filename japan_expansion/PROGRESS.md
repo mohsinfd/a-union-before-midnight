@@ -1,3 +1,7 @@
+# R15.1 timing repair
+
+Nagoya failure confirmed from the 1934 autosave. Shared elapsed-time repair installed; original save preserved and a separate repaired copy created. Final offline reconciliation: see R15_1_COLD_AUDIT.json. No game launched.
+
 # Japan Rising R15 — ready for player testing
 
 | Work | State |

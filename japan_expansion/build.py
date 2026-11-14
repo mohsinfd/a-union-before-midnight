@@ -64,6 +64,7 @@ import r15_enemy
 import r15_recovery
 import r15_strategy
 import enemy_transport_ai
+import timer_reliability
 
 from runtime_paths import GAME
 from runtime_paths import SOURCE
@@ -343,6 +344,7 @@ def prepare_catalog():
     final_event_integrity.apply()
     equipment_delivery.apply()
     player_copy.apply()
+    timer_reliability.apply()
     IDS.update({e.key:e.id for e in EVENTS})
     PREPARED_CORES=china_cores
     return china_cores
@@ -363,7 +365,7 @@ def compiled_event(e):
     # Keep the engine's tooltip-suppression token only for large legacy
     # receivers. It is localised below; it is not a promise of silent execution.
     large=hidden and any(len(a.commands)>20 or len(a.gate)>3000 for a in e.actions)
-    title='"AI_EVENT"' if large else "JX_"+e.key+"_NAME"
+    title='"AI_EVENT"' if large or getattr(e,'engine_hidden',False) else "JX_"+e.key+"_NAME"
     lines=[f"# {e.key}: {e.purpose}","event = {",f" id = {e.id}"," random = no",f" country = {e.country}"," save_date = yes",f" name = {title}"]
     lines += [f" desc = JX_{e.key}_DESC"," style = 2",f' picture = "jx_{e.art}"']
     if e.persistent or e.triggered:

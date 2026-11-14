@@ -6,6 +6,7 @@ import simulate as sim
 from FLOW_review import HumanWorld
 import r15_strategy as strategy
 import r15_common as common
+from timer_test_fixtures import elapsed
 
 b.prepare_catalog();strategy.apply()
 b.IDS.update({e.key:e.id for e in b.EVENTS})
@@ -40,6 +41,7 @@ def world(stage='china',year=None):
         w.flags['JX_PACIFIC']=1;w.addwar('JAP','USA')
         if stage=='america':
             w.controlled[1887]='JAP';w.history[str(BY['usc_landing'].id)]=w.day-30
+            elapsed(w,'usc_landing',30)
     return w
 
 
@@ -62,6 +64,7 @@ class StrategyReview(unittest.TestCase):
             w.year=BY[key].year-1;self.assertFalse(self.eligible(w,key))
         w=world();w.armies['CHI']=60;self.assertFalse(self.eligible(w,'r15_china_or_fleet'))
         w=world('america');w.history[str(BY['usc_landing'].id)]=w.day-29
+        elapsed(w,'usc_landing',29)
         self.assertFalse(self.eligible(w,'r15_american_army'))
         w=world('ocean');w.controlled[1432]='ENG';self.assertFalse(self.eligible(w,'r15_pacific_or_ocean'))
 

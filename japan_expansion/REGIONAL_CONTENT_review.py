@@ -135,6 +135,8 @@ class RegionalTests(unittest.TestCase):
         w.history[str(BY_KEY['china_mission'].id)]=w.day
         w.dispatch('china_mission_finish_0');self.assertEqual(w.resources['JAP'],before)
         w.advance(60)
+        from timer_test_fixtures import elapsed
+        elapsed(w,'china_mission',60)
         w.dispatch('china_mission_finish_0');self.assertEqual(w.resources['JAP']['money'],before['money']+120)
         w.dispatch('china_mission_finish_1');self.assertEqual(w.resources['JAP']['money'],before['money']+120)
 

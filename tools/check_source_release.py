@@ -21,9 +21,13 @@ events=json.loads((project/'events.json').read_text())
 audit=json.loads((project/'R14_COLD_AUDIT.json').read_text(encoding='utf-8'))
 catalogue=ast.parse((project/'catalog.py').read_text(encoding='utf-8'))
 version=next(ast.literal_eval(n.value) for n in catalogue.body if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='VERSION' for t in n.targets))
-assert audit['passed'] and audit['version']==version
+assert audit['passed']
+if version.endswith('R15.1'):
+    audit=json.loads((project/'R15_1_COLD_AUDIT.json').read_text(encoding='utf-8'))
+assert audit['version']==version
 r15_audit=json.loads((project/'R15_COLD_AUDIT.json').read_text(encoding='utf-8'))
-assert r15_audit['passed'] and r15_audit['version']==version and r15_audit['events']==audit['events']
+assert r15_audit['passed']
+if not version.endswith('R15.1'):assert r15_audit['version']==version and r15_audit['events']==audit['events']
 assert len(events)==audit['events'] and len({e['id'] for e in events})==len(events)
 assert sum(e['decision'] for e in events)==audit['registered_decisions']
 baseline=json.loads((project/'R14_BASELINE_IDS.json').read_text(encoding='utf-8'))
@@ -39,7 +43,7 @@ manifest=json.loads((ROOT/'SOURCE_RELEASE_MANIFEST.json').read_text(encoding='ut
 assert manifest['version']==audit['version']
 for record in manifest['files']:
     path=ROOT/record['path'];raw=path.read_bytes()
-    if path.suffix.lower() not in ('.png','.bmp','.jpg','.jpeg'):
+    if path.suffix.lower() not in ('.png','.bmp','.jpg','.jpeg','.gz'):
         raw=raw.replace(b'\r\r\n',b'\n').replace(b'\r\n',b'\n')
     assert len(raw)==record['bytes'],record['path']
     assert hashlib.sha256(raw).hexdigest()==record['sha256_git_blob_bytes'],record['path']

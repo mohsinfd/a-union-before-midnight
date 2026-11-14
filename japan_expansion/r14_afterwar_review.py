@@ -143,12 +143,16 @@ class Afterwar(unittest.TestCase):
         w=self.world();w.flags.update(JX_US_PEACE=1)
         w.flags['JX_US_RETURN_HAWAII' if returned else 'JX_US_KEEP_HAWAII']=1
         w.history[str(sim.BY_KEY['us_signed'].id)]=-360
+        from timer_test_fixtures import elapsed
+        elapsed(w,'us_signed',360)
         if not returned:w.owned[1734]=w.controlled[1734]='JAP'
         return w
 
     def test_us_waits_for_verified_peace_and_treaty_choice(self):
         w=self.america();self.assertTrue(self.gate(w,'r14_american_future'))
         w.history[str(sim.BY_KEY['us_signed'].id)]=0
+        from timer_test_fixtures import elapsed
+        elapsed(w,'us_signed',0)
         self.assertFalse(self.gate(w,'r14_american_future'))
         w=self.america();self.assertFalse(w.action('r14_american_future',1))
         w=self.america(False);self.assertFalse(w.action('r14_american_future',0))

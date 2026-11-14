@@ -40,6 +40,8 @@ class ColdWorld(simulate.World):
 def ready():
     w=ColdWorld();w.year=1944;w.day=800
     w.history[str(BY['pacific_open'].id)]=0
+    from timer_test_fixtures import elapsed
+    elapsed(w,'pacific_open',800)
     for p in (1734,1432,1565):w.controlled[p]='JAP'
     w.owned[1734]='USA';w.owned[1432]='ENG';w.owned[1565]='USA'
     w.types['JAP','carrier']=10;w.types['USA','carrier']=2

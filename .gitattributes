@@ -10,3 +10,5 @@
 *.bmp binary
 *.jpg binary
 *.jpeg binary
+
+*.gz binary

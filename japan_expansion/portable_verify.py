@@ -37,8 +37,11 @@ def verify():
                 with Image.open(path) as picture:assert picture.size==(192,104)
     with Image.open(target/'gfx/map/hoi_counter_strip.bmp') as image:assert image.size==((53+len(d.CLASSES))*32,34)
     reports={}
-    for filename in ('UNIQUE_UNIT_COLD_AUDIT.json','ENEMY_TRANSPORT_AI_AUDIT.json','R14_COLD_AUDIT.json','R15_COLD_AUDIT.json'):
+    audit_names=(('R15_1_COLD_AUDIT.json',) if b.VERSION.endswith('R15.1') else
+                 ('UNIQUE_UNIT_COLD_AUDIT.json','ENEMY_TRANSPORT_AI_AUDIT.json','R14_COLD_AUDIT.json','R15_COLD_AUDIT.json'))
+    for filename in audit_names:
         report=json.loads((b.HERE/filename).read_text());assert report['passed'],filename
+        assert report['version']==b.VERSION,filename
         reports[filename]=report
     docs=target/'Japan Rising Documentation';docs.mkdir(exist_ok=True)
     for filename in ('README.md','R13_UNITS.md','R13_1_CHANGES.md','ENEMY_TRANSPORT_AI_REPORT.json',
@@ -49,6 +52,9 @@ def verify():
                      'R15_README.md','R15_ENEMY.md','R15_RECOVERY.md','R15_STRATEGY.md',
                      'R15_COLD_AUDIT.json','R15_COST_AUDIT.json','R15_COST_AUDIT.md'):
         shutil.copy2(b.HERE/filename,docs/filename)
+    if b.VERSION.endswith('R15.1'):
+        for filename in ('R15_1_COLD_AUDIT.json','R15_1_CHANGES.md','R15_1_REGRESSION_RESULTS.json'):
+            shutil.copy2(b.HERE/filename,docs/filename)
     receipt=dict(version=b.VERSION,target=str(target),state='installed-offline-validated',
                  events=len(b.EVENTS),modules=len(groups),loaded_english_matches=len(expected),
                  game_launched=False,save_edits=False,source_path=str(b.SOURCE),
