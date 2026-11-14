@@ -1,5 +1,5 @@
 {
-  "version": "JX 1.1 ALPHA 2 R15.1",
+  "version": "JX 1.1 ALPHA 2 R15.2",
   "note": "Hashes describe canonical Git blob bytes. Windows checkout can convert script line endings.",
   "files": [
     {
@@ -34,8 +34,8 @@
     },
     {
       "path": "README.md",
-      "sha256_git_blob_bytes": "2ee0535f7fdd5441779e6ca938ec1eac8e623075ef2e1c2a71f764bce86ecb50",
-      "bytes": 5146
+      "sha256_git_blob_bytes": "d947c52859b4d9a225dbbd5e30c579a9a7e0ec67a6f4365759a9222f08878f2d",
+      "bytes": 5084
     },
     {
       "path": "RELEASE_NOTES.md",
@@ -134,8 +134,8 @@
     },
     {
       "path": "japan_expansion/EVENT_SPEC.md",
-      "sha256_git_blob_bytes": "52db7abd3e18988e3047872da6daf4a2aa94d8a9d89e3b7d01d7c42308c2f767",
-      "bytes": 49948567
+      "sha256_git_blob_bytes": "8949d36e34fa41d12d8ed49235be2de40de31e90da386848c6cd903a60e80810",
+      "bytes": 49951620
     },
     {
       "path": "japan_expansion/FINAL_EVENT_INTEGRITY_review.py",
@@ -144,8 +144,8 @@
     },
     {
       "path": "japan_expansion/FINAL_INSTALL_REVIEW.json",
-      "sha256_git_blob_bytes": "d84d2fef455b7eb71efddc15a32061fd06cfc641703430030ac79f9f2691f8e7",
-      "bytes": 5781
+      "sha256_git_blob_bytes": "4b97b08643d36386512a9060e48df3c75f363d20d8d5f3abfbcad8de935e5bf0",
+      "bytes": 6026
     },
     {
       "path": "japan_expansion/FINAL_INSTALL_review.py",
@@ -264,8 +264,18 @@
     },
     {
       "path": "japan_expansion/PROGRESS.md",
-      "sha256_git_blob_bytes": "6753feb418bc55661c2392062e4b45dce6db099ae9d8ecba16c0e82305506ac8",
-      "bytes": 1423
+      "sha256_git_blob_bytes": "d2f4eee63d9eb98171612897e21bb73b9f28e25602d5803058e07e32c65fbbd8",
+      "bytes": 1670
+    },
+    {
+      "path": "japan_expansion/PURCHASE_AUDIT_1936_APRIL.json",
+      "sha256_git_blob_bytes": "6e005591acecfcbaf264a84d7793676b57b0e24f208b59633fb7f66dac262147",
+      "bytes": 72826
+    },
+    {
+      "path": "japan_expansion/PURCHASE_AUDIT_1936_APRIL.md",
+      "sha256_git_blob_bytes": "1545fff1526ea0394ea91b77eb74dc0d44eb028ca2318783ff79c711101705e7",
+      "bytes": 6882
     },
     {
       "path": "japan_expansion/R10_CHANGES.md",
@@ -433,6 +443,11 @@
       "bytes": 20013
     },
     {
+      "path": "japan_expansion/R15_1_BASELINE_EVENTS.json.gz",
+      "sha256_git_blob_bytes": "e2d17f5ce4e11281e6be054be8a6751fa3156548e4ff703403d0b90f43f3ecf4",
+      "bytes": 1455185
+    },
+    {
       "path": "japan_expansion/R15_1_CHANGES.md",
       "sha256_git_blob_bytes": "6a5a1223634275385b4a7fdc6bd9971cdd608d9810442e07acc4761183c57796",
       "bytes": 1642
@@ -451,6 +466,26 @@
       "path": "japan_expansion/R15_1_REGRESSION_RESULTS.json",
       "sha256_git_blob_bytes": "306656cf5a38416661dbe82d289106da966caf25c92cf62d2a49fe863f01004a",
       "bytes": 11390
+    },
+    {
+      "path": "japan_expansion/R15_2_CHANGES.md",
+      "sha256_git_blob_bytes": "e84534fecee53a6c9ae0ed45c48033f63e6314eceded4708c990c674579b6866",
+      "bytes": 2585
+    },
+    {
+      "path": "japan_expansion/R15_2_COLD_AUDIT.json",
+      "sha256_git_blob_bytes": "e1e77e616942b4e477e86c7c4ae7638847833aed6b435ab3d7f9fc34f8c2c080",
+      "bytes": 19280
+    },
+    {
+      "path": "japan_expansion/R15_2_COLD_review.py",
+      "sha256_git_blob_bytes": "081e34e98d30aa1a30b097fc2481ed777d6a5c0b305f479d0c7b919f5b7e2245",
+      "bytes": 6043
+    },
+    {
+      "path": "japan_expansion/R15_2_REGRESSION_RESULTS.json",
+      "sha256_git_blob_bytes": "1dae9135674a7820f3f525be089dcea552ab6c26d5c658cf26a936f96b803776",
+      "bytes": 14525
     },
     {
       "path": "japan_expansion/R15_BASELINE_ENGLISH_HASHES.json",
@@ -499,8 +534,8 @@
     },
     {
       "path": "japan_expansion/R15_INSTALL_RECEIPT.json",
-      "sha256_git_blob_bytes": "daa17aac20ab2fc1839a4119107e496d5740aec88f16739c98d7d0bb80f32a2d",
-      "bytes": 19261
+      "sha256_git_blob_bytes": "da24e6910e97e72036eeee5f3bbb1cc6bdfb33fcc2568cec969f20223e8c869f",
+      "bytes": 21517
     },
     {
       "path": "japan_expansion/R15_README.md",
@@ -529,8 +564,8 @@
     },
     {
       "path": "japan_expansion/README.md",
-      "sha256_git_blob_bytes": "345ebb5d16356885af050c15400bfb5416649ca3e9602b8c36cfb62d3f898ad5",
-      "bytes": 17238
+      "sha256_git_blob_bytes": "de514917de5d9e7bf19c5e217d6690a7fd442dbd64d19ef4d25d6f3cd76666ef",
+      "bytes": 17329
     },
     {
       "path": "japan_expansion/RECRUITMENT_review.py",
@@ -569,12 +604,12 @@
     },
     {
       "path": "japan_expansion/SPEC_SHA256.txt",
-      "sha256_git_blob_bytes": "ad0b859de70abd1f46adcbde73d53e80a124880f2e94a8c837ca43fdaf37fcaa",
+      "sha256_git_blob_bytes": "70e41835961631e0c6cfcfc818ace9732718a5bd1a826b5d62285824d1dca6d0",
       "bytes": 65
     },
     {
       "path": "japan_expansion/STATIC_VALIDATION.json",
-      "sha256_git_blob_bytes": "25d201ff7c962e3fc165e43c46d2a5ba8e86d60922891acefd2ca4888ac8fa2c",
+      "sha256_git_blob_bytes": "2b334ee184ce6c79aa31a409874891f8031ae203e039f370eeb6e1813b34a2c7",
       "bytes": 244
     },
     {
@@ -828,6 +863,11 @@
       "bytes": 9989
     },
     {
+      "path": "japan_expansion/audit_purchases_1936.py",
+      "sha256_git_blob_bytes": "3d154b15db6e9f4c5dd2c7a1d04879a05addd5bdacd3d9f5ea479d3a1e6981b7",
+      "bytes": 14341
+    },
+    {
       "path": "japan_expansion/balance_b1_review.py",
       "sha256_git_blob_bytes": "16a1a560ab825965b15d1174641c1286f7e7a17c42299263618aae2a1425e56a",
       "bytes": 9078
@@ -839,8 +879,8 @@
     },
     {
       "path": "japan_expansion/build.py",
-      "sha256_git_blob_bytes": "780d94bb1b36eef5d42cfa0ed0c0cab68da1ab2e8412b02557135019fdab55dd",
-      "bytes": 46491
+      "sha256_git_blob_bytes": "4196455888268bf7b22c49a89c908677d8aedaeb73781005001b353a5b118dea",
+      "bytes": 47267
     },
     {
       "path": "japan_expansion/cabinet_expansion.py",
@@ -859,7 +899,7 @@
     },
     {
       "path": "japan_expansion/catalog.py",
-      "sha256_git_blob_bytes": "79aa05e13e7c79b5d2668350f1819962745aa4844dec59129213ba6ece5b77c4",
+      "sha256_git_blob_bytes": "55f89ec7375e0bd82ce5925b089cafa9bd9b18116ac96cffd0ab82874a564023",
       "bytes": 46273
     },
     {
@@ -924,8 +964,8 @@
     },
     {
       "path": "japan_expansion/events.json",
-      "sha256_git_blob_bytes": "0463b7d5042336852ac121eb86f0f3a8dc96b79cf638f1451afb8baabcead6a1",
-      "bytes": 51191419
+      "sha256_git_blob_bytes": "c8f0dd97aebba84588190c5c7123a15bff637a27b16be5421177828142015bc0",
+      "bytes": 51194239
     },
     {
       "path": "japan_expansion/final_event_integrity.py",
@@ -969,8 +1009,8 @@
     },
     {
       "path": "japan_expansion/install_portable.py",
-      "sha256_git_blob_bytes": "02d2d570e0a4a73b80bb3bf1543fec01824262cb7c82008faf3c5a7586893346",
-      "bytes": 3432
+      "sha256_git_blob_bytes": "24b050c2e81b6a187ca39bce5d47f8becd94a3b9e480f50359e857d40d72d8a2",
+      "bytes": 3511
     },
     {
       "path": "japan_expansion/island_shipping.py",
@@ -1039,8 +1079,8 @@
     },
     {
       "path": "japan_expansion/portable_verify.py",
-      "sha256_git_blob_bytes": "b864d3e0f60dc3d133403b1ad4d38037a8de3735fcc6fa40a90721d3d1e969ad",
-      "bytes": 4766
+      "sha256_git_blob_bytes": "73d495e2519afebf55007889d8c1f4c5821e6a8c1023a837c2faef328d6a466e",
+      "bytes": 5023
     },
     {
       "path": "japan_expansion/prewar_content.py",
@@ -1056,6 +1096,21 @@
       "path": "japan_expansion/programme_review.py",
       "sha256_git_blob_bytes": "19ce938e37d1197fd111ed7e2d7e2e75c74b0e331dae016594f3f2e935d2ce76",
       "bytes": 2095
+    },
+    {
+      "path": "japan_expansion/purchase_reliability.py",
+      "sha256_git_blob_bytes": "95272c7cfd131647ff643bac97e19cc9e062f24107bb7c02b6f9f374c82b7767",
+      "bytes": 2989
+    },
+    {
+      "path": "japan_expansion/purchase_reliability_review.py",
+      "sha256_git_blob_bytes": "2c1994a44fb00a9fc0a74623db93106fa2397d4d71de354bfac48e4fec612661",
+      "bytes": 4017
+    },
+    {
+      "path": "japan_expansion/purchase_save_review.py",
+      "sha256_git_blob_bytes": "559f36a90179355fedfb50ca266e8bd34087c5fd36367af301a03a262bf6276a",
+      "bytes": 3750
     },
     {
       "path": "japan_expansion/r14_afterwar.py",
@@ -1193,6 +1248,11 @@
       "bytes": 3889
     },
     {
+      "path": "japan_expansion/repair_purchases_r15_2.py",
+      "sha256_git_blob_bytes": "379aa33d42f4381e9140696948cfa936db8f094dc8e52b4d289da9fbf365fb42",
+      "bytes": 10976
+    },
+    {
       "path": "japan_expansion/resource_review.py",
       "sha256_git_blob_bytes": "da502294fbe7e87461e540c15a02a90fe77d29113f8a651f739f2f7a4ffbb3b8",
       "bytes": 14025
@@ -1294,8 +1354,8 @@
     },
     {
       "path": "japan_expansion/validate.py",
-      "sha256_git_blob_bytes": "046ceeaa866b338aa6f8a21bac5ae912146d9fea4b6be2b1ca60907263dc399c",
-      "bytes": 11309
+      "sha256_git_blob_bytes": "91e9bc46ca27b6c628c936da9079cc6a4e78c329f2ee2342c40f83dd227f717e",
+      "bytes": 11346
     },
     {
       "path": "requirements.txt",
@@ -1309,8 +1369,8 @@
     },
     {
       "path": "tools/check_source_release.py",
-      "sha256_git_blob_bytes": "7ac21e7d97950e225ee33b0eeeb9a390d9bfd54182a8ec1678574ddccb45eaf8",
-      "bytes": 3217
+      "sha256_git_blob_bytes": "fcd01031e4f837ab79ffdc3f9b26c9b13fb5ba0f8522594e3881f66d546b9762",
+      "bytes": 4005
     }
   ]
 }

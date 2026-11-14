@@ -1,3 +1,7 @@
+# R15.2 purchase repair
+
+Central native integer rendering repaired. Latest April 1936 autosave migrated without duplicate shipping, training rewards or oil contracts. Final cold and installation verification: R15_2_COLD_AUDIT.json. Game not run.
+
 # R15.1 timing repair
 
 Nagoya failure confirmed from the 1934 autosave. Shared elapsed-time repair installed; original save preserved and a separate repaired copy created. Final offline reconciliation: see R15_1_COLD_AUDIT.json. No game launched.

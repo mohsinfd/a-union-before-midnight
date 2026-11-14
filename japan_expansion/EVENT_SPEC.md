@@ -1,8 +1,8 @@
-# Japan Rising: executable event specification — JX 1.1 ALPHA 2 R15.1
+# Japan Rising: executable event specification — JX 1.1 ALPHA 2 R15.2
 
 This catalogue is compiled into the installed event files. It lists every event, including technical receivers, cooldowns and verification. IDs and conditions below are generated from the same objects used by the build.
 
-Total: 3106 events; 128 actionable decision entries. Counts include alternative paths and technical follow-ups; a campaign does not display them all.
+Total: 3107 events; 128 actionable decision entries. Counts include alternative paths and technical follow-ups; a campaign does not display them all.
 
 ## Cascade rules
 
@@ -3121,10 +3121,11 @@ Total: 3106 events; 128 actionable decision entries. Counts include alternative 
 | 28603104 | time_delivery_28603001_1_11 | JAP | timer_reliability | receiver | r15_american_army_finish_1 (28603007) |
 | 28603105 | time_delivery_28603004_1_12 | JAP | timer_reliability | receiver | r15_american_army_return_0 (28603003) |
 | 28603106 | time_delivery_28603007_1_12 | JAP | timer_reliability | receiver | r15_american_army_return_1 (28603006) |
+| 28603107 | paid_us_imports_end | JAP | purchase_reliability | automatic |  |
 
 ## Exact events, gates and actions
 
-### 28600001: Japan Rising - JX 1.1 ALPHA 2 R15.1
+### 28600001: Japan Rising - JX 1.1 ALPHA 2 R15.2
 
 Country: JAP. Module: opening. Earliest year: 1933. Triggered receiver: False. Persistent: False.
 
@@ -22586,7 +22587,7 @@ event = {
   command = { type = supplies value = -1500 }
   command = { type = setflag which = JX_china_mission_PENDING }
   command = { type = event
-which = "28603025"
+which = 28603025
 where = JAP
 when = 60 }
   command = { type = setflag which = JX_R11_CHINESE_AID_0 }
@@ -22599,7 +22600,7 @@ when = 60 }
   command = { type = supplies value = -1500 }
   command = { type = setflag which = JX_china_mission_PENDING }
   command = { type = event
-which = "28603026"
+which = 28603026
 where = JAP
 when = 60 }
   command = { type = setflag which = JX_R11_CHINESE_AID_1 }
@@ -25454,7 +25455,7 @@ which = JX_R14_CIVIL_RECOVERY_CHOSEN }
 	flag = JX_R14_CIVIL_RECOVERY_CIVILIAN_PENDING_EXECUTING
 }
 type = event
-which = "28603027"
+which = 28603027
 where = JAP
 when = 360 }
   command = { trigger = {
@@ -25527,7 +25528,7 @@ which = JX_R14_CIVIL_RECOVERY_CHOSEN }
 	flag = JX_R14_CIVIL_RECOVERY_RESERVES_PENDING_EXECUTING
 }
 type = event
-which = "28603028"
+which = 28603028
 where = JAP
 when = 180 }
   command = { trigger = {
@@ -25744,14 +25745,14 @@ which = U87 }
 	flag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_PENDING_EXECUTING
 }
 type = event
-which = "28603029"
+which = 28603029
 where = U87
 when = 1 }
   command = { trigger = {
 	flag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_PENDING_EXECUTING
 }
 type = event
-which = "28603030"
+which = 28603030
 where = JAP
 when = 2 }
   command = { trigger = {
@@ -25879,14 +25880,14 @@ which = JX_R14_CHINA_AUTONOMY_CIVILIAN }
 	flag = JX_R14_CHINA_AUTONOMY_CIVILIAN_PENDING_EXECUTING
 }
 type = event
-which = "28603031"
+which = 28603031
 where = U87
 when = 1 }
   command = { trigger = {
 	flag = JX_R14_CHINA_AUTONOMY_CIVILIAN_PENDING_EXECUTING
 }
 type = event
-which = "28603032"
+which = 28603032
 where = JAP
 when = 2 }
   command = { trigger = {
@@ -25954,14 +25955,14 @@ which = JX_R14_CHINA_AUTONOMY_MILITARY }
 	flag = JX_R14_CHINA_AUTONOMY_MILITARY_PENDING_EXECUTING
 }
 type = event
-which = "28603033"
+which = 28603033
 where = U87
 when = 1 }
   command = { trigger = {
 	flag = JX_R14_CHINA_AUTONOMY_MILITARY_PENDING_EXECUTING
 }
 type = event
-which = "28603034"
+which = 28603034
 where = JAP
 when = 2 }
   command = { trigger = {
@@ -26214,14 +26215,14 @@ which = IND }
 	flag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_PENDING_EXECUTING
 }
 type = event
-which = "28603035"
+which = 28603035
 where = IND
 when = 1 }
   command = { trigger = {
 	flag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_PENDING_EXECUTING
 }
 type = event
-which = "28603036"
+which = 28603036
 where = JAP
 when = 2 }
   command = { trigger = {
@@ -26349,14 +26350,14 @@ which = JX_R14_INDIA_AUTONOMY_CIVILIAN }
 	flag = JX_R14_INDIA_AUTONOMY_CIVILIAN_PENDING_EXECUTING
 }
 type = event
-which = "28603037"
+which = 28603037
 where = IND
 when = 1 }
   command = { trigger = {
 	flag = JX_R14_INDIA_AUTONOMY_CIVILIAN_PENDING_EXECUTING
 }
 type = event
-which = "28603038"
+which = 28603038
 where = JAP
 when = 2 }
   command = { trigger = {
@@ -26424,14 +26425,14 @@ which = JX_R14_INDIA_AUTONOMY_MILITARY }
 	flag = JX_R14_INDIA_AUTONOMY_MILITARY_PENDING_EXECUTING
 }
 type = event
-which = "28603039"
+which = 28603039
 where = IND
 when = 1 }
   command = { trigger = {
 	flag = JX_R14_INDIA_AUTONOMY_MILITARY_PENDING_EXECUTING
 }
 type = event
-which = "28603040"
+which = 28603040
 where = JAP
 when = 2 }
   command = { trigger = {
@@ -34389,7 +34390,7 @@ event = {
 	}
 }
 type = event
-which = "28603041"
+which = 28603041
 where = JAP
 when = 1800 }
   command = { trigger = { AND = { flag = JX_US_PENDING flag = JX_R14_US_PEACE_ISSUED NOT = { war = { country = JAP country = USA } } } AND = {  flag = JX_US_KEEP_HAWAII  } } type = relation which = USA value = -60 }
@@ -38923,7 +38924,7 @@ Country: JAP. Module: early. Earliest year: 1933. Triggered receiver: False. Per
 
 Choose a two-year American fuel contract. The mixed contract buys 12 metal and 24 oil daily for 4 supplies and 1 money daily. The oil-first contract buys 48 oil daily for 6 supplies and 1.5 money daily. Either costs 80 money now. Delivery follows trade efficiency; embargo, war or expiry can end it. These agreements do not renew themselves. This is an ordinary cancellable trade: cancel it in Diplomacy when imports exceed use or storage is full. The handling fee is spent; daily payments stop when the trade is cancelled. Oil above the storage limit is lost. A smaller 8-oil daily contract costs 30 money now, then one supply and 0.4 money daily.
 
-This is an optional decision. Open it when needed; leaving it available costs nothing.
+This is an optional decision. Open it when needed; leaving it available costs nothing. These are fixed-term contracts. Deliveries and payments continue until the stated expiry; war or an embargo ends American trade. Storage losses still apply.
 
 ```text
 # fx1933:
@@ -38947,32 +38948,58 @@ event = {
  action = {
   name = JX_fx1933_A0
   ai_chance = 100
-  trigger = { NOT = { flag = JX_EARLY_fx1933_DONE } money = 80 supplies = 0 oil = 0 exists = USA NOT = { war = { country = JAP country = USA } event = 2049026 } }
+  trigger = { NOT = { flag = JX_EARLY_fx1933_DONE } money = 80 supplies = 0 oil = 0 exists = USA NOT = { war = { country = JAP country = USA } event = 2049026 } NOT = { flag = JX_PAID_US_IMPORTS_CLOSED embargo = { country = USA country = JAP value = 1 } embargo = { country = JAP country = USA value = 1 } } }
   command = { type = money value = -80 }
   command = { type = supplies value = 0 }
   command = { type = oilpool value = 0 }
-  command = { type = trade which = USA where = JAP metal = -12 oil = -24 supplies = 4 money = 1 when = 720 value = 0 }
+  command = { type = trade
+which = USA
+where = JAP
+metal = -12
+oil = -24
+supplies = 4
+money = 1
+when = 720
+value = 1 }
   command = { type = setflag which = JX_EARLY_fx1933_DONE }
+  command = { type = setflag which = JX_PAID_US_FX1933 }
  }
  action = {
   name = JX_fx1933_A1
   ai_chance = 0
-  trigger = { NOT = { flag = JX_EARLY_fx1933_DONE } money = 80 supplies = 0 oil = 0 exists = USA NOT = { war = { country = JAP country = USA } event = 2049026 } }
+  trigger = { NOT = { flag = JX_EARLY_fx1933_DONE } money = 80 supplies = 0 oil = 0 exists = USA NOT = { war = { country = JAP country = USA } event = 2049026 } NOT = { flag = JX_PAID_US_IMPORTS_CLOSED embargo = { country = USA country = JAP value = 1 } embargo = { country = JAP country = USA value = 1 } } }
   command = { type = money value = -80 }
   command = { type = supplies value = 0 }
   command = { type = oilpool value = 0 }
-  command = { type = trade which = USA where = JAP metal = 0 oil = -48 supplies = 6 money = 1.5 when = 720 value = 0 }
+  command = { type = trade
+which = USA
+where = JAP
+metal = 0
+oil = -48
+supplies = 6
+money = 1.5
+when = 720
+value = 1 }
   command = { type = setflag which = JX_EARLY_fx1933_DONE }
+  command = { type = setflag which = JX_PAID_US_FX1933 }
  }
  action = {
   name = JX_fx1933_A2
   ai_chance = 0
-  trigger = { NOT = { flag = JX_EARLY_fx1933_DONE } money = 30 supplies = 0 oil = 0 exists = USA NOT = { war = { country = JAP country = USA } event = 2049026 } }
+  trigger = { NOT = { flag = JX_EARLY_fx1933_DONE } money = 30 supplies = 0 oil = 0 exists = USA NOT = { war = { country = JAP country = USA } event = 2049026 } NOT = { flag = JX_PAID_US_IMPORTS_CLOSED embargo = { country = USA country = JAP value = 1 } embargo = { country = JAP country = USA value = 1 } } }
   command = { type = money value = -30 }
   command = { type = supplies value = 0 }
   command = { type = oilpool value = 0 }
-  command = { type = trade which = USA where = JAP oil = -8 supplies = 1 money = 0.4 when = 720 value = 0 }
+  command = { type = trade
+which = USA
+where = JAP
+oil = -8
+supplies = 1
+money = 0.4
+when = 720
+value = 1 }
   command = { type = setflag which = JX_EARLY_fx1933_DONE }
+  command = { type = setflag which = JX_PAID_US_FX1933 }
  }
  action = {
   name = JX_fx1933_A3
@@ -39328,7 +39355,7 @@ Country: JAP. Module: early. Earliest year: 1934. Triggered receiver: False. Per
 
 Buy 24 oil daily for three years, paying 4 supplies and 1 money daily plus 80 money now. This is an additional contract. Storage expansion is a separate programme. Embargo, war or expiry can end this trade. The alternative keeps the existing fuel-conservation work. This is an ordinary cancellable trade: cancel it in Diplomacy when imports exceed use or storage is full. The handling fee is spent; daily payments stop when the trade is cancelled. Oil above the storage limit is lost.
 
-This is an optional decision. Open it when needed; leaving it available costs nothing.
+This is an optional decision. Open it when needed; leaving it available costs nothing. These are fixed-term contracts. Deliveries and payments continue until the stated expiry; war or an embargo ends American trade. Storage losses still apply.
 
 ```text
 # oil1934:
@@ -39352,12 +39379,21 @@ event = {
  action = {
   name = JX_oil1934_A0
   ai_chance = 100
-  trigger = { NOT = { flag = JX_EARLY_oil1934_DONE } money = 80 supplies = 0 oil = 0 exists = USA NOT = { war = { country = JAP country = USA } event = 2049026 } }
+  trigger = { NOT = { flag = JX_EARLY_oil1934_DONE } money = 80 supplies = 0 oil = 0 exists = USA NOT = { war = { country = JAP country = USA } event = 2049026 } NOT = { flag = JX_PAID_US_IMPORTS_CLOSED embargo = { country = USA country = JAP value = 1 } embargo = { country = JAP country = USA value = 1 } } }
   command = { type = money value = -80 }
   command = { type = supplies value = 0 }
   command = { type = oilpool value = 0 }
-  command = { type = trade which = USA where = JAP metal = 0 oil = -24 supplies = 4 money = 1 when = 1080 value = 0 }
+  command = { type = trade
+which = USA
+where = JAP
+metal = 0
+oil = -24
+supplies = 4
+money = 1
+when = 1080
+value = 1 }
   command = { type = setflag which = JX_EARLY_oil1934_DONE }
+  command = { type = setflag which = JX_PAID_US_OIL1934 }
  }
  action = {
   name = JX_oil1934_A1
@@ -39764,7 +39800,7 @@ Country: JAP. Module: early. Earliest year: 1936. Triggered receiver: False. Per
 
 Buy a three-year American contract for 12 metal and 24 oil daily. Pay 80 money now, then 4 supplies and 1 money daily. Embargo, war or expiry can end it. Or retain the existing escort alternative. This is an ordinary cancellable trade: cancel it in Diplomacy when imports exceed use or storage is full. The handling fee is spent; daily payments stop when the trade is cancelled. Oil above the storage limit is lost.
 
-This is an optional decision. Open it when needed; leaving it available costs nothing.
+This is an optional decision. Open it when needed; leaving it available costs nothing. These are fixed-term contracts. Deliveries and payments continue until the stated expiry; war or an embargo ends American trade. Storage losses still apply.
 
 ```text
 # fx1936:
@@ -39788,12 +39824,21 @@ event = {
  action = {
   name = JX_fx1936_A0
   ai_chance = 100
-  trigger = { NOT = { flag = JX_EARLY_fx1936_DONE } money = 80 supplies = 0 oil = 0 exists = USA NOT = { war = { country = JAP country = USA } event = 2049026 } }
+  trigger = { NOT = { flag = JX_EARLY_fx1936_DONE } money = 80 supplies = 0 oil = 0 exists = USA NOT = { war = { country = JAP country = USA } event = 2049026 } NOT = { flag = JX_PAID_US_IMPORTS_CLOSED embargo = { country = USA country = JAP value = 1 } embargo = { country = JAP country = USA value = 1 } } }
   command = { type = money value = -80 }
   command = { type = supplies value = 0 }
   command = { type = oilpool value = 0 }
-  command = { type = trade which = USA where = JAP metal = -12 oil = -24 supplies = 4 money = 1 when = 1080 value = 0 }
+  command = { type = trade
+which = USA
+where = JAP
+metal = -12
+oil = -24
+supplies = 4
+money = 1
+when = 1080
+value = 1 }
   command = { type = setflag which = JX_EARLY_fx1936_DONE }
+  command = { type = setflag which = JX_PAID_US_FX1936 }
  }
  action = {
   name = JX_fx1936_A1
@@ -159559,7 +159604,7 @@ event = {
   command = { type = setflag which = JX_cn_shanghai_holding_PENDING }
   command = { type = setflag which = JX_cn_shanghai_holding_CHOICE_0 }
   command = { type = event
-which = "28603042"
+which = 28603042
 where = JAP
 when = 120 }
  }
@@ -159573,7 +159618,7 @@ when = 120 }
   command = { type = setflag which = JX_cn_shanghai_holding_PENDING }
   command = { type = setflag which = JX_cn_shanghai_holding_CHOICE_1 }
   command = { type = event
-which = "28603043"
+which = 28603043
 where = JAP
 when = 180 }
  }
@@ -159729,7 +159774,7 @@ event = {
   command = { type = setflag which = JX_cn_wuhan_choice_PENDING }
   command = { type = setflag which = JX_cn_wuhan_choice_CHOICE_0 }
   command = { type = event
-which = "28603044"
+which = 28603044
 where = JAP
 when = 180 }
  }
@@ -159742,7 +159787,7 @@ when = 180 }
   command = { type = setflag which = JX_cn_wuhan_choice_PENDING }
   command = { type = setflag which = JX_cn_wuhan_choice_CHOICE_1 }
   command = { type = event
-which = "28603045"
+which = 28603045
 where = JAP
 when = 120 }
  }
@@ -159966,7 +160011,7 @@ event = {
   command = { type = setflag which = JX_ph_manila_air_PENDING }
   command = { type = setflag which = JX_ph_manila_air_CHOICE_0 }
   command = { type = event
-which = "28603046"
+which = 28603046
 where = JAP
 when = 150 }
  }
@@ -159982,7 +160027,7 @@ when = 150 }
   command = { type = setflag which = JX_ph_manila_air_PENDING }
   command = { type = setflag which = JX_ph_manila_air_CHOICE_1 }
   command = { type = event
-which = "28603047"
+which = 28603047
 where = JAP
 when = 180 }
  }
@@ -160139,7 +160184,7 @@ event = {
   command = { type = setflag which = JX_ph_island_agreement_PENDING }
   command = { type = setflag which = JX_ph_island_agreement_CHOICE_0 }
   command = { type = event
-which = "28603048"
+which = 28603048
 where = JAP
 when = 210 }
  }
@@ -160152,7 +160197,7 @@ when = 210 }
   command = { type = setflag which = JX_ph_island_agreement_PENDING }
   command = { type = setflag which = JX_ph_island_agreement_CHOICE_1 }
   command = { type = event
-which = "28603049"
+which = 28603049
 where = JAP
 when = 120 }
  }
@@ -160374,7 +160419,7 @@ event = {
   command = { type = setflag which = JX_in_java_shipyards_PENDING }
   command = { type = setflag which = JX_in_java_shipyards_CHOICE_0 }
   command = { type = event
-which = "28603050"
+which = 28603050
 where = JAP
 when = 240 }
  }
@@ -160390,7 +160435,7 @@ when = 240 }
   command = { type = setflag which = JX_in_java_shipyards_PENDING }
   command = { type = setflag which = JX_in_java_shipyards_CHOICE_1 }
   command = { type = event
-which = "28603051"
+which = 28603051
 where = JAP
 when = 300 }
  }
@@ -160541,7 +160586,7 @@ event = {
   command = { type = setflag which = JX_in_indonesian_exports_PENDING }
   command = { type = setflag which = JX_in_indonesian_exports_CHOICE_0 }
   command = { type = event
-which = "28603052"
+which = 28603052
 where = JAP
 when = 150 }
  }
@@ -160554,7 +160599,7 @@ when = 150 }
   command = { type = setflag which = JX_in_indonesian_exports_PENDING }
   command = { type = setflag which = JX_in_indonesian_exports_CHOICE_1 }
   command = { type = event
-which = "28603053"
+which = 28603053
 where = JAP
 when = 150 }
  }
@@ -160744,7 +160789,7 @@ event = {
   command = { type = setflag which = JX_my_singapore_yards_PENDING }
   command = { type = setflag which = JX_my_singapore_yards_CHOICE_0 }
   command = { type = event
-which = "28603054"
+which = 28603054
 where = JAP
 when = 90 }
  }
@@ -160758,7 +160803,7 @@ when = 90 }
   command = { type = setflag which = JX_my_singapore_yards_PENDING }
   command = { type = setflag which = JX_my_singapore_yards_CHOICE_1 }
   command = { type = event
-which = "28603055"
+which = 28603055
 where = JAP
 when = 150 }
  }
@@ -160907,7 +160952,7 @@ event = {
   command = { type = setflag which = JX_my_malayan_exports_PENDING }
   command = { type = setflag which = JX_my_malayan_exports_CHOICE_0 }
   command = { type = event
-which = "28603056"
+which = 28603056
 where = JAP
 when = 150 }
  }
@@ -160920,7 +160965,7 @@ when = 150 }
   command = { type = setflag which = JX_my_malayan_exports_PENDING }
   command = { type = setflag which = JX_my_malayan_exports_CHOICE_1 }
   command = { type = event
-which = "28603057"
+which = 28603057
 where = JAP
 when = 150 }
  }
@@ -161055,7 +161100,7 @@ event = {
   command = { type = setflag which = JX_prewar_rural_works_PENDING }
   command = { type = setflag which = JX_prewar_rural_works_SELECTED_0 }
   command = { type = event
-which = "28603058"
+which = 28603058
 where = JAP
 when = 270 }
  }
@@ -161069,7 +161114,7 @@ when = 270 }
   command = { type = setflag which = JX_prewar_rural_works_PENDING }
   command = { type = setflag which = JX_prewar_rural_works_SELECTED_1 }
   command = { type = event
-which = "28603059"
+which = 28603059
 where = JAP
 when = 270 }
  }
@@ -161229,7 +161274,7 @@ event = {
   command = { type = setflag which = JX_prewar_deck_commission_PENDING }
   command = { type = setflag which = JX_prewar_deck_commission_SELECTED_0 }
   command = { type = event
-which = "28603060"
+which = 28603060
 where = JAP
 when = 240 }
  }
@@ -161243,7 +161288,7 @@ when = 240 }
   command = { type = setflag which = JX_prewar_deck_commission_PENDING }
   command = { type = setflag which = JX_prewar_deck_commission_SELECTED_1 }
   command = { type = event
-which = "28603061"
+which = 28603061
 where = JAP
 when = 240 }
  }
@@ -161408,7 +161453,7 @@ event = {
   command = { type = setflag which = JX_prewar_navigation_trials_PENDING }
   command = { type = setflag which = JX_prewar_navigation_trials_SELECTED_0 }
   command = { type = event
-which = "28603062"
+which = 28603062
 where = JAP
 when = 180 }
  }
@@ -161423,7 +161468,7 @@ when = 180 }
   command = { type = setflag which = JX_prewar_navigation_trials_PENDING }
   command = { type = setflag which = JX_prewar_navigation_trials_SELECTED_1 }
   command = { type = event
-which = "28603063"
+which = 28603063
 where = JAP
 when = 180 }
  }
@@ -161597,7 +161642,7 @@ event = {
   command = { type = setflag which = JX_prewar_landing_trials_PENDING }
   command = { type = setflag which = JX_prewar_landing_trials_SELECTED_0 }
   command = { type = event
-which = "28603064"
+which = 28603064
 where = JAP
 when = 180 }
  }
@@ -161611,7 +161656,7 @@ when = 180 }
   command = { type = setflag which = JX_prewar_landing_trials_PENDING }
   command = { type = setflag which = JX_prewar_landing_trials_SELECTED_1 }
   command = { type = event
-which = "28603065"
+which = 28603065
 where = JAP
 when = 180 }
  }
@@ -161770,7 +161815,7 @@ event = {
   command = { type = setflag which = JX_prewar_medical_service_PENDING }
   command = { type = setflag which = JX_prewar_medical_service_SELECTED_0 }
   command = { type = event
-which = "28603066"
+which = 28603066
 where = JAP
 when = 180 }
  }
@@ -161783,7 +161828,7 @@ when = 180 }
   command = { type = setflag which = JX_prewar_medical_service_PENDING }
   command = { type = setflag which = JX_prewar_medical_service_SELECTED_1 }
   command = { type = event
-which = "28603067"
+which = 28603067
 where = JAP
 when = 180 }
  }
@@ -161940,7 +161985,7 @@ event = {
   command = { type = setflag which = JX_prewar_factory_dispersion_PENDING }
   command = { type = setflag which = JX_prewar_factory_dispersion_SELECTED_0 }
   command = { type = event
-which = "28603068"
+which = 28603068
 where = JAP
 when = 270 }
  }
@@ -161954,7 +161999,7 @@ when = 270 }
   command = { type = setflag which = JX_prewar_factory_dispersion_PENDING }
   command = { type = setflag which = JX_prewar_factory_dispersion_SELECTED_1 }
   command = { type = event
-which = "28603069"
+which = 28603069
 where = JAP
 when = 270 }
  }
@@ -167012,7 +167057,7 @@ event = {
   command = { type = setflag which = JX_usc_replacements_PENDING }
   command = { type = setflag which = JX_usc_replacements_CHOICE_0 }
   command = { type = event
-which = "28603070"
+which = 28603070
 where = JAP
 when = 60 }
  }
@@ -167025,7 +167070,7 @@ when = 60 }
   command = { type = setflag which = JX_usc_replacements_PENDING }
   command = { type = setflag which = JX_usc_replacements_CHOICE_1 }
   command = { type = event
-which = "28603071"
+which = 28603071
 where = JAP
 when = 60 }
  }
@@ -170839,7 +170884,7 @@ event = {
   command = { type = setflag which = JX_usc_commitment_PENDING }
   command = { type = setflag which = JX_usc_commitment_CHOICE_0 }
   command = { type = event
-which = "28603072"
+which = 28603072
 where = JAP
 when = 60 }
  }
@@ -170852,7 +170897,7 @@ when = 60 }
   command = { type = setflag which = JX_usc_commitment_PENDING }
   command = { type = setflag which = JX_usc_commitment_CHOICE_1 }
   command = { type = event
-which = "28603073"
+which = 28603073
 where = JAP
 when = 60 }
  }
@@ -591777,7 +591822,7 @@ which = JX_R14_CHINA_AUTONOMY_SOVEREIGN_ACCEPTED }
 	flag = JX_TIME_28600448_1
 }
 type = event
-which = "28603074"
+which = 28603074
 where = U87
 when = 360 }
   command = { trigger = {
@@ -591863,7 +591908,7 @@ which = JX_R14_CHINA_AUTONOMY_SOVEREIGN_REFUND_DUE }
 	}
 }
 type = trigger
-which = "28602903" }
+which = 28602903 }
   command = { trigger = {
 	flag = JX_R14_CHINA_AUTONOMY_SOVEREIGN
 	NOT = {
@@ -592302,7 +592347,7 @@ which = JX_R14_CHINA_AUTONOMY_SOVEREIGN_REFUND_DUE }
 	}
 }
 type = trigger
-which = "28602903" }
+which = 28602903 }
   command = { trigger = {
 	flag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_ACCEPTED
 	NOT = {
@@ -592485,7 +592530,7 @@ which = JX_R14_CHINA_AUTONOMY_SOVEREIGN_REFUND_DUE }
 	flag = JX_TIME_28600448_2
 }
 type = trigger
-which = "28602903" }
+which = 28602903 }
   command = { trigger = {
 	flag = JX_R14_CHINA_AUTONOMY_SOVEREIGN
 	NOT = {
@@ -592554,7 +592599,7 @@ which = JX_R14_CHINA_AUTONOMY_SOVEREIGN_REFUND_DUE }
 	}
 }
 type = trigger
-which = "28602903" }
+which = 28602903 }
   command = { trigger = {
 	flag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_ACCEPTED
 	NOT = {
@@ -592708,7 +592753,7 @@ which = JX_R14_CHINA_AUTONOMY_CIVILIAN_ACCEPTED }
 	flag = JX_TIME_28600448_1
 }
 type = event
-which = "28603075"
+which = 28603075
 where = U87
 when = 360 }
   command = { trigger = {
@@ -592797,7 +592842,7 @@ which = JX_R14_CHINA_AUTONOMY_CIVILIAN_REFUND_DUE }
 	}
 }
 type = trigger
-which = "28602909" }
+which = 28602909 }
   command = { trigger = {
 	flag = JX_R14_CHINA_AUTONOMY_CIVILIAN
 	NOT = {
@@ -593242,7 +593287,7 @@ which = JX_R14_CHINA_AUTONOMY_CIVILIAN_REFUND_DUE }
 	}
 }
 type = trigger
-which = "28602909" }
+which = 28602909 }
   command = { trigger = {
 	flag = JX_R14_CHINA_AUTONOMY_CIVILIAN_ACCEPTED
 	NOT = {
@@ -593426,7 +593471,7 @@ which = JX_R14_CHINA_AUTONOMY_CIVILIAN_REFUND_DUE }
 	flag = JX_TIME_28600448_2
 }
 type = trigger
-which = "28602909" }
+which = 28602909 }
   command = { trigger = {
 	flag = JX_R14_CHINA_AUTONOMY_CIVILIAN
 	NOT = {
@@ -593495,7 +593540,7 @@ which = JX_R14_CHINA_AUTONOMY_CIVILIAN_REFUND_DUE }
 	}
 }
 type = trigger
-which = "28602909" }
+which = 28602909 }
   command = { trigger = {
 	flag = JX_R14_CHINA_AUTONOMY_CIVILIAN_ACCEPTED
 	NOT = {
@@ -593637,7 +593682,7 @@ which = JX_R14_CHINA_AUTONOMY_MILITARY_ACCEPTED }
 	flag = JX_TIME_28600448_1
 }
 type = event
-which = "28603076"
+which = 28603076
 where = U87
 when = 180 }
   command = { trigger = {
@@ -593714,7 +593759,7 @@ which = JX_R14_CHINA_AUTONOMY_MILITARY_REFUND_DUE }
 	}
 }
 type = trigger
-which = "28602915" }
+which = 28602915 }
   command = { trigger = {
 	flag = JX_R14_CHINA_AUTONOMY_MILITARY
 	NOT = {
@@ -593883,7 +593928,7 @@ which = JX_R14_CHINA_AUTONOMY_MILITARY_REFUND_DUE }
 	}
 }
 type = trigger
-which = "28602915" }
+which = 28602915 }
   command = { trigger = {
 	flag = JX_R14_CHINA_AUTONOMY_MILITARY_ACCEPTED
 	NOT = {
@@ -594013,7 +594058,7 @@ which = JX_R14_CHINA_AUTONOMY_MILITARY_REFUND_DUE }
 	flag = JX_TIME_28600448_2
 }
 type = trigger
-which = "28602915" }
+which = 28602915 }
   command = { trigger = {
 	flag = JX_R14_CHINA_AUTONOMY_MILITARY
 	NOT = {
@@ -594082,7 +594127,7 @@ which = JX_R14_CHINA_AUTONOMY_MILITARY_REFUND_DUE }
 	}
 }
 type = trigger
-which = "28602915" }
+which = 28602915 }
   command = { trigger = {
 	flag = JX_R14_CHINA_AUTONOMY_MILITARY_ACCEPTED
 	NOT = {
@@ -594191,7 +594236,7 @@ which = JX_R14_INDIA_AUTONOMY_SOVEREIGN_ACCEPTED }
 	flag = JX_TIME_28600451_1
 }
 type = event
-which = "28603077"
+which = 28603077
 where = IND
 when = 360 }
   command = { trigger = {
@@ -594277,7 +594322,7 @@ which = JX_R14_INDIA_AUTONOMY_SOVEREIGN_REFUND_DUE }
 	}
 }
 type = trigger
-which = "28602920" }
+which = 28602920 }
   command = { trigger = {
 	flag = JX_R14_INDIA_AUTONOMY_SOVEREIGN
 	NOT = {
@@ -594716,7 +594761,7 @@ which = JX_R14_INDIA_AUTONOMY_SOVEREIGN_REFUND_DUE }
 	}
 }
 type = trigger
-which = "28602920" }
+which = 28602920 }
   command = { trigger = {
 	flag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_ACCEPTED
 	NOT = {
@@ -594899,7 +594944,7 @@ which = JX_R14_INDIA_AUTONOMY_SOVEREIGN_REFUND_DUE }
 	flag = JX_TIME_28600451_2
 }
 type = trigger
-which = "28602920" }
+which = 28602920 }
   command = { trigger = {
 	flag = JX_R14_INDIA_AUTONOMY_SOVEREIGN
 	NOT = {
@@ -594968,7 +595013,7 @@ which = JX_R14_INDIA_AUTONOMY_SOVEREIGN_REFUND_DUE }
 	}
 }
 type = trigger
-which = "28602920" }
+which = 28602920 }
   command = { trigger = {
 	flag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_ACCEPTED
 	NOT = {
@@ -595122,7 +595167,7 @@ which = JX_R14_INDIA_AUTONOMY_CIVILIAN_ACCEPTED }
 	flag = JX_TIME_28600451_1
 }
 type = event
-which = "28603078"
+which = 28603078
 where = IND
 when = 360 }
   command = { trigger = {
@@ -595211,7 +595256,7 @@ which = JX_R14_INDIA_AUTONOMY_CIVILIAN_REFUND_DUE }
 	}
 }
 type = trigger
-which = "28602926" }
+which = 28602926 }
   command = { trigger = {
 	flag = JX_R14_INDIA_AUTONOMY_CIVILIAN
 	NOT = {
@@ -595656,7 +595701,7 @@ which = JX_R14_INDIA_AUTONOMY_CIVILIAN_REFUND_DUE }
 	}
 }
 type = trigger
-which = "28602926" }
+which = 28602926 }
   command = { trigger = {
 	flag = JX_R14_INDIA_AUTONOMY_CIVILIAN_ACCEPTED
 	NOT = {
@@ -595840,7 +595885,7 @@ which = JX_R14_INDIA_AUTONOMY_CIVILIAN_REFUND_DUE }
 	flag = JX_TIME_28600451_2
 }
 type = trigger
-which = "28602926" }
+which = 28602926 }
   command = { trigger = {
 	flag = JX_R14_INDIA_AUTONOMY_CIVILIAN
 	NOT = {
@@ -595909,7 +595954,7 @@ which = JX_R14_INDIA_AUTONOMY_CIVILIAN_REFUND_DUE }
 	}
 }
 type = trigger
-which = "28602926" }
+which = 28602926 }
   command = { trigger = {
 	flag = JX_R14_INDIA_AUTONOMY_CIVILIAN_ACCEPTED
 	NOT = {
@@ -596051,7 +596096,7 @@ which = JX_R14_INDIA_AUTONOMY_MILITARY_ACCEPTED }
 	flag = JX_TIME_28600451_1
 }
 type = event
-which = "28603079"
+which = 28603079
 where = IND
 when = 180 }
   command = { trigger = {
@@ -596128,7 +596173,7 @@ which = JX_R14_INDIA_AUTONOMY_MILITARY_REFUND_DUE }
 	}
 }
 type = trigger
-which = "28602932" }
+which = 28602932 }
   command = { trigger = {
 	flag = JX_R14_INDIA_AUTONOMY_MILITARY
 	NOT = {
@@ -596297,7 +596342,7 @@ which = JX_R14_INDIA_AUTONOMY_MILITARY_REFUND_DUE }
 	}
 }
 type = trigger
-which = "28602932" }
+which = 28602932 }
   command = { trigger = {
 	flag = JX_R14_INDIA_AUTONOMY_MILITARY_ACCEPTED
 	NOT = {
@@ -596427,7 +596472,7 @@ which = JX_R14_INDIA_AUTONOMY_MILITARY_REFUND_DUE }
 	flag = JX_TIME_28600451_2
 }
 type = trigger
-which = "28602932" }
+which = 28602932 }
   command = { trigger = {
 	flag = JX_R14_INDIA_AUTONOMY_MILITARY
 	NOT = {
@@ -596496,7 +596541,7 @@ which = JX_R14_INDIA_AUTONOMY_MILITARY_REFUND_DUE }
 	}
 }
 type = trigger
-which = "28602932" }
+which = 28602932 }
   command = { trigger = {
 	flag = JX_R14_INDIA_AUTONOMY_MILITARY_ACCEPTED
 	NOT = {
@@ -596622,7 +596667,7 @@ which = JX_R14_AMERICAN_FUTURE_CHOSEN }
 	flag = JX_R14_R14_AMERICAN_FUTURE_COMMERCE_PENDING_EXECUTING
 }
 type = event
-which = "28603080"
+which = 28603080
 where = JAP
 when = 180 }
   command = { trigger = {
@@ -596760,7 +596805,7 @@ which = JX_R14_AMERICAN_FUTURE_CHOSEN }
 	flag = JX_R14_R14_AMERICAN_FUTURE_HAWAII_PENDING_EXECUTING
 }
 type = event
-which = "28603081"
+which = 28603081
 where = JAP
 when = 180 }
   command = { trigger = {
@@ -596949,7 +596994,7 @@ value = 6000 }
 	flag = JX_US_RETURN_HAWAII
 }
 type = event
-which = "28602939"
+which = 28602939
 where = USA
 when = 1 }
   command = { trigger = {
@@ -597288,7 +597333,7 @@ value = 3000 }
 	}
 }
 type = event
-which = "28602940"
+which = 28602940
 where = USA
 when = 1 }
   command = { trigger = {
@@ -597820,7 +597865,7 @@ event = {
 	flag = JX_R14_EXEC_694
 }
 type = event
-which = "28603082"
+which = 28603082
 where = USA
 when = 30 }
   command = { type = clrflag which = JX_R14_EXEC_694 }
@@ -597902,7 +597947,7 @@ event = {
 	flag = JX_R14_EXEC_696
 }
 type = event
-which = "28603083"
+which = 28603083
 where = USA
 when = 180 }
   command = { trigger = { flag = JX_R14_EXEC_696 } type = event which = 28602946 where = JAP when = 1 }
@@ -597910,7 +597955,7 @@ when = 180 }
 	flag = JX_R14_EXEC_696
 }
 type = event
-which = "28603084"
+which = 28603084
 where = JAP
 when = 181 }
   command = { type = clrflag which = JX_R14_EXEC_696 }
@@ -598511,7 +598556,7 @@ event = {
 	flag = JX_R14_EXEC_708
 }
 type = event
-which = "28603085"
+which = 28603085
 where = AST
 when = 30 }
   command = { type = clrflag which = JX_R14_EXEC_708 }
@@ -598593,7 +598638,7 @@ event = {
 	flag = JX_R14_EXEC_710
 }
 type = event
-which = "28603086"
+which = 28603086
 where = AST
 when = 120 }
   command = { trigger = { flag = JX_R14_EXEC_710 } type = event which = 28602955 where = JAP when = 1 }
@@ -598601,7 +598646,7 @@ when = 120 }
 	flag = JX_R14_EXEC_710
 }
 type = event
-which = "28603087"
+which = 28603087
 where = JAP
 when = 121 }
   command = { type = clrflag which = JX_R14_EXEC_710 }
@@ -598958,7 +599003,7 @@ event = {
 	flag = JX_R14_EXEC_718
 }
 type = event
-which = "28603088"
+which = 28603088
 where = ENG
 when = 30 }
   command = { type = clrflag which = JX_R14_EXEC_718 }
@@ -599040,7 +599085,7 @@ event = {
 	flag = JX_R14_EXEC_720
 }
 type = event
-which = "28603089"
+which = 28603089
 where = ENG
 when = 150 }
   command = { trigger = { flag = JX_R14_EXEC_720 } type = event which = 28602964 where = JAP when = 1 }
@@ -599048,7 +599093,7 @@ when = 150 }
 	flag = JX_R14_EXEC_720
 }
 type = event
-which = "28603090"
+which = 28603090
 where = JAP
 when = 151 }
   command = { type = clrflag which = JX_R14_EXEC_720 }
@@ -599561,7 +599606,7 @@ event = {
 	flag = JX_R14_EXEC_732
 }
 type = event
-which = "28603091"
+which = 28603091
 where = JAP
 when = 330 }
   command = { type = clrflag which = JX_R14_EXEC_732 }
@@ -599586,7 +599631,7 @@ when = 330 }
 	flag = JX_R14_EXEC_735
 }
 type = event
-which = "28603092"
+which = 28603092
 where = JAP
 when = 180 }
   command = { type = clrflag which = JX_R14_EXEC_735 }
@@ -599955,7 +600000,7 @@ event = {
 	flag = JX_R14_EXEC_741
 }
 type = event
-which = "28603093"
+which = 28603093
 where = JAP
 when = 90 }
   command = { type = clrflag which = JX_R14_EXEC_741 }
@@ -599980,7 +600025,7 @@ when = 90 }
 	flag = JX_R14_EXEC_744
 }
 type = event
-which = "28603094"
+which = 28603094
 where = JAP
 when = 180 }
   command = { type = clrflag which = JX_R14_EXEC_744 }
@@ -600446,7 +600491,7 @@ event = {
 	flag = JX_R14_EXEC_754
 }
 type = event
-which = "28603095"
+which = 28603095
 where = JAP
 when = 180 }
   command = { type = clrflag which = JX_R14_EXEC_754 }
@@ -600470,7 +600515,7 @@ when = 180 }
 	flag = JX_R14_EXEC_758
 }
 type = event
-which = "28603096"
+which = 28603096
 where = JAP
 when = 240 }
   command = { type = clrflag which = JX_R14_EXEC_758 }
@@ -600677,7 +600722,7 @@ event = {
 	flag = JX_R14_EXEC_757
 }
 type = event
-which = "28603097"
+which = 28603097
 where = JAP
 when = 90 }
   command = { type = clrflag which = JX_R14_EXEC_757 }
@@ -600844,7 +600889,7 @@ event = {
 	flag = JX_R14_EXEC_761
 }
 type = event
-which = "28603098"
+which = 28603098
 where = JAP
 when = 90 }
   command = { type = clrflag which = JX_R14_EXEC_761 }
@@ -600907,7 +600952,7 @@ event = {
 	flag = JX_R14_EXEC_765
 }
 type = event
-which = "28603099"
+which = 28603099
 where = JAP
 when = 210 }
   command = { type = clrflag which = JX_R14_EXEC_765 }
@@ -600931,7 +600976,7 @@ when = 210 }
 	flag = JX_R14_EXEC_769
 }
 type = event
-which = "28603100"
+which = 28603100
 where = JAP
 when = 240 }
   command = { type = clrflag which = JX_R14_EXEC_769 }
@@ -601140,7 +601185,7 @@ event = {
 	flag = JX_R14_EXEC_768
 }
 type = event
-which = "28603101"
+which = 28603101
 where = JAP
 when = 90 }
   command = { type = clrflag which = JX_R14_EXEC_768 }
@@ -601311,7 +601356,7 @@ event = {
 	flag = JX_R14_EXEC_772
 }
 type = event
-which = "28603102"
+which = 28603102
 where = JAP
 when = 90 }
   command = { type = clrflag which = JX_R14_EXEC_772 }
@@ -601374,7 +601419,7 @@ event = {
 	flag = JX_R14_EXEC_776
 }
 type = event
-which = "28603103"
+which = 28603103
 where = JAP
 when = 270 }
   command = { type = clrflag which = JX_R14_EXEC_776 }
@@ -601398,7 +601443,7 @@ when = 270 }
 	flag = JX_R14_EXEC_780
 }
 type = event
-which = "28603104"
+which = 28603104
 where = JAP
 when = 150 }
   command = { type = clrflag which = JX_R14_EXEC_780 }
@@ -601655,7 +601700,7 @@ event = {
 	flag = JX_R14_EXEC_779
 }
 type = event
-which = "28603105"
+which = 28603105
 where = JAP
 when = 90 }
   command = { type = clrflag which = JX_R14_EXEC_779 }
@@ -601821,7 +601866,7 @@ event = {
 	flag = JX_R14_EXEC_783
 }
 type = event
-which = "28603106"
+which = 28603106
 where = JAP
 when = 90 }
   command = { type = clrflag which = JX_R14_EXEC_783 }
@@ -604487,6 +604532,37 @@ event = {
   ai_chance = 100
   command = { type = setflag which = JX_TIME_28603007_90 }
   command = { type = trigger which = 28603006 }
+ }
+}
+```
+
+### 28603107: American deliveries stop
+
+Country: JAP. Module: purchase_reliability. Earliest year: 1933. Triggered receiver: False. Persistent: False.
+
+War or an embargo has ended American trade with Japan. The fuel and metal contracts stop, along with their daily payments. Their earlier handling fees are spent. No replacement imports are granted.
+
+```text
+# paid_us_imports_end: End protected paid imports on war or embargo; never renew expired contracts.
+event = {
+ id = 28603107
+ random = no
+ country = JAP
+ save_date = yes
+ name = JX_paid_us_imports_end_NAME
+ desc = JX_paid_us_imports_end_DESC
+ style = 2
+ picture = "jx_diplomacy"
+ trigger = { ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE exists = USA OR = { flag = JX_PAID_US_FX1933 flag = JX_PAID_US_FX1936 flag = JX_PAID_US_OIL1934 } NOT = { flag = JX_PAID_US_IMPORTS_CLOSED } OR = { war = { country = JAP country = USA } embargo = { country = USA country = JAP value = 1 } embargo = { country = JAP country = USA value = 1 } event = 2049026 } }
+ date = { day = 0 month = january year = 1933 }
+ offset = 1
+ deathdate = { day = 29 month = december year = 1950 }
+ action = {
+  name = JX_paid_us_imports_end_A0
+  ai_chance = 100
+  trigger = { ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE exists = USA OR = { flag = JX_PAID_US_FX1933 flag = JX_PAID_US_FX1936 flag = JX_PAID_US_OIL1934 } NOT = { flag = JX_PAID_US_IMPORTS_CLOSED } OR = { war = { country = JAP country = USA } embargo = { country = USA country = JAP value = 1 } embargo = { country = JAP country = USA value = 1 } event = 2049026 } }
+  command = { type = end_trades which = USA where = JAP }
+  command = { type = setflag which = JX_PAID_US_IMPORTS_CLOSED }
  }
 }
 ```

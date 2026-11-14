@@ -106,8 +106,9 @@ def run():
                     if get(v,"where") is None:errors.append(f"{eid}: unplaced construction")
                 if typ=='inherit' and get(v,'value')!='1':errors.append(f'{eid}: inheritance does not explicitly preserve units/queue')
                 if typ=='trade':
-                    cancellable={str(IDS[k]) for k in ('fx1933','oil1934','fx1936')}
-                    protected=get(v,'which')=='USA' and get(v,'where')=='JAP' and str(eid) not in cancellable
+                    # R15.2: every paid US import uses native protection;
+                    # other suppliers retain their existing cancellable policy.
+                    protected=get(v,'which')=='USA' and get(v,'where')=='JAP'
                     if get(v,'value')!=('1' if protected else '0') or not get(v,'when'):errors.append(f'{eid}: commercial trade protection/duration does not match its supplier policy')
                 if typ in {"add_division","build_division"}:
                     unit=get(v,"value") if typ=="add_division" else get(v,"which")

@@ -1,14 +1,14 @@
-# Japan Rising - R15.1
+# Japan Rising - R15.2
 
 A human-Japan campaign for **Darkest Hour 1.05.2 + Blood and Iron v1.1**, beginning in 1933. Historical diplomacy through Pearl Harbor leads into alternative Pacific, Indian Ocean, Chinese, Soviet and American campaigns through 1950.
 
 This is the **japan-rising** branch of `mohsinfd/a-union-before-midnight`. The India project remains on its existing branches; this branch contains the separate Japan mod.
 
-R15.1 repairs the persistent-event timing failure confirmed in Nagoya. See [the repair details](japan_expansion/R15_1_CHANGES.md). The branch contains the current repair; the R15 release below predates it.
+R15.2 repairs shared event dispatch and protects finite paid US supply contracts. See [the repair details](japan_expansion/R15_2_CHANGES.md).
 
 ## Download and install
 
-Download the source ZIP from [Releases](https://github.com/mohsinfd/a-union-before-midnight/releases/tag/japan-rising-r15), or clone this branch:
+Download the source ZIP from [Releases](https://github.com/mohsinfd/a-union-before-midnight/releases/tag/japan-rising-r15.2), or clone this branch:
 
 ```powershell
 git clone --branch japan-rising --single-branch https://github.com/mohsinfd/a-union-before-midnight.git
@@ -24,7 +24,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\Install.ps1 -GameRoot "C:\
 
 Alternatively, double-click **INSTALL.bat** and enter the two folder paths when prompted. The installer checks your local folders, clones the foundation into **Mods\Japan Rising JX1 Alpha2**, applies the mod, runs offline verification and creates a desktop shortcut. It **does not launch the game**. Close the game before installing; the builder refuses to overwrite a running session. The destination must be writable.
 
-Start a **new 1933 campaign as Japan** through **Japan Rising JX1 Alpha2**. Confirm **R15.1** in the scenario and welcome event. Existing saves are not migrated by this installer. Keep the extracted source folder because the shortcut uses its launcher.
+Start a **new 1933 campaign as Japan** through **Japan Rising JX1 Alpha2**. Confirm **R15.2** in the scenario and welcome event. Existing saves are not migrated by this installer. Keep the extracted source folder because the shortcut uses its launcher.
 
 R15 adds three geography-based enemy reactions and five situational military choices, with one shared staff commitment, costly voluntary cancellation and guarded delivery/refunds. Recover after carrier losses, choose Pacific defence or an Indian Ocean expedition, and fund a follow-up army for America. All R14.1 event IDs and logic are preserved. See [the R15 walkthrough](japan_expansion/R15_README.md).
 

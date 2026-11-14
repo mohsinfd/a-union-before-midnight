@@ -1,0 +1,1759 @@
+{
+  "date": {
+    "year": "1936",
+    "month": "april",
+    "day": "0",
+    "hour": "0"
+  },
+  "source": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Darkest Hour A HOI Game\\Mods\\Japan Rising JX1 Alpha2\\scenarios\\save games\\autosave.eug",
+  "source_sha256": "ad70e9f0b7e607e9548353ed27022f4a0798899556f256f68b5ba58403caa6a6",
+  "installed_version": "JX 1.1 ALPHA 2 R15.1",
+  "source_unchanged": true,
+  "save_edits": false,
+  "installation_edits": false,
+  "game_run": false,
+  "shipping": {
+    "free_transports": 716,
+    "assigned_transports": 84,
+    "total_transports": 800,
+    "free_escorts": 165,
+    "assigned_escorts": 0,
+    "total_escorts": 165,
+    "scenario_transports": 640,
+    "scenario_escorts": 100,
+    "completed_transports": 160,
+    "completed_escorts": 65
+  },
+  "purchases": [
+    {
+      "key": "first_industry",
+      "title": "The next industrial investment",
+      "selection": "Fund the programme",
+      "history": "5:00 February 22, 1933 : We went with Fund the programme in The next industrial investment.",
+      "upfront_cost": {
+        "money": 200.0,
+        "supplies": 900.0
+      },
+      "status": "delivered",
+      "evidence": "Tokyo/Hiroshima factory additions are present; the February 1934 checkpoint already has 13 and 10 IC respectively.",
+      "selected_commands": [
+        "type = money value = -200",
+        "type = supplies value = -900",
+        "type = setflag which = JX_first_industry_PENDING",
+        "type = event which = 28600003 where = JAP when = 270"
+      ],
+      "programme_flags": {
+        "JX_first_industry_DISMISSED": "0",
+        "JX_first_industry_DONE": "1",
+        "JX_first_industry_PENDING": "0",
+        "JX_first_industry_WAIT": "0"
+      }
+    },
+    {
+      "key": "army_supply",
+      "title": "Supply the expanding army",
+      "selection": "Fund the programme",
+      "history": "1:00 March 1, 1933 : We went with Fund the programme in Supply the expanding army.",
+      "upfront_cost": {
+        "money": 150.0,
+        "supplies": 700.0
+      },
+      "status": "consistent",
+      "evidence": "Done; saved supply modifier 1.38 and TC modifier 1.89. These totals include research and other effects, so the individual 15-point contributions are not isolated by the completion flag alone.",
+      "selected_commands": [
+        "type = money value = -150",
+        "type = supplies value = -700",
+        "type = setflag which = JX_army_supply_PENDING",
+        "type = event which = 28600007 where = JAP when = 180"
+      ],
+      "programme_flags": {
+        "JX_army_supply_DISMISSED": "0",
+        "JX_army_supply_DONE": "1",
+        "JX_army_supply_PENDING": "0",
+        "JX_army_supply_WAIT": "0"
+      }
+    },
+    {
+      "key": "army_production",
+      "title": "Equip a larger army",
+      "selection": "Equip infantry, mountain troops and full Marines",
+      "history": "17:00 April 4, 1933 : We went with Equip infantry, mountain troops and full Marines in Equip a larger army.",
+      "upfront_cost": {
+        "money": 150.0,
+        "supplies": 900.0
+      },
+      "status": "delivered",
+      "evidence": "Saved unit cost modifiers: Infantry -1 IC, Mountain Infantry -1.2 IC, Marines -1.6 IC; Marine build time -63 days. This choice awards production savings, not completed divisions.",
+      "selected_commands": [
+        "type = money value = -150",
+        "type = supplies value = -900",
+        "type = setflag which = JX_army_production_PENDING",
+        "type = event which = 28601681 where = JAP when = 180"
+      ],
+      "programme_flags": {
+        "JX_army_production_DISMISSED": "0",
+        "JX_army_production_DONE": "1",
+        "JX_army_production_PENDING": "0",
+        "JX_army_production_WAIT": "0"
+      }
+    },
+    {
+      "key": "prewar_rural_works",
+      "title": "Rural recovery: workshops or reserve rolls?",
+      "selection": "Employ the workforce in Nagoya workshops",
+      "history": "18:00 April 15, 1933 : We went with Employ the workforce in Nagoya workshops in Rural recovery: workshops or reserve rolls?.",
+      "upfront_cost": {
+        "money": 45.0,
+        "supplies": 400.0,
+        "metalpool": 300.0,
+        "manpowerpool": 25.0
+      },
+      "status": "previously_repaired",
+      "evidence": "The original completion failed. The February repaired save closes it and restores 3 IC; the current save retains DONE=1.",
+      "selected_commands": [
+        "type = money value = -45",
+        "type = supplies value = -400",
+        "type = metalpool value = -300",
+        "type = manpowerpool value = -25",
+        "type = setflag which = JX_prewar_rural_works_PENDING",
+        "type = setflag which = JX_prewar_rural_works_SELECTED_0",
+        "type = event\nwhich = \"28603058\"\nwhere = JAP\nwhen = 270"
+      ],
+      "programme_flags": {
+        "JX_prewar_rural_works_CANCELLED": "0",
+        "JX_prewar_rural_works_DISMISSED": "0",
+        "JX_prewar_rural_works_DONE": "1",
+        "JX_prewar_rural_works_PENDING": "0",
+        "JX_prewar_rural_works_SELECTED_0": "0"
+      }
+    },
+    {
+      "key": "strategic_storage",
+      "title": "Expand fuel and supply reserves",
+      "selection": "Fund the programme",
+      "history": "5:00 April 26, 1933 : We went with Fund the programme in Expand fuel and supply reserves.",
+      "upfront_cost": {
+        "money": 100.0,
+        "supplies": 800.0
+      },
+      "status": "delivered",
+      "evidence": "Oil/supply storage modifier is 2.8 in peace and 3 in war, consistent with the selected +200 percentage-point addition.",
+      "selected_commands": [
+        "type = money value = -100",
+        "type = supplies value = -800",
+        "type = setflag which = JX_strategic_storage_PENDING",
+        "type = event which = 28601707 where = JAP when = 90"
+      ],
+      "programme_flags": {
+        "JX_strategic_storage_DISMISSED": "0",
+        "JX_strategic_storage_DONE": "1",
+        "JX_strategic_storage_PENDING": "0",
+        "JX_strategic_storage_WAIT": "0"
+      }
+    },
+    {
+      "key": "merchant_prewar",
+      "title": "Expand the merchant marine",
+      "selection": "Fund the programme",
+      "history": "10:00 April 29, 1933 : We went with Fund the programme in Expand the merchant marine.",
+      "upfront_cost": {
+        "money": 120.0,
+        "supplies": 600.0
+      },
+      "status": "delivered",
+      "evidence": "Starting 640 transports + purchased 160 = 800 total now. Starting 100 escorts + purchased 40 + later Manchukuo 25 = 165 now.",
+      "selected_commands": [
+        "type = money value = -120",
+        "type = supplies value = -600",
+        "type = setflag which = JX_merchant_prewar_PENDING",
+        "type = event which = 28600011 where = JAP when = 150"
+      ],
+      "programme_flags": {
+        "JX_merchant_prewar_DISMISSED": "0",
+        "JX_merchant_prewar_DONE": "1",
+        "JX_merchant_prewar_PENDING": "0",
+        "JX_merchant_prewar_WAIT": "0"
+      }
+    },
+    {
+      "key": "air_production",
+      "title": "Build an air force Japan can afford",
+      "selection": "Expand tactical and maritime aviation",
+      "history": "5:00 January 13, 1934 : We went with Expand tactical and maritime aviation in Build an air force Japan can afford.",
+      "upfront_cost": {
+        "money": 180.0,
+        "supplies": 1000.0
+      },
+      "status": "delivered",
+      "evidence": "Saved bomber-priority modifiers: Tactical bomber -5 IC/-46 days; Naval bomber -4 IC/-48 days; Transport aircraft -5 IC/-48 days; fighters -1.5 IC/-18 days.",
+      "selected_commands": [
+        "type = money value = -180",
+        "type = supplies value = -1000",
+        "type = setflag which = JX_air_production_PENDING",
+        "type = event which = 28601686 where = JAP when = 180"
+      ],
+      "programme_flags": {
+        "JX_air_production_DISMISSED": "0",
+        "JX_air_production_DONE": "1",
+        "JX_air_production_PENDING": "0",
+        "JX_air_production_WAIT": "0"
+      }
+    },
+    {
+      "key": "tomozuru1934",
+      "title": "Tomozuru: too much weight above the waterline",
+      "selection": "Redesign the small-ship hulls",
+      "history": "0:00 March 12, 1934 : We went with Redesign the small-ship hulls in Tomozuru: too much weight above the waterline.",
+      "upfront_cost": {
+        "money": 60.0,
+        "supplies": 250.0
+      },
+      "status": "delivered",
+      "evidence": "Stability study retained; destroyer sea-defence vulnerability is -1 after both structural events. The temporary production penalty has expired.",
+      "selected_commands": [
+        "type = money value = -60",
+        "type = supplies value = -250",
+        "type = oilpool value = 0",
+        "type = setflag which = JX_STABILITY_STUDIES",
+        "type = naval_defense which = destroyer value = -0.5",
+        "type = naval_defense which = light_cruiser value = -0.5",
+        "type = build_time which = destroyer when = on_upgrade value = 12",
+        "type = build_time which = light_cruiser when = on_upgrade value = 12",
+        "type = setflag which = JX_EARLY_stability_ACTIVE",
+        "type = event which = 28600589 where = JAP when = 180",
+        "type = setflag which = JX_EARLY_tomozuru1934_DONE",
+        "type = naval_defense\nvalue = -0.5\nwhich = d_13",
+        "type = naval_defense\nvalue = -0.5\nwhich = d_18",
+        "type = build_time\nwhen = on_upgrade\nvalue = 12\nwhich = d_13",
+        "type = build_time\nwhen = on_upgrade\nvalue = 12\nwhich = d_18"
+      ],
+      "programme_flags": {}
+    },
+    {
+      "key": "prewar_deck_commission",
+      "title": "The carrier safety commission",
+      "selection": "Build an experienced deck and aircrew school",
+      "history": "16:00 July 20, 1934 : We went with Build an experienced deck and aircrew school in The carrier safety commission.",
+      "upfront_cost": {
+        "money": 60.0,
+        "supplies": 450.0,
+        "oilpool": 250.0
+      },
+      "status": "failed_overdue",
+      "evidence": "Selected aircrew school remains PENDING=1, DONE=0, CANCELLED=0. No completion or callback is queued. CAG/light-CAG +8 morale and +5 organisation were not delivered.",
+      "selected_commands": [
+        "type = money value = -60",
+        "type = supplies value = -450",
+        "type = oilpool value = -250",
+        "type = setflag which = JX_prewar_deck_commission_PENDING",
+        "type = setflag which = JX_prewar_deck_commission_SELECTED_0",
+        "type = event\nwhich = \"28603060\"\nwhere = JAP\nwhen = 240"
+      ],
+      "programme_flags": {
+        "JX_prewar_deck_commission_CANCELLED": "0",
+        "JX_prewar_deck_commission_DISMISSED": "0",
+        "JX_prewar_deck_commission_DONE": "0",
+        "JX_prewar_deck_commission_PENDING": "1",
+        "JX_prewar_deck_commission_SELECTED_0": "1"
+      }
+    },
+    {
+      "key": "oil1934",
+      "title": "The oil law needs an actual reserve",
+      "selection": "Buy a further 24 oil daily",
+      "history": "8:00 August 3, 1934 : We went with Buy a further 24 oil daily in The oil law needs an actual reserve.",
+      "upfront_cost": {
+        "money": 80.0
+      },
+      "status": "contract_missing",
+      "evidence": "The purchased additional 24 oil/day agreement should run until August 1937, but is absent. Its script permits cancellation (value=0). The save cannot prove whether it never appeared or was later cancelled/merged.",
+      "selected_commands": [
+        "type = money value = -80",
+        "type = supplies value = 0",
+        "type = oilpool value = 0",
+        "type = trade which = USA where = JAP metal = 0 oil = -24 supplies = 4 money = 1 when = 1080 value = 0",
+        "type = setflag which = JX_EARLY_oil1934_DONE"
+      ],
+      "programme_flags": {}
+    },
+    {
+      "key": "manchurian_contract",
+      "title": "A commercial agreement with Manchukuo",
+      "selection": "Fit 25 convoy escorts instead",
+      "history": "10:00 November 11, 1934 : We went with Fit 25 convoy escorts instead in A commercial agreement with Manchukuo.",
+      "upfront_cost": {
+        "money": 40.0,
+        "supplies": 250.0
+      },
+      "status": "delivered",
+      "evidence": "Selected 25 convoy escorts; the escort pool increased from 140 at the February 1934 checkpoint to 165 now.",
+      "selected_commands": [
+        "type = money value = -40",
+        "type = supplies value = -250",
+        "type = setflag which = JX_manchurian_contract_PENDING",
+        "type = event which = 28600664 where = JAP when = 90"
+      ],
+      "programme_flags": {
+        "JX_manchurian_contract_DISMISSED": "0",
+        "JX_manchurian_contract_DONE": "1",
+        "JX_manchurian_contract_PENDING": "0",
+        "JX_manchurian_contract_WAIT": "0"
+      }
+    },
+    {
+      "key": "fx1933",
+      "title": "Buy oil for a larger fleet",
+      "selection": "Buy 24 oil and 12 metal daily",
+      "history": "22:00 November 18, 1934 : We went with Buy 24 oil and 12 metal daily in Buy oil for a larger fleet.",
+      "upfront_cost": {
+        "money": 80.0
+      },
+      "status": "contract_missing",
+      "evidence": "The selected 24 oil/day plus 12 metal/day agreement should run until November 1936, but is absent. Its script permits cancellation (value=0); who/what ended it is not established.",
+      "selected_commands": [
+        "type = money value = -80",
+        "type = supplies value = 0",
+        "type = oilpool value = 0",
+        "type = trade which = USA where = JAP metal = -12 oil = -24 supplies = 4 money = 1 when = 720 value = 0",
+        "type = setflag which = JX_EARLY_fx1933_DONE"
+      ],
+      "programme_flags": {}
+    },
+    {
+      "key": "naval_production",
+      "title": "Choose the next shipyard expansion",
+      "selection": "Expand carrier and air-group production",
+      "history": "23:00 January 6, 1935 : We went with Expand carrier and air-group production in Choose the next shipyard expansion.",
+      "upfront_cost": {
+        "money": 220.0,
+        "supplies": 1200.0
+      },
+      "status": "delivered",
+      "evidence": "Saved fleet/light carrier cost and time modifiers are -0.38 IC/-153 days and -0.23 IC/-147 days. CAG savings are also present; fractional day values are stored as whole days.",
+      "selected_commands": [
+        "type = money value = -220",
+        "type = supplies value = -1200",
+        "type = setflag which = JX_naval_production_PENDING",
+        "type = event which = 28601689 where = JAP when = 240"
+      ],
+      "programme_flags": {
+        "JX_naval_production_DISMISSED": "0",
+        "JX_naval_production_DONE": "1",
+        "JX_naval_production_PENDING": "0",
+        "JX_naval_production_WAIT": "0"
+      }
+    },
+    {
+      "key": "prewar_navigation_trials",
+      "title": "Navigation trials or a coastal warning belt?",
+      "selection": "Train maritime navigation and search crews",
+      "history": "16:00 March 23, 1935 : We went with Train maritime navigation and search crews in Navigation trials or a coastal warning belt?.",
+      "upfront_cost": {
+        "money": 75.0,
+        "supplies": 600.0,
+        "metalpool": 500.0,
+        "energypool": 1000.0
+      },
+      "status": "failed_overdue",
+      "evidence": "Selected maritime trials remain PENDING=1, DONE=0, CANCELLED=0. No completion or callback is queued; Naval Bomber range +300 km and surface detection +2 are absent.",
+      "selected_commands": [
+        "type = money value = -75",
+        "type = supplies value = -600",
+        "type = metalpool value = -500",
+        "type = energypool value = -1000",
+        "type = setflag which = JX_prewar_navigation_trials_PENDING",
+        "type = setflag which = JX_prewar_navigation_trials_SELECTED_0",
+        "type = event\nwhich = \"28603062\"\nwhere = JAP\nwhen = 180"
+      ],
+      "programme_flags": {
+        "JX_prewar_navigation_trials_CANCELLED": "0",
+        "JX_prewar_navigation_trials_DISMISSED": "0",
+        "JX_prewar_navigation_trials_DONE": "0",
+        "JX_prewar_navigation_trials_PENDING": "1",
+        "JX_prewar_navigation_trials_SELECTED_0": "1"
+      }
+    },
+    {
+      "key": "home_fuel",
+      "title": "Build the home fuel and minerals complex",
+      "selection": "Fund balanced industry",
+      "history": "2:00 June 17, 1935 : We went with Fund balanced industry in Build the home fuel and minerals complex.",
+      "upfront_cost": {
+        "money": 350.0,
+        "supplies": 2400.0,
+        "metalpool": 1000.0
+      },
+      "status": "delivered",
+      "evidence": "Kushiro base resources are now 217 energy/40 metal/12 rares, matching +160/+40/+10. Tokyo oil is 20; Yokohama energy is 27, matching the -20 input.",
+      "selected_commands": [
+        "type = money value = -350",
+        "type = supplies value = -2400",
+        "type = metalpool value = -1000",
+        "type = setflag which = JX_home_fuel_PENDING",
+        "type = event which = 28601693 where = JAP when = 240"
+      ],
+      "programme_flags": {
+        "JX_home_fuel_DISMISSED": "0",
+        "JX_home_fuel_DONE": "1",
+        "JX_home_fuel_PENDING": "0",
+        "JX_home_fuel_WAIT": "0"
+      }
+    },
+    {
+      "key": "typhoon1935",
+      "title": "The typhoon exposes the fleet's weak seams",
+      "selection": "Apply the earlier study: 40 money, 300 supplies",
+      "history": "0:00 September 26, 1935 : We went with Apply the earlier study: 40 money, 300 supplies in The typhoon exposes the fleet's weak seams.",
+      "upfront_cost": {
+        "money": 40.0,
+        "supplies": 300.0
+      },
+      "status": "delivered",
+      "evidence": "Second structural study completed; destroyer/light-cruiser vulnerability is reduced. Temporary +8-day destroyer construction penalty ended on 26 March 1936.",
+      "selected_commands": [
+        "type = money value = -40",
+        "type = supplies value = -300",
+        "type = oilpool value = 0",
+        "type = naval_defense which = destroyer value = -0.5",
+        "type = naval_defense which = light_cruiser value = -0.5",
+        "type = build_time which = destroyer when = on_upgrade value = 8",
+        "type = setflag which = JX_EARLY_structure_ACTIVE",
+        "type = event which = 28600594 where = JAP when = 180",
+        "type = setflag which = JX_EARLY_typhoon1935_DONE",
+        "type = naval_defense\nvalue = -0.5\nwhich = d_13",
+        "type = naval_defense\nvalue = -0.5\nwhich = d_18",
+        "type = build_time\nwhen = on_upgrade\nvalue = 8\nwhich = d_13",
+        "type = build_time\nwhen = on_upgrade\nvalue = 8\nwhich = d_18"
+      ],
+      "programme_flags": {}
+    },
+    {
+      "key": "merchant_reserve",
+      "title": "Keep civilian hulls ready for a wider war",
+      "selection": "Reserve more merchant hulls",
+      "history": "9:00 October 5, 1935 : We went with Reserve more merchant hulls in Keep civilian hulls ready for a wider war.",
+      "upfront_cost": {
+        "money": 50.0,
+        "supplies": 300.0
+      },
+      "status": "not_due",
+      "evidence": "The +60-transports delivery is still queued: event 28600667, 105 game hours from the 1 April save, due 5 April 1936 at 09:00.",
+      "selected_commands": [
+        "type = money value = -50",
+        "type = supplies value = -300",
+        "type = setflag which = JX_merchant_reserve_PENDING",
+        "type = event which = 28600667 where = JAP when = 180"
+      ],
+      "programme_flags": {
+        "JX_merchant_reserve_DISMISSED": "0",
+        "JX_merchant_reserve_DONE": "0",
+        "JX_merchant_reserve_PENDING": "1",
+        "JX_merchant_reserve_WAIT": "0"
+      }
+    }
+  ],
+  "stalled_purchases": [
+    {
+      "programme": "prewar_deck_commission",
+      "due": "20 March 1935",
+      "owed": "Fleet and light CAG: +8 morale, +5 maximum organisation",
+      "receiver": 28601743,
+      "wrapper": 28603060,
+      "command": "type = event\nwhich = \"28603060\"\nwhere = JAP\nwhen = 240",
+      "completion_present": false
+    },
+    {
+      "programme": "prewar_navigation_trials",
+      "due": "23 September 1935",
+      "owed": "Naval Bomber: +300 km range, +2 surface detection",
+      "receiver": 28601746,
+      "wrapper": 28603062,
+      "command": "type = event\nwhich = \"28603062\"\nwhere = JAP\nwhen = 180",
+      "completion_present": false
+    }
+  ],
+  "paid_oil_contracts_missing": 2,
+  "current_us_trades": [
+    {
+      "countries": [
+        "USA",
+        "JAP"
+      ],
+      "oil": "-50",
+      "metal": "0",
+      "supplies": "15",
+      "money": "0",
+      "cancel": "no",
+      "expiry": {
+        "year": "1948",
+        "month": "december",
+        "day": "29",
+        "hour": "0"
+      }
+    },
+    {
+      "countries": [
+        "USA",
+        "JAP"
+      ],
+      "oil": "0",
+      "metal": "-96.7193",
+      "supplies": "17.1939",
+      "money": "1.6443",
+      "cancel": null,
+      "expiry": {
+        "year": "2035",
+        "month": "july",
+        "day": "25",
+        "hour": "0"
+      }
+    }
+  ],
+  "upgrade_evidence": {
+    "marine": [
+      [
+        "buildtime",
+        "-63"
+      ],
+      [
+        "cost",
+        "-1.6000"
+      ],
+      [
+        "supplyconsumption",
+        "-0.2000"
+      ],
+      [
+        "defaultorganisation",
+        "25"
+      ],
+      [
+        "morale",
+        "15.6000"
+      ]
+    ],
+    "infantry": [
+      [
+        "buildtime",
+        "-73"
+      ],
+      [
+        "cost",
+        "-1"
+      ],
+      [
+        "supplyconsumption",
+        "-0.2000"
+      ],
+      [
+        "hardattack",
+        "1"
+      ],
+      [
+        "defaultorganisation",
+        "25"
+      ],
+      [
+        "morale",
+        "15.6000"
+      ]
+    ],
+    "bergsjaeger": [
+      [
+        "buildtime",
+        "-44"
+      ],
+      [
+        "cost",
+        "-1.2000"
+      ],
+      [
+        "supplyconsumption",
+        "-0.2000"
+      ],
+      [
+        "hardattack",
+        "1"
+      ],
+      [
+        "defaultorganisation",
+        "25"
+      ],
+      [
+        "morale",
+        "15.6000"
+      ]
+    ],
+    "carrier": [
+      [
+        "buildtime",
+        "-153"
+      ],
+      [
+        "cost",
+        "-0.3800"
+      ],
+      [
+        "range",
+        "500"
+      ],
+      [
+        "defaultorganisation",
+        "15"
+      ],
+      [
+        "morale",
+        "20"
+      ]
+    ],
+    "light_carrier": [
+      [
+        "buildtime",
+        "-147"
+      ],
+      [
+        "cost",
+        "-0.2300"
+      ],
+      [
+        "range",
+        "500"
+      ],
+      [
+        "defaultorganisation",
+        "15"
+      ],
+      [
+        "morale",
+        "20"
+      ]
+    ],
+    "cag": [
+      [
+        "buildtime",
+        "-26"
+      ],
+      [
+        "cost",
+        "-0.3000"
+      ],
+      [
+        "seaattack",
+        "3"
+      ],
+      [
+        "convoyattack",
+        "3"
+      ],
+      [
+        "defaultorganisation",
+        "2"
+      ],
+      [
+        "morale",
+        "12"
+      ]
+    ],
+    "light_cag": [
+      [
+        "buildtime",
+        "-26"
+      ],
+      [
+        "cost",
+        "-0.1700"
+      ],
+      [
+        "seaattack",
+        "3"
+      ],
+      [
+        "convoyattack",
+        "3"
+      ],
+      [
+        "defaultorganisation",
+        "2"
+      ],
+      [
+        "morale",
+        "12"
+      ]
+    ],
+    "interceptor": [
+      [
+        "buildtime",
+        "-18"
+      ],
+      [
+        "cost",
+        "-1.5000"
+      ],
+      [
+        "defaultorganisation",
+        "6"
+      ],
+      [
+        "morale",
+        "26"
+      ]
+    ],
+    "tactical_bomber": [
+      [
+        "buildtime",
+        "-46"
+      ],
+      [
+        "cost",
+        "-5"
+      ],
+      [
+        "morale",
+        "10"
+      ]
+    ],
+    "naval_bomber": [
+      [
+        "buildtime",
+        "-48"
+      ],
+      [
+        "cost",
+        "-4"
+      ],
+      [
+        "navalattack",
+        "5"
+      ],
+      [
+        "morale",
+        "10"
+      ]
+    ],
+    "transport_plane": [
+      [
+        "buildtime",
+        "-48"
+      ],
+      [
+        "cost",
+        "-5"
+      ]
+    ]
+  },
+  "provinces": {
+    "1544": {
+      "ic": "1",
+      "resources": {
+        "energy": "217",
+        "metal": "40",
+        "rare_materials": "12",
+        "oil": null
+      }
+    },
+    "1550": {
+      "ic": [
+        [
+          "size",
+          "9"
+        ],
+        [
+          "current_size",
+          "9"
+        ]
+      ],
+      "resources": {
+        "energy": "27",
+        "metal": null,
+        "rare_materials": null,
+        "oil": null
+      }
+    },
+    "1552": {
+      "ic": [
+        [
+          "size",
+          "16"
+        ],
+        [
+          "current_size",
+          "16"
+        ]
+      ],
+      "resources": {
+        "energy": null,
+        "metal": null,
+        "rare_materials": null,
+        "oil": "20"
+      }
+    },
+    "1554": {
+      "ic": [
+        [
+          "size",
+          "10"
+        ],
+        [
+          "current_size",
+          "10"
+        ]
+      ],
+      "resources": {
+        "energy": null,
+        "metal": null,
+        "rare_materials": null,
+        "oil": null
+      }
+    },
+    "1557": {
+      "ic": [
+        [
+          "size",
+          "11"
+        ],
+        [
+          "current_size",
+          "11"
+        ]
+      ],
+      "resources": {
+        "energy": null,
+        "metal": null,
+        "rare_materials": null,
+        "oil": null
+      }
+    }
+  },
+  "free_type93_attachments_present": 2,
+  "queued_events": [
+    {
+      "tag": "CHI",
+      "id": "1330110052",
+      "hour": "7176"
+    },
+    {
+      "tag": "ITA",
+      "id": "9300524",
+      "hour": "336"
+    },
+    {
+      "tag": "JAP",
+      "id": "28600667",
+      "hour": "105"
+    },
+    {
+      "tag": "GUA",
+      "id": "9000049",
+      "hour": "240"
+    },
+    {
+      "tag": "SAU",
+      "id": "9000049",
+      "hour": "312"
+    },
+    {
+      "tag": "AST",
+      "id": "9000049",
+      "hour": "1056"
+    },
+    {
+      "tag": "SOV",
+      "id": "9300183",
+      "hour": "6528"
+    },
+    {
+      "tag": "CAN",
+      "id": "9000049",
+      "hour": "2064"
+    },
+    {
+      "tag": "USA",
+      "id": "9000054",
+      "hour": "24"
+    },
+    {
+      "tag": "IRE",
+      "id": "9000049",
+      "hour": "3840"
+    },
+    {
+      "tag": "GER",
+      "id": "9300240",
+      "hour": "8568"
+    }
+  ],
+  "dispatch_risk": {
+    "quoted_references": 108,
+    "affected_events": 65,
+    "timing_handoffs": 82,
+    "findings": [
+      {
+        "event": "china_mission",
+        "module": "partners",
+        "choice": 0,
+        "type": "event",
+        "target": "time_delivery_28600382_0_3",
+        "command": "type = event\nwhich = \"28603025\"\nwhere = JAP\nwhen = 60"
+      },
+      {
+        "event": "china_mission",
+        "module": "partners",
+        "choice": 1,
+        "type": "event",
+        "target": "time_delivery_28600382_1_3",
+        "command": "type = event\nwhich = \"28603026\"\nwhere = JAP\nwhen = 60"
+      },
+      {
+        "event": "civil_recovery",
+        "module": "postwar",
+        "choice": 0,
+        "type": "event",
+        "target": "time_delivery_28600446_0_5",
+        "command": "trigger = {\n\tflag = JX_R14_CIVIL_RECOVERY_CIVILIAN_PENDING_EXECUTING\n}\ntype = event\nwhich = \"28603027\"\nwhere = JAP\nwhen = 360"
+      },
+      {
+        "event": "civil_recovery",
+        "module": "postwar",
+        "choice": 1,
+        "type": "event",
+        "target": "time_delivery_28600446_1_5",
+        "command": "trigger = {\n\tflag = JX_R14_CIVIL_RECOVERY_RESERVES_PENDING_EXECUTING\n}\ntype = event\nwhich = \"28603028\"\nwhere = JAP\nwhen = 180"
+      },
+      {
+        "event": "china_autonomy",
+        "module": "postwar",
+        "choice": 0,
+        "type": "event",
+        "target": "time_delivery_28600448_0_7",
+        "command": "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_PENDING_EXECUTING\n}\ntype = event\nwhich = \"28603029\"\nwhere = U87\nwhen = 1"
+      },
+      {
+        "event": "china_autonomy",
+        "module": "postwar",
+        "choice": 0,
+        "type": "event",
+        "target": "time_delivery_28600448_0_8",
+        "command": "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_PENDING_EXECUTING\n}\ntype = event\nwhich = \"28603030\"\nwhere = JAP\nwhen = 2"
+      },
+      {
+        "event": "china_autonomy",
+        "module": "postwar",
+        "choice": 1,
+        "type": "event",
+        "target": "time_delivery_28600448_1_6",
+        "command": "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_PENDING_EXECUTING\n}\ntype = event\nwhich = \"28603031\"\nwhere = U87\nwhen = 1"
+      },
+      {
+        "event": "china_autonomy",
+        "module": "postwar",
+        "choice": 1,
+        "type": "event",
+        "target": "time_delivery_28600448_1_7",
+        "command": "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_PENDING_EXECUTING\n}\ntype = event\nwhich = \"28603032\"\nwhere = JAP\nwhen = 2"
+      },
+      {
+        "event": "china_autonomy",
+        "module": "postwar",
+        "choice": 2,
+        "type": "event",
+        "target": "time_delivery_28600448_2_6",
+        "command": "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_MILITARY_PENDING_EXECUTING\n}\ntype = event\nwhich = \"28603033\"\nwhere = U87\nwhen = 1"
+      },
+      {
+        "event": "china_autonomy",
+        "module": "postwar",
+        "choice": 2,
+        "type": "event",
+        "target": "time_delivery_28600448_2_7",
+        "command": "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_MILITARY_PENDING_EXECUTING\n}\ntype = event\nwhich = \"28603034\"\nwhere = JAP\nwhen = 2"
+      },
+      {
+        "event": "india_autonomy",
+        "module": "postwar",
+        "choice": 0,
+        "type": "event",
+        "target": "time_delivery_28600451_0_7",
+        "command": "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_PENDING_EXECUTING\n}\ntype = event\nwhich = \"28603035\"\nwhere = IND\nwhen = 1"
+      },
+      {
+        "event": "india_autonomy",
+        "module": "postwar",
+        "choice": 0,
+        "type": "event",
+        "target": "time_delivery_28600451_0_8",
+        "command": "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_PENDING_EXECUTING\n}\ntype = event\nwhich = \"28603036\"\nwhere = JAP\nwhen = 2"
+      },
+      {
+        "event": "india_autonomy",
+        "module": "postwar",
+        "choice": 1,
+        "type": "event",
+        "target": "time_delivery_28600451_1_6",
+        "command": "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_PENDING_EXECUTING\n}\ntype = event\nwhich = \"28603037\"\nwhere = IND\nwhen = 1"
+      },
+      {
+        "event": "india_autonomy",
+        "module": "postwar",
+        "choice": 1,
+        "type": "event",
+        "target": "time_delivery_28600451_1_7",
+        "command": "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_PENDING_EXECUTING\n}\ntype = event\nwhich = \"28603038\"\nwhere = JAP\nwhen = 2"
+      },
+      {
+        "event": "india_autonomy",
+        "module": "postwar",
+        "choice": 2,
+        "type": "event",
+        "target": "time_delivery_28600451_2_6",
+        "command": "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_MILITARY_PENDING_EXECUTING\n}\ntype = event\nwhich = \"28603039\"\nwhere = IND\nwhen = 1"
+      },
+      {
+        "event": "india_autonomy",
+        "module": "postwar",
+        "choice": 2,
+        "type": "event",
+        "target": "time_delivery_28600451_2_7",
+        "command": "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_MILITARY_PENDING_EXECUTING\n}\ntype = event\nwhich = \"28603040\"\nwhere = JAP\nwhen = 2"
+      },
+      {
+        "event": "us_signed",
+        "module": "usa",
+        "choice": 0,
+        "type": "event",
+        "target": "time_delivery_28600475_0_4",
+        "command": "trigger = {\n\tAND = {\n\t\tflag = JX_US_PENDING\n\t\tflag = JX_R14_US_PEACE_ISSUED\n\t\tNOT = {\n\t\t\twar = {\n\t\t\t\tcountry = JAP\n\t\t\t\tcountry = USA\n\t\t\t}\n\t\t}\n\t}\n\tAND = {\n\t\tflag = JX_US_RETURN_HAWAII\n\t}\n}\ntype = event\nwhich = \"28603041\"\nwhere = JAP\nwhen = 1800"
+      },
+      {
+        "event": "cn_shanghai_holding",
+        "module": "country_campaigns",
+        "choice": 0,
+        "type": "event",
+        "target": "time_delivery_28601715_0_5",
+        "command": "type = event\nwhich = \"28603042\"\nwhere = JAP\nwhen = 120"
+      },
+      {
+        "event": "cn_shanghai_holding",
+        "module": "country_campaigns",
+        "choice": 1,
+        "type": "event",
+        "target": "time_delivery_28601715_1_5",
+        "command": "type = event\nwhich = \"28603043\"\nwhere = JAP\nwhen = 180"
+      },
+      {
+        "event": "cn_wuhan_choice",
+        "module": "country_campaigns",
+        "choice": 0,
+        "type": "event",
+        "target": "time_delivery_28601718_0_5",
+        "command": "type = event\nwhich = \"28603044\"\nwhere = JAP\nwhen = 180"
+      },
+      {
+        "event": "cn_wuhan_choice",
+        "module": "country_campaigns",
+        "choice": 1,
+        "type": "event",
+        "target": "time_delivery_28601718_1_4",
+        "command": "type = event\nwhich = \"28603045\"\nwhere = JAP\nwhen = 120"
+      },
+      {
+        "event": "ph_manila_air",
+        "module": "country_campaigns",
+        "choice": 0,
+        "type": "event",
+        "target": "time_delivery_28601721_0_7",
+        "command": "type = event\nwhich = \"28603046\"\nwhere = JAP\nwhen = 150"
+      },
+      {
+        "event": "ph_manila_air",
+        "module": "country_campaigns",
+        "choice": 1,
+        "type": "event",
+        "target": "time_delivery_28601721_1_7",
+        "command": "type = event\nwhich = \"28603047\"\nwhere = JAP\nwhen = 180"
+      },
+      {
+        "event": "ph_island_agreement",
+        "module": "country_campaigns",
+        "choice": 0,
+        "type": "event",
+        "target": "time_delivery_28601724_0_5",
+        "command": "type = event\nwhich = \"28603048\"\nwhere = JAP\nwhen = 210"
+      },
+      {
+        "event": "ph_island_agreement",
+        "module": "country_campaigns",
+        "choice": 1,
+        "type": "event",
+        "target": "time_delivery_28601724_1_4",
+        "command": "type = event\nwhich = \"28603049\"\nwhere = JAP\nwhen = 120"
+      },
+      {
+        "event": "in_java_shipyards",
+        "module": "country_campaigns",
+        "choice": 0,
+        "type": "event",
+        "target": "time_delivery_28601727_0_7",
+        "command": "type = event\nwhich = \"28603050\"\nwhere = JAP\nwhen = 240"
+      },
+      {
+        "event": "in_java_shipyards",
+        "module": "country_campaigns",
+        "choice": 1,
+        "type": "event",
+        "target": "time_delivery_28601727_1_7",
+        "command": "type = event\nwhich = \"28603051\"\nwhere = JAP\nwhen = 300"
+      },
+      {
+        "event": "in_indonesian_exports",
+        "module": "country_campaigns",
+        "choice": 0,
+        "type": "event",
+        "target": "time_delivery_28601730_0_5",
+        "command": "type = event\nwhich = \"28603052\"\nwhere = JAP\nwhen = 150"
+      },
+      {
+        "event": "in_indonesian_exports",
+        "module": "country_campaigns",
+        "choice": 1,
+        "type": "event",
+        "target": "time_delivery_28601730_1_4",
+        "command": "type = event\nwhich = \"28603053\"\nwhere = JAP\nwhen = 150"
+      },
+      {
+        "event": "my_singapore_yards",
+        "module": "country_campaigns",
+        "choice": 0,
+        "type": "event",
+        "target": "time_delivery_28601734_0_6",
+        "command": "type = event\nwhich = \"28603054\"\nwhere = JAP\nwhen = 90"
+      },
+      {
+        "event": "my_singapore_yards",
+        "module": "country_campaigns",
+        "choice": 1,
+        "type": "event",
+        "target": "time_delivery_28601734_1_5",
+        "command": "type = event\nwhich = \"28603055\"\nwhere = JAP\nwhen = 150"
+      },
+      {
+        "event": "my_malayan_exports",
+        "module": "country_campaigns",
+        "choice": 0,
+        "type": "event",
+        "target": "time_delivery_28601737_0_4",
+        "command": "type = event\nwhich = \"28603056\"\nwhere = JAP\nwhen = 150"
+      },
+      {
+        "event": "my_malayan_exports",
+        "module": "country_campaigns",
+        "choice": 1,
+        "type": "event",
+        "target": "time_delivery_28601737_1_4",
+        "command": "type = event\nwhich = \"28603057\"\nwhere = JAP\nwhen = 150"
+      },
+      {
+        "event": "prewar_rural_works",
+        "module": "prewar_content",
+        "choice": 0,
+        "type": "event",
+        "target": "time_delivery_28601739_0_6",
+        "command": "type = event\nwhich = \"28603058\"\nwhere = JAP\nwhen = 270"
+      },
+      {
+        "event": "prewar_rural_works",
+        "module": "prewar_content",
+        "choice": 1,
+        "type": "event",
+        "target": "time_delivery_28601739_1_5",
+        "command": "type = event\nwhich = \"28603059\"\nwhere = JAP\nwhen = 270"
+      },
+      {
+        "event": "prewar_deck_commission",
+        "module": "prewar_content",
+        "choice": 0,
+        "type": "event",
+        "target": "time_delivery_28601742_0_5",
+        "command": "type = event\nwhich = \"28603060\"\nwhere = JAP\nwhen = 240"
+      },
+      {
+        "event": "prewar_deck_commission",
+        "module": "prewar_content",
+        "choice": 1,
+        "type": "event",
+        "target": "time_delivery_28601742_1_5",
+        "command": "type = event\nwhich = \"28603061\"\nwhere = JAP\nwhen = 240"
+      },
+      {
+        "event": "prewar_navigation_trials",
+        "module": "prewar_content",
+        "choice": 0,
+        "type": "event",
+        "target": "time_delivery_28601745_0_6",
+        "command": "type = event\nwhich = \"28603062\"\nwhere = JAP\nwhen = 180"
+      },
+      {
+        "event": "prewar_navigation_trials",
+        "module": "prewar_content",
+        "choice": 1,
+        "type": "event",
+        "target": "time_delivery_28601745_1_6",
+        "command": "type = event\nwhich = \"28603063\"\nwhere = JAP\nwhen = 180"
+      },
+      {
+        "event": "prewar_landing_trials",
+        "module": "prewar_content",
+        "choice": 0,
+        "type": "event",
+        "target": "time_delivery_28601748_0_5",
+        "command": "type = event\nwhich = \"28603064\"\nwhere = JAP\nwhen = 180"
+      },
+      {
+        "event": "prewar_landing_trials",
+        "module": "prewar_content",
+        "choice": 1,
+        "type": "event",
+        "target": "time_delivery_28601748_1_5",
+        "command": "type = event\nwhich = \"28603065\"\nwhere = JAP\nwhen = 180"
+      },
+      {
+        "event": "prewar_medical_service",
+        "module": "prewar_content",
+        "choice": 0,
+        "type": "event",
+        "target": "time_delivery_28601751_0_4",
+        "command": "type = event\nwhich = \"28603066\"\nwhere = JAP\nwhen = 180"
+      },
+      {
+        "event": "prewar_medical_service",
+        "module": "prewar_content",
+        "choice": 1,
+        "type": "event",
+        "target": "time_delivery_28601751_1_4",
+        "command": "type = event\nwhich = \"28603067\"\nwhere = JAP\nwhen = 180"
+      },
+      {
+        "event": "prewar_factory_dispersion",
+        "module": "prewar_content",
+        "choice": 0,
+        "type": "event",
+        "target": "time_delivery_28601754_0_5",
+        "command": "type = event\nwhich = \"28603068\"\nwhere = JAP\nwhen = 270"
+      },
+      {
+        "event": "prewar_factory_dispersion",
+        "module": "prewar_content",
+        "choice": 1,
+        "type": "event",
+        "target": "time_delivery_28601754_1_5",
+        "command": "type = event\nwhich = \"28603069\"\nwhere = JAP\nwhen = 270"
+      },
+      {
+        "event": "usc_replacements",
+        "module": "us_campaign_content",
+        "choice": 0,
+        "type": "event",
+        "target": "time_delivery_28601762_0_4",
+        "command": "type = event\nwhich = \"28603070\"\nwhere = JAP\nwhen = 60"
+      },
+      {
+        "event": "usc_replacements",
+        "module": "us_campaign_content",
+        "choice": 1,
+        "type": "event",
+        "target": "time_delivery_28601762_1_4",
+        "command": "type = event\nwhich = \"28603071\"\nwhere = JAP\nwhen = 60"
+      },
+      {
+        "event": "usc_commitment",
+        "module": "us_campaign_content",
+        "choice": 0,
+        "type": "event",
+        "target": "time_delivery_28601769_0_4",
+        "command": "type = event\nwhich = \"28603072\"\nwhere = JAP\nwhen = 60"
+      },
+      {
+        "event": "usc_commitment",
+        "module": "us_campaign_content",
+        "choice": 1,
+        "type": "event",
+        "target": "time_delivery_28601769_1_4",
+        "command": "type = event\nwhich = \"28603073\"\nwhere = JAP\nwhen = 60"
+      },
+      {
+        "event": "r14_china_autonomy_sovereign",
+        "module": "postwar",
+        "choice": 0,
+        "type": "event",
+        "target": "time_delivery_28602901_0_4",
+        "command": "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_DELIVERED\n\t}\n\texists = JAP\n\tNOT = {\n\t\twar = {\n\t\t\tcountry = U87\n\t\t\tcountry = JAP\n\t\t}\n\t}\n\tNOT = {\n\t\tispuppet = U87\n\t}\n\tatwar = no\n\tNOT = {\n\t\tatwar = JAP\n\t}\n\tflag = JX_TIME_28600448_1\n}\ntype = event\nwhich = \"28603074\"\nwhere = U87\nwhen = 360"
+      },
+      {
+        "event": "r14_china_autonomy_sovereign",
+        "module": "postwar",
+        "choice": 1,
+        "type": "trigger",
+        "target": "r14_china_autonomy_sovereign_refund",
+        "command": "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_DELIVERED\n\t}\n\tflag = JX_TIME_28600448_1\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = U87\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tNOT = {\n\t\t\t\tispuppet = U87\n\t\t\t}\n\t\t\tatwar = no\n\t\t\tNOT = {\n\t\t\t\tatwar = JAP\n\t\t\t}\n\t\t}\n\t}\n}\ntype = trigger\nwhich = \"28602903\""
+      },
+      {
+        "event": "r14_china_autonomy_sovereign_finish",
+        "module": "postwar",
+        "choice": 1,
+        "type": "trigger",
+        "target": "r14_china_autonomy_sovereign_refund",
+        "command": "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_FINISHED\n\t}\n\tflag = JX_TIME_28602901_360\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = U87\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tNOT = {\n\t\t\t\tispuppet = U87\n\t\t\t}\n\t\t\tatwar = no\n\t\t\tNOT = {\n\t\t\t\tatwar = JAP\n\t\t\t\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_WAR_BROKEN\n\t\t\t}\n\t\t\towned = {\n\t\t\t\tprovince = 1337\n\t\t\t\tdata = U87\n\t\t\t}\n\t\t\tcontrol = {\n\t\t\t\tprovince = 1337\n\t\t\t\tdata = U87\n\t\t\t}\n\t\t\ttechnology = 5800\n\t\t\tOR = {\n\t\t\t\tAND = {\n\t\t\t\t\tNOT = {\n\t\t\t\t\t\tbuilding = {\n\t\t\t\t\t\t\tprovince = 1337\n\t\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\t\tvalue = 2\n\t\t\t\t\t\t\twhen = now\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1337\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 0.31\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\tAND = {\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1337\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 2\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1337\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 31\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tNOT = {\n\t\t\t\tbuilding = {\n\t\t\t\t\tprovince = 1337\n\t\t\t\t\ttype = ic\n\t\t\t\t\tvalue = 197\n\t\t\t\t\twhen = now\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n}\ntype = trigger\nwhich = \"28602903\""
+      },
+      {
+        "event": "r14_china_autonomy_sovereign_check",
+        "module": "postwar",
+        "choice": 0,
+        "type": "trigger",
+        "target": "r14_china_autonomy_sovereign_refund",
+        "command": "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_DELIVERED\n\t}\n\tflag = JX_TIME_28600448_2\n}\ntype = trigger\nwhich = \"28602903\""
+      },
+      {
+        "event": "r14_china_autonomy_sovereign_government_lost",
+        "module": "postwar",
+        "choice": 0,
+        "type": "trigger",
+        "target": "r14_china_autonomy_sovereign_refund",
+        "command": "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_FINISHED\n\t}\n\tflag = JX_TIME_28602901_360\n\tNOT = {\n\t\texists = U87\n\t}\n}\ntype = trigger\nwhich = \"28602903\""
+      },
+      {
+        "event": "r14_china_autonomy_civilian",
+        "module": "postwar",
+        "choice": 0,
+        "type": "event",
+        "target": "time_delivery_28602907_0_4",
+        "command": "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_DELIVERED\n\t}\n\texists = JAP\n\tNOT = {\n\t\twar = {\n\t\t\tcountry = U87\n\t\t\tcountry = JAP\n\t\t}\n\t}\n\tpuppet = {\n\t\tcountry = U87\n\t\tcountry = JAP\n\t}\n\tatwar = no\n\tNOT = {\n\t\tatwar = JAP\n\t}\n\tflag = JX_TIME_28600448_1\n}\ntype = event\nwhich = \"28603075\"\nwhere = U87\nwhen = 360"
+      },
+      {
+        "event": "r14_china_autonomy_civilian",
+        "module": "postwar",
+        "choice": 1,
+        "type": "trigger",
+        "target": "r14_china_autonomy_civilian_refund",
+        "command": "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_DELIVERED\n\t}\n\tflag = JX_TIME_28600448_1\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = U87\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tpuppet = {\n\t\t\t\tcountry = U87\n\t\t\t\tcountry = JAP\n\t\t\t}\n\t\t\tatwar = no\n\t\t\tNOT = {\n\t\t\t\tatwar = JAP\n\t\t\t}\n\t\t}\n\t}\n}\ntype = trigger\nwhich = \"28602909\""
+      },
+      {
+        "event": "r14_china_autonomy_civilian_finish",
+        "module": "postwar",
+        "choice": 1,
+        "type": "trigger",
+        "target": "r14_china_autonomy_civilian_refund",
+        "command": "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_FINISHED\n\t}\n\tflag = JX_TIME_28602907_360\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = U87\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tpuppet = {\n\t\t\t\tcountry = U87\n\t\t\t\tcountry = JAP\n\t\t\t}\n\t\t\tatwar = no\n\t\t\tNOT = {\n\t\t\t\tatwar = JAP\n\t\t\t\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_WAR_BROKEN\n\t\t\t}\n\t\t\towned = {\n\t\t\t\tprovince = 1337\n\t\t\t\tdata = U87\n\t\t\t}\n\t\t\tcontrol = {\n\t\t\t\tprovince = 1337\n\t\t\t\tdata = U87\n\t\t\t}\n\t\t\ttechnology = 5800\n\t\t\tOR = {\n\t\t\t\tAND = {\n\t\t\t\t\tNOT = {\n\t\t\t\t\t\tbuilding = {\n\t\t\t\t\t\t\tprovince = 1337\n\t\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\t\tvalue = 2\n\t\t\t\t\t\t\twhen = now\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1337\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 0.31\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\tAND = {\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1337\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 2\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1337\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 31\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tNOT = {\n\t\t\t\tbuilding = {\n\t\t\t\t\tprovince = 1337\n\t\t\t\t\ttype = ic\n\t\t\t\t\tvalue = 197\n\t\t\t\t\twhen = now\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n}\ntype = trigger\nwhich = \"28602909\""
+      },
+      {
+        "event": "r14_china_autonomy_civilian_check",
+        "module": "postwar",
+        "choice": 0,
+        "type": "trigger",
+        "target": "r14_china_autonomy_civilian_refund",
+        "command": "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_DELIVERED\n\t}\n\tflag = JX_TIME_28600448_2\n}\ntype = trigger\nwhich = \"28602909\""
+      },
+      {
+        "event": "r14_china_autonomy_civilian_government_lost",
+        "module": "postwar",
+        "choice": 0,
+        "type": "trigger",
+        "target": "r14_china_autonomy_civilian_refund",
+        "command": "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_FINISHED\n\t}\n\tflag = JX_TIME_28602907_360\n\tNOT = {\n\t\texists = U87\n\t}\n}\ntype = trigger\nwhich = \"28602909\""
+      },
+      {
+        "event": "r14_china_autonomy_military",
+        "module": "postwar",
+        "choice": 0,
+        "type": "event",
+        "target": "time_delivery_28602913_0_4",
+        "command": "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_MILITARY\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_MILITARY_DELIVERED\n\t}\n\texists = JAP\n\tNOT = {\n\t\twar = {\n\t\t\tcountry = U87\n\t\t\tcountry = JAP\n\t\t}\n\t}\n\tpuppet = {\n\t\tcountry = U87\n\t\tcountry = JAP\n\t}\n\tflag = JX_TIME_28600448_1\n}\ntype = event\nwhich = \"28603076\"\nwhere = U87\nwhen = 180"
+      },
+      {
+        "event": "r14_china_autonomy_military",
+        "module": "postwar",
+        "choice": 1,
+        "type": "trigger",
+        "target": "r14_china_autonomy_military_refund",
+        "command": "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_MILITARY\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_MILITARY_DELIVERED\n\t}\n\tflag = JX_TIME_28600448_1\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = U87\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tpuppet = {\n\t\t\t\tcountry = U87\n\t\t\t\tcountry = JAP\n\t\t\t}\n\t\t}\n\t}\n}\ntype = trigger\nwhich = \"28602915\""
+      },
+      {
+        "event": "r14_china_autonomy_military_finish",
+        "module": "postwar",
+        "choice": 1,
+        "type": "trigger",
+        "target": "r14_china_autonomy_military_refund",
+        "command": "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_MILITARY_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_MILITARY_FINISHED\n\t}\n\tflag = JX_TIME_28602913_180\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = U87\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tpuppet = {\n\t\t\t\tcountry = U87\n\t\t\t\tcountry = JAP\n\t\t\t}\n\t\t}\n\t}\n}\ntype = trigger\nwhich = \"28602915\""
+      },
+      {
+        "event": "r14_china_autonomy_military_check",
+        "module": "postwar",
+        "choice": 0,
+        "type": "trigger",
+        "target": "r14_china_autonomy_military_refund",
+        "command": "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_MILITARY\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_MILITARY_DELIVERED\n\t}\n\tflag = JX_TIME_28600448_2\n}\ntype = trigger\nwhich = \"28602915\""
+      },
+      {
+        "event": "r14_china_autonomy_military_government_lost",
+        "module": "postwar",
+        "choice": 0,
+        "type": "trigger",
+        "target": "r14_china_autonomy_military_refund",
+        "command": "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_MILITARY_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_MILITARY_FINISHED\n\t}\n\tflag = JX_TIME_28602913_180\n\tNOT = {\n\t\texists = U87\n\t}\n}\ntype = trigger\nwhich = \"28602915\""
+      },
+      {
+        "event": "r14_india_autonomy_sovereign",
+        "module": "postwar",
+        "choice": 0,
+        "type": "event",
+        "target": "time_delivery_28602918_0_4",
+        "command": "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_DELIVERED\n\t}\n\texists = JAP\n\tNOT = {\n\t\twar = {\n\t\t\tcountry = IND\n\t\t\tcountry = JAP\n\t\t}\n\t}\n\tNOT = {\n\t\tispuppet = IND\n\t}\n\tatwar = no\n\tNOT = {\n\t\tatwar = JAP\n\t}\n\tflag = JX_TIME_28600451_1\n}\ntype = event\nwhich = \"28603077\"\nwhere = IND\nwhen = 360"
+      },
+      {
+        "event": "r14_india_autonomy_sovereign",
+        "module": "postwar",
+        "choice": 1,
+        "type": "trigger",
+        "target": "r14_india_autonomy_sovereign_refund",
+        "command": "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_DELIVERED\n\t}\n\tflag = JX_TIME_28600451_1\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = IND\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tNOT = {\n\t\t\t\tispuppet = IND\n\t\t\t}\n\t\t\tatwar = no\n\t\t\tNOT = {\n\t\t\t\tatwar = JAP\n\t\t\t}\n\t\t}\n\t}\n}\ntype = trigger\nwhich = \"28602920\""
+      },
+      {
+        "event": "r14_india_autonomy_sovereign_finish",
+        "module": "postwar",
+        "choice": 1,
+        "type": "trigger",
+        "target": "r14_india_autonomy_sovereign_refund",
+        "command": "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_FINISHED\n\t}\n\tflag = JX_TIME_28602918_360\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = IND\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tNOT = {\n\t\t\t\tispuppet = IND\n\t\t\t}\n\t\t\tatwar = no\n\t\t\tNOT = {\n\t\t\t\tatwar = JAP\n\t\t\t\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_WAR_BROKEN\n\t\t\t}\n\t\t\towned = {\n\t\t\t\tprovince = 1459\n\t\t\t\tdata = IND\n\t\t\t}\n\t\t\tcontrol = {\n\t\t\t\tprovince = 1459\n\t\t\t\tdata = IND\n\t\t\t}\n\t\t\ttechnology = 5800\n\t\t\tOR = {\n\t\t\t\tAND = {\n\t\t\t\t\tNOT = {\n\t\t\t\t\t\tbuilding = {\n\t\t\t\t\t\t\tprovince = 1459\n\t\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\t\tvalue = 2\n\t\t\t\t\t\t\twhen = now\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1459\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 0.31\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\tAND = {\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1459\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 2\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1459\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 31\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tNOT = {\n\t\t\t\tbuilding = {\n\t\t\t\t\tprovince = 1459\n\t\t\t\t\ttype = ic\n\t\t\t\t\tvalue = 197\n\t\t\t\t\twhen = now\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n}\ntype = trigger\nwhich = \"28602920\""
+      },
+      {
+        "event": "r14_india_autonomy_sovereign_check",
+        "module": "postwar",
+        "choice": 0,
+        "type": "trigger",
+        "target": "r14_india_autonomy_sovereign_refund",
+        "command": "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_DELIVERED\n\t}\n\tflag = JX_TIME_28600451_2\n}\ntype = trigger\nwhich = \"28602920\""
+      },
+      {
+        "event": "r14_india_autonomy_sovereign_government_lost",
+        "module": "postwar",
+        "choice": 0,
+        "type": "trigger",
+        "target": "r14_india_autonomy_sovereign_refund",
+        "command": "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_FINISHED\n\t}\n\tflag = JX_TIME_28602918_360\n\tNOT = {\n\t\texists = IND\n\t}\n}\ntype = trigger\nwhich = \"28602920\""
+      },
+      {
+        "event": "r14_india_autonomy_civilian",
+        "module": "postwar",
+        "choice": 0,
+        "type": "event",
+        "target": "time_delivery_28602924_0_4",
+        "command": "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_DELIVERED\n\t}\n\texists = JAP\n\tNOT = {\n\t\twar = {\n\t\t\tcountry = IND\n\t\t\tcountry = JAP\n\t\t}\n\t}\n\tpuppet = {\n\t\tcountry = IND\n\t\tcountry = JAP\n\t}\n\tatwar = no\n\tNOT = {\n\t\tatwar = JAP\n\t}\n\tflag = JX_TIME_28600451_1\n}\ntype = event\nwhich = \"28603078\"\nwhere = IND\nwhen = 360"
+      },
+      {
+        "event": "r14_india_autonomy_civilian",
+        "module": "postwar",
+        "choice": 1,
+        "type": "trigger",
+        "target": "r14_india_autonomy_civilian_refund",
+        "command": "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_DELIVERED\n\t}\n\tflag = JX_TIME_28600451_1\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = IND\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tpuppet = {\n\t\t\t\tcountry = IND\n\t\t\t\tcountry = JAP\n\t\t\t}\n\t\t\tatwar = no\n\t\t\tNOT = {\n\t\t\t\tatwar = JAP\n\t\t\t}\n\t\t}\n\t}\n}\ntype = trigger\nwhich = \"28602926\""
+      },
+      {
+        "event": "r14_india_autonomy_civilian_finish",
+        "module": "postwar",
+        "choice": 1,
+        "type": "trigger",
+        "target": "r14_india_autonomy_civilian_refund",
+        "command": "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_FINISHED\n\t}\n\tflag = JX_TIME_28602924_360\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = IND\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tpuppet = {\n\t\t\t\tcountry = IND\n\t\t\t\tcountry = JAP\n\t\t\t}\n\t\t\tatwar = no\n\t\t\tNOT = {\n\t\t\t\tatwar = JAP\n\t\t\t\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_WAR_BROKEN\n\t\t\t}\n\t\t\towned = {\n\t\t\t\tprovince = 1459\n\t\t\t\tdata = IND\n\t\t\t}\n\t\t\tcontrol = {\n\t\t\t\tprovince = 1459\n\t\t\t\tdata = IND\n\t\t\t}\n\t\t\ttechnology = 5800\n\t\t\tOR = {\n\t\t\t\tAND = {\n\t\t\t\t\tNOT = {\n\t\t\t\t\t\tbuilding = {\n\t\t\t\t\t\t\tprovince = 1459\n\t\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\t\tvalue = 2\n\t\t\t\t\t\t\twhen = now\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1459\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 0.31\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\tAND = {\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1459\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 2\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1459\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 31\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tNOT = {\n\t\t\t\tbuilding = {\n\t\t\t\t\tprovince = 1459\n\t\t\t\t\ttype = ic\n\t\t\t\t\tvalue = 197\n\t\t\t\t\twhen = now\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n}\ntype = trigger\nwhich = \"28602926\""
+      },
+      {
+        "event": "r14_india_autonomy_civilian_check",
+        "module": "postwar",
+        "choice": 0,
+        "type": "trigger",
+        "target": "r14_india_autonomy_civilian_refund",
+        "command": "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_DELIVERED\n\t}\n\tflag = JX_TIME_28600451_2\n}\ntype = trigger\nwhich = \"28602926\""
+      },
+      {
+        "event": "r14_india_autonomy_civilian_government_lost",
+        "module": "postwar",
+        "choice": 0,
+        "type": "trigger",
+        "target": "r14_india_autonomy_civilian_refund",
+        "command": "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_FINISHED\n\t}\n\tflag = JX_TIME_28602924_360\n\tNOT = {\n\t\texists = IND\n\t}\n}\ntype = trigger\nwhich = \"28602926\""
+      },
+      {
+        "event": "r14_india_autonomy_military",
+        "module": "postwar",
+        "choice": 0,
+        "type": "event",
+        "target": "time_delivery_28602930_0_4",
+        "command": "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_MILITARY\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_MILITARY_DELIVERED\n\t}\n\texists = JAP\n\tNOT = {\n\t\twar = {\n\t\t\tcountry = IND\n\t\t\tcountry = JAP\n\t\t}\n\t}\n\tpuppet = {\n\t\tcountry = IND\n\t\tcountry = JAP\n\t}\n\tflag = JX_TIME_28600451_1\n}\ntype = event\nwhich = \"28603079\"\nwhere = IND\nwhen = 180"
+      },
+      {
+        "event": "r14_india_autonomy_military",
+        "module": "postwar",
+        "choice": 1,
+        "type": "trigger",
+        "target": "r14_india_autonomy_military_refund",
+        "command": "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_MILITARY\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_MILITARY_DELIVERED\n\t}\n\tflag = JX_TIME_28600451_1\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = IND\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tpuppet = {\n\t\t\t\tcountry = IND\n\t\t\t\tcountry = JAP\n\t\t\t}\n\t\t}\n\t}\n}\ntype = trigger\nwhich = \"28602932\""
+      },
+      {
+        "event": "r14_india_autonomy_military_finish",
+        "module": "postwar",
+        "choice": 1,
+        "type": "trigger",
+        "target": "r14_india_autonomy_military_refund",
+        "command": "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_MILITARY_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_MILITARY_FINISHED\n\t}\n\tflag = JX_TIME_28602930_180\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = IND\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tpuppet = {\n\t\t\t\tcountry = IND\n\t\t\t\tcountry = JAP\n\t\t\t}\n\t\t}\n\t}\n}\ntype = trigger\nwhich = \"28602932\""
+      },
+      {
+        "event": "r14_india_autonomy_military_check",
+        "module": "postwar",
+        "choice": 0,
+        "type": "trigger",
+        "target": "r14_india_autonomy_military_refund",
+        "command": "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_MILITARY\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_MILITARY_DELIVERED\n\t}\n\tflag = JX_TIME_28600451_2\n}\ntype = trigger\nwhich = \"28602932\""
+      },
+      {
+        "event": "r14_india_autonomy_military_government_lost",
+        "module": "postwar",
+        "choice": 0,
+        "type": "trigger",
+        "target": "r14_india_autonomy_military_refund",
+        "command": "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_MILITARY_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_MILITARY_FINISHED\n\t}\n\tflag = JX_TIME_28602930_180\n\tNOT = {\n\t\texists = IND\n\t}\n}\ntype = trigger\nwhich = \"28602932\""
+      },
+      {
+        "event": "r14_american_future",
+        "module": "postwar",
+        "choice": 0,
+        "type": "event",
+        "target": "time_delivery_28602935_0_4",
+        "command": "trigger = {\n\tNOT = {\n\t\tflag = JX_R14_ARMISTICE_BROKEN\n\t}\n\tflag = JX_US_RETURN_HAWAII\n\tflag = JX_R14_R14_AMERICAN_FUTURE_COMMERCE_PENDING_EXECUTING\n}\ntype = event\nwhich = \"28603080\"\nwhere = JAP\nwhen = 180"
+      },
+      {
+        "event": "r14_american_future",
+        "module": "postwar",
+        "choice": 1,
+        "type": "event",
+        "target": "time_delivery_28602935_1_5",
+        "command": "trigger = {\n\tNOT = {\n\t\tflag = JX_R14_ARMISTICE_BROKEN\n\t}\n\tflag = JX_US_KEEP_HAWAII\n\tflag = JX_R14_R14_AMERICAN_FUTURE_HAWAII_PENDING_EXECUTING\n}\ntype = event\nwhich = \"28603081\"\nwhere = JAP\nwhen = 180"
+      },
+      {
+        "event": "r14_r14_american_future_commerce",
+        "module": "postwar",
+        "choice": 0,
+        "type": "event",
+        "target": "r14_us_export_receipt",
+        "command": "trigger = {\n\tflag = JX_R14_R14_AMERICAN_FUTURE_COMMERCE_PENDING\n\tNOT = {\n\t\tflag = JX_R14_R14_AMERICAN_FUTURE_COMMERCE_CLOSED\n\t}\n\tflag = JX_TIME_28602935_180\n\tai = no\n\tNOT = {\n\t\tispuppet = JAP\n\t}\n\tflag = JX_ACTIVE\n\tflag = JX_US_PEACE\n\texists = USA\n\tNOT = {\n\t\twar = {\n\t\t\tcountry = JAP\n\t\t\tcountry = USA\n\t\t}\n\t\tflag = JX_R14_ARMISTICE_BROKEN\n\t}\n\tflag = JX_US_RETURN_HAWAII\n}\ntype = event\nwhich = \"28602939\"\nwhere = USA\nwhen = 1"
+      },
+      {
+        "event": "r14_r14_american_future_hawaii",
+        "module": "postwar",
+        "choice": 0,
+        "type": "event",
+        "target": "r14_us_pacific_rebuild",
+        "command": "trigger = {\n\tflag = JX_R14_R14_AMERICAN_FUTURE_HAWAII_PENDING\n\tNOT = {\n\t\tflag = JX_R14_R14_AMERICAN_FUTURE_HAWAII_CLOSED\n\t}\n\tflag = JX_TIME_28602935_180\n\tai = no\n\tNOT = {\n\t\tispuppet = JAP\n\t}\n\tflag = JX_ACTIVE\n\tflag = JX_US_PEACE\n\texists = USA\n\tNOT = {\n\t\twar = {\n\t\t\tcountry = JAP\n\t\t\tcountry = USA\n\t\t}\n\t\tflag = JX_R14_ARMISTICE_BROKEN\n\t}\n\tflag = JX_US_KEEP_HAWAII\n\ttechnology = 2800\n\towned = {\n\t\tprovince = 1734\n\t\tdata = JAP\n\t}\n\tcontrol = {\n\t\tprovince = 1734\n\t\tdata = JAP\n\t}\n\tNOT = {\n\t\tbuilding = {\n\t\t\tprovince = 1734\n\t\t\ttype = coastal_fort\n\t\t\tvalue = 8\n\t\t\twhen = now\n\t\t}\n\t\tbuilding = {\n\t\t\tprovince = 1734\n\t\t\ttype = flak\n\t\t\tvalue = 8\n\t\t\twhen = now\n\t\t}\n\t}\n}\ntype = event\nwhich = \"28602940\"\nwhere = USA\nwhen = 1"
+      },
+      {
+        "event": "r15_enemy_hawaii_threat",
+        "module": "r15_enemy",
+        "choice": 0,
+        "type": "event",
+        "target": "time_delivery_28602942_0_4",
+        "command": "trigger = {\n\tflag = JX_R14_EXEC_694\n}\ntype = event\nwhich = \"28603082\"\nwhere = USA\nwhen = 30"
+      },
+      {
+        "event": "r15_enemy_hawaii_pay",
+        "module": "r15_enemy",
+        "choice": 0,
+        "type": "event",
+        "target": "time_delivery_28602944_0_8",
+        "command": "trigger = {\n\tflag = JX_R14_EXEC_696\n}\ntype = event\nwhich = \"28603083\"\nwhere = USA\nwhen = 180"
+      },
+      {
+        "event": "r15_enemy_hawaii_pay",
+        "module": "r15_enemy",
+        "choice": 0,
+        "type": "event",
+        "target": "time_delivery_28602944_0_10",
+        "command": "trigger = {\n\tflag = JX_R14_EXEC_696\n}\ntype = event\nwhich = \"28603084\"\nwhere = JAP\nwhen = 181"
+      },
+      {
+        "event": "r15_enemy_australia_threat",
+        "module": "r15_enemy",
+        "choice": 0,
+        "type": "event",
+        "target": "time_delivery_28602951_0_4",
+        "command": "trigger = {\n\tflag = JX_R14_EXEC_708\n}\ntype = event\nwhich = \"28603085\"\nwhere = AST\nwhen = 30"
+      },
+      {
+        "event": "r15_enemy_australia_pay",
+        "module": "r15_enemy",
+        "choice": 0,
+        "type": "event",
+        "target": "time_delivery_28602953_0_8",
+        "command": "trigger = {\n\tflag = JX_R14_EXEC_710\n}\ntype = event\nwhich = \"28603086\"\nwhere = AST\nwhen = 120"
+      },
+      {
+        "event": "r15_enemy_australia_pay",
+        "module": "r15_enemy",
+        "choice": 0,
+        "type": "event",
+        "target": "time_delivery_28602953_0_10",
+        "command": "trigger = {\n\tflag = JX_R14_EXEC_710\n}\ntype = event\nwhich = \"28603087\"\nwhere = JAP\nwhen = 121"
+      },
+      {
+        "event": "r15_enemy_ocean_threat",
+        "module": "r15_enemy",
+        "choice": 0,
+        "type": "event",
+        "target": "time_delivery_28602960_0_4",
+        "command": "trigger = {\n\tflag = JX_R14_EXEC_718\n}\ntype = event\nwhich = \"28603088\"\nwhere = ENG\nwhen = 30"
+      },
+      {
+        "event": "r15_enemy_ocean_pay",
+        "module": "r15_enemy",
+        "choice": 0,
+        "type": "event",
+        "target": "time_delivery_28602962_0_8",
+        "command": "trigger = {\n\tflag = JX_R14_EXEC_720\n}\ntype = event\nwhich = \"28603089\"\nwhere = ENG\nwhen = 150"
+      },
+      {
+        "event": "r15_enemy_ocean_pay",
+        "module": "r15_enemy",
+        "choice": 0,
+        "type": "event",
+        "target": "time_delivery_28602962_0_10",
+        "command": "trigger = {\n\tflag = JX_R14_EXEC_720\n}\ntype = event\nwhich = \"28603090\"\nwhere = JAP\nwhen = 151"
+      },
+      {
+        "event": "r15_carrier_recovery",
+        "module": "r15_recovery",
+        "choice": 0,
+        "type": "event",
+        "target": "time_delivery_28602973_0_12",
+        "command": "trigger = {\n\tflag = JX_R14_EXEC_732\n}\ntype = event\nwhich = \"28603091\"\nwhere = JAP\nwhen = 330"
+      },
+      {
+        "event": "r15_carrier_recovery",
+        "module": "r15_recovery",
+        "choice": 1,
+        "type": "event",
+        "target": "time_delivery_28602973_1_12",
+        "command": "trigger = {\n\tflag = JX_R14_EXEC_735\n}\ntype = event\nwhich = \"28603092\"\nwhere = JAP\nwhen = 180"
+      },
+      {
+        "event": "r15_anchorage_recovery",
+        "module": "r15_recovery",
+        "choice": 0,
+        "type": "event",
+        "target": "time_delivery_28602978_0_10",
+        "command": "trigger = {\n\tflag = JX_R14_EXEC_741\n}\ntype = event\nwhich = \"28603093\"\nwhere = JAP\nwhen = 90"
+      },
+      {
+        "event": "r15_anchorage_recovery",
+        "module": "r15_recovery",
+        "choice": 1,
+        "type": "event",
+        "target": "time_delivery_28602978_1_12",
+        "command": "trigger = {\n\tflag = JX_R14_EXEC_744\n}\ntype = event\nwhich = \"28603094\"\nwhere = JAP\nwhen = 180"
+      },
+      {
+        "event": "r15_china_or_fleet",
+        "module": "r15_strategy",
+        "choice": 0,
+        "type": "event",
+        "target": "time_delivery_28602987_0_11",
+        "command": "trigger = {\n\tflag = JX_R14_EXEC_754\n}\ntype = event\nwhich = \"28603095\"\nwhere = JAP\nwhen = 180"
+      },
+      {
+        "event": "r15_china_or_fleet",
+        "module": "r15_strategy",
+        "choice": 1,
+        "type": "event",
+        "target": "time_delivery_28602987_1_11",
+        "command": "trigger = {\n\tflag = JX_R14_EXEC_758\n}\ntype = event\nwhich = \"28603096\"\nwhere = JAP\nwhen = 240"
+      },
+      {
+        "event": "r15_china_or_fleet_finish_0",
+        "module": "r15_strategy",
+        "choice": 1,
+        "type": "event",
+        "target": "time_delivery_28602990_1_12",
+        "command": "trigger = {\n\tflag = JX_R14_EXEC_757\n}\ntype = event\nwhich = \"28603097\"\nwhere = JAP\nwhen = 90"
+      },
+      {
+        "event": "r15_china_or_fleet_finish_1",
+        "module": "r15_strategy",
+        "choice": 1,
+        "type": "event",
+        "target": "time_delivery_28602993_1_12",
+        "command": "trigger = {\n\tflag = JX_R14_EXEC_761\n}\ntype = event\nwhich = \"28603098\"\nwhere = JAP\nwhen = 90"
+      },
+      {
+        "event": "r15_pacific_or_ocean",
+        "module": "r15_strategy",
+        "choice": 0,
+        "type": "event",
+        "target": "time_delivery_28602994_0_11",
+        "command": "trigger = {\n\tflag = JX_R14_EXEC_765\n}\ntype = event\nwhich = \"28603099\"\nwhere = JAP\nwhen = 210"
+      },
+      {
+        "event": "r15_pacific_or_ocean",
+        "module": "r15_strategy",
+        "choice": 1,
+        "type": "event",
+        "target": "time_delivery_28602994_1_11",
+        "command": "trigger = {\n\tflag = JX_R14_EXEC_769\n}\ntype = event\nwhich = \"28603100\"\nwhere = JAP\nwhen = 240"
+      },
+      {
+        "event": "r15_pacific_or_ocean_finish_0",
+        "module": "r15_strategy",
+        "choice": 1,
+        "type": "event",
+        "target": "time_delivery_28602997_1_12",
+        "command": "trigger = {\n\tflag = JX_R14_EXEC_768\n}\ntype = event\nwhich = \"28603101\"\nwhere = JAP\nwhen = 90"
+      },
+      {
+        "event": "r15_pacific_or_ocean_finish_1",
+        "module": "r15_strategy",
+        "choice": 1,
+        "type": "event",
+        "target": "time_delivery_28603000_1_12",
+        "command": "trigger = {\n\tflag = JX_R14_EXEC_772\n}\ntype = event\nwhich = \"28603102\"\nwhere = JAP\nwhen = 90"
+      },
+      {
+        "event": "r15_american_army",
+        "module": "r15_strategy",
+        "choice": 0,
+        "type": "event",
+        "target": "time_delivery_28603001_0_11",
+        "command": "trigger = {\n\tflag = JX_R14_EXEC_776\n}\ntype = event\nwhich = \"28603103\"\nwhere = JAP\nwhen = 270"
+      },
+      {
+        "event": "r15_american_army",
+        "module": "r15_strategy",
+        "choice": 1,
+        "type": "event",
+        "target": "time_delivery_28603001_1_11",
+        "command": "trigger = {\n\tflag = JX_R14_EXEC_780\n}\ntype = event\nwhich = \"28603104\"\nwhere = JAP\nwhen = 150"
+      },
+      {
+        "event": "r15_american_army_finish_0",
+        "module": "r15_strategy",
+        "choice": 1,
+        "type": "event",
+        "target": "time_delivery_28603004_1_12",
+        "command": "trigger = {\n\tflag = JX_R14_EXEC_779\n}\ntype = event\nwhich = \"28603105\"\nwhere = JAP\nwhen = 90"
+      },
+      {
+        "event": "r15_american_army_finish_1",
+        "module": "r15_strategy",
+        "choice": 1,
+        "type": "event",
+        "target": "time_delivery_28603007_1_12",
+        "command": "trigger = {\n\tflag = JX_R14_EXEC_783\n}\ntype = event\nwhich = \"28603106\"\nwhere = JAP\nwhen = 90"
+      }
+    ],
+    "confidence": "Confirmed missing deliveries; quoted-numeric callback formatting is the leading explanation, not a running-engine proof.",
+    "audit_gap": "The Python parser/simulator normalises quoted IDs into strings, hiding this native-format difference from AST parity and simulation checks."
+  },
+  "engine_log_sha256": "18234ef06de9666657e758d65fb4d83fd6f270812e26efadb2470bf8bb6eb5db"
+}

@@ -1,7 +1,7 @@
 [
   {
     "key": "welcome",
-    "title": "Japan Rising - JX 1.1 ALPHA 2 R15.1",
+    "title": "Japan Rising - JX 1.1 ALPHA 2 R15.2",
     "desc": "Japan enters 1933 with a powerful fleet, limited industrial resources and competing demands from the Army and Navy. Invest in factories, shipping, training and reserves to prepare for conflict in China and across the Pacific. Choose Japan's future alliances and peace terms from the position we build.\n\nGarrisons defend local bases, Mountain Infantry handle difficult terrain and Marines lead opposed landings. Production priorities and regional agreements can support the forces you build.",
     "country": "JAP",
     "gate": "ai = no NOT = { ispuppet = JAP } NOT = { flag = JX_ACTIVE }",
@@ -23418,7 +23418,7 @@
           "type = money value = -120",
           "type = supplies value = -1500",
           "type = setflag which = JX_china_mission_PENDING",
-          "type = event\nwhich = \"28603025\"\nwhere = JAP\nwhen = 60",
+          "type = event\nwhich = 28603025\nwhere = JAP\nwhen = 60",
           "type = setflag which = JX_R11_CHINESE_AID_0"
         ],
         "gate": "ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE NOT = { flag = JX_china_mission_DONE flag = JX_china_mission_PENDING flag = JX_china_mission_WAIT flag = JX_china_mission_DISMISSED } puppet = { country = U87 country = JAP } money = 120 supplies = 1500",
@@ -23430,7 +23430,7 @@
           "type = money value = -120",
           "type = supplies value = -1500",
           "type = setflag which = JX_china_mission_PENDING",
-          "type = event\nwhich = \"28603026\"\nwhere = JAP\nwhen = 60",
+          "type = event\nwhich = 28603026\nwhere = JAP\nwhen = 60",
           "type = setflag which = JX_R11_CHINESE_AID_1"
         ],
         "gate": "ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE NOT = { flag = JX_china_mission_DONE flag = JX_china_mission_PENDING flag = JX_china_mission_WAIT flag = JX_china_mission_DISMISSED } puppet = { country = U87 country = JAP } money = 120 supplies = 1500",
@@ -26502,7 +26502,7 @@
           "trigger = {\n\tflag = JX_R14_CIVIL_RECOVERY_CIVILIAN_PENDING_EXECUTING\n}\ntype = supplies\nvalue = -2500",
           "trigger = {\n\tflag = JX_R14_CIVIL_RECOVERY_CIVILIAN_PENDING_EXECUTING\n}\ntype = manpowerpool\nvalue = -60",
           "trigger = {\n\tflag = JX_R14_CIVIL_RECOVERY_CIVILIAN_PENDING_EXECUTING\n}\ntype = setflag\nwhich = JX_R14_CIVIL_RECOVERY_CHOSEN",
-          "trigger = {\n\tflag = JX_R14_CIVIL_RECOVERY_CIVILIAN_PENDING_EXECUTING\n}\ntype = event\nwhich = \"28603027\"\nwhere = JAP\nwhen = 360",
+          "trigger = {\n\tflag = JX_R14_CIVIL_RECOVERY_CIVILIAN_PENDING_EXECUTING\n}\ntype = event\nwhich = 28603027\nwhere = JAP\nwhen = 360",
           "trigger = {\n\tflag = JX_R14_CIVIL_RECOVERY_CIVILIAN_PENDING_EXECUTING\n}\ntype = setflag\nwhich = JX_R14_CIVIL_RECOVERY_CIVILIAN_PENDING",
           "trigger = {\n\tflag = JX_R14_CIVIL_RECOVERY_CIVILIAN_PENDING_EXECUTING\n}\ntype = clrflag\nwhich = JX_R14_CIVIL_RECOVERY_CIVILIAN_PENDING_EXECUTING"
         ],
@@ -26517,7 +26517,7 @@
           "trigger = {\n\tflag = JX_R14_CIVIL_RECOVERY_RESERVES_PENDING_EXECUTING\n}\ntype = supplies\nvalue = -5000",
           "trigger = {\n\tflag = JX_R14_CIVIL_RECOVERY_RESERVES_PENDING_EXECUTING\n}\ntype = oilpool\nvalue = -2000",
           "trigger = {\n\tflag = JX_R14_CIVIL_RECOVERY_RESERVES_PENDING_EXECUTING\n}\ntype = setflag\nwhich = JX_R14_CIVIL_RECOVERY_CHOSEN",
-          "trigger = {\n\tflag = JX_R14_CIVIL_RECOVERY_RESERVES_PENDING_EXECUTING\n}\ntype = event\nwhich = \"28603028\"\nwhere = JAP\nwhen = 180",
+          "trigger = {\n\tflag = JX_R14_CIVIL_RECOVERY_RESERVES_PENDING_EXECUTING\n}\ntype = event\nwhich = 28603028\nwhere = JAP\nwhen = 180",
           "trigger = {\n\tflag = JX_R14_CIVIL_RECOVERY_RESERVES_PENDING_EXECUTING\n}\ntype = setflag\nwhich = JX_R14_CIVIL_RECOVERY_RESERVES_PENDING",
           "trigger = {\n\tflag = JX_R14_CIVIL_RECOVERY_RESERVES_PENDING_EXECUTING\n}\ntype = clrflag\nwhich = JX_R14_CIVIL_RECOVERY_RESERVES_PENDING_EXECUTING"
         ],
@@ -26601,8 +26601,8 @@
           "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_PENDING_EXECUTING\n}\ntype = setflag\nwhich = JX_china_autonomy_DONE",
           "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_PENDING_EXECUTING\n}\ntype = setflag\nwhich = JX_R14_CHINA_AUTONOMY_SOVEREIGN",
           "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_PENDING_EXECUTING\n}\ntype = end_mastery\nwhich = U87",
-          "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_PENDING_EXECUTING\n}\ntype = event\nwhich = \"28603029\"\nwhere = U87\nwhen = 1",
-          "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_PENDING_EXECUTING\n}\ntype = event\nwhich = \"28603030\"\nwhere = JAP\nwhen = 2",
+          "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_PENDING_EXECUTING\n}\ntype = event\nwhich = 28603029\nwhere = U87\nwhen = 1",
+          "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_PENDING_EXECUTING\n}\ntype = event\nwhich = 28603030\nwhere = JAP\nwhen = 2",
           "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_PENDING_EXECUTING\n}\ntype = setflag\nwhich = JX_R14_CHINA_AUTONOMY_SOVEREIGN_PENDING",
           "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_PENDING_EXECUTING\n}\ntype = clrflag\nwhich = JX_R14_CHINA_AUTONOMY_SOVEREIGN_PENDING_EXECUTING"
         ],
@@ -26618,8 +26618,8 @@
           "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_PENDING_EXECUTING\n}\ntype = setflag\nwhich = JX_R14_CHINA_AUTONOMY_CHOSEN",
           "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_PENDING_EXECUTING\n}\ntype = setflag\nwhich = JX_china_autonomy_DONE",
           "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_PENDING_EXECUTING\n}\ntype = setflag\nwhich = JX_R14_CHINA_AUTONOMY_CIVILIAN",
-          "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_PENDING_EXECUTING\n}\ntype = event\nwhich = \"28603031\"\nwhere = U87\nwhen = 1",
-          "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_PENDING_EXECUTING\n}\ntype = event\nwhich = \"28603032\"\nwhere = JAP\nwhen = 2",
+          "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_PENDING_EXECUTING\n}\ntype = event\nwhich = 28603031\nwhere = U87\nwhen = 1",
+          "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_PENDING_EXECUTING\n}\ntype = event\nwhich = 28603032\nwhere = JAP\nwhen = 2",
           "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_PENDING_EXECUTING\n}\ntype = setflag\nwhich = JX_R14_CHINA_AUTONOMY_CIVILIAN_PENDING",
           "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_PENDING_EXECUTING\n}\ntype = clrflag\nwhich = JX_R14_CHINA_AUTONOMY_CIVILIAN_PENDING_EXECUTING"
         ],
@@ -26635,8 +26635,8 @@
           "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_MILITARY_PENDING_EXECUTING\n}\ntype = setflag\nwhich = JX_R14_CHINA_AUTONOMY_CHOSEN",
           "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_MILITARY_PENDING_EXECUTING\n}\ntype = setflag\nwhich = JX_china_autonomy_DONE",
           "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_MILITARY_PENDING_EXECUTING\n}\ntype = setflag\nwhich = JX_R14_CHINA_AUTONOMY_MILITARY",
-          "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_MILITARY_PENDING_EXECUTING\n}\ntype = event\nwhich = \"28603033\"\nwhere = U87\nwhen = 1",
-          "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_MILITARY_PENDING_EXECUTING\n}\ntype = event\nwhich = \"28603034\"\nwhere = JAP\nwhen = 2",
+          "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_MILITARY_PENDING_EXECUTING\n}\ntype = event\nwhich = 28603033\nwhere = U87\nwhen = 1",
+          "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_MILITARY_PENDING_EXECUTING\n}\ntype = event\nwhich = 28603034\nwhere = JAP\nwhen = 2",
           "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_MILITARY_PENDING_EXECUTING\n}\ntype = setflag\nwhich = JX_R14_CHINA_AUTONOMY_MILITARY_PENDING",
           "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_MILITARY_PENDING_EXECUTING\n}\ntype = clrflag\nwhich = JX_R14_CHINA_AUTONOMY_MILITARY_PENDING_EXECUTING"
         ],
@@ -26752,8 +26752,8 @@
           "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_PENDING_EXECUTING\n}\ntype = setflag\nwhich = JX_india_autonomy_DONE",
           "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_PENDING_EXECUTING\n}\ntype = setflag\nwhich = JX_R14_INDIA_AUTONOMY_SOVEREIGN",
           "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_PENDING_EXECUTING\n}\ntype = end_mastery\nwhich = IND",
-          "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_PENDING_EXECUTING\n}\ntype = event\nwhich = \"28603035\"\nwhere = IND\nwhen = 1",
-          "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_PENDING_EXECUTING\n}\ntype = event\nwhich = \"28603036\"\nwhere = JAP\nwhen = 2",
+          "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_PENDING_EXECUTING\n}\ntype = event\nwhich = 28603035\nwhere = IND\nwhen = 1",
+          "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_PENDING_EXECUTING\n}\ntype = event\nwhich = 28603036\nwhere = JAP\nwhen = 2",
           "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_PENDING_EXECUTING\n}\ntype = setflag\nwhich = JX_R14_INDIA_AUTONOMY_SOVEREIGN_PENDING",
           "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_PENDING_EXECUTING\n}\ntype = clrflag\nwhich = JX_R14_INDIA_AUTONOMY_SOVEREIGN_PENDING_EXECUTING"
         ],
@@ -26769,8 +26769,8 @@
           "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_PENDING_EXECUTING\n}\ntype = setflag\nwhich = JX_R14_INDIA_AUTONOMY_CHOSEN",
           "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_PENDING_EXECUTING\n}\ntype = setflag\nwhich = JX_india_autonomy_DONE",
           "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_PENDING_EXECUTING\n}\ntype = setflag\nwhich = JX_R14_INDIA_AUTONOMY_CIVILIAN",
-          "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_PENDING_EXECUTING\n}\ntype = event\nwhich = \"28603037\"\nwhere = IND\nwhen = 1",
-          "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_PENDING_EXECUTING\n}\ntype = event\nwhich = \"28603038\"\nwhere = JAP\nwhen = 2",
+          "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_PENDING_EXECUTING\n}\ntype = event\nwhich = 28603037\nwhere = IND\nwhen = 1",
+          "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_PENDING_EXECUTING\n}\ntype = event\nwhich = 28603038\nwhere = JAP\nwhen = 2",
           "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_PENDING_EXECUTING\n}\ntype = setflag\nwhich = JX_R14_INDIA_AUTONOMY_CIVILIAN_PENDING",
           "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_PENDING_EXECUTING\n}\ntype = clrflag\nwhich = JX_R14_INDIA_AUTONOMY_CIVILIAN_PENDING_EXECUTING"
         ],
@@ -26786,8 +26786,8 @@
           "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_MILITARY_PENDING_EXECUTING\n}\ntype = setflag\nwhich = JX_R14_INDIA_AUTONOMY_CHOSEN",
           "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_MILITARY_PENDING_EXECUTING\n}\ntype = setflag\nwhich = JX_india_autonomy_DONE",
           "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_MILITARY_PENDING_EXECUTING\n}\ntype = setflag\nwhich = JX_R14_INDIA_AUTONOMY_MILITARY",
-          "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_MILITARY_PENDING_EXECUTING\n}\ntype = event\nwhich = \"28603039\"\nwhere = IND\nwhen = 1",
-          "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_MILITARY_PENDING_EXECUTING\n}\ntype = event\nwhich = \"28603040\"\nwhere = JAP\nwhen = 2",
+          "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_MILITARY_PENDING_EXECUTING\n}\ntype = event\nwhich = 28603039\nwhere = IND\nwhen = 1",
+          "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_MILITARY_PENDING_EXECUTING\n}\ntype = event\nwhich = 28603040\nwhere = JAP\nwhen = 2",
           "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_MILITARY_PENDING_EXECUTING\n}\ntype = setflag\nwhich = JX_R14_INDIA_AUTONOMY_MILITARY_PENDING",
           "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_MILITARY_PENDING_EXECUTING\n}\ntype = clrflag\nwhich = JX_R14_INDIA_AUTONOMY_MILITARY_PENDING_EXECUTING"
         ],
@@ -37162,7 +37162,7 @@
           "trigger = { flag = JX_US_PENDING NOT = { flag = JX_US_PEACE } flag = JX_R14_US_ACCEPTED flag = JX_R14_US_PEACE_ISSUED NOT = { war = { country = JAP country = USA } flag = JX_R14_US_TRANSFER_FAILED } } type = event which = 28603020 where = JAP when = 360",
           "trigger = { AND = { flag = JX_US_PENDING flag = JX_R14_US_PEACE_ISSUED NOT = { war = { country = JAP country = USA } } } AND = {  flag = JX_US_RETURN_HAWAII  } } type = relation which = USA value = 35",
           "trigger = { AND = { flag = JX_US_PENDING flag = JX_R14_US_PEACE_ISSUED NOT = { war = { country = JAP country = USA } } } AND = {  flag = JX_US_RETURN_HAWAII  } } type = non_aggression which = JAP where = USA when = 1800",
-          "trigger = {\n\tAND = {\n\t\tflag = JX_US_PENDING\n\t\tflag = JX_R14_US_PEACE_ISSUED\n\t\tNOT = {\n\t\t\twar = {\n\t\t\t\tcountry = JAP\n\t\t\t\tcountry = USA\n\t\t\t}\n\t\t}\n\t}\n\tAND = {\n\t\tflag = JX_US_RETURN_HAWAII\n\t}\n}\ntype = event\nwhich = \"28603041\"\nwhere = JAP\nwhen = 1800",
+          "trigger = {\n\tAND = {\n\t\tflag = JX_US_PENDING\n\t\tflag = JX_R14_US_PEACE_ISSUED\n\t\tNOT = {\n\t\t\twar = {\n\t\t\t\tcountry = JAP\n\t\t\t\tcountry = USA\n\t\t\t}\n\t\t}\n\t}\n\tAND = {\n\t\tflag = JX_US_RETURN_HAWAII\n\t}\n}\ntype = event\nwhich = 28603041\nwhere = JAP\nwhen = 1800",
           "trigger = { AND = { flag = JX_US_PENDING flag = JX_R14_US_PEACE_ISSUED NOT = { war = { country = JAP country = USA } } } AND = {  flag = JX_US_KEEP_HAWAII  } } type = relation which = USA value = -60",
           "trigger = { flag = JX_US_PENDING flag = JX_R14_US_PEACE_ISSUED NOT = { war = { country = JAP country = USA } } } type = setflag which = JX_US_PEACE",
           "trigger = { flag = JX_US_PENDING flag = JX_R14_US_PEACE_ISSUED NOT = { war = { country = JAP country = USA } } } type = dissent value = -2",
@@ -42261,7 +42261,7 @@
   {
     "key": "fx1933",
     "title": "Buy oil for a larger fleet",
-    "desc": "Choose a two-year American fuel contract. The mixed contract buys 12 metal and 24 oil daily for 4 supplies and 1 money daily. The oil-first contract buys 48 oil daily for 6 supplies and 1.5 money daily. Either costs 80 money now. Delivery follows trade efficiency; embargo, war or expiry can end it. These agreements do not renew themselves. This is an ordinary cancellable trade: cancel it in Diplomacy when imports exceed use or storage is full. The handling fee is spent; daily payments stop when the trade is cancelled. Oil above the storage limit is lost. A smaller 8-oil daily contract costs 30 money now, then one supply and 0.4 money daily.\n\nThis is an optional decision. Open it when needed; leaving it available costs nothing.",
+    "desc": "Choose a two-year American fuel contract. The mixed contract buys 12 metal and 24 oil daily for 4 supplies and 1 money daily. The oil-first contract buys 48 oil daily for 6 supplies and 1.5 money daily. Either costs 80 money now. Delivery follows trade efficiency; embargo, war or expiry can end it. These agreements do not renew themselves. This is an ordinary cancellable trade: cancel it in Diplomacy when imports exceed use or storage is full. The handling fee is spent; daily payments stop when the trade is cancelled. Oil above the storage limit is lost. A smaller 8-oil daily contract costs 30 money now, then one supply and 0.4 money daily.\n\nThis is an optional decision. Open it when needed; leaving it available costs nothing. These are fixed-term contracts. Deliveries and payments continue until the stated expiry; war or an embargo ends American trade. Storage losses still apply.",
     "country": "JAP",
     "gate": "ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE NOT = { flag = JX_PACIFIC } NOT = { flag = JX_EARLY_fx1933_DONE flag = JX_EARLY_fx1933_WAIT } exists = USA NOT = { war = { country = JAP country = USA } event = 2049026 }",
     "actions": [
@@ -42271,10 +42271,11 @@
           "type = money value = -80",
           "type = supplies value = 0",
           "type = oilpool value = 0",
-          "type = trade which = USA where = JAP metal = -12 oil = -24 supplies = 4 money = 1 when = 720 value = 0",
-          "type = setflag which = JX_EARLY_fx1933_DONE"
+          "type = trade\nwhich = USA\nwhere = JAP\nmetal = -12\noil = -24\nsupplies = 4\nmoney = 1\nwhen = 720\nvalue = 1",
+          "type = setflag which = JX_EARLY_fx1933_DONE",
+          "type = setflag which = JX_PAID_US_FX1933"
         ],
-        "gate": "NOT = { flag = JX_EARLY_fx1933_DONE } money = 80 supplies = 0 oil = 0 exists = USA NOT = { war = { country = JAP country = USA } event = 2049026 }",
+        "gate": "NOT = { flag = JX_EARLY_fx1933_DONE } money = 80 supplies = 0 oil = 0 exists = USA NOT = { war = { country = JAP country = USA } event = 2049026 } NOT = { flag = JX_PAID_US_IMPORTS_CLOSED embargo = { country = USA country = JAP value = 1 } embargo = { country = JAP country = USA value = 1 } }",
         "chance": 100
       },
       {
@@ -42283,10 +42284,11 @@
           "type = money value = -80",
           "type = supplies value = 0",
           "type = oilpool value = 0",
-          "type = trade which = USA where = JAP metal = 0 oil = -48 supplies = 6 money = 1.5 when = 720 value = 0",
-          "type = setflag which = JX_EARLY_fx1933_DONE"
+          "type = trade\nwhich = USA\nwhere = JAP\nmetal = 0\noil = -48\nsupplies = 6\nmoney = 1.5\nwhen = 720\nvalue = 1",
+          "type = setflag which = JX_EARLY_fx1933_DONE",
+          "type = setflag which = JX_PAID_US_FX1933"
         ],
-        "gate": "NOT = { flag = JX_EARLY_fx1933_DONE } money = 80 supplies = 0 oil = 0 exists = USA NOT = { war = { country = JAP country = USA } event = 2049026 }",
+        "gate": "NOT = { flag = JX_EARLY_fx1933_DONE } money = 80 supplies = 0 oil = 0 exists = USA NOT = { war = { country = JAP country = USA } event = 2049026 } NOT = { flag = JX_PAID_US_IMPORTS_CLOSED embargo = { country = USA country = JAP value = 1 } embargo = { country = JAP country = USA value = 1 } }",
         "chance": 0
       },
       {
@@ -42295,10 +42297,11 @@
           "type = money value = -30",
           "type = supplies value = 0",
           "type = oilpool value = 0",
-          "type = trade which = USA where = JAP oil = -8 supplies = 1 money = 0.4 when = 720 value = 0",
-          "type = setflag which = JX_EARLY_fx1933_DONE"
+          "type = trade\nwhich = USA\nwhere = JAP\noil = -8\nsupplies = 1\nmoney = 0.4\nwhen = 720\nvalue = 1",
+          "type = setflag which = JX_EARLY_fx1933_DONE",
+          "type = setflag which = JX_PAID_US_FX1933"
         ],
-        "gate": "NOT = { flag = JX_EARLY_fx1933_DONE } money = 30 supplies = 0 oil = 0 exists = USA NOT = { war = { country = JAP country = USA } event = 2049026 }",
+        "gate": "NOT = { flag = JX_EARLY_fx1933_DONE } money = 30 supplies = 0 oil = 0 exists = USA NOT = { war = { country = JAP country = USA } event = 2049026 } NOT = { flag = JX_PAID_US_IMPORTS_CLOSED embargo = { country = USA country = JAP value = 1 } embargo = { country = JAP country = USA value = 1 } }",
         "chance": 0
       },
       {
@@ -42699,7 +42702,7 @@
   {
     "key": "oil1934",
     "title": "The oil law needs an actual reserve",
-    "desc": "Buy 24 oil daily for three years, paying 4 supplies and 1 money daily plus 80 money now. This is an additional contract. Storage expansion is a separate programme. Embargo, war or expiry can end this trade. The alternative keeps the existing fuel-conservation work. This is an ordinary cancellable trade: cancel it in Diplomacy when imports exceed use or storage is full. The handling fee is spent; daily payments stop when the trade is cancelled. Oil above the storage limit is lost.\n\nThis is an optional decision. Open it when needed; leaving it available costs nothing.",
+    "desc": "Buy 24 oil daily for three years, paying 4 supplies and 1 money daily plus 80 money now. This is an additional contract. Storage expansion is a separate programme. Embargo, war or expiry can end this trade. The alternative keeps the existing fuel-conservation work. This is an ordinary cancellable trade: cancel it in Diplomacy when imports exceed use or storage is full. The handling fee is spent; daily payments stop when the trade is cancelled. Oil above the storage limit is lost.\n\nThis is an optional decision. Open it when needed; leaving it available costs nothing. These are fixed-term contracts. Deliveries and payments continue until the stated expiry; war or an embargo ends American trade. Storage losses still apply.",
     "country": "JAP",
     "gate": "ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE NOT = { flag = JX_PACIFIC } NOT = { flag = JX_EARLY_oil1934_DONE flag = JX_EARLY_oil1934_WAIT } ",
     "actions": [
@@ -42709,10 +42712,11 @@
           "type = money value = -80",
           "type = supplies value = 0",
           "type = oilpool value = 0",
-          "type = trade which = USA where = JAP metal = 0 oil = -24 supplies = 4 money = 1 when = 1080 value = 0",
-          "type = setflag which = JX_EARLY_oil1934_DONE"
+          "type = trade\nwhich = USA\nwhere = JAP\nmetal = 0\noil = -24\nsupplies = 4\nmoney = 1\nwhen = 1080\nvalue = 1",
+          "type = setflag which = JX_EARLY_oil1934_DONE",
+          "type = setflag which = JX_PAID_US_OIL1934"
         ],
-        "gate": "NOT = { flag = JX_EARLY_oil1934_DONE } money = 80 supplies = 0 oil = 0 exists = USA NOT = { war = { country = JAP country = USA } event = 2049026 }",
+        "gate": "NOT = { flag = JX_EARLY_oil1934_DONE } money = 80 supplies = 0 oil = 0 exists = USA NOT = { war = { country = JAP country = USA } event = 2049026 } NOT = { flag = JX_PAID_US_IMPORTS_CLOSED embargo = { country = USA country = JAP value = 1 } embargo = { country = JAP country = USA value = 1 } }",
         "chance": 100
       },
       {
@@ -43155,7 +43159,7 @@
   {
     "key": "fx1936",
     "title": "Renew the commercial breathing space",
-    "desc": "Buy a three-year American contract for 12 metal and 24 oil daily. Pay 80 money now, then 4 supplies and 1 money daily. Embargo, war or expiry can end it. Or retain the existing escort alternative. This is an ordinary cancellable trade: cancel it in Diplomacy when imports exceed use or storage is full. The handling fee is spent; daily payments stop when the trade is cancelled. Oil above the storage limit is lost.\n\nThis is an optional decision. Open it when needed; leaving it available costs nothing.",
+    "desc": "Buy a three-year American contract for 12 metal and 24 oil daily. Pay 80 money now, then 4 supplies and 1 money daily. Embargo, war or expiry can end it. Or retain the existing escort alternative. This is an ordinary cancellable trade: cancel it in Diplomacy when imports exceed use or storage is full. The handling fee is spent; daily payments stop when the trade is cancelled. Oil above the storage limit is lost.\n\nThis is an optional decision. Open it when needed; leaving it available costs nothing. These are fixed-term contracts. Deliveries and payments continue until the stated expiry; war or an embargo ends American trade. Storage losses still apply.",
     "country": "JAP",
     "gate": "ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE NOT = { flag = JX_PACIFIC } NOT = { flag = JX_EARLY_fx1936_DONE flag = JX_EARLY_fx1936_WAIT } exists = USA NOT = { war = { country = JAP country = USA } event = 2049026 }",
     "actions": [
@@ -43165,10 +43169,11 @@
           "type = money value = -80",
           "type = supplies value = 0",
           "type = oilpool value = 0",
-          "type = trade which = USA where = JAP metal = -12 oil = -24 supplies = 4 money = 1 when = 1080 value = 0",
-          "type = setflag which = JX_EARLY_fx1936_DONE"
+          "type = trade\nwhich = USA\nwhere = JAP\nmetal = -12\noil = -24\nsupplies = 4\nmoney = 1\nwhen = 1080\nvalue = 1",
+          "type = setflag which = JX_EARLY_fx1936_DONE",
+          "type = setflag which = JX_PAID_US_FX1936"
         ],
-        "gate": "NOT = { flag = JX_EARLY_fx1936_DONE } money = 80 supplies = 0 oil = 0 exists = USA NOT = { war = { country = JAP country = USA } event = 2049026 }",
+        "gate": "NOT = { flag = JX_EARLY_fx1936_DONE } money = 80 supplies = 0 oil = 0 exists = USA NOT = { war = { country = JAP country = USA } event = 2049026 } NOT = { flag = JX_PAID_US_IMPORTS_CLOSED embargo = { country = USA country = JAP value = 1 } embargo = { country = JAP country = USA value = 1 } }",
         "chance": 100
       },
       {
@@ -173729,7 +173734,7 @@
           "type = manpowerpool value = -20.0",
           "type = setflag which = JX_cn_shanghai_holding_PENDING",
           "type = setflag which = JX_cn_shanghai_holding_CHOICE_0",
-          "type = event\nwhich = \"28603042\"\nwhere = JAP\nwhen = 120"
+          "type = event\nwhich = 28603042\nwhere = JAP\nwhen = 120"
         ],
         "gate": "ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE war = { country = JAP country = CHI } control = { province = 1338 data = JAP } NOT = { flag = JX_cn_shanghai_holding_DONE flag = JX_cn_shanghai_holding_PENDING flag = JX_cn_shanghai_holding_WAIT flag = JX_cn_shanghai_holding_DISMISSED } money = 160 supplies = 2000 manpower = 20 technology = { country = JAP value = 1090 }  year = 1937",
         "chance": 100
@@ -173742,7 +173747,7 @@
           "type = manpowerpool value = -13.0",
           "type = setflag which = JX_cn_shanghai_holding_PENDING",
           "type = setflag which = JX_cn_shanghai_holding_CHOICE_1",
-          "type = event\nwhich = \"28603043\"\nwhere = JAP\nwhen = 180"
+          "type = event\nwhich = 28603043\nwhere = JAP\nwhen = 180"
         ],
         "gate": "ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE war = { country = JAP country = CHI } control = { province = 1338 data = JAP } NOT = { flag = JX_cn_shanghai_holding_DONE flag = JX_cn_shanghai_holding_PENDING flag = JX_cn_shanghai_holding_WAIT flag = JX_cn_shanghai_holding_DISMISSED } money = 200 supplies = 2800 manpower = 13 technology = { country = JAP value = 1100 }  year = 1937",
         "chance": 0
@@ -173903,7 +173908,7 @@
           "type = manpowerpool value = -26.0",
           "type = setflag which = JX_cn_wuhan_choice_PENDING",
           "type = setflag which = JX_cn_wuhan_choice_CHOICE_0",
-          "type = event\nwhich = \"28603044\"\nwhere = JAP\nwhen = 180"
+          "type = event\nwhich = 28603044\nwhere = JAP\nwhen = 180"
         ],
         "gate": "ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE war = { country = JAP country = CHI } control = { province = 1317 data = JAP } NOT = { flag = JX_cn_wuhan_choice_DONE flag = JX_cn_wuhan_choice_PENDING flag = JX_cn_wuhan_choice_WAIT flag = JX_cn_wuhan_choice_DISMISSED } money = 220 supplies = 4000 manpower = 26 technology = { country = JAP value = 1250 }  year = 1938",
         "chance": 100
@@ -173915,7 +173920,7 @@
           "type = supplies value = -3000",
           "type = setflag which = JX_cn_wuhan_choice_PENDING",
           "type = setflag which = JX_cn_wuhan_choice_CHOICE_1",
-          "type = event\nwhich = \"28603045\"\nwhere = JAP\nwhen = 120"
+          "type = event\nwhich = 28603045\nwhere = JAP\nwhen = 120"
         ],
         "gate": "ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE war = { country = JAP country = CHI } control = { province = 1317 data = JAP } NOT = { flag = JX_cn_wuhan_choice_DONE flag = JX_cn_wuhan_choice_PENDING flag = JX_cn_wuhan_choice_WAIT flag = JX_cn_wuhan_choice_DISMISSED } money = 140 supplies = 3000  year = 1938",
         "chance": 0
@@ -174086,7 +174091,7 @@
           "type = oilpool value = -500",
           "type = setflag which = JX_ph_manila_air_PENDING",
           "type = setflag which = JX_ph_manila_air_CHOICE_0",
-          "type = event\nwhich = \"28603046\"\nwhere = JAP\nwhen = 150"
+          "type = event\nwhich = 28603046\nwhere = JAP\nwhen = 150"
         ],
         "gate": "ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE flag = JX_PACIFIC control = { province = 1565 data = JAP } NOT = { flag = JX_ph_manila_air_DONE flag = JX_ph_manila_air_PENDING flag = JX_ph_manila_air_WAIT flag = JX_ph_manila_air_DISMISSED } money = 220 supplies = 3200 manpower = 1.5 metal = 500 oil = 500 technology = { country = JAP value = 4030 }  year = 1941 building = { province = 1565 type = air_base value = 1 when = now }",
         "chance": 100
@@ -174101,7 +174106,7 @@
           "type = oilpool value = -800",
           "type = setflag which = JX_ph_manila_air_PENDING",
           "type = setflag which = JX_ph_manila_air_CHOICE_1",
-          "type = event\nwhich = \"28603047\"\nwhere = JAP\nwhen = 180"
+          "type = event\nwhich = 28603047\nwhere = JAP\nwhen = 180"
         ],
         "gate": "ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE flag = JX_PACIFIC control = { province = 1565 data = JAP } NOT = { flag = JX_ph_manila_air_DONE flag = JX_ph_manila_air_PENDING flag = JX_ph_manila_air_WAIT flag = JX_ph_manila_air_DISMISSED } money = 260 supplies = 4000 manpower = 4.4 metal = 600 oil = 800 technology = { country = JAP value = 4190 }  year = 1941 building = { province = 1565 type = air_base value = 1 when = now }",
         "chance": 0
@@ -174263,7 +174268,7 @@
           "type = manpowerpool value = -26.0",
           "type = setflag which = JX_ph_island_agreement_PENDING",
           "type = setflag which = JX_ph_island_agreement_CHOICE_0",
-          "type = event\nwhich = \"28603048\"\nwhere = JAP\nwhen = 210"
+          "type = event\nwhich = 28603048\nwhere = JAP\nwhen = 210"
         ],
         "gate": "ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE flag = JX_PACIFIC exists = PHI NOT = { war = { country = JAP country = PHI } } OR = { puppet = { country = PHI country = JAP } AND = { flag = JX_philippines_NEUTRAL flag = JX_philippines_SETTLED access = { country = PHI country = JAP } } } NOT = { flag = JX_ph_island_agreement_DONE flag = JX_ph_island_agreement_PENDING flag = JX_ph_island_agreement_WAIT flag = JX_ph_island_agreement_DISMISSED } money = 300 supplies = 4200 manpower = 26 technology = { country = JAP value = 1100 } puppet = { country = PHI country = JAP } control = { province = 1552 data = JAP } year = 1941",
         "chance": 100
@@ -174275,7 +174280,7 @@
           "type = supplies value = -1800",
           "type = setflag which = JX_ph_island_agreement_PENDING",
           "type = setflag which = JX_ph_island_agreement_CHOICE_1",
-          "type = event\nwhich = \"28603049\"\nwhere = JAP\nwhen = 120"
+          "type = event\nwhich = 28603049\nwhere = JAP\nwhen = 120"
         ],
         "gate": "ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE flag = JX_PACIFIC exists = PHI NOT = { war = { country = JAP country = PHI } } OR = { puppet = { country = PHI country = JAP } AND = { flag = JX_philippines_NEUTRAL flag = JX_philippines_SETTLED access = { country = PHI country = JAP } } } NOT = { flag = JX_ph_island_agreement_DONE flag = JX_ph_island_agreement_PENDING flag = JX_ph_island_agreement_WAIT flag = JX_ph_island_agreement_DISMISSED } money = 200 supplies = 1800  year = 1941",
         "chance": 0
@@ -174444,7 +174449,7 @@
           "type = oilpool value = -600",
           "type = setflag which = JX_in_java_shipyards_PENDING",
           "type = setflag which = JX_in_java_shipyards_CHOICE_0",
-          "type = event\nwhich = \"28603050\"\nwhere = JAP\nwhen = 240"
+          "type = event\nwhich = 28603050\nwhere = JAP\nwhen = 240"
         ],
         "gate": "ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE flag = JX_PACIFIC control = { province = 1653 data = JAP } NOT = { flag = JX_in_java_shipyards_DONE flag = JX_in_java_shipyards_PENDING flag = JX_in_java_shipyards_WAIT flag = JX_in_java_shipyards_DISMISSED } money = 260 supplies = 4200 manpower = 2.5 metal = 1200 oil = 600 technology = { country = JAP value = 3070 }  year = 1941 building = { province = 1653 type = naval_base value = 1 when = now }",
         "chance": 100
@@ -174459,7 +174464,7 @@
           "type = oilpool value = -800",
           "type = setflag which = JX_in_java_shipyards_PENDING",
           "type = setflag which = JX_in_java_shipyards_CHOICE_1",
-          "type = event\nwhich = \"28603051\"\nwhere = JAP\nwhen = 300"
+          "type = event\nwhich = 28603051\nwhere = JAP\nwhen = 300"
         ],
         "gate": "ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE flag = JX_PACIFIC control = { province = 1653 data = JAP } NOT = { flag = JX_in_java_shipyards_DONE flag = JX_in_java_shipyards_PENDING flag = JX_in_java_shipyards_WAIT flag = JX_in_java_shipyards_DISMISSED } money = 300 supplies = 5000 manpower = 0.75 metal = 1600 oil = 800 technology = { country = JAP value = 3160 }  year = 1941 building = { province = 1653 type = naval_base value = 1 when = now }",
         "chance": 0
@@ -174617,7 +174622,7 @@
           "type = energypool value = -4000",
           "type = setflag which = JX_in_indonesian_exports_PENDING",
           "type = setflag which = JX_in_indonesian_exports_CHOICE_0",
-          "type = event\nwhich = \"28603052\"\nwhere = JAP\nwhen = 150"
+          "type = event\nwhich = 28603052\nwhere = JAP\nwhen = 150"
         ],
         "gate": "ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE flag = JX_PACIFIC OR = { control = { province = 1647 data = JAP } AND = { exists = INO NOT = { war = { country = JAP country = INO } } OR = { puppet = { country = INO country = JAP } AND = { flag = JX_indonesia_NEUTRAL flag = JX_indonesia_SETTLED access = { country = INO country = JAP } } } control = { province = 1647 data = INO } } } OR = { control = { province = 1636 data = JAP } AND = { exists = INO NOT = { war = { country = JAP country = INO } } OR = { puppet = { country = INO country = JAP } AND = { flag = JX_indonesia_NEUTRAL flag = JX_indonesia_SETTLED access = { country = INO country = JAP } } } control = { province = 1636 data = INO } } } NOT = { flag = JX_in_indonesian_exports_DONE flag = JX_in_indonesian_exports_PENDING flag = JX_in_indonesian_exports_WAIT flag = JX_in_indonesian_exports_DISMISSED } money = 260 supplies = 2800 energy = 4000 NOT = { oil = 12000 } year = 1941",
         "chance": 100
@@ -174629,7 +174634,7 @@
           "type = supplies value = -2800",
           "type = setflag which = JX_in_indonesian_exports_PENDING",
           "type = setflag which = JX_in_indonesian_exports_CHOICE_1",
-          "type = event\nwhich = \"28603053\"\nwhere = JAP\nwhen = 150"
+          "type = event\nwhich = 28603053\nwhere = JAP\nwhen = 150"
         ],
         "gate": "ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE flag = JX_PACIFIC OR = { control = { province = 1647 data = JAP } AND = { exists = INO NOT = { war = { country = JAP country = INO } } OR = { puppet = { country = INO country = JAP } AND = { flag = JX_indonesia_NEUTRAL flag = JX_indonesia_SETTLED access = { country = INO country = JAP } } } control = { province = 1647 data = INO } } } OR = { control = { province = 1636 data = JAP } AND = { exists = INO NOT = { war = { country = JAP country = INO } } OR = { puppet = { country = INO country = JAP } AND = { flag = JX_indonesia_NEUTRAL flag = JX_indonesia_SETTLED access = { country = INO country = JAP } } } control = { province = 1636 data = INO } } } NOT = { flag = JX_in_indonesian_exports_DONE flag = JX_in_indonesian_exports_PENDING flag = JX_in_indonesian_exports_WAIT flag = JX_in_indonesian_exports_DISMISSED } money = 260 supplies = 2800  year = 1941",
         "chance": 0
@@ -174832,7 +174837,7 @@
           "type = oilpool value = -1000",
           "type = setflag which = JX_my_singapore_yards_PENDING",
           "type = setflag which = JX_my_singapore_yards_CHOICE_0",
-          "type = event\nwhich = \"28603054\"\nwhere = JAP\nwhen = 90"
+          "type = event\nwhich = 28603054\nwhere = JAP\nwhen = 90"
         ],
         "gate": "ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE flag = JX_PACIFIC control = { province = 1432 data = JAP } NOT = { flag = JX_my_singapore_yards_DONE flag = JX_my_singapore_yards_PENDING flag = JX_my_singapore_yards_WAIT flag = JX_my_singapore_yards_DISMISSED } money = 180 supplies = 3000 metal = 1500 oil = 1000  year = 1941",
         "chance": 100
@@ -174845,7 +174850,7 @@
           "type = metalpool value = -1000",
           "type = setflag which = JX_my_singapore_yards_PENDING",
           "type = setflag which = JX_my_singapore_yards_CHOICE_1",
-          "type = event\nwhich = \"28603055\"\nwhere = JAP\nwhen = 150"
+          "type = event\nwhich = 28603055\nwhere = JAP\nwhen = 150"
         ],
         "gate": "ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE flag = JX_PACIFIC control = { province = 1432 data = JAP } NOT = { flag = JX_my_singapore_yards_DONE flag = JX_my_singapore_yards_PENDING flag = JX_my_singapore_yards_WAIT flag = JX_my_singapore_yards_DISMISSED } money = 220 supplies = 2400 metal = 1000  year = 1941",
         "chance": 0
@@ -175001,7 +175006,7 @@
           "type = supplies value = -2200",
           "type = setflag which = JX_my_malayan_exports_PENDING",
           "type = setflag which = JX_my_malayan_exports_CHOICE_0",
-          "type = event\nwhich = \"28603056\"\nwhere = JAP\nwhen = 150"
+          "type = event\nwhich = 28603056\nwhere = JAP\nwhen = 150"
         ],
         "gate": "ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE flag = JX_PACIFIC OR = { control = { province = 1438 data = JAP } AND = { exists = MLY NOT = { war = { country = JAP country = MLY } } OR = { puppet = { country = MLY country = JAP } AND = { flag = JX_malaya_NEUTRAL flag = JX_malaya_SETTLED access = { country = MLY country = JAP } } } control = { province = 1438 data = MLY } } } NOT = { flag = JX_my_malayan_exports_DONE flag = JX_my_malayan_exports_PENDING flag = JX_my_malayan_exports_WAIT flag = JX_my_malayan_exports_DISMISSED } money = 220 supplies = 2200  year = 1941",
         "chance": 100
@@ -175013,7 +175018,7 @@
           "type = supplies value = -2200",
           "type = setflag which = JX_my_malayan_exports_PENDING",
           "type = setflag which = JX_my_malayan_exports_CHOICE_1",
-          "type = event\nwhich = \"28603057\"\nwhere = JAP\nwhen = 150"
+          "type = event\nwhich = 28603057\nwhere = JAP\nwhen = 150"
         ],
         "gate": "ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE flag = JX_PACIFIC OR = { control = { province = 1438 data = JAP } AND = { exists = MLY NOT = { war = { country = JAP country = MLY } } OR = { puppet = { country = MLY country = JAP } AND = { flag = JX_malaya_NEUTRAL flag = JX_malaya_SETTLED access = { country = MLY country = JAP } } } control = { province = 1438 data = MLY } } } NOT = { flag = JX_my_malayan_exports_DONE flag = JX_my_malayan_exports_PENDING flag = JX_my_malayan_exports_WAIT flag = JX_my_malayan_exports_DISMISSED } money = 220 supplies = 2200  year = 1941",
         "chance": 0
@@ -175158,7 +175163,7 @@
           "type = manpowerpool value = -25",
           "type = setflag which = JX_prewar_rural_works_PENDING",
           "type = setflag which = JX_prewar_rural_works_SELECTED_0",
-          "type = event\nwhich = \"28603058\"\nwhere = JAP\nwhen = 270"
+          "type = event\nwhich = 28603058\nwhere = JAP\nwhen = 270"
         ],
         "gate": "ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE year = 1933 OR = { year = 1934 month = april } NOT = { flag = JX_PACIFIC war = { country = JAP country = USA } war = { country = JAP country = ENG } } NOT = { flag = JX_prewar_rural_works_DONE flag = JX_prewar_rural_works_PENDING flag = JX_prewar_rural_works_DISMISSED flag = JX_prewar_rural_works_CANCELLED } money = 45 supplies = 400 metal = 300 manpower = 25 ai = no NOT = { ispuppet = JAP }  owned = { province = 1557 data = JAP } control = { province = 1557 data = JAP } technology = 5800 NOT = { building = { province = 1557 type = ic value = 198 } } OR = { AND = { NOT = { building = { province = 1557 type = infrastructure value = 2  when = now } } building = { province = 1557 type = infrastructure value = 0.31  when = now } } AND = { building = { province = 1557 type = infrastructure value = 2  when = now } building = { province = 1557 type = infrastructure value = 31  when = now } } }",
         "chance": 100
@@ -175171,7 +175176,7 @@
           "type = metalpool value = -300",
           "type = setflag which = JX_prewar_rural_works_PENDING",
           "type = setflag which = JX_prewar_rural_works_SELECTED_1",
-          "type = event\nwhich = \"28603059\"\nwhere = JAP\nwhen = 270"
+          "type = event\nwhich = 28603059\nwhere = JAP\nwhen = 270"
         ],
         "gate": "ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE year = 1933 OR = { year = 1934 month = april } NOT = { flag = JX_PACIFIC war = { country = JAP country = USA } war = { country = JAP country = ENG } } NOT = { flag = JX_prewar_rural_works_DONE flag = JX_prewar_rural_works_PENDING flag = JX_prewar_rural_works_DISMISSED flag = JX_prewar_rural_works_CANCELLED } money = 45 supplies = 400 metal = 300 ai = no NOT = { ispuppet = JAP } ",
         "chance": 0
@@ -175332,7 +175337,7 @@
           "type = oilpool value = -250",
           "type = setflag which = JX_prewar_deck_commission_PENDING",
           "type = setflag which = JX_prewar_deck_commission_SELECTED_0",
-          "type = event\nwhich = \"28603060\"\nwhere = JAP\nwhen = 240"
+          "type = event\nwhich = 28603060\nwhere = JAP\nwhen = 240"
         ],
         "gate": "ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE year = 1934 OR = { year = 1935 month = june } NOT = { flag = JX_PACIFIC war = { country = JAP country = USA } war = { country = JAP country = ENG } } NOT = { flag = JX_prewar_deck_commission_DONE flag = JX_prewar_deck_commission_PENDING flag = JX_prewar_deck_commission_DISMISSED flag = JX_prewar_deck_commission_CANCELLED } money = 60 supplies = 450 oil = 250 ai = no NOT = { ispuppet = JAP } owned = { province = 1554 data = JAP } control = { province = 1554 data = JAP }",
         "chance": 100
@@ -175345,7 +175350,7 @@
           "type = oilpool value = -250",
           "type = setflag which = JX_prewar_deck_commission_PENDING",
           "type = setflag which = JX_prewar_deck_commission_SELECTED_1",
-          "type = event\nwhich = \"28603061\"\nwhere = JAP\nwhen = 240"
+          "type = event\nwhich = 28603061\nwhere = JAP\nwhen = 240"
         ],
         "gate": "ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE year = 1934 OR = { year = 1935 month = june } NOT = { flag = JX_PACIFIC war = { country = JAP country = USA } war = { country = JAP country = ENG } } NOT = { flag = JX_prewar_deck_commission_DONE flag = JX_prewar_deck_commission_PENDING flag = JX_prewar_deck_commission_DISMISSED flag = JX_prewar_deck_commission_CANCELLED } money = 60 supplies = 450 oil = 250 ai = no NOT = { ispuppet = JAP } owned = { province = 1554 data = JAP } control = { province = 1554 data = JAP }",
         "chance": 0
@@ -175511,7 +175516,7 @@
           "type = energypool value = -1000",
           "type = setflag which = JX_prewar_navigation_trials_PENDING",
           "type = setflag which = JX_prewar_navigation_trials_SELECTED_0",
-          "type = event\nwhich = \"28603062\"\nwhere = JAP\nwhen = 180"
+          "type = event\nwhich = 28603062\nwhere = JAP\nwhen = 180"
         ],
         "gate": "ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE year = 1935 OR = { year = 1936 month = february } NOT = { flag = JX_PACIFIC war = { country = JAP country = USA } war = { country = JAP country = ENG } } NOT = { flag = JX_prewar_navigation_trials_DONE flag = JX_prewar_navigation_trials_PENDING flag = JX_prewar_navigation_trials_DISMISSED flag = JX_prewar_navigation_trials_CANCELLED } money = 75 supplies = 600 metal = 500 energy = 1000 ai = no NOT = { ispuppet = JAP } owned = { province = 1552 data = JAP } control = { province = 1552 data = JAP }",
         "chance": 100
@@ -175525,7 +175530,7 @@
           "type = energypool value = -1000",
           "type = setflag which = JX_prewar_navigation_trials_PENDING",
           "type = setflag which = JX_prewar_navigation_trials_SELECTED_1",
-          "type = event\nwhich = \"28603063\"\nwhere = JAP\nwhen = 180"
+          "type = event\nwhich = 28603063\nwhere = JAP\nwhen = 180"
         ],
         "gate": "ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE year = 1935 OR = { year = 1936 month = february } NOT = { flag = JX_PACIFIC war = { country = JAP country = USA } war = { country = JAP country = ENG } } NOT = { flag = JX_prewar_navigation_trials_DONE flag = JX_prewar_navigation_trials_PENDING flag = JX_prewar_navigation_trials_DISMISSED flag = JX_prewar_navigation_trials_CANCELLED } money = 75 supplies = 600 metal = 500 energy = 1000 ai = no NOT = { ispuppet = JAP }  owned = { province = 1552 data = JAP } control = { province = 1552 data = JAP } technology = 2800 NOT = { building = { province = 1552 type = flak value = 9 } } owned = { province = 1554 data = JAP } control = { province = 1554 data = JAP } NOT = { building = { province = 1554 type = flak value = 9 } }",
         "chance": 0
@@ -175692,7 +175697,7 @@
           "type = oilpool value = -300",
           "type = setflag which = JX_prewar_landing_trials_PENDING",
           "type = setflag which = JX_prewar_landing_trials_SELECTED_0",
-          "type = event\nwhich = \"28603064\"\nwhere = JAP\nwhen = 180"
+          "type = event\nwhich = 28603064\nwhere = JAP\nwhen = 180"
         ],
         "gate": "ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE year = 1936 OR = { year = 1937 month = may } NOT = { flag = JX_PACIFIC war = { country = JAP country = USA } war = { country = JAP country = ENG } } NOT = { flag = JX_prewar_landing_trials_DONE flag = JX_prewar_landing_trials_PENDING flag = JX_prewar_landing_trials_DISMISSED flag = JX_prewar_landing_trials_CANCELLED } money = 80 supplies = 800 oil = 300 ai = no NOT = { ispuppet = JAP } owned = { province = 1554 data = JAP } control = { province = 1554 data = JAP }",
         "chance": 100
@@ -175705,7 +175710,7 @@
           "type = oilpool value = -300",
           "type = setflag which = JX_prewar_landing_trials_PENDING",
           "type = setflag which = JX_prewar_landing_trials_SELECTED_1",
-          "type = event\nwhich = \"28603065\"\nwhere = JAP\nwhen = 180"
+          "type = event\nwhich = 28603065\nwhere = JAP\nwhen = 180"
         ],
         "gate": "ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE year = 1936 OR = { year = 1937 month = may } NOT = { flag = JX_PACIFIC war = { country = JAP country = USA } war = { country = JAP country = ENG } } NOT = { flag = JX_prewar_landing_trials_DONE flag = JX_prewar_landing_trials_PENDING flag = JX_prewar_landing_trials_DISMISSED flag = JX_prewar_landing_trials_CANCELLED } money = 80 supplies = 800 oil = 300 ai = no NOT = { ispuppet = JAP } owned = { province = 1554 data = JAP } control = { province = 1554 data = JAP }",
         "chance": 0
@@ -175865,7 +175870,7 @@
           "type = supplies value = -700",
           "type = setflag which = JX_prewar_medical_service_PENDING",
           "type = setflag which = JX_prewar_medical_service_SELECTED_0",
-          "type = event\nwhich = \"28603066\"\nwhere = JAP\nwhen = 180"
+          "type = event\nwhich = 28603066\nwhere = JAP\nwhen = 180"
         ],
         "gate": "ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE year = 1938 OR = { year = 1939 month = march } NOT = { flag = JX_PACIFIC war = { country = JAP country = USA } war = { country = JAP country = ENG } } NOT = { flag = JX_prewar_medical_service_DONE flag = JX_prewar_medical_service_PENDING flag = JX_prewar_medical_service_DISMISSED flag = JX_prewar_medical_service_CANCELLED } money = 60 supplies = 700 ai = no NOT = { ispuppet = JAP } owned = { province = 1552 data = JAP } control = { province = 1552 data = JAP }",
         "chance": 100
@@ -175877,7 +175882,7 @@
           "type = supplies value = -700",
           "type = setflag which = JX_prewar_medical_service_PENDING",
           "type = setflag which = JX_prewar_medical_service_SELECTED_1",
-          "type = event\nwhich = \"28603067\"\nwhere = JAP\nwhen = 180"
+          "type = event\nwhich = 28603067\nwhere = JAP\nwhen = 180"
         ],
         "gate": "ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE year = 1938 OR = { year = 1939 month = march } NOT = { flag = JX_PACIFIC war = { country = JAP country = USA } war = { country = JAP country = ENG } } NOT = { flag = JX_prewar_medical_service_DONE flag = JX_prewar_medical_service_PENDING flag = JX_prewar_medical_service_DISMISSED flag = JX_prewar_medical_service_CANCELLED } money = 60 supplies = 700 ai = no NOT = { ispuppet = JAP } owned = { province = 1552 data = JAP } control = { province = 1552 data = JAP }",
         "chance": 0
@@ -176035,7 +176040,7 @@
           "type = metalpool value = -1000",
           "type = setflag which = JX_prewar_factory_dispersion_PENDING",
           "type = setflag which = JX_prewar_factory_dispersion_SELECTED_0",
-          "type = event\nwhich = \"28603068\"\nwhere = JAP\nwhen = 270"
+          "type = event\nwhich = 28603068\nwhere = JAP\nwhen = 270"
         ],
         "gate": "ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE year = 1940 OR = { year = 1941 month = january } NOT = { flag = JX_PACIFIC war = { country = JAP country = USA } war = { country = JAP country = ENG } } NOT = { flag = JX_prewar_factory_dispersion_DONE flag = JX_prewar_factory_dispersion_PENDING flag = JX_prewar_factory_dispersion_DISMISSED flag = JX_prewar_factory_dispersion_CANCELLED } money = 90 supplies = 900 metal = 1000 ai = no NOT = { ispuppet = JAP }  owned = { province = 1549 data = JAP } control = { province = 1549 data = JAP } technology = 5800 NOT = { building = { province = 1549 type = ic value = 199 } } OR = { AND = { NOT = { building = { province = 1549 type = infrastructure value = 2  when = now } } building = { province = 1549 type = infrastructure value = 0.31  when = now } } AND = { building = { province = 1549 type = infrastructure value = 2  when = now } building = { province = 1549 type = infrastructure value = 31  when = now } } } technology = 2800 NOT = { building = { province = 1549 type = flak value = 7 } }",
         "chance": 100
@@ -176048,7 +176053,7 @@
           "type = metalpool value = -1000",
           "type = setflag which = JX_prewar_factory_dispersion_PENDING",
           "type = setflag which = JX_prewar_factory_dispersion_SELECTED_1",
-          "type = event\nwhich = \"28603069\"\nwhere = JAP\nwhen = 270"
+          "type = event\nwhich = 28603069\nwhere = JAP\nwhen = 270"
         ],
         "gate": "ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE year = 1940 OR = { year = 1941 month = january } NOT = { flag = JX_PACIFIC war = { country = JAP country = USA } war = { country = JAP country = ENG } } NOT = { flag = JX_prewar_factory_dispersion_DONE flag = JX_prewar_factory_dispersion_PENDING flag = JX_prewar_factory_dispersion_DISMISSED flag = JX_prewar_factory_dispersion_CANCELLED } money = 90 supplies = 900 metal = 1000 ai = no NOT = { ispuppet = JAP }  owned = { province = 1552 data = JAP } control = { province = 1552 data = JAP } technology = 5800 NOT = { building = { province = 1552 type = ic value = 197 } } OR = { AND = { NOT = { building = { province = 1552 type = infrastructure value = 2  when = now } } building = { province = 1552 type = infrastructure value = 0.31  when = now } } AND = { building = { province = 1552 type = infrastructure value = 2  when = now } building = { province = 1552 type = infrastructure value = 31  when = now } } }",
         "chance": 0
@@ -176778,7 +176783,7 @@
           "type = supplies value = -2500",
           "type = setflag which = JX_usc_replacements_PENDING",
           "type = setflag which = JX_usc_replacements_CHOICE_0",
-          "type = event\nwhich = \"28603070\"\nwhere = JAP\nwhen = 60"
+          "type = event\nwhich = 28603070\nwhere = JAP\nwhen = 60"
         ],
         "gate": "ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE ai = USA year = 1941 exists = USA war = { country = JAP country = USA } OR = { control = { province = 1886 data = JAP } control = { province = 1887 data = JAP } control = { province = 1889 data = JAP } control = { province = 1874 data = JAP } } flag = JX_USC_LANDING_DONE NOT = { flag = JX_usc_replacements_DONE flag = JX_usc_replacements_PENDING flag = JX_usc_replacements_WAIT flag = JX_usc_replacements_DISMISSED } money = 200 supplies = 2500",
         "chance": 100
@@ -176790,7 +176795,7 @@
           "type = supplies value = -2500",
           "type = setflag which = JX_usc_replacements_PENDING",
           "type = setflag which = JX_usc_replacements_CHOICE_1",
-          "type = event\nwhich = \"28603071\"\nwhere = JAP\nwhen = 60"
+          "type = event\nwhich = 28603071\nwhere = JAP\nwhen = 60"
         ],
         "gate": "ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE ai = USA year = 1941 exists = USA war = { country = JAP country = USA } OR = { control = { province = 1886 data = JAP } control = { province = 1887 data = JAP } control = { province = 1889 data = JAP } control = { province = 1874 data = JAP } } flag = JX_USC_LANDING_DONE NOT = { flag = JX_usc_replacements_DONE flag = JX_usc_replacements_PENDING flag = JX_usc_replacements_WAIT flag = JX_usc_replacements_DISMISSED } money = 200 supplies = 2500",
         "chance": 0
@@ -177354,7 +177359,7 @@
           "type = supplies value = -4000",
           "type = setflag which = JX_usc_commitment_PENDING",
           "type = setflag which = JX_usc_commitment_CHOICE_0",
-          "type = event\nwhich = \"28603072\"\nwhere = JAP\nwhen = 60"
+          "type = event\nwhich = 28603072\nwhere = JAP\nwhen = 60"
         ],
         "gate": "ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE ai = USA year = 1941 exists = USA war = { country = JAP country = USA } OR = { control = { province = 1886 data = JAP } control = { province = 1887 data = JAP } control = { province = 1889 data = JAP } control = { province = 1874 data = JAP } } flag = JX_USC_LANDING_DONE flag = JX_TIME_28601757_180 NOT = { flag = JX_usc_commitment_DONE flag = JX_usc_commitment_PENDING flag = JX_usc_commitment_WAIT flag = JX_usc_commitment_DISMISSED } money = 250 supplies = 4000",
         "chance": 100
@@ -177366,7 +177371,7 @@
           "type = supplies value = -4000",
           "type = setflag which = JX_usc_commitment_PENDING",
           "type = setflag which = JX_usc_commitment_CHOICE_1",
-          "type = event\nwhich = \"28603073\"\nwhere = JAP\nwhen = 60"
+          "type = event\nwhich = 28603073\nwhere = JAP\nwhen = 60"
         ],
         "gate": "ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE ai = USA year = 1941 exists = USA war = { country = JAP country = USA } OR = { control = { province = 1886 data = JAP } control = { province = 1887 data = JAP } control = { province = 1889 data = JAP } control = { province = 1874 data = JAP } } flag = JX_USC_LANDING_DONE flag = JX_TIME_28601757_180 NOT = { flag = JX_usc_commitment_DONE flag = JX_usc_commitment_PENDING flag = JX_usc_commitment_WAIT flag = JX_usc_commitment_DISMISSED } money = 250 supplies = 4000",
         "chance": 0
@@ -226040,7 +226045,7 @@
           "trigger = { flag = JX_R14_CHINA_AUTONOMY_SOVEREIGN NOT = { flag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_DELIVERED } exists = JAP NOT = { war = { country = U87 country = JAP } } NOT = { ispuppet = U87 } atwar = no NOT = { atwar = JAP } flag = JX_TIME_28600448_1 } type = event which = 28603013 where = JAP when = 360",
           "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_DELIVERED\n\t}\n\texists = JAP\n\tNOT = {\n\t\twar = {\n\t\t\tcountry = U87\n\t\t\tcountry = JAP\n\t\t}\n\t}\n\tNOT = {\n\t\tispuppet = U87\n\t}\n\tatwar = no\n\tNOT = {\n\t\tatwar = JAP\n\t}\n\tflag = JX_TIME_28600448_1\n}\ntype = access\nwhich = JAP",
           "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_DELIVERED\n\t}\n\texists = JAP\n\tNOT = {\n\t\twar = {\n\t\t\tcountry = U87\n\t\t\tcountry = JAP\n\t\t}\n\t}\n\tNOT = {\n\t\tispuppet = U87\n\t}\n\tatwar = no\n\tNOT = {\n\t\tatwar = JAP\n\t}\n\tflag = JX_TIME_28600448_1\n}\ntype = setflag\nwhich = JX_R14_CHINA_AUTONOMY_SOVEREIGN_ACCEPTED",
-          "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_DELIVERED\n\t}\n\texists = JAP\n\tNOT = {\n\t\twar = {\n\t\t\tcountry = U87\n\t\t\tcountry = JAP\n\t\t}\n\t}\n\tNOT = {\n\t\tispuppet = U87\n\t}\n\tatwar = no\n\tNOT = {\n\t\tatwar = JAP\n\t}\n\tflag = JX_TIME_28600448_1\n}\ntype = event\nwhich = \"28603074\"\nwhere = U87\nwhen = 360",
+          "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_DELIVERED\n\t}\n\texists = JAP\n\tNOT = {\n\t\twar = {\n\t\t\tcountry = U87\n\t\t\tcountry = JAP\n\t\t}\n\t}\n\tNOT = {\n\t\tispuppet = U87\n\t}\n\tatwar = no\n\tNOT = {\n\t\tatwar = JAP\n\t}\n\tflag = JX_TIME_28600448_1\n}\ntype = event\nwhich = 28603074\nwhere = U87\nwhen = 360",
           "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_DELIVERED\n\t}\n\texists = JAP\n\tNOT = {\n\t\twar = {\n\t\t\tcountry = U87\n\t\t\tcountry = JAP\n\t\t}\n\t}\n\tNOT = {\n\t\tispuppet = U87\n\t}\n\tatwar = no\n\tNOT = {\n\t\tatwar = JAP\n\t}\n\tflag = JX_TIME_28600448_1\n}\ntype = setflag\nwhich = JX_R14_CHINA_AUTONOMY_SOVEREIGN_DELIVERED"
         ],
         "gate": "flag = JX_R14_CHINA_AUTONOMY_SOVEREIGN NOT = { flag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_DELIVERED } exists = JAP NOT = { war = { country = U87 country = JAP } } NOT = { ispuppet = U87 } atwar = no NOT = { atwar = JAP } flag = JX_TIME_28600448_1",
@@ -226052,7 +226057,7 @@
           "trigger = { flag = JX_R14_CHINA_AUTONOMY_SOVEREIGN NOT = { flag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_DELIVERED } flag = JX_TIME_28600448_1 NOT = { AND = { exists = JAP NOT = { war = { country = U87 country = JAP } } NOT = { ispuppet = U87 } atwar = no NOT = { atwar = JAP } } } } type = clrflag which = JX_TIME_28602901_360",
           "trigger = { flag = JX_R14_CHINA_AUTONOMY_SOVEREIGN NOT = { flag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_DELIVERED } flag = JX_TIME_28600448_1 NOT = { AND = { exists = JAP NOT = { war = { country = U87 country = JAP } } NOT = { ispuppet = U87 } atwar = no NOT = { atwar = JAP } } } } type = event which = 28603013 where = JAP when = 360",
           "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_DELIVERED\n\t}\n\tflag = JX_TIME_28600448_1\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = U87\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tNOT = {\n\t\t\t\tispuppet = U87\n\t\t\t}\n\t\t\tatwar = no\n\t\t\tNOT = {\n\t\t\t\tatwar = JAP\n\t\t\t}\n\t\t}\n\t}\n}\ntype = setflag\nwhich = JX_R14_CHINA_AUTONOMY_SOVEREIGN_REFUND_DUE",
-          "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_DELIVERED\n\t}\n\tflag = JX_TIME_28600448_1\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = U87\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tNOT = {\n\t\t\t\tispuppet = U87\n\t\t\t}\n\t\t\tatwar = no\n\t\t\tNOT = {\n\t\t\t\tatwar = JAP\n\t\t\t}\n\t\t}\n\t}\n}\ntype = trigger\nwhich = \"28602903\"",
+          "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_DELIVERED\n\t}\n\tflag = JX_TIME_28600448_1\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = U87\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tNOT = {\n\t\t\t\tispuppet = U87\n\t\t\t}\n\t\t\tatwar = no\n\t\t\tNOT = {\n\t\t\t\tatwar = JAP\n\t\t\t}\n\t\t}\n\t}\n}\ntype = trigger\nwhich = 28602903",
           "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_DELIVERED\n\t}\n\tflag = JX_TIME_28600448_1\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = U87\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tNOT = {\n\t\t\t\tispuppet = U87\n\t\t\t}\n\t\t\tatwar = no\n\t\t\tNOT = {\n\t\t\t\tatwar = JAP\n\t\t\t}\n\t\t}\n\t}\n}\ntype = setflag\nwhich = JX_R14_CHINA_AUTONOMY_SOVEREIGN_DELIVERED"
         ],
         "gate": "flag = JX_R14_CHINA_AUTONOMY_SOVEREIGN NOT = { flag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_DELIVERED } flag = JX_TIME_28600448_1 NOT = { AND = { exists = JAP NOT = { war = { country = U87 country = JAP } } NOT = { ispuppet = U87 } atwar = no NOT = { atwar = JAP } } }",
@@ -226105,7 +226110,7 @@
         "name": "Return the unused Japanese investment",
         "commands": [
           "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_FINISHED\n\t}\n\tflag = JX_TIME_28602901_360\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = U87\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tNOT = {\n\t\t\t\tispuppet = U87\n\t\t\t}\n\t\t\tatwar = no\n\t\t\tNOT = {\n\t\t\t\tatwar = JAP\n\t\t\t\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_WAR_BROKEN\n\t\t\t}\n\t\t\towned = {\n\t\t\t\tprovince = 1337\n\t\t\t\tdata = U87\n\t\t\t}\n\t\t\tcontrol = {\n\t\t\t\tprovince = 1337\n\t\t\t\tdata = U87\n\t\t\t}\n\t\t\ttechnology = 5800\n\t\t\tOR = {\n\t\t\t\tAND = {\n\t\t\t\t\tNOT = {\n\t\t\t\t\t\tbuilding = {\n\t\t\t\t\t\t\tprovince = 1337\n\t\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\t\tvalue = 2\n\t\t\t\t\t\t\twhen = now\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1337\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 0.31\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\tAND = {\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1337\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 2\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1337\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 31\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tNOT = {\n\t\t\t\tbuilding = {\n\t\t\t\t\tprovince = 1337\n\t\t\t\t\ttype = ic\n\t\t\t\t\tvalue = 197\n\t\t\t\t\twhen = now\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n}\ntype = setflag\nwhich = JX_R14_CHINA_AUTONOMY_SOVEREIGN_REFUND_DUE",
-          "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_FINISHED\n\t}\n\tflag = JX_TIME_28602901_360\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = U87\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tNOT = {\n\t\t\t\tispuppet = U87\n\t\t\t}\n\t\t\tatwar = no\n\t\t\tNOT = {\n\t\t\t\tatwar = JAP\n\t\t\t\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_WAR_BROKEN\n\t\t\t}\n\t\t\towned = {\n\t\t\t\tprovince = 1337\n\t\t\t\tdata = U87\n\t\t\t}\n\t\t\tcontrol = {\n\t\t\t\tprovince = 1337\n\t\t\t\tdata = U87\n\t\t\t}\n\t\t\ttechnology = 5800\n\t\t\tOR = {\n\t\t\t\tAND = {\n\t\t\t\t\tNOT = {\n\t\t\t\t\t\tbuilding = {\n\t\t\t\t\t\t\tprovince = 1337\n\t\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\t\tvalue = 2\n\t\t\t\t\t\t\twhen = now\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1337\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 0.31\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\tAND = {\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1337\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 2\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1337\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 31\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tNOT = {\n\t\t\t\tbuilding = {\n\t\t\t\t\tprovince = 1337\n\t\t\t\t\ttype = ic\n\t\t\t\t\tvalue = 197\n\t\t\t\t\twhen = now\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n}\ntype = trigger\nwhich = \"28602903\"",
+          "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_FINISHED\n\t}\n\tflag = JX_TIME_28602901_360\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = U87\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tNOT = {\n\t\t\t\tispuppet = U87\n\t\t\t}\n\t\t\tatwar = no\n\t\t\tNOT = {\n\t\t\t\tatwar = JAP\n\t\t\t\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_WAR_BROKEN\n\t\t\t}\n\t\t\towned = {\n\t\t\t\tprovince = 1337\n\t\t\t\tdata = U87\n\t\t\t}\n\t\t\tcontrol = {\n\t\t\t\tprovince = 1337\n\t\t\t\tdata = U87\n\t\t\t}\n\t\t\ttechnology = 5800\n\t\t\tOR = {\n\t\t\t\tAND = {\n\t\t\t\t\tNOT = {\n\t\t\t\t\t\tbuilding = {\n\t\t\t\t\t\t\tprovince = 1337\n\t\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\t\tvalue = 2\n\t\t\t\t\t\t\twhen = now\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1337\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 0.31\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\tAND = {\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1337\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 2\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1337\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 31\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tNOT = {\n\t\t\t\tbuilding = {\n\t\t\t\t\tprovince = 1337\n\t\t\t\t\ttype = ic\n\t\t\t\t\tvalue = 197\n\t\t\t\t\twhen = now\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n}\ntype = trigger\nwhich = 28602903",
           "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_FINISHED\n\t}\n\tflag = JX_TIME_28602901_360\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = U87\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tNOT = {\n\t\t\t\tispuppet = U87\n\t\t\t}\n\t\t\tatwar = no\n\t\t\tNOT = {\n\t\t\t\tatwar = JAP\n\t\t\t\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_WAR_BROKEN\n\t\t\t}\n\t\t\towned = {\n\t\t\t\tprovince = 1337\n\t\t\t\tdata = U87\n\t\t\t}\n\t\t\tcontrol = {\n\t\t\t\tprovince = 1337\n\t\t\t\tdata = U87\n\t\t\t}\n\t\t\ttechnology = 5800\n\t\t\tOR = {\n\t\t\t\tAND = {\n\t\t\t\t\tNOT = {\n\t\t\t\t\t\tbuilding = {\n\t\t\t\t\t\t\tprovince = 1337\n\t\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\t\tvalue = 2\n\t\t\t\t\t\t\twhen = now\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1337\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 0.31\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\tAND = {\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1337\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 2\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1337\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 31\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tNOT = {\n\t\t\t\tbuilding = {\n\t\t\t\t\tprovince = 1337\n\t\t\t\t\ttype = ic\n\t\t\t\t\tvalue = 197\n\t\t\t\t\twhen = now\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n}\ntype = setflag\nwhich = JX_R14_CHINA_AUTONOMY_SOVEREIGN_FINISHED"
         ],
         "gate": "flag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_ACCEPTED NOT = { flag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_FINISHED } flag = JX_TIME_28602901_360 NOT = { AND = { exists = JAP NOT = { war = { country = U87 country = JAP } } NOT = { ispuppet = U87 } atwar = no NOT = { atwar = JAP flag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_WAR_BROKEN } owned = { province = 1337 data = U87 } control = { province = 1337 data = U87 } technology = 5800 OR = { AND = { NOT = { building = { province = 1337 type = infrastructure value = 2 when = now } } building = { province = 1337 type = infrastructure value = 0.31 when = now } } AND = { building = { province = 1337 type = infrastructure value = 2 when = now } building = { province = 1337 type = infrastructure value = 31 when = now } } } NOT = { building = { province = 1337 type = ic value = 197 when = now } } } }",
@@ -226185,7 +226190,7 @@
         "name": "",
         "commands": [
           "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_DELIVERED\n\t}\n\tflag = JX_TIME_28600448_2\n}\ntype = setflag\nwhich = JX_R14_CHINA_AUTONOMY_SOVEREIGN_REFUND_DUE",
-          "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_DELIVERED\n\t}\n\tflag = JX_TIME_28600448_2\n}\ntype = trigger\nwhich = \"28602903\"",
+          "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_DELIVERED\n\t}\n\tflag = JX_TIME_28600448_2\n}\ntype = trigger\nwhich = 28602903",
           "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_DELIVERED\n\t}\n\tflag = JX_TIME_28600448_2\n}\ntype = setflag\nwhich = JX_R14_CHINA_AUTONOMY_SOVEREIGN_DELIVERED"
         ],
         "gate": "flag = JX_R14_CHINA_AUTONOMY_SOVEREIGN NOT = { flag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_DELIVERED } flag = JX_TIME_28600448_2",
@@ -226226,7 +226231,7 @@
         "name": "Recover the unused investment",
         "commands": [
           "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_FINISHED\n\t}\n\tflag = JX_TIME_28602901_360\n\tNOT = {\n\t\texists = U87\n\t}\n}\ntype = setflag\nwhich = JX_R14_CHINA_AUTONOMY_SOVEREIGN_REFUND_DUE",
-          "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_FINISHED\n\t}\n\tflag = JX_TIME_28602901_360\n\tNOT = {\n\t\texists = U87\n\t}\n}\ntype = trigger\nwhich = \"28602903\"",
+          "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_FINISHED\n\t}\n\tflag = JX_TIME_28602901_360\n\tNOT = {\n\t\texists = U87\n\t}\n}\ntype = trigger\nwhich = 28602903",
           "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_FINISHED\n\t}\n\tflag = JX_TIME_28602901_360\n\tNOT = {\n\t\texists = U87\n\t}\n}\ntype = setflag\nwhich = JX_R14_CHINA_AUTONOMY_SOVEREIGN_FINISHED"
         ],
         "gate": "flag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_ACCEPTED NOT = { flag = JX_R14_CHINA_AUTONOMY_SOVEREIGN_FINISHED } flag = JX_TIME_28602901_360 NOT = { exists = U87 }",
@@ -226295,7 +226300,7 @@
           "trigger = { flag = JX_R14_CHINA_AUTONOMY_CIVILIAN NOT = { flag = JX_R14_CHINA_AUTONOMY_CIVILIAN_DELIVERED } exists = JAP NOT = { war = { country = U87 country = JAP } } puppet = { country = U87 country = JAP } atwar = no NOT = { atwar = JAP } flag = JX_TIME_28600448_1 } type = event which = 28603011 where = JAP when = 360",
           "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_DELIVERED\n\t}\n\texists = JAP\n\tNOT = {\n\t\twar = {\n\t\t\tcountry = U87\n\t\t\tcountry = JAP\n\t\t}\n\t}\n\tpuppet = {\n\t\tcountry = U87\n\t\tcountry = JAP\n\t}\n\tatwar = no\n\tNOT = {\n\t\tatwar = JAP\n\t}\n\tflag = JX_TIME_28600448_1\n}\ntype = access\nwhich = JAP",
           "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_DELIVERED\n\t}\n\texists = JAP\n\tNOT = {\n\t\twar = {\n\t\t\tcountry = U87\n\t\t\tcountry = JAP\n\t\t}\n\t}\n\tpuppet = {\n\t\tcountry = U87\n\t\tcountry = JAP\n\t}\n\tatwar = no\n\tNOT = {\n\t\tatwar = JAP\n\t}\n\tflag = JX_TIME_28600448_1\n}\ntype = setflag\nwhich = JX_R14_CHINA_AUTONOMY_CIVILIAN_ACCEPTED",
-          "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_DELIVERED\n\t}\n\texists = JAP\n\tNOT = {\n\t\twar = {\n\t\t\tcountry = U87\n\t\t\tcountry = JAP\n\t\t}\n\t}\n\tpuppet = {\n\t\tcountry = U87\n\t\tcountry = JAP\n\t}\n\tatwar = no\n\tNOT = {\n\t\tatwar = JAP\n\t}\n\tflag = JX_TIME_28600448_1\n}\ntype = event\nwhich = \"28603075\"\nwhere = U87\nwhen = 360",
+          "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_DELIVERED\n\t}\n\texists = JAP\n\tNOT = {\n\t\twar = {\n\t\t\tcountry = U87\n\t\t\tcountry = JAP\n\t\t}\n\t}\n\tpuppet = {\n\t\tcountry = U87\n\t\tcountry = JAP\n\t}\n\tatwar = no\n\tNOT = {\n\t\tatwar = JAP\n\t}\n\tflag = JX_TIME_28600448_1\n}\ntype = event\nwhich = 28603075\nwhere = U87\nwhen = 360",
           "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_DELIVERED\n\t}\n\texists = JAP\n\tNOT = {\n\t\twar = {\n\t\t\tcountry = U87\n\t\t\tcountry = JAP\n\t\t}\n\t}\n\tpuppet = {\n\t\tcountry = U87\n\t\tcountry = JAP\n\t}\n\tatwar = no\n\tNOT = {\n\t\tatwar = JAP\n\t}\n\tflag = JX_TIME_28600448_1\n}\ntype = setflag\nwhich = JX_R14_CHINA_AUTONOMY_CIVILIAN_DELIVERED"
         ],
         "gate": "flag = JX_R14_CHINA_AUTONOMY_CIVILIAN NOT = { flag = JX_R14_CHINA_AUTONOMY_CIVILIAN_DELIVERED } exists = JAP NOT = { war = { country = U87 country = JAP } } puppet = { country = U87 country = JAP } atwar = no NOT = { atwar = JAP } flag = JX_TIME_28600448_1",
@@ -226307,7 +226312,7 @@
           "trigger = { flag = JX_R14_CHINA_AUTONOMY_CIVILIAN NOT = { flag = JX_R14_CHINA_AUTONOMY_CIVILIAN_DELIVERED } flag = JX_TIME_28600448_1 NOT = { AND = { exists = JAP NOT = { war = { country = U87 country = JAP } } puppet = { country = U87 country = JAP } atwar = no NOT = { atwar = JAP } } } } type = clrflag which = JX_TIME_28602907_360",
           "trigger = { flag = JX_R14_CHINA_AUTONOMY_CIVILIAN NOT = { flag = JX_R14_CHINA_AUTONOMY_CIVILIAN_DELIVERED } flag = JX_TIME_28600448_1 NOT = { AND = { exists = JAP NOT = { war = { country = U87 country = JAP } } puppet = { country = U87 country = JAP } atwar = no NOT = { atwar = JAP } } } } type = event which = 28603011 where = JAP when = 360",
           "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_DELIVERED\n\t}\n\tflag = JX_TIME_28600448_1\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = U87\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tpuppet = {\n\t\t\t\tcountry = U87\n\t\t\t\tcountry = JAP\n\t\t\t}\n\t\t\tatwar = no\n\t\t\tNOT = {\n\t\t\t\tatwar = JAP\n\t\t\t}\n\t\t}\n\t}\n}\ntype = setflag\nwhich = JX_R14_CHINA_AUTONOMY_CIVILIAN_REFUND_DUE",
-          "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_DELIVERED\n\t}\n\tflag = JX_TIME_28600448_1\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = U87\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tpuppet = {\n\t\t\t\tcountry = U87\n\t\t\t\tcountry = JAP\n\t\t\t}\n\t\t\tatwar = no\n\t\t\tNOT = {\n\t\t\t\tatwar = JAP\n\t\t\t}\n\t\t}\n\t}\n}\ntype = trigger\nwhich = \"28602909\"",
+          "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_DELIVERED\n\t}\n\tflag = JX_TIME_28600448_1\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = U87\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tpuppet = {\n\t\t\t\tcountry = U87\n\t\t\t\tcountry = JAP\n\t\t\t}\n\t\t\tatwar = no\n\t\t\tNOT = {\n\t\t\t\tatwar = JAP\n\t\t\t}\n\t\t}\n\t}\n}\ntype = trigger\nwhich = 28602909",
           "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_DELIVERED\n\t}\n\tflag = JX_TIME_28600448_1\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = U87\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tpuppet = {\n\t\t\t\tcountry = U87\n\t\t\t\tcountry = JAP\n\t\t\t}\n\t\t\tatwar = no\n\t\t\tNOT = {\n\t\t\t\tatwar = JAP\n\t\t\t}\n\t\t}\n\t}\n}\ntype = setflag\nwhich = JX_R14_CHINA_AUTONOMY_CIVILIAN_DELIVERED"
         ],
         "gate": "flag = JX_R14_CHINA_AUTONOMY_CIVILIAN NOT = { flag = JX_R14_CHINA_AUTONOMY_CIVILIAN_DELIVERED } flag = JX_TIME_28600448_1 NOT = { AND = { exists = JAP NOT = { war = { country = U87 country = JAP } } puppet = { country = U87 country = JAP } atwar = no NOT = { atwar = JAP } } }",
@@ -226360,7 +226365,7 @@
         "name": "Return the unused Japanese investment",
         "commands": [
           "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_FINISHED\n\t}\n\tflag = JX_TIME_28602907_360\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = U87\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tpuppet = {\n\t\t\t\tcountry = U87\n\t\t\t\tcountry = JAP\n\t\t\t}\n\t\t\tatwar = no\n\t\t\tNOT = {\n\t\t\t\tatwar = JAP\n\t\t\t\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_WAR_BROKEN\n\t\t\t}\n\t\t\towned = {\n\t\t\t\tprovince = 1337\n\t\t\t\tdata = U87\n\t\t\t}\n\t\t\tcontrol = {\n\t\t\t\tprovince = 1337\n\t\t\t\tdata = U87\n\t\t\t}\n\t\t\ttechnology = 5800\n\t\t\tOR = {\n\t\t\t\tAND = {\n\t\t\t\t\tNOT = {\n\t\t\t\t\t\tbuilding = {\n\t\t\t\t\t\t\tprovince = 1337\n\t\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\t\tvalue = 2\n\t\t\t\t\t\t\twhen = now\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1337\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 0.31\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\tAND = {\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1337\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 2\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1337\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 31\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tNOT = {\n\t\t\t\tbuilding = {\n\t\t\t\t\tprovince = 1337\n\t\t\t\t\ttype = ic\n\t\t\t\t\tvalue = 197\n\t\t\t\t\twhen = now\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n}\ntype = setflag\nwhich = JX_R14_CHINA_AUTONOMY_CIVILIAN_REFUND_DUE",
-          "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_FINISHED\n\t}\n\tflag = JX_TIME_28602907_360\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = U87\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tpuppet = {\n\t\t\t\tcountry = U87\n\t\t\t\tcountry = JAP\n\t\t\t}\n\t\t\tatwar = no\n\t\t\tNOT = {\n\t\t\t\tatwar = JAP\n\t\t\t\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_WAR_BROKEN\n\t\t\t}\n\t\t\towned = {\n\t\t\t\tprovince = 1337\n\t\t\t\tdata = U87\n\t\t\t}\n\t\t\tcontrol = {\n\t\t\t\tprovince = 1337\n\t\t\t\tdata = U87\n\t\t\t}\n\t\t\ttechnology = 5800\n\t\t\tOR = {\n\t\t\t\tAND = {\n\t\t\t\t\tNOT = {\n\t\t\t\t\t\tbuilding = {\n\t\t\t\t\t\t\tprovince = 1337\n\t\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\t\tvalue = 2\n\t\t\t\t\t\t\twhen = now\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1337\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 0.31\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\tAND = {\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1337\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 2\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1337\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 31\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tNOT = {\n\t\t\t\tbuilding = {\n\t\t\t\t\tprovince = 1337\n\t\t\t\t\ttype = ic\n\t\t\t\t\tvalue = 197\n\t\t\t\t\twhen = now\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n}\ntype = trigger\nwhich = \"28602909\"",
+          "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_FINISHED\n\t}\n\tflag = JX_TIME_28602907_360\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = U87\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tpuppet = {\n\t\t\t\tcountry = U87\n\t\t\t\tcountry = JAP\n\t\t\t}\n\t\t\tatwar = no\n\t\t\tNOT = {\n\t\t\t\tatwar = JAP\n\t\t\t\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_WAR_BROKEN\n\t\t\t}\n\t\t\towned = {\n\t\t\t\tprovince = 1337\n\t\t\t\tdata = U87\n\t\t\t}\n\t\t\tcontrol = {\n\t\t\t\tprovince = 1337\n\t\t\t\tdata = U87\n\t\t\t}\n\t\t\ttechnology = 5800\n\t\t\tOR = {\n\t\t\t\tAND = {\n\t\t\t\t\tNOT = {\n\t\t\t\t\t\tbuilding = {\n\t\t\t\t\t\t\tprovince = 1337\n\t\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\t\tvalue = 2\n\t\t\t\t\t\t\twhen = now\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1337\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 0.31\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\tAND = {\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1337\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 2\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1337\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 31\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tNOT = {\n\t\t\t\tbuilding = {\n\t\t\t\t\tprovince = 1337\n\t\t\t\t\ttype = ic\n\t\t\t\t\tvalue = 197\n\t\t\t\t\twhen = now\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n}\ntype = trigger\nwhich = 28602909",
           "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_FINISHED\n\t}\n\tflag = JX_TIME_28602907_360\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = U87\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tpuppet = {\n\t\t\t\tcountry = U87\n\t\t\t\tcountry = JAP\n\t\t\t}\n\t\t\tatwar = no\n\t\t\tNOT = {\n\t\t\t\tatwar = JAP\n\t\t\t\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_WAR_BROKEN\n\t\t\t}\n\t\t\towned = {\n\t\t\t\tprovince = 1337\n\t\t\t\tdata = U87\n\t\t\t}\n\t\t\tcontrol = {\n\t\t\t\tprovince = 1337\n\t\t\t\tdata = U87\n\t\t\t}\n\t\t\ttechnology = 5800\n\t\t\tOR = {\n\t\t\t\tAND = {\n\t\t\t\t\tNOT = {\n\t\t\t\t\t\tbuilding = {\n\t\t\t\t\t\t\tprovince = 1337\n\t\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\t\tvalue = 2\n\t\t\t\t\t\t\twhen = now\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1337\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 0.31\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\tAND = {\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1337\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 2\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1337\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 31\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tNOT = {\n\t\t\t\tbuilding = {\n\t\t\t\t\tprovince = 1337\n\t\t\t\t\ttype = ic\n\t\t\t\t\tvalue = 197\n\t\t\t\t\twhen = now\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n}\ntype = setflag\nwhich = JX_R14_CHINA_AUTONOMY_CIVILIAN_FINISHED"
         ],
         "gate": "flag = JX_R14_CHINA_AUTONOMY_CIVILIAN_ACCEPTED NOT = { flag = JX_R14_CHINA_AUTONOMY_CIVILIAN_FINISHED } flag = JX_TIME_28602907_360 NOT = { AND = { exists = JAP NOT = { war = { country = U87 country = JAP } } puppet = { country = U87 country = JAP } atwar = no NOT = { atwar = JAP flag = JX_R14_CHINA_AUTONOMY_CIVILIAN_WAR_BROKEN } owned = { province = 1337 data = U87 } control = { province = 1337 data = U87 } technology = 5800 OR = { AND = { NOT = { building = { province = 1337 type = infrastructure value = 2 when = now } } building = { province = 1337 type = infrastructure value = 0.31 when = now } } AND = { building = { province = 1337 type = infrastructure value = 2 when = now } building = { province = 1337 type = infrastructure value = 31 when = now } } } NOT = { building = { province = 1337 type = ic value = 197 when = now } } } }",
@@ -226440,7 +226445,7 @@
         "name": "",
         "commands": [
           "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_DELIVERED\n\t}\n\tflag = JX_TIME_28600448_2\n}\ntype = setflag\nwhich = JX_R14_CHINA_AUTONOMY_CIVILIAN_REFUND_DUE",
-          "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_DELIVERED\n\t}\n\tflag = JX_TIME_28600448_2\n}\ntype = trigger\nwhich = \"28602909\"",
+          "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_DELIVERED\n\t}\n\tflag = JX_TIME_28600448_2\n}\ntype = trigger\nwhich = 28602909",
           "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_DELIVERED\n\t}\n\tflag = JX_TIME_28600448_2\n}\ntype = setflag\nwhich = JX_R14_CHINA_AUTONOMY_CIVILIAN_DELIVERED"
         ],
         "gate": "flag = JX_R14_CHINA_AUTONOMY_CIVILIAN NOT = { flag = JX_R14_CHINA_AUTONOMY_CIVILIAN_DELIVERED } flag = JX_TIME_28600448_2",
@@ -226481,7 +226486,7 @@
         "name": "Recover the unused investment",
         "commands": [
           "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_FINISHED\n\t}\n\tflag = JX_TIME_28602907_360\n\tNOT = {\n\t\texists = U87\n\t}\n}\ntype = setflag\nwhich = JX_R14_CHINA_AUTONOMY_CIVILIAN_REFUND_DUE",
-          "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_FINISHED\n\t}\n\tflag = JX_TIME_28602907_360\n\tNOT = {\n\t\texists = U87\n\t}\n}\ntype = trigger\nwhich = \"28602909\"",
+          "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_FINISHED\n\t}\n\tflag = JX_TIME_28602907_360\n\tNOT = {\n\t\texists = U87\n\t}\n}\ntype = trigger\nwhich = 28602909",
           "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_CIVILIAN_FINISHED\n\t}\n\tflag = JX_TIME_28602907_360\n\tNOT = {\n\t\texists = U87\n\t}\n}\ntype = setflag\nwhich = JX_R14_CHINA_AUTONOMY_CIVILIAN_FINISHED"
         ],
         "gate": "flag = JX_R14_CHINA_AUTONOMY_CIVILIAN_ACCEPTED NOT = { flag = JX_R14_CHINA_AUTONOMY_CIVILIAN_FINISHED } flag = JX_TIME_28602907_360 NOT = { exists = U87 }",
@@ -226550,7 +226555,7 @@
           "trigger = { flag = JX_R14_CHINA_AUTONOMY_MILITARY NOT = { flag = JX_R14_CHINA_AUTONOMY_MILITARY_DELIVERED } exists = JAP NOT = { war = { country = U87 country = JAP } } puppet = { country = U87 country = JAP } flag = JX_TIME_28600448_1 } type = event which = 28603012 where = JAP when = 180",
           "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_MILITARY\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_MILITARY_DELIVERED\n\t}\n\texists = JAP\n\tNOT = {\n\t\twar = {\n\t\t\tcountry = U87\n\t\t\tcountry = JAP\n\t\t}\n\t}\n\tpuppet = {\n\t\tcountry = U87\n\t\tcountry = JAP\n\t}\n\tflag = JX_TIME_28600448_1\n}\ntype = access\nwhich = JAP",
           "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_MILITARY\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_MILITARY_DELIVERED\n\t}\n\texists = JAP\n\tNOT = {\n\t\twar = {\n\t\t\tcountry = U87\n\t\t\tcountry = JAP\n\t\t}\n\t}\n\tpuppet = {\n\t\tcountry = U87\n\t\tcountry = JAP\n\t}\n\tflag = JX_TIME_28600448_1\n}\ntype = setflag\nwhich = JX_R14_CHINA_AUTONOMY_MILITARY_ACCEPTED",
-          "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_MILITARY\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_MILITARY_DELIVERED\n\t}\n\texists = JAP\n\tNOT = {\n\t\twar = {\n\t\t\tcountry = U87\n\t\t\tcountry = JAP\n\t\t}\n\t}\n\tpuppet = {\n\t\tcountry = U87\n\t\tcountry = JAP\n\t}\n\tflag = JX_TIME_28600448_1\n}\ntype = event\nwhich = \"28603076\"\nwhere = U87\nwhen = 180",
+          "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_MILITARY\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_MILITARY_DELIVERED\n\t}\n\texists = JAP\n\tNOT = {\n\t\twar = {\n\t\t\tcountry = U87\n\t\t\tcountry = JAP\n\t\t}\n\t}\n\tpuppet = {\n\t\tcountry = U87\n\t\tcountry = JAP\n\t}\n\tflag = JX_TIME_28600448_1\n}\ntype = event\nwhich = 28603076\nwhere = U87\nwhen = 180",
           "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_MILITARY\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_MILITARY_DELIVERED\n\t}\n\texists = JAP\n\tNOT = {\n\t\twar = {\n\t\t\tcountry = U87\n\t\t\tcountry = JAP\n\t\t}\n\t}\n\tpuppet = {\n\t\tcountry = U87\n\t\tcountry = JAP\n\t}\n\tflag = JX_TIME_28600448_1\n}\ntype = setflag\nwhich = JX_R14_CHINA_AUTONOMY_MILITARY_DELIVERED"
         ],
         "gate": "flag = JX_R14_CHINA_AUTONOMY_MILITARY NOT = { flag = JX_R14_CHINA_AUTONOMY_MILITARY_DELIVERED } exists = JAP NOT = { war = { country = U87 country = JAP } } puppet = { country = U87 country = JAP } flag = JX_TIME_28600448_1",
@@ -226562,7 +226567,7 @@
           "trigger = { flag = JX_R14_CHINA_AUTONOMY_MILITARY NOT = { flag = JX_R14_CHINA_AUTONOMY_MILITARY_DELIVERED } flag = JX_TIME_28600448_1 NOT = { AND = { exists = JAP NOT = { war = { country = U87 country = JAP } } puppet = { country = U87 country = JAP } } } } type = clrflag which = JX_TIME_28602913_180",
           "trigger = { flag = JX_R14_CHINA_AUTONOMY_MILITARY NOT = { flag = JX_R14_CHINA_AUTONOMY_MILITARY_DELIVERED } flag = JX_TIME_28600448_1 NOT = { AND = { exists = JAP NOT = { war = { country = U87 country = JAP } } puppet = { country = U87 country = JAP } } } } type = event which = 28603012 where = JAP when = 180",
           "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_MILITARY\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_MILITARY_DELIVERED\n\t}\n\tflag = JX_TIME_28600448_1\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = U87\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tpuppet = {\n\t\t\t\tcountry = U87\n\t\t\t\tcountry = JAP\n\t\t\t}\n\t\t}\n\t}\n}\ntype = setflag\nwhich = JX_R14_CHINA_AUTONOMY_MILITARY_REFUND_DUE",
-          "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_MILITARY\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_MILITARY_DELIVERED\n\t}\n\tflag = JX_TIME_28600448_1\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = U87\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tpuppet = {\n\t\t\t\tcountry = U87\n\t\t\t\tcountry = JAP\n\t\t\t}\n\t\t}\n\t}\n}\ntype = trigger\nwhich = \"28602915\"",
+          "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_MILITARY\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_MILITARY_DELIVERED\n\t}\n\tflag = JX_TIME_28600448_1\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = U87\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tpuppet = {\n\t\t\t\tcountry = U87\n\t\t\t\tcountry = JAP\n\t\t\t}\n\t\t}\n\t}\n}\ntype = trigger\nwhich = 28602915",
           "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_MILITARY\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_MILITARY_DELIVERED\n\t}\n\tflag = JX_TIME_28600448_1\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = U87\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tpuppet = {\n\t\t\t\tcountry = U87\n\t\t\t\tcountry = JAP\n\t\t\t}\n\t\t}\n\t}\n}\ntype = setflag\nwhich = JX_R14_CHINA_AUTONOMY_MILITARY_DELIVERED"
         ],
         "gate": "flag = JX_R14_CHINA_AUTONOMY_MILITARY NOT = { flag = JX_R14_CHINA_AUTONOMY_MILITARY_DELIVERED } flag = JX_TIME_28600448_1 NOT = { AND = { exists = JAP NOT = { war = { country = U87 country = JAP } } puppet = { country = U87 country = JAP } } }",
@@ -226615,7 +226620,7 @@
         "name": "Return the unused Japanese investment",
         "commands": [
           "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_MILITARY_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_MILITARY_FINISHED\n\t}\n\tflag = JX_TIME_28602913_180\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = U87\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tpuppet = {\n\t\t\t\tcountry = U87\n\t\t\t\tcountry = JAP\n\t\t\t}\n\t\t}\n\t}\n}\ntype = setflag\nwhich = JX_R14_CHINA_AUTONOMY_MILITARY_REFUND_DUE",
-          "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_MILITARY_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_MILITARY_FINISHED\n\t}\n\tflag = JX_TIME_28602913_180\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = U87\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tpuppet = {\n\t\t\t\tcountry = U87\n\t\t\t\tcountry = JAP\n\t\t\t}\n\t\t}\n\t}\n}\ntype = trigger\nwhich = \"28602915\"",
+          "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_MILITARY_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_MILITARY_FINISHED\n\t}\n\tflag = JX_TIME_28602913_180\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = U87\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tpuppet = {\n\t\t\t\tcountry = U87\n\t\t\t\tcountry = JAP\n\t\t\t}\n\t\t}\n\t}\n}\ntype = trigger\nwhich = 28602915",
           "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_MILITARY_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_MILITARY_FINISHED\n\t}\n\tflag = JX_TIME_28602913_180\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = U87\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tpuppet = {\n\t\t\t\tcountry = U87\n\t\t\t\tcountry = JAP\n\t\t\t}\n\t\t}\n\t}\n}\ntype = setflag\nwhich = JX_R14_CHINA_AUTONOMY_MILITARY_FINISHED"
         ],
         "gate": "flag = JX_R14_CHINA_AUTONOMY_MILITARY_ACCEPTED NOT = { flag = JX_R14_CHINA_AUTONOMY_MILITARY_FINISHED } flag = JX_TIME_28602913_180 NOT = { AND = { exists = JAP NOT = { war = { country = U87 country = JAP } } puppet = { country = U87 country = JAP } } }",
@@ -226695,7 +226700,7 @@
         "name": "",
         "commands": [
           "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_MILITARY\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_MILITARY_DELIVERED\n\t}\n\tflag = JX_TIME_28600448_2\n}\ntype = setflag\nwhich = JX_R14_CHINA_AUTONOMY_MILITARY_REFUND_DUE",
-          "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_MILITARY\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_MILITARY_DELIVERED\n\t}\n\tflag = JX_TIME_28600448_2\n}\ntype = trigger\nwhich = \"28602915\"",
+          "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_MILITARY\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_MILITARY_DELIVERED\n\t}\n\tflag = JX_TIME_28600448_2\n}\ntype = trigger\nwhich = 28602915",
           "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_MILITARY\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_MILITARY_DELIVERED\n\t}\n\tflag = JX_TIME_28600448_2\n}\ntype = setflag\nwhich = JX_R14_CHINA_AUTONOMY_MILITARY_DELIVERED"
         ],
         "gate": "flag = JX_R14_CHINA_AUTONOMY_MILITARY NOT = { flag = JX_R14_CHINA_AUTONOMY_MILITARY_DELIVERED } flag = JX_TIME_28600448_2",
@@ -226736,7 +226741,7 @@
         "name": "Recover the unused investment",
         "commands": [
           "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_MILITARY_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_MILITARY_FINISHED\n\t}\n\tflag = JX_TIME_28602913_180\n\tNOT = {\n\t\texists = U87\n\t}\n}\ntype = setflag\nwhich = JX_R14_CHINA_AUTONOMY_MILITARY_REFUND_DUE",
-          "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_MILITARY_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_MILITARY_FINISHED\n\t}\n\tflag = JX_TIME_28602913_180\n\tNOT = {\n\t\texists = U87\n\t}\n}\ntype = trigger\nwhich = \"28602915\"",
+          "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_MILITARY_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_MILITARY_FINISHED\n\t}\n\tflag = JX_TIME_28602913_180\n\tNOT = {\n\t\texists = U87\n\t}\n}\ntype = trigger\nwhich = 28602915",
           "trigger = {\n\tflag = JX_R14_CHINA_AUTONOMY_MILITARY_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_CHINA_AUTONOMY_MILITARY_FINISHED\n\t}\n\tflag = JX_TIME_28602913_180\n\tNOT = {\n\t\texists = U87\n\t}\n}\ntype = setflag\nwhich = JX_R14_CHINA_AUTONOMY_MILITARY_FINISHED"
         ],
         "gate": "flag = JX_R14_CHINA_AUTONOMY_MILITARY_ACCEPTED NOT = { flag = JX_R14_CHINA_AUTONOMY_MILITARY_FINISHED } flag = JX_TIME_28602913_180 NOT = { exists = U87 }",
@@ -226774,7 +226779,7 @@
           "trigger = { flag = JX_R14_INDIA_AUTONOMY_SOVEREIGN NOT = { flag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_DELIVERED } exists = JAP NOT = { war = { country = IND country = JAP } } NOT = { ispuppet = IND } atwar = no NOT = { atwar = JAP } flag = JX_TIME_28600451_1 } type = event which = 28603016 where = JAP when = 360",
           "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_DELIVERED\n\t}\n\texists = JAP\n\tNOT = {\n\t\twar = {\n\t\t\tcountry = IND\n\t\t\tcountry = JAP\n\t\t}\n\t}\n\tNOT = {\n\t\tispuppet = IND\n\t}\n\tatwar = no\n\tNOT = {\n\t\tatwar = JAP\n\t}\n\tflag = JX_TIME_28600451_1\n}\ntype = access\nwhich = JAP",
           "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_DELIVERED\n\t}\n\texists = JAP\n\tNOT = {\n\t\twar = {\n\t\t\tcountry = IND\n\t\t\tcountry = JAP\n\t\t}\n\t}\n\tNOT = {\n\t\tispuppet = IND\n\t}\n\tatwar = no\n\tNOT = {\n\t\tatwar = JAP\n\t}\n\tflag = JX_TIME_28600451_1\n}\ntype = setflag\nwhich = JX_R14_INDIA_AUTONOMY_SOVEREIGN_ACCEPTED",
-          "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_DELIVERED\n\t}\n\texists = JAP\n\tNOT = {\n\t\twar = {\n\t\t\tcountry = IND\n\t\t\tcountry = JAP\n\t\t}\n\t}\n\tNOT = {\n\t\tispuppet = IND\n\t}\n\tatwar = no\n\tNOT = {\n\t\tatwar = JAP\n\t}\n\tflag = JX_TIME_28600451_1\n}\ntype = event\nwhich = \"28603077\"\nwhere = IND\nwhen = 360",
+          "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_DELIVERED\n\t}\n\texists = JAP\n\tNOT = {\n\t\twar = {\n\t\t\tcountry = IND\n\t\t\tcountry = JAP\n\t\t}\n\t}\n\tNOT = {\n\t\tispuppet = IND\n\t}\n\tatwar = no\n\tNOT = {\n\t\tatwar = JAP\n\t}\n\tflag = JX_TIME_28600451_1\n}\ntype = event\nwhich = 28603077\nwhere = IND\nwhen = 360",
           "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_DELIVERED\n\t}\n\texists = JAP\n\tNOT = {\n\t\twar = {\n\t\t\tcountry = IND\n\t\t\tcountry = JAP\n\t\t}\n\t}\n\tNOT = {\n\t\tispuppet = IND\n\t}\n\tatwar = no\n\tNOT = {\n\t\tatwar = JAP\n\t}\n\tflag = JX_TIME_28600451_1\n}\ntype = setflag\nwhich = JX_R14_INDIA_AUTONOMY_SOVEREIGN_DELIVERED"
         ],
         "gate": "flag = JX_R14_INDIA_AUTONOMY_SOVEREIGN NOT = { flag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_DELIVERED } exists = JAP NOT = { war = { country = IND country = JAP } } NOT = { ispuppet = IND } atwar = no NOT = { atwar = JAP } flag = JX_TIME_28600451_1",
@@ -226786,7 +226791,7 @@
           "trigger = { flag = JX_R14_INDIA_AUTONOMY_SOVEREIGN NOT = { flag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_DELIVERED } flag = JX_TIME_28600451_1 NOT = { AND = { exists = JAP NOT = { war = { country = IND country = JAP } } NOT = { ispuppet = IND } atwar = no NOT = { atwar = JAP } } } } type = clrflag which = JX_TIME_28602918_360",
           "trigger = { flag = JX_R14_INDIA_AUTONOMY_SOVEREIGN NOT = { flag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_DELIVERED } flag = JX_TIME_28600451_1 NOT = { AND = { exists = JAP NOT = { war = { country = IND country = JAP } } NOT = { ispuppet = IND } atwar = no NOT = { atwar = JAP } } } } type = event which = 28603016 where = JAP when = 360",
           "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_DELIVERED\n\t}\n\tflag = JX_TIME_28600451_1\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = IND\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tNOT = {\n\t\t\t\tispuppet = IND\n\t\t\t}\n\t\t\tatwar = no\n\t\t\tNOT = {\n\t\t\t\tatwar = JAP\n\t\t\t}\n\t\t}\n\t}\n}\ntype = setflag\nwhich = JX_R14_INDIA_AUTONOMY_SOVEREIGN_REFUND_DUE",
-          "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_DELIVERED\n\t}\n\tflag = JX_TIME_28600451_1\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = IND\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tNOT = {\n\t\t\t\tispuppet = IND\n\t\t\t}\n\t\t\tatwar = no\n\t\t\tNOT = {\n\t\t\t\tatwar = JAP\n\t\t\t}\n\t\t}\n\t}\n}\ntype = trigger\nwhich = \"28602920\"",
+          "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_DELIVERED\n\t}\n\tflag = JX_TIME_28600451_1\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = IND\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tNOT = {\n\t\t\t\tispuppet = IND\n\t\t\t}\n\t\t\tatwar = no\n\t\t\tNOT = {\n\t\t\t\tatwar = JAP\n\t\t\t}\n\t\t}\n\t}\n}\ntype = trigger\nwhich = 28602920",
           "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_DELIVERED\n\t}\n\tflag = JX_TIME_28600451_1\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = IND\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tNOT = {\n\t\t\t\tispuppet = IND\n\t\t\t}\n\t\t\tatwar = no\n\t\t\tNOT = {\n\t\t\t\tatwar = JAP\n\t\t\t}\n\t\t}\n\t}\n}\ntype = setflag\nwhich = JX_R14_INDIA_AUTONOMY_SOVEREIGN_DELIVERED"
         ],
         "gate": "flag = JX_R14_INDIA_AUTONOMY_SOVEREIGN NOT = { flag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_DELIVERED } flag = JX_TIME_28600451_1 NOT = { AND = { exists = JAP NOT = { war = { country = IND country = JAP } } NOT = { ispuppet = IND } atwar = no NOT = { atwar = JAP } } }",
@@ -226839,7 +226844,7 @@
         "name": "Return the unused Japanese investment",
         "commands": [
           "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_FINISHED\n\t}\n\tflag = JX_TIME_28602918_360\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = IND\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tNOT = {\n\t\t\t\tispuppet = IND\n\t\t\t}\n\t\t\tatwar = no\n\t\t\tNOT = {\n\t\t\t\tatwar = JAP\n\t\t\t\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_WAR_BROKEN\n\t\t\t}\n\t\t\towned = {\n\t\t\t\tprovince = 1459\n\t\t\t\tdata = IND\n\t\t\t}\n\t\t\tcontrol = {\n\t\t\t\tprovince = 1459\n\t\t\t\tdata = IND\n\t\t\t}\n\t\t\ttechnology = 5800\n\t\t\tOR = {\n\t\t\t\tAND = {\n\t\t\t\t\tNOT = {\n\t\t\t\t\t\tbuilding = {\n\t\t\t\t\t\t\tprovince = 1459\n\t\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\t\tvalue = 2\n\t\t\t\t\t\t\twhen = now\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1459\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 0.31\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\tAND = {\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1459\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 2\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1459\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 31\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tNOT = {\n\t\t\t\tbuilding = {\n\t\t\t\t\tprovince = 1459\n\t\t\t\t\ttype = ic\n\t\t\t\t\tvalue = 197\n\t\t\t\t\twhen = now\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n}\ntype = setflag\nwhich = JX_R14_INDIA_AUTONOMY_SOVEREIGN_REFUND_DUE",
-          "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_FINISHED\n\t}\n\tflag = JX_TIME_28602918_360\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = IND\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tNOT = {\n\t\t\t\tispuppet = IND\n\t\t\t}\n\t\t\tatwar = no\n\t\t\tNOT = {\n\t\t\t\tatwar = JAP\n\t\t\t\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_WAR_BROKEN\n\t\t\t}\n\t\t\towned = {\n\t\t\t\tprovince = 1459\n\t\t\t\tdata = IND\n\t\t\t}\n\t\t\tcontrol = {\n\t\t\t\tprovince = 1459\n\t\t\t\tdata = IND\n\t\t\t}\n\t\t\ttechnology = 5800\n\t\t\tOR = {\n\t\t\t\tAND = {\n\t\t\t\t\tNOT = {\n\t\t\t\t\t\tbuilding = {\n\t\t\t\t\t\t\tprovince = 1459\n\t\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\t\tvalue = 2\n\t\t\t\t\t\t\twhen = now\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1459\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 0.31\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\tAND = {\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1459\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 2\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1459\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 31\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tNOT = {\n\t\t\t\tbuilding = {\n\t\t\t\t\tprovince = 1459\n\t\t\t\t\ttype = ic\n\t\t\t\t\tvalue = 197\n\t\t\t\t\twhen = now\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n}\ntype = trigger\nwhich = \"28602920\"",
+          "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_FINISHED\n\t}\n\tflag = JX_TIME_28602918_360\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = IND\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tNOT = {\n\t\t\t\tispuppet = IND\n\t\t\t}\n\t\t\tatwar = no\n\t\t\tNOT = {\n\t\t\t\tatwar = JAP\n\t\t\t\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_WAR_BROKEN\n\t\t\t}\n\t\t\towned = {\n\t\t\t\tprovince = 1459\n\t\t\t\tdata = IND\n\t\t\t}\n\t\t\tcontrol = {\n\t\t\t\tprovince = 1459\n\t\t\t\tdata = IND\n\t\t\t}\n\t\t\ttechnology = 5800\n\t\t\tOR = {\n\t\t\t\tAND = {\n\t\t\t\t\tNOT = {\n\t\t\t\t\t\tbuilding = {\n\t\t\t\t\t\t\tprovince = 1459\n\t\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\t\tvalue = 2\n\t\t\t\t\t\t\twhen = now\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1459\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 0.31\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\tAND = {\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1459\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 2\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1459\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 31\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tNOT = {\n\t\t\t\tbuilding = {\n\t\t\t\t\tprovince = 1459\n\t\t\t\t\ttype = ic\n\t\t\t\t\tvalue = 197\n\t\t\t\t\twhen = now\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n}\ntype = trigger\nwhich = 28602920",
           "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_FINISHED\n\t}\n\tflag = JX_TIME_28602918_360\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = IND\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tNOT = {\n\t\t\t\tispuppet = IND\n\t\t\t}\n\t\t\tatwar = no\n\t\t\tNOT = {\n\t\t\t\tatwar = JAP\n\t\t\t\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_WAR_BROKEN\n\t\t\t}\n\t\t\towned = {\n\t\t\t\tprovince = 1459\n\t\t\t\tdata = IND\n\t\t\t}\n\t\t\tcontrol = {\n\t\t\t\tprovince = 1459\n\t\t\t\tdata = IND\n\t\t\t}\n\t\t\ttechnology = 5800\n\t\t\tOR = {\n\t\t\t\tAND = {\n\t\t\t\t\tNOT = {\n\t\t\t\t\t\tbuilding = {\n\t\t\t\t\t\t\tprovince = 1459\n\t\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\t\tvalue = 2\n\t\t\t\t\t\t\twhen = now\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1459\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 0.31\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\tAND = {\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1459\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 2\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1459\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 31\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tNOT = {\n\t\t\t\tbuilding = {\n\t\t\t\t\tprovince = 1459\n\t\t\t\t\ttype = ic\n\t\t\t\t\tvalue = 197\n\t\t\t\t\twhen = now\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n}\ntype = setflag\nwhich = JX_R14_INDIA_AUTONOMY_SOVEREIGN_FINISHED"
         ],
         "gate": "flag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_ACCEPTED NOT = { flag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_FINISHED } flag = JX_TIME_28602918_360 NOT = { AND = { exists = JAP NOT = { war = { country = IND country = JAP } } NOT = { ispuppet = IND } atwar = no NOT = { atwar = JAP flag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_WAR_BROKEN } owned = { province = 1459 data = IND } control = { province = 1459 data = IND } technology = 5800 OR = { AND = { NOT = { building = { province = 1459 type = infrastructure value = 2 when = now } } building = { province = 1459 type = infrastructure value = 0.31 when = now } } AND = { building = { province = 1459 type = infrastructure value = 2 when = now } building = { province = 1459 type = infrastructure value = 31 when = now } } } NOT = { building = { province = 1459 type = ic value = 197 when = now } } } }",
@@ -226919,7 +226924,7 @@
         "name": "",
         "commands": [
           "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_DELIVERED\n\t}\n\tflag = JX_TIME_28600451_2\n}\ntype = setflag\nwhich = JX_R14_INDIA_AUTONOMY_SOVEREIGN_REFUND_DUE",
-          "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_DELIVERED\n\t}\n\tflag = JX_TIME_28600451_2\n}\ntype = trigger\nwhich = \"28602920\"",
+          "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_DELIVERED\n\t}\n\tflag = JX_TIME_28600451_2\n}\ntype = trigger\nwhich = 28602920",
           "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_DELIVERED\n\t}\n\tflag = JX_TIME_28600451_2\n}\ntype = setflag\nwhich = JX_R14_INDIA_AUTONOMY_SOVEREIGN_DELIVERED"
         ],
         "gate": "flag = JX_R14_INDIA_AUTONOMY_SOVEREIGN NOT = { flag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_DELIVERED } flag = JX_TIME_28600451_2",
@@ -226960,7 +226965,7 @@
         "name": "Recover the unused investment",
         "commands": [
           "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_FINISHED\n\t}\n\tflag = JX_TIME_28602918_360\n\tNOT = {\n\t\texists = IND\n\t}\n}\ntype = setflag\nwhich = JX_R14_INDIA_AUTONOMY_SOVEREIGN_REFUND_DUE",
-          "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_FINISHED\n\t}\n\tflag = JX_TIME_28602918_360\n\tNOT = {\n\t\texists = IND\n\t}\n}\ntype = trigger\nwhich = \"28602920\"",
+          "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_FINISHED\n\t}\n\tflag = JX_TIME_28602918_360\n\tNOT = {\n\t\texists = IND\n\t}\n}\ntype = trigger\nwhich = 28602920",
           "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_FINISHED\n\t}\n\tflag = JX_TIME_28602918_360\n\tNOT = {\n\t\texists = IND\n\t}\n}\ntype = setflag\nwhich = JX_R14_INDIA_AUTONOMY_SOVEREIGN_FINISHED"
         ],
         "gate": "flag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_ACCEPTED NOT = { flag = JX_R14_INDIA_AUTONOMY_SOVEREIGN_FINISHED } flag = JX_TIME_28602918_360 NOT = { exists = IND }",
@@ -227029,7 +227034,7 @@
           "trigger = { flag = JX_R14_INDIA_AUTONOMY_CIVILIAN NOT = { flag = JX_R14_INDIA_AUTONOMY_CIVILIAN_DELIVERED } exists = JAP NOT = { war = { country = IND country = JAP } } puppet = { country = IND country = JAP } atwar = no NOT = { atwar = JAP } flag = JX_TIME_28600451_1 } type = event which = 28603014 where = JAP when = 360",
           "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_DELIVERED\n\t}\n\texists = JAP\n\tNOT = {\n\t\twar = {\n\t\t\tcountry = IND\n\t\t\tcountry = JAP\n\t\t}\n\t}\n\tpuppet = {\n\t\tcountry = IND\n\t\tcountry = JAP\n\t}\n\tatwar = no\n\tNOT = {\n\t\tatwar = JAP\n\t}\n\tflag = JX_TIME_28600451_1\n}\ntype = access\nwhich = JAP",
           "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_DELIVERED\n\t}\n\texists = JAP\n\tNOT = {\n\t\twar = {\n\t\t\tcountry = IND\n\t\t\tcountry = JAP\n\t\t}\n\t}\n\tpuppet = {\n\t\tcountry = IND\n\t\tcountry = JAP\n\t}\n\tatwar = no\n\tNOT = {\n\t\tatwar = JAP\n\t}\n\tflag = JX_TIME_28600451_1\n}\ntype = setflag\nwhich = JX_R14_INDIA_AUTONOMY_CIVILIAN_ACCEPTED",
-          "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_DELIVERED\n\t}\n\texists = JAP\n\tNOT = {\n\t\twar = {\n\t\t\tcountry = IND\n\t\t\tcountry = JAP\n\t\t}\n\t}\n\tpuppet = {\n\t\tcountry = IND\n\t\tcountry = JAP\n\t}\n\tatwar = no\n\tNOT = {\n\t\tatwar = JAP\n\t}\n\tflag = JX_TIME_28600451_1\n}\ntype = event\nwhich = \"28603078\"\nwhere = IND\nwhen = 360",
+          "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_DELIVERED\n\t}\n\texists = JAP\n\tNOT = {\n\t\twar = {\n\t\t\tcountry = IND\n\t\t\tcountry = JAP\n\t\t}\n\t}\n\tpuppet = {\n\t\tcountry = IND\n\t\tcountry = JAP\n\t}\n\tatwar = no\n\tNOT = {\n\t\tatwar = JAP\n\t}\n\tflag = JX_TIME_28600451_1\n}\ntype = event\nwhich = 28603078\nwhere = IND\nwhen = 360",
           "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_DELIVERED\n\t}\n\texists = JAP\n\tNOT = {\n\t\twar = {\n\t\t\tcountry = IND\n\t\t\tcountry = JAP\n\t\t}\n\t}\n\tpuppet = {\n\t\tcountry = IND\n\t\tcountry = JAP\n\t}\n\tatwar = no\n\tNOT = {\n\t\tatwar = JAP\n\t}\n\tflag = JX_TIME_28600451_1\n}\ntype = setflag\nwhich = JX_R14_INDIA_AUTONOMY_CIVILIAN_DELIVERED"
         ],
         "gate": "flag = JX_R14_INDIA_AUTONOMY_CIVILIAN NOT = { flag = JX_R14_INDIA_AUTONOMY_CIVILIAN_DELIVERED } exists = JAP NOT = { war = { country = IND country = JAP } } puppet = { country = IND country = JAP } atwar = no NOT = { atwar = JAP } flag = JX_TIME_28600451_1",
@@ -227041,7 +227046,7 @@
           "trigger = { flag = JX_R14_INDIA_AUTONOMY_CIVILIAN NOT = { flag = JX_R14_INDIA_AUTONOMY_CIVILIAN_DELIVERED } flag = JX_TIME_28600451_1 NOT = { AND = { exists = JAP NOT = { war = { country = IND country = JAP } } puppet = { country = IND country = JAP } atwar = no NOT = { atwar = JAP } } } } type = clrflag which = JX_TIME_28602924_360",
           "trigger = { flag = JX_R14_INDIA_AUTONOMY_CIVILIAN NOT = { flag = JX_R14_INDIA_AUTONOMY_CIVILIAN_DELIVERED } flag = JX_TIME_28600451_1 NOT = { AND = { exists = JAP NOT = { war = { country = IND country = JAP } } puppet = { country = IND country = JAP } atwar = no NOT = { atwar = JAP } } } } type = event which = 28603014 where = JAP when = 360",
           "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_DELIVERED\n\t}\n\tflag = JX_TIME_28600451_1\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = IND\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tpuppet = {\n\t\t\t\tcountry = IND\n\t\t\t\tcountry = JAP\n\t\t\t}\n\t\t\tatwar = no\n\t\t\tNOT = {\n\t\t\t\tatwar = JAP\n\t\t\t}\n\t\t}\n\t}\n}\ntype = setflag\nwhich = JX_R14_INDIA_AUTONOMY_CIVILIAN_REFUND_DUE",
-          "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_DELIVERED\n\t}\n\tflag = JX_TIME_28600451_1\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = IND\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tpuppet = {\n\t\t\t\tcountry = IND\n\t\t\t\tcountry = JAP\n\t\t\t}\n\t\t\tatwar = no\n\t\t\tNOT = {\n\t\t\t\tatwar = JAP\n\t\t\t}\n\t\t}\n\t}\n}\ntype = trigger\nwhich = \"28602926\"",
+          "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_DELIVERED\n\t}\n\tflag = JX_TIME_28600451_1\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = IND\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tpuppet = {\n\t\t\t\tcountry = IND\n\t\t\t\tcountry = JAP\n\t\t\t}\n\t\t\tatwar = no\n\t\t\tNOT = {\n\t\t\t\tatwar = JAP\n\t\t\t}\n\t\t}\n\t}\n}\ntype = trigger\nwhich = 28602926",
           "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_DELIVERED\n\t}\n\tflag = JX_TIME_28600451_1\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = IND\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tpuppet = {\n\t\t\t\tcountry = IND\n\t\t\t\tcountry = JAP\n\t\t\t}\n\t\t\tatwar = no\n\t\t\tNOT = {\n\t\t\t\tatwar = JAP\n\t\t\t}\n\t\t}\n\t}\n}\ntype = setflag\nwhich = JX_R14_INDIA_AUTONOMY_CIVILIAN_DELIVERED"
         ],
         "gate": "flag = JX_R14_INDIA_AUTONOMY_CIVILIAN NOT = { flag = JX_R14_INDIA_AUTONOMY_CIVILIAN_DELIVERED } flag = JX_TIME_28600451_1 NOT = { AND = { exists = JAP NOT = { war = { country = IND country = JAP } } puppet = { country = IND country = JAP } atwar = no NOT = { atwar = JAP } } }",
@@ -227094,7 +227099,7 @@
         "name": "Return the unused Japanese investment",
         "commands": [
           "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_FINISHED\n\t}\n\tflag = JX_TIME_28602924_360\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = IND\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tpuppet = {\n\t\t\t\tcountry = IND\n\t\t\t\tcountry = JAP\n\t\t\t}\n\t\t\tatwar = no\n\t\t\tNOT = {\n\t\t\t\tatwar = JAP\n\t\t\t\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_WAR_BROKEN\n\t\t\t}\n\t\t\towned = {\n\t\t\t\tprovince = 1459\n\t\t\t\tdata = IND\n\t\t\t}\n\t\t\tcontrol = {\n\t\t\t\tprovince = 1459\n\t\t\t\tdata = IND\n\t\t\t}\n\t\t\ttechnology = 5800\n\t\t\tOR = {\n\t\t\t\tAND = {\n\t\t\t\t\tNOT = {\n\t\t\t\t\t\tbuilding = {\n\t\t\t\t\t\t\tprovince = 1459\n\t\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\t\tvalue = 2\n\t\t\t\t\t\t\twhen = now\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1459\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 0.31\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\tAND = {\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1459\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 2\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1459\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 31\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tNOT = {\n\t\t\t\tbuilding = {\n\t\t\t\t\tprovince = 1459\n\t\t\t\t\ttype = ic\n\t\t\t\t\tvalue = 197\n\t\t\t\t\twhen = now\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n}\ntype = setflag\nwhich = JX_R14_INDIA_AUTONOMY_CIVILIAN_REFUND_DUE",
-          "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_FINISHED\n\t}\n\tflag = JX_TIME_28602924_360\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = IND\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tpuppet = {\n\t\t\t\tcountry = IND\n\t\t\t\tcountry = JAP\n\t\t\t}\n\t\t\tatwar = no\n\t\t\tNOT = {\n\t\t\t\tatwar = JAP\n\t\t\t\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_WAR_BROKEN\n\t\t\t}\n\t\t\towned = {\n\t\t\t\tprovince = 1459\n\t\t\t\tdata = IND\n\t\t\t}\n\t\t\tcontrol = {\n\t\t\t\tprovince = 1459\n\t\t\t\tdata = IND\n\t\t\t}\n\t\t\ttechnology = 5800\n\t\t\tOR = {\n\t\t\t\tAND = {\n\t\t\t\t\tNOT = {\n\t\t\t\t\t\tbuilding = {\n\t\t\t\t\t\t\tprovince = 1459\n\t\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\t\tvalue = 2\n\t\t\t\t\t\t\twhen = now\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1459\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 0.31\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\tAND = {\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1459\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 2\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1459\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 31\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tNOT = {\n\t\t\t\tbuilding = {\n\t\t\t\t\tprovince = 1459\n\t\t\t\t\ttype = ic\n\t\t\t\t\tvalue = 197\n\t\t\t\t\twhen = now\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n}\ntype = trigger\nwhich = \"28602926\"",
+          "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_FINISHED\n\t}\n\tflag = JX_TIME_28602924_360\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = IND\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tpuppet = {\n\t\t\t\tcountry = IND\n\t\t\t\tcountry = JAP\n\t\t\t}\n\t\t\tatwar = no\n\t\t\tNOT = {\n\t\t\t\tatwar = JAP\n\t\t\t\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_WAR_BROKEN\n\t\t\t}\n\t\t\towned = {\n\t\t\t\tprovince = 1459\n\t\t\t\tdata = IND\n\t\t\t}\n\t\t\tcontrol = {\n\t\t\t\tprovince = 1459\n\t\t\t\tdata = IND\n\t\t\t}\n\t\t\ttechnology = 5800\n\t\t\tOR = {\n\t\t\t\tAND = {\n\t\t\t\t\tNOT = {\n\t\t\t\t\t\tbuilding = {\n\t\t\t\t\t\t\tprovince = 1459\n\t\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\t\tvalue = 2\n\t\t\t\t\t\t\twhen = now\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1459\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 0.31\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\tAND = {\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1459\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 2\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1459\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 31\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tNOT = {\n\t\t\t\tbuilding = {\n\t\t\t\t\tprovince = 1459\n\t\t\t\t\ttype = ic\n\t\t\t\t\tvalue = 197\n\t\t\t\t\twhen = now\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n}\ntype = trigger\nwhich = 28602926",
           "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_FINISHED\n\t}\n\tflag = JX_TIME_28602924_360\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = IND\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tpuppet = {\n\t\t\t\tcountry = IND\n\t\t\t\tcountry = JAP\n\t\t\t}\n\t\t\tatwar = no\n\t\t\tNOT = {\n\t\t\t\tatwar = JAP\n\t\t\t\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_WAR_BROKEN\n\t\t\t}\n\t\t\towned = {\n\t\t\t\tprovince = 1459\n\t\t\t\tdata = IND\n\t\t\t}\n\t\t\tcontrol = {\n\t\t\t\tprovince = 1459\n\t\t\t\tdata = IND\n\t\t\t}\n\t\t\ttechnology = 5800\n\t\t\tOR = {\n\t\t\t\tAND = {\n\t\t\t\t\tNOT = {\n\t\t\t\t\t\tbuilding = {\n\t\t\t\t\t\t\tprovince = 1459\n\t\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\t\tvalue = 2\n\t\t\t\t\t\t\twhen = now\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1459\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 0.31\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\tAND = {\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1459\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 2\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t\tbuilding = {\n\t\t\t\t\t\tprovince = 1459\n\t\t\t\t\t\ttype = infrastructure\n\t\t\t\t\t\tvalue = 31\n\t\t\t\t\t\twhen = now\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tNOT = {\n\t\t\t\tbuilding = {\n\t\t\t\t\tprovince = 1459\n\t\t\t\t\ttype = ic\n\t\t\t\t\tvalue = 197\n\t\t\t\t\twhen = now\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n}\ntype = setflag\nwhich = JX_R14_INDIA_AUTONOMY_CIVILIAN_FINISHED"
         ],
         "gate": "flag = JX_R14_INDIA_AUTONOMY_CIVILIAN_ACCEPTED NOT = { flag = JX_R14_INDIA_AUTONOMY_CIVILIAN_FINISHED } flag = JX_TIME_28602924_360 NOT = { AND = { exists = JAP NOT = { war = { country = IND country = JAP } } puppet = { country = IND country = JAP } atwar = no NOT = { atwar = JAP flag = JX_R14_INDIA_AUTONOMY_CIVILIAN_WAR_BROKEN } owned = { province = 1459 data = IND } control = { province = 1459 data = IND } technology = 5800 OR = { AND = { NOT = { building = { province = 1459 type = infrastructure value = 2 when = now } } building = { province = 1459 type = infrastructure value = 0.31 when = now } } AND = { building = { province = 1459 type = infrastructure value = 2 when = now } building = { province = 1459 type = infrastructure value = 31 when = now } } } NOT = { building = { province = 1459 type = ic value = 197 when = now } } } }",
@@ -227174,7 +227179,7 @@
         "name": "",
         "commands": [
           "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_DELIVERED\n\t}\n\tflag = JX_TIME_28600451_2\n}\ntype = setflag\nwhich = JX_R14_INDIA_AUTONOMY_CIVILIAN_REFUND_DUE",
-          "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_DELIVERED\n\t}\n\tflag = JX_TIME_28600451_2\n}\ntype = trigger\nwhich = \"28602926\"",
+          "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_DELIVERED\n\t}\n\tflag = JX_TIME_28600451_2\n}\ntype = trigger\nwhich = 28602926",
           "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_DELIVERED\n\t}\n\tflag = JX_TIME_28600451_2\n}\ntype = setflag\nwhich = JX_R14_INDIA_AUTONOMY_CIVILIAN_DELIVERED"
         ],
         "gate": "flag = JX_R14_INDIA_AUTONOMY_CIVILIAN NOT = { flag = JX_R14_INDIA_AUTONOMY_CIVILIAN_DELIVERED } flag = JX_TIME_28600451_2",
@@ -227215,7 +227220,7 @@
         "name": "Recover the unused investment",
         "commands": [
           "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_FINISHED\n\t}\n\tflag = JX_TIME_28602924_360\n\tNOT = {\n\t\texists = IND\n\t}\n}\ntype = setflag\nwhich = JX_R14_INDIA_AUTONOMY_CIVILIAN_REFUND_DUE",
-          "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_FINISHED\n\t}\n\tflag = JX_TIME_28602924_360\n\tNOT = {\n\t\texists = IND\n\t}\n}\ntype = trigger\nwhich = \"28602926\"",
+          "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_FINISHED\n\t}\n\tflag = JX_TIME_28602924_360\n\tNOT = {\n\t\texists = IND\n\t}\n}\ntype = trigger\nwhich = 28602926",
           "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_CIVILIAN_FINISHED\n\t}\n\tflag = JX_TIME_28602924_360\n\tNOT = {\n\t\texists = IND\n\t}\n}\ntype = setflag\nwhich = JX_R14_INDIA_AUTONOMY_CIVILIAN_FINISHED"
         ],
         "gate": "flag = JX_R14_INDIA_AUTONOMY_CIVILIAN_ACCEPTED NOT = { flag = JX_R14_INDIA_AUTONOMY_CIVILIAN_FINISHED } flag = JX_TIME_28602924_360 NOT = { exists = IND }",
@@ -227284,7 +227289,7 @@
           "trigger = { flag = JX_R14_INDIA_AUTONOMY_MILITARY NOT = { flag = JX_R14_INDIA_AUTONOMY_MILITARY_DELIVERED } exists = JAP NOT = { war = { country = IND country = JAP } } puppet = { country = IND country = JAP } flag = JX_TIME_28600451_1 } type = event which = 28603015 where = JAP when = 180",
           "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_MILITARY\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_MILITARY_DELIVERED\n\t}\n\texists = JAP\n\tNOT = {\n\t\twar = {\n\t\t\tcountry = IND\n\t\t\tcountry = JAP\n\t\t}\n\t}\n\tpuppet = {\n\t\tcountry = IND\n\t\tcountry = JAP\n\t}\n\tflag = JX_TIME_28600451_1\n}\ntype = access\nwhich = JAP",
           "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_MILITARY\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_MILITARY_DELIVERED\n\t}\n\texists = JAP\n\tNOT = {\n\t\twar = {\n\t\t\tcountry = IND\n\t\t\tcountry = JAP\n\t\t}\n\t}\n\tpuppet = {\n\t\tcountry = IND\n\t\tcountry = JAP\n\t}\n\tflag = JX_TIME_28600451_1\n}\ntype = setflag\nwhich = JX_R14_INDIA_AUTONOMY_MILITARY_ACCEPTED",
-          "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_MILITARY\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_MILITARY_DELIVERED\n\t}\n\texists = JAP\n\tNOT = {\n\t\twar = {\n\t\t\tcountry = IND\n\t\t\tcountry = JAP\n\t\t}\n\t}\n\tpuppet = {\n\t\tcountry = IND\n\t\tcountry = JAP\n\t}\n\tflag = JX_TIME_28600451_1\n}\ntype = event\nwhich = \"28603079\"\nwhere = IND\nwhen = 180",
+          "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_MILITARY\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_MILITARY_DELIVERED\n\t}\n\texists = JAP\n\tNOT = {\n\t\twar = {\n\t\t\tcountry = IND\n\t\t\tcountry = JAP\n\t\t}\n\t}\n\tpuppet = {\n\t\tcountry = IND\n\t\tcountry = JAP\n\t}\n\tflag = JX_TIME_28600451_1\n}\ntype = event\nwhich = 28603079\nwhere = IND\nwhen = 180",
           "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_MILITARY\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_MILITARY_DELIVERED\n\t}\n\texists = JAP\n\tNOT = {\n\t\twar = {\n\t\t\tcountry = IND\n\t\t\tcountry = JAP\n\t\t}\n\t}\n\tpuppet = {\n\t\tcountry = IND\n\t\tcountry = JAP\n\t}\n\tflag = JX_TIME_28600451_1\n}\ntype = setflag\nwhich = JX_R14_INDIA_AUTONOMY_MILITARY_DELIVERED"
         ],
         "gate": "flag = JX_R14_INDIA_AUTONOMY_MILITARY NOT = { flag = JX_R14_INDIA_AUTONOMY_MILITARY_DELIVERED } exists = JAP NOT = { war = { country = IND country = JAP } } puppet = { country = IND country = JAP } flag = JX_TIME_28600451_1",
@@ -227296,7 +227301,7 @@
           "trigger = { flag = JX_R14_INDIA_AUTONOMY_MILITARY NOT = { flag = JX_R14_INDIA_AUTONOMY_MILITARY_DELIVERED } flag = JX_TIME_28600451_1 NOT = { AND = { exists = JAP NOT = { war = { country = IND country = JAP } } puppet = { country = IND country = JAP } } } } type = clrflag which = JX_TIME_28602930_180",
           "trigger = { flag = JX_R14_INDIA_AUTONOMY_MILITARY NOT = { flag = JX_R14_INDIA_AUTONOMY_MILITARY_DELIVERED } flag = JX_TIME_28600451_1 NOT = { AND = { exists = JAP NOT = { war = { country = IND country = JAP } } puppet = { country = IND country = JAP } } } } type = event which = 28603015 where = JAP when = 180",
           "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_MILITARY\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_MILITARY_DELIVERED\n\t}\n\tflag = JX_TIME_28600451_1\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = IND\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tpuppet = {\n\t\t\t\tcountry = IND\n\t\t\t\tcountry = JAP\n\t\t\t}\n\t\t}\n\t}\n}\ntype = setflag\nwhich = JX_R14_INDIA_AUTONOMY_MILITARY_REFUND_DUE",
-          "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_MILITARY\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_MILITARY_DELIVERED\n\t}\n\tflag = JX_TIME_28600451_1\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = IND\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tpuppet = {\n\t\t\t\tcountry = IND\n\t\t\t\tcountry = JAP\n\t\t\t}\n\t\t}\n\t}\n}\ntype = trigger\nwhich = \"28602932\"",
+          "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_MILITARY\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_MILITARY_DELIVERED\n\t}\n\tflag = JX_TIME_28600451_1\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = IND\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tpuppet = {\n\t\t\t\tcountry = IND\n\t\t\t\tcountry = JAP\n\t\t\t}\n\t\t}\n\t}\n}\ntype = trigger\nwhich = 28602932",
           "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_MILITARY\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_MILITARY_DELIVERED\n\t}\n\tflag = JX_TIME_28600451_1\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = IND\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tpuppet = {\n\t\t\t\tcountry = IND\n\t\t\t\tcountry = JAP\n\t\t\t}\n\t\t}\n\t}\n}\ntype = setflag\nwhich = JX_R14_INDIA_AUTONOMY_MILITARY_DELIVERED"
         ],
         "gate": "flag = JX_R14_INDIA_AUTONOMY_MILITARY NOT = { flag = JX_R14_INDIA_AUTONOMY_MILITARY_DELIVERED } flag = JX_TIME_28600451_1 NOT = { AND = { exists = JAP NOT = { war = { country = IND country = JAP } } puppet = { country = IND country = JAP } } }",
@@ -227349,7 +227354,7 @@
         "name": "Return the unused Japanese investment",
         "commands": [
           "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_MILITARY_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_MILITARY_FINISHED\n\t}\n\tflag = JX_TIME_28602930_180\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = IND\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tpuppet = {\n\t\t\t\tcountry = IND\n\t\t\t\tcountry = JAP\n\t\t\t}\n\t\t}\n\t}\n}\ntype = setflag\nwhich = JX_R14_INDIA_AUTONOMY_MILITARY_REFUND_DUE",
-          "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_MILITARY_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_MILITARY_FINISHED\n\t}\n\tflag = JX_TIME_28602930_180\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = IND\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tpuppet = {\n\t\t\t\tcountry = IND\n\t\t\t\tcountry = JAP\n\t\t\t}\n\t\t}\n\t}\n}\ntype = trigger\nwhich = \"28602932\"",
+          "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_MILITARY_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_MILITARY_FINISHED\n\t}\n\tflag = JX_TIME_28602930_180\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = IND\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tpuppet = {\n\t\t\t\tcountry = IND\n\t\t\t\tcountry = JAP\n\t\t\t}\n\t\t}\n\t}\n}\ntype = trigger\nwhich = 28602932",
           "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_MILITARY_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_MILITARY_FINISHED\n\t}\n\tflag = JX_TIME_28602930_180\n\tNOT = {\n\t\tAND = {\n\t\t\texists = JAP\n\t\t\tNOT = {\n\t\t\t\twar = {\n\t\t\t\t\tcountry = IND\n\t\t\t\t\tcountry = JAP\n\t\t\t\t}\n\t\t\t}\n\t\t\tpuppet = {\n\t\t\t\tcountry = IND\n\t\t\t\tcountry = JAP\n\t\t\t}\n\t\t}\n\t}\n}\ntype = setflag\nwhich = JX_R14_INDIA_AUTONOMY_MILITARY_FINISHED"
         ],
         "gate": "flag = JX_R14_INDIA_AUTONOMY_MILITARY_ACCEPTED NOT = { flag = JX_R14_INDIA_AUTONOMY_MILITARY_FINISHED } flag = JX_TIME_28602930_180 NOT = { AND = { exists = JAP NOT = { war = { country = IND country = JAP } } puppet = { country = IND country = JAP } } }",
@@ -227429,7 +227434,7 @@
         "name": "",
         "commands": [
           "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_MILITARY\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_MILITARY_DELIVERED\n\t}\n\tflag = JX_TIME_28600451_2\n}\ntype = setflag\nwhich = JX_R14_INDIA_AUTONOMY_MILITARY_REFUND_DUE",
-          "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_MILITARY\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_MILITARY_DELIVERED\n\t}\n\tflag = JX_TIME_28600451_2\n}\ntype = trigger\nwhich = \"28602932\"",
+          "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_MILITARY\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_MILITARY_DELIVERED\n\t}\n\tflag = JX_TIME_28600451_2\n}\ntype = trigger\nwhich = 28602932",
           "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_MILITARY\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_MILITARY_DELIVERED\n\t}\n\tflag = JX_TIME_28600451_2\n}\ntype = setflag\nwhich = JX_R14_INDIA_AUTONOMY_MILITARY_DELIVERED"
         ],
         "gate": "flag = JX_R14_INDIA_AUTONOMY_MILITARY NOT = { flag = JX_R14_INDIA_AUTONOMY_MILITARY_DELIVERED } flag = JX_TIME_28600451_2",
@@ -227470,7 +227475,7 @@
         "name": "Recover the unused investment",
         "commands": [
           "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_MILITARY_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_MILITARY_FINISHED\n\t}\n\tflag = JX_TIME_28602930_180\n\tNOT = {\n\t\texists = IND\n\t}\n}\ntype = setflag\nwhich = JX_R14_INDIA_AUTONOMY_MILITARY_REFUND_DUE",
-          "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_MILITARY_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_MILITARY_FINISHED\n\t}\n\tflag = JX_TIME_28602930_180\n\tNOT = {\n\t\texists = IND\n\t}\n}\ntype = trigger\nwhich = \"28602932\"",
+          "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_MILITARY_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_MILITARY_FINISHED\n\t}\n\tflag = JX_TIME_28602930_180\n\tNOT = {\n\t\texists = IND\n\t}\n}\ntype = trigger\nwhich = 28602932",
           "trigger = {\n\tflag = JX_R14_INDIA_AUTONOMY_MILITARY_ACCEPTED\n\tNOT = {\n\t\tflag = JX_R14_INDIA_AUTONOMY_MILITARY_FINISHED\n\t}\n\tflag = JX_TIME_28602930_180\n\tNOT = {\n\t\texists = IND\n\t}\n}\ntype = setflag\nwhich = JX_R14_INDIA_AUTONOMY_MILITARY_FINISHED"
         ],
         "gate": "flag = JX_R14_INDIA_AUTONOMY_MILITARY_ACCEPTED NOT = { flag = JX_R14_INDIA_AUTONOMY_MILITARY_FINISHED } flag = JX_TIME_28602930_180 NOT = { exists = IND }",
@@ -227508,7 +227513,7 @@
           "trigger = {\n\tNOT = {\n\t\tflag = JX_R14_ARMISTICE_BROKEN\n\t}\n\tflag = JX_US_RETURN_HAWAII\n\tflag = JX_R14_R14_AMERICAN_FUTURE_COMMERCE_PENDING_EXECUTING\n}\ntype = money\nvalue = -600",
           "trigger = {\n\tNOT = {\n\t\tflag = JX_R14_ARMISTICE_BROKEN\n\t}\n\tflag = JX_US_RETURN_HAWAII\n\tflag = JX_R14_R14_AMERICAN_FUTURE_COMMERCE_PENDING_EXECUTING\n}\ntype = supplies\nvalue = -3000",
           "trigger = {\n\tNOT = {\n\t\tflag = JX_R14_ARMISTICE_BROKEN\n\t}\n\tflag = JX_US_RETURN_HAWAII\n\tflag = JX_R14_R14_AMERICAN_FUTURE_COMMERCE_PENDING_EXECUTING\n}\ntype = setflag\nwhich = JX_R14_AMERICAN_FUTURE_CHOSEN",
-          "trigger = {\n\tNOT = {\n\t\tflag = JX_R14_ARMISTICE_BROKEN\n\t}\n\tflag = JX_US_RETURN_HAWAII\n\tflag = JX_R14_R14_AMERICAN_FUTURE_COMMERCE_PENDING_EXECUTING\n}\ntype = event\nwhich = \"28603080\"\nwhere = JAP\nwhen = 180",
+          "trigger = {\n\tNOT = {\n\t\tflag = JX_R14_ARMISTICE_BROKEN\n\t}\n\tflag = JX_US_RETURN_HAWAII\n\tflag = JX_R14_R14_AMERICAN_FUTURE_COMMERCE_PENDING_EXECUTING\n}\ntype = event\nwhich = 28603080\nwhere = JAP\nwhen = 180",
           "trigger = {\n\tNOT = {\n\t\tflag = JX_R14_ARMISTICE_BROKEN\n\t}\n\tflag = JX_US_RETURN_HAWAII\n\tflag = JX_R14_R14_AMERICAN_FUTURE_COMMERCE_PENDING_EXECUTING\n}\ntype = setflag\nwhich = JX_R14_R14_AMERICAN_FUTURE_COMMERCE_PENDING",
           "trigger = {\n\tNOT = {\n\t\tflag = JX_R14_ARMISTICE_BROKEN\n\t}\n\tflag = JX_US_RETURN_HAWAII\n\tflag = JX_R14_R14_AMERICAN_FUTURE_COMMERCE_PENDING_EXECUTING\n}\ntype = clrflag\nwhich = JX_R14_R14_AMERICAN_FUTURE_COMMERCE_PENDING_EXECUTING"
         ],
@@ -227523,7 +227528,7 @@
           "trigger = {\n\tNOT = {\n\t\tflag = JX_R14_ARMISTICE_BROKEN\n\t}\n\tflag = JX_US_KEEP_HAWAII\n\tflag = JX_R14_R14_AMERICAN_FUTURE_HAWAII_PENDING_EXECUTING\n}\ntype = supplies\nvalue = -5000",
           "trigger = {\n\tNOT = {\n\t\tflag = JX_R14_ARMISTICE_BROKEN\n\t}\n\tflag = JX_US_KEEP_HAWAII\n\tflag = JX_R14_R14_AMERICAN_FUTURE_HAWAII_PENDING_EXECUTING\n}\ntype = oilpool\nvalue = -3000",
           "trigger = {\n\tNOT = {\n\t\tflag = JX_R14_ARMISTICE_BROKEN\n\t}\n\tflag = JX_US_KEEP_HAWAII\n\tflag = JX_R14_R14_AMERICAN_FUTURE_HAWAII_PENDING_EXECUTING\n}\ntype = setflag\nwhich = JX_R14_AMERICAN_FUTURE_CHOSEN",
-          "trigger = {\n\tNOT = {\n\t\tflag = JX_R14_ARMISTICE_BROKEN\n\t}\n\tflag = JX_US_KEEP_HAWAII\n\tflag = JX_R14_R14_AMERICAN_FUTURE_HAWAII_PENDING_EXECUTING\n}\ntype = event\nwhich = \"28603081\"\nwhere = JAP\nwhen = 180",
+          "trigger = {\n\tNOT = {\n\t\tflag = JX_R14_ARMISTICE_BROKEN\n\t}\n\tflag = JX_US_KEEP_HAWAII\n\tflag = JX_R14_R14_AMERICAN_FUTURE_HAWAII_PENDING_EXECUTING\n}\ntype = event\nwhich = 28603081\nwhere = JAP\nwhen = 180",
           "trigger = {\n\tNOT = {\n\t\tflag = JX_R14_ARMISTICE_BROKEN\n\t}\n\tflag = JX_US_KEEP_HAWAII\n\tflag = JX_R14_R14_AMERICAN_FUTURE_HAWAII_PENDING_EXECUTING\n}\ntype = setflag\nwhich = JX_R14_R14_AMERICAN_FUTURE_HAWAII_PENDING",
           "trigger = {\n\tNOT = {\n\t\tflag = JX_R14_ARMISTICE_BROKEN\n\t}\n\tflag = JX_US_KEEP_HAWAII\n\tflag = JX_R14_R14_AMERICAN_FUTURE_HAWAII_PENDING_EXECUTING\n}\ntype = clrflag\nwhich = JX_R14_R14_AMERICAN_FUTURE_HAWAII_PENDING_EXECUTING"
         ],
@@ -227572,7 +227577,7 @@
           "trigger = {\n\tflag = JX_R14_R14_AMERICAN_FUTURE_COMMERCE_PENDING\n\tNOT = {\n\t\tflag = JX_R14_R14_AMERICAN_FUTURE_COMMERCE_CLOSED\n\t}\n\tflag = JX_TIME_28602935_180\n\tai = no\n\tNOT = {\n\t\tispuppet = JAP\n\t}\n\tflag = JX_ACTIVE\n\tflag = JX_US_PEACE\n\texists = USA\n\tNOT = {\n\t\twar = {\n\t\t\tcountry = JAP\n\t\t\tcountry = USA\n\t\t}\n\t\tflag = JX_R14_ARMISTICE_BROKEN\n\t}\n\tflag = JX_US_RETURN_HAWAII\n}\ntype = oilpool\nvalue = 12000",
           "trigger = {\n\tflag = JX_R14_R14_AMERICAN_FUTURE_COMMERCE_PENDING\n\tNOT = {\n\t\tflag = JX_R14_R14_AMERICAN_FUTURE_COMMERCE_CLOSED\n\t}\n\tflag = JX_TIME_28602935_180\n\tai = no\n\tNOT = {\n\t\tispuppet = JAP\n\t}\n\tflag = JX_ACTIVE\n\tflag = JX_US_PEACE\n\texists = USA\n\tNOT = {\n\t\twar = {\n\t\t\tcountry = JAP\n\t\t\tcountry = USA\n\t\t}\n\t\tflag = JX_R14_ARMISTICE_BROKEN\n\t}\n\tflag = JX_US_RETURN_HAWAII\n}\ntype = metalpool\nvalue = 12000",
           "trigger = {\n\tflag = JX_R14_R14_AMERICAN_FUTURE_COMMERCE_PENDING\n\tNOT = {\n\t\tflag = JX_R14_R14_AMERICAN_FUTURE_COMMERCE_CLOSED\n\t}\n\tflag = JX_TIME_28602935_180\n\tai = no\n\tNOT = {\n\t\tispuppet = JAP\n\t}\n\tflag = JX_ACTIVE\n\tflag = JX_US_PEACE\n\texists = USA\n\tNOT = {\n\t\twar = {\n\t\t\tcountry = JAP\n\t\t\tcountry = USA\n\t\t}\n\t\tflag = JX_R14_ARMISTICE_BROKEN\n\t}\n\tflag = JX_US_RETURN_HAWAII\n}\ntype = rarematerialspool\nvalue = 6000",
-          "trigger = {\n\tflag = JX_R14_R14_AMERICAN_FUTURE_COMMERCE_PENDING\n\tNOT = {\n\t\tflag = JX_R14_R14_AMERICAN_FUTURE_COMMERCE_CLOSED\n\t}\n\tflag = JX_TIME_28602935_180\n\tai = no\n\tNOT = {\n\t\tispuppet = JAP\n\t}\n\tflag = JX_ACTIVE\n\tflag = JX_US_PEACE\n\texists = USA\n\tNOT = {\n\t\twar = {\n\t\t\tcountry = JAP\n\t\t\tcountry = USA\n\t\t}\n\t\tflag = JX_R14_ARMISTICE_BROKEN\n\t}\n\tflag = JX_US_RETURN_HAWAII\n}\ntype = event\nwhich = \"28602939\"\nwhere = USA\nwhen = 1",
+          "trigger = {\n\tflag = JX_R14_R14_AMERICAN_FUTURE_COMMERCE_PENDING\n\tNOT = {\n\t\tflag = JX_R14_R14_AMERICAN_FUTURE_COMMERCE_CLOSED\n\t}\n\tflag = JX_TIME_28602935_180\n\tai = no\n\tNOT = {\n\t\tispuppet = JAP\n\t}\n\tflag = JX_ACTIVE\n\tflag = JX_US_PEACE\n\texists = USA\n\tNOT = {\n\t\twar = {\n\t\t\tcountry = JAP\n\t\t\tcountry = USA\n\t\t}\n\t\tflag = JX_R14_ARMISTICE_BROKEN\n\t}\n\tflag = JX_US_RETURN_HAWAII\n}\ntype = event\nwhich = 28602939\nwhere = USA\nwhen = 1",
           "trigger = {\n\tflag = JX_R14_R14_AMERICAN_FUTURE_COMMERCE_PENDING\n\tNOT = {\n\t\tflag = JX_R14_R14_AMERICAN_FUTURE_COMMERCE_CLOSED\n\t}\n\tflag = JX_TIME_28602935_180\n\tai = no\n\tNOT = {\n\t\tispuppet = JAP\n\t}\n\tflag = JX_ACTIVE\n\tflag = JX_US_PEACE\n\texists = USA\n\tNOT = {\n\t\twar = {\n\t\t\tcountry = JAP\n\t\t\tcountry = USA\n\t\t}\n\t\tflag = JX_R14_ARMISTICE_BROKEN\n\t}\n\tflag = JX_US_RETURN_HAWAII\n}\ntype = setflag\nwhich = JX_R14_R14_AMERICAN_FUTURE_COMMERCE_CLOSED"
         ],
         "gate": "flag = JX_R14_R14_AMERICAN_FUTURE_COMMERCE_PENDING NOT = { flag = JX_R14_R14_AMERICAN_FUTURE_COMMERCE_CLOSED } flag = JX_TIME_28602935_180 ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE flag = JX_US_PEACE exists = USA NOT = { war = { country = JAP country = USA } flag = JX_R14_ARMISTICE_BROKEN } flag = JX_US_RETURN_HAWAII",
@@ -227625,7 +227630,7 @@
           "trigger = {\n\tflag = JX_R14_R14_AMERICAN_FUTURE_HAWAII_PENDING\n\tNOT = {\n\t\tflag = JX_R14_R14_AMERICAN_FUTURE_HAWAII_CLOSED\n\t}\n\tflag = JX_TIME_28602935_180\n\tai = no\n\tNOT = {\n\t\tispuppet = JAP\n\t}\n\tflag = JX_ACTIVE\n\tflag = JX_US_PEACE\n\texists = USA\n\tNOT = {\n\t\twar = {\n\t\t\tcountry = JAP\n\t\t\tcountry = USA\n\t\t}\n\t\tflag = JX_R14_ARMISTICE_BROKEN\n\t}\n\tflag = JX_US_KEEP_HAWAII\n\ttechnology = 2800\n\towned = {\n\t\tprovince = 1734\n\t\tdata = JAP\n\t}\n\tcontrol = {\n\t\tprovince = 1734\n\t\tdata = JAP\n\t}\n\tNOT = {\n\t\tbuilding = {\n\t\t\tprovince = 1734\n\t\t\ttype = coastal_fort\n\t\t\tvalue = 8\n\t\t\twhen = now\n\t\t}\n\t\tbuilding = {\n\t\t\tprovince = 1734\n\t\t\ttype = flak\n\t\t\tvalue = 8\n\t\t\twhen = now\n\t\t}\n\t}\n}\ntype = construct\nwhich = coastal_fort\nwhere = 1734\nvalue = 3",
           "trigger = {\n\tflag = JX_R14_R14_AMERICAN_FUTURE_HAWAII_PENDING\n\tNOT = {\n\t\tflag = JX_R14_R14_AMERICAN_FUTURE_HAWAII_CLOSED\n\t}\n\tflag = JX_TIME_28602935_180\n\tai = no\n\tNOT = {\n\t\tispuppet = JAP\n\t}\n\tflag = JX_ACTIVE\n\tflag = JX_US_PEACE\n\texists = USA\n\tNOT = {\n\t\twar = {\n\t\t\tcountry = JAP\n\t\t\tcountry = USA\n\t\t}\n\t\tflag = JX_R14_ARMISTICE_BROKEN\n\t}\n\tflag = JX_US_KEEP_HAWAII\n\ttechnology = 2800\n\towned = {\n\t\tprovince = 1734\n\t\tdata = JAP\n\t}\n\tcontrol = {\n\t\tprovince = 1734\n\t\tdata = JAP\n\t}\n\tNOT = {\n\t\tbuilding = {\n\t\t\tprovince = 1734\n\t\t\ttype = coastal_fort\n\t\t\tvalue = 8\n\t\t\twhen = now\n\t\t}\n\t\tbuilding = {\n\t\t\tprovince = 1734\n\t\t\ttype = flak\n\t\t\tvalue = 8\n\t\t\twhen = now\n\t\t}\n\t}\n}\ntype = construct\nwhich = flak\nwhere = 1734\nvalue = 3",
           "trigger = {\n\tflag = JX_R14_R14_AMERICAN_FUTURE_HAWAII_PENDING\n\tNOT = {\n\t\tflag = JX_R14_R14_AMERICAN_FUTURE_HAWAII_CLOSED\n\t}\n\tflag = JX_TIME_28602935_180\n\tai = no\n\tNOT = {\n\t\tispuppet = JAP\n\t}\n\tflag = JX_ACTIVE\n\tflag = JX_US_PEACE\n\texists = USA\n\tNOT = {\n\t\twar = {\n\t\t\tcountry = JAP\n\t\t\tcountry = USA\n\t\t}\n\t\tflag = JX_R14_ARMISTICE_BROKEN\n\t}\n\tflag = JX_US_KEEP_HAWAII\n\ttechnology = 2800\n\towned = {\n\t\tprovince = 1734\n\t\tdata = JAP\n\t}\n\tcontrol = {\n\t\tprovince = 1734\n\t\tdata = JAP\n\t}\n\tNOT = {\n\t\tbuilding = {\n\t\t\tprovince = 1734\n\t\t\ttype = coastal_fort\n\t\t\tvalue = 8\n\t\t\twhen = now\n\t\t}\n\t\tbuilding = {\n\t\t\tprovince = 1734\n\t\t\ttype = flak\n\t\t\tvalue = 8\n\t\t\twhen = now\n\t\t}\n\t}\n}\ntype = supplies\nvalue = 3000",
-          "trigger = {\n\tflag = JX_R14_R14_AMERICAN_FUTURE_HAWAII_PENDING\n\tNOT = {\n\t\tflag = JX_R14_R14_AMERICAN_FUTURE_HAWAII_CLOSED\n\t}\n\tflag = JX_TIME_28602935_180\n\tai = no\n\tNOT = {\n\t\tispuppet = JAP\n\t}\n\tflag = JX_ACTIVE\n\tflag = JX_US_PEACE\n\texists = USA\n\tNOT = {\n\t\twar = {\n\t\t\tcountry = JAP\n\t\t\tcountry = USA\n\t\t}\n\t\tflag = JX_R14_ARMISTICE_BROKEN\n\t}\n\tflag = JX_US_KEEP_HAWAII\n\ttechnology = 2800\n\towned = {\n\t\tprovince = 1734\n\t\tdata = JAP\n\t}\n\tcontrol = {\n\t\tprovince = 1734\n\t\tdata = JAP\n\t}\n\tNOT = {\n\t\tbuilding = {\n\t\t\tprovince = 1734\n\t\t\ttype = coastal_fort\n\t\t\tvalue = 8\n\t\t\twhen = now\n\t\t}\n\t\tbuilding = {\n\t\t\tprovince = 1734\n\t\t\ttype = flak\n\t\t\tvalue = 8\n\t\t\twhen = now\n\t\t}\n\t}\n}\ntype = event\nwhich = \"28602940\"\nwhere = USA\nwhen = 1",
+          "trigger = {\n\tflag = JX_R14_R14_AMERICAN_FUTURE_HAWAII_PENDING\n\tNOT = {\n\t\tflag = JX_R14_R14_AMERICAN_FUTURE_HAWAII_CLOSED\n\t}\n\tflag = JX_TIME_28602935_180\n\tai = no\n\tNOT = {\n\t\tispuppet = JAP\n\t}\n\tflag = JX_ACTIVE\n\tflag = JX_US_PEACE\n\texists = USA\n\tNOT = {\n\t\twar = {\n\t\t\tcountry = JAP\n\t\t\tcountry = USA\n\t\t}\n\t\tflag = JX_R14_ARMISTICE_BROKEN\n\t}\n\tflag = JX_US_KEEP_HAWAII\n\ttechnology = 2800\n\towned = {\n\t\tprovince = 1734\n\t\tdata = JAP\n\t}\n\tcontrol = {\n\t\tprovince = 1734\n\t\tdata = JAP\n\t}\n\tNOT = {\n\t\tbuilding = {\n\t\t\tprovince = 1734\n\t\t\ttype = coastal_fort\n\t\t\tvalue = 8\n\t\t\twhen = now\n\t\t}\n\t\tbuilding = {\n\t\t\tprovince = 1734\n\t\t\ttype = flak\n\t\t\tvalue = 8\n\t\t\twhen = now\n\t\t}\n\t}\n}\ntype = event\nwhich = 28602940\nwhere = USA\nwhen = 1",
           "trigger = {\n\tflag = JX_R14_R14_AMERICAN_FUTURE_HAWAII_PENDING\n\tNOT = {\n\t\tflag = JX_R14_R14_AMERICAN_FUTURE_HAWAII_CLOSED\n\t}\n\tflag = JX_TIME_28602935_180\n\tai = no\n\tNOT = {\n\t\tispuppet = JAP\n\t}\n\tflag = JX_ACTIVE\n\tflag = JX_US_PEACE\n\texists = USA\n\tNOT = {\n\t\twar = {\n\t\t\tcountry = JAP\n\t\t\tcountry = USA\n\t\t}\n\t\tflag = JX_R14_ARMISTICE_BROKEN\n\t}\n\tflag = JX_US_KEEP_HAWAII\n\ttechnology = 2800\n\towned = {\n\t\tprovince = 1734\n\t\tdata = JAP\n\t}\n\tcontrol = {\n\t\tprovince = 1734\n\t\tdata = JAP\n\t}\n\tNOT = {\n\t\tbuilding = {\n\t\t\tprovince = 1734\n\t\t\ttype = coastal_fort\n\t\t\tvalue = 8\n\t\t\twhen = now\n\t\t}\n\t\tbuilding = {\n\t\t\tprovince = 1734\n\t\t\ttype = flak\n\t\t\tvalue = 8\n\t\t\twhen = now\n\t\t}\n\t}\n}\ntype = setflag\nwhich = JX_R14_R14_AMERICAN_FUTURE_HAWAII_CLOSED"
         ],
         "gate": "flag = JX_R14_R14_AMERICAN_FUTURE_HAWAII_PENDING NOT = { flag = JX_R14_R14_AMERICAN_FUTURE_HAWAII_CLOSED } flag = JX_TIME_28602935_180 ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE flag = JX_US_PEACE exists = USA NOT = { war = { country = JAP country = USA } flag = JX_R14_ARMISTICE_BROKEN } flag = JX_US_KEEP_HAWAII technology = 2800 owned = { province = 1734 data = JAP } control = { province = 1734 data = JAP } NOT = { building = { province = 1734 type = coastal_fort value = 8 when = now } building = { province = 1734 type = flak value = 8 when = now } }",
@@ -227835,7 +227840,7 @@
           "trigger = { flag = JX_ACTIVE exists = JAP NOT = { ai = JAP ispuppet = JAP } exists = USA war = { country = JAP country = USA } ai = USA NOT = { puppet = { country = USA country = JAP } } year = 1941 flag = JX_PACIFIC OR = { control = { province = 1734 data = JAP } } NOT = { flag = JX_R15_E_HAWAII_SEEN } } type = event which = 28603018 where = JAP when = 30",
           "trigger = { flag = JX_ACTIVE exists = JAP NOT = { ai = JAP ispuppet = JAP } exists = USA war = { country = JAP country = USA } ai = USA NOT = { puppet = { country = USA country = JAP } } year = 1941 flag = JX_PACIFIC OR = { control = { province = 1734 data = JAP } } NOT = { flag = JX_R15_E_HAWAII_SEEN } } type = setflag which = JX_R14_EXEC_694",
           "trigger = { flag = JX_R14_EXEC_694 } type = setflag which = JX_R15_E_HAWAII_SEEN",
-          "trigger = {\n\tflag = JX_R14_EXEC_694\n}\ntype = event\nwhich = \"28603082\"\nwhere = USA\nwhen = 30",
+          "trigger = {\n\tflag = JX_R14_EXEC_694\n}\ntype = event\nwhich = 28603082\nwhere = USA\nwhen = 30",
           "type = clrflag which = JX_R14_EXEC_694"
         ],
         "gate": "flag = JX_ACTIVE exists = JAP NOT = { ai = JAP ispuppet = JAP } exists = USA war = { country = JAP country = USA } ai = USA NOT = { puppet = { country = USA country = JAP } } year = 1941 flag = JX_PACIFIC OR = { control = { province = 1734 data = JAP } } NOT = { flag = JX_R15_E_HAWAII_SEEN }",
@@ -227918,9 +227923,9 @@
           "trigger = { flag = JX_R14_EXEC_696 } type = metalpool value = -2000",
           "trigger = { flag = JX_R14_EXEC_696 } type = setflag which = JX_R15_E_HAWAII_ORDERED",
           "trigger = { flag = JX_R14_EXEC_696 } type = ai which = \"jx/r15_hawaii.ai\"",
-          "trigger = {\n\tflag = JX_R14_EXEC_696\n}\ntype = event\nwhich = \"28603083\"\nwhere = USA\nwhen = 180",
+          "trigger = {\n\tflag = JX_R14_EXEC_696\n}\ntype = event\nwhich = 28603083\nwhere = USA\nwhen = 180",
           "trigger = { flag = JX_R14_EXEC_696 } type = event which = 28602946 where = JAP when = 1",
-          "trigger = {\n\tflag = JX_R14_EXEC_696\n}\ntype = event\nwhich = \"28603084\"\nwhere = JAP\nwhen = 181",
+          "trigger = {\n\tflag = JX_R14_EXEC_696\n}\ntype = event\nwhich = 28603084\nwhere = JAP\nwhen = 181",
           "type = clrflag which = JX_R14_EXEC_696"
         ],
         "gate": "flag = JX_R15_E_HAWAII_SEEN NOT = { flag = JX_R15_E_HAWAII_ORDERED flag = JX_R15_E_HAWAII_CLOSED } flag = JX_TIME_28602942_30 flag = JX_R15_E_HAWAII_PLAN flag = JX_ACTIVE exists = JAP NOT = { ai = JAP ispuppet = JAP } exists = USA war = { country = JAP country = USA } ai = USA NOT = { puppet = { country = USA country = JAP } } year = 1941 flag = JX_PACIFIC OR = { control = { province = 1734 data = JAP } } manpower = 60 money = 200 supplies = 12000 oil = 4000 metal = 2000 OR = { AND = { year = 1949 technology = 1630 } AND = { year = 1946 technology = 1620 } AND = { year = 1943 technology = 1610 } AND = { year = 1940 technology = 1600 } AND = { year = 1937 technology = 1590 } AND = { year = 1931 technology = 1580 } } OR = { AND = { year = 1945 technology = 3080 } AND = { year = 1941 technology = 12000 } AND = { year = 1937 technology = 3070 } AND = { year = 1933 technology = 3060 } } OR = { AND = { year = 1949 technology = 3850 } AND = { year = 1941 technology = 3840 } AND = { year = 1936 technology = 3830 } AND = { year = 1925 technology = 3820 } } OR = { AND = { owned = { province = 1886 data = USA } control = { province = 1886 data = USA } building = { province = 1886 type = naval_base value = 1 when = now } } AND = { owned = { province = 1887 data = USA } control = { province = 1887 data = USA } building = { province = 1887 type = naval_base value = 1 when = now } } AND = { owned = { province = 1889 data = USA } control = { province = 1889 data = USA } building = { province = 1889 type = naval_base value = 1 when = now } } }",
@@ -228556,7 +228561,7 @@
           "trigger = { flag = JX_ACTIVE exists = JAP NOT = { ai = JAP ispuppet = JAP } exists = AST war = { country = JAP country = AST } ai = AST NOT = { puppet = { country = AST country = JAP } } year = 1941 flag = JX_PACIFIC OR = { OR = { control = { province = 1726 data = JAP } } OR = { control = { province = 1607 data = JAP } AND = { exists = INO puppet = { country = INO country = JAP } control = { province = 1607 data = INO } NOT = { war = { country = JAP country = INO } } } } OR = { control = { province = 1697 data = JAP } AND = { exists = AST puppet = { country = AST country = JAP } control = { province = 1697 data = AST } NOT = { war = { country = JAP country = AST } } } } } NOT = { flag = JX_R15_E_AUSTRALIA_SEEN } } type = event which = 28603017 where = JAP when = 30",
           "trigger = { flag = JX_ACTIVE exists = JAP NOT = { ai = JAP ispuppet = JAP } exists = AST war = { country = JAP country = AST } ai = AST NOT = { puppet = { country = AST country = JAP } } year = 1941 flag = JX_PACIFIC OR = { OR = { control = { province = 1726 data = JAP } } OR = { control = { province = 1607 data = JAP } AND = { exists = INO puppet = { country = INO country = JAP } control = { province = 1607 data = INO } NOT = { war = { country = JAP country = INO } } } } OR = { control = { province = 1697 data = JAP } AND = { exists = AST puppet = { country = AST country = JAP } control = { province = 1697 data = AST } NOT = { war = { country = JAP country = AST } } } } } NOT = { flag = JX_R15_E_AUSTRALIA_SEEN } } type = setflag which = JX_R14_EXEC_708",
           "trigger = { flag = JX_R14_EXEC_708 } type = setflag which = JX_R15_E_AUSTRALIA_SEEN",
-          "trigger = {\n\tflag = JX_R14_EXEC_708\n}\ntype = event\nwhich = \"28603085\"\nwhere = AST\nwhen = 30",
+          "trigger = {\n\tflag = JX_R14_EXEC_708\n}\ntype = event\nwhich = 28603085\nwhere = AST\nwhen = 30",
           "type = clrflag which = JX_R14_EXEC_708"
         ],
         "gate": "flag = JX_ACTIVE exists = JAP NOT = { ai = JAP ispuppet = JAP } exists = AST war = { country = JAP country = AST } ai = AST NOT = { puppet = { country = AST country = JAP } } year = 1941 flag = JX_PACIFIC OR = { OR = { control = { province = 1726 data = JAP } } OR = { control = { province = 1607 data = JAP } AND = { exists = INO puppet = { country = INO country = JAP } control = { province = 1607 data = INO } NOT = { war = { country = JAP country = INO } } } } OR = { control = { province = 1697 data = JAP } AND = { exists = AST puppet = { country = AST country = JAP } control = { province = 1697 data = AST } NOT = { war = { country = JAP country = AST } } } } } NOT = { flag = JX_R15_E_AUSTRALIA_SEEN }",
@@ -228639,9 +228644,9 @@
           "trigger = { flag = JX_R14_EXEC_710 } type = metalpool value = -1000",
           "trigger = { flag = JX_R14_EXEC_710 } type = setflag which = JX_R15_E_AUSTRALIA_ORDERED",
           "trigger = { flag = JX_R14_EXEC_710 } type = ai which = \"jx/r15_australia.ai\"",
-          "trigger = {\n\tflag = JX_R14_EXEC_710\n}\ntype = event\nwhich = \"28603086\"\nwhere = AST\nwhen = 120",
+          "trigger = {\n\tflag = JX_R14_EXEC_710\n}\ntype = event\nwhich = 28603086\nwhere = AST\nwhen = 120",
           "trigger = { flag = JX_R14_EXEC_710 } type = event which = 28602955 where = JAP when = 1",
-          "trigger = {\n\tflag = JX_R14_EXEC_710\n}\ntype = event\nwhich = \"28603087\"\nwhere = JAP\nwhen = 121",
+          "trigger = {\n\tflag = JX_R14_EXEC_710\n}\ntype = event\nwhich = 28603087\nwhere = JAP\nwhen = 121",
           "type = clrflag which = JX_R14_EXEC_710"
         ],
         "gate": "flag = JX_R15_E_AUSTRALIA_SEEN NOT = { flag = JX_R15_E_AUSTRALIA_ORDERED flag = JX_R15_E_AUSTRALIA_CLOSED } flag = JX_TIME_28602951_30 flag = JX_R15_E_AUSTRALIA_PLAN flag = JX_ACTIVE exists = JAP NOT = { ai = JAP ispuppet = JAP } exists = AST war = { country = JAP country = AST } ai = AST NOT = { puppet = { country = AST country = JAP } } year = 1941 flag = JX_PACIFIC OR = { OR = { control = { province = 1726 data = JAP } } OR = { control = { province = 1607 data = JAP } AND = { exists = INO puppet = { country = INO country = JAP } control = { province = 1607 data = INO } NOT = { war = { country = JAP country = INO } } } } OR = { control = { province = 1697 data = JAP } AND = { exists = AST puppet = { country = AST country = JAP } control = { province = 1697 data = AST } NOT = { war = { country = JAP country = AST } } } } } manpower = 58 money = 75 supplies = 5000 oil = 1000 metal = 1000 OR = { AND = { year = 1948 technology = 1140 } AND = { year = 1945 technology = 1130 } AND = { year = 1942 technology = 1120 } AND = { year = 1939 technology = 1110 } AND = { year = 1936 technology = 1100 } AND = { year = 1931 technology = 1090 } } OR = { AND = { year = 1950 technology = 15020 } AND = { year = 1947 technology = 15010 } AND = { year = 1944 technology = 15000 } AND = { year = 1942 technology = 4090 } AND = { year = 1940 technology = 4060 } AND = { year = 1937 technology = 4030 } AND = { year = 1930 technology = 4020 } } OR = { AND = { owned = { province = 1704 data = AST } control = { province = 1704 data = AST } building = { province = 1704 type = air_base value = 1 when = now } } }",
@@ -229025,7 +229030,7 @@
           "trigger = { flag = JX_ACTIVE exists = JAP NOT = { ai = JAP ispuppet = JAP } exists = ENG war = { country = JAP country = ENG } ai = ENG NOT = { puppet = { country = ENG country = JAP } } year = 1941 flag = JX_PACIFIC OR = { control = { province = 1432 data = JAP } AND = { exists = MLY puppet = { country = MLY country = JAP } control = { province = 1432 data = MLY } NOT = { war = { country = JAP country = MLY } } } AND = { exists = U75 puppet = { country = U75 country = JAP } control = { province = 1432 data = U75 } NOT = { war = { country = JAP country = U75 } } } } OR = { control = { province = 1511 data = JAP } AND = { exists = IND puppet = { country = IND country = JAP } control = { province = 1511 data = IND } NOT = { war = { country = JAP country = IND } } } AND = { exists = U83 puppet = { country = U83 country = JAP } control = { province = 1511 data = U83 } NOT = { war = { country = JAP country = U83 } } } } NOT = { flag = JX_R15_E_OCEAN_SEEN } } type = event which = 28603019 where = JAP when = 30",
           "trigger = { flag = JX_ACTIVE exists = JAP NOT = { ai = JAP ispuppet = JAP } exists = ENG war = { country = JAP country = ENG } ai = ENG NOT = { puppet = { country = ENG country = JAP } } year = 1941 flag = JX_PACIFIC OR = { control = { province = 1432 data = JAP } AND = { exists = MLY puppet = { country = MLY country = JAP } control = { province = 1432 data = MLY } NOT = { war = { country = JAP country = MLY } } } AND = { exists = U75 puppet = { country = U75 country = JAP } control = { province = 1432 data = U75 } NOT = { war = { country = JAP country = U75 } } } } OR = { control = { province = 1511 data = JAP } AND = { exists = IND puppet = { country = IND country = JAP } control = { province = 1511 data = IND } NOT = { war = { country = JAP country = IND } } } AND = { exists = U83 puppet = { country = U83 country = JAP } control = { province = 1511 data = U83 } NOT = { war = { country = JAP country = U83 } } } } NOT = { flag = JX_R15_E_OCEAN_SEEN } } type = setflag which = JX_R14_EXEC_718",
           "trigger = { flag = JX_R14_EXEC_718 } type = setflag which = JX_R15_E_OCEAN_SEEN",
-          "trigger = {\n\tflag = JX_R14_EXEC_718\n}\ntype = event\nwhich = \"28603088\"\nwhere = ENG\nwhen = 30",
+          "trigger = {\n\tflag = JX_R14_EXEC_718\n}\ntype = event\nwhich = 28603088\nwhere = ENG\nwhen = 30",
           "type = clrflag which = JX_R14_EXEC_718"
         ],
         "gate": "flag = JX_ACTIVE exists = JAP NOT = { ai = JAP ispuppet = JAP } exists = ENG war = { country = JAP country = ENG } ai = ENG NOT = { puppet = { country = ENG country = JAP } } year = 1941 flag = JX_PACIFIC OR = { control = { province = 1432 data = JAP } AND = { exists = MLY puppet = { country = MLY country = JAP } control = { province = 1432 data = MLY } NOT = { war = { country = JAP country = MLY } } } AND = { exists = U75 puppet = { country = U75 country = JAP } control = { province = 1432 data = U75 } NOT = { war = { country = JAP country = U75 } } } } OR = { control = { province = 1511 data = JAP } AND = { exists = IND puppet = { country = IND country = JAP } control = { province = 1511 data = IND } NOT = { war = { country = JAP country = IND } } } AND = { exists = U83 puppet = { country = U83 country = JAP } control = { province = 1511 data = U83 } NOT = { war = { country = JAP country = U83 } } } } NOT = { flag = JX_R15_E_OCEAN_SEEN }",
@@ -229108,9 +229113,9 @@
           "trigger = { flag = JX_R14_EXEC_720 } type = metalpool value = -1500",
           "trigger = { flag = JX_R14_EXEC_720 } type = setflag which = JX_R15_E_OCEAN_ORDERED",
           "trigger = { flag = JX_R14_EXEC_720 } type = ai which = \"jx/r15_ocean.ai\"",
-          "trigger = {\n\tflag = JX_R14_EXEC_720\n}\ntype = event\nwhich = \"28603089\"\nwhere = ENG\nwhen = 150",
+          "trigger = {\n\tflag = JX_R14_EXEC_720\n}\ntype = event\nwhich = 28603089\nwhere = ENG\nwhen = 150",
           "trigger = { flag = JX_R14_EXEC_720 } type = event which = 28602964 where = JAP when = 1",
-          "trigger = {\n\tflag = JX_R14_EXEC_720\n}\ntype = event\nwhich = \"28603090\"\nwhere = JAP\nwhen = 151",
+          "trigger = {\n\tflag = JX_R14_EXEC_720\n}\ntype = event\nwhich = 28603090\nwhere = JAP\nwhen = 151",
           "type = clrflag which = JX_R14_EXEC_720"
         ],
         "gate": "flag = JX_R15_E_OCEAN_SEEN NOT = { flag = JX_R15_E_OCEAN_ORDERED flag = JX_R15_E_OCEAN_CLOSED } flag = JX_TIME_28602960_30 flag = JX_R15_E_OCEAN_PLAN flag = JX_ACTIVE exists = JAP NOT = { ai = JAP ispuppet = JAP } exists = ENG war = { country = JAP country = ENG } ai = ENG NOT = { puppet = { country = ENG country = JAP } } year = 1941 flag = JX_PACIFIC OR = { control = { province = 1432 data = JAP } AND = { exists = MLY puppet = { country = MLY country = JAP } control = { province = 1432 data = MLY } NOT = { war = { country = JAP country = MLY } } } AND = { exists = U75 puppet = { country = U75 country = JAP } control = { province = 1432 data = U75 } NOT = { war = { country = JAP country = U75 } } } } OR = { control = { province = 1511 data = JAP } AND = { exists = IND puppet = { country = IND country = JAP } control = { province = 1511 data = IND } NOT = { war = { country = JAP country = IND } } } AND = { exists = U83 puppet = { country = U83 country = JAP } control = { province = 1511 data = U83 } NOT = { war = { country = JAP country = U83 } } } } manpower = 50 money = 125 supplies = 8000 oil = 3000 metal = 1500 OR = { AND = { year = 1948 technology = 1140 } AND = { year = 1945 technology = 1130 } AND = { year = 1942 technology = 1120 } AND = { year = 1939 technology = 1110 } AND = { year = 1936 technology = 1100 } AND = { year = 1931 technology = 1090 } } OR = { AND = { year = 1945 technology = 3080 } AND = { year = 1941 technology = 12000 } AND = { year = 1937 technology = 3070 } AND = { year = 1933 technology = 3060 } } OR = { AND = { year = 1949 technology = 3850 } AND = { year = 1941 technology = 3840 } AND = { year = 1936 technology = 3830 } AND = { year = 1925 technology = 3820 } } OR = { AND = { owned = { province = 1053 data = ENG } control = { province = 1053 data = ENG } building = { province = 1053 type = naval_base value = 1 when = now } } }",
@@ -229642,7 +229647,7 @@
           "trigger = { flag = JX_R14_EXEC_732 } type = metalpool value = -3500",
           "trigger = { flag = JX_R14_EXEC_732 } type = manpowerpool value = -10.14",
           "trigger = { flag = JX_R14_EXEC_732 } type = trigger which = 28602974",
-          "trigger = {\n\tflag = JX_R14_EXEC_732\n}\ntype = event\nwhich = \"28603091\"\nwhere = JAP\nwhen = 330",
+          "trigger = {\n\tflag = JX_R14_EXEC_732\n}\ntype = event\nwhich = 28603091\nwhere = JAP\nwhen = 330",
           "type = clrflag which = JX_R14_EXEC_732"
         ],
         "gate": "ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE year = 1942 flag = JX_PACIFIC OR = { war = { country = JAP country = USA } war = { country = JAP country = ENG } } losses = { country = JAP type = carrier value = 3 } NOT = { carrier = { country = JAP value = 4 when = now } } NOT = { flag = JX_R15_CARRIER_RECOVERY_CLOSED flag = JX_R15_CARRIER_RECOVERY_DECLINED flag = JX_R15_CARRIER_RECOVERY_PENDING flag = JX_R15_CARRIER_RECOVERY_WAIT } NOT = { flag = JX_R15_MAJOR_PENDING } money = 500 supplies = 14000 oil = 4000 metal = 3500 manpower = 10.14 ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE flag = JX_PACIFIC OR = { war = { country = JAP country = USA } war = { country = JAP country = ENG } } owned = { province = 1552 data = JAP } control = { province = 1552 data = JAP } building = { province = 1552 type = naval_base value = 1 when = now } OR = { AND = { year = 1948 technology = 12160 } AND = { year = 1944 technology = 12150 } AND = { year = 1941 technology = 12140 } } OR = { AND = { year = 1947 technology = 4960 } AND = { year = 1943 technology = 4950 } AND = { year = 1940 technology = 4940 } } OR = { AND = { year = 1945 technology = 3080 } AND = { year = 1941 technology = 12000 } AND = { year = 1937 technology = 3070 } }",
@@ -229663,7 +229668,7 @@
           "trigger = { flag = JX_R14_EXEC_735 } type = metalpool value = -1500",
           "trigger = { flag = JX_R14_EXEC_735 } type = manpowerpool value = -5.4",
           "trigger = { flag = JX_R14_EXEC_735 } type = trigger which = 28602976",
-          "trigger = {\n\tflag = JX_R14_EXEC_735\n}\ntype = event\nwhich = \"28603092\"\nwhere = JAP\nwhen = 180",
+          "trigger = {\n\tflag = JX_R14_EXEC_735\n}\ntype = event\nwhich = 28603092\nwhere = JAP\nwhen = 180",
           "type = clrflag which = JX_R14_EXEC_735"
         ],
         "gate": "ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE year = 1942 flag = JX_PACIFIC OR = { war = { country = JAP country = USA } war = { country = JAP country = ENG } } losses = { country = JAP type = carrier value = 3 } NOT = { carrier = { country = JAP value = 4 when = now } } NOT = { flag = JX_R15_CARRIER_RECOVERY_CLOSED flag = JX_R15_CARRIER_RECOVERY_DECLINED flag = JX_R15_CARRIER_RECOVERY_PENDING flag = JX_R15_CARRIER_RECOVERY_WAIT } NOT = { flag = JX_R15_MAJOR_PENDING } money = 250 supplies = 6500 oil = 1500 metal = 1500 manpower = 5.4 ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE flag = JX_PACIFIC OR = { war = { country = JAP country = USA } war = { country = JAP country = ENG } } owned = { province = 1552 data = JAP } control = { province = 1552 data = JAP } building = { province = 1552 type = air_base value = 1 when = now } OR = { AND = { year = 1949 technology = 15150 } AND = { year = 1945 technology = 15140 } AND = { year = 1943 technology = 4210 } AND = { year = 1941 technology = 4200 } AND = { year = 1938 technology = 4190 } } OR = { AND = { year = 1950 technology = 15040 } AND = { year = 1948 technology = 15030 } AND = { year = 1945 technology = 4350 } AND = { year = 1943 technology = 4100 } AND = { year = 1940 technology = 4070 } }",
@@ -230045,7 +230050,7 @@
           "trigger = { flag = JX_R14_EXEC_741 } type = supplies value = -3500",
           "trigger = { flag = JX_R14_EXEC_741 } type = oilpool value = -1000",
           "trigger = { flag = JX_R14_EXEC_741 } type = trigger which = 28602979",
-          "trigger = {\n\tflag = JX_R14_EXEC_741\n}\ntype = event\nwhich = \"28603093\"\nwhere = JAP\nwhen = 90",
+          "trigger = {\n\tflag = JX_R14_EXEC_741\n}\ntype = event\nwhich = 28603093\nwhere = JAP\nwhen = 90",
           "type = clrflag which = JX_R14_EXEC_741"
         ],
         "gate": "ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE year = 1941 flag = JX_PACIFIC OR = { war = { country = JAP country = USA } war = { country = JAP country = ENG } } flag = JX_R15_ANCHORAGE_LOST NOT = { flag = JX_R15_ANCHORAGE_RECOVERY_CLOSED flag = JX_R15_ANCHORAGE_RECOVERY_DECLINED flag = JX_R15_ANCHORAGE_RECOVERY_PENDING flag = JX_R15_ANCHORAGE_RECOVERY_WAIT } NOT = { flag = JX_R15_MAJOR_PENDING } money = 150 supplies = 3500 oil = 1000 ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE flag = JX_PACIFIC OR = { war = { country = JAP country = USA } war = { country = JAP country = ENG } }",
@@ -230066,7 +230071,7 @@
           "trigger = { flag = JX_R14_EXEC_744 } type = metalpool value = -1000",
           "trigger = { flag = JX_R14_EXEC_744 } type = manpowerpool value = -15.5",
           "trigger = { flag = JX_R14_EXEC_744 } type = trigger which = 28602981",
-          "trigger = {\n\tflag = JX_R14_EXEC_744\n}\ntype = event\nwhich = \"28603094\"\nwhere = JAP\nwhen = 180",
+          "trigger = {\n\tflag = JX_R14_EXEC_744\n}\ntype = event\nwhich = 28603094\nwhere = JAP\nwhen = 180",
           "type = clrflag which = JX_R14_EXEC_744"
         ],
         "gate": "ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE year = 1941 flag = JX_PACIFIC OR = { war = { country = JAP country = USA } war = { country = JAP country = ENG } } flag = JX_R15_ANCHORAGE_LOST NOT = { flag = JX_R15_ANCHORAGE_RECOVERY_CLOSED flag = JX_R15_ANCHORAGE_RECOVERY_DECLINED flag = JX_R15_ANCHORAGE_RECOVERY_PENDING flag = JX_R15_ANCHORAGE_RECOVERY_WAIT } NOT = { flag = JX_R15_MAJOR_PENDING } money = 300 supplies = 6000 oil = 2000 metal = 1000 manpower = 15.5 ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE flag = JX_PACIFIC OR = { war = { country = JAP country = USA } war = { country = JAP country = ENG } } owned = { province = 1552 data = JAP } control = { province = 1552 data = JAP } owned = { province = 1552 data = JAP } control = { province = 1552 data = JAP } building = { province = 1552 type = naval_base value = 1 when = now } OR = { AND = { year = 1949 technology = 1630 } AND = { year = 1946 technology = 1620 } AND = { year = 1943 technology = 1610 } AND = { year = 1940 technology = 1600 } } OR = { AND = { year = 1949 technology = 3850 } AND = { year = 1941 technology = 3840 } AND = { year = 1936 technology = 3830 } }",
@@ -230545,7 +230550,7 @@
           "trigger = { flag = JX_R14_EXEC_754 } type = oilpool value = -500",
           "trigger = { flag = JX_R14_EXEC_754 } type = manpowerpool value = -39.0",
           "trigger = { flag = JX_R14_EXEC_754 } type = trigger which = 28602988",
-          "trigger = {\n\tflag = JX_R14_EXEC_754\n}\ntype = event\nwhich = \"28603095\"\nwhere = JAP\nwhen = 180",
+          "trigger = {\n\tflag = JX_R14_EXEC_754\n}\ntype = event\nwhich = 28603095\nwhere = JAP\nwhen = 180",
           "type = clrflag which = JX_R14_EXEC_754"
         ],
         "gate": "ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE year = 1937 war = { country = JAP country = CHI } NOT = { flag = JX_PACIFIC } OR = { control = { province = 1338 data = JAP } control = { province = 1337 data = JAP } } army = { country = CHI size = 61 type = 0 when = 0 where = 1 which = 1 } NOT = { flag = JX_R15_CHINA_OR_FLEET_CLOSED flag = JX_R15_CHINA_OR_FLEET_DECLINED flag = JX_R15_CHINA_OR_FLEET_PENDING flag = JX_R15_CHINA_OR_FLEET_WAIT } NOT = { flag = JX_R15_MAJOR_PENDING } money = 300 supplies = 7000 oil = 500 manpower = 39 ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE owned = { province = 1552 data = JAP } control = { province = 1552 data = JAP } OR = { AND = { year = 1948 technology = 1140 } AND = { year = 1945 technology = 1130 } AND = { year = 1942 technology = 1120 } AND = { year = 1939 technology = 1110 } AND = { year = 1936 technology = 1100 } } OR = { AND = { year = 1948 technology = 1290 } AND = { year = 1945 technology = 1280 } AND = { year = 1942 technology = 1270 } AND = { year = 1939 technology = 1260 } AND = { year = 1935 technology = 1250 } }",
@@ -230565,7 +230570,7 @@
           "trigger = { flag = JX_R14_EXEC_758 } type = oilpool value = -1800",
           "trigger = { flag = JX_R14_EXEC_758 } type = manpowerpool value = -15.5",
           "trigger = { flag = JX_R14_EXEC_758 } type = trigger which = 28602991",
-          "trigger = {\n\tflag = JX_R14_EXEC_758\n}\ntype = event\nwhich = \"28603096\"\nwhere = JAP\nwhen = 240",
+          "trigger = {\n\tflag = JX_R14_EXEC_758\n}\ntype = event\nwhich = 28603096\nwhere = JAP\nwhen = 240",
           "type = clrflag which = JX_R14_EXEC_758"
         ],
         "gate": "ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE year = 1937 war = { country = JAP country = CHI } NOT = { flag = JX_PACIFIC } OR = { control = { province = 1338 data = JAP } control = { province = 1337 data = JAP } } army = { country = CHI size = 61 type = 0 when = 0 where = 1 which = 1 } NOT = { flag = JX_R15_CHINA_OR_FLEET_CLOSED flag = JX_R15_CHINA_OR_FLEET_DECLINED flag = JX_R15_CHINA_OR_FLEET_PENDING flag = JX_R15_CHINA_OR_FLEET_WAIT } NOT = { flag = JX_R15_MAJOR_PENDING } money = 350 supplies = 7000 oil = 1800 manpower = 15.5 ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE owned = { province = 1552 data = JAP } control = { province = 1552 data = JAP } building = { province = 1552 type = naval_base value = 1 when = now } OR = { AND = { year = 1945 technology = 3080 } AND = { year = 1941 technology = 12000 } AND = { year = 1937 technology = 3070 } AND = { year = 1933 technology = 3060 } } OR = { AND = { year = 1947 technology = 4960 } AND = { year = 1943 technology = 4950 } AND = { year = 1940 technology = 4940 } AND = { year = 1937 technology = 4930 } AND = { year = 1934 technology = 4920 } }",
@@ -230789,7 +230794,7 @@
           "trigger = { flag = JX_R14_EXEC_757 } type = clrflag which = JX_R15_FOCUS_CHINA",
           "trigger = { flag = JX_R14_EXEC_757 } type = setflag which = JX_R15_CHINA_OR_FLEET_WAIT_0",
           "trigger = { flag = JX_R14_EXEC_757 } type = setflag which = JX_R15_CHINA_OR_FLEET_WAIT",
-          "trigger = {\n\tflag = JX_R14_EXEC_757\n}\ntype = event\nwhich = \"28603097\"\nwhere = JAP\nwhen = 90",
+          "trigger = {\n\tflag = JX_R14_EXEC_757\n}\ntype = event\nwhich = 28603097\nwhere = JAP\nwhen = 90",
           "type = clrflag which = JX_R14_EXEC_757"
         ],
         "gate": "flag = JX_R15_CHINA_OR_FLEET_PENDING flag = JX_R15_CHINA_OR_FLEET_CHOICE_0 NOT = { flag = JX_R15_CHINA_OR_FLEET_CLOSED } flag = JX_TIME_28602988_180 NOT = { AND = { ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE owned = { province = 1552 data = JAP } control = { province = 1552 data = JAP } OR = { AND = { year = 1948 technology = 1140 } AND = { year = 1945 technology = 1130 } AND = { year = 1942 technology = 1120 } AND = { year = 1939 technology = 1110 } AND = { year = 1936 technology = 1100 } } OR = { AND = { year = 1948 technology = 1290 } AND = { year = 1945 technology = 1280 } AND = { year = 1942 technology = 1270 } AND = { year = 1939 technology = 1260 } AND = { year = 1935 technology = 1250 } } } }",
@@ -230964,7 +230969,7 @@
           "trigger = { flag = JX_R14_EXEC_761 } type = clrflag which = JX_R15_FOCUS_FLEET",
           "trigger = { flag = JX_R14_EXEC_761 } type = setflag which = JX_R15_CHINA_OR_FLEET_WAIT_1",
           "trigger = { flag = JX_R14_EXEC_761 } type = setflag which = JX_R15_CHINA_OR_FLEET_WAIT",
-          "trigger = {\n\tflag = JX_R14_EXEC_761\n}\ntype = event\nwhich = \"28603098\"\nwhere = JAP\nwhen = 90",
+          "trigger = {\n\tflag = JX_R14_EXEC_761\n}\ntype = event\nwhich = 28603098\nwhere = JAP\nwhen = 90",
           "type = clrflag which = JX_R14_EXEC_761"
         ],
         "gate": "flag = JX_R15_CHINA_OR_FLEET_PENDING flag = JX_R15_CHINA_OR_FLEET_CHOICE_1 NOT = { flag = JX_R15_CHINA_OR_FLEET_CLOSED } flag = JX_TIME_28602991_240 NOT = { AND = { ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE owned = { province = 1552 data = JAP } control = { province = 1552 data = JAP } building = { province = 1552 type = naval_base value = 1 when = now } OR = { AND = { year = 1945 technology = 3080 } AND = { year = 1941 technology = 12000 } AND = { year = 1937 technology = 3070 } AND = { year = 1933 technology = 3060 } } OR = { AND = { year = 1947 technology = 4960 } AND = { year = 1943 technology = 4950 } AND = { year = 1940 technology = 4940 } AND = { year = 1937 technology = 4930 } AND = { year = 1934 technology = 4920 } } } }",
@@ -231015,7 +231020,7 @@
           "trigger = { flag = JX_R14_EXEC_765 } type = oilpool value = -1000",
           "trigger = { flag = JX_R14_EXEC_765 } type = manpowerpool value = -39.0",
           "trigger = { flag = JX_R14_EXEC_765 } type = trigger which = 28602995",
-          "trigger = {\n\tflag = JX_R14_EXEC_765\n}\ntype = event\nwhich = \"28603099\"\nwhere = JAP\nwhen = 210",
+          "trigger = {\n\tflag = JX_R14_EXEC_765\n}\ntype = event\nwhich = 28603099\nwhere = JAP\nwhen = 210",
           "type = clrflag which = JX_R14_EXEC_765"
         ],
         "gate": "ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE year = 1941 flag = JX_PACIFIC OR = { war = { country = JAP country = USA } war = { country = JAP country = ENG } } control = { province = 1432 data = JAP } NOT = { flag = JX_R15_PACIFIC_OR_OCEAN_CLOSED flag = JX_R15_PACIFIC_OR_OCEAN_DECLINED flag = JX_R15_PACIFIC_OR_OCEAN_PENDING flag = JX_R15_PACIFIC_OR_OCEAN_WAIT } NOT = { flag = JX_R15_MAJOR_PENDING } money = 350 supplies = 7500 oil = 1000 manpower = 39 ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE OR = { war = { country = JAP country = USA } war = { country = JAP country = ENG } } owned = { province = 1667 data = JAP } control = { province = 1667 data = JAP } building = { province = 1667 type = naval_base value = 1 when = now } owned = { province = 1685 data = JAP } control = { province = 1685 data = JAP } building = { province = 1685 type = naval_base value = 1 when = now } owned = { province = 1676 data = JAP } control = { province = 1676 data = JAP } building = { province = 1676 type = naval_base value = 1 when = now } OR = { AND = { year = 1945 technology = 1130 } AND = { year = 1939 technology = 1110 } AND = { year = 1931 technology = 1090 } } OR = { AND = { year = 1945 technology = 1130 } AND = { year = 1939 technology = 1110 } AND = { year = 1931 technology = 1090 } } OR = { AND = { year = 1945 technology = 1130 } AND = { year = 1939 technology = 1110 } AND = { year = 1931 technology = 1090 } } OR = { AND = { year = 1948 technology = 2540 } AND = { year = 1942 technology = 2530 } AND = { year = 1936 technology = 2520 } AND = { year = 1930 technology = 2510 } }",
@@ -231035,7 +231040,7 @@
           "trigger = { flag = JX_R14_EXEC_769 } type = oilpool value = -5000",
           "trigger = { flag = JX_R14_EXEC_769 } type = manpowerpool value = -29.0",
           "trigger = { flag = JX_R14_EXEC_769 } type = trigger which = 28602998",
-          "trigger = {\n\tflag = JX_R14_EXEC_769\n}\ntype = event\nwhich = \"28603100\"\nwhere = JAP\nwhen = 240",
+          "trigger = {\n\tflag = JX_R14_EXEC_769\n}\ntype = event\nwhich = 28603100\nwhere = JAP\nwhen = 240",
           "type = clrflag which = JX_R14_EXEC_769"
         ],
         "gate": "ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE year = 1941 flag = JX_PACIFIC OR = { war = { country = JAP country = USA } war = { country = JAP country = ENG } } control = { province = 1432 data = JAP } NOT = { flag = JX_R15_PACIFIC_OR_OCEAN_CLOSED flag = JX_R15_PACIFIC_OR_OCEAN_DECLINED flag = JX_R15_PACIFIC_OR_OCEAN_PENDING flag = JX_R15_PACIFIC_OR_OCEAN_WAIT } NOT = { flag = JX_R15_MAJOR_PENDING } money = 450 supplies = 9000 oil = 5000 manpower = 29 ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE OR = { war = { country = JAP country = USA } war = { country = JAP country = ENG } } owned = { province = 1432 data = JAP } control = { province = 1432 data = JAP } building = { province = 1432 type = naval_base value = 1 when = now } OR = { AND = { year = 1949 technology = 1630 } AND = { year = 1946 technology = 1620 } AND = { year = 1943 technology = 1610 } AND = { year = 1940 technology = 1600 } AND = { year = 1937 technology = 1590 } } OR = { AND = { year = 1948 technology = 1290 } AND = { year = 1945 technology = 1280 } AND = { year = 1942 technology = 1270 } AND = { year = 1939 technology = 1260 } AND = { year = 1935 technology = 1250 } } OR = { AND = { year = 1949 technology = 3850 } AND = { year = 1941 technology = 3840 } AND = { year = 1936 technology = 3830 } }",
@@ -231261,7 +231266,7 @@
           "trigger = { flag = JX_R14_EXEC_768 } type = clrflag which = JX_R15_FOCUS_PACIFIC",
           "trigger = { flag = JX_R14_EXEC_768 } type = setflag which = JX_R15_PACIFIC_OR_OCEAN_WAIT_0",
           "trigger = { flag = JX_R14_EXEC_768 } type = setflag which = JX_R15_PACIFIC_OR_OCEAN_WAIT",
-          "trigger = {\n\tflag = JX_R14_EXEC_768\n}\ntype = event\nwhich = \"28603101\"\nwhere = JAP\nwhen = 90",
+          "trigger = {\n\tflag = JX_R14_EXEC_768\n}\ntype = event\nwhich = 28603101\nwhere = JAP\nwhen = 90",
           "type = clrflag which = JX_R14_EXEC_768"
         ],
         "gate": "flag = JX_R15_PACIFIC_OR_OCEAN_PENDING flag = JX_R15_PACIFIC_OR_OCEAN_CHOICE_0 NOT = { flag = JX_R15_PACIFIC_OR_OCEAN_CLOSED } flag = JX_TIME_28602995_210 NOT = { AND = { ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE OR = { war = { country = JAP country = USA } war = { country = JAP country = ENG } } owned = { province = 1667 data = JAP } control = { province = 1667 data = JAP } building = { province = 1667 type = naval_base value = 1 when = now } owned = { province = 1685 data = JAP } control = { province = 1685 data = JAP } building = { province = 1685 type = naval_base value = 1 when = now } owned = { province = 1676 data = JAP } control = { province = 1676 data = JAP } building = { province = 1676 type = naval_base value = 1 when = now } OR = { AND = { year = 1945 technology = 1130 } AND = { year = 1939 technology = 1110 } AND = { year = 1931 technology = 1090 } } OR = { AND = { year = 1945 technology = 1130 } AND = { year = 1939 technology = 1110 } AND = { year = 1931 technology = 1090 } } OR = { AND = { year = 1945 technology = 1130 } AND = { year = 1939 technology = 1110 } AND = { year = 1931 technology = 1090 } } OR = { AND = { year = 1948 technology = 2540 } AND = { year = 1942 technology = 2530 } AND = { year = 1936 technology = 2520 } AND = { year = 1930 technology = 2510 } } } }",
@@ -231440,7 +231445,7 @@
           "trigger = { flag = JX_R14_EXEC_772 } type = clrflag which = JX_R15_FOCUS_OCEAN",
           "trigger = { flag = JX_R14_EXEC_772 } type = setflag which = JX_R15_PACIFIC_OR_OCEAN_WAIT_1",
           "trigger = { flag = JX_R14_EXEC_772 } type = setflag which = JX_R15_PACIFIC_OR_OCEAN_WAIT",
-          "trigger = {\n\tflag = JX_R14_EXEC_772\n}\ntype = event\nwhich = \"28603102\"\nwhere = JAP\nwhen = 90",
+          "trigger = {\n\tflag = JX_R14_EXEC_772\n}\ntype = event\nwhich = 28603102\nwhere = JAP\nwhen = 90",
           "type = clrflag which = JX_R14_EXEC_772"
         ],
         "gate": "flag = JX_R15_PACIFIC_OR_OCEAN_PENDING flag = JX_R15_PACIFIC_OR_OCEAN_CHOICE_1 NOT = { flag = JX_R15_PACIFIC_OR_OCEAN_CLOSED } flag = JX_TIME_28602998_240 NOT = { AND = { ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE OR = { war = { country = JAP country = USA } war = { country = JAP country = ENG } } owned = { province = 1432 data = JAP } control = { province = 1432 data = JAP } building = { province = 1432 type = naval_base value = 1 when = now } OR = { AND = { year = 1949 technology = 1630 } AND = { year = 1946 technology = 1620 } AND = { year = 1943 technology = 1610 } AND = { year = 1940 technology = 1600 } AND = { year = 1937 technology = 1590 } } OR = { AND = { year = 1948 technology = 1290 } AND = { year = 1945 technology = 1280 } AND = { year = 1942 technology = 1270 } AND = { year = 1939 technology = 1260 } AND = { year = 1935 technology = 1250 } } OR = { AND = { year = 1949 technology = 3850 } AND = { year = 1941 technology = 3840 } AND = { year = 1936 technology = 3830 } } } }",
@@ -231491,7 +231496,7 @@
           "trigger = { flag = JX_R14_EXEC_776 } type = oilpool value = -6000",
           "trigger = { flag = JX_R14_EXEC_776 } type = manpowerpool value = -104.0",
           "trigger = { flag = JX_R14_EXEC_776 } type = trigger which = 28603002",
-          "trigger = {\n\tflag = JX_R14_EXEC_776\n}\ntype = event\nwhich = \"28603103\"\nwhere = JAP\nwhen = 270",
+          "trigger = {\n\tflag = JX_R14_EXEC_776\n}\ntype = event\nwhich = 28603103\nwhere = JAP\nwhen = 270",
           "type = clrflag which = JX_R14_EXEC_776"
         ],
         "gate": "ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE year = 1942 flag = JX_PACIFIC war = { country = JAP country = USA } OR = { control = { province = 1886 data = JAP } control = { province = 1887 data = JAP } control = { province = 1889 data = JAP } control = { province = 1874 data = JAP } } flag = JX_TIME_28601757_30 NOT = { flag = JX_R15_AMERICAN_ARMY_CLOSED flag = JX_R15_AMERICAN_ARMY_DECLINED flag = JX_R15_AMERICAN_ARMY_PENDING flag = JX_R15_AMERICAN_ARMY_WAIT } NOT = { flag = JX_R15_MAJOR_PENDING } money = 800 supplies = 22000 oil = 6000 manpower = 104 ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE war = { country = JAP country = USA } OR = { control = { province = 1886 data = JAP } control = { province = 1887 data = JAP } control = { province = 1889 data = JAP } control = { province = 1874 data = JAP } } owned = { province = 1552 data = JAP } control = { province = 1552 data = JAP } OR = { AND = { year = 1948 technology = 1140 } AND = { year = 1945 technology = 1130 } AND = { year = 1942 technology = 1120 } AND = { year = 1939 technology = 1110 } AND = { year = 1936 technology = 1100 } } OR = { AND = { year = 1948 technology = 1290 } AND = { year = 1945 technology = 1280 } AND = { year = 1942 technology = 1270 } AND = { year = 1939 technology = 1260 } AND = { year = 1935 technology = 1250 } }",
@@ -231511,7 +231516,7 @@
           "trigger = { flag = JX_R14_EXEC_780 } type = oilpool value = -2500",
           "trigger = { flag = JX_R14_EXEC_780 } type = manpowerpool value = -40.0",
           "trigger = { flag = JX_R14_EXEC_780 } type = trigger which = 28603005",
-          "trigger = {\n\tflag = JX_R14_EXEC_780\n}\ntype = event\nwhich = \"28603104\"\nwhere = JAP\nwhen = 150",
+          "trigger = {\n\tflag = JX_R14_EXEC_780\n}\ntype = event\nwhich = 28603104\nwhere = JAP\nwhen = 150",
           "type = clrflag which = JX_R14_EXEC_780"
         ],
         "gate": "ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE year = 1942 flag = JX_PACIFIC war = { country = JAP country = USA } OR = { control = { province = 1886 data = JAP } control = { province = 1887 data = JAP } control = { province = 1889 data = JAP } control = { province = 1874 data = JAP } } flag = JX_TIME_28601757_30 NOT = { flag = JX_R15_AMERICAN_ARMY_CLOSED flag = JX_R15_AMERICAN_ARMY_DECLINED flag = JX_R15_AMERICAN_ARMY_PENDING flag = JX_R15_AMERICAN_ARMY_WAIT } NOT = { flag = JX_R15_MAJOR_PENDING } money = 450 supplies = 11000 oil = 2500 manpower = 40 ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE war = { country = JAP country = USA } owned = { province = 1552 data = JAP } control = { province = 1552 data = JAP } owned = { province = 1550 data = JAP } control = { province = 1550 data = JAP } owned = { province = 1554 data = JAP } control = { province = 1554 data = JAP } owned = { province = 1557 data = JAP } control = { province = 1557 data = JAP } OR = { AND = { year = 1945 technology = 1130 } AND = { year = 1939 technology = 1110 } AND = { year = 1931 technology = 1090 } } OR = { AND = { year = 1945 technology = 1130 } AND = { year = 1939 technology = 1110 } AND = { year = 1931 technology = 1090 } } OR = { AND = { year = 1945 technology = 1130 } AND = { year = 1939 technology = 1110 } AND = { year = 1931 technology = 1090 } } OR = { AND = { year = 1945 technology = 1130 } AND = { year = 1939 technology = 1110 } AND = { year = 1931 technology = 1090 } }",
@@ -231785,7 +231790,7 @@
           "trigger = { flag = JX_R14_EXEC_779 } type = clrflag which = JX_R15_FOCUS_AMERICA",
           "trigger = { flag = JX_R14_EXEC_779 } type = setflag which = JX_R15_AMERICAN_ARMY_WAIT_0",
           "trigger = { flag = JX_R14_EXEC_779 } type = setflag which = JX_R15_AMERICAN_ARMY_WAIT",
-          "trigger = {\n\tflag = JX_R14_EXEC_779\n}\ntype = event\nwhich = \"28603105\"\nwhere = JAP\nwhen = 90",
+          "trigger = {\n\tflag = JX_R14_EXEC_779\n}\ntype = event\nwhich = 28603105\nwhere = JAP\nwhen = 90",
           "type = clrflag which = JX_R14_EXEC_779"
         ],
         "gate": "flag = JX_R15_AMERICAN_ARMY_PENDING flag = JX_R15_AMERICAN_ARMY_CHOICE_0 NOT = { flag = JX_R15_AMERICAN_ARMY_CLOSED } flag = JX_TIME_28603002_270 NOT = { AND = { ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE war = { country = JAP country = USA } OR = { control = { province = 1886 data = JAP } control = { province = 1887 data = JAP } control = { province = 1889 data = JAP } control = { province = 1874 data = JAP } } owned = { province = 1552 data = JAP } control = { province = 1552 data = JAP } OR = { AND = { year = 1948 technology = 1140 } AND = { year = 1945 technology = 1130 } AND = { year = 1942 technology = 1120 } AND = { year = 1939 technology = 1110 } AND = { year = 1936 technology = 1100 } } OR = { AND = { year = 1948 technology = 1290 } AND = { year = 1945 technology = 1280 } AND = { year = 1942 technology = 1270 } AND = { year = 1939 technology = 1260 } AND = { year = 1935 technology = 1250 } } } }",
@@ -231959,7 +231964,7 @@
           "trigger = { flag = JX_R14_EXEC_783 } type = clrflag which = JX_R15_FOCUS_HOME",
           "trigger = { flag = JX_R14_EXEC_783 } type = setflag which = JX_R15_AMERICAN_ARMY_WAIT_1",
           "trigger = { flag = JX_R14_EXEC_783 } type = setflag which = JX_R15_AMERICAN_ARMY_WAIT",
-          "trigger = {\n\tflag = JX_R14_EXEC_783\n}\ntype = event\nwhich = \"28603106\"\nwhere = JAP\nwhen = 90",
+          "trigger = {\n\tflag = JX_R14_EXEC_783\n}\ntype = event\nwhich = 28603106\nwhere = JAP\nwhen = 90",
           "type = clrflag which = JX_R14_EXEC_783"
         ],
         "gate": "flag = JX_R15_AMERICAN_ARMY_PENDING flag = JX_R15_AMERICAN_ARMY_CHOICE_1 NOT = { flag = JX_R15_AMERICAN_ARMY_CLOSED } flag = JX_TIME_28603005_150 NOT = { AND = { ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE war = { country = JAP country = USA } owned = { province = 1552 data = JAP } control = { province = 1552 data = JAP } owned = { province = 1550 data = JAP } control = { province = 1550 data = JAP } owned = { province = 1554 data = JAP } control = { province = 1554 data = JAP } owned = { province = 1557 data = JAP } control = { province = 1557 data = JAP } OR = { AND = { year = 1945 technology = 1130 } AND = { year = 1939 technology = 1110 } AND = { year = 1931 technology = 1090 } } OR = { AND = { year = 1945 technology = 1130 } AND = { year = 1939 technology = 1110 } AND = { year = 1931 technology = 1090 } } OR = { AND = { year = 1945 technology = 1130 } AND = { year = 1939 technology = 1110 } AND = { year = 1931 technology = 1090 } } OR = { AND = { year = 1945 technology = 1130 } AND = { year = 1939 technology = 1110 } AND = { year = 1931 technology = 1090 } } } }",
@@ -235302,6 +235307,38 @@
     "follows": [
       "r15_american_army_return_1"
     ],
+    "manual_only": false
+  },
+  {
+    "key": "paid_us_imports_end",
+    "title": "American deliveries stop",
+    "desc": "War or an embargo has ended American trade with Japan. The fuel and metal contracts stop, along with their daily payments. Their earlier handling fees are spent. No replacement imports are granted.",
+    "country": "JAP",
+    "gate": "ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE exists = USA OR = { flag = JX_PAID_US_FX1933 flag = JX_PAID_US_FX1936 flag = JX_PAID_US_OIL1934 } NOT = { flag = JX_PAID_US_IMPORTS_CLOSED } OR = { war = { country = JAP country = USA } embargo = { country = USA country = JAP value = 1 } embargo = { country = JAP country = USA value = 1 } event = 2049026 }",
+    "actions": [
+      {
+        "name": "Acknowledge the loss of American supplies",
+        "commands": [
+          "type = end_trades which = USA where = JAP",
+          "type = setflag which = JX_PAID_US_IMPORTS_CLOSED"
+        ],
+        "gate": "ai = no NOT = { ispuppet = JAP } flag = JX_ACTIVE exists = USA OR = { flag = JX_PAID_US_FX1933 flag = JX_PAID_US_FX1936 flag = JX_PAID_US_OIL1934 } NOT = { flag = JX_PAID_US_IMPORTS_CLOSED } OR = { war = { country = JAP country = USA } embargo = { country = USA country = JAP value = 1 } embargo = { country = JAP country = USA value = 1 } event = 2049026 }",
+        "chance": 100
+      }
+    ],
+    "decision": false,
+    "ready": "",
+    "year": 1933,
+    "offset": 1,
+    "persistent": false,
+    "triggered": false,
+    "art": "diplomacy",
+    "module": "purchase_reliability",
+    "purpose": "End protected paid imports on war or embargo; never renew expired contracts.",
+    "id": 28603107,
+    "start_month": "january",
+    "start_day": 0,
+    "follows": [],
     "manual_only": false
   }
 ]

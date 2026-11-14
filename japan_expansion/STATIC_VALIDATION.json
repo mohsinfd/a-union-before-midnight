@@ -1,8 +1,8 @@
 {
   "result": "PASS",
-  "event_files": 145,
-  "all_event_blocks": 7269,
-  "new_event_blocks": 3007,
+  "event_files": 147,
+  "all_event_blocks": 7369,
+  "new_event_blocks": 3107,
   "new_decisions": 128,
   "errors": [],
   "warnings": [],

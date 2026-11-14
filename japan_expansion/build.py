@@ -65,6 +65,7 @@ import r15_recovery
 import r15_strategy
 import enemy_transport_ai
 import timer_reliability
+import purchase_reliability
 
 from runtime_paths import GAME
 from runtime_paths import SOURCE
@@ -102,7 +103,19 @@ def resolve(text):
         if key not in IDS:
             raise ValueError("Unknown event reference: "+key)
         return str(IDS[key])
+    # Resolve quoted symbolic IDs before parsing can hide their token type.
+    text=re.sub(r'"@([A-Za-z0-9_]+)"',replace,text)
     return re.sub(r"@([A-Za-z0-9_]+)",replace,text)
+
+
+def check_native_event_target(command):
+    """Check raw integer tokens before the parser can erase quotation."""
+    kind=re.search(r'\btype\s*=\s*(event|trigger)\b',command)
+    if not kind:return
+    target=re.search(r'\bwhich\s*=\s*(\S+)',command[kind.end():])
+    if not target or not re.fullmatch(r'[1-9][0-9]*',target[1]):
+        raise ValueError('Event target must be an unquoted positive integer: '+command)
+    if int(target[1])>2147483647:raise ValueError('Event ID exceeds the native integer range')
 
 
 def quote(s):
@@ -345,6 +358,7 @@ def prepare_catalog():
     equipment_delivery.apply()
     player_copy.apply()
     timer_reliability.apply()
+    purchase_reliability.apply()
     IDS.update({e.key:e.id for e in EVENTS})
     PREPARED_CORES=china_cores
     return china_cores
@@ -383,7 +397,9 @@ def compiled_event(e):
         lines += [" action = {",f"  name = {'ACTION_NAME_OK' if not a.name else 'JX_'+e.key+'_A'+str(i)}",f"  ai_chance = {a.chance}"]
         if a.gate:lines.append("  trigger = { "+resolve(a.gate)+" }")
         for c in a.commands:
-            lines.append("  command = { "+resolve(c)+" }")
+            native=resolve(c)
+            check_native_event_target(native)
+            lines.append("  command = { "+native+" }")
         if not a.commands:lines.append("  command = { }")
         lines.append(" }")
     lines.append("}")
