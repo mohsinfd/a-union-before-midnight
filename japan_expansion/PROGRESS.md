@@ -1,3 +1,7 @@
+# R15.3 tooltip crash repair
+
+Crash address exactly matches bytes 256-259 of the old Mixed Brigade tooltip. Specialist text now has strict byte limits; owned percentage text is format-safe. Gameplay and save hashes are checked against R15.2. No game launch.
+
 # R15.2 purchase repair
 
 Central native integer rendering repaired. Latest April 1936 autosave migrated without duplicate shipping, training rewards or oil contracts. Final cold and installation verification: R15_2_COLD_AUDIT.json. Game not run.

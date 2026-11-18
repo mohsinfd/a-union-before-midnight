@@ -66,6 +66,7 @@ import r15_strategy
 import enemy_transport_ai
 import timer_reliability
 import purchase_reliability
+import tooltip_safety
 
 from runtime_paths import GAME
 from runtime_paths import SOURCE
@@ -409,6 +410,7 @@ def compiled_event(e):
 def localisation():
     rows=["# Japan Rising English localisation;;;;;;;;;;;X"]
     def row(key,value):
+        value=tooltip_safety.player_text(key,value)
         value=ascii_text(value).replace(";",",").replace("\r","").replace("\n","\\n")
         if "\xa7" in value:raise ValueError("Colour code in "+key)
         rows.append(";".join([key,value]+[""]*9+["X"]))

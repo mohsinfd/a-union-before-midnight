@@ -33,14 +33,22 @@ audit=json.loads((project/'R14_COLD_AUDIT.json').read_text(encoding='utf-8'))
 catalogue=ast.parse((project/'catalog.py').read_text(encoding='utf-8'))
 version=next(ast.literal_eval(n.value) for n in catalogue.body if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='VERSION' for t in n.targets))
 assert audit['passed']
-if version.endswith('R15.2'):
+if version.endswith('R15.3'):
+    audit=json.loads((project/'R15_3_COLD_AUDIT.json').read_text(encoding='utf-8'))
+elif version.endswith('R15.2'):
     audit=json.loads((project/'R15_2_COLD_AUDIT.json').read_text(encoding='utf-8'))
 elif version.endswith('R15.1'):
     audit=json.loads((project/'R15_1_COLD_AUDIT.json').read_text(encoding='utf-8'))
 assert audit['version']==version
 r15_audit=json.loads((project/'R15_COLD_AUDIT.json').read_text(encoding='utf-8'))
 assert r15_audit['passed']
-if not version.endswith(('R15.1','R15.2')):assert r15_audit['version']==version and r15_audit['events']==audit['events']
+if not version.endswith(('R15.1','R15.2','R15.3')):assert r15_audit['version']==version and r15_audit['events']==audit['events']
+if version.endswith('R15.3'):
+    tooltip_rows=json.loads((project/'R15_3_TOOLTIPS.json').read_text(encoding='utf-8'))
+    for entry in tooltip_rows:
+        payload=(entry['description']+'\n'+entry['label']+'\0').encode('latin1')
+        assert len(payload)==entry['bytes'] and len(payload)<=224
+        assert '%' not in entry['description']+entry['label']
 assert len(events)==audit['events'] and len({e['id'] for e in events})==len(events)
 assert sum(e['decision'] for e in events)==audit['registered_decisions']
 baseline=json.loads((project/'R14_BASELINE_IDS.json').read_text(encoding='utf-8'))

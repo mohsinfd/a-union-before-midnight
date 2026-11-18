@@ -1,0 +1,394 @@
+[
+  {
+    "unit": "b_01",
+    "model": 0,
+    "description": "Oxygen torpedoes for destroyers and cruisers. Strong surface and convoy attack, with greater ammunition and supply demand.",
+    "label": "Type 93 Oxygen Torpedoes 1935 (Type 93-1)",
+    "bytes": 165
+  },
+  {
+    "unit": "b_01",
+    "model": 1,
+    "description": "Oxygen torpedoes for destroyers and cruisers. Strong surface and convoy attack, with greater ammunition and supply demand.",
+    "label": "Type 93 Oxygen Torpedoes 1942 (Type 93-2)",
+    "bytes": 165
+  },
+  {
+    "unit": "b_01",
+    "model": 2,
+    "description": "Oxygen torpedoes for destroyers and cruisers. Strong surface and convoy attack, with greater ammunition and supply demand.",
+    "label": "Type 93 Oxygen Torpedoes 1945 (Type 93-3)",
+    "bytes": 165
+  },
+  {
+    "unit": "b_01",
+    "model": 3,
+    "description": "Oxygen torpedoes for destroyers and cruisers. Strong surface and convoy attack, with greater ammunition and supply demand.",
+    "label": "Type 93 Oxygen Torpedoes 1948 (Type 93-4)",
+    "bytes": 165
+  },
+  {
+    "unit": "b_02",
+    "model": 0,
+    "description": "Mixed troops for occupation and local defence. More suppression and firepower than military police. Movement is limited to four.",
+    "label": "Dokuritsu Konsei Mixed Brigade 1937 (Mixed Bde-1)",
+    "bytes": 179
+  },
+  {
+    "unit": "b_02",
+    "model": 1,
+    "description": "Mixed troops for occupation and local defence. More suppression and firepower than military police. Movement is limited to four.",
+    "label": "Dokuritsu Konsei Mixed Brigade 1939 (Mixed Bde-2)",
+    "bytes": 179
+  },
+  {
+    "unit": "b_02",
+    "model": 2,
+    "description": "Mixed troops for occupation and local defence. More suppression and firepower than military police. Movement is limited to four.",
+    "label": "Dokuritsu Konsei Mixed Brigade 1942 (Mixed Bde-3)",
+    "bytes": 179
+  },
+  {
+    "unit": "b_02",
+    "model": 3,
+    "description": "Mixed troops for occupation and local defence. More suppression and firepower than military police. Movement is limited to four.",
+    "label": "Dokuritsu Konsei Mixed Brigade 1945 (Mixed Bde-4)",
+    "bytes": 179
+  },
+  {
+    "unit": "b_02",
+    "model": 4,
+    "description": "Mixed troops for occupation and local defence. More suppression and firepower than military police. Movement is limited to four.",
+    "label": "Dokuritsu Konsei Mixed Brigade 1948 (Mixed Bde-5)",
+    "bytes": 179
+  },
+  {
+    "unit": "b_03",
+    "model": 0,
+    "description": "Small amphibious tank units for infantry and Marine landings. Stronger shore attacks, with less fuel demand than a full tank brigade.",
+    "label": "Ka-Mi Naval Tank Detachment 1942 (Naval Tanks-1)",
+    "bytes": 183
+  },
+  {
+    "unit": "b_03",
+    "model": 1,
+    "description": "Small amphibious tank units for infantry and Marine landings. Stronger shore attacks, with less fuel demand than a full tank brigade.",
+    "label": "Ka-Mi Naval Tank Detachment 1944 (Naval Tanks-2)",
+    "bytes": 183
+  },
+  {
+    "unit": "b_03",
+    "model": 2,
+    "description": "Small amphibious tank units for infantry and Marine landings. Stronger shore attacks, with less fuel demand than a full tank brigade.",
+    "label": "Ka-Mi Naval Tank Detachment 1949 (Naval Tanks-3)",
+    "bytes": 183
+  },
+  {
+    "unit": "d_13",
+    "model": 0,
+    "description": "Anti-aircraft destroyers for carrier defence. Strong AA fire, but weaker torpedo attack and higher cost than ordinary destroyers.",
+    "label": "Akizuki AA Escort 1942 (Akizuki AA-1)",
+    "bytes": 168
+  },
+  {
+    "unit": "d_13",
+    "model": 1,
+    "description": "Anti-aircraft destroyers for carrier defence. Strong AA fire, but weaker torpedo attack and higher cost than ordinary destroyers.",
+    "label": "Improved AA Escort 1945 (Akizuki AA-2)",
+    "bytes": 169
+  },
+  {
+    "unit": "d_13",
+    "model": 2,
+    "description": "Anti-aircraft destroyers for carrier defence. Strong AA fire, but weaker torpedo attack and higher cost than ordinary destroyers.",
+    "label": "Postwar AA Escort 1955 (Akizuki AA-3)",
+    "bytes": 168
+  },
+  {
+    "unit": "d_14",
+    "model": 0,
+    "description": "Long-range flying boats for sea patrols and reconnaissance. Excellent reach and detection, but weaker attacks and higher cost.",
+    "label": "H6K Maritime Patrol 1938 (Flying Boat-1)",
+    "bytes": 168
+  },
+  {
+    "unit": "d_14",
+    "model": 1,
+    "description": "Long-range flying boats for sea patrols and reconnaissance. Excellent reach and detection, but weaker attacks and higher cost.",
+    "label": "H8K Maritime Patrol 1942 (Flying Boat-2)",
+    "bytes": 168
+  },
+  {
+    "unit": "d_14",
+    "model": 2,
+    "description": "Long-range flying boats for sea patrols and reconnaissance. Excellent reach and detection, but weaker attacks and higher cost.",
+    "label": "H8K Search Patrol 1943 (Flying Boat-3)",
+    "bytes": 166
+  },
+  {
+    "unit": "d_14",
+    "model": 3,
+    "description": "Long-range flying boats for sea patrols and reconnaissance. Excellent reach and detection, but weaker attacks and higher cost.",
+    "label": "Long-Range Flying Boat 1945 (Flying Boat-4)",
+    "bytes": 171
+  },
+  {
+    "unit": "d_14",
+    "model": 4,
+    "description": "Long-range flying boats for sea patrols and reconnaissance. Excellent reach and detection, but weaker attacks and higher cost.",
+    "label": "Ocean Patrol Flying Boat 1949 (Flying Boat-5)",
+    "bytes": 173
+  },
+  {
+    "unit": "d_15",
+    "model": 0,
+    "description": "Airborne infantry with high morale and organisation. Needs transport aircraft and airborne doctrine. Costs more than ordinary paratroopers.",
+    "label": "Teishin Airborne 1942 (Teishin-1)",
+    "bytes": 174
+  },
+  {
+    "unit": "d_15",
+    "model": 1,
+    "description": "Airborne infantry with high morale and organisation. Needs transport aircraft and airborne doctrine. Costs more than ordinary paratroopers.",
+    "label": "Teishin Airborne 1944 (Teishin-2)",
+    "bytes": 174
+  },
+  {
+    "unit": "d_15",
+    "model": 2,
+    "description": "Airborne infantry with high morale and organisation. Needs transport aircraft and airborne doctrine. Costs more than ordinary paratroopers.",
+    "label": "Teishin Airborne 1947 (Teishin-3)",
+    "bytes": 174
+  },
+  {
+    "unit": "d_15",
+    "model": 3,
+    "description": "Airborne infantry with high morale and organisation. Needs transport aircraft and airborne doctrine. Costs more than ordinary paratroopers.",
+    "label": "Teishin Airborne 1950 (Teishin-4)",
+    "bytes": 174
+  },
+  {
+    "unit": "d_16",
+    "model": 0,
+    "description": "Shore-based naval fighters with long range. Greater fuel use and vulnerability than ordinary fighters. Cannot serve on carriers.",
+    "label": "A6M Long-Range Fighter 1940 (Naval Fighter-1)",
+    "bytes": 175
+  },
+  {
+    "unit": "d_16",
+    "model": 1,
+    "description": "Shore-based naval fighters with long range. Greater fuel use and vulnerability than ordinary fighters. Cannot serve on carriers.",
+    "label": "A6M Long-Range Fighter 1943 (Naval Fighter-2)",
+    "bytes": 175
+  },
+  {
+    "unit": "d_16",
+    "model": 2,
+    "description": "Shore-based naval fighters with long range. Greater fuel use and vulnerability than ordinary fighters. Cannot serve on carriers.",
+    "label": "A7M Long-Range Fighter 1945 (Naval Fighter-3)",
+    "bytes": 175
+  },
+  {
+    "unit": "d_16",
+    "model": 3,
+    "description": "Shore-based naval fighters with long range. Greater fuel use and vulnerability than ordinary fighters. Cannot serve on carriers.",
+    "label": "Long-Range Naval Fighter 1948 (Naval Fighter-4)",
+    "bytes": 177
+  },
+  {
+    "unit": "d_17",
+    "model": 0,
+    "description": "Long-range naval bombers. Good reach and low purchase cost, but greater fuel demand and vulnerability. Weak ground attack.",
+    "label": "G3M Naval Attack 1938 (Naval Attack-1)",
+    "bytes": 162
+  },
+  {
+    "unit": "d_17",
+    "model": 1,
+    "description": "Long-range naval bombers. Good reach and low purchase cost, but greater fuel demand and vulnerability. Weak ground attack.",
+    "label": "G4M Naval Attack 1941 (Naval Attack-2)",
+    "bytes": 162
+  },
+  {
+    "unit": "d_17",
+    "model": 2,
+    "description": "Long-range naval bombers. Good reach and low purchase cost, but greater fuel demand and vulnerability. Weak ground attack.",
+    "label": "G4M Naval Attack 1943 (Naval Attack-3)",
+    "bytes": 162
+  },
+  {
+    "unit": "d_17",
+    "model": 3,
+    "description": "Long-range naval bombers. Good reach and low purchase cost, but greater fuel demand and vulnerability. Weak ground attack.",
+    "label": "Improved Naval Attack 1945 (Naval Attack-4)",
+    "bytes": 167
+  },
+  {
+    "unit": "d_17",
+    "model": 4,
+    "description": "Long-range naval bombers. Good reach and low purchase cost, but greater fuel demand and vulnerability. Weak ground attack.",
+    "label": "Ocean Strike Wing 1949 (Naval Attack-5)",
+    "bytes": 163
+  },
+  {
+    "unit": "d_18",
+    "model": 0,
+    "description": "Cheap Matsu escorts for convoy and anti-submarine work. Weaker surface firepower, speed and range than fleet destroyers.",
+    "label": "Matsu Escort 1944 (Matsu Escort-1)",
+    "bytes": 156
+  },
+  {
+    "unit": "d_18",
+    "model": 1,
+    "description": "Cheap Matsu escorts for convoy and anti-submarine work. Weaker surface firepower, speed and range than fleet destroyers.",
+    "label": "Tachibana Escort 1945 (Matsu Escort-2)",
+    "bytes": 160
+  },
+  {
+    "unit": "d_18",
+    "model": 2,
+    "description": "Cheap Matsu escorts for convoy and anti-submarine work. Weaker surface firepower, speed and range than fleet destroyers.",
+    "label": "Postwar Escort 1955 (Matsu Escort-3)",
+    "bytes": 158
+  },
+  {
+    "unit": "d_19",
+    "model": 0,
+    "description": "Expeditionary infantry for jungle and island campaigns. Easier to supply, but less defence and anti-armour firepower. Normal landing limits.",
+    "label": "Expeditionary Assault 1937 (Expeditionary-1)",
+    "bytes": 186
+  },
+  {
+    "unit": "d_19",
+    "model": 1,
+    "description": "Expeditionary infantry for jungle and island campaigns. Easier to supply, but less defence and anti-armour firepower. Normal landing limits.",
+    "label": "Expeditionary Assault 1939 (Expeditionary-2)",
+    "bytes": 186
+  },
+  {
+    "unit": "d_19",
+    "model": 2,
+    "description": "Expeditionary infantry for jungle and island campaigns. Easier to supply, but less defence and anti-armour firepower. Normal landing limits.",
+    "label": "Expeditionary Assault 1942 (Expeditionary-3)",
+    "bytes": 186
+  },
+  {
+    "unit": "d_19",
+    "model": 3,
+    "description": "Expeditionary infantry for jungle and island campaigns. Easier to supply, but less defence and anti-armour firepower. Normal landing limits.",
+    "label": "Expeditionary Assault 1945 (Expeditionary-4)",
+    "bytes": 186
+  },
+  {
+    "unit": "d_19",
+    "model": 4,
+    "description": "Expeditionary infantry for jungle and island campaigns. Easier to supply, but less defence and anti-armour firepower. Normal landing limits.",
+    "label": "Expeditionary Assault 1948 (Expeditionary-5)",
+    "bytes": 186
+  },
+  {
+    "unit": "d_10",
+    "model": 0,
+    "description": "Static overseas base defence, weak on the offensive.",
+    "label": "Naval Base Force 1937 (Base Force-1)",
+    "bytes": 90
+  },
+  {
+    "unit": "d_10",
+    "model": 1,
+    "description": "Static overseas base defence, weak on the offensive.",
+    "label": "Naval Base Force 1939 (Base Force-2)",
+    "bytes": 90
+  },
+  {
+    "unit": "d_10",
+    "model": 2,
+    "description": "Static overseas base defence, weak on the offensive.",
+    "label": "Naval Base Force 1942 (Base Force-3)",
+    "bytes": 90
+  },
+  {
+    "unit": "d_10",
+    "model": 3,
+    "description": "Static overseas base defence, weak on the offensive.",
+    "label": "Naval Base Force 1945 (Base Force-4)",
+    "bytes": 90
+  },
+  {
+    "unit": "d_10",
+    "model": 4,
+    "description": "Static overseas base defence, weak on the offensive.",
+    "label": "Naval Base Force 1948 (Base Force-5)",
+    "bytes": 90
+  },
+  {
+    "unit": "d_11",
+    "model": 0,
+    "description": "Light jungle infantry, less firepower and supply demand, ordinary opposed-landing penalties.",
+    "label": "Jungle Light Infantry 1937 (Jungle Light-1)",
+    "bytes": 137
+  },
+  {
+    "unit": "d_11",
+    "model": 1,
+    "description": "Light jungle infantry, less firepower and supply demand, ordinary opposed-landing penalties.",
+    "label": "Jungle Light Infantry 1939 (Jungle Light-2)",
+    "bytes": 137
+  },
+  {
+    "unit": "d_11",
+    "model": 2,
+    "description": "Light jungle infantry, less firepower and supply demand, ordinary opposed-landing penalties.",
+    "label": "Jungle Light Infantry 1942 (Jungle Light-3)",
+    "bytes": 137
+  },
+  {
+    "unit": "d_11",
+    "model": 3,
+    "description": "Light jungle infantry, less firepower and supply demand, ordinary opposed-landing penalties.",
+    "label": "Jungle Light Infantry 1945 (Jungle Light-4)",
+    "bytes": 137
+  },
+  {
+    "unit": "d_11",
+    "model": 4,
+    "description": "Light jungle infantry, less firepower and supply demand, ordinary opposed-landing penalties.",
+    "label": "Jungle Light Infantry 1948 (Jungle Light-5)",
+    "bytes": 137
+  },
+  {
+    "unit": "d_12",
+    "model": 0,
+    "description": "Mobile naval assault division: 9 manpower, lighter supply and transport loads, improved landings, reduced firepower and defence.",
+    "label": "Special Naval Landing Division 1937 (SNLF-1)",
+    "bytes": 174
+  },
+  {
+    "unit": "d_12",
+    "model": 1,
+    "description": "Mobile naval assault division: 9 manpower, lighter supply and transport loads, improved landings, reduced firepower and defence.",
+    "label": "Special Naval Landing Division 1940 (SNLF-2)",
+    "bytes": 174
+  },
+  {
+    "unit": "d_12",
+    "model": 2,
+    "description": "Mobile naval assault division: 9 manpower, lighter supply and transport loads, improved landings, reduced firepower and defence.",
+    "label": "Special Naval Landing Division 1943 (SNLF-3)",
+    "bytes": 174
+  },
+  {
+    "unit": "d_12",
+    "model": 3,
+    "description": "Mobile naval assault division: 9 manpower, lighter supply and transport loads, improved landings, reduced firepower and defence.",
+    "label": "Special Naval Landing Division 1946 (SNLF-4)",
+    "bytes": 174
+  },
+  {
+    "unit": "d_12",
+    "model": 4,
+    "description": "Mobile naval assault division: 9 manpower, lighter supply and transport loads, improved landings, reduced firepower and defence.",
+    "label": "Special Naval Landing Division 1949 (SNLF-5)",
+    "bytes": 174
+  }
+]

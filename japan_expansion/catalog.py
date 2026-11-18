@@ -6,7 +6,7 @@ are resolved by the builder, so documentation and script cascades share IDs.
 from dataclasses import dataclass, field
 import re
 
-VERSION = "JX 1.1 ALPHA 2 R15.2"
+VERSION = "JX 1.1 ALPHA 2 R15.3"
 MOD_NAME = "Japan Rising JX1 Alpha2"
 BASE_ID = 28600000
 

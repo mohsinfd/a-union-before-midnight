@@ -1,0 +1,34 @@
+{
+  "version": "JX 1.1 ALPHA 2 R15.3",
+  "passed": true,
+  "events": 3107,
+  "registered_decisions": 128,
+  "native_gameplay_files_unchanged": 43,
+  "unit_files_unchanged": 104,
+  "original_event_ids_and_rewards_preserved": true,
+  "saves_unchanged": 2,
+  "original_fault_address": "0x694d2820",
+  "original_tooltip_bytes": 270,
+  "crash_signature_reproduced_offline": true,
+  "tooltips_checked": 56,
+  "largest_tooltip_bytes": 186,
+  "tooltip_budget": 224,
+  "raw_percent_in_owned_localisation": 0,
+  "loaded_english_matches": 7810,
+  "suites": [
+    {
+      "script": "tooltip_safety_review.py",
+      "passed": true,
+      "tail": "test_every_specialist_model_fits_with_margin (__main__.TooltipReview.test_every_specialist_model_fits_with_margin) ... ok\ntest_future_oversized_text_fails_instead_of_shipping (__main__.TooltipReview.test_future_oversized_text_fails_instead_of_shipping) ... ok\ntest_original_payload_matches_the_crash_instruction_address (__main__.TooltipReview.test_original_payload_matches_the_crash_instruction_address) ... ok\ntest_owned_narrative_has_no_raw_percent_or_colour_codes (__main__.TooltipReview.test_owned_narrative_has_no_raw_percent_or_colour_codes) ... ok\n\n----------------------------------------------------------------------\nRan 4 tests in 0.042s\n\nOK\n"
+    },
+    {
+      "script": "PLAYER_COPY_review.py",
+      "passed": true,
+      "tail": "test_all_generated_english_and_ministers_are_clean (__main__.PlayerCopyReview.test_all_generated_english_and_ministers_are_clean) ... ok\ntest_army_mobile_and_naval_effects_are_explicit (__main__.PlayerCopyReview.test_army_mobile_and_naval_effects_are_explicit) ... ok\ntest_mechanics_fingerprint_and_idempotence (__main__.PlayerCopyReview.test_mechanics_fingerprint_and_idempotence) ... ok\ntest_no_development_terms_in_any_event_english (__main__.PlayerCopyReview.test_no_development_terms_in_any_event_english) ... ok\ntest_prewar_choice_bills_and_paid_worker_finish (__main__.PlayerCopyReview.test_prewar_choice_bills_and_paid_worker_finish) ... ok\ntest_selected_fuel_deliveries_do_not_request_payment_again (__main__.PlayerCopyReview.test_selected_fuel_deliveries_do_not_request_payment_again) ... ok\ntest_selected_regional_delivery_and_plain_equipment_conditions (__main__.PlayerCopyReview.test_selected_regional_delivery_and_plain_equipment_conditions) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 0.082s\n\nOK\n"
+    }
+  ],
+  "game_run": false,
+  "save_edits": false,
+  "source_spec_sha256": "8890e3217a30f21ddbf38b17a86482bdae02376b7764d815b8c01360ada6a2de",
+  "qualification": "Offline crash-signature and tooltip-size checks. No game launch. Does not claim every possible crash has been eliminated."
+}

@@ -1,4 +1,4 @@
-# Japan Rising: executable event specification — JX 1.1 ALPHA 2 R15.2
+# Japan Rising: executable event specification — JX 1.1 ALPHA 2 R15.3
 
 This catalogue is compiled into the installed event files. It lists every event, including technical receivers, cooldowns and verification. IDs and conditions below are generated from the same objects used by the build.
 
@@ -3125,7 +3125,7 @@ Total: 3107 events; 128 actionable decision entries. Counts include alternative 
 
 ## Exact events, gates and actions
 
-### 28600001: Japan Rising - JX 1.1 ALPHA 2 R15.2
+### 28600001: Japan Rising - JX 1.1 ALPHA 2 R15.3
 
 Country: JAP. Module: opening. Earliest year: 1933. Triggered receiver: False. Persistent: False.
 

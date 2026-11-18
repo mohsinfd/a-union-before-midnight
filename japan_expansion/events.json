@@ -1,7 +1,7 @@
 [
   {
     "key": "welcome",
-    "title": "Japan Rising - JX 1.1 ALPHA 2 R15.2",
+    "title": "Japan Rising - JX 1.1 ALPHA 2 R15.3",
     "desc": "Japan enters 1933 with a powerful fleet, limited industrial resources and competing demands from the Army and Navy. Invest in factories, shipping, training and reserves to prepare for conflict in China and across the Pacific. Choose Japan's future alliances and peace terms from the position we build.\n\nGarrisons defend local bases, Mountain Infantry handle difficult terrain and Marines lead opposed landings. Production priorities and regional agreements can support the forces you build.",
     "country": "JAP",
     "gate": "ai = no NOT = { ispuppet = JAP } NOT = { flag = JX_ACTIVE }",

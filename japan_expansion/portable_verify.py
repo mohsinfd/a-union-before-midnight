@@ -37,7 +37,7 @@ def verify():
                 with Image.open(path) as picture:assert picture.size==(192,104)
     with Image.open(target/'gfx/map/hoi_counter_strip.bmp') as image:assert image.size==((53+len(d.CLASSES))*32,34)
     reports={}
-    audit_names=(('R15_2_COLD_AUDIT.json',) if b.VERSION.endswith('R15.2') else ('R15_1_COLD_AUDIT.json',) if b.VERSION.endswith('R15.1') else
+    audit_names=(('R15_3_COLD_AUDIT.json',) if b.VERSION.endswith('R15.3') else ('R15_2_COLD_AUDIT.json',) if b.VERSION.endswith('R15.2') else ('R15_1_COLD_AUDIT.json',) if b.VERSION.endswith('R15.1') else
                  ('UNIQUE_UNIT_COLD_AUDIT.json','ENEMY_TRANSPORT_AI_AUDIT.json','R14_COLD_AUDIT.json','R15_COLD_AUDIT.json'))
     for filename in audit_names:
         report=json.loads((b.HERE/filename).read_text());assert report['passed'],filename
@@ -52,6 +52,9 @@ def verify():
                      'R15_README.md','R15_ENEMY.md','R15_RECOVERY.md','R15_STRATEGY.md',
                      'R15_COLD_AUDIT.json','R15_COST_AUDIT.json','R15_COST_AUDIT.md'):
         shutil.copy2(b.HERE/filename,docs/filename)
+    if b.VERSION.endswith('R15.3'):
+        for filename in ('R15_3_COLD_AUDIT.json','R15_3_CHANGES.md','R15_3_REGRESSION_RESULTS.json'):
+            shutil.copy2(b.HERE/filename,docs/filename)
     if b.VERSION.endswith('R15.2'):
         for filename in ('R15_2_COLD_AUDIT.json','R15_2_CHANGES.md','R15_2_REGRESSION_RESULTS.json'):
             shutil.copy2(b.HERE/filename,docs/filename)

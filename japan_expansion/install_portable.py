@@ -23,7 +23,7 @@ def main():
     (HERE/'local_paths.json').write_text(json.dumps({'game_root':str(game),'base_root':str(base)},indent=2)+'\n')
     # Build refuses to replace files while the game process is running.
     from catalog import VERSION
-    cold=(('R15_2_COLD_review.py',['--run-suites']),) if VERSION.endswith('R15.2') else (('R15_1_COLD_review.py',['--run-suites']),) if VERSION.endswith('R15.1') else (('R14_COLD_review.py',[]),('R15_COLD_review.py',[]))
+    cold=(('R15_3_COLD_review.py',['--run-suites']),) if VERSION.endswith('R15.3') else (('R15_2_COLD_review.py',['--run-suites']),) if VERSION.endswith('R15.2') else (('R15_1_COLD_review.py',['--run-suites']),) if VERSION.endswith('R15.1') else (('R14_COLD_review.py',[]),('R15_COLD_review.py',[]))
     stages=(('build.py',['spec']),('build.py',['install']),
                         ('UNIQUE_UNIT_EVENTS_review.py',[]),('ENEMY_TRANSPORT_AI_review.py',[]),
                         ('PLAYER_COPY_review.py',[]),('validate.py',[]))+cold+(('portable_verify.py',[]),)
